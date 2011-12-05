@@ -43,8 +43,8 @@ struct _MateDAWebItem {
     MateDAItem generic;
     gboolean run_in_terminal;
     gboolean netscape_remote;
-    gchar *tab_command;
-    gchar *win_command;
+    gchar* tab_command;
+    gchar* win_command;
 };
 
 struct _MateDASimpleItem {

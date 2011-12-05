@@ -47,10 +47,10 @@ mate_da_xml_get_bool (const xmlNode *parent, const gchar *val_name)
 	if (!xmlStrncmp (element->name, xml_val_name, len)) {
 	    xmlChar *cont = xmlNodeGetContent (element);
 
-	    if (!xmlStrcasecmp (cont, "true") || !xmlStrcasecmp (cont, "1"))
-		ret_val = TRUE;
+	    if (!xmlStrcasecmp(cont, (const xmlChar*) "true") || !xmlStrcasecmp(cont, (const xmlChar*) "1"))
+			ret_val = TRUE;
 	    else
-		ret_val = FALSE;
+			ret_val = FALSE;
 
 	    xmlFree (cont);
 	}
@@ -91,7 +91,7 @@ mate_da_xml_get_string (const xmlNode *parent, const gchar *val_name)
 	    }
 	    else {
 		for (i = 0; sys_langs[i] != NULL; i++) {
-		    if (!strcmp (sys_langs[i], node_lang)) {
+		    if (!strcmp(sys_langs[i], (char*) node_lang)) {
 			ret_val = (gchar *) xmlNodeGetContent (element);
 			/* since sys_langs is sorted from most desirable to
 			 * least desirable, exit at first match
@@ -144,9 +144,9 @@ mate_da_xml_load_xml (MateDACapplet *capplet, const gchar * filename)
     root = xmlDocGetRootElement (xml_doc);
 
     for (section = root->children; section != NULL; section = section->next) {
-	if (!xmlStrncmp (section->name, "web-browsers", 12)) {
+	if (!xmlStrncmp(section->name, (const xmlChar*) "web-browsers", strlen("web-browsers"))) {
 	    for (element = section->children; element != NULL; element = element->next) {
-		if (!xmlStrncmp (element->name, "web-browser", 11)) {
+		if (!xmlStrncmp (element->name, (const xmlChar*) "web-browser", strlen("web-browser"))) {
 		    executable = mate_da_xml_get_string (element, "executable");
 		    if (is_executable_valid (executable)) {
 			web_item = mate_da_web_item_new ();
@@ -170,9 +170,9 @@ mate_da_xml_load_xml (MateDACapplet *capplet, const gchar * filename)
 		}
 	    }
 	}
-	else if (!xmlStrncmp (section->name, "mail-readers", 12)) {
+	else if (!xmlStrncmp (section->name, (const xmlChar*) "mail-readers", strlen("mail-readers"))) {
 	    for (element = section->children; element != NULL; element = element->next) {
-		if (!xmlStrncmp (element->name, "mail-reader", 11)) {
+		if (!xmlStrncmp (element->name, (const xmlChar*) "mail-reader", strlen("mail-reader"))) {
 		    executable = mate_da_xml_get_string (element, "executable");
 		    if (is_executable_valid (executable)) {
 			mail_item = mate_da_simple_item_new ();
@@ -191,9 +191,9 @@ mate_da_xml_load_xml (MateDACapplet *capplet, const gchar * filename)
 		}
 	    }
 	}
-	else if (!xmlStrncmp (section->name, "terminals", 9)) {
+	else if (!xmlStrncmp (section->name, (const xmlChar*) "terminals", strlen("terminals"))) {
 	    for (element = section->children; element != NULL; element = element->next) {
-		if (!xmlStrncmp (element->name, "terminal", 8)) {
+		if (!xmlStrncmp (element->name, (const xmlChar*) "terminal", strlen("terminal"))) {
 		    executable = mate_da_xml_get_string (element, "executable");
 		    if (is_executable_valid (executable)) {
 			term_item = mate_da_term_item_new ();
@@ -212,9 +212,9 @@ mate_da_xml_load_xml (MateDACapplet *capplet, const gchar * filename)
 		}
 	    }
 	}
-	else if (!xmlStrncmp (section->name, "media-players", 13)) {
+	else if (!xmlStrncmp (section->name, (const xmlChar*) "music-players", strlen("music-players"))) {
 	    for (element = section->children; element != NULL; element = element->next) {
-		if (!xmlStrncmp (element->name, "media-player", 12)) {
+		if (!xmlStrncmp (element->name, (const xmlChar*) "music-player", strlen("music-player"))) {
 		    executable = mate_da_xml_get_string (element, "executable");
 		    if (is_executable_valid (executable)) {
 			media_item = mate_da_simple_item_new ();
@@ -233,9 +233,9 @@ mate_da_xml_load_xml (MateDACapplet *capplet, const gchar * filename)
 		}
 	    }
 	}
-	else if (!xmlStrncmp (section->name, "a11y-visual", 11)) {
+	else if (!xmlStrncmp (section->name, (const xmlChar*) "a11y-visual", strlen("a11y-visual"))) {
 	    for (element = section->children; element != NULL; element = element->next) {
-		if (!xmlStrncmp (element->name, "visual", 6)) {
+		if (!xmlStrncmp (element->name, (const xmlChar*) "visual", strlen("visual"))) {
 		    executable = mate_da_xml_get_string (element,"executable");
 		    if (is_executable_valid (executable)) {
 			visual_item = mate_da_visual_item_new ();
@@ -254,9 +254,9 @@ mate_da_xml_load_xml (MateDACapplet *capplet, const gchar * filename)
 		}
 	    }
 	}
-	else if (!xmlStrncmp (section->name, "a11y-mobility", 13)) {
+	else if (!xmlStrncmp (section->name, (const xmlChar*) "a11y-mobility", strlen("a11y-mobility"))) {
 	    for (element = section->children; element != NULL; element = element->next) {
-		if (!xmlStrncmp (element->name, "mobility", 8)) {
+		if (!xmlStrncmp (element->name, (const xmlChar*) "mobility", strlen("mobility"))) {
 		    executable = mate_da_xml_get_string (element,"executable");
 		    if (is_executable_valid (executable)) {
 			mobility_item = mate_da_mobility_item_new ();
@@ -305,23 +305,24 @@ void mate_da_xml_load_list(MateDACapplet* capplet)
 	}
 }
 
-void
-mate_da_xml_free (MateDACapplet *capplet)
+void mate_da_xml_free(MateDACapplet* capplet)
 {
-    g_list_foreach (capplet->web_browsers, (GFunc) mate_da_web_item_free, NULL);
-    g_list_foreach (capplet->mail_readers, (GFunc) mate_da_simple_item_free, NULL);
-    g_list_foreach (capplet->terminals, (GFunc) mate_da_term_item_free, NULL);
-    g_list_foreach (capplet->media_players, (GFunc) mate_da_simple_item_free, NULL);
-    g_list_foreach (capplet->visual_ats, (GFunc) mate_da_visual_item_free, NULL);
-    g_list_foreach (capplet->mobility_ats, (GFunc) mate_da_mobility_item_free, NULL);
+    g_list_foreach(capplet->web_browsers, (GFunc) mate_da_web_item_free, NULL);
+    g_list_foreach(capplet->mail_readers, (GFunc) mate_da_simple_item_free, NULL);
+    g_list_foreach(capplet->terminals, (GFunc) mate_da_term_item_free, NULL);
+    g_list_foreach(capplet->media_players, (GFunc) mate_da_simple_item_free, NULL);
+    g_list_foreach(capplet->visual_ats, (GFunc) mate_da_visual_item_free, NULL);
+    g_list_foreach(capplet->mobility_ats, (GFunc) mate_da_mobility_item_free, NULL);
+    //g_list_foreach(capplet->filemanagers, (GFunc) mate_da_filemanager_item_free, NULL);
 
-    g_list_free (capplet->web_browsers);
-    g_list_free (capplet->mail_readers);
-    g_list_free (capplet->terminals);
-    g_list_free (capplet->media_players);
-    g_list_free (capplet->visual_ats);
-    g_list_free (capplet->mobility_ats);
+    g_list_free(capplet->web_browsers);
+    g_list_free(capplet->mail_readers);
+    g_list_free(capplet->terminals);
+    g_list_free(capplet->media_players);
+    g_list_free(capplet->visual_ats);
+    g_list_free(capplet->mobility_ats);
+    //g_list_free(capplet->filemanagers);
 
-    g_object_unref (capplet->builder);
-    g_free (capplet);
+    g_object_unref(capplet->builder);
+    g_free(capplet);
 }

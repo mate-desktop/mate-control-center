@@ -85,7 +85,9 @@ struct _MateDACapplet {
 	GtkWidget* visual_combo_box;
 	GtkWidget* mobility_combo_box;
 	/* Para el File Manager */
-	/*GtkWidget* filemanager_combo_box;*/
+	GtkWidget* file_combo_box;
+	GtkWidget* text_combo_box;
+
 
 	GtkWidget* web_browser_command_entry;
 	GtkWidget* web_browser_command_label;
@@ -95,12 +97,12 @@ struct _MateDACapplet {
 	GtkWidget* new_tab_radiobutton;
 
 	/* Para el File Manager */
-	/*GtkWidget* file_manager_command_entry;
+	GtkWidget* file_manager_command_entry;
 	GtkWidget* file_manager_command_label;
 	GtkWidget* file_manager_terminal_checkbutton;
 	GtkWidget* file_manager_default_radiobutton;
 	GtkWidget* file_manager_new_win_radiobutton;
-	GtkWidget* file_manager_new_tab_radiobutton;*/
+	GtkWidget* file_manager_new_tab_radiobutton;
 
 
 	GtkWidget* mail_reader_command_entry;
@@ -133,7 +135,7 @@ struct _MateDACapplet {
 	GList* visual_ats;
 	GList* mobility_ats;
 	/* Para el File Manager */
-	/*GList* file_managers;*/
+	GList* file_managers;
 };
 
 #endif
