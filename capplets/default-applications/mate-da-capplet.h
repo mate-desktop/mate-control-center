@@ -2,6 +2,7 @@
  *  Authors: Luca Cavalli <loopback@slackit.org>
  *
  *  Copyright 2005-2006 Luca Cavalli
+ *  Copyright 2010 Perberos <perberos@gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of version 2 of the GNU General Public License
@@ -61,6 +62,10 @@
 #define DEFAULT_APPS_KEY_MEDIA_EXEC        DEFAULT_APPS_KEY_MEDIA_PATH"/exec"
 #define DEFAULT_APPS_KEY_MEDIA_NEEDS_TERM  DEFAULT_APPS_KEY_MEDIA_PATH"/needs_term"
 
+#define DEFAULT_APPS_KEY_IMAGE_PATH        "/desktop/mate/applications/image"
+#define DEFAULT_APPS_KEY_IMAGE_EXEC        DEFAULT_APPS_KEY_IMAGE_PATH"/exec"
+#define DEFAULT_APPS_KEY_IMAGE_NEEDS_TERM  DEFAULT_APPS_KEY_IMAGE_PATH"/needs_term"
+
 #define DEFAULT_APPS_KEY_VISUAL_PATH  "/desktop/mate/applications/at/visual"
 #define DEFAULT_APPS_KEY_VISUAL_EXEC  DEFAULT_APPS_KEY_VISUAL_PATH"/exec"
 #define DEFAULT_APPS_KEY_VISUAL_STARTUP DEFAULT_APPS_KEY_VISUAL_PATH"/startup"
@@ -87,6 +92,7 @@ struct _MateDACapplet {
 	/* Para el File Manager */
 	GtkWidget* file_combo_box;
 	GtkWidget* text_combo_box;
+	GtkWidget* image_combo_box;
 
 
 	GtkWidget* web_browser_command_entry;
@@ -126,6 +132,11 @@ struct _MateDACapplet {
 	GtkWidget* mobility_command_label;
 	GtkWidget* mobility_startup_checkbutton;
 
+
+	GtkWidget* image_viewer_command_entry;
+	GtkWidget* image_viewer_command_label;
+	GtkWidget* image_viewer_terminal_checkbutton;
+
 	MateConfClient* mateconf;
 
 	GList* web_browsers;
@@ -136,6 +147,7 @@ struct _MateDACapplet {
 	GList* mobility_ats;
 	/* Para el File Manager */
 	GList* file_managers;
+	GList* image_viewers;
 };
 
 #endif
