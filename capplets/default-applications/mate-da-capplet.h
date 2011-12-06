@@ -62,6 +62,10 @@
 #define DEFAULT_APPS_KEY_MEDIA_EXEC        DEFAULT_APPS_KEY_MEDIA_PATH"/exec"
 #define DEFAULT_APPS_KEY_MEDIA_NEEDS_TERM  DEFAULT_APPS_KEY_MEDIA_PATH"/needs_term"
 
+#define DEFAULT_APPS_KEY_VIDEO_PATH        "/desktop/mate/applications/video"
+#define DEFAULT_APPS_KEY_VIDEO_EXEC        DEFAULT_APPS_KEY_VIDEO_PATH"/exec"
+#define DEFAULT_APPS_KEY_VIDEO_NEEDS_TERM  DEFAULT_APPS_KEY_VIDEO_PATH"/needs_term"
+
 #define DEFAULT_APPS_KEY_IMAGE_PATH        "/desktop/mate/applications/image"
 #define DEFAULT_APPS_KEY_IMAGE_EXEC        DEFAULT_APPS_KEY_IMAGE_PATH"/exec"
 #define DEFAULT_APPS_KEY_IMAGE_NEEDS_TERM  DEFAULT_APPS_KEY_IMAGE_PATH"/needs_term"
@@ -93,6 +97,7 @@ typedef struct _MateDACapplet {
 	GtkWidget* mail_combo_box;
 	GtkWidget* term_combo_box;
 	GtkWidget* media_combo_box;
+	GtkWidget* video_combo_box;
 	GtkWidget* visual_combo_box;
 	GtkWidget* mobility_combo_box;
 	/* Para el File Manager */
@@ -140,6 +145,11 @@ typedef struct _MateDACapplet {
 	GtkWidget* media_player_command_label;
 	GtkWidget* media_player_terminal_checkbutton;
 
+	/* reproductor de videos */
+	GtkWidget* video_player_command_entry;
+	GtkWidget* video_player_command_label;
+	GtkWidget* video_player_terminal_checkbutton;
+
 	/* accesibilidad visual */
 	GtkWidget* visual_command_entry;
 	GtkWidget* visual_command_label;
@@ -157,6 +167,7 @@ typedef struct _MateDACapplet {
 	GList* mail_readers;
 	GList* terminals;
 	GList* media_players;
+	GList* video_players;
 	GList* visual_ats;
 	GList* mobility_ats;
 	GList* file_managers;

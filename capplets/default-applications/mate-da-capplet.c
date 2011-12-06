@@ -325,7 +325,7 @@ static void media_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
     gboolean is_custom_active;
 
     current_index = gtk_combo_box_get_active (combo);
-    is_custom_active = (current_index >= g_list_length (capplet->media_players));
+    is_custom_active = (current_index >= g_list_length(capplet->media_players));
 
 	if (current_index != -1)
 	{
@@ -348,10 +348,12 @@ static void media_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
 					{
 						/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-vorbis+ogg", NULL);
 						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-scpls", NULL);
 						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/mpeg", NULL);
 						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-wav", NULL);
 						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-mpegurl", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/webm", NULL);
 					}
 				}
 
@@ -367,6 +369,59 @@ static void media_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
     gtk_widget_set_sensitive(capplet->media_player_terminal_checkbutton, is_custom_active);
 }
 
+static void video_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+    guint current_index;
+    gboolean is_custom_active;
+
+    current_index = gtk_combo_box_get_active (combo);
+    is_custom_active = (current_index >= g_list_length(capplet->video_players));
+
+	if (current_index != -1)
+	{
+		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->video_players, current_index);
+
+		if (item != NULL)
+		{
+			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
+			 * item.
+			 * De lo contrario, se crea un elemento especial. */
+			GList* recommended = g_app_info_get_recommended_for_type("video/x-ogm+ogg");
+
+			if (recommended!= NULL)
+			{
+				GList* app;
+
+				for (app = recommended; app != NULL; app = app->next)
+				{
+					/* nice hack bro */
+					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
+					{
+						/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/mpeg", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-mpeg", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/msvideo", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/quicktime", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-avi", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-ogm+ogg", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-matroska", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/webm", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/mp4", NULL);
+						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-flv", NULL);
+					}
+				}
+
+				g_list_free_full(recommended, g_object_unref);
+			}
+		}
+	}
+
+	/* Si, aun falta para poder crear personalizables... */
+	is_custom_active = FALSE;
+    gtk_widget_set_sensitive(capplet->video_player_command_entry, is_custom_active);
+    gtk_widget_set_sensitive(capplet->video_player_command_label, is_custom_active);
+    gtk_widget_set_sensitive(capplet->video_player_terminal_checkbutton, is_custom_active);
+}
 static void terminal_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 {
     guint current_index;
@@ -1006,6 +1061,10 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->media_player_command_label = get_widget("media_player_command_label");
 	capplet->media_player_terminal_checkbutton = get_widget("media_player_terminal_checkbutton");
 
+	capplet->video_player_command_entry = get_widget("video_command_entry");
+	capplet->video_player_command_label = get_widget("video_command_label");
+	capplet->video_player_terminal_checkbutton = get_widget("video_terminal_checkbox");
+
 	capplet->visual_command_entry = get_widget("visual_command_entry");
 	capplet->visual_command_label = get_widget("visual_command_label");
 	capplet->visual_startup_checkbutton = get_widget("visual_start_checkbutton");
@@ -1030,9 +1089,9 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->mail_combo_box = get_widget("mail_reader_combobox");
 	capplet->term_combo_box = get_widget("terminal_combobox");
 	capplet->media_combo_box = get_widget("media_player_combobox");
+	capplet->video_combo_box = get_widget("video_combobox");
 	capplet->visual_combo_box = get_widget("visual_combobox");
 	capplet->mobility_combo_box = get_widget("mobility_combobox");
-
 	capplet->text_combo_box = get_widget("text_combobox");
 	capplet->file_combo_box = get_widget("filemanager_combobox");
 	capplet->image_combo_box = get_widget("image_combobox");
@@ -1045,6 +1104,7 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers);
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals);
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->media_combo_box), capplet->media_players);
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->video_combo_box), capplet->video_players);
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats);
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats);
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->image_combo_box), capplet->image_viewers);
@@ -1055,6 +1115,7 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->mail_combo_box, "changed", G_CALLBACK(mail_combo_changed_cb), capplet);
 	g_signal_connect(capplet->term_combo_box, "changed", G_CALLBACK(terminal_combo_changed_cb), capplet);
 	g_signal_connect(capplet->media_combo_box, "changed", G_CALLBACK(media_combo_changed_cb), capplet);
+	g_signal_connect(capplet->video_combo_box, "changed", G_CALLBACK(video_combo_changed_cb), capplet);
 	g_signal_connect(capplet->visual_combo_box, "changed", G_CALLBACK(visual_combo_changed_cb), capplet);
 	g_signal_connect(capplet->mobility_combo_box, "changed", G_CALLBACK(mobility_combo_changed_cb), capplet);
 	g_signal_connect(capplet->image_combo_box, "changed", G_CALLBACK(image_combo_changed_cb), capplet);
@@ -1125,6 +1186,25 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	mateconf_peditor_new_boolean (NULL,
 		DEFAULT_APPS_KEY_MEDIA_NEEDS_TERM,
 		capplet->media_player_terminal_checkbutton,
+		NULL);
+
+	/* Video player */
+	mateconf_peditor_new_combo_box (NULL,
+		DEFAULT_APPS_KEY_VIDEO_EXEC,
+		capplet->video_combo_box,
+		"conv-from-widget-cb", combo_conv_from_widget,
+		"conv-to-widget-cb", combo_conv_to_widget,
+		"data", capplet->video_players,
+		NULL);
+
+	mateconf_peditor_new_string (NULL,
+		DEFAULT_APPS_KEY_VIDEO_EXEC,
+		capplet->video_player_command_entry,
+		NULL);
+
+	mateconf_peditor_new_boolean (NULL,
+		DEFAULT_APPS_KEY_VIDEO_NEEDS_TERM,
+		capplet->video_player_terminal_checkbutton,
 		NULL);
 
 	/* Image viewer */

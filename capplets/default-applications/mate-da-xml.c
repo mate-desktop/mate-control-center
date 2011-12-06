@@ -148,6 +148,7 @@ static void mate_da_xml_load_xml(MateDACapplet* capplet, const gchar* filename)
 	MateDAImageItem* image_item;
 	MateDATextItem* text_item;
 	MateDAFileItem* file_item;
+	MateDASimpleItem* video_item;
 
 	xml_doc = xmlParseFile(filename);
 
@@ -270,6 +271,34 @@ static void mate_da_xml_load_xml(MateDACapplet* capplet, const gchar* filename)
 						media_item->run_in_terminal = mate_da_xml_get_bool (element, "run-in-terminal");
 
 						capplet->media_players = g_list_append (capplet->media_players, media_item);
+					}
+					else
+					{
+						g_free(executable);
+					}
+				}
+			}
+		}
+		else if (!xmlStrncmp(section->name, (const xmlChar*) "video-players", strlen("video-players")))
+		{
+			for (element = section->children; element != NULL; element = element->next)
+			{
+				if (!xmlStrncmp (element->name, (const xmlChar*) "video-player", strlen("video-player")))
+				{
+					executable = mate_da_xml_get_string(element, "executable");
+
+					if (is_executable_valid(executable))
+					{
+						video_item = mate_da_simple_item_new();
+
+						video_item->generic.name = mate_da_xml_get_string (element, "name");
+						video_item->generic.executable = executable;
+						video_item->generic.command = mate_da_xml_get_string (element, "command");
+						video_item->generic.icon_name = mate_da_xml_get_string (element, "icon-name");
+
+						video_item->run_in_terminal = mate_da_xml_get_bool (element, "run-in-terminal");
+
+						capplet->video_players = g_list_append (capplet->video_players, video_item);
 					}
 					else
 					{
@@ -454,6 +483,7 @@ void mate_da_xml_free(MateDACapplet* capplet)
 	g_list_foreach(capplet->mail_readers, (GFunc) mate_da_simple_item_free, NULL);
 	g_list_foreach(capplet->terminals, (GFunc) mate_da_term_item_free, NULL);
 	g_list_foreach(capplet->media_players, (GFunc) mate_da_simple_item_free, NULL);
+	g_list_foreach(capplet->video_players, (GFunc) mate_da_simple_item_free, NULL);
 	g_list_foreach(capplet->visual_ats, (GFunc) mate_da_visual_item_free, NULL);
 	g_list_foreach(capplet->mobility_ats, (GFunc) mate_da_mobility_item_free, NULL);
 	g_list_foreach(capplet->image_viewers, (GFunc) mate_da_image_item_free, NULL);
@@ -464,6 +494,7 @@ void mate_da_xml_free(MateDACapplet* capplet)
 	g_list_free(capplet->mail_readers);
 	g_list_free(capplet->terminals);
 	g_list_free(capplet->media_players);
+	g_list_free(capplet->video_players);
 	g_list_free(capplet->visual_ats);
 	g_list_free(capplet->mobility_ats);
 	g_list_free(capplet->image_viewers);
