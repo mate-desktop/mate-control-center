@@ -56,6 +56,20 @@ MateDAImageItem* mate_da_image_item_new(void)
 	return item;
 }
 
+MateDATextItem* mate_da_text_item_new(void)
+{
+	MateDATextItem* item = g_new0(MateDATextItem, 1);
+
+	return item;
+}
+
+MateDAFileItem* mate_da_file_item_new(void)
+{
+	MateDAFileItem* item = g_new0(MateDAFileItem, 1);
+
+	return item;
+}
+
 MateDAMobilityItem* mate_da_mobility_item_new(void)
 {
 	MateDAMobilityItem* item = g_new0(MateDAMobilityItem, 1);
@@ -95,6 +109,34 @@ void mate_da_simple_item_free(MateDASimpleItem* item)
 }
 
 void mate_da_image_item_free(MateDAImageItem* item)
+{
+	if (item != NULL)
+	{
+		g_free(item->generic.name);
+		g_free(item->generic.executable);
+		g_free(item->generic.command);
+		g_free(item->generic.icon_name);
+		g_free(item->generic.icon_path);
+
+		g_free(item);
+	}
+}
+
+void mate_da_text_item_free(MateDATextItem* item)
+{
+	if (item != NULL)
+	{
+		g_free(item->generic.name);
+		g_free(item->generic.executable);
+		g_free(item->generic.command);
+		g_free(item->generic.icon_name);
+		g_free(item->generic.icon_path);
+
+		g_free(item);
+	}
+}
+
+void mate_da_file_item_free(MateDAFileItem* item)
 {
 	if (item != NULL)
 	{

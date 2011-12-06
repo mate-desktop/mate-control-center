@@ -31,80 +31,92 @@
 
 static gboolean mate_da_xml_get_bool(const xmlNode* parent, const gchar* val_name)
 {
-    xmlNode *element;
+    xmlNode* element;
     gboolean ret_val = FALSE;
-    xmlChar *xml_val_name;
+    xmlChar* xml_val_name;
     gint len;
 
-    g_return_val_if_fail (parent != NULL, FALSE);
-    g_return_val_if_fail (parent->children != NULL, ret_val);
-    g_return_val_if_fail (val_name != NULL, FALSE);
+	if (parent != NULL && parent->children != NULL && val_name == NULL)
+	{
+		xml_val_name = xmlCharStrdup(val_name);
+		len = xmlStrlen(xml_val_name);
 
-    xml_val_name = xmlCharStrdup (val_name);
-    len = xmlStrlen (xml_val_name);
+		for (element = parent->children; element != NULL; element = element->next)
+		{
+			if (!xmlStrncmp(element->name, xml_val_name, len))
+			{
+				xmlChar* cont = xmlNodeGetContent(element);
 
-    for (element = parent->children; element != NULL; element = element->next) {
-	if (!xmlStrncmp (element->name, xml_val_name, len)) {
-	    xmlChar *cont = xmlNodeGetContent (element);
+				if (!xmlStrcasecmp(cont, (const xmlChar*) "true") || !xmlStrcasecmp(cont, (const xmlChar*) "1"))
+				{
+					ret_val = TRUE;
+				}
+				else
+				{
+					ret_val = FALSE;
+				}
 
-	    if (!xmlStrcasecmp(cont, (const xmlChar*) "true") || !xmlStrcasecmp(cont, (const xmlChar*) "1"))
-			ret_val = TRUE;
-	    else
-			ret_val = FALSE;
+				xmlFree(cont);
+			}
+		}
 
-	    xmlFree (cont);
+		xmlFree(xml_val_name);
 	}
-    }
 
-    xmlFree (xml_val_name);
     return ret_val;
 }
 
 static gchar* mate_da_xml_get_string(const xmlNode* parent, const gchar* val_name)
 {
-    const gchar * const *sys_langs;
-    xmlChar *node_lang;
-    xmlNode *element;
-    gchar *ret_val = NULL;
-    xmlChar *xml_val_name;
-    gint len;
-    gint i;
+	const gchar* const* sys_langs;
+	xmlChar* node_lang;
+	xmlNode* element;
+	gchar* ret_val = NULL;
+	xmlChar* xml_val_name;
+	gint len;
+	gint i;
 
-    g_return_val_if_fail (parent != NULL, ret_val);
-    g_return_val_if_fail (parent->children != NULL, ret_val);
-    g_return_val_if_fail (val_name != NULL, ret_val);
+	if (parent != NULL && parent->children != NULL && val_name != NULL)
+	{
+		#if GLIB_CHECK_VERSION (2, 6, 0)
+			sys_langs = g_get_language_names();
+		#endif
 
-#if GLIB_CHECK_VERSION (2, 6, 0)
-    sys_langs = g_get_language_names ();
-#endif
+		xml_val_name = xmlCharStrdup(val_name);
+		len = xmlStrlen(xml_val_name);
 
-    xml_val_name = xmlCharStrdup (val_name);
-    len = xmlStrlen (xml_val_name);
+		for (element = parent->children; element != NULL; element = element->next)
+		{
+			if (!xmlStrncmp(element->name, xml_val_name, len))
+			{
+				node_lang = xmlNodeGetLang(element);
 
-    for (element = parent->children; element != NULL; element = element->next) {
-	if (!xmlStrncmp (element->name, xml_val_name, len)) {
-	    node_lang = xmlNodeGetLang (element);
+				if (node_lang == NULL)
+				{
+					ret_val = (gchar *) xmlNodeGetContent(element);
+				}
+				else
+				{
+					for (i = 0; sys_langs[i] != NULL; i++)
+					{
+						if (!strcmp(sys_langs[i], (char*) node_lang))
+						{
+							ret_val = (gchar*) xmlNodeGetContent(element);
+							/* since sys_langs is sorted from most desirable to
+							 * least desirable, exit at first match */
+							break;
+						}
+					}
+				}
 
-	    if (node_lang == NULL) {
-		ret_val = (gchar *) xmlNodeGetContent (element);
-	    }
-	    else {
-		for (i = 0; sys_langs[i] != NULL; i++) {
-		    if (!strcmp(sys_langs[i], (char*) node_lang)) {
-			ret_val = (gchar *) xmlNodeGetContent (element);
-			/* since sys_langs is sorted from most desirable to
-			 * least desirable, exit at first match
-			 */
-			break;
-		    }
+				xmlFree(node_lang);
+			}
 		}
-	    }
-	    xmlFree (node_lang);
-	}
-    }
 
-    xmlFree (xml_val_name);
-    return ret_val;
+		xmlFree(xml_val_name);
+	}
+
+	return ret_val;
 }
 
 static gboolean is_executable_valid(gchar* executable)
@@ -134,6 +146,8 @@ static void mate_da_xml_load_xml(MateDACapplet* capplet, const gchar* filename)
 	MateDAVisualItem* visual_item;
 	MateDAMobilityItem* mobility_item;
 	MateDAImageItem* image_item;
+	MateDATextItem* text_item;
+	MateDAFileItem* file_item;
 
 	xml_doc = xmlParseFile(filename);
 
@@ -292,6 +306,62 @@ static void mate_da_xml_load_xml(MateDACapplet* capplet, const gchar* filename)
 				}
 			}
 		}
+		else if (!xmlStrncmp(section->name, (const xmlChar*) "text-editors", strlen("text-editors")))
+		{
+			for (element = section->children; element != NULL; element = element->next)
+			{
+				if (!xmlStrncmp(element->name, (const xmlChar*) "text-editor", strlen("text-editor")))
+				{
+					executable = mate_da_xml_get_string(element, "executable");
+
+					if (is_executable_valid(executable))
+					{
+						text_item = mate_da_text_item_new();
+
+						text_item->generic.name = mate_da_xml_get_string(element, "name");
+						text_item->generic.executable = executable;
+						text_item->generic.command = mate_da_xml_get_string(element, "command");
+						text_item->generic.icon_name = mate_da_xml_get_string(element, "icon-name");
+
+						text_item->run_in_terminal = mate_da_xml_get_bool(element, "run-in-terminal");
+
+						capplet->text_editors = g_list_append(capplet->text_editors, text_item);
+					}
+					else
+					{
+						g_free(executable);
+					}
+				}
+			}
+		}
+		else if (!xmlStrncmp(section->name, (const xmlChar*) "file-managers", strlen("file-managers")))
+		{
+			for (element = section->children; element != NULL; element = element->next)
+			{
+				if (!xmlStrncmp(element->name, (const xmlChar*) "file-manager", strlen("file-manager")))
+				{
+					executable = mate_da_xml_get_string(element, "executable");
+
+					if (is_executable_valid(executable))
+					{
+						file_item = mate_da_file_item_new();
+
+						file_item->generic.name = mate_da_xml_get_string(element, "name");
+						file_item->generic.executable = executable;
+						file_item->generic.command = mate_da_xml_get_string(element, "command");
+						file_item->generic.icon_name = mate_da_xml_get_string(element, "icon-name");
+
+						file_item->run_in_terminal = mate_da_xml_get_bool(element, "run-in-terminal");
+
+						capplet->file_managers = g_list_append(capplet->file_managers, file_item);
+					}
+					else
+					{
+						g_free(executable);
+					}
+				}
+			}
+		}
 		else if (!xmlStrncmp(section->name, (const xmlChar*) "a11y-visual", strlen("a11y-visual")))
 		{
 			for (element = section->children; element != NULL; element = element->next)
@@ -380,24 +450,26 @@ void mate_da_xml_load_list(MateDACapplet* capplet)
 
 void mate_da_xml_free(MateDACapplet* capplet)
 {
-    g_list_foreach(capplet->web_browsers, (GFunc) mate_da_web_item_free, NULL);
-    g_list_foreach(capplet->mail_readers, (GFunc) mate_da_simple_item_free, NULL);
-    g_list_foreach(capplet->terminals, (GFunc) mate_da_term_item_free, NULL);
-    g_list_foreach(capplet->media_players, (GFunc) mate_da_simple_item_free, NULL);
-    g_list_foreach(capplet->visual_ats, (GFunc) mate_da_visual_item_free, NULL);
-    g_list_foreach(capplet->mobility_ats, (GFunc) mate_da_mobility_item_free, NULL);
-    //g_list_foreach(capplet->filemanagers, (GFunc) mate_da_filemanager_item_free, NULL);
-    g_list_foreach(capplet->image_viewers, (GFunc) mate_da_image_item_free, NULL);
+	g_list_foreach(capplet->web_browsers, (GFunc) mate_da_web_item_free, NULL);
+	g_list_foreach(capplet->mail_readers, (GFunc) mate_da_simple_item_free, NULL);
+	g_list_foreach(capplet->terminals, (GFunc) mate_da_term_item_free, NULL);
+	g_list_foreach(capplet->media_players, (GFunc) mate_da_simple_item_free, NULL);
+	g_list_foreach(capplet->visual_ats, (GFunc) mate_da_visual_item_free, NULL);
+	g_list_foreach(capplet->mobility_ats, (GFunc) mate_da_mobility_item_free, NULL);
+	g_list_foreach(capplet->image_viewers, (GFunc) mate_da_image_item_free, NULL);
+	g_list_foreach(capplet->text_editors, (GFunc) mate_da_text_item_free, NULL);
+	g_list_foreach(capplet->file_managers, (GFunc) mate_da_file_item_free, NULL);
 
-    g_list_free(capplet->web_browsers);
-    g_list_free(capplet->mail_readers);
-    g_list_free(capplet->terminals);
-    g_list_free(capplet->media_players);
-    g_list_free(capplet->visual_ats);
-    g_list_free(capplet->mobility_ats);
-    g_list_free(capplet->image_viewers);
-    //g_list_free(capplet->filemanagers);
+	g_list_free(capplet->web_browsers);
+	g_list_free(capplet->mail_readers);
+	g_list_free(capplet->terminals);
+	g_list_free(capplet->media_players);
+	g_list_free(capplet->visual_ats);
+	g_list_free(capplet->mobility_ats);
+	g_list_free(capplet->image_viewers);
+	g_list_free(capplet->text_editors);
+	g_list_free(capplet->file_managers);
 
-    g_object_unref(capplet->builder);
-    g_free(capplet);
+	g_object_unref(capplet->builder);
+	g_free(capplet);
 }

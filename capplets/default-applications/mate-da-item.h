@@ -49,6 +49,16 @@ typedef struct _MateDAImageItem {
 	gboolean run_in_terminal;
 } MateDAImageItem;
 
+typedef struct _MateDATextItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+} MateDATextItem;
+
+typedef struct _MateDAFileItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+} MateDAFileItem;
+
 typedef struct _MateDATermItem {
 	MateDAItem generic;
 	gchar* exec_flag;
@@ -78,6 +88,12 @@ void mate_da_visual_item_free(MateDAVisualItem* item);
 
 MateDAImageItem* mate_da_image_item_new(void);
 void mate_da_image_item_free(MateDAImageItem* item);
+
+MateDATextItem* mate_da_text_item_new(void);
+void mate_da_text_item_free(MateDATextItem* item);
+
+MateDAFileItem* mate_da_file_item_new(void);
+void mate_da_file_item_free(MateDAFileItem* item);
 
 MateDAMobilityItem* mate_da_mobility_item_new(void);
 void mate_da_mobility_item_free(MateDAMobilityItem* item);
