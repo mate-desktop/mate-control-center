@@ -88,11 +88,11 @@ get_default_mouse_info (int *default_numerator, int *default_denominator, int *d
 	int tmp_num, tmp_den, tmp_threshold;
 
 	/* Query X for the default value */
-	XGetPointerControl (GDK_DISPLAY (), &numerator, &denominator,
+	XGetPointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numerator, &denominator,
 			    &threshold);
-	XChangePointerControl (GDK_DISPLAY (), True, True, -1, -1, -1);
-	XGetPointerControl (GDK_DISPLAY (), &tmp_num, &tmp_den, &tmp_threshold);
-	XChangePointerControl (GDK_DISPLAY (), True, True, numerator, denominator, threshold);
+	XChangePointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), True, True, -1, -1, -1);
+	XGetPointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &tmp_num, &tmp_den, &tmp_threshold);
+	XChangePointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), True, True, numerator, denominator, threshold);
 
 	if (default_numerator)
 		*default_numerator = tmp_num;
@@ -338,23 +338,23 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 	unsigned long nitems, bytes_after;
 	unsigned char *data;
 
-	prop = XInternAtom (GDK_DISPLAY (), "Synaptics Capabilities", True);
+	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "Synaptics Capabilities", True);
 	if (!prop)
 		return;
 
-	devicelist = XListInputDevices (GDK_DISPLAY (), &numdevices);
+	devicelist = XListInputDevices (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numdevices);
 	for (i = 0; i < numdevices; i++) {
 		if (devicelist[i].use != IsXExtensionPointer)
 			continue;
 
 		gdk_error_trap_push ();
-		XDevice *device = XOpenDevice (GDK_DISPLAY (),
+		XDevice *device = XOpenDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
 					       devicelist[i].id);
 		if (gdk_error_trap_pop ())
 			continue;
 
 		gdk_error_trap_push ();
-		if ((XGetDeviceProperty (GDK_DISPLAY (), device, prop, 0, 2, False,
+		if ((XGetDeviceProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device, prop, 0, 2, False,
 					 XA_INTEGER, &realtype, &realformat, &nitems,
 					 &bytes_after, &data) == Success) && (realtype != None)) {
 			/* Property data is booleans for has_left, has_middle,
@@ -371,7 +371,7 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 		}
 		gdk_error_trap_pop ();
 
-		XCloseDevice (GDK_DISPLAY (), device);
+		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
 	}
 	XFreeDeviceList (devicelist);
 #endif
@@ -391,30 +391,30 @@ find_synaptics (void)
 	XExtensionVersion *version;
 
 	/* Input device properties require version 1.5 or higher */
-	version = XGetExtensionVersion (GDK_DISPLAY (), "XInputExtension");
+	version = XGetExtensionVersion (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "XInputExtension");
 	if (!version->present ||
 		(version->major_version * 1000 + version->minor_version) < 1005) {
 		XFree (version);
 		return False;
 	}
 
-	prop = XInternAtom (GDK_DISPLAY (), "Synaptics Off", True);
+	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "Synaptics Off", True);
 	if (!prop)
 		return False;
 
-	devicelist = XListInputDevices (GDK_DISPLAY (), &numdevices);
+	devicelist = XListInputDevices (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numdevices);
 	for (i = 0; i < numdevices; i++) {
 		if (devicelist[i].use != IsXExtensionPointer)
 			continue;
 
 		gdk_error_trap_push();
-		XDevice *device = XOpenDevice (GDK_DISPLAY (),
+		XDevice *device = XOpenDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
 					       devicelist[i].id);
 		if (gdk_error_trap_pop ())
 			continue;
 
 		gdk_error_trap_push ();
-		if ((XGetDeviceProperty (GDK_DISPLAY (), device, prop, 0, 1, False,
+		if ((XGetDeviceProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device, prop, 0, 1, False,
 					 XA_INTEGER, &realtype, &realformat, &nitems,
 					 &bytes_after, &data) == Success) && (realtype != None)) {
 			XFree (data);
@@ -422,7 +422,7 @@ find_synaptics (void)
 		}
 		gdk_error_trap_pop ();
 
-		XCloseDevice (GDK_DISPLAY (), device);
+		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
 
 		if (ret)
 			break;

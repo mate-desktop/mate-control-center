@@ -637,7 +637,7 @@ read_current_cursor_font (void)
   gchar *dir_name;
   struct dirent *file_dirent;
 
-  dir_name = g_build_filename (g_get_home_dir (), ".mate2/share/cursor-fonts", NULL);
+  dir_name = g_build_filename (g_get_home_dir (), ".config/mate/share/cursor-fonts", NULL);
   if (! g_file_test (dir_name, G_FILE_TEST_EXISTS)) {
     g_free (dir_name);
     return NULL;

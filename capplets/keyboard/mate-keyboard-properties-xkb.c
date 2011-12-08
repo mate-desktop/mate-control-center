@@ -170,7 +170,7 @@ setup_xkb_tabs (GtkBuilder * dialog, MateConfChangeSet * changeset)
 
 	xkb_mateconf_client = mateconf_client_get_default ();
 
-	engine = xkl_engine_get_instance (GDK_DISPLAY ());
+	engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()));
 	config_registry = xkl_config_registry_get_instance (engine);
 
 	matekbd_desktop_config_init (&desktop_config, xkb_mateconf_client,

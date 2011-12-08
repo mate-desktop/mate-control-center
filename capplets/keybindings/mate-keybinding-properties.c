@@ -82,10 +82,9 @@ static GtkWidget *custom_shortcut_dialog = NULL;
 static GtkWidget *custom_shortcut_name_entry = NULL;
 static GtkWidget *custom_shortcut_command_entry = NULL;
 
-static GtkWidget*
-_gtk_builder_get_widget (GtkBuilder *builder, const gchar *name)
+static GtkWidget* _gtk_builder_get_widget(GtkBuilder* builder, const gchar* name)
 {
-  return GTK_WIDGET (gtk_builder_get_object (builder, name));
+	return GTK_WIDGET (gtk_builder_get_object (builder, name));
 }
 
 static GtkBuilder *
@@ -421,72 +420,78 @@ typedef struct {
   gboolean found;
 } KeyMatchData;
 
-static gboolean
-key_match (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+static gboolean key_match(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data)
 {
-  KeyMatchData *match_data = data;
-  KeyEntry *element;
+	KeyMatchData* match_data = data;
+	KeyEntry* element;
 
-  gtk_tree_model_get (model, iter,
-		      KEYENTRY_COLUMN, &element,
-		      -1);
+	gtk_tree_model_get(model, iter,
+		KEYENTRY_COLUMN, &element,
+		-1);
 
-  if (element && g_strcmp0 (element->mateconf_key, match_data->key) == 0)
-    {
-      match_data->found = TRUE;
-      return TRUE;
-    }
+	if (element && g_strcmp0(element->mateconf_key, match_data->key) == 0)
+	{
+		match_data->found = TRUE;
+		return TRUE;
+	}
 
-  return FALSE;
+	return FALSE;
 }
 
-static gboolean
-key_is_already_shown (GtkTreeModel *model, const KeyListEntry *entry)
+static gboolean key_is_already_shown(GtkTreeModel* model, const KeyListEntry* entry)
 {
-  KeyMatchData data;
+	KeyMatchData data;
 
-  data.key = entry->name;
-  data.found = FALSE;
-  gtk_tree_model_foreach (model, key_match, &data);
+	data.key = entry->name;
+	data.found = FALSE;
+	gtk_tree_model_foreach(model, key_match, &data);
 
-  return data.found;
+	return data.found;
 }
 
-static gboolean
-should_show_key (const KeyListEntry *entry)
+static gboolean should_show_key(const KeyListEntry* entry)
 {
-  int value;
-  MateConfClient *client;
+	int value;
+	MateConfClient *client;
 
-  if (entry->comparison == COMPARISON_NONE)
-    return TRUE;
+	if (entry->comparison == COMPARISON_NONE)
+	{
+		return TRUE;
+	}
 
-  g_return_val_if_fail (entry->key != NULL, FALSE);
+	g_return_val_if_fail(entry->key != NULL, FALSE);
 
-  client = mateconf_client_get_default();
-  value = mateconf_client_get_int (client, entry->key, NULL);
-  g_object_unref (client);
+	client = mateconf_client_get_default();
+	value = mateconf_client_get_int (client, entry->key, NULL);
+	g_object_unref (client);
 
-  switch (entry->comparison) {
-  case COMPARISON_NONE:
-    /* For compiler warnings */
-    g_assert_not_reached ();
-    return FALSE;
-  case COMPARISON_GT:
-    if (value > entry->value)
-      return TRUE;
-    break;
-  case COMPARISON_LT:
-    if (value < entry->value)
-      return TRUE;
-    break;
-  case COMPARISON_EQ:
-    if (value == entry->value)
-      return TRUE;
-    break;
-  }
+	switch (entry->comparison)
+	{
+		case COMPARISON_NONE:
+			/* For compiler warnings */
+			g_assert_not_reached ();
+			return FALSE;
+		case COMPARISON_GT:
+			if (value > entry->value)
+			{
+				return TRUE;
+			}
+			break;
+		case COMPARISON_LT:
+			if (value < entry->value)
+			{
+				return TRUE;
+			}
+			break;
+		case COMPARISON_EQ:
+			if (value == entry->value)
+			{
+				return TRUE;
+			}
+			break;
+	}
 
-  return FALSE;
+	return FALSE;
 }
 
 static gboolean
@@ -1015,73 +1020,78 @@ key_entry_controlling_key_changed (MateConfClient *client,
   reload_key_entries (user_data);
 }
 
-static gboolean
-cb_check_for_uniqueness (GtkTreeModel *model,
-			 GtkTreePath  *path,
-			 GtkTreeIter  *iter,
-			 KeyEntry *new_key)
+static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, KeyEntry* new_key)
 {
-  KeyEntry *element;
+	KeyEntry* element;
 
-  gtk_tree_model_get (new_key->model, iter,
-		      KEYENTRY_COLUMN, &element,
-		      -1);
+	gtk_tree_model_get (new_key->model, iter,
+		KEYENTRY_COLUMN, &element,
+		-1);
 
-  /* no conflict for : blanks, different modifiers, or ourselves */
-  if (element == NULL || new_key->mask != element->mask ||
-      !strcmp (new_key->mateconf_key, element->mateconf_key))
-    return FALSE;
+	/* no conflict for : blanks, different modifiers, or ourselves */
+	if (element == NULL || new_key->mask != element->mask ||
+		!strcmp (new_key->mateconf_key, element->mateconf_key))
+	{
+		return FALSE;
+	}
 
-  if (new_key->keyval != 0) {
-      if (new_key->keyval != element->keyval)
-	  return FALSE;
-  } else if (element->keyval != 0 || new_key->keycode != element->keycode)
-    return FALSE;
+	if (new_key->keyval != 0)
+	{
+		if (new_key->keyval != element->keyval)
+		{
+			return FALSE;
+		}
+	}
+	else if (element->keyval != 0 || new_key->keycode != element->keycode)
+	{
+		return FALSE;
+	}
 
-  new_key->editable = FALSE;
-  new_key->mateconf_key = element->mateconf_key;
-  new_key->description = element->description;
-  new_key->desc_mateconf_key = element->desc_mateconf_key;
-  new_key->desc_editable = element->desc_editable;
-  return TRUE;
+	new_key->editable = FALSE;
+	new_key->mateconf_key = element->mateconf_key;
+	new_key->description = element->description;
+	new_key->desc_mateconf_key = element->desc_mateconf_key;
+	new_key->desc_editable = element->desc_editable;
+
+	return TRUE;
 }
 
 static const guint forbidden_keyvals[] = {
-  /* Navigation keys */
-  GDK_Home,
-  GDK_Left,
-  GDK_Up,
-  GDK_Right,
-  GDK_Down,
-  GDK_Page_Up,
-  GDK_Page_Down,
-  GDK_End,
-  GDK_Tab,
+	/* Navigation keys */
+	GDK_Home,
+	GDK_Left,
+	GDK_Up,
+	GDK_Right,
+	GDK_Down,
+	GDK_Page_Up,
+	GDK_Page_Down,
+	GDK_End,
+	GDK_Tab,
 
-  /* Return */
-  GDK_KP_Enter,
-  GDK_Return,
+	/* Return */
+	GDK_KP_Enter,
+	GDK_Return,
 
-  GDK_space,
-  GDK_Mode_switch
+	GDK_space,
+	GDK_Mode_switch
 };
 
-static gboolean
-keyval_is_forbidden (guint keyval)
+static gboolean keyval_is_forbidden(guint keyval)
 {
-  guint i;
+	guint i;
 
-  for (i = 0; i < G_N_ELEMENTS(forbidden_keyvals); i++) {
-    if (keyval == forbidden_keyvals[i])
-      return TRUE;
-  }
+	for (i = 0; i < G_N_ELEMENTS(forbidden_keyvals); i++)
+	{
+		if (keyval == forbidden_keyvals[i])
+		{
+			return TRUE;
+		}
+	}
 
-  return FALSE;
+	return FALSE;
 }
 
-static void
-show_error (GtkWindow *parent,
-	    GError *err)
+static void show_error(GtkWindow* parent, GError* err)
 {
   GtkWidget *dialog;
 
@@ -1097,24 +1107,18 @@ show_error (GtkWindow *parent,
   gtk_widget_destroy (dialog);
 }
 
-static void
-accel_edited_callback (GtkCellRendererText   *cell,
-                       const char            *path_string,
-                       guint                  keyval,
-                       EggVirtualModifierType mask,
-		       guint		      keycode,
-                       gpointer               data)
+static void accel_edited_callback(GtkCellRendererText* cell, const char* path_string, guint keyval, EggVirtualModifierType mask, guint keycode, gpointer data)
 {
-  MateConfClient *client;
-  GtkTreeView *view = (GtkTreeView *)data;
-  GtkTreeModel *model;
-  GtkTreePath *path = gtk_tree_path_new_from_string (path_string);
-  GtkTreeIter iter;
-  KeyEntry *key_entry, tmp_key;
-  GError *err = NULL;
-  char *str;
+	MateConfClient* client;
+	GtkTreeView* view = (GtkTreeView*) data;
+	GtkTreeModel* model;
+	GtkTreePath* path = gtk_tree_path_new_from_string (path_string);
+	GtkTreeIter iter;
+	KeyEntry* key_entry, tmp_key;
+	GError* err = NULL;
+	char* str;
 
-  block_accels = FALSE;
+	block_accels = FALSE;
 
   model = gtk_tree_view_get_model (view);
   gtk_tree_model_get_iter (model, &iter, path);
@@ -1123,171 +1127,172 @@ accel_edited_callback (GtkCellRendererText   *cell,
 		      KEYENTRY_COLUMN, &key_entry,
 		      -1);
 
-  /* sanity check */
-  if (key_entry == NULL)
-    return;
+	/* sanity check */
+	if (key_entry == NULL)
+	{
+		return;
+	}
 
-  /* CapsLock isn't supported as a keybinding modifier, so keep it from confusing us */
-  mask &= ~EGG_VIRTUAL_LOCK_MASK;
+	/* CapsLock isn't supported as a keybinding modifier, so keep it from confusing us */
+	mask &= ~EGG_VIRTUAL_LOCK_MASK;
 
-  tmp_key.model  = model;
-  tmp_key.keyval = keyval;
-  tmp_key.keycode = keycode;
-  tmp_key.mask   = mask;
-  tmp_key.mateconf_key = key_entry->mateconf_key;
-  tmp_key.description = NULL;
-  tmp_key.editable = TRUE; /* kludge to stuff in a return flag */
+	tmp_key.model  = model;
+	tmp_key.keyval = keyval;
+	tmp_key.keycode = keycode;
+	tmp_key.mask   = mask;
+	tmp_key.mateconf_key = key_entry->mateconf_key;
+	tmp_key.description = NULL;
+	tmp_key.editable = TRUE; /* kludge to stuff in a return flag */
 
-  if (keyval != 0 || keycode != 0) /* any number of keys can be disabled */
-    gtk_tree_model_foreach (model,
-      (GtkTreeModelForeachFunc) cb_check_for_uniqueness,
-      &tmp_key);
+	if (keyval != 0 || keycode != 0) /* any number of keys can be disabled */
+	{
+		gtk_tree_model_foreach(model, (GtkTreeModelForeachFunc) cb_check_for_uniqueness, &tmp_key);
+	}
 
-  /* Check for unmodified keys */
-  if (tmp_key.mask == 0 && tmp_key.keycode != 0)
+	/* Check for unmodified keys */
+	if (tmp_key.mask == 0 && tmp_key.keycode != 0)
     {
-      if ((tmp_key.keyval >= GDK_a && tmp_key.keyval <= GDK_z)
-	   || (tmp_key.keyval >= GDK_A && tmp_key.keyval <= GDK_Z)
-	   || (tmp_key.keyval >= GDK_0 && tmp_key.keyval <= GDK_9)
-	   || (tmp_key.keyval >= GDK_kana_fullstop && tmp_key.keyval <= GDK_semivoicedsound)
-	   || (tmp_key.keyval >= GDK_Arabic_comma && tmp_key.keyval <= GDK_Arabic_sukun)
-	   || (tmp_key.keyval >= GDK_Serbian_dje && tmp_key.keyval <= GDK_Cyrillic_HARDSIGN)
-	   || (tmp_key.keyval >= GDK_Greek_ALPHAaccent && tmp_key.keyval <= GDK_Greek_omega)
-	   || (tmp_key.keyval >= GDK_hebrew_doublelowline && tmp_key.keyval <= GDK_hebrew_taf)
-	   || (tmp_key.keyval >= GDK_Thai_kokai && tmp_key.keyval <= GDK_Thai_lekkao)
-	   || (tmp_key.keyval >= GDK_Hangul && tmp_key.keyval <= GDK_Hangul_Special)
-	   || (tmp_key.keyval >= GDK_Hangul_Kiyeog && tmp_key.keyval <= GDK_Hangul_J_YeorinHieuh)
-	   || keyval_is_forbidden (tmp_key.keyval)) {
-        GtkWidget *dialog;
-	char *name;
+		if ((tmp_key.keyval >= GDK_a && tmp_key.keyval <= GDK_z)
+			|| (tmp_key.keyval >= GDK_A && tmp_key.keyval <= GDK_Z)
+			|| (tmp_key.keyval >= GDK_0 && tmp_key.keyval <= GDK_9)
+			|| (tmp_key.keyval >= GDK_kana_fullstop && tmp_key.keyval <= GDK_semivoicedsound)
+			|| (tmp_key.keyval >= GDK_Arabic_comma && tmp_key.keyval <= GDK_Arabic_sukun)
+			|| (tmp_key.keyval >= GDK_Serbian_dje && tmp_key.keyval <= GDK_Cyrillic_HARDSIGN)
+			|| (tmp_key.keyval >= GDK_Greek_ALPHAaccent && tmp_key.keyval <= GDK_Greek_omega)
+			|| (tmp_key.keyval >= GDK_hebrew_doublelowline && tmp_key.keyval <= GDK_hebrew_taf)
+			|| (tmp_key.keyval >= GDK_Thai_kokai && tmp_key.keyval <= GDK_Thai_lekkao)
+			|| (tmp_key.keyval >= GDK_Hangul && tmp_key.keyval <= GDK_Hangul_Special)
+			|| (tmp_key.keyval >= GDK_Hangul_Kiyeog && tmp_key.keyval <= GDK_Hangul_J_YeorinHieuh)
+			|| keyval_is_forbidden (tmp_key.keyval))
+		{
+		
+			GtkWidget *dialog;
+			char *name;
 
-	name = binding_name (keyval, keycode, mask, TRUE);
+			name = binding_name (keyval, keycode, mask, TRUE);
 
-	dialog =
-	  gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))),
-			  	  GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
-				  GTK_MESSAGE_WARNING,
-				  GTK_BUTTONS_CANCEL,
-				  _("The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
-				  "Please try with a key such as Control, Alt or Shift at the same time."),
-				  name);
-
-	g_free (name);
-	gtk_dialog_run (GTK_DIALOG (dialog));
-	gtk_widget_destroy (dialog);
-
-	/* set it back to its previous value. */
-	egg_cell_renderer_keys_set_accelerator
-	  (EGG_CELL_RENDERER_KEYS (cell),
-	   key_entry->keyval, key_entry->keycode, key_entry->mask);
-	return;
-      }
-    }
-
-  /* flag to see if the new accelerator was in use by something */
-  if (!tmp_key.editable)
-    {
-      GtkWidget *dialog;
-      char *name;
-      int response;
-
-      name = binding_name (keyval, keycode, mask, TRUE);
-
-      dialog =
-	gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))),
+			dialog = gtk_message_dialog_new (
+				GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))),
 				GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
 				GTK_MESSAGE_WARNING,
 				GTK_BUTTONS_CANCEL,
-				_("The shortcut \"%s\" is already used for\n\"%s\""),
-				name, tmp_key.description ?
-				tmp_key.description : tmp_key.mateconf_key);
-      g_free (name);
+				_("The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
+				"Please try with a key such as Control, Alt or Shift at the same time."),
+				name);
 
-      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-	  _("If you reassign the shortcut to \"%s\", the \"%s\" shortcut "
-	    "will be disabled."),
-	  key_entry->description ?
-	  key_entry->description : key_entry->mateconf_key,
-	  tmp_key.description ?
-	  tmp_key.description : tmp_key.mateconf_key);
+			g_free (name);
+			gtk_dialog_run (GTK_DIALOG (dialog));
+			gtk_widget_destroy (dialog);
 
-      gtk_dialog_add_button (GTK_DIALOG (dialog),
-                             _("_Reassign"),
-			     GTK_RESPONSE_ACCEPT);
-
-      gtk_dialog_set_default_response (GTK_DIALOG (dialog),
-				       GTK_RESPONSE_ACCEPT);
-
-      response = gtk_dialog_run (GTK_DIALOG (dialog));
-      gtk_widget_destroy (dialog);
-
-      if (response == GTK_RESPONSE_ACCEPT)
-	{
-	  MateConfClient *client;
-
-	  client = mateconf_client_get_default ();
-
-          mateconf_client_set_string (client,
-				   tmp_key.mateconf_key,
-				   "", &err);
-
-	  if (err != NULL)
-	    {
-	       show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))),
-			   err);
-	       g_error_free (err);
-	       g_object_unref (client);
-	       return;
-	    }
-
-	  str = binding_name (keyval, keycode, mask, FALSE);
-	  mateconf_client_set_string (client,
-				   key_entry->mateconf_key,
-				   str, &err);
-
-	  if (err != NULL)
-	    {
-	       show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))),
-			   err);
-	       g_error_free (err);
-
-	       /* reset the previous shortcut */
-	       mateconf_client_set_string (client,
-					tmp_key.mateconf_key,
-					str, NULL);
-	    }
-
-	  g_free (str);
-	  g_object_unref (client);
-	}
-      else
-	{
-	  /* set it back to its previous value. */
-	  egg_cell_renderer_keys_set_accelerator (EGG_CELL_RENDERER_KEYS (cell),
-						  key_entry->keyval,
-						  key_entry->keycode,
-						  key_entry->mask);
+			/* set it back to its previous value. */
+			egg_cell_renderer_keys_set_accelerator(
+				EGG_CELL_RENDERER_KEYS(cell),
+				key_entry->keyval,
+				key_entry->keycode,
+				key_entry->mask);
+			return;
+		}
 	}
 
-      return;
-    }
+	/* flag to see if the new accelerator was in use by something */
+	if (!tmp_key.editable)
+	{
+		GtkWidget* dialog;
+		char* name;
+		int response;
 
-  str = binding_name (keyval, keycode, mask, FALSE);
+		name = binding_name(keyval, keycode, mask, TRUE);
+		
+		dialog = gtk_message_dialog_new(
+			GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(view))),
+			GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
+			GTK_MESSAGE_WARNING,
+			GTK_BUTTONS_CANCEL,
+			_("The shortcut \"%s\" is already used for\n\"%s\""),
+			name,
+			tmp_key.description ? tmp_key.description : tmp_key.mateconf_key);
+			g_free (name);
 
-  client = mateconf_client_get_default ();
-  mateconf_client_set_string (client,
-                           key_entry->mateconf_key,
-                           str,
-                           &err);
-  g_free (str);
-  g_object_unref (client);
+		gtk_message_dialog_format_secondary_text (
+			GTK_MESSAGE_DIALOG (dialog),
+			_("If you reassign the shortcut to \"%s\", the \"%s\" shortcut "
+			"will be disabled."),
+			key_entry->description ? key_entry->description : key_entry->mateconf_key,
+			tmp_key.description ? tmp_key.description : tmp_key.mateconf_key);
 
-  if (err != NULL)
-    {
-      show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))), err);
-      g_error_free (err);
-      key_entry->editable = FALSE;
-    }
+		gtk_dialog_add_button(GTK_DIALOG (dialog), _("_Reassign"), GTK_RESPONSE_ACCEPT);
+
+		gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
+
+		response = gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+
+		if (response == GTK_RESPONSE_ACCEPT)
+		{
+			MateConfClient* client;
+
+			client = mateconf_client_get_default ();
+
+			mateconf_client_set_string(
+				client,
+				tmp_key.mateconf_key,
+				"",
+				&err);
+
+			if (err != NULL)
+			{
+				show_error(GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))), err);
+				g_error_free (err);
+				g_object_unref (client);
+				return;
+			}
+
+			str = binding_name (keyval, keycode, mask, FALSE);
+			mateconf_client_set_string (client, key_entry->mateconf_key, str, &err);
+
+			if (err != NULL)
+			{
+				show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))), err);
+				g_error_free (err);
+
+				/* reset the previous shortcut */
+				mateconf_client_set_string (client, tmp_key.mateconf_key, str, NULL);
+			}
+
+			g_free (str);
+			g_object_unref (client);
+		}
+		else
+		{
+			/* set it back to its previous value. */
+			egg_cell_renderer_keys_set_accelerator(
+				EGG_CELL_RENDERER_KEYS(cell),
+				key_entry->keyval,
+				key_entry->keycode,
+				key_entry->mask);
+		}
+
+		return;
+	}
+
+	str = binding_name (keyval, keycode, mask, FALSE);
+
+	client = mateconf_client_get_default ();
+	mateconf_client_set_string(
+		client,
+		key_entry->mateconf_key,
+		str,
+		&err);
+
+	g_free (str);
+	g_object_unref (client);
+
+	if (err != NULL)
+	{
+		show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view))), err);
+		g_error_free (err);
+		key_entry->editable = FALSE;
+	}
 }
 
 static void
@@ -1733,16 +1738,14 @@ start_editing_cb (GtkTreeView    *tree_view,
 /* this handler is used to keep accels from activating while the user
  * is assigning a new shortcut so that he won't accidentally trigger one
  * of the widgets */
-static gboolean
-maybe_block_accels (GtkWidget *widget,
-                    GdkEventKey *event,
-                    gpointer user_data)
+static gboolean maybe_block_accels(GtkWidget* widget, GdkEventKey* event, gpointer user_data)
 {
-  if (block_accels)
-  {
-    return gtk_window_propagate_key_event (GTK_WINDOW (widget), event);
-  }
-  return FALSE;
+	if (block_accels)
+	{
+		return gtk_window_propagate_key_event(GTK_WINDOW(widget), event);
+	}
+
+	return FALSE;
 }
 
 static void
