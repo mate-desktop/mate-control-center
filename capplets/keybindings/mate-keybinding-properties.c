@@ -104,18 +104,23 @@ create_builder (void)
   return builder;
 }
 
-static char*
-binding_name (guint                   keyval,
-	      guint		      keycode,
-              EggVirtualModifierType  mask,
-              gboolean                translate)
+static char* binding_name(guint keyval, guint keycode, EggVirtualModifierType mask, gboolean translate)
 {
-  if (keyval != 0 || keycode != 0)
-    return translate ?
-	egg_virtual_accelerator_label (keyval, keycode, mask) :
-	egg_virtual_accelerator_name (keyval, keycode, mask);
-  else
-    return g_strdup (translate ? _("Disabled") : "");
+	if (keyval != 0 || keycode != 0)
+	{
+		if (translate)
+		{
+			return egg_virtual_accelerator_label (keyval, keycode, mask);
+		}
+		else
+		{
+			return egg_virtual_accelerator_name (keyval, keycode, mask);
+		}
+	}
+	else
+	{
+		return g_strdup (translate ? _("Disabled") : "");
+	}
 }
 
 static gboolean
@@ -1165,7 +1170,7 @@ static void accel_edited_callback(GtkCellRendererText* cell, const char* path_st
 			|| (tmp_key.keyval >= GDK_Hangul_Kiyeog && tmp_key.keyval <= GDK_Hangul_J_YeorinHieuh)
 			|| keyval_is_forbidden (tmp_key.keyval))
 		{
-		
+
 			GtkWidget *dialog;
 			char *name;
 
@@ -1202,7 +1207,7 @@ static void accel_edited_callback(GtkCellRendererText* cell, const char* path_st
 		int response;
 
 		name = binding_name(keyval, keycode, mask, TRUE);
-		
+
 		dialog = gtk_message_dialog_new(
 			GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(view))),
 			GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,

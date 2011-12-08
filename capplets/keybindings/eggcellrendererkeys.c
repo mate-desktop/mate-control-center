@@ -214,16 +214,14 @@ egg_cell_renderer_keys_class_init (EggCellRendererKeysClass *cell_keys_class)
 }
 
 
-GtkCellRenderer *
-egg_cell_renderer_keys_new (void)
+GtkCellRenderer* egg_cell_renderer_keys_new(void)
 {
-  return GTK_CELL_RENDERER (g_object_new (EGG_TYPE_CELL_RENDERER_KEYS, NULL));
+	return GTK_CELL_RENDERER(g_object_new(EGG_TYPE_CELL_RENDERER_KEYS, NULL));
 }
 
-static void
-egg_cell_renderer_keys_finalize (GObject *object)
+static void egg_cell_renderer_keys_finalize(GObject* object)
 {
-  (* G_OBJECT_CLASS (parent_class)->finalize) (object);
+	(*G_OBJECT_CLASS(parent_class)->finalize)(object);
 }
 
 static gchar* convert_keysym_state_to_string(guint keysym, guint keycode, EggVirtualModifierType mask)

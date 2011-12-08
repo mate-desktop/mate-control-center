@@ -152,7 +152,7 @@ static inline gboolean is_super(const gchar* string)
 		(string[6] == '>'));
 }
 
-static inline gboolean is_hyper (const gchar *string)
+static inline gboolean is_hyper(const gchar *string)
 {
 	return ((string[0] == '<') &&
 		(string[1] == 'h' || string[1] == 'H') &&
@@ -161,6 +161,19 @@ static inline gboolean is_hyper (const gchar *string)
 		(string[4] == 'e' || string[4] == 'E') &&
 		(string[5] == 'r' || string[5] == 'R') &&
 		(string[6] == '>'));
+}
+
+static inline gboolean is_primary(const gchar* string)
+{
+	return ((string[0] == '<') &&
+		(string[1] == 'p' || string[1] == 'P') &&
+		(string[2] == 'r' || string[2] == 'R') &&
+		(string[3] == 'i' || string[3] == 'I') &&
+		(string[4] == 'm' || string[4] == 'M') &&
+		(string[5] == 'a' || string[5] == 'A') &&
+		(string[6] == 'r' || string[6] == 'R') &&
+		(string[7] == 'y' || string[7] == 'Y') &&
+		(string[8] == '>'));
 }
 
 static inline gboolean is_keycode(const gchar *string)
@@ -230,6 +243,12 @@ egg_accelerator_parse_virtual (const gchar            *accelerator,
 	      mods |= EGG_VIRTUAL_RELEASE_MASK;
 	    }
 	  else if (len >= 9 && is_control (accelerator))
+	    {
+	      accelerator += 9;
+	      len -= 9;
+	      mods |= EGG_VIRTUAL_CONTROL_MASK;
+	    }
+	  else if (len >= 9 && is_primary (accelerator))
 	    {
 	      accelerator += 9;
 	      len -= 9;
@@ -372,26 +391,28 @@ egg_accelerator_parse_virtual (const gchar            *accelerator,
  *
  * The caller of this function must free the returned string.
  */
-gchar*
-egg_virtual_accelerator_name (guint                  accelerator_key,
-			      guint		     keycode,
-                              EggVirtualModifierType accelerator_mods)
+gchar* egg_virtual_accelerator_name (guint accelerator_key, guint keycode, EggVirtualModifierType accelerator_mods)
 {
-  gchar *gtk_name;
-  GdkModifierType gdkmods = 0;
+	/* Acá esta el problema...
+	 * */
+	gchar* gtk_name;
+	GdkModifierType gdkmods = 0;
 
-  egg_keymap_resolve_virtual_modifiers (NULL, accelerator_mods, &gdkmods);
-  gtk_name = gtk_accelerator_name (accelerator_key, gdkmods);
+	egg_keymap_resolve_virtual_modifiers(NULL, accelerator_mods, &gdkmods);
 
-  if (!accelerator_key)
-    {
-	gchar *name;
-	name = g_strdup_printf ("%s0x%02x", gtk_name, keycode);
-	g_free (gtk_name);
-	return name;
-    }
+	/* en la funcion gtk_accelerator_name, desde la modificacion del 16 de sep
+	 * del 2011 en GTK+, la tecla <Control> es tomada como <Primary> (?) */
+	gtk_name = gtk_accelerator_name(accelerator_key, gdkmods);
 
-  return gtk_name;
+	if (!accelerator_key)
+	{
+		gchar *name;
+		name = g_strdup_printf ("%s0x%02x", gtk_name, keycode);
+		g_free (gtk_name);
+		return name;
+	}
+
+	return gtk_name;
 }
 
 /**
@@ -413,47 +434,46 @@ egg_virtual_accelerator_label (guint                  accelerator_key,
 			       guint		      keycode,
 			       EggVirtualModifierType accelerator_mods)
 {
-  gchar *gtk_label;
-  GdkModifierType gdkmods = 0;
+	gchar *gtk_label;
+	GdkModifierType gdkmods = 0;
 
-  egg_keymap_resolve_virtual_modifiers (NULL, accelerator_mods, &gdkmods);
-  gtk_label = gtk_accelerator_get_label (accelerator_key, gdkmods);
+	egg_keymap_resolve_virtual_modifiers (NULL, accelerator_mods, &gdkmods);
+	gtk_label = gtk_accelerator_get_label (accelerator_key, gdkmods);
 
-  if (!accelerator_key)
-    {
-	gchar *label;
-	label = g_strdup_printf ("%s0x%02x", gtk_label, keycode);
-	g_free (gtk_label);
-	return label;
-    }
+	if (!accelerator_key)
+	{
+		gchar *label;
+		label = g_strdup_printf ("%s0x%02x", gtk_label, keycode);
+		g_free (gtk_label);
+		return label;
+	}
 
-  return gtk_label;
+	return gtk_label;
 }
 
-void
-egg_keymap_resolve_virtual_modifiers (GdkKeymap              *keymap,
-                                      EggVirtualModifierType  virtual_mods,
-                                      GdkModifierType        *concrete_mods)
+void egg_keymap_resolve_virtual_modifiers (GdkKeymap* keymap, EggVirtualModifierType virtual_mods, GdkModifierType* concrete_mods)
 {
-  GdkModifierType concrete;
-  int i;
-  const EggModmap *modmap;
+	GdkModifierType concrete;
+	int i;
+	const EggModmap* modmap;
 
-  g_return_if_fail (concrete_mods != NULL);
-  g_return_if_fail (keymap == NULL || GDK_IS_KEYMAP (keymap));
+	g_return_if_fail (concrete_mods != NULL);
+	g_return_if_fail (keymap == NULL || GDK_IS_KEYMAP (keymap));
 
-  modmap = egg_keymap_get_modmap (keymap);
+	modmap = egg_keymap_get_modmap(keymap);
 
-  /* Not so sure about this algorithm. */
+	/* Not so sure about this algorithm. */
+	concrete = 0;
 
-  concrete = 0;
-  for (i = 0; i < EGG_MODMAP_ENTRY_LAST; ++i)
-    {
-      if (modmap->mapping[i] & virtual_mods)
-        concrete |= MODMAP_ENTRY_TO_MODIFIER (i);
-    }
+	for (i = 0; i < EGG_MODMAP_ENTRY_LAST; ++i)
+	{
+		if (modmap->mapping[i] & virtual_mods)
+		{
+			concrete |= MODMAP_ENTRY_TO_MODIFIER (i);
+		}
+	}
 
-  *concrete_mods = concrete;
+	*concrete_mods = concrete;
 }
 
 void
