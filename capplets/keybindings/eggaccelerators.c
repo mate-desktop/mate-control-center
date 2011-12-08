@@ -26,69 +26,62 @@
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
-enum
-{
-  EGG_MODMAP_ENTRY_SHIFT   = 0,
-  EGG_MODMAP_ENTRY_LOCK    = 1,
-  EGG_MODMAP_ENTRY_CONTROL = 2,
-  EGG_MODMAP_ENTRY_MOD1    = 3,
-  EGG_MODMAP_ENTRY_MOD2    = 4,
-  EGG_MODMAP_ENTRY_MOD3    = 5,
-  EGG_MODMAP_ENTRY_MOD4    = 6,
-  EGG_MODMAP_ENTRY_MOD5    = 7,
-  EGG_MODMAP_ENTRY_LAST    = 8
+enum {
+	EGG_MODMAP_ENTRY_SHIFT   = 0,
+	EGG_MODMAP_ENTRY_LOCK    = 1,
+	EGG_MODMAP_ENTRY_CONTROL = 2,
+	EGG_MODMAP_ENTRY_MOD1    = 3,
+	EGG_MODMAP_ENTRY_MOD2    = 4,
+	EGG_MODMAP_ENTRY_MOD3    = 5,
+	EGG_MODMAP_ENTRY_MOD4    = 6,
+	EGG_MODMAP_ENTRY_MOD5    = 7,
+	EGG_MODMAP_ENTRY_LAST    = 8
 };
 
 #define MODMAP_ENTRY_TO_MODIFIER(x) (1 << (x))
 
-typedef struct
-{
-  EggVirtualModifierType mapping[EGG_MODMAP_ENTRY_LAST];
-
+typedef struct {
+	EggVirtualModifierType mapping[EGG_MODMAP_ENTRY_LAST];
 } EggModmap;
 
-const EggModmap* egg_keymap_get_modmap (GdkKeymap *keymap);
+const EggModmap* egg_keymap_get_modmap(GdkKeymap* keymap);
 
-static inline gboolean
-is_alt (const gchar *string)
+static inline gboolean is_alt(const gchar* string)
 {
-  return ((string[0] == '<') &&
-	  (string[1] == 'a' || string[1] == 'A') &&
-	  (string[2] == 'l' || string[2] == 'L') &&
-	  (string[3] == 't' || string[3] == 'T') &&
-	  (string[4] == '>'));
+	return ((string[0] == '<') &&
+		(string[1] == 'a' || string[1] == 'A') &&
+		(string[2] == 'l' || string[2] == 'L') &&
+		(string[3] == 't' || string[3] == 'T') &&
+		(string[4] == '>'));
 }
 
-static inline gboolean
-is_ctl (const gchar *string)
+static inline gboolean is_ctl (const gchar* string)
 {
-  return ((string[0] == '<') &&
-	  (string[1] == 'c' || string[1] == 'C') &&
-	  (string[2] == 't' || string[2] == 'T') &&
-	  (string[3] == 'l' || string[3] == 'L') &&
-	  (string[4] == '>'));
+	return ((string[0] == '<') &&
+		(string[1] == 'c' || string[1] == 'C') &&
+		(string[2] == 't' || string[2] == 'T') &&
+		(string[3] == 'l' || string[3] == 'L') &&
+		(string[4] == '>'));
 }
 
-static inline gboolean
-is_modx (const gchar *string)
+static inline gboolean is_modx(const gchar* string)
 {
-  return ((string[0] == '<') &&
-	  (string[1] == 'm' || string[1] == 'M') &&
-	  (string[2] == 'o' || string[2] == 'O') &&
-	  (string[3] == 'd' || string[3] == 'D') &&
-	  (string[4] >= '1' && string[4] <= '5') &&
-	  (string[5] == '>'));
+	return ((string[0] == '<') &&
+		(string[1] == 'm' || string[1] == 'M') &&
+		(string[2] == 'o' || string[2] == 'O') &&
+		(string[3] == 'd' || string[3] == 'D') &&
+		(string[4] >= '1' && string[4] <= '5') &&
+		(string[5] == '>'));
 }
 
-static inline gboolean
-is_ctrl (const gchar *string)
+static inline gboolean is_ctrl(const gchar* string)
 {
-  return ((string[0] == '<') &&
-	  (string[1] == 'c' || string[1] == 'C') &&
-	  (string[2] == 't' || string[2] == 'T') &&
-	  (string[3] == 'r' || string[3] == 'R') &&
-	  (string[4] == 'l' || string[4] == 'L') &&
-	  (string[5] == '>'));
+	return ((string[0] == '<') &&
+		(string[1] == 'c' || string[1] == 'C') &&
+		(string[2] == 't' || string[2] == 'T') &&
+		(string[3] == 'r' || string[3] == 'R') &&
+		(string[4] == 'l' || string[4] == 'L') &&
+		(string[5] == '>'));
 }
 
 static inline gboolean
