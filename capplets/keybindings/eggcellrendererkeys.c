@@ -86,7 +86,6 @@ GType egg_cell_renderer_keys_get_type(void)
 
 static void egg_cell_renderer_keys_init(EggCellRendererKeys* cell_keys)
 {
-	MATEDEBUG();
 	cell_keys->accel_mode = EGG_CELL_RENDERER_KEYS_MODE_GTK;
 }
 
