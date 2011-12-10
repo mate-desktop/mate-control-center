@@ -120,7 +120,7 @@ COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  gio-2.0 dnl
  mateconf-2.0 dnl
  libxml-2.0 dnl
- mate-desktop-2.0 >= 2.29.4"
+ mate-desktop-2.0"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
 PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.1.0)
 PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu unique-1.0)
