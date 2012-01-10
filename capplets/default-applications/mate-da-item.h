@@ -23,59 +23,79 @@
 
 #include <glib.h>
 
-typedef struct _MateDAItem MateDAItem;
+typedef struct _MateDAItem {
+	gchar* name;
+	gchar* executable;
+	gchar* command;
+	gchar* icon_name;
+	gchar* icon_path;
+} MateDAItem;
 
-typedef struct _MateDAWebItem MateDAWebItem;
-typedef struct _MateDATermItem MateDATermItem;
-typedef struct _MateDASimpleItem MateDASimpleItem;
-typedef struct _MateDAVisualItem MateDAVisualItem;
-typedef struct _MateDAMobilityItem MateDAMobilityItem;
+typedef struct _MateDAWebItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+	gboolean netscape_remote;
+	gchar* tab_command;
+	gchar* win_command;
+} MateDAWebItem;
 
-struct _MateDAItem {
-    gchar *name;
-    gchar *executable;
-    gchar *command;
-    gchar *icon_name;
-    gchar *icon_path;
-};
+typedef struct _MateDASimpleItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+} MateDASimpleItem;
 
-struct _MateDAWebItem {
-    MateDAItem generic;
-    gboolean run_in_terminal;
-    gboolean netscape_remote;
-    gchar *tab_command;
-    gchar *win_command;
-};
+typedef struct _MateDAImageItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+} MateDAImageItem;
 
-struct _MateDASimpleItem {
-    MateDAItem generic;
-    gboolean run_in_terminal;
-};
+typedef struct _MateDATextItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+} MateDATextItem;
 
-struct _MateDATermItem {
-    MateDAItem generic;
-    gchar *exec_flag;
-};
+typedef struct _MateDAFileItem {
+	MateDAItem generic;
+	gboolean run_in_terminal;
+} MateDAFileItem;
 
-struct _MateDAVisualItem {
-    MateDAItem generic;
-    gboolean run_at_startup;
-};
+typedef struct _MateDATermItem {
+	MateDAItem generic;
+	gchar* exec_flag;
+} MateDATermItem;
 
-struct _MateDAMobilityItem {
-    MateDAItem generic;
-    gboolean run_at_startup;
-};
+typedef struct _MateDAVisualItem {
+	MateDAItem generic;
+	gboolean run_at_startup;
+} MateDAVisualItem;
 
-MateDAWebItem* mate_da_web_item_new (void);
-MateDATermItem* mate_da_term_item_new (void);
-MateDASimpleItem* mate_da_simple_item_new (void);
-MateDAVisualItem* mate_da_visual_item_new (void);
-MateDAMobilityItem* mate_da_mobility_item_new (void);
-void mate_da_web_item_free (MateDAWebItem *item);
-void mate_da_term_item_free (MateDATermItem *item);
-void mate_da_simple_item_free (MateDASimpleItem *item);
-void mate_da_visual_item_free (MateDAVisualItem *item);
-void mate_da_mobility_item_free (MateDAMobilityItem *item);
+typedef struct _MateDAMobilityItem {
+	MateDAItem generic;
+	gboolean run_at_startup;
+} MateDAMobilityItem;
+
+MateDAWebItem* mate_da_web_item_new(void);
+void mate_da_web_item_free(MateDAWebItem* item);
+
+MateDATermItem* mate_da_term_item_new(void);
+void mate_da_term_item_free(MateDATermItem* item);
+
+MateDASimpleItem* mate_da_simple_item_new(void);
+void mate_da_simple_item_free(MateDASimpleItem* item);
+
+MateDAVisualItem* mate_da_visual_item_new(void);
+void mate_da_visual_item_free(MateDAVisualItem* item);
+
+MateDAImageItem* mate_da_image_item_new(void);
+void mate_da_image_item_free(MateDAImageItem* item);
+
+MateDATextItem* mate_da_text_item_new(void);
+void mate_da_text_item_free(MateDATextItem* item);
+
+MateDAFileItem* mate_da_file_item_new(void);
+void mate_da_file_item_free(MateDAFileItem* item);
+
+MateDAMobilityItem* mate_da_mobility_item_new(void);
+void mate_da_mobility_item_free(MateDAMobilityItem* item);
 
 #endif

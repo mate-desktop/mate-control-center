@@ -1,4 +1,4 @@
-AC_INIT([mate-control-center], [2011.12.01], [https://github.com/perberos/mate-desktop-environment])
+AC_INIT([mate-control-center], [1.1.0], [htts://www.mate-desktop.org/])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
@@ -120,14 +120,14 @@ COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  gio-2.0 dnl
  mateconf-2.0 dnl
  libxml-2.0 dnl
- mate-desktop-2.0 >= 2.29.4"
+ mate-desktop-2.0"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
-PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 2.10.1)
+PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.1.0)
 PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu unique-1.0)
 PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
-PKG_CHECK_MODULES(MARCO, libmarco-private >= 2.23.1)
+PKG_CHECK_MODULES(MARCO, libmarco-private >= 1.1.0)
 PKG_CHECK_MODULES(TYPING, glib-2.0 > 2.11 mateconf-2.0 gtk+-2.0)
 PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon)
 PKG_CHECK_MODULES(GIO, gio-2.0)
@@ -231,11 +231,11 @@ CAPPLET_LIBS="$CAPPLET_LIBS $XINPUT_LIBS"
 dnl ==============
 dnl gswitchit
 dnl ==============
-PKG_CHECK_MODULES(LIBMATEKBD, [libmatekbd >= 2.31.1 libxklavier >= 4.0])
+PKG_CHECK_MODULES(LIBMATEKBD, [libmatekbd >= 1.1.0 libxklavier >= 4.0])
 AC_SUBST(LIBMATEKBD_CFLAGS)
 AC_SUBST(LIBMATEKBD_LIBS)
 
-PKG_CHECK_MODULES(LIBMATEKBDUI, [libmatekbdui >= 2.31.2])
+PKG_CHECK_MODULES(LIBMATEKBDUI, [libmatekbdui >= 1.1.0])
 AC_SUBST(LIBMATEKBDUI_CFLAGS)
 AC_SUBST(LIBMATEKBDUI_LIBS)
 

@@ -21,7 +21,7 @@
 #ifndef _MATE_DA_XML_H_
 #define _MATE_DA_XML_H_
 
-void mate_da_xml_load_list (MateDACapplet *capplet);
-void mate_da_xml_free (MateDACapplet *capplet);
+void mate_da_xml_load_list(MateDACapplet* capplet);
+void mate_da_xml_free(MateDACapplet* capplet);
 
 #endif

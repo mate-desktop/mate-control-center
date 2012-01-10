@@ -29,8 +29,7 @@
 #include "capplet-util.h"
 #include "theme-util.h"
 
-gboolean
-theme_is_writable (const gpointer theme)
+gboolean theme_is_writable (const gpointer theme)
 {
   MateThemeCommonInfo *info = theme;
   GFile *file;
@@ -57,8 +56,7 @@ theme_is_writable (const gpointer theme)
   return writable;
 }
 
-gboolean
-theme_delete (const gchar *name, ThemeType type)
+gboolean theme_delete (const gchar *name, ThemeType type)
 {
   gboolean rc;
   GtkDialog *dialog;
@@ -140,8 +138,7 @@ theme_delete (const gchar *name, ThemeType type)
   return rc;
 }
 
-gboolean
-theme_model_iter_last (GtkTreeModel *model, GtkTreeIter *iter)
+gboolean theme_model_iter_last (GtkTreeModel *model, GtkTreeIter *iter)
 {
   GtkTreeIter walk, prev;
   gboolean valid;
@@ -160,8 +157,7 @@ theme_model_iter_last (GtkTreeModel *model, GtkTreeIter *iter)
   return FALSE;
 }
 
-gboolean
-theme_find_in_model (GtkTreeModel *model, const gchar *name, GtkTreeIter *iter)
+gboolean theme_find_in_model (GtkTreeModel *model, const gchar *name, GtkTreeIter *iter)
 {
   GtkTreeIter walk;
   gboolean valid;
@@ -190,8 +186,7 @@ theme_find_in_model (GtkTreeModel *model, const gchar *name, GtkTreeIter *iter)
   return FALSE;
 }
 
-gboolean
-packagekit_available (void)
+gboolean packagekit_available (void)
 {
   DBusGConnection *connection;
   DBusGProxy *proxy;

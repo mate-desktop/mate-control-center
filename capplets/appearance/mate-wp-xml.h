@@ -21,8 +21,8 @@
 #ifndef _MATE_WP_XML_H_
 #define _MATE_WP_XML_H_
 
-void mate_wp_xml_load_list (AppearanceData *data);
-void mate_wp_xml_save_list (AppearanceData *data);
+void mate_wp_xml_load_list(AppearanceData* data);
+void mate_wp_xml_save_list(AppearanceData* data);
 
 #endif
 

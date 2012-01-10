@@ -24,22 +24,19 @@
 #include <glib.h>
 #include <libmateui/mate-desktop-thumbnail.h>
 
-typedef struct _MateWPInfo MateWPInfo;
+typedef struct _MateWPInfo {
+	char* uri;
+	char* thumburi;
+	char* name;
+	char* mime_type;
 
-struct _MateWPInfo {
-  gchar * uri;
-  gchar * thumburi;
-  gchar * name;
-  gchar * mime_type;
+	goffset size;
 
-  goffset size;
+	time_t mtime;
+} MateWPInfo;
 
-  time_t mtime;
-};
-
-MateWPInfo * mate_wp_info_new (const gchar * uri,
-				 MateDesktopThumbnailFactory * thumbs);
-void mate_wp_info_free (MateWPInfo * info);
+MateWPInfo* mate_wp_info_new(const char* uri, MateDesktopThumbnailFactory* thumbs);
+void mate_wp_info_free(MateWPInfo* info);
 
 #endif
 

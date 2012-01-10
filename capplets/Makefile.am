@@ -1,26 +1,26 @@
 SUBDIRS = \
-	common			\
-	accessibility	\
-	appearance		\
-	default-applications	\
-	display			\
-	keybindings		\
-	keyboard		\
-	mouse			\
-	network			\
+	common \
+	accessibility \
+	appearance \
+	default-applications \
+	display \
+	keybindings \
+	keyboard \
+	mouse \
+	network \
 	windows
 
 DIST_SUBDIRS = \
-	common			\
-	accessibility		\
-	appearance		\
-	default-applications	\
-	keybindings		\
-	keyboard		\
-	mouse			\
-	network			\
-	windows			\
-	display 		\
+	common \
+	accessibility \
+	appearance \
+	default-applications \
+	keybindings \
+	keyboard \
+	mouse \
+	network \
+	windows \
+	display \
 	about-me
 
 

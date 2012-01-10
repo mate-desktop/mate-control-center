@@ -64,7 +64,7 @@ wm_free (AvailableWindowManager *wm)
         g_free (wm->config_tryexec);
         g_free (wm->module);
         g_free (wm->identify_name);
-        
+
         g_free (wm);
 }
 
@@ -87,15 +87,15 @@ list_desktop_files_in_dir (gchar *directory)
                 suffix = child->d_name + strlen (child->d_name) - 8;
                 /* strlen(".desktop") == 8 */
 
-                if (suffix <= child->d_name || 
+                if (suffix <= child->d_name ||
                     strcmp (suffix, ".desktop") != 0)
                         continue;
-                
-                result = g_list_prepend (result, 
+
+                result = g_list_prepend (result,
                                          g_build_filename (directory, child->d_name, NULL));
         }
         closedir (dir);
-        
+
         return result;
 }
 
@@ -106,7 +106,7 @@ wm_compare (gconstpointer a, gconstpointer b)
         const AvailableWindowManager *wm_b = (const AvailableWindowManager *)b;
 
         /* mmm, sloooow */
-        
+
         return g_utf8_collate (mate_desktop_item_get_string (wm_a->ditem, MATE_DESKTOP_ITEM_NAME),
                                mate_desktop_item_get_string (wm_b->ditem, MATE_DESKTOP_ITEM_NAME));
 }
@@ -117,9 +117,9 @@ wm_load (const char *desktop_file,
 {
         gchar *path;
         AvailableWindowManager *wm;
-                
+
         wm = g_new0 (AvailableWindowManager, 1);
-        
+
         wm->ditem = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
 
         if (wm->ditem == NULL) {
@@ -131,10 +131,10 @@ wm_load (const char *desktop_file,
 
         wm->exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
                                                             MATE_DESKTOP_ITEM_EXEC));
-        
+
         wm->name = g_strdup (mate_desktop_item_get_string (wm->ditem,
                                                             MATE_DESKTOP_ITEM_NAME));
-                                    
+
         wm->config_exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
                                                                    "ConfigExec"));
         wm->config_tryexec = g_strdup (mate_desktop_item_get_string (wm->ditem,
@@ -147,14 +147,14 @@ wm_load (const char *desktop_file,
 
         wm->identify_name = g_strdup (mate_desktop_item_get_string (wm->ditem,
                                                                      "X-MATE-WMName"));
-        
+
         wm->is_user = is_user;
-        
+
         if (mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_EXEC)) {
                 const char *tryexec;
 
                 tryexec = mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_TRY_EXEC);
-                
+
                 if (tryexec) {
                         path = g_find_program_in_path (tryexec);
                         wm->is_present = (path != NULL);
@@ -164,7 +164,7 @@ wm_load (const char *desktop_file,
                         wm->is_present = TRUE;
         } else
                 wm->is_present = FALSE;
-        
+
         if (wm->config_exec) {
                 if (wm->config_tryexec) {
                         path = g_find_program_in_path (wm->config_tryexec);
@@ -202,10 +202,10 @@ scan_wm_directory (gchar *directory, gboolean is_user)
                 AvailableWindowManager *wm;
 
                 wm = wm_load (tmp_list->data, is_user);
-                
+
                 if (wm != NULL)
                         available_wms = g_list_prepend (available_wms, wm);
-                
+
                 tmp_list = tmp_list->next;
         }
 
@@ -213,26 +213,26 @@ scan_wm_directory (gchar *directory, gboolean is_user)
         g_list_free (files);
 }
 
-void
-mate_wm_manager_init (void)
+void mate_wm_manager_init(void)
 {
-        char *tempdir;
+	char* tempdir;
 
-        if (done_scan)
-                return;
+	if (done_scan)
+	{
+		return;
+	}
 
-        done_scan = TRUE;
-        
-        tempdir = g_build_filename (MATE_WM_PROPERTY_PATH, NULL);
-        scan_wm_directory (tempdir, FALSE);
-        g_free (tempdir);
+	done_scan = TRUE;
 
-	tempdir = g_build_filename (g_get_home_dir(), ".mate2", "wm-properties", NULL);
-        scan_wm_directory (tempdir, TRUE);
-        g_free (tempdir);
+	tempdir = g_build_filename(MATE_WM_PROPERTY_PATH, NULL);
+	scan_wm_directory(tempdir, FALSE);
+	g_free(tempdir);
 
-        available_wms = g_list_sort (available_wms,
-                                     wm_compare);
+	tempdir = g_build_filename(g_get_home_dir(), ".config", "mate", "wm-properties", NULL);
+	scan_wm_directory(tempdir, TRUE);
+	g_free(tempdir);
+
+	available_wms = g_list_sort(available_wms, wm_compare);
 }
 
 static AvailableWindowManager*
@@ -241,13 +241,13 @@ get_current_wm (GdkScreen *screen)
         AvailableWindowManager *current_wm;
         const char *name;
         GList *tmp_list;
-        
+
         g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
-        
+
         name = gdk_x11_screen_get_window_manager_name (screen);
 
         current_wm = NULL;
-        
+
         tmp_list = available_wms;
         while (tmp_list != NULL) {
                 AvailableWindowManager *wm = tmp_list->data;
@@ -264,11 +264,11 @@ get_current_wm (GdkScreen *screen)
                 /* Try with localized name, sort of crackrock
                  * back compat hack
                  */
-                
+
                 tmp_list = available_wms;
                 while (tmp_list != NULL) {
                         AvailableWindowManager *wm = tmp_list->data;
-                        
+
                         if (strcmp (wm->name, name) == 0) {
                                 current_wm = wm;
                                 break;
@@ -301,16 +301,16 @@ mate_wm_manager_spawn_config_tool_for_current (GdkScreen  *screen,
         AvailableWindowManager *wm;
 
         wm = get_current_wm (screen);
-        
+
         if (wm != NULL && wm->config_exec != NULL) {
                 return g_spawn_command_line_async (wm->config_exec,
                                                    error);
         } else {
                 const char *name;
-                
+
                 name = gdk_x11_screen_get_window_manager_name (screen);
 
-                g_set_error (error, 
+                g_set_error (error,
                              G_SPAWN_ERROR,
                              G_SPAWN_ERROR_FAILED,
                              _("Window manager \"%s\" has not registered a configuration tool\n"),
