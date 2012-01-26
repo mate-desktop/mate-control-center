@@ -13,11 +13,11 @@ options=('!emptydirs' '!libtool')
 url="http://matsusoft.com.ar/projects/mate/"
 groups=('mate')
 install=mate-control-center.install
-source=(http://sourceforge.net/projects/matede/files/${pkgver}/${pkgname}.tar.gz/download)
-sha256sums=('9e820258040b18d23ef536a146d4796b8d31b75b5bbc6915017f8b90abaee361')
+source=()
+sha256sums=()
 
 build() {
-    cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/../../../"
     ./autogen.sh \
         --prefix=/usr \
         --sysconfdir=/etc \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/../../../"
 
     make MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install || return 1
 
