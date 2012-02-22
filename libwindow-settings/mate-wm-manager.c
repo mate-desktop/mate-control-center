@@ -228,7 +228,12 @@ void mate_wm_manager_init(void)
 	scan_wm_directory(tempdir, FALSE);
 	g_free(tempdir);
 
-	tempdir = g_build_filename(g_get_home_dir(), ".config", "mate", "wm-properties", NULL);
+	#if GLIB_CHECK_VERSION(2, 6, 0)
+		tempdir = g_build_filename(g_get_user_config_dir(), "mate", "wm-properties", NULL);
+	#else // glib version < 2.6.0
+		tempdir = g_build_filename(g_get_home_dir(), ".config", "mate", "wm-properties", NULL);
+	#endif
+
 	scan_wm_directory(tempdir, TRUE);
 	g_free(tempdir);
 
