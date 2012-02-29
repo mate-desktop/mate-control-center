@@ -1,4 +1,4 @@
-AC_INIT([mate-control-center], [1.1.0], [htts://www.mate-desktop.org/])
+AC_INIT([mate-control-center], [1.2.0], [htts://www.mate-desktop.org/])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
@@ -30,7 +30,7 @@ changequote([,])dnl
 
 IT_PROG_INTLTOOL([0.37.1])
 
-GETTEXT_PACKAGE=mate-control-center-2.0
+GETTEXT_PACKAGE=mate-control-center
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package])
 
