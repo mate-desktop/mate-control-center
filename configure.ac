@@ -374,3 +374,19 @@ typing-break/Makefile
 
 dnl due to a bug in intltool we need to expand something from the root last control-center.spec
 AC_OUTPUT
+
+dnl ---------------------------------------------------------------------------
+dnl - Show summary
+dnl ---------------------------------------------------------------------------
+
+echo "
+              mate-control-center
+
+        Appindicator:          ${enable_appindicator}
+        Libslab:               ${have_libslab_deps}
+        XCursor support:       ${have_xcursor}
+        XInput support:        ${have_xinput}
+        About-me:              ${enable_aboutme}
+        Ubuntu hacks:          ${enable_ubuntu}
+
+"
