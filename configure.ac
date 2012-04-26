@@ -116,6 +116,7 @@ dnl ==============================================
 
 COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  glib-2.0 >= 2.17.4 dnl
+ gmodule-2.0 >= 2.0.0 dnl
  gthread-2.0 dnl
  gio-2.0 dnl
  mateconf-2.0 dnl
