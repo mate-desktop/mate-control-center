@@ -639,7 +639,7 @@ popup_about_cb (GtkAction *action, DrWright *dr)
 	gtk_show_about_dialog (NULL,
 			       "authors", authors,
 			       "comments",  _("A computer break reminder."),
-			       "logo-icon-name", "typing-monitor",
+			       "logo-icon-name", "mate-typing-monitor",
 			       "translator-credits", _("translator-credits"),
 			       "version", VERSION,
 			       NULL);

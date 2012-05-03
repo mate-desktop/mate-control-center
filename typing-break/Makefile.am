@@ -40,9 +40,9 @@ dist_image_DATA = bar.png bar-red.png bar-green.png bar-disabled.png ocean-strip
 
 # Themeable application icon
 icondir = $(datadir)/icons/hicolor/48x48/apps
-dist_icon_DATA = typing-monitor.png
+dist_icon_DATA = mate-typing-monitor.png
 svgicondir = $(datadir)/icons/hicolor/scalable/apps
-dist_svgicon_DATA = typing-monitor.svg
+dist_svgicon_DATA = mate-typing-monitor.svg
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 install-data-hook: update-icon-cache
 uninstall-hook: update-icon-cache
