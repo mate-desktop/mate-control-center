@@ -23,7 +23,6 @@
 #define _MATE_DA_CAPPLET_H_
 
 #include <gtk/gtk.h>
-#include <mateconf/mateconf-client.h>
 
 // Set http, https, about, and unknown keys to the chosen web browser.
 #define DEFAULT_APPS_KEY_HTTP_PATH       "/desktop/mate/url-handlers/http"
@@ -159,9 +158,6 @@ typedef struct _MateDACapplet {
 	GtkWidget* mobility_command_entry;
 	GtkWidget* mobility_command_label;
 	GtkWidget* mobility_startup_checkbutton;
-
-
-	MateConfClient* mateconf;
 
 	GList* web_browsers;
 	GList* mail_readers;

@@ -28,23 +28,39 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
-#include "mateconf-property-editor.h"
 #include "mate-da-capplet.h"
-#include "mate-da-xml.h"
-#include "mate-da-item.h"
 #include "capplet-util.h"
 
+
+enum {
+	DA_TYPE_WEB_BROWSER,
+	DA_TYPE_EMAIL,
+	DA_TYPE_TERMINAL,
+	DA_TYPE_MEDIA,
+	DA_TYPE_VIDEO,
+	DA_TYPE_VISUAL,
+	DA_TYPE_MOBILITY,
+	DA_TYPE_IMAGE,
+	DA_TYPE_TEXT,
+	DA_TYPE_FILE,
+	DA_N_COLUMNS
+};
+
+/* for combo box */
 enum {
 	PIXBUF_COL,
 	TEXT_COL,
+	ID_COL,
+	ICONAME_COL,
 	N_COLUMNS
 };
 
-static void close_cb(GtkWidget* window, gint response, gpointer user_data)
+static void
+close_cb(GtkWidget* window, gint response, gpointer user_data)
 {
 	if (response == GTK_RESPONSE_HELP)
 	{
-		capplet_help(GTK_WINDOW (window), "prefs-preferredapps");
+		capplet_help(GTK_WINDOW(window), "prefs-preferredapps");
 	}
 	else
 	{
@@ -53,483 +69,180 @@ static void close_cb(GtkWidget* window, gint response, gpointer user_data)
 	}
 }
 
-static void web_radiobutton_toggled_cb(GtkWidget* togglebutton, MateDACapplet* capplet)
+static void
+set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 {
-	gint index;
-	MateDAWebItem* item;
-	const gchar* command;
-	GError* error = NULL;
+	guint index;
+	GAppInfo* item;
 
-	index = gtk_combo_box_get_active(GTK_COMBO_BOX(capplet->web_combo_box));
+	index = gtk_combo_box_get_active(combo);
 
-	if (index == -1)
+	if (index < g_list_length(list))
 	{
-		return;
-	}
-
-	item = (MateDAWebItem*) g_list_nth_data(capplet->web_browsers, index);
-
-	if (item == NULL)
-	{
-		return;
-	}
-
-	if (togglebutton == capplet->new_win_radiobutton)
-	{
-		command = item->win_command;
-	}
-	else if (togglebutton == capplet->new_tab_radiobutton)
-	{
-		command = item->tab_command;
-	}
-	else
-	{
-		command = item->generic.command;
-	}
-
-	mateconf_client_set_string(capplet->mateconf, DEFAULT_APPS_KEY_HTTP_EXEC, command, &error);
-
-	if (error != NULL)
-	{
-		g_warning(_("Error saving configuration: %s"), error->message);
-		g_error_free(error);
-	}
-
-	/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-	 * item.
-	 * De lo contrario, se crea un elemento especial. */
-	GList* recommended = g_app_info_get_recommended_for_type("x-scheme-handler/http");
-
-	if (recommended!= NULL)
-	{
-		GList* app;
-
-		for (app = recommended; app != NULL; app = app->next)
+		item = (GAppInfo*) g_list_nth_data(list, index);
+	
+		switch (type)
 		{
-			/* nice hack bro */
-			if (strcmp(item->generic.executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-			{
+			case DA_TYPE_WEB_BROWSER:
+			
 				/* establecemos el item */
-				g_app_info_set_as_default_for_type((GAppInfo*) app->data, "x-scheme-handler/http", NULL);
-				g_app_info_set_as_default_for_type((GAppInfo*) app->data, "x-scheme-handler/https", NULL);
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/http", NULL);
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/https", NULL);
 
 				/* about:config es usado por mozilla firefox y algunos otros con
 				 * webtoolkit */
-				g_app_info_set_as_default_for_type((GAppInfo*) app->data, "x-scheme-handler/about", NULL);
-			}
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/about", NULL);
+				break;
+
+			case DA_TYPE_EMAIL:
+				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/mailto", NULL);
+				break;
+			
+			case DA_TYPE_FILE:
+				/* falta agregar más mime-types */
+				g_app_info_set_as_default_for_type(item, "inode/directory", NULL);
+				break;
+			
+			case DA_TYPE_TEXT:
+				/* falta agregar más mime-types */
+				g_app_info_set_as_default_for_type(item, "text/plain", NULL);
+				break;
+
+			case DA_TYPE_MEDIA:
+				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+				g_app_info_set_as_default_for_type(item, "audio/x-vorbis+ogg", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/x-scpls", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/mpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/x-wav", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/x-mpegurl", NULL);
+				g_app_info_set_as_default_for_type(item, "video/webm", NULL);
+				break;
+				
+			case DA_TYPE_VIDEO:
+				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+				g_app_info_set_as_default_for_type(item, "video/mpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-mpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "video/msvideo", NULL);
+				g_app_info_set_as_default_for_type(item, "video/quicktime", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-avi", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-ogm+ogg", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-matroska", NULL);
+				g_app_info_set_as_default_for_type(item, "video/webm", NULL);
+				g_app_info_set_as_default_for_type(item, "video/mp4", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-flv", NULL);
+				break;
+
+			case DA_TYPE_IMAGE:
+				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+				g_app_info_set_as_default_for_type(item, "image/png", NULL);
+				g_app_info_set_as_default_for_type(item, "image/jpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "image/gif", NULL);
+				g_app_info_set_as_default_for_type(item, "image/bmp", NULL);
+				g_app_info_set_as_default_for_type(item, "image/tiff", NULL);
+				break;
+						
+						
+			default:;
+				break;
 		}
-
-		g_list_free_full(recommended, g_object_unref);
-	}
-
-	gtk_entry_set_text(GTK_ENTRY(capplet->web_browser_command_entry), command);
-
-	if (error != NULL)
-	{
-		g_warning(_("Error saving configuration: %s"), error->message);
-		g_error_free(error);
 	}
 }
 
-static void web_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+/* Combo box callbacks */
+static void
+web_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 {
-    guint current_index;
-    gboolean is_custom_active;
-    gboolean has_net_remote;
-    MateDAWebItem* item;
-    GtkWidget* active = NULL;
+	set_changed(combo, capplet, capplet->web_browsers, DA_TYPE_WEB_BROWSER);
+}
 
-    current_index = gtk_combo_box_get_active(combo);
+static void
+mail_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->mail_readers, DA_TYPE_EMAIL);
+}
 
-    if (current_index < g_list_length(capplet->web_browsers))
+static void
+file_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->file_managers, DA_TYPE_FILE);
+}
+
+static void
+text_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->text_editors, DA_TYPE_TEXT);
+}
+
+static void
+media_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->media_players, DA_TYPE_TEXT);
+}
+
+static void
+video_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->video_players, DA_TYPE_TEXT);
+}
+
+static void
+terminal_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->terminals, DA_TYPE_TERMINAL);
+}
+
+static void
+visual_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->visual_ats, DA_TYPE_VISUAL);
+}
+
+static void
+mobility_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->mobility_ats, DA_TYPE_MOBILITY);
+}
+
+static void
+image_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->image_viewers, DA_TYPE_IMAGE);
+}
+
+static void
+refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list)
+{
+	GtkTreeIter iter;
+	GtkTreeModel* model;
+	gboolean valid;
+	GdkPixbuf* pixbuf;
+	gchar* icon_name;
+	
+	model = gtk_combo_box_get_model(combo_box);
+
+	valid = gtk_tree_model_get_iter_first(model, &iter);
+	
+	while (valid)
     {
-		item = (MateDAWebItem*) g_list_nth_data(capplet->web_browsers, current_index);
-		has_net_remote = item->netscape_remote;
-		is_custom_active = FALSE;
-    }
-    else
-    {
-        has_net_remote = FALSE;
-        is_custom_active = TRUE;
-    }
+		gtk_tree_model_get(model, &iter,
+				          ICONAME_COL, &icon_name,
+				          -1);
 
-	/* Si, aun falta para poder crear personalizables... */
-	has_net_remote = FALSE;
-	is_custom_active = FALSE;
-    gtk_widget_set_sensitive(capplet->default_radiobutton, has_net_remote);
-    gtk_widget_set_sensitive(capplet->new_win_radiobutton, has_net_remote);
-    gtk_widget_set_sensitive(capplet->new_tab_radiobutton, has_net_remote);
+		pixbuf = gtk_icon_theme_load_icon(theme, icon_name, 22, 0, NULL);
 
-    gtk_widget_set_sensitive(capplet->web_browser_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->web_browser_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->web_browser_terminal_checkbutton, is_custom_active);
-
-    if (has_net_remote)
-    {
-        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(capplet->new_win_radiobutton)))
-        {
-            active = capplet->new_win_radiobutton;
-		}
-        else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(capplet->new_tab_radiobutton)))
-        {
-            active = capplet->new_tab_radiobutton;
-		}
-        else
-        {
-            active = capplet->default_radiobutton;
-		}
-    }
-
-    web_radiobutton_toggled_cb(active, capplet);
-}
-
-/* FIXME: Refactor these two functions below into one... */
-static void mail_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active(combo);
-    is_custom_active = (current_index >= g_list_length(capplet->mail_readers));
-
-	if (current_index != -1)
-	{
-		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->mail_readers, current_index);
-
-		if (item != NULL)
-		{
-			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-			 * item.
-			 * De lo contrario, se crea un elemento especial. */
-			GList* recommended = g_app_info_get_recommended_for_type("x-scheme-handler/mailto");
-
-			if (recommended!= NULL)
-			{
-				GList* app;
-
-				for (app = recommended; app != NULL; app = app->next)
-				{
-					/* nice hack bro */
-					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-					{
-						/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "x-scheme-handler/mailto", NULL);
-					}
-				}
-
-				g_list_free_full(recommended, g_object_unref);
-			}
-		}
-	}
-
-	/* Si, aun falta para poder crear personalizables... */
-	is_custom_active = FALSE;
-    gtk_widget_set_sensitive(capplet->mail_reader_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->mail_reader_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->mail_reader_terminal_checkbutton, is_custom_active);
-}
-
-static void file_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active(combo);
-    is_custom_active = (current_index >= g_list_length(capplet->file_managers));
-
-	if (current_index != -1)
-	{
-		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->file_managers, current_index);
-
-		if (item != NULL)
-		{
-			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-			 * item.
-			 * De lo contrario, se crea un elemento especial. */
-			GList* recommended = g_app_info_get_recommended_for_type("inode/directory");
-
-			if (recommended!= NULL)
-			{
-				GList* app;
-
-				for (app = recommended; app != NULL; app = app->next)
-				{
-					/* nice hack bro */
-					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-					{
-						/* falta agregar más mime-types */
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "inode/directory", NULL);
-					}
-				}
-
-				g_list_free_full(recommended, g_object_unref);
-			}
-		}
-	}
-
-	/* Si, aun falta para poder crear personalizables... */
-	is_custom_active = FALSE;
-	gtk_widget_set_sensitive(capplet->file_manager_command_entry, is_custom_active);
-	gtk_widget_set_sensitive(capplet->file_manager_command_label, is_custom_active);
-	gtk_widget_set_sensitive(capplet->file_manager_terminal_checkbutton, is_custom_active);
-}
-
-static void text_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active(combo);
-    is_custom_active = (current_index >= g_list_length(capplet->text_editors));
-
-	if (current_index != -1)
-	{
-		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->text_editors, current_index);
-
-		if (item != NULL)
-		{
-			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-			 * item.
-			 * De lo contrario, se crea un elemento especial. */
-			GList* recommended = g_app_info_get_recommended_for_type("text/plain");
-
-			if (recommended!= NULL)
-			{
-				GList* app;
-
-				for (app = recommended; app != NULL; app = app->next)
-				{
-					/* nice hack bro */
-					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-					{
-						/* falta agregar más mime-types */
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "text/plain", NULL);
-					}
-				}
-
-				g_list_free_full(recommended, g_object_unref);
-			}
-		}
-	}
-
-	/* Si, aun falta para poder crear personalizables... */
-	is_custom_active = FALSE;
-    gtk_widget_set_sensitive(capplet->text_editor_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->text_editor_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->text_editor_terminal_checkbutton, is_custom_active);
-}
-
-static void media_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active (combo);
-    is_custom_active = (current_index >= g_list_length(capplet->media_players));
-
-	if (current_index != -1)
-	{
-		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->media_players, current_index);
-
-		if (item != NULL)
-		{
-			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-			 * item.
-			 * De lo contrario, se crea un elemento especial. */
-			GList* recommended = g_app_info_get_recommended_for_type("audio/x-vorbis+ogg");
-
-			if (recommended!= NULL)
-			{
-				GList* app;
-
-				for (app = recommended; app != NULL; app = app->next)
-				{
-					/* nice hack bro */
-					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-					{
-						/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-vorbis+ogg", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-scpls", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/mpeg", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-wav", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "audio/x-mpegurl", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/webm", NULL);
-					}
-				}
-
-				g_list_free_full(recommended, g_object_unref);
-			}
-		}
-	}
-
-	/* Si, aun falta para poder crear personalizables... */
-	is_custom_active = FALSE;
-    gtk_widget_set_sensitive(capplet->media_player_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->media_player_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->media_player_terminal_checkbutton, is_custom_active);
-}
-
-static void video_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active (combo);
-    is_custom_active = (current_index >= g_list_length(capplet->video_players));
-
-	if (current_index != -1)
-	{
-		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->video_players, current_index);
-
-		if (item != NULL)
-		{
-			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-			 * item.
-			 * De lo contrario, se crea un elemento especial. */
-			GList* recommended = g_app_info_get_recommended_for_type("video/x-ogm+ogg");
-
-			if (recommended!= NULL)
-			{
-				GList* app;
-
-				for (app = recommended; app != NULL; app = app->next)
-				{
-					/* nice hack bro */
-					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-					{
-						/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/mpeg", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-mpeg", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/msvideo", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/quicktime", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-avi", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-ogm+ogg", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-matroska", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/webm", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/mp4", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "video/x-flv", NULL);
-					}
-				}
-
-				g_list_free_full(recommended, g_object_unref);
-			}
-		}
-	}
-
-	/* Si, aun falta para poder crear personalizables... */
-	is_custom_active = FALSE;
-    gtk_widget_set_sensitive(capplet->video_player_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->video_player_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->video_player_terminal_checkbutton, is_custom_active);
-}
-static void terminal_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active(combo);
-    is_custom_active = (current_index >= g_list_length(capplet->terminals));
-
-    gtk_widget_set_sensitive(capplet->terminal_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->terminal_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->terminal_exec_flag_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->terminal_exec_flag_label, is_custom_active);
-}
-
-static void visual_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active(combo);
-    is_custom_active = (current_index >= g_list_length(capplet->visual_ats));
-
-    gtk_widget_set_sensitive(capplet->visual_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->visual_command_label, is_custom_active);
-}
-
-static void mobility_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active (combo);
-    is_custom_active = (current_index >= g_list_length (capplet->mobility_ats));
-
-    gtk_widget_set_sensitive (capplet->mobility_command_entry, is_custom_active);
-    gtk_widget_set_sensitive (capplet->mobility_command_label, is_custom_active);
-}
-
-static void image_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
-{
-    guint current_index;
-    gboolean is_custom_active;
-
-    current_index = gtk_combo_box_get_active(combo);
-    is_custom_active = (current_index >= g_list_length(capplet->image_viewers));
-
-	if (current_index != -1)
-	{
-		MateDAItem* item = (MateDAItem*) g_list_nth_data(capplet->image_viewers, current_index);
-
-		if (item != NULL)
-		{
-			/* Para obtener la lista de elementos, y si está en la lista, agregar ese
-			 * item.
-			 * De lo contrario, se crea un elemento especial. */
-			GList* recommended = g_app_info_get_recommended_for_type("image/png");
-
-			if (recommended!= NULL)
-			{
-				GList* app;
-
-				for (app = recommended; app != NULL; app = app->next)
-				{
-					/* nice hack bro */
-					if (strcmp(item->executable, g_app_info_get_executable((GAppInfo*) app->data)) == 0)
-					{
-						/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "image/png", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "image/jpeg", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "image/gif", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "image/bmp", NULL);
-						g_app_info_set_as_default_for_type((GAppInfo*) app->data, "image/tiff", NULL);
-					}
-				}
-
-				g_list_free_full(recommended, g_object_unref);
-			}
-		}
-	}
-
-    gtk_widget_set_sensitive(capplet->image_viewer_command_entry, is_custom_active);
-    gtk_widget_set_sensitive(capplet->image_viewer_command_label, is_custom_active);
-    gtk_widget_set_sensitive(capplet->image_viewer_terminal_checkbutton, is_custom_active);
-}
-
-static void refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list)
-{
-    GList *entry;
-    MateDAItem *item;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-    GdkPixbuf *pixbuf;
-
-    for (entry = app_list; entry != NULL; entry = g_list_next (entry)) {
-	item = (MateDAItem *) entry->data;
-
-	model = gtk_combo_box_get_model (combo_box);
-
-	if (item->icon_path && gtk_tree_model_get_iter_from_string (model, &iter, item->icon_path)) {
-	    pixbuf = gtk_icon_theme_load_icon (theme, item->icon_name, 22, 0, NULL);
-
-	    gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+		gtk_list_store_set(GTK_LIST_STORE(model), &iter,
 				PIXBUF_COL, pixbuf,
 				-1);
 
-	    if (pixbuf)
-		g_object_unref (pixbuf);
-	}
+		if (pixbuf)
+		{
+			g_object_unref(pixbuf);
+		}
+		
+		g_free(icon_name);
+
+		valid = gtk_tree_model_iter_next(model, &iter);
     }
 }
 
@@ -550,7 +263,9 @@ static struct {
 	{"terminal_image",     "terminal"},
 };
 
-static void theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
+/* Esta funcion se llama cuando se cambia o actualizan los iconos */
+static void
+theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 {
 	GObject* icon;
 	gint i;
@@ -559,11 +274,12 @@ static void theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 	{
 		icon = gtk_builder_get_object(capplet->builder, icons[i].name);
 
-		GdkPixbuf* pixbuf = gtk_icon_theme_load_icon(theme, icons[i].icon, 48, 0, NULL);
+		GdkPixbuf* pixbuf = gtk_icon_theme_load_icon(theme, icons[i].icon, 32, 0, NULL);
 
+		gtk_image_set_from_pixbuf(GTK_IMAGE(icon), pixbuf);
+		
 		if (pixbuf)
 		{
-			gtk_image_set_from_pixbuf(GTK_IMAGE(icon), pixbuf);
 			g_object_unref(pixbuf);
 		}
 	}
@@ -578,7 +294,8 @@ static void theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->text_combo_box), capplet->text_editors);
 }
 
-static void screen_changed_cb(GtkWidget* widget, GdkScreen* screen, MateDACapplet* capplet)
+static void
+screen_changed_cb(GtkWidget* widget, GdkScreen* screen, MateDACapplet* capplet)
 {
 	GtkIconTheme* theme;
 
@@ -595,366 +312,28 @@ static void screen_changed_cb(GtkWidget* widget, GdkScreen* screen, MateDACapple
 	capplet->icon_theme = theme;
 }
 
-static gint generic_item_comp(const void* list_item, const void* command)
+static void
+fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gchar* mime)
 {
-	return (strcmp(((MateDAItem*) list_item)->command, (char*) command));
-}
-
-static int web_item_comp(const void* item, const void* command)
-{
-    MateDAWebItem* web_list_item;
-
-    web_list_item = (MateDAWebItem*) item;
-
-    if (strcmp (web_list_item->generic.command, (char*) command) == 0)
-    {
-		return 0;
-	}
-
-    if (web_list_item->netscape_remote)
-    {
-		if (strcmp (web_list_item->tab_command, (char*) command) == 0)
-		{
-			return 0;
-		}
-
-		if (strcmp (web_list_item->win_command, (char*) command) == 0)
-		{
-			return 0;
-		}
-    }
-
-    return (strcmp(web_list_item->generic.command, (char*) command));
-}
-
-static void web_mateconf_changed_cb(MateConfPropertyEditor* peditor, gchar* key, MateConfValue* value, MateDACapplet* capplet)
-{
-    MateConfChangeSet *cs;
-    GError *error = NULL;
-    GList *list_entry;
-
-    /* This function is used to update HTTPS,ABOUT and UNKNOWN handlers, which
-     * should also use the same value as HTTP
-     */
-
-    if (strcmp (key, DEFAULT_APPS_KEY_HTTP_EXEC) == 0)
-    {
-		gchar *short_browser, *pos;
-		const gchar *value_str = mateconf_value_get_string (value);
-
-		cs = mateconf_change_set_new ();
-
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_HTTPS_EXEC, value);
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_UNKNOWN_EXEC, value);
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_ABOUT_EXEC, value);
-		pos = strstr (value_str, " ");
-		if (pos == NULL)
-			short_browser = g_strdup (value_str);
-		else
-			short_browser = g_strndup (value_str, pos - value_str);
-		mateconf_change_set_set_string (cs, DEFAULT_APPS_KEY_BROWSER_EXEC, short_browser);
-		g_free (short_browser);
-
-		list_entry = g_list_find_custom (capplet->web_browsers,
-						 value_str,
-						 (GCompareFunc) web_item_comp);
-
-		if (list_entry) {
-			MateDAWebItem *item = (MateDAWebItem *) list_entry->data;
-
-			mateconf_change_set_set_bool (cs, DEFAULT_APPS_KEY_BROWSER_NREMOTE, item->netscape_remote);
-		}
-
-		mateconf_client_commit_change_set (capplet->mateconf, cs, TRUE, &error);
-
-		if (error != NULL) {
-			g_warning (_("Error saving configuration: %s"), error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-
-		mateconf_change_set_unref (cs);
-    }
-    else if (strcmp (key, DEFAULT_APPS_KEY_HTTP_NEEDS_TERM) == 0)
-    {
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (capplet->web_browser_terminal_checkbutton),
-						  mateconf_value_get_bool (value));
-
-		cs = mateconf_change_set_new ();
-
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_HTTPS_NEEDS_TERM, value);
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_UNKNOWN_NEEDS_TERM, value);
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_ABOUT_NEEDS_TERM, value);
-		mateconf_change_set_set (cs, DEFAULT_APPS_KEY_BROWSER_NEEDS_TERM, value);
-
-		mateconf_client_commit_change_set (capplet->mateconf, cs, TRUE, &error);
-
-		if (error != NULL) {
-			g_warning (_("Error saving configuration: %s"), error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-
-		mateconf_change_set_unref (cs);
-    }
-}
-
-static void web_browser_update_radio_buttons(MateDACapplet* capplet, const gchar* command)
-{
-    GList *entry;
-    gboolean has_net_remote;
-
-    entry = g_list_find_custom (capplet->web_browsers, command, (GCompareFunc) web_item_comp);
-
-    if (entry) {
-	MateDAWebItem *item = (MateDAWebItem *) entry->data;
-
-	has_net_remote = item->netscape_remote;
-
-	if (has_net_remote) {
-	    /* disable "toggle" signal emitting, thus preventing calling this function twice */
-	    g_signal_handlers_block_matched (capplet->default_radiobutton, G_SIGNAL_MATCH_FUNC, 0,
-					     0, NULL, G_CALLBACK (web_radiobutton_toggled_cb), NULL);
-	    g_signal_handlers_block_matched (capplet->new_tab_radiobutton, G_SIGNAL_MATCH_FUNC, 0,
-					     0, NULL, G_CALLBACK (web_radiobutton_toggled_cb), NULL);
-	    g_signal_handlers_block_matched (capplet->new_win_radiobutton,G_SIGNAL_MATCH_FUNC, 0,
-					     0, NULL, G_CALLBACK (web_radiobutton_toggled_cb), NULL);
-
-	    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (capplet->default_radiobutton),
-					  strcmp (item->generic.command, command) == 0);
-	    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (capplet->new_tab_radiobutton),
-					  strcmp (item->tab_command, command) == 0);
-	    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (capplet->new_win_radiobutton),
-					  strcmp (item->win_command, command) == 0);
-
-	    g_signal_handlers_unblock_matched (capplet->default_radiobutton, G_SIGNAL_MATCH_FUNC, 0,
-					       0, NULL, G_CALLBACK (web_radiobutton_toggled_cb), NULL);
-	    g_signal_handlers_unblock_matched (capplet->new_tab_radiobutton, G_SIGNAL_MATCH_FUNC, 0,
-					       0, NULL, G_CALLBACK (web_radiobutton_toggled_cb), NULL);
-	    g_signal_handlers_unblock_matched (capplet->new_win_radiobutton, G_SIGNAL_MATCH_FUNC, 0,
-					       0, NULL, G_CALLBACK (web_radiobutton_toggled_cb), NULL);
-	}
-    }
-    else {
-	has_net_remote = FALSE;
-    }
-
-    gtk_widget_set_sensitive (capplet->default_radiobutton, has_net_remote);
-    gtk_widget_set_sensitive (capplet->new_win_radiobutton, has_net_remote);
-    gtk_widget_set_sensitive (capplet->new_tab_radiobutton, has_net_remote);
-}
-
-static MateConfValue* web_combo_conv_to_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-	MateConfValue *ret;
-	GList *entry, *handlers;
-	const gchar *command;
-	gint index;
-	MateDACapplet *capplet;
-
-	g_object_get (G_OBJECT (peditor), "data", &capplet, NULL);
-
-	command = mateconf_value_get_string (value);
-	handlers = capplet->web_browsers;
-
-	if (handlers)
-	{
-		entry = g_list_find_custom (handlers, command, (GCompareFunc) web_item_comp);
-
-		if (entry)
-		{
-			index = g_list_position (handlers, entry);
-		}
-		else
-		{
-			index = g_list_length (handlers) + 1;
-		}
-	}
-	else
-	{
-		/* if the item has no handlers lsit then select the Custom item */
-		index = 1;
-	}
-
-	web_browser_update_radio_buttons (capplet, command);
-
-	ret = mateconf_value_new (MATECONF_VALUE_INT);
-	mateconf_value_set_int (ret, index);
-
-	return ret;
-}
-
-static MateConfValue* web_combo_conv_from_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-    MateConfValue *ret;
-    GList *handlers;
-    gint index;
-    MateDAWebItem *item;
-    const gchar *command;
-    MateDACapplet *capplet;
-
-    g_object_get (G_OBJECT (peditor), "data", &capplet, NULL);
-
-    index = mateconf_value_get_int (value);
-    handlers = capplet->web_browsers;
-
-    item = g_list_nth_data (handlers, index);
-
-    ret = mateconf_value_new (MATECONF_VALUE_STRING);
-    if (!item)
-    {
-        /* if item was not found, this is probably the "Custom" item */
-        /* XXX: returning "" as the value here is not ideal, but required to
-         * prevent the combo box from jumping back to the previous value if the
-         * user has selected Custom */
-        mateconf_value_set_string (ret, "");
-        return ret;
-    }
-    else
-    {
-        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (capplet->new_win_radiobutton)) && item->netscape_remote == TRUE)
-            command = item->win_command;
-        else if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (capplet->new_tab_radiobutton)) && item->netscape_remote == TRUE)
-            command = item->tab_command;
-        else
-            command = item->generic.command;
-
-        mateconf_value_set_string (ret, command);
-        return ret;
-    }
-}
-
-static MateConfValue* combo_conv_to_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-    MateConfValue *ret;
-    GList *entry, *handlers;
-    const gchar *command;
-    gint index;
-
-    g_object_get (G_OBJECT (peditor), "data", &handlers, NULL);
-
-    command = mateconf_value_get_string (value);
-
-    if (handlers)
-    {
-        entry = g_list_find_custom (handlers, command, (GCompareFunc) generic_item_comp);
-        if (entry)
-            index = g_list_position (handlers, entry);
-        else
-            index = g_list_length (handlers) + 1;
-    }
-    else
-    {
-        /* if the item has no handlers lsit then select the Custom item */
-        index = 1;
-    }
-
-    ret = mateconf_value_new (MATECONF_VALUE_INT);
-    mateconf_value_set_int (ret, index);
-    return ret;
-}
-
-static MateConfValue* combo_conv_from_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-    MateConfValue *ret;
-    GList *handlers;
-    gint index;
-    MateDAItem *item;
-
-    g_object_get (G_OBJECT (peditor), "data", &handlers, NULL);
-    index = mateconf_value_get_int (value);
-
-    item = g_list_nth_data (handlers, index);
-    ret = mateconf_value_new (MATECONF_VALUE_STRING);
-
-    if (!item)
-    {
-        /* if item was not found, this is probably the "Custom" item */
-
-        /* XXX: returning "" as the value here is not ideal, but required to
-         * prevent the combo box from jumping back to the previous value if the
-         * user has selected Custom */
-        mateconf_value_set_string (ret, "");
-        return ret;
-    }
-    else
-    {
-        mateconf_value_set_string (ret, item->command);
-        return ret;
-    }
-}
-
-static MateConfValue* combo_conv_from_widget_term_flag (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-    MateConfValue *ret;
-    GList *handlers;
-    gint index;
-    MateDATermItem *item;
-
-    g_object_get (G_OBJECT (peditor), "data", &handlers, NULL);
-    index = mateconf_value_get_int (value);
-
-    item = g_list_nth_data (handlers, index);
-    ret = mateconf_value_new (MATECONF_VALUE_STRING);
-
-    if (!item)
-    {
-        /* if item was not found, this is probably the "Custom" item */
-
-        /* XXX: returning "" as the value here is not ideal, but required to
-         * prevent the combo box from jumping back to the previous value if the
-         * user has selected Custom */
-        mateconf_value_set_string (ret, "");
-        return ret;
-    }
-    else
-    {
-        mateconf_value_set_string (ret, item->exec_flag);
-        return ret;
-    }
-}
-
-static MateConfValue* combo_conv_to_widget_term_flag(MateConfPropertyEditor* peditor, const MateConfValue* value)
-{
-	GtkComboBox* combo = GTK_COMBO_BOX(mateconf_property_editor_get_ui_control(peditor));
-
-	MateConfValue* ret = mateconf_value_new(MATECONF_VALUE_INT);
-
-	mateconf_value_set_int(ret, gtk_combo_box_get_active (combo));
-
-	return ret;
-}
-
-static gboolean is_separator(GtkTreeModel* model, GtkTreeIter* iter, gpointer sep_index)
-{
-    GtkTreePath* path = gtk_tree_model_get_path(model, iter);
-
-    gboolean result = gtk_tree_path_get_indices(path)[0] == GPOINTER_TO_INT(sep_index);
-
-    gtk_tree_path_free(path);
-
-    return result;
-}
-
-static void fill_combo_box (GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list)
-{
+	guint index = 0;
 	GList* entry;
 	GtkTreeModel* model;
 	GtkCellRenderer* renderer;
 	GtkTreeIter iter;
 	GdkPixbuf* pixbuf;
+	GAppInfo* default_app;
+	
+	default_app = g_app_info_get_default_for_type(mime, FALSE);
 
 	if (theme == NULL)
 	{
 		theme = gtk_icon_theme_get_default();
 	}
 
-	gtk_combo_box_set_row_separator_func(combo_box, is_separator, GINT_TO_POINTER(g_list_length(app_list)), NULL);
-
-	model = GTK_TREE_MODEL(gtk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING));
+	model = GTK_TREE_MODEL(gtk_list_store_new(4, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 	gtk_combo_box_set_model(combo_box, model);
 
-	renderer = gtk_cell_renderer_pixbuf_new ();
+	renderer = gtk_cell_renderer_pixbuf_new();
 
 	/* not all cells have a pixbuf, this prevents the combo box to shrink */
 	gtk_cell_renderer_set_fixed_size(renderer, -1, 22);
@@ -965,52 +344,56 @@ static void fill_combo_box (GtkIconTheme* theme, GtkComboBox* combo_box, GList* 
 
 	renderer = gtk_cell_renderer_text_new();
 
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo_box), renderer, TRUE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo_box), renderer,
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo_box), renderer, TRUE);
+	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(combo_box), renderer,
 		"text", TEXT_COL,
 		NULL);
 
-	for (entry = app_list; entry != NULL; entry = g_list_next (entry))
+	for (entry = app_list; entry != NULL; entry = g_list_next(entry))
 	{
-		MateDAItem* item = (MateDAItem*) entry->data;
-
-		pixbuf = gtk_icon_theme_load_icon(theme, item->icon_name, 22, 0, NULL);
+		GAppInfo* item = (GAppInfo*) entry->data;
+		
+		// icon
+		GIcon* icon = g_app_info_get_icon(item);
+		gchar* icon_name = g_icon_to_string(icon);
+		
+		if (icon_name == NULL)
+		{
+			icon_name = g_strdup("binary"); // default icon
+		}
+		
+		pixbuf = gtk_icon_theme_load_icon(theme, icon_name, 22, 0, NULL);
 
 		gtk_list_store_append(GTK_LIST_STORE(model), &iter);
 		gtk_list_store_set(GTK_LIST_STORE(model), &iter,
 			PIXBUF_COL, pixbuf,
-			TEXT_COL, item->name,
+			TEXT_COL, g_app_info_get_display_name(item),
+			ID_COL, g_app_info_get_id(item),
+			ICONAME_COL, icon_name,
 			-1);
-
-		item->icon_path = gtk_tree_model_get_string_from_iter(model, &iter);
 
 		if (pixbuf)
 		{
 			g_object_unref(pixbuf);
 		}
+		
+		/* set the index */
+		if (default_app != NULL && g_app_info_equal(item, default_app))
+		{
+			gtk_combo_box_set_active(combo_box, index);
+		}
+		
+		g_free(icon_name);
+		
+		index++;
 	}
-
-	gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-	gtk_list_store_set(GTK_LIST_STORE(model), &iter, -1);
-	gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-	gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-		PIXBUF_COL, NULL,
-		TEXT_COL, _("Custom"),
-		-1);
 }
 
-/* not used
-static GtkWidget* _gtk_builder_get_widget(GtkBuilder* builder, const gchar* name)
-{
-    return GTK_WIDGET(gtk_builder_get_object(builder, name));
-}*/
-
-
-static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
+static void
+show_dialog(MateDACapplet* capplet, const gchar* start_page)
 {
 	#define get_widget(name) GTK_WIDGET(gtk_builder_get_object(builder, name))
 
-	GObject* obj;
 	GtkBuilder* builder;
 	guint builder_result;
 
@@ -1041,50 +424,6 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 	g_signal_connect(capplet->window, "response", G_CALLBACK(close_cb), NULL);
 
-	capplet->web_browser_command_entry = get_widget("web_browser_command_entry");
-	capplet->web_browser_command_label = get_widget("web_browser_command_label");
-	capplet->web_browser_terminal_checkbutton = get_widget("web_browser_terminal_checkbutton");
-	capplet->default_radiobutton = get_widget("web_browser_default_radiobutton");
-	capplet->new_win_radiobutton = get_widget("web_browser_new_win_radiobutton");
-	capplet->new_tab_radiobutton = get_widget("web_browser_new_tab_radiobutton");
-
-	capplet->mail_reader_command_entry = get_widget("mail_reader_command_entry");
-	capplet->mail_reader_command_label = get_widget("mail_reader_command_label");
-	capplet->mail_reader_terminal_checkbutton = get_widget("mail_reader_terminal_checkbutton");
-
-	capplet->terminal_command_entry = get_widget("terminal_command_entry");
-	capplet->terminal_command_label = get_widget("terminal_command_label");
-	capplet->terminal_exec_flag_entry = get_widget("terminal_exec_flag_entry");
-	capplet->terminal_exec_flag_label = get_widget("terminal_exec_flag_label");
-
-	capplet->media_player_command_entry = get_widget("media_player_command_entry");
-	capplet->media_player_command_label = get_widget("media_player_command_label");
-	capplet->media_player_terminal_checkbutton = get_widget("media_player_terminal_checkbutton");
-
-	capplet->video_player_command_entry = get_widget("video_command_entry");
-	capplet->video_player_command_label = get_widget("video_command_label");
-	capplet->video_player_terminal_checkbutton = get_widget("video_terminal_checkbox");
-
-	capplet->visual_command_entry = get_widget("visual_command_entry");
-	capplet->visual_command_label = get_widget("visual_command_label");
-	capplet->visual_startup_checkbutton = get_widget("visual_start_checkbutton");
-
-	capplet->image_viewer_command_entry = get_widget("image_command_entry");
-	capplet->image_viewer_command_label = get_widget("image_command_label");
-	capplet->image_viewer_terminal_checkbutton = get_widget("image_terminal_checkbox");
-
-	capplet->text_editor_command_entry = get_widget("text_command_entry");
-	capplet->text_editor_command_label = get_widget("text_command_label");
-	capplet->text_editor_terminal_checkbutton = get_widget("text_terminal_checkbox");
-
-	capplet->file_manager_command_entry = get_widget("filemanager_command_entry");
-	capplet->file_manager_command_label = get_widget("filemanager_command_label");
-	capplet->file_manager_terminal_checkbutton = get_widget("filemanager_terminal_checkbox");
-
-	capplet->mobility_command_entry = get_widget("mobility_command_entry");
-	capplet->mobility_command_label = get_widget("mobility_command_label");
-	capplet->mobility_startup_checkbutton = get_widget("mobility_start_checkbutton");
-
 	capplet->web_combo_box = get_widget("web_browser_combobox");
 	capplet->mail_combo_box = get_widget("mail_reader_combobox");
 	capplet->term_combo_box = get_widget("terminal_combobox");
@@ -1100,16 +439,28 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->window, "screen-changed", G_CALLBACK(screen_changed_cb), capplet);
 	screen_changed_cb(capplet->window, gdk_screen_get_default(), capplet);
 
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->media_combo_box), capplet->media_players);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->video_combo_box), capplet->video_players);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->image_combo_box), capplet->image_viewers);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->text_combo_box), capplet->text_editors);
-	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->file_combo_box), capplet->file_managers);
+	// lists
+	capplet->web_browsers = g_app_info_get_all_for_type("x-scheme-handler/http");
+	capplet->mail_readers = g_app_info_get_all_for_type("x-scheme-handler/mailto");
+	//capplet->terminals = g_app_info_get_all_for_type("inode/directory");
+	capplet->media_players = g_app_info_get_all_for_type("audio/x-vorbis+ogg");
+	capplet->video_players = g_app_info_get_all_for_type("video/x-ogm+ogg");
+	//capplet->visual_ats = g_app_info_get_all_for_type("inode/directory");
+	//capplet->mobility_ats = g_app_info_get_all_for_type("inode/directory");
+	capplet->text_editors = g_app_info_get_all_for_type("text/plain");
+	capplet->image_viewers = g_app_info_get_all_for_type("image/png");
+	capplet->file_managers = g_app_info_get_all_for_type("inode/directory");
+	
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers, "x-scheme-handler/http");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers, "x-scheme-handler/mailto");
+	//fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals, "");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->media_combo_box), capplet->media_players, "audio/x-vorbis+ogg");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->video_combo_box), capplet->video_players, "video/x-ogm+ogg");
+	//fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats, NULL);
+	//fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats, NULL);
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->image_combo_box), capplet->image_viewers, "image/png");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->text_combo_box), capplet->text_editors, "text/plain");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->file_combo_box), capplet->file_managers, "inode/directory");
 
 	g_signal_connect(capplet->web_combo_box, "changed", G_CALLBACK(web_combo_changed_cb), capplet);
 	g_signal_connect(capplet->mail_combo_box, "changed", G_CALLBACK(mail_combo_changed_cb), capplet);
@@ -1123,215 +474,7 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->file_combo_box, "changed", G_CALLBACK(file_combo_changed_cb), capplet);
 
 
-	g_signal_connect(capplet->default_radiobutton, "toggled", G_CALLBACK(web_radiobutton_toggled_cb), capplet);
-	g_signal_connect(capplet->new_win_radiobutton, "toggled", G_CALLBACK(web_radiobutton_toggled_cb), capplet);
-	g_signal_connect(capplet->new_tab_radiobutton, "toggled", G_CALLBACK(web_radiobutton_toggled_cb), capplet);
-
-	/* Setup MateConfPropertyEditors */
-
-	/* Web Browser */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_HTTP_EXEC,
-		capplet->web_combo_box,
-		"conv-from-widget-cb", web_combo_conv_from_widget,
-		"conv-to-widget-cb", web_combo_conv_to_widget,
-		"data", capplet,
-		NULL);
-
-	obj = mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_HTTP_EXEC,
-		capplet->web_browser_command_entry,
-		NULL);
-	g_signal_connect (obj, "value-changed", G_CALLBACK (web_mateconf_changed_cb), capplet);
-
-	obj = mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_HTTP_NEEDS_TERM,
-		capplet->web_browser_terminal_checkbutton,
-		NULL);
-	g_signal_connect (obj, "value-changed", G_CALLBACK (web_mateconf_changed_cb), capplet);
-
-	/* Mailer */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_MAILER_EXEC,
-		capplet->mail_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->mail_readers,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_MAILER_EXEC,
-		capplet->mail_reader_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_MAILER_NEEDS_TERM,
-		capplet->mail_reader_terminal_checkbutton,
-		NULL);
-
-	/* Media player */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_MEDIA_EXEC,
-		capplet->media_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->media_players,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_MEDIA_EXEC,
-		capplet->media_player_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_MEDIA_NEEDS_TERM,
-		capplet->media_player_terminal_checkbutton,
-		NULL);
-
-	/* Video player */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_VIDEO_EXEC,
-		capplet->video_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->video_players,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_VIDEO_EXEC,
-		capplet->video_player_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_VIDEO_NEEDS_TERM,
-		capplet->video_player_terminal_checkbutton,
-		NULL);
-
-	/* Image viewer */
-	mateconf_peditor_new_combo_box(NULL,
-		DEFAULT_APPS_KEY_IMAGE_EXEC,
-		capplet->image_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->image_viewers,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_IMAGE_EXEC,
-		capplet->image_viewer_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_IMAGE_NEEDS_TERM,
-		capplet->image_viewer_terminal_checkbutton,
-		NULL);
-
-	/* File manager */
-	mateconf_peditor_new_combo_box(NULL,
-		DEFAULT_APPS_KEY_FILE_EXEC,
-		capplet->file_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->file_managers,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_FILE_EXEC,
-		capplet->file_manager_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_FILE_NEEDS_TERM,
-		capplet->file_manager_terminal_checkbutton,
-		NULL);
-
-
-	/* Text editors */
-	mateconf_peditor_new_combo_box(NULL,
-		DEFAULT_APPS_KEY_TEXT_EXEC,
-		capplet->text_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->text_editors,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_TEXT_EXEC,
-		capplet->text_editor_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_TEXT_NEEDS_TERM,
-		capplet->text_editor_terminal_checkbutton,
-		NULL);
-
-
-	/* Terminal */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_TERMINAL_EXEC,
-		capplet->term_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->terminals,
-		NULL);
-
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_TERMINAL_EXEC_ARG,
-		capplet->term_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget_term_flag,
-		"conv-to-widget-cb", combo_conv_to_widget_term_flag,
-		"data", capplet->terminals,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_TERMINAL_EXEC,
-		capplet->terminal_command_entry,
-		NULL);
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_TERMINAL_EXEC_ARG,
-		capplet->terminal_exec_flag_entry,
-		NULL);
-
-
-	/* Visual */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_VISUAL_EXEC,
-		capplet->visual_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->visual_ats,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_VISUAL_EXEC,
-		capplet->visual_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_VISUAL_STARTUP,
-		capplet->visual_startup_checkbutton,
-		NULL);
-
-
-	/* Mobility */
-	mateconf_peditor_new_combo_box (NULL,
-		DEFAULT_APPS_KEY_MOBILITY_EXEC,
-		capplet->mobility_combo_box,
-		"conv-from-widget-cb", combo_conv_from_widget,
-		"conv-to-widget-cb", combo_conv_to_widget,
-		"data", capplet->mobility_ats,
-		NULL);
-
-	mateconf_peditor_new_string (NULL,
-		DEFAULT_APPS_KEY_MOBILITY_EXEC,
-		capplet->mobility_command_entry,
-		NULL);
-
-	mateconf_peditor_new_boolean (NULL,
-		DEFAULT_APPS_KEY_MOBILITY_STARTUP,
-		capplet->mobility_startup_checkbutton,
-		NULL);
-
+	/* TODO: fix the name icon */
 	gtk_window_set_icon_name(GTK_WINDOW (capplet->window), "preferences-desktop-default-applications");
 
 	if (start_page != NULL)
@@ -1345,13 +488,16 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 		if (w != NULL)
 		{
-			GtkNotebook *nb;
+			GtkNotebook* nb;
 			gint pindex;
 
-			nb = GTK_NOTEBOOK (get_widget("preferred_apps_notebook"));
-			pindex = gtk_notebook_page_num (nb, w);
+			nb = GTK_NOTEBOOK(get_widget("preferred_apps_notebook"));
+			pindex = gtk_notebook_page_num(nb, w);
+			
 			if (pindex != -1)
-				gtk_notebook_set_current_page (nb, pindex);
+			{
+				gtk_notebook_set_current_page(nb, pindex);
+			}
 		}
 
 		g_free(page_name);
@@ -1362,7 +508,8 @@ static void show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	#undef get_widget
 }
 
-int main(int argc, char** argv)
+int
+main(int argc, char** argv)
 {
 	gchar* start_page = NULL;
 
@@ -1383,23 +530,14 @@ int main(int argc, char** argv)
 	GOptionContext* context = g_option_context_new(_("- MATE Default Applications"));
 	g_option_context_add_main_entries(context, option_entries, GETTEXT_PACKAGE);
 
-	capplet_init (context, &argc, &argv);
+	capplet_init(context, &argc, &argv);
 
 	MateDACapplet* capplet = g_new0(MateDACapplet, 1);
-	capplet->mateconf = mateconf_client_get_default();
-	mateconf_client_add_dir(capplet->mateconf, "/desktop/mate/url-handlers", MATECONF_CLIENT_PRELOAD_RECURSIVE, NULL);
-	mateconf_client_add_dir(capplet->mateconf, "/desktop/mate/applications", MATECONF_CLIENT_PRELOAD_RECURSIVE, NULL);
-
-	mate_da_xml_load_list(capplet);
 
 	show_dialog(capplet, start_page);
 	g_free(start_page);
 
 	gtk_main();
-
-	g_object_unref(capplet->mateconf);
-
-	mate_da_xml_free(capplet);
 
 	return 0;
 }

@@ -7,9 +7,7 @@ bin_SCRIPTS = mate-at-visual mate-at-mobility
 
 mate_default_applications_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 mate_default_applications_properties_SOURCES = \
-	mate-da-capplet.c mate-da-capplet.h \
-	mate-da-xml.c mate-da-xml.h \
-	mate-da-item.c mate-da-item.h
+	mate-da-capplet.c mate-da-capplet.h
 
 @INTLTOOL_DESKTOP_RULE@
 
@@ -33,19 +31,13 @@ autostartdir = $(sysconfdir)/xdg/autostart
 autostart_in_files = mate-at-session.desktop.in
 autostart_DATA = $(autostart_in_files:.desktop.in=.desktop)
 
-xmldata_in_files = mate-default-applications.xml.in
-xmldatadir = $(pkgdatadir)/default-apps
-xmldata_DATA = $(xmldata_in_files:.xml.in=.xml)
-@INTLTOOL_XML_RULE@
-
 INCLUDES = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(DEFAULT_APPLICATIONS_CAPPLET_CFLAGS) \
 	-DMATELOCALEDIR=\""$(datadir)/locale"\"\
-	-DMATECC_UI_DIR=\""$(uidir)"\" \
-	-DMATECC_APPS_DIR=\""$(xmldatadir)"\"
+	-DMATECC_UI_DIR=\""$(uidir)"\"
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA) $(xmldata_DATA) $(autostart_DATA) $(bin_SCRIPTS)
-EXTRA_DIST = $(xmldata_in_files) mate-default-applications.pc.in
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA) $(autostart_DATA) $(bin_SCRIPTS)
+EXTRA_DIST = mate-default-applications.pc.in
 
 -include $(top_srcdir)/git.mk
