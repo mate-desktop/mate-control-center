@@ -183,7 +183,7 @@ media_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 static void
 video_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 {
-	set_changed(combo, capplet, capplet->video_players, DA_TYPE_VISUAL);
+	set_changed(combo, capplet, capplet->video_players, DA_TYPE_VIDEO);
 }
 
 static void
