@@ -55,7 +55,8 @@ mate_theme_test_SOURCES = \
 
 mate_theme_test_LDADD = 						\
 	libcommon.la							\
-	$(MATECC_CAPPLETS_LIBS)
+	$(MATECC_CAPPLETS_LIBS)						\
+	$(MATECC_LIBS)
 
 noinst_PROGRAMS = \
 	mate-theme-test
