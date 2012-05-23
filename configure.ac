@@ -114,7 +114,9 @@ dnl ==============================================
 dnl Check that we meet the  dependencies
 dnl ==============================================
 
+PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
+ $GMODULE_ADD dnl
  glib-2.0 >= 2.17.4 dnl
  gthread-2.0 dnl
  gio-2.0 dnl
@@ -128,7 +130,7 @@ PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
 PKG_CHECK_MODULES(MARCO, libmarco-private >= 1.1.0)
-PKG_CHECK_MODULES(TYPING, glib-2.0 > 2.11 mateconf-2.0 gtk+-2.0)
+PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 mateconf-2.0 gtk+-2.0)
 PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon)
 PKG_CHECK_MODULES(GIO, gio-2.0)
 
@@ -137,7 +139,7 @@ gtk_binary_version=`$PKG_CONFIG --variable gtk_binary_version gtk+-2.0`
 GTK_ENGINE_DIR="$gtk_lib_dir/gtk-2.0/$gtk_binary_version/engines"
 AC_SUBST(GTK_ENGINE_DIR)
 
-PKG_CHECK_MODULES(GLIB, glib-2.0)
+PKG_CHECK_MODULES(GLIB, glib-2.0 $GMODULE_ADD)
 
 dnl
 dnl Check dependencies of libslab
