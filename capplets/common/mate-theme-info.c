@@ -1499,28 +1499,6 @@ gchar* gtk_theme_info_missing_engine(const gchar* gtk_theme, gboolean nameOnly)
 
 		for (l = engines; l; l = l->next)
 		{
-			#if 1 // set to 0 if you can not compile with the follow code
-			GtkThemeEngine* a = gtk_theme_engine_get((const gchar*) l->data);
-
-			if (!a)
-			{
-				if (nameOnly)
-				{
-         			engine = g_strdup(l->data);
-        		}
-        		else
-        		{
-					// esto necesita más trabajo, pero creo que debian no se
-					// salva ni con el anterior fix.
-					// GTK_ENGINE_DIR aún sigue conteniendo un path erroneo.
-         			engine = g_module_build_path(GTK_ENGINE_DIR, l->data);
-        		}
-
-        		break;
-			}
-
-			#else
-
 			/* This code do not work on distros with more of one gtk theme
 			 * engine path. Like debian. But yes on others like Archlinux.
 			 * Example, debian use:
@@ -1550,7 +1528,6 @@ gchar* gtk_theme_info_missing_engine(const gchar* gtk_theme, gboolean nameOnly)
         	}
 
         	g_free(full);
-			#endif
         }
 
 		g_slist_foreach(engines, (GFunc) g_free, NULL);
