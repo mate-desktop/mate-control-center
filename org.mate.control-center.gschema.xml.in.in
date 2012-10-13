@@ -1,0 +1,25 @@
+<schemalist gettext-domain="@GETTEXT_PACKAGE@">
+    <schema id="org.mate.control-center" path="/org/mate/control-center/">
+        <child name="appearance" schema="org.mate.control-center.appearance" />
+        <child name="network" schema="org.mate.control-center.network" />
+    </schema>
+    <schema id="org.mate.control-center.appearance" path="/org/mate/control-center/appearance/">
+        <key name="more-backgrounds-url" type="s">
+            <default>'http://art.gnome.org/backgrounds/'</default>
+            <_summary>More backgrounds URL</_summary>
+            <_description>URL for where to get more desktop backgrounds.  If set to an empty string the link will not appear.</_description>
+        </key>
+        <key name="more-themes-url" type="s">
+            <default>'http://art.gnome.org/themes/'</default>
+            <_summary>More themes URL</_summary>
+            <_description>URL for where to get more desktop themes.  If set to an empty string the link will not appear.</_description>
+        </key>
+    </schema>
+    <schema id="org.mate.control-center.network" path="/org/mate/control-center/network/">
+        <key name="current-location" type="s">
+            <default>''</default>
+            <_summary>Current network location</_summary>
+            <_description>Set this to your current location name.  This is used to determine the appropriate network proxy configuration.</_description>
+        </key>
+    </schema>
+</schemalist>

@@ -13,15 +13,19 @@ if HAVE_TYPING_BREAK
 SUBDIRS += typing-break
 endif
 
-schemasdir   = @MATECONF_SCHEMA_FILE_DIR@
-schemas_in_files = mate-control-center.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
-@INTLTOOL_SCHEMAS_RULE@
+@INTLTOOL_XML_NOMERGE_RULE@
+gsettings_SCHEMAS = org.mate.control-center.gschema.xml
+@GSETTINGS_RULES@
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
 
 ACLOCAL_AMFLAGS = -I m4
 
 CLEANFILES = \
-	$(schemas_DATA)
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 DISTCLEANFILES = \
 	mate-doc-utils.make
@@ -46,7 +50,7 @@ MAINTAINERCLEANFILES = \
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 EXTRA_DIST = \
-	$(schemas_in_files) \
+	$(gsettings_schemas_in_in) \
 	MAINTAINERS \
 	mate-doc-utils.make
 
@@ -55,15 +59,6 @@ DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --disable-update-mimedb
 GITIGNOREFILES=m4
 
 -include $(top_srcdir)/git.mk
-
-install-data-local:
-if MATECONF_SCHEMAS_INSTALL
-	if test -z "$(DESTDIR)" ; then \
-	for p in $(schemas_DATA) ; do \
-	MATECONF_CONFIG_SOURCE=$(MATECONF_SCHEMA_CONFIG_SOURCE) $(MATECONFTOOL) --makefile-install-rule $(top_builddir)/$$p >&1 > /dev/null; \
-	done \
-	fi
-endif
 
 dist-hook:
 	@if test -d "$(srcdir)/.git"; \
