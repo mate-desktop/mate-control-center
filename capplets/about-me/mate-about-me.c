@@ -25,7 +25,6 @@
 
 #include <glib/gstdio.h>
 #include <gio/gio.h>
-#include <mateconf/mateconf-client.h>
 #include <unistd.h>
 #include <libebook/e-book.h>
 #include <dbus/dbus-glib-bindings.h>
