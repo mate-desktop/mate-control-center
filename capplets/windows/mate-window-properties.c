@@ -33,7 +33,6 @@
 #include <mate-wm-manager.h>
 
 #include "capplet-util.h"
-#include "mateconf-property-editor.h"
 
 typedef struct
 {
