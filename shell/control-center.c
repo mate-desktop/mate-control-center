@@ -188,7 +188,7 @@ int main(int argc, char* argv[])
 	actions = get_actions_list();
 	layout_shell(app_data, _("Filter"), _("Groups"), _("Common Tasks"), actions, handle_static_action_clicked);
 
-	create_main_window(app_data, "MyControlCenter", _("Control Center"), "mate-control-center", 975, 600, hidden);
+	create_main_window(app_data, "MyControlCenter", _("Control Center"), "preferences-desktop", 975, 600, hidden);
 
 	unique_app_watch_window(unique_app, GTK_WINDOW(app_data->main_app));
 	g_signal_connect(unique_app, "message-received", G_CALLBACK(message_received_cb), app_data);
