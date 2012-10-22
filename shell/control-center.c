@@ -22,6 +22,7 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <gio/gio.h>
 #include <libmate/mate-desktop-item.h>
 #include <unique/unique.h>
 
@@ -30,23 +31,34 @@
 void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data);
 static GSList* get_actions_list();
 
-#define CONTROL_CENTER_PREFIX "/apps/control-center/cc_"
-#define CONTROL_CENTER_ACTIONS_LIST_KEY (CONTROL_CENTER_PREFIX  "actions_list")
+#define CONTROL_CENTER_SCHEMA "org.mate.control-center"
+#define CONTROL_CENTER_ACTIONS_LIST_KEY "cc-actions-list"
 #define CONTROL_CENTER_ACTIONS_SEPARATOR ";"
-#define EXIT_SHELL_ON_STATIC_ACTION "exit_shell_on_static_action"
+#define EXIT_SHELL_ON_STATIC_ACTION "cc-exit-shell-on-static-action"
 
 static GSList* get_actions_list(void)
 {
+	GSettings *settings;
 	GSList* l;
-	GSList* key_list;
+	GSList* key_list = NULL;
 	GSList* actions_list = NULL;
 	AppAction* action;
+	gchar **array;
+	gint i;
 
-	key_list = get_slab_mateconf_slist(CONTROL_CENTER_ACTIONS_LIST_KEY);
+	settings = g_settings_new (CONTROL_CENTER_SCHEMA);
+	array = g_settings_get_strv (settings, CONTROL_CENTER_ACTIONS_LIST_KEY);
+	if (array != NULL) {
+		for (i = 0; array[i]; i++) {
+			key_list = g_slist_append (key_list, g_strdup (array[i]));
+		}
+	}
+	g_strfreev (array);
+	g_object_unref (settings);
 
 	if (!key_list)
 	{
-		g_warning(_("key not found [%s]\n"), CONTROL_CENTER_ACTIONS_LIST_KEY);
+		g_warning(_("%s key is empty\n"), CONTROL_CENTER_ACTIONS_LIST_KEY);
 		return NULL;
 	}
 
@@ -79,9 +91,9 @@ static GSList* get_actions_list(void)
 
 void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data)
 {
-	gchar* temp;
 	AppShellData* app_data = (AppShellData*) data;
 	MateDesktopItem* item = (MateDesktopItem*) g_object_get_data(G_OBJECT(tile), APP_ACTION_KEY);
+	GSettings *settings;
 
 	if (event->type == TILE_EVENT_ACTIVATED_DOUBLE_CLICK)
 	{
@@ -90,9 +102,9 @@ void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data)
 
 	open_desktop_item_exec(item);
 
-	temp = g_strdup_printf("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_STATIC_ACTION);
+	settings = g_settings_new (CONTROL_CENTER_SCHEMA);
 
-	if (get_slab_mateconf_bool(temp))
+	if (g_settings_get_boolean(settings, EXIT_SHELL_ON_STATIC_ACTION))
 	{
 		if (app_data->exit_on_close)
 		{
@@ -104,7 +116,7 @@ void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data)
 		}
 	}
 
-	g_free(temp);
+	g_object_unref(settings);
 }
 
 static UniqueResponse message_received_cb(UniqueApp* app, UniqueCommand command, UniqueMessageData* message, guint time, gpointer user_data)
@@ -182,7 +194,7 @@ int main(int argc, char* argv[])
 		return retval;
 	}
 
-	app_data = appshelldata_new("matecc.menu", NULL, CONTROL_CENTER_PREFIX, GTK_ICON_SIZE_DND, FALSE, TRUE);
+	app_data = appshelldata_new("matecc.menu", GTK_ICON_SIZE_DND, FALSE, TRUE);
 	generate_categories(app_data);
 
 	actions = get_actions_list();
