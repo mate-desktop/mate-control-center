@@ -36,11 +36,6 @@
 
 #include "libslab-utils.h"
 
-#define MODIFIABLE_APPS_MATECONF_KEY "/desktop/mate/applications/main-menu/lock-down/user_modifiable_apps"
-#define MODIFIABLE_DOCS_MATECONF_KEY "/desktop/mate/applications/main-menu/lock-down/user_modifiable_docs"
-#define MODIFIABLE_DIRS_MATECONF_KEY "/desktop/mate/applications/main-menu/lock-down/user_modifiable_dirs"
-#define MODIFIABLE_SYS_MATECONF_KEY  "/desktop/mate/applications/main-menu/lock-down/user_modifiable_system_area"
-
 #define USER_APPS_STORE_FILE_NAME "applications.xbel"
 #define USER_DOCS_STORE_FILE_NAME "documents.xbel"
 #define USER_DIRS_STORE_FILE_NAME "places.xbel"
@@ -67,11 +62,9 @@ typedef struct {
 	gboolean                 user_modifiable;
 	gboolean                 reorderable;
 	const gchar             *store_filename;
-	const gchar             *lockdown_key;
 
 	GFileMonitor            *store_monitor;
 	GFileMonitor            *user_store_monitor;
-	guint                    mateconf_monitor;
 
 	void                  (* update_path) (BookmarkAgent *);
 	void                  (* load_store)  (BookmarkAgent *);
@@ -119,7 +112,6 @@ static void create_dir_item          (BookmarkAgent *, const gchar *);
 
 static void store_monitor_cb (GFileMonitor *, GFile *, GFile *,
                               GFileMonitorEvent, gpointer);
-static void mateconf_notify_cb  (MateConfClient *, guint, MateConfEntry *, gpointer);
 static void weak_destroy_cb  (gpointer, GObject *);
 
 static gint recent_item_mru_comp_func (gconstpointer a, gconstpointer b);
@@ -469,11 +461,9 @@ bookmark_agent_init (BookmarkAgent *this)
 	priv->user_modifiable     = FALSE;
 	priv->reorderable         = FALSE;
 	priv->store_filename      = NULL;
-	priv->lockdown_key        = NULL;
 
 	priv->store_monitor       = NULL;
 	priv->user_store_monitor  = NULL;
-	priv->mateconf_monitor       = 0;
 
 	priv->update_path         = NULL;
 	priv->load_store          = NULL;
@@ -499,25 +489,22 @@ bookmark_agent_new (BookmarkStoreType type)
 
 	switch (type) {
 		case BOOKMARK_STORE_USER_APPS:
-			priv->lockdown_key   = MODIFIABLE_APPS_MATECONF_KEY;
 			priv->store_filename = USER_APPS_STORE_FILE_NAME;
 			priv->create_item    = create_app_item;
 
 			break;
 
 		case BOOKMARK_STORE_USER_DOCS:
-			priv->lockdown_key   = MODIFIABLE_DOCS_MATECONF_KEY;
 			priv->store_filename = USER_DOCS_STORE_FILE_NAME;
 			priv->create_item    = create_doc_item;
 
 			break;
 
 		case BOOKMARK_STORE_USER_DIRS:
-			priv->lockdown_key   = MODIFIABLE_DIRS_MATECONF_KEY;
 			priv->store_filename = USER_DIRS_STORE_FILE_NAME;
 			priv->create_item    = create_dir_item;
 
-			priv->user_modifiable = GPOINTER_TO_INT (libslab_get_mateconf_value (priv->lockdown_key));
+			priv->user_modifiable = TRUE;
 			priv->reorderable     = FALSE;
 
 			priv->load_store = load_places_store;
@@ -545,7 +532,6 @@ bookmark_agent_new (BookmarkStoreType type)
 			break;
 
 		case BOOKMARK_STORE_SYSTEM:
-			priv->lockdown_key   = MODIFIABLE_SYS_MATECONF_KEY;
 			priv->store_filename = SYSTEM_STORE_FILE_NAME;
 			priv->create_item    = create_app_item;
 
@@ -559,15 +545,12 @@ bookmark_agent_new (BookmarkStoreType type)
 		type == BOOKMARK_STORE_USER_APPS || type == BOOKMARK_STORE_USER_DOCS ||
 		type == BOOKMARK_STORE_USER_DIRS || type == BOOKMARK_STORE_SYSTEM)
 	{
-		priv->user_modifiable = GPOINTER_TO_INT (libslab_get_mateconf_value (priv->lockdown_key));
+		priv->user_modifiable = TRUE;
 
 		priv->user_store_path = g_build_filename (
 			g_get_user_data_dir (), PACKAGE, priv->store_filename, NULL);
 
 		priv->update_path = update_user_spec_path;
-
-		priv->mateconf_monitor = libslab_mateconf_notify_add (
-			priv->lockdown_key, mateconf_notify_cb, this);
 	}
 
 	if (type == BOOKMARK_STORE_USER_APPS || type == BOOKMARK_STORE_USER_DOCS || type == BOOKMARK_STORE_SYSTEM) {
@@ -639,8 +622,6 @@ finalize (GObject *g_obj)
 		g_file_monitor_cancel (priv->gtk_store_monitor);
 		g_object_unref (priv->gtk_store_monitor);
 	}
-
-	libslab_mateconf_notify_remove (priv->mateconf_monitor);
 
 	g_bookmark_file_free (priv->store);
 
@@ -1242,24 +1223,6 @@ store_monitor_cb (GFileMonitor *mon, GFile *f1, GFile *f2,
                   GFileMonitorEvent event_type, gpointer user_data)
 {
 	update_agent (BOOKMARK_AGENT (user_data));
-}
-
-static void
-mateconf_notify_cb (MateConfClient *client, guint conn_id,
-                 MateConfEntry *entry, gpointer user_data)
-{
-	BookmarkAgent        *this = BOOKMARK_AGENT (user_data);
-	BookmarkAgentPrivate *priv = PRIVATE        (this);
-
-	gboolean user_modifiable;
-
-
-	user_modifiable = GPOINTER_TO_INT (libslab_get_mateconf_value (priv->lockdown_key));
-
-	if (priv->user_modifiable != user_modifiable) {
-		priv->user_modifiable = user_modifiable;
-		update_agent (this);
-	}
 }
 
 static void

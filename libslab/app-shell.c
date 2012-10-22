@@ -44,11 +44,11 @@
 
 #define TILE_EXEC_NAME "Tile_desktop_exec_name"
 #define SECONDS_IN_DAY 86400
-#define EXIT_SHELL_ON_ACTION_START "exit_shell_on_action_start"
-#define EXIT_SHELL_ON_ACTION_HELP "exit_shell_on_action_help"
-#define EXIT_SHELL_ON_ACTION_ADD_REMOVE "exit_shell_on_action_add_remove"
-#define EXIT_SHELL_ON_ACTION_UPGRADE_UNINSTALL "exit_shell_on_action_upgrade_uninstall"
-#define NEW_APPS_FILE_KEY "new_apps_file_key"
+#define CC_SCHEMA "org.mate.control-center"
+#define EXIT_SHELL_ON_ACTION_START "cc-exit-shell-on-action-start"
+#define EXIT_SHELL_ON_ACTION_HELP "cc-exit-shell-on-action-help"
+#define EXIT_SHELL_ON_ACTION_ADD_REMOVE "cc-exit-shell-on-action-add-remove"
+#define EXIT_SHELL_ON_ACTION_UPGRADE_UNINSTALL "cc-exit-shell-on-action-upgrade-uninstall"
 
 static void create_application_category_sections (AppShellData * app_data);
 static GtkWidget *create_filter_section (AppShellData * app_data, const gchar * title);
@@ -59,7 +59,6 @@ static GtkWidget *create_actions_section (AppShellData * app_data, const gchar *
 static void generate_category (const char * category, MateMenuTreeDirectory * root_dir, AppShellData * app_data, gboolean recursive);
 static void generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data,
 	CategoryData * cat_data, gboolean recursive);
-static void generate_new_apps (AppShellData * app_data);
 static void insert_launcher_into_category (CategoryData * cat_data, MateDesktopItem * desktop_item,
 	AppShellData * app_data);
 
@@ -842,12 +841,10 @@ matemenu_tree_changed_callback (MateMenuTree * old_tree, gpointer user_data)
 }
 
 AppShellData *
-appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps, const gchar * mateconf_keys_prefix,
-	GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close)
+appshelldata_new (const gchar * menu_name, GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close)
 {
 	AppShellData *app_data = g_new0 (AppShellData, 1);
-	app_data->mateconf_prefix = mateconf_keys_prefix;
-	app_data->new_apps = new_apps;
+	app_data->settings = g_settings_new (CC_SCHEMA);
 	app_data->menu_name = menu_name;
 	app_data->icon_size = icon_size;
 	app_data->stop_incremental_relayout = TRUE;
@@ -915,9 +912,6 @@ generate_categories (AppShellData * app_data)
 	}
 
 	matemenu_tree_item_unref (root_dir);
-
-	if (app_data->new_apps && (app_data->new_apps->max_items > 0))
-		generate_new_apps (app_data);
 }
 
 static void
@@ -955,8 +949,8 @@ generate_category (const char * category, MateMenuTreeDirectory * root_dir, AppS
 static gboolean
 check_specific_apps_hack (MateDesktopItem * item)
 {
-	static const gchar *COMMAND_LINE_LOCKDOWN_MATECONF_KEY =
-		"/desktop/mate/lockdown/disable_command_line";
+	static const gchar *COMMAND_LINE_LOCKDOWN_SCHEMA = "org.mate.lockdown";
+	static const gchar *COMMAND_LINE_LOCKDOWN_KEY = "disable-command-line";
 	static const gchar *COMMAND_LINE_LOCKDOWN_DESKTOP_CATEGORY = "TerminalEmulator";
 	static gboolean got_lockdown_value = FALSE;
 	static gboolean command_line_lockdown;
@@ -967,7 +961,10 @@ check_specific_apps_hack (MateDesktopItem * item)
 	if (!got_lockdown_value)
 	{
 		got_lockdown_value = TRUE;
-		command_line_lockdown = get_slab_mateconf_bool (COMMAND_LINE_LOCKDOWN_MATECONF_KEY);
+		GSettings *lockdown_settings;
+		lockdown_settings = g_settings_new (COMMAND_LINE_LOCKDOWN_SCHEMA);
+		command_line_lockdown = g_settings_get_boolean (lockdown_settings, COMMAND_LINE_LOCKDOWN_KEY);
+		g_object_unref (lockdown_settings);
 	}
 
 	/* This seems like an ugly hack but it's the way it's currently done in the old control center */
@@ -1058,184 +1055,6 @@ generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data, C
 }
 
 static void
-generate_new_apps (AppShellData * app_data)
-{
-	GHashTable *all_apps_cache = NULL;
-	gchar *all_apps;
-	GError *error = NULL;
-	gchar *separator = "\n";
-	gchar *mateconf_key;
-
-	gchar *basename;
-	gchar *all_apps_file_name;
-	gchar **all_apps_split;
-	gint x;
-	gboolean got_new_apps;
-	CategoryData *new_apps_category = NULL;
-	GList *categories, *launchers;
-	GHashTable *new_apps_dups;
-
-	mateconf_key = g_strdup_printf ("%s%s", app_data->mateconf_prefix, NEW_APPS_FILE_KEY);
-	basename = get_slab_mateconf_string (mateconf_key);
-	g_free (mateconf_key);
-	if (!basename)
-	{
-		g_warning ("Failure getting mateconf key NEW_APPS_FILE_KEY");
-		return;
-	}
-
-	all_apps_file_name = g_build_filename (g_get_home_dir (), basename, NULL);
-	g_free (basename);
-
-	if (!g_file_get_contents (all_apps_file_name, &all_apps, NULL, &error))
-	{
-		/* If file does not exist, this is the first time this user has run this, create the baseline file */
-		GList *categories, *launchers;
-		GString *gstr;
-		gchar *dirname;
-
-		g_error_free (error);
-		error = NULL;
-
-		/* best initial size determined by running on a couple different platforms */
-		gstr = g_string_sized_new (10000);
-
-		for (categories = app_data->categories_list; categories; categories = categories->next)
-		{
-			CategoryData *data = categories->data;
-			for (launchers = data->launcher_list; launchers; launchers = launchers->next)
-			{
-				Tile *tile = TILE (launchers->data);
-				MateDesktopItem *item =
-					application_tile_get_desktop_item (APPLICATION_TILE (tile));
-				const gchar *uri = mate_desktop_item_get_location (item);
-				g_string_append (gstr, uri);
-				g_string_append (gstr, separator);
-			}
-		}
-
-		dirname = g_path_get_dirname (all_apps_file_name);
-		g_mkdir_with_parents (dirname, 0700);	/* creates if does not exist */
-		g_free (dirname);
-
-		if (!g_file_set_contents (all_apps_file_name, gstr->str, -1, &error))
-			g_warning ("Error setting all apps file:%s\n", error->message);
-
-		g_string_free (gstr, TRUE);
-		g_free (all_apps_file_name);
-		return;
-	}
-
-	all_apps_cache = g_hash_table_new (g_str_hash, g_str_equal);
-	all_apps_split = g_strsplit (all_apps, separator, -1);
-	for (x = 0; all_apps_split[x]; x++)
-	{
-		g_hash_table_insert (all_apps_cache, all_apps_split[x], all_apps_split[x]);
-	}
-
-	got_new_apps = FALSE;
-	new_apps_dups = g_hash_table_new (g_str_hash, g_str_equal);
-	for (categories = app_data->categories_list; categories; categories = categories->next)
-	{
-		CategoryData *cat_data = categories->data;
-		for (launchers = cat_data->launcher_list; launchers; launchers = launchers->next)
-		{
-			Tile *tile = TILE (launchers->data);
-			MateDesktopItem *item =
-				application_tile_get_desktop_item (APPLICATION_TILE (tile));
-			const gchar *uri = mate_desktop_item_get_location (item);
-			if (!g_hash_table_lookup (all_apps_cache, uri))
-			{
-				GFile *file;
-				GFileInfo *info;
-				long filetime;
-
-				if (g_hash_table_lookup (new_apps_dups, uri))
-				{
-					/* if a desktop file is in 2 or more top level categories, only show it once */
-					/* printf("Discarding Newapp duplicate:%s\n", uri); */
-					break;
-				}
-				g_hash_table_insert (new_apps_dups, (gpointer) uri, (gpointer) uri);
-
-				if (!got_new_apps)
-				{
-					new_apps_category = g_new0 (CategoryData, 1);
-					new_apps_category->category =
-						g_strdup (app_data->new_apps->name);
-					app_data->new_apps->garray =
-						g_array_sized_new (FALSE, TRUE,
-						sizeof (NewAppData *),
-						app_data->new_apps->max_items);
-
-					/* should not need this, but a bug in glib does not actually clear the elements until you call this method */
-					g_array_set_size (app_data->new_apps->garray, app_data->new_apps->max_items);
-					got_new_apps = TRUE;
-				}
-
-				file = g_file_new_for_uri (uri);
-				info = g_file_query_info (file,
-							  G_FILE_ATTRIBUTE_TIME_MODIFIED,
-							  0, NULL, NULL);
-
-				if (!info)
-				{
-					g_object_unref (file);
-					g_warning ("Cant get vfs info for %s\n", uri);
-					return;
-				}
-				filetime = (long) g_file_info_get_attribute_uint64 (info,
-										    G_FILE_ATTRIBUTE_TIME_MODIFIED);
-				g_object_unref (info);
-				g_object_unref (file);
-
-				for (x = 0; x < app_data->new_apps->max_items; x++)
-				{
-					NewAppData *temp_data = (NewAppData *)
-						g_array_index (app_data->new_apps->garray, NewAppData *, x);
-					if (!temp_data || filetime > temp_data->time)	/* if this slot is empty or we are newer than this slot */
-					{
-						NewAppData *temp = g_new0 (NewAppData, 1);
-						temp->time = filetime;
-						temp->item = item;
-						g_array_insert_val (app_data->new_apps->garray, x,
-							temp);
-						break;
-					}
-				}
-			}
-		}
-	}
-	g_hash_table_destroy (new_apps_dups);
-	g_hash_table_destroy (all_apps_cache);
-
-	if (got_new_apps)
-	{
-		for (x = 0; x < app_data->new_apps->max_items; x++)
-		{
-			NewAppData *data =
-				(NewAppData *) g_array_index (app_data->new_apps->garray,
-				NewAppData *, x);
-			if (data)
-			{
-				insert_launcher_into_category (new_apps_category, data->item,
-					app_data);
-				g_free (data);
-			}
-			else
-				break;
-		}
-		app_data->categories_list =
-			g_list_prepend (app_data->categories_list, new_apps_category);
-
-		g_array_free (app_data->new_apps->garray, TRUE);
-	}
-	g_free (all_apps);
-	g_free (all_apps_file_name);
-	g_strfreev (all_apps_split);
-}
-
-static void
 insert_launcher_into_category (CategoryData * cat_data, MateDesktopItem * desktop_item,
 	AppShellData * app_data)
 {
@@ -1251,7 +1070,7 @@ insert_launcher_into_category (CategoryData * cat_data, MateDesktopItem * deskto
 
 	launcher =
 		application_tile_new_full (mate_desktop_item_get_location (desktop_item),
-		app_data->icon_size, app_data->show_tile_generic_name, app_data->mateconf_prefix);
+		app_data->icon_size, app_data->show_tile_generic_name);
 	gtk_widget_set_size_request (launcher, SIZING_TILE_WIDTH, -1);
 
 	filepath =
@@ -1350,19 +1169,16 @@ static void
 handle_launcher_single_clicked (Tile * launcher, gpointer data)
 {
 	AppShellData *app_data = (AppShellData *) data;
-	gchar *mateconf_key;
 
 	tile_trigger_action (launcher, launcher->actions[APPLICATION_TILE_ACTION_START]);
 
-	mateconf_key = g_strdup_printf ("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_ACTION_START);
-	if (get_slab_mateconf_bool (mateconf_key))
+	if (g_settings_get_boolean (app_data->settings, EXIT_SHELL_ON_ACTION_START))
 	{
 		if (app_data->exit_on_close)
 			gtk_main_quit ();
 		else
 			hide_shell (app_data);
 	}
-	g_free (mateconf_key);
 }
 
 static void
@@ -1375,38 +1191,35 @@ handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * a
 	temp = NULL;
 	if (action == launcher->actions[APPLICATION_TILE_ACTION_START])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_ACTION_START);
+		temp = EXIT_SHELL_ON_ACTION_START;
 	}
 
 	else if (action == launcher->actions[APPLICATION_TILE_ACTION_HELP])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_ACTION_HELP);
+		temp = EXIT_SHELL_ON_ACTION_HELP;
 	}
 
 	else if (action == launcher->actions[APPLICATION_TILE_ACTION_UPDATE_MAIN_MENU]
 		|| action == launcher->actions[APPLICATION_TILE_ACTION_UPDATE_STARTUP])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix,
-			EXIT_SHELL_ON_ACTION_ADD_REMOVE);
+		temp = EXIT_SHELL_ON_ACTION_ADD_REMOVE;
 	}
 
 	else if (action == launcher->actions[APPLICATION_TILE_ACTION_UPGRADE_PACKAGE]
 		|| action == launcher->actions[APPLICATION_TILE_ACTION_UNINSTALL_PACKAGE])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix,
-			EXIT_SHELL_ON_ACTION_UPGRADE_UNINSTALL);
+		temp = EXIT_SHELL_ON_ACTION_UPGRADE_UNINSTALL;
 	}
 
 	if (temp)
 	{
-		if (get_slab_mateconf_bool (temp))
+		if (g_settings_get_boolean (app_data->settings, temp))
 		{
 			if (app_data->exit_on_close)
 				gtk_main_quit ();
 			else
 				hide_shell (app_data);
 		}
-		g_free (temp);
 	}
 	else
 		g_warning ("Unknown Action");

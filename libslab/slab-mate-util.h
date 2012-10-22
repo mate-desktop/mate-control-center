@@ -47,23 +47,14 @@ extern "C" {
 #define SLAB_FILE_MANAGER_OPEN_CMD      "/desktop/mate/applications/main-menu/file-area/file_mgr_open_cmd"
 #define SLAB_FILE_SEND_TO_CMD           "/desktop/mate/applications/main-menu/file-area/file_send_to_cmd"
 
-gboolean get_slab_mateconf_bool (const gchar * key);
-gint get_slab_mateconf_int (const gchar * key);
-GSList *get_slab_mateconf_slist (const gchar * key);
-void free_slab_mateconf_slist_of_strings (GSList * list);
 void free_list_of_strings (GList * list);
-gchar *get_slab_mateconf_string (const gchar * key);
 
-MateDesktopItem *load_desktop_item_from_mateconf_key (const gchar * key);
 MateDesktopItem *load_desktop_item_from_unknown (const gchar * id);
 
 gchar *get_package_name_from_desktop_item (MateDesktopItem * desktop_item);
 
 gboolean open_desktop_item_exec (MateDesktopItem * desktop_item);
 gboolean open_desktop_item_help (MateDesktopItem * desktop_item);
-
-gboolean desktop_item_is_in_main_menu (MateDesktopItem * desktop_item);
-gboolean desktop_uri_is_in_main_menu (const gchar * uri);
 
 gint desktop_item_location_compare (gconstpointer a, gconstpointer b);
 

@@ -23,6 +23,7 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <gio/gio.h>
 #define MATEMENU_I_KNOW_THIS_IS_UNSTABLE
 #include <matemenu-tree.h>
 #include <libmate/mate-desktop-item.h>
@@ -82,9 +83,7 @@ typedef struct _AppShellData
 	Tile *last_clicked_launcher;
 	SlabSection *selected_group;
 	GtkIconSize icon_size;
-	const gchar *mateconf_prefix;
 	const gchar *menu_name;
-	NewAppConfig *new_apps;
 	MateMenuTree *tree;
 	GHashTable *hash;
 
@@ -97,6 +96,8 @@ typedef struct _AppShellData
 
 	gboolean show_tile_generic_name;
 	gboolean exit_on_close;
+
+	GSettings *settings;
 } AppShellData;
 
 typedef struct
@@ -123,10 +124,8 @@ typedef struct
 
 void generate_categories (AppShellData * app_data);
 
-/* If new_apps is NULL then the new applications category is not created */
-AppShellData *appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps,
-	const gchar * mateconf_keys_prefix, GtkIconSize icon_size,
-	gboolean show_tile_generic_name, gboolean exit_on_close);
+AppShellData *appshelldata_new (const gchar * menu_name,
+	GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close);
 
 void layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar * groups_title,
 	const gchar * actions_title, GSList * actions,

@@ -23,7 +23,6 @@
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
-#include <mateconf/mateconf-client.h>
 
 #include "bookmark-agent.h"
 #include "slab-mate-util.h"

@@ -25,7 +25,6 @@
 #include <glib.h>
 #include <glib/gi18n-lib.h>
 #include <glib/gstdio.h>
-#include <mateconf/mateconf-client.h>
 #include <unistd.h>
 
 #include "slab-mate-util.h"
@@ -45,7 +44,7 @@ static void application_tile_get_property (GObject *, guint,       GValue *, GPa
 static void application_tile_set_property (GObject *, guint, const GValue *, GParamSpec *);
 static void application_tile_finalize     (GObject *);
 
-static void application_tile_setup (ApplicationTile *, const gchar *);
+static void application_tile_setup (ApplicationTile *);
 
 static GtkWidget *create_header    (const gchar *);
 static GtkWidget *create_subheader (const gchar *);
@@ -56,16 +55,11 @@ static void start_trigger     (Tile *, TileEvent *, TileAction *);
 static void help_trigger      (Tile *, TileEvent *, TileAction *);
 static void user_apps_trigger (Tile *, TileEvent *, TileAction *);
 static void startup_trigger   (Tile *, TileEvent *, TileAction *);
-static void upgrade_trigger   (Tile *, TileEvent *, TileAction *);
-static void uninstall_trigger (Tile *, TileEvent *, TileAction *);
 
 static void add_to_user_list         (ApplicationTile *);
 static void remove_from_user_list    (ApplicationTile *);
 static void add_to_startup_list      (ApplicationTile *);
 static void remove_from_startup_list (ApplicationTile *);
-
-static gboolean verify_package_management_command (const gchar *);
-static void run_package_management_command (ApplicationTile *, gchar *);
 
 static void update_user_list_menu_item (ApplicationTile *);
 static void agent_notify_cb (GObject *, GParamSpec *, gpointer);
@@ -94,8 +88,7 @@ typedef struct {
 enum {
 	PROP_0,
 	PROP_APPLICATION_NAME,
-	PROP_APPLICATION_DESCRIPTION,
-	PROP_APPLICATION_MATECONF_PREFIX
+	PROP_APPLICATION_DESCRIPTION
 };
 
 static void
@@ -122,24 +115,17 @@ application_tile_class_init (ApplicationTileClass *app_tile_class)
 			"application-description", "application-description",
 			"the name of the application", NULL,
 			G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
-
-	g_object_class_install_property (
-		g_obj_class, PROP_APPLICATION_MATECONF_PREFIX,
-		g_param_spec_string (
-			"mateconf-prefix", "mateconf-prefix",
-			"configuration prefix", NULL,
-			G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 }
 
 GtkWidget *
 application_tile_new (const gchar *desktop_item_id)
 {
-	return application_tile_new_full (desktop_item_id, GTK_ICON_SIZE_DND, TRUE, NULL);
+	return application_tile_new_full (desktop_item_id, GTK_ICON_SIZE_DND, TRUE);
 }
 
 GtkWidget *
 application_tile_new_full (const gchar *desktop_item_id,
-	GtkIconSize image_size, gboolean show_generic_name, const gchar *mateconf_prefix)
+	GtkIconSize image_size, gboolean show_generic_name)
 {
 	ApplicationTile        *this;
 	ApplicationTilePrivate *priv;
@@ -171,7 +157,7 @@ application_tile_new_full (const gchar *desktop_item_id,
 	priv->desktop_item = desktop_item;
 	priv->show_generic_name = show_generic_name;
 
-	application_tile_setup (this, mateconf_prefix);
+	application_tile_setup (this);
 
 	return GTK_WIDGET (this);
 }
@@ -190,7 +176,7 @@ application_tile_init (ApplicationTile *tile)
 	priv->is_bookmarked    = FALSE;
 	priv->notify_signal_id = 0;
 
-	tile->name = tile->description = tile->mateconf_prefix = NULL;
+	tile->name = tile->description = NULL;
 }
 
 static void
@@ -206,10 +192,6 @@ application_tile_finalize (GObject *g_object)
 	if (tile->description) {
 		g_free (tile->description);
 		tile->description = NULL;
-	}
-	if (tile->mateconf_prefix) {
-		g_free (tile->mateconf_prefix);
-		tile->mateconf_prefix = NULL;
 	}
 
 	if (priv->desktop_item) {
@@ -243,10 +225,6 @@ application_tile_get_property (GObject *g_obj, guint prop_id, GValue *value, GPa
 		g_value_set_string (value, tile->description);
 		break;
 
-	case PROP_APPLICATION_MATECONF_PREFIX:
-		g_value_set_string (value, tile->mateconf_prefix);
-		break;
-
 	default:
 		break;
 	}
@@ -270,19 +248,13 @@ application_tile_set_property (GObject *g_obj, guint prop_id, const GValue *valu
 		tile->description = g_strdup (g_value_get_string (value));
 		break;
 
-	case PROP_APPLICATION_MATECONF_PREFIX:
-		if (tile->mateconf_prefix)
-			g_free (tile->mateconf_prefix);
-		tile->mateconf_prefix = g_strdup (g_value_get_string (value));
-		break;
-
 	default:
 		break;
 	}
 }
 
 static void
-application_tile_setup (ApplicationTile *this, const gchar *mateconf_prefix)
+application_tile_setup (ApplicationTile *this)
 {
 	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
 
@@ -305,11 +277,6 @@ application_tile_setup (ApplicationTile *this, const gchar *mateconf_prefix)
 	const gchar *key;
 	gchar *markup;
 	gchar *str;
-
-	/*Fixme - need to address the entire mateconf key location issue */
-	/*Fixme - this is just a temporary stop gap                   */
-	gboolean use_new_prefix;
-
 
 	if (! priv->desktop_item) {
 		priv->desktop_item = load_desktop_item_from_unknown (TILE (this)->uri);
@@ -350,7 +317,6 @@ application_tile_setup (ApplicationTile *this, const gchar *mateconf_prefix)
 		"context-menu",            context_menu,
 		"application-name",        name,
 		"application-description", desc,
-		"mateconf-prefix",            mateconf_prefix,
 		NULL);
 	gtk_widget_set_tooltip_text (GTK_WIDGET (this), comment);
 
@@ -425,41 +391,6 @@ application_tile_setup (ApplicationTile *this, const gchar *mateconf_prefix)
 
 		gtk_container_add (menu_ctnr, menu_item);
 	}
-
-/* make upgrade action */
-
-	if (this->mateconf_prefix && ! g_str_has_prefix (this->mateconf_prefix, "/desktop/"))
-		use_new_prefix = TRUE;
-	else
-		use_new_prefix = FALSE;
-
-	if(!use_new_prefix)
-		key = SLAB_UPGRADE_PACKAGE_KEY;
-	else
-		key = "/apps/main-menu/upgrade_package_command";
-
-	if (verify_package_management_command (key)) {
-		action = tile_action_new (TILE (this), upgrade_trigger, _("Upgrade"), TILE_ACTION_OPENS_NEW_WINDOW);
-		actions [APPLICATION_TILE_ACTION_UPGRADE_PACKAGE] = action;
-		menu_item = GTK_WIDGET (tile_action_get_menu_item (action));
-		gtk_container_add (menu_ctnr, menu_item);
-	} else
-		actions [APPLICATION_TILE_ACTION_UPGRADE_PACKAGE] = NULL;
-
-/* make uninstall action */
-
-	if(!use_new_prefix)
-		key = SLAB_UNINSTALL_PACKAGE_KEY;
-	else
-		key = "/apps/main-menu/uninstall_package_command";
-
-	if (verify_package_management_command (key)) {
-		action = tile_action_new (TILE (this), uninstall_trigger, _("Uninstall"), TILE_ACTION_OPENS_NEW_WINDOW);
-		actions [APPLICATION_TILE_ACTION_UNINSTALL_PACKAGE] = action;
-		menu_item = GTK_WIDGET (tile_action_get_menu_item (action));
-		gtk_container_add (menu_ctnr, menu_item);
-	} else
-		actions [APPLICATION_TILE_ACTION_UNINSTALL_PACKAGE] = NULL;
 
 	gtk_widget_show_all (GTK_WIDGET (TILE (this)->context_menu));
 }
@@ -552,92 +483,6 @@ remove_from_user_list (ApplicationTile *this)
 	bookmark_agent_remove_item (priv->agent, TILE (this)->uri);
 
 	priv->is_bookmarked = FALSE;
-}
-
-static void
-upgrade_trigger (Tile *tile, TileEvent *event, TileAction *action)
-{
-	run_package_management_command (APPLICATION_TILE (tile), SLAB_UPGRADE_PACKAGE_KEY);
-}
-
-static void
-uninstall_trigger (Tile *tile, TileEvent *event, TileAction *action)
-{
-	run_package_management_command (APPLICATION_TILE (tile), SLAB_UNINSTALL_PACKAGE_KEY);
-}
-
-static gboolean
-verify_package_management_command (const gchar *mateconf_key)
-{
-	gchar *cmd;
-	gchar *path;
-	gchar *args;
-
-	gboolean retval;
-
-	cmd = get_slab_mateconf_string (mateconf_key);
-	if (!cmd)
-		return FALSE;
-
-	args = strchr (cmd, ' ');
-
-	if (args)
-		*args = '\0';
-
-	path = g_find_program_in_path (cmd);
-
-	retval = (path != NULL);
-
-	g_free (cmd);
-	g_free (path);
-
-	return retval;
-}
-
-static void
-run_package_management_command (ApplicationTile *tile, gchar *mateconf_key)
-{
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (tile);
-
-	gchar *cmd_precis;
-	gchar *package_name;
-
-	GString *cmd;
-	gint pivot;
-	gchar **argv;
-
-	GError *error = NULL;
-
-	package_name = get_package_name_from_desktop_item (priv->desktop_item);
-
-	if (!package_name)
-		return;
-
-	cmd_precis = get_slab_mateconf_string (mateconf_key);
-
-	g_assert (cmd_precis);
-
-	pivot = strstr (cmd_precis, "PACKAGE_NAME") - cmd_precis;
-
-	cmd = g_string_new_len (cmd_precis, pivot);
-	g_string_append (cmd, package_name);
-	g_string_append (cmd, & cmd_precis [pivot + 12]);
-
-	argv = g_strsplit (cmd->str, " ", -1);
-
-	g_string_free (cmd, TRUE);
-
-	g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
-
-	if (error) {
-		g_warning ("error: [%s]\n", error->message);
-
-		g_error_free (error);
-	}
-
-	g_free (cmd_precis);
-	g_free (package_name);
-	g_strfreev (argv);
 }
 
 static void

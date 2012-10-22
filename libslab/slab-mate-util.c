@@ -21,79 +21,8 @@
 #include "slab-mate-util.h"
 #include "libslab-utils.h"
 
-#include <mateconf/mateconf-client.h>
 #include <gio/gio.h>
 #include <string.h>
-
-gboolean
-get_slab_mateconf_bool (const gchar * key)
-{
-	MateConfClient *mateconf_client;
-	GError *error;
-
-	gboolean value;
-
-	mateconf_client = mateconf_client_get_default ();
-	error = NULL;
-
-	value = mateconf_client_get_bool (mateconf_client, key, &error);
-
-	g_object_unref (mateconf_client);
-
-	if (error)
-	{
-		g_warning ("error accessing %s [%s]\n", key, error->message);
-		g_error_free (error);
-	}
-
-	return value;
-}
-
-gint
-get_slab_mateconf_int (const gchar * key)
-{
-	MateConfClient *mateconf_client;
-	GError *error;
-
-	gint value;
-
-	mateconf_client = mateconf_client_get_default ();
-	error = NULL;
-
-	value = mateconf_client_get_int (mateconf_client, key, &error);
-
-	g_object_unref (mateconf_client);
-	if (error)
-	{
-		g_warning ("error accessing %s [%s]\n", key, error->message);
-		g_error_free (error);
-	}
-
-	return value;
-}
-
-gchar *
-get_slab_mateconf_string (const gchar * key)
-{
-	MateConfClient *mateconf_client;
-	GError *error;
-
-	gchar *value;
-
-	mateconf_client = mateconf_client_get_default ();
-	error = NULL;
-
-	value = mateconf_client_get_string (mateconf_client, key, &error);
-
-	g_object_unref (mateconf_client);
-	if (error)
-	{
-		g_warning ("error accessing %s [%s]\n", key, error->message);
-		g_error_free (error);
-	}
-
-	return value;
-}
 
 void
 free_list_of_strings (GList * string_list)
@@ -101,52 +30,6 @@ free_list_of_strings (GList * string_list)
 	g_assert (string_list != NULL);
 	g_list_foreach (string_list, (GFunc) g_free, NULL);
 	g_list_free (string_list);
-}
-
-void
-free_slab_mateconf_slist_of_strings (GSList * string_list)
-{
-	g_assert (string_list != NULL);
-	g_slist_foreach (string_list, (GFunc) g_free, NULL);
-	g_slist_free (string_list);
-}
-
-GSList *
-get_slab_mateconf_slist (const gchar * key)
-{
-	MateConfClient *mateconf_client;
-	GError *error;
-
-	GSList *value;
-
-	mateconf_client = mateconf_client_get_default ();
-	error = NULL;
-
-	value = mateconf_client_get_list (mateconf_client, key, MATECONF_VALUE_STRING, &error);
-
-	g_object_unref (mateconf_client);
-	if (error)
-	{
-		g_warning ("error accessing %s [%s]\n", key, error->message);
-
-		g_error_free (error);
-	}
-
-	return value;
-}
-
-MateDesktopItem *
-load_desktop_item_from_mateconf_key (const gchar * key)
-{
-	MateDesktopItem *item;
-	gchar *id = get_slab_mateconf_string (key);
-
-	if (!id)
-		return NULL;
-
-	item = load_desktop_item_from_unknown (id);
-	g_free (id);
-	return item;
 }
 
 MateDesktopItem *
@@ -291,47 +174,6 @@ open_desktop_item_help (MateDesktopItem * desktop_item)
 		return FALSE;
 
 	return TRUE;
-}
-
-gboolean
-desktop_item_is_in_main_menu (MateDesktopItem * desktop_item)
-{
-	return desktop_uri_is_in_main_menu (mate_desktop_item_get_location (desktop_item));
-}
-
-gboolean
-desktop_uri_is_in_main_menu (const gchar * uri)
-{
-	GSList *app_list;
-
-	GSList *node;
-	gint offset;
-	gint uri_len;
-	gboolean found = FALSE;
-
-	app_list = get_slab_mateconf_slist (SLAB_USER_SPECIFIED_APPS_KEY);
-
-	if (!app_list)
-		return FALSE;
-
-	uri_len = strlen (uri);
-
-	for (node = app_list; node; node = node->next)
-	{
-		offset = uri_len - strlen ((gchar *) node->data);
-
-		if (offset < 0)
-			offset = 0;
-
-		if (!strcmp (&uri[offset], (gchar *) node->data))
-		{
-			found = TRUE;
-			break;
-		}
-	}
-
-	free_slab_mateconf_slist_of_strings (app_list);
-	return found;
 }
 
 gint

@@ -48,7 +48,6 @@ typedef struct
 
 	gchar *name;
 	gchar *description;
-	gchar *mateconf_prefix;
 } ApplicationTile;
 
 typedef struct
@@ -60,7 +59,7 @@ GType application_tile_get_type (void);
 
 GtkWidget *application_tile_new (const gchar * desktop_item_id);
 GtkWidget *application_tile_new_full (const gchar * desktop_item_id,
-	GtkIconSize icon_size, gboolean show_generic_name, const gchar *mateconf_prefix);
+	GtkIconSize icon_size, gboolean show_generic_name);
 
 MateDesktopItem *application_tile_get_desktop_item (ApplicationTile * tile);
 

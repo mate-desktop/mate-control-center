@@ -10,8 +10,6 @@ HEADER_FILES=					\
 	app-shell.h				\
 	application-tile.h			\
 	bookmark-agent.h			\
-	directory-tile.h			\
-	document-tile.h				\
 	double-click-detector.h			\
 	mate-utils.h				\
 	libslab-utils.h				\
@@ -38,8 +36,6 @@ libslab_la_SOURCES =				\
 	app-shell.c				\
 	application-tile.c			\
 	bookmark-agent.c			\
-	directory-tile.c			\
-	document-tile.c				\
 	double-click-detector.c			\
 	mate-utils.c				\
 	libslab-utils.c				\
