@@ -28,10 +28,6 @@ libcommon_la_SOURCES = \
 	capplet-util.h			\
 	file-transfer-dialog.c		\
 	file-transfer-dialog.h		\
-	mateconf-property-editor.c		\
-	mateconf-property-editor.h		\
-	mateconf-property-editor-marshal.c	\
-	mateconf-property-editor-marshal.h \
 	mate-theme-apply.c		\
 	mate-theme-apply.h 		\
 	mate-theme-info.c		\

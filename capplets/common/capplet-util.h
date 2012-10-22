@@ -27,8 +27,6 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <mateconf/mateconf.h>
-#include <mateconf/mateconf-changeset.h>
 
 /* Macros to make certain repetitive tasks a bit easier */
 

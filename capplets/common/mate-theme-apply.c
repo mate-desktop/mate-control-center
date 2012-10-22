@@ -22,26 +22,36 @@
 #endif
 
 #include <string.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <mate-wm-manager.h>
 #include "mate-theme-apply.h"
 #include "gtkrc-utils.h"
 
-#define GTK_THEME_KEY      "/desktop/mate/interface/gtk_theme"
-#define COLOR_SCHEME_KEY   "/desktop/mate/interface/gtk_color_scheme"
-#define ICON_THEME_KEY     "/desktop/mate/interface/icon_theme"
-#define FONT_KEY	         "/desktop/mate/interface/font_name"
-#define CURSOR_FONT_KEY   "/desktop/mate/peripherals/mouse/cursor_font"
-#define CURSOR_THEME_KEY   "/desktop/mate/peripherals/mouse/cursor_theme"
-#define CURSOR_SIZE_KEY    "/desktop/mate/peripherals/mouse/cursor_size"
-#define NOTIFICATION_THEME_KEY    "/apps/notification-daemon/theme"
+#define INTERFACE_SCHEMA        "org.mate.interface"
+#define GTK_THEME_KEY           "gtk-theme"
+#define COLOR_SCHEME_KEY        "gtk-color-scheme"
+#define ICON_THEME_KEY          "icon-theme"
+#define FONT_KEY                "font-name"
+
+#define MOUSE_SCHEMA            "org.mate.peripherals-mouse"
+#define CURSOR_FONT_KEY         "cursor-font"
+#define CURSOR_THEME_KEY        "cursor-theme"
+#define CURSOR_SIZE_KEY         "cursor-size"
+
+#define NOTIFICATION_SCHEMA     "org.mate.NotificationDaemon"
+#define NOTIFICATION_THEME_KEY  "theme"
 
 #define compare(x,y) (!x && y) || (x && !y) || (x && y && strcmp (x, y))
 
 void
 mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 {
-  MateConfClient *client;
+  GSettings *interface_settings;
+  GSettings *mouse_settings;
+  GSettings *notification_settings = NULL;
+  const char * const *schemas;
+  gboolean schema_exists;
+  gint i;
   gchar *old_key;
   gint old_key_int;
   MateWindowManager *window_manager;
@@ -51,18 +61,34 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 
   window_manager = mate_wm_manager_get_current (gdk_display_get_default_screen (gdk_display_get_default ()));
 
-  client = mateconf_client_get_default ();
+  interface_settings = g_settings_new (INTERFACE_SCHEMA);
+  mouse_settings = g_settings_new (MOUSE_SCHEMA);
+  
+  /* We  need this because mate-control-center does not depend on mate-notification-daemon,
+   * and if we try to get notification theme without schema installed, gsettings crashes
+   * see https://bugzilla.gnome.org/show_bug.cgi?id=651225 */
+  schemas = g_settings_list_schemas ();
+  schema_exists = FALSE;
+  for (i = 0; schemas[i] != NULL; i++) {
+    if (g_strcmp0 (schemas[i], NOTIFICATION_SCHEMA) == 0) {
+      schema_exists = TRUE;
+      break;
+      }
+  }
+  if (schema_exists == TRUE) {
+      notification_settings = g_settings_new (NOTIFICATION_SCHEMA);
+  }
 
   /* Set the gtk+ key */
-  old_key = mateconf_client_get_string (client, GTK_THEME_KEY, NULL);
+  old_key = g_settings_get_string (interface_settings, GTK_THEME_KEY);
   if (compare (old_key, meta_theme_info->gtk_theme_name))
     {
-      mateconf_client_set_string (client, GTK_THEME_KEY, meta_theme_info->gtk_theme_name, NULL);
+      g_settings_set_string (interface_settings, GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
     }
   g_free (old_key);
 
   /* Set the color scheme key */
-  old_key = mateconf_client_get_string (client, COLOR_SCHEME_KEY, NULL);
+  old_key = g_settings_get_string (interface_settings, COLOR_SCHEME_KEY);
   if (compare (old_key, meta_theme_info->gtk_color_scheme))
     {
       /* only save the color scheme if it differs from the default
@@ -75,11 +101,11 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
       if (newval == NULL || !strcmp (newval, "") ||
           mate_theme_color_scheme_equal (newval, gtkcols))
         {
-          mateconf_client_unset (client, COLOR_SCHEME_KEY, NULL);
+          g_settings_reset (interface_settings, COLOR_SCHEME_KEY);
         }
       else
         {
-          mateconf_client_set_string (client, COLOR_SCHEME_KEY, newval, NULL);
+          g_settings_set_string (interface_settings, COLOR_SCHEME_KEY, newval);
         }
       g_free (gtkcols);
     }
@@ -92,45 +118,51 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
     mate_window_manager_change_settings (window_manager, &wm_settings);
 
   /* set the icon theme */
-  old_key = mateconf_client_get_string (client, ICON_THEME_KEY, NULL);
+  old_key = g_settings_get_string (interface_settings, ICON_THEME_KEY);
   if (compare (old_key, meta_theme_info->icon_theme_name))
     {
-      mateconf_client_set_string (client, ICON_THEME_KEY, meta_theme_info->icon_theme_name, NULL);
+      g_settings_set_string (interface_settings, ICON_THEME_KEY, meta_theme_info->icon_theme_name);
     }
   g_free (old_key);
 
   /* set the notification theme */
-  if (meta_theme_info->notification_theme_name != NULL)
+  if (notification_settings != NULL)
     {
-      old_key = mateconf_client_get_string (client, NOTIFICATION_THEME_KEY, NULL);
-      if (compare (old_key, meta_theme_info->notification_theme_name))
-        {
-          mateconf_client_set_string (client, NOTIFICATION_THEME_KEY, meta_theme_info->notification_theme_name, NULL);
-        }
-      g_free (old_key);
+    if (meta_theme_info->notification_theme_name != NULL)
+      {
+        old_key = g_settings_get_string (notification_settings, NOTIFICATION_THEME_KEY);
+        if (compare (old_key, meta_theme_info->notification_theme_name))
+          {
+            g_settings_set_string (notification_settings, NOTIFICATION_THEME_KEY, meta_theme_info->notification_theme_name);
+          }
+        g_free (old_key);
+      }
     }
 
   /* Set the cursor theme key */
 #ifdef HAVE_XCURSOR
-  old_key = mateconf_client_get_string (client, CURSOR_THEME_KEY, NULL);
+  old_key = g_settings_get_string (mouse_settings, CURSOR_THEME_KEY);
   if (compare (old_key, meta_theme_info->cursor_theme_name))
     {
-      mateconf_client_set_string (client, CURSOR_THEME_KEY, meta_theme_info->cursor_theme_name, NULL);
+      g_settings_set_string (mouse_settings, CURSOR_THEME_KEY, meta_theme_info->cursor_theme_name);
     }
 
-  old_key_int = mateconf_client_get_int (client, CURSOR_SIZE_KEY, NULL);
+  old_key_int = g_settings_get_int (mouse_settings, CURSOR_SIZE_KEY);
   if (old_key_int != meta_theme_info->cursor_size)
     {
-      mateconf_client_set_int (client, CURSOR_SIZE_KEY, meta_theme_info->cursor_size, NULL);
+      g_settings_set_int (mouse_settings, CURSOR_SIZE_KEY, meta_theme_info->cursor_size);
     }
 #else
-  old_key = mateconf_client_get_string (client, CURSOR_FONT_KEY, NULL);
+  old_key = g_settings_get_string (mouse_settings, CURSOR_FONT_KEY);
   if (compare (old_key, meta_theme_info->cursor_theme_name))
     {
-      mateconf_client_set_string (client, CURSOR_FONT_KEY, meta_theme_info->cursor_theme_name, NULL);
+      g_settings_set_string (mouse_settings, CURSOR_FONT_KEY, meta_theme_info->cursor_theme_name);
     }
 #endif
 
   g_free (old_key);
-  g_object_unref (client);
+  g_object_unref (interface_settings);
+  g_object_unref (mouse_settings);
+  if (notification_settings != NULL)
+    g_object_unref (notification_settings);
 }
