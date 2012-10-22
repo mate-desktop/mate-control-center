@@ -27,15 +27,14 @@
 
 #include <glib/gi18n.h>
 #include <string.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <gdk/gdkx.h>
 #include <math.h>
 
 #include "capplet-util.h"
-#include "mateconf-property-editor.h"
 #include "activate-settings-daemon.h"
 #include "capplet-stock-icons.h"
-#include "mate-mouse-accessibility.h"
+//#include "mate-mouse-accessibility.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -56,29 +55,18 @@ enum
 	DOUBLE_CLICK_TEST_ON
 };
 
-/* We use this in at least half a dozen places, so it makes sense just to
- * define the macro */
+#define MOUSE_SCHEMA "org.mate.peripherals-mouse"
+#define DOUBLE_CLICK_KEY "double-click"
 
-#define DOUBLE_CLICK_KEY "/desktop/mate/peripherals/mouse/double_click"
+#define TOUCHPAD_SCHEMA "org.mate.peripherals-touchpad"
 
 /* State in testing the double-click speed. Global for a great deal of
  * convenience
  */
 static gint double_click_state = DOUBLE_CLICK_TEST_OFF;
 
-/* normalization routines */
-/* All of our scales but double_click are on the range 1->10 as a result, we
- * have a few routines to convert from whatever the mateconf key is to our range.
- */
-static MateConfValue *
-double_click_from_mateconf (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-	MateConfValue *new_value;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_INT);
-	mateconf_value_set_int (new_value, CLAMP ((int) floor ((mateconf_value_get_int (value) + 50) / 100.0) * 100, 100, 1000));
-	return new_value;
-}
+static GSettings *mouse_settings = NULL;
+static GSettings *touchpad_settings = NULL;
 
 static void
 get_default_mouse_info (int *default_numerator, int *default_denominator, int *default_threshold)
@@ -103,86 +91,6 @@ get_default_mouse_info (int *default_numerator, int *default_denominator, int *d
 	if (default_threshold)
 		*default_threshold = tmp_threshold;
 
-}
-
-static MateConfValue *
-motion_acceleration_from_mateconf (MateConfPropertyEditor *peditor,
-				const MateConfValue *value)
-{
-	MateConfValue *new_value;
-	gfloat motion_acceleration;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_FLOAT);
-
-	if (mateconf_value_get_float (value) == -1.0) {
-		int numerator, denominator;
-
-		get_default_mouse_info (&numerator, &denominator, NULL);
-
-		motion_acceleration = CLAMP ((gfloat)(numerator / denominator), 0.2, 6.0);
-	}
-	else {
-		motion_acceleration = CLAMP (mateconf_value_get_float (value), 0.2, 6.0);
-	}
-
-	if (motion_acceleration >= 1)
-		mateconf_value_set_float (new_value, motion_acceleration + 4);
-	else
-		mateconf_value_set_float (new_value, motion_acceleration * 5);
-
-	return new_value;
-}
-
-static MateConfValue *
-motion_acceleration_to_mateconf (MateConfPropertyEditor *peditor,
-			      const MateConfValue *value)
-{
-	MateConfValue *new_value;
-	gfloat motion_acceleration;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_FLOAT);
-	motion_acceleration = CLAMP (mateconf_value_get_float (value), 1.0, 10.0);
-
-	if (motion_acceleration < 5)
-		mateconf_value_set_float (new_value, motion_acceleration / 5.0);
-	else
-		mateconf_value_set_float (new_value, motion_acceleration - 4);
-
-	return new_value;
-}
-
-static MateConfValue *
-threshold_from_mateconf (MateConfPropertyEditor *peditor,
-		      const MateConfValue *value)
-{
-	MateConfValue *new_value;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_FLOAT);
-
-	if (mateconf_value_get_int (value) == -1) {
-		int threshold;
-
-		get_default_mouse_info (NULL, NULL, &threshold);
-		mateconf_value_set_float (new_value, CLAMP (threshold, 1, 10));
-	}
-	else {
-		mateconf_value_set_float (new_value, CLAMP (mateconf_value_get_int (value), 1, 10));
-	}
-
-	return new_value;
-}
-
-static MateConfValue *
-drag_threshold_from_mateconf (MateConfPropertyEditor *peditor,
-			   const MateConfValue *value)
-{
-	MateConfValue *new_value;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_FLOAT);
-
-	mateconf_value_set_float (new_value, CLAMP (mateconf_value_get_int (value), 1, 10));
-
-	return new_value;
 }
 
 /* Double Click handling */
@@ -213,29 +121,21 @@ test_maybe_timeout (struct test_data_t *data)
 static gboolean
 event_box_button_press_event (GtkWidget   *widget,
 			      GdkEventButton *event,
-			      MateConfChangeSet *changeset)
+			      gpointer user_data)
 {
 	gint                       double_click_time;
-	MateConfValue                *value;
 	static struct test_data_t  data;
 	static gint                test_on_timeout_id     = 0;
 	static gint                test_maybe_timeout_id  = 0;
 	static guint32             double_click_timestamp = 0;
 	GtkWidget                 *image;
-	MateConfClient               *client;
 
 	if (event->type != GDK_BUTTON_PRESS)
 		return FALSE;
 
 	image = g_object_get_data (G_OBJECT (widget), "image");
 
-	if (!(changeset && mateconf_change_set_check_value (changeset, DOUBLE_CLICK_KEY, &value))) {
-		client = mateconf_client_get_default();
-		double_click_time = mateconf_client_get_int (client, DOUBLE_CLICK_KEY, NULL);
-		g_object_unref (client);
-
-	} else
-		double_click_time = mateconf_value_get_int (value);
+	double_click_time = g_settings_get_int (mouse_settings, DOUBLE_CLICK_KEY);
 
 	if (test_maybe_timeout_id != 0)
 		g_source_remove  (test_maybe_timeout_id);
@@ -289,42 +189,53 @@ orientation_radio_button_release_event (GtkWidget   *widget,
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
 }
 
-static MateConfValue *
-left_handed_from_mateconf (MateConfPropertyEditor *peditor,
-			const MateConfValue *value)
+static void
+orientation_radio_button_toggled (GtkToggleButton *togglebutton,
+				        GtkBuilder *dialog)
 {
-	MateConfValue *new_value;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_INT);
-
-	mateconf_value_set_int (new_value, mateconf_value_get_bool (value));
-
-	return new_value;
-}
-
-static MateConfValue *
-left_handed_to_mateconf (MateConfPropertyEditor *peditor,
-		      const MateConfValue *value)
-{
-	MateConfValue *new_value;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_BOOL);
-
-	mateconf_value_set_bool (new_value, mateconf_value_get_int (value) == 1);
-
-	return new_value;
+	gboolean left_handed;
+	left_handed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (WID ("left_handed_radio")));
+	g_settings_set_boolean (mouse_settings, "left-handed", left_handed);
 }
 
 static void
-scrollmethod_changed_event (MateConfPropertyEditor *peditor,
-			    const gchar *key,
-			    const MateConfValue *value,
-			    GtkBuilder *dialog)
+scrollmethod_gsettings_changed_event (GSettings *settings,
+				gchar *key,
+				GtkBuilder *dialog)
+{
+	int scroll_method = g_settings_get_int (touchpad_settings, "scroll-method");
+	gtk_widget_set_sensitive (WID ("scroll_disabled_radio"),
+				scroll_method == 0);
+	gtk_widget_set_sensitive (WID ("scroll_edge_radio"),
+				scroll_method == 1);
+	gtk_widget_set_sensitive (WID ("scroll_twofinger_radio"),
+				scroll_method == 2);
+}
+
+static void
+scrollmethod_clicked_event (GtkWidget *widget,
+				GtkBuilder *dialog)
 {
 	GtkToggleButton *disabled = GTK_TOGGLE_BUTTON (WID ("scroll_disabled_radio"));
 
 	gtk_widget_set_sensitive (WID ("horiz_scroll_toggle"),
 				  !gtk_toggle_button_get_active (disabled));
+
+	GSList *radio_group;
+	int new_scroll_method;
+	int old_scroll_method = g_settings_get_int (touchpad_settings, "scroll-method");
+
+	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(widget)))
+		return;
+
+	radio_group = g_slist_copy (gtk_radio_button_get_group
+		(GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"))));
+	radio_group = g_slist_reverse (radio_group);
+	new_scroll_method = g_slist_index (radio_group, widget);
+	g_slist_free (radio_group);
+	
+	if (new_scroll_method != old_scroll_method)
+		g_settings_set_int (touchpad_settings, "scroll-method", new_scroll_method);
 }
 
 static void
@@ -436,75 +347,85 @@ find_synaptics (void)
 
 /* Set up the property editors in the dialog. */
 static void
-setup_dialog (GtkBuilder *dialog, MateConfChangeSet *changeset)
+setup_dialog (GtkBuilder *dialog)
 {
 	GtkRadioButton    *radio;
-	GObject           *peditor;
 
 	/* Orientation radio buttons */
 	radio = GTK_RADIO_BUTTON (WID ("left_handed_radio"));
-	peditor = mateconf_peditor_new_select_radio
-		(changeset, "/desktop/mate/peripherals/mouse/left_handed", gtk_radio_button_get_group (radio),
-		 "conv-to-widget-cb", left_handed_from_mateconf,
-		 "conv-from-widget-cb", left_handed_to_mateconf,
-		 NULL);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(radio),
+		g_settings_get_boolean(mouse_settings, "left-handed"));
 	/* explicitly connect to button-release so that you can change orientation with either button */
 	g_signal_connect (WID ("right_handed_radio"), "button_release_event",
 		G_CALLBACK (orientation_radio_button_release_event), NULL);
 	g_signal_connect (WID ("left_handed_radio"), "button_release_event",
 		G_CALLBACK (orientation_radio_button_release_event), NULL);
+	g_signal_connect (WID ("left_handed_radio"), "toggled",
+		G_CALLBACK (orientation_radio_button_toggled), dialog);
 
 	/* Locate pointer toggle */
-	peditor = mateconf_peditor_new_boolean
-		(changeset, "/desktop/mate/peripherals/mouse/locate_pointer", WID ("locate_pointer_toggle"), NULL);
+	g_settings_bind (mouse_settings, "locate-pointer", WID ("locate_pointer_toggle"),
+		"active", G_SETTINGS_BIND_DEFAULT);
 
 	/* Double-click time */
-	peditor = mateconf_peditor_new_numeric_range
-		(changeset, DOUBLE_CLICK_KEY, WID ("delay_scale"),
-		 "conv-to-widget-cb", double_click_from_mateconf,
-		 NULL);
+	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
+		gtk_range_get_adjustment (GTK_RANGE (WID ("delay_scale"))), "value",
+		G_SETTINGS_BIND_DEFAULT);
+	
 	gtk_image_set_from_stock (GTK_IMAGE (WID ("double_click_image")), MOUSE_DBLCLCK_OFF, mouse_capplet_dblclck_icon_get_size ());
 	g_object_set_data (G_OBJECT (WID ("double_click_eventbox")), "image", WID ("double_click_image"));
 	g_signal_connect (WID ("double_click_eventbox"), "button_press_event",
-			  G_CALLBACK (event_box_button_press_event), changeset);
+			  G_CALLBACK (event_box_button_press_event), NULL);
 
 	/* speed */
-      	mateconf_peditor_new_numeric_range
-		(changeset, "/desktop/mate/peripherals/mouse/motion_acceleration", WID ("accel_scale"),
-		 "conv-to-widget-cb", motion_acceleration_from_mateconf,
-		 "conv-from-widget-cb", motion_acceleration_to_mateconf,
-		 NULL);
-
-	mateconf_peditor_new_numeric_range
-		(changeset, "/desktop/mate/peripherals/mouse/motion_threshold", WID ("sensitivity_scale"),
-		 "conv-to-widget-cb", threshold_from_mateconf,
-		 NULL);
+	g_settings_bind (mouse_settings, "motion-acceleration",
+		gtk_range_get_adjustment (GTK_RANGE (WID ("accel_scale"))), "value",
+		G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (mouse_settings, "motion-threshold",
+		gtk_range_get_adjustment (GTK_RANGE (WID ("sensitivity_scale"))), "value",
+		G_SETTINGS_BIND_DEFAULT);
 
 	/* DnD threshold */
-	mateconf_peditor_new_numeric_range
-		(changeset, "/desktop/mate/peripherals/mouse/drag_threshold", WID ("drag_threshold_scale"),
-		 "conv-to-widget-cb", drag_threshold_from_mateconf,
-		 NULL);
+	g_settings_bind (mouse_settings, "drag-threshold",
+		gtk_range_get_adjustment (GTK_RANGE (WID ("drag_threshold_scale"))), "value",
+		G_SETTINGS_BIND_DEFAULT);
 
 	/* Trackpad page */
 	if (find_synaptics () == FALSE)
 		gtk_notebook_remove_page (GTK_NOTEBOOK (WID ("prefs_widget")), -1);
 	else {
-		mateconf_peditor_new_boolean
-			(changeset, "/desktop/mate/peripherals/touchpad/disable_while_typing", WID ("disable_w_typing_toggle"), NULL);
-		mateconf_peditor_new_boolean
-			(changeset, "/desktop/mate/peripherals/touchpad/tap_to_click", WID ("tap_to_click_toggle"), NULL);
-		mateconf_peditor_new_boolean
-			(changeset, "/desktop/mate/peripherals/touchpad/horiz_scroll_enabled", WID ("horiz_scroll_toggle"), NULL);
-		radio = GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"));
-		peditor = mateconf_peditor_new_select_radio
-			(changeset, "/desktop/mate/peripherals/touchpad/scroll_method", gtk_radio_button_get_group (radio),
-			 NULL);
+		g_settings_bind (touchpad_settings, "disable-while-typing",
+			WID ("disable_w_typing_toggle"), "active",
+			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "tap-to-click",
+			WID ("tap_to_click_toggle"), "active",
+			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "horiz-scroll-enabled",
+			WID ("horiz_scroll_toggle"), "active",
+			G_SETTINGS_BIND_DEFAULT);
 
+		radio = GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"));
+		GSList *radio_group = gtk_radio_button_get_group (radio);
+		GSList *item;
+		gint i;
+		gint scroll_method = g_settings_get_int(touchpad_settings, "scroll-method");
+		for (item = radio_group; item != NULL; item = item->next) {
+			if (i == scroll_method) {
+				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(item->data), TRUE);
+				break;
+			}
+			i++;
+		}
 		synaptics_check_capabilities (dialog);
-		scrollmethod_changed_event (MATECONF_PROPERTY_EDITOR (peditor), NULL, NULL, dialog);
-		g_signal_connect (peditor, "value-changed",
-				  G_CALLBACK (scrollmethod_changed_event), dialog);
+		for (item = radio_group; item != NULL; item = item->next) {
+			g_signal_connect (G_OBJECT (item->data), "clicked",
+				  G_CALLBACK(scrollmethod_clicked_event),
+				  dialog);
+		}
+		g_signal_connect (touchpad_settings,
+			"changed::scroll-method",
+			G_CALLBACK(scrollmethod_gsettings_changed_event),
+			dialog);
 	}
 
 }
@@ -564,7 +485,7 @@ create_dialog (void)
 /* Callback issued when a button is clicked on the dialog */
 
 static void
-dialog_response_cb (GtkDialog *dialog, gint response_id, MateConfChangeSet *changeset)
+dialog_response_cb (GtkDialog *dialog, gint response_id, gpointer data)
 {
 	if (response_id == GTK_RESPONSE_HELP)
 		capplet_help (GTK_WINDOW (dialog),
@@ -576,7 +497,6 @@ dialog_response_cb (GtkDialog *dialog, gint response_id, MateConfChangeSet *chan
 int
 main (int argc, char **argv)
 {
-	MateConfClient    *client;
 	GtkBuilder     *dialog;
 	GtkWidget      *dialog_win, *w;
 	gchar *start_page = NULL;
@@ -587,7 +507,7 @@ main (int argc, char **argv)
 		 G_OPTION_ARG_STRING,
 		 &start_page,
 		 /* TRANSLATORS: don't translate the terms in brackets */
-		 N_("Specify the name of the page to show (general|accessibility)"),
+		 N_("Specify the name of the page to show (general)"),
 		 N_("page") },
 		{NULL}
 	};
@@ -600,15 +520,14 @@ main (int argc, char **argv)
 
 	activate_settings_daemon ();
 
-	client = mateconf_client_get_default ();
-	mateconf_client_add_dir (client, "/desktop/mate/peripherals/mouse", MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	mateconf_client_add_dir (client, "/desktop/mate/peripherals/touchpad", MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
+	mouse_settings = g_settings_new (MOUSE_SCHEMA);
+	touchpad_settings = g_settings_new (TOUCHPAD_SCHEMA);
 
 	dialog = create_dialog ();
 
 	if (dialog) {
-		setup_dialog (dialog, NULL);
-		setup_accessibility (dialog, client);
+		setup_dialog (dialog);
+		//setup_accessibility (dialog);
 
 		dialog_win = WID ("mouse_properties_dialog");
 		g_signal_connect (dialog_win, "response",
@@ -641,7 +560,8 @@ main (int argc, char **argv)
 		g_object_unref (dialog);
 	}
 
-	g_object_unref (client);
+	g_object_unref (mouse_settings);
+	g_object_unref (touchpad_settings);
 
 	return 0;
 }
