@@ -33,7 +33,7 @@
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <glib/gi18n.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-bindings.h>
 
@@ -66,7 +66,7 @@ struct App
 
     GtkWidget      *area;
     gboolean	    ignore_gui_changes;
-    MateConfClient	   *client;
+    GSettings	   *settings;
 
     /* These are used while we are waiting for the ApplyConfiguration method to be executed over D-bus */
     DBusGConnection *connection;
@@ -2138,8 +2138,9 @@ on_detect_displays (GtkWidget *widget, gpointer data)
     }
 }
 
-#define SHOW_ICON_KEY "/apps/mate_settings_daemon/xrandr/show_notification_icon"
-
+#define MSD_XRANDR_SCHEMA                 "org.mate.SettingsDaemon.plugins.xrandr"
+#define SHOW_ICON_KEY                     "show-notification-icon"
+#define DEFAULT_CONFIGURATION_FILE_KEY    "default-configuration-file"
 
 static void
 on_show_icon_toggled (GtkWidget *widget, gpointer data)
@@ -2147,8 +2148,8 @@ on_show_icon_toggled (GtkWidget *widget, gpointer data)
     GtkToggleButton *tb = GTK_TOGGLE_BUTTON (widget);
     App *app = data;
 
-    mateconf_client_set_bool (app->client, SHOW_ICON_KEY,
-			   gtk_toggle_button_get_active (tb), NULL);
+    g_settings_set_boolean (app->settings, SHOW_ICON_KEY,
+			   gtk_toggle_button_get_active (tb));
 }
 
 static MateOutputInfo *
@@ -2352,7 +2353,7 @@ make_default (App *app)
     if (!sanitize_and_save_configuration (app))
 	return;
 
-    dest_filename = mateconf_client_get_string (app->client, "/apps/mate_settings_daemon/xrandr/default_configuration_file", NULL);
+    dest_filename = g_settings_get_string (app->settings, DEFAULT_CONFIGURATION_FILE_KEY);
     if (!dest_filename)
 	return; /* FIXME: present an error? */
 
@@ -2425,7 +2426,7 @@ run_application (App *app)
 	return;
     }
 
-    app->client = mateconf_client_get_default ();
+    app->settings = g_settings_new (MSD_XRANDR_SCHEMA);
 
     app->dialog = _gtk_builder_get_widget (builder, "dialog");
     g_signal_connect_after (app->dialog, "map-event",
@@ -2473,7 +2474,7 @@ run_application (App *app)
 						      "show_notification_icon");
 
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (app->show_icon_checkbox),
-				  mateconf_client_get_bool (app->client, SHOW_ICON_KEY, NULL));
+				  g_settings_get_boolean (app->settings, SHOW_ICON_KEY));
 
     g_signal_connect (app->show_icon_checkbox, "toggled", G_CALLBACK (on_show_icon_toggled), app);
 
@@ -2547,7 +2548,7 @@ restart:
 
     gtk_widget_destroy (app->dialog);
     mate_rr_screen_destroy (app->screen);
-    g_object_unref (app->client);
+    g_object_unref (app->settings);
 }
 
 int
