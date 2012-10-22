@@ -1,6 +1,6 @@
 #include <config.h>
 #include <gtk/gtk.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
@@ -16,11 +16,10 @@ enum {
 };
 
 #include "capplet-util.h"
-#include "mateconf-property-editor.h"
 #include "activate-settings-daemon.h"
 
-#define ACCESSIBILITY_KEY       "/desktop/mate/interface/accessibility"
-#define ACCESSIBILITY_KEY_DIR   "/desktop/mate/interface"
+#define ACCESSIBILITY_KEY       "accessibility"
+#define ACCESSIBILITY_SCHEMA    "org.mate.interface"
 
 static gboolean initial_state;
 
@@ -167,33 +166,31 @@ cb_dialog_response (GtkDialog *dialog, gint response_id)
 static void
 close_logout_update (GtkBuilder *builder)
 {
-	MateConfClient *client = mateconf_client_get_default ();
-	gboolean curr_state = mateconf_client_get_bool (client, ACCESSIBILITY_KEY, NULL);
+	GSettings *settings = g_settings_new (ACCESSIBILITY_SCHEMA);
+	gboolean curr_state = g_settings_get_boolean (settings, ACCESSIBILITY_KEY);
 	GObject *btn = gtk_builder_get_object (builder,
 					       "at_close_logout_button");
 
 	gtk_widget_set_sensitive (GTK_WIDGET (btn), initial_state != curr_state);
-	g_object_unref (client);
+	g_object_unref (settings);
 }
 
 static void
 at_enable_toggled (GtkToggleButton *toggle_button,
 		   GtkBuilder      *builder)
 {
-	MateConfClient *client = mateconf_client_get_default ();
+	GSettings *settings = g_settings_new (ACCESSIBILITY_SCHEMA);
 	gboolean is_enabled = gtk_toggle_button_get_active (toggle_button);
 
-	mateconf_client_set_bool (client, ACCESSIBILITY_KEY,
-			       is_enabled,
-			       NULL);
-	g_object_unref (client);
+	g_settings_set_boolean (settings, ACCESSIBILITY_KEY, is_enabled);
+	g_object_unref (settings);
 }
 
 static void
-at_enable_update (MateConfClient *client,
+at_enable_update (GSettings *settings,
 		  GtkBuilder  *builder)
 {
-	gboolean is_enabled = mateconf_client_get_bool (client, ACCESSIBILITY_KEY, NULL);
+	gboolean is_enabled = g_settings_get_boolean (settings, ACCESSIBILITY_KEY);
 	GObject *btn = gtk_builder_get_object (builder, "at_enable_toggle");
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (btn),
@@ -201,44 +198,32 @@ at_enable_update (MateConfClient *client,
 }
 
 static void
-at_enable_changed (MateConfClient *client,
-		   guint        cnxn_id,
-		   MateConfEntry  *entry,
+at_enable_changed (GSettings *settings,
+		   gchar       *key,
 		   gpointer     user_data)
 {
-	at_enable_update (client, user_data);
+	at_enable_update (settings, user_data);
 	close_logout_update (user_data);
 }
 
 static void
-setup_dialog (GtkBuilder *builder)
+setup_dialog (GtkBuilder *builder, GSettings *settings)
 {
-	MateConfClient *client;
 	GtkWidget *widget;
 	GObject *object;
 	GObject *peditor;
-
-	client = mateconf_client_get_default ();
-
-	mateconf_client_add_dir (client, ACCESSIBILITY_KEY_DIR,
-			      MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
 
 	object = gtk_builder_get_object (builder, "at_enable_toggle");
 	g_signal_connect (object, "toggled",
 			  G_CALLBACK (at_enable_toggled),
 			  builder);
 
-	peditor = mateconf_peditor_new_boolean (NULL, ACCESSIBILITY_KEY,
-					     GTK_WIDGET (object),
-					     NULL);
+	initial_state = g_settings_get_boolean (settings, ACCESSIBILITY_KEY);
 
-	initial_state = mateconf_client_get_bool (client, ACCESSIBILITY_KEY, NULL);
+	at_enable_update (settings, builder);
 
-	at_enable_update (client, builder);
-
-	mateconf_client_notify_add (client, ACCESSIBILITY_KEY_DIR,
-				 at_enable_changed,
-				 builder, NULL, NULL);
+	g_signal_connect (settings, "changed::" ACCESSIBILITY_KEY, G_CALLBACK (at_enable_changed),
+				 builder);
 
 	object = gtk_builder_get_object (builder, "at_pref_button");
 	g_signal_connect (object, "clicked",
@@ -265,28 +250,29 @@ setup_dialog (GtkBuilder *builder)
 			  G_CALLBACK (cb_dialog_response), NULL);
 
 	gtk_widget_show (widget);
-
-	g_object_unref (client);
 }
 
 int
 main (int argc, char *argv[])
 {
+	GSettings  *settings;
 	GtkBuilder *builder;
 
 	capplet_init (NULL, &argc, &argv);
 
 	activate_settings_daemon ();
 
+	settings = g_settings_new (ACCESSIBILITY_SCHEMA);
 	builder = create_builder ();
 
 	if (builder) {
 
-		setup_dialog (builder);
+		setup_dialog (builder, settings);
 
 		gtk_main ();
 
 		g_object_unref (builder);
+		g_object_unref (settings);
 	}
 
 	return 0;
