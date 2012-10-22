@@ -26,7 +26,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 
 #ifdef HAVE_CANBERRA_GTK
 #include <canberra-gtk.h>
@@ -131,21 +131,17 @@ drw_break_window_init (DrwBreakWindow *window)
 	GdkRectangle           monitor;
 	gint                   right_padding;
 	gint                   bottom_padding;
-	MateConfClient	      *client;
+	GSettings             *settings;
 
 	priv = DRW_BREAK_WINDOW_GET_PRIVATE (window);
 	window->priv = priv;
 
-	client = mateconf_client_get_default ();
+	settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
-	priv->break_time = 60 * mateconf_client_get_int (client,
-						      MATECONF_PATH "/break_time",
-						      NULL);
+	priv->break_time = 60 * g_settings_get_int (settings, "break-time");
 
-	allow_postpone = mateconf_client_get_bool (client,
-					      MATECONF_PATH "/allow_postpone",
-					      NULL);
-	g_object_unref (client);
+	allow_postpone = g_settings_get_boolean (settings, "allow-postpone");
+	g_object_unref (settings);
 
 	g_object_set (window, "type", GTK_WINDOW_POPUP, NULL);
 	gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
@@ -419,14 +415,12 @@ postpone_entry_activate_cb (GtkWidget      *entry,
 {
 	const gchar *str;
 	gchar *phrase;
-	MateConfClient *client = mateconf_client_get_default();
+	GSettings *settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
 	str = gtk_entry_get_text (GTK_ENTRY (entry));
 
-	phrase = mateconf_client_get_string (client,
-					  MATECONF_PATH "/unlock_phrase",
-					  NULL);
-	g_object_unref (client);
+	phrase = g_settings_get_string (settings, "unlock-phrase");
+	g_object_unref (settings);
 
 	if (!strcmp (str, phrase)) {
 		g_signal_emit (window, signals[POSTPONE], 0, NULL);
@@ -509,9 +503,7 @@ postpone_clicked_cb (GtkWidget *button,
 	gchar                 *phrase;
 
 	/* Disable the phrase for now. */
-	phrase = NULL; /*mateconf_client_get_string (mateconf_client_get_default (),
-					  MATECONF_PATH "/unlock_phrase",
-					  NULL);*/
+	phrase = NULL; /*g_settings_get_string (settings, "unlock-phrase");*/
 
 	if (!phrase || !phrase[0]) {
 		g_signal_emit (window, signals[POSTPONE], 0, NULL);

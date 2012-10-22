@@ -27,7 +27,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 
 #ifdef HAVE_APP_INDICATOR
 #include <libappindicator/app-indicator.h>
@@ -548,39 +548,32 @@ activity_detected_cb (DrwMonitor *monitor,
 }
 
 static void
-mateconf_notify_cb (MateConfClient *client,
-		 guint        cnxn_id,
-		 MateConfEntry  *entry,
+gsettings_notify_cb (GSettings *settings,
+		 gchar       *key,
 		 gpointer     user_data)
 {
 	DrWright  *dr = user_data;
 	GtkWidget *item;
 
-	if (!strcmp (entry->key, MATECONF_PATH "/type_time")) {
-		if (entry->value->type == MATECONF_VALUE_INT) {
-			dr->type_time = 60 * mateconf_value_get_int (entry->value);
-			dr->warn_time = MIN (dr->type_time / 10, 5*60);
+	if (!strcmp (key, "type-time")) {
+		dr->type_time = 60 * g_settings_get_int (settings, key);
+		dr->warn_time = MIN (dr->type_time / 10, 5*60);
 
-			dr->state = STATE_START;
-		}
+		dr->state = STATE_START;
 	}
-	else if (!strcmp (entry->key, MATECONF_PATH "/break_time")) {
-		if (entry->value->type == MATECONF_VALUE_INT) {
-			dr->break_time = 60 * mateconf_value_get_int (entry->value);
-			dr->state = STATE_START;
-		}
+	else if (!strcmp (key, "break-time")) {
+		dr->break_time = 60 * g_settings_get_int (settings, key);
+		dr->state = STATE_START;
 	}
-	else if (!strcmp (entry->key, MATECONF_PATH "/enabled")) {
-		if (entry->value->type == MATECONF_VALUE_BOOL) {
-			dr->enabled = mateconf_value_get_bool (entry->value);
-			dr->state = STATE_START;
+	else if (!strcmp (key, "enabled")) {
+		dr->enabled = g_settings_get_boolean (settings, key);
+		dr->state = STATE_START;
 
-			item = gtk_ui_manager_get_widget (dr->ui_manager,
-							  "/Pop/TakeABreak");
-			gtk_widget_set_sensitive (item, dr->enabled);
+		item = gtk_ui_manager_get_widget (dr->ui_manager,
+						  "/Pop/TakeABreak");
+		gtk_widget_set_sensitive (item, dr->enabled);
 
-			update_status (dr);
-		}
+		update_status (dr);
 	}
 
 	maybe_change_state (dr);
@@ -810,7 +803,7 @@ drwright_new (void)
 {
 	DrWright  *dr;
 	GtkWidget *item;
-	MateConfClient *client;
+	GSettings *settings;
 	GtkActionGroup *action_group;
 
 	static const char ui_description[] =
@@ -825,33 +818,17 @@ drwright_new (void)
 
         dr = g_new0 (DrWright, 1);
 
-	client = mateconf_client_get_default ();
+	settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
-	mateconf_client_add_dir (client,
-			      MATECONF_PATH,
-			      MATECONF_CLIENT_PRELOAD_NONE,
-			      NULL);
+	g_signal_connect (settings, "changed", G_CALLBACK (gsettings_notify_cb), dr);
 
-	mateconf_client_notify_add (client, MATECONF_PATH,
-				 mateconf_notify_cb,
-				 dr,
-				 NULL,
-				 NULL);
-
-	dr->type_time = 60 * mateconf_client_get_int (
-		client, MATECONF_PATH "/type_time", NULL);
+	dr->type_time = 60 * g_settings_get_int (settings, "type-time");
 
 	dr->warn_time = MIN (dr->type_time / 12, 60*3);
 
-	dr->break_time = 60 * mateconf_client_get_int (
-		client, MATECONF_PATH "/break_time", NULL);
+	dr->break_time = 60 * g_settings_get_int (settings, "break-time");
 
-	dr->enabled = mateconf_client_get_bool (
-		client,
-		MATECONF_PATH "/enabled",
-		NULL);
-
-	g_object_unref (client);
+	dr->enabled = g_settings_get_boolean (settings, "enabled");
 
 	if (debug) {
 		setup_debug_values (dr);
