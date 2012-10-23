@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The MATE Foundation
+ * Copyright (C) 2007 The GNOME Foundation
  * Written by Thomas Wood <thos@gnome.org>
  * All Rights Reserved
  *
@@ -22,17 +22,67 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <libmateui/mate-desktop-thumbnail.h>
 
 #include "mate-theme-info.h"
 
-#define APPEARANCE_KEY_DIR "/apps/control-center/appearance"
-#define MORE_THEMES_URL_KEY APPEARANCE_KEY_DIR "/more_themes_url"
-#define MORE_BACKGROUNDS_URL_KEY APPEARANCE_KEY_DIR "/more_backgrounds_url"
+#define APPEARANCE_SCHEMA            "org.mate.control-center.appearance"
+#define MORE_THEMES_URL_KEY          "more-themes-url"
+#define MORE_BACKGROUNDS_URL_KEY     "more-backgrounds-url"
+
+#define WP_SCHEMA                    "org.mate.background"
+#define WP_FILE_KEY                  "picture-filename"
+#define WP_OPTIONS_KEY               "picture-options"
+#define WP_SHADING_KEY               "color-shading-type"
+#define WP_PCOLOR_KEY                "primary-color"
+#define WP_SCOLOR_KEY                "secondary-color"
+
+#define INTERFACE_SCHEMA             "org.mate.interface"
+#define GTK_FONT_KEY                 "font-name"
+#define MONOSPACE_FONT_KEY           "monospace-font-name"
+#define DOCUMENT_FONT_KEY            "document-font-name"
+#define GTK_THEME_KEY                "gtk-theme"
+#define ICON_THEME_KEY               "icon-theme"
+#define COLOR_SCHEME_KEY             "gtk-color-scheme"
+#define GTK_FONT_DEFAULT_VALUE       "Sans 10"
+
+#define LOCKDOWN_SCHEMA              "org.mate.lockdown"
+#define DISABLE_THEMES_SETTINGS_KEY  "disable-theme-settings"
+
+#define CAJA_SCHEMA                  "org.mate.caja.desktop"
+#define DESKTOP_FONT_KEY             "font"
+
+#define MARCO_SCHEMA                 "org.mate.Marco.general"
+#define MARCO_THEME_KEY              "theme"
+#define WINDOW_TITLE_FONT_KEY        "titlebar-font"
+#define WINDOW_TITLE_USES_SYSTEM_KEY "titlebar-uses-system-font"
+
+#define NOTIFICATION_SCHEMA          "org.mate.NotificationDaemon"
+#define NOTIFICATION_THEME_KEY       "theme"
+
+#define MOUSE_SCHEMA                 "org.mate.peripherals-mouse"
+#define CURSOR_THEME_KEY             "cursor-theme"
+#define CURSOR_SIZE_KEY              "cursor-size"
+
+#ifdef HAVE_XFT2
+#define FONT_RENDER_SCHEMA           "org.mate.font-rendering"
+#define FONT_ANTIALIASING_KEY        "antialiasing"
+#define FONT_HINTING_KEY             "hinting"
+#define FONT_RGBA_ORDER_KEY          "rgba-order"
+#define FONT_DPI_KEY                 "dpi"
+#endif /* HAVE_XFT2 */
 
 typedef struct {
-	MateConfClient* client;
+	GSettings* settings;
+	GSettings* wp_settings;
+	GSettings* caja_settings;
+	GSettings* interface_settings;
+	GSettings* marco_settings;
+	GSettings* mouse_settings;
+#ifdef HAVE_XFT2
+	GSettings* font_settings;
+#endif /* HAVE_XFT2 */
 	GtkBuilder* ui;
 	MateDesktopThumbnailFactory* thumb_factory;
 	gulong screen_size_handler;
@@ -40,7 +90,7 @@ typedef struct {
 
 	/* desktop */
 	GHashTable* wp_hash;
-	gboolean wp_update_mateconf;
+	gboolean wp_update_settings;
 	GtkIconView* wp_view;
 	GtkTreeModel* wp_model;
 	GtkWidget* wp_scpicker;

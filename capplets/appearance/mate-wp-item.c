@@ -21,49 +21,86 @@
 #include <config.h>
 
 #include <glib/gi18n.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <string.h>
 #include "mate-wp-item.h"
 
-static MateConfEnumStringPair options_lookup[] = {
-  { MATE_BG_PLACEMENT_CENTERED, "centered" },
-  { MATE_BG_PLACEMENT_FILL_SCREEN, "stretched" },
-  { MATE_BG_PLACEMENT_SCALED, "scaled" },
-  { MATE_BG_PLACEMENT_ZOOMED, "zoom" },
-  { MATE_BG_PLACEMENT_TILED, "wallpaper" },
-  { MATE_BG_PLACEMENT_SPANNED, "spanned" },
-  { 0, NULL }
-};
-
-static MateConfEnumStringPair shade_lookup[] = {
-  { MATE_BG_COLOR_SOLID, "solid" },
-  { MATE_BG_COLOR_H_GRADIENT, "horizontal-gradient" },
-  { MATE_BG_COLOR_V_GRADIENT, "vertical-gradient" },
-  { 0, NULL }
-};
+#define WP_SCHEMA                    "org.mate.background"
+#define WP_OPTIONS_KEY               "picture-options"
+#define WP_SHADING_KEY               "color-shading-type"
+#define WP_PCOLOR_KEY                "primary-color"
+#define WP_SCOLOR_KEY                "secondary-color"
 
 const gchar *wp_item_option_to_string (MateBGPlacement type)
 {
-  return mateconf_enum_to_string (options_lookup, type);
+  switch (type)
+  {
+    case MATE_BG_PLACEMENT_CENTERED:
+      return "centered";
+      break;
+    case MATE_BG_PLACEMENT_FILL_SCREEN:
+      return "stretched";
+      break;
+    case MATE_BG_PLACEMENT_SCALED:
+      return "scaled";
+      break;
+    case MATE_BG_PLACEMENT_ZOOMED:
+      return "zoom";
+      break;
+    case MATE_BG_PLACEMENT_TILED:
+      return "wallpaper";
+      break;
+    case MATE_BG_PLACEMENT_SPANNED:
+      return "spanned";
+      break;
+  }
+  return "";
 }
 
 const gchar *wp_item_shading_to_string (MateBGColorType type)
 {
-  return mateconf_enum_to_string (shade_lookup, type);
+  switch (type) {
+    case MATE_BG_COLOR_SOLID:
+      return "solid";
+      break;
+    case MATE_BG_COLOR_H_GRADIENT:
+      return "horizontal-gradient";
+      break;
+    case MATE_BG_COLOR_V_GRADIENT:
+      return "vertical-gradient";
+      break;
+  }
+  return "";
 }
 
 MateBGPlacement wp_item_string_to_option (const gchar *option)
 {
-  int i = MATE_BG_PLACEMENT_SCALED;
-  mateconf_string_to_enum (options_lookup, option, &i);
-  return i;
+  if (!g_strcmp0(option, "centered"))
+    return MATE_BG_PLACEMENT_CENTERED;
+  else if (!g_strcmp0(option, "stretched"))
+    return MATE_BG_PLACEMENT_FILL_SCREEN;
+  else if (!g_strcmp0(option, "scaled"))
+    return MATE_BG_PLACEMENT_SCALED;
+  else if (!g_strcmp0(option, "zoom"))
+    return MATE_BG_PLACEMENT_ZOOMED;
+  else if (!g_strcmp0(option, "wallpaper"))
+    return MATE_BG_PLACEMENT_TILED;
+  else if (!g_strcmp0(option, "spanned"))
+    return MATE_BG_PLACEMENT_SPANNED;
+  else
+    return MATE_BG_PLACEMENT_SCALED;
 }
 
 MateBGColorType wp_item_string_to_shading (const gchar *shade_type)
 {
-  int i = MATE_BG_COLOR_SOLID;
-  mateconf_string_to_enum (shade_lookup, shade_type, &i);
-  return i;
+  if (!g_strcmp0(shade_type, "solid"))
+    return MATE_BG_COLOR_SOLID;
+  else if (!g_strcmp0(shade_type, "horizontal-gradient"))
+    return MATE_BG_COLOR_H_GRADIENT;
+  else if (!g_strcmp0(shade_type, "vertical-gradient"))
+    return MATE_BG_COLOR_V_GRADIENT;
+  else
+    return MATE_BG_COLOR_SOLID;
 }
 
 static void set_bg_properties (MateWPItem *item)
@@ -85,33 +122,29 @@ void mate_wp_item_ensure_mate_bg (MateWPItem *item)
 }
 
 void mate_wp_item_update (MateWPItem *item) {
-  MateConfClient *client;
+  GSettings *settings;
   GdkColor color1 = { 0, 0, 0, 0 }, color2 = { 0, 0, 0, 0 };
   gchar *s;
 
-  client = mateconf_client_get_default ();
+  settings = g_settings_new (WP_SCHEMA);
 
-  s = mateconf_client_get_string (client, WP_OPTIONS_KEY, NULL);
-  item->options = wp_item_string_to_option (s);
-  g_free (s);
+  item->options = g_settings_get_enum (settings, WP_OPTIONS_KEY);
 
-  s = mateconf_client_get_string (client, WP_SHADING_KEY, NULL);
-  item->shade_type = wp_item_string_to_shading (s);
-  g_free (s);
+  item->shade_type = g_settings_get_enum (settings, WP_SHADING_KEY);
 
-  s = mateconf_client_get_string (client, WP_PCOLOR_KEY, NULL);
+  s = g_settings_get_string (settings, WP_PCOLOR_KEY);
   if (s != NULL) {
     gdk_color_parse (s, &color1);
     g_free (s);
   }
 
-  s = mateconf_client_get_string (client, WP_SCOLOR_KEY, NULL);
+  s = g_settings_get_string (settings, WP_SCOLOR_KEY);
   if (s != NULL) {
     gdk_color_parse (s, &color2);
     g_free (s);
   }
 
-  g_object_unref (client);
+  g_object_unref (settings);
 
   if (item->pcolor != NULL)
     gdk_color_free (item->pcolor);

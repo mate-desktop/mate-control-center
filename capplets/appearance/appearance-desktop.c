@@ -27,7 +27,6 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <string.h>
-#include <mateconf/mateconf-client.h>
 #include <libmateui/mate-desktop-thumbnail.h>
 #include <libmateui/mate-bg.h>
 
@@ -267,23 +266,23 @@ wp_set_sensitivities (AppearanceData *data)
   if (item != NULL)
     filename = item->filename;
 
-  if (!mateconf_client_key_is_writable (data->client, WP_OPTIONS_KEY, NULL)
+  if (!g_settings_is_writable (data->wp_settings, WP_OPTIONS_KEY)
       || (filename && !strcmp (filename, "(none)")))
     gtk_widget_set_sensitive (data->wp_style_menu, FALSE);
   else
     gtk_widget_set_sensitive (data->wp_style_menu, TRUE);
 
-  if (!mateconf_client_key_is_writable (data->client, WP_SHADING_KEY, NULL))
+  if (!g_settings_is_writable (data->wp_settings, WP_SHADING_KEY))
     gtk_widget_set_sensitive (data->wp_color_menu, FALSE);
   else
     gtk_widget_set_sensitive (data->wp_color_menu, TRUE);
 
-  if (!mateconf_client_key_is_writable (data->client, WP_PCOLOR_KEY, NULL))
+  if (!g_settings_is_writable (data->wp_settings, WP_PCOLOR_KEY))
     gtk_widget_set_sensitive (data->wp_pcpicker, FALSE);
   else
     gtk_widget_set_sensitive (data->wp_pcpicker, TRUE);
 
-  if (!mateconf_client_key_is_writable (data->client, WP_SCOLOR_KEY, NULL))
+  if (!g_settings_is_writable (data->wp_settings, WP_SCOLOR_KEY))
     gtk_widget_set_sensitive (data->wp_scpicker, FALSE);
   else
     gtk_widget_set_sensitive (data->wp_scpicker, TRUE);
@@ -316,9 +315,8 @@ wp_scale_type_changed (GtkComboBox *combobox,
   if (pixbuf != NULL)
     g_object_unref (pixbuf);
 
-  if (mateconf_client_key_is_writable (data->client, WP_OPTIONS_KEY, NULL))
-    mateconf_client_set_string (data->client, WP_OPTIONS_KEY,
-                             wp_item_option_to_string (item->options), NULL);
+  if (g_settings_is_writable (data->wp_settings, WP_OPTIONS_KEY))
+    g_settings_set_enum (data->wp_settings, WP_OPTIONS_KEY, item->options);
 }
 
 static void
@@ -343,9 +341,8 @@ wp_shade_type_changed (GtkWidget *combobox,
   if (pixbuf != NULL)
     g_object_unref (pixbuf);
 
-  if (mateconf_client_key_is_writable (data->client, WP_SHADING_KEY, NULL))
-    mateconf_client_set_string (data->client, WP_SHADING_KEY,
-                             wp_item_shading_to_string (item->shade_type), NULL);
+  if (g_settings_is_writable (data->wp_settings, WP_SHADING_KEY))
+    g_settings_set_enum (data->wp_settings, WP_SHADING_KEY, item->shade_type);
 }
 
 static void
@@ -368,8 +365,8 @@ wp_color_changed (AppearanceData *data,
 
     pcolor = gdk_color_to_string (item->pcolor);
     scolor = gdk_color_to_string (item->scolor);
-    mateconf_client_set_string (data->client, WP_PCOLOR_KEY, pcolor, NULL);
-    mateconf_client_set_string (data->client, WP_SCOLOR_KEY, scolor, NULL);
+    g_settings_set_string (data->wp_settings, WP_PCOLOR_KEY, pcolor);
+    g_settings_set_string (data->wp_settings, WP_SCOLOR_KEY, scolor);
     g_free (pcolor);
     g_free (scolor);
   }
@@ -429,14 +426,14 @@ wp_uri_changed (const gchar *uri,
 }
 
 static void
-wp_file_changed (MateConfClient *client, guint id,
-                 MateConfEntry *entry,
+wp_file_changed (GSettings *settings,
+                 gchar *key,
                  AppearanceData *data)
 {
-  const gchar *uri;
+  gchar *uri;
   gchar *wpfile;
 
-  uri = mateconf_value_get_string (entry->value);
+  uri = g_settings_get_string (settings, key);
 
   if (g_utf8_validate (uri, -1, NULL) && g_file_test (uri, G_FILE_TEST_EXISTS))
     wpfile = g_strdup (uri);
@@ -446,26 +443,29 @@ wp_file_changed (MateConfClient *client, guint id,
   wp_uri_changed (wpfile, data);
 
   g_free (wpfile);
+  g_free (uri);
 }
 
 static void
-wp_options_changed (MateConfClient *client, guint id,
-                    MateConfEntry *entry,
+wp_options_changed (GSettings *settings,
+                    gchar *key,
                     AppearanceData *data)
 {
   MateWPItem *item;
-  const gchar *option;
+  gchar *option;
 
-  option = mateconf_value_get_string (entry->value);
+  option = g_settings_get_string (settings, key);
 
   /* "none" means we don't use a background image */
   if (option == NULL || !strcmp (option, "none"))
   {
     /* temporarily disconnect so we don't override settings when
      * updating the selection */
-    data->wp_update_mateconf = FALSE;
+    data->wp_update_settings = FALSE;
     wp_uri_changed ("(none)", data);
-    data->wp_update_mateconf = TRUE;
+    data->wp_update_settings = TRUE;
+    if (option)
+        g_free (option);
     return;
   }
 
@@ -473,14 +473,15 @@ wp_options_changed (MateConfClient *client, guint id,
 
   if (item != NULL)
   {
-    item->options = wp_item_string_to_option (option);
+    item->options = g_settings_get_enum (settings, key);
     wp_option_menu_set (data, item->options, FALSE);
   }
+  g_free (option);
 }
 
 static void
-wp_shading_changed (MateConfClient *client, guint id,
-                    MateConfEntry *entry,
+wp_shading_changed (GSettings *settings,
+                    gchar *key,
                     AppearanceData *data)
 {
   MateWPItem *item;
@@ -491,59 +492,62 @@ wp_shading_changed (MateConfClient *client, guint id,
 
   if (item != NULL)
   {
-    item->shade_type = wp_item_string_to_shading (mateconf_value_get_string (entry->value));
+    item->shade_type = g_settings_get_enum (settings, key);
     wp_option_menu_set (data, item->shade_type, TRUE);
   }
 }
 
 static void
-wp_color1_changed (MateConfClient *client, guint id,
-                   MateConfEntry *entry,
+wp_color1_changed (GSettings *settings,
+                   gchar *key,
                    AppearanceData *data)
 {
   GdkColor color;
-  const gchar *colorhex;
+  gchar *colorhex;
 
-  colorhex = mateconf_value_get_string (entry->value);
+  colorhex = g_settings_get_string (settings, key);
 
   gdk_color_parse (colorhex, &color);
 
   gtk_color_button_set_color (GTK_COLOR_BUTTON (data->wp_pcpicker), &color);
 
   wp_color_changed (data, FALSE);
+
+  g_free (colorhex);
 }
 
 static void
-wp_color2_changed (MateConfClient *client, guint id,
-                   MateConfEntry *entry,
+wp_color2_changed (GSettings *settings,
+                   gchar *key,
                    AppearanceData *data)
 {
   GdkColor color;
-  const gchar *colorhex;
+  gchar *colorhex;
 
   wp_set_sensitivities (data);
 
-  colorhex = mateconf_value_get_string (entry->value);
+  colorhex = g_settings_get_string (settings, key);
 
   gdk_color_parse (colorhex, &color);
 
   gtk_color_button_set_color (GTK_COLOR_BUTTON (data->wp_scpicker), &color);
 
   wp_color_changed (data, FALSE);
+
+  g_free (colorhex);
 }
 
 static gboolean
 wp_props_wp_set (AppearanceData *data, MateWPItem *item)
 {
-  MateConfChangeSet *cs;
   gchar *pcolor, *scolor;
 
-  cs = mateconf_change_set_new ();
+  g_settings_delay (data->wp_settings);
 
   if (!strcmp (item->filename, "(none)"))
   {
-    mateconf_change_set_set_string (cs, WP_OPTIONS_KEY, "none");
-    mateconf_change_set_set_string (cs, WP_FILE_KEY, "");
+    g_settings_set_string (data->wp_settings, WP_OPTIONS_KEY, "none");
+    g_settings_set_string (data->wp_settings, WP_FILE_KEY, "");
   }
   else
   {
@@ -557,27 +561,23 @@ wp_props_wp_set (AppearanceData *data, MateWPItem *item)
     if (uri == NULL) {
       g_warning ("Failed to convert filename to UTF-8: %s", item->filename);
     } else {
-      mateconf_change_set_set_string (cs, WP_FILE_KEY, uri);
+      g_settings_set_string (data->wp_settings, WP_FILE_KEY, uri);
       g_free (uri);
     }
 
-    mateconf_change_set_set_string (cs, WP_OPTIONS_KEY,
-                                 wp_item_option_to_string (item->options));
+    g_settings_set_enum (data->wp_settings, WP_OPTIONS_KEY, item->options);
   }
 
-  mateconf_change_set_set_string (cs, WP_SHADING_KEY,
-                               wp_item_shading_to_string (item->shade_type));
+  g_settings_set_enum (data->wp_settings, WP_SHADING_KEY, item->shade_type);
 
   pcolor = gdk_color_to_string (item->pcolor);
   scolor = gdk_color_to_string (item->scolor);
-  mateconf_change_set_set_string (cs, WP_PCOLOR_KEY, pcolor);
-  mateconf_change_set_set_string (cs, WP_SCOLOR_KEY, scolor);
+  g_settings_set_string (data->wp_settings, WP_PCOLOR_KEY, pcolor);
+  g_settings_set_string (data->wp_settings, WP_SCOLOR_KEY, scolor);
   g_free (pcolor);
   g_free (scolor);
 
-  mateconf_client_commit_change_set (data->client, cs, TRUE, NULL);
-
-  mateconf_change_set_unref (cs);
+  g_settings_apply (data->wp_settings);
 
   return FALSE;
 }
@@ -604,7 +604,7 @@ wp_props_wp_selected (GtkTreeSelection *selection,
     gtk_color_button_set_color (GTK_COLOR_BUTTON (data->wp_scpicker),
                                 item->scolor);
 
-    if (data->wp_update_mateconf)
+    if (data->wp_update_settings)
       wp_props_wp_set (data, item);
   }
   else
@@ -941,15 +941,13 @@ wp_load_stuffs (void *user_data)
   g_hash_table_foreach (data->wp_hash, (GHFunc) wp_props_load_wallpaper,
                         data);
 
-  style = mateconf_client_get_string (data->client,
-                                   WP_OPTIONS_KEY,
-                                   NULL);
+  style = g_settings_get_string (data->wp_settings,
+                                   WP_OPTIONS_KEY);
   if (style == NULL)
     style = g_strdup ("none");
 
-  uri = mateconf_client_get_string (data->client,
-                                 WP_FILE_KEY,
-                                 NULL);
+  uri = g_settings_get_string (data->wp_settings,
+                                 WP_FILE_KEY);
 
   if (uri && *uri == '\0')
   {
@@ -971,7 +969,7 @@ wp_load_stuffs (void *user_data)
 
   if (item != NULL)
   {
-    /* update with the current mateconf settings */
+    /* update with the current gsettings */
     mate_wp_item_update (item);
 
     if (strcmp (style, "none") != 0)
@@ -1221,7 +1219,7 @@ desktop_init (AppearanceData *data,
   GtkCellRenderer *cr;
   char *url;
 
-  data->wp_update_mateconf = TRUE;
+  data->wp_update_settings = TRUE;
 
   data->wp_uris = NULL;
   if (uris != NULL) {
@@ -1232,7 +1230,7 @@ desktop_init (AppearanceData *data,
   }
 
   w = appearance_capplet_get_widget (data, "more_backgrounds_linkbutton");
-  url = mateconf_client_get_string (data->client, MORE_BACKGROUNDS_URL_KEY, NULL);
+  url = g_settings_get_string (data->settings, MORE_BACKGROUNDS_URL_KEY);
   if (url != NULL && url[0] != '\0') {
     gtk_link_button_set_uri (GTK_LINK_BUTTON (w), url);
     gtk_widget_show (w);
@@ -1243,29 +1241,26 @@ desktop_init (AppearanceData *data,
 
   data->wp_hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-  mateconf_client_add_dir (data->client, WP_PATH_KEY,
-      MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-
-  mateconf_client_notify_add (data->client,
-                           WP_FILE_KEY,
-                           (MateConfClientNotifyFunc) wp_file_changed,
-                           data, NULL, NULL);
-  mateconf_client_notify_add (data->client,
-                           WP_OPTIONS_KEY,
-                           (MateConfClientNotifyFunc) wp_options_changed,
-                           data, NULL, NULL);
-  mateconf_client_notify_add (data->client,
-                           WP_SHADING_KEY,
-                           (MateConfClientNotifyFunc) wp_shading_changed,
-                           data, NULL, NULL);
-  mateconf_client_notify_add (data->client,
-                           WP_PCOLOR_KEY,
-                           (MateConfClientNotifyFunc) wp_color1_changed,
-                           data, NULL, NULL);
-  mateconf_client_notify_add (data->client,
-                           WP_SCOLOR_KEY,
-                           (MateConfClientNotifyFunc) wp_color2_changed,
-                           data, NULL, NULL);
+  g_signal_connect (data->wp_settings,
+                           "changed::" WP_FILE_KEY,
+                           G_CALLBACK (wp_file_changed),
+                           data);
+  g_signal_connect (data->wp_settings,
+                           "changed::" WP_OPTIONS_KEY,
+                           G_CALLBACK (wp_options_changed),
+                           data);
+  g_signal_connect (data->wp_settings,
+                           "changed::" WP_SHADING_KEY,
+                           G_CALLBACK (wp_shading_changed),
+                           data);
+  g_signal_connect (data->wp_settings,
+                           "changed::" WP_PCOLOR_KEY,
+                           G_CALLBACK (wp_color1_changed),
+                           data);
+  g_signal_connect (data->wp_settings,
+                           "changed::" WP_SCOLOR_KEY,
+                           G_CALLBACK (wp_color2_changed),
+                           data);
 
   data->wp_model = GTK_TREE_MODEL (gtk_list_store_new (2, GDK_TYPE_PIXBUF,
                                                        G_TYPE_POINTER));

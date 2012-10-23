@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007, 2010 The MATE Foundation
+ * Copyright (C) 2007, 2010 The GNOME Foundation
  * Written by Thomas Wood <thos@gnome.org>
  * All Rights Reserved
  *
@@ -22,12 +22,16 @@
 #include <string.h>
 #include <pango/pango.h>
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 
 #include "theme-util.h"
 #include "gtkrc-utils.h"
-#include "mateconf-property-editor.h"
 #include "theme-thumbnail.h"
 #include "capplet-util.h"
+
+#define GSETTINGS_SETTINGS "GSETTINGS_SETTINGS"
+#define GSETTINGS_KEY      "GSETTINGS_KEY"
+#define THEME_DATA         "THEME_DATA"
 
 typedef void (* ThumbnailGenFunc) (void               *type,
 				   ThemeThumbnailFunc  theme,
@@ -37,7 +41,7 @@ typedef void (* ThumbnailGenFunc) (void               *type,
 typedef struct {
   AppearanceData *data;
   GdkPixbuf *thumbnail;
-} PEditorConvData;
+} ThemeConvData;
 
 static void update_message_area (AppearanceData *data);
 static void create_thumbnail (const gchar *name, GdkPixbuf *default_thumb, AppearanceData *data);
@@ -80,18 +84,15 @@ find_string_in_model (GtkTreeModel *model, const gchar *value, gint column)
   return path;
 }
 
-static MateConfValue *
-conv_to_widget_cb (MateConfPropertyEditor *peditor, const MateConfValue *value)
+static void
+treeview_gsettings_changed_callback (GSettings *settings, gchar *key, GtkTreeView *list)
 {
   GtkTreeModel *store;
-  GtkTreeView *list;
-  const gchar *curr_value;
-  MateConfValue *new_value;
+  gchar *curr_value;
   gchar *path;
 
   /* find value in model */
-  curr_value = mateconf_value_get_string (value);
-  list = GTK_TREE_VIEW (mateconf_property_editor_get_ui_control (peditor));
+  curr_value = g_settings_get_string (settings, key);
   store = gtk_tree_view_get_model (list);
 
   path = find_string_in_model (store, curr_value, COL_NAME);
@@ -103,11 +104,11 @@ conv_to_widget_cb (MateConfPropertyEditor *peditor, const MateConfValue *value)
   {
     GtkListStore *list_store;
     GtkTreeIter iter, sort_iter;
-    PEditorConvData *conv;
+    ThemeConvData *conv;
 
     list_store = GTK_LIST_STORE (gtk_tree_model_sort_get_model (GTK_TREE_MODEL_SORT (store)));
 
-    g_object_get (peditor, "data", &conv, NULL);
+    conv = g_object_get_data (G_OBJECT(list), THEME_DATA);
     gtk_list_store_insert_with_values (list_store, &iter, 0,
                                        COL_LABEL, curr_value,
                                        COL_NAME, curr_value,
@@ -120,25 +121,27 @@ conv_to_widget_cb (MateConfPropertyEditor *peditor, const MateConfValue *value)
 
     create_thumbnail (curr_value, conv->thumbnail, conv->data);
   }
-
-  new_value = mateconf_value_new (MATECONF_VALUE_STRING);
-  mateconf_value_set_string (new_value, path);
-  g_free (path);
-
-  return new_value;
+  /* select the new gsettings theme in treeview */
+  GtkTreeSelection *selection = gtk_tree_view_get_selection (list);
+  GtkTreePath *treepath = gtk_tree_path_new_from_string (path);
+  gtk_tree_selection_select_path (selection, treepath);
+  gtk_tree_view_scroll_to_cell (list, treepath, NULL, FALSE, 0, 0);
+  gtk_tree_path_free (treepath);
 }
 
-static MateConfValue *
-conv_from_widget_cb (MateConfPropertyEditor *peditor, const MateConfValue *value)
+static void
+treeview_selection_changed_callback (GtkTreeSelection *selection, guint data)
 {
-  MateConfValue *new_value = NULL;
+  GSettings *settings;
+  gchar *key;
   GtkTreeIter iter;
-  GtkTreeSelection *selection;
   GtkTreeModel *model;
   GtkTreeView *list;
 
-  list = GTK_TREE_VIEW (mateconf_property_editor_get_ui_control (peditor));
-  selection = gtk_tree_view_get_selection (list);
+  list = gtk_tree_selection_get_tree_view (selection);
+
+  settings = g_object_get_data (G_OBJECT (list), GSETTINGS_SETTINGS);
+  key = g_object_get_data (G_OBJECT (list), GSETTINGS_KEY);
 
   if (gtk_tree_selection_get_selected (selection, &model, &iter)) {
     gchar *list_value;
@@ -146,13 +149,9 @@ conv_from_widget_cb (MateConfPropertyEditor *peditor, const MateConfValue *value
     gtk_tree_model_get (model, &iter, COL_NAME, &list_value, -1);
 
     if (list_value) {
-      new_value = mateconf_value_new (MATECONF_VALUE_STRING);
-      mateconf_value_set_string (new_value, list_value);
-      g_free (list_value);
+      g_settings_set_string (settings, key, list_value);
     }
   }
-
-  return new_value;
 }
 
 static gint
@@ -299,7 +298,7 @@ update_color_buttons_from_settings (GtkSettings *settings,
 {
   gchar *scheme, *setting;
 
-  scheme = mateconf_client_get_string (data->client, COLOR_SCHEME_KEY, NULL);
+  scheme = g_settings_get_string (data->interface_settings, COLOR_SCHEME_KEY);
   g_object_get (settings, "gtk-color-scheme", &setting, NULL);
 
   if (scheme == NULL || strcmp (scheme, "") == 0)
@@ -381,7 +380,7 @@ color_button_clicked_cb (GtkWidget *colorbutton, AppearanceData *data)
   g_object_get (gtk_settings_get_default (), "gtk-color-scheme", &old_scheme, NULL);
 
   if (!mate_theme_color_scheme_equal (old_scheme, scheme->str)) {
-    mateconf_client_set_string (data->client, COLOR_SCHEME_KEY, scheme->str, NULL);
+    g_settings_set_string (data->interface_settings, COLOR_SCHEME_KEY, scheme->str);
 
     gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "color_scheme_defaults_button"), TRUE);
   }
@@ -392,7 +391,7 @@ color_button_clicked_cb (GtkWidget *colorbutton, AppearanceData *data)
 static void
 color_scheme_defaults_button_clicked_cb (GtkWidget *button, AppearanceData *data)
 {
-  mateconf_client_unset (data->client, COLOR_SCHEME_KEY, NULL);
+  g_settings_reset (data->interface_settings, COLOR_SCHEME_KEY);
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "color_scheme_defaults_button"), FALSE);
 }
 
@@ -407,16 +406,14 @@ style_response_cb (GtkDialog *dialog, gint response_id)
 }
 
 static void
-gtk_theme_changed (MateConfPropertyEditor *peditor,
-		   const gchar *key,
-		   const MateConfValue *value,
-		   AppearanceData *data)
+gtk_theme_changed (GSettings *settings, gchar *key, AppearanceData *data)
 {
   MateThemeInfo *theme = NULL;
-  const gchar *name;
-  GtkSettings *settings = gtk_settings_get_default ();
+  gchar *name;
+  GtkSettings *gtksettings = gtk_settings_get_default ();
 
-  if (value && (name = mateconf_value_get_string (value))) {
+  name = g_settings_get_string (settings, key);
+  if (name) {
     gchar *current;
 
     theme = mate_theme_info_find (name);
@@ -424,17 +421,18 @@ gtk_theme_changed (MateConfPropertyEditor *peditor,
     /* Manually update GtkSettings to new gtk+ theme.
      * This will eventually happen anyway, but we need the
      * info for the color scheme updates already. */
-    g_object_get (settings, "gtk-theme-name", &current, NULL);
+    g_object_get (gtksettings, "gtk-theme-name", &current, NULL);
 
     if (strcmp (current, name) != 0) {
-      g_object_set (settings, "gtk-theme-name", name, NULL);
+      g_object_set (gtksettings, "gtk-theme-name", name, NULL);
       update_message_area (data);
     }
 
     g_free (current);
 
-    check_color_schemes_enabled (settings, data);
-    update_color_buttons_from_settings (settings, data);
+    check_color_schemes_enabled (gtksettings, data);
+    update_color_buttons_from_settings (gtksettings, data);
+    g_free (name);
   }
 
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "gtk_themes_delete"),
@@ -442,32 +440,33 @@ gtk_theme_changed (MateConfPropertyEditor *peditor,
 }
 
 static void
-window_theme_changed (MateConfPropertyEditor *peditor,
-		      const gchar *key,
-		      const MateConfValue *value,
-		      AppearanceData *data)
+window_theme_changed (GSettings *settings, gchar *key, AppearanceData *data)
 {
   MateThemeInfo *theme = NULL;
-  const gchar *name;
+  gchar *name;
 
-  if (value && (name = mateconf_value_get_string (value)))
+  name = g_settings_get_string (settings, key);
+  if (name)
+  {
     theme = mate_theme_info_find (name);
+    g_free (name);
+  }
 
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "window_themes_delete"),
 			    theme_is_writable (theme));
 }
 
 static void
-icon_theme_changed (MateConfPropertyEditor *peditor,
-		    const gchar *key,
-		    const MateConfValue *value,
-		    AppearanceData *data)
+icon_theme_changed (GSettings *settings, gchar *key, AppearanceData *data)
 {
   MateThemeIconInfo *theme = NULL;
-  const gchar *name;
+  gchar *name;
 
-  if (value && (name = mateconf_value_get_string (value)))
+  name = g_settings_get_string (settings, key);
+  if (name) {
     theme = mate_theme_icon_info_find (name);
+    g_free (name);
+}
 
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "icon_themes_delete"),
 			    theme_is_writable (theme));
@@ -477,7 +476,7 @@ icon_theme_changed (MateConfPropertyEditor *peditor,
 static void
 cursor_size_changed_cb (int size, AppearanceData *data)
 {
-  mateconf_client_set_int (data->client, CURSOR_SIZE_KEY, size, NULL);
+  g_settings_set_int (data->mouse_settings, CURSOR_SIZE_KEY, size);
 }
 
 static void
@@ -486,7 +485,7 @@ cursor_size_scale_value_changed_cb (GtkRange *range, AppearanceData *data)
   MateThemeCursorInfo *theme;
   gchar *name;
 
-  name = mateconf_client_get_string (data->client, CURSOR_THEME_KEY, NULL);
+  name = g_settings_get_string (data->mouse_settings, CURSOR_THEME_KEY);
   if (name == NULL)
     return;
 
@@ -512,7 +511,7 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
   GtkWidget *cursor_size_small_label;
   GtkWidget *cursor_size_large_label;
   gboolean sensitive;
-  gint size, mateconf_size;
+  gint size, gsettings_size;
 
   cursor_size_scale = appearance_capplet_get_widget (data, "cursor_size_scale");
   cursor_size_label = appearance_capplet_get_widget (data, "cursor_size_label");
@@ -525,7 +524,7 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
   gtk_widget_set_sensitive (cursor_size_small_label, sensitive);
   gtk_widget_set_sensitive (cursor_size_large_label, sensitive);
 
-  mateconf_size = mateconf_client_get_int (data->client, CURSOR_SIZE_KEY, NULL);
+  gsettings_size = g_settings_get_int (data->mouse_settings, CURSOR_SIZE_KEY);
 
   if (sensitive) {
     GtkAdjustment *adjustment;
@@ -536,25 +535,25 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
     g_object_set (adjustment, "upper", (gdouble) theme->sizes->len - 1, NULL);
 
 
-    /* fallback if the mateconf value is bigger than all available sizes;
+    /* fallback if the gsettings value is bigger than all available sizes;
        use the largest we have */
     index = theme->sizes->len - 1;
 
-    /* set the slider to the cursor size which matches the mateconf setting best  */
+    /* set the slider to the cursor size which matches the gsettings setting best  */
     for (i = 0; i < theme->sizes->len; i++) {
       size = g_array_index (theme->sizes, gint, i);
 
-      if (size == mateconf_size) {
+      if (size == gsettings_size) {
       	index = i;
         break;
-      } else if (size > mateconf_size) {
+      } else if (size > gsettings_size) {
         if (i == 0) {
           index = 0;
         } else {
           gint diff, diff_to_last;
 
-          diff = size - mateconf_size;
-          diff_to_last = mateconf_size - g_array_index (theme->sizes, gint, i - 1);
+          diff = size - gsettings_size;
+          diff_to_last = gsettings_size - g_array_index (theme->sizes, gint, i - 1);
 
           index = (diff < diff_to_last) ? i : i - 1;
         }
@@ -572,22 +571,22 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
       size = 18;
   }
 
-  if (size != mateconf_size)
+  if (size != gsettings_size)
     cursor_size_changed_cb (size, data);
 #endif
 }
 
 static void
-cursor_theme_changed (MateConfPropertyEditor *peditor,
-		    const gchar *key,
-		    const MateConfValue *value,
-		    AppearanceData *data)
+cursor_theme_changed (GSettings *settings, gchar *key, AppearanceData *data)
 {
   MateThemeCursorInfo *theme = NULL;
-  const gchar *name;
+  gchar *name;
 
-  if (value && (name = mateconf_value_get_string (value)))
+  name = g_settings_get_string (settings, key);
+  if (name) {
     theme = mate_theme_cursor_info_find (name);
+    g_free (name);
+  }
 
   update_cursor_size_scale (theme, data);
 
@@ -872,17 +871,17 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
   GtkTreeModel *sort_model;
   GdkPixbuf *thumbnail;
   const gchar *key;
-  GObject *peditor;
-  MateConfValue *value;
   ThumbnailGenFunc generator;
   ThemeThumbnailFunc thumb_cb;
-  PEditorConvData *conv_data;
+  ThemeConvData *conv_data;
+  GSettings *settings;
 
   switch (type)
   {
     case THEME_TYPE_GTK:
       themes = mate_theme_info_find_by_type (MATE_THEME_GTK_2);
       thumbnail = data->gtk_theme_icon;
+      settings = data->interface_settings;
       key = GTK_THEME_KEY;
       generator = (ThumbnailGenFunc) generate_gtk_theme_thumbnail_async;
       thumb_cb = (ThemeThumbnailFunc) gtk_theme_thumbnail_cb;
@@ -891,6 +890,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
     case THEME_TYPE_WINDOW:
       themes = mate_theme_info_find_by_type (MATE_THEME_MARCO);
       thumbnail = data->window_theme_icon;
+      settings = data->marco_settings;
       key = MARCO_THEME_KEY;
       generator = (ThumbnailGenFunc) generate_marco_theme_thumbnail_async;
       thumb_cb = (ThemeThumbnailFunc) marco_theme_thumbnail_cb;
@@ -899,6 +899,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
     case THEME_TYPE_ICON:
       themes = mate_theme_icon_info_find_all ();
       thumbnail = data->icon_theme_icon;
+      settings = data->interface_settings;
       key = ICON_THEME_KEY;
       generator = (ThumbnailGenFunc) generate_icon_theme_thumbnail_async;
       thumb_cb = (ThemeThumbnailFunc) icon_theme_thumbnail_cb;
@@ -907,6 +908,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
     case THEME_TYPE_CURSOR:
       themes = mate_theme_cursor_info_find_all ();
       thumbnail = NULL;
+      settings = data->mouse_settings;
       key = CURSOR_THEME_KEY;
       generator = NULL;
       thumb_cb = NULL;
@@ -969,23 +971,41 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
   gtk_tree_view_column_add_attribute (column, renderer, "text", COL_LABEL);
   gtk_tree_view_append_column (GTK_TREE_VIEW (list), column);
 
-  conv_data = g_new (PEditorConvData, 1);
+  conv_data = g_new (ThemeConvData, 1);
   conv_data->data = data;
   conv_data->thumbnail = thumbnail;
-  peditor = mateconf_peditor_new_tree_view (NULL, key, list,
-      "conv-to-widget-cb", conv_to_widget_cb,
-      "conv-from-widget-cb", conv_from_widget_cb,
-      "data", conv_data,
-      "data-free-cb", g_free,
-      NULL);
-  g_signal_connect (peditor, "value-changed", callback, data);
+  
+  /* set useful data for callbacks */
+  g_object_set_data (G_OBJECT (list), THEME_DATA, conv_data);
+  g_object_set_data (G_OBJECT (list), GSETTINGS_SETTINGS, settings);
+  g_object_set_data (G_OBJECT (list), GSETTINGS_KEY, g_strdup(key));
+  
+  /* select in treeview the theme set in gsettings */
+  GtkTreeModel *treemodel;
+  treemodel = gtk_tree_view_get_model (list);
+  gchar *theme = g_settings_get_string (settings, key);
+  gchar *path = find_string_in_model (treemodel, theme, COL_NAME);
+  if (path)
+  {
+    GtkTreeSelection *selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (list));
+    GtkTreePath *treepath = gtk_tree_path_new_from_string (path);
+    gtk_tree_selection_select_path (selection, treepath);
+    gtk_tree_view_scroll_to_cell (list, treepath, NULL, FALSE, 0, 0);
+    gtk_tree_path_free (treepath);
+    g_free (path);
+  }
+  if (theme)
+    g_free (theme);
+  
+  /* connect to gsettings change event */
+  gchar *signal_name = g_strdup_printf("changed::%s", key);
+  g_signal_connect (settings, signal_name,
+      G_CALLBACK (treeview_gsettings_changed_callback), list);
+  g_free (signal_name);
 
-  /* init the delete buttons */
-  value = mateconf_client_get (data->client, key, NULL);
-  (*((void (*) (MateConfPropertyEditor *, const gchar *, const MateConfValue *, gpointer)) callback))
-      (MATECONF_PROPERTY_EDITOR (peditor), key, value, data);
-  if (value)
-    mateconf_value_free (value);
+  /* connect to treeview change event */
+  g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW (list)),
+      "changed", G_CALLBACK (treeview_selection_changed_callback), list);
 }
 
 void

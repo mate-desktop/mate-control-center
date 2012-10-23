@@ -185,69 +185,75 @@ static void theme_changed_on_disk_cb(MateThemeCommonInfo* theme, MateThemeChange
 	}
 }
 
-static gchar* get_default_string_from_key(MateConfClient* client, const char* key)
+/* Find out if the lockdown key has been set. */
+static gboolean is_locked_down()
 {
-	gchar* str = NULL;
-
-	MateConfValue* value = mateconf_client_get_default_from_schema(client, key, NULL);
-
-	if (value)
-	{
-		if (value->type == MATECONF_VALUE_STRING)
-		{
-			str = mateconf_value_to_string (value);
-		}
-
-		mateconf_value_free (value);
-	}
-
-	return str;
-}
-
-/* Find out if the lockdown key has been set.
- * Currently returns false on error... */
-static gboolean is_locked_down(MateConfClient* client)
-{
-	return mateconf_client_get_bool(client, LOCKDOWN_KEY, NULL);
+  gboolean is_locked;
+  GSettings *settings;
+  settings = g_settings_new (LOCKDOWN_SCHEMA);
+  is_locked = g_settings_get_boolean (settings, DISABLE_THEMES_SETTINGS_KEY);
+  g_object_unref (settings);
+  return is_locked;
 }
 
 static MateThemeMetaInfo *
-theme_load_from_mateconf (MateConfClient *client)
+theme_load_from_gsettings (AppearanceData *data)
 {
   MateThemeMetaInfo *theme;
   gchar *scheme;
+  const char * const *schemas;
+  gboolean schema_exists;
+  gint i;
 
   theme = mate_theme_meta_info_new ();
 
-  theme->gtk_theme_name = mateconf_client_get_string (client, GTK_THEME_KEY, NULL);
+  theme->gtk_theme_name = g_settings_get_string (data->interface_settings, GTK_THEME_KEY);
   if (theme->gtk_theme_name == NULL)
     theme->gtk_theme_name = g_strdup ("Clearlooks");
 
-  scheme = mateconf_client_get_string (client, COLOR_SCHEME_KEY, NULL);
+  scheme = g_settings_get_string (data->interface_settings, COLOR_SCHEME_KEY);
   if (scheme == NULL || !strcmp (scheme, "")) {
     g_free (scheme);
     scheme = gtkrc_get_color_scheme_for_theme (theme->gtk_theme_name);
   }
   theme->gtk_color_scheme = scheme;
 
-  theme->marco_theme_name = mateconf_client_get_string (client, MARCO_THEME_KEY, NULL);
+  theme->marco_theme_name = g_settings_get_string (data->marco_settings, MARCO_THEME_KEY);
   if (theme->marco_theme_name == NULL)
     theme->marco_theme_name = g_strdup ("Clearlooks");
 
-  theme->icon_theme_name = mateconf_client_get_string (client, ICON_THEME_KEY, NULL);
+  theme->icon_theme_name = g_settings_get_string (data->interface_settings, ICON_THEME_KEY);
   if (theme->icon_theme_name == NULL)
     theme->icon_theme_name = g_strdup ("mate");
 
-  theme->notification_theme_name = mateconf_client_get_string (client, NOTIFICATION_THEME_KEY, NULL);
+  /* We  need this because mate-control-center does not depend on mate-notification-daemon,
+   * and if we try to get notification theme without schema installed, gsettings crashes
+   * see https://bugzilla.gnome.org/show_bug.cgi?id=651225 */
+  schemas = g_settings_list_schemas ();
+  schema_exists = FALSE;
+  for (i = 0; schemas[i] != NULL; i++) {
+    if (g_strcmp0 (schemas[i], NOTIFICATION_SCHEMA) == 0) {
+      schema_exists = TRUE;
+      break;
+      }
+  }
+  if (schema_exists == TRUE) {
+    GSettings *notification_settings;
+    notification_settings = g_settings_new (NOTIFICATION_SCHEMA);
+    theme->notification_theme_name = g_settings_get_string (notification_settings, NOTIFICATION_THEME_KEY);
+    g_object_unref (notification_settings);
+  }
+  else
+    theme->notification_theme_name = NULL;
 
-  theme->cursor_theme_name = mateconf_client_get_string (client, CURSOR_THEME_KEY, NULL);
+  theme->cursor_theme_name = g_settings_get_string (data->mouse_settings, CURSOR_THEME_KEY);
 #ifdef HAVE_XCURSOR
-  theme->cursor_size = mateconf_client_get_int (client, CURSOR_SIZE_KEY, NULL);
+  theme->cursor_size = g_settings_get_int (data->mouse_settings, CURSOR_SIZE_KEY);
 #endif
   if (theme->cursor_theme_name == NULL)
     theme->cursor_theme_name = g_strdup ("default");
 
-  theme->application_font = mateconf_client_get_string (client, APPLICATION_FONT_KEY, NULL);
+  theme->application_font = g_settings_get_string (data->interface_settings, GTK_FONT_KEY);
 
   return theme;
 }
@@ -380,12 +386,12 @@ theme_set_custom_from_theme (const MateThemeMetaInfo *info, AppearanceData *data
     if (info->gtk_color_scheme)
       custom->gtk_color_scheme = g_strdup (info->gtk_color_scheme);
     else
-      custom->gtk_color_scheme = get_default_string_from_key (data->client, COLOR_SCHEME_KEY);
+      custom->gtk_color_scheme = g_strdup ("");
 
     if (info->application_font)
       custom->application_font = g_strdup (info->application_font);
     else
-      custom->application_font = get_default_string_from_key (data->client, APPLICATION_FONT_KEY);
+      custom->application_font = g_strdup (GTK_FONT_DEFAULT_VALUE);
   }
 
   /* select the custom theme */
@@ -443,42 +449,36 @@ theme_message_area_response_cb (GtkWidget *w,
   switch (response_id)
   {
     case RESPONSE_APPLY_BG:
-      mateconf_client_set_string (data->client, BACKGROUND_KEY,
-                               theme->background_image, NULL);
+      g_settings_set_string (data->wp_settings, WP_FILE_KEY, theme->background_image);
       break;
 
     case RESPONSE_REVERT_FONT:
       if (data->revert_application_font != NULL) {
-        mateconf_client_set_string (data->client, APPLICATION_FONT_KEY,
-                                 data->revert_application_font, NULL);
+        g_settings_set_string (data->interface_settings, GTK_FONT_KEY, data->revert_application_font);
         g_free (data->revert_application_font);
         data->revert_application_font = NULL;
       }
 
       if (data->revert_documents_font != NULL) {
-        mateconf_client_set_string (data->client, DOCUMENTS_FONT_KEY,
-                                 data->revert_documents_font, NULL);
+        g_settings_set_string (data->interface_settings, DOCUMENT_FONT_KEY, data->revert_documents_font);
         g_free (data->revert_documents_font);
         data->revert_documents_font = NULL;
       }
 
       if (data->revert_desktop_font != NULL) {
-        mateconf_client_set_string (data->client, DESKTOP_FONT_KEY,
-                                 data->revert_desktop_font, NULL);
+        g_settings_set_string (data->caja_settings, DESKTOP_FONT_KEY, data->revert_desktop_font);
         g_free (data->revert_desktop_font);
         data->revert_desktop_font = NULL;
       }
 
       if (data->revert_windowtitle_font != NULL) {
-        mateconf_client_set_string (data->client, WINDOWTITLE_FONT_KEY,
-                                 data->revert_windowtitle_font, NULL);
+        g_settings_set_string (data->marco_settings, WINDOW_TITLE_FONT_KEY, data->revert_windowtitle_font);
         g_free (data->revert_windowtitle_font);
         data->revert_windowtitle_font = NULL;
       }
 
       if (data->revert_monospace_font != NULL) {
-        mateconf_client_set_string (data->client, MONOSPACE_FONT_KEY,
-                                 data->revert_monospace_font, NULL);
+        g_settings_set_string (data->interface_settings, MONOSPACE_FONT_KEY, data->revert_monospace_font);
         g_free (data->revert_monospace_font);
         data->revert_monospace_font = NULL;
       }
@@ -486,7 +486,7 @@ theme_message_area_response_cb (GtkWidget *w,
 
     case RESPONSE_APPLY_FONT:
       if (theme->application_font) {
-        tmpfont = mateconf_client_get_string (data->client, APPLICATION_FONT_KEY, NULL);
+        tmpfont = g_settings_get_string (data->interface_settings, GTK_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_application_font);
 
@@ -496,12 +496,11 @@ theme_message_area_response_cb (GtkWidget *w,
           } else
             data->revert_application_font = tmpfont;
         }
-        mateconf_client_set_string (data->client, APPLICATION_FONT_KEY,
-                                 theme->application_font, NULL);
+        g_settings_set_string (data->interface_settings, GTK_FONT_KEY, theme->application_font);
       }
 
       if (theme->documents_font) {
-        tmpfont = mateconf_client_get_string (data->client, DOCUMENTS_FONT_KEY, NULL);
+        tmpfont = g_settings_get_string (data->interface_settings, DOCUMENT_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_documents_font);
 
@@ -511,12 +510,11 @@ theme_message_area_response_cb (GtkWidget *w,
           } else
             data->revert_documents_font = tmpfont;
         }
-        mateconf_client_set_string (data->client, DOCUMENTS_FONT_KEY,
-                                 theme->documents_font, NULL);
+        g_settings_set_string (data->interface_settings, DOCUMENT_FONT_KEY, theme->documents_font);
       }
 
       if (theme->desktop_font) {
-        tmpfont = mateconf_client_get_string (data->client, DESKTOP_FONT_KEY, NULL);
+        tmpfont = g_settings_get_string (data->caja_settings, DESKTOP_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_desktop_font);
 
@@ -526,12 +524,11 @@ theme_message_area_response_cb (GtkWidget *w,
           } else
             data->revert_desktop_font = tmpfont;
         }
-        mateconf_client_set_string (data->client, DESKTOP_FONT_KEY,
-                                 theme->desktop_font, NULL);
+        g_settings_set_string (data->caja_settings, DESKTOP_FONT_KEY, theme->desktop_font);
       }
 
       if (theme->windowtitle_font) {
-        tmpfont = mateconf_client_get_string (data->client, WINDOWTITLE_FONT_KEY, NULL);
+        tmpfont = g_settings_get_string (data->marco_settings, WINDOW_TITLE_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_windowtitle_font);
 
@@ -541,12 +538,11 @@ theme_message_area_response_cb (GtkWidget *w,
           } else
             data->revert_windowtitle_font = tmpfont;
         }
-        mateconf_client_set_string (data->client, WINDOWTITLE_FONT_KEY,
-                                 theme->windowtitle_font, NULL);
+        g_settings_set_string (data->marco_settings, WINDOW_TITLE_FONT_KEY, theme->windowtitle_font);
       }
 
       if (theme->monospace_font) {
-        tmpfont = mateconf_client_get_string (data->client, MONOSPACE_FONT_KEY, NULL);
+        tmpfont = g_settings_get_string (data->interface_settings, MONOSPACE_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_monospace_font);
 
@@ -556,8 +552,7 @@ theme_message_area_response_cb (GtkWidget *w,
           } else
             data->revert_monospace_font = tmpfont;
         }
-        mateconf_client_set_string (data->client, MONOSPACE_FONT_KEY,
-                                 theme->monospace_font, NULL);
+        g_settings_set_string (data->interface_settings, MONOSPACE_FONT_KEY, theme->monospace_font);
       }
       break;
 
@@ -602,42 +597,42 @@ theme_message_area_update (AppearanceData *data)
     if (theme->background_image != NULL) {
       gchar *background;
 
-      background = mateconf_client_get_string (data->client, BACKGROUND_KEY, NULL);
+      background = g_settings_get_string (data->wp_settings, WP_FILE_KEY);
       show_apply_background =
           (!background || strcmp (theme->background_image, background) != 0);
       g_free (background);
     }
 
     if (theme->application_font) {
-      font = mateconf_client_get_string (data->client, APPLICATION_FONT_KEY, NULL);
+      font = g_settings_get_string (data->interface_settings, GTK_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
       g_free (font);
     }
 
     if (!show_apply_font && theme->documents_font) {
-      font = mateconf_client_get_string (data->client, DOCUMENTS_FONT_KEY, NULL);
+      font = g_settings_get_string (data->interface_settings, DOCUMENT_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
       g_free (font);
     }
 
     if (!show_apply_font && theme->desktop_font) {
-      font = mateconf_client_get_string (data->client, DESKTOP_FONT_KEY, NULL);
+      font = g_settings_get_string (data->caja_settings, DESKTOP_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
       g_free (font);
     }
 
     if (!show_apply_font && theme->windowtitle_font) {
-      font = mateconf_client_get_string (data->client, WINDOWTITLE_FONT_KEY, NULL);
+      font = g_settings_get_string (data->marco_settings, WINDOW_TITLE_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
       g_free (font);
     }
 
     if (!show_apply_font && theme->monospace_font) {
-      font = mateconf_client_get_string (data->client, MONOSPACE_FONT_KEY, NULL);
+      font = g_settings_get_string (data->interface_settings, MONOSPACE_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
       g_free (font);
@@ -864,19 +859,19 @@ theme_delete_cb (GtkWidget *button, AppearanceData *data)
 static void
 theme_details_changed_cb (AppearanceData *data)
 {
-  MateThemeMetaInfo *mateconf_theme;
+  MateThemeMetaInfo *gsettings_theme;
   const MateThemeMetaInfo *selected;
   GtkIconView *icon_view;
   gboolean done = FALSE;
 
-  /* load new state from mateconf */
-  mateconf_theme = theme_load_from_mateconf (data->client);
+  /* load new state from gsettings */
+  gsettings_theme = theme_load_from_gsettings (data);
 
   /* check if it's our currently selected theme */
   icon_view = GTK_ICON_VIEW (appearance_capplet_get_widget (data, "theme_list"));
   selected = theme_get_selected (icon_view, data);
 
-  if (!selected || !(done = theme_is_equal (selected, mateconf_theme))) {
+  if (!selected || !(done = theme_is_equal (selected, gsettings_theme))) {
     /* look for a matching metatheme */
     GList *theme_list, *l;
 
@@ -885,7 +880,7 @@ theme_details_changed_cb (AppearanceData *data)
     for (l = theme_list; l; l = l->next) {
       MateThemeMetaInfo *info = l->data;
 
-      if (theme_is_equal (mateconf_theme, info)) {
+      if (theme_is_equal (gsettings_theme, info)) {
         theme_select_name (icon_view, info->name);
         done = TRUE;
         break;
@@ -896,9 +891,9 @@ theme_details_changed_cb (AppearanceData *data)
 
   if (!done)
     /* didn't find a match, set or update custom */
-    theme_set_custom_from_theme (mateconf_theme, data);
+    theme_set_custom_from_theme (gsettings_theme, data);
 
-  mate_theme_meta_info_free (mateconf_theme);
+  mate_theme_meta_info_free (gsettings_theme);
 }
 
 static void
@@ -910,10 +905,9 @@ theme_setting_changed_cb (GObject *settings,
 }
 
 static void
-theme_mateconf_changed (MateConfClient *client,
-                     guint conn_id,
-                     MateConfEntry *entry,
-                     AppearanceData *data)
+theme_gsettings_changed (GSettings *settings,
+                         gchar *key,
+                         AppearanceData *data)
 {
   theme_details_changed_cb (data);
 }
@@ -991,7 +985,7 @@ theme_drag_data_received_cb (GtkWidget *widget,
   g_strfreev (uris);
 }
 
-static void background_or_font_changed(MateConfEngine* conf, guint cnxn_id, MateConfEntry* entry, AppearanceData* data)
+static void background_or_font_changed(GSettings *settings, gchar *key, AppearanceData* data)
 {
 	theme_message_area_update(data);
 }
@@ -1030,7 +1024,7 @@ void themes_init(AppearanceData* data)
   theme_list = mate_theme_meta_info_find_all ();
   mate_theme_info_register_theme_change ((ThemeChangedCallback) theme_changed_on_disk_cb, data);
 
-  data->theme_custom = theme_load_from_mateconf (data->client);
+  data->theme_custom = theme_load_from_gsettings (data);
   data->theme_custom->name = g_strdup (CUSTOM_THEME_NAME);
   data->theme_custom->readable_name = g_strdup_printf ("<i>%s</i>", _("Custom"));
 
@@ -1115,11 +1109,11 @@ void themes_init(AppearanceData* data)
 		     drop_types, G_N_ELEMENTS (drop_types),
 		     GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
   g_signal_connect (w, "drag-data-received", (GCallback) theme_drag_data_received_cb, data);
-  if (is_locked_down (data->client))
+  if (is_locked_down ())
     gtk_widget_set_sensitive (w, FALSE);
 
   w = appearance_capplet_get_widget (data, "more_themes_linkbutton");
-  url = mateconf_client_get_string (data->client, MORE_THEMES_URL_KEY, NULL);
+  url = g_settings_get_string (data->settings, MORE_THEMES_URL_KEY);
   if (url != NULL && url[0] != '\0') {
     gtk_link_button_set_uri (GTK_LINK_BUTTON (w), url);
     gtk_widget_show (w);
@@ -1128,20 +1122,18 @@ void themes_init(AppearanceData* data)
   }
   g_free (url);
 
-  /* listen to mateconf changes, too */
-  mateconf_client_add_dir (data->client, "/apps/marco/general", MATECONF_CLIENT_PRELOAD_NONE, NULL);
-  mateconf_client_add_dir (data->client, "/desktop/mate/interface", MATECONF_CLIENT_PRELOAD_NONE, NULL);
-  mateconf_client_notify_add (data->client, MARCO_THEME_KEY, (MateConfClientNotifyFunc) theme_mateconf_changed, data, NULL, NULL);
-  mateconf_client_notify_add (data->client, CURSOR_THEME_KEY, (MateConfClientNotifyFunc) theme_mateconf_changed, data, NULL, NULL);
+  /* listen to gsettings changes, too */
+  g_signal_connect (data->marco_settings, "changed::" MARCO_THEME_KEY, G_CALLBACK (theme_gsettings_changed), data);
+  g_signal_connect (data->mouse_settings, "changed::" CURSOR_THEME_KEY, G_CALLBACK (theme_gsettings_changed), data);
 #ifdef HAVE_XCURSOR
-  mateconf_client_notify_add (data->client, CURSOR_SIZE_KEY, (MateConfClientNotifyFunc) theme_mateconf_changed, data, NULL, NULL);
+  g_signal_connect (data->mouse_settings, "changed::" CURSOR_SIZE_KEY, G_CALLBACK (theme_gsettings_changed), data);
 #endif
-  mateconf_client_notify_add (data->client, BACKGROUND_KEY, (MateConfClientNotifyFunc) background_or_font_changed, data, NULL, NULL);
-  mateconf_client_notify_add (data->client, APPLICATION_FONT_KEY, (MateConfClientNotifyFunc) background_or_font_changed, data, NULL, NULL);
-  mateconf_client_notify_add (data->client, DOCUMENTS_FONT_KEY, (MateConfClientNotifyFunc) background_or_font_changed, data, NULL, NULL);
-  mateconf_client_notify_add (data->client, DESKTOP_FONT_KEY, (MateConfClientNotifyFunc) background_or_font_changed, data, NULL, NULL);
-  mateconf_client_notify_add (data->client, WINDOWTITLE_FONT_KEY, (MateConfClientNotifyFunc) background_or_font_changed, data, NULL, NULL);
-  mateconf_client_notify_add (data->client, MONOSPACE_FONT_KEY, (MateConfClientNotifyFunc) background_or_font_changed, data, NULL, NULL);
+  g_signal_connect (data->wp_settings, "changed::" WP_FILE_KEY, G_CALLBACK (background_or_font_changed), data);
+  g_signal_connect (data->interface_settings, "changed::" GTK_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+  g_signal_connect (data->interface_settings, "changed::" DOCUMENT_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+  g_signal_connect (data->caja_settings, "changed::" DESKTOP_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+  g_signal_connect (data->marco_settings, "changed::" WINDOW_TITLE_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+  g_signal_connect (data->interface_settings, "changed::" MONOSPACE_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
 
   settings = gtk_settings_get_default ();
   g_signal_connect (settings, "notify::gtk-color-scheme", (GCallback) theme_setting_changed_cb, data);

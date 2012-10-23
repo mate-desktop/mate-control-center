@@ -18,26 +18,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#define GTK_THEME_KEY "/desktop/mate/interface/gtk_theme"
-#define MARCO_THEME_KEY "/apps/marco/general/theme"
-#define ICON_THEME_KEY "/desktop/mate/interface/icon_theme"
-#define NOTIFICATION_THEME_KEY "/apps/notification-daemon/theme"
-#define COLOR_SCHEME_KEY "/desktop/mate/interface/gtk_color_scheme"
-#define LOCKDOWN_KEY "/desktop/mate/lockdown/disable_theme_settings"
-#define BACKGROUND_KEY "/desktop/mate/background/picture_filename"
-#define APPLICATION_FONT_KEY "/desktop/mate/interface/font_name"
-#define DOCUMENTS_FONT_KEY "/desktop/mate/interface/document_font_name"
-#define DESKTOP_FONT_KEY "/apps/caja/preferences/desktop_font"
-#define WINDOWTITLE_FONT_KEY "/apps/marco/general/titlebar_font"
-#define MONOSPACE_FONT_KEY "/desktop/mate/interface/monospace_font_name"
-
-#ifdef HAVE_XCURSOR
-	#define CURSOR_THEME_KEY "/desktop/mate/peripherals/mouse/cursor_theme"
-	#define CURSOR_SIZE_KEY "/desktop/mate/peripherals/mouse/cursor_size"
-#else
-	#define CURSOR_THEME_KEY "/desktop/mate/peripherals/mouse/cursor_font"
-#endif
-
 enum {
 	COL_THUMBNAIL,
 	COL_LABEL,

@@ -145,7 +145,6 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 		{
 			MateWPItem * wp;
 			char *pcolor = NULL, *scolor = NULL;
-			char *s;
 			gboolean have_scale = FALSE, have_shade = FALSE;
 
 			wp = g_new0(MateWPItem, 1);
@@ -266,26 +265,22 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 			/* Verify the colors and alloc some GdkColors here */
 			if (!have_scale)
 			{
-				s = mateconf_client_get_string(data->client, WP_OPTIONS_KEY, NULL);
-				wp->options = wp_item_string_to_option (s);
-				g_free (s);
+				wp->options = g_settings_get_enum(data->wp_settings, WP_OPTIONS_KEY);
 			}
 
 			if (!have_shade)
 			{
-				s = mateconf_client_get_string(data->client, WP_SHADING_KEY, NULL);
-				wp->shade_type = wp_item_string_to_shading (s);
-				g_free (s);
+				wp->shade_type = g_settings_get_enum(data->wp_settings, WP_SHADING_KEY);
 			}
 
 			if (pcolor == NULL)
 			{
-				pcolor = mateconf_client_get_string(data->client, WP_PCOLOR_KEY, NULL);
+				pcolor = g_settings_get_string(data->wp_settings, WP_PCOLOR_KEY);
 			}
 
 			if (scolor == NULL)
 			{
-				scolor = mateconf_client_get_string (data->client, WP_SCOLOR_KEY, NULL);
+				scolor = g_settings_get_string (data->wp_settings, WP_SCOLOR_KEY);
 			}
 
 			gdk_color_parse(pcolor, &color1);

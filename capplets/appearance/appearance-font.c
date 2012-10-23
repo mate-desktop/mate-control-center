@@ -31,26 +31,11 @@
 #endif /* HAVE_XFT2 */
 
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 
 #include "capplet-util.h"
-#include "mateconf-property-editor.h"
-
-#define GTK_FONT_KEY           "/desktop/mate/interface/font_name"
-#define DESKTOP_FONT_KEY       "/apps/caja/preferences/desktop_font"
-
-#define MARCO_DIR "/apps/marco/general"
-#define WINDOW_TITLE_FONT_KEY MARCO_DIR "/titlebar_font"
-#define WINDOW_TITLE_USES_SYSTEM_KEY MARCO_DIR "/titlebar_uses_system_font"
-#define MONOSPACE_FONT_KEY "/desktop/mate/interface/monospace_font_name"
-#define DOCUMENT_FONT_KEY "/desktop/mate/interface/document_font_name"
 
 #ifdef HAVE_XFT2
-#define FONT_RENDER_DIR "/desktop/mate/font_rendering"
-#define FONT_ANTIALIASING_KEY FONT_RENDER_DIR "/antialiasing"
-#define FONT_HINTING_KEY      FONT_RENDER_DIR "/hinting"
-#define FONT_RGBA_ORDER_KEY   FONT_RENDER_DIR "/rgba_order"
-#define FONT_DPI_KEY          FONT_RENDER_DIR "/dpi"
-
 /* X servers sometimes lie about the screen's physical dimensions, so we cannot
  * compute an accurate DPI value.  When this happens, the user gets fonts that
  * are too huge or too tiny.  So, we see what the server returns:  if it reports
@@ -58,7 +43,7 @@
  * DPI_HIGH_REASONABLE_VALUE], then we assume that it is lying and we use
  * DPI_FALLBACK instead.
  *
- * See get_dpi_from_mateconf_or_server() below, and also
+ * See get_dpi_from_mate_conf_or_server() below, and also
  * https://bugzilla.novell.com/show_bug.cgi?id=217790
  */
 #define DPI_FALLBACK 96
@@ -67,7 +52,6 @@
 #endif /* HAVE_XFT2 */
 
 static gboolean in_change = FALSE;
-static gchar* old_font = NULL;
 
 #define MAX_FONT_POINT_WITHOUT_WARNING 32
 #define MAX_FONT_SIZE_WITHOUT_WARNING MAX_FONT_POINT_WITHOUT_WARNING * 1024
@@ -112,13 +96,6 @@ typedef enum {
 	ANTIALIAS_RGBA
 } Antialiasing;
 
-static MateConfEnumStringPair antialias_enums[] = {
-	{ANTIALIAS_NONE,      "none"},
-	{ANTIALIAS_GRAYSCALE, "grayscale"},
-	{ANTIALIAS_RGBA,      "rgba"},
-	{-1,                  NULL}
-};
-
 typedef enum {
 	HINT_NONE,
 	HINT_SLIGHT,
@@ -126,28 +103,12 @@ typedef enum {
 	HINT_FULL
 } Hinting;
 
-static MateConfEnumStringPair hint_enums[] = {
-	{HINT_NONE,   "none"},
-	{HINT_SLIGHT, "slight"},
-	{HINT_MEDIUM, "medium"},
-	{HINT_FULL,   "full"},
-	{-1,          NULL}
-};
-
 typedef enum {
 	RGBA_RGB,
 	RGBA_BGR,
 	RGBA_VRGB,
 	RGBA_VBGR
 } RgbaOrder;
-
-static MateConfEnumStringPair rgba_order_enums[] = {
-	{RGBA_RGB,  "rgb" },
-	{RGBA_BGR,  "bgr" },
-	{RGBA_VRGB, "vrgb" },
-	{RGBA_VBGR, "vbgr" },
-	{-1,         NULL }
-};
 
 static XftFont* open_pattern(FcPattern* pattern, Antialiasing antialiasing, Hinting hinting)
 {
@@ -319,32 +280,9 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 
 /*
  * Code implementing a group of radio buttons with different Xft option combinations.
- * If one of the buttons is matched by the MateConf key, we pick it. Otherwise we
+ * If one of the buttons is matched by the GSettings key, we pick it. Otherwise we
  * show the group as inconsistent.
  */
-static void
-font_render_get_mateconf (MateConfClient  *client,
-		       Antialiasing *antialiasing,
-		       Hinting      *hinting)
-{
-  gchar *antialias_str = mateconf_client_get_string (client, FONT_ANTIALIASING_KEY, NULL);
-  gchar *hint_str = mateconf_client_get_string (client, FONT_HINTING_KEY, NULL);
-  gint val;
-
-  val = ANTIALIAS_GRAYSCALE;
-  if (antialias_str) {
-    mateconf_string_to_enum (antialias_enums, antialias_str, &val);
-    g_free (antialias_str);
-  }
-  *antialiasing = val;
-
-  val = HINT_FULL;
-  if (hint_str) {
-    mateconf_string_to_enum (hint_enums, hint_str, &val);
-    g_free (hint_str);
-  }
-  *hinting = val;
-}
 
 typedef struct {
   Antialiasing antialiasing;
@@ -355,14 +293,15 @@ typedef struct {
 static GSList *font_pairs = NULL;
 
 static void
-font_render_load (MateConfClient *client)
+font_render_load (GSettings *settings)
 {
   Antialiasing antialiasing;
   Hinting hinting;
   gboolean inconsistent = TRUE;
   GSList *tmp_list;
 
-  font_render_get_mateconf (client, &antialiasing, &hinting);
+  antialiasing = g_settings_get_enum (settings, FONT_ANTIALIASING_KEY);
+  hinting = g_settings_get_enum (settings, FONT_HINTING_KEY);
 
   in_change = TRUE;
 
@@ -386,12 +325,11 @@ font_render_load (MateConfClient *client)
 }
 
 static void
-font_render_changed (MateConfClient *client,
-                     guint        cnxn_id,
-                     MateConfEntry  *entry,
-                     gpointer     user_data)
+font_render_changed (GSettings *settings,
+                     gchar     *key,
+                     gpointer   user_data)
 {
-  font_render_load (client);
+  font_render_load (settings);
 }
 
 static void
@@ -399,18 +337,14 @@ font_radio_toggled (GtkToggleButton *toggle_button,
 		    FontPair        *pair)
 {
   if (!in_change) {
-    MateConfClient *client = mateconf_client_get_default ();
+    GSettings *settings = g_settings_new (FONT_RENDER_SCHEMA);
 
-    mateconf_client_set_string (client, FONT_ANTIALIASING_KEY,
-			     mateconf_enum_to_string (antialias_enums, pair->antialiasing),
-			     NULL);
-    mateconf_client_set_string (client, FONT_HINTING_KEY,
-			     mateconf_enum_to_string (hint_enums, pair->hinting),
-			     NULL);
+    g_settings_set_enum (settings, FONT_ANTIALIASING_KEY, pair->antialiasing);
+    g_settings_set_enum (settings, FONT_HINTING_KEY, pair->hinting);
 
     /* Restore back to the previous state until we get notification */
-    font_render_load (client);
-    g_object_unref (client);
+    font_render_load (settings);
+    g_object_unref (settings);
   }
 }
 
@@ -438,161 +372,28 @@ static void
 marco_titlebar_load_sensitivity (AppearanceData *data)
 {
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "window_title_font"),
-			    !mateconf_client_get_bool (data->client,
-						    WINDOW_TITLE_USES_SYSTEM_KEY,
-						    NULL));
+			    !g_settings_get_boolean (data->marco_settings,
+						    WINDOW_TITLE_USES_SYSTEM_KEY));
 }
 
 static void
-marco_changed (MateConfClient *client,
-		  guint        cnxn_id,
-		  MateConfEntry  *entry,
-		  gpointer     user_data)
+marco_changed (GSettings *settings,
+	       gchar     *entry,
+	       gpointer   user_data)
 {
   marco_titlebar_load_sensitivity (user_data);
 }
 
-/* returns 0 if the font is safe, otherwise returns the size in points. */
-static gint
-font_dangerous (const char *font)
-{
-  PangoFontDescription *pfd;
-  gboolean retval = 0;
-
-  pfd = pango_font_description_from_string (font);
-  if (pfd == NULL)
-    /* an invalid font was passed in.  This isn't our problem. */
-    return 0;
-
-  if ((pango_font_description_get_set_fields (pfd) & PANGO_FONT_MASK_SIZE) &&
-      (pango_font_description_get_size (pfd) >= MAX_FONT_SIZE_WITHOUT_WARNING)) {
-    retval = pango_font_description_get_size (pfd)/1024;
-  }
-  pango_font_description_free (pfd);
-
-  return retval;
-}
-
-static MateConfValue *
-application_font_to_mateconf (MateConfPropertyEditor *peditor,
-			   MateConfValue          *value)
-{
-  MateConfValue *new_value;
-  const char *new_font;
-  GtkWidget *font_button;
-  gint danger_level;
-
-  font_button = GTK_WIDGET (mateconf_property_editor_get_ui_control (peditor));
-  g_return_val_if_fail (font_button != NULL, NULL);
-
-  new_value = mateconf_value_new (MATECONF_VALUE_STRING);
-  new_font = mateconf_value_get_string (value);
-  if (font_dangerous (old_font)) {
-    /* If we're already too large, we don't warn again. */
-    mateconf_value_set_string (new_value, new_font);
-    return new_value;
-  }
-
-  danger_level = font_dangerous (new_font);
-  if (danger_level) {
-    GtkWidget *warning_dialog, *apply_button;
-    const gchar *warning_label;
-    gchar *warning_label2;
-
-    warning_label = _("Font may be too large");
-
-    if (danger_level > MAX_FONT_POINT_WITHOUT_WARNING) {
-      warning_label2 = g_strdup_printf (ngettext (
-			"The font selected is %d point large, "
-			"and may make it difficult to effectively "
-			"use the computer.  It is recommended that "
-			"you select a size smaller than %d.",
-			"The font selected is %d points large, "
-			"and may make it difficult to effectively "
-			"use the computer. It is recommended that "
-			"you select a size smaller than %d.",
-			danger_level),
-			danger_level,
-			MAX_FONT_POINT_WITHOUT_WARNING);
-    } else {
-      warning_label2 = g_strdup_printf (ngettext (
-			"The font selected is %d point large, "
-			"and may make it difficult to effectively "
-			"use the computer.  It is recommended that "
-			"you select a smaller sized font.",
-			"The font selected is %d points large, "
-			"and may make it difficult to effectively "
-			"use the computer. It is recommended that "
-			"you select a smaller sized font.",
-			danger_level),
-			danger_level);
-    }
-
-    warning_dialog = gtk_message_dialog_new (NULL,
-					     GTK_DIALOG_MODAL,
-					     GTK_MESSAGE_WARNING,
-					     GTK_BUTTONS_NONE,
-					     "%s",
-					     warning_label);
-
-    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (warning_dialog),
-					      "%s", warning_label2);
-
-    gtk_dialog_add_button (GTK_DIALOG (warning_dialog),
-			   _("Use previous font"), GTK_RESPONSE_CLOSE);
-
-    apply_button = gtk_button_new_with_label (_("Use selected font"));
-
-    gtk_button_set_image (GTK_BUTTON (apply_button), gtk_image_new_from_stock (GTK_STOCK_APPLY, GTK_ICON_SIZE_BUTTON));
-    gtk_dialog_add_action_widget (GTK_DIALOG (warning_dialog), apply_button, GTK_RESPONSE_APPLY);
-    gtk_widget_set_can_default (apply_button, TRUE);
-    gtk_widget_show (apply_button);
-
-    gtk_dialog_set_default_response (GTK_DIALOG (warning_dialog), GTK_RESPONSE_CLOSE);
-
-    g_free (warning_label2);
-
-    if (gtk_dialog_run (GTK_DIALOG (warning_dialog)) == GTK_RESPONSE_APPLY) {
-      mateconf_value_set_string (new_value, new_font);
-    } else {
-      mateconf_value_set_string (new_value, old_font);
-      gtk_font_button_set_font_name (GTK_FONT_BUTTON (font_button), old_font);
-    }
-
-    gtk_widget_destroy (warning_dialog);
-  } else {
-    mateconf_value_set_string (new_value, new_font);
-  }
-
-  return new_value;
-}
-
-static void
-application_font_changed (GtkWidget *font_button)
-{
-  const gchar *font;
-
-  font = gtk_font_button_get_font_name (GTK_FONT_BUTTON (font_button));
-  g_free (old_font);
-  old_font = g_strdup (font);
-}
-
 #ifdef HAVE_XFT2
 /*
- * EnumGroup - a group of radio buttons tied to a string enumeration
- *             value. We add this here because the mateconf peditor
- *             equivalent of this is both painful to use (you have
- *             to supply functions to convert from enums to indices)
- *             and conceptually broken (the order of radio buttons
- *             in a group when using Glade is not predictable.
+ * EnumGroup - a group of radio buttons for a gsettings enum
  */
 typedef struct
 {
-  MateConfClient *client;
+  GSettings *settings;
   GSList *items;
-  gchar *mateconf_key;
-  MateConfEnumStringPair *enums;
-  int default_value;
+  gchar *settings_key;
+  gulong settings_signal_id;
 } EnumGroup;
 
 typedef struct
@@ -605,14 +406,8 @@ typedef struct
 static void
 enum_group_load (EnumGroup *group)
 {
-  gchar *str = mateconf_client_get_string (group->client, group->mateconf_key, NULL);
-  gint val = group->default_value;
+  gint val = g_settings_get_enum (group->settings, group->settings_key);
   GSList *tmp_list;
-
-  if (str)
-    mateconf_string_to_enum (group->enums, str, &val);
-
-  g_free (str);
 
   in_change = TRUE;
 
@@ -627,10 +422,9 @@ enum_group_load (EnumGroup *group)
 }
 
 static void
-enum_group_changed (MateConfClient *client,
-		    guint        cnxn_id,
-		    MateConfEntry  *entry,
-		    gpointer     user_data)
+enum_group_changed (GSettings *settings,
+		    gchar     *key,
+		    gpointer  user_data)
 {
   enum_group_load (user_data);
 }
@@ -642,9 +436,7 @@ enum_item_toggled (GtkToggleButton *toggle_button,
   EnumGroup *group = item->group;
 
   if (!in_change) {
-    mateconf_client_set_string (group->client, group->mateconf_key,
-			     mateconf_enum_to_string (group->enums, item->value),
-			     NULL);
+    g_settings_set_enum (group->settings, group->settings_key, item->value);
   }
 
   /* Restore back to the previous state until we get notification */
@@ -652,9 +444,8 @@ enum_item_toggled (GtkToggleButton *toggle_button,
 }
 
 static EnumGroup *
-enum_group_create (const gchar         *mateconf_key,
-		   MateConfEnumStringPair *enums,
-		   int                  default_value,
+enum_group_create (GSettings           *settings,
+		   const gchar         *settings_key,
 		   GtkWidget           *first_widget,
 		   ...)
 {
@@ -664,10 +455,8 @@ enum_group_create (const gchar         *mateconf_key,
 
   group = g_new (EnumGroup, 1);
 
-  group->client = mateconf_client_get_default ();
-  group->mateconf_key = g_strdup (mateconf_key);
-  group->enums = enums;
-  group->default_value = default_value;
+  group->settings = settings;
+  group->settings_key = g_strdup (settings_key);
   group->items = NULL;
 
   va_start (args, first_widget);
@@ -693,9 +482,10 @@ enum_group_create (const gchar         *mateconf_key,
 
   enum_group_load (group);
 
-  mateconf_client_notify_add (group->client, mateconf_key,
-			   enum_group_changed,
-			   group, NULL, NULL);
+  gchar *signal_name = g_strdup_printf("changed::%s", settings_key);
+  group->settings_signal_id = g_signal_connect (settings, signal_name,
+                                                G_CALLBACK (enum_group_changed), group);
+  g_free (signal_name);
 
   return group;
 }
@@ -703,8 +493,10 @@ enum_group_create (const gchar         *mateconf_key,
 static void
 enum_group_destroy (EnumGroup *group)
 {
-  g_object_unref (group->client);
-  g_free (group->mateconf_key);
+  group->settings = NULL;
+  g_signal_handler_disconnect (group->settings, group->settings_signal_id);
+  group->settings_signal_id = 0;
+  g_free (group->settings_key);
 
   g_slist_foreach (group->items, (GFunc) g_free, NULL);
   g_slist_free (group->items);
@@ -757,18 +549,15 @@ get_dpi_from_x_server (void)
  * The font rendering details dialog
  */
 static void
-dpi_load (MateConfClient   *client,
+dpi_load (GSettings     *settings,
 	  GtkSpinButton *spinner)
 {
-  MateConfValue *value;
+  gdouble value = g_settings_get_double (settings, FONT_DPI_KEY);
   gdouble dpi;
 
-  value = mateconf_client_get_without_default (client, FONT_DPI_KEY, NULL);
-
-  if (value) {
-    dpi = mateconf_value_get_float (value);
-    mateconf_value_free (value);
-  } else
+  if (value != 0)
+    dpi = value;
+  else
     dpi = get_dpi_from_x_server ();
 
   if (dpi < DPI_LOW_REASONABLE_VALUE)
@@ -780,32 +569,31 @@ dpi_load (MateConfClient   *client,
 }
 
 static void
-dpi_changed (MateConfClient *client,
-	     guint        cnxn_id,
-	     MateConfEntry  *entry,
-	     gpointer     user_data)
+dpi_changed (GSettings *settings,
+	     gchar     *key,
+	     gpointer   user_data)
 {
-  dpi_load (client, user_data);
+  dpi_load (settings, user_data);
 }
 
 static void
 dpi_value_changed (GtkSpinButton *spinner,
-		   MateConfClient   *client)
+		   GSettings     *settings)
 {
-  /* Like any time when using a spin button with MateConf, there is
+  /* Like any time when using a spin button with GSettings, there is
    * a race condition here. When we change, we send the new
-   * value to MateConf, then restore to the old value until
+   * value to GSettings, then restore to the old value until
    * we get a response to emulate the proper model/view behavior.
    *
    * If the user changes the value faster than responses are
-   * received from MateConf, this may cause mildly strange effects.
+   * received from GSettings, this may cause mildly strange effects.
    */
   if (!in_change) {
     gdouble new_dpi = gtk_spin_button_get_value (spinner);
 
-    mateconf_client_set_float (client, FONT_DPI_KEY, new_dpi, NULL);
+    g_settings_set_double (settings, FONT_DPI_KEY, new_dpi);
 
-    dpi_load (client, spinner);
+    dpi_load (settings, spinner);
   }
 }
 
@@ -841,19 +629,18 @@ cb_show_details (GtkWidget *button,
     gtk_adjustment_set_upper (adjustment, DPI_HIGH_REASONABLE_VALUE);
     gtk_adjustment_set_step_increment (adjustment, 1);
 
-    dpi_load (data->client, GTK_SPIN_BUTTON (widget));
+    dpi_load (data->font_settings, GTK_SPIN_BUTTON (widget));
     g_signal_connect (widget, "value_changed",
-		      G_CALLBACK (dpi_value_changed), data->client);
+		      G_CALLBACK (dpi_value_changed), data->font_settings);
 
-    mateconf_client_notify_add (data->client, FONT_DPI_KEY,
-			     dpi_changed, widget, NULL, NULL);
+    g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), widget);
 
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_none_sample"),      ANTIALIAS_NONE,      HINT_FULL);
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_grayscale_sample"), ANTIALIAS_GRAYSCALE, HINT_FULL);
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_subpixel_sample"),  ANTIALIAS_RGBA,      HINT_FULL);
 
     group = enum_group_create (
-    	FONT_ANTIALIASING_KEY, antialias_enums, ANTIALIAS_GRAYSCALE,
+    	data->font_settings, FONT_ANTIALIASING_KEY,
 	appearance_capplet_get_widget (data, "antialias_none_radio"),      ANTIALIAS_NONE,
 	appearance_capplet_get_widget (data, "antialias_grayscale_radio"), ANTIALIAS_GRAYSCALE,
 	appearance_capplet_get_widget (data, "antialias_subpixel_radio"),  ANTIALIAS_RGBA,
@@ -865,7 +652,7 @@ cb_show_details (GtkWidget *button,
     setup_font_sample (appearance_capplet_get_widget (data, "hint_medium_sample"), ANTIALIAS_GRAYSCALE, HINT_MEDIUM);
     setup_font_sample (appearance_capplet_get_widget (data, "hint_full_sample"),   ANTIALIAS_GRAYSCALE, HINT_FULL);
 
-    group = enum_group_create (FONT_HINTING_KEY, hint_enums, HINT_FULL,
+    group = enum_group_create (data->font_settings, FONT_HINTING_KEY,
                                appearance_capplet_get_widget (data, "hint_none_radio"),   HINT_NONE,
                                appearance_capplet_get_widget (data, "hint_slight_radio"), HINT_SLIGHT,
                                appearance_capplet_get_widget (data, "hint_medium_radio"), HINT_MEDIUM,
@@ -882,7 +669,7 @@ cb_show_details (GtkWidget *button,
     gtk_image_set_from_file (GTK_IMAGE (appearance_capplet_get_widget (data, "subpixel_vbgr_image")),
                              MATECC_PIXMAP_DIR "/subpixel-vbgr.png");
 
-    group = enum_group_create (FONT_RGBA_ORDER_KEY, rgba_order_enums, RGBA_RGB,
+    group = enum_group_create (data->font_settings, FONT_RGBA_ORDER_KEY,
                                appearance_capplet_get_widget (data, "subpixel_rgb_radio"),  RGBA_RGB,
                                appearance_capplet_get_widget (data, "subpixel_bgr_radio"),  RGBA_BGR,
                                appearance_capplet_get_widget (data, "subpixel_vrgb_radio"), RGBA_VRGB,
@@ -904,34 +691,50 @@ cb_show_details (GtkWidget *button,
 
 void font_init(AppearanceData* data)
 {
-	GObject* peditor;
 	GtkWidget* widget;
 
 	data->font_details = NULL;
 	data->font_groups = NULL;
 
-	mateconf_client_add_dir(data->client, "/desktop/mate/interface", MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	mateconf_client_add_dir(data->client, "/apps/caja/preferences", MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	mateconf_client_add_dir(data->client, MARCO_DIR, MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-  
-	#ifdef HAVE_XFT2
-		mateconf_client_add_dir(data->client, FONT_RENDER_DIR, MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	#endif /* HAVE_XFT2 */
-
 	widget = appearance_capplet_get_widget(data, "application_font");
-	peditor = mateconf_peditor_new_font(NULL, GTK_FONT_KEY, widget, "conv-from-widget-cb", application_font_to_mateconf, NULL);
-	g_signal_connect_swapped(peditor, "value-changed", G_CALLBACK (application_font_changed), widget);
-	application_font_changed(widget);
+	g_settings_bind (data->interface_settings,
+			 GTK_FONT_KEY,
+			 G_OBJECT (widget),
+			 "font-name",
+			 G_SETTINGS_BIND_DEFAULT);
 
-	peditor = mateconf_peditor_new_font(NULL, DOCUMENT_FONT_KEY, appearance_capplet_get_widget (data, "document_font"), NULL);
+	widget = appearance_capplet_get_widget (data, "document_font");
+	g_settings_bind (data->interface_settings,
+			 DOCUMENT_FONT_KEY,
+			 G_OBJECT (widget),
+			 "font-name",
+			 G_SETTINGS_BIND_DEFAULT);
 
-	peditor = mateconf_peditor_new_font(NULL, DESKTOP_FONT_KEY, appearance_capplet_get_widget (data, "desktop_font"), NULL);
+	widget = appearance_capplet_get_widget (data, "desktop_font");
+	g_settings_bind (data->caja_settings,
+			 DESKTOP_FONT_KEY,
+			 G_OBJECT (widget),
+			 "font-name",
+			 G_SETTINGS_BIND_DEFAULT);
 
-	peditor = mateconf_peditor_new_font(NULL, WINDOW_TITLE_FONT_KEY, appearance_capplet_get_widget (data, "window_title_font"), NULL);
+	widget = appearance_capplet_get_widget (data, "window_title_font");
+	g_settings_bind (data->marco_settings,
+			 WINDOW_TITLE_FONT_KEY,
+			 G_OBJECT (widget),
+			 "font-name",
+			 G_SETTINGS_BIND_DEFAULT);
 
-	peditor = mateconf_peditor_new_font(NULL, MONOSPACE_FONT_KEY, appearance_capplet_get_widget (data, "monospace_font"), NULL);
+	widget = appearance_capplet_get_widget (data, "monospace_font");
+	g_settings_bind (data->interface_settings,
+			 MONOSPACE_FONT_KEY,
+			 G_OBJECT (widget),
+			 "font-name",
+			 G_SETTINGS_BIND_DEFAULT);
 
-	mateconf_client_notify_add (data->client, WINDOW_TITLE_USES_SYSTEM_KEY, marco_changed, data, NULL, NULL);
+	g_signal_connect (data->marco_settings,
+			  "changed::" WINDOW_TITLE_USES_SYSTEM_KEY,
+			  G_CALLBACK (marco_changed),
+			  data);
 
 	marco_titlebar_load_sensitivity(data);
 
@@ -941,9 +744,9 @@ void font_init(AppearanceData* data)
 		setup_font_pair(appearance_capplet_get_widget(data, "best_contrast_radio"), appearance_capplet_get_widget (data, "best_contrast_sample"), ANTIALIAS_GRAYSCALE, HINT_FULL);
 		setup_font_pair(appearance_capplet_get_widget(data, "subpixel_radio"), appearance_capplet_get_widget (data, "subpixel_sample"), ANTIALIAS_RGBA, HINT_FULL);
 
-		font_render_load (data->client);
+		font_render_load (data->font_settings);
 
-		mateconf_client_notify_add (data->client, FONT_RENDER_DIR, font_render_changed, data->client, NULL, NULL);
+		g_signal_connect (data->font_settings, "changed", G_CALLBACK (font_render_changed), NULL);
 
 		g_signal_connect (appearance_capplet_get_widget (data, "details_button"), "clicked", G_CALLBACK (cb_show_details), data);
 	#else /* !HAVE_XFT2 */
@@ -957,5 +760,4 @@ void font_shutdown(AppearanceData* data)
 	g_slist_free(data->font_groups);
 	g_slist_foreach(font_pairs, (GFunc) g_free, NULL);
 	g_slist_free(font_pairs);
-	g_free(old_font);
 }

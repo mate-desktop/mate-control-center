@@ -23,6 +23,7 @@
 
 #include <glib/gstdio.h>
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 #include <string.h>
 
 #include "theme-save.h"
@@ -182,7 +183,7 @@ write_theme_to_disk (MateThemeMetaInfo  *theme_info,
 	gchar* str;
 	gchar* current_background;
 
-	MateConfClient* client;
+	GSettings* settings;
 	const gchar* theme_header = ""
 		"[Desktop Entry]\n"
 		"Name=%s\n"
@@ -243,8 +244,8 @@ write_theme_to_disk (MateThemeMetaInfo  *theme_info,
   }
 
   if (save_background) {
-    client = mateconf_client_get_default ();
-    current_background = mateconf_client_get_string (client, BACKGROUND_KEY, NULL);
+    settings = g_settings_new (WP_SCHEMA);
+    current_background = g_settings_get_string (settings, WP_FILE_KEY);
 
     if (current_background != NULL) {
       str = g_strdup_printf ("BackgroundImage=%s\n", current_background);
@@ -254,7 +255,7 @@ write_theme_to_disk (MateThemeMetaInfo  *theme_info,
       g_free (current_background);
       g_free (str);
     }
-    g_object_unref (client);
+    g_object_unref (settings);
   }
 
   g_file_move (tmp_file, target_file, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, NULL);

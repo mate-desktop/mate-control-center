@@ -436,32 +436,40 @@ mate_theme_install_real (GtkWindow *parent,
 
 				if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_APPLY) {
 					/* apply theme here! */
-					MateConfClient *mateconf_client;
-
-					mateconf_client = mateconf_client_get_default ();
+					GSettings *settings;
 
 					switch (theme_type) {
 					case THEME_GTK:
-						mateconf_client_set_string (mateconf_client, GTK_THEME_KEY, theme_name, NULL);
+						settings = g_settings_new (INTERFACE_SCHEMA);
+						g_settings_set_string (settings, GTK_THEME_KEY, theme_name);
+						g_object_unref (settings);
 						break;
 					case THEME_MARCO:
-						mateconf_client_set_string (mateconf_client, MARCO_THEME_KEY, theme_name, NULL);
+						settings = g_settings_new (MARCO_SCHEMA);
+						g_settings_set_string (settings, MARCO_THEME_KEY, theme_name);
+						g_object_unref (settings);
 						break;
 					case THEME_ICON:
-						mateconf_client_set_string (mateconf_client, ICON_THEME_KEY, theme_name, NULL);
+						settings = g_settings_new (INTERFACE_SCHEMA);
+						g_settings_set_string (settings, ICON_THEME_KEY, theme_name);
+						g_object_unref (settings);
 						break;
 					case THEME_CURSOR:
-						mateconf_client_set_string (mateconf_client, CURSOR_THEME_KEY, theme_name, NULL);
+						settings = g_settings_new (MOUSE_SCHEMA);
+						g_settings_set_string (settings, CURSOR_THEME_KEY, theme_name);
+						g_object_unref (settings);
 						break;
 					case THEME_ICON_CURSOR:
-						mateconf_client_set_string (mateconf_client, ICON_THEME_KEY, theme_name, NULL);
-						mateconf_client_set_string (mateconf_client, CURSOR_THEME_KEY, theme_name, NULL);
+						settings = g_settings_new (INTERFACE_SCHEMA);
+						g_settings_set_string (settings, ICON_THEME_KEY, theme_name);
+						g_object_unref (settings);
+						settings = g_settings_new (MOUSE_SCHEMA);
+						g_settings_set_string (settings, CURSOR_THEME_KEY, theme_name);
+						g_object_unref (settings);
 						break;
 					default:
 						break;
 					}
-
-					g_object_unref (mateconf_client);
 				}
 			} else {
 				dialog = gtk_message_dialog_new (parent,
