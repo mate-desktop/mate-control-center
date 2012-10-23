@@ -28,43 +28,55 @@
 #include <dirent.h>
 #include <string.h>
 #include <glib/gi18n.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 
 #include "marco-window-manager.h"
 
-#define MARCO_THEME_KEY "/apps/marco/general/theme"
-#define MARCO_FONT_KEY  "/apps/marco/general/titlebar_font"
-#define MARCO_FOCUS_KEY "/apps/marco/general/focus_mode"
-#define MARCO_USE_SYSTEM_FONT_KEY "/apps/marco/general/titlebar_uses_system_font"
-#define MARCO_AUTORAISE_KEY "/apps/marco/general/auto_raise"
-#define MARCO_AUTORAISE_DELAY_KEY "/apps/marco/general/auto_raise_delay"
-#define MARCO_MOUSE_MODIFIER_KEY "/apps/marco/general/mouse_button_modifier"
-#define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "/apps/marco/general/action_double_click_titlebar"
+#define MARCO_SCHEMA "org.mate.Marco.general"
+#define MARCO_THEME_KEY "theme"
+#define MARCO_FONT_KEY  "titlebar-font"
+#define MARCO_FOCUS_KEY "focus-mode"
+#define MARCO_USE_SYSTEM_FONT_KEY "titlebar-uses-system-font"
+#define MARCO_AUTORAISE_KEY "auto-raise"
+#define MARCO_AUTORAISE_DELAY_KEY "auto-raise-delay"
+#define MARCO_MOUSE_MODIFIER_KEY "mouse-button-modifier"
+#define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
+#define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
+#define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
 
+
+/* keep following enums in sync with marco */
 enum
 {
-        DOUBLE_CLICK_MAXIMIZE,
-        DOUBLE_CLICK_MAXIMIZE_VERTICALLY,
-        DOUBLE_CLICK_MAXIMIZE_HORIZONTALLY,
-        DOUBLE_CLICK_MINIMIZE,
-        DOUBLE_CLICK_SHADE,
-        DOUBLE_CLICK_NONE
+        ACTION_TITLEBAR_TOGGLE_SHADE,
+        ACTION_TITLEBAR_TOGGLE_MAXIMIZE,
+        ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY,
+        ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY,
+        ACTION_TITLEBAR_MINIMIZE,
+        ACTION_TITLEBAR_NONE,
+        ACTION_TITLEBAR_LOWER,
+        ACTION_TITLEBAR_MENU
+};
+enum
+{
+        FOCUS_MODE_CLICK,
+        FOCUS_MODE_SLOPPY,
+        FOCUS_MODE_MOUSE
 };
 
 static MateWindowManagerClass *parent_class;
 
 struct _MarcoWindowManagerPrivate {
-        MateConfClient *mateconf;
+        GSettings *settings;
         char *font;
         char *theme;
         char *mouse_modifier;
 };
 
 static void
-value_changed (MateConfClient *client,
-               const gchar *key,
-               MateConfValue  *value,
-               void        *data)
+value_changed (GSettings *settings,
+               gchar     *key,
+               void      *data)
 {
         MarcoWindowManager *meta_wm;
 
@@ -109,7 +121,7 @@ add_themes_from_dir (GList *current_list, const char *path)
                 return current_list;
         
         for (entry = readdir (theme_dir); entry != NULL; entry = readdir (theme_dir)) {
-                theme_file_path = g_build_filename (path, entry->d_name, "marco-1/marco-theme-1.xml", NULL);
+                theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-1.xml", NULL);
 
                 if (g_file_test (theme_file_path, G_FILE_TEST_EXISTS)) {
 
@@ -164,74 +176,47 @@ marco_change_settings (MateWindowManager    *wm,
         meta_wm = MARCO_WINDOW_MANAGER (wm);
         
         if (settings->flags & MATE_WM_SETTING_MOUSE_FOCUS)
-                mateconf_client_set_string (meta_wm->p->mateconf,
-                                         MARCO_FOCUS_KEY,
-                                         settings->focus_follows_mouse ?
-                                         "sloppy" : "click", NULL);
+                g_settings_set_enum (meta_wm->p->settings,
+                                     MARCO_FOCUS_KEY,
+                                     settings->focus_follows_mouse ?
+                                     FOCUS_MODE_SLOPPY : FOCUS_MODE_CLICK);
 
         if (settings->flags & MATE_WM_SETTING_AUTORAISE)
-                mateconf_client_set_bool (meta_wm->p->mateconf,
-                                       MARCO_AUTORAISE_KEY,
-                                       settings->autoraise, NULL);
+                g_settings_set_boolean (meta_wm->p->settings,
+                                        MARCO_AUTORAISE_KEY,
+                                        settings->autoraise);
         
         if (settings->flags & MATE_WM_SETTING_AUTORAISE_DELAY)
-                mateconf_client_set_int (meta_wm->p->mateconf,
-                                      MARCO_AUTORAISE_DELAY_KEY,
-                                      settings->autoraise_delay, NULL);
+                g_settings_set_int (meta_wm->p->settings,
+                                    MARCO_AUTORAISE_DELAY_KEY,
+                                    settings->autoraise_delay);
 
         if (settings->flags & MATE_WM_SETTING_FONT) {
-                mateconf_client_set_string (meta_wm->p->mateconf,
-                                         MARCO_FONT_KEY,
-                                         settings->font, NULL);
+                g_settings_set_string (meta_wm->p->settings,
+                                       MARCO_FONT_KEY,
+                                       settings->font);
         }
         
         if (settings->flags & MATE_WM_SETTING_MOUSE_MOVE_MODIFIER) {
                 char *value;
 
                 value = g_strdup_printf ("<%s>", settings->mouse_move_modifier);
-                mateconf_client_set_string (meta_wm->p->mateconf,
-                                         MARCO_MOUSE_MODIFIER_KEY,
-                                         value, NULL);
+                g_settings_set_string (meta_wm->p->settings,
+                                       MARCO_MOUSE_MODIFIER_KEY,
+                                       value);
                 g_free (value);
         }
 
         if (settings->flags & MATE_WM_SETTING_THEME) {
-                mateconf_client_set_string (meta_wm->p->mateconf,
-                                         MARCO_THEME_KEY,
-                                         settings->theme, NULL);
+                g_settings_set_string (meta_wm->p->settings,
+                                       MARCO_THEME_KEY,
+                                       settings->theme);
         }
 
         if (settings->flags & MATE_WM_SETTING_DOUBLE_CLICK_ACTION) {
-                const char *action;
-
-                action = NULL;
-                
-                switch (settings->double_click_action) {
-                case DOUBLE_CLICK_SHADE:
-                        action = "toggle_shade";
-                        break;
-                case DOUBLE_CLICK_MAXIMIZE:
-                        action = "toggle_maximize";
-                        break;
-                case DOUBLE_CLICK_MAXIMIZE_VERTICALLY:
-                        action = "toggle_maximize_vertically";
-                        break;
-                case DOUBLE_CLICK_MAXIMIZE_HORIZONTALLY:
-                        action = "toggle_maximize_horizontally";
-                        break;
-                case DOUBLE_CLICK_MINIMIZE:
-                        action = "minimize";
-                        break;
-                case DOUBLE_CLICK_NONE:
-                        action = "none";
-                        break;
-                }
-
-                if (action != NULL) {
-                        mateconf_client_set_string (meta_wm->p->mateconf,
-                                                 MARCO_DOUBLE_CLICK_TITLEBAR_KEY,
-                                                 action, NULL);
-                }
+                g_settings_set_enum (meta_wm->p->settings,
+                                     MARCO_DOUBLE_CLICK_TITLEBAR_KEY,
+                                     settings->double_click_action);
         }
 }
 
@@ -248,41 +233,35 @@ marco_get_settings (MateWindowManager *wm,
         settings->flags = 0;
         
         if (to_get & MATE_WM_SETTING_MOUSE_FOCUS) {
-                char *str;
+                gint marco_focus_value;
 
-                str = mateconf_client_get_string (meta_wm->p->mateconf,
-                                               MARCO_FOCUS_KEY, NULL);
+                marco_focus_value = g_settings_get_enum (meta_wm->p->settings,
+                                                         MARCO_FOCUS_KEY);
                 settings->focus_follows_mouse = FALSE;
-                if (str && (strcmp (str, "sloppy") == 0 ||
-                            strcmp (str, "mouse") == 0))
+                if (marco_focus_value == FOCUS_MODE_SLOPPY || marco_focus_value == FOCUS_MODE_MOUSE)
                         settings->focus_follows_mouse = TRUE;
 
-                g_free (str);
-                
                 settings->flags |= MATE_WM_SETTING_MOUSE_FOCUS;
         }
         
         if (to_get & MATE_WM_SETTING_AUTORAISE) {
-                settings->autoraise = mateconf_client_get_bool (meta_wm->p->mateconf,
-                                                             MARCO_AUTORAISE_KEY,
-                                                             NULL);
+                settings->autoraise = g_settings_get_boolean (meta_wm->p->settings,
+                                                              MARCO_AUTORAISE_KEY);
                 settings->flags |= MATE_WM_SETTING_AUTORAISE;
         }
         
         if (to_get & MATE_WM_SETTING_AUTORAISE_DELAY) {
                 settings->autoraise_delay =
-                        mateconf_client_get_int (meta_wm->p->mateconf,
-                                              MARCO_AUTORAISE_DELAY_KEY,
-                                              NULL);
+                        g_settings_get_int (meta_wm->p->settings,
+                                            MARCO_AUTORAISE_DELAY_KEY);
                 settings->flags |= MATE_WM_SETTING_AUTORAISE_DELAY;
         }
 
         if (to_get & MATE_WM_SETTING_FONT) {
                 char *str;
 
-                str = mateconf_client_get_string (meta_wm->p->mateconf,
-                                               MARCO_FONT_KEY,
-                                               NULL);
+                str = g_settings_get_string (meta_wm->p->settings,
+                                             MARCO_FONT_KEY);
 
                 if (str == NULL)
                         str = g_strdup ("Sans Bold 12");
@@ -304,9 +283,8 @@ marco_get_settings (MateWindowManager *wm,
                 char *str;
                 const char *new;
 
-                str = mateconf_client_get_string (meta_wm->p->mateconf,
-                                               MARCO_MOUSE_MODIFIER_KEY,
-                                               NULL);
+                str = g_settings_get_string (meta_wm->p->settings,
+                                             MARCO_MOUSE_MODIFIER_KEY);
 
                 if (str == NULL)
                         str = g_strdup ("<Super>");
@@ -342,12 +320,11 @@ marco_get_settings (MateWindowManager *wm,
         if (to_get & MATE_WM_SETTING_THEME) {
                 char *str;
 
-                str = mateconf_client_get_string (meta_wm->p->mateconf,
-                                               MARCO_THEME_KEY,
-                                               NULL);
+                str = g_settings_get_string (meta_wm->p->settings,
+                                             MARCO_THEME_KEY);
 
                 if (str == NULL)
-                        str = g_strdup ("Atlanta");
+                        str = g_strdup ("Spidey");
 
                 g_free (meta_wm->p->theme);
                 meta_wm->p->theme = str;
@@ -357,35 +334,11 @@ marco_get_settings (MateWindowManager *wm,
         }
 
         if (to_get & MATE_WM_SETTING_DOUBLE_CLICK_ACTION) {
-                char *str;
-
-                str = mateconf_client_get_string (meta_wm->p->mateconf,
-                                               MARCO_DOUBLE_CLICK_TITLEBAR_KEY,
-                                               NULL);
+                settings->double_click_action =
+                        g_settings_get_enum (meta_wm->p->settings,
+                                             MARCO_DOUBLE_CLICK_TITLEBAR_KEY);
                 
-                if (str == NULL)
-                        str = g_strdup ("toggle_shade");
-                
-                if (strcmp (str, "toggle_shade") == 0)
-                        settings->double_click_action = DOUBLE_CLICK_SHADE;
-                else if (strcmp (str, "toggle_maximize") == 0)
-                        settings->double_click_action = DOUBLE_CLICK_MAXIMIZE;
-                else if (strcmp (str, "toggle_maximize_horizontally") == 0 ||
-                         strcmp (str, "toggle_maximize_horiz") == 0)
-                        settings->double_click_action = DOUBLE_CLICK_MAXIMIZE_HORIZONTALLY;
-                else if (strcmp (str, "toggle_maximize_vertically") == 0 ||
-                         strcmp (str, "toggle_maximize_vert") == 0)
-                        settings->double_click_action = DOUBLE_CLICK_MAXIMIZE_VERTICALLY;
-                else if (strcmp (str, "minimize") == 0)
-                        settings->double_click_action = DOUBLE_CLICK_MINIMIZE;
-                else if (strcmp (str, "none") == 0)
-                        settings->double_click_action = DOUBLE_CLICK_NONE;
-                else
-                        settings->double_click_action = DOUBLE_CLICK_SHADE;
-                
-                g_free (str);
-                
-                settings->flags |= MATE_WM_SETTING_DOUBLE_CLICK_ACTION;             
+                settings->flags |= MATE_WM_SETTING_DOUBLE_CLICK_ACTION;
         }
 }
 
@@ -401,25 +354,23 @@ marco_get_double_click_actions (MateWindowManager              *wm,
                                    int                             *n_actions_p)
 {
         static MateWMDoubleClickAction actions[] = {
-                { DOUBLE_CLICK_MAXIMIZE, N_("Maximize") },
-                { DOUBLE_CLICK_MAXIMIZE_VERTICALLY, N_("Maximize Vertically") },
-                { DOUBLE_CLICK_MAXIMIZE_HORIZONTALLY, N_("Maximize Horizontally") },
-                { DOUBLE_CLICK_MINIMIZE, N_("Minimize") },
-                { DOUBLE_CLICK_SHADE, N_("Roll up") },
-                { DOUBLE_CLICK_NONE, N_("None") }
+                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE, N_("Maximize") },
+                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY, N_("Maximize Vertically") },
+                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY, N_("Maximize Horizontally") },
+                { ACTION_TITLEBAR_MINIMIZE, N_("Minimize") },
+                { ACTION_TITLEBAR_TOGGLE_SHADE, N_("Roll up") },
+                { ACTION_TITLEBAR_NONE, N_("None") }
         };
-        static gboolean initialized = FALSE;        
+        
+        static gboolean initialized = FALSE;
 
         if (!initialized) {
                 int i;
                 
                 initialized = TRUE;
                 i = 0;
-                while (i < (int) G_N_ELEMENTS (actions)) {
-                        g_assert (actions[i].number == i);
+                for (i = 0; i < G_N_ELEMENTS (actions); i++) {
                         actions[i].human_readable_name = _(actions[i].human_readable_name);
-                        
-                        ++i;
                 }
         }
 
@@ -432,18 +383,13 @@ marco_window_manager_init (MarcoWindowManager *marco_window_manager,
                               MarcoWindowManagerClass *class)
 {
         marco_window_manager->p = g_new0 (MarcoWindowManagerPrivate, 1);
-        marco_window_manager->p->mateconf = mateconf_client_get_default ();
+        marco_window_manager->p->settings = g_settings_new (MARCO_SCHEMA);
         marco_window_manager->p->font = NULL;
         marco_window_manager->p->theme = NULL;
         marco_window_manager->p->mouse_modifier = NULL;
-        
-        mateconf_client_add_dir (marco_window_manager->p->mateconf,
-                              "/apps/marco/general",
-                              MATECONF_CLIENT_PRELOAD_ONELEVEL,
-                              NULL);
 
-        g_signal_connect (G_OBJECT (marco_window_manager->p->mateconf),
-                          "value_changed",
+        g_signal_connect (marco_window_manager->p->settings,
+                          "changed",
                           G_CALLBACK (value_changed), marco_window_manager);
 }
 
@@ -456,12 +402,8 @@ marco_window_manager_finalize (GObject *object)
         g_return_if_fail (IS_MARCO_WINDOW_MANAGER (object));
 
         marco_window_manager = MARCO_WINDOW_MANAGER (object);
-        
-        g_signal_handlers_disconnect_by_func (G_OBJECT (marco_window_manager->p->mateconf),
-                                              G_CALLBACK (value_changed),
-                                              marco_window_manager);
-        
-        g_object_unref (G_OBJECT (marco_window_manager->p->mateconf));
+
+        g_object_unref (marco_window_manager->p->settings);
         g_free (marco_window_manager->p);
 
         G_OBJECT_CLASS (parent_class)->finalize (object);
