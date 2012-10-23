@@ -1,4 +1,4 @@
-AC_INIT([mate-control-center], [1.4.0], [htts://www.mate-desktop.org/])
+AC_INIT([mate-control-center], [1.5.0], [htts://www.mate-desktop.org/])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
@@ -120,18 +120,17 @@ COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  glib-2.0 >= 2.17.4 dnl
  gthread-2.0 dnl
  gio-2.0 dnl
- mateconf-2.0 dnl
  libxml-2.0 dnl
- mate-desktop-2.0"
+ mate-desktop-2.0 >= 1.5.2"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
 PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.1.0)
 PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu unique-1.0)
 PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
-PKG_CHECK_MODULES(MARCO, libmarco-private >= 1.1.0)
-PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 mateconf-2.0 gtk+-2.0)
-PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon)
+PKG_CHECK_MODULES(MARCO, libmarco-private >= 1.5.0)
+PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 gio-2.0 gtk+-2.0)
+PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon >= 1.5.2)
 PKG_CHECK_MODULES(GIO, gio-2.0)
 
 gtk_lib_dir=`$PKG_CONFIG --variable libdir gtk+-2.0`
@@ -148,7 +147,7 @@ PKG_CHECK_MODULES(EXTERNAL_LIBSLAB, [libslab], have_libslab=yes, have_libslab=no
 
 if test $have_libslab = no; then
 	PKG_CHECK_MODULES(LIBSLAB, [
-				   gio-2.0 mate-desktop-2.0 librsvg-2.0 libmate-menu pango mateconf-2.0
+				   gio-2.0 mate-desktop-2.0 librsvg-2.0 libmate-menu pango
 				   ],
 				   have_libslab_deps=yes,
 				   have_libslab_deps=no)
@@ -273,16 +272,10 @@ fi
 AC_SUBST(GLIB_GENMARSHAL)
 
 dnl ==============================================
-dnl Special MateConf section
+dnl Special GSettings section
 dnl ==============================================
 
-AC_PATH_PROG(MATECONFTOOL, mateconftool-2, no)
-
-if test x"$MATECONFTOOL" = xno; then
-  AC_MSG_ERROR([mateconftool-2 executable not found in your path - should be installed with MateConf])
-fi
-
-AM_MATECONF_SOURCE_2
+GLIB_GSETTINGS
 
 dnl ==============================================
 dnl Define the main variables
@@ -346,8 +339,6 @@ capplets/appearance/data/mate-theme-installer.desktop.in
 capplets/common/Makefile
 capplets/default-applications/Makefile
 capplets/default-applications/default-applications.desktop.in
-capplets/default-applications/mate-at-commandline.in
-capplets/default-applications/mate-at-session.desktop.in
 capplets/default-applications/mate-default-applications.pc
 capplets/display/Makefile
 capplets/display/display-properties.desktop.in
