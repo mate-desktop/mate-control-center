@@ -4,11 +4,14 @@ SUBDIRS = \
 	appearance \
 	default-applications \
 	display \
-	keybindings \
 	keyboard \
 	mouse \
 	network \
 	windows
+
+# Enable these applets when migrated to gsettings
+GSETTINS_DISABLED_SUBDIRS = \
+	keybindings
 
 DIST_SUBDIRS = \
 	common \
