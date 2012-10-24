@@ -27,15 +27,17 @@
 
 #include <string.h>
 #include <gdk/gdkx.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <glib/gi18n.h>
 
 #include "capplet-util.h"
-#include "mateconf-property-editor.h"
 
 #include "mate-keyboard-properties-xkb.h"
 
 #include <libmatekbd/matekbd-desktop-config.h>
+
+#define XKB_GENERAL_SCHEMA "org.mate.peripherals-keyboard-xkb.general"
+#define XKB_KBD_SCHEMA "org.mate.peripherals-keyboard-xkb.kbd"
 
 XklEngine *engine;
 XklConfigRegistry *config_registry;
@@ -43,7 +45,8 @@ XklConfigRegistry *config_registry;
 MatekbdKeyboardConfig initial_config;
 MatekbdDesktopConfig desktop_config;
 
-MateConfClient *xkb_mateconf_client;
+GSettings *xkb_general_settings;
+GSettings *xkb_kbd_settings;
 
 char *
 xci_desc_to_utf8 (XklConfigItem * ci)
@@ -53,19 +56,19 @@ xci_desc_to_utf8 (XklConfigItem * ci)
 }
 
 static void
-set_model_text (GtkWidget * picker, MateConfValue * value)
+set_model_text (GtkWidget * picker, gchar * value)
 {
 	XklConfigItem *ci = xkl_config_item_new ();
-	const char *model = NULL;
+	char *model = NULL;
 
-	if (value != NULL && value->type == MATECONF_VALUE_STRING) {
-		model = mateconf_value_get_string (value);
+	if (value != NULL) {
+		model = g_strdup(value);
 		if (model != NULL && model[0] == '\0')
 			model = NULL;
 	}
 
 	if (model == NULL) {
-		model = initial_config.model;
+		model = g_strdup(initial_config.model);
 		if (model == NULL)
 			model = "";
 	}
@@ -82,14 +85,14 @@ set_model_text (GtkWidget * picker, MateConfValue * value)
 		gtk_button_set_label (GTK_BUTTON (picker), _("Unknown"));
 	}
 	g_object_unref (G_OBJECT (ci));
+	g_free (model);
 }
 
 static void
-model_key_changed (MateConfClient * client,
-		   guint cnxn_id, MateConfEntry * entry, GtkBuilder * dialog)
+model_key_changed (GSettings * settings, gchar * key, GtkBuilder * dialog)
 {
 	set_model_text (WID ("xkb_model_pick"),
-			mateconf_entry_get_value (entry));
+			g_settings_get_string (settings, key));
 
 	enable_disable_restoring (dialog);
 }
@@ -97,18 +100,17 @@ model_key_changed (MateConfClient * client,
 static void
 setup_model_entry (GtkBuilder * dialog)
 {
-	MateConfValue *value;
+	gchar *value;
 
-	value = mateconf_client_get (xkb_mateconf_client,
-				  MATEKBD_KEYBOARD_CONFIG_KEY_MODEL, NULL);
+	value = g_settings_get_string (xkb_kbd_settings, "model");
 	set_model_text (WID ("xkb_model_pick"), value);
 	if (value != NULL)
-		mateconf_value_free (value);
+		g_free (value);
 
-	mateconf_client_notify_add (xkb_mateconf_client,
-				 MATEKBD_KEYBOARD_CONFIG_KEY_MODEL,
-				 (MateConfClientNotifyFunc) model_key_changed,
-				 dialog, NULL, NULL);
+	g_signal_connect (xkb_kbd_settings,
+					  "changed::model",
+					  G_CALLBACK (model_key_changed),
+					  dialog);
 }
 
 static void
@@ -120,8 +122,10 @@ cleanup_xkb_tabs (GtkBuilder * dialog)
 	config_registry = NULL;
 	g_object_unref (G_OBJECT (engine));
 	engine = NULL;
-	g_object_unref (G_OBJECT (xkb_mateconf_client));
-	xkb_mateconf_client = NULL;
+	g_object_unref (G_OBJECT (xkb_kbd_settings));
+	xkb_kbd_settings = NULL;
+	g_object_unref (G_OBJECT (xkb_general_settings));
+	xkb_general_settings = NULL;
 }
 
 static void
@@ -129,25 +133,22 @@ reset_to_defaults (GtkWidget * button, GtkBuilder * dialog)
 {
 	MatekbdKeyboardConfig empty_kbd_config;
 
-	matekbd_keyboard_config_init (&empty_kbd_config, xkb_mateconf_client,
-				   engine);
-	matekbd_keyboard_config_save_to_mateconf (&empty_kbd_config);
+	matekbd_keyboard_config_init (&empty_kbd_config, engine);
+	matekbd_keyboard_config_save_to_gsettings (&empty_kbd_config);
 	matekbd_keyboard_config_term (&empty_kbd_config);
 
-	mateconf_client_unset (xkb_mateconf_client,
-			    MATEKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP, NULL);
+	g_settings_reset (xkb_general_settings, "default-group");
 
 	/* all the rest is g-s-d's business */
 }
 
 static void
-chk_separate_group_per_window_toggled (MateConfPropertyEditor * peditor,
-				       const gchar * key,
-				       const MateConfValue * value,
+chk_separate_group_per_window_toggled (GSettings * settings,
+				       gchar * key,
 				       GtkBuilder * dialog)
 {
 	gtk_widget_set_sensitive (WID ("chk_new_windows_inherit_layout"),
-				  mateconf_value_get_bool (value));
+				  g_settings_get_boolean (settings, key));
 }
 
 static void
@@ -162,43 +163,44 @@ chk_new_windows_inherit_layout_toggled (GtkWidget *
 }
 
 void
-setup_xkb_tabs (GtkBuilder * dialog, MateConfChangeSet * changeset)
+setup_xkb_tabs (GtkBuilder * dialog)
 {
-	GObject *peditor;
 	GtkWidget *chk_new_windows_inherit_layout =
 	    WID ("chk_new_windows_inherit_layout");
 
-	xkb_mateconf_client = mateconf_client_get_default ();
+	xkb_general_settings = g_settings_new (XKB_GENERAL_SCHEMA);
+	xkb_kbd_settings = g_settings_new (XKB_KBD_SCHEMA);
 
 	engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()));
 	config_registry = xkl_config_registry_get_instance (engine);
 
-	matekbd_desktop_config_init (&desktop_config, xkb_mateconf_client,
-				  engine);
-	matekbd_desktop_config_load_from_mateconf (&desktop_config);
+	matekbd_desktop_config_init (&desktop_config, engine);
+	matekbd_desktop_config_load_from_gsettings (&desktop_config);
 
-	xkl_config_registry_load (config_registry,
-				  desktop_config.load_extra_items);
+	xkl_config_registry_load (config_registry, desktop_config.load_extra_items);
 
-	matekbd_keyboard_config_init (&initial_config, xkb_mateconf_client,
-				   engine);
+	matekbd_keyboard_config_init (&initial_config, engine);
 	matekbd_keyboard_config_load_from_x_initial (&initial_config, NULL);
 
 	setup_model_entry (dialog);
 
-	peditor = mateconf_peditor_new_boolean
-	    (changeset, (gchar *) MATEKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW,
-	     WID ("chk_separate_group_per_window"), NULL);
+	g_settings_bind (xkb_general_settings,
+					 "group-per-window",
+					 WID ("chk_separate_group_per_window"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 
-	g_signal_connect (peditor, "value-changed", (GCallback)
-			  chk_separate_group_per_window_toggled, dialog);
+	g_signal_connect (xkb_general_settings,
+					 "changed::group-per-window",
+					 G_CALLBACK (chk_separate_group_per_window_toggled),
+					 dialog);
 
 #ifdef HAVE_X11_EXTENSIONS_XKB_H
 	if (strcmp (xkl_engine_get_backend_name (engine), "XKB"))
 #endif
 		gtk_widget_hide (WID ("xkb_layouts_print"));
 
-	xkb_layouts_prepare_selected_tree (dialog, changeset);
+	xkb_layouts_prepare_selected_tree (dialog);
 	xkb_layouts_fill_selected_tree (dialog);
 
 	gtk_widget_set_sensitive (chk_new_windows_inherit_layout,
@@ -228,8 +230,8 @@ setup_xkb_tabs (GtkBuilder * dialog, MateConfChangeSet * changeset)
 				  "clicked", G_CALLBACK (choose_model),
 				  dialog);
 
-	xkb_layouts_register_mateconf_listener (dialog);
-	xkb_options_register_mateconf_listener (dialog);
+	xkb_layouts_register_gsettings_listener (dialog);
+	xkb_options_register_gsettings_listener (dialog);
 
 	g_signal_connect (G_OBJECT (WID ("keyboard_dialog")),
 			  "destroy", G_CALLBACK (cleanup_xkb_tabs),
@@ -244,11 +246,39 @@ enable_disable_restoring (GtkBuilder * dialog)
 	MatekbdKeyboardConfig gswic;
 	gboolean enable;
 
-	matekbd_keyboard_config_init (&gswic, xkb_mateconf_client, engine);
-	matekbd_keyboard_config_load_from_mateconf (&gswic, NULL);
+	matekbd_keyboard_config_init (&gswic, engine);
+	matekbd_keyboard_config_load_from_gsettings (&gswic, NULL);
 
 	enable = !matekbd_keyboard_config_equals (&gswic, &initial_config);
 
 	matekbd_keyboard_config_term (&gswic);
 	gtk_widget_set_sensitive (WID ("xkb_reset_to_defaults"), enable);
+}
+
+void
+xkb_save_gslist_as_strv (gchar *schema, gchar *key, GSList *list)
+{
+	GSettings *settings;
+	GArray *array;
+	GSList *l;
+	array = g_array_new (TRUE, TRUE, sizeof (gchar *));
+	for (l = list; l; l = l->next) {
+		array = g_array_append_val (array, l->data);
+	}
+	settings = g_settings_new (schema);
+	g_settings_set_strv (settings, key, (const gchar **) array->data);
+	g_array_free (array, TRUE);
+	g_object_unref (settings);
+}
+
+void
+xkb_layouts_set_selected_list(GSList *list)
+{
+	xkb_save_gslist_as_strv (XKB_KBD_SCHEMA, "layouts", list);
+}
+
+void
+xkb_options_set_selected_list(GSList *list)
+{
+	xkb_save_gslist_as_strv (XKB_KBD_SCHEMA, "options", list);
 }

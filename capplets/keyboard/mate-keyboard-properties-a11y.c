@@ -25,14 +25,23 @@
 #endif
 
 #include "mate-keyboard-properties-a11y.h"
-#include <mateconf/mateconf-client.h>
-#include "mateconf-property-editor.h"
+#include <gio/gio.h>
 #include "capplet-util.h"
 
-#define CONFIG_ROOT "/desktop/mate/accessibility/keyboard"
 #define NWID(s) GTK_WIDGET (gtk_builder_get_object (notifications_dialog, s))
 
+#define A11Y_SCHEMA "org.mate.accessibility-keyboard"
+#define MARCO_SCHEMA "org.mate.Marco.general"
+
 static GtkBuilder *notifications_dialog = NULL;
+static GSettings *a11y_settings = NULL;
+
+enum
+{
+	VISUAL_BELL_TYPE_INVALID,
+	VISUAL_BELL_TYPE_FULLSCREEN,
+	VISUAL_BELL_TYPE_FRAME_FLASH
+};
 
 static void
 stickykeys_enable_toggled_cb (GtkWidget *w, GtkBuilder *dialog)
@@ -75,42 +84,37 @@ visual_bell_enable_toggled_cb (GtkWidget *w, GtkBuilder *dialog)
 	}
 }
 
-static MateConfEnumStringPair bell_flash_enums[] = {
-        { 0, "frame_flash" },
-        { 1, "fullscreen" },
-        { -1, NULL }
-};
-
-static MateConfValue *
-bell_flash_from_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
+static void
+bell_flash_gsettings_changed (GSettings *settings, gchar *key, GtkBuilder *dialog)
 {
-        MateConfValue *new_value;
-
-        new_value = mateconf_value_new (MATECONF_VALUE_STRING);
-        mateconf_value_set_string (new_value,
-                                mateconf_enum_to_string (bell_flash_enums, mateconf_value_get_int (value)));
-
-        return new_value;
+	int bell_flash_type = g_settings_get_enum (settings, key);
+	if (bell_flash_type == VISUAL_BELL_TYPE_FULLSCREEN)
+	{
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (NWID ("visual_bell_fullscreen")), TRUE);
+	}
+	else if (bell_flash_type == VISUAL_BELL_TYPE_FRAME_FLASH)
+	{
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (NWID ("visual_bell_titlebar")), TRUE);
+	}
 }
 
-static MateConfValue *
-bell_flash_to_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
+static void
+bell_flash_radio_changed (GtkWidget *widget, GtkBuilder *builder)
 {
-        MateConfValue *new_value;
-        const gchar *str;
-        gint val = 2;
+	GSettings *marco_settings;
+	marco_settings = g_settings_new (MARCO_SCHEMA);
+	int old_bell_flash_type = g_settings_get_enum (marco_settings, "visual-bell-type");
+	int new_bell_flash_type = VISUAL_BELL_TYPE_INVALID;
 
-        str = (value && (value->type == MATECONF_VALUE_STRING)) ? mateconf_value_get_string (value) : NULL;
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (NWID ("visual_bell_fullscreen"))))
+		new_bell_flash_type = VISUAL_BELL_TYPE_FULLSCREEN;
+	else if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (NWID ("visual_bell_titlebar"))))
+		new_bell_flash_type = VISUAL_BELL_TYPE_FRAME_FLASH;
 
-        new_value = mateconf_value_new (MATECONF_VALUE_INT);
-        if (value->type == MATECONF_VALUE_STRING) {
-                mateconf_string_to_enum (bell_flash_enums,
-                                      str,
-                                      &val);
-        }
-        mateconf_value_set_int (new_value, val);
+	if (old_bell_flash_type != new_bell_flash_type)
+		g_settings_set_enum (marco_settings, "visual-bell-type", new_bell_flash_type);
 
-        return new_value;
+	g_object_unref (marco_settings);
 }
 
 static void
@@ -138,54 +142,44 @@ notifications_button_clicked_cb (GtkWidget *button, GtkBuilder *dialog)
 	bouncekeys_enable_toggled_cb (WID ("bouncekeys_enable"), dialog);
 
 	w = NWID ("feature_state_change_beep");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/feature_state_change_beep",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "feature-state-change-beep", w, "active", G_SETTINGS_BIND_DEFAULT);
 
 	w = NWID ("togglekeys_enable");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/togglekeys_enable",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "togglekeys_-enable", w, "active", G_SETTINGS_BIND_DEFAULT);
 
 	w = NWID ("stickykeys_modifier_beep");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/stickykeys_modifier_beep",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "stickykeys-modifier-beep", w, "active", G_SETTINGS_BIND_DEFAULT);
 
 	w = NWID ("slowkeys_beep_press");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/slowkeys_beep_press",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "slowkeys-beep-press", w, "active", G_SETTINGS_BIND_DEFAULT);
 
 	w = NWID ("slowkeys_beep_accept");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/slowkeys_beep_accept",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "slowkeys-beep-accept", w, "active", G_SETTINGS_BIND_DEFAULT);
 
 	w = NWID ("slowkeys_beep_reject");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/slowkeys_beep_reject",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "slowkeys-beep-reject", w, "active", G_SETTINGS_BIND_DEFAULT);
 
 	w = NWID ("bouncekeys_beep_reject");
-	mateconf_peditor_new_boolean (NULL,
-	                          CONFIG_ROOT "/bouncekeys_beep_reject",
-	                          w, NULL);
+	g_settings_bind (a11y_settings, "bouncekeys-beep-reject", w, "active", G_SETTINGS_BIND_DEFAULT);
 
+	GSettings *marco_settings = g_settings_new (MARCO_SCHEMA);
 	w = NWID ("visual_bell_enable");
-	mateconf_peditor_new_boolean (NULL,
-				   "/apps/marco/general/visual_bell",
-				   w, NULL);
-        g_signal_connect (w, "toggled",
-                          G_CALLBACK (visual_bell_enable_toggled_cb), dialog);
-        visual_bell_enable_toggled_cb (w, dialog);
+	g_settings_bind (marco_settings, "visual-bell", w, "active", G_SETTINGS_BIND_DEFAULT);
+	g_signal_connect (w, "toggled",
+			G_CALLBACK (visual_bell_enable_toggled_cb), dialog);
+	visual_bell_enable_toggled_cb (w, dialog);
 
-       mateconf_peditor_new_select_radio (NULL,
-                                        "/apps/marco/general/visual_bell_type",
-                                        gtk_radio_button_get_group (GTK_RADIO_BUTTON (NWID ("visual_bell_titlebar"))),
-                                        "conv-to-widget-cb", bell_flash_to_widget,
-                                        "conv-from-widget-cb", bell_flash_from_widget,
-                                        NULL);
+	bell_flash_gsettings_changed (marco_settings, "visual-bell-type", NULL);
+	g_signal_connect (NWID ("visual_bell_titlebar"), "clicked",
+					  G_CALLBACK(bell_flash_radio_changed),
+					  notifications_dialog);
+	g_signal_connect (NWID ("visual_bell_fullscreen"), "clicked",
+					  G_CALLBACK(bell_flash_radio_changed),
+					  notifications_dialog);
+	g_signal_connect (marco_settings,
+					  "changed::visual-bell-type",
+					  G_CALLBACK (bell_flash_gsettings_changed),
+					  notifications_dialog);
 
 	w = NWID ("a11y_notifications_dialog");
 	gtk_window_set_transient_for (GTK_WINDOW (w),
@@ -195,6 +189,7 @@ notifications_button_clicked_cb (GtkWidget *button, GtkBuilder *dialog)
 
 	gtk_dialog_run (GTK_DIALOG (w));
 
+	g_object_unref (marco_settings);
 	g_object_unref (notifications_dialog);
 	notifications_dialog = NULL;
 }
@@ -206,95 +201,71 @@ mousekeys_enable_toggled_cb (GtkWidget *w, GtkBuilder *dialog)
 	gtk_widget_set_sensitive (WID ("mousekeys_table"), active);
 }
 
-static MateConfValue *
-mousekeys_accel_time_to_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
+void
+finalize_a11y_tabs (void)
 {
-	GtkAdjustment *adjustment;
-	gdouble range_upper;
-	MateConfValue *new_value;
-
-	adjustment = GTK_ADJUSTMENT (mateconf_property_editor_get_ui_control (peditor));
-	g_object_get (adjustment,
-	              "upper", &range_upper,
-	              NULL);
-
-	new_value = mateconf_value_new (MATECONF_VALUE_INT);
-	mateconf_value_set_int (new_value, MAX (0, ((int) range_upper) - mateconf_value_get_int (value)));
-
-	return new_value;
-}
-
-static MateConfValue *
-mousekeys_accel_time_from_widget (MateConfPropertyEditor *peditor, const MateConfValue *value)
-{
-	GtkAdjustment *adjustment;
-	gdouble range_value, range_upper;
-	MateConfValue *new_value;
-
-	adjustment = GTK_ADJUSTMENT (mateconf_property_editor_get_ui_control (peditor));
-	g_object_get (adjustment,
-	              "value", &range_value,
-	              "upper", &range_upper,
-	              NULL);
-
-	new_value = mateconf_value_new (MATECONF_VALUE_INT);
-	mateconf_value_set_int (new_value, (int) range_upper - range_value);
-
-	return new_value;
+	g_object_unref (a11y_settings);
 }
 
 void
-setup_a11y_tabs (GtkBuilder *dialog, MateConfChangeSet *changeset)
+setup_a11y_tabs (GtkBuilder *dialog)
 {
-	MateConfClient *client;
 	GtkWidget *w;
 
-	client = mateconf_client_get_default ();
-	mateconf_client_add_dir (client, CONFIG_ROOT, MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	g_object_unref (client);
+	a11y_settings = g_settings_new (A11Y_SCHEMA);
 
 	/* Accessibility tab */
-
-	w = WID ("master_enable");
-	mateconf_peditor_new_boolean (changeset,
-				   CONFIG_ROOT "/enable",
-				   w, NULL);
-
+	g_settings_bind (a11y_settings,
+					 "enable",
+					 WID ("master_enable"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 	w = WID ("stickykeys_enable");
-	mateconf_peditor_new_boolean (changeset,
-				   CONFIG_ROOT "/stickykeys_enable",
-				   w, NULL);
+	g_settings_bind (a11y_settings,
+					 "stickykeys-enable",
+					 w,
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 	g_signal_connect (w, "toggled",
 			  G_CALLBACK (stickykeys_enable_toggled_cb), dialog);
 	stickykeys_enable_toggled_cb (w, dialog);
 
-	w = WID ("stickykeys_two_key_off");
-	mateconf_peditor_new_boolean (changeset,
-				   CONFIG_ROOT "/stickykeys_two_key_off",
-				   w, NULL);
+	g_settings_bind (a11y_settings,
+					 "stickykeys-two-key-off",
+					 WID ("stickykeys_two_key_off"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 
 	w = WID ("slowkeys_enable");
-	mateconf_peditor_new_boolean (changeset,
-				   CONFIG_ROOT "/slowkeys_enable",
-				   w, NULL);
+	g_settings_bind (a11y_settings,
+					 "slowkeys-enable",
+					 w,
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 	g_signal_connect (w, "toggled",
 			  G_CALLBACK (slowkeys_enable_toggled_cb), dialog);
 	slowkeys_enable_toggled_cb (w, dialog);
 
 	w = WID ("bouncekeys_enable");
-	mateconf_peditor_new_boolean (changeset,
-				   CONFIG_ROOT "/bouncekeys_enable",
-				   w, NULL);
+	g_settings_bind (a11y_settings,
+					 "bouncekeys-enable",
+					 w,
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 	g_signal_connect (w, "toggled",
 			  G_CALLBACK (bouncekeys_enable_toggled_cb), dialog);
 	bouncekeys_enable_toggled_cb (w, dialog);
 
-	mateconf_peditor_new_numeric_range (changeset,
-					 CONFIG_ROOT "/slowkeys_delay",
-					 WID ("slowkeys_delay_slide"), NULL);
-	mateconf_peditor_new_numeric_range (changeset,
-					 CONFIG_ROOT "/bouncekeys_delay",
-					 WID ("bouncekeys_delay_slide"), NULL);
+	g_settings_bind (a11y_settings,
+					 "slowkeys-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("slowkeys_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (a11y_settings,
+					 "bouncekeys-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("bouncekeys_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
 
 	w = WID ("notifications_button");
 	g_signal_connect (w, "clicked",
@@ -303,23 +274,49 @@ setup_a11y_tabs (GtkBuilder *dialog, MateConfChangeSet *changeset)
 	/* Mouse Keys tab */
 
 	w = WID ("mousekeys_enable");
-	mateconf_peditor_new_boolean (changeset,
-				   CONFIG_ROOT "/mousekeys_enable",
-				   w, NULL);
+	g_settings_bind (a11y_settings,
+					 "mousekeys-enable",
+					 w,
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 	g_signal_connect (w, "toggled",
 			  G_CALLBACK (mousekeys_enable_toggled_cb), dialog);
 	mousekeys_enable_toggled_cb (w, dialog);
 
-	mateconf_peditor_new_numeric_range (changeset,
-					 CONFIG_ROOT "/mousekeys_accel_time",
-					 WID ("mousekeys_accel_time_slide"),
-					 "conv-to-widget-cb", mousekeys_accel_time_to_widget,
-					 "conv-from-widget-cb", mousekeys_accel_time_from_widget,
-					 NULL);
-	mateconf_peditor_new_numeric_range (changeset,
-					 CONFIG_ROOT "/mousekeys_max_speed",
-					 WID ("mousekeys_max_speed_slide"), NULL);
-	mateconf_peditor_new_numeric_range (changeset,
-					 CONFIG_ROOT "/mousekeys_init_delay",
-					 WID ("mousekeys_init_delay_slide"), NULL);
+	g_settings_bind (a11y_settings,
+					 "slowkeys-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("slowkeys_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (a11y_settings,
+					 "bouncekeys-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("bouncekeys_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (a11y_settings,
+					 "slowkeys-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("slowkeys_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (a11y_settings,
+					 "bouncekeys-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("bouncekeys_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+
+	g_settings_bind (a11y_settings,
+					 "mousekeys-accel-time",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("mousekeys_accel_time_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (a11y_settings,
+					 "mousekeys-max-speed",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("mousekeys_max_speed_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (a11y_settings,
+					 "mousekeys-init-delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("mousekeys_init_delay_slide"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
 }

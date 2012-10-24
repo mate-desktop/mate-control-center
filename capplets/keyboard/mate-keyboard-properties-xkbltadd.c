@@ -366,6 +366,33 @@ xkb_layout_chooser_available_layouts_fill (GtkBuilder *
 				  chooser_dialog);
 }
 
+GSList*
+xkb_layout_gslist_from_strv (gchar **array)
+{
+    GSList *list = NULL;
+    gint i;
+    if (array != NULL) {
+        for (i = 0; array[i]; i++) {
+            list = g_slist_append (list, g_strdup (array[i]));
+        }
+    }
+    return list;
+}
+
+gchar **
+xkb_layout_strv_from_gslist (GSList *list)
+{
+    GArray *array;
+    GSList *l;
+    array = g_array_new (TRUE, TRUE, sizeof (gchar *));
+    for (l = list; l; l = l->next) {
+        array = g_array_append_val (array, l->data);
+    }
+    return (gchar **) array->data;
+}
+
+
+
 void
 xkl_layout_chooser_add_default_switcher_if_necessary (GSList *
 						      layouts_list)
@@ -373,11 +400,16 @@ xkl_layout_chooser_add_default_switcher_if_necessary (GSList *
 	GSList *options_list = xkb_options_get_selected_list ();
 	gboolean was_appended;
 
-	options_list =
+	gchar **layouts_list_strv = xkb_layout_strv_from_gslist (layouts_list);
+	gchar **options_list_strv = xkb_layout_strv_from_gslist (options_list);
+
+	options_list_strv =
 	    matekbd_keyboard_config_add_default_switch_option_if_necessary
-	    (layouts_list, options_list, &was_appended);
-	if (was_appended)
+		(layouts_list_strv, options_list_strv, &was_appended);
+	if (was_appended) {
 		xkb_options_set_selected_list (options_list);
+		
+	}
 	clear_xkb_elements_list (options_list);
 }
 

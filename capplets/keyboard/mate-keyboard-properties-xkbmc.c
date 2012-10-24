@@ -26,7 +26,7 @@
 #endif
 
 #include <gdk/gdkx.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <glib/gi18n.h>
 
 #include "capplet-util.h"
@@ -300,9 +300,7 @@ xkb_model_chooser_response (GtkDialog * dialog,
 			gtk_tree_model_get (list_store, &iter,
 					    1, &model_name, -1);
 
-			mateconf_client_set_string (xkb_mateconf_client,
-						 MATEKBD_KEYBOARD_CONFIG_KEY_MODEL,
-						 model_name, NULL);
+			g_settings_set_string (xkb_kbd_settings, "model", model_name);
 			g_free (model_name);
 		}
 	}
@@ -323,9 +321,7 @@ choose_model (GtkBuilder * dialog)
 				      GTK_WINDOW (WID
 						  ("keyboard_dialog")));
 	current_model_name =
-	    mateconf_client_get_string (xkb_mateconf_client,
-				     MATEKBD_KEYBOARD_CONFIG_KEY_MODEL, NULL);
-
+	    g_settings_get_string (xkb_kbd_settings, "model");
 
 	prepare_vendors_list (chooser_dialog);
 	prepare_models_list (chooser_dialog);

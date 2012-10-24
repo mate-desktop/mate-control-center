@@ -24,9 +24,9 @@
 #ifndef __MATE_KEYBOARD_PROPERTY_A11Y_H
 #define __MATE_KEYBOARD_PROPERTY_A11Y_H
 
-#include <mateconf/mateconf-changeset.h>
 #include <gtk/gtk.h>
 
-extern void setup_a11y_tabs (GtkBuilder * dialog, MateConfChangeSet * changeset);
+extern void setup_a11y_tabs (GtkBuilder * dialog);
+extern void finalize_a11y_tabs (void);
 
 #endif /* __MATE_KEYBOARD_PROPERTY_A11Y_H */

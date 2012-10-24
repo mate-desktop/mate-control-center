@@ -26,7 +26,7 @@
 #endif
 
 #include <gdk/gdkx.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 #include <glib/gi18n.h>
 
 #include <libmatekbd/matekbd-desktop-config.h>
@@ -88,20 +88,23 @@ find_selected_layout_idx (GtkBuilder * dialog)
 GSList *
 xkb_layouts_get_selected_list (void)
 {
-	GSList *retval;
+	gchar **array;
+	GSList *retval = NULL;
+	gint i;
+	array = g_settings_get_strv (xkb_kbd_settings, "layouts");
+	if (array != NULL) {
+		for (i = 0; array[i]; i++) {
+			retval = g_slist_append (retval, g_strdup (array[i]));
+		}
+	}
+	g_strfreev (array);
 
-	retval = mateconf_client_get_list (xkb_mateconf_client,
-					MATEKBD_KEYBOARD_CONFIG_KEY_LAYOUTS,
-					MATECONF_VALUE_STRING, NULL);
 	if (retval == NULL) {
-		GSList *cur_layout;
-
-		for (cur_layout = initial_config.layouts_variants;
-		     cur_layout != NULL; cur_layout = cur_layout->next)
-			retval =
-			    g_slist_prepend (retval,
-					     g_strdup (cur_layout->data));
-
+		if (initial_config.layouts_variants != NULL) {
+			for (i = 0; initial_config.layouts_variants[i] != NULL; i++)
+				retval = 
+				    g_slist_prepend (retval, g_strdup (initial_config.layouts_variants[i]));
+		}
 		retval = g_slist_reverse (retval);
 	}
 
@@ -111,18 +114,14 @@ xkb_layouts_get_selected_list (void)
 gint
 xkb_get_default_group ()
 {
-	return mateconf_client_get_int (xkb_mateconf_client,
-				     MATEKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
-				     NULL);
+	return g_settings_get_int (xkb_general_settings, "default-group");
 }
 
 void
 xkb_save_default_group (gint default_group)
 {
 	if (default_group != xkb_get_default_group ())
-		mateconf_client_set_int (xkb_mateconf_client,
-				      MATEKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
-				      default_group, NULL);
+		g_settings_set_int (xkb_general_settings, "default-group", default_group);
 }
 
 static void
@@ -224,8 +223,7 @@ xkb_layouts_dnd_data_received (GtkWidget * widget, GdkDragContext * dc,
 }
 
 void
-xkb_layouts_prepare_selected_tree (GtkBuilder * dialog,
-				   MateConfChangeSet * changeset)
+xkb_layouts_prepare_selected_tree (GtkBuilder * dialog)
 {
 	GtkListStore *list_store =
 	    gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING,
@@ -456,20 +454,17 @@ xkb_layouts_register_buttons_handlers (GtkBuilder * dialog)
 }
 
 static void
-xkb_layouts_update_list (MateConfClient * client,
-			 guint cnxn_id, MateConfEntry * entry,
-			 GtkBuilder * dialog)
+xkb_layouts_update_list (GSettings * settings, gchar * key, GtkBuilder * dialog)
 {
 	xkb_layouts_fill_selected_tree (dialog);
 	enable_disable_restoring (dialog);
 }
 
 void
-xkb_layouts_register_mateconf_listener (GtkBuilder * dialog)
+xkb_layouts_register_gsettings_listener (GtkBuilder * dialog)
 {
-	mateconf_client_notify_add (xkb_mateconf_client,
-				 MATEKBD_KEYBOARD_CONFIG_KEY_LAYOUTS,
-				 (MateConfClientNotifyFunc)
-				 xkb_layouts_update_list, dialog, NULL,
-				 NULL);
+	g_signal_connect (xkb_kbd_settings,
+			  "changed::layouts",
+			  G_CALLBACK (xkb_layouts_update_list),
+			  dialog);
 }

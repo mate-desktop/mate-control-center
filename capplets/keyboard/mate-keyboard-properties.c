@@ -28,20 +28,27 @@
 #  include <config.h>
 #endif
 
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 
 #include "capplet-util.h"
-#include "mateconf-property-editor.h"
 #include "activate-settings-daemon.h"
 #include "capplet-stock-icons.h"
 
 #include "mate-keyboard-properties-a11y.h"
 #include "mate-keyboard-properties-xkb.h"
 
+#define KEYBOARD_SCHEMA "org.mate.peripherals-keyboard"
+#define INTERFACE_SCHEMA "org.mate.interface"
+#define TYPING_BREAK_SCHEMA "org.mate.typing-break"
+
 enum {
 	RESPONSE_APPLY = 1,
 	RESPONSE_CLOSE
 };
+
+static GSettings * keyboard_settings = NULL;
+static GSettings * interface_settings = NULL;
+static GSettings * typing_break_settings = NULL;
 
 static GtkBuilder *
 create_dialog (void)
@@ -82,35 +89,9 @@ create_dialog (void)
 	return dialog;
 }
 
-static MateConfValue *
-blink_from_widget (MateConfPropertyEditor * peditor, const MateConfValue * value)
-{
-	MateConfValue *new_value;
-
-	new_value = mateconf_value_new (MATECONF_VALUE_INT);
-	mateconf_value_set_int (new_value,
-			     2600 - mateconf_value_get_int (value));
-
-	return new_value;
-}
-
-static MateConfValue *
-blink_to_widget (MateConfPropertyEditor * peditor, const MateConfValue * value)
-{
-	MateConfValue *new_value;
-	gint current_rate;
-
-	current_rate = mateconf_value_get_int (value);
-	new_value = mateconf_value_new (MATECONF_VALUE_INT);
-	mateconf_value_set_int (new_value,
-			     CLAMP (2600 - current_rate, 100, 2500));
-
-	return new_value;
-}
-
 static void
 dialog_response (GtkWidget * widget,
-		 gint response_id, MateConfChangeSet * changeset)
+		 gint response_id, guint data)
 {
 	if (response_id == GTK_RESPONSE_HELP)
 		capplet_help (GTK_WINDOW (widget), "goscustperiph-2");
@@ -119,59 +100,78 @@ dialog_response (GtkWidget * widget,
 }
 
 static void
-setup_dialog (GtkBuilder * dialog, MateConfChangeSet * changeset)
+setup_dialog (GtkBuilder * dialog)
 {
-	GObject *peditor;
 	gchar *monitor;
 
-	peditor = mateconf_peditor_new_boolean
-	    (changeset, "/desktop/mate/peripherals/keyboard/repeat",
-	     WID ("repeat_toggle"), NULL);
-	mateconf_peditor_widget_set_guard (MATECONF_PROPERTY_EDITOR (peditor),
-					WID ("repeat_table"));
+	g_settings_bind (keyboard_settings,
+					 "repeat",
+					 WID ("repeat_toggle"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (keyboard_settings,
+					 "repeat",
+					 WID ("repeat_table"),
+					 "sensitive",
+					 G_SETTINGS_BIND_DEFAULT);
 
-	mateconf_peditor_new_numeric_range
-	    (changeset, "/desktop/mate/peripherals/keyboard/delay",
-	     WID ("repeat_delay_scale"), NULL);
+	g_settings_bind (keyboard_settings,
+					 "delay",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("repeat_delay_scale"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (keyboard_settings,
+					 "rate",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("repeat_speed_scale"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
 
-	mateconf_peditor_new_numeric_range
-	    (changeset, "/desktop/mate/peripherals/keyboard/rate",
-	     WID ("repeat_speed_scale"), NULL);
-
-	peditor = mateconf_peditor_new_boolean
-	    (changeset, "/desktop/mate/interface/cursor_blink",
-	     WID ("cursor_toggle"), NULL);
-	mateconf_peditor_widget_set_guard (MATECONF_PROPERTY_EDITOR (peditor),
-					WID ("cursor_hbox"));
-	mateconf_peditor_new_numeric_range (changeset,
-					 "/desktop/mate/interface/cursor_blink_time",
-					 WID ("cursor_blink_time_scale"),
-					 "conv-to-widget-cb",
-					 blink_to_widget,
-					 "conv-from-widget-cb",
-					 blink_from_widget, NULL);
+	g_settings_bind (interface_settings,
+					 "cursor-blink",
+					 WID ("cursor_toggle"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (interface_settings,
+					 "cursor-blink",
+					 WID ("cursor_hbox"),
+					 "sensitive",
+					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (interface_settings,
+					 "cursor-blink-time",
+					 gtk_range_get_adjustment (GTK_RANGE (WID ("cursor_blink_time_scale"))),
+					 "value",
+					 G_SETTINGS_BIND_DEFAULT);
 
 	/* Ergonomics */
 	monitor = g_find_program_in_path ("mate-typing-monitor");
 	if (monitor != NULL) {
 		g_free (monitor);
 
-		peditor = mateconf_peditor_new_boolean
-			(changeset, "/desktop/mate/typing_break/enabled",
-	     		WID ("break_enabled_toggle"), NULL);
-		mateconf_peditor_widget_set_guard (MATECONF_PROPERTY_EDITOR (peditor),
-						WID ("break_details_table"));
-		mateconf_peditor_new_numeric_range (changeset,
-						 "/desktop/mate/typing_break/type_time",
-						 WID ("break_enabled_spin"), NULL);
-		mateconf_peditor_new_numeric_range (changeset,
-						 "/desktop/mate/typing_break/break_time",
+		g_settings_bind (typing_break_settings,
+						 "enabled",
+						 WID ("break_enabled_toggle"),
+						 "active",
+						 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings,
+						 "enabled",
+						 WID ("break_details_table"),
+						 "sensitive",
+						 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings,
+						 "type-time",
+						 WID ("break_enabled_spin"),
+						 "value",
+						 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings,
+						 "break-time",
 						 WID ("break_interval_spin"),
-						 NULL);
-		mateconf_peditor_new_boolean (changeset,
-					   "/desktop/mate/typing_break/allow_postpone",
-					   WID ("break_postponement_toggle"),
-					   NULL);
+						 "value",
+						 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings,
+						 "allow-postpone",
+						 WID ("break_postponement_toggle"),
+						 "active",
+						 G_SETTINGS_BIND_DEFAULT);
 
 	} else {
 		/* don't show the typing break tab if the daemon is not available */
@@ -181,17 +181,15 @@ setup_dialog (GtkBuilder * dialog, MateConfChangeSet * changeset)
 	}
 
 	g_signal_connect (WID ("keyboard_dialog"), "response",
-			  (GCallback) dialog_response, changeset);
+			  (GCallback) dialog_response, NULL);
 
-	setup_xkb_tabs (dialog, changeset);
-	setup_a11y_tabs (dialog, changeset);
+	setup_xkb_tabs (dialog);
+	setup_a11y_tabs (dialog);
 }
 
 int
 main (int argc, char **argv)
 {
-	MateConfClient *client;
-	MateConfChangeSet *changeset;
 	GtkBuilder *dialog;
 	GOptionContext *context;
 
@@ -231,17 +229,12 @@ main (int argc, char **argv)
 
 	activate_settings_daemon ();
 
-	client = mateconf_client_get_default ();
-	mateconf_client_add_dir (client,
-			      "/desktop/mate/peripherals/keyboard",
-			      MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	mateconf_client_add_dir (client, "/desktop/mate/interface",
-			      MATECONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	g_object_unref (client);
+	keyboard_settings = g_settings_new (KEYBOARD_SCHEMA);
+	interface_settings = g_settings_new (INTERFACE_SCHEMA);
+	typing_break_settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
-	changeset = NULL;
 	dialog = create_dialog ();
-	setup_dialog (dialog, changeset);
+	setup_dialog (dialog);
 	if (switch_to_typing_break_page) {
 		gtk_notebook_set_current_page (GTK_NOTEBOOK
 					       (WID
@@ -260,6 +253,11 @@ main (int argc, char **argv)
 			  "preferences-desktop-keyboard");
 	gtk_widget_show (WID ("keyboard_dialog"));
 	gtk_main ();
+
+	finalize_a11y_tabs ();
+	g_object_unref (keyboard_settings);
+	g_object_unref (interface_settings);
+	g_object_unref (typing_break_settings);
 
 	return 0;
 }

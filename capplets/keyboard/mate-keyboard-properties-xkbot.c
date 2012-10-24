@@ -28,7 +28,7 @@
 
 #include <glib/gi18n.h>
 #include <string.h>
-#include <mateconf/mateconf-client.h>
+#include <gio/gio.h>
 
 #include "capplet-util.h"
 
@@ -44,26 +44,28 @@ static GSList *current_radio_group = NULL;
 
 #define OPTION_ID_PROP "optionID"
 #define SELCOUNTER_PROP "selectionCounter"
-#define MATECONFSTATE_PROP "mateconfState"
 #define EXPANDERS_PROP "expandersList"
 
 GSList *
 xkb_options_get_selected_list (void)
 {
-	GSList *retval;
+	gchar **array;
+	GSList *retval = NULL;
+	gint i;
+	array = g_settings_get_strv (xkb_kbd_settings, "options");
+	if (array != NULL) {
+		for (i = 0; array[i]; i++) {
+			retval = g_slist_append (retval, g_strdup (array[i]));
+		}
+	}
+	g_strfreev (array);
 
-	retval = mateconf_client_get_list (xkb_mateconf_client,
-					MATEKBD_KEYBOARD_CONFIG_KEY_OPTIONS,
-					MATECONF_VALUE_STRING, NULL);
 	if (retval == NULL) {
-		GSList *cur_option;
-
-		for (cur_option = initial_config.options;
-		     cur_option != NULL; cur_option = cur_option->next)
-			retval =
-			    g_slist_prepend (retval,
-					     g_strdup (cur_option->data));
-
+		if (initial_config.options != NULL) {
+			for (i = 0; initial_config.options[i] != NULL; i++)
+				retval = 
+				    g_slist_prepend (retval, g_strdup (initial_config.options[i]));
+		}
 		retval = g_slist_reverse (retval);
 	}
 
@@ -284,8 +286,6 @@ xkb_options_add_option (XklConfigRegistry * config_registry,
 			  WID ("options_scroll"));
 
 	xkb_options_expander_selcounter_add (initial_state);
-	g_object_set_data (G_OBJECT (option_check), MATECONFSTATE_PROP,
-			   GINT_TO_POINTER (initial_state));
 }
 
 static gint
@@ -473,13 +473,12 @@ xkb_options_update_option_counters (XklConfigRegistry * config_registry,
 	xkb_options_expander_selcounter_add (current_state);
 }
 
-/* Respond to a change in the xkb mateconf settings */
+/* Respond to a change in the xkb gsettings settings */
 static void
-xkb_options_update (MateConfClient * client,
-		    guint cnxn_id, MateConfEntry * entry, GtkBuilder * dialog)
+xkb_options_update (GSettings * settings, gchar * key, GtkBuilder * dialog)
 {
-	/* Updating options is handled by mateconf notifies for each widget
-	   This is here to avoid calling it N_OPTIONS times for each mateconf
+	/* Updating options is handled by gsettings notifies for each widget
+	   This is here to avoid calling it N_OPTIONS times for each gsettings
 	   change. */
 	enable_disable_restoring (dialog);
 
@@ -507,10 +506,10 @@ xkb_options_update (MateConfClient * client,
 }
 
 void
-xkb_options_register_mateconf_listener (GtkBuilder * dialog)
+xkb_options_register_gsettings_listener (GtkBuilder * dialog)
 {
-	mateconf_client_notify_add (xkb_mateconf_client,
-				 MATEKBD_KEYBOARD_CONFIG_KEY_OPTIONS,
-				 (MateConfClientNotifyFunc)
-				 xkb_options_update, dialog, NULL, NULL);
+	g_signal_connect (xkb_kbd_settings,
+			  "changed::options",
+			  G_CALLBACK (xkb_options_update),
+			  dialog);
 }
