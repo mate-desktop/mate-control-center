@@ -1111,7 +1111,6 @@ static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, 
     gchar *new_key_path = NULL;
     gchar *element_path = NULL;
 
-    /* FIXME GLIB_CHECK_VERSION for < 2.32 */
     if (new_key && new_key->settings)
     {
         #if GLIB_CHECK_VERSION (2, 32, 0)
