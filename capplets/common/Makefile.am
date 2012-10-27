@@ -14,7 +14,8 @@ INCLUDES = \
 	$(MATE_DESKTOP_CFLAGS)						\
 	$(MARCO_CFLAGS)						\
 	$(GSD_DBUS_CFLAGS)						\
-	$(GIO_CFLAGS)
+	$(GIO_CFLAGS)						\
+	$(DCONF_CFLAGS)
 
 
 noinst_LTLIBRARIES = libcommon.la
@@ -26,6 +27,8 @@ libcommon_la_SOURCES = \
 	capplet-stock-icons.h		\
 	capplet-util.c			\
 	capplet-util.h			\
+	dconf-util.c				\
+	dconf-util.h				\
 	file-transfer-dialog.c		\
 	file-transfer-dialog.h		\
 	mate-theme-apply.c		\
@@ -44,7 +47,8 @@ libcommon_la_LIBADD =							\
 	$(MARCO_LIBS)						\
 	$(DBUS_LIBS)							\
 	$(MATE_DESKTOP_LIBS)						\
-	$(GIO_LIBS)
+	$(GIO_LIBS)									\
+	$(DCONF_LIBS)
 
 mate_theme_test_SOURCES = \
 	mate-theme-test.c

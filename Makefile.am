@@ -14,7 +14,9 @@ SUBDIRS += typing-break
 endif
 
 @INTLTOOL_XML_NOMERGE_RULE@
-gsettings_SCHEMAS = org.mate.control-center.gschema.xml
+gsettings_SCHEMAS = \
+	org.mate.control-center.gschema.xml \
+	org.mate.control-center.keybinding.gschema.xml
 @GSETTINGS_RULES@
 
 %.gschema.xml.in: %.gschema.xml.in.in Makefile
