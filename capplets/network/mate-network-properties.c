@@ -311,6 +311,7 @@ cb_http_details_button_clicked (GtkWidget *button,
 	gtk_widget_show_all (widget);
 }
 
+static void
 proxy_mode_gsettings_changed (GSettings *settings,
 				   gchar *key,
 				   GtkBuilder *builder)
