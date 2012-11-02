@@ -316,7 +316,11 @@ wp_scale_type_changed (GtkComboBox *combobox,
     g_object_unref (pixbuf);
 
   if (g_settings_is_writable (data->wp_settings, WP_OPTIONS_KEY))
+  {
+    g_settings_delay (data->wp_settings);
     g_settings_set_enum (data->wp_settings, WP_OPTIONS_KEY, item->options);
+    g_settings_apply (data->wp_settings);
+  }
 }
 
 static void
@@ -342,7 +346,11 @@ wp_shade_type_changed (GtkWidget *combobox,
     g_object_unref (pixbuf);
 
   if (g_settings_is_writable (data->wp_settings, WP_SHADING_KEY))
+  {
+    g_settings_delay (data->wp_settings);
     g_settings_set_enum (data->wp_settings, WP_SHADING_KEY, item->shade_type);
+    g_settings_apply (data->wp_settings);
+  }
 }
 
 static void
@@ -365,8 +373,10 @@ wp_color_changed (AppearanceData *data,
 
     pcolor = gdk_color_to_string (item->pcolor);
     scolor = gdk_color_to_string (item->scolor);
+    g_settings_delay (data->wp_settings);
     g_settings_set_string (data->wp_settings, WP_PCOLOR_KEY, pcolor);
     g_settings_set_string (data->wp_settings, WP_SCOLOR_KEY, scolor);
+    g_settings_apply (data->wp_settings);
     g_free (pcolor);
     g_free (scolor);
   }
@@ -452,22 +462,6 @@ wp_options_changed (GSettings *settings,
                     AppearanceData *data)
 {
   MateWPItem *item;
-  gchar *option;
-
-  option = g_settings_get_string (settings, key);
-
-  /* "none" means we don't use a background image */
-  if (option == NULL || !strcmp (option, "none"))
-  {
-    /* temporarily disconnect so we don't override settings when
-     * updating the selection */
-    data->wp_update_settings = FALSE;
-    wp_uri_changed ("(none)", data);
-    data->wp_update_settings = TRUE;
-    if (option)
-        g_free (option);
-    return;
-  }
 
   item = get_selected_item (data, NULL);
 
@@ -476,7 +470,6 @@ wp_options_changed (GSettings *settings,
     item->options = g_settings_get_enum (settings, key);
     wp_option_menu_set (data, item->options, FALSE);
   }
-  g_free (option);
 }
 
 static void
@@ -546,7 +539,7 @@ wp_props_wp_set (AppearanceData *data, MateWPItem *item)
 
   if (!strcmp (item->filename, "(none)"))
   {
-    g_settings_set_string (data->wp_settings, WP_OPTIONS_KEY, "none");
+    g_settings_set_enum (data->wp_settings, WP_OPTIONS_KEY, 0);
     g_settings_set_string (data->wp_settings, WP_FILE_KEY, "");
   }
   else
@@ -604,8 +597,7 @@ wp_props_wp_selected (GtkTreeSelection *selection,
     gtk_color_button_set_color (GTK_COLOR_BUTTON (data->wp_scpicker),
                                 item->scolor);
 
-    if (data->wp_update_settings)
-      wp_props_wp_set (data, item);
+    wp_props_wp_set (data, item);
   }
   else
   {
@@ -1218,8 +1210,6 @@ desktop_init (AppearanceData *data,
   GtkWidget *add_button, *w;
   GtkCellRenderer *cr;
   char *url;
-
-  data->wp_update_settings = TRUE;
 
   data->wp_uris = NULL;
   if (uris != NULL) {

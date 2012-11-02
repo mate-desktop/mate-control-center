@@ -90,7 +90,6 @@ typedef struct {
 
 	/* desktop */
 	GHashTable* wp_hash;
-	gboolean wp_update_settings;
 	GtkIconView* wp_view;
 	GtkTreeModel* wp_model;
 	GtkWidget* wp_scpicker;

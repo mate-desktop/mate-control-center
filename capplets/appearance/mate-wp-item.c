@@ -23,13 +23,8 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <string.h>
+#include "appearance.h"
 #include "mate-wp-item.h"
-
-#define WP_SCHEMA                    "org.mate.background"
-#define WP_OPTIONS_KEY               "picture-options"
-#define WP_SHADING_KEY               "color-shading-type"
-#define WP_PCOLOR_KEY                "primary-color"
-#define WP_SCOLOR_KEY                "secondary-color"
 
 const gchar *wp_item_option_to_string (MateBGPlacement type)
 {
