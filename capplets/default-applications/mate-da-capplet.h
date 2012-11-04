@@ -24,67 +24,6 @@
 
 #include <gtk/gtk.h>
 
-// Set http, https, about, and unknown keys to the chosen web browser.
-#define DEFAULT_APPS_KEY_HTTP_PATH       "/desktop/mate/url-handlers/http"
-#define DEFAULT_APPS_KEY_HTTP_NEEDS_TERM DEFAULT_APPS_KEY_HTTP_PATH"/needs_terminal"
-#define DEFAULT_APPS_KEY_HTTP_EXEC       DEFAULT_APPS_KEY_HTTP_PATH"/command"
-
-#define DEFAULT_APPS_KEY_HTTPS_PATH       "/desktop/mate/url-handlers/https"
-#define DEFAULT_APPS_KEY_HTTPS_NEEDS_TERM DEFAULT_APPS_KEY_HTTPS_PATH"/needs_terminal"
-#define DEFAULT_APPS_KEY_HTTPS_EXEC       DEFAULT_APPS_KEY_HTTPS_PATH"/command"
-
-// While mate-vfs2 does not use the "unknown" key, several widespread apps like htmlview
-// have read it for the past few years.  Setting it should not hurt.
-#define DEFAULT_APPS_KEY_UNKNOWN_PATH       "/desktop/mate/url-handlers/unknown"
-#define DEFAULT_APPS_KEY_UNKNOWN_NEEDS_TERM DEFAULT_APPS_KEY_UNKNOWN_PATH"/needs_terminal"
-#define DEFAULT_APPS_KEY_UNKNOWN_EXEC       DEFAULT_APPS_KEY_UNKNOWN_PATH"/command"
-
-// about:blank and other about: URI's are commonly used by browsers too
-#define DEFAULT_APPS_KEY_ABOUT_PATH       "/desktop/mate/url-handlers/about"
-#define DEFAULT_APPS_KEY_ABOUT_NEEDS_TERM DEFAULT_APPS_KEY_ABOUT_PATH"/needs_terminal"
-#define DEFAULT_APPS_KEY_ABOUT_EXEC       DEFAULT_APPS_KEY_ABOUT_PATH"/command"
-
-#define DEFAULT_APPS_KEY_MAILER_PATH       "/desktop/mate/url-handlers/mailto"
-#define DEFAULT_APPS_KEY_MAILER_NEEDS_TERM DEFAULT_APPS_KEY_MAILER_PATH"/needs_terminal"
-#define DEFAULT_APPS_KEY_MAILER_EXEC       DEFAULT_APPS_KEY_MAILER_PATH"/command"
-
-#define DEFAULT_APPS_KEY_BROWSER_PATH       "/desktop/mate/applications/browser"
-#define DEFAULT_APPS_KEY_BROWSER_EXEC       DEFAULT_APPS_KEY_BROWSER_PATH"/exec"
-#define DEFAULT_APPS_KEY_BROWSER_NEEDS_TERM DEFAULT_APPS_KEY_BROWSER_PATH"/needs_term"
-#define DEFAULT_APPS_KEY_BROWSER_NREMOTE    DEFAULT_APPS_KEY_BROWSER_PATH"/nremote"
-
-#define DEFAULT_APPS_KEY_TERMINAL_PATH     "/desktop/mate/applications/terminal"
-#define DEFAULT_APPS_KEY_TERMINAL_EXEC_ARG DEFAULT_APPS_KEY_TERMINAL_PATH"/exec_arg"
-#define DEFAULT_APPS_KEY_TERMINAL_EXEC     DEFAULT_APPS_KEY_TERMINAL_PATH"/exec"
-
-#define DEFAULT_APPS_KEY_MEDIA_PATH        "/desktop/mate/applications/media"
-#define DEFAULT_APPS_KEY_MEDIA_EXEC        DEFAULT_APPS_KEY_MEDIA_PATH"/exec"
-#define DEFAULT_APPS_KEY_MEDIA_NEEDS_TERM  DEFAULT_APPS_KEY_MEDIA_PATH"/needs_term"
-
-#define DEFAULT_APPS_KEY_VIDEO_PATH        "/desktop/mate/applications/video"
-#define DEFAULT_APPS_KEY_VIDEO_EXEC        DEFAULT_APPS_KEY_VIDEO_PATH"/exec"
-#define DEFAULT_APPS_KEY_VIDEO_NEEDS_TERM  DEFAULT_APPS_KEY_VIDEO_PATH"/needs_term"
-
-#define DEFAULT_APPS_KEY_IMAGE_PATH        "/desktop/mate/applications/image"
-#define DEFAULT_APPS_KEY_IMAGE_EXEC        DEFAULT_APPS_KEY_IMAGE_PATH"/exec"
-#define DEFAULT_APPS_KEY_IMAGE_NEEDS_TERM  DEFAULT_APPS_KEY_IMAGE_PATH"/needs_term"
-
-#define DEFAULT_APPS_KEY_TEXT_PATH        "/desktop/mate/applications/text"
-#define DEFAULT_APPS_KEY_TEXT_EXEC        DEFAULT_APPS_KEY_TEXT_PATH"/exec"
-#define DEFAULT_APPS_KEY_TEXT_NEEDS_TERM  DEFAULT_APPS_KEY_TEXT_PATH"/needs_term"
-
-#define DEFAULT_APPS_KEY_FILE_PATH        "/desktop/mate/applications/file"
-#define DEFAULT_APPS_KEY_FILE_EXEC        DEFAULT_APPS_KEY_FILE_PATH"/exec"
-#define DEFAULT_APPS_KEY_FILE_NEEDS_TERM  DEFAULT_APPS_KEY_FILE_PATH"/needs_term"
-
-#define DEFAULT_APPS_KEY_VISUAL_PATH  "/desktop/mate/applications/at/visual"
-#define DEFAULT_APPS_KEY_VISUAL_EXEC  DEFAULT_APPS_KEY_VISUAL_PATH"/exec"
-#define DEFAULT_APPS_KEY_VISUAL_STARTUP DEFAULT_APPS_KEY_VISUAL_PATH"/startup"
-
-#define DEFAULT_APPS_KEY_MOBILITY_PATH  "/desktop/mate/applications/at/mobility"
-#define DEFAULT_APPS_KEY_MOBILITY_EXEC  DEFAULT_APPS_KEY_MOBILITY_PATH"/exec"
-#define DEFAULT_APPS_KEY_MOBILITY_STARTUP DEFAULT_APPS_KEY_MOBILITY_PATH"/startup"
-
 typedef struct _MateDACapplet {
 	GtkBuilder* builder;
 
