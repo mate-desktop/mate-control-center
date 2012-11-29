@@ -152,28 +152,18 @@ PKG_CHECK_MODULES(GLIB, glib-2.0 $GMODULE_ADD)
 dnl
 dnl Check dependencies of libslab
 dnl
-PKG_CHECK_MODULES(EXTERNAL_LIBSLAB, [libslab], have_libslab=yes, have_libslab=no)
+PKG_CHECK_MODULES(LIBSLAB, [
+			   gio-2.0 mate-desktop-2.0 librsvg-2.0 libmate-menu pango
+			   ],
+			   have_libslab=yes,
+			   have_libslab=no)
+WARN_CFLAGS="-Wall"
 
-if test $have_libslab = no; then
-	PKG_CHECK_MODULES(LIBSLAB, [
-				   gio-2.0 mate-desktop-2.0 librsvg-2.0 libmate-menu pango
-				   ],
-				   have_libslab_deps=yes,
-				   have_libslab_deps=no)
-	WARN_CFLAGS="-Wall"
-else
-	have_libslab_deps=no
-fi
-
-AC_SUBST(EXTERNAL_LIBSLAB_CFLAGS)
-AC_SUBST(EXTERNAL_LIBSLAB_LIBS)
 AC_SUBST(LIBSLAB_CFLAGS)
 AC_SUBST(LIBSLAB_LIBS)
 AC_SUBST(WARN_CFLAGS)
 
-AM_CONDITIONAL(HAVE_LIBSLAB, [test $have_libslab = yes -o $have_libslab_deps = yes])
-AM_CONDITIONAL(HAVE_LIBSLAB_DEPS, [test $have_libslab_deps = yes])
-AM_CONDITIONAL(LIBSLAB_FOR_INTERNAL_USE, test "yes" = "yes")
+AM_CONDITIONAL(HAVE_LIBSLAB, [test $have_libslab = yes])
 
 dnl
 dnl Check for Xft version 2; we build in extra functionality to the font capplet
@@ -368,6 +358,7 @@ help/Makefile
 libwindow-settings/Makefile
 libwindow-settings/mate-window-settings-2.0.pc
 po/Makefile.in
+libslab/libslab.pc
 libslab/Makefile
 shell/Makefile
 shell/matecc.desktop.in
@@ -385,7 +376,7 @@ echo "
               mate-control-center
 
         Appindicator:          ${enable_appindicator}
-        Libslab:               ${have_libslab_deps}
+        Libslab:               ${have_libslab}
         XCursor support:       ${have_xcursor}
         XInput support:        ${have_xinput}
         About-me:              ${enable_aboutme}
