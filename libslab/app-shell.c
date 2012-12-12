@@ -59,6 +59,7 @@ static GtkWidget *create_actions_section (AppShellData * app_data, const gchar *
 static void generate_category (const char * category, MateMenuTreeDirectory * root_dir, AppShellData * app_data, gboolean recursive);
 static void generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data,
 	CategoryData * cat_data, gboolean recursive);
+static void generate_new_apps (AppShellData * app_data);
 static void insert_launcher_into_category (CategoryData * cat_data, MateDesktopItem * desktop_item,
 	AppShellData * app_data);
 
@@ -841,7 +842,7 @@ matemenu_tree_changed_callback (MateMenuTree * old_tree, gpointer user_data)
 }
 
 AppShellData *
-appshelldata_new (const gchar * menu_name, GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close)
+appshelldata_new (const gchar * menu_name, GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close, gint new_apps_max_items)
 {
 	AppShellData *app_data = g_new0 (AppShellData, 1);
 	app_data->settings = g_settings_new (CC_SCHEMA);
@@ -850,6 +851,11 @@ appshelldata_new (const gchar * menu_name, GtkIconSize icon_size, gboolean show_
 	app_data->stop_incremental_relayout = TRUE;
 	app_data->show_tile_generic_name = show_tile_generic_name;
 	app_data->exit_on_close = exit_on_close;
+	if (new_apps_max_items > 0) {
+		app_data->new_apps = g_new0 (NewAppConfig, 1);
+		app_data->new_apps->max_items = new_apps_max_items;
+		app_data->new_apps->name = _("New Applications");
+	}
 	return app_data;
 }
 
@@ -912,6 +918,9 @@ generate_categories (AppShellData * app_data)
 	}
 
 	matemenu_tree_item_unref (root_dir);
+
+	if (app_data->new_apps && (app_data->new_apps->max_items > 0))
+		generate_new_apps (app_data);
 }
 
 static void
@@ -1052,6 +1061,172 @@ generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data, C
 		matemenu_tree_item_unref (l->data);
 	}
 	g_slist_free (contents);
+}
+
+static void
+generate_new_apps (AppShellData * app_data)
+{
+	GHashTable *all_apps_cache = NULL;
+	gchar *all_apps;
+	GError *error = NULL;
+	gchar *separator = "\n";
+
+	gchar *all_apps_file_name;
+	gchar **all_apps_split;
+	gint x;
+	gboolean got_new_apps;
+	CategoryData *new_apps_category = NULL;
+	GList *categories, *launchers;
+	GHashTable *new_apps_dups;
+
+	all_apps_file_name = g_build_filename (g_get_user_config_dir (), "mate", "ab-newapps.txt", NULL);
+
+	if (!g_file_get_contents (all_apps_file_name, &all_apps, NULL, &error))
+	{
+		/* If file does not exist, this is the first time this user has run this, create the baseline file */
+		GList *categories, *launchers;
+		GString *gstr;
+		gchar *dirname;
+
+		g_error_free (error);
+		error = NULL;
+
+		/* best initial size determined by running on a couple different platforms */
+		gstr = g_string_sized_new (10000);
+
+		for (categories = app_data->categories_list; categories; categories = categories->next)
+		{
+			CategoryData *data = categories->data;
+			for (launchers = data->launcher_list; launchers; launchers = launchers->next)
+			{
+				Tile *tile = TILE (launchers->data);
+				MateDesktopItem *item =
+					application_tile_get_desktop_item (APPLICATION_TILE (tile));
+				const gchar *uri = mate_desktop_item_get_location (item);
+				g_string_append (gstr, uri);
+				g_string_append (gstr, separator);
+			}
+		}
+
+		dirname = g_path_get_dirname (all_apps_file_name);
+		g_mkdir_with_parents (dirname, 0700);	/* creates if does not exist */
+		g_free (dirname);
+
+		if (!g_file_set_contents (all_apps_file_name, gstr->str, -1, &error))
+			g_warning ("Error setting all apps file:%s\n", error->message);
+
+		g_string_free (gstr, TRUE);
+		g_free (all_apps_file_name);
+		return;
+	}
+
+	all_apps_cache = g_hash_table_new (g_str_hash, g_str_equal);
+	all_apps_split = g_strsplit (all_apps, separator, -1);
+	for (x = 0; all_apps_split[x]; x++)
+	{
+		g_hash_table_insert (all_apps_cache, all_apps_split[x], all_apps_split[x]);
+	}
+
+	got_new_apps = FALSE;
+	new_apps_dups = g_hash_table_new (g_str_hash, g_str_equal);
+	for (categories = app_data->categories_list; categories; categories = categories->next)
+	{
+		CategoryData *cat_data = categories->data;
+		for (launchers = cat_data->launcher_list; launchers; launchers = launchers->next)
+		{
+			Tile *tile = TILE (launchers->data);
+			MateDesktopItem *item =
+				application_tile_get_desktop_item (APPLICATION_TILE (tile));
+			const gchar *uri = mate_desktop_item_get_location (item);
+			if (!g_hash_table_lookup (all_apps_cache, uri))
+			{
+				GFile *file;
+				GFileInfo *info;
+				long filetime;
+
+				if (g_hash_table_lookup (new_apps_dups, uri))
+				{
+					/* if a desktop file is in 2 or more top level categories, only show it once */
+					/* printf("Discarding Newapp duplicate:%s\n", uri); */
+					break;
+				}
+				g_hash_table_insert (new_apps_dups, (gpointer) uri, (gpointer) uri);
+
+				if (!got_new_apps)
+				{
+					new_apps_category = g_new0 (CategoryData, 1);
+					new_apps_category->category =
+						g_strdup (app_data->new_apps->name);
+					app_data->new_apps->garray =
+						g_array_sized_new (FALSE, TRUE,
+						sizeof (NewAppData *),
+						app_data->new_apps->max_items);
+
+					/* should not need this, but a bug in glib does not actually clear the elements until you call this method */
+					g_array_set_size (app_data->new_apps->garray, app_data->new_apps->max_items);
+					got_new_apps = TRUE;
+				}
+
+				file = g_file_new_for_uri (uri);
+				info = g_file_query_info (file,
+							  G_FILE_ATTRIBUTE_TIME_MODIFIED,
+							  0, NULL, NULL);
+
+				if (!info)
+				{
+					g_object_unref (file);
+					g_warning ("Cant get vfs info for %s\n", uri);
+					return;
+				}
+				filetime = (long) g_file_info_get_attribute_uint64 (info,
+										    G_FILE_ATTRIBUTE_TIME_MODIFIED);
+				g_object_unref (info);
+				g_object_unref (file);
+
+				for (x = 0; x < app_data->new_apps->max_items; x++)
+				{
+					NewAppData *temp_data = (NewAppData *)
+						g_array_index (app_data->new_apps->garray, NewAppData *, x);
+					if (!temp_data || filetime > temp_data->time)	/* if this slot is empty or we are newer than this slot */
+					{
+						NewAppData *temp = g_new0 (NewAppData, 1);
+						temp->time = filetime;
+						temp->item = item;
+						g_array_insert_val (app_data->new_apps->garray, x,
+							temp);
+						break;
+					}
+				}
+			}
+		}
+	}
+	g_hash_table_destroy (new_apps_dups);
+	g_hash_table_destroy (all_apps_cache);
+
+	if (got_new_apps)
+	{
+		for (x = 0; x < app_data->new_apps->max_items; x++)
+		{
+			NewAppData *data =
+				(NewAppData *) g_array_index (app_data->new_apps->garray,
+				NewAppData *, x);
+			if (data)
+			{
+				insert_launcher_into_category (new_apps_category, data->item,
+					app_data);
+				g_free (data);
+			}
+			else
+				break;
+		}
+		app_data->categories_list =
+			g_list_prepend (app_data->categories_list, new_apps_category);
+
+		g_array_free (app_data->new_apps->garray, TRUE);
+	}
+	g_free (all_apps);
+	g_free (all_apps_file_name);
+	g_strfreev (all_apps_split);
 }
 
 static void

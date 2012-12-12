@@ -84,6 +84,7 @@ typedef struct _AppShellData
 	SlabSection *selected_group;
 	GtkIconSize icon_size;
 	const gchar *menu_name;
+	NewAppConfig *new_apps;
 	MateMenuTree *tree;
 	GHashTable *hash;
 
@@ -124,8 +125,9 @@ typedef struct
 
 void generate_categories (AppShellData * app_data);
 
+/* If new_apps_max_items is 0 then the new applications category is not created */
 AppShellData *appshelldata_new (const gchar * menu_name,
-	GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close);
+	GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close, gint new_apps_max_items);
 
 void layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar * groups_title,
 	const gchar * actions_title, GSList * actions,

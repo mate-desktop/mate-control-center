@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
 		return retval;
 	}
 
-	app_data = appshelldata_new("matecc.menu", GTK_ICON_SIZE_DND, FALSE, TRUE);
+	app_data = appshelldata_new("matecc.menu", GTK_ICON_SIZE_DND, FALSE, TRUE, 0);
 	generate_categories(app_data);
 
 	actions = get_actions_list();

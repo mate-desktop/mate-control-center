@@ -26,6 +26,8 @@
 #include <libslab/app-shell.h>
 #include <libslab/application-tile.h>
 #include <libslab/bookmark-agent.h>
+#include <libslab/directory-tile.h>
+#include <libslab/document-tile.h>
 #include <libslab/double-click-detector.h>
 #include <libslab/mate-utils.h>
 #include <libslab/libslab-utils.h>
