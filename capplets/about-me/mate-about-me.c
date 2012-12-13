@@ -26,7 +26,9 @@
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 #include <unistd.h>
+#if 0
 #include <libebook/e-book.h>
+#endif
 #include <dbus/dbus-glib-bindings.h>
 
 #define MATE_DESKTOP_USE_UNSTABLE_API
@@ -45,23 +47,26 @@
 #define EMAIL_SLOTS 4
 
 typedef struct {
+#if 0
 	EContact 	*contact;
 	EBook    	*book;
+#endif
 
 	GtkBuilder 	*dialog;
 	GtkWidget	*enable_fingerprint_button;
 	GtkWidget	*disable_fingerprint_button;
-	GtkWidget   *image_chooser;
+	GtkWidget   	*image_chooser;
 
 	GdkScreen    	*screen;
 	GtkIconTheme 	*theme;
 	MateDesktopThumbnailFactory *thumbs;
 
+#if 0
 	EContactAddress *addr1;
 	EContactAddress *addr2;
 	gchar           *email[EMAIL_SLOTS];
 	const gchar     *email_types[EMAIL_SLOTS];
-
+#endif
 	gboolean      	 have_image;
 	gboolean      	 image_changed;
 	gboolean      	 create_self;
@@ -80,6 +85,7 @@ struct WidToCid {
 	guint  cid;
 };
 
+#if 0
 enum {
 	ADDRESS_STREET = 1,
 	ADDRESS_POBOX,
@@ -144,7 +150,7 @@ struct WidToCid ids[] = {
 #define ATTRIBUTE_OTHER "OTHER"
 
 static void about_me_set_address_field (EContactAddress *, guint, gchar *);
-
+#endif
 
 /*** Utility functions ***/
 static void
@@ -154,7 +160,7 @@ about_me_error (GtkWindow *parent, gchar *str)
 
 	dialog = gtk_message_dialog_new (parent,
 				         GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR,
-				         GTK_BUTTONS_OK, str);
+				         GTK_BUTTONS_OK, "%s", str);
 
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
@@ -164,6 +170,7 @@ about_me_error (GtkWindow *parent, gchar *str)
 static void
 about_me_destroy (void)
 {
+#if 0
 	e_contact_address_free (me->addr1);
 	e_contact_address_free (me->addr2);
 
@@ -171,13 +178,16 @@ about_me_destroy (void)
 		g_object_unref (me->contact);
 	if (me->book)
 		g_object_unref (me->book);
+#endif
 	if (me->dialog)
 		g_object_unref (me->dialog);
 
+#if 0
 	g_free (me->email[0]);
 	g_free (me->email[1]);
 	g_free (me->email[2]);
 	g_free (me->email[3]);
+#endif
 
 	g_free (me->person);
 	g_free (me->login);
@@ -186,6 +196,7 @@ about_me_destroy (void)
 	me = NULL;
 }
 
+#if 0
 static void
 about_me_update_email (MateAboutMe *me)
 {
@@ -332,6 +343,7 @@ about_me_focus_out (GtkWidget *widget, GdkEventFocus *event, MateAboutMe *unused
 
 	return FALSE;
 }
+
 
 /*
  * Helpers
@@ -497,8 +509,15 @@ about_me_load_string_field (MateAboutMe *me, const gchar *wid, guint cid, guint 
 	g_signal_connect (widget, "focus-out-event", G_CALLBACK (about_me_focus_out), me);
 }
 
+#endif
+
+#if 0
 static void
 about_me_load_photo (MateAboutMe *me, EContact *contact)
+#endif
+
+static void
+about_me_load_photo (MateAboutMe *me)
 {
 	GtkBuilder    *dialog;
 	EContactPhoto *photo;
@@ -621,6 +640,7 @@ about_me_update_photo (MateAboutMe *me)
 static void
 about_me_load_info (MateAboutMe *me)
 {
+#if 0
 	gint i;
 
 	if (me->create_self == FALSE) {
@@ -638,7 +658,7 @@ about_me_load_info (MateAboutMe *me)
 	for (i = 0; ids[i].wid != NULL; i++) {
 		about_me_load_string_field (me, ids[i].wid, ids[i].cid, i);
 	}
-
+#endif
 	set_fingerprint_label (me->enable_fingerprint_button,
 			       me->disable_fingerprint_button);
 }
@@ -883,6 +903,7 @@ about_me_setup_dialog (void)
 				 main_dialog,
 				 G_CONNECT_SWAPPED);
 
+#if 0
 	/* Get the self contact */
 	if (!e_book_get_self (&me->contact, &me->book, &error)) {
 		if (error->code == E_BOOK_ERROR_PROTOCOL_NOT_SUPPORTED) {
@@ -914,6 +935,7 @@ about_me_setup_dialog (void)
 	} else {
 		about_me_setup_email (me);
 	}
+#endif
 
 	me->login = g_strdup (g_get_user_name ());
 	me->username = g_strdup (g_get_real_name ());
@@ -953,6 +975,7 @@ about_me_setup_dialog (void)
 	g_signal_connect (me->image_chooser, "changed",
 			  G_CALLBACK (about_me_image_changed_cb), me);
 
+#if 0
 	/* Address tab: set up the focus chains */
 	chain = g_list_prepend (NULL, WID ("addr-country-1"));
 	chain = g_list_prepend (chain, WID ("addr-po-1"));
@@ -973,7 +996,7 @@ about_me_setup_dialog (void)
 	widget = WID ("addr-table-2");
 	gtk_container_set_focus_chain (GTK_CONTAINER (widget), chain);
 	g_list_free (chain);
-
+#endif
 	about_me_load_info (me);
 
 	gtk_widget_show_all (main_dialog);

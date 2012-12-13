@@ -250,11 +250,11 @@ AC_ARG_ENABLE([aboutme],
    [enable_aboutme=no])
 AC_MSG_RESULT([$enable_aboutme])
 
-if test "x$enable_aboutme" = "xyes"; then
-  PKG_CHECK_MODULES(LIBEBOOK, [libebook-1.2 >= 1.7.90],
-                    [AC_DEFINE([HAVE_LIBEBOOK], 1,
-                    [Define if evolution-data-server libebook-1.2 is available])])
-fi
+dnl if test "x$enable_aboutme" = "xyes"; then
+dnl   PKG_CHECK_MODULES(LIBEBOOK, [libebook-1.2 >= 1.7.90],
+dnl                     [AC_DEFINE([HAVE_LIBEBOOK], 1,
+dnl                     [Define if evolution-data-server libebook-1.2 is available])])
+dnl fi
 
 AM_CONDITIONAL(BUILD_ABOUTME, test "x$enable_aboutme" = "xyes")
 
