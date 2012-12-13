@@ -49,6 +49,7 @@ typedef struct {
 	GtkWidget	*enable_fingerprint_button;
 	GtkWidget	*disable_fingerprint_button;
 	GtkWidget   	*image_chooser;
+	GdkPixbuf       *image;
 
 	GdkScreen    	*screen;
 	GtkIconTheme 	*theme;
@@ -66,11 +67,6 @@ typedef struct {
 } MateAboutMe;
 
 static MateAboutMe *me = NULL;
-
-struct WidToCid {
-	gchar *wid;
-	guint  cid;
-};
 
 /*** Utility functions ***/
 static void
@@ -96,6 +92,7 @@ about_me_destroy (void)
 	g_free (me->person);
 	g_free (me->login);
 	g_free (me->username);
+	g_free (me->image);
 	g_free (me);
 	me = NULL;
 }
@@ -103,31 +100,24 @@ about_me_destroy (void)
 static void
 about_me_load_photo (MateAboutMe *me)
 {
-	GtkBuilder    *dialog;
-	EContactPhoto *photo;
+	gchar         *file;
 
-	dialog = me->dialog;
+	file = g_build_filename (g_get_home_dir (), ".face", NULL);
+        me->image = gdk_pixbuf_new_from_file(file, NULL);
 
-	if (me->person)
-		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
+        if (me->image != NULL)
+                me->have_image = TRUE;
+        else
+                me->have_image = FALSE;
 
-	photo = e_contact_get (contact, E_CONTACT_PHOTO);
-
-	if (photo && photo->type == E_CONTACT_PHOTO_TYPE_INLINED) {
-		me->have_image = TRUE;
-		e_image_chooser_set_image_data (E_IMAGE_CHOOSER (me->image_chooser),
-						(char *) photo->data.inlined.data, photo->data.inlined.length);
-		e_contact_photo_free (photo);
-	} else {
-		me->have_image = FALSE;
-	}
+        g_free (file);
 }
 
 static void
 about_me_update_photo (MateAboutMe *me)
 {
 	GtkBuilder    *dialog;
-	EContactPhoto *photo;
+	GTKPixbuf     *photo;
 	gchar         *file;
 	GError        *error;
 
@@ -209,8 +199,6 @@ about_me_update_photo (MateAboutMe *me)
 
 	} else if (me->image_changed && !me->have_image) {
 		/* Update the image in the card */
-		e_contact_set (me->contact, E_CONTACT_PHOTO, NULL);
-
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
 
 		g_unlink (file);
@@ -431,6 +419,7 @@ about_me_setup_dialog (void)
 	gchar        *str;
 
 	me = g_new0 (MateAboutMe, 1);
+        me->image = NULL;
 
 	dialog = gtk_builder_new ();
 	gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-about-me-dialog.ui", NULL);
@@ -472,7 +461,7 @@ about_me_setup_dialog (void)
 	me->username = g_strdup (g_get_real_name ());
 
 	/* Contact Tab */
-	about_me_load_photo (me, me->contact);
+	about_me_load_photo (me);
 
 	widget = WID ("fullname");
 	str = g_strdup_printf ("<b><span size=\"xx-large\">%s</span></b>", me->username);
