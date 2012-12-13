@@ -117,9 +117,10 @@ static void
 about_me_update_photo (MateAboutMe *me)
 {
 	GtkBuilder    *dialog;
-	GTKPixbuf     *photo;
+	GdkPixbuf     *photo;
 	gchar         *file;
 	GError        *error;
+        gboolean      result;
 
 	guchar 	      *data;
 	gsize 	       length;
@@ -173,20 +174,12 @@ about_me_update_photo (MateAboutMe *me)
 			length = scaled_length;
 		}
 
-		photo = g_new0 (EContactPhoto, 1);
-		photo->type = E_CONTACT_PHOTO_TYPE_INLINED;
-		photo->data.inlined.data = data;
-		photo->data.inlined.length = length;
-		e_contact_set (me->contact, E_CONTACT_PHOTO, photo);
-
 		/* Save the image for MDM */
 		/* FIXME: I would have to read the default used by the mdmgreeter program */
 		error = NULL;
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
-		if (g_file_set_contents (file,
-					 (gchar *) photo->data.inlined.data,
-					 photo->data.inlined.length,
-					 &error) != FALSE) {
+		result = gdk_pixbuf_save (photo, file, "png", &error, NULL);
+		if (result == TRUE) {
 			g_chmod (file, 0644);
 		} else {
 			g_warning ("Could not create %s: %s", file, error->message);
@@ -195,7 +188,7 @@ about_me_update_photo (MateAboutMe *me)
 
 		g_free (file);
 
-		e_contact_photo_free (photo);
+		g_free (photo);
 
 	} else if (me->image_changed && !me->have_image) {
 		/* Update the image in the card */
@@ -205,8 +198,6 @@ about_me_update_photo (MateAboutMe *me)
 
 		g_free (file);
 	}
-
-	about_me_commit (me);
 }
 
 static void
@@ -382,7 +373,6 @@ about_me_button_clicked_cb (GtkDialog *dialog, gint response_id, MateAboutMe *me
 	else {
 		if (me->commit_timeout_id) {
 			g_source_remove (me->commit_timeout_id);
-			about_me_commit (me);
 		}
 
 		about_me_destroy ();
@@ -415,7 +405,6 @@ about_me_setup_dialog (void)
 	GtkIconInfo  *icon;
 	GtkBuilder   *dialog;
 	GError 	     *error = NULL;
-	GList        *chain;
 	gchar        *str;
 
 	me = g_new0 (MateAboutMe, 1);
