@@ -88,11 +88,12 @@ about_me_destroy (void)
 {
 	if (me->dialog)
 		g_object_unref (me->dialog);
+	if (me->image)
+		g_object_unref (me->image);
 
 	g_free (me->person);
 	g_free (me->login);
 	g_free (me->username);
-	g_free (me->image);
 	g_free (me);
 	me = NULL;
 }
@@ -101,14 +102,19 @@ static void
 about_me_load_photo (MateAboutMe *me)
 {
 	gchar         *file;
+        GError        *error = NULL;
 
 	file = g_build_filename (g_get_home_dir (), ".face", NULL);
-        me->image = gdk_pixbuf_new_from_file(file, NULL);
+        me->image = gdk_pixbuf_new_from_file(file, &error);
 
-        if (me->image != NULL)
+        if (me->image != NULL) {
+		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), file);
                 me->have_image = TRUE;
-        else
+        } else {
                 me->have_image = FALSE;
+                g_warning ("Could not load %s: %s", file, error->message);
+                g_error_free (error);
+        }
 
         g_free (file);
 }
@@ -117,10 +123,9 @@ static void
 about_me_update_photo (MateAboutMe *me)
 {
 	GtkBuilder    *dialog;
-	GdkPixbuf     *photo;
 	gchar         *file;
 	GError        *error;
-        gboolean      result;
+        gboolean       result;
 
 	guchar 	      *data;
 	gsize 	       length;
@@ -130,7 +135,7 @@ about_me_update_photo (MateAboutMe *me)
 
 	if (me->image_changed && me->have_image) {
 		GdkPixbufLoader *loader = gdk_pixbuf_loader_new ();
-		GdkPixbuf *pixbuf, *scaled;
+		GdkPixbuf *pixbuf = NULL, *scaled = NULL;
 		int height, width;
 		gboolean do_scale = FALSE;
 		float scale;
@@ -170,6 +175,7 @@ about_me_update_photo (MateAboutMe *me)
 						   "compression", "9", NULL);
 
 			g_free (data);
+                        g_free (scaled);
 			data = (guchar *) scaled_data;
 			length = scaled_length;
 		}
@@ -178,8 +184,7 @@ about_me_update_photo (MateAboutMe *me)
 		/* FIXME: I would have to read the default used by the mdmgreeter program */
 		error = NULL;
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
-		result = gdk_pixbuf_save (photo, file, "png", &error, NULL);
-		if (result == TRUE) {
+                if (g_file_set_contents (file, (gchar *)data, length, &error) == TRUE) {
 			g_chmod (file, 0644);
 		} else {
 			g_warning ("Could not create %s: %s", file, error->message);
@@ -187,8 +192,8 @@ about_me_update_photo (MateAboutMe *me)
 		}
 
 		g_free (file);
-
-		g_free (photo);
+                g_free (data);
+                g_object_unref (pixbuf);
 
 	} else if (me->image_changed && !me->have_image) {
 		/* Update the image in the card */
