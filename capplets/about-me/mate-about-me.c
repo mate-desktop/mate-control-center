@@ -38,8 +38,8 @@
 
 #include "capplet-util.h"
 
-#define MAX_HEIGHT 150
-#define MAX_WIDTH  150
+#define MAX_HEIGHT 100
+#define MAX_WIDTH  100
 
 #define EMAIL_SLOTS 4
 
@@ -175,7 +175,6 @@ about_me_update_photo (MateAboutMe *me)
 						   "compression", "9", NULL);
 
 			g_free (data);
-                        g_free (scaled);
 			data = (guchar *) scaled_data;
 			length = scaled_length;
 		}
@@ -192,7 +191,6 @@ about_me_update_photo (MateAboutMe *me)
 		}
 
 		g_free (file);
-                g_free (data);
                 g_object_unref (pixbuf);
 
 	} else if (me->image_changed && !me->have_image) {
