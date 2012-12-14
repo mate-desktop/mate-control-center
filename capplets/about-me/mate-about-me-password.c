@@ -210,6 +210,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		g_set_error (error,
 					 PASSDLG_ERROR,
 					 PASSDLG_ERROR_BACKEND,
+					 "%s",
 					 strerror (errno));
 
 		/* Clean up */
@@ -427,7 +428,7 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 	GError		*error = NULL;
 
 	gchar		*msg = NULL;		/* Status error message */
-	GtkBuilder	*dialog;
+	GtkBuilder	*dialog = NULL;
 
 	gboolean	reinit = FALSE;
 
@@ -722,13 +723,13 @@ passdlg_error_dialog (GtkWindow *parent, const gchar *title,
 
 	dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL,
 					 GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-					 msg);
+					 "%s", msg);
 	if (title)
 		gtk_window_set_title (GTK_WINDOW (dialog), title);
 
 	if (details)
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  details);
+							  "%s", details);
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
 }
@@ -872,7 +873,7 @@ passdlg_authenticate (GtkButton *button, PasswordDialog *pdialog)
 static guint
 passdlg_validate_passwords (PasswordDialog *pdialog)
 {
-	GtkBuilder	*dialog;
+	GtkBuilder	*dialog = NULL;
 	const gchar	*new_password, *retyped_password;
 	glong			nlen, rlen;
 

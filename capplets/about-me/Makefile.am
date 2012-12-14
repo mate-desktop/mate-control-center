@@ -28,10 +28,9 @@ marshal.h: fprintd-marshal.list
 marshal.c: fprintd-marshal.list
 	@GLIB_GENMARSHAL@ --prefix=fprintd_marshal $< --body --header > $@
 
-if BUILD_ABOUTME
 bin_PROGRAMS = mate-about-me
 
-mate_about_me_LDADD = $(MATECC_CAPPLETS_LIBS) $(LIBEBOOK_LIBS)
+mate_about_me_LDADD = $(MATECC_CAPPLETS_LIBS)
 mate_about_me_LDFLAGS = -export-dynamic
 
 @INTLTOOL_DESKTOP_RULE@
@@ -50,8 +49,6 @@ INCLUDES = \
 	-DMATECC_UI_DIR="\"$(uidir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pkgdatadir)/pixmaps\"" \
 	-DMATELOCALEDIR="\"$(datadir)/locale\""
-
-endif # BUILD_ABOUTME
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(MARSHALFILES)
 EXTRA_DIST = $(ui_files) fprintd-marshal.list

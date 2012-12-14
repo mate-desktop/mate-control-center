@@ -240,25 +240,6 @@ AC_SUBST(LIBMATEKBDUI_CFLAGS)
 AC_SUBST(LIBMATEKBDUI_LIBS)
 
 dnl ==============================================
-dnl About-me
-dnl ==============================================
-
-AC_MSG_CHECKING([whether to enable About Me])
-AC_ARG_ENABLE([aboutme],
-   AC_HELP_STRING([--enable-aboutme],
-                  [enable about-me capplet]),,
-   [enable_aboutme=no])
-AC_MSG_RESULT([$enable_aboutme])
-
-if test "x$enable_aboutme" = "xyes"; then
-  PKG_CHECK_MODULES(LIBEBOOK, [libebook-1.2 >= 1.7.90],
-                    [AC_DEFINE([HAVE_LIBEBOOK], 1,
-                    [Define if evolution-data-server libebook-1.2 is available])])
-fi
-
-AM_CONDITIONAL(BUILD_ABOUTME, test "x$enable_aboutme" = "xyes")
-
-dnl ==============================================
 dnl End: Check that we meet the  dependencies
 dnl ==============================================
 
