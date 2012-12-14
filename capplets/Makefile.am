@@ -8,7 +8,8 @@ SUBDIRS = \
 	keybindings \
 	mouse \
 	network \
-	windows
+	windows \
+        about-me
 
 DIST_SUBDIRS = \
 	common \
@@ -22,10 +23,5 @@ DIST_SUBDIRS = \
 	windows \
 	display \
 	about-me
-
-
-if BUILD_ABOUTME
-SUBDIRS += about-me
-endif
 
 -include $(top_srcdir)/git.mk
