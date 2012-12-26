@@ -22,6 +22,9 @@ gsettings_SCHEMAS = \
 %.gschema.xml.in: %.gschema.xml.in.in Makefile
 	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
 
+convertdir = $(datadir)/MateConf/gsettings
+convert_DATA = mate-control-center.convert
+
 ACLOCAL_AMFLAGS = -I m4
 
 CLEANFILES = \
@@ -53,6 +56,7 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	$(gsettings_schemas_in_in) \
+	$(convert_DATA) \
 	MAINTAINERS \
 	mate-doc-utils.make
 
