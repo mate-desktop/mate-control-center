@@ -24,6 +24,7 @@
 #include "appearance-font.h"
 #include "appearance-themes.h"
 #include "appearance-style.h"
+#include "appearance-support.h"
 #include "theme-installer.h"
 #include "theme-thumbnail.h"
 #include "activate-settings-daemon.h"
@@ -90,6 +91,7 @@ main_window_response (GtkWidget *widget,
     style_shutdown (data);
     desktop_shutdown (data);
     font_shutdown (data);
+    support_shutdown (data);
 
     g_object_unref (data->thumb_factory);
     g_object_unref (data->settings);
@@ -182,6 +184,9 @@ main (int argc, char **argv)
   desktop_init (data, (const gchar **) wallpaper_files);
   g_strfreev (wallpaper_files);
   font_init (data);
+
+  /* init support for other window managers */
+  support_init (data);
 
   /* prepare the main window */
   w = appearance_capplet_get_widget (data, "appearance_window");

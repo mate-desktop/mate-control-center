@@ -1,8 +1,10 @@
 #ifndef WM_COMMON_H
 #define WM_COMMON_H
 
-#define WM_COMMON_MARCO "Marco"
+#define WM_COMMON_MARCO    "Marco"
 #define WM_COMMON_SAWFISH  "Sawfish"
+#define WM_COMMON_METACITY "Metacity"
+#define WM_COMMON_COMPIZ   "compiz"
 #define WM_COMMON_UNKNOWN  "Unknown"
 
 gchar *wm_common_get_current_window_manager (void);
@@ -12,6 +14,7 @@ char **wm_common_get_current_keybindings (void);
 
 void   wm_common_register_window_manager_change (GFunc    func,
 						 gpointer data);
+void   wm_common_update_window (void);
 
 #endif /* WM_COMMON_H */
 

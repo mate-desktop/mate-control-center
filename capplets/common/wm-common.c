@@ -181,4 +181,8 @@ wm_common_register_window_manager_change (GFunc    func,
   XSync (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), False);
 }
 
-
+void
+wm_common_update_window ()
+{
+  update_wm_window();
+}
