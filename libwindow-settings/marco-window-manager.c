@@ -354,11 +354,11 @@ marco_get_double_click_actions (MateWindowManager              *wm,
                                    int                             *n_actions_p)
 {
         static MateWMDoubleClickAction actions[] = {
-                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE, N_("Maximize") },
-                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY, N_("Maximize Vertically") },
-                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY, N_("Maximize Horizontally") },
-                { ACTION_TITLEBAR_MINIMIZE, N_("Minimize") },
                 { ACTION_TITLEBAR_TOGGLE_SHADE, N_("Roll up") },
+                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE, N_("Maximize") },
+                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY, N_("Maximize Horizontally") },
+                { ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY, N_("Maximize Vertically") },
+                { ACTION_TITLEBAR_MINIMIZE, N_("Minimize") },
                 { ACTION_TITLEBAR_NONE, N_("None") }
         };
         
