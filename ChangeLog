@@ -1,3 +1,686 @@
+commit 181e0b4fa41131c37c439380d986fe93f1303b8d
+Merge: 8480f4f 9833392
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Fri Jan 11 07:15:08 2013 -0800
+
+    Merge pull request #28 from cygwinports/master
+    
+    Add mateconf-gsettings-data-convert file
+
+commit 8480f4f60a060781934f7ca96857118ff8ebec07
+Author: Steve Zesch <stevezesch2@gmail.com>
+Date:   Fri Jan 11 00:12:19 2013 -0500
+
+    Changed the ordering that titlebar actions are displayed.
+    
+    Previously, the ordering of the titlebar actions did not match
+    the enum ordering in the schema file, which caused the wrong
+    action to be set.
+
+ libwindow-settings/marco-window-manager.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 088a9625513cc7cb5c8b4d5f18573c4ae42b488f
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Wed Jan 2 20:17:06 2013 +0100
+
+    appearance: Set metacity theme if compiz or metacity are running
+
+ capplets/appearance/Makefile.am          |    2 +
+ capplets/appearance/appearance-main.c    |    5 ++
+ capplets/appearance/appearance-support.c |  106 ++++++++++++++++++++++++++++++
+ capplets/appearance/appearance-support.h |   22 +++++++
+ capplets/common/wm-common.c              |    6 +-
+ capplets/common/wm-common.h              |    5 +-
+ 6 files changed, 144 insertions(+), 2 deletions(-)
+
+commit 9833392a4ec4fcf29a42dae188af763858678269
+Author: Yaakov Selkowitz <yselkowitz@users.sourceforge.net>
+Date:   Tue Dec 25 18:37:17 2012 -0600
+
+    Add mateconf-gsettings-data-convert file
+
+ Makefile.am                 |    4 ++++
+ mate-control-center.convert |   11 +++++++++++
+ 2 files changed, 15 insertions(+)
+
+commit 17d2ea57491246b3ac68d94d9a1cd29a91b5409b
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Thu Dec 20 00:02:55 2012 +0100
+
+    Update POTFILES.in
+
+ po/POTFILES.in |    6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+commit 89978db6442a2f7a301394f21d6ac915c0ac8542
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Wed Dec 19 23:40:03 2012 +0100
+
+    Update NEWS
+
+ NEWS |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 633888e6d08db32937799634da238ad2d8e575a2
+Merge: 6540605 37b7b37
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Fri Dec 14 08:03:06 2012 -0800
+
+    Merge pull request #26 from sbalneav/master
+    
+    Get about-me functional.
+
+commit 37b7b37e16c6f8067ff213b9436027b362c476a8
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Fri Dec 14 08:56:06 2012 -0600
+
+    Remove about-me conditional compile as it has no dependencies
+
+ capplets/Makefile.am          |    8 ++------
+ capplets/about-me/Makefile.am |    5 +----
+ configure.ac                  |   19 -------------------
+ 3 files changed, 3 insertions(+), 29 deletions(-)
+
+commit 0eb2befbdb3b986cfe2a6ac3429951f463a10a7c
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Thu Dec 13 20:01:54 2012 -0600
+
+    Make the image size correspond to the scaling
+
+ capplets/about-me/mate-about-me-dialog.ui |    4 ++--
+ capplets/about-me/mate-about-me.c         |    6 ++----
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+commit 9c36e768c1636dd1e1d68dc7029a6f5918bb55d2
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Thu Dec 13 15:43:18 2012 -0600
+
+    Working better
+
+ capplets/about-me/mate-about-me.c |   27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+
+commit 23d7eaabbdb414fd2f4d3f1ebb50da2bb6e6f9c7
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Thu Dec 13 13:06:02 2012 -0600
+
+    Compiles
+
+ capplets/about-me/mate-about-me.c |   21 +++++----------------
+ 1 file changed, 5 insertions(+), 16 deletions(-)
+
+commit d1cbc7503f6ea28e6c220a2a74d0539f285f186b
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Thu Dec 13 12:25:17 2012 -0600
+
+    Just deal with loading .face
+
+ capplets/about-me/mate-about-me.c |   37 +++++++++++++------------------------
+ 1 file changed, 13 insertions(+), 24 deletions(-)
+
+commit 7542533b7a12b6d5e379707c51ab45a4e314e169
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Thu Dec 13 12:10:25 2012 -0600
+
+    Actually remove obviously uneeded code
+
+ capplets/about-me/mate-about-me.c |  491 -------------------------------------
+ 1 file changed, 491 deletions(-)
+
+commit 61b61c3fb75dee78f362558764149e18df75c96a
+Author: Scott Balneaves <sbalneav@alburg.net>
+Date:   Wed Dec 12 19:21:20 2012 -0600
+
+    First cut at fixing about-me
+
+ capplets/about-me/mate-about-me-dialog.ui  | 1512 +---------------------------
+ capplets/about-me/mate-about-me-password.c |    9 +-
+ capplets/about-me/mate-about-me.c          |   35 +-
+ configure.ac                               |   10 +-
+ 4 files changed, 88 insertions(+), 1478 deletions(-)
+
+commit 6540605b4e786e2ce75d2dd89aa3c66e961265b8
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Wed Dec 12 15:46:25 2012 +0100
+
+    bump version to 1.5.2
+
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 762dd31acc761e33f05d27857a7b5f2b23f6d917
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Wed Dec 12 15:41:41 2012 +0100
+
+    re-add previously deleted files into libslab
+    they are dependencies of gnome-main-menu
+    they are migrated to gsettings
+
+ libslab/Makefile.am      |    4 +
+ libslab/app-shell.c      |  177 +++++++-
+ libslab/app-shell.h      |    4 +-
+ libslab/directory-tile.c |  667 +++++++++++++++++++++++++++
+ libslab/directory-tile.h |   61 +++
+ libslab/document-tile.c  | 1129 ++++++++++++++++++++++++++++++++++++++++++++++
+ libslab/document-tile.h  |   70 +++
+ libslab/slab.h           |    2 +
+ shell/control-center.c   |    2 +-
+ 9 files changed, 2113 insertions(+), 3 deletions(-)
+
+commit 443a918bd4735e674bdec300f6b8eabe8cda24e0
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Thu Nov 29 16:50:04 2012 +0100
+
+    install libslab library and headers
+    gnome libslab is no more available, so we can ship it
+
+ Makefile.am           |    2 +-
+ configure.ac          |   27 +++++++++------------------
+ libslab/Makefile.am   |   13 +++----------
+ libslab/libslab.pc.in |   12 ++++++++++++
+ shell/Makefile.am     |    5 -----
+ 5 files changed, 25 insertions(+), 34 deletions(-)
+
+commit 12129854c64a6104ad15c96aace53b08edf64d2b
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sun Nov 25 23:28:42 2012 +0100
+
+    bump version to 1.5.1
+
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 77fa608f36628e5a51ef06149e11cd6395fa168b
+Merge: 218e877 27712ac
+Author: Steve Zesch <stevezesch2@gmail.com>
+Date:   Tue Nov 13 15:40:40 2012 -0800
+
+    Merge pull request #20 from NiceandGently/master
+    
+    fix incorrect fsf adress in COPYING
+
+commit 27712ac80f8bdaac02d0c1fcd74279e1f9710d0b
+Author: raveit <chat-to-me@raveit.de>
+Date:   Wed Nov 14 00:12:17 2012 +0100
+
+    fix wrong fsf address in COPYING
+
+ COPYING |   41 ++++++++++++++++++++---------------------
+ 1 file changed, 20 insertions(+), 21 deletions(-)
+
+commit 218e877dcb65692105169c963ca0093aaa6f9d6c
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sun Nov 4 12:19:56 2012 +0100
+
+    default-applications: remove old mateconf keys declarations
+
+ capplets/default-applications/mate-da-capplet.h |   61 -----------------------
+ 1 file changed, 61 deletions(-)
+
+commit 2ab117bf8104308e86f9f71eb4d9bf3c2dccb323
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Fri Nov 2 21:21:56 2012 +0100
+
+    appearance: fix background settings
+
+ capplets/appearance/appearance-desktop.c |   34 +++++++++++-------------------
+ capplets/appearance/appearance.h         |    1 -
+ capplets/appearance/mate-wp-item.c       |    7 +-----
+ 3 files changed, 13 insertions(+), 29 deletions(-)
+
+commit c25d655923c6c563b1a2ab68c32abb16b83db9f5
+Merge: 3da8767 d214d5e
+Author: Nelson Marques <nmo.marques@gmail.com>
+Date:   Sun Oct 28 09:13:29 2012 -0700
+
+    Merge pull request #13 from sbalneav/master
+    
+    Function header update in mate-control-center
+
+commit d214d5e996469ce4f507ca7fb995642da7897a87
+Author: Scott Balneaves <sbalneav@ltsp.org>
+Date:   Sun Oct 28 11:08:17 2012 -0500
+
+    Fix up function header for consistency
+
+ capplets/network/mate-network-properties.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+commit 3da87672867dbfc9c00b006a3aa9611d47e16818
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sat Oct 27 16:48:21 2012 +0200
+
+    remove solved FIXME
+
+ capplets/keybindings/mate-keybinding-properties.c |    1 -
+ 1 file changed, 1 deletion(-)
+
+commit 2ebc394a1ae159238254696fe0cb487528ee239b
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sat Oct 27 16:44:58 2012 +0200
+
+    update README
+
+ README |   18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+commit ae46e7dc17aa620b25cae52a8c576022ecc1c66b
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sat Oct 27 16:41:01 2012 +0200
+
+    migrate keybindings applet to gsettings
+
+ Makefile.am                                        |    4 +-
+ NEWS                                               |    2 +-
+ capplets/Makefile.am                               |    5 +-
+ capplets/common/Makefile.am                        |    8 +-
+ capplets/common/dconf-util.c                       |  113 ++
+ capplets/common/dconf-util.h                       |   45 +
+ capplets/keybindings/00-multimedia-key.xml.in      |   32 +-
+ capplets/keybindings/01-desktop-key.xml.in         |   26 +-
+ capplets/keybindings/mate-keybinding-properties.c  | 1497 ++++++++++----------
+ configure.ac                                       |    9 +
+ ...ate.control-center.keybinding.gschema.xml.in.in |   19 +
+ 11 files changed, 981 insertions(+), 779 deletions(-)
+
+commit 7544506864790940a96de68280fb96ea89a2ecac
+Merge: e225cba 390aaa9
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Thu Oct 25 00:40:10 2012 +0200
+
+    Merge branch 'master' of github.com:mate-desktop/mate-control-center
+
+commit e225cba670719af7573bf8f04a57393a0764569a
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Thu Oct 25 00:39:57 2012 +0200
+
+    update NEWS
+
+ NEWS                 |    2 +-
+ capplets/Makefile.am |    5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+commit 3bb2d6c2e4c434cd7852eddfac5256ad807f4da4
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Thu Oct 25 00:38:52 2012 +0200
+
+    migrate keyboard applet to gsettings
+
+ capplets/keyboard/mate-keyboard-properties-a11y.c  |  287 ++++++++++----------
+ capplets/keyboard/mate-keyboard-properties-a11y.h  |    4 +-
+ .../keyboard/mate-keyboard-properties-dialog.ui    |   16 +-
+ capplets/keyboard/mate-keyboard-properties-xkb.c   |  130 +++++----
+ capplets/keyboard/mate-keyboard-properties-xkb.h   |   25 +-
+ capplets/keyboard/mate-keyboard-properties-xkblt.c |   55 ++--
+ .../keyboard/mate-keyboard-properties-xkbltadd.c   |   38 ++-
+ capplets/keyboard/mate-keyboard-properties-xkbmc.c |   10 +-
+ capplets/keyboard/mate-keyboard-properties-xkbot.c |   51 ++--
+ capplets/keyboard/mate-keyboard-properties.c       |  170 ++++++------
+ 10 files changed, 413 insertions(+), 373 deletions(-)
+
+commit 390aaa9377dafe00a7332f849088f83445276b5c
+Merge: fdbdbec fa107e9
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Wed Oct 24 13:44:11 2012 -0700
+
+    Merge pull request #11 from kottroll/patch-1
+    
+    ololo fix
+
+commit fa107e93fc30aecee47f60277b3bca7f0dcb4717
+Author: kottroll <kot.troll@ya.ru>
+Date:   Wed Oct 24 21:30:38 2012 +0400
+
+    ololo fix
+
+ NEWS |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit fdbdbecabce4115565a3beaeeb96486e1e5fdb28
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Tue Oct 23 19:05:00 2012 +0200
+
+    update configure for gsettings and next release
+
+ configure.ac |   25 ++++++++-----------------
+ 1 file changed, 8 insertions(+), 17 deletions(-)
+
+commit ae436e3b114e1524d21d1f96184e06a8ba15a362
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Tue Oct 23 19:04:25 2012 +0200
+
+    update NEWS
+
+ NEWS |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit 7adc758263d6067cb8e24d736ff5a9fd44f29e72
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Tue Oct 23 19:04:01 2012 +0200
+
+    migrate windows capplet to gsettings
+
+ libwindow-settings/marco-window-manager.c |  234 +++++++++++------------------
+ 1 file changed, 88 insertions(+), 146 deletions(-)
+
+commit b3e27b1d6a0f11c5835f5829bac3861e2147b17e
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Tue Oct 23 19:03:44 2012 +0200
+
+    migrate appearance applet to gsettings
+
+ capplets/appearance/appearance-desktop.c |  159 ++++++------
+ capplets/appearance/appearance-font.c    |  402 ++++++++----------------------
+ capplets/appearance/appearance-main.c    |   20 +-
+ capplets/appearance/appearance-style.c   |  200 ++++++++-------
+ capplets/appearance/appearance-themes.c  |  180 +++++++------
+ capplets/appearance/appearance.h         |   64 ++++-
+ capplets/appearance/data/appearance.ui   |    2 +
+ capplets/appearance/mate-wp-item.c       |  105 +++++---
+ capplets/appearance/mate-wp-item.h       |    7 -
+ capplets/appearance/mate-wp-xml.c        |   13 +-
+ capplets/appearance/theme-installer.c    |   30 ++-
+ capplets/appearance/theme-save.c         |    9 +-
+ capplets/appearance/theme-util.h         |   20 --
+ 13 files changed, 549 insertions(+), 662 deletions(-)
+
+commit 46787e474859801435542191480e2851f7fd870c
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Tue Oct 23 19:03:27 2012 +0200
+
+    migrate network capplet to gsettings
+
+ capplets/network/mate-network-properties.c  | 1203 ++++-----------------------
+ capplets/network/mate-network-properties.ui |  700 ++++++++--------
+ 2 files changed, 484 insertions(+), 1419 deletions(-)
+
+commit d2d6d2944d6e725cd6bd2fce1c6f979649e77ed8
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:45:56 2012 +0200
+
+    migrate common stuff to gsettings
+
+ capplets/common/Makefile.am                        |    4 -
+ capplets/common/capplet-util.h                     |    2 -
+ capplets/common/mate-theme-apply.c                 |   96 +-
+ capplets/common/mateconf-property-editor-marshal.c |   41 -
+ capplets/common/mateconf-property-editor-marshal.h |   19 -
+ capplets/common/mateconf-property-editor.c         | 1801 --------------------
+ capplets/common/mateconf-property-editor.h         |  162 --
+ 7 files changed, 64 insertions(+), 2061 deletions(-)
+
+commit 909bf45d2c2d567decaf57b7869e0fbdcb7c0ed4
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:44:21 2012 +0200
+
+    port mouse applet to gsettings
+
+ capplets/mouse/Makefile.am                |    4 +-
+ capplets/mouse/mate-mouse-accessibility.c |  232 ----------
+ capplets/mouse/mate-mouse-accessibility.h |   33 --
+ capplets/mouse/mate-mouse-properties.c    |  286 +++++--------
+ capplets/mouse/mate-mouse-properties.ui   |  666 -----------------------------
+ 5 files changed, 104 insertions(+), 1117 deletions(-)
+
+commit c9069329a8f08e10fe2193b8a3524653bdfc9ec3
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:40:45 2012 +0200
+
+    port accessibility to gsettings
+
+ capplets/accessibility/at-properties/main.c |   60 ++++++++++-----------------
+ 1 file changed, 23 insertions(+), 37 deletions(-)
+
+commit dc2e834a6bec8716cdfdcf9d5a506f23796b3ffe
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:40:05 2012 +0200
+
+    remove mateconf from default-applications
+
+ capplets/default-applications/Makefile.am          |   14 +--
+ .../default-applications/mate-at-commandline.in.in |  101 --------------------
+ .../mate-at-session.desktop.in.in                  |   11 ---
+ 3 files changed, 1 insertion(+), 125 deletions(-)
+
+commit 78bd678462f2f5cc78b8986e4d17d98e5286819d
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:39:08 2012 +0200
+
+    migrate control-center to gsettings
+
+ shell/Makefile.am               |   17 ++--------
+ shell/control-center.c          |   36 +++++++++++++-------
+ shell/control-center.schemas.in |   71 ---------------------------------------
+ 3 files changed, 26 insertions(+), 98 deletions(-)
+
+commit 9b69f6561dab8a2669d65b67636ea07e171c60b5
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:38:29 2012 +0200
+
+    migrate typing-break to gsettings
+
+ typing-break/drw-break-window.c |   28 ++++++----------
+ typing-break/drwright.c         |   69 +++++++++++++--------------------------
+ typing-break/drwright.h         |    2 +-
+ 3 files changed, 34 insertions(+), 65 deletions(-)
+
+commit bfb3989ea5020a7b42c886378464ae65b80089cc
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:37:53 2012 +0200
+
+    update gsettings schema
+
+ org.mate.control-center.gschema.xml.in.in |   38 +++++++++++++++++++++++------
+ 1 file changed, 30 insertions(+), 8 deletions(-)
+
+commit 4edd11dd21d392b5a611f87b38efbb97f5ecfb00
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:32:45 2012 +0200
+
+    migrate display applet to gsettings
+
+ capplets/display/xrandr-capplet.c |   21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
+commit f8e9fa19a14aad7d5ac467419b3d05d89d6005b3
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:32:06 2012 +0200
+
+    update POTFILES.in
+
+ po/POTFILES.in |    3 ---
+ 1 file changed, 3 deletions(-)
+
+commit 8f5ff09a0016f24ddac5581a4c56c62c4267124f
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Mon Oct 22 16:31:17 2012 +0200
+
+    migrate libslab to gsettings
+
+ libslab/Makefile.am        |    4 -
+ libslab/app-shell.c        |  227 +--------
+ libslab/app-shell.h        |   11 +-
+ libslab/application-tile.c |  169 +------
+ libslab/application-tile.h |    3 +-
+ libslab/bookmark-agent.c   |   41 +-
+ libslab/directory-tile.c   |  669 --------------------------
+ libslab/directory-tile.h   |   61 ---
+ libslab/document-tile.c    | 1130 --------------------------------------------
+ libslab/document-tile.h    |   70 ---
+ libslab/libslab-utils.c    |  196 --------
+ libslab/libslab-utils.h    |    5 -
+ libslab/mate-utils.c       |  180 -------
+ libslab/mate-utils.h       |    4 -
+ libslab/slab-mate-util.c   |  158 -------
+ libslab/slab-mate-util.h   |    9 -
+ libslab/slab.h             |    2 -
+ libslab/system-tile.c      |    1 -
+ 18 files changed, 35 insertions(+), 2905 deletions(-)
+
+commit 0d19a66abfe03ffcfaca0f2539a9c6758d99a823
+Merge: 49d6561 e2acedc
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Thu Oct 18 00:41:22 2012 +0200
+
+    Merge branch 'master' of github.com:mate-desktop/mate-control-center
+
+commit e2acedc27aa5859db9f9450eb09290c366f35d26
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Wed Oct 17 16:21:23 2012 +0200
+
+    control-center: use a generic icon supported by all themes
+
+ shell/control-center.c     |    2 +-
+ shell/matecc.desktop.in.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 0bd454ddfeb6020b0631781326db897a2dd11c22
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sun Oct 14 00:38:10 2012 +0200
+
+    remove unused mateconf include
+
+ capplets/about-me/mate-about-me.c |    1 -
+ 1 file changed, 1 deletion(-)
+
+commit 4ae29f6925f0ad9e367c30a1659f3bb74fb14dff
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sun Oct 14 00:35:32 2012 +0200
+
+    remove unused mateconf include
+
+ capplets/windows/mate-window-properties.c |    1 -
+ 1 file changed, 1 deletion(-)
+
+commit 49d65611edf1a28df001fef2fa9896919544729d
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sat Oct 13 11:28:28 2012 +0200
+
+    add gsettings schema and remove mateconf one
+
+ Makefile.am                               |   25 ++++++---------
+ mate-control-center.schemas.in            |   49 -----------------------------
+ org.mate.control-center.gschema.xml.in.in |   25 +++++++++++++++
+ po/POTFILES.in                            |    2 +-
+ 4 files changed, 36 insertions(+), 65 deletions(-)
+
+commit 2b96b475c36a35871d3a0ac13a7693eb102f5a6d
+Author: Stefano Karapetsas <stefano@karapetsas.com>
+Date:   Sat Oct 13 11:08:11 2012 +0200
+
+    font-viewer: replace mateconf schema with thumbnailer file
+
+ font-viewer/Makefile.am                  |   15 +---
+ font-viewer/fontilus.schemas.in          |  109 ------------------------------
+ font-viewer/mate-font-viewer.thumbnailer |    4 ++
+ 3 files changed, 7 insertions(+), 121 deletions(-)
+
+commit 029158e0f2f003946c7b94f7d30bf67e443c4718
+Author: Steve Zesch <stevezesch2@gmail.com>
+Date:   Thu Aug 9 15:50:13 2012 -0400
+
+    Removed MATE Categories key in *.desktop files.
+
+ capplets/about-me/mate-about-me.desktop.in.in      |    6 +-----
+ .../at-properties/at-properties.desktop.in.in      |    6 +-----
+ .../data/mate-appearance-properties.desktop.in.in  |    6 +-----
+ .../data/mate-theme-installer.desktop.in.in        |    6 +-----
+ .../default-applications.desktop.in.in             |    6 +-----
+ .../mate-at-session.desktop.in.in                  |    4 ----
+ capplets/display/display-properties.desktop.in.in  |    6 +-----
+ capplets/keybindings/mate-keybinding.desktop.in.in |    6 +-----
+ capplets/keyboard/keyboard.desktop.in.in           |    6 +-----
+ capplets/mouse/mate-settings-mouse.desktop.in.in   |    6 +-----
+ .../network/mate-network-properties.desktop.in.in  |    6 +-----
+ capplets/windows/window-properties.desktop.in.in   |    6 +-----
+ font-viewer/mate-font-viewer.desktop.in.in         |    4 ----
+ shell/matecc.desktop.in.in                         |    6 +-----
+ 14 files changed, 12 insertions(+), 68 deletions(-)
+
+commit b1c431a5d722b48d73ca2a4a5504518768df5cf7
+Author: Steve Zesch <stevezesch2@gmail.com>
+Date:   Thu Aug 2 21:04:59 2012 -0400
+
+    Fixed incorrect fsf address.
+
+ capplets/about-me/e-image-chooser.c                |    4 ++--
+ capplets/about-me/e-image-chooser.h                |    4 ++--
+ capplets/about-me/eel-alert-dialog.c               |    4 ++--
+ capplets/about-me/eel-alert-dialog.h               |    4 ++--
+ capplets/about-me/eel-gtk-macros.h                 |    4 ++--
+ capplets/about-me/mate-about-me-fingerprint.c      |    4 ++--
+ capplets/about-me/mate-about-me-fingerprint.h      |    4 ++--
+ capplets/about-me/mate-about-me-password.c         |    4 ++--
+ capplets/about-me/mate-about-me.c                  |    4 ++--
+ capplets/appearance/mate-wp-info.c                 |    2 +-
+ capplets/appearance/mate-wp-info.h                 |    2 +-
+ capplets/appearance/mate-wp-item.c                 |    2 +-
+ capplets/appearance/mate-wp-item.h                 |    2 +-
+ capplets/appearance/mate-wp-xml.c                  |    2 +-
+ capplets/appearance/mate-wp-xml.h                  |    2 +-
+ capplets/common/capplet-stock-icons.c              |    4 ++--
+ capplets/common/capplet-stock-icons.h              |    4 ++--
+ capplets/common/capplet-util.c                     |    4 ++--
+ capplets/common/capplet-util.h                     |    4 ++--
+ capplets/common/file-transfer-dialog.c             |    4 ++--
+ capplets/common/file-transfer-dialog.h             |    4 ++--
+ capplets/common/mate-theme-apply.c                 |    2 +-
+ capplets/common/mate-theme-apply.h                 |    4 ++--
+ capplets/common/mate-theme-info.c                  |    4 ++--
+ capplets/common/mate-theme-info.h                  |    4 ++--
+ capplets/common/mateconf-property-editor.c         |    4 ++--
+ capplets/common/mateconf-property-editor.h         |    4 ++--
+ capplets/default-applications/mate-da-capplet.c    |    2 +-
+ capplets/default-applications/mate-da-capplet.h    |    2 +-
+ capplets/display/scrollarea.c                      |    4 ++--
+ capplets/display/scrollarea.h                      |    4 ++--
+ capplets/display/xrandr-capplet.c                  |    2 +-
+ capplets/keybindings/eggaccelerators.c             |    4 ++--
+ capplets/keybindings/eggaccelerators.h             |    4 ++--
+ capplets/keybindings/eggcellrendererkeys.h         |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-a11y.h  |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-xkb.c   |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-xkb.h   |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-xkblt.c |    4 ++--
+ .../keyboard/mate-keyboard-properties-xkbltadd.c   |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-xkbmc.c |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-xkbot.c |    4 ++--
+ capplets/keyboard/mate-keyboard-properties-xkbpv.c |    4 ++--
+ capplets/keyboard/mate-keyboard-properties.c       |    4 ++--
+ capplets/mouse/mate-mouse-properties.c             |    4 ++--
+ capplets/network/mate-network-properties.c         |    4 ++--
+ capplets/windows/mate-window-properties.c          |    4 ++--
+ font-viewer/font-thumbnailer.c                     |    2 +-
+ font-viewer/font-view.c                            |    2 +-
+ font-viewer/ftstream-vfs.c                         |    2 +-
+ libwindow-settings/marco-window-manager.c          |    4 ++--
+ libwindow-settings/mate-window-manager.c           |    4 ++--
+ libwindow-settings/mate-window-manager.h           |    4 ++--
+ libwindow-settings/mate-wm-manager.c               |    4 ++--
+ typing-break/drw-break-window.c                    |    4 ++--
+ typing-break/drw-break-window.h                    |    4 ++--
+ typing-break/drw-monitor.c                         |    4 ++--
+ typing-break/drw-monitor.h                         |    4 ++--
+ typing-break/drw-timer.c                           |    4 ++--
+ typing-break/drw-timer.h                           |    4 ++--
+ typing-break/drw-utils.c                           |    4 ++--
+ typing-break/drw-utils.h                           |    4 ++--
+ typing-break/drwright.c                            |    4 ++--
+ typing-break/drwright.h                            |    4 ++--
+ typing-break/main.c                                |    4 ++--
+ 65 files changed, 117 insertions(+), 117 deletions(-)
+
+commit 3d9141cf86c77ee07af7b826dc23d8c1fe40fe04
+Author: Steve Zesch <stevezesch2@gmail.com>
+Date:   Thu Jul 5 14:24:18 2012 -0400
+
+    Preparing for 1.4 release.
+
+ ChangeLog    |  864 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ configure.ac |    2 +-
+ 2 files changed, 865 insertions(+), 1 deletion(-)
+
 commit dc7650d7fc6ab26dc3a15964a65e59dd184d75b9
 Author: Stefano Karapetsas <stefano@karapetsas.com>
 Date:   Thu Jun 28 16:28:36 2012 +0200
