@@ -1032,6 +1032,11 @@ style_init (AppearanceData *data)
   prepare_list (data, appearance_capplet_get_widget (data, "icon_themes_list"), THEME_TYPE_ICON, (GCallback) icon_theme_changed);
   prepare_list (data, appearance_capplet_get_widget (data, "cursor_themes_list"), THEME_TYPE_CURSOR, (GCallback) cursor_theme_changed);
 
+  window_theme_changed (data->marco_settings, MARCO_THEME_KEY, data);
+  gtk_theme_changed (data->interface_settings, GTK_THEME_KEY, data);
+  icon_theme_changed (data->icon_theme_icon, ICON_THEME_KEY, data);
+  cursor_theme_changed (data->mouse_settings, CURSOR_THEME_KEY, data);
+
   w = appearance_capplet_get_widget (data, "color_scheme_message_hbox");
   gtk_widget_set_no_show_all (w, TRUE);
 
