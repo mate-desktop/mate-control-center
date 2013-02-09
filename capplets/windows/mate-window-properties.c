@@ -44,6 +44,8 @@ typedef struct
 
 static MateWindowManager *current_wm; /* may be NULL */
 static GtkWidget *dialog_win;
+static GObject *compositing_checkbutton;
+static GObject *compositing_fast_alt_tab_checkbutton;
 static GObject *focus_mode_checkbutton;
 static GObject *autoraise_checkbutton;
 static GObject *autoraise_delay_slider;
@@ -59,6 +61,34 @@ static MouseClickModifier *mouse_modifiers = NULL;
 static int n_mouse_modifiers = 0;
 
 static void reload_mouse_modifiers (void);
+
+static void
+compositing_manager_toggled_callback (GtkWidget *button,
+                              void      *data)
+{
+        MateWMSettings new_settings;
+
+        new_settings.flags = MATE_WM_SETTING_COMPOSITING_MANAGER;
+        new_settings.compositing_manager =
+                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+        if (current_wm != NULL && new_settings.compositing_manager != settings->compositing_manager)
+                mate_window_manager_change_settings (current_wm, &new_settings);
+}
+
+static void
+compositing_fast_alt_tab_toggled_callback (GtkWidget *button,
+                                           void      *data)
+{
+        MateWMSettings new_settings;
+
+        new_settings.flags = MATE_WM_SETTING_COMPOSITING_ALTTAB;
+        new_settings.compositing_fast_alt_tab =
+                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+        if (current_wm != NULL && new_settings.compositing_fast_alt_tab != settings->compositing_fast_alt_tab)
+                mate_window_manager_change_settings (current_wm, &new_settings);
+}
 
 static void
 mouse_focus_toggled_callback (GtkWidget *button,
@@ -150,6 +180,9 @@ update_sensitivity (void)
         gtk_widget_set_sensitive (GTK_WIDGET (double_click_titlebar_optionmenu),
                                   n_double_click_actions > 1);
 
+        gtk_widget_set_sensitive (GTK_WIDGET (compositing_fast_alt_tab_checkbutton),
+                                  settings->compositing_manager);
+
         /* disable the whole dialog while no WM is running, or
          * a WM we don't understand is running. We should probably do
          * something better. I don't want to just launch the config tool
@@ -163,6 +196,12 @@ static void
 init_settings_struct (MateWMSettings *settings)
 {
         /* Init fields that weren't initialized */
+        if ((settings->flags & MATE_WM_SETTING_COMPOSITING_MANAGER) == 0)
+                settings->compositing_manager = FALSE;
+
+        if ((settings->flags & MATE_WM_SETTING_COMPOSITING_ALTTAB) == 0)
+                settings->compositing_fast_alt_tab = FALSE;
+
         if ((settings->flags & MATE_WM_SETTING_MOUSE_FOCUS) == 0)
                 settings->focus_follows_mouse = FALSE;
 
@@ -213,7 +252,10 @@ reload_settings (void)
         g_assert (n_mouse_modifiers > 0);
 
         if (current_wm != NULL) {
-                new_settings.flags = MATE_WM_SETTING_MOUSE_FOCUS |
+                new_settings.flags = 
+                        MATE_WM_SETTING_COMPOSITING_MANAGER |
+                        MATE_WM_SETTING_COMPOSITING_ALTTAB |
+                        MATE_WM_SETTING_MOUSE_FOCUS |
                         MATE_WM_SETTING_AUTORAISE |
                         MATE_WM_SETTING_AUTORAISE_DELAY |
                         MATE_WM_SETTING_MOUSE_MOVE_MODIFIER |
@@ -226,6 +268,14 @@ reload_settings (void)
         }
 
         init_settings_struct (&new_settings);
+
+        if (new_settings.compositing_manager != settings->compositing_manager)
+                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (compositing_checkbutton),
+                                              new_settings.compositing_manager);
+
+        if (new_settings.compositing_fast_alt_tab != settings->compositing_fast_alt_tab)
+                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (compositing_fast_alt_tab_checkbutton),
+                                              new_settings.compositing_fast_alt_tab);
 
         if (new_settings.focus_follows_mouse != settings->focus_follows_mouse)
                 gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton),
@@ -409,6 +459,10 @@ main (int argc, char **argv)
 
         dialog_win = GTK_WIDGET (gtk_builder_get_object (builder,
                                                          "main-dialog"));
+        compositing_checkbutton = gtk_builder_get_object (builder,
+                                                         "compositing-manager-checkbutton");
+        compositing_fast_alt_tab_checkbutton = gtk_builder_get_object (builder,
+                                                         "compositing-fast-alt-tab-checkbutton");
         focus_mode_checkbutton = gtk_builder_get_object (builder,
                                                          "focus-mode-checkbutton");
         autoraise_checkbutton = gtk_builder_get_object (builder,
@@ -448,6 +502,11 @@ main (int argc, char **argv)
         g_signal_connect (G_OBJECT (dialog_win), "destroy",
                           G_CALLBACK (gtk_main_quit), NULL);
 
+        g_signal_connect (compositing_checkbutton, "toggled",
+                          G_CALLBACK (compositing_manager_toggled_callback), NULL);
+
+        g_signal_connect (compositing_fast_alt_tab_checkbutton, "toggled",
+                          G_CALLBACK (compositing_fast_alt_tab_toggled_callback), NULL);
 
         g_signal_connect (focus_mode_checkbutton, "toggled",
                           G_CALLBACK (mouse_focus_toggled_callback), NULL);

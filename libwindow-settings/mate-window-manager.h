@@ -47,6 +47,8 @@ typedef enum
         MATE_WM_SETTING_MOUSE_MOVE_MODIFIER = 1 << 4,
         MATE_WM_SETTING_THEME               = 1 << 5,
         MATE_WM_SETTING_DOUBLE_CLICK_ACTION = 1 << 6,
+        MATE_WM_SETTING_COMPOSITING_MANAGER = 1 << 7,
+        MATE_WM_SETTING_COMPOSITING_ALTTAB  = 1 << 8,
         MATE_WM_SETTING_MASK                =
         MATE_WM_SETTING_FONT                |
         MATE_WM_SETTING_MOUSE_FOCUS         |
@@ -54,7 +56,9 @@ typedef enum
         MATE_WM_SETTING_AUTORAISE_DELAY     |
         MATE_WM_SETTING_MOUSE_MOVE_MODIFIER |
         MATE_WM_SETTING_THEME               |
-        MATE_WM_SETTING_DOUBLE_CLICK_ACTION
+        MATE_WM_SETTING_DOUBLE_CLICK_ACTION |
+        MATE_WM_SETTING_COMPOSITING_MANAGER |
+        MATE_WM_SETTING_COMPOSITING_ALTTAB
 } MateWMSettingsFlags;
 
 typedef struct
@@ -77,6 +81,9 @@ typedef struct
 
         guint focus_follows_mouse : 1;
         guint autoraise : 1;
+
+        gboolean compositing_manager;
+        gboolean compositing_fast_alt_tab;
 
 } MateWMSettings;
 

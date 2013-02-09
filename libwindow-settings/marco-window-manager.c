@@ -174,7 +174,17 @@ marco_change_settings (MateWindowManager    *wm,
         MarcoWindowManager *meta_wm;
 
         meta_wm = MARCO_WINDOW_MANAGER (wm);
-        
+
+        if (settings->flags & MATE_WM_SETTING_COMPOSITING_MANAGER)
+                g_settings_set_boolean (meta_wm->p->settings,
+                                        MARCO_COMPOSITING_MANAGER_KEY,
+                                        settings->compositing_manager);
+
+        if (settings->flags & MATE_WM_SETTING_COMPOSITING_ALTTAB)
+                g_settings_set_boolean (meta_wm->p->settings,
+                                        MARCO_COMPOSITING_FAST_ALT_TAB_KEY,
+                                        settings->compositing_fast_alt_tab);
+
         if (settings->flags & MATE_WM_SETTING_MOUSE_FOCUS)
                 g_settings_set_enum (meta_wm->p->settings,
                                      MARCO_FOCUS_KEY,
@@ -231,6 +241,18 @@ marco_get_settings (MateWindowManager *wm,
         
         to_get = settings->flags;
         settings->flags = 0;
+        
+        if (to_get & MATE_WM_SETTING_COMPOSITING_MANAGER) {
+                settings->compositing_manager = g_settings_get_boolean (meta_wm->p->settings,
+                                                                        MARCO_COMPOSITING_MANAGER_KEY);
+                settings->flags |= MATE_WM_SETTING_COMPOSITING_MANAGER;
+        }
+        
+        if (to_get & MATE_WM_SETTING_COMPOSITING_ALTTAB) {
+                settings->compositing_fast_alt_tab = g_settings_get_boolean (meta_wm->p->settings,
+                                                                             MARCO_COMPOSITING_FAST_ALT_TAB_KEY);
+                settings->flags |= MATE_WM_SETTING_COMPOSITING_ALTTAB;
+        }
         
         if (to_get & MATE_WM_SETTING_MOUSE_FOCUS) {
                 gint marco_focus_value;
