@@ -15,45 +15,121 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
-"POT-Creation-Date: 2012-02-29 00:45+0100\n"
-"PO-Revision-Date: 2012-04-27 01:23+0000\n"
-"Last-Translator: noureddin <noureddin@barid.com>\n"
+"POT-Creation-Date: 2013-02-11 11:51+0100\n"
+"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/MATE/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: ../mate-control-center.schemas.in.h:1
-msgid "Current network location"
-msgstr "مكان الشبكة الحالي"
+#: ../org.mate.control-center.gschema.xml.in.in.h:1
+msgid ""
+"[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
+"Applications;default-applications.desktop' ]"
+msgstr ""
 
-#: ../mate-control-center.schemas.in.h:2
+#: ../org.mate.control-center.gschema.xml.in.in.h:2
+msgid "Task names and associated .desktop files"
+msgstr "أسماء المهام وملفات .desktop المرتبطة بها"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:3
+msgid ""
+"The task name to be displayed in the control-center followed by a \";\" "
+"separator then the filename of an associated .desktop file to launch for "
+"that task."
+msgstr "أسماء المهام التي ستعرض في مركز التحكم مفصولة بفاصل \";\" ثم اسم ملف .desktop المرتبط لإطلاق هذه المهمّة."
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:4
+msgid "Close the control-center when a task is activated"
+msgstr "أغلق مركز التحكم عند تنشيط مهمّة"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:5
+msgid ""
+"if true, the control-center will close when a \"Common Task\" is activated."
+msgstr "إذا كان صحيحًا، سيغلق سطح المكتب عند تنشيط \"مهمة شائعة\""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:6
+msgid "Exit shell on start action performed"
+msgstr "اخرج من الصدفة عند أداء إجراء بدء"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:7
+msgid "Indicates whether to close the shell when a start action is performed."
+msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء بدء."
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:8
+msgid "Exit shell on help action performed"
+msgstr "اخرج من الصدفة عند أداء إجراء مساعدة"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:9
+msgid "Indicates whether to close the shell when a help action is performed."
+msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء مساعدة."
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:10
+msgid "Exit shell on add or remove action performed"
+msgstr "اخرج من الصدفة عند أداء إجراء إضافة أو حذف"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:11
+msgid ""
+"Indicates whether to close the shell when an add or remove action is "
+"performed."
+msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء إضافة أو حذف."
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:12
+msgid "Exit shell on upgrade or uninstall action performed"
+msgstr "اخرج من الصدفة عند أداء إجراء ترقية أو إزالة"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:13
+msgid ""
+"Indicates whether to close the shell when an upgrade or uninstall action is "
+"performed."
+msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء تحديث أو إزالة تثبيت."
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:14
 msgid "More backgrounds URL"
 msgstr "مسار جلب المزيد من الخلفيات"
 
-#: ../mate-control-center.schemas.in.h:3
-msgid "More themes URL"
-msgstr "مسار جلب المزيد من السمات"
-
-#: ../mate-control-center.schemas.in.h:4
-msgid ""
-"Set this to your current location name. This is used to determine the "
-"appropriate network proxy configuration."
-msgstr "يحدد هذا اسما لمكانك الحالي. يستخدم هذا لتحديد إعدادات وسيط الشبكة المناسبة."
-
-#: ../mate-control-center.schemas.in.h:5
+#: ../org.mate.control-center.gschema.xml.in.in.h:15
 msgid ""
 "URL for where to get more desktop backgrounds. If set to an empty string the"
 " link will not appear."
 msgstr "مسار لجلب المزيد من خلفيات سطح المكتب. إذا ترك فارغا لن يظهر."
 
-#: ../mate-control-center.schemas.in.h:6
+#: ../org.mate.control-center.gschema.xml.in.in.h:16
+msgid "More themes URL"
+msgstr "مسار جلب المزيد من السمات"
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:17
 msgid ""
 "URL for where to get more desktop themes. If set to an empty string the link"
 " will not appear."
 msgstr "مسار لجلب المزيد من سمات سطح المكتب. إذا ترك فارغا لن يظهر."
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:1
+msgid "Keybinding"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:2
+msgid "Keybinding associated with a custom shortcut."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:3
+msgid "Command"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:4
+msgid "Command associated with a custom keybinding."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:5
+msgid "Name"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:6
+msgid "Description associated with a custom keybinding."
+msgstr ""
 
 #: ../capplets/about-me/eel-alert-dialog.c:110
 msgid "Image/label border"
@@ -83,242 +159,57 @@ msgstr "الأزرار المعروضة في حوار التّنبيه"
 msgid "Show more _details"
 msgstr "أظهر _تفاصيل أكثر"
 
-#: ../capplets/about-me/mate-about-me.c:716
+#: ../capplets/about-me/mate-about-me.c:282
 msgid "Select Image"
 msgstr "اختر صورة"
 
-#: ../capplets/about-me/mate-about-me.c:718
+#: ../capplets/about-me/mate-about-me.c:284
 msgid "No Image"
 msgstr "لا صورة"
 
-#: ../capplets/about-me/mate-about-me.c:746
-#: ../capplets/appearance/appearance-desktop.c:654
+#: ../capplets/about-me/mate-about-me.c:312
+#: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "صور"
 
-#: ../capplets/about-me/mate-about-me.c:750
-#: ../capplets/appearance/theme-installer.c:766
+#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/appearance/theme-installer.c:774
 msgid "All Files"
 msgstr "كل الملفّات"
 
-#: ../capplets/about-me/mate-about-me.c:890
-msgid ""
-"There was an error while trying to get the addressbook information\n"
-"Evolution Data Server can't handle the protocol"
-msgstr "حدث خطأ أثناء محاولة جلب معلومات دفتر العناوين \nلا يستطيع خادوم معلومات إيفوليوشن التعامل مع هذا البروتوكول"
-
-#: ../capplets/about-me/mate-about-me.c:911
-msgid "Unable to open address book"
-msgstr "تعذّر فتح دفتر العناوين"
-
-#: ../capplets/about-me/mate-about-me.c:934
+#: ../capplets/about-me/mate-about-me.c:467
 #, c-format
 msgid "About %s"
 msgstr "عنْ %s"
 
 #: ../capplets/about-me/mate-about-me-dialog.ui.h:1
-msgid "A_IM/iChat:"
-msgstr "A_IM/iChat:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:2
-msgid "A_ddress:"
-msgstr "ال_عنوان:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:3
-msgid "A_ssistant:"
-msgstr "المُ_سَاعَد:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:4
 #: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
 msgid "About Me"
 msgstr "عنّي"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:5
-msgid "Address"
-msgstr "العنوان"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:6
-msgid "C_ity:"
-msgstr "المدي_نة:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:7
-msgid "C_ompany:"
-msgstr "ال_شركة:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:8
-msgid "Cale_ndar:"
-msgstr "الت_قويم:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:9
-msgid "Change Passwo_rd..."
-msgstr "غيِّر _كلمة السر..."
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:10
-msgid "Ci_ty:"
-msgstr "ال_مدينة:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:11
-msgid "Co_untry:"
-msgstr "الب_لد:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:12
-msgid "Contact"
-msgstr "الاتصال"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:13
-msgid "Cou_ntry:"
-msgstr "الب_لد:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:14
-msgid "Disable _Fingerprint Login..."
-msgstr "عطّل الولوك بالب_صمة..."
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:15
-msgid "Email"
-msgstr "البريد"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:16
-msgid "Enable _Fingerprint Login..."
-msgstr "فعّل الولوج بالب_صمة..."
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:17
-msgid "Full Name"
-msgstr "الاسم بالكامل"
-
-#. Home vs Work (phone)
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:19
-msgid "Hom_e:"
-msgstr "ال_منزل:"
-
-#. Home vs Work (address)
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:21
-msgid "Home"
-msgstr "المنزل:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:22
-msgid "IC_Q:"
-msgstr "IC_Q:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:23
-msgid "Instant Messaging"
-msgstr "التراسل الفوري"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:24
-msgid "Job"
-msgstr "العمل"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:25
-msgid "M_SN:"
-msgstr "M_SN:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:26
-msgid "P.O. _box:"
-msgstr "_صندوق البريد:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:27
-msgid "P._O. box:"
-msgstr "ص_ندوق البريد:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:28
-msgid "Personal Info"
-msgstr "المعلومات الشخصية"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:29
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:2
 msgid "Select your photo"
 msgstr "اختر صورتك"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:30
-msgid "State/Pro_vince:"
-msgstr "ال_ولاية/المحافظة:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:3
+msgid "Full Name"
+msgstr "الاسم بالكامل"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:31
-msgid "Telephone"
-msgstr "الهاتف"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:32
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:4
 msgid "User name:"
 msgstr "اسم المستخدم:"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:33
-msgid "Web"
-msgstr "وب"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:5
+msgid "Change Passwo_rd..."
+msgstr "غيِّر _كلمة السر..."
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:34
-msgid "Web _log:"
-msgstr "الم_دوّنة:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:6
+msgid "Enable _Fingerprint Login..."
+msgstr "فعّل الولوج بالب_صمة..."
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:35
-msgid "Wor_k:"
-msgstr "ال_عمل:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:36
-msgid "Work"
-msgstr "العمل"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:37
-msgid "Work _fax:"
-msgstr "_فاكس العمل:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:38
-msgid "ZIP/_Postal code:"
-msgstr "الر_مز البريدي:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:39
-msgid "_Address:"
-msgstr "ال_عنوان:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:40
-msgid "_Department:"
-msgstr "ال_مَصْلَحَة:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:41
-msgid "_GroupWise:"
-msgstr "_GroupWise:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:42
-msgid "_Home page:"
-msgstr "ال_صفحة الرئيسيّة:"
-
-#. Home vs Work (email)
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:44
-msgid "_Home:"
-msgstr "ال_منزل:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:45
-msgid "_Manager:"
-msgstr "الم_دير:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:46
-msgid "_Mobile:"
-msgstr "الم_حمول:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:47
-msgid "_Profession:"
-msgstr "المه_نة:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:48
-msgid "_State/Province:"
-msgstr "ال_ولاية/المحافظة:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:49
-msgid "_Title:"
-msgstr "ال_مُسمّى:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:50
-msgid "_Work:"
-msgstr "ال_عمل:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:51
-msgid "_XMPP:"
-msgstr "_XMPP:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:52
-msgid "_Yahoo:"
-msgstr "_ياهو:"
-
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:53
-msgid "_ZIP/Postal code:"
-msgstr "الر_مز البريدي:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:7
+msgid "Disable _Fingerprint Login..."
+msgstr "عطّل الولوك بالب_صمة..."
 
 #: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
 msgid "Set your personal information"
@@ -352,7 +243,7 @@ msgid ""
 msgstr "أتريد حذف بصماتك المسجلة بحيث يُعطل الولوج بالبصمة؟"
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:359
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:1
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:15
 msgid "Done!"
 msgstr "تم"
 
@@ -382,7 +273,7 @@ msgid "Please contact your system administrator for help."
 msgstr "من فضلك راجع مدير النظام للمساعدة."
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:554
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:2
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
 msgid "Enable Fingerprint Login"
 msgstr "فعّل الولوج بالبصمة"
 
@@ -406,55 +297,55 @@ msgstr "انقر بأصبعك على القارئ"
 msgid "Place finger on reader"
 msgstr "ضع أصبعك على القارئ"
 
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:1
+msgid "Left thumb"
+msgstr "الإبهام الأيسر"
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:2
+msgid "Left middle finger"
+msgstr "الوسطى اليسرى"
+
 #: ../capplets/about-me/mate-about-me-fingerprint.ui.h:3
-msgid "Left index finger"
-msgstr "السبابة اليسرى"
+msgid "Left ring finger"
+msgstr "البنصر الأيسر"
 
 #: ../capplets/about-me/mate-about-me-fingerprint.ui.h:4
 msgid "Left little finger"
 msgstr "الخنصر الأيسر"
 
 #: ../capplets/about-me/mate-about-me-fingerprint.ui.h:5
-msgid "Left middle finger"
-msgstr "الوسطى اليسرى"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:6
-msgid "Left ring finger"
-msgstr "البنصر الأيسر"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:7
-msgid "Left thumb"
-msgstr "الإبهام الأيسر"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:8
-msgid "Other finger: "
-msgstr "أصبع آخر: "
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
-msgid "Right index finger"
-msgstr "السبابة اليمنى"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:10
-msgid "Right little finger"
-msgstr "الخنصر الأيمن"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:11
-msgid "Right middle finger"
-msgstr "الوسطى اليمنى"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:12
-msgid "Right ring finger"
-msgstr "البنصر الأيمن"
-
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:13
 msgid "Right thumb"
 msgstr "الإبهام الأيمن"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:14
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:6
+msgid "Right middle finger"
+msgstr "الوسطى اليمنى"
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:7
+msgid "Right ring finger"
+msgstr "البنصر الأيمن"
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:8
+msgid "Right little finger"
+msgstr "الخنصر الأيمن"
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:10
+msgid "Right index finger"
+msgstr "السبابة اليمنى"
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:11
+msgid "Left index finger"
+msgstr "السبابة اليسرى"
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:12
+msgid "Other finger: "
+msgstr "أصبع آخر: "
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:13
 msgid "Select finger"
 msgstr "اختر أصبعا"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:15
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:14
 msgid ""
 "Your fingerprint was successfully saved. You should now be able to log in "
 "using your fingerprint reader."
@@ -464,17 +355,17 @@ msgstr "حُفظت بصمتك بنجاح. تستطيع الآن الولوج ب�
 msgid "Child exited unexpectedly"
 msgstr "خرج التطبيق بشكلٍ غير متوقّع"
 
-#: ../capplets/about-me/mate-about-me-password.c:296
+#: ../capplets/about-me/mate-about-me-password.c:297
 #, c-format
 msgid "Could not shutdown backend_stdin IO channel: %s"
 msgstr "تعذّر إيقاف قناة الدخل/الخرج backend_stdin: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:309
+#: ../capplets/about-me/mate-about-me-password.c:310
 #, c-format
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "تعذّر إيقاف قناة الدخل/الخرج backend_stdout: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:408
+#: ../capplets/about-me/mate-about-me-password.c:409
 msgid "Authenticated!"
 msgstr "مستوثق"
 
@@ -484,126 +375,126 @@ msgstr "مستوثق"
 #. 
 #. Update status message and auth state
 #. Authentication failure
-#: ../capplets/about-me/mate-about-me-password.c:474
-#: ../capplets/about-me/mate-about-me-password.c:559
+#: ../capplets/about-me/mate-about-me-password.c:475
+#: ../capplets/about-me/mate-about-me-password.c:560
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
 msgstr "تغيِّرت كلمة السر بعد الاستيثاق الأخير، رجاء أعِد الاستيثاق."
 
-#: ../capplets/about-me/mate-about-me-password.c:476
+#: ../capplets/about-me/mate-about-me-password.c:477
 msgid "That password was incorrect."
 msgstr "كلمة السر هذه خطأ."
 
-#: ../capplets/about-me/mate-about-me-password.c:527
+#: ../capplets/about-me/mate-about-me-password.c:528
 msgid "Your password has been changed."
 msgstr "غُيِّرَت كلمة السر."
 
 #. What does this indicate?
 #. * "Authentication information cannot be recovered?" from libpam?
-#: ../capplets/about-me/mate-about-me-password.c:537
+#: ../capplets/about-me/mate-about-me-password.c:538
 #, c-format
 msgid "System error: %s."
 msgstr "خطأ في النظام: %s."
 
-#: ../capplets/about-me/mate-about-me-password.c:540
+#: ../capplets/about-me/mate-about-me-password.c:541
 msgid "The password is too short."
 msgstr "كلمة السر صغيرة جدا."
 
-#: ../capplets/about-me/mate-about-me-password.c:544
+#: ../capplets/about-me/mate-about-me-password.c:545
 msgid "The password is too simple."
 msgstr "كلمة السر بسيطة جدا."
 
-#: ../capplets/about-me/mate-about-me-password.c:549
+#: ../capplets/about-me/mate-about-me-password.c:550
 msgid "The old and new passwords are too similar."
 msgstr "كلمتا السر القديمة و الجديدة متشابهتان جدا."
 
-#: ../capplets/about-me/mate-about-me-password.c:551
+#: ../capplets/about-me/mate-about-me-password.c:552
 msgid "The new password must contain numeric or special character(s)."
 msgstr "يجب أن تحتوي كلمة السر الجديدة على محارف خاصة أو أرقام."
 
-#: ../capplets/about-me/mate-about-me-password.c:554
+#: ../capplets/about-me/mate-about-me-password.c:555
 msgid "The old and new passwords are the same."
 msgstr "كلمتا السر القديمة و الجديدة متطابقتان."
 
-#: ../capplets/about-me/mate-about-me-password.c:556
+#: ../capplets/about-me/mate-about-me-password.c:557
 msgid "The new password has already been used recently."
 msgstr "كلمة السر الجديدة سبق استخدامها مؤخرا."
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:827
+#: ../capplets/about-me/mate-about-me-password.c:828
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "تعذّر تشغيل %s: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:831
+#: ../capplets/about-me/mate-about-me-password.c:832
 msgid "Unable to launch backend"
 msgstr "تعذّر تشغيل النهاية الخلفية"
 
-#: ../capplets/about-me/mate-about-me-password.c:832
+#: ../capplets/about-me/mate-about-me-password.c:833
 msgid "A system error has occurred"
 msgstr "حصل خطأ في النظام"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:852
+#: ../capplets/about-me/mate-about-me-password.c:853
 msgid "Checking password..."
 msgstr "يتحقق من كلمة السر..."
 
-#: ../capplets/about-me/mate-about-me-password.c:939
+#: ../capplets/about-me/mate-about-me-password.c:940
 msgid "Click <b>Change password</b> to change your password."
 msgstr "انقر <b>غيّر كلمة السر</b> لتغيّر كلمة سرّك."
 
-#: ../capplets/about-me/mate-about-me-password.c:942
+#: ../capplets/about-me/mate-about-me-password.c:943
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "من فضلك اكتب كلمة سرِّك في حقل <b>كلمة سر الجديدة</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:945
-#: ../capplets/about-me/mate-about-me-password.ui.h:5
+#: ../capplets/about-me/mate-about-me-password.c:946
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "من فضلك اكتب كلمة سرِّك مرّة أخرى في حقل <b>أعِد كتابة كلمة السر</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:948
+#: ../capplets/about-me/mate-about-me-password.c:949
 msgid "The two passwords are not equal."
 msgstr "كلمتا السر غير متطابقتين."
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:1
-msgid "Change pa_ssword"
-msgstr "_غيِّر كلمة السر"
-
-#: ../capplets/about-me/mate-about-me-password.ui.h:2
 msgid "Change password"
 msgstr "غيّر كلمة السر"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:3
+#: ../capplets/about-me/mate-about-me-password.ui.h:2
 msgid "Change your password"
 msgstr "غيّر كلمة السر"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:4
-msgid "Current _password:"
-msgstr "كلمة السر ال_حالية:"
-
-#: ../capplets/about-me/mate-about-me-password.ui.h:6
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
 msgstr "لتغيير كلمة السر، أدخل كلمة السر في الخانة بأسفل ثم انقر <b>استوثِق</b>.\nبعد الاستيثاق، أدخل كلمة السر الجديدة، أعد كتابتها للتّحقّق و انقر <b>غيّر كلمة السر</b>."
 
+#: ../capplets/about-me/mate-about-me-password.ui.h:5
+msgid "Current _password:"
+msgstr "كلمة السر ال_حالية:"
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
+msgid "_New password:"
+msgstr "ك_لمة السر الجديدة:"
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
+msgid "_Retype new password:"
+msgstr "أعِ_د كتابة كلمة السر الجديدة:"
+
 #: ../capplets/about-me/mate-about-me-password.ui.h:8
 msgid "_Authenticate"
 msgstr "ا_ستوثق"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:9
-msgid "_New password:"
-msgstr "ك_لمة السر الجديدة:"
-
 #: ../capplets/about-me/mate-about-me-password.ui.h:10
-msgid "_Retype new password:"
-msgstr "أعِ_د كتابة كلمة السر الجديدة:"
+msgid "Change pa_ssword"
+msgstr "_غيِّر كلمة السر"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
-msgid "Accessible Lo_gin"
-msgstr "الولو_ج المُعان"
+msgid "Assistive Technologies Preferences"
+msgstr "تفضيلات التقنية المعِينة"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
 #: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
@@ -611,520 +502,473 @@ msgid "Assistive Technologies"
 msgstr "التقنيات المُعِينة"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
-msgid "Assistive Technologies Preferences"
-msgstr "تفضيلات التقنية المعِينة"
+msgid "_Preferred Applications"
+msgstr "التطبيقات المف_ضّلة"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+msgid "Jump to Preferred Applications dialog"
+msgstr "انتقل إلى مربع حوار التطبيقات المفضلة"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
+msgid "_Enable assistive technologies"
+msgstr "_فعِّل التقنيات المساعدة"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
 msgstr "تغييرات تفعيل التقنيات المُعِينة لن تأخذ مجراها حتى تلج في المرة القادمة."
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
-msgid "Close and _Log Out"
-msgstr "أغلق و ا_خرج"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
-msgid "Jump to Preferred Applications dialog"
-msgstr "انتقل إلى مربع حوار التطبيقات المفضلة"
-
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
-msgid "Jump to the Accessible Login dialog"
-msgstr "انتقل إلى مربع حوار الولوج المُعان"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
-msgid "Jump to the Keyboard Accessibility dialog"
-msgstr "انتقل إلى مربع حوار إتاحة لوحة المفاتيح"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
-msgid "Jump to the Mouse Accessibility dialog"
-msgstr "انتقل إلى مربع حوار إتاحة الفأرة"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
 msgid "Preferences"
 msgstr "التفضيلات"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
-msgid "_Enable assistive technologies"
-msgstr "_فعِّل التقنيات المساعدة"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
 msgid "_Keyboard Accessibility"
 msgstr "إتاحة لوحة المفاتي_ح"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+msgid "Jump to the Keyboard Accessibility dialog"
+msgstr "انتقل إلى مربع حوار إتاحة لوحة المفاتيح"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
 msgid "_Mouse Accessibility"
 msgstr "إتاحة ال_فأرة"
 
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+msgid "Jump to the Mouse Accessibility dialog"
+msgstr "انتقل إلى مربع حوار إتاحة الفأرة"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+msgid "Accessible Lo_gin"
+msgstr "الولو_ج المُعان"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+msgid "Jump to the Accessible Login dialog"
+msgstr "انتقل إلى مربع حوار الولوج المُعان"
+
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
-msgid "_Preferred Applications"
-msgstr "التطبيقات المف_ضّلة"
+msgid "Close and _Log Out"
+msgstr "أغلق و ا_خرج"
 
 #: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "اختر صلاحيات الإعانة عند تسجيل الدخول"
 
-#: ../capplets/appearance/appearance-desktop.c:623
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "أضِف خلفية للشاشة"
 
-#: ../capplets/appearance/appearance-desktop.c:658
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "All files"
 msgstr "كل الملفّات"
 
-#: ../capplets/appearance/appearance-font.c:502
-msgid "Font may be too large"
-msgstr "قد يكون الخط كبيرًا جدا"
-
-#: ../capplets/appearance/appearance-font.c:506
-#, c-format
-msgid ""
-"The font selected is %d point large, and may make it difficult to "
-"effectively use the computer.  It is recommended that you select a size "
-"smaller than %d."
-msgid_plural ""
-"The font selected is %d points large, and may make it difficult to "
-"effectively use the computer. It is recommended that you select a size "
-"smaller than %d."
-msgstr[0] "الخط المختار حجمه أقل من نقطة (%Id) و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار حجمًا أقلّ من %Id."
-msgstr[1] "الخط المختار حجمه نقطة واحدة (%Id) و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار حجمًا أقلّ من %Id."
-msgstr[2] "الخط المختار حجمه نقطتان (%Id) و قد يصعّب استخدام الحاسوب. من المستحسن أن تختار حجمًا أقلّ من %Id."
-msgstr[3] "الخط المختار حجمه %Id نقاط و قد يصعّب استخدام الحاسوب. من المستحسن أن تختار حجمًا أقلّ من %Id."
-msgstr[4] "الخط المختار حجمه %Id نقطة و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار حجمًا أقلّ من %Id."
-msgstr[5] "الخط المختار حجمه %Id نقطة و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار حجمًا أقلّ من %Id."
-
-#: ../capplets/appearance/appearance-font.c:519
-#, c-format
-msgid ""
-"The font selected is %d point large, and may make it difficult to "
-"effectively use the computer.  It is recommended that you select a smaller "
-"sized font."
-msgid_plural ""
-"The font selected is %d points large, and may make it difficult to "
-"effectively use the computer. It is recommended that you select a smaller "
-"sized font."
-msgstr[0] "الخط المختار حجمه أقل من نقطة و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار خطًّا بحجمٍ أصغر."
-msgstr[1] "الخط المختار حجمه نقطة واحدة و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار خطًّا بحجمٍ أصغر."
-msgstr[2] "الخط المختار حجمه نقطتان و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار خطًّا بحجمٍ أصغر."
-msgstr[3] "الخط المختار حجمه %Id نقاط و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار خطًّا بحجمٍ أصغر."
-msgstr[4] "الخط المختار حجمه %Id نقطة و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار خطًّا بحجمٍ أصغر."
-msgstr[5] "الخط المختار حجمه %Id نقطة و قد يُصعّب استخدام الحاسوب. من المستحسن أن تختار خطًّا بحجمٍ أصغر."
-
-#: ../capplets/appearance/appearance-font.c:542
-msgid "Use previous font"
-msgstr "استخدم الخط السابق"
-
-#: ../capplets/appearance/appearance-font.c:544
-msgid "Use selected font"
-msgstr "استخدم الخط المُختار"
-
-#: ../capplets/appearance/appearance-main.c:56
+#: ../capplets/appearance/appearance-main.c:57
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "لم يمكن تحميل ملف واجهة المستخدم: %s"
 
-#: ../capplets/appearance/appearance-main.c:135
+#: ../capplets/appearance/appearance-main.c:153
 msgid "Specify the filename of a theme to install"
 msgstr "حدد اسم ملف سِمة لتثبيتها"
 
-#: ../capplets/appearance/appearance-main.c:136
+#: ../capplets/appearance/appearance-main.c:154
 msgid "filename"
 msgstr "اسم الملف"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:143
+#: ../capplets/appearance/appearance-main.c:161
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "حدّد اسم الصفحة التي تريد إظهارها (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:144
-#: ../capplets/default-applications/mate-da-capplet.c:1378
-#: ../capplets/mouse/mate-mouse-properties.c:591
+#: ../capplets/appearance/appearance-main.c:162
+#: ../capplets/default-applications/mate-da-capplet.c:525
+#: ../capplets/mouse/mate-mouse-properties.c:511
 msgid "page"
 msgstr "صفحة"
 
-#: ../capplets/appearance/appearance-main.c:151
+#: ../capplets/appearance/appearance-main.c:169
 msgid "[WALLPAPER...]"
 msgstr "[خلفية...]"
 
-#: ../capplets/appearance/appearance-style.c:172
+#: ../capplets/appearance/appearance-style.c:171
 #: ../capplets/common/mate-theme-info.c:497
 #: ../capplets/common/mate-theme-info.c:694
 msgid "Default Pointer"
 msgstr "المؤشر المبدئي"
 
-#: ../capplets/appearance/appearance-style.c:234
-#: ../capplets/appearance/appearance-themes.c:679
+#: ../capplets/appearance/appearance-style.c:233
+#: ../capplets/appearance/appearance-themes.c:674
 msgid "Install"
 msgstr "ثبِّت"
 
-#: ../capplets/appearance/appearance-style.c:256
-#: ../capplets/common/mate-theme-info.c:1746
+#: ../capplets/appearance/appearance-style.c:255
+#: ../capplets/common/mate-theme-info.c:1723
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
 "'%s' is not installed."
 msgstr "لن تظهر هذه السمة كما يفترض لأن محرك سمات جتك+ المطلوب '%s' ليس مُثبّتا."
 
-#: ../capplets/appearance/appearance-themes.c:667
+#: ../capplets/appearance/appearance-themes.c:662
 msgid "Apply Background"
 msgstr "استخدم الخلفيّة"
 
-#: ../capplets/appearance/appearance-themes.c:671
+#: ../capplets/appearance/appearance-themes.c:666
 msgid "Apply Font"
 msgstr "استخدم الخط"
 
-#: ../capplets/appearance/appearance-themes.c:675
+#: ../capplets/appearance/appearance-themes.c:670
 msgid "Revert Font"
 msgstr "استرجِع الخط"
 
-#: ../capplets/appearance/appearance-themes.c:706
+#: ../capplets/appearance/appearance-themes.c:701
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "السمة الحالية تقترح خلفية وخطًا. ويمكن أيضا التراجع عن آخر خط مقترح تم تفعيله."
 
-#: ../capplets/appearance/appearance-themes.c:708
+#: ../capplets/appearance/appearance-themes.c:703
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "السمة الحالية تقترح خلفية. ويمكن أيضا التراجع عن آخر خط مقترح تم تفعيله."
 
-#: ../capplets/appearance/appearance-themes.c:710
+#: ../capplets/appearance/appearance-themes.c:705
 msgid "The current theme suggests a background and a font."
 msgstr "السمة الحالية تقترح خلفية وخطًا."
 
-#: ../capplets/appearance/appearance-themes.c:712
+#: ../capplets/appearance/appearance-themes.c:707
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "السمة الحالية تقترح خطًا. ويمكن أيضا التراجع عن آخر خط مقترح تم تفعيله."
 
-#: ../capplets/appearance/appearance-themes.c:714
+#: ../capplets/appearance/appearance-themes.c:709
 msgid "The current theme suggests a background."
 msgstr "السمة الحالية تقترح خلفية."
 
-#: ../capplets/appearance/appearance-themes.c:716
+#: ../capplets/appearance/appearance-themes.c:711
 msgid "The last applied font suggestion can be reverted."
 msgstr "يمكن التراجع عن آخر خط مقترح تم تفعيله."
 
-#: ../capplets/appearance/appearance-themes.c:718
+#: ../capplets/appearance/appearance-themes.c:713
 msgid "The current theme suggests a font."
 msgstr "السمة الحالية تقترح خطًا."
 
-#: ../capplets/appearance/appearance-themes.c:1035
-#: ../capplets/default-applications/mate-da-capplet.c:998
+#: ../capplets/appearance/appearance-themes.c:1029
 msgid "Custom"
 msgstr "مخصص"
 
 #: ../capplets/appearance/data/appearance.ui.h:1
-msgid "Appearance Preferences"
-msgstr "تفضيلات المظهر"
-
-#: ../capplets/appearance/data/appearance.ui.h:2
-msgid "Background"
-msgstr "الخلفية"
-
-#: ../capplets/appearance/data/appearance.ui.h:3
-msgid "Best _shapes"
-msgstr "أفضل أ_شكال"
-
-#: ../capplets/appearance/data/appearance.ui.h:4
-msgid "Best co_ntrast"
-msgstr "أفضل _تباين"
-
-#: ../capplets/appearance/data/appearance.ui.h:5
-msgid "C_olors:"
-msgstr "الأ_لوان:"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
-msgid "C_ustomize..."
-msgstr "_خصِّص..."
-
-#: ../capplets/appearance/data/appearance.ui.h:7
-msgid "Center"
-msgstr "موسَّطة"
-
-#: ../capplets/appearance/data/appearance.ui.h:8
-msgid "Changing your cursor theme takes effect the next time you log in."
-msgstr "تغيير سمة مؤشرك سيطبّق عند ولوجك القادم."
-
-#: ../capplets/appearance/data/appearance.ui.h:9
-msgid "Colors"
-msgstr "الألوان"
-
-#: ../capplets/appearance/data/appearance.ui.h:10
-msgid "Controls"
-msgstr "المتحكّمات"
-
-#: ../capplets/appearance/data/appearance.ui.h:11
-msgid "Customize Theme"
-msgstr "خصّص السمة"
-
-#: ../capplets/appearance/data/appearance.ui.h:12
-msgid "D_etails..."
-msgstr "ال_تفاصيل..."
-
-#: ../capplets/appearance/data/appearance.ui.h:13
-msgid "Des_ktop font:"
-msgstr "خط ال_مكتب:"
-
-#: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Font Rendering Details"
 msgstr "تفاصيل تصيير الخط"
 
-#: ../capplets/appearance/data/appearance.ui.h:15
-msgid "Fonts"
-msgstr "الخطوط"
-
-#: ../capplets/appearance/data/appearance.ui.h:16
-msgid "Get more backgrounds online"
-msgstr "اجلب المزيد من الخلفيات من الإنترنت"
-
-#: ../capplets/appearance/data/appearance.ui.h:17
-msgid "Get more themes online"
-msgstr "اجلب المزيد من السمات من الإنترنت"
-
-#: ../capplets/appearance/data/appearance.ui.h:18
-msgid "Gra_yscale"
-msgstr "تد_رج رمادي"
-
-#. font hinting
-#: ../capplets/appearance/data/appearance.ui.h:20
-msgid "Hinting"
-msgstr "التلميح"
-
-#: ../capplets/appearance/data/appearance.ui.h:21
-msgid "Horizontal gradient"
-msgstr "تدرج أفقي"
-
-#: ../capplets/appearance/data/appearance.ui.h:22
-msgid "Icons"
-msgstr "الأيقونات"
-
-#: ../capplets/appearance/data/appearance.ui.h:23
-msgid "Icons only"
-msgstr "أيقونات فقط"
-
-#: ../capplets/appearance/data/appearance.ui.h:24
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
-msgid "Large"
-msgstr "كبير"
-
-#: ../capplets/appearance/data/appearance.ui.h:25
-msgid "N_one"
-msgstr "_لا شيء"
-
-#: ../capplets/appearance/data/appearance.ui.h:26
-msgid "Open a dialog to specify the color"
-msgstr "افتح حوارا لتحديد اللون"
-
-#: ../capplets/appearance/data/appearance.ui.h:27
-msgid "Pointer"
-msgstr "المؤشر"
-
-#: ../capplets/appearance/data/appearance.ui.h:28
+#: ../capplets/appearance/data/appearance.ui.h:2
 msgid "R_esolution:"
 msgstr "الا_ستبانة:"
 
-#: ../capplets/appearance/data/appearance.ui.h:29
-msgid "Rendering"
-msgstr "التصيير"
+#: ../capplets/appearance/data/appearance.ui.h:3
+msgid "dots per inch"
+msgstr "نقطة في البوصة"
 
-#: ../capplets/appearance/data/appearance.ui.h:30
-msgid "Save Theme As..."
-msgstr "احفظ السِمة باسم..."
-
-#: ../capplets/appearance/data/appearance.ui.h:31
-msgid "Save _As..."
-msgstr "احفظ با_سم..."
-
-#: ../capplets/appearance/data/appearance.ui.h:32
-msgid "Save _background image"
-msgstr "احفظ صورة ال_خلفية"
-
-#: ../capplets/appearance/data/appearance.ui.h:33
-msgid "Scale"
-msgstr "محجّمة"
-
-#: ../capplets/appearance/data/appearance.ui.h:34
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
-msgid "Small"
-msgstr "صغير"
-
-#: ../capplets/appearance/data/appearance.ui.h:35
+#: ../capplets/appearance/data/appearance.ui.h:4
 msgid "Smoothing"
 msgstr "التنعيم"
 
-#: ../capplets/appearance/data/appearance.ui.h:36
-msgid "Solid color"
-msgstr "لون سادة"
-
-#: ../capplets/appearance/data/appearance.ui.h:37
-msgid "Span"
-msgstr "موسّعة"
-
-#: ../capplets/appearance/data/appearance.ui.h:38
-msgid "Stretch"
-msgstr "ممددة"
-
-#: ../capplets/appearance/data/appearance.ui.h:39
-msgid "Sub_pixel (LCDs)"
-msgstr "تحت _بكسلي (LCD)"
-
-#: ../capplets/appearance/data/appearance.ui.h:40
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "تنعيم تحت _بكسلي (LCD)"
-
-#: ../capplets/appearance/data/appearance.ui.h:41
-msgid "Subpixel Order"
-msgstr "الترتيب تحت البكسلي"
-
-#: ../capplets/appearance/data/appearance.ui.h:42
-msgid "Text"
-msgstr "نص"
-
-#: ../capplets/appearance/data/appearance.ui.h:43
-msgid "Text below items"
-msgstr "نص تحت العناصر"
-
-#: ../capplets/appearance/data/appearance.ui.h:44
-msgid "Text beside items"
-msgstr "نص بجانب العناصر"
-
-#: ../capplets/appearance/data/appearance.ui.h:45
-msgid "Text only"
-msgstr "نص فقط"
-
-#: ../capplets/appearance/data/appearance.ui.h:46
-msgid "The current controls theme does not support color schemes."
-msgstr "لا تدعم سِمة المتحكّمات الحالية مخططات الألوان."
-
-#: ../capplets/appearance/data/appearance.ui.h:47
-msgid "Theme"
-msgstr "السِمة"
-
-#: ../capplets/appearance/data/appearance.ui.h:48
-msgid "Tile"
-msgstr "مبلّطة"
-
-#. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:50
-msgid "VB_GR"
-msgstr "VB_GR"
-
-#: ../capplets/appearance/data/appearance.ui.h:51
-msgid "Vertical gradient"
-msgstr "تدرج رأسي"
-
-#: ../capplets/appearance/data/appearance.ui.h:52
-msgid "Window Border"
-msgstr "حدود النافذة"
-
-#: ../capplets/appearance/data/appearance.ui.h:53
-msgid "Zoom"
-msgstr "التقريب"
-
-#: ../capplets/appearance/data/appearance.ui.h:54
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
-msgid "_Add..."
-msgstr "أ_ضف..."
-
-#: ../capplets/appearance/data/appearance.ui.h:55
-msgid "_Application font:"
-msgstr "خط الت_طبيق:"
-
-#. pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:57
-msgid "_BGR"
-msgstr "_BGR"
-
-#: ../capplets/appearance/data/appearance.ui.h:58
-msgid "_Description:"
-msgstr "ال_وصف:"
-
-#: ../capplets/appearance/data/appearance.ui.h:59
-msgid "_Document font:"
-msgstr "خط ال_مستند:"
-
-#: ../capplets/appearance/data/appearance.ui.h:60
-msgid "_Fixed width font:"
-msgstr "خط _ثابت العرض:"
-
-#: ../capplets/appearance/data/appearance.ui.h:61
-msgid "_Full"
-msgstr "_كامل"
-
-#: ../capplets/appearance/data/appearance.ui.h:62
-msgid "_Input boxes:"
-msgstr "_صناديق الدخْل:"
-
-#: ../capplets/appearance/data/appearance.ui.h:63
-msgid "_Install..."
-msgstr "_ثبِّت..."
-
-#: ../capplets/appearance/data/appearance.ui.h:64
-msgid "_Medium"
-msgstr "_متوسط"
-
-#: ../capplets/appearance/data/appearance.ui.h:65
-msgid "_Monochrome"
-msgstr "أ_حادي اللون"
-
-#: ../capplets/appearance/data/appearance.ui.h:66
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-msgid "_Name:"
-msgstr "الا_سم:"
-
-#: ../capplets/appearance/data/appearance.ui.h:67
+#: ../capplets/appearance/data/appearance.ui.h:5
 msgid "_None"
 msgstr "_لا شيء"
 
-#. pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:69
-msgid "_RGB"
-msgstr "_RGB"
+#: ../capplets/appearance/data/appearance.ui.h:6
+msgid "Gra_yscale"
+msgstr "تد_رج رمادي"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
-msgid "_Reset to Defaults"
-msgstr "أعد الضبط لل_مبدئيات"
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "Sub_pixel (LCDs)"
+msgstr "تحت _بكسلي (LCD)"
 
-#: ../capplets/appearance/data/appearance.ui.h:71
-msgid "_Selected items:"
-msgstr "العناصر الم_حددة:"
+#. font hinting
+#: ../capplets/appearance/data/appearance.ui.h:9
+msgid "Hinting"
+msgstr "التلميح"
 
-#: ../capplets/appearance/data/appearance.ui.h:72
-msgid "_Size:"
-msgstr "الم_قاس:"
+#: ../capplets/appearance/data/appearance.ui.h:10
+msgid "N_one"
+msgstr "_لا شيء"
 
-#: ../capplets/appearance/data/appearance.ui.h:73
+#: ../capplets/appearance/data/appearance.ui.h:11
 msgid "_Slight"
 msgstr "_خفيف"
 
-#: ../capplets/appearance/data/appearance.ui.h:74
-msgid "_Style:"
-msgstr "الأ_سلوب:"
+#: ../capplets/appearance/data/appearance.ui.h:12
+msgid "_Medium"
+msgstr "_متوسط"
 
-#: ../capplets/appearance/data/appearance.ui.h:75
-msgid "_Tooltips:"
-msgstr "تلميحات الأ_دوات:"
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Full"
+msgstr "_كامل"
+
+#: ../capplets/appearance/data/appearance.ui.h:14
+msgid "Subpixel Order"
+msgstr "الترتيب تحت البكسلي"
+
+#. pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:16
+msgid "_RGB"
+msgstr "_RGB"
+
+#. pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:18
+msgid "_BGR"
+msgstr "_BGR"
 
 #. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#. vertical hinting, pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "VB_GR"
+msgstr "VB_GR"
+
+#: ../capplets/appearance/data/appearance.ui.h:23
+msgid "Appearance Preferences"
+msgstr "تفضيلات المظهر"
+
+#: ../capplets/appearance/data/appearance.ui.h:24
+msgid "Save _As..."
+msgstr "احفظ با_سم..."
+
+#: ../capplets/appearance/data/appearance.ui.h:25
+msgid "C_ustomize..."
+msgstr "_خصِّص..."
+
+#: ../capplets/appearance/data/appearance.ui.h:26
+msgid "_Install..."
+msgstr "_ثبِّت..."
+
+#: ../capplets/appearance/data/appearance.ui.h:27
+msgid "Get more themes online"
+msgstr "اجلب المزيد من السمات من الإنترنت"
+
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Theme"
+msgstr "السِمة"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Style:"
+msgstr "الأ_سلوب:"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "C_olors:"
+msgstr "الأ_لوان:"
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "Open a dialog to specify the color"
+msgstr "افتح حوارا لتحديد اللون"
+
+#: ../capplets/appearance/data/appearance.ui.h:32
+msgid "Get more backgrounds online"
+msgstr "اجلب المزيد من الخلفيات من الإنترنت"
+
+#: ../capplets/appearance/data/appearance.ui.h:33
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr "أ_ضف..."
+
+#: ../capplets/appearance/data/appearance.ui.h:34
+msgid "Background"
+msgstr "الخلفية"
+
+#: ../capplets/appearance/data/appearance.ui.h:35
+msgid "_Document font:"
+msgstr "خط ال_مستند:"
+
+#: ../capplets/appearance/data/appearance.ui.h:36
+msgid "Des_ktop font:"
+msgstr "خط ال_مكتب:"
+
+#: ../capplets/appearance/data/appearance.ui.h:37
 msgid "_Window title font:"
 msgstr "خط عنوان ال_نافذة:"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:38
+msgid "_Fixed width font:"
+msgstr "خط _ثابت العرض:"
+
+#: ../capplets/appearance/data/appearance.ui.h:39
+msgid "_Application font:"
+msgstr "خط الت_طبيق:"
+
+#: ../capplets/appearance/data/appearance.ui.h:40
+msgid "Rendering"
+msgstr "التصيير"
+
+#: ../capplets/appearance/data/appearance.ui.h:41
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "تنعيم تحت _بكسلي (LCD)"
+
+#: ../capplets/appearance/data/appearance.ui.h:42
+msgid "Best co_ntrast"
+msgstr "أفضل _تباين"
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+msgid "Best _shapes"
+msgstr "أفضل أ_شكال"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Monochrome"
+msgstr "أ_حادي اللون"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "D_etails..."
+msgstr "ال_تفاصيل..."
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Fonts"
+msgstr "الخطوط"
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Tile"
+msgstr "مبلّطة"
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Zoom"
+msgstr "التقريب"
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Center"
+msgstr "موسَّطة"
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Scale"
+msgstr "محجّمة"
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Stretch"
+msgstr "ممددة"
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Span"
+msgstr "موسّعة"
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Solid color"
+msgstr "لون سادة"
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Horizontal gradient"
+msgstr "تدرج أفقي"
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Vertical gradient"
+msgstr "تدرج رأسي"
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Text below items"
+msgstr "نص تحت العناصر"
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Text beside items"
+msgstr "نص بجانب العناصر"
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Icons only"
+msgstr "أيقونات فقط"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Text only"
+msgstr "نص فقط"
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "Customize Theme"
+msgstr "خصّص السمة"
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "Controls"
+msgstr "المتحكّمات"
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "The current controls theme does not support color schemes."
+msgstr "لا تدعم سِمة المتحكّمات الحالية مخططات الألوان."
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "_Tooltips:"
+msgstr "تلميحات الأ_دوات:"
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Selected items:"
+msgstr "العناصر الم_حددة:"
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "_Input boxes:"
+msgstr "_صناديق الدخْل:"
+
+#: ../capplets/appearance/data/appearance.ui.h:66
 msgid "_Windows:"
 msgstr "ال_نوافذ:"
 
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Text"
+msgstr "نص"
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+msgid "_Reset to Defaults"
+msgstr "أعد الضبط لل_مبدئيات"
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "Colors"
+msgstr "الألوان"
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "Window Border"
+msgstr "حدود النافذة"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Icons"
+msgstr "الأيقونات"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "Changing your cursor theme takes effect the next time you log in."
+msgstr "تغيير سمة مؤشرك سيطبّق عند ولوجك القادم."
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Size:"
+msgstr "الم_قاس:"
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
+msgid "Small"
+msgstr "صغير"
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+msgid "Large"
+msgstr "كبير"
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Pointer"
+msgstr "المؤشر"
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Save Theme As..."
+msgstr "احفظ السِمة باسم..."
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Name:"
+msgstr "الا_سم:"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "_Description:"
+msgstr "ال_وصف:"
+
 #: ../capplets/appearance/data/appearance.ui.h:80
-msgid "dots per inch"
-msgstr "نقطة في البوصة"
+msgid "Save _background image"
+msgstr "احفظ صورة ال_خلفية"
 
 #: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
 msgid "Appearance"
@@ -1135,12 +979,12 @@ msgid "Customize the look of the desktop"
 msgstr "خصّص مظهر سطح المكتب"
 
 #: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:1
-msgid "Installs themes packages for various parts of the desktop"
-msgstr "ثبِّت حزم السِمات لأجزاء سطح المكتب المختلفة"
-
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
 msgid "Theme Installer"
 msgstr "مُثبِّت السِمات"
+
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
+msgid "Installs themes packages for various parts of the desktop"
+msgstr "ثبِّت حزم السِمات لأجزاء سطح المكتب المختلفة"
 
 #: ../capplets/appearance/data/mate-theme-package.xml.in.h:1
 msgid "Mate Theme Package"
@@ -1150,26 +994,26 @@ msgstr "حزمة سِمات جنوم"
 msgid "No Desktop Background"
 msgstr "لا خلفية لسطح المكتب"
 
-#: ../capplets/appearance/mate-wp-item.c:261
+#: ../capplets/appearance/mate-wp-item.c:289
 msgid "Slide Show"
 msgstr "عرض شرائح"
 
-#: ../capplets/appearance/mate-wp-item.c:263
+#: ../capplets/appearance/mate-wp-item.c:291
 msgid "Image"
 msgstr "صورة"
 
-#: ../capplets/appearance/mate-wp-item.c:269
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "multiple sizes"
 msgstr "مقاسات متعددة"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:272
+#: ../capplets/appearance/mate-wp-item.c:300
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s في %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:274
-#: ../capplets/appearance/mate-wp-item.c:276
+#: ../capplets/appearance/mate-wp-item.c:302
+#: ../capplets/appearance/mate-wp-item.c:304
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "بكسل"
@@ -1183,7 +1027,7 @@ msgstr[5] "بكسل"
 #. * mime type, size
 #. * Folder: /path/to/file
 #. 
-#: ../capplets/appearance/mate-wp-item.c:284
+#: ../capplets/appearance/mate-wp-item.c:312
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1195,7 +1039,7 @@ msgstr "<b>‏%s</b>\n%s، %s\nالمجلد: %s"
 #. * Image missing
 #. * Folder: /path/to/file
 #. 
-#: ../capplets/appearance/mate-wp-item.c:296
+#: ../capplets/appearance/mate-wp-item.c:324
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1203,7 +1047,7 @@ msgid ""
 "Folder: %s"
 msgstr "<b>‏%s</b>\n%s\nالمجلد: %s"
 
-#: ../capplets/appearance/mate-wp-item.c:300
+#: ../capplets/appearance/mate-wp-item.c:328
 msgid "Image missing"
 msgstr "الصور مفقودة"
 
@@ -1259,48 +1103,48 @@ msgstr "أبقِ السِمة الحالية"
 msgid "Apply New Theme"
 msgstr "طبّق السِمة الجديدة"
 
-#: ../capplets/appearance/theme-installer.c:471
+#: ../capplets/appearance/theme-installer.c:479
 #, c-format
 msgid "MATE Theme %s correctly installed"
 msgstr "سِمة جنوم %s مثبتة بشكل صحيح"
 
-#: ../capplets/appearance/theme-installer.c:533
+#: ../capplets/appearance/theme-installer.c:541
 msgid "Failed to create temporary directory"
 msgstr "فشل إنشاء دليل مؤقت"
 
-#: ../capplets/appearance/theme-installer.c:596
+#: ../capplets/appearance/theme-installer.c:604
 msgid "New themes have been successfully installed."
 msgstr "أضيفت السِمات الجديدة بنجاح."
 
-#: ../capplets/appearance/theme-installer.c:646
+#: ../capplets/appearance/theme-installer.c:654
 msgid "No theme file location specified to install"
 msgstr "لم يحدّد موقع ملف السِمة لتثبيتها"
 
-#: ../capplets/appearance/theme-installer.c:670
+#: ../capplets/appearance/theme-installer.c:678
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
 msgstr "تّصريحات غير كافية لتثبيت السِمة في:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:748
+#: ../capplets/appearance/theme-installer.c:756
 msgid "Select Theme"
 msgstr "اختر سمة"
 
-#: ../capplets/appearance/theme-installer.c:759
+#: ../capplets/appearance/theme-installer.c:767
 msgid "Theme Packages"
 msgstr "حزم السمة"
 
-#: ../capplets/appearance/theme-save.c:93
+#: ../capplets/appearance/theme-save.c:94
 #, c-format
 msgid "Theme name must be present"
 msgstr "يجب أن يكون اسم السِمة موجودا"
 
-#: ../capplets/appearance/theme-save.c:156
+#: ../capplets/appearance/theme-save.c:157
 msgid "The theme already exists. Would you like to replace it?"
 msgstr "هذه السِمة موجودة أصلًا. أتريد استبدالها؟"
 
-#: ../capplets/appearance/theme-save.c:157
+#: ../capplets/appearance/theme-save.c:158
 #: ../capplets/common/file-transfer-dialog.c:451
 msgid "_Overwrite"
 msgstr "ا_ستبدلها"
@@ -1409,101 +1253,6 @@ msgstr "_تخطى"
 msgid "Overwrite _All"
 msgstr "استبدل ال_كل"
 
-#: ../capplets/common/mateconf-property-editor.c:134
-msgid "Key"
-msgstr "المفتاح"
-
-#: ../capplets/common/mateconf-property-editor.c:135
-msgid "MateConf key to which this property editor is attached"
-msgstr "مفتاح MateConf الذي يتبعه محرّر الخاصية هذا."
-
-#: ../capplets/common/mateconf-property-editor.c:141
-msgid "Callback"
-msgstr "اتصال معاكس"
-
-#: ../capplets/common/mateconf-property-editor.c:142
-msgid "Issue this callback when the value associated with key gets changed"
-msgstr "فعّل هذا الاتصال المعاكس إثر تغيير قيمة بالمفتاح"
-
-#: ../capplets/common/mateconf-property-editor.c:147
-msgid "Change set"
-msgstr "مجموعة التغييرات"
-
-#: ../capplets/common/mateconf-property-editor.c:148
-msgid ""
-"MateConf change set containing data to be forwarded to the mateconf client "
-"on apply"
-msgstr "مجموعة تغييرات MateConf المحتوية على بيانات سترسل إلى عميل mateconf عند التطبيق"
-
-#: ../capplets/common/mateconf-property-editor.c:153
-msgid "Conversion to widget callback"
-msgstr "تحويل إلى نداء معاكس للودجة"
-
-#: ../capplets/common/mateconf-property-editor.c:154
-msgid ""
-"Callback to be issued when data are to be converted from MateConf to the "
-"widget"
-msgstr "الاتصال المعاكس الذي يتم تفعيله لتحويل البيانات من MateConf للودجة"
-
-#: ../capplets/common/mateconf-property-editor.c:159
-msgid "Conversion from widget callback"
-msgstr "تحويل من النداء المعاكس للودجة"
-
-#: ../capplets/common/mateconf-property-editor.c:160
-msgid ""
-"Callback to be issued when data are to be converted to MateConf from the "
-"widget"
-msgstr "الاتصال المعاكس الذي يتم تفعيله لتحويل البيانات من الودجة إلى MateConf"
-
-#: ../capplets/common/mateconf-property-editor.c:165
-msgid "UI Control"
-msgstr "كائن واجهة المستخدم"
-
-#: ../capplets/common/mateconf-property-editor.c:166
-msgid "Object that controls the property (normally a widget)"
-msgstr "الكائن الذي يتحكم في الخاصية (عادة ودجة)"
-
-#: ../capplets/common/mateconf-property-editor.c:181
-msgid "Property editor object data"
-msgstr "بيانات كائن محرّر الخاصيات"
-
-#: ../capplets/common/mateconf-property-editor.c:182
-msgid "Custom data required by the specific property editor"
-msgstr "البيانات المعرفة المطلوبة من محرّر الخاصية المحدّد"
-
-#: ../capplets/common/mateconf-property-editor.c:188
-msgid "Property editor data freeing callback"
-msgstr "الاتصال المعاكس المفرغ لمحرر الخاصيات من بياناته"
-
-#: ../capplets/common/mateconf-property-editor.c:189
-msgid "Callback to be issued when property editor object data is to be freed"
-msgstr "الاتصال المعاكس الذي يتم تفعيله عند تحرير بيانات جسم محرّر الخاصيات"
-
-#: ../capplets/common/mateconf-property-editor.c:1406
-#, c-format
-msgid ""
-"Couldn't find the file '%s'.\n"
-"\n"
-"Please make sure it exists and try again, or choose a different background picture."
-msgstr "تعذّر إيجاد الملف '%s'.\n\nرجاء تأكد من وجوده وأعد المحاولة مرّة اخرى، أو اختر صورةَ خلفية مغايرة."
-
-#: ../capplets/common/mateconf-property-editor.c:1414
-#, c-format
-msgid ""
-"I don't know how to open the file '%s'.\n"
-"Perhaps it's a kind of picture that is not yet supported.\n"
-"\n"
-"Please select a different picture instead."
-msgstr "لا أعرف كيف أفتح الملف '%s'.\nقد يكون نوع الصورة غير مدعوم الآن.\n\nرجاء اختر صورة أخرى."
-
-#: ../capplets/common/mateconf-property-editor.c:1536
-msgid "Please select an image."
-msgstr "رجاء اختر صورة."
-
-#: ../capplets/common/mateconf-property-editor.c:1541
-msgid "_Select"
-msgstr "ا_ختر"
-
 #: ../capplets/common/mate-theme-info.c:695
 msgid "Default Pointer - Current"
 msgstr "المؤشر المبدئي - الحالي"
@@ -1532,21 +1281,21 @@ msgstr "مؤشر أبيض كبير - الحالي"
 msgid "Large White Pointer"
 msgstr "مؤشر أبيض كبير"
 
-#: ../capplets/common/mate-theme-info.c:1717
+#: ../capplets/common/mate-theme-info.c:1694
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
 " not installed."
 msgstr "لن تظهر هذه السمة كما يفترض لأن سمة جتك+ المطلوبة '%s' ليست مُثبّتة."
 
-#: ../capplets/common/mate-theme-info.c:1727
+#: ../capplets/common/mate-theme-info.c:1704
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
 "theme '%s' is not installed."
 msgstr "لن تظهر هذه السمة كما يفترض لأن محرك سمة مدير النوافذ المطلوبة '%s' ليست مُثبّتة."
 
-#: ../capplets/common/mate-theme-info.c:1735
+#: ../capplets/common/mate-theme-info.c:1712
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1554,7 +1303,7 @@ msgid ""
 msgstr "لن تظهر هذه السمة كما يفترض لأن سمة الأيقونات المطلوبة '%s' ليست مُثبّتة."
 
 #: ../capplets/default-applications/default-applications.desktop.in.in.h:1
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "التطبيقات المفضّلة"
 
@@ -1562,509 +1311,206 @@ msgstr "التطبيقات المفضّلة"
 msgid "Select your default applications"
 msgstr "اختر تطبيقاتك المبدئية"
 
-#: ../capplets/default-applications/mate-at-session.desktop.in.in.h:1
-msgid "Start the preferred visual assistive technology"
-msgstr "ابدأ تقنية الإعانة المرئية المفضلة"
-
-#: ../capplets/default-applications/mate-at-session.desktop.in.in.h:2
-msgid "Visual Assistance"
-msgstr "الإعانة المرئية"
-
-#: ../capplets/default-applications/mate-da-capplet.c:94
-#: ../capplets/default-applications/mate-da-capplet.c:129
-#: ../capplets/default-applications/mate-da-capplet.c:671
-#: ../capplets/default-applications/mate-da-capplet.c:693
-#, c-format
-msgid "Error saving configuration: %s"
-msgstr "خطأ أثناء حفظ الإعدادات: %s"
-
-#: ../capplets/default-applications/mate-da-capplet.c:1030
+#: ../capplets/default-applications/mate-da-capplet.c:413
 msgid "Could not load the main interface"
 msgstr "تعذّر تحميل الواجهة الرئيسيّة"
 
-#: ../capplets/default-applications/mate-da-capplet.c:1031
+#: ../capplets/default-applications/mate-da-capplet.c:414
 msgid "Please make sure that the applet is properly installed"
 msgstr "رجاء تأكّد من أن البريمج مثبت بدقة"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:1377
+#: ../capplets/default-applications/mate-da-capplet.c:524
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "حدّد اسم الصفحة التي تريد إظهارها (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:1383
+#: ../capplets/default-applications/mate-da-capplet.c:530
 msgid "- MATE Default Applications"
 msgstr "- تطبيقات جنوم المبدئية"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
-#: ../capplets/mouse/mate-mouse-properties.ui.h:1
-msgid "Accessibility"
-msgstr "الإتاحة"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:2
+msgid "Web Browser"
+msgstr "متصفّح الوِب"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:3
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
 #, no-c-format
 msgid "All %s occurrences will be replaced with actual link"
 msgstr "سيتم تبديل كل مصادفات %s بالرابط الحقيقي"
 
-#. * vim: sw=2 ts=8 cindent noai bs=2
-#. 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
-msgid "C_ommand:"
-msgstr "الأ_مر:"
-
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
-msgid "Co_mmand:"
-msgstr "الأ_مر:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
-msgid "E_xecute flag:"
-msgstr "شا_رة التنفيذ:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
-msgid "File Manager"
-msgstr "مدير الملفات"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
-msgid "Image Viewer"
-msgstr "عارض الصّور"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
-msgid "Instant Messenger"
-msgstr "المرسال الفوري"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
-msgid "Internet"
-msgstr "إنترنت"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
-msgid "Mail Reader"
-msgstr "قارئ البريد"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
-msgid "Mobility"
-msgstr "الحركيّة"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
-msgid "Multimedia"
-msgstr "وسائط متعدّدة"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
-msgid "Multimedia Player"
-msgstr "مشغل الوسائط المتعددة"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
-msgid "Open link in new _tab"
-msgstr "افتح الرابط في _لسان جديد"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
-msgid "Open link in new _window"
-msgstr "افتح الرابط في _نافذة جديدة"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
-msgid "Open link with web browser _default"
-msgstr "افتح الرابط بمتصفح الوِب ال_مبدئي"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
-msgid "Run at st_art"
-msgstr "شغّ_ل عند البدء"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
 msgid "Run in t_erminal"
 msgstr "شغّل في _طرفية"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
-msgid "System"
-msgstr "النظام"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
+msgid "Open link with web browser _default"
+msgstr "افتح الرابط بمتصفح الوِب ال_مبدئي"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
-msgid "Terminal Emulator"
-msgstr "محاكي الطرفية"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
+msgid "Open link in new _tab"
+msgstr "افتح الرابط في _لسان جديد"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
-msgid "Text Editor"
-msgstr "محرّر النصوص"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+msgid "Open link in new _window"
+msgstr "افتح الرابط في _نافذة جديدة"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+msgid "C_ommand:"
+msgstr "الأ_مر:"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
+msgid "Mail Reader"
+msgstr "قارئ البريد"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
+msgid "Co_mmand:"
+msgstr "الأ_مر:"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
+msgid "Instant Messenger"
+msgstr "المرسال الفوري"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
+msgid "Internet"
+msgstr "إنترنت"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
+msgid "Image Viewer"
+msgstr "عارض الصّور"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
+msgid "Multimedia Player"
+msgstr "مشغل الوسائط المتعددة"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
 msgid "Video Player"
 msgstr "مشغل الأفلام"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+msgid "Multimedia"
+msgstr "وسائط متعدّدة"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+msgid "Text Editor"
+msgstr "محرّر النصوص"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+msgid "Terminal Emulator"
+msgstr "محاكي الطرفية"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+msgid "E_xecute flag:"
+msgstr "شا_رة التنفيذ:"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+msgid "File Manager"
+msgstr "مدير الملفات"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+msgid "System"
+msgstr "النظام"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
 msgid "Visual"
 msgstr "مرئي"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
-msgid "Web Browser"
-msgstr "متصفّح الوِب"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
 msgid "_Run at start"
 msgstr "_شغل عند البدء"
 
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:1
-msgid "Balsa"
-msgstr "Balsa"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:2
-msgid "Banshee Music Player"
-msgstr "مشغل موسيقى بانشي"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:3
-msgid "Chromium"
-msgstr "كرميوم"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:4
-msgid "Claws Mail"
-msgstr "بريد كلُوْز"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:5
-msgid "Dasher"
-msgstr "داشر"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:6
-msgid "DeaDBeeF"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:7
-msgid "Debian Sensible Browser"
-msgstr "متصفّح دبيان الحساس"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:8
-msgid "Debian Terminal Emulator"
-msgstr "محاكي طرفية دبيان"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:9
-msgid "ETerm"
-msgstr "ETerm"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:10
-msgid "Encompass"
-msgstr "Encompass"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:11
-msgid "Epiphany Web Browser"
-msgstr "متصفّح الوب إبِفَني"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:12
-msgid "Evolution Mail Reader"
-msgstr "قارئ البريد إيفوليوشن"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:13
-msgid "Eye of GNOME"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:14
-msgid "Firebird"
-msgstr "فايربرد"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:15
-msgid "Firefox"
-msgstr "فايرفوكس"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:16
-msgid "GNOME Terminal"
-msgstr "طرفية جنوم"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:17
-msgid "Galeon"
-msgstr "جاليون"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:18
-msgid "Gedit"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:19
-msgid "Gnopernicus"
-msgstr "جنوبرنيكوس"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:20
-msgid "Gnopernicus with Magnifier"
-msgstr "جنوبرنيكوس مع المكبّر"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:21
-msgid "Google Chrome"
-msgstr "جوجل كروم"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:22
-msgid "Gwenview"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:23
-msgid "Iceape"
-msgstr "أيس آب"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:24
-msgid "Iceape Mail"
-msgstr "بريد أيس آب"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:25
-msgid "Icedove"
-msgstr "أيس دوڤ"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:26
-msgid "Iceweasel"
-msgstr "أيس وِصل"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:27
-msgid "KDE Magnifier without Screen Reader"
-msgstr "مكبّر كدي بدون قارئ الشاشة"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:28
-msgid "KMail"
-msgstr "بريد كي"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:29
-msgid "Konqueror"
-msgstr "كنكرر"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:30
-msgid "Konsole"
-msgstr "كونسول"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:31
-msgid "Linux Screen Reader"
-msgstr "قارئ شاشة لينكس"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:32
-msgid "Linux Screen Reader with Magnifier"
-msgstr "قارئ شاشة لينكس مع المكبّر"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:33
-msgid "Listen"
-msgstr "استمع"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:34
-msgid "MATE Magnifier without Screen Reader"
-msgstr "مكبّر جنوم بدون قارئ الشاشة"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:35
-msgid "MATE OnScreen Keyboard"
-msgstr "لوحة مفاتيح جنوم على الشاشة"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:36
-msgid "MATE Terminal"
-msgstr "طرفية جنوم"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:37
-msgid "MATE file manager"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:38
-msgid "MATE image viewer"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:39
-msgid "MATE text editor"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:40
-msgid "MComix"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:41
-msgid "Midori"
-msgstr "ميدوري"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:42
-msgid "Mozilla"
-msgstr "موزيلا"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:43
-msgid "Mozilla 1.6"
-msgstr "موزيلا 1.6"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:44
-msgid "Mozilla Mail"
-msgstr "بريد موزيلا"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:45
-msgid "Mozilla Thunderbird"
-msgstr "ثندربرد موزيلا"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:46
-msgid "Muine Music Player"
-msgstr "مشغل الموسيقى موين"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:47
-msgid "Mutt"
-msgstr "Mutt"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:48
-msgid "NXterm"
-msgstr "NXterm"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:49
-msgid "Nautilus"
-msgstr "نوتاليس"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:50
-msgid "Netscape Communicator"
-msgstr "نتسكيب كميونيكتر"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:51
-msgid "Opera"
-msgstr "أوبرا"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:52
-msgid "Orca"
-msgstr "أوركا"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:53
-msgid "Orca with Magnifier"
-msgstr "أوركا مع المكبّر"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:54
-msgid "RXVT"
-msgstr "RXVT"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:55
-msgid "Rhythmbox Music Player"
-msgstr "مشغل الموسيقى أنغام"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:56
-msgid "Ristretto"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:57
-msgid "Sakura"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:58
-msgid "SeaMonkey"
-msgstr "سي منكي"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:59
-msgid "SeaMonkey Mail"
-msgstr "بريد سي منكي"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:60
-msgid "Shotwell"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:61
-msgid "Standard XTerminal"
-msgstr "طرفيّة X القياسيّة"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:62
-msgid "Sylpheed"
-msgstr "Sylpheed"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:63
-msgid "Terminal"
-msgstr "الطرفية"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:64
-msgid "Terminator"
-msgstr "Terminator"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:65
-msgid "Thunar"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:66
-msgid "Thunderbird"
-msgstr "ثندربرد"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:67
-msgid "Totem Movie Player"
-msgstr "مشغل الأفلام توتم"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:68
-msgid "VLC"
-msgstr "في-إل-سي"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:69
-msgid "aterm"
-msgstr "aterm"
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:70
-msgid "gThumb"
-msgstr ""
-
-#: ../capplets/default-applications/mate-default-applications.xml.in.h:71
-msgid "leafpad"
-msgstr ""
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+msgid "Mobility"
+msgstr "الحركيّة"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+msgid "Run at st_art"
+msgstr "شغّ_ل عند البدء"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+msgid "Accessibility"
+msgstr "الإتاحة"
 
 #: ../capplets/display/display-capplet.ui.h:1
-msgid "Include _panel"
-msgstr "تضمن ا_لشريط"
-
-#: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:312
-msgid "Left"
-msgstr "يسار"
-
-#: ../capplets/display/display-capplet.ui.h:3
-msgid "Make Default"
-msgstr "اجعله المبدئي"
-
-#: ../capplets/display/display-capplet.ui.h:4
-#: ../capplets/display/xrandr-capplet.c:515
-msgid "Monitor"
-msgstr "الشاشة"
-
-#: ../capplets/display/display-capplet.ui.h:5
 msgid "Monitor Preferences"
 msgstr "تفضيلات الشاشة"
 
+#: ../capplets/display/display-capplet.ui.h:2
+msgid "Sa_me image in all monitors"
+msgstr "_نفس الصورة على كل الشاشات"
+
+#: ../capplets/display/display-capplet.ui.h:3
+msgid "_Detect monitors"
+msgstr "اكتشف ال_شاشات"
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Panel icon"
+msgstr "أيقونة الشريط"
+
+#: ../capplets/display/display-capplet.ui.h:5
+msgid "_Show monitors in panel"
+msgstr "ا_عرض الشاشات في الشريط"
+
 #: ../capplets/display/display-capplet.ui.h:6
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
-msgid "Normal"
-msgstr "طبيعي"
+msgid "_Resolution:"
+msgstr "ال_ميز:"
 
 #: ../capplets/display/display-capplet.ui.h:7
-msgid "Off"
-msgstr "معطّل"
+msgid "Re_fresh rate:"
+msgstr "تردد الت_حديث:"
 
 #: ../capplets/display/display-capplet.ui.h:8
 msgid "On"
 msgstr "مفعّل"
 
 #: ../capplets/display/display-capplet.ui.h:9
-msgid "Panel icon"
-msgstr "أيقونة الشريط"
+msgid "Off"
+msgstr "معطّل"
 
 #: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/xrandr-capplet.c:515
+msgid "Monitor"
+msgstr "الشاشة"
+
+#: ../capplets/display/display-capplet.ui.h:11
 msgid "R_otation:"
 msgstr "ال_دوران:"
 
-#: ../capplets/display/display-capplet.ui.h:11
-msgid "Re_fresh rate:"
-msgstr "تردد الت_حديث:"
-
 #: ../capplets/display/display-capplet.ui.h:12
+msgid "Include _panel"
+msgstr "تضمن ا_لشريط"
+
+#: ../capplets/display/display-capplet.ui.h:13
+msgid "Make Default"
+msgstr "اجعله المبدئي"
+
+#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/xrandr-capplet.c:311
+#: ../capplets/display/xrandr-capplet.c:350
+msgid "Normal"
+msgstr "طبيعي"
+
+#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/xrandr-capplet.c:312
+msgid "Left"
+msgstr "يسار"
+
+#: ../capplets/display/display-capplet.ui.h:16
 #: ../capplets/display/xrandr-capplet.c:313
 msgid "Right"
 msgstr "يمين"
 
-#: ../capplets/display/display-capplet.ui.h:13
-msgid "Sa_me image in all monitors"
-msgstr "_نفس الصورة على كل الشاشات"
-
-#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/display-capplet.ui.h:17
 msgid "Upside-down"
 msgstr "رأسا على عقب"
 
-#: ../capplets/display/display-capplet.ui.h:15
-msgid "_Detect monitors"
-msgstr "اكتشف ال_شاشات"
-
-#: ../capplets/display/display-capplet.ui.h:16
-msgid "_Resolution:"
-msgstr "ال_ميز:"
-
-#: ../capplets/display/display-capplet.ui.h:17
-msgid "_Show monitors in panel"
-msgstr "ا_عرض الشاشات في الشريط"
-
 #: ../capplets/display/display-properties.desktop.in.in.h:1
-msgid "Change resolution and position of monitors"
-msgstr "غيّر ميز وموضع الشاشات"
-
-#: ../capplets/display/display-properties.desktop.in.in.h:2
 msgid "Monitors"
 msgstr "الشاشات"
+
+#: ../capplets/display/display-properties.desktop.in.in.h:2
+msgid "Change resolution and position of monitors"
+msgstr "غيّر ميز وموضع الشاشات"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:44
 #, c-format
@@ -2148,13 +1594,13 @@ msgid "Could not rename %s to %s: %s\n"
 msgstr "تعذّر تغيير اسم %s إلى %s‏: %s\n"
 
 #: ../capplets/display/org.mate.randr.policy.in.h:1
+msgid "Install multi-monitor settings for the whole system"
+msgstr "ثبّت إعدادات الشاشات المتعددة لكل النظام"
+
+#: ../capplets/display/org.mate.randr.policy.in.h:2
 msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "الاستيثاق مطلوب لتثبيت إعدادات الشاشات المتعددة لكل المستخدمين"
-
-#: ../capplets/display/org.mate.randr.policy.in.h:2
-msgid "Install multi-monitor settings for the whole system"
-msgstr "ثبّت إعدادات الشاشات المتعددة لكل النظام"
 
 #: ../capplets/display/xrandr-capplet.c:314
 msgid "Upside Down"
@@ -2203,30 +1649,21 @@ msgstr "تعذرت معرفة الجلسة أثناء تطبيق تضبيطات 
 msgid "Could not detect displays"
 msgstr "تعذّر اكتشاف أجهزة العرض"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2328
 msgid "The monitor configuration has been saved"
 msgstr "حُفظت إعدادات الشاشة"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2330
 msgid "This configuration will be used the next time someone logs in."
 msgstr "ستُستخدم هذه الإعدادات في المرة التالية التي تلج فيها."
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2339
 msgid "Could not set the default configuration for monitors"
 msgstr "تعذّر ضبط الإعدادات المبدئية للشاشات"
 
-#: ../capplets/display/xrandr-capplet.c:2422
+#: ../capplets/display/xrandr-capplet.c:2423
 msgid "Could not get screen information"
 msgstr "تعذّرت معرفة معلومات الشاشة"
-
-#: ../capplets/keybindings/00-multimedia-key.xml.in.h:1
-msgid "Sound"
-msgstr "الصوت"
-
-#: ../capplets/keybindings/01-desktop-key.xml.in.h:1
-#: ../libslab/bookmark-agent.c:1183
-msgid "Desktop"
-msgstr "سطح المكتب"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:21
 msgid "New shortcut..."
@@ -2256,287 +1693,287 @@ msgid "The type of accelerator."
 msgstr "نوع مفتاح الاختصار."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:122
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
 #: ../typing-break/drwright.c:498
 msgid "Disabled"
 msgstr "معطّل"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:204
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<إجراء مجهول>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:960
-#: ../capplets/keybindings/mate-keybinding-properties.c:1591
+#: ../capplets/keybindings/mate-keybinding-properties.c:1028
+#: ../capplets/keybindings/mate-keybinding-properties.c:1626
 msgid "Custom Shortcuts"
 msgstr "اختصار مخصص"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1107
+#: ../capplets/keybindings/mate-keybinding-properties.c:1206
 msgid "Error saving the new shortcut"
 msgstr "خطأ أثناء حفظ الاختصار الجديد"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1184
+#: ../capplets/keybindings/mate-keybinding-properties.c:1282
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "الاختصار \"%s\" لا يمكن استعماله لأن الكتابة بهذا المفتاح ستصبح مستحيلة. \nالرجاء المحاولة مجدّدا بمفتاح Control، Alt أو Shift في نفس الوقت."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1216
+#: ../capplets/keybindings/mate-keybinding-properties.c:1314
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "الاختصار \"%s\" مستخدم في:\n\"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1223
+#: ../capplets/keybindings/mate-keybinding-properties.c:1321
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "إذا أعدت تعيين الاختصار \"%s\" فسيُعطّل الاختصار \"%s\"."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1228
+#: ../capplets/keybindings/mate-keybinding-properties.c:1326
 msgid "_Reassign"
 msgstr "أعِد ال_تعيين"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1345
-#, c-format
-msgid "Error unsetting accelerator in configuration database: %s"
-msgstr "خطأ عند إلغاء ضبط مفتاح الاختصار في قاعدة بيانات الإعدادات: %s"
-
-#: ../capplets/keybindings/mate-keybinding-properties.c:1546
+#: ../capplets/keybindings/mate-keybinding-properties.c:1581
 msgid "Too many custom shortcuts"
 msgstr "الكثير من الاختصارات المخصصة"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1840
+#: ../capplets/keybindings/mate-keybinding-properties.c:1871
 msgid "Action"
 msgstr "الإجراء"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1862
+#: ../capplets/keybindings/mate-keybinding-properties.c:1893
 msgid "Shortcut"
 msgstr "الاختصار"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
-msgid "Custom Shortcut"
-msgstr "اختصار مخصص"
-
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
+#. * vim: sw=2 ts=8 cindent noai bs=2
+#. 
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "اختصارات لوحة المفاتيح"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
 msgstr "لتحرير مفتاح اختصار انقر السّطر المقابل و أدخل مسرّعًا جديدًا أو اضغط مفتاح التّراجع للإخلاء."
 
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "Custom Shortcut"
+msgstr "اختصار مخصص"
+
+#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "اربط مفاتيح اختصار بأوامر"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:205
-#: ../capplets/keyboard/mate-keyboard-properties.c:210
+#: ../capplets/keyboard/mate-keyboard-properties.c:203
+#: ../capplets/keyboard/mate-keyboard-properties.c:208
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "فقط طبّق الإعدادات واخرج (للتوافق فقط؛ يتم التعامل معها عن طريق جنّي حاليا)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:215
+#: ../capplets/keyboard/mate-keyboard-properties.c:213
 msgid "Start the page with the typing break settings showing"
 msgstr "ابدأ الصفحة بإعدادات استراحة الكتابة مرئية"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:220
+#: ../capplets/keyboard/mate-keyboard-properties.c:218
 msgid "Start the page with the accessibility settings showing"
 msgstr "ابدأ الصفحة بإعدادات تسهيل الاستخدام مرئية"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:226
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
 msgid "- MATE Keyboard Preferences"
 msgstr "- تفضيلات لوحة مفاتيح جنوم"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:1
-msgid "Beep when _accessibility features are turned on or off"
-msgstr "صافرة عند تشغيل أو تعطيل _ميزات تسهيل الاستخدام من لوحة المفاتيح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
-msgid "Beep when a _modifier key is pressed"
-msgstr "صافرة عند ضغط مفاتي_ح المغيّرات"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:3
-msgid "Beep when a _toggle key is pressed"
-msgstr "صافرة عند ضغ_ط مفتاح تبديل"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:4
-msgid "Beep when a key is pr_essed"
-msgstr "صافرة عند ض_غط مفتاح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
-msgid "Beep when a key is reje_cted"
-msgstr "صافرة إذا _رُفض مفتاح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
-msgid "Beep when key is _accepted"
-msgstr "_صافرة إذا قُبل المفتاح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
-msgid "Beep when key is _rejected"
-msgstr "صافرة إ_ذا رُفض المفتاح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:4
-msgid "Bounce Keys"
-msgstr "مفاتيح قافزة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
-msgid "Flash _window titlebar"
-msgstr "أو_مض عنوان النافذة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
-msgid "Flash entire _screen"
-msgstr "أومض _كل الشاشة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
-msgid "General"
-msgstr "عام"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
 msgid "Keyboard Accessibility Audio Feedback"
 msgstr "المردود الصوتي لإتاحة لوحة المفاتيح"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
+msgid "General"
+msgstr "عام"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:3
+msgid "Beep when _accessibility features are turned on or off"
+msgstr "صافرة عند تشغيل أو تعطيل _ميزات تسهيل الاستخدام من لوحة المفاتيح"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:4
+msgid "Beep when a _toggle key is pressed"
+msgstr "صافرة عند ضغ_ط مفتاح تبديل"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
+msgid "Visual cues for sounds"
+msgstr "مؤثرات مرئية للأصوات"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
 msgid "Show _visual feedback for the alert sound"
 msgstr "اعرض _مؤثرات مرئية لأصوات التنبيه"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Flash _window titlebar"
+msgstr "أو_مض عنوان النافذة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Flash entire _screen"
+msgstr "أومض _كل الشاشة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
 msgid "Slow Keys"
 msgstr "مفاتيح بطيئة"
 
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Beep when a key is pr_essed"
+msgstr "صافرة عند ض_غط مفتاح"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+msgid "Beep when key is _accepted"
+msgstr "_صافرة إذا قُبل المفتاح"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when key is _rejected"
+msgstr "صافرة إ_ذا رُفض المفتاح"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr "مفاتيح قافزة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when a key is reje_cted"
+msgstr "صافرة إذا _رُفض مفتاح"
+
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
 msgid "Sticky Keys"
 msgstr "مفاتيح ملتصقة"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
-msgid "Visual cues for sounds"
-msgstr "مؤثرات مرئية للأصوات"
+msgid "Beep when a _modifier key is pressed"
+msgstr "صافرة عند ضغط مفاتي_ح المغيّرات"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:2
-msgid "All_ow postponing of breaks"
-msgstr "ا_سمح بتأجيل الاستراحات"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:3
-msgid "Audio _Feedback..."
-msgstr "المردود ال_صوتي..."
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:5
-msgid "Check if breaks are allowed to be postponed"
-msgstr "تثبت من أنه يمكن تأجيل الاستراحات"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-msgid "Cursor Blinking"
-msgstr "وميض المؤشر"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-msgid "Cursor _blinks in text fields"
-msgstr "_ومضات المؤشر في حقول النصوص"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:8
-#: ../capplets/mouse/mate-mouse-properties.ui.h:4
-msgid "Cursor blinks speed"
-msgstr "سرعة ومضات المؤشر"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:5
-msgid "D_elay:"
-msgstr "ال_تأخير:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-msgid "Disa_ble sticky keys if two keys are pressed together"
-msgstr "ع_طِّل المفاتيح الملتصقة إذا ضُغط مفتاحان في آن واحد"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:11
-msgid "Duration of the break when typing is disallowed"
-msgstr "مدة الاستراحة عند منع الكتابة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:12
-msgid "Duration of work before forcing a break"
-msgstr "مدة العمل قبل فرض استراحة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:13
-#: ../capplets/mouse/mate-mouse-properties.ui.h:14
-msgid "Fast"
-msgstr "سريع"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
-msgid "Key presses _repeat when key is held down"
-msgstr "_تكرار نقر المفتاح عند الضغط عليه"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:16
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
 msgstr "تفضيلات لوحة المفاتيح"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
-msgid "Keyboard _model:"
-msgstr "_طراز لوحة المفاتيح:"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:2
+msgid "Repeat Keys"
+msgstr "تكرار المفاتيح"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:18
-msgid "Layouts"
-msgstr "التخطيطات"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:3
+msgid "Key presses _repeat when key is held down"
+msgstr "_تكرار نقر المفتاح عند الضغط عليه"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:19
-msgid "List of keyboard layouts selected for usage"
-msgstr "قائمة بتخطيطات لوحة المفاتيح المختارة للاستخدام"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:4
+msgid "_Delay:"
+msgstr "ال_تأخير:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:20
-msgid ""
-"Lock screen after a certain duration to help prevent repetitive keyboard use"
-" injuries"
-msgstr "أقفل الشاشة بعد مدّة معيّنة للحماية من إصابات الاستخدام المتكرر للوحة المفاتيح"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:5
+msgid "_Speed:"
+msgstr "ال_سرعة:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:21
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
+msgid "Short"
+msgstr "قصير"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
+msgid "Slow"
+msgstr "بطيء"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:8
+msgid "Repeat keys speed"
+msgstr "سرعة المفاتيح المعادة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
+#: ../capplets/mouse/mate-mouse-properties.ui.h:22
 msgid "Long"
 msgstr "طويل"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:22
-msgid "Mouse Keys"
-msgstr "مفاتيح الفأرة"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
+#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+msgid "Fast"
+msgstr "سريع"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:23
-msgid "Move _Down"
-msgstr "انقل لأ_سفل"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:11
+msgid "Cursor Blinking"
+msgstr "وميض المؤشر"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:24
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:12
+msgid "Cursor _blinks in text fields"
+msgstr "_ومضات المؤشر في حقول النصوص"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:13
+msgid "S_peed:"
+msgstr "ال_سرعة:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "Cursor blinks speed"
+msgstr "سرعة ومضات المؤشر"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:16
+msgid "List of keyboard layouts selected for usage"
+msgstr "قائمة بتخطيطات لوحة المفاتيح المختارة للاستخدام"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:18
+msgid "Select a keyboard layout to be added to the list"
+msgstr "اختر تخطيط لوحة مفاتيح ليُضاف إلى القائمة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:19
+msgid "Remove the selected keyboard layout from the list"
+msgstr "احذف تخطيط لوحة المفاتيح المحدد من القائمة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:20
 msgid "Move _Up"
 msgstr "انقل لأ_على"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:25
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:21
+msgid "Move the selected keyboard layout up in the list"
+msgstr "انقل تخطيط لوحة المفاتيح المحدد إلى أعلى"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:22
+msgid "Move _Down"
+msgstr "انقل لأ_سفل"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:23
 msgid "Move the selected keyboard layout down in the list"
 msgstr "انقل تخطيط لوحة المفاتيح المحدد إلى أسفل"
 
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:24
+msgid "_Show..."
+msgstr "أظهر..."
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:25
+msgid "Print a diagram of the selected keyboard layout"
+msgstr "اطبع رسما لتخطيط لوحة المفاتيح المحدد"
+
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:26
-msgid "Move the selected keyboard layout up in the list"
-msgstr "انقل تخطيط لوحة المفاتيح المحدد إلى أعلى"
+msgid "_Separate layout for each window"
+msgstr "_تخطيط مستقل لكل نافذة"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:27
 msgid "New windows u_se active window's layout"
 msgstr "النوافذ الجديدة تستخدم _تخطيط النافذة النشطة"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:28
-msgid "Print a diagram of the selected keyboard layout"
-msgstr "اطبع رسما لتخطيط لوحة المفاتيح المحدد"
+msgid "Keyboard _model:"
+msgstr "_طراز لوحة المفاتيح:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:29
-msgid "Remove the selected keyboard layout from the list"
-msgstr "احذف تخطيط لوحة المفاتيح المحدد من القائمة"
+msgid "_Options..."
+msgstr "ال_خيارات…"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:30
-msgid "Repeat Keys"
-msgstr "تكرار المفاتيح"
+msgid "View and edit keyboard layout options"
+msgstr "اعرض وحلالا خيارات تخطيط لوحة المفاتيح"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
-msgid "Repeat keys speed"
-msgstr "سرعة المفاتيح المعادة"
+msgid "Reset to De_faults"
+msgstr "ا_ستعد المبدئيات"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:32
 msgid ""
@@ -2545,150 +1982,145 @@ msgid ""
 msgstr "غيّر إعدادات لوحة المفاتيح الحالية إلى الإعدادات المبدئية"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:34
-msgid "Reset to De_faults"
-msgstr "ا_ستعد المبدئيات"
+msgid "Layouts"
+msgstr "التخطيطات"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:35
-msgid "S_peed:"
-msgstr "ال_سرعة:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
-msgid "Select a keyboard layout to be added to the list"
-msgstr "اختر تخطيط لوحة مفاتيح ليُضاف إلى القائمة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:37
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
-msgid "Short"
-msgstr "قصير"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:38
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
-msgid "Slow"
-msgstr "بطيء"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
-msgid "Typing Break"
-msgstr "استراحة عن الكتابة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
-msgid "View and edit keyboard layout options"
-msgstr "اعرض وحلالا خيارات تخطيط لوحة المفاتيح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
-msgid "_Acceleration:"
-msgstr "ال_تسارع:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
 msgid "_Accessibility features can be toggled with keyboard shortcuts"
 msgstr "يمكن ت_شغيل وإطفاء ميزات تسهيل الاستخدام من لوحة المفاتيح"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
-msgid "_Break interval lasts:"
-msgstr "مدة الا_ستراحة:"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:37
+msgid "_Simulate simultaneous keypresses"
+msgstr "_حاكى ضغطات المفاتيح المتزامنة"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
-msgid "_Delay:"
-msgstr "ال_تأخير:"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:38
+msgid "Disa_ble sticky keys if two keys are pressed together"
+msgstr "ع_طِّل المفاتيح الملتصقة إذا ضُغط مفتاحان في آن واحد"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+msgid "_Only accept long keypresses"
+msgstr "_لا تقبل إلا المفاتيح المضغوطة لمدة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
 msgid "_Ignore fast duplicate keypresses"
 msgstr "_تجاهل الضغطات المكررة السريعة للمفاتيح"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+msgid "D_elay:"
+msgstr "ال_تأخير:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+msgid "Audio _Feedback..."
+msgstr "المردود ال_صوتي..."
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+msgid "_Pointer can be controlled using the keypad"
+msgstr "يمكن ال_تحكم في المؤشر باستخدام لوحة المفاتيح"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
+#: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "_Acceleration:"
+msgstr "ال_تسارع:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+msgid "Mouse Keys"
+msgstr "مفاتيح الفأرة"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
 msgid "_Lock screen to enforce typing break"
 msgstr "أ_قفل الشاشة لفرض استراحة عن الكتابة"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
-msgid "_Only accept long keypresses"
-msgstr "_لا تقبل إلا المفاتيح المضغوطة لمدة"
+msgid ""
+"Lock screen after a certain duration to help prevent repetitive keyboard use"
+" injuries"
+msgstr "أقفل الشاشة بعد مدّة معيّنة للحماية من إصابات الاستخدام المتكرر للوحة المفاتيح"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
-msgid "_Options..."
-msgstr "ال_خيارات…"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
-msgid "_Pointer can be controlled using the keypad"
-msgstr "يمكن ال_تحكم في المؤشر باستخدام لوحة المفاتيح"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
-msgid "_Separate layout for each window"
-msgstr "_تخطيط مستقل لكل نافذة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
-msgid "_Show..."
-msgstr "أظهر..."
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
-msgid "_Simulate simultaneous keypresses"
-msgstr "_حاكى ضغطات المفاتيح المتزامنة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
-msgid "_Speed:"
-msgstr "ال_سرعة:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
-msgid "_Type to test settings:"
-msgstr "ا_كتب لاختبار الإعدادات:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
 msgid "_Work interval lasts:"
 msgstr "مدة ال_عمل:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+msgid "_Break interval lasts:"
+msgstr "مدة الا_ستراحة:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+msgid "Duration of work before forcing a break"
+msgstr "مدة العمل قبل فرض استراحة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+msgid "Duration of the break when typing is disallowed"
+msgstr "مدة الاستراحة عند منع الكتابة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "minutes"
 msgstr "دقائق"
 
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+msgid "All_ow postponing of breaks"
+msgstr "ا_سمح بتأجيل الاستراحات"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+msgid "Check if breaks are allowed to be postponed"
+msgstr "تثبت من أنه يمكن تأجيل الاستراحات"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+msgid "Typing Break"
+msgstr "استراحة عن الكتابة"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+msgid "_Type to test settings:"
+msgstr "ا_كتب لاختبار الإعدادات:"
+
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:1
-msgid "By _country"
-msgstr "بالب_لد"
-
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
-msgid "By _language"
-msgstr "بالل_غة"
-
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
 msgid "Choose a Layout"
 msgstr "اختر تخطيطًا"
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
-msgid "Preview:"
-msgstr "معاينة:"
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
+msgid "_Variants:"
+msgstr "ال_تنويعات:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:5
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
 msgid "_Country:"
 msgstr "الب_لد:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:6
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
+msgid "By _country"
+msgstr "بالب_لد"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:5
 msgid "_Language:"
 msgstr "الل_غة:"
 
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:6
+msgid "By _language"
+msgstr "بالل_غة"
+
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:7
-msgid "_Variants:"
-msgstr "ال_تنويعات:"
+msgid "Preview:"
+msgstr "معاينة:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:1
 msgid "Choose a Keyboard Model"
 msgstr "اختر طراز لوحة المفاتيح"
 
 #: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:2
-msgid "_Models:"
-msgstr "ال_طرُز:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:3
 msgid "_Vendors:"
 msgstr "ال_مُنتِج:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:3
+msgid "_Models:"
+msgstr "ال_طرُز:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-options-dialog.ui.h:1
 msgid "Keyboard Layout Options"
 msgstr "خيارات تخطيط لوحة المفاتيح"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:82
+#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:85
 msgid "Unknown"
 msgstr "مجهول"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:242
+#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:240
 msgid "Layout"
 msgstr "التصميم"
 
@@ -2700,8 +2132,7 @@ msgstr "المُنتِج"
 msgid "Models"
 msgstr "الطّرُز"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:235
-#: ../capplets/network/mate-network-properties.c:581
+#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:237
 msgid "Default"
 msgstr "المبدئي"
 
@@ -2713,190 +2144,107 @@ msgstr "لوحة المفاتيح"
 msgid "Set your keyboard preferences"
 msgstr "اضبط خصائص لوحة مفاتيحك"
 
-#. Translators: this is the gesture to trigger/choose the click type.
-#. Don't include the prefix "gesture|" in the translation.
-#: ../capplets/mouse/mate-mouse-accessibility.c:89
-msgid "gesture|Move left"
-msgstr "تحرّك يسارًا"
-
-#. Translators: this is the gesture to trigger/choose the click type.
-#. Don't include the prefix "gesture|" in the translation.
-#: ../capplets/mouse/mate-mouse-accessibility.c:94
-msgid "gesture|Move right"
-msgstr "تحرّك يمينًا"
-
-#. Translators: this is the gesture to trigger/choose the click type.
-#. Don't include the prefix "gesture|" in the translation.
-#: ../capplets/mouse/mate-mouse-accessibility.c:99
-msgid "gesture|Move up"
-msgstr "تحرّك إلى أعلى"
-
-#. Translators: this is the gesture to trigger/choose the click type.
-#. Don't include the prefix "gesture|" in the translation.
-#: ../capplets/mouse/mate-mouse-accessibility.c:104
-msgid "gesture|Move down"
-msgstr "تحرّك إلى أسفل"
-
-#. Translators: this is the gesture to trigger/choose the click type.
-#. Don't include the prefix "gesture|" in the translation.
-#: ../capplets/mouse/mate-mouse-accessibility.c:109
-msgid "gesture|Disabled"
-msgstr "معطّل"
-
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:590
-msgid "Specify the name of the page to show (general|accessibility)"
-msgstr "حدّد اسم الصفحة التي تريد إظهارها (general|accessibility)"
+#: ../capplets/mouse/mate-mouse-properties.c:510
+msgid "Specify the name of the page to show (general)"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:595
+#: ../capplets/mouse/mate-mouse-properties.c:515
 msgid "- MATE Mouse Preferences"
 msgstr "- تفضيلات فأرة جنوم"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:2
-msgid "Choose type of click _beforehand"
-msgstr "اختر نوع النقر م_سبقًا"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:3
-msgid "Choose type of click with mo_use gestures"
-msgstr "اختر نو_ع النقر بحركات الفأرة"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:6
-msgid "D_ouble click:"
-msgstr "الن_قر المزدوج:"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:7
-msgid "D_rag click:"
-msgstr "نقر ال_سحب:"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:8
-msgid "Disable _touchpad while typing"
-msgstr "_عطّل لوحة اللمس أثناء الكتابة"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
-msgid "Double-Click Timeout"
-msgstr "مهلة النقر المزدوج"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:10
-msgid "Drag and Drop"
-msgstr "السحب والإفلات"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
-msgid "Dwell Click"
-msgstr "النقر السلبي"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:12
-msgid "Enable _mouse clicks with touchpad"
-msgstr "فعّل _نقرات الفأرة في لوحة اللمس"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
-msgid "Enable h_orizontal scrolling"
-msgstr "فعّل اللف الأ_فقي"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:16
-msgid "High"
-msgstr "عال"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
-msgid "Locate Pointer"
-msgstr "حدد موقع المؤشر"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
-msgid "Low"
-msgstr "منخفض"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:21
-msgid "Mouse Orientation"
-msgstr "اتجاه الفأرة"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+#: ../capplets/mouse/mate-mouse-properties.ui.h:1
 msgid "Mouse Preferences"
 msgstr "تفضيلات الفأرة"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
-msgid "Pointer Speed"
-msgstr "سرعة المؤشر"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:2
+msgid "Mouse Orientation"
+msgstr "اتجاه الفأرة"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:24
-msgid "Scrolling"
-msgstr "اللف"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:3
+msgid "_Right-handed"
+msgstr "فأرة لليد الي_منى"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:25
-msgid "Seco_ndary click:"
-msgstr "النقر ال_ثانوي:"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:4
+msgid "_Left-handed"
+msgstr "فأرة لليد اليسر_ى"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:5
+msgid "Locate Pointer"
+msgstr "حدد موقع المؤشر"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:6
 msgid "Sh_ow position of pointer when the Control key is pressed"
 msgstr "أ_ظهر موقع الفأرة عند ضغط مفتاح Ctrl"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
-msgid "Show click type _window"
-msgstr "أظ_هر نافذة نوع النقر"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:7
+msgid "Pointer Speed"
+msgstr "سرعة المؤشر"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
-msgid "Simulated Secondary Click"
-msgstr "محاكاة النقر الثانوي"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+msgid "_Sensitivity:"
+msgstr "الح_ساسية:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
+msgid "Low"
+msgstr "منخفض"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+msgid "High"
+msgstr "عال"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
+msgid "Drag and Drop"
+msgstr "السحب والإفلات"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:15
 msgid "Thr_eshold:"
 msgstr "ال_عتبة:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+msgid "Double-Click Timeout"
+msgstr "مهلة النقر المزدوج"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+msgid "_Timeout:"
+msgstr "ا_لمهلة:"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "لاختبار إعدادات النقر المزدوج، جرّب نقرًا مزدوجًا على المصباح."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
-msgid "Touchpad"
-msgstr "لوحة اللمس"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+msgid "Disable _touchpad while typing"
+msgstr "_عطّل لوحة اللمس أثناء الكتابة"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
-msgid "Two-_finger scrolling"
-msgstr "اللف بأ_صبعين"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+msgid "Enable _mouse clicks with touchpad"
+msgstr "فعّل _نقرات الفأرة في لوحة اللمس"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
-msgid ""
-"You can also use the Dwell Click panel applet to choose the click type."
-msgstr "يمكنك أيضًا استخدام بريمج النقر السلبي لاختيار نوع النقر."
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+msgid "Scrolling"
+msgstr "اللف"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "_Disabled"
 msgstr "مع_طّل"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid "_Edge scrolling"
 msgstr "اللف عند ال_حافة"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
-msgid "_Initiate click when stopping pointer movement"
-msgstr "ابتد_ئ بالنقر عند توقف حركة المؤشر"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+msgid "Two-_finger scrolling"
+msgstr "اللف بأ_صبعين"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
-msgid "_Left-handed"
-msgstr "فأرة لليد اليسر_ى"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+msgid "Enable h_orizontal scrolling"
+msgstr "فعّل اللف الأ_فقي"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
-msgid "_Motion threshold:"
-msgstr "عتبة الحر_كة:"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
-msgid "_Right-handed"
-msgstr "فأرة لليد الي_منى"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:45
-msgid "_Sensitivity:"
-msgstr "الح_ساسية:"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:46
-msgid "_Single click:"
-msgstr "نقرة م_فردة:"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:47
-msgid "_Timeout:"
-msgstr "ا_لمهلة:"
-
-#: ../capplets/mouse/mate-mouse-properties.ui.h:48
-msgid "_Trigger secondary click by holding down the primary button"
-msgstr "يسبب النقر ال_ثانوي عن طريق الاستمرار بضغط الزر الأولي"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+msgid "Touchpad"
+msgstr "لوحة اللمس"
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
@@ -2905,15 +2253,6 @@ msgstr "الفأرة"
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
 msgid "Set your mouse preferences"
 msgstr "اضبط تفضيلات فأرتك"
-
-#: ../capplets/network/mate-network-properties.c:699
-#: ../capplets/network/mate-network-properties.c:850
-msgid "New Location..."
-msgstr "مكان جديد..."
-
-#: ../capplets/network/mate-network-properties.c:816
-msgid "Location already exists"
-msgstr "المكان موجود بالفعل"
 
 #: ../capplets/network/mate-network-properties.desktop.in.in.h:1
 msgid "Network Proxy"
@@ -2924,303 +2263,221 @@ msgid "Set your network proxy preferences"
 msgstr "اضبط خيارات وسيط شبكتك"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
-msgid "<b>Di_rect internet connection</b>"
-msgstr "<b>ات_صال مباشر بالإنترنت</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:2
-msgid "<b>_Automatic proxy configuration</b>"
-msgstr "<b>إعداد آ_لي للوسيط</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:3
-msgid "<b>_Manual proxy configuration</b>"
-msgstr "<b>إعداد _يدوي للوسيط</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:4
-msgid "<b>_Use authentication</b>"
-msgstr "<b>است_خدم الاستيثاق</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:5
-msgid "Autoconfiguration _URL:"
-msgstr "_مسار الإعداد الآلي:"
-
-#: ../capplets/network/mate-network-properties.ui.h:6
-msgid "C_reate"
-msgstr "أن_شئ"
-
-#: ../capplets/network/mate-network-properties.ui.h:7
-msgid "Create New Location"
-msgstr "أنشئ مكانا جديدا"
-
-#: ../capplets/network/mate-network-properties.ui.h:8
 msgid "HTTP Proxy Details"
 msgstr "تفاصيل وسيط HTTP"
 
-#: ../capplets/network/mate-network-properties.ui.h:9
-msgid "H_TTP proxy:"
-msgstr "و_سيط HTTP:"
+#: ../capplets/network/mate-network-properties.ui.h:2
+msgid "<b>_Use authentication</b>"
+msgstr "<b>است_خدم الاستيثاق</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:10
-msgid "Ignore Host List"
-msgstr "قائمة المستضيفين المُتجاهلين"
-
-#: ../capplets/network/mate-network-properties.ui.h:11
-msgid "Ignored Hosts"
-msgstr "المستضيفين المُتجاهلين"
-
-#: ../capplets/network/mate-network-properties.ui.h:12
-msgid "Location:"
-msgstr "المكان:"
-
-#: ../capplets/network/mate-network-properties.ui.h:13
-msgid "Network Proxy Preferences"
-msgstr "تفضيلات وسيط الشبكة"
-
-#: ../capplets/network/mate-network-properties.ui.h:14
-msgid "Port:"
-msgstr "المنفذ:"
-
-#: ../capplets/network/mate-network-properties.ui.h:15
-msgid "Proxy Configuration"
-msgstr "إعداد الوسيط"
-
-#: ../capplets/network/mate-network-properties.ui.h:16
-msgid "S_ocks host:"
-msgstr "مستضيف S_ocks:"
-
-#: ../capplets/network/mate-network-properties.ui.h:17
-msgid "The location already exists."
-msgstr "المكان موجود بالفعل."
-
-#: ../capplets/network/mate-network-properties.ui.h:18
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "U_sername:"
 msgstr "ا_سم المستخدم:"
 
-#: ../capplets/network/mate-network-properties.ui.h:19
-msgid "_Delete Location"
-msgstr "اح_ذف المكان"
-
-#: ../capplets/network/mate-network-properties.ui.h:20
-msgid "_Details"
-msgstr "ال_تفاصيل"
-
-#: ../capplets/network/mate-network-properties.ui.h:21
-msgid "_FTP proxy:"
-msgstr "_وسيط FTP:"
-
-#: ../capplets/network/mate-network-properties.ui.h:22
-msgid "_Location name:"
-msgstr "ا_سم المكان:"
-
-#: ../capplets/network/mate-network-properties.ui.h:23
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "_Password:"
 msgstr "_كلمة السر:"
 
-#: ../capplets/network/mate-network-properties.ui.h:24
+#: ../capplets/network/mate-network-properties.ui.h:5
+msgid "Network Proxy Preferences"
+msgstr "تفضيلات وسيط الشبكة"
+
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "<b>Di_rect internet connection</b>"
+msgstr "<b>ات_صال مباشر بالإنترنت</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "<b>_Manual proxy configuration</b>"
+msgstr "<b>إعداد _يدوي للوسيط</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "H_TTP proxy:"
+msgstr "و_سيط HTTP:"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
 msgid "_Secure HTTP proxy:"
 msgstr "وسيط HTTP آ_من:"
 
-#: ../capplets/network/mate-network-properties.ui.h:25
-msgid "_Use the same proxy for all protocols"
-msgstr "ا_ستخدم نفس الوسيط لكل البرتوكولات"
+#: ../capplets/network/mate-network-properties.ui.h:10
+msgid "_FTP proxy:"
+msgstr "_وسيط FTP:"
 
-#: ../capplets/windows/mate-window-properties.c:344
+#: ../capplets/network/mate-network-properties.ui.h:11
+msgid "S_ocks host:"
+msgstr "مستضيف S_ocks:"
+
+#: ../capplets/network/mate-network-properties.ui.h:12
+msgid "Port:"
+msgstr "المنفذ:"
+
+#: ../capplets/network/mate-network-properties.ui.h:13
+msgid "_Details"
+msgstr "ال_تفاصيل"
+
+#: ../capplets/network/mate-network-properties.ui.h:14
+msgid "<b>_Automatic proxy configuration</b>"
+msgstr "<b>إعداد آ_لي للوسيط</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "Autoconfiguration _URL:"
+msgstr "_مسار الإعداد الآلي:"
+
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "Proxy Configuration"
+msgstr "إعداد الوسيط"
+
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "Ignore Host List"
+msgstr "قائمة المستضيفين المُتجاهلين"
+
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "Ignored Hosts"
+msgstr "المستضيفين المُتجاهلين"
+
+#: ../capplets/windows/mate-window-properties.c:393
 msgid "Cannot start the preferences application for your window manager"
 msgstr "تعذّر تشغيل تطبيق تفضيلات مدير نوافذك"
 
-#: ../capplets/windows/mate-window-properties.c:603
+#: ../capplets/windows/mate-window-properties.c:661
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:609
+#: ../capplets/windows/mate-window-properties.c:667
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:616
+#: ../capplets/windows/mate-window-properties.c:674
 msgid "S_uper (or \"Windows logo\")"
 msgstr "‏S_uper (أو \"شعار ويندوز\")"
 
-#: ../capplets/windows/mate-window-properties.c:623
+#: ../capplets/windows/mate-window-properties.c:681
 msgid "_Meta"
 msgstr "_Meta"
 
 #: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Movement Key"
-msgstr "مفتاح الحركة"
-
-#: ../capplets/windows/mate-window-properties.ui.h:2
-msgid "Titlebar Action"
-msgstr "إجراء شريط العنوان"
-
-#: ../capplets/windows/mate-window-properties.ui.h:3
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "لنقل نافذة، انقر و اضغط هذا المفتاح ثم أمسك النافذة:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
 msgid "Window Preferences"
 msgstr "تفضيلات النافذة"
+
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:4
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr ""
 
 #: ../capplets/windows/mate-window-properties.ui.h:5
 msgid "Window Selection"
 msgstr "تحديد النّافذة"
 
 #: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "_Double-click titlebar to perform this action:"
-msgstr "ا_نقر مرتان على شريط العناوين للقيام بهذا الإجراء:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "_Interval before raising:"
-msgstr "الفا_صل الزمني قبل الرفع:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Raise selected windows after an interval"
-msgstr "ا_رفع النافذة المختارة بعد فاصل زمني"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "_Select windows when the mouse moves over them"
 msgstr "_حدد النوافذ عند تنقل الفأرة فوقها"
 
-#: ../capplets/windows/mate-window-properties.ui.h:10
+#: ../capplets/windows/mate-window-properties.ui.h:7
+msgid "_Raise selected windows after an interval"
+msgstr "ا_رفع النافذة المختارة بعد فاصل زمني"
+
+#: ../capplets/windows/mate-window-properties.ui.h:8
+msgid "_Interval before raising:"
+msgstr "الفا_صل الزمني قبل الرفع:"
+
+#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "seconds"
 msgstr "ثوان"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
-msgid "Set your window properties"
-msgstr "اضبط خصائص نافذتك"
+#: ../capplets/windows/mate-window-properties.ui.h:10
+msgid "Titlebar Action"
+msgstr "إجراء شريط العنوان"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.ui.h:11
+msgid "_Double-click titlebar to perform this action:"
+msgstr "ا_نقر مرتان على شريط العناوين للقيام بهذا الإجراء:"
+
+#: ../capplets/windows/mate-window-properties.ui.h:12
+msgid "Movement Key"
+msgstr "مفتاح الحركة"
+
+#: ../capplets/windows/mate-window-properties.ui.h:13
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "لنقل نافذة، انقر و اضغط هذا المفتاح ثم أمسك النافذة:"
+
+#: ../capplets/windows/window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "النوافذ"
+
+#: ../capplets/windows/window-properties.desktop.in.in.h:2
+msgid "Set your window properties"
+msgstr "اضبط خصائص نافذتك"
 
 #: ../libwindow-settings/mate-wm-manager.c:321
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "لم يسجل مدير النوافذ \"%s\" أيّة أداة إعداد\n"
 
-#: ../libwindow-settings/marco-window-manager.c:404
-msgid "Maximize"
-msgstr "كبِّر"
-
-#: ../libwindow-settings/marco-window-manager.c:405
-msgid "Maximize Vertically"
-msgstr "كبّر رأسيا"
-
-#: ../libwindow-settings/marco-window-manager.c:406
-msgid "Maximize Horizontally"
-msgstr "كبّر أفقيا"
-
-#: ../libwindow-settings/marco-window-manager.c:407
-msgid "Minimize"
-msgstr "صغّر"
-
-#: ../libwindow-settings/marco-window-manager.c:408
+#: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "لُف للأعلى"
 
-#: ../libwindow-settings/marco-window-manager.c:409
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "كبِّر"
+
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
+msgstr "كبّر أفقيا"
+
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
+msgstr "كبّر رأسيا"
+
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
+msgstr "صغّر"
+
+#: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "لا شيء"
 
-#: ../shell/control-center.c:49
+#: ../shell/control-center.c:61
 #, c-format
-msgid "key not found [%s]\n"
-msgstr "المفتاح غير موجود [%s]\n"
+msgid "%s key is empty\n"
+msgstr ""
 
-#: ../shell/control-center.c:149
+#: ../shell/control-center.c:161
 msgid "Hide on start (useful to preload the shell)"
 msgstr "أخفِ عند البدء (مفيد لتحميل الصدفة مسبقا)"
 
-#: ../shell/control-center.c:189
+#: ../shell/control-center.c:201
 msgid "Filter"
 msgstr "رشِّح"
 
-#: ../shell/control-center.c:189
+#: ../shell/control-center.c:201
 msgid "Groups"
 msgstr "المجموعات"
 
-#: ../shell/control-center.c:189
+#: ../shell/control-center.c:201
 msgid "Common Tasks"
 msgstr "المهام الشائعة"
 
-#: ../shell/control-center.c:191 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/control-center.c:203 ../shell/matecc.desktop.in.in.h:1
 #: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "مركز التحكّم"
-
-#: ../shell/control-center.schemas.in.h:1
-msgid "Close the control-center when a task is activated"
-msgstr "أغلق مركز التحكم عند تنشيط مهمّة"
-
-#: ../shell/control-center.schemas.in.h:2
-msgid "Exit shell on add or remove action performed"
-msgstr "اخرج من الصدفة عند أداء إجراء إضافة أو حذف"
-
-#: ../shell/control-center.schemas.in.h:3
-msgid "Exit shell on help action performed"
-msgstr "اخرج من الصدفة عند أداء إجراء مساعدة"
-
-#: ../shell/control-center.schemas.in.h:4
-msgid "Exit shell on start action performed"
-msgstr "اخرج من الصدفة عند أداء إجراء بدء"
-
-#: ../shell/control-center.schemas.in.h:5
-msgid "Exit shell on upgrade or uninstall action performed"
-msgstr "اخرج من الصدفة عند أداء إجراء ترقية أو إزالة"
-
-#: ../shell/control-center.schemas.in.h:6
-msgid "Indicates whether to close the shell when a help action is performed."
-msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء مساعدة."
-
-#: ../shell/control-center.schemas.in.h:7
-msgid "Indicates whether to close the shell when a start action is performed."
-msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء بدء."
-
-#: ../shell/control-center.schemas.in.h:8
-msgid ""
-"Indicates whether to close the shell when an add or remove action is "
-"performed."
-msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء إضافة أو حذف."
-
-#: ../shell/control-center.schemas.in.h:9
-msgid ""
-"Indicates whether to close the shell when an upgrade or uninstall action is "
-"performed."
-msgstr "يشير إلى ما إذا كانت الصدفة ستغلق عند أداء إجراء تحديث أو إزالة تثبيت."
-
-#: ../shell/control-center.schemas.in.h:10
-msgid "Task names and associated .desktop files"
-msgstr "أسماء المهام وملفات .desktop المرتبطة بها"
-
-#: ../shell/control-center.schemas.in.h:11
-msgid ""
-"The task name to be displayed in the control-center followed by a \";\" "
-"separator then the filename of an associated .desktop file to launch for "
-"that task."
-msgstr "أسماء المهام التي ستعرض في مركز التحكم مفصولة بفاصل \";\" ثم اسم ملف .desktop المرتبط لإطلاق هذه المهمّة."
-
-#. Translators: The format of this string is the task name to be displayed
-#. (translate that part) followed by a ";" separator then the filename (DONT
-#. translate the file name) of a .desktop file to launch. Multiple entries are
-#. separated by a ","
-#: ../shell/control-center.schemas.in.h:13
-msgid ""
-"[Change Theme;gtk-theme-selector.desktop,Set Preferred Applications;default-"
-"applications.desktop,Add Printer;mate-cups-manager.desktop]"
-msgstr "[غيّر السمة;gtk-theme-selector.desktop,ضبط التطبيقات المفضلة;default-applications.desktop,أضف طابعة;mate-cups-manager.desktop]"
-
-#: ../shell/control-center.schemas.in.h:14
-msgid ""
-"if true, the control-center will close when a \"Common Task\" is activated."
-msgstr "إذا كان صحيحًا، سيغلق سطح المكتب عند تنشيط \"مهمة شائعة\""
 
 #: ../shell/matecc.desktop.in.in.h:2
 msgid "The MATE configuration tool"
 msgstr "أداة إعداد جنوم"
 
-#: ../typing-break/drw-break-window.c:194
+#: ../typing-break/drw-break-window.c:190
 msgid "_Postpone Break"
 msgstr "أخّر الاستراح_ة"
 
-#: ../typing-break/drw-break-window.c:250
+#: ../typing-break/drw-break-window.c:246
 msgid "Take a break!"
 msgstr "استرِح"
 
@@ -3254,26 +2511,26 @@ msgstr "استرح الآن (الاستراحة التالية خلال أقل �
 msgid "Less than one minute until the next break"
 msgstr "أقل من دقيقة حتى الاستراحة التالية"
 
-#: ../typing-break/drwright.c:614
+#: ../typing-break/drwright.c:607
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "تعذّر إحضار حوار خصائص استراحة الكتابة بسبب الخطأ التالي: %s"
 
-#: ../typing-break/drwright.c:631
+#: ../typing-break/drwright.c:624
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "كتبَهُ ريتشارد هولت <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:632
+#: ../typing-break/drwright.c:625
 msgid "Eye candy added by Anders Carlsson"
 msgstr "أضاف الجماليّات أندرس كارلسن"
 
-#: ../typing-break/drwright.c:641
+#: ../typing-break/drwright.c:634
 msgid "A computer break reminder."
 msgstr "مذكّر الاستراحة عن الحاسوب."
 
-#: ../typing-break/drwright.c:643
+#: ../typing-break/drwright.c:636
 msgid "translator-credits"
 msgstr "فريق عرب آيز للترجمة http://www.arabeyes.org :\nسيد جعفر الموسوي\t <mosawi@arabeyes.org>\nعصام بيازيدي\t<bayazidi@arabeyes.org>\nعرفات المديني\t<lumina@silverpen.de>\nعبد العزيز العرفج\t<alarfaj0@yahoo.com>\nجهاد عفيفي\t<djihed@gmail.com>\nخالد حسني\t<khaledhosny@eglug.org>\nأنس الحسيني\t<linux.anas@gmail.com>"
 
@@ -3296,72 +2553,6 @@ msgid ""
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
 msgstr "يستخدم مراقب الكتابة مساحة التبليغ لعرض المعلومات. يبدو أنك لا تملك مساحة تبليغ على شريطك. يمكنك إضافتها بنقر يمينيّ على شريطك و اختيار 'أضِف للشريط' ثم اختيار 'مساحة التبليغ' ثم النقر على أضِف."
-
-#: ../font-viewer/fontilus.schemas.in.h:1
-msgid "If set to true, then OpenType fonts will be thumbnailed."
-msgstr "إذا ضبط لصحيح، فستنشأ مصغرات لخطوط OpenType."
-
-#: ../font-viewer/fontilus.schemas.in.h:2
-msgid "If set to true, then PCF fonts will be thumbnailed."
-msgstr "إذا ضبط لصحيح، فستنشأ مصغرات لخطوط PCF."
-
-#: ../font-viewer/fontilus.schemas.in.h:3
-msgid "If set to true, then TrueType fonts will be thumbnailed."
-msgstr "إذا ضبط لصحيح، فستنشأ مصغرات لخطوط TrueType."
-
-#: ../font-viewer/fontilus.schemas.in.h:4
-msgid "If set to true, then Type1 fonts will be thumbnailed."
-msgstr "إذا ضبط لصحيح، فستنشأ مصغرات لخطوط Type1."
-
-#: ../font-viewer/fontilus.schemas.in.h:5
-msgid ""
-"Set this key to the command used to create thumbnails for OpenType fonts."
-msgstr "اضبط هذا المفتاح للأمر المجعول لإنشاء مصغرات خطوط OpenType."
-
-#: ../font-viewer/fontilus.schemas.in.h:6
-msgid "Set this key to the command used to create thumbnails for PCF fonts."
-msgstr "اضبط هذا المفتاح للأمر المجعول لإنشاء مصغرات خطوط PCF."
-
-#: ../font-viewer/fontilus.schemas.in.h:7
-msgid ""
-"Set this key to the command used to create thumbnails for TrueType fonts."
-msgstr "اضبط هذا المفتاح للأمر المجعول لإنشاء مصغرات خطوط TrueType."
-
-#: ../font-viewer/fontilus.schemas.in.h:8
-msgid "Set this key to the command used to create thumbnails for Type1 fonts."
-msgstr "اضبط هذا المفتاح للأمر المجعول لإنشاء مصغرات خطوط Type1."
-
-#: ../font-viewer/fontilus.schemas.in.h:9
-msgid "Thumbnail command for OpenType fonts"
-msgstr "أمر إنشاء مصغرات خطوط OpenType"
-
-#: ../font-viewer/fontilus.schemas.in.h:10
-msgid "Thumbnail command for PCF fonts"
-msgstr "أمر إنشاء مصغرات خطوط PCF"
-
-#: ../font-viewer/fontilus.schemas.in.h:11
-msgid "Thumbnail command for TrueType fonts"
-msgstr "أمر إنشاء مصغرات خطوط TrueType"
-
-#: ../font-viewer/fontilus.schemas.in.h:12
-msgid "Thumbnail command for Type1 fonts"
-msgstr "أمر إنشاء مصغرات خطوط Type1"
-
-#: ../font-viewer/fontilus.schemas.in.h:13
-msgid "Whether to thumbnail OpenType fonts"
-msgstr "فيما إذا ستنشأ مصغرات لخطوط OpenType"
-
-#: ../font-viewer/fontilus.schemas.in.h:14
-msgid "Whether to thumbnail PCF fonts"
-msgstr "فيما إذا ستنشأ مصغرات لخطوط PCF"
-
-#: ../font-viewer/fontilus.schemas.in.h:15
-msgid "Whether to thumbnail TrueType fonts"
-msgstr "فيما إذا ستنشأ مصغرات لخطوط TrueType"
-
-#: ../font-viewer/fontilus.schemas.in.h:16
-msgid "Whether to thumbnail Type1 fonts"
-msgstr "فيما إذا ستنشأ مصغرات لخطوط Type1"
 
 #: ../font-viewer/font-view.c:299
 msgid "Name:"
@@ -3450,169 +2641,83 @@ msgstr "لا يطابق المرشح \"%s\" أي عناصر."
 msgid "No matches found."
 msgstr "لا تطابقات."
 
-#: ../libslab/app-shell.c:909
+#: ../libslab/app-shell.c:857
+msgid "New Applications"
+msgstr ""
+
+#: ../libslab/app-shell.c:912
 msgid "Other"
 msgstr "أخرى"
 
 #. make start action
-#: ../libslab/application-tile.c:374
+#: ../libslab/application-tile.c:340
 #, c-format
 msgid "Start %s"
 msgstr "ابدأ %s"
 
-#: ../libslab/application-tile.c:395
+#: ../libslab/application-tile.c:361
 msgid "Help"
 msgstr "مساعدة"
 
-#: ../libslab/application-tile.c:442
-msgid "Upgrade"
-msgstr "رقّي"
-
-#: ../libslab/application-tile.c:457
-msgid "Uninstall"
-msgstr "أزِل"
-
-#: ../libslab/application-tile.c:784 ../libslab/document-tile.c:738
+#: ../libslab/application-tile.c:629
 msgid "Remove from Favorites"
 msgstr "احذف من المفضّلة"
 
-#: ../libslab/application-tile.c:786 ../libslab/document-tile.c:740
+#: ../libslab/application-tile.c:631
 msgid "Add to Favorites"
 msgstr "أضِف للمفضّلة"
 
-#: ../libslab/application-tile.c:871
+#: ../libslab/application-tile.c:716
 msgid "Remove from Startup Programs"
 msgstr "احذف من برامج بدء التشغيل"
 
-#: ../libslab/application-tile.c:873
+#: ../libslab/application-tile.c:718
 msgid "Add to Startup Programs"
 msgstr "أضِف لبرامج بدء التشغيل"
 
-#: ../libslab/bookmark-agent.c:1110
+#: ../libslab/bookmark-agent.c:1091
 msgid "New Spreadsheet"
 msgstr "ورقة حساب جديدة"
 
-#: ../libslab/bookmark-agent.c:1115
+#: ../libslab/bookmark-agent.c:1096
 msgid "New Document"
 msgstr "مستند جديد"
 
-#: ../libslab/bookmark-agent.c:1168
+#: ../libslab/bookmark-agent.c:1149
 msgctxt "Home folder"
 msgid "Home"
 msgstr "المنزل"
 
-#: ../libslab/bookmark-agent.c:1175
+#: ../libslab/bookmark-agent.c:1156
 msgid "Documents"
 msgstr "مستندات"
 
-#: ../libslab/bookmark-agent.c:1190
+#: ../libslab/bookmark-agent.c:1164
+msgid "Desktop"
+msgstr "سطح المكتب"
+
+#: ../libslab/bookmark-agent.c:1171
 msgid "File System"
 msgstr "نظام الملفات"
 
-#: ../libslab/bookmark-agent.c:1194
+#: ../libslab/bookmark-agent.c:1175
 msgid "Network Servers"
 msgstr "خواديم الشبكة"
 
-#: ../libslab/bookmark-agent.c:1223
+#: ../libslab/bookmark-agent.c:1204
 msgid "Search"
 msgstr "ابحث"
-
-#. make open with default action
-#: ../libslab/directory-tile.c:171
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>افتح</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:190 ../libslab/document-tile.c:236
-msgid "Rename..."
-msgstr "غيّر الاسم..."
-
-#: ../libslab/directory-tile.c:204 ../libslab/directory-tile.c:213
-#: ../libslab/document-tile.c:250 ../libslab/document-tile.c:259
-msgid "Send To..."
-msgstr "أرسل إلى..."
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:228 ../libslab/document-tile.c:285
-msgid "Move to Trash"
-msgstr "انقل للمهملات"
-
-#: ../libslab/directory-tile.c:238 ../libslab/directory-tile.c:457
-#: ../libslab/document-tile.c:295 ../libslab/document-tile.c:854
-msgid "Delete"
-msgstr "احذف"
-
-#: ../libslab/directory-tile.c:533 ../libslab/document-tile.c:1016
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "أمتأكد أنك تريد حذف \"%s\" نهائيًا؟"
-
-#: ../libslab/directory-tile.c:534 ../libslab/document-tile.c:1017
-msgid "If you delete an item, it is permanently lost."
-msgstr "إذا حذفت عنصرًا، فسيُفقد إلى الأبد."
-
-#: ../libslab/document-tile.c:195
-#, c-format
-msgid "Open with \"%s\""
-msgstr "افتح باستخدام \"%s\""
-
-#: ../libslab/document-tile.c:209
-msgid "Open with Default Application"
-msgstr "افتح بالتطبيق المبدئي"
-
-#: ../libslab/document-tile.c:220
-msgid "Open in File Manager"
-msgstr "افتح في مدير الملفّات"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:304
-msgid "Remove from recent menu"
-msgstr "احذف من قائمة المفتوح مؤخرا"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:312
-msgid "Purge all the recent items"
-msgstr "أفرق قائمة المفتوح مؤخرا"
-
-#: ../libslab/document-tile.c:634
-msgid "?"
-msgstr "؟"
-
-#: ../libslab/document-tile.c:641
-msgid "%l:%M %p"
-msgstr "%Ol:%OM %p"
-
-#: ../libslab/document-tile.c:649
-msgid "Today %l:%M %p"
-msgstr "اليوم %Ol:%OM %p"
-
-#: ../libslab/document-tile.c:659
-msgid "Yesterday %l:%M %p"
-msgstr "بالأمس %Ol:%OM %p"
-
-#: ../libslab/document-tile.c:671
-msgid "%a %l:%M %p"
-msgstr "%A %Ol:%OM %p"
-
-#: ../libslab/document-tile.c:679
-msgid "%b %d %l:%M %p"
-msgstr "%Od %B %Ol:%OM %p"
-
-#: ../libslab/document-tile.c:681
-msgid "%b %d %Y"
-msgstr "%Od %B %Y"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
 msgstr "ابحث الآن"
 
-#: ../libslab/system-tile.c:127
+#: ../libslab/system-tile.c:126
 #, c-format
 msgid "<b>Open %s</b>"
 msgstr "<b>افتح %s</b>"
 
-#: ../libslab/system-tile.c:140
+#: ../libslab/system-tile.c:139
 #, c-format
 msgid "Remove from System Items"
 msgstr "احذف من عناصر النظام"

@@ -1,1009 +1,1298 @@
-# Xhosa translation of mate-control-center
-# Copyright (C) 2005 Canonical Ltd.
-# This file is distributed under the same license as the mate-control-center package.
-# Translation by Canonical Ltd <translations@canonical.com> with thanks to
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Translation World CC in South Africa, 2005.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-17 22:10+0200\n"
-"PO-Revision-Date: 2005-03-23 09:53+0200\n"
-"Last-Translator: Canonical Ltd <translations@canonical.com>\n"
-"Language-Team: Xhosa <xh-translate@ubuntu.com>\n"
+"Project-Id-Version: MATE Desktop Environment\n"
+"Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
+"POT-Creation-Date: 2013-02-11 11:51+0100\n"
+"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"Language: xh\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../capplets/about-me/eel-alert-dialog.c:114
+#: ../org.mate.control-center.gschema.xml.in.in.h:1
+msgid ""
+"[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
+"Applications;default-applications.desktop' ]"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:2
+msgid "Task names and associated .desktop files"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:3
+msgid ""
+"The task name to be displayed in the control-center followed by a \";\" "
+"separator then the filename of an associated .desktop file to launch for "
+"that task."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:4
+msgid "Close the control-center when a task is activated"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:5
+msgid ""
+"if true, the control-center will close when a \"Common Task\" is activated."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:6
+msgid "Exit shell on start action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:7
+msgid "Indicates whether to close the shell when a start action is performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:8
+msgid "Exit shell on help action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:9
+msgid "Indicates whether to close the shell when a help action is performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:10
+msgid "Exit shell on add or remove action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:11
+msgid ""
+"Indicates whether to close the shell when an add or remove action is "
+"performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:12
+msgid "Exit shell on upgrade or uninstall action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:13
+msgid ""
+"Indicates whether to close the shell when an upgrade or uninstall action is "
+"performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:14
+msgid "More backgrounds URL"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:15
+msgid ""
+"URL for where to get more desktop backgrounds. If set to an empty string the"
+" link will not appear."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:16
+msgid "More themes URL"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:17
+msgid ""
+"URL for where to get more desktop themes. If set to an empty string the link"
+" will not appear."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:1
+msgid "Keybinding"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:2
+msgid "Keybinding associated with a custom shortcut."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:3
+msgid "Command"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:4
+msgid "Command associated with a custom keybinding."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:5
+msgid "Name"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:6
+msgid "Description associated with a custom keybinding."
+msgstr ""
+
+#: ../capplets/about-me/eel-alert-dialog.c:110
 msgid "Image/label border"
 msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:115
+#: ../capplets/about-me/eel-alert-dialog.c:111
 msgid "Width of border around the label and image in the alert dialog"
 msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:124
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:120
 msgid "Alert Type"
-msgstr "Yongeza uHlobo lweFayili"
+msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:125
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:121
 msgid "The type of alert"
-msgstr "Uhlobo lwesibalekisi."
+msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:133
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:129
 msgid "Alert Buttons"
-msgstr "Amaqhosha"
+msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:134
+#: ../capplets/about-me/eel-alert-dialog.c:130
 msgid "The buttons shown in the alert dialog"
 msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:198
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:194
 msgid "Show more _details"
-msgstr "_Iinkcukacha zoMxholo"
+msgstr ""
 
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
-#: ../capplets/about-me/mate-about-me.glade.h:14
-msgid "About Me"
-msgstr "Malunga Nam"
-
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
-#, fuzzy
-msgid "Set your personal information"
-msgstr "Uhlobo lolwazi i-MIME"
-
-#: ../capplets/about-me/mate-about-me.c:554
+#: ../capplets/about-me/mate-about-me.c:282
 msgid "Select Image"
 msgstr "Khetha uMfanekiso"
 
-#: ../capplets/about-me/mate-about-me.c:556
+#: ../capplets/about-me/mate-about-me.c:284
 msgid "No Image"
 msgstr "Akukho Mfanekiso"
 
-#: ../capplets/about-me/mate-about-me.c:706
-msgid ""
-"There was an error while trying to get the addressbook information\n"
-"Evolution Data Server can't handle the protocol"
+#: ../capplets/about-me/mate-about-me.c:312
+#: ../capplets/appearance/appearance-desktop.c:646
+msgid "Images"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.c:727
-msgid "Unable to open address book"
+#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/appearance/theme-installer.c:774
+msgid "All Files"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.c:739
-msgid "Unknown login ID, the user database might be corrupted"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.c:770
-#: ../capplets/about-me/mate-about-me.c:772
-#, fuzzy, c-format
+#: ../capplets/about-me/mate-about-me.c:467
+#, c-format
 msgid "About %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:1
+#: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
+msgid "About Me"
 msgstr "Malunga Nam"
 
-#: ../capplets/about-me/mate-about-me-password.c:101
-#: ../capplets/about-me/mate-about-me-password.c:479
-msgid "Old password is incorrect, please retype it"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:2
+msgid "Select your photo"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me-password.c:112
-#, fuzzy
-msgid "System error has occurred"
-msgstr "Kwenzeke impazamo engalindelekanga"
-
-#: ../capplets/about-me/mate-about-me-password.c:113
-#, fuzzy
-msgid "Could not run /usr/bin/passwd"
-msgstr "Akukwazekanga ukusebenzisa i-passwd"
-
-#: ../capplets/about-me/mate-about-me-password.c:114
-msgid "Unable to launch backend"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:116
-#: ../capplets/about-me/mate-about-me-password.c:117
-#, fuzzy
-msgid "Unexpected error has occurred"
-msgstr "Kwenzeke impazamo engalindelekanga"
-
-#: ../capplets/about-me/mate-about-me-password.c:315
-msgid "Password is too short"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:318
-#: ../capplets/about-me/mate-about-me-password.c:321
-msgid "Password is too simple"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:324
-msgid "Old and new passwords are too similar"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:328
-msgid "Old and new password are the same"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:406
-#, fuzzy
-msgid "Please type the passwords."
-msgstr "Chwetheza kwakhona i-Password eNtsha:"
-
-#: ../capplets/about-me/mate-about-me-password.c:414
-msgid "Please type the password again, it is wrong."
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:417
-msgid "Click on Change Password to change the password."
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:1
-#: ../vfs-methods/themus/apply-font.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../capplets/about-me/mate-about-me.glade.h:2
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:1
-#: ../capplets/font/font-properties.glade.h:1
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:1
-#: ../capplets/mouse/mate-mouse-properties.glade.h:1
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../capplets/about-me/mate-about-me.glade.h:3
-msgid "<b>Email</b>"
-msgstr "<b>I-imeyile</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:4
-msgid "<b>Home</b>"
-msgstr "<b>Ikhaya</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:5
-msgid "<b>Instant Messaging</b>"
-msgstr "<b>Umyalezo wesiquphe</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:6
-msgid "<b>Job</b>"
-msgstr "<b>Umsebenzi</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:7
-msgid "<b>Please type the passwords.</b>"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:8
-msgid "<b>Telephone</b>"
-msgstr "<b>Imfonomfono</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:9
-msgid "<b>Web</b>"
-msgstr "<b>I-Web</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:10
-msgid "<b>Work</b>"
-msgstr "<b>Umsebenzi</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:11
-msgid "A_IM/iChat:"
-msgstr "I-A_IM/iChat:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:12
-#, fuzzy
-msgid "A_ddress:"
-msgstr "_Idilesi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:13
-msgid "A_ssistant:"
-msgstr "Um_ncedisi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:15
-#, fuzzy
-msgid "Address"
-msgstr "_Idilesi"
-
-#: ../capplets/about-me/mate-about-me.glade.h:16
-msgid "C_ity:"
-msgstr "Isi_xeko:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:17
-msgid "C_ompany:"
-msgstr "Inka_mpani:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:18
-msgid "Cale_ndar:"
-msgstr "Ikhale_nda:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:19
-#, fuzzy
-msgid "Change Passwo_rd..."
-msgstr "Tshintsha i-Passwo_rd"
-
-#: ../capplets/about-me/mate-about-me.glade.h:20
-msgid "Change Password"
-msgstr "Tshintsha i-Password"
-
-#: ../capplets/about-me/mate-about-me.glade.h:21
-#, fuzzy
-msgid "Ci_ty:"
-msgstr "Isi_xeko:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:22
-msgid "Co_untry:"
-msgstr "Ili_zwe:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:23
-#, fuzzy
-msgid "Contact"
-msgstr "_Nxibelelana"
-
-#: ../capplets/about-me/mate-about-me.glade.h:24
-#, fuzzy
-msgid "Cou_ntry:"
-msgstr "Ili_zwe:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:25
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:3
 msgid "Full Name"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:26
-#, fuzzy
-msgid "Hom_e:"
-msgstr "_Ikhaya:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:27
-msgid "IC_Q:"
-msgstr "I-IC_Q:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:28
-msgid "M_SN:"
-msgstr "I-M_SN:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:29
-#, fuzzy
-msgid "Old pa_ssword:"
-msgstr "I-Password eNdala:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:30
-#, fuzzy
-msgid "P.O. _box:"
-msgstr "IBhokisi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:31
-#, fuzzy
-msgid "P._O. box:"
-msgstr "IBhokisi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:32
-#, fuzzy
-msgid "Personal Info"
-msgstr "_Iinkcukacha Zakho"
-
-#: ../capplets/about-me/mate-about-me.glade.h:33
-#, fuzzy
-msgid "State/Pro_vince:"
-msgstr "_Ilizwe/Iphondo:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:34
-#, fuzzy
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:4
 msgid "User name:"
-msgstr "I_gama lomsebenzisi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:35
-#, fuzzy
-msgid "Web _log:"
-msgstr "I-Web _Log:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:36
-#, fuzzy
-msgid "Wor_k:"
-msgstr "_Umsebenzi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:37
-#, fuzzy
-msgid "Work _fax:"
-msgstr "IFeksi _yoMsebenzi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:38
-#, fuzzy
-msgid "Zip/_Postal code:"
-msgstr "U-_zip/Ikhowudi yePosi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:39
-msgid "_Address:"
-msgstr "_Idilesi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:40
-msgid "_Department:"
-msgstr "_Isebe:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:41
-msgid "_Groupwise:"
-msgstr "_Ngokweqela:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:42
-#, fuzzy
-msgid "_Home page:"
-msgstr "_Iphepha laseKhaya:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:43
-msgid "_Home:"
-msgstr "_Ikhaya:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:44
-msgid "_Jabber:"
-msgstr "I-_Jabber:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:45
-msgid "_Manager:"
-msgstr "_Umlawuli:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:46
-msgid "_Mobile:"
-msgstr "_Ephathwayo:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:47
-#, fuzzy
-msgid "_New password:"
-msgstr "I-Password eNtsha:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:48
-msgid "_Profession:"
-msgstr "_Ikhondo:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:49
-#, fuzzy
-msgid "_Retype new password:"
-msgstr "Chwetheza kwakhona i-Password eNtsha:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:50
-msgid "_State/Province:"
-msgstr "_Ilizwe/Iphondo:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:51
-msgid "_Title:"
-msgstr "_Isihloko:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:52
-msgid "_Work:"
-msgstr "_Umsebenzi:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:53
-msgid "_Yahoo:"
-msgstr "U-_Yahoo:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:54
-#, fuzzy
-msgid "_Zip/Postal code:"
-msgstr "U-_zip/Ikhowudi yePosi:"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:1
-msgid "<b>Applications</b>"
-msgstr "<b>Iinkqubo</b>"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:2
-msgid "<b>Support</b>"
-msgstr "<b>Inkxaso</b>"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:3
-msgid ""
-"<small><i><b>Note:</b> Changes to this setting will not take effect until "
-"you next log in.</i></small>"
 msgstr ""
-"<small><i><b>Qaphela:</b> Iinguqulelo kulo mmiselo azizukwenziwa de ungene "
-"kwakhona.</i></small>"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:4
-msgid "Assistive Technology Preferences"
-msgstr "Uluhlu lokukhetha lobuChwephesha oluNcedayo"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:5
+msgid "Change Passwo_rd..."
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:5
-msgid "Close and _Log Out"
-msgstr "Vala _Uphume"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:6
+msgid "Enable _Fingerprint Login..."
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:6
-msgid "Start these assistive technologies every time you log in:"
-msgstr "Qalisa obu buchwephesha buncedayo ngalo lonke ixesha ungena:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:7
+msgid "Disable _Fingerprint Login..."
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:7
+#: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
+msgid "Set your personal information"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:100
+msgid ""
+"You are not allowed to access the device. Contact your system administrator."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:102
+msgid "The device is already in use."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:104
+msgid "An internal error occured"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:221
+msgid "Delete registered fingerprints?"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:224
+msgid "_Delete Fingerprints"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:231
+msgid ""
+"Do you want to delete your registered fingerprints so fingerprint login is "
+"disabled?"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:359
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:15
+msgid "Done!"
+msgstr ""
+
+#. translators:
+#. * The variable is the name of the device, for example:
+#. * "Could you not access "Digital Persona U.are.U 4000/4000B" device
+#: ../capplets/about-me/mate-about-me-fingerprint.c:405
+#: ../capplets/about-me/mate-about-me-fingerprint.c:427
+#, c-format
+msgid "Could not access '%s' device"
+msgstr ""
+
+#. translators:
+#. * The variable is the name of the device, for example:
+#. * "Could you not access "Digital Persona U.are.U 4000/4000B" device
+#: ../capplets/about-me/mate-about-me-fingerprint.c:476
+#, c-format
+msgid "Could not start finger capture on '%s' device"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:523
+msgid "Could not access any fingerprint readers"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:524
+msgid "Please contact your system administrator for help."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:554
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
+msgid "Enable Fingerprint Login"
+msgstr ""
+
+#. translators:
+#. * The variable is the name of the device, for example:
+#. * "To enable fingerprint login, you need to save one of your fingerprints,
+#. using the
+#. * 'Digital Persona U.are.U 4000/4000B' device."
+#: ../capplets/about-me/mate-about-me-fingerprint.c:584
+#, c-format
+msgid ""
+"To enable fingerprint login, you need to save one of your fingerprints, "
+"using the '%s' device."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:593
+msgid "Swipe finger on reader"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:595
+msgid "Place finger on reader"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:1
+msgid "Left thumb"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:2
+msgid "Left middle finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:3
+msgid "Left ring finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:4
+msgid "Left little finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:5
+msgid "Right thumb"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:6
+msgid "Right middle finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:7
+msgid "Right ring finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:8
+msgid "Right little finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:10
+msgid "Right index finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:11
+msgid "Left index finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:12
+msgid "Other finger: "
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:13
+msgid "Select finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:14
+msgid ""
+"Your fingerprint was successfully saved. You should now be able to log in "
+"using your fingerprint reader."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:161
+msgid "Child exited unexpectedly"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:297
+#, c-format
+msgid "Could not shutdown backend_stdin IO channel: %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:310
+#, c-format
+msgid "Could not shutdown backend_stdout IO channel: %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:409
+msgid "Authenticated!"
+msgstr ""
+
+#. This is a re-auth, and it failed.
+#. * The password must have been changed in the meantime!
+#. * Ask the user to re-authenticate
+#. 
+#. Update status message and auth state
+#. Authentication failure
+#: ../capplets/about-me/mate-about-me-password.c:475
+#: ../capplets/about-me/mate-about-me-password.c:560
+msgid ""
+"Your password has been changed since you initially authenticated! Please re-"
+"authenticate."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:477
+msgid "That password was incorrect."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:528
+msgid "Your password has been changed."
+msgstr ""
+
+#. What does this indicate?
+#. * "Authentication information cannot be recovered?" from libpam?
+#: ../capplets/about-me/mate-about-me-password.c:538
+#, c-format
+msgid "System error: %s."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:541
+msgid "The password is too short."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:545
+msgid "The password is too simple."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:550
+msgid "The old and new passwords are too similar."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:552
+msgid "The new password must contain numeric or special character(s)."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:555
+msgid "The old and new passwords are the same."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:557
+msgid "The new password has already been used recently."
+msgstr ""
+
+#. translators: Unable to launch <program>: <error message>
+#: ../capplets/about-me/mate-about-me-password.c:828
+#, c-format
+msgid "Unable to launch %s: %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:832
+msgid "Unable to launch backend"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:833
+msgid "A system error has occurred"
+msgstr ""
+
+#. Update status message
+#: ../capplets/about-me/mate-about-me-password.c:853
+msgid "Checking password..."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:940
+msgid "Click <b>Change password</b> to change your password."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:943
+msgid "Please type your password in the <b>New password</b> field."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:946
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
+msgid ""
+"Please type your password again in the <b>Retype new password</b> field."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:949
+msgid "The two passwords are not equal."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:1
+msgid "Change password"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:2
+msgid "Change your password"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
+msgid ""
+"To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
+"After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:5
+msgid "Current _password:"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
+msgid "_New password:"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
+msgid "_Retype new password:"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:8
+msgid "_Authenticate"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:10
+msgid "Change pa_ssword"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
+msgid "Assistive Technologies Preferences"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+msgid "Assistive Technologies"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
+msgid "_Preferred Applications"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+msgid "Jump to Preferred Applications dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
 msgid "_Enable assistive technologies"
 msgstr "_Yenza ukuba ubuchwepheshe obuncedayo busebenze"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:8
-msgid "_Magnifier"
-msgstr "_Isandisi"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+msgid ""
+"Changes to enable assistive technologies will not take effect until your "
+"next log in."
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:9
-msgid "_On-screen keyboard"
-msgstr "_I-keyboard ekwiskrini"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+msgid "Preferences"
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:10
-msgid "_Screenreader"
-msgstr "_Okufunda iskrini"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+msgid "_Keyboard Accessibility"
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
-msgid "Assistive Technology Support"
-msgstr "INkxaso yobuChwepheshe eNcedayo"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+msgid "Jump to the Keyboard Accessibility dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+msgid "_Mouse Accessibility"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+msgid "Jump to the Mouse Accessibility dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+msgid "Accessible Lo_gin"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+msgid "Jump to the Accessible Login dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
+msgid "Close and _Log Out"
+msgstr "Vala _Uphume"
 
 #: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
-msgid "Enable support for MATE assistive technologies at login"
-msgstr ""
-"Yenza ukuba kusebenze inkxaso ukulungiselela ubuchwephesha boncedo be-MATE "
-"kungeno"
-
-#: ../capplets/accessibility/at-properties/main.c:60
-msgid ""
-"No Assistive Technology is available on your system.  The 'gok' package must "
-"be installed in order to get on-screen keyboard support, and the "
-"'gnopernicus' package must be installed for screenreading and magnifying "
-"capabilities."
-msgstr ""
-"Akukho buChwephesha boNcedo bukhoyo kwinkqubo yakho. Umqulu wenkqubo we'gok' "
-"kufuneka umiselwe ukuze kufikelelwe kwinkxaso ye-keyboard ekwiskrin, yaye "
-"umpakisho we'gnopernicus' kufuneka umiselwe ufundo lweskrini namandla okwazi "
-"ukwandisa."
-
-#: ../capplets/accessibility/at-properties/main.c:62
-msgid ""
-"Not all available assistive technologies are installed on your system.  The "
-"'gok' package must be installed in order to get on-screen keyboard support."
-msgstr ""
-"Ayibubo bonke ubuchwepheshe obuncedayo obumiselweyo kwinkqubo yakho. Umqulu "
-"wenkqubo ye-'gok' kufuneka imiselwe ukuze kufikeleleke kwinkxaso ye-keyboard "
-"ekwiskrini."
-
-#: ../capplets/accessibility/at-properties/main.c:64
-msgid ""
-"Not all available assistive technologies are installed on your system.  The "
-"'gnopernicus' package must be installed for screenreading and magnifying "
-"capabilities."
-msgstr ""
-"Asibubo bonke ubuchwepheshe obuncedayo obusekiweyo kwinkqubo yakho. Umqulu "
-"wenkqubo we-'gnopernicus' kufuneka usekiwe ukulungiselela ufundo lweskrini "
-"namandla okwazi ukwandisa."
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:241
-#, c-format
-msgid "There was an error launching the mouse preferences dialog: %s"
-msgstr ""
-"Kubekho impazamo ekundululeni unxibelelwano loluhlu ekukhethwa kulo "
-"lwemawusi: %s"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:337
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:398
-#, c-format
-msgid "Unable to import AccessX settings from file '%s'"
-msgstr "Akukwazeki ukudlulisa imimiselo ye-AccessX kwifayili '%s'"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:435
-msgid "Import Feature Settings File"
-msgstr "IFayili yeMimiselo yoPhawu lokuNgenisa"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:439
-msgid "_Import"
-msgstr "_Ngenisa"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in.h:1
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:20
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
-msgid "Keyboard"
-msgstr "I-keyboard"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in.h:2
-msgid "Set your keyboard accessibility preferences"
-msgstr "Misela uluhlu lokukhetha lwakho lokufikelela lwe-keyboard"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.c:59
-msgid ""
-"This system does not seem to have the XKB extension.  The keyboard "
-"accessibility features will not operate without it."
-msgstr ""
-"Le nkqubo ayibonakalisi ukuba inesongezo i-XKB. Iimpawu ze-keyboard "
-"zokufumaneka azizukusebenza ngaphandle kwayo."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:2
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:1
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:2
-#: ../capplets/theme-switcher/theme-install.glade.h:1
-#: ../capplets/theme-switcher/theme-properties.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:3
-msgid "<b>Enable Bo_unce Keys</b>"
-msgstr "<b>Yenza ukuba amaQhosha okuQa_katha asebenze</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:4
-msgid "<b>Enable Slo_w Keys</b>"
-msgstr "<b>Yenza ukuba amaQhosha okuCo_thisa asebenze</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:5
-msgid "<b>Enable _Mouse Keys</b>"
-msgstr "<b>Yenza ukuba amaQhosha _Emawusi asebenze</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:6
-msgid "<b>Enable _Repeat Keys</b>"
-msgstr "<b>Yenza ukuba amaQhosha _Okuphinda asebenze</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:7
-msgid "<b>Enable _Sticky Keys</b>"
-msgstr "<b>Yenza ukuba amaQhosha _Ancamathelayo asebenze</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:8
-msgid "<b>Features</b>"
-msgstr "<b>Iimpawu</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:9
-msgid "<b>Toggle Keys</b>"
-msgstr "<b>AmaQhosha i-Toggle</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:10
-msgid "Basic"
-msgstr "Esisiseko"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:11
-msgid "Beep if key is re_jected"
-msgstr "Yenza isandi esifutshane esiphindaphindayo ukuba iqhosha la_liwe"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:12
-msgid "Beep when _features turned on or off from keyboard"
-msgstr ""
-"Yenza isandi esifutshane esiphindaphindayo xa _iimpawu zivuliwe okanye "
-"zivaliwe kwi-keyboard"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:13
-msgid "Beep when _modifier is pressed"
-msgstr ""
-"Yenza isandi esifutshane esiphindaphindayo xa _iqhosha elisisilungisi "
-"licinezelwe"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:14
-msgid "Beep when an LED is turned on and two beeps when one is turned off."
-msgstr ""
-"Yenza isandi esifutshane esiphindaphindayo xa iLED ivuliwe uze wenze izandi "
-"ezibini ezifutshane xa ivaliwe."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:15
-msgid "Beep when key is:"
-msgstr "Yenza isandi esifutshane esiphindaphindayo xa iqhosha li:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:16
-msgid "Del_ay:"
-msgstr "Libaz_isa:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:17
-msgid "Delay between keypress and pointer mo_vement:"
-msgstr "Ukulibazisa phakathi kocinezelo qhosha nentshu_kumo yesalathisi:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:18
-msgid "Disa_ble if two keys pressed together"
-msgstr "Yenza ukuba inga_sebenzi ukuba amaqhosha amabini acinezelwe kunye"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:19
-msgid "E_nable Toggle Keys"
-msgstr "Yenza ukuba amaQhosha e-Toggle ase_benze"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:20
-msgid "Filters"
-msgstr "Izihluzi"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:21
-msgid "I_gnore duplicate keypresses within:"
-msgstr "Suku_hoya ukucofwa kwamaqhosha okuphindiweyo ngaphakathi:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:22
-msgid ""
-"Ignore all subsequent presses of the SAME key if they happen within a user "
-"selectable period of time."
-msgstr ""
-"Sukuhoya konke ukucofa okulandelayo kweqhosha ELIFANAYO ukuba akwixesha "
-"elikhethwe ngumsebenzisi."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:23
-msgid "Keyboard Accessibility Preferences (AccessX)"
-msgstr "Uluhlu lokukhetha lokufikelela lwe-Keyboard (AccessX)"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:24
-msgid "Ma_ximum pointer speed:"
-msgstr "Isantya sesalathisi esisesona Siphe_zulu:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:25
-msgid "Mouse Keys"
-msgstr "Amaqhosha emawusi"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:26
-msgid "Mouse _Preferences..."
-msgstr "_Uluhlu lokukhetha lwemawusi..."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:27
-msgid ""
-"Only accept keys after they have been pressed and held for a user adjustable "
-"amount of time."
-msgstr ""
-"Yamkela amaqhosha kuphela emva kokuba ecinezelwe aze agcinwa ngexesha "
-"lomsebenzisi elilungelelanisiweyo."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:28
-msgid ""
-"Perform multiple simultaneous key press operations by pressing modifier keys "
-"in sequence."
-msgstr ""
-"Yenza imisebenzi yokucinezela amaqhosha ngaxeshanye kaninzi ngokucinezela "
-"amaqhosha azizilungisi ngokulandelelana."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:29
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:29
-msgid "S_peed:"
-msgstr "I_santya:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:30
-msgid "Time to acce_lerate to maximum speed:"
-msgstr "Lixesha lokunqu_mla ngesantya esisesona siphezulu:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:31
-msgid "Turn the numeric keypad into a mouse control pad."
-msgstr "Guqulela i-keypad yamanani kwi-pad yolawulo lwemawusi."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:32
-msgid "_Disable if unused for:"
-msgstr "_Yenza ukuba ingasebenzi ukuba ayisetyenziswa:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:33
-msgid "_Enable keyboard accessibility features"
-msgstr "_Yenza ukuba iimpawu zokufikelela ze-keyboard zingasebenzi"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:34
-msgid "_Import Feature Settings..."
-msgstr "_Imimiselo yeeMpawu zokuDlulisa..."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:35
-msgid "_Only accept keys held for:"
-msgstr "_Yamkela kuphela amaqhosha abanjelwe i:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:36
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:39
-msgid "_Type to test settings:"
-msgstr "_Chwetheza ukuvavanya imimiselo:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:37
-msgid "_accepted"
-msgstr "_ivunyiwe"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:38
-msgid "_pressed"
-msgstr "_icinezelwe"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:39
-msgid "_rejected"
-msgstr "_yaliwe"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:40
-msgid "characters/second"
-msgstr "iimpawu/umzuzwana"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:41
-msgid "milliseconds"
-msgstr "i-mizuzwana yemizuzwana"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:42
-msgid "pixels/second"
-msgstr "i-pixels/umzuzwana"
-
-#. set the timeout value  label with correct value of timeout
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:43
-#: ../capplets/mouse/mate-mouse-properties.c:138
-#: ../capplets/mouse/mate-mouse-properties.c:885
-#: ../capplets/mouse/mate-mouse-properties.glade.h:27
-#: ../capplets/windows/mate-window-properties.glade.h:10
-msgid "seconds"
-msgstr "imizuzwana"
-
-#: ../capplets/background/background.desktop.in.in.h:1
-msgid "Change your Desktop Background settings"
-msgstr "Tshintsha imimiselo yokungaSemva kwi-Desktop"
-
-#: ../capplets/background/background.desktop.in.in.h:2
-msgid "Desktop Background"
-msgstr "OkungaSemva kwi-Desktop"
-
-#: ../capplets/background/mate-background-properties.glade.h:1
-msgid "<b>Desktop _Wallpaper</b>"
-msgstr "<b>_Umhombiso we-Desktop</b>"
-
-#: ../capplets/background/mate-background-properties.glade.h:2
-msgid "<b>_Desktop Colors</b>"
-msgstr "<b>Imibala ye-_Desktop</b>"
-
-#: ../capplets/background/mate-background-properties.glade.h:3
-msgid "Desktop Background Preferences"
-msgstr "Uluhlu lokukhetha lokungaSemva kwi-Desktop"
-
-#: ../capplets/background/mate-background-properties.glade.h:4
-msgid "Open a dialog to specify the color"
+msgid "Choose which accessibility features to enable when you log in"
 msgstr ""
 
-#: ../capplets/background/mate-background-properties.glade.h:5
-msgid "_Add Wallpaper"
-msgstr "_Faka umHombiso weskrini"
-
-#: ../capplets/background/mate-background-properties.glade.h:6
-msgid "_Style:"
-msgstr "I_simbo:"
-
-#: ../capplets/background/mate-wp-capplet.c:74
-#: ../capplets/common/capplet-util.c:340
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:333
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "Kubekho impazamo ekuvezeni uncedo: %s"
-
-#: ../capplets/background/mate-wp-capplet.c:1042
-#: ../capplets/background/mate-wp-capplet.c:1060
-msgid "Centered"
-msgstr "Ibekwe embindini"
-
-#: ../capplets/background/mate-wp-capplet.c:1068
-#: ../capplets/background/mate-wp-capplet.c:1085
-msgid "Fill Screen"
-msgstr "Zalisa iSkrini"
-
-#: ../capplets/background/mate-wp-capplet.c:1093
-#: ../capplets/background/mate-wp-capplet.c:1110
-msgid "Scaled"
-msgstr "Ihlengahlengisiwe"
-
-#: ../capplets/background/mate-wp-capplet.c:1118
-#: ../capplets/background/mate-wp-capplet.c:1135
-msgid "Tiled"
-msgstr "Ifakwe iithayili"
-
-#: ../capplets/background/mate-wp-capplet.c:1159
-#: ../capplets/background/mate-wp-capplet.c:1168
-msgid "Solid Color"
-msgstr "Umbala oNgqingqwa"
-
-#: ../capplets/background/mate-wp-capplet.c:1176
-#: ../capplets/background/mate-wp-capplet.c:1185
-msgid "Horizontal Gradient"
-msgstr "UkuThambeka okuNqamlezileyo"
-
-#: ../capplets/background/mate-wp-capplet.c:1193
-#: ../capplets/background/mate-wp-capplet.c:1202
-msgid "Vertical Gradient"
-msgstr "UkuThambeka okuthe Nkqo"
-
-#. Create the file chooser dialog stuff here
-#: ../capplets/background/mate-wp-capplet.c:1251
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "Hombisa iSkrini"
 
-#: ../capplets/background/mate-wp-info.c:57
-msgid "No Wallpaper"
-msgstr "Akukho mHombiso"
+#: ../capplets/appearance/appearance-desktop.c:650
+msgid "All files"
+msgstr ""
 
-#: ../capplets/background/mate-wp-item.c:292
-#: ../capplets/background/mate-wp-item.c:294
+#: ../capplets/appearance/appearance-main.c:57
+#, c-format
+msgid "Could not load user interface file: %s"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:153
+msgid "Specify the filename of a theme to install"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:154
+msgid "filename"
+msgstr ""
+
+#. TRANSLATORS: don't translate the terms in brackets
+#: ../capplets/appearance/appearance-main.c:161
+msgid ""
+"Specify the name of the page to show (theme|background|fonts|interface)"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:162
+#: ../capplets/default-applications/mate-da-capplet.c:525
+#: ../capplets/mouse/mate-mouse-properties.c:511
+msgid "page"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:169
+msgid "[WALLPAPER...]"
+msgstr ""
+
+#: ../capplets/appearance/appearance-style.c:171
+#: ../capplets/common/mate-theme-info.c:497
+#: ../capplets/common/mate-theme-info.c:694
+msgid "Default Pointer"
+msgstr ""
+
+#: ../capplets/appearance/appearance-style.c:233
+#: ../capplets/appearance/appearance-themes.c:674
+msgid "Install"
+msgstr ""
+
+#: ../capplets/appearance/appearance-style.c:255
+#: ../capplets/common/mate-theme-info.c:1723
+#, c-format
+msgid ""
+"This theme will not look as intended because the required GTK+ theme engine "
+"'%s' is not installed."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:662
+msgid "Apply Background"
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:666
+msgid "Apply Font"
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:670
+msgid "Revert Font"
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:701
+msgid ""
+"The current theme suggests a background and a font. Also, the last applied "
+"font suggestion can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:703
+msgid ""
+"The current theme suggests a background. Also, the last applied font "
+"suggestion can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:705
+msgid "The current theme suggests a background and a font."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:707
+msgid ""
+"The current theme suggests a font. Also, the last applied font suggestion "
+"can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:709
+msgid "The current theme suggests a background."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:711
+msgid "The last applied font suggestion can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:713
+msgid "The current theme suggests a font."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:1029
+msgid "Custom"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:1
+msgid "Font Rendering Details"
+msgstr "Iinkcukacha Zokwenza iFonti"
+
+#: ../capplets/appearance/data/appearance.ui.h:2
+msgid "R_esolution:"
+msgstr "Isi_gqibo:"
+
+#: ../capplets/appearance/data/appearance.ui.h:3
+msgid "dots per inch"
+msgstr "amachaphaza nge-intshi"
+
+#: ../capplets/appearance/data/appearance.ui.h:4
+msgid "Smoothing"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:5
+msgid "_None"
+msgstr "_Ayikho"
+
+#: ../capplets/appearance/data/appearance.ui.h:6
+msgid "Gra_yscale"
+msgstr "I-Gra_yscale"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "Sub_pixel (LCDs)"
+msgstr "I-Sub_pixel (LCDs)"
+
+#. font hinting
+#: ../capplets/appearance/data/appearance.ui.h:9
+msgid "Hinting"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:10
+msgid "N_one"
+msgstr "A_yikho"
+
+#: ../capplets/appearance/data/appearance.ui.h:11
+msgid "_Slight"
+msgstr "_Kancinci"
+
+#: ../capplets/appearance/data/appearance.ui.h:12
+msgid "_Medium"
+msgstr "_Phakathi"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Full"
+msgstr "_Zele"
+
+#: ../capplets/appearance/data/appearance.ui.h:14
+msgid "Subpixel Order"
+msgstr ""
+
+#. pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:16
+msgid "_RGB"
+msgstr "I-_RGB"
+
+#. pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:18
+msgid "_BGR"
+msgstr "I-_BGR"
+
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:20
+msgid "_VRGB"
+msgstr "I-_VRGB"
+
+#. vertical hinting, pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "VB_GR"
+msgstr "i-VB_GR"
+
+#: ../capplets/appearance/data/appearance.ui.h:23
+msgid "Appearance Preferences"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:24
+msgid "Save _As..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:25
+msgid "C_ustomize..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:26
+msgid "_Install..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:27
+msgid "Get more themes online"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Theme"
+msgstr "Umxholo"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Style:"
+msgstr "I_simbo:"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "C_olors:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "Open a dialog to specify the color"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:32
+msgid "Get more backgrounds online"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:33
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr "_Yongeza..."
+
+#: ../capplets/appearance/data/appearance.ui.h:34
+msgid "Background"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:35
+msgid "_Document font:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:36
+msgid "Des_ktop font:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:37
+msgid "_Window title font:"
+msgstr "_Ifonti yesihloko sefestile:"
+
+#: ../capplets/appearance/data/appearance.ui.h:38
+msgid "_Fixed width font:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:39
+msgid "_Application font:"
+msgstr "_Ifonti yenkqubo:"
+
+#: ../capplets/appearance/data/appearance.ui.h:40
+msgid "Rendering"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:41
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "Ukugudisa i-sub_pixel (LCDs)"
+
+#: ../capplets/appearance/data/appearance.ui.h:42
+msgid "Best co_ntrast"
+msgstr "Ink_caso eyiyeyona ingcono"
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+msgid "Best _shapes"
+msgstr "_Izazobe ezizezona ezibhetele"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Monochrome"
+msgstr "I-_Monochrome"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "D_etails..."
+msgstr "Iink_cukacha..."
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Fonts"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Tile"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Zoom"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Center"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Scale"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Stretch"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Span"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Solid color"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Horizontal gradient"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Text below items"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Text beside items"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Icons only"
+msgstr "Imifanekiso engumqondiso kuphela"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Text only"
+msgstr "Umbhalo kuphela"
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "Customize Theme"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "Controls"
+msgstr "Izilawuli"
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "The current controls theme does not support color schemes."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "_Tooltips:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Selected items:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "_Input boxes:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:66
+msgid "_Windows:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Text"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "Colors"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "Window Border"
+msgstr "UMqukumbelo weFestile"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Icons"
+msgstr "Imifanekiso"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "Changing your cursor theme takes effect the next time you log in."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Size:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
+msgid "Small"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+msgid "Large"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Pointer"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Save Theme As..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Name:"
+msgstr "_Igama:"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "_Description:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:80
+msgid "Save _background image"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
+msgid "Appearance"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:2
+msgid "Customize the look of the desktop"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:1
+msgid "Theme Installer"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
+msgid "Installs themes packages for various parts of the desktop"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-theme-package.xml.in.h:1
+msgid "Mate Theme Package"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-info.c:51
+msgid "No Desktop Background"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:289
+msgid "Slide Show"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:291
+msgid "Image"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:297
+msgid "multiple sizes"
+msgstr ""
+
+#. translators: x pixel(s) by y pixel(s)
+#: ../capplets/appearance/mate-wp-item.c:300
+#, c-format
+msgid "%d %s by %d %s"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:302
+#: ../capplets/appearance/mate-wp-item.c:304
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "i-pixel"
 msgstr[1] "ii-pixels"
 
-#: ../capplets/common/activate-settings-daemon.c:18
+#. translators: <b>wallpaper name</b>
+#. * mime type, size
+#. * Folder: /path/to/file
+#. 
+#: ../capplets/appearance/mate-wp-item.c:312
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"%s, %s\n"
+"Folder: %s"
+msgstr ""
+
+#. translators: <b>wallpaper name</b>
+#. * Image missing
+#. * Folder: /path/to/file
+#. 
+#: ../capplets/appearance/mate-wp-item.c:324
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"%s\n"
+"Folder: %s"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:328
+msgid "Image missing"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:178
+#: ../capplets/appearance/theme-installer.c:234
+msgid "Cannot install theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:180
+#, c-format
+msgid "The %s utility is not installed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:236
+msgid "There was a problem while extracting the theme."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:264
+msgid "There was an error installing the selected file"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:265
+#, c-format
+msgid "\"%s\" does not appear to be a valid theme."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:266
+#, c-format
+msgid ""
+"\"%s\" does not appear to be a valid theme. It may be a theme engine which "
+"you need to compile."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:372
+#, c-format
+msgid "Installation for theme \"%s\" failed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:411
+#, c-format
+msgid "The theme \"%s\" has been installed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:421
+msgid "Would you like to apply it now, or keep your current theme?"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:424
+msgid "Keep Current Theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:427
+msgid "Apply New Theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:479
+#, c-format
+msgid "MATE Theme %s correctly installed"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:541
+msgid "Failed to create temporary directory"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:604
+msgid "New themes have been successfully installed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:654
+msgid "No theme file location specified to install"
+msgstr "Akukho ndawo yomxholo wefayili ichaziweyo ukuba isekwe"
+
+#: ../capplets/appearance/theme-installer.c:678
+#, c-format
+msgid ""
+"Insufficient permissions to install the theme in:\n"
+"%s"
+msgstr "Iimvume ezingonelanga ukuseka imixholo ku:\n%s"
+
+#: ../capplets/appearance/theme-installer.c:756
+msgid "Select Theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:767
+msgid "Theme Packages"
+msgstr ""
+
+#: ../capplets/appearance/theme-save.c:94
+#, c-format
+msgid "Theme name must be present"
+msgstr "Igama lomxholo malibekhona"
+
+#: ../capplets/appearance/theme-save.c:157
+msgid "The theme already exists. Would you like to replace it?"
+msgstr "Umxholo sowukhona. Ungathanda ukubeka omnye endaweni yawo?"
+
+#: ../capplets/appearance/theme-save.c:158
+#: ../capplets/common/file-transfer-dialog.c:451
+msgid "_Overwrite"
+msgstr ""
+
+#: ../capplets/appearance/theme-util.c:73
+msgid "Would you like to delete this theme?"
+msgstr ""
+
+#: ../capplets/appearance/theme-util.c:123
+msgid "Theme cannot be deleted"
+msgstr ""
+
+#: ../capplets/appearance/theme-util.c:249
+msgid "Could not install theme engine"
+msgstr ""
+
+#: ../capplets/common/activate-settings-daemon.c:16
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
-"Without the MATE settings manager running, some preferences may not take "
-"effect. This could indicate a problem with MateComponent, or a non-MATE (e.g. KDE) "
-"settings manager may already be active and conflicting with the MATE "
-"settings manager."
-msgstr ""
-"Akukwazeki ukuqalisa imimiselo yomlawuli i-'mate-settings-daemon'.\n"
-"Ngaphandle kokuqhubeka komlawuli wemimiselo i-MATE, uluhlu lokukhetha "
-"oluthile lunokungasebenzi. Oku kunokubonisa ingxaki ye-MateComponent, okanye "
-"umlawuli wemimiselo ongengo-MATE (umz. KDE) inoba sele esebenza yaye abe "
-"uyakhabana nomlawuli wemimiselo ye-MATE."
-
-#: ../capplets/common/capplet-stock-icons.c:94
-#, c-format
-msgid "Unable to load capplet stock icon '%s'\n"
-msgstr "Akukwazeki ukufaka umfanekiso we-capplet stock '%s'\n"
-
-#: ../capplets/common/capplet-util.c:239 ../capplets/common/capplet-util.c:241
-msgid "Just apply settings and quit"
-msgstr "Faka nje kuphela imimiselo uze uphume"
-
-#: ../capplets/common/capplet-util.c:243
-#: ../capplets/default-applications/mate-default-applications-properties.c:765
-#: ../capplets/keyboard/mate-keyboard-properties.c:225
-#: ../capplets/mouse/mate-mouse-properties.c:1021
-#: ../capplets/sound/sound-properties-capplet.c:244
-msgid "Retrieve and store legacy settings"
-msgstr "Fumana kwakhona uze ugcine imimiselo elilifa"
-
-#: ../capplets/common/file-transfer-dialog.c:94
-#, c-format
-msgid "Copying file: %i of %i"
+"Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
 msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:122
+#: ../capplets/common/capplet-stock-icons.c:66
+#, c-format
+msgid "Unable to load stock icon '%s'\n"
+msgstr ""
+
+#: ../capplets/common/capplet-util.c:88
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Kubekho impazamo ekuvezeni uncedo: %s"
+
+#: ../capplets/common/file-transfer-dialog.c:98
+#, c-format
+msgid "Copying file: %u of %u"
+msgstr ""
+
+#: ../capplets/common/file-transfer-dialog.c:145
 #, c-format
 msgid "Copying '%s'"
 msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:193
-msgid "From URI"
-msgstr "Ivela kwi-URI"
-
-#: ../capplets/common/file-transfer-dialog.c:194
-msgid "URI currently transferring from"
-msgstr "I-URI idlulisela ngoku ukusuka"
-
-#: ../capplets/common/file-transfer-dialog.c:201
-msgid "To URI"
-msgstr "Ukuya kwi-URI"
-
-#: ../capplets/common/file-transfer-dialog.c:202
-msgid "URI currently transferring to"
-msgstr "I-URI ngoku idlulisela"
-
-#: ../capplets/common/file-transfer-dialog.c:209
-msgid "Fraction completed"
-msgstr "Iqhezu ligqityiwe"
-
-#: ../capplets/common/file-transfer-dialog.c:210
-msgid "Fraction of transfer currently completed"
-msgstr "Iqhezu lokudlulisa ligqityiwe ngoku"
-
-#: ../capplets/common/file-transfer-dialog.c:217
-msgid "Current URI index"
-msgstr "Isalathiso se-URI sangoku"
-
-#: ../capplets/common/file-transfer-dialog.c:218
-msgid "Current URI index - starts from 1"
-msgstr "Isalathiso se-URI sangoku - siqala ku1"
-
-#: ../capplets/common/file-transfer-dialog.c:225
-msgid "Total URIs"
-msgstr "I-URIs zizonke"
-
-#: ../capplets/common/file-transfer-dialog.c:226
-msgid "Total number of URIs"
-msgstr "Inani lilonke le-URIs"
-
-#: ../capplets/common/file-transfer-dialog.c:327
-#: ../capplets/common/file-transfer-dialog.c:369
+#: ../capplets/common/file-transfer-dialog.c:185
+#: ../capplets/common/file-transfer-dialog.c:313
 msgid "Copying files"
 msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:345
-#, fuzzy
-msgid "From:"
-msgstr "Ivela: %s"
+#: ../capplets/common/file-transfer-dialog.c:224
+msgid "Parent Window"
+msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:349
-#, fuzzy
-msgid "To:"
-msgstr "Iya: %s"
+#: ../capplets/common/file-transfer-dialog.c:225
+msgid "Parent window of the dialog"
+msgstr ""
+
+#: ../capplets/common/file-transfer-dialog.c:231
+msgid "From URI"
+msgstr "Ivela kwi-URI"
+
+#: ../capplets/common/file-transfer-dialog.c:232
+msgid "URI currently transferring from"
+msgstr "I-URI idlulisela ngoku ukusuka"
+
+#: ../capplets/common/file-transfer-dialog.c:239
+msgid "To URI"
+msgstr "Ukuya kwi-URI"
+
+#: ../capplets/common/file-transfer-dialog.c:240
+msgid "URI currently transferring to"
+msgstr "I-URI ngoku idlulisela"
+
+#: ../capplets/common/file-transfer-dialog.c:247
+msgid "Fraction completed"
+msgstr "Iqhezu ligqityiwe"
+
+#: ../capplets/common/file-transfer-dialog.c:248
+msgid "Fraction of transfer currently completed"
+msgstr "Iqhezu lokudlulisa ligqityiwe ngoku"
+
+#: ../capplets/common/file-transfer-dialog.c:255
+msgid "Current URI index"
+msgstr "Isalathiso se-URI sangoku"
+
+#: ../capplets/common/file-transfer-dialog.c:256
+msgid "Current URI index - starts from 1"
+msgstr "Isalathiso se-URI sangoku - siqala ku1"
+
+#: ../capplets/common/file-transfer-dialog.c:263
+msgid "Total URIs"
+msgstr "I-URIs zizonke"
+
+#: ../capplets/common/file-transfer-dialog.c:264
+msgid "Total number of URIs"
+msgstr "Inani lilonke le-URIs"
+
+#: ../capplets/common/file-transfer-dialog.c:445
+#, c-format
+msgid "File '%s' already exists. Do you want to overwrite it?"
+msgstr ""
 
 #: ../capplets/common/file-transfer-dialog.c:448
-msgid "Connecting..."
-msgstr "Iyahlangana..."
-
-#: ../capplets/common/mateconf-property-editor.c:170
-msgid "Key"
-msgstr "Iqhosha"
-
-#: ../capplets/common/mateconf-property-editor.c:171
-msgid "MateConf key to which this property editor is attached"
-msgstr "Iqhosha le-MateConf apho umhleli wophawu aqhotyoshelwe khona"
-
-#: ../capplets/common/mateconf-property-editor.c:177
-msgid "Callback"
-msgstr "Ubuyiselo nxulumano"
-
-#: ../capplets/common/mateconf-property-editor.c:178
-msgid "Issue this callback when the value associated with key gets changed"
+msgid "_Skip"
 msgstr ""
-"Khupha le ubuyiselo nxulumano xa ixabiso elinxulunyaniswa neqhosha "
-"litshintshiwe"
 
-#: ../capplets/common/mateconf-property-editor.c:183
-msgid "Change set"
-msgstr "Utshintsho lommiselo"
-
-#: ../capplets/common/mateconf-property-editor.c:184
-msgid ""
-"MateConf change set containing data to be forwarded to the mateconf client on apply"
+#: ../capplets/common/file-transfer-dialog.c:449
+msgid "Overwrite _All"
 msgstr ""
-"Utshintsho lommiselo we-MateConf oqulethe i-data emayithunyelwe kumxumi we-"
-"mateconf iyasebenza"
 
-#: ../capplets/common/mateconf-property-editor.c:189
-msgid "Conversion to widget callback"
-msgstr "Uguqulo ku-widget callback"
-
-#: ../capplets/common/mateconf-property-editor.c:190
-msgid ""
-"Callback to be issued when data are to be converted from MateConf to the widget"
+#: ../capplets/common/mate-theme-info.c:695
+msgid "Default Pointer - Current"
 msgstr ""
-"Ubuyiselo nxulumano malukhutshwe xa i-data kufuneka iguqulelwe ukusuka kwi-"
-"MateConf ukuya ku-widget"
 
-#: ../capplets/common/mateconf-property-editor.c:195
-msgid "Conversion from widget callback"
-msgstr "Uguqulo olusuka ku-widget callback"
-
-#: ../capplets/common/mateconf-property-editor.c:196
-msgid ""
-"Callback to be issued when data are to be converted to MateConf from the widget"
+#: ../capplets/common/mate-theme-info.c:699
+msgid "White Pointer"
 msgstr ""
-"Ubuyiselo nxulumano malukhutshwe xa i-data kufuneka iguqulelwe ukuya kwi-"
-"MateConf isuka ku-widget"
 
-#: ../capplets/common/mateconf-property-editor.c:201
-msgid "UI Control"
-msgstr "ULawulo lwe-UI"
-
-#: ../capplets/common/mateconf-property-editor.c:202
-msgid "Object that controls the property (normally a widget)"
-msgstr "Into elawula uphawu (ngokuqhelekileyo i-widget)"
-
-#: ../capplets/common/mateconf-property-editor.c:217
-msgid "Property editor object data"
-msgstr "Ulwazi lomhleli lophawu lwento"
-
-#: ../capplets/common/mateconf-property-editor.c:218
-msgid "Custom data required by the specific property editor"
-msgstr "Ulwazi ozenzeleyo olufunwa ngumhleli wophawu othile"
-
-#: ../capplets/common/mateconf-property-editor.c:224
-msgid "Property editor data freeing callback"
-msgstr "Ulwazi lomhleli lophawu ikhulula ubuyiselo nxulumano"
-
-#: ../capplets/common/mateconf-property-editor.c:225
-msgid "Callback to be issued when property editor object data is to be freed"
+#: ../capplets/common/mate-theme-info.c:700
+msgid "White Pointer - Current"
 msgstr ""
-"Ubuyiselo nxulumano emalikhutshwe xa i-data yomhleli yento kufuneka ikhululwe"
 
-#: ../capplets/common/mateconf-property-editor.c:1466
+#: ../capplets/common/mate-theme-info.c:704
+msgid "Large Pointer"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:705
+msgid "Large Pointer - Current"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:709
+msgid "Large White Pointer - Current"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:710
+msgid "Large White Pointer"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:1694
 #, c-format
 msgid ""
-"Couldn't find the file '%s'.\n"
-"\n"
-"Please make sure it exists and try again, or choose a different background "
-"picture."
+"This theme will not look as intended because the required GTK+ theme '%s' is"
+" not installed."
 msgstr ""
-"Ayifumanekanga ifayili '%s'.\n"
-"\n"
-"Nceda uqinisekise ukuba ikhona uze uzame kwakhona, okanye khetha umfanekiso "
-"wokungasemva owohlukileyo."
 
-#: ../capplets/common/mateconf-property-editor.c:1474
+#: ../capplets/common/mate-theme-info.c:1704
 #, c-format
 msgid ""
-"I don't know how to open the file '%s'.\n"
-"Perhaps it's a kind of picture that is not yet supported.\n"
-"\n"
-"Please select a different picture instead."
+"This theme will not look as intended because the required window manager "
+"theme '%s' is not installed."
 msgstr ""
-"Andikwazi ukuvula ifayili '%s'.\n"
-"Mhlawumbi luhlobo lomfanekiso olungekaxhaswa.\n"
-"\n"
-"Nceda ukhethe umfanekiso owohlukileyo endaweni yoko."
 
-#: ../capplets/common/mateconf-property-editor.c:1593
-msgid "Please select an image."
-msgstr "Nceda ukhethe umfanekiso."
-
-#: ../capplets/common/mateconf-property-editor.c:1598
-msgid "_Select"
-msgstr "_Khetha"
+#: ../capplets/common/mate-theme-info.c:1712
+#, c-format
+msgid ""
+"This theme will not look as intended because the required icon theme '%s' is"
+" not installed."
+msgstr ""
 
 #: ../capplets/default-applications/default-applications.desktop.in.in.h:1
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:18
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "IiNkqubo eziKhethwayo"
 
@@ -1011,950 +1300,940 @@ msgstr "IiNkqubo eziKhethwayo"
 msgid "Select your default applications"
 msgstr "Khetha iinkqubo zakho ezimiselweyo"
 
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:9
-msgid "Debian Sensible Browser"
-msgstr "I-Debian Sensible Browser"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:10
-msgid "Epiphany"
-msgstr "I-Epiphany"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:11
-msgid "Galeon"
-msgstr "I-Galeon"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:12
-msgid "Encompass"
-msgstr "i-Encompass"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:13
-msgid "Firebird"
-msgstr "i-Firebird"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:14
-msgid "Firefox"
-msgstr "I-Firefox"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:15
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:16
-msgid "Mozilla"
-msgstr "I-Mozilla"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:17
-msgid "Netscape Communicator"
-msgstr "Umnxibelelanisi we-Netscape"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:18
-msgid "Konqueror"
-msgstr "I-Konqueror"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:19
-msgid "W3M Text Browser"
-msgstr "IsiKhangeli soMbhalo we-W3M"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:20
-msgid "Lynx Text Browser"
-msgstr "Isikhangeli soMbhalo we-Lynx"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:21
-msgid "Links Text Browser"
-msgstr "Inxulumanisa isiKhangeli soMbhalo"
-
-#. The code in mate-default-applications-properties.c makes sure
-#. * there is only one (the first entry in this list) Evolution entry
-#. * in the list shown to the user
-#.
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:36
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:37
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:38
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:39
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:40
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:41
-msgid "Evolution Mail Reader"
-msgstr "I-Evolution Mail Reader"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:42
-msgid "Balsa"
-msgstr "I-Balsa"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:43
-msgid "KMail"
-msgstr "I-KMail"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:44
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:45
-msgid "Thunderbird"
-msgstr "i-Thunderbird"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:46
-msgid "Mozilla Mail"
-msgstr "I-Mozilla Mail"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:47
-msgid "Mutt"
-msgstr "I-Mutt"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:58
-msgid "Debian Terminal Emulator"
-msgstr "IsiLinganisi sexesha elimiselweyo seDebian"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:59
-msgid "MATE Terminal"
-msgstr "I-Terminal ye-MATE"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:60
-msgid "Standard XTerminal"
-msgstr "I-Standard XTerminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:61
-msgid "NXterm"
-msgstr "I-NXterm"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:62
-msgid "RXVT"
-msgstr "I-RXVT"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:63
-msgid "aterm"
-msgstr "i-aterm"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:64
-msgid "ETerm"
-msgstr "I-ETerm"
-
-#: ../capplets/default-applications/mate-default-applications-properties.c:123
-msgid "Please specify a name and a command for this editor."
-msgstr "Nceda uchaze igama nomyalelo walo mhleli."
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:2
-msgid "Add..."
-msgstr "Yongeza..."
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:3
-msgid "C_ustom"
-msgstr "Isi_qhelo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:4
-msgid "C_ustom:"
-msgstr "Isi_qhelo:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:5
-msgid "Can open _URIs"
-msgstr "Ingavula ii _URIs"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:6
-msgid "Can open multiple _files"
-msgstr "Ingavula ii _fayili ezininzi"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:7
-msgid "Co_mmand:"
-msgstr "Um_yalelo:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:8
-msgid "Custom Editor Properties"
-msgstr "Iimpawu zoMhleli zokuZenzela"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:9
-msgid "Default Mail Reader"
-msgstr "Umfundi we-Imeyile omiselweyo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:10
-msgid "Default Terminal"
-msgstr "I-Terminal eMiselweyo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:11
-msgid "Default Text Editor"
-msgstr "UMhleli woMbhalo oMiselweyo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:12
-msgid "Default Web Browser"
-msgstr "IsiKhangeli se-Web esiMiselweyo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:13
-msgid "Default Window Manager"
-msgstr "UMlawuli weFestile eMiselweyo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:14
-msgid "Delete"
-msgstr "Cima"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:15
-msgid "E_xec Flag:"
-msgstr "I-E_xec Flag:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:16
-msgid "Edit..."
-msgstr "Hlela..."
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:17
-msgid "Mail Reader"
-msgstr "UMfundi we-Imeyile"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:19
-msgid "Run in a _terminal"
-msgstr "Ukusebenza kwi _terminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:20
-msgid "Run in a t_erminal"
-msgstr "Ukusebenza kwi-t_erminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:21
-msgid ""
-"Select the window manager you want.  You will need to hit apply, wave the "
-"magic wand, and do a magic dance for it to work."
+#: ../capplets/default-applications/mate-da-capplet.c:413
+msgid "Could not load the main interface"
 msgstr ""
-"Khetha umlawuli wefestile omfunayo. Kuza kufuneka ubethe u-apply, wave the "
-"magic wand, uze."
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:22
-msgid "Terminal"
-msgstr "I-Terminal"
+#: ../capplets/default-applications/mate-da-capplet.c:414
+msgid "Please make sure that the applet is properly installed"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:23
-msgid "Text Editor"
-msgstr "Umhleli woMbhalo"
+#. TRANSLATORS: don't translate the terms in brackets
+#: ../capplets/default-applications/mate-da-capplet.c:524
+msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:24
-msgid "Understands _Netscape Remote Control"
-msgstr "Iqonda i _Netscape Remote Control"
+#: ../capplets/default-applications/mate-da-capplet.c:530
+msgid "- MATE Default Applications"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:25
-msgid "Use this _editor to open text files in the file manager"
-msgstr "Sebenzisa lo _mhleli ukuvula iifayili zombhalo kumlawuli wefayili"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:2
 msgid "Web Browser"
 msgstr "IsiKhangeli seWeb"
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:27
-msgid "Window Manager"
-msgstr "UMlawuli weFestile"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
+#, no-c-format
+msgid "All %s occurrences will be replaced with actual link"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:28
-msgid "_Command:"
-msgstr "_Umyalelo:"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
+msgid "Run in t_erminal"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:29
-msgid "_Name:"
-msgstr "_Igama:"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
+msgid "Open link with web browser _default"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:30
-msgid "_Properties..."
-msgstr "_Iimpawu..."
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
+msgid "Open link in new _tab"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:31
-msgid "_Select:"
-msgstr "_Khetha:"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+msgid "Open link in new _window"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+msgid "C_ommand:"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
+msgid "Mail Reader"
+msgstr "UMfundi we-Imeyile"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
+msgid "Co_mmand:"
+msgstr "Um_yalelo:"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
+msgid "Instant Messenger"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
+msgid "Internet"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
+msgid "Image Viewer"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
+msgid "Multimedia Player"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
+msgid "Video Player"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+msgid "Multimedia"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+msgid "Text Editor"
+msgstr "Umhleli woMbhalo"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+msgid "Terminal Emulator"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+msgid "E_xecute flag:"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+msgid "File Manager"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+msgid "System"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
+msgid "Visual"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+msgid "_Run at start"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+msgid "Mobility"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+msgid "Run at st_art"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+msgid "Accessibility"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:1
+msgid "Monitor Preferences"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:2
+msgid "Sa_me image in all monitors"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:3
+msgid "_Detect monitors"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Panel icon"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:5
+msgid "_Show monitors in panel"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:6
+msgid "_Resolution:"
+msgstr "_Isigqibo:"
+
+#: ../capplets/display/display-capplet.ui.h:7
+msgid "Re_fresh rate:"
+msgstr "Umda wokwenza ntsha_kwakhona:"
+
+#: ../capplets/display/display-capplet.ui.h:8
+msgid "On"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:9
+msgid "Off"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/xrandr-capplet.c:515
+msgid "Monitor"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:11
+msgid "R_otation:"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:12
+msgid "Include _panel"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:13
+msgid "Make Default"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/xrandr-capplet.c:311
+#: ../capplets/display/xrandr-capplet.c:350
+msgid "Normal"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/xrandr-capplet.c:312
+msgid "Left"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/xrandr-capplet.c:313
+msgid "Right"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:17
+msgid "Upside-down"
+msgstr ""
 
 #: ../capplets/display/display-properties.desktop.in.in.h:1
-msgid "Change screen resolution"
-msgstr "Tshintsha isigqibo seskrini"
+msgid "Monitors"
+msgstr ""
 
 #: ../capplets/display/display-properties.desktop.in.in.h:2
-msgid "Screen Resolution"
-msgstr "Isigqibo seSkrini"
+msgid "Change resolution and position of monitors"
+msgstr ""
 
-#: ../capplets/display/main.c:345
+#: ../capplets/display/mate-display-properties-install-systemwide.c:44
+#, c-format
+msgid ""
+"Usage: %s SOURCE_FILE DEST_NAME\n"
+"\n"
+"This program installs a RANDR profile for multi-monitor setups into\n"
+"a systemwide location.  The resulting profile will get used when\n"
+"the RANDR plug-in gets run in mate-settings-daemon.\n"
+"\n"
+"SOURCE_FILE - a full pathname, typically /home/username/.config/monitors.xml\n"
+"\n"
+"DEST_NAME - relative name for the installed file.  This will get put in\n"
+"            the systemwide directory for RANDR configurations,\n"
+"            so the result will typically be %s/DEST_NAME\n"
+msgstr ""
+
+#. Translators: only able to install RANDR profiles as root
+#: ../capplets/display/mate-display-properties-install-systemwide.c:151
+msgid "This program can only be used by the root user"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:168
+msgid "The source filename must be absolute"
+msgstr ""
+
+#. Translators: first %s is a filename; second %s is an error message
+#: ../capplets/display/mate-display-properties-install-systemwide.c:179
+#, c-format
+msgid "Could not open %s: %s\n"
+msgstr ""
+
+#. Translators: first %s is a filename; second %s is an error message
+#: ../capplets/display/mate-display-properties-install-systemwide.c:188
+#, c-format
+msgid "Could not get information for %s: %s\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:195
+#, c-format
+msgid "%s must be a regular file\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:204
+msgid "This program must only be run through pkexec(1)"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:209
+msgid "PKEXEC_UID must be set to an integer value"
+msgstr ""
+
+#. Translators: we are complaining that a file must be really owned by the
+#. user who called this program
+#: ../capplets/display/mate-display-properties-install-systemwide.c:215
+#, c-format
+msgid "%s must be owned by you\n"
+msgstr ""
+
+#. Translators: here we are saying that a plain filename must look like
+#. "filename", not like "some_dir/filename"
+#: ../capplets/display/mate-display-properties-install-systemwide.c:223
+#, c-format
+msgid "%s must not have any directory components\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:231
+#, c-format
+msgid "%s must be a directory\n"
+msgstr ""
+
+#. Translators: the first %s/%s is a directory/filename; the last %s is an
+#. error message
+#: ../capplets/display/mate-display-properties-install-systemwide.c:242
+#, c-format
+msgid "Could not open %s/%s: %s\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:262
+#, c-format
+msgid "Could not rename %s to %s: %s\n"
+msgstr ""
+
+#: ../capplets/display/org.mate.randr.policy.in.h:1
+msgid "Install multi-monitor settings for the whole system"
+msgstr ""
+
+#: ../capplets/display/org.mate.randr.policy.in.h:2
+msgid ""
+"Authentication is required to install multi-monitor settings for all users"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:314
+msgid "Upside Down"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:356
 #, c-format
 msgid "%d Hz"
 msgstr "I-%d Hz"
 
-#: ../capplets/display/main.c:448
-msgid "_Resolution:"
-msgstr "_Isigqibo:"
-
-#: ../capplets/display/main.c:467
-msgid "Re_fresh rate:"
-msgstr "Umda wokwenza ntsha_kwakhona:"
-
-#: ../capplets/display/main.c:488
-msgid "Default Settings"
-msgstr "Imimiselo emiselweyo"
-
-#: ../capplets/display/main.c:490
-#, c-format
-msgid "Screen %d Settings\n"
-msgstr "Iskrini %d Imimiselo\n"
-
-#: ../capplets/display/main.c:516
-msgid "Screen Resolution Preferences"
-msgstr "Uluhlu lokuKhetha lweSigqibo seSkrini"
-
-#: ../capplets/display/main.c:553
-#, c-format
-msgid "_Make default for this computer (%s) only"
-msgstr "_Yenza okumiselweyo kule khompyutha (%s) kuphela"
-
-#: ../capplets/display/main.c:571
-msgid "Options"
-msgstr "Ekunokukhethwa kuko"
-
-#: ../capplets/display/main.c:592
-#, c-format
-msgid ""
-"Testing the new settings. If you don't respond in %d second the previous "
-"settings will be restored."
-msgid_plural ""
-"Testing the new settings. If you don't respond in %d seconds the previous "
-"settings will be restored."
-msgstr[0] ""
-"Kuvavanywa imimiselo emitsha. Ukuba awuphenduli kwi %d yomzuzwana imimiselo "
-"yangaphambili iyabuyiselwa kwakhona."
-msgstr[1] ""
-"Kuvavanywa imimiselo emitsha. Ukuba awuphenduli kwi %d yemizuzwana imimiselo "
-"yangaphambili iyabuyiselwa kwakhona."
-
-#: ../capplets/display/main.c:638
-msgid "Keep Resolution"
-msgstr "Gcina isiGqibo"
-
-#: ../capplets/display/main.c:642
-msgid "Do you want to keep this resolution?"
-msgstr "Uyafuna ukugcina esi sigqibo?"
-
-#: ../capplets/display/main.c:667
-msgid "Use _previous resolution"
-msgstr "Sebenzisa isigqibo _sangaphambili"
-
-#: ../capplets/display/main.c:667
-msgid "_Keep resolution"
-msgstr "_Gcina isigqibo"
-
-#: ../capplets/display/main.c:818
-msgid ""
-"The X Server does not support the XRandR extension.  Runtime resolution "
-"changes to the display size are not available."
+#. Translators:  this is the feature where what you see on your laptop's
+#. * screen is the same as your external monitor.  Here, "Mirror" is being
+#. * used as an adjective, not as a verb.  For example, the Spanish
+#. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
+#. 
+#: ../capplets/display/xrandr-capplet.c:504
+#: ../capplets/display/xrandr-capplet.c:1650
+msgid "Mirror Screens"
 msgstr ""
-"I-X Server ayisixhasi isandiso se-XR ne-R. Iinguqulo zesigqibo sexesha "
-"lokusebenza kubungakanani kokukwiskrini azikho."
 
-#: ../capplets/display/main.c:826
-msgid ""
-"The version of the XRandR extension is incompatible with this program. "
-"Runtime changes to the display size are not available."
+#: ../capplets/display/xrandr-capplet.c:506
+#, c-format
+msgid "Monitor: %s"
 msgstr ""
-"Uhlobo lwesandiso se-XR neR aluhambelani nale nkqubo. Iinguqulo zesigqibo "
-"sexesha kubungakanani bokwiskrini azikho."
 
-#: ../capplets/font/font-properties.desktop.in.in.h:1
-msgid "Font"
-msgstr "Ifonti"
-
-#: ../capplets/font/font-properties.desktop.in.in.h:2
-msgid "Select fonts for the desktop"
-msgstr "Khetha iifonti ze-desktop"
-
-#: ../capplets/font/font-properties.glade.h:2
-msgid "<b>Font Rendering</b>"
-msgstr "<b>Ukwenza iFonti</b>"
-
-#: ../capplets/font/font-properties.glade.h:3
-msgid "<b>Hinting</b>:"
-msgstr "<b>Ukucebisa</b>:"
-
-#: ../capplets/font/font-properties.glade.h:4
-msgid "<b>Smoothing</b>:"
-msgstr "<b>Ukugudisa</b>:"
-
-#: ../capplets/font/font-properties.glade.h:5
-msgid "<b>Subpixel order</b>:"
-msgstr "<b>Ulungelelwano oluyi-Subpixel</b>:"
-
-#: ../capplets/font/font-properties.glade.h:6
-msgid "Best _shapes"
-msgstr "_Izazobe ezizezona ezibhetele"
-
-#: ../capplets/font/font-properties.glade.h:7
-msgid "Best co_ntrast"
-msgstr "Ink_caso eyiyeyona ingcono"
-
-#: ../capplets/font/font-properties.glade.h:8
-msgid "D_etails..."
-msgstr "Iink_cukacha..."
-
-#: ../capplets/font/font-properties.glade.h:9
-msgid "Font Preferences"
-msgstr "ULuhlu lokukhetha lwefonti"
-
-#: ../capplets/font/font-properties.glade.h:10
-msgid "Font Rendering Details"
-msgstr "Iinkcukacha Zokwenza iFonti"
-
-#: ../capplets/font/font-properties.glade.h:11
-msgid "Go _to font folder"
-msgstr "Yiya _kwisiqulathi seefayili"
-
-#: ../capplets/font/font-properties.glade.h:12
-msgid "Gra_yscale"
-msgstr "I-Gra_yscale"
-
-#: ../capplets/font/font-properties.glade.h:13
-msgid "N_one"
-msgstr "A_yikho"
-
-#: ../capplets/font/font-properties.glade.h:14
-msgid "R_esolution:"
-msgstr "Isi_gqibo:"
-
-#: ../capplets/font/font-properties.glade.h:15
-msgid "Sub_pixel (LCDs)"
-msgstr "I-Sub_pixel (LCDs)"
-
-#: ../capplets/font/font-properties.glade.h:16
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "Ukugudisa i-sub_pixel (LCDs)"
-
-#: ../capplets/font/font-properties.glade.h:17
-msgid "VB_GR"
-msgstr "i-VB_GR"
-
-#: ../capplets/font/font-properties.glade.h:18
-msgid "_Application font:"
-msgstr "_Ifonti yenkqubo:"
-
-#: ../capplets/font/font-properties.glade.h:19
-msgid "_BGR"
-msgstr "I-_BGR"
-
-#: ../capplets/font/font-properties.glade.h:20
-msgid "_Desktop font:"
-msgstr "Ifonti ye-_desktop:"
-
-#: ../capplets/font/font-properties.glade.h:21
-msgid "_Full"
-msgstr "_Zele"
-
-#: ../capplets/font/font-properties.glade.h:22
-msgid "_Medium"
-msgstr "_Phakathi"
-
-#: ../capplets/font/font-properties.glade.h:23
-msgid "_Monochrome"
-msgstr "I-_Monochrome"
-
-#: ../capplets/font/font-properties.glade.h:24
-msgid "_None"
-msgstr "_Ayikho"
-
-#: ../capplets/font/font-properties.glade.h:25
-msgid "_RGB"
-msgstr "I-_RGB"
-
-#: ../capplets/font/font-properties.glade.h:26
-msgid "_Slight"
-msgstr "_Kancinci"
-
-#: ../capplets/font/font-properties.glade.h:27
-msgid "_Terminal font:"
-msgstr "Ifonti ye-_terminal:"
-
-#: ../capplets/font/font-properties.glade.h:28
-msgid "_VRGB"
-msgstr "I-_VRGB"
-
-#: ../capplets/font/font-properties.glade.h:29
-msgid "_Window title font:"
-msgstr "_Ifonti yesihloko sefestile:"
-
-#: ../capplets/font/font-properties.glade.h:30
-msgid "dots per inch"
-msgstr "amachaphaza nge-intshi"
-
-#: ../capplets/font/main.c:488
-msgid "Font may be too large"
-msgstr "Inokuba ifonti inkulu kakhulu"
-
-#: ../capplets/font/main.c:492
+#: ../capplets/display/xrandr-capplet.c:584
 #, c-format
-msgid ""
-"The font selected is %d point large, and may make it difficult to "
-"effectively use the computer.  It is recommended that you select a size "
-"smaller than %d."
-msgid_plural ""
-"The font selected is %d points large, and may make it difficult to "
-"effectively use the computer. It is recommended that you select a size "
-"smaller than %d."
-msgstr[0] ""
-"Ifonti ekhethiweyo ilichaphaza %d ubukhulu, yaye inokwenza ukuba kube nzima "
-"ukusebenzisa ngokukuko ikhompyutha. Kuyacetyiswa ukuba ukhethe ubungakanani "
-"obuncinci kuno%d."
-msgstr[1] ""
-"Ifonti ekhethiweyo ingamachaphaza %d ubukhulu, yaye inokwenza ukuba kube "
-"nzima ukusebenzisa ngokukuko ikhompyutha. Kuyacetyiswa ukuba ukhethe "
-"ubungakanani obuncinci kuno%d."
+msgid "%d x %d"
+msgstr ""
 
-#: ../capplets/font/main.c:505
-#, c-format
+#: ../capplets/display/xrandr-capplet.c:1506
 msgid ""
-"The font selected is %d point large, and may make it difficult to "
-"effectively use the computer.  It is recommended that you select a smaller "
-"sized font."
-msgid_plural ""
-"The font selected is %d points large, and may make it difficult to "
-"effectively use the computer. It is recommended that you select a smaller "
-"sized font."
-msgstr[0] ""
-"Ifonti ekhethiweyo ilichaphaza %d ubukhulu, yaye inokwenza ukuba kube nzima "
-"ukusebenzisa ngokukuko ikhompyutha. Kuyacetyiswa ukuba ukhethe ifonti "
-"encinci."
-msgstr[1] ""
-"Ifonti ekhethiweyo ingamachaphaza %d ubukhulu, yaye inokwenza ukuba kube "
-"nzima ukusebenzisa ngokukuko ikhompyutha. Kuyacetyiswa ukuba ukhethe ifonti "
-"encinci."
+"Select a monitor to change its properties; drag it to rearrange its "
+"placement."
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2071
+msgid "Could not save the monitor configuration"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2093
+msgid "Could not get session bus while applying display configuration"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2135
+msgid "Could not detect displays"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2328
+msgid "The monitor configuration has been saved"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2330
+msgid "This configuration will be used the next time someone logs in."
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2339
+msgid "Could not set the default configuration for monitors"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2423
+msgid "Could not get screen information"
+msgstr ""
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:21
-msgid "New accelerator..."
-msgstr "Isikhawulezisi esitsha..."
+msgid "New shortcut..."
+msgstr ""
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:163
-#: ../capplets/keybindings/eggcellrendererkeys.c:164
+#: ../capplets/keybindings/eggcellrendererkeys.c:157
+#: ../capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "Iqhosha lokubalekisa"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:173
-#: ../capplets/keybindings/eggcellrendererkeys.c:174
+#: ../capplets/keybindings/eggcellrendererkeys.c:167
+#: ../capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "Amaqhosha azizilungisi zokubalekisa"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:182
-#: ../capplets/keybindings/eggcellrendererkeys.c:183
+#: ../capplets/keybindings/eggcellrendererkeys.c:176
+#: ../capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "Ibhodi yamaqhosha okubalekisa"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:193
+#: ../capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "Inkqubo i-Accel"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:194
+#: ../capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "Uhlobo lwesibalekisi."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:242
-#: ../capplets/keybindings/mate-keybinding-properties.c:197
-#: ../libbackground/applier.c:624 ../typing-break/drwright.c:477
+#: ../capplets/keybindings/eggcellrendererkeys.c:231
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
+#: ../typing-break/drwright.c:498
 msgid "Disabled"
 msgstr "Ukhubazekile"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:545
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<Isenzo esingaziwayo>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:566
-msgid "Desktop"
-msgstr "I-desktop"
+#: ../capplets/keybindings/mate-keybinding-properties.c:1028
+#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+msgid "Custom Shortcuts"
+msgstr ""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:567
-#: ../capplets/sound/mate-settings-sound.desktop.in.in.h:2
-msgid "Sound"
-msgstr "Isandi"
+#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+msgid "Error saving the new shortcut"
+msgstr ""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:571
-msgid "Window Management"
-msgstr "Ulawulo lwefestile"
-
-#: ../capplets/keybindings/mate-keybinding-properties.c:668
+#: ../capplets/keybindings/mate-keybinding-properties.c:1282
 #, c-format
 msgid ""
-"The shortcut \"%s\" is already used for:\n"
-" \"%s\"\n"
+"The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
+"Please try with a key such as Control, Alt or Shift at the same time."
 msgstr ""
-"Indlela enqumlayo i- \"%s\" seyisetyenziselwe i-:\n"
-" \"%s\"\n"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:700
+#: ../capplets/keybindings/mate-keybinding-properties.c:1314
 #, c-format
-msgid "Error setting new accelerator in configuration database: %s\n"
+msgid ""
+"The shortcut \"%s\" is already used for\n"
+"\"%s\""
 msgstr ""
-"Impazamo imisela isinqumlisi esitsha kwi-database yomiselo lwenkqubo "
-"yekhompyutha: %s\n"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:750
+#: ../capplets/keybindings/mate-keybinding-properties.c:1321
 #, c-format
-msgid "Error unsetting accelerator in configuration database: %s\n"
+msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
-"Impazamo iyeka ukumisela isinqumlisi kwi-database yomiselo lwenkqubo "
-"yekhompyutha: %s\n"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:857
+#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+msgid "_Reassign"
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+msgid "Too many custom shortcuts"
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding-properties.c:1871
 msgid "Action"
 msgstr "Isenzo"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:881
+#: ../capplets/keybindings/mate-keybinding-properties.c:1893
 msgid "Shortcut"
 msgstr "Indlela enqumlayo"
 
-#: ../capplets/keybindings/mate-keybinding-properties.glade.h:1
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
+#. * vim: sw=2 ts=8 cindent noai bs=2
+#. 
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Iindlela eziNqumlayo ze-Keyboard"
 
-#: ../capplets/keybindings/mate-keybinding-properties.glade.h:2
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new "
-"accelerator, or press backspace to clear."
+"To edit a shortcut key, click on the corresponding row and type a new key "
+"combination, or press backspace to clear."
 msgstr ""
-"Ukuhlela iqhosha lendlela enqumlayo, cofa kumgca ohambelanayo uze uchwetheze "
-"isinqumlisi esitsha, okanye cinezela isithuba esiya emva ukucima."
 
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "Custom Shortcut"
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "Nikela amaqhosha endlela enqumlayo kwimiyalelo"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:84
-msgid "Unknown"
-msgstr "Ayaziwa"
-
-#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:273
-msgid "Layout"
-msgstr "Ubume"
-
-#. The first radio in a group is to be "Default", meaning none of
-#. the below options are to be included in the selected list.
-#. This is a HIG-compliant alternative to allowing no
-#. selection in the group.
-#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:277
-#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:228
-msgid "Default"
-msgstr "Esilelayo"
-
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:75
-msgid "Models"
-msgstr "Iimodeli"
-
-#: ../capplets/keyboard/mate-keyboard-properties.c:106
-#, c-format
-msgid "There was an error launching the keyboard capplet : %s"
-msgstr "Bekukho impazamo ekundululeni i-capplet ye-keyboard : %s"
-
-#: ../capplets/keyboard/mate-keyboard-properties.c:202
-msgid "_Accessibility"
-msgstr "_Ukufumaneka"
-
-#: ../capplets/keyboard/mate-keyboard-properties.c:221
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
-#: ../capplets/sound/sound-properties-capplet.c:240
-#: ../capplets/sound/sound-properties-capplet.c:242
+#: ../capplets/keyboard/mate-keyboard-properties.c:203
+#: ../capplets/keyboard/mate-keyboard-properties.c:208
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
-msgstr ""
-"Faka nje kuphela imimiselo uze uphume (ukungqinelana kuphela; ngoku "
-"kuphethwe yi-daemon)"
+msgstr "Faka nje kuphela imimiselo uze uphume (ukungqinelana kuphela; ngoku kuphethwe yi-daemon)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:227
+#: ../capplets/keyboard/mate-keyboard-properties.c:213
 msgid "Start the page with the typing break settings showing"
 msgstr "Qalisa iphepha ngemimiselo yohlulo lokuchwetheza ebonakalayo"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:3
-msgid "..."
-msgstr "..."
+#: ../capplets/keyboard/mate-keyboard-properties.c:218
+msgid "Start the page with the accessibility settings showing"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:4
-msgid "<b>Cursor Blinking</b>"
-msgstr "<b>Ikhesa iyaDanyaza</b>"
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
+msgid "- MATE Keyboard Preferences"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:5
-msgid "<b>Repeat Keys</b>"
-msgstr "<b>Amaqhosha okuPhinda</b>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:1
+msgid "Keyboard Accessibility Audio Feedback"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:6
-msgid "<b>_Lock screen to enforce typing break</b>"
-msgstr "<b>_Tshixa iskrini ukunyanzela ulwahlulo lokuchwetheza</b>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
+msgid "General"
+msgstr "Jikelele"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:7
-msgid "<small><i>Fast</i></small>"
-msgstr "<small><i>Khawulezayo</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:3
+msgid "Beep when _accessibility features are turned on or off"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:8
-msgid "<small><i>Long</i></small>"
-msgstr "<small><i>Nde</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:4
+msgid "Beep when a _toggle key is pressed"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:9
-msgid "<small><i>Short</i></small>"
-msgstr "<small><i>Mfutshane</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
+msgid "Visual cues for sounds"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:10
-msgid "<small><i>Slow</i></small>"
-msgstr "<small><i>Cothayo</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
+msgid "Show _visual feedback for the alert sound"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:11
-msgid "A_vailable layouts:"
-msgstr "Ubume obu_khoyo:"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Flash _window titlebar"
+msgstr "Danyazisa _ifestile ye-titlebar"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:12
-msgid "All_ow postponing of breaks"
-msgstr "Vume_la ukumisela elinye ixesha ulwahlulo"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Flash entire _screen"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:13
-msgid "Check if breaks are allowed to be postponed"
-msgstr "Jonga ukuba ulwahlulo luvumelekile na ukuba limiselwe elinye ixesha"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "Slow Keys"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:14
-msgid "Choose A Keyboard Model"
-msgstr "Khetha iModeli ye-Keyboard"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Beep when a key is pr_essed"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:15
-msgid "Choose A Layout"
-msgstr "Khetha uBume"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+msgid "Beep when key is _accepted"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:16
-msgid "Cursor _blinks in text boxes and fields"
-msgstr "Ikhesa _iyadanyaza kwiibhokisi zombhalo nakwiindawo"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when key is _rejected"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:17
-msgid "Duration of the break when typing is disallowed"
-msgstr "Ixesha lolwahlulo xa ukuchwetheza kungavumelekanga"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:18
-msgid "Duration of work before forcing a break"
-msgstr "Ixesha lomsebenzi phambi kokunyanzela ulwahlulo"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when a key is reje_cted"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:19
-msgid "Key presses _repeat when key is held down"
-msgstr "Iqhosha licinezela _u-phinda xa iqhosha licinezelwe"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
+msgid "Sticky Keys"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:21
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+msgid "Beep when a _modifier key is pressed"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
 msgstr "Uluhlu lokukhetha lwe-Keyboard"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:22
-msgid "Keyboard _model:"
-msgstr "I_modeli ye-keyboard:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:23
-msgid "Layout Options"
-msgstr "Iindlela zokukhetha zobume"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:24
-msgid "Layouts"
-msgstr "Ubume"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:25
-msgid ""
-"Lock screen after a certain duration to help prevent repetitive keyboard use "
-"injuries"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:2
+msgid "Repeat Keys"
 msgstr ""
-"Tshixa iskrini emva kwexesha elithile ukunceda ukunqanda iingozi "
-"zokusetyenziswa kwe-keyboard"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:26
-msgid "Microsoft Natural Keyboard"
-msgstr "I-Microsoft Natural Keyboard"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:3
+msgid "Key presses _repeat when key is held down"
+msgstr "Iqhosha licinezela _u-phinda xa iqhosha licinezelwe"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:27
-msgid "Preview:"
-msgstr "Okuqale kubonakaliswe:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:28
-msgid "Reset To De_faults"
-msgstr "Misela kwakhona Kokumi_selweyo"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:30
-msgid "Separate _group for each window"
-msgstr "_Iqela elohlukeneyo ngefestile nganye"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:31
-msgid "Typing Break"
-msgstr "Unqanyulo lokuChwetheza"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:32
-msgid "_Accessibility..."
-msgstr "_Ukufikelela..."
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:33
-msgid "_Add..."
-msgstr "_Yongeza..."
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:34
-msgid "_Break interval lasts:"
-msgstr "_Ithuba lokuhlala liyahlala:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:35
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:4
 msgid "_Delay:"
 msgstr "_Libazisa:"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:36
-msgid "_Models:"
-msgstr "Ii_modeli:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:37
-msgid "_Selected layouts:"
-msgstr "_Ubume obukhethiweyo:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:38
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:5
 msgid "_Speed:"
 msgstr "I_santya:"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
+msgid "Short"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
+msgid "Slow"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:8
+msgid "Repeat keys speed"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
+#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+msgid "Long"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
+#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+msgid "Fast"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:11
+msgid "Cursor Blinking"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:12
+msgid "Cursor _blinks in text fields"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:13
+msgid "S_peed:"
+msgstr "I_santya:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "Cursor blinks speed"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:16
+msgid "List of keyboard layouts selected for usage"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:18
+msgid "Select a keyboard layout to be added to the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:19
+msgid "Remove the selected keyboard layout from the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:20
+msgid "Move _Up"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:21
+msgid "Move the selected keyboard layout up in the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:22
+msgid "Move _Down"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:23
+msgid "Move the selected keyboard layout down in the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:24
+msgid "_Show..."
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:25
+msgid "Print a diagram of the selected keyboard layout"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:26
+msgid "_Separate layout for each window"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:27
+msgid "New windows u_se active window's layout"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:28
+msgid "Keyboard _model:"
+msgstr "I_modeli ye-keyboard:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:29
+msgid "_Options..."
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:30
+msgid "View and edit keyboard layout options"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
+msgid "Reset to De_faults"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:32
+msgid ""
+"Replace the current keyboard layout settings with the\n"
+"default settings"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:34
+msgid "Layouts"
+msgstr "Ubume"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:35
+msgid "_Accessibility features can be toggled with keyboard shortcuts"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:37
+msgid "_Simulate simultaneous keypresses"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:38
+msgid "Disa_ble sticky keys if two keys are pressed together"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+msgid "_Only accept long keypresses"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+msgid "_Ignore fast duplicate keypresses"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+msgid "D_elay:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+msgid "Audio _Feedback..."
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+msgid "_Pointer can be controlled using the keypad"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
+#: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "_Acceleration:"
+msgstr "_Ukhawuleziso:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+msgid "Mouse Keys"
+msgstr "Amaqhosha emawusi"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+msgid "_Lock screen to enforce typing break"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+msgid ""
+"Lock screen after a certain duration to help prevent repetitive keyboard use"
+" injuries"
+msgstr "Tshixa iskrini emva kwexesha elithile ukunceda ukunqanda iingozi zokusetyenziswa kwe-keyboard"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid "_Work interval lasts:"
 msgstr "_Isithuba sokusebenza siyahlala:"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+msgid "_Break interval lasts:"
+msgstr "_Ithuba lokuhlala liyahlala:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+msgid "Duration of work before forcing a break"
+msgstr "Ixesha lomsebenzi phambi kokunyanzela ulwahlulo"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+msgid "Duration of the break when typing is disallowed"
+msgstr "Ixesha lolwahlulo xa ukuchwetheza kungavumelekanga"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "minutes"
 msgstr "imizuzu"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+msgid "All_ow postponing of breaks"
+msgstr "Vume_la ukumisela elinye ixesha ulwahlulo"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+msgid "Check if breaks are allowed to be postponed"
+msgstr "Jonga ukuba ulwahlulo luvumelekile na ukuba limiselwe elinye ixesha"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+msgid "Typing Break"
+msgstr "Unqanyulo lokuChwetheza"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+msgid "_Type to test settings:"
+msgstr "_Chwetheza ukuvavanya imimiselo:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:1
+msgid "Choose a Layout"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
+msgid "_Variants:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+msgid "_Country:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
+msgid "By _country"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:5
+msgid "_Language:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:6
+msgid "By _language"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:7
+msgid "Preview:"
+msgstr "Okuqale kubonakaliswe:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:1
+msgid "Choose a Keyboard Model"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:2
+msgid "_Vendors:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:3
+msgid "_Models:"
+msgstr "Ii_modeli:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-options-dialog.ui.h:1
+msgid "Keyboard Layout Options"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:85
+msgid "Unknown"
+msgstr "Ayaziwa"
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+msgid "Layout"
+msgstr "Ubume"
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+msgid "Vendors"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+msgid "Models"
+msgstr "Iimodeli"
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:237
+msgid "Default"
+msgstr "Esilelayo"
+
+#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+msgid "Keyboard"
+msgstr "I-keyboard"
 
 #: ../capplets/keyboard/keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "Misela uluhlu lokukhetha lwe-keyboard"
 
-#: ../capplets/mouse/mate-mouse-properties.c:559
-msgid "Unknown Cursor"
-msgstr "IKhesa eNgaziwayo"
+#. TRANSLATORS: don't translate the terms in brackets
+#: ../capplets/mouse/mate-mouse-properties.c:510
+msgid "Specify the name of the page to show (general)"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:761
-msgid "Default Cursor"
-msgstr "IKhesa eMiselweyo"
+#: ../capplets/mouse/mate-mouse-properties.c:515
+msgid "- MATE Mouse Preferences"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:762
-msgid "Default Cursor - Current"
-msgstr "IKhesa eMiselweyo - Ngoku"
-
-#: ../capplets/mouse/mate-mouse-properties.c:763
-msgid "The default cursor that ships with X"
-msgstr "Ikhesa emiselweyo ethumela kunye no-X"
-
-#: ../capplets/mouse/mate-mouse-properties.c:767
-msgid "White Cursor"
-msgstr "IKhesa eMhlophe"
-
-#: ../capplets/mouse/mate-mouse-properties.c:768
-msgid "White Cursor - Current"
-msgstr "IKhesa eMhlophe - Ngoku"
-
-#: ../capplets/mouse/mate-mouse-properties.c:769
-msgid "The default cursor inverted"
-msgstr "Ikhesa emiselweyo igqwethiwe"
-
-#: ../capplets/mouse/mate-mouse-properties.c:773
-msgid "Large Cursor"
-msgstr "IKhesa eNkulu"
-
-#: ../capplets/mouse/mate-mouse-properties.c:774
-msgid "Large Cursor - Current"
-msgstr "IKhesa eNkulu - Ngoku"
-
-#: ../capplets/mouse/mate-mouse-properties.c:775
-msgid "Large version of normal cursor"
-msgstr "Uhlobo olukhulu lwekhesa eqhelekileyo"
-
-#: ../capplets/mouse/mate-mouse-properties.c:779
-msgid "Large White Cursor - Current"
-msgstr "IKhesa eNkulu eMhlophe - Ngoku"
-
-#: ../capplets/mouse/mate-mouse-properties.c:780
-msgid "Large White Cursor"
-msgstr "IKhesa eNkulu eMhlophe"
-
-#: ../capplets/mouse/mate-mouse-properties.c:781
-msgid "Large version of white cursor"
-msgstr "Uhlobo olukhulu lwekhesa emhlophe"
-
-#: ../capplets/mouse/mate-mouse-properties.c:975
-msgid "Cursor Theme"
-msgstr "UMxholo weKhesa"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:2
-msgid "<b>Double-Click Timeout </b>"
-msgstr "<b>Ukuphela kweXesha lokuCofa-Kabini </b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:3
-msgid "<b>Drag and Drop</b>"
-msgstr "<b>Tsala uze uFake</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:4
-msgid "<b>Locate Pointer</b>"
-msgstr "<b>Fumana iSalathisi</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:5
-msgid "<b>Mouse Orientation</b>"
-msgstr "<b>UQhelaniso lweMawusi</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:6
-msgid "<b>Speed</b>"
-msgstr "<b>Isantya</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:7
-msgid "<i>Fast</i>"
-msgstr "<i>Khawulezayo</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:8
-msgid "<i>High</i>"
-msgstr "<i>Phezulu</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:9
-msgid "<i>Large</i>"
-msgstr "<i>Nkulu</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:10
-msgid "<i>Low</i>"
-msgstr "<i>Phantsi</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:11
-msgid "<i>Slow</i>"
-msgstr "<i>Cothayo</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:12
-msgid "<i>Small</i>"
-msgstr "<i>Ncinci</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:13
-msgid "Buttons"
-msgstr "Amaqhosha"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:14
-#, fuzzy
-msgid "Cursor Size:"
-msgstr "UbuNgakanani beKhesa"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:15
-msgid "Cursors"
-msgstr "Iikhesa"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:16
-msgid "Highlight the _pointer when you press Ctrl"
-msgstr "Qaqambisa _isalathisi xa ucinezela u-Ctrl"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:17
-#, fuzzy
-msgid "Large"
-msgstr "_Nkulu"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:18
-#, fuzzy
-msgid "Medium"
-msgstr "_Phakathi"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:19
-msgid "Motion"
-msgstr "Intshukumo"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:1
 msgid "Mouse Preferences"
 msgstr "ULuhlu lokuKhetha lweMawusi"
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:21
-#, fuzzy
-msgid "Small"
-msgstr "_Ncinci"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:2
+msgid "Mouse Orientation"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:22
-msgid "_Acceleration:"
-msgstr "_Ukhawuleziso:"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:3
+msgid "_Right-handed"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:23
-msgid "_Left-handed mouse"
-msgstr "_Imawusi elinxele"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:4
+msgid "_Left-handed"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:24
+#: ../capplets/mouse/mate-mouse-properties.ui.h:5
+msgid "Locate Pointer"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:6
+msgid "Sh_ow position of pointer when the Control key is pressed"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:7
+msgid "Pointer Speed"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "_Sensitivity:"
 msgstr "_Uvakalelo:"
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:25
-msgid "_Threshold:"
-msgstr "_Umda:"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
+msgid "Low"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+msgid "High"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
+msgid "Drag and Drop"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+msgid "Thr_eshold:"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+msgid "Double-Click Timeout"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "_Timeout:"
 msgstr "_Ukuphela kwexesha:"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+msgid ""
+"To test your double-click settings, try to double-click on the light bulb."
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+msgid "Disable _touchpad while typing"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+msgid "Enable _mouse clicks with touchpad"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+msgid "Scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+msgid "_Disabled"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+msgid "_Edge scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+msgid "Two-_finger scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+msgid "Enable h_orizontal scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+msgid "Touchpad"
+msgstr ""
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
@@ -1964,1540 +2243,466 @@ msgstr "Imawusi"
 msgid "Set your mouse preferences"
 msgstr "Misela uluhlu lwakho lokukhetha lwemawusi"
 
-#: ../capplets/network/mate-network-preferences.desktop.in.in.h:1
+#: ../capplets/network/mate-network-properties.desktop.in.in.h:1
 msgid "Network Proxy"
 msgstr "Unxibelelwano lweKhompyutha esebenza njengomqobo"
 
-#: ../capplets/network/mate-network-preferences.desktop.in.in.h:2
+#: ../capplets/network/mate-network-properties.desktop.in.in.h:2
 msgid "Set your network proxy preferences"
-msgstr ""
-"Misela uluhlu lokukhetha lonxibelelwano lwekhompyutha esbenza njengomqobo"
+msgstr "Misela uluhlu lokukhetha lonxibelelwano lwekhompyutha esbenza njengomqobo"
 
-#: ../capplets/network/mate-network-preferences.glade.h:1
-msgid "      "
-msgstr "      "
-
-#: ../capplets/network/mate-network-preferences.glade.h:2
-#, fuzzy
-msgid "<b>D_irect internet connection</b>"
-msgstr "<b>_Unxulumano lwe-intanethi oluthe gqo</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:3
-#, fuzzy
-msgid "<b>Ignore Host List</b>"
-msgstr "<b>Sukuluhoya uluhlu lwabaququzeleli</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:4
-msgid "<b>_Automatic proxy configuration</b>"
-msgstr ""
-"<b>Ukumiselwa kwenkqubo kwikhompyutha esebenza njengomqobo _ezenzekelayo</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:5
-msgid "<b>_Manual proxy configuration</b>"
-msgstr ""
-"<b>_Ukumiselwa kwenkqubo yoxwebhu kwikhompyutha esebenza njengomqobo</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:6
-msgid "<b>_Use authentication</b>"
-msgstr "<b>_Sebenzisa uqinisekiso</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:7
-msgid "Advanced Configuration"
-msgstr "Ukumiselwa kwenkqubo yekhompyutha okunkqenkqeza phambili"
-
-#: ../capplets/network/mate-network-preferences.glade.h:8
-msgid "Autoconfiguration _URL:"
-msgstr "I-Autoconfiguration _URL:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:9
+#: ../capplets/network/mate-network-properties.ui.h:1
 msgid "HTTP Proxy Details"
 msgstr "Iinkcukacha zeKhompyutha esebenza njengomqobo ye-HTTP"
 
-#: ../capplets/network/mate-network-preferences.glade.h:10
-msgid "H_TTP proxy:"
-msgstr "Ikhompyutha esebenza njengomqobo eyi-H_TTP:"
+#: ../capplets/network/mate-network-properties.ui.h:2
+msgid "<b>_Use authentication</b>"
+msgstr "<b>_Sebenzisa uqinisekiso</b>"
 
-#: ../capplets/network/mate-network-preferences.glade.h:11
-msgid "Network Proxy Preferences"
-msgstr "Uluhlu lokukhetha loThungelwano lweKhompyutha esebenza njengomqobo"
-
-#: ../capplets/network/mate-network-preferences.glade.h:12
-msgid "Port:"
-msgstr "Isiqhakamsheli:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:13
-msgid "Proxy Configuration"
-msgstr "UkuMiselwa kwenkqubo kwiKhompyutha esbenza njengomqobo"
-
-#: ../capplets/network/mate-network-preferences.glade.h:14
-msgid "S_ocks host:"
-msgstr "Umququzeleli we-S_ocks:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:15
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "U_sername:"
 msgstr "I_gama lomsebenzisi:"
 
-#: ../capplets/network/mate-network-preferences.glade.h:16
-msgid "_Details"
-msgstr "_Iinkcukacha"
-
-#: ../capplets/network/mate-network-preferences.glade.h:17
-msgid "_FTP proxy:"
-msgstr "Ikhompyutha esebenza njengomqobo i-_FTP:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:18
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "_Password:"
 msgstr "I-_Password:"
 
-#: ../capplets/network/mate-network-preferences.glade.h:19
+#: ../capplets/network/mate-network-properties.ui.h:5
+msgid "Network Proxy Preferences"
+msgstr "Uluhlu lokukhetha loThungelwano lweKhompyutha esebenza njengomqobo"
+
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "<b>Di_rect internet connection</b>"
+msgstr ""
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "<b>_Manual proxy configuration</b>"
+msgstr "<b>_Ukumiselwa kwenkqubo yoxwebhu kwikhompyutha esebenza njengomqobo</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "H_TTP proxy:"
+msgstr "Ikhompyutha esebenza njengomqobo eyi-H_TTP:"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
 msgid "_Secure HTTP proxy:"
 msgstr "_Qinisekisa ikhompyutha esebenza njengomqobo i-HTTP:"
 
-#: ../capplets/sound/mate-settings-sound.desktop.in.in.h:1
-msgid "Enable sound and associate sounds with events"
-msgstr "Yenza ukuba kusebenze isandi nezandi ezinxulumeneyo kunye nezehlo"
+#: ../capplets/network/mate-network-properties.ui.h:10
+msgid "_FTP proxy:"
+msgstr "Ikhompyutha esebenza njengomqobo i-_FTP:"
 
-#: ../capplets/sound/sound-properties-capplet.c:271
-#: ../capplets/sound/sound-properties.glade.h:6
-msgid "Sound Preferences"
-msgstr "Uluhlu lwezinto ekukhethwa kuzo lwesandi"
+#: ../capplets/network/mate-network-properties.ui.h:11
+msgid "S_ocks host:"
+msgstr "Umququzeleli we-S_ocks:"
 
-#: ../capplets/sound/sound-properties.glade.h:1
-msgid "E_nable sound server startup"
-msgstr "Y_enza ukuba ukuvula kwesandi seseva kusebenze"
+#: ../capplets/network/mate-network-properties.ui.h:12
+msgid "Port:"
+msgstr "Isiqhakamsheli:"
 
-#: ../capplets/sound/sound-properties.glade.h:2
-msgid "Flash _entire screen"
-msgstr "Danyazisa iskrini _sonke"
+#: ../capplets/network/mate-network-properties.ui.h:13
+msgid "_Details"
+msgstr "_Iinkcukacha"
 
-#: ../capplets/sound/sound-properties.glade.h:3
-msgid "Flash _window titlebar"
-msgstr "Danyazisa _ifestile ye-titlebar"
+#: ../capplets/network/mate-network-properties.ui.h:14
+msgid "<b>_Automatic proxy configuration</b>"
+msgstr "<b>Ukumiselwa kwenkqubo kwikhompyutha esebenza njengomqobo _ezenzekelayo</b>"
 
-#: ../capplets/sound/sound-properties.glade.h:4
-msgid "General"
-msgstr "Jikelele"
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "Autoconfiguration _URL:"
+msgstr "I-Autoconfiguration _URL:"
 
-#: ../capplets/sound/sound-properties.glade.h:5
-msgid "Sound Events"
-msgstr "Izehlo zesandi"
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "Proxy Configuration"
+msgstr "UkuMiselwa kwenkqubo kwiKhompyutha esbenza njengomqobo"
 
-#: ../capplets/sound/sound-properties.glade.h:7
-msgid "System Bell"
-msgstr "INtsimbi yeNkqubo"
-
-#: ../capplets/sound/sound-properties.glade.h:8
-msgid "_Sound an audible bell"
-msgstr "_Betha intsimbi evakalayo"
-
-#: ../capplets/sound/sound-properties.glade.h:9
-msgid "_Sounds for events"
-msgstr "_Izandi zezehlo"
-
-#: ../capplets/sound/sound-properties.glade.h:10
-msgid "_Visual feedback:"
-msgstr "Impendulo_ebonakalayo:"
-
-#: ../capplets/theme-switcher/mate-theme-details.c:347
-msgid ""
-"No themes could be found on your system.  This probably means that your "
-"\"Theme Preferences\" dialog was improperly installed, or you haven't "
-"installed the \"mate-themes\" package."
-msgstr ""
-"Akukho mixholo ifumanekileyo kwinkqubo yakho.  Oku mhlawumbi kuthetha ukuba "
-"unxibelelwano lwakho i-\"Theme Preferences\" ayisekwanga kakuhle, okanye "
-"awuwusekanga umqulu wenkqubo we-\"mate-themes\"."
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:227
-msgid "This theme is not in a supported format."
-msgstr "Lo mxholo awukho kulungiselelo oluxhasiweyo."
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:244
-msgid "Failed to create temporary directory"
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "Ignore Host List"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:264
-msgid ""
-"Can not install theme. \n"
-"The bzip2 utility is not installed."
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "Ignored Hosts"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:282
-#: ../capplets/theme-switcher/mate-theme-installer.c:319
-#: ../capplets/theme-switcher/mate-theme-installer.c:399
-#, fuzzy
-msgid "Installation Failed"
-msgstr "Ukusekwa komxholo"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:302
-msgid ""
-"Can not install themes. \n"
-"The gzip utility is not installed."
+#: ../capplets/windows/mate-window-properties.c:393
+msgid "Cannot start the preferences application for your window manager"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:340
-#, c-format
-msgid ""
-"Icon Theme %s correctly installed.\n"
-"You can select it in the theme details."
+#: ../capplets/windows/mate-window-properties.c:661
+msgid "_Alt"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:343
-#, c-format
-msgid "Mate Theme %s correctly installed"
+#: ../capplets/windows/mate-window-properties.c:667
+msgid "H_yper"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:346
-#, c-format
-msgid ""
-"Windows Border Theme %s correctly installed.\n"
-"You can select it in the theme details."
+#: ../capplets/windows/mate-window-properties.c:674
+msgid "S_uper (or \"Windows logo\")"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:349
-#, c-format
-msgid ""
-"Controls Theme %s correctly installed.\n"
-"You can select it in the theme details."
+#: ../capplets/windows/mate-window-properties.c:681
+msgid "_Meta"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:357
-msgid "The theme is an engine. You need to compile the theme."
-msgstr ""
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:374
-#, fuzzy
-msgid "The file format is invalid"
-msgstr "I-password efakiweyo ayilunganga"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:468
-msgid "No theme file location specified to install"
-msgstr "Akukho ndawo yomxholo wefayili ichaziweyo ukuba isekwe"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:485
-msgid "The theme file location specified to install is invalid"
-msgstr "Indawo yomxholo wefayili echaziweyo ukuba isekwe ayilunganga"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:505
-#, c-format
-msgid ""
-"Insufficient permissions to install the theme in:\n"
-"%s"
-msgstr ""
-"Iimvume ezingonelanga ukuseka imixholo ku:\n"
-"%s"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:526
-#, fuzzy
-msgid "The file format is invalid."
-msgstr "I-password efakiweyo ayilunganga"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:553
-#, c-format
-msgid ""
-"%s is the path where the theme files will be installed. This can not be "
-"selected as the source location"
-msgstr ""
-"I-%s yindlela apho iifayili zemixholo ziza kusekwa khona. Oku akunakukhethwa "
-"njengendawo yomthombo"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:607
-msgid ""
-"Cannot install theme.\n"
-"The tar program is not installed on your system."
-msgstr ""
-
-#: ../capplets/theme-switcher/mate-theme-manager.c:680
-msgid "Custom theme"
-msgstr "Umxholo ozenzelayo"
-
-#: ../capplets/theme-switcher/mate-theme-manager.c:680
-msgid "You can save this theme by pressing the Save Theme button."
-msgstr "Ungawugcina lo mxholo ngokucinezela iqhosha lokuGcina umXholo."
-
-#: ../capplets/theme-switcher/mate-theme-manager.c:1476
-msgid ""
-"The default theme schemas could not be found on your system.  This means "
-"that you probably don't have marco installed, or that your mateconf is "
-"configured incorrectly."
-msgstr ""
-"Iinkcazelo zomxholo ezimiselweyo azifumanekanga kwinkqubo yakho. Oku "
-"kuthetha ukuba awunayo i-marco esekiweyo, okanye i-mateconf yakho imiselwe "
-"ngokungalunganga."
-
-#: ../capplets/theme-switcher/mate-theme-save.c:72
-msgid "Theme name must be present"
-msgstr "Igama lomxholo malibekhona"
-
-#: ../capplets/theme-switcher/mate-theme-save.c:104
-msgid "The theme already exists. Would you like to replace it?"
-msgstr "Umxholo sowukhona. Ungathanda ukubeka omnye endaweni yawo?"
-
-#: ../capplets/theme-switcher/gtk-theme-selector.desktop.in.in.h:1
-msgid "Select themes for various parts of the desktop"
-msgstr "Khetha imixholo yeendawo ngeendawo ze-desktop"
-
-#: ../capplets/theme-switcher/gtk-theme-selector.desktop.in.in.h:2
-#: ../vfs-methods/themus/themus-properties-main.c:92
-msgid "Theme"
-msgstr "Umxholo"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:2
-msgid "<span size=\"larger\" weight=\"bold\">Install a Theme</span>"
-msgstr "<span size=\"larger\" weight=\"bold\">Seka umxholo</span>"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:3
-msgid "Theme Installation"
-msgstr "Ukusekwa komxholo"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:4
-msgid "_Install"
-msgstr "_Faka"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:5
-msgid "_Location:"
-msgstr "_Indawo:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:2
-msgid "<span size=\"larger\" weight=\"bold\">Save Theme to Disk</span>"
-msgstr "<span size=\"larger\" weight=\"bold\">Gcina umXholo kwiDiski</span>"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:3
-msgid "Apply _Background"
-msgstr "Faka _Okungasemva"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:4
-msgid "Apply _Font"
-msgstr "Faka i_Fonti"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:5
-msgid "Controls"
-msgstr "Izilawuli"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:6
-msgid "Icons"
-msgstr "Imifanekiso"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:7
-msgid "New themes can also be installed by dragging them into the window."
-msgstr "Imixholo emitsha ikwanokusekwa ngokuyitsalela kwifestile."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:8
-msgid "Save Theme"
-msgstr "Gcina umxholo"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:9
-msgid "Select theme for the desktop"
-msgstr "Khetha umxholo we-desktop"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:10
-msgid "Short _description:"
-msgstr "Inkcazelo _emfutshane:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:11
-msgid "Theme Details"
-msgstr "IiNkcukacha zomXholo"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:12
-msgid "Theme Preferences"
-msgstr "Uluhlu lokukhetha lwemixholo"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:13
-msgid "Theme _Details"
-msgstr "_Iinkcukacha zoMxholo"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:14
-msgid "This theme does not suggest any particular font or background."
-msgstr "Lo mxholo awucebisi nayiphina ifonti ethile okanye okungasemva."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:15
-msgid "This theme suggests a background:"
-msgstr "Lo mxholo ucebisa okungasemva:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:16
-msgid "This theme suggests a font and a background:"
-msgstr "Lo mxholo ucebisa ifonti nokungasemva:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:17
-msgid "This theme suggests a font:"
-msgstr "Lo mxholo ucebisa ifonti:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:18
-msgid "Window Border"
-msgstr "UMqukumbelo weFestile"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:19
-msgid "_Go To Theme Folder"
-msgstr "_Yiya kwisiQulathi soMxholo"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:20
-msgid "_Install Theme..."
-msgstr "_Seka uMxholo..."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:21
-msgid "_Revert"
-msgstr "_Buyela"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:22
-msgid "_Save Theme..."
-msgstr "_Gcina uMxholo..."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:23
-msgid "_Theme name:"
-msgstr "_Igama lomxholo:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:24
-msgid "theme selection tree"
-msgstr "ukhetho lomxholo ngokwemo-mthi"
-
-#: ../capplets/ui-properties/mate-ui-properties.desktop.in.in.h:1
-msgid "Customize the appearance of toolbars and menubars in applications"
-msgstr "Zenzele inkangeleko ye-toolbars namaqhosha emenyu kwiinkqubo"
-
-#: ../capplets/ui-properties/mate-ui-properties.desktop.in.in.h:2
-msgid "Menus & Toolbars"
-msgstr "IiMenyu & ne-Toolbars"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:2
-msgid "<b>Behavior and Appearance</b>"
-msgstr "<b>Isimbo kunye neNkangeleko</b>"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:3
-msgid "<b>Preview</b>"
-msgstr "<b>Ukubonakalisa kuqala</b>"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:4
-msgid "C_ut"
-msgstr "Si_ka"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:5
-msgid "Icons only"
-msgstr "Imifanekiso engumqondiso kuphela"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:6
-msgid "Menu and Toolbar Preferences"
-msgstr "Uluhlu lwezinto ekukhethwa kuzo lweMenyu ne-Toolbar"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:7
-msgid "New File"
-msgstr "IFayili eNtsha"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:8
-msgid "Open File"
-msgstr "Vula iFayili"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:9
-msgid "Save File"
-msgstr "Gcina iFayili"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:10
-msgid "Show _icons in menus"
-msgstr "Bonisa _imifanekiso kwiimenyu"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:11
-msgid "Text below icons"
-msgstr "Umbhalo ongaphantsi kwemifanekiso"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:12
-msgid "Text beside icons"
-msgstr "Umbhalo osecaleni kwemifanekiso"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:13
-msgid "Text only"
-msgstr "Umbhalo kuphela"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:14
-#, fuzzy
-msgid "Toolbar _button labels:"
-msgstr "Iilebhile zeqhosha le_Toolbar: "
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:15
-msgid "_Copy"
-msgstr "_Kopa"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:16
-msgid "_Detachable toolbars"
-msgstr "I-toolbars _ezisukayo"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:17
-msgid "_Edit"
-msgstr "_Hlela"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:18
-msgid "_Editable menu accelerators"
-msgstr "_Izinqumlisi zemenyu ezihlelekayo"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:19
-msgid "_File"
-msgstr "i_Fayili"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:20
-msgid "_New"
-msgstr "_Entsha"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:21
-msgid "_Open"
-msgstr "_Vula"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:22
-msgid "_Paste"
-msgstr "_Ncamathisela"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:23
-msgid "_Print"
-msgstr "_Shicilela"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:24
-msgid "_Quit"
-msgstr "_Phuma"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:25
-msgid "_Save"
-msgstr "_Gcina"
-
-#: ../capplets/windows/mate-window-properties.c:386
-#, c-format
-msgid ""
-"<b>Cannot start the preferences application for your window manager</b>\n"
-"\n"
-"%s"
-msgstr ""
-"<b>Ayinakuqalisa inkqubo yoluhlu lokukhetha lomlawuli wefestile wakho</b>\n"
-"\n"
-"%s"
-
-#: ../capplets/windows/mate-window-properties.c:644
-msgid "Control"
-msgstr "Lawula"
-
-#: ../capplets/windows/mate-window-properties.c:649
-msgid "Alt"
-msgstr "Tshintshanisa"
-
-#: ../capplets/windows/mate-window-properties.c:655
-msgid "Hyper"
-msgstr "I-Hyper"
-
-#: ../capplets/windows/mate-window-properties.c:662
-msgid "Super (or \"Windows logo\")"
-msgstr "Ngaphezulu kombhalo (okanye \"ilogo ka-Windows\")"
-
-#: ../capplets/windows/mate-window-properties.c:669
-msgid "Meta"
-msgstr "I-Meta"
-
-#: ../capplets/windows/mate-window-properties.glade.h:1
-msgid "<b>Movement Key</b>"
-msgstr "<b>Iqhosha leNtshukumo</b>"
-
-#: ../capplets/windows/mate-window-properties.glade.h:2
-msgid "<b>Titlebar Action</b>"
-msgstr "<b>ISenzo se-Titlebar</b>"
-
-#: ../capplets/windows/mate-window-properties.glade.h:3
-msgid "<b>Window Selection</b>"
-msgstr "<b>Ukukhethwa kweFestile</b>"
-
-#: ../capplets/windows/mate-window-properties.glade.h:4
-msgid "To _move a window, press-and-hold this key then grab the window:"
-msgstr ""
-"Uku _hambisa ifestile, cinezela-uze-ubambe eliqhosha uze uthathe ugcine "
-"ifestile:"
-
-#: ../capplets/windows/mate-window-properties.glade.h:5
+#: ../capplets/windows/mate-window-properties.ui.h:1
 msgid "Window Preferences"
 msgstr "ULuhlu lokukhetha lweeFestile"
 
-#: ../capplets/windows/mate-window-properties.glade.h:6
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Cofa-kabini i-titlebar ukwenza esi senzo:"
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.glade.h:7
-msgid "_Interval before raising:"
-msgstr "_Isithuba phambi kokunyusa:"
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.glade.h:8
-msgid "_Raise selected windows after an interval"
-msgstr "_Nyusa iifestile ezikhethiweyo emva kwesithuba"
+#: ../capplets/windows/mate-window-properties.ui.h:4
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.glade.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Selection"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Khetha iifestile xa imawusi ishukuma phezu kwazo"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
-msgid "Set your window properties"
-msgstr "Misela iimpawu zefestile yakho"
+#: ../capplets/windows/mate-window-properties.ui.h:7
+msgid "_Raise selected windows after an interval"
+msgstr "_Nyusa iifestile ezikhethiweyo emva kwesithuba"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.ui.h:8
+msgid "_Interval before raising:"
+msgstr "_Isithuba phambi kokunyusa:"
+
+#: ../capplets/windows/mate-window-properties.ui.h:9
+msgid "seconds"
+msgstr "imizuzwana"
+
+#: ../capplets/windows/mate-window-properties.ui.h:10
+msgid "Titlebar Action"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:11
+msgid "_Double-click titlebar to perform this action:"
+msgstr "_Cofa-kabini i-titlebar ukwenza esi senzo:"
+
+#: ../capplets/windows/mate-window-properties.ui.h:12
+msgid "Movement Key"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:13
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr ""
+
+#: ../capplets/windows/window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "U-Windows"
 
-#: ../control-center/control-center-categories.c:257
-msgid "Others"
-msgstr "Ezinye"
-
-#: ../control-center/control-center.c:42
-msgid "Desktop Preferences"
-msgstr "ULuhlu lokukhetha lwe-Desktop"
-
-#: ../control-center/matecc.desktop.in.in.h:1
-msgid "MATE Control Center"
-msgstr "ULungelelaniso ngasembindini lwe-MATE"
-
-#: ../control-center/matecc.desktop.in.in.h:2
-#: ../vfs-methods/fontilus/mate-font-viewer.desktop.in.in.h:2
-msgid "The MATE configuration tool"
-msgstr "Isixhobo sokumiselwa kwe-MATE"
-
-#: ../mate-settings-daemon/actions/acme.glade.h:1
-msgid "Volume"
-msgstr "Isandi"
-
-#: ../mate-settings-daemon/factory.c:36
-msgid "Could not initialize MateComponent"
-msgstr "Ayikwazanga ukuqalisa ukwaba amaxabiso eenkcukacha ze-MateComponent"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:397
-msgid "Slow Keys Alert"
-msgstr "IsiLumkiso samaQhosha aCothayo"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:398
-msgid ""
-"You just held down the Shift key for 8 seconds.  This is the shortcut for "
-"the Slow Keys feature, which affects the way your keyboard works."
-msgstr ""
-"Ucinezele iqhosha u-Shift imizuzu eyi-8. Le yindlela enqumlayo yophawu "
-"lwamaQhosha aCothayo, echaphazela indlela esebenza ngayo i-keyboard yakho."
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:400
-msgid "Do you want to activate Slow Keys?"
-msgstr "Uyafuna ukwenza amaQhosha aCothayo ukuba asebenze?"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:401
-msgid "Do you want to deactivate Slow Keys?"
-msgstr "Uyafuna ukwenza ukuba amaQhosha aCothayo angasebenzi?"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:410
-msgid "Sticky Keys Alert"
-msgstr "IsiLumkiso samaQhosha aNcamathelayo"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:411
-msgid ""
-"You just pressed the Shift key 5 times in a row.  This is the shortcut for "
-"the Sticky Keys feature, which affects the way your keyboard works."
-msgstr ""
-"Uvele wacinezela iqhosha i-Shift ka-5 kuluhlu. Le yindlela enqumlayo yophawu "
-"lwamaQhosha aNcamathelayo, echaphazela indlela esebenza ngayo i-keyboard "
-"yakho."
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:413
-msgid ""
-"You just pressed two keys at once, or pressed the Shift key 5 times in a "
-"row.  This turns off the Sticky Keys feature, which affects the way your "
-"keyboard works."
-msgstr ""
-"Uvele wacinezela amaqhosha amabini kwakanye, okanye wacinezela iqhosha u-"
-"Shift ka-5 kuluhlu. Oku kuvala uphawu lwamaQhosha aNcamathelayo, "
-"okuchaphazela indlela esebenza ngayo i-keyboard yakho."
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:415
-msgid "Do you want to activate Sticky Keys?"
-msgstr "Ufuna ukuwenza asebenze amaQhosha aNcamathelayo?"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:416
-msgid "Do you want to deactivate Sticky Keys?"
-msgstr "Ufuna ukuwenza angasebenzi amaQhosha aNcamathelayo?"
-
-#: ../mate-settings-daemon/mate-settings-font.c:107
-#, c-format
-msgid ""
-"Cannot create the directory \"%s\".\n"
-"This is needed to allow changing cursors."
-msgstr ""
-"Akukwazeki ukwenza uvimba weefayili \"%s\".\n"
-"Oku kuyafuneka ukuvumela ukutshintsha iikhesa."
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:209
-#, c-format
-msgid "Key Binding (%s) has its action defined multiple times\n"
-msgstr ""
-"IKhowudi exhomekekileyo yeQhosa (%s) inesenzo sayo esichazwe amaxesha "
-"amaninzi\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:222
-#, c-format
-msgid "Key Binding (%s) has its binding defined multiple times\n"
-msgstr ""
-"IKhowudi exhomekekileyo yeQhosha(%s) inekhowudi exhomekekileyo echazwe "
-"amaxesha amaninzi\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:228
-#, c-format
-msgid "Key Binding (%s) is incomplete\n"
-msgstr "IKhowudi exhomekekileyo yeQhosha (%s) ayiphelelanga\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:256
-#, c-format
-msgid "Key Binding (%s) is invalid\n"
-msgstr "IKhowudi exhomekekileyo yeQhosha (%s) ayiphelelanga\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:292
-#, c-format
-msgid "It seems that another application already has access to key '%d'."
-msgstr "Kubonakala ngathi enye inkqubo sele inokufukelela kwiqhosha '%d'."
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:361
-#, c-format
-msgid "Key Binding (%s) is already in use\n"
-msgstr "IKhowudi exhomekekileyo yeQhosha (%s) sele isetyenziswa\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:436
-#, c-format
-msgid ""
-"Error while trying to run (%s)\n"
-"which is linked to the key (%s)"
-msgstr ""
-"Impazamo xa bekuzanywa ukusebenzisa i- (%s)\n"
-"edityaniswe kwiqhosha (%s)"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:103
-#, fuzzy, c-format
-msgid ""
-"Error activating XKB configuration.\n"
-"It can happen under various circumstances:\n"
-"- a bug in libxklavier library\n"
-"- a bug in X server (xkbcomp, xmodmap utilities)\n"
-"- X server with incompatible libxkbfile implementation\n"
-"\n"
-"X server version data:\n"
-"%s\n"
-"%d\n"
-"%s\n"
-"If you report this situation as a bug, please include:\n"
-"- The result of <b>%s</b>\n"
-"- The result of <b>%s</b>"
-msgstr ""
-"Impazamo ekwenzeni ukuba ukumiselwa kwenkqubo i-XKB kusebenze.\n"
-"Phantsi kweemeko ezininzi inokuba :\n"
-"- nesiphene kwi-libxklavier library\n"
-"- nesiphene kwi-X server (xkbcomp, xmodmap utilities)\n"
-"- I-X server enokwenziwa kwe-libxkbfile okungangqinelaniyo\n"
-"\n"
-"I-data yohlobo lwe-X server :\n"
-"%s\n"
-"%d\n"
-"%s\n"
-"Ukuba uchaza le meko njengesiphene, nceda uquke:\n"
-"- Isiphumo se-<b>xprop -root | grep XKB</b>\n"
-"- Isiphumo se <b>mateconftool-2 -R /desktop/mate/peripherals/keyboard/kbd</b>"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:117
-#, fuzzy
-msgid ""
-"You are using XFree 4.3.0.\n"
-"There are known problems with complex XKB configurations.\n"
-"Try using a simpler configuration or taking a fresher version of XFree "
-"software."
-msgstr ""
-"Usebenzisa i-XFree 4.3.0.\n"
-"Kukhona iingxaki ezaziwayo ngokumiselwa kwe-XKB okunabileyo.\n"
-"Zama ukusebenzisa ukumiselwa kwenkqubo okulula okanye uthathe uhlobo olutsha "
-"lobucukubhede be-XFree."
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:227
-#, fuzzy
-msgid "Do _not show this warning again"
-msgstr "_Ungaphinde uwubonise lo myalezo kwakhona"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:238
-msgid ""
-"The X system keyboard settings differ from your current MATE keyboard "
-"settings.  Which set would you like to use?"
-msgstr ""
-"Imimiselo yesixokelelwano u-X se-keyboard siyohluka kwimimiselo ye-keyboard "
-"ye-MATE ekhoyo. Ngowuphi ummiselo ongathanda ukuwusebenzisa?"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:251
-msgid "Use X settings"
-msgstr "Sebenzisa imimiselo u-X"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:253
-msgid "Use MATE settings"
-msgstr "Sebenzisa imimiselo ye-MATE"
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:129
-#, c-format
-msgid ""
-"Couldn't execute command: %s\n"
-"Verify that this command exists."
-msgstr ""
-"Akukwazekanga ukwenza umyalelo: %s\n"
-"Qinisekisa ukuba lo myalelo ukhona."
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:145
-msgid ""
-"Couldn't put the machine to sleep.\n"
-"Verify that the machine is correctly configured."
-msgstr ""
-"Akukwazekanga ukubeka umatshini kwimo yokulala.\n"
-"Qinisekisa ukuba imatshini imiselwe kakuhle."
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:155
-#, c-format
-msgid "Permissions on the file %s are broken\n"
-msgstr "Iimvume kwifayilii %s azilandelwanga\n"
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:200
-msgid ""
-"Couldn't load the Glade file.\n"
-"Make sure that this daemon is properly installed."
-msgstr ""
-"Akukwazekanga ukufaka ifayili i-Glade.\n"
-"Qinisekisa ukuba le daemon isekwe kakuhle."
-
-#: ../mate-settings-daemon/mate-settings-screensaver.c:113
-#, c-format
-msgid ""
-"There was an error starting up the screensaver:\n"
-"\n"
-"%s\n"
-"\n"
-"Screensaver functionality will not work in this session."
-msgstr ""
-"Kubekho impazamo ukuqalisa i-screensaver:\n"
-"\n"
-"%s\n"
-"\n"
-"Ukusebenza kwe-Screensaver akuzukusebenza kule seshoni."
-
-#: ../mate-settings-daemon/mate-settings-screensaver.c:123
-msgid "_Do not show this message again"
-msgstr "_Ungaphinde uwubonise lo myalezo kwakhona"
-
-#: ../mate-settings-daemon/mate-settings-sound.c:129
-#, c-format
-msgid "Couldn't load sound file %s as sample %s"
-msgstr "Akukwazekanga ukufaka ifayili yesandi %s njengesampuli %s"
-
-#: ../mate-settings-daemon/mate-settings-xrdb.c:214
-#: ../mate-settings-daemon/mate-settings-xrdb.c:262
-msgid "Cannot determine user's home directory"
-msgstr "Akukwazeki ukumisa uvimba weefayili wasekhaya womsebenzisi"
-
-#: ../mate-settings-daemon/mate-settings-xsettings.c:215
-#, c-format
-msgid "MateConf key %s set to type %s but its expected type was %s\n"
-msgstr ""
-"Iqhosha le-MateConf %s limiselwe ukuba lichwetheze %s kodwa umchwethezo walo "
-"olindelekileyo ibingu %s\n"
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:1
-#, fuzzy
-msgid "A_vailable files:"
-msgstr "Ubume obu_khoyo:"
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:2
-#, fuzzy
-msgid "Do _not show this warning again."
-msgstr "_Ungaphinde uwubonise lo myalezo kwakhona"
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:3
-msgid "Load modmap files"
-msgstr ""
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:4
-msgid "Would you like to load the modmap file(s)?"
-msgstr ""
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:5
-msgid "_Load"
-msgstr ""
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:6
-#, fuzzy
-msgid "_Loaded files:"
-msgstr "Ii_modeli:"
-
-#: ../mate-settings-daemon/reaper.c:103
-msgid "Error creating signal pipe."
-msgstr "Impazamo edala umqondiso wombhobho wothungelwano."
-
-#: ../libbackground/applier.c:255
-msgid "Type"
-msgstr "Uhlobo"
-
-#: ../libbackground/applier.c:256
-msgid ""
-"Type of bg_applier: BG_APPLIER_ROOT for root window or BG_APPLIER_PREVIEW "
-"for preview"
-msgstr ""
-"Uhlobo lwe-bg_applier: i-BG_APPLIER_ROOT yefestile yomsebenzi onikwe amandla "
-"akhethekileyo okanye i-BG_APPLIER_PREVIEW yokubonakalayo kuqala"
-
-#: ../libbackground/applier.c:263
-msgid "Preview Width"
-msgstr "Ububanzi obubonakalisa kuqala"
-
-#: ../libbackground/applier.c:264
-msgid "Width if applier is a preview: Defaults to 64."
-msgstr ""
-"Ububanzi ukuba isifaki sesokubonakalisa kuqala: Ezimiselweyo ukuya ku 64."
-
-#: ../libbackground/applier.c:271
-msgid "Preview Height"
-msgstr "Ubude bokuBonakalisa kuqala"
-
-#: ../libbackground/applier.c:272
-msgid "Height if applier is a preview: Defaults to 48."
-msgstr "Ubude ukuba isifaki sesokubonakalisa kuqala: Ezimiselweyo ukuya ku 48."
-
-#: ../libbackground/applier.c:279
-msgid "Screen"
-msgstr "Iskrini"
-
-#: ../libbackground/applier.c:280
-msgid "Screen on which BGApplier is to draw"
-msgstr "Iskrini apho i-BGApplier iza kuzoba khona"
-
-#: ../libgswitchit/gswitchit_config.c:1035
-#, fuzzy, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Kubekho impazamo ekuvezeni uncedo: %s"
-
-#: ../libsounds/sound-view.c:122 ../libsounds/sound-view.c:147
-msgid "The sound file for this event does not exist."
-msgstr "Ifayili yesandi yesi sehlo ayikho."
-
-#: ../libsounds/sound-view.c:149
-msgid ""
-"The sound file for this event does not exist.\n"
-"You may want to install the mate-audio package\n"
-"for a set of default sounds."
-msgstr ""
-"Ifayili yesandi yesi sehlo ayikho.\n"
-"Unokufuna ukuseka umqulu onesandi we-mate\n"
-"womiselo wezandi ezimiselweyo."
-
-#: ../libsounds/sound-view.c:224
-#, c-format
-msgid "The file %s is not a valid wav file"
-msgstr "Ifayili %s asiyofayili i-wav elungileyo"
-
-#: ../libsounds/sound-view.c:289
-msgid "Event"
-msgstr "Isehlo"
-
-#: ../libsounds/sound-view.c:298
-msgid "Sound File"
-msgstr "IFayili yeSandi"
-
-#: ../libsounds/sound-view.c:314
-msgid "_Sounds:"
-msgstr "I_zandi:"
-
-#: ../libsounds/sound-view.c:328
-msgid "Sound _file:"
-msgstr "i_Fayili yesandi:"
-
-#: ../libsounds/sound-view.c:332
-msgid "Select Sound File"
-msgstr "Khetha iFayili yeSandi"
-
-#: ../libsounds/sound-view.c:356
-msgid "_Play"
-msgstr "_Dlala"
-
-#: ../libsounds/sound-view.c:366
-msgid "_Remove"
-msgstr "_Susa"
-
-#: ../libwindow-settings/mate-wm-manager.c:320
+#: ../capplets/windows/window-properties.desktop.in.in.h:2
+msgid "Set your window properties"
+msgstr "Misela iimpawu zefestile yakho"
+
+#: ../libwindow-settings/mate-wm-manager.c:321
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
-msgstr ""
-"Umlawuli wefestile \"%s\" akasifakanga isixhobo sokumiselwa kwenkqubo\n"
-
-#: ../libwindow-settings/marco-window-manager.c:378
-msgid "Maximize"
-msgstr "Yenza ibe nkulu"
+msgstr "Umlawuli wefestile \"%s\" akasifakanga isixhobo sokumiselwa kwenkqubo\n"
 
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Ukusonga"
 
-#: ../schemas/apps_mate_settings_daemon_default_editor.schemas.in.h:1
-msgid ""
-"If true, the mime handlers for text/plain and text/* will be kept in sync"
-msgstr ""
-"Ukuba kuyinyani, izibambi ze-mime text/plain kunye text/* ziza kugcinwa kwi-"
-"sync"
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "Yenza ibe nkulu"
 
-#: ../schemas/apps_mate_settings_daemon_default_editor.schemas.in.h:2
-msgid "Sync text/plain and text/* handlers"
-msgstr "Umbhalo owenzeka text/plain kunye text/* izibambi"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:1
-msgid "Brightness down"
-msgstr "Ukukhanya makuthotywe"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:2
-msgid "Brightness down's shortcut."
-msgstr "Indlela enqumlayo yokuthotywa kokukhanya."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:3
-msgid "Brightness up"
-msgstr "Ukukhanya makunyuswe"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:4
-msgid "Brightness up's shortcut."
-msgstr "Indlela enqumlayo yokunyuswa kokukhanya."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:5
-msgid "E-mail"
-msgstr "I-imeyili"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:6
-msgid "E-mail's shortcut."
-msgstr "Indlela enqumlayo ye-imeyili."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:7
-msgid "Eject"
-msgstr "Khupha"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:8
-msgid "Eject's shortcut."
-msgstr "Indlela enqumlayo yokukhupha."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:9
-msgid "Home folder"
-msgstr "Isiqulathi seefayili sasekhaya"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:10
-msgid "Home folder's shortcut."
-msgstr "Indlela enqumlayo yesiqulathi seefayili zasekhaya."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:11
-msgid "Launch help browser"
-msgstr "Isikhangeli soncedo sokundulula"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:12
-msgid "Launch help browser's shortcut."
-msgstr "Indlela enqumlayo yesikhangeli soncedo sokundulula."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:13
-msgid "Launch web browser"
-msgstr "Isikhangeli sewebhu sokundulula"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:14
-msgid "Launch web browser's shortcut."
-msgstr "Indlela enqumlayo yesikhangeli sewebhu sokundulula."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:15
-msgid "Lock screen"
-msgstr "Tshixa iskrini"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:16
-msgid "Lock screen's shortcut."
-msgstr "Indlela enqumlayo yokutshixa iskrini."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:17
-msgid "Log out"
-msgstr "Phuma"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:18
-msgid "Log out's shortcut."
-msgstr "Indlela enqumlayo yokuphuma."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:19
-msgid "Next track key's shortcut."
-msgstr "Indlela enqumlayo yeqhosha lomzila elandelayo."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:20
-msgid "Pause"
-msgstr "Nqumama"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:21
-msgid "Pause key's shortcut."
-msgstr "Indlela enqumlayo yeqhosha lokunqumama."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:22
-msgid "Play (or play/pause)"
-msgstr "Dlala (okanye dlala/nqumama)"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:23
-msgid "Play (or play/pause) key's shortcut."
-msgstr "Indlela enqumlayo yeqhosha u-Dlala (okanye dlala/nqumama)."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:24
-msgid "Previous track key's shortcut."
-msgstr "Indlela enqumlayo yamaqhosha omzila angaphambili."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:25
-msgid "Search"
-msgstr "Khangela"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:26
-msgid "Search's shortcut."
-msgstr "Indlela enqumlayo yokukhangela."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:27
-msgid "Skip to next track"
-msgstr "Tsibela kwingoma elandelayo"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:28
-msgid "Skip to previous track"
-msgstr "Tsibela kwingoma yangaphambili"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:29
-msgid "Sleep"
-msgstr "Lala"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:30
-msgid "Sleep's shortcut."
-msgstr "Indlela enqumlayo yokulala."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:31
-msgid "Stop playback key"
-msgstr "Iqhosha lokumisa ukudlala okungasemva"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:32
-msgid "Stop playback key's shortcut."
-msgstr "Indlela enqumlayo yeqhosha lokumisa ukudlala."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:33
-msgid "Volume down"
-msgstr "Isandi masithotywe"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:34
-msgid "Volume down's shortcut."
-msgstr "Indlela enqumlayo yokuthotywa kwesandi."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:35
-msgid "Volume mute"
-msgstr "Ukuthula kwesandi"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:36
-msgid "Volume mute's shortcut"
-msgstr "Indlela enqumlayo yokuthula kwesandi"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:37
-msgid "Volume step"
-msgstr "Inqanaba lesandi"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:38
-msgid "Volume step as percentage of volume."
-msgstr "Inqanaba lesandi njengepesenti yesandi."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:39
-msgid "Volume up"
-msgstr "Nyusa isandi"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:40
-msgid "Volume up's shortcut."
-msgstr "Indlela enqumlayo yokunyuswa kwesandi."
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:1
-#, fuzzy
-msgid "Display a dialog when there are errors running the screensaver"
-msgstr "Bonisa unxibelelwano xa kukho iimpazamo ezenzekayo kwi-XSscreenSaver"
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:2
-#, fuzzy
-msgid "Run screensaver at login"
-msgstr "Yenza i-XScreenSaver ku-ngena"
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:3
-msgid "Show Startup Errors"
-msgstr "Bonisa iiMpazamo zokuVula"
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:4
-#, fuzzy
-msgid "Start screensaver"
-msgstr "Qalisa i-XScreenSaver"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"Ingqokelela yamaxwebhu emawasetyenzwe naninina isimo se-keyboard sifakiwe "
-"kwakhona. Iluncedo ukufaka kwakhona ulungelelwaniso olusekelwe kwi-xmodmap"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr "Iqela elimiselweyo, elabelwe kuyilo lwefestile"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:4
-msgid "Keep and manage separate group per window"
-msgstr "Gcina uze ulawule iqela elahlukeneyo ngefestile nganye"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "IziBambi zokuHlaziya i-Keyboard"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "Ubume be-keyboard"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "Imodeli ye-keyboard"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "Ekunokukhethwa kuko kwe-keyboard"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:9
-#, fuzzy
-msgid ""
-"Keyboard settings in mateconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr ""
-"Imimiselo ye-keyboard ku-mateconf ayizukunanzwa kwinkqubo NGOKUKHAWULEZILEYO"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:10
-msgid "Save/restore indicators together with layout groups"
-msgstr "Gcina/gcina kwakhona izibonisi kunye namaqela obume"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:11
-msgid "Show layout names instead of group names"
-msgstr "Bonisa amagama obume endaweni yamagama eqela"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:12
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-"Bonisa amagama obume endaweni yamagama eqela (kuphela ngeentlobo zobume "
-"obunabileyo benkxaso i-XFree)"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Suppress the \"X sysconfig changed\" warning message"
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:14
-msgid ""
-"Very soon, keyboard settings in mateconf will be overridden (from the system "
-"configuration) This key has been deprecated since MATE 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:15
-msgid "keyboard layout"
-msgstr "ubume be-keyboard"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:16
-msgid "keyboard model"
-msgstr "imodeli ye-keyboard"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "modmap file list"
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
 msgstr ""
 
-#: ../typing-break/drw-break-window.c:212
-msgid "_Postpone break"
-msgstr "_Nqumamisa isithuba"
+#: ../shell/control-center.c:61
+#, c-format
+msgid "%s key is empty\n"
+msgstr ""
 
-#: ../typing-break/drw-break-window.c:259
+#: ../shell/control-center.c:161
+msgid "Hide on start (useful to preload the shell)"
+msgstr ""
+
+#: ../shell/control-center.c:201
+msgid "Filter"
+msgstr ""
+
+#: ../shell/control-center.c:201
+msgid "Groups"
+msgstr ""
+
+#: ../shell/control-center.c:201
+msgid "Common Tasks"
+msgstr ""
+
+#: ../shell/control-center.c:203 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/matecc.directory.in.h:1
+msgid "Control Center"
+msgstr ""
+
+#: ../shell/matecc.desktop.in.in.h:2
+msgid "The MATE configuration tool"
+msgstr "Isixhobo sokumiselwa kwe-MATE"
+
+#: ../typing-break/drw-break-window.c:190
+msgid "_Postpone Break"
+msgstr ""
+
+#: ../typing-break/drw-break-window.c:246
 msgid "Take a break!"
 msgstr "Thatha isithuba!"
 
-#. { N_("/_Enabled"),      NULL, GIF_CB (popup_enabled_cb),     POPUP_ITEM_ENABLED, "<ToggleItem>", NULL },
-#: ../typing-break/drwright.c:141
-msgid "/_Preferences"
-msgstr "/_Uluhlu lokukhetha"
+#: ../typing-break/drwright.c:136
+msgid "_Take a Break"
+msgstr ""
 
-#: ../typing-break/drwright.c:142
-msgid "/_About"
-msgstr "/_Malunga"
+#: ../typing-break/drwright.c:507
+#, c-format
+msgid "Take a break now (next in %dm)"
+msgstr ""
 
-#: ../typing-break/drwright.c:144
-msgid "/_Take a Break"
-msgstr "/_Thatha isiThuba"
-
-#: ../typing-break/drwright.c:495
+#: ../typing-break/drwright.c:509
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d umzuzu kude kube sisithuba esilandelayo"
 msgstr[1] "%d imizuzu kude kube sisithuba esilandelayo"
 
-#: ../typing-break/drwright.c:499
+#: ../typing-break/drwright.c:515
+#, c-format
+msgid "Take a break now (next in less than one minute)"
+msgstr ""
+
+#: ../typing-break/drwright.c:517
+#, c-format
 msgid "Less than one minute until the next break"
 msgstr "Ngaphantsi komzuzu omnye kude kube sisithuba esilandelayo"
 
-#: ../typing-break/drwright.c:587
+#: ../typing-break/drwright.c:607
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
+msgstr "Akukwazeki ukuvela nonxibelelwano lweempawu zesithuba sokuchwetheza ngale mpazamo ilandelayo: %s"
+
+#: ../typing-break/drwright.c:624
+msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr ""
-"Akukwazeki ukuvela nonxibelelwano lweempawu zesithuba sokuchwetheza ngale "
-"mpazamo ilandelayo: %s"
 
-#: ../typing-break/drwright.c:635
-msgid "About MATE Typing Monitor"
-msgstr "Malunga neMonitha yokuChwetheza ye-MATE"
-
-#: ../typing-break/drwright.c:659
-msgid "A computer break reminder."
-msgstr "Isikhumbuzi sesithuba sekhompyutha."
-
-#: ../typing-break/drwright.c:660
-msgid "Written by Richard Hult &lt;richard@imendio.com&gt;"
-msgstr "Ibhalwe nguRichard Hult &lt;richard@imendio.com&gt;"
-
-#: ../typing-break/drwright.c:661
+#: ../typing-break/drwright.c:625
 msgid "Eye candy added by Anders Carlsson"
 msgstr "I-eye candy yongezwe ngu-Anders Carlsson"
 
-#: ../typing-break/drwright.c:837
-msgid "Break reminder"
-msgstr "Isikhumbuzi sesithuba"
+#: ../typing-break/drwright.c:634
+msgid "A computer break reminder."
+msgstr "Isikhumbuzi sesithuba sekhompyutha."
 
-#: ../typing-break/main.c:93
-msgid "The typing monitor is already running."
-msgstr "Imonitha yokuchwetheza sele iqhubeka."
+#: ../typing-break/drwright.c:636
+msgid "translator-credits"
+msgstr ""
 
-#: ../typing-break/main.c:106
-#, fuzzy
+#: ../typing-break/main.c:63
+msgid "Enable debugging code"
+msgstr ""
+
+#: ../typing-break/main.c:65
+msgid "Don't check whether the notification area exists"
+msgstr ""
+
+#: ../typing-break/main.c:91
+msgid "Typing Monitor"
+msgstr ""
+
+#: ../typing-break/main.c:108
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
 msgstr ""
-"Imonitha yokuchwetheza isebenzisa indawo yokwazisa ukubonisa ulwazi. "
-"Awubonakali unendawo yokwazisa kwindawo yolawulo yakho. Ungayongeza "
-"ngokucofa ekunene kwemawusi kwindawo yolawulo yakho uze ukhethe 'Yongeza "
-"kwindawo yolawulo -> Indawo yamancedo -> Indawo yokwazisa'."
 
-#: ../vfs-methods/fontilus/font-view.c:115
-msgid "The quick brown fox jumps over the lazy dog. 0123456789"
-msgstr "Ingcuka emdaka ekhawulezayo itsiba phezu kwenja eyonqenayo. 0123456789"
-
-#: ../vfs-methods/fontilus/font-view.c:276
+#: ../font-viewer/font-view.c:299
 msgid "Name:"
 msgstr "Igama:"
 
-#: ../vfs-methods/fontilus/font-view.c:279
+#: ../font-viewer/font-view.c:302
 msgid "Style:"
 msgstr "Isimbo:"
 
-#: ../vfs-methods/fontilus/font-view.c:289
+#: ../font-viewer/font-view.c:315
 msgid "Type:"
 msgstr "Uhlobo:"
 
-#: ../vfs-methods/fontilus/font-view.c:295
+#: ../font-viewer/font-view.c:319
 msgid "Size:"
 msgstr "Ubungakanani:"
 
-#: ../vfs-methods/fontilus/font-view.c:339
-#: ../vfs-methods/fontilus/font-view.c:352
+#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
 msgid "Version:"
 msgstr "Uhlobo:"
 
-#: ../vfs-methods/fontilus/font-view.c:343
-#: ../vfs-methods/fontilus/font-view.c:354
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
 msgid "Copyright:"
 msgstr "Amalungelo omqulunqi:"
 
-#: ../vfs-methods/fontilus/font-view.c:347
+#: ../font-viewer/font-view.c:371
 msgid "Description:"
 msgstr "Inkcazelo:"
 
-#: ../vfs-methods/fontilus/font-view.c:408
+#: ../font-viewer/font-view.c:451
+msgid "Installed"
+msgstr ""
+
+#: ../font-viewer/font-view.c:454
+msgid "Install Failed"
+msgstr ""
+
+#: ../font-viewer/font-view.c:525
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "ukusetyenziswa: %s i-fontfile\n"
 
-#: ../vfs-methods/fontilus/fontilus-context-menu.c:132
-msgid "Set as Application Font"
-msgstr "Misela njengeFonti yeNkqubo"
-
-#: ../vfs-methods/fontilus/fontilus-context-menu.c:133
-msgid "Sets the default application font"
-msgstr "Imisela ifonti yenkqubo emiselweyo"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:1
-msgid "If set to true, then OpenType fonts will be thumbnailed."
+#: ../font-viewer/font-view.c:596
+msgid "I_nstall Font"
 msgstr ""
-"Ukuba imiselwe ku-inyani, ngako oko iifonti i-OpenType ziza kwenziwa "
-"zityhile ngokukhawulezayo."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:2
-msgid "If set to true, then PCF fonts will be thumbnailed."
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+msgid "Font Viewer"
 msgstr ""
-"Ukuba imiselwe ku-inyani, ngako oko iifonti ze-PCF ziza kwenziwa zityhileke "
-"ngokukhawulezayo."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:3
-msgid "If set to true, then TrueType fonts will be thumbnailed."
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
+msgid "Preview fonts"
 msgstr ""
-"Ukuba imiselwe ku-inyani, ngako oko iifonti i-TrueType ziza kwenziwa "
-"zityhileke ngokukhawuleza."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:4
-msgid "If set to true, then Type1 fonts will be thumbnailed."
+#: ../font-viewer/font-thumbnailer.c:245
+msgid "Text to thumbnail (default: Aa)"
 msgstr ""
-"Ukuba imiselwe ku-inyani, ngako oko iifonti i-Type1 ziza kwenziwa zityhileke "
-"ngokukhawuleza."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:5
-msgid ""
-"Set this key to the command used to create thumbnails for OpenType fonts."
+#: ../font-viewer/font-thumbnailer.c:245
+msgid "TEXT"
 msgstr ""
-"Misela eli qhosha kumyalelo osetyenzisiweyo ukudala ukutyhila okukhawulezayo "
-"kweefonti i-OpenType."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:6
-msgid "Set this key to the command used to create thumbnails for PCF fonts."
+#: ../font-viewer/font-thumbnailer.c:247
+msgid "Font size (default: 64)"
 msgstr ""
-"Misela eli qhosha kumyalelo osetyenzisiweyo ukudala ukutyhila okukhawulezayo "
-"kweefonti i-PCF."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:7
-msgid ""
-"Set this key to the command used to create thumbnails for TrueType fonts."
+#: ../font-viewer/font-thumbnailer.c:247
+msgid "SIZE"
 msgstr ""
-"Misela eli qhosha kumyalelo osetyenzisiweyo ukudala ukutyhila okukhawulezayo "
-"kweefonti i-TrueType."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:8
-msgid "Set this key to the command used to create thumbnails for Type1 fonts."
+#: ../font-viewer/font-thumbnailer.c:249
+msgid "FONT-FILE OUTPUT-FILE"
 msgstr ""
-"Misela eli qhosha kumyalelo osetyenzisiweyo ukudala ukutyhila okukhawulezayo "
-"kweefonti i-Type1."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:9
-msgid "Thumbnail command for OpenType fonts"
-msgstr "Umyalelo wokutyhila okukhawulezayo kweefonti i-OpenType"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:10
-msgid "Thumbnail command for PCF fonts"
-msgstr "Umyalelo wokutyhila okukhawulezayo kweefonti i-PCF"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:11
-msgid "Thumbnail command for TrueType fonts"
-msgstr "Umyalelo wokutyhila okukhawulezayo kweefonti i-TrueType"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:12
-msgid "Thumbnail command for Type1 fonts"
-msgstr "Umyalelo wokutyhila okukhawulezayo kweefonti i-Type1"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:13
-msgid "Whether to thumbnail OpenType fonts"
-msgstr "Noba kwenziwe ukutyhila okukhawulezayo kweefonti i-OpenType"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:14
-msgid "Whether to thumbnail PCF fonts"
-msgstr "Noba kwenziwe ukutyhila okukhawulezayo kweefonti i-PCF"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:15
-msgid "Whether to thumbnail TrueType fonts"
-msgstr "Noba kwenziwe ukutyhila okukhawulezileyo kweefonti i-TrueType"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:16
-msgid "Whether to thumbnail Type1 fonts"
-msgstr "Noba kwenziwe ukutyhila okukhawulezayo kweefonti i-Type1"
-
-#: ../vfs-methods/fontilus/mate-font-viewer.desktop.in.in.h:1
-msgid "MATE Font Viewer"
-msgstr "Isibonakalisi seFonti se-MATE"
-
-#: ../vfs-methods/themus/apply-font.glade.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Apply new font?</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Faka ifonti entsha?</span>"
-
-#: ../vfs-methods/themus/apply-font.glade.h:3
-msgid "Do _not apply font"
-msgstr "Unga _faki ifonti"
-
-#: ../vfs-methods/themus/apply-font.glade.h:4
-msgid ""
-"The theme you have selected suggests a new font. A preview of the font is "
-"shown below."
+#: ../font-viewer/font-thumbnailer.c:268
+#, c-format
+msgid "Error parsing arguments: %s\n"
 msgstr ""
-"Umxholo owukhethileyo ucebisa ifonti entsha. Ukubonakaliswa kuqala kwefonti "
-"kuboniswe ngezantsi."
 
-#: ../vfs-methods/themus/apply-font.glade.h:5
-msgid "_Apply font"
-msgstr "_Faka ifonti"
-
-#: ../vfs-methods/themus/theme-method.c:520
-msgid "Themes"
-msgstr "Imixholo"
-
-#: ../vfs-methods/themus/themus-properties-view.c:126
-msgid "Description"
-msgstr "Inkcazelo"
-
-#: ../vfs-methods/themus/themus-properties-view.c:133
-msgid "Control theme"
-msgstr "Lawula umxholo"
-
-#: ../vfs-methods/themus/themus-properties-view.c:139
-msgid "Window border theme"
-msgstr "Umxholo womqukumbelo wefestile"
-
-#: ../vfs-methods/themus/themus-properties-view.c:145
-msgid "Icon theme"
-msgstr "Umxholo womfanekiso"
-
-#. translators: you may want to include non-western chars here
-#: ../vfs-methods/themus/themus-theme-applier.c:78
-msgid "ABCDEFG"
-msgstr "ABCDEFG"
-
-#: ../vfs-methods/themus/themus-theme-applier.desktop.in.in.h:1
-msgid "Apply theme"
-msgstr "Faka umxholo"
-
-#: ../vfs-methods/themus/themus-theme-applier.desktop.in.in.h:2
-msgid "Sets the default theme"
-msgstr "Imisela umxholo omiselweyo"
-
-#: ../vfs-methods/themus/themus.schemas.in.h:1
-msgid "If set to true, then installed themes will be thumbnailed."
+#: ../libslab/app-shell.c:754
+#, c-format
+msgid "Your filter \"%s\" does not match any items."
 msgstr ""
-"Ukuba imiselwe ku-inyani, ngako oko imixholo esekiweyo iza kwenziwa ityhilwe "
-"ngokukhawulezayo."
 
-#: ../vfs-methods/themus/themus.schemas.in.h:2
-msgid "If set to true, then themes will be thumbnailed."
+#: ../libslab/app-shell.c:756
+msgid "No matches found."
 msgstr ""
-"Ukuba imiselwe ku-inyani, ngako oko imixholo iza kwenziwa ityhileke "
-"ngokukhawulezileyo."
 
-#: ../vfs-methods/themus/themus.schemas.in.h:3
-msgid ""
-"Set this key to the command used to create thumbnails for installed themes."
+#: ../libslab/app-shell.c:857
+msgid "New Applications"
 msgstr ""
-"Misela eli qhosha kumyalelo osetyenzisiweyo ukudala ukutyhila okukhawulezayo."
 
-#: ../vfs-methods/themus/themus.schemas.in.h:4
-msgid "Set this key to the command used to create thumbnails for themes."
+#: ../libslab/app-shell.c:912
+msgid "Other"
 msgstr ""
-"Misela eli qhosha kumyalelo osetyenzisiweyo ukudala ukutyhila okukhawulezayo "
-"kwemixholo."
 
-#: ../vfs-methods/themus/themus.schemas.in.h:5
-msgid "Thumbnail command for installed themes"
-msgstr "Yenza ukutyhila okukhawulezayo komyalelo kwemixholo okusekiweyo"
+#. make start action
+#: ../libslab/application-tile.c:340
+#, c-format
+msgid "Start %s"
+msgstr ""
 
-#: ../vfs-methods/themus/themus.schemas.in.h:6
-msgid "Thumbnail command for themes"
-msgstr "Ukutyhila okukhawulezayo kwemixholo"
+#: ../libslab/application-tile.c:361
+msgid "Help"
+msgstr ""
 
-#: ../vfs-methods/themus/themus.schemas.in.h:7
-msgid "Whether to thumbnail installed themes"
-msgstr "Nokuba ngaba kwenziwe ukutyhila okukhawulezayo kwemixholo esekiweyo"
+#: ../libslab/application-tile.c:629
+msgid "Remove from Favorites"
+msgstr ""
 
-#: ../vfs-methods/themus/themus.schemas.in.h:8
-msgid "Whether to thumbnail themes"
-msgstr "Nokuba ngaba kwenziwe ukutyhila okukhawulezayo kwemixholo"
+#: ../libslab/application-tile.c:631
+msgid "Add to Favorites"
+msgstr ""
+
+#: ../libslab/application-tile.c:716
+msgid "Remove from Startup Programs"
+msgstr ""
+
+#: ../libslab/application-tile.c:718
+msgid "Add to Startup Programs"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1091
+msgid "New Spreadsheet"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1096
+msgid "New Document"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1149
+msgctxt "Home folder"
+msgid "Home"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1156
+msgid "Documents"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1164
+msgid "Desktop"
+msgstr "I-desktop"
+
+#: ../libslab/bookmark-agent.c:1171
+msgid "File System"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1175
+msgid "Network Servers"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1204
+msgid "Search"
+msgstr "Khangela"
+
+#: ../libslab/search-bar.c:255
+msgid "Find Now"
+msgstr ""
+
+#: ../libslab/system-tile.c:126
+#, c-format
+msgid "<b>Open %s</b>"
+msgstr ""
+
+#: ../libslab/system-tile.c:139
+#, c-format
+msgid "Remove from System Items"
+msgstr ""

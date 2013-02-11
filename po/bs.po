@@ -1,1008 +1,1300 @@
-# translation of mate-control-center.HEAD.bs.po to Bosnian
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER, 2004.
 # Kenan Hadžiavdić <kenan@bgnett.no>, 2004.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center.HEAD.bs\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-17 22:10+0200\n"
-"PO-Revision-Date: 2004-07-31 15:15+0200\n"
-"Last-Translator: Kenan Hadžiavdić <kenan@bgnett.no>\n"
-"Language-Team: Bosnian <lokal@linux.org.ba>\n"
+"Project-Id-Version: MATE Desktop Environment\n"
+"Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
+"POT-Creation-Date: 2013-02-11 11:51+0100\n"
+"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../capplets/about-me/eel-alert-dialog.c:114
+#: ../org.mate.control-center.gschema.xml.in.in.h:1
+msgid ""
+"[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
+"Applications;default-applications.desktop' ]"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:2
+msgid "Task names and associated .desktop files"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:3
+msgid ""
+"The task name to be displayed in the control-center followed by a \";\" "
+"separator then the filename of an associated .desktop file to launch for "
+"that task."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:4
+msgid "Close the control-center when a task is activated"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:5
+msgid ""
+"if true, the control-center will close when a \"Common Task\" is activated."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:6
+msgid "Exit shell on start action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:7
+msgid "Indicates whether to close the shell when a start action is performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:8
+msgid "Exit shell on help action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:9
+msgid "Indicates whether to close the shell when a help action is performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:10
+msgid "Exit shell on add or remove action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:11
+msgid ""
+"Indicates whether to close the shell when an add or remove action is "
+"performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:12
+msgid "Exit shell on upgrade or uninstall action performed"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:13
+msgid ""
+"Indicates whether to close the shell when an upgrade or uninstall action is "
+"performed."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:14
+msgid "More backgrounds URL"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:15
+msgid ""
+"URL for where to get more desktop backgrounds. If set to an empty string the"
+" link will not appear."
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:16
+msgid "More themes URL"
+msgstr ""
+
+#: ../org.mate.control-center.gschema.xml.in.in.h:17
+msgid ""
+"URL for where to get more desktop themes. If set to an empty string the link"
+" will not appear."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:1
+msgid "Keybinding"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:2
+msgid "Keybinding associated with a custom shortcut."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:3
+msgid "Command"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:4
+msgid "Command associated with a custom keybinding."
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:5
+msgid "Name"
+msgstr ""
+
+#: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:6
+msgid "Description associated with a custom keybinding."
+msgstr ""
+
+#: ../capplets/about-me/eel-alert-dialog.c:110
 msgid "Image/label border"
 msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:115
+#: ../capplets/about-me/eel-alert-dialog.c:111
 msgid "Width of border around the label and image in the alert dialog"
 msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:124
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:120
 msgid "Alert Type"
-msgstr "Dodaj tip datoteke"
+msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:125
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:121
 msgid "The type of alert"
-msgstr "Tip kratice."
+msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:133
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:129
 msgid "Alert Buttons"
-msgstr "Dugmad"
+msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:134
+#: ../capplets/about-me/eel-alert-dialog.c:130
 msgid "The buttons shown in the alert dialog"
 msgstr ""
 
-#: ../capplets/about-me/eel-alert-dialog.c:198
-#, fuzzy
+#: ../capplets/about-me/eel-alert-dialog.c:194
 msgid "Show more _details"
-msgstr "_Detalji teme"
+msgstr ""
 
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
-#: ../capplets/about-me/mate-about-me.glade.h:14
-#, fuzzy
-msgid "About Me"
-msgstr "_O"
-
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
-#, fuzzy
-msgid "Set your personal information"
-msgstr "Informacije o MIME tipu"
-
-#: ../capplets/about-me/mate-about-me.c:554
-#, fuzzy
+#: ../capplets/about-me/mate-about-me.c:282
 msgid "Select Image"
-msgstr "_Izaberi"
+msgstr ""
 
-#: ../capplets/about-me/mate-about-me.c:556
-#, fuzzy
+#: ../capplets/about-me/mate-about-me.c:284
 msgid "No Image"
-msgstr "Slike"
-
-#: ../capplets/about-me/mate-about-me.c:706
-msgid ""
-"There was an error while trying to get the addressbook information\n"
-"Evolution Data Server can't handle the protocol"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.c:727
-msgid "Unable to open address book"
+#: ../capplets/about-me/mate-about-me.c:312
+#: ../capplets/appearance/appearance-desktop.c:646
+msgid "Images"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.c:739
-msgid "Unknown login ID, the user database might be corrupted"
+#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/appearance/theme-installer.c:774
+msgid "All Files"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.c:770
-#: ../capplets/about-me/mate-about-me.c:772
-#, fuzzy, c-format
+#: ../capplets/about-me/mate-about-me.c:467
+#, c-format
 msgid "About %s"
-msgstr "_O"
-
-#: ../capplets/about-me/mate-about-me-password.c:101
-#: ../capplets/about-me/mate-about-me-password.c:479
-msgid "Old password is incorrect, please retype it"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me-password.c:112
-msgid "System error has occurred"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:1
+#: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
+msgid "About Me"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me-password.c:113
-msgid "Could not run /usr/bin/passwd"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:2
+msgid "Select your photo"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me-password.c:114
-msgid "Unable to launch backend"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:116
-#: ../capplets/about-me/mate-about-me-password.c:117
-msgid "Unexpected error has occurred"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:315
-msgid "Password is too short"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:318
-#: ../capplets/about-me/mate-about-me-password.c:321
-msgid "Password is too simple"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:324
-msgid "Old and new passwords are too similar"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:328
-msgid "Old and new password are the same"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:406
-#, fuzzy
-msgid "Please type the passwords."
-msgstr "_Šifra:"
-
-#: ../capplets/about-me/mate-about-me-password.c:414
-msgid "Please type the password again, it is wrong."
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me-password.c:417
-msgid "Click on Change Password to change the password."
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:1
-#: ../vfs-methods/themus/apply-font.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../capplets/about-me/mate-about-me.glade.h:2
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:1
-#: ../capplets/font/font-properties.glade.h:1
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:1
-#: ../capplets/mouse/mate-mouse-properties.glade.h:1
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../capplets/about-me/mate-about-me.glade.h:3
-#, fuzzy
-msgid "<b>Email</b>"
-msgstr "<i>Malo</i>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:4
-#, fuzzy
-msgid "<b>Home</b>"
-msgstr "<b>Brzina</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:5
-#, fuzzy
-msgid "<b>Instant Messaging</b>"
-msgstr "<b>Iscrtavanje fontova</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:6
-#, fuzzy
-msgid "<b>Job</b>"
-msgstr "<b>Podrška</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:7
-msgid "<b>Please type the passwords.</b>"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:8
-#, fuzzy
-msgid "<b>Telephone</b>"
-msgstr "<b>Prekidači</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:9
-#, fuzzy
-msgid "<b>Web</b>"
-msgstr "<b>Brzina</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:10
-#, fuzzy
-msgid "<b>Work</b>"
-msgstr "<b>Podrška</b>"
-
-#: ../capplets/about-me/mate-about-me.glade.h:11
-msgid "A_IM/iChat:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:12
-#, fuzzy
-msgid "A_ddress:"
-msgstr "_Dodaj:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:13
-msgid "A_ssistant:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:15
-#, fuzzy
-msgid "Address"
-msgstr "_pritisnuto"
-
-#: ../capplets/about-me/mate-about-me.glade.h:16
-#, fuzzy
-msgid "C_ity:"
-msgstr "_Stil:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:17
-#, fuzzy
-msgid "C_ompany:"
-msgstr "_Naredba:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:18
-#, fuzzy
-msgid "Cale_ndar:"
-msgstr "_Kategorija:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:19
-#, fuzzy
-msgid "Change Passwo_rd..."
-msgstr "Skup promjena"
-
-#: ../capplets/about-me/mate-about-me.glade.h:20
-#, fuzzy
-msgid "Change Password"
-msgstr "Skup promjena"
-
-#: ../capplets/about-me/mate-about-me.glade.h:21
-#, fuzzy
-msgid "Ci_ty:"
-msgstr "_Stil:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:22
-#, fuzzy
-msgid "Co_untry:"
-msgstr "Kontrola"
-
-#: ../capplets/about-me/mate-about-me.glade.h:23
-#, fuzzy
-msgid "Contact"
-msgstr "_Sadržaj"
-
-#: ../capplets/about-me/mate-about-me.glade.h:24
-#, fuzzy
-msgid "Cou_ntry:"
-msgstr "Kontrola"
-
-#: ../capplets/about-me/mate-about-me.glade.h:25
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:3
 msgid "Full Name"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:26
-#, fuzzy
-msgid "Hom_e:"
-msgstr "_Ime:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:27
-msgid "IC_Q:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:28
-msgid "M_SN:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:29
-#, fuzzy
-msgid "Old pa_ssword:"
-msgstr "_Šifra:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:30
-msgid "P.O. _box:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:31
-msgid "P._O. box:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:32
-#, fuzzy
-msgid "Personal Info"
-msgstr "Font za _terminal:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:33
-msgid "State/Pro_vince:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:34
-#, fuzzy
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:4
 msgid "User name:"
-msgstr "_Korisničko ime:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:35
-msgid "Web _log:"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:36
-msgid "Wor_k:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:5
+msgid "Change Passwo_rd..."
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:37
-msgid "Work _fax:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:6
+msgid "Enable _Fingerprint Login..."
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:38
-msgid "Zip/_Postal code:"
+#: ../capplets/about-me/mate-about-me-dialog.ui.h:7
+msgid "Disable _Fingerprint Login..."
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:39
-#, fuzzy
-msgid "_Address:"
-msgstr "_Dodaj:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:40
-msgid "_Department:"
+#: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
+msgid "Set your personal information"
 msgstr ""
 
-#: ../capplets/about-me/mate-about-me.glade.h:41
-msgid "_Groupwise:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:42
-#, fuzzy
-msgid "_Home page:"
-msgstr "_Ime teme:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:43
-#, fuzzy
-msgid "_Home:"
-msgstr "_Ime:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:44
-msgid "_Jabber:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:45
-#, fuzzy
-msgid "_Manager:"
-msgstr "_Povećalo"
-
-#: ../capplets/about-me/mate-about-me.glade.h:46
-#, fuzzy
-msgid "_Mobile:"
-msgstr "_Datoteka"
-
-#: ../capplets/about-me/mate-about-me.glade.h:47
-#, fuzzy
-msgid "_New password:"
-msgstr "_Šifra:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:48
-#, fuzzy
-msgid "_Profession:"
-msgstr "Verzija:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:49
-#, fuzzy
-msgid "_Retype new password:"
-msgstr "_Šifra:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:50
-msgid "_State/Province:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:51
-#, fuzzy
-msgid "_Title:"
-msgstr "_Stil:"
-
-#: ../capplets/about-me/mate-about-me.glade.h:52
-msgid "_Work:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:53
-msgid "_Yahoo:"
-msgstr ""
-
-#: ../capplets/about-me/mate-about-me.glade.h:54
-msgid "_Zip/Postal code:"
-msgstr ""
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:1
-msgid "<b>Applications</b>"
-msgstr "<b>Aplikacije</b>"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:2
-msgid "<b>Support</b>"
-msgstr "<b>Podrška</b>"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:3
+#: ../capplets/about-me/mate-about-me-fingerprint.c:100
 msgid ""
-"<small><i><b>Note:</b> Changes to this setting will not take effect until "
-"you next log in.</i></small>"
+"You are not allowed to access the device. Contact your system administrator."
 msgstr ""
-"<small><i><b>Napomena:</b> Promjene ove postavke neće imati efekta prije "
-"vaše sljedeće prijave.</i></small>"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:4
-msgid "Assistive Technology Preferences"
-msgstr "Postavke za pomoćnu tehnologiju"
+#: ../capplets/about-me/mate-about-me-fingerprint.c:102
+msgid "The device is already in use."
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:5
-msgid "Close and _Log Out"
-msgstr "Zatvori i _odjavi se"
+#: ../capplets/about-me/mate-about-me-fingerprint.c:104
+msgid "An internal error occured"
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:6
-msgid "Start these assistive technologies every time you log in:"
-msgstr "Pokreni pomoćnu tehnologiju pri svakom prijavljivanju:"
+#: ../capplets/about-me/mate-about-me-fingerprint.c:221
+msgid "Delete registered fingerprints?"
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:7
+#: ../capplets/about-me/mate-about-me-fingerprint.c:224
+msgid "_Delete Fingerprints"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:231
+msgid ""
+"Do you want to delete your registered fingerprints so fingerprint login is "
+"disabled?"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:359
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:15
+msgid "Done!"
+msgstr ""
+
+#. translators:
+#. * The variable is the name of the device, for example:
+#. * "Could you not access "Digital Persona U.are.U 4000/4000B" device
+#: ../capplets/about-me/mate-about-me-fingerprint.c:405
+#: ../capplets/about-me/mate-about-me-fingerprint.c:427
+#, c-format
+msgid "Could not access '%s' device"
+msgstr ""
+
+#. translators:
+#. * The variable is the name of the device, for example:
+#. * "Could you not access "Digital Persona U.are.U 4000/4000B" device
+#: ../capplets/about-me/mate-about-me-fingerprint.c:476
+#, c-format
+msgid "Could not start finger capture on '%s' device"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:523
+msgid "Could not access any fingerprint readers"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:524
+msgid "Please contact your system administrator for help."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:554
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
+msgid "Enable Fingerprint Login"
+msgstr ""
+
+#. translators:
+#. * The variable is the name of the device, for example:
+#. * "To enable fingerprint login, you need to save one of your fingerprints,
+#. using the
+#. * 'Digital Persona U.are.U 4000/4000B' device."
+#: ../capplets/about-me/mate-about-me-fingerprint.c:584
+#, c-format
+msgid ""
+"To enable fingerprint login, you need to save one of your fingerprints, "
+"using the '%s' device."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:593
+msgid "Swipe finger on reader"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.c:595
+msgid "Place finger on reader"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:1
+msgid "Left thumb"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:2
+msgid "Left middle finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:3
+msgid "Left ring finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:4
+msgid "Left little finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:5
+msgid "Right thumb"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:6
+msgid "Right middle finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:7
+msgid "Right ring finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:8
+msgid "Right little finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:10
+msgid "Right index finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:11
+msgid "Left index finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:12
+msgid "Other finger: "
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:13
+msgid "Select finger"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:14
+msgid ""
+"Your fingerprint was successfully saved. You should now be able to log in "
+"using your fingerprint reader."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:161
+msgid "Child exited unexpectedly"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:297
+#, c-format
+msgid "Could not shutdown backend_stdin IO channel: %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:310
+#, c-format
+msgid "Could not shutdown backend_stdout IO channel: %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:409
+msgid "Authenticated!"
+msgstr ""
+
+#. This is a re-auth, and it failed.
+#. * The password must have been changed in the meantime!
+#. * Ask the user to re-authenticate
+#. 
+#. Update status message and auth state
+#. Authentication failure
+#: ../capplets/about-me/mate-about-me-password.c:475
+#: ../capplets/about-me/mate-about-me-password.c:560
+msgid ""
+"Your password has been changed since you initially authenticated! Please re-"
+"authenticate."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:477
+msgid "That password was incorrect."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:528
+msgid "Your password has been changed."
+msgstr ""
+
+#. What does this indicate?
+#. * "Authentication information cannot be recovered?" from libpam?
+#: ../capplets/about-me/mate-about-me-password.c:538
+#, c-format
+msgid "System error: %s."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:541
+msgid "The password is too short."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:545
+msgid "The password is too simple."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:550
+msgid "The old and new passwords are too similar."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:552
+msgid "The new password must contain numeric or special character(s)."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:555
+msgid "The old and new passwords are the same."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:557
+msgid "The new password has already been used recently."
+msgstr ""
+
+#. translators: Unable to launch <program>: <error message>
+#: ../capplets/about-me/mate-about-me-password.c:828
+#, c-format
+msgid "Unable to launch %s: %s"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:832
+msgid "Unable to launch backend"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:833
+msgid "A system error has occurred"
+msgstr ""
+
+#. Update status message
+#: ../capplets/about-me/mate-about-me-password.c:853
+msgid "Checking password..."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:940
+msgid "Click <b>Change password</b> to change your password."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:943
+msgid "Please type your password in the <b>New password</b> field."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:946
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
+msgid ""
+"Please type your password again in the <b>Retype new password</b> field."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.c:949
+msgid "The two passwords are not equal."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:1
+msgid "Change password"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:2
+msgid "Change your password"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
+msgid ""
+"To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
+"After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:5
+msgid "Current _password:"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
+msgid "_New password:"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
+msgid "_Retype new password:"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:8
+msgid "_Authenticate"
+msgstr ""
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:10
+msgid "Change pa_ssword"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
+msgid "Assistive Technologies Preferences"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+msgid "Assistive Technologies"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
+msgid "_Preferred Applications"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+msgid "Jump to Preferred Applications dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
 msgid "_Enable assistive technologies"
 msgstr "_Uključi pomoćnu tehnologiju"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:8
-msgid "_Magnifier"
-msgstr "_Povećalo"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+msgid ""
+"Changes to enable assistive technologies will not take effect until your "
+"next log in."
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:9
-msgid "_On-screen keyboard"
-msgstr "_Tastatura na ekranu"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+msgid "Preferences"
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.glade.h:10
-msgid "_Screenreader"
-msgstr "_Čitač ekrana"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+msgid "_Keyboard Accessibility"
+msgstr ""
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
-msgid "Assistive Technology Support"
-msgstr "Podrška za pomoćnu tehnologiju"
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+msgid "Jump to the Keyboard Accessibility dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+msgid "_Mouse Accessibility"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+msgid "Jump to the Mouse Accessibility dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+msgid "Accessible Lo_gin"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+msgid "Jump to the Accessible Login dialog"
+msgstr ""
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
+msgid "Close and _Log Out"
+msgstr "Zatvori i _odjavi se"
 
 #: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
-msgid "Enable support for MATE assistive technologies at login"
-msgstr "Uključi podršku za MATE pomoćnu tehnologiju pri prijavi"
-
-#: ../capplets/accessibility/at-properties/main.c:60
-msgid ""
-"No Assistive Technology is available on your system.  The 'gok' package must "
-"be installed in order to get on-screen keyboard support, and the "
-"'gnopernicus' package must be installed for screenreading and magnifying "
-"capabilities."
-msgstr ""
-"Pomoćna tehnologija nije dostupna na ovom sistemu.  Za podršku tastature na "
-"ekranu mora paket 'gok' biti instaliran, a za čitanje ekrana i povećavanje "
-"mora paket 'gnopernicus' biti instaliran."
-
-#: ../capplets/accessibility/at-properties/main.c:62
-msgid ""
-"Not all available assistive technologies are installed on your system.  The "
-"'gok' package must be installed in order to get on-screen keyboard support."
-msgstr ""
-"Nisu sve dostupne pomoćne tehnologije instalirane na vašem sistemu.  Paket "
-"'gok' mora biti instaliran za podršku tastature na ekranu."
-
-#: ../capplets/accessibility/at-properties/main.c:64
-msgid ""
-"Not all available assistive technologies are installed on your system.  The "
-"'gnopernicus' package must be installed for screenreading and magnifying "
-"capabilities."
-msgstr ""
-"Nisu sve dostupne pomoćne tehnologije instalirane na vašem sistemu.  Paket "
-"'gnopernicus' mora biti instaliran za čitanje ekrana i povećavanje."
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:241
-#, c-format
-msgid "There was an error launching the mouse preferences dialog: %s"
-msgstr "Dogodila se greška pri pokretanju dijaloga za postavke miša: %s"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:337
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:398
-#, c-format
-msgid "Unable to import AccessX settings from file '%s'"
-msgstr "Ne mogu uvesti postavke za AccessX iz datoteke '%s'"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:435
-msgid "Import Feature Settings File"
-msgstr "Uvezi datoteku s postavkama osobina"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.c:439
-msgid "_Import"
-msgstr "_Uvezi"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in.h:1
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:20
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
-msgid "Keyboard"
-msgstr "Tastatura"
-
-#: ../capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in.h:2
-msgid "Set your keyboard accessibility preferences"
-msgstr "Postavite opcije pristupačnosti tastature"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.c:59
-msgid ""
-"This system does not seem to have the XKB extension.  The keyboard "
-"accessibility features will not operate without it."
-msgstr ""
-"Sistem nema XKB proširenje. Osobine pristupačnosti tastature neće raditi bez "
-"toga."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:2
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:1
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:2
-#: ../capplets/theme-switcher/theme-install.glade.h:1
-#: ../capplets/theme-switcher/theme-properties.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:3
-msgid "<b>Enable Bo_unce Keys</b>"
-msgstr "<b>Omogući _odskočne tipke</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:4
-msgid "<b>Enable Slo_w Keys</b>"
-msgstr "<b>Omogući _spore tipke</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:5
-msgid "<b>Enable _Mouse Keys</b>"
-msgstr "<b>Omogući tipke na _mišu</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:6
-msgid "<b>Enable _Repeat Keys</b>"
-msgstr "<b>Omogući _ponavljanje tipki</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:7
-msgid "<b>Enable _Sticky Keys</b>"
-msgstr "<b>Omogući _ljepljive tipke</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:8
-msgid "<b>Features</b>"
-msgstr "<b>Osobine</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:9
-msgid "<b>Toggle Keys</b>"
-msgstr "<b>Prekidači</b>"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:10
-msgid "Basic"
-msgstr "Osnovno"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:11
-msgid "Beep if key is re_jected"
-msgstr "_Bipni ako je tipka odbijena"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:12
-msgid "Beep when _features turned on or off from keyboard"
-msgstr "Bipni kada su _osobine tastature uključene ili isključene"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:13
-msgid "Beep when _modifier is pressed"
-msgstr "Bipni kada je _modifikator pritisnut"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:14
-msgid "Beep when an LED is turned on and two beeps when one is turned off."
-msgstr "Bipni jednom kad se lampica upali, a dvaput kad se ugasi."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:15
-msgid "Beep when key is:"
-msgstr "Bipni kada je tipka:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:16
-msgid "Del_ay:"
-msgstr "Od_gađanje:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:17
-msgid "Delay between keypress and pointer mo_vement:"
-msgstr "Pauza između pritiska tipke i _pomjeranja pokazivača:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:18
-msgid "Disa_ble if two keys pressed together"
-msgstr "O_nemogući ako su dvije tipke pritisnute zajedno"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:19
-msgid "E_nable Toggle Keys"
-msgstr "_Omogući prekidače"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:20
-msgid "Filters"
-msgstr "Filteri"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:21
-msgid "I_gnore duplicate keypresses within:"
-msgstr "_Zanemari dvostruke pritiske tipki do:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:22
-msgid ""
-"Ignore all subsequent presses of the SAME key if they happen within a user "
-"selectable period of time."
-msgstr ""
-"Zanemari sve naredne pritiske ISTE tipke ako se dogode u okviru korisnički "
-"definisanog perioda vremena."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:23
-msgid "Keyboard Accessibility Preferences (AccessX)"
-msgstr "Opcije pristupačnosti tastature (AccessX)"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:24
-msgid "Ma_ximum pointer speed:"
-msgstr "Ma_ksimalna brzina kursora:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:25
-msgid "Mouse Keys"
-msgstr "Tipke miša"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:26
-msgid "Mouse _Preferences..."
-msgstr "Opcije _miša..."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:27
-msgid ""
-"Only accept keys after they have been pressed and held for a user adjustable "
-"amount of time."
-msgstr ""
-"Prihvati tipke samo nakon što su bile pritisnute određeno korisnički "
-"definisano vrijeme."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:28
-msgid ""
-"Perform multiple simultaneous key press operations by pressing modifier keys "
-"in sequence."
-msgstr ""
-"Izvrši višestruke simultane operacije pritiska tipki pritiskajući "
-"modifikatorske tipke u nizu."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:29
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:29
-msgid "S_peed:"
-msgstr "_Brzina:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:30
-msgid "Time to acce_lerate to maximum speed:"
-msgstr "Vrijema _ubrzanja do maksimalne brzine:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:31
-msgid "Turn the numeric keypad into a mouse control pad."
-msgstr "Preobrati numerički dio tastature u kontrolnu ploču miša."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:32
-msgid "_Disable if unused for:"
-msgstr "_Onemogući ako nije korišteno:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:33
-msgid "_Enable keyboard accessibility features"
-msgstr "_Omogući osobine pristupačnosti tastature"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:34
-msgid "_Import Feature Settings..."
-msgstr "_Uvezi postavke osobina..."
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:35
-msgid "_Only accept keys held for:"
-msgstr "Prihvati _samo tipke koje su pritisnute:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:36
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:39
-msgid "_Type to test settings:"
-msgstr "_Tipkaj za provjeru postavki:"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:37
-msgid "_accepted"
-msgstr "_prihvaćeno"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:38
-msgid "_pressed"
-msgstr "_pritisnuto"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:39
-msgid "_rejected"
-msgstr "_odbijeno"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:40
-msgid "characters/second"
-msgstr "znakova u sekundi"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:41
-msgid "milliseconds"
-msgstr "milisekundi"
-
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:42
-msgid "pixels/second"
-msgstr "piksli u sekundi"
-
-#. set the timeout value  label with correct value of timeout
-#: ../capplets/accessibility/keyboard/mate-accessibility-keyboard-properties.glade.h:43
-#: ../capplets/mouse/mate-mouse-properties.c:138
-#: ../capplets/mouse/mate-mouse-properties.c:885
-#: ../capplets/mouse/mate-mouse-properties.glade.h:27
-#: ../capplets/windows/mate-window-properties.glade.h:10
-msgid "seconds"
-msgstr "sekundi"
-
-#: ../capplets/background/background.desktop.in.in.h:1
-msgid "Change your Desktop Background settings"
-msgstr "Promijenite postavke pozadine vašeg desktopa"
-
-#: ../capplets/background/background.desktop.in.in.h:2
-msgid "Desktop Background"
-msgstr "Pozadina desktopa"
-
-#: ../capplets/background/mate-background-properties.glade.h:1
-msgid "<b>Desktop _Wallpaper</b>"
-msgstr "<b>_Pozadina desktopa</b>"
-
-#: ../capplets/background/mate-background-properties.glade.h:2
-msgid "<b>_Desktop Colors</b>"
-msgstr "<b>_Boje desktopa</b>"
-
-#: ../capplets/background/mate-background-properties.glade.h:3
-msgid "Desktop Background Preferences"
-msgstr "Opcije pozadine desktopa"
-
-#: ../capplets/background/mate-background-properties.glade.h:4
-msgid "Open a dialog to specify the color"
+msgid "Choose which accessibility features to enable when you log in"
 msgstr ""
 
-#: ../capplets/background/mate-background-properties.glade.h:5
-msgid "_Add Wallpaper"
-msgstr "_Dodaj pozadinu"
-
-#: ../capplets/background/mate-background-properties.glade.h:6
-msgid "_Style:"
-msgstr "_Stil:"
-
-#: ../capplets/background/mate-wp-capplet.c:74
-#: ../capplets/common/capplet-util.c:340
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:333
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "Dogodila se greška pri prikazivanju pomoći: %s"
-
-#: ../capplets/background/mate-wp-capplet.c:1042
-#: ../capplets/background/mate-wp-capplet.c:1060
-msgid "Centered"
-msgstr "Centrirano"
-
-#: ../capplets/background/mate-wp-capplet.c:1068
-#: ../capplets/background/mate-wp-capplet.c:1085
-msgid "Fill Screen"
-msgstr "Popuni ekran"
-
-#: ../capplets/background/mate-wp-capplet.c:1093
-#: ../capplets/background/mate-wp-capplet.c:1110
-msgid "Scaled"
-msgstr "Srazmjerno"
-
-#: ../capplets/background/mate-wp-capplet.c:1118
-#: ../capplets/background/mate-wp-capplet.c:1135
-msgid "Tiled"
-msgstr "Popločano"
-
-#: ../capplets/background/mate-wp-capplet.c:1159
-#: ../capplets/background/mate-wp-capplet.c:1168
-msgid "Solid Color"
-msgstr "Puna boja"
-
-#: ../capplets/background/mate-wp-capplet.c:1176
-#: ../capplets/background/mate-wp-capplet.c:1185
-msgid "Horizontal Gradient"
-msgstr "Vodoravni gradijent"
-
-#: ../capplets/background/mate-wp-capplet.c:1193
-#: ../capplets/background/mate-wp-capplet.c:1202
-msgid "Vertical Gradient"
-msgstr "Uspravni gradijent"
-
-#. Create the file chooser dialog stuff here
-#: ../capplets/background/mate-wp-capplet.c:1251
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "Dodaj pozadinu"
 
-#: ../capplets/background/mate-wp-info.c:57
-msgid "No Wallpaper"
-msgstr "Bez pozadine"
+#: ../capplets/appearance/appearance-desktop.c:650
+msgid "All files"
+msgstr ""
 
-#: ../capplets/background/mate-wp-item.c:292
-#: ../capplets/background/mate-wp-item.c:294
+#: ../capplets/appearance/appearance-main.c:57
+#, c-format
+msgid "Could not load user interface file: %s"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:153
+msgid "Specify the filename of a theme to install"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:154
+msgid "filename"
+msgstr ""
+
+#. TRANSLATORS: don't translate the terms in brackets
+#: ../capplets/appearance/appearance-main.c:161
+msgid ""
+"Specify the name of the page to show (theme|background|fonts|interface)"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:162
+#: ../capplets/default-applications/mate-da-capplet.c:525
+#: ../capplets/mouse/mate-mouse-properties.c:511
+msgid "page"
+msgstr ""
+
+#: ../capplets/appearance/appearance-main.c:169
+msgid "[WALLPAPER...]"
+msgstr ""
+
+#: ../capplets/appearance/appearance-style.c:171
+#: ../capplets/common/mate-theme-info.c:497
+#: ../capplets/common/mate-theme-info.c:694
+msgid "Default Pointer"
+msgstr ""
+
+#: ../capplets/appearance/appearance-style.c:233
+#: ../capplets/appearance/appearance-themes.c:674
+msgid "Install"
+msgstr ""
+
+#: ../capplets/appearance/appearance-style.c:255
+#: ../capplets/common/mate-theme-info.c:1723
+#, c-format
+msgid ""
+"This theme will not look as intended because the required GTK+ theme engine "
+"'%s' is not installed."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:662
+msgid "Apply Background"
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:666
+msgid "Apply Font"
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:670
+msgid "Revert Font"
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:701
+msgid ""
+"The current theme suggests a background and a font. Also, the last applied "
+"font suggestion can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:703
+msgid ""
+"The current theme suggests a background. Also, the last applied font "
+"suggestion can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:705
+msgid "The current theme suggests a background and a font."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:707
+msgid ""
+"The current theme suggests a font. Also, the last applied font suggestion "
+"can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:709
+msgid "The current theme suggests a background."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:711
+msgid "The last applied font suggestion can be reverted."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:713
+msgid "The current theme suggests a font."
+msgstr ""
+
+#: ../capplets/appearance/appearance-themes.c:1029
+msgid "Custom"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:1
+msgid "Font Rendering Details"
+msgstr "Detalji iscrtavanja fontova"
+
+#: ../capplets/appearance/data/appearance.ui.h:2
+msgid "R_esolution:"
+msgstr "_Rezolucija:"
+
+#: ../capplets/appearance/data/appearance.ui.h:3
+msgid "dots per inch"
+msgstr "tačaka po inču"
+
+#: ../capplets/appearance/data/appearance.ui.h:4
+msgid "Smoothing"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:5
+msgid "_None"
+msgstr "_Nijedno"
+
+#: ../capplets/appearance/data/appearance.ui.h:6
+msgid "Gra_yscale"
+msgstr "Sive _nijanse"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "Sub_pixel (LCDs)"
+msgstr "_Podpiksla (LCD)"
+
+#. font hinting
+#: ../capplets/appearance/data/appearance.ui.h:9
+msgid "Hinting"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:10
+msgid "N_one"
+msgstr "_Nijedan"
+
+#: ../capplets/appearance/data/appearance.ui.h:11
+msgid "_Slight"
+msgstr "_Malo"
+
+#: ../capplets/appearance/data/appearance.ui.h:12
+msgid "_Medium"
+msgstr "_Srednje"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Full"
+msgstr "_Potpuno"
+
+#: ../capplets/appearance/data/appearance.ui.h:14
+msgid "Subpixel Order"
+msgstr ""
+
+#. pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:16
+msgid "_RGB"
+msgstr "_RGB"
+
+#. pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:18
+msgid "_BGR"
+msgstr "_BGR"
+
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:20
+msgid "_VRGB"
+msgstr "_VRGB"
+
+#. vertical hinting, pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "VB_GR"
+msgstr "VB_GR"
+
+#: ../capplets/appearance/data/appearance.ui.h:23
+msgid "Appearance Preferences"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:24
+msgid "Save _As..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:25
+msgid "C_ustomize..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:26
+msgid "_Install..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:27
+msgid "Get more themes online"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Theme"
+msgstr "Tema"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Style:"
+msgstr "_Stil:"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "C_olors:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "Open a dialog to specify the color"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:32
+msgid "Get more backgrounds online"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:33
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:34
+msgid "Background"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:35
+msgid "_Document font:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:36
+msgid "Des_ktop font:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:37
+msgid "_Window title font:"
+msgstr "Font za naslov _prozora:"
+
+#: ../capplets/appearance/data/appearance.ui.h:38
+msgid "_Fixed width font:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:39
+msgid "_Application font:"
+msgstr "Font za _aplikacije:"
+
+#: ../capplets/appearance/data/appearance.ui.h:40
+msgid "Rendering"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:41
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "Glačanje _podpiksli (LCD)"
+
+#: ../capplets/appearance/data/appearance.ui.h:42
+msgid "Best co_ntrast"
+msgstr "Najbolji _kontrast"
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+msgid "Best _shapes"
+msgstr "Najbolji _oblici"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Monochrome"
+msgstr "_Jednobojno"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "D_etails..."
+msgstr "_Detalji..."
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Fonts"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Tile"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Zoom"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Center"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Scale"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Stretch"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Span"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Solid color"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Horizontal gradient"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Text below items"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Text beside items"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Icons only"
+msgstr "Samo ikone"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Text only"
+msgstr "Samo tekst"
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "Customize Theme"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "Controls"
+msgstr "Kontrole"
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "The current controls theme does not support color schemes."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "_Tooltips:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Selected items:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "_Input boxes:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:66
+msgid "_Windows:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Text"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "Colors"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "Window Border"
+msgstr "Okvir prozora"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Icons"
+msgstr "Ikone"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "Changing your cursor theme takes effect the next time you log in."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Size:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
+msgid "Small"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+msgid "Large"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Pointer"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Save Theme As..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Name:"
+msgstr "_Ime:"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "_Description:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:80
+msgid "Save _background image"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
+msgid "Appearance"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:2
+msgid "Customize the look of the desktop"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:1
+msgid "Theme Installer"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
+msgid "Installs themes packages for various parts of the desktop"
+msgstr ""
+
+#: ../capplets/appearance/data/mate-theme-package.xml.in.h:1
+msgid "Mate Theme Package"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-info.c:51
+msgid "No Desktop Background"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:289
+msgid "Slide Show"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:291
+msgid "Image"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:297
+msgid "multiple sizes"
+msgstr ""
+
+#. translators: x pixel(s) by y pixel(s)
+#: ../capplets/appearance/mate-wp-item.c:300
+#, c-format
+msgid "%d %s by %d %s"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:302
+#: ../capplets/appearance/mate-wp-item.c:304
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
-#: ../capplets/common/activate-settings-daemon.c:18
+#. translators: <b>wallpaper name</b>
+#. * mime type, size
+#. * Folder: /path/to/file
+#. 
+#: ../capplets/appearance/mate-wp-item.c:312
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"%s, %s\n"
+"Folder: %s"
+msgstr ""
+
+#. translators: <b>wallpaper name</b>
+#. * Image missing
+#. * Folder: /path/to/file
+#. 
+#: ../capplets/appearance/mate-wp-item.c:324
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"%s\n"
+"Folder: %s"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:328
+msgid "Image missing"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:178
+#: ../capplets/appearance/theme-installer.c:234
+msgid "Cannot install theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:180
+#, c-format
+msgid "The %s utility is not installed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:236
+msgid "There was a problem while extracting the theme."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:264
+msgid "There was an error installing the selected file"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:265
+#, c-format
+msgid "\"%s\" does not appear to be a valid theme."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:266
+#, c-format
+msgid ""
+"\"%s\" does not appear to be a valid theme. It may be a theme engine which "
+"you need to compile."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:372
+#, c-format
+msgid "Installation for theme \"%s\" failed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:411
+#, c-format
+msgid "The theme \"%s\" has been installed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:421
+msgid "Would you like to apply it now, or keep your current theme?"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:424
+msgid "Keep Current Theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:427
+msgid "Apply New Theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:479
+#, c-format
+msgid "MATE Theme %s correctly installed"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:541
+msgid "Failed to create temporary directory"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:604
+msgid "New themes have been successfully installed."
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:654
+msgid "No theme file location specified to install"
+msgstr "Nije navedeno mjesto gdje će datoteke tema biti instalirane"
+
+#: ../capplets/appearance/theme-installer.c:678
+#, c-format
+msgid ""
+"Insufficient permissions to install the theme in:\n"
+"%s"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:756
+msgid "Select Theme"
+msgstr ""
+
+#: ../capplets/appearance/theme-installer.c:767
+msgid "Theme Packages"
+msgstr ""
+
+#: ../capplets/appearance/theme-save.c:94
+#, c-format
+msgid "Theme name must be present"
+msgstr "Ime teme mora biti upisano"
+
+#: ../capplets/appearance/theme-save.c:157
+msgid "The theme already exists. Would you like to replace it?"
+msgstr ""
+
+#: ../capplets/appearance/theme-save.c:158
+#: ../capplets/common/file-transfer-dialog.c:451
+msgid "_Overwrite"
+msgstr ""
+
+#: ../capplets/appearance/theme-util.c:73
+msgid "Would you like to delete this theme?"
+msgstr ""
+
+#: ../capplets/appearance/theme-util.c:123
+msgid "Theme cannot be deleted"
+msgstr ""
+
+#: ../capplets/appearance/theme-util.c:249
+msgid "Could not install theme engine"
+msgstr ""
+
+#: ../capplets/common/activate-settings-daemon.c:16
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
-"Without the MATE settings manager running, some preferences may not take "
-"effect. This could indicate a problem with MateComponent, or a non-MATE (e.g. KDE) "
-"settings manager may already be active and conflicting with the MATE "
-"settings manager."
-msgstr ""
-"Ne mogu pokrenuti upravitelj postavki 'mate-settings-daemon'.\n"
-"Bez upravitelja postavki za MATE neke opcije neće raditi. Ovo može "
-"ukazivati na problem sa MateComponent ili je možda neki ne-MATE (npr. KDE) "
-"upravitelj postavki već aktivan i u konfliktu sa upraviteljom postavki za "
-"MATE."
-
-#: ../capplets/common/capplet-stock-icons.c:94
-#, c-format
-msgid "Unable to load capplet stock icon '%s'\n"
-msgstr "Ne mogu učitati standardnu ikonu '%s' za capplet\n"
-
-#: ../capplets/common/capplet-util.c:239 ../capplets/common/capplet-util.c:241
-msgid "Just apply settings and quit"
-msgstr "Samo primijeni postavke i izađi"
-
-#: ../capplets/common/capplet-util.c:243
-#: ../capplets/default-applications/mate-default-applications-properties.c:765
-#: ../capplets/keyboard/mate-keyboard-properties.c:225
-#: ../capplets/mouse/mate-mouse-properties.c:1021
-#: ../capplets/sound/sound-properties-capplet.c:244
-msgid "Retrieve and store legacy settings"
-msgstr "Dobavi i pohrani starije postavke"
-
-#: ../capplets/common/file-transfer-dialog.c:94
-#, c-format
-msgid "Copying file: %i of %i"
+"Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
 msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:122
+#: ../capplets/common/capplet-stock-icons.c:66
+#, c-format
+msgid "Unable to load stock icon '%s'\n"
+msgstr ""
+
+#: ../capplets/common/capplet-util.c:88
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Dogodila se greška pri prikazivanju pomoći: %s"
+
+#: ../capplets/common/file-transfer-dialog.c:98
+#, c-format
+msgid "Copying file: %u of %u"
+msgstr ""
+
+#: ../capplets/common/file-transfer-dialog.c:145
 #, c-format
 msgid "Copying '%s'"
 msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:193
-msgid "From URI"
-msgstr "Sa URI-a"
-
-#: ../capplets/common/file-transfer-dialog.c:194
-msgid "URI currently transferring from"
-msgstr "URI sa kojeg se trenutno vrši prijenos"
-
-#: ../capplets/common/file-transfer-dialog.c:201
-msgid "To URI"
-msgstr "Na URI"
-
-#: ../capplets/common/file-transfer-dialog.c:202
-msgid "URI currently transferring to"
-msgstr "URI na koji se trenutno vrši prijenos"
-
-#: ../capplets/common/file-transfer-dialog.c:209
-msgid "Fraction completed"
-msgstr "Završen dio"
-
-#: ../capplets/common/file-transfer-dialog.c:210
-msgid "Fraction of transfer currently completed"
-msgstr "Trenutno završeni dio prijenosa"
-
-#: ../capplets/common/file-transfer-dialog.c:217
-msgid "Current URI index"
-msgstr "Trenutni URI indeks"
-
-#: ../capplets/common/file-transfer-dialog.c:218
-msgid "Current URI index - starts from 1"
-msgstr "Trenutni URI indeks počinje od 1"
-
-#: ../capplets/common/file-transfer-dialog.c:225
-msgid "Total URIs"
-msgstr "Ukupno URI-a"
-
-#: ../capplets/common/file-transfer-dialog.c:226
-msgid "Total number of URIs"
-msgstr "Ukupan broj URI-a"
-
-#: ../capplets/common/file-transfer-dialog.c:327
-#: ../capplets/common/file-transfer-dialog.c:369
+#: ../capplets/common/file-transfer-dialog.c:185
+#: ../capplets/common/file-transfer-dialog.c:313
 msgid "Copying files"
 msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:345
-#, fuzzy
-msgid "From:"
-msgstr "Iz: %s"
+#: ../capplets/common/file-transfer-dialog.c:224
+msgid "Parent Window"
+msgstr ""
 
-#: ../capplets/common/file-transfer-dialog.c:349
-#, fuzzy
-msgid "To:"
-msgstr "U: %s"
+#: ../capplets/common/file-transfer-dialog.c:225
+msgid "Parent window of the dialog"
+msgstr ""
+
+#: ../capplets/common/file-transfer-dialog.c:231
+msgid "From URI"
+msgstr "Sa URI-a"
+
+#: ../capplets/common/file-transfer-dialog.c:232
+msgid "URI currently transferring from"
+msgstr "URI sa kojeg se trenutno vrši prijenos"
+
+#: ../capplets/common/file-transfer-dialog.c:239
+msgid "To URI"
+msgstr "Na URI"
+
+#: ../capplets/common/file-transfer-dialog.c:240
+msgid "URI currently transferring to"
+msgstr "URI na koji se trenutno vrši prijenos"
+
+#: ../capplets/common/file-transfer-dialog.c:247
+msgid "Fraction completed"
+msgstr "Završen dio"
+
+#: ../capplets/common/file-transfer-dialog.c:248
+msgid "Fraction of transfer currently completed"
+msgstr "Trenutno završeni dio prijenosa"
+
+#: ../capplets/common/file-transfer-dialog.c:255
+msgid "Current URI index"
+msgstr "Trenutni URI indeks"
+
+#: ../capplets/common/file-transfer-dialog.c:256
+msgid "Current URI index - starts from 1"
+msgstr "Trenutni URI indeks počinje od 1"
+
+#: ../capplets/common/file-transfer-dialog.c:263
+msgid "Total URIs"
+msgstr "Ukupno URI-a"
+
+#: ../capplets/common/file-transfer-dialog.c:264
+msgid "Total number of URIs"
+msgstr "Ukupan broj URI-a"
+
+#: ../capplets/common/file-transfer-dialog.c:445
+#, c-format
+msgid "File '%s' already exists. Do you want to overwrite it?"
+msgstr ""
 
 #: ../capplets/common/file-transfer-dialog.c:448
-msgid "Connecting..."
-msgstr "Spajam se..."
-
-#: ../capplets/common/mateconf-property-editor.c:170
-msgid "Key"
-msgstr "Ključ"
-
-#: ../capplets/common/mateconf-property-editor.c:171
-msgid "MateConf key to which this property editor is attached"
-msgstr "MateConf ključ na koji je prikačen ovaj editor osobina"
-
-#: ../capplets/common/mateconf-property-editor.c:177
-msgid "Callback"
-msgstr "Povratni poziv"
-
-#: ../capplets/common/mateconf-property-editor.c:178
-msgid "Issue this callback when the value associated with key gets changed"
+msgid "_Skip"
 msgstr ""
-"Pošalji ovaj povratni poziv kada se vrijednost koja je asocirana sa ključem "
-"promijeni"
 
-#: ../capplets/common/mateconf-property-editor.c:183
-msgid "Change set"
-msgstr "Skup promjena"
-
-#: ../capplets/common/mateconf-property-editor.c:184
-msgid ""
-"MateConf change set containing data to be forwarded to the mateconf client on apply"
+#: ../capplets/common/file-transfer-dialog.c:449
+msgid "Overwrite _All"
 msgstr ""
-"MateConf skup promjena sadrži podatke koji će se dalje poslati mateconf klijentu "
-"pri aktiviranju"
 
-#: ../capplets/common/mateconf-property-editor.c:189
-msgid "Conversion to widget callback"
-msgstr "Pretvaranje u povratni poziv grafičkog elementa"
-
-#: ../capplets/common/mateconf-property-editor.c:190
-msgid ""
-"Callback to be issued when data are to be converted from MateConf to the widget"
+#: ../capplets/common/mate-theme-info.c:695
+msgid "Default Pointer - Current"
 msgstr ""
-"Povratni poziv koji će se poslati kada podaci tebaju biti pretvoreni iz "
-"MateConf u grafički element"
 
-#: ../capplets/common/mateconf-property-editor.c:195
-msgid "Conversion from widget callback"
-msgstr "Pretvaranje iz povratnog poziva grafičkog elementa"
-
-#: ../capplets/common/mateconf-property-editor.c:196
-msgid ""
-"Callback to be issued when data are to be converted to MateConf from the widget"
+#: ../capplets/common/mate-theme-info.c:699
+msgid "White Pointer"
 msgstr ""
-"Povratni poziv koji će se poslati kada podaci tebaju biti pretvoreni u MateConf "
-"iz grafičkog elementa"
 
-#: ../capplets/common/mateconf-property-editor.c:201
-msgid "UI Control"
-msgstr "Kontrola korisničkog interfejsa"
-
-#: ../capplets/common/mateconf-property-editor.c:202
-msgid "Object that controls the property (normally a widget)"
-msgstr "Objekat koji kontrolira osobinu (obično grafički element)"
-
-#: ../capplets/common/mateconf-property-editor.c:217
-msgid "Property editor object data"
-msgstr "Podaci objekta editora osobina"
-
-#: ../capplets/common/mateconf-property-editor.c:218
-msgid "Custom data required by the specific property editor"
-msgstr "Vlastiti podaci su neophodni za editor posebnih osobina"
-
-#: ../capplets/common/mateconf-property-editor.c:224
-msgid "Property editor data freeing callback"
-msgstr "Povratni poziv koji oslobađa podatke editora osobina"
-
-#: ../capplets/common/mateconf-property-editor.c:225
-msgid "Callback to be issued when property editor object data is to be freed"
+#: ../capplets/common/mate-theme-info.c:700
+msgid "White Pointer - Current"
 msgstr ""
-"Povratni poziv koji se šalje kada će se osloboditi podaci objekta editora "
-"osobina"
 
-#: ../capplets/common/mateconf-property-editor.c:1466
+#: ../capplets/common/mate-theme-info.c:704
+msgid "Large Pointer"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:705
+msgid "Large Pointer - Current"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:709
+msgid "Large White Pointer - Current"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:710
+msgid "Large White Pointer"
+msgstr ""
+
+#: ../capplets/common/mate-theme-info.c:1694
 #, c-format
 msgid ""
-"Couldn't find the file '%s'.\n"
-"\n"
-"Please make sure it exists and try again, or choose a different background "
-"picture."
+"This theme will not look as intended because the required GTK+ theme '%s' is"
+" not installed."
 msgstr ""
-"Nisam mogao pronaći datoteku '%s'.\n"
-"\n"
-"Molim provjerite da li postoji i pokušajte ponovo ili izaberite neku drugu "
-"sliku pozadine."
 
-#: ../capplets/common/mateconf-property-editor.c:1474
+#: ../capplets/common/mate-theme-info.c:1704
 #, c-format
 msgid ""
-"I don't know how to open the file '%s'.\n"
-"Perhaps it's a kind of picture that is not yet supported.\n"
-"\n"
-"Please select a different picture instead."
+"This theme will not look as intended because the required window manager "
+"theme '%s' is not installed."
 msgstr ""
-"Ne znam otvoriti datoteku '%s'.\n"
-"Možda je u pitanju vrsta slike koja još nije podržana.\n"
-"\n"
-"Molim izaberite neku drugu sliku."
 
-#: ../capplets/common/mateconf-property-editor.c:1593
-msgid "Please select an image."
-msgstr "Molim izaberite sliku."
-
-#: ../capplets/common/mateconf-property-editor.c:1598
-msgid "_Select"
-msgstr "_Izaberi"
+#: ../capplets/common/mate-theme-info.c:1712
+#, c-format
+msgid ""
+"This theme will not look as intended because the required icon theme '%s' is"
+" not installed."
+msgstr ""
 
 #: ../capplets/default-applications/default-applications.desktop.in.in.h:1
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:18
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "Povlaštene aplikacije"
 
@@ -1010,975 +1302,940 @@ msgstr "Povlaštene aplikacije"
 msgid "Select your default applications"
 msgstr "Izaberite vaše uobičajene aplikacije"
 
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:9
-#, fuzzy
-msgid "Debian Sensible Browser"
-msgstr "Uobičajeni web preglednik"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:10
-msgid "Epiphany"
-msgstr "Epiphany"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:11
-msgid "Galeon"
-msgstr "Galeon"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:12
-msgid "Encompass"
-msgstr "Encompass"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:13
-#, fuzzy
-msgid "Firebird"
-msgstr "Firebird/FireFox"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:14
-msgid "Firefox"
+#: ../capplets/default-applications/mate-da-capplet.c:413
+msgid "Could not load the main interface"
 msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:15
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:16
-#, fuzzy
-msgid "Mozilla"
-msgstr "Mozilla Mail"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:17
-msgid "Netscape Communicator"
-msgstr "Netscape Communicator"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:18
-msgid "Konqueror"
-msgstr "Konqueror"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:19
-msgid "W3M Text Browser"
-msgstr "W3M tekstualni preglednik"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:20
-msgid "Lynx Text Browser"
-msgstr "Lynx tekstualni preglednik"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:21
-msgid "Links Text Browser"
-msgstr "Links tekstualni preglednik"
-
-#. The code in mate-default-applications-properties.c makes sure
-#. * there is only one (the first entry in this list) Evolution entry
-#. * in the list shown to the user
-#.
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:36
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:37
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:38
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:39
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:40
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:41
-msgid "Evolution Mail Reader"
-msgstr "Evolution čitač email-a"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:42
-msgid "Balsa"
-msgstr "Balsa"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:43
-msgid "KMail"
-msgstr "KMail"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:44
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:45
-msgid "Thunderbird"
+#: ../capplets/default-applications/mate-da-capplet.c:414
+msgid "Please make sure that the applet is properly installed"
 msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:46
-msgid "Mozilla Mail"
-msgstr "Mozilla Mail"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:47
-msgid "Mutt"
-msgstr "Mutt"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:58
-#, fuzzy
-msgid "Debian Terminal Emulator"
-msgstr "Uobičajeni terminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:59
-#, fuzzy
-msgid "MATE Terminal"
-msgstr "Terminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:60
-msgid "Standard XTerminal"
-msgstr "Standardni XTerminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:61
-msgid "NXterm"
-msgstr "NXterm"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:62
-msgid "RXVT"
-msgstr "RXVT"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:63
-#, fuzzy
-msgid "aterm"
-msgstr "NXterm"
-
-#: ../capplets/default-applications/mate-default-applications-properties-structs.c:64
-msgid "ETerm"
-msgstr "ETerm"
-
-#: ../capplets/default-applications/mate-default-applications-properties.c:123
-msgid "Please specify a name and a command for this editor."
-msgstr "Molim navedite ime i naredbu za ovaj editor."
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:2
-msgid "Add..."
-msgstr "Dodaj..."
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:3
-#, fuzzy
-msgid "C_ustom"
-msgstr "Vlastiti"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:4
-#, fuzzy
-msgid "C_ustom:"
-msgstr "Vlastiti"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:5
-msgid "Can open _URIs"
+#. TRANSLATORS: don't translate the terms in brackets
+#: ../capplets/default-applications/mate-da-capplet.c:524
+msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:6
-#, fuzzy
-msgid "Can open multiple _files"
-msgstr "Ova aplikacija može otvoriti _više datoteka"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:7
-msgid "Co_mmand:"
-msgstr "_Naredba:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:8
-msgid "Custom Editor Properties"
-msgstr "Osobine vlastitog editora"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:9
-msgid "Default Mail Reader"
-msgstr "Uobičajeni čitač email-a"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:10
-msgid "Default Terminal"
-msgstr "Uobičajeni terminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:11
-msgid "Default Text Editor"
-msgstr "Uobičajeni editor teksta"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:12
-msgid "Default Web Browser"
-msgstr "Uobičajeni web preglednik"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:13
-msgid "Default Window Manager"
-msgstr "Uobičajeni upravitelj prozora"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:14
-msgid "Delete"
-msgstr "Obriši"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:15
-msgid "E_xec Flag:"
-msgstr "Oznaka _izvršne datoteke:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:16
-msgid "Edit..."
-msgstr "Izmijeni..."
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:17
-msgid "Mail Reader"
-msgstr "Čitač email-a"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:19
-#, fuzzy
-msgid "Run in a _terminal"
-msgstr "Pokreni u _terminalu"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:20
-#, fuzzy
-msgid "Run in a t_erminal"
-msgstr "Pokreni u _terminalu"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:21
-msgid ""
-"Select the window manager you want.  You will need to hit apply, wave the "
-"magic wand, and do a magic dance for it to work."
+#: ../capplets/default-applications/mate-da-capplet.c:530
+msgid "- MATE Default Applications"
 msgstr ""
-"Izaberite upravitelj prozora koji želite.  Da bi radio, moraćete pritisnuti "
-"primijeni, mahnuti čarobnim štapićem i zaplesati magični ples."
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:22
-msgid "Terminal"
-msgstr "Terminal"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:23
-msgid "Text Editor"
-msgstr "Editor teksta"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:24
-msgid "Understands _Netscape Remote Control"
-msgstr "Razumije _Netscape-ov daljinski upravljač"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:25
-msgid "Use this _editor to open text files in the file manager"
-msgstr "Koristi ovaj _editor za otvaranje čistog teksta u upravitelju datoteka"
-
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:2
 msgid "Web Browser"
 msgstr "Web preglednik"
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:27
-msgid "Window Manager"
-msgstr "Upravitelj prozora"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
+#, no-c-format
+msgid "All %s occurrences will be replaced with actual link"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:28
-#, fuzzy
-msgid "_Command:"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
+msgid "Run in t_erminal"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
+msgid "Open link with web browser _default"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
+msgid "Open link in new _tab"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+msgid "Open link in new _window"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+msgid "C_ommand:"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
+msgid "Mail Reader"
+msgstr "Čitač email-a"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
+msgid "Co_mmand:"
 msgstr "_Naredba:"
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:29
-msgid "_Name:"
-msgstr "_Ime:"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
+msgid "Instant Messenger"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:30
-msgid "_Properties..."
-msgstr "_Osobine..."
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
+msgid "Internet"
+msgstr ""
 
-#: ../capplets/default-applications/mate-default-applications-properties.glade.h:31
-#, fuzzy
-msgid "_Select:"
-msgstr "_Izaberi"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
+msgid "Image Viewer"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
+msgid "Multimedia Player"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
+msgid "Video Player"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+msgid "Multimedia"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+msgid "Text Editor"
+msgstr "Editor teksta"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+msgid "Terminal Emulator"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+msgid "E_xecute flag:"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+msgid "File Manager"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+msgid "System"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
+msgid "Visual"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+msgid "_Run at start"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+msgid "Mobility"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+msgid "Run at st_art"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+msgid "Accessibility"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:1
+msgid "Monitor Preferences"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:2
+msgid "Sa_me image in all monitors"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:3
+msgid "_Detect monitors"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Panel icon"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:5
+msgid "_Show monitors in panel"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:6
+msgid "_Resolution:"
+msgstr "_Rezolucija:"
+
+#: ../capplets/display/display-capplet.ui.h:7
+msgid "Re_fresh rate:"
+msgstr "Učestalost _osvježavanja:"
+
+#: ../capplets/display/display-capplet.ui.h:8
+msgid "On"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:9
+msgid "Off"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/xrandr-capplet.c:515
+msgid "Monitor"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:11
+msgid "R_otation:"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:12
+msgid "Include _panel"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:13
+msgid "Make Default"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/xrandr-capplet.c:311
+#: ../capplets/display/xrandr-capplet.c:350
+msgid "Normal"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/xrandr-capplet.c:312
+msgid "Left"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/xrandr-capplet.c:313
+msgid "Right"
+msgstr ""
+
+#: ../capplets/display/display-capplet.ui.h:17
+msgid "Upside-down"
+msgstr ""
 
 #: ../capplets/display/display-properties.desktop.in.in.h:1
-msgid "Change screen resolution"
-msgstr "Promijeni rezoluciju ekrana"
+msgid "Monitors"
+msgstr ""
 
 #: ../capplets/display/display-properties.desktop.in.in.h:2
-msgid "Screen Resolution"
-msgstr "Rezolucija ekrana"
+msgid "Change resolution and position of monitors"
+msgstr ""
 
-#: ../capplets/display/main.c:345
+#: ../capplets/display/mate-display-properties-install-systemwide.c:44
+#, c-format
+msgid ""
+"Usage: %s SOURCE_FILE DEST_NAME\n"
+"\n"
+"This program installs a RANDR profile for multi-monitor setups into\n"
+"a systemwide location.  The resulting profile will get used when\n"
+"the RANDR plug-in gets run in mate-settings-daemon.\n"
+"\n"
+"SOURCE_FILE - a full pathname, typically /home/username/.config/monitors.xml\n"
+"\n"
+"DEST_NAME - relative name for the installed file.  This will get put in\n"
+"            the systemwide directory for RANDR configurations,\n"
+"            so the result will typically be %s/DEST_NAME\n"
+msgstr ""
+
+#. Translators: only able to install RANDR profiles as root
+#: ../capplets/display/mate-display-properties-install-systemwide.c:151
+msgid "This program can only be used by the root user"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:168
+msgid "The source filename must be absolute"
+msgstr ""
+
+#. Translators: first %s is a filename; second %s is an error message
+#: ../capplets/display/mate-display-properties-install-systemwide.c:179
+#, c-format
+msgid "Could not open %s: %s\n"
+msgstr ""
+
+#. Translators: first %s is a filename; second %s is an error message
+#: ../capplets/display/mate-display-properties-install-systemwide.c:188
+#, c-format
+msgid "Could not get information for %s: %s\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:195
+#, c-format
+msgid "%s must be a regular file\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:204
+msgid "This program must only be run through pkexec(1)"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:209
+msgid "PKEXEC_UID must be set to an integer value"
+msgstr ""
+
+#. Translators: we are complaining that a file must be really owned by the
+#. user who called this program
+#: ../capplets/display/mate-display-properties-install-systemwide.c:215
+#, c-format
+msgid "%s must be owned by you\n"
+msgstr ""
+
+#. Translators: here we are saying that a plain filename must look like
+#. "filename", not like "some_dir/filename"
+#: ../capplets/display/mate-display-properties-install-systemwide.c:223
+#, c-format
+msgid "%s must not have any directory components\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:231
+#, c-format
+msgid "%s must be a directory\n"
+msgstr ""
+
+#. Translators: the first %s/%s is a directory/filename; the last %s is an
+#. error message
+#: ../capplets/display/mate-display-properties-install-systemwide.c:242
+#, c-format
+msgid "Could not open %s/%s: %s\n"
+msgstr ""
+
+#: ../capplets/display/mate-display-properties-install-systemwide.c:262
+#, c-format
+msgid "Could not rename %s to %s: %s\n"
+msgstr ""
+
+#: ../capplets/display/org.mate.randr.policy.in.h:1
+msgid "Install multi-monitor settings for the whole system"
+msgstr ""
+
+#: ../capplets/display/org.mate.randr.policy.in.h:2
+msgid ""
+"Authentication is required to install multi-monitor settings for all users"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:314
+msgid "Upside Down"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:356
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
 
-#: ../capplets/display/main.c:448
-msgid "_Resolution:"
-msgstr "_Rezolucija:"
-
-#: ../capplets/display/main.c:467
-msgid "Re_fresh rate:"
-msgstr "Učestalost _osvježavanja:"
-
-#: ../capplets/display/main.c:488
-msgid "Default Settings"
-msgstr "Uobičajene postavke"
-
-#: ../capplets/display/main.c:490
-#, c-format
-msgid "Screen %d Settings\n"
-msgstr "Postavke ekrana %d\n"
-
-#: ../capplets/display/main.c:516
-msgid "Screen Resolution Preferences"
-msgstr "Opcije rezolucije ekrana"
-
-#: ../capplets/display/main.c:553
-#, c-format
-msgid "_Make default for this computer (%s) only"
-msgstr "_Napravi uobičajenim samo za ovaj računar (%s)"
-
-#: ../capplets/display/main.c:571
-msgid "Options"
-msgstr "Opcije"
-
-#: ../capplets/display/main.c:592
-#, c-format
-msgid ""
-"Testing the new settings. If you don't respond in %d second the previous "
-"settings will be restored."
-msgid_plural ""
-"Testing the new settings. If you don't respond in %d seconds the previous "
-"settings will be restored."
-msgstr[0] ""
-"Isprobavam nove postavke. Ako ne odgovorite u roku od %d sekunde, prethodne "
-"postavke će biti vraćene."
-msgstr[1] ""
-"Isprobavam nove postavke. Ako ne odgovorite u roku od %d sekunde, prethodne "
-"postavke će biti vraćene."
-msgstr[2] ""
-"Isprobavam nove postavke. Ako ne odgovorite u roku od %d sekundi, prethodne "
-"postavke će biti vraćene."
-
-#: ../capplets/display/main.c:638
-msgid "Keep Resolution"
-msgstr "Zadrži rezoluciju"
-
-#: ../capplets/display/main.c:642
-msgid "Do you want to keep this resolution?"
-msgstr "Želite li zadržati ovu rezoluciju?"
-
-#: ../capplets/display/main.c:667
-msgid "Use _previous resolution"
-msgstr "Koristi _prethodnu rezoluciju"
-
-#: ../capplets/display/main.c:667
-msgid "_Keep resolution"
-msgstr "_Zadrži rezoluciju"
-
-#: ../capplets/display/main.c:818
-msgid ""
-"The X Server does not support the XRandR extension.  Runtime resolution "
-"changes to the display size are not available."
+#. Translators:  this is the feature where what you see on your laptop's
+#. * screen is the same as your external monitor.  Here, "Mirror" is being
+#. * used as an adjective, not as a verb.  For example, the Spanish
+#. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
+#. 
+#: ../capplets/display/xrandr-capplet.c:504
+#: ../capplets/display/xrandr-capplet.c:1650
+msgid "Mirror Screens"
 msgstr ""
-"XServer ne podržava XRandR proširenje.  Aktivne izmjene rezolucija veličine "
-"prikaza nisu dostupne."
 
-#: ../capplets/display/main.c:826
-msgid ""
-"The version of the XRandR extension is incompatible with this program. "
-"Runtime changes to the display size are not available."
+#: ../capplets/display/xrandr-capplet.c:506
+#, c-format
+msgid "Monitor: %s"
 msgstr ""
-"Verzija XRandR proširenja nije kompatibilna. Promjena rezolucije aktivnog "
-"prikaza nije dostupna."
 
-#: ../capplets/font/font-properties.desktop.in.in.h:1
-msgid "Font"
-msgstr "Font"
-
-#: ../capplets/font/font-properties.desktop.in.in.h:2
-msgid "Select fonts for the desktop"
-msgstr "Izaberi fontove za desktop"
-
-#: ../capplets/font/font-properties.glade.h:2
-msgid "<b>Font Rendering</b>"
-msgstr "<b>Iscrtavanje fontova</b>"
-
-#: ../capplets/font/font-properties.glade.h:3
-msgid "<b>Hinting</b>:"
-msgstr "<b>Savjeti</b>:"
-
-#: ../capplets/font/font-properties.glade.h:4
-msgid "<b>Smoothing</b>:"
-msgstr "<b>Glačanje</b>:"
-
-#: ../capplets/font/font-properties.glade.h:5
-msgid "<b>Subpixel order</b>:"
-msgstr "<b>Redoslijed podpiksli</b>:"
-
-#: ../capplets/font/font-properties.glade.h:6
-msgid "Best _shapes"
-msgstr "Najbolji _oblici"
-
-#: ../capplets/font/font-properties.glade.h:7
-msgid "Best co_ntrast"
-msgstr "Najbolji _kontrast"
-
-#: ../capplets/font/font-properties.glade.h:8
-msgid "D_etails..."
-msgstr "_Detalji..."
-
-#: ../capplets/font/font-properties.glade.h:9
-msgid "Font Preferences"
-msgstr "Opcije za font"
-
-#: ../capplets/font/font-properties.glade.h:10
-msgid "Font Rendering Details"
-msgstr "Detalji iscrtavanja fontova"
-
-#: ../capplets/font/font-properties.glade.h:11
-msgid "Go _to font folder"
-msgstr "Idi u _direktorij sa fontovima"
-
-#: ../capplets/font/font-properties.glade.h:12
-msgid "Gra_yscale"
-msgstr "Sive _nijanse"
-
-#: ../capplets/font/font-properties.glade.h:13
-msgid "N_one"
-msgstr "_Nijedan"
-
-#: ../capplets/font/font-properties.glade.h:14
-msgid "R_esolution:"
-msgstr "_Rezolucija:"
-
-#: ../capplets/font/font-properties.glade.h:15
-msgid "Sub_pixel (LCDs)"
-msgstr "_Podpiksla (LCD)"
-
-#: ../capplets/font/font-properties.glade.h:16
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "Glačanje _podpiksli (LCD)"
-
-#: ../capplets/font/font-properties.glade.h:17
-msgid "VB_GR"
-msgstr "VB_GR"
-
-#: ../capplets/font/font-properties.glade.h:18
-msgid "_Application font:"
-msgstr "Font za _aplikacije:"
-
-#: ../capplets/font/font-properties.glade.h:19
-msgid "_BGR"
-msgstr "_BGR"
-
-#: ../capplets/font/font-properties.glade.h:20
-msgid "_Desktop font:"
-msgstr "Font za _desktop:"
-
-#: ../capplets/font/font-properties.glade.h:21
-msgid "_Full"
-msgstr "_Potpuno"
-
-#: ../capplets/font/font-properties.glade.h:22
-msgid "_Medium"
-msgstr "_Srednje"
-
-#: ../capplets/font/font-properties.glade.h:23
-msgid "_Monochrome"
-msgstr "_Jednobojno"
-
-#: ../capplets/font/font-properties.glade.h:24
-msgid "_None"
-msgstr "_Nijedno"
-
-#: ../capplets/font/font-properties.glade.h:25
-msgid "_RGB"
-msgstr "_RGB"
-
-#: ../capplets/font/font-properties.glade.h:26
-msgid "_Slight"
-msgstr "_Malo"
-
-#: ../capplets/font/font-properties.glade.h:27
-msgid "_Terminal font:"
-msgstr "Font za _terminal:"
-
-#: ../capplets/font/font-properties.glade.h:28
-msgid "_VRGB"
-msgstr "_VRGB"
-
-#: ../capplets/font/font-properties.glade.h:29
-msgid "_Window title font:"
-msgstr "Font za naslov _prozora:"
-
-#: ../capplets/font/font-properties.glade.h:30
-msgid "dots per inch"
-msgstr "tačaka po inču"
-
-#: ../capplets/font/main.c:488
-msgid "Font may be too large"
-msgstr "Font je možda prevelik"
-
-#: ../capplets/font/main.c:492
+#: ../capplets/display/xrandr-capplet.c:584
 #, c-format
-msgid ""
-"The font selected is %d point large, and may make it difficult to "
-"effectively use the computer.  It is recommended that you select a size "
-"smaller than %d."
-msgid_plural ""
-"The font selected is %d points large, and may make it difficult to "
-"effectively use the computer. It is recommended that you select a size "
-"smaller than %d."
-msgstr[0] ""
-"Veličina izabranog fonta je %d tačka i može biti poteškoća u efektivnom "
-"korištenju računara. Preporučuje se da izaberete veličinu manju od %d."
-msgstr[1] ""
-"Veličina izabranog fonta je %d tačke i može biti poteškoća u efektivnom "
-"korištenju računara.  Preporučuje se da izaberete veličinu manju od %d."
-msgstr[2] ""
-"Veličina izabranog fonta je %d tačaka i može biti poteškoća u efektivnom "
-"korištenju računara. Preporučuje se da izaberete veličinu manju od %d."
+msgid "%d x %d"
+msgstr ""
 
-#: ../capplets/font/main.c:505
-#, c-format
+#: ../capplets/display/xrandr-capplet.c:1506
 msgid ""
-"The font selected is %d point large, and may make it difficult to "
-"effectively use the computer.  It is recommended that you select a smaller "
-"sized font."
-msgid_plural ""
-"The font selected is %d points large, and may make it difficult to "
-"effectively use the computer. It is recommended that you select a smaller "
-"sized font."
-msgstr[0] ""
-"Veličina izabranog fonta je %d tačka i može biti poteškoća u efektivnom "
-"korištenju računara. Preporučuje se da izaberete font manje veličine."
-msgstr[1] ""
-"Veličina izabranog fonta je %d tačke i može biti poteškoća u efektivnom "
-"korištenju računara. Preporučuje se da izaberete font manje veličine."
-msgstr[2] ""
-"Veličina izabranog fonta je %d tačaka i može biti poteškoća u efektivnom "
-"korištenju računara. Preporučuje se da izaberete font manje veličine."
+"Select a monitor to change its properties; drag it to rearrange its "
+"placement."
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2071
+msgid "Could not save the monitor configuration"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2093
+msgid "Could not get session bus while applying display configuration"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2135
+msgid "Could not detect displays"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2328
+msgid "The monitor configuration has been saved"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2330
+msgid "This configuration will be used the next time someone logs in."
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2339
+msgid "Could not set the default configuration for monitors"
+msgstr ""
+
+#: ../capplets/display/xrandr-capplet.c:2423
+msgid "Could not get screen information"
+msgstr ""
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:21
-msgid "New accelerator..."
-msgstr "Nova kratica..."
+msgid "New shortcut..."
+msgstr ""
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:163
-#: ../capplets/keybindings/eggcellrendererkeys.c:164
+#: ../capplets/keybindings/eggcellrendererkeys.c:157
+#: ../capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "Kratica"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:173
-#: ../capplets/keybindings/eggcellrendererkeys.c:174
+#: ../capplets/keybindings/eggcellrendererkeys.c:167
+#: ../capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "Modifikatori kratica"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:182
-#: ../capplets/keybindings/eggcellrendererkeys.c:183
+#: ../capplets/keybindings/eggcellrendererkeys.c:176
+#: ../capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "Tipka za kraticu"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:193
+#: ../capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "Mod kratica"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:194
+#: ../capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "Tip kratice."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:242
-#: ../capplets/keybindings/mate-keybinding-properties.c:197
-#: ../libbackground/applier.c:624 ../typing-break/drwright.c:477
+#: ../capplets/keybindings/eggcellrendererkeys.c:231
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
+#: ../typing-break/drwright.c:498
 msgid "Disabled"
 msgstr "Onemogućeno"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:545
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<Nepoznata akcija>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:566
-msgid "Desktop"
-msgstr "Desktop"
+#: ../capplets/keybindings/mate-keybinding-properties.c:1028
+#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+msgid "Custom Shortcuts"
+msgstr ""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:567
-#: ../capplets/sound/mate-settings-sound.desktop.in.in.h:2
-msgid "Sound"
-msgstr "Zvuk"
+#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+msgid "Error saving the new shortcut"
+msgstr ""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:571
-msgid "Window Management"
-msgstr "Upravitelj prozora"
-
-#: ../capplets/keybindings/mate-keybinding-properties.c:668
+#: ../capplets/keybindings/mate-keybinding-properties.c:1282
 #, c-format
 msgid ""
-"The shortcut \"%s\" is already used for:\n"
-" \"%s\"\n"
+"The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
+"Please try with a key such as Control, Alt or Shift at the same time."
 msgstr ""
-"Kratica \"%s\" se već koristi za:\n"
-" \"%s\"\n"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:700
+#: ../capplets/keybindings/mate-keybinding-properties.c:1314
 #, c-format
-msgid "Error setting new accelerator in configuration database: %s\n"
+msgid ""
+"The shortcut \"%s\" is already used for\n"
+"\"%s\""
 msgstr ""
-"Greška pri postavljanju nove kratice u bazi podataka s podešavanjima: %s\n"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:750
+#: ../capplets/keybindings/mate-keybinding-properties.c:1321
 #, c-format
-msgid "Error unsetting accelerator in configuration database: %s\n"
-msgstr "Greška pri brisanju kratice iz baze podataka s podešavanjima: %s\n"
+msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
+msgstr ""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:857
+#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+msgid "_Reassign"
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+msgid "Too many custom shortcuts"
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding-properties.c:1871
 msgid "Action"
 msgstr "Akcija"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:881
+#: ../capplets/keybindings/mate-keybinding-properties.c:1893
 msgid "Shortcut"
 msgstr "Kratica"
 
-#: ../capplets/keybindings/mate-keybinding-properties.glade.h:1
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
+#. * vim: sw=2 ts=8 cindent noai bs=2
+#. 
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Kratice tastature"
 
-#: ../capplets/keybindings/mate-keybinding-properties.glade.h:2
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new "
-"accelerator, or press backspace to clear."
+"To edit a shortcut key, click on the corresponding row and type a new key "
+"combination, or press backspace to clear."
 msgstr ""
-"Da biste izmijenili kraticu, kliknite u odgovarajući red i unesite novu "
-"kraticu ili pritisnite tipku backspace da obrišete."
 
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "Custom Shortcut"
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "Dodijeli kratice naredbama"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:84
-#, fuzzy
-msgid "Unknown"
-msgstr "Nepoznat kursor"
-
-#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:273
-msgid "Layout"
-msgstr "Raspored"
-
-#. The first radio in a group is to be "Default", meaning none of
-#. the below options are to be included in the selected list.
-#. This is a HIG-compliant alternative to allowing no
-#. selection in the group.
-#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:277
-#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:228
-#, fuzzy
-msgid "Default"
-msgstr "Uobičajeni kursor"
-
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:75
-#, fuzzy
-msgid "Models"
-msgstr "Model"
-
-#: ../capplets/keyboard/mate-keyboard-properties.c:106
-#, c-format
-msgid "There was an error launching the keyboard capplet : %s"
-msgstr "Greška pri pokretanju dijaloga za tastaturu : %s"
-
-#: ../capplets/keyboard/mate-keyboard-properties.c:202
-msgid "_Accessibility"
-msgstr "_Pristupačnost"
-
-#: ../capplets/keyboard/mate-keyboard-properties.c:221
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
-#: ../capplets/sound/sound-properties-capplet.c:240
-#: ../capplets/sound/sound-properties-capplet.c:242
+#: ../capplets/keyboard/mate-keyboard-properties.c:203
+#: ../capplets/keyboard/mate-keyboard-properties.c:208
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
-msgstr ""
-"Samo primijeni postavke i izađi (zbog kompatibilnosti, time sada upravlja "
-"daemon)"
+msgstr "Samo primijeni postavke i izađi (zbog kompatibilnosti, time sada upravlja daemon)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:227
+#: ../capplets/keyboard/mate-keyboard-properties.c:213
 msgid "Start the page with the typing break settings showing"
 msgstr "Pokreni stranicu sa prikazanim postavkama za pauziranje pri tipkanju"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:3
-#, fuzzy
-msgid "..."
-msgstr "Dodaj..."
+#: ../capplets/keyboard/mate-keyboard-properties.c:218
+msgid "Start the page with the accessibility settings showing"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:4
-msgid "<b>Cursor Blinking</b>"
-msgstr "<b>Titranje kursora</b>"
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
+msgid "- MATE Keyboard Preferences"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:5
-msgid "<b>Repeat Keys</b>"
-msgstr "<b>Ponavljanje tipki</b>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:1
+msgid "Keyboard Accessibility Audio Feedback"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:6
-msgid "<b>_Lock screen to enforce typing break</b>"
-msgstr "<b>_Zaključaj ekran za prisilno pauziranje u tipkanju</b>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
+msgid "General"
+msgstr "Općenito"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:7
-msgid "<small><i>Fast</i></small>"
-msgstr "<small><i>Brzo</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:3
+msgid "Beep when _accessibility features are turned on or off"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:8
-msgid "<small><i>Long</i></small>"
-msgstr "<small><i>Dugo</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:4
+msgid "Beep when a _toggle key is pressed"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:9
-msgid "<small><i>Short</i></small>"
-msgstr "<small><i>Kratko</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
+msgid "Visual cues for sounds"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:10
-msgid "<small><i>Slow</i></small>"
-msgstr "<small><i>Sporo</i></small>"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
+msgid "Show _visual feedback for the alert sound"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:11
-msgid "A_vailable layouts:"
-msgstr "_Dostupni rasporedi:"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Flash _window titlebar"
+msgstr "Neka žmiga traka s naslovom _prozora"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:12
-msgid "All_ow postponing of breaks"
-msgstr "Dopusti _odgađanje pauza"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Flash entire _screen"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:13
-msgid "Check if breaks are allowed to be postponed"
-msgstr "Provjeri da li je dopušteno odgađanje pauza"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "Slow Keys"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:14
-#, fuzzy
-msgid "Choose A Keyboard Model"
-msgstr "XKB model tastature"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Beep when a key is pr_essed"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:15
-#, fuzzy
-msgid "Choose A Layout"
-msgstr "Zatvori i _odjavi se"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+msgid "Beep when key is _accepted"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:16
-msgid "Cursor _blinks in text boxes and fields"
-msgstr "Kursor _titra u okvirima i poljima za tekst"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when key is _rejected"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:17
-msgid "Duration of the break when typing is disallowed"
-msgstr "Trajanje pauze kada tipkanje nije dopušteno"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:18
-msgid "Duration of work before forcing a break"
-msgstr "Dužina rada prije prisilne pauze"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when a key is reje_cted"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:19
-msgid "Key presses _repeat when key is held down"
-msgstr "_Ponovi pritiskanje tipki kada se tipka drži pritisnuta"
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
+msgid "Sticky Keys"
+msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:21
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+msgid "Beep when a _modifier key is pressed"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
 msgstr "Opcije za tastaturu"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:22
-msgid "Keyboard _model:"
-msgstr "_Model tastature:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:23
-msgid "Layout Options"
-msgstr "Opcije rasporeda"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:24
-msgid "Layouts"
-msgstr "Rasporedi"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:25
-msgid ""
-"Lock screen after a certain duration to help prevent repetitive keyboard use "
-"injuries"
-msgstr ""
-"Zaključaj ekran nakon određenog vremena radi sprečavanja povreda usljed "
-"pretjeranog korištenja tastature"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:26
-msgid "Microsoft Natural Keyboard"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:2
+msgid "Repeat Keys"
 msgstr ""
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:27
-#, fuzzy
-msgid "Preview:"
-msgstr "Širina prethodnog prikaza"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:3
+msgid "Key presses _repeat when key is held down"
+msgstr "_Ponovi pritiskanje tipki kada se tipka drži pritisnuta"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:28
-#, fuzzy
-msgid "Reset To De_faults"
-msgstr "Vrati na _uobičajeno"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:30
-msgid "Separate _group for each window"
-msgstr ""
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:31
-msgid "Typing Break"
-msgstr "Pauza u tipkanju"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:32
-msgid "_Accessibility..."
-msgstr "_Pristupačnost..."
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:33
-#, fuzzy
-msgid "_Add..."
-msgstr "Dodaj..."
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:34
-msgid "_Break interval lasts:"
-msgstr "_Pauza traje:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:35
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:4
 msgid "_Delay:"
 msgstr "_Odgoda:"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:36
-#, fuzzy
-msgid "_Models:"
-msgstr "Model"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:37
-msgid "_Selected layouts:"
-msgstr "_Izabrani rasporedi:"
-
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:38
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:5
 msgid "_Speed:"
 msgstr "_Brzina:"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
+msgid "Short"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
+msgid "Slow"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:8
+msgid "Repeat keys speed"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
+#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+msgid "Long"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
+#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+msgid "Fast"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:11
+msgid "Cursor Blinking"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:12
+msgid "Cursor _blinks in text fields"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:13
+msgid "S_peed:"
+msgstr "_Brzina:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "Cursor blinks speed"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:16
+msgid "List of keyboard layouts selected for usage"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:18
+msgid "Select a keyboard layout to be added to the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:19
+msgid "Remove the selected keyboard layout from the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:20
+msgid "Move _Up"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:21
+msgid "Move the selected keyboard layout up in the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:22
+msgid "Move _Down"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:23
+msgid "Move the selected keyboard layout down in the list"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:24
+msgid "_Show..."
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:25
+msgid "Print a diagram of the selected keyboard layout"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:26
+msgid "_Separate layout for each window"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:27
+msgid "New windows u_se active window's layout"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:28
+msgid "Keyboard _model:"
+msgstr "_Model tastature:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:29
+msgid "_Options..."
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:30
+msgid "View and edit keyboard layout options"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
+msgid "Reset to De_faults"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:32
+msgid ""
+"Replace the current keyboard layout settings with the\n"
+"default settings"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:34
+msgid "Layouts"
+msgstr "Rasporedi"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:35
+msgid "_Accessibility features can be toggled with keyboard shortcuts"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:37
+msgid "_Simulate simultaneous keypresses"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:38
+msgid "Disa_ble sticky keys if two keys are pressed together"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+msgid "_Only accept long keypresses"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+msgid "_Ignore fast duplicate keypresses"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+msgid "D_elay:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+msgid "Audio _Feedback..."
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+msgid "_Pointer can be controlled using the keypad"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
+#: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "_Acceleration:"
+msgstr "_Ubrzanje:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+msgid "Mouse Keys"
+msgstr "Tipke miša"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+msgid "_Lock screen to enforce typing break"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+msgid ""
+"Lock screen after a certain duration to help prevent repetitive keyboard use"
+" injuries"
+msgstr "Zaključaj ekran nakon određenog vremena radi sprečavanja povreda usljed pretjeranog korištenja tastature"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid "_Work interval lasts:"
 msgstr "_Radni period traje:"
 
-#: ../capplets/keyboard/mate-keyboard-properties.glade.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+msgid "_Break interval lasts:"
+msgstr "_Pauza traje:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+msgid "Duration of work before forcing a break"
+msgstr "Dužina rada prije prisilne pauze"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+msgid "Duration of the break when typing is disallowed"
+msgstr "Trajanje pauze kada tipkanje nije dopušteno"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "minutes"
 msgstr "minuta"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+msgid "All_ow postponing of breaks"
+msgstr "Dopusti _odgađanje pauza"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+msgid "Check if breaks are allowed to be postponed"
+msgstr "Provjeri da li je dopušteno odgađanje pauza"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+msgid "Typing Break"
+msgstr "Pauza u tipkanju"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+msgid "_Type to test settings:"
+msgstr "_Tipkaj za provjeru postavki:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:1
+msgid "Choose a Layout"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
+msgid "_Variants:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+msgid "_Country:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
+msgid "By _country"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:5
+msgid "_Language:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:6
+msgid "By _language"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:7
+msgid "Preview:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:1
+msgid "Choose a Keyboard Model"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:2
+msgid "_Vendors:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:3
+msgid "_Models:"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-options-dialog.ui.h:1
+msgid "Keyboard Layout Options"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:85
+msgid "Unknown"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+msgid "Layout"
+msgstr "Raspored"
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+msgid "Vendors"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+msgid "Models"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:237
+msgid "Default"
+msgstr ""
+
+#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+msgid "Keyboard"
+msgstr "Tastatura"
 
 #: ../capplets/keyboard/keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "Postavite vaše opcije za tastaturu"
 
-#: ../capplets/mouse/mate-mouse-properties.c:559
-msgid "Unknown Cursor"
-msgstr "Nepoznat kursor"
+#. TRANSLATORS: don't translate the terms in brackets
+#: ../capplets/mouse/mate-mouse-properties.c:510
+msgid "Specify the name of the page to show (general)"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:761
-msgid "Default Cursor"
-msgstr "Uobičajeni kursor"
+#: ../capplets/mouse/mate-mouse-properties.c:515
+msgid "- MATE Mouse Preferences"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:762
-msgid "Default Cursor - Current"
-msgstr "Uobičajeni kursor - trenutni"
-
-#: ../capplets/mouse/mate-mouse-properties.c:763
-msgid "The default cursor that ships with X"
-msgstr "Uobičajeni kursor koji dolazi uz X"
-
-#: ../capplets/mouse/mate-mouse-properties.c:767
-msgid "White Cursor"
-msgstr "Bijeli kursor"
-
-#: ../capplets/mouse/mate-mouse-properties.c:768
-msgid "White Cursor - Current"
-msgstr "Bijeli kursor - trenutni"
-
-#: ../capplets/mouse/mate-mouse-properties.c:769
-msgid "The default cursor inverted"
-msgstr "Uobičajeni kursor obrnutih boja"
-
-#: ../capplets/mouse/mate-mouse-properties.c:773
-msgid "Large Cursor"
-msgstr "Veliki kursor"
-
-#: ../capplets/mouse/mate-mouse-properties.c:774
-msgid "Large Cursor - Current"
-msgstr "Veliki kursor - trenutni"
-
-#: ../capplets/mouse/mate-mouse-properties.c:775
-msgid "Large version of normal cursor"
-msgstr "Velika verzija normalnog kursora"
-
-#: ../capplets/mouse/mate-mouse-properties.c:779
-msgid "Large White Cursor - Current"
-msgstr "Veliki bijeli kursor - trenutni"
-
-#: ../capplets/mouse/mate-mouse-properties.c:780
-msgid "Large White Cursor"
-msgstr "Veliki bijeli kursor"
-
-#: ../capplets/mouse/mate-mouse-properties.c:781
-msgid "Large version of white cursor"
-msgstr "Velika verzija bijelog kursora"
-
-#: ../capplets/mouse/mate-mouse-properties.c:975
-msgid "Cursor Theme"
-msgstr "Tema kursora"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:2
-msgid "<b>Double-Click Timeout </b>"
-msgstr "<b>Istek vremena za dvostruki klik </b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:3
-msgid "<b>Drag and Drop</b>"
-msgstr "<b>Povuci i ispusti</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:4
-msgid "<b>Locate Pointer</b>"
-msgstr "<b>Lociraj kursor</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:5
-msgid "<b>Mouse Orientation</b>"
-msgstr "<b>Orjentacija miša</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:6
-msgid "<b>Speed</b>"
-msgstr "<b>Brzina</b>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:7
-msgid "<i>Fast</i>"
-msgstr "<i>Brzo</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:8
-msgid "<i>High</i>"
-msgstr "<i>Visoko</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:9
-msgid "<i>Large</i>"
-msgstr "<i>Veliko</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:10
-msgid "<i>Low</i>"
-msgstr "<i>Nisko</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:11
-msgid "<i>Slow</i>"
-msgstr "<i>Sporo</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:12
-msgid "<i>Small</i>"
-msgstr "<i>Malo</i>"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:13
-msgid "Buttons"
-msgstr "Dugmad"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:14
-#, fuzzy
-msgid "Cursor Size:"
-msgstr "Veličina kursora"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:15
-msgid "Cursors"
-msgstr "Kursori"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:16
-msgid "Highlight the _pointer when you press Ctrl"
-msgstr "Istakni _kursor na pritisak tipke Ctrl"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:17
-#, fuzzy
-msgid "Large"
-msgstr "_Veliko"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:18
-#, fuzzy
-msgid "Medium"
-msgstr "_Srednje"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:19
-msgid "Motion"
-msgstr "Kretanje"
-
-#: ../capplets/mouse/mate-mouse-properties.glade.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:1
 msgid "Mouse Preferences"
 msgstr "Osobine miša"
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:21
-#, fuzzy
-msgid "Small"
-msgstr "_Malo"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:2
+msgid "Mouse Orientation"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:22
-msgid "_Acceleration:"
-msgstr "_Ubrzanje:"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:3
+msgid "_Right-handed"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:23
-msgid "_Left-handed mouse"
-msgstr "Miš za _lijevake"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:4
+msgid "_Left-handed"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:24
+#: ../capplets/mouse/mate-mouse-properties.ui.h:5
+msgid "Locate Pointer"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:6
+msgid "Sh_ow position of pointer when the Control key is pressed"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:7
+msgid "Pointer Speed"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "_Sensitivity:"
 msgstr "_Osjetljivost:"
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:25
-msgid "_Threshold:"
-msgstr "_Prag:"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
+msgid "Low"
+msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.glade.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+msgid "High"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
+msgid "Drag and Drop"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+msgid "Thr_eshold:"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+msgid "Double-Click Timeout"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "_Timeout:"
 msgstr "_Istek vremena:"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+msgid ""
+"To test your double-click settings, try to double-click on the light bulb."
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+msgid "Disable _touchpad while typing"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+msgid "Enable _mouse clicks with touchpad"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+msgid "Scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+msgid "_Disabled"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+msgid "_Edge scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+msgid "Two-_finger scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+msgid "Enable h_orizontal scrolling"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+msgid "Touchpad"
+msgstr ""
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
@@ -1988,1254 +2245,243 @@ msgstr "Miš"
 msgid "Set your mouse preferences"
 msgstr "Postavite opcije za miša"
 
-#: ../capplets/network/mate-network-preferences.desktop.in.in.h:1
+#: ../capplets/network/mate-network-properties.desktop.in.in.h:1
 msgid "Network Proxy"
 msgstr "Mrežni proxy"
 
-#: ../capplets/network/mate-network-preferences.desktop.in.in.h:2
-#, fuzzy
+#: ../capplets/network/mate-network-properties.desktop.in.in.h:2
 msgid "Set your network proxy preferences"
-msgstr "Opcije za mrežni proxy"
-
-#: ../capplets/network/mate-network-preferences.glade.h:1
-msgid "      "
-msgstr "      "
-
-#: ../capplets/network/mate-network-preferences.glade.h:2
-#, fuzzy
-msgid "<b>D_irect internet connection</b>"
-msgstr "<b>_Direktna internet veza</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:3
-msgid "<b>Ignore Host List</b>"
 msgstr ""
 
-#: ../capplets/network/mate-network-preferences.glade.h:4
-msgid "<b>_Automatic proxy configuration</b>"
-msgstr "<b>_Automatsko podešavanje proxy-a</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:5
-msgid "<b>_Manual proxy configuration</b>"
-msgstr "<b>_Ručno podešavanje proxy-a</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:6
-msgid "<b>_Use authentication</b>"
-msgstr "<b>_Provjeri autentičnost</b>"
-
-#: ../capplets/network/mate-network-preferences.glade.h:7
-#, fuzzy
-msgid "Advanced Configuration"
-msgstr "_URL za automatsko podešavanje:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:8
-msgid "Autoconfiguration _URL:"
-msgstr "_URL za automatsko podešavanje:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:9
+#: ../capplets/network/mate-network-properties.ui.h:1
 msgid "HTTP Proxy Details"
 msgstr "Detalji o HTTP proxy-u"
 
-#: ../capplets/network/mate-network-preferences.glade.h:10
-msgid "H_TTP proxy:"
-msgstr "_HTTP proxy:"
+#: ../capplets/network/mate-network-properties.ui.h:2
+msgid "<b>_Use authentication</b>"
+msgstr "<b>_Provjeri autentičnost</b>"
 
-#: ../capplets/network/mate-network-preferences.glade.h:11
-#, fuzzy
-msgid "Network Proxy Preferences"
-msgstr "Opcije za mrežni proxy"
-
-#: ../capplets/network/mate-network-preferences.glade.h:12
-msgid "Port:"
-msgstr "Port:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:13
-#, fuzzy
-msgid "Proxy Configuration"
-msgstr "Podešavanje mrežnog proxy-a"
-
-#: ../capplets/network/mate-network-preferences.glade.h:14
-msgid "S_ocks host:"
-msgstr "S_ocks host:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:15
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "U_sername:"
 msgstr "_Korisničko ime:"
 
-#: ../capplets/network/mate-network-preferences.glade.h:16
-msgid "_Details"
-msgstr "_Detalji"
-
-#: ../capplets/network/mate-network-preferences.glade.h:17
-msgid "_FTP proxy:"
-msgstr "_FTP proxy:"
-
-#: ../capplets/network/mate-network-preferences.glade.h:18
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "_Password:"
 msgstr "_Šifra:"
 
-#: ../capplets/network/mate-network-preferences.glade.h:19
+#: ../capplets/network/mate-network-properties.ui.h:5
+msgid "Network Proxy Preferences"
+msgstr ""
+
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "<b>Di_rect internet connection</b>"
+msgstr ""
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "<b>_Manual proxy configuration</b>"
+msgstr "<b>_Ručno podešavanje proxy-a</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "H_TTP proxy:"
+msgstr "_HTTP proxy:"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
 msgid "_Secure HTTP proxy:"
 msgstr "_Siguran HTTP proxy:"
 
-#: ../capplets/sound/mate-settings-sound.desktop.in.in.h:1
-msgid "Enable sound and associate sounds with events"
-msgstr "Uključi zvuk i pridruži zvukove događajima"
+#: ../capplets/network/mate-network-properties.ui.h:10
+msgid "_FTP proxy:"
+msgstr "_FTP proxy:"
 
-#: ../capplets/sound/sound-properties-capplet.c:271
-#: ../capplets/sound/sound-properties.glade.h:6
-msgid "Sound Preferences"
-msgstr "Opcije zvuka"
+#: ../capplets/network/mate-network-properties.ui.h:11
+msgid "S_ocks host:"
+msgstr "S_ocks host:"
 
-#: ../capplets/sound/sound-properties.glade.h:1
-msgid "E_nable sound server startup"
-msgstr "_Omogući pokretanje servera za zvuk"
+#: ../capplets/network/mate-network-properties.ui.h:12
+msgid "Port:"
+msgstr "Port:"
 
-#: ../capplets/sound/sound-properties.glade.h:2
-msgid "Flash _entire screen"
-msgstr "Neka _čitav ekran žmiga"
+#: ../capplets/network/mate-network-properties.ui.h:13
+msgid "_Details"
+msgstr "_Detalji"
 
-#: ../capplets/sound/sound-properties.glade.h:3
-msgid "Flash _window titlebar"
-msgstr "Neka žmiga traka s naslovom _prozora"
+#: ../capplets/network/mate-network-properties.ui.h:14
+msgid "<b>_Automatic proxy configuration</b>"
+msgstr "<b>_Automatsko podešavanje proxy-a</b>"
 
-#: ../capplets/sound/sound-properties.glade.h:4
-msgid "General"
-msgstr "Općenito"
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "Autoconfiguration _URL:"
+msgstr "_URL za automatsko podešavanje:"
 
-#: ../capplets/sound/sound-properties.glade.h:5
-msgid "Sound Events"
-msgstr "Zvučni signali"
-
-#: ../capplets/sound/sound-properties.glade.h:7
-msgid "System Bell"
-msgstr "Sistemsko zvono"
-
-#: ../capplets/sound/sound-properties.glade.h:8
-msgid "_Sound an audible bell"
-msgstr "_Pusti čujan zvuk"
-
-#: ../capplets/sound/sound-properties.glade.h:9
-msgid "_Sounds for events"
-msgstr "_Zvukovi za događaje"
-
-#: ../capplets/sound/sound-properties.glade.h:10
-msgid "_Visual feedback:"
-msgstr "_Vizuelna uzvratna poruka:"
-
-#: ../capplets/theme-switcher/mate-theme-details.c:347
-msgid ""
-"No themes could be found on your system.  This probably means that your "
-"\"Theme Preferences\" dialog was improperly installed, or you haven't "
-"installed the \"mate-themes\" package."
-msgstr ""
-"Tema nije pronađena na vašem sistemu.  To vjerovatno znači da vaš dijalog "
-"«Opcije tema» nije pravilno instaliran ili niste instalirali paket «mate-"
-"themes»."
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:227
-msgid "This theme is not in a supported format."
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "Proxy Configuration"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:244
-msgid "Failed to create temporary directory"
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "Ignore Host List"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:264
-msgid ""
-"Can not install theme. \n"
-"The bzip2 utility is not installed."
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "Ignored Hosts"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:282
-#: ../capplets/theme-switcher/mate-theme-installer.c:319
-#: ../capplets/theme-switcher/mate-theme-installer.c:399
-#, fuzzy
-msgid "Installation Failed"
-msgstr "Instalacija teme"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:302
-msgid ""
-"Can not install themes. \n"
-"The gzip utility is not installed."
+#: ../capplets/windows/mate-window-properties.c:393
+msgid "Cannot start the preferences application for your window manager"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:340
-#, c-format
-msgid ""
-"Icon Theme %s correctly installed.\n"
-"You can select it in the theme details."
+#: ../capplets/windows/mate-window-properties.c:661
+msgid "_Alt"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:343
-#, c-format
-msgid "Mate Theme %s correctly installed"
+#: ../capplets/windows/mate-window-properties.c:667
+msgid "H_yper"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:346
-#, c-format
-msgid ""
-"Windows Border Theme %s correctly installed.\n"
-"You can select it in the theme details."
+#: ../capplets/windows/mate-window-properties.c:674
+msgid "S_uper (or \"Windows logo\")"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:349
-#, c-format
-msgid ""
-"Controls Theme %s correctly installed.\n"
-"You can select it in the theme details."
+#: ../capplets/windows/mate-window-properties.c:681
+msgid "_Meta"
 msgstr ""
 
-#: ../capplets/theme-switcher/mate-theme-installer.c:357
-msgid "The theme is an engine. You need to compile the theme."
-msgstr ""
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:374
-#, fuzzy
-msgid "The file format is invalid"
-msgstr "Datoteka %s nije važeća wav datoteka"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:468
-msgid "No theme file location specified to install"
-msgstr "Nije navedeno mjesto gdje će datoteke tema biti instalirane"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:485
-msgid "The theme file location specified to install is invalid"
-msgstr "Navedeno mjesto za instaliranje datoteka za teme je nevažeće"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:505
-#, c-format
-msgid ""
-"Insufficient permissions to install the theme in:\n"
-"%s"
-msgstr ""
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:526
-#, fuzzy
-msgid "The file format is invalid."
-msgstr "Datoteka %s nije važeća wav datoteka"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:553
-#, c-format
-msgid ""
-"%s is the path where the theme files will be installed. This can not be "
-"selected as the source location"
-msgstr ""
-"%s je putanja gdje će datoteke tema biti instalirane. Ova putanja ne može "
-"biti izabrana kao mjesto izvora"
-
-#: ../capplets/theme-switcher/mate-theme-installer.c:607
-msgid ""
-"Cannot install theme.\n"
-"The tar program is not installed on your system."
-msgstr ""
-
-#: ../capplets/theme-switcher/mate-theme-manager.c:680
-msgid "Custom theme"
-msgstr "Vlastita tema"
-
-#: ../capplets/theme-switcher/mate-theme-manager.c:680
-msgid "You can save this theme by pressing the Save Theme button."
-msgstr "Možete sačuvati ovu temu ako pritisnete dugme Snimi temu."
-
-#: ../capplets/theme-switcher/mate-theme-manager.c:1476
-msgid ""
-"The default theme schemas could not be found on your system.  This means "
-"that you probably don't have marco installed, or that your mateconf is "
-"configured incorrectly."
-msgstr ""
-"Uobičajene schema tema nisu nađene na vašem sistemu.  Ovo znači da "
-"vjerovatno niste instalirali marco ili da je mateconf nepravilno podešen."
-
-#: ../capplets/theme-switcher/mate-theme-save.c:72
-msgid "Theme name must be present"
-msgstr "Ime teme mora biti upisano"
-
-#: ../capplets/theme-switcher/mate-theme-save.c:104
-#, fuzzy
-msgid "The theme already exists. Would you like to replace it?"
-msgstr "Tema već postoji. Želite li je zamijeniti?"
-
-#: ../capplets/theme-switcher/gtk-theme-selector.desktop.in.in.h:1
-msgid "Select themes for various parts of the desktop"
-msgstr "Izaberite teme za različite dijelove desktopa"
-
-#: ../capplets/theme-switcher/gtk-theme-selector.desktop.in.in.h:2
-#: ../vfs-methods/themus/themus-properties-main.c:92
-msgid "Theme"
-msgstr "Tema"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:2
-msgid "<span size=\"larger\" weight=\"bold\">Install a Theme</span>"
-msgstr "<span size=\"larger\" weight=\"bold\">Instaliraj temu</span>"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:3
-msgid "Theme Installation"
-msgstr "Instalacija teme"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:4
-msgid "_Install"
-msgstr "_Instaliraj"
-
-#: ../capplets/theme-switcher/theme-install.glade.h:5
-msgid "_Location:"
-msgstr "_Lokacija:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:2
-msgid "<span size=\"larger\" weight=\"bold\">Save Theme to Disk</span>"
-msgstr "<span size=\"larger\" weight=\"bold\">Snimi temu na disk</span>"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:3
-msgid "Apply _Background"
-msgstr "Koristi _pozadinu"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:4
-msgid "Apply _Font"
-msgstr "Koristi _font"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:5
-msgid "Controls"
-msgstr "Kontrole"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:6
-msgid "Icons"
-msgstr "Ikone"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:7
-msgid "New themes can also be installed by dragging them into the window."
-msgstr ""
-"Nove teme mogu također biti instalirane i povlačenjem teme unutar prozora."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:8
-msgid "Save Theme"
-msgstr "Snimi temu"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:9
-msgid "Select theme for the desktop"
-msgstr "Izaberi temu za desktop"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:10
-msgid "Short _description:"
-msgstr "Kratki _opis:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:11
-msgid "Theme Details"
-msgstr "Detalji teme"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:12
-msgid "Theme Preferences"
-msgstr "Opcije teme"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:13
-msgid "Theme _Details"
-msgstr "_Detalji teme"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:14
-msgid "This theme does not suggest any particular font or background."
-msgstr "Ova tema ne predlaže nijedan font ili pozadinu."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:15
-msgid "This theme suggests a background:"
-msgstr "Ova tema predlaže pozadinu:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:16
-msgid "This theme suggests a font and a background:"
-msgstr "Ova tema predlaže font i pozadinu:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:17
-msgid "This theme suggests a font:"
-msgstr "Ova tema predlaže font:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:18
-msgid "Window Border"
-msgstr "Okvir prozora"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:19
-msgid "_Go To Theme Folder"
-msgstr "_Idi u direktorij sa temama"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:20
-msgid "_Install Theme..."
-msgstr "_Instaliraj temu..."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:21
-msgid "_Revert"
-msgstr "_Vrati na prvobitno"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:22
-msgid "_Save Theme..."
-msgstr "_Snimi temu..."
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:23
-msgid "_Theme name:"
-msgstr "_Ime teme:"
-
-#: ../capplets/theme-switcher/theme-properties.glade.h:24
-msgid "theme selection tree"
-msgstr "stablo za izbor teme"
-
-#: ../capplets/ui-properties/mate-ui-properties.desktop.in.in.h:1
-msgid "Customize the appearance of toolbars and menubars in applications"
-msgstr "Prilagodi izgled traka s alatima i menijima u aplikacijama"
-
-#: ../capplets/ui-properties/mate-ui-properties.desktop.in.in.h:2
-msgid "Menus & Toolbars"
-msgstr "Meniji & Alati"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:2
-msgid "<b>Behavior and Appearance</b>"
-msgstr "<b>Ponašanje i izgled</b>"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:3
-msgid "<b>Preview</b>"
-msgstr "<b>Prethodni pogled</b>"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:4
-msgid "C_ut"
-msgstr "I_zreži"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:5
-msgid "Icons only"
-msgstr "Samo ikone"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:6
-msgid "Menu and Toolbar Preferences"
-msgstr "Opcije za meni i traku sa alatima"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:7
-msgid "New File"
-msgstr "Nova datoteka"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:8
-msgid "Open File"
-msgstr "Otvori datoteku"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:9
-msgid "Save File"
-msgstr "Snimi datoteku"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:10
-msgid "Show _icons in menus"
-msgstr "Prikaži _ikone u menijima"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:11
-msgid "Text below icons"
-msgstr "Tekst ispod ikona"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:12
-msgid "Text beside icons"
-msgstr "Tekst pored ikona"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:13
-msgid "Text only"
-msgstr "Samo tekst"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:14
-#, fuzzy
-msgid "Toolbar _button labels:"
-msgstr "Oznake _dugmadi na traci s alatima: "
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:15
-msgid "_Copy"
-msgstr "_Kopiraj"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:16
-msgid "_Detachable toolbars"
-msgstr "_Odvojive trake s alatima"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:17
-msgid "_Edit"
-msgstr "_Izmijeni"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:18
-msgid "_Editable menu accelerators"
-msgstr ""
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:19
-msgid "_File"
-msgstr "_Datoteka"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:20
-msgid "_New"
-msgstr "_Nova"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:21
-msgid "_Open"
-msgstr "_Otvori"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:22
-msgid "_Paste"
-msgstr "_Umetni"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:23
-msgid "_Print"
-msgstr "_Štampaj"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:24
-msgid "_Quit"
-msgstr "_Izađi"
-
-#: ../capplets/ui-properties/mate-ui-properties.glade.h:25
-msgid "_Save"
-msgstr "_Snimi"
-
-#: ../capplets/windows/mate-window-properties.c:386
-#, c-format
-msgid ""
-"<b>Cannot start the preferences application for your window manager</b>\n"
-"\n"
-"%s"
-msgstr ""
-"<b>Ne mogu pokrenuti aplikaciju sa opcijama za vaš upravitelj prozora</b>\n"
-"\n"
-"%s"
-
-#: ../capplets/windows/mate-window-properties.c:644
-msgid "Control"
-msgstr "Kontrola"
-
-#: ../capplets/windows/mate-window-properties.c:649
-msgid "Alt"
-msgstr "Alt"
-
-#: ../capplets/windows/mate-window-properties.c:655
-msgid "Hyper"
-msgstr "Hyper"
-
-#: ../capplets/windows/mate-window-properties.c:662
-msgid "Super (or \"Windows logo\")"
-msgstr "Super (ili \"Windows tipka\")"
-
-#: ../capplets/windows/mate-window-properties.c:669
-msgid "Meta"
-msgstr "Meta"
-
-#: ../capplets/windows/mate-window-properties.glade.h:1
-msgid "<b>Movement Key</b>"
-msgstr "<b>Tipka za pomjeranje</b>"
-
-#: ../capplets/windows/mate-window-properties.glade.h:2
-msgid "<b>Titlebar Action</b>"
-msgstr "<b>Radnja trake s naslovom</b>"
-
-#: ../capplets/windows/mate-window-properties.glade.h:3
-msgid "<b>Window Selection</b>"
-msgstr "<b>Izbor prozora</b>"
-
-#: ../capplets/windows/mate-window-properties.glade.h:4
-msgid "To _move a window, press-and-hold this key then grab the window:"
-msgstr ""
-"Da _pomjerite prozor, pritisnite i držite ovu tipku a zatim zgrabite prozor:"
-
-#: ../capplets/windows/mate-window-properties.glade.h:5
+#: ../capplets/windows/mate-window-properties.ui.h:1
 msgid "Window Preferences"
 msgstr "Opcije za prozor"
 
-#: ../capplets/windows/mate-window-properties.glade.h:6
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Dvostruko kliknite traku sa naslovom da izvedete ovu akciju:"
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.glade.h:7
-msgid "_Interval before raising:"
-msgstr "_Vrijeme prije podizanja:"
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.glade.h:8
-msgid "_Raise selected windows after an interval"
-msgstr "_Podigni izabrane prozore nakon određenog perioda"
+#: ../capplets/windows/mate-window-properties.ui.h:4
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.glade.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Selection"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Izaberi prozore kada miš pređe preko njih"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
-#, fuzzy
-msgid "Set your window properties"
-msgstr "Osobine prozora"
+#: ../capplets/windows/mate-window-properties.ui.h:7
+msgid "_Raise selected windows after an interval"
+msgstr "_Podigni izabrane prozore nakon određenog perioda"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.ui.h:8
+msgid "_Interval before raising:"
+msgstr "_Vrijeme prije podizanja:"
+
+#: ../capplets/windows/mate-window-properties.ui.h:9
+msgid "seconds"
+msgstr "sekundi"
+
+#: ../capplets/windows/mate-window-properties.ui.h:10
+msgid "Titlebar Action"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:11
+msgid "_Double-click titlebar to perform this action:"
+msgstr "_Dvostruko kliknite traku sa naslovom da izvedete ovu akciju:"
+
+#: ../capplets/windows/mate-window-properties.ui.h:12
+msgid "Movement Key"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:13
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr ""
+
+#: ../capplets/windows/window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "Prozori"
 
-#: ../control-center/control-center-categories.c:257
-msgid "Others"
-msgstr "Ostali"
-
-#: ../control-center/control-center.c:42
-#, fuzzy
-msgid "Desktop Preferences"
-msgstr "Opcije pozadine desktopa"
-
-#: ../control-center/matecc.desktop.in.in.h:1
-msgid "MATE Control Center"
-msgstr "MATE Kontrolni centar"
-
-#: ../control-center/matecc.desktop.in.in.h:2
-#: ../vfs-methods/fontilus/mate-font-viewer.desktop.in.in.h:2
-msgid "The MATE configuration tool"
-msgstr "MATE alat za podešavanje"
-
-#: ../mate-settings-daemon/actions/acme.glade.h:1
-msgid "Volume"
-msgstr "Jačina zvuka"
-
-#: ../mate-settings-daemon/factory.c:36
-msgid "Could not initialize MateComponent"
-msgstr "Nisam mogao inicijalizirati MateComponent"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:397
-msgid "Slow Keys Alert"
-msgstr "Upozorenje na spore tipke"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:398
-msgid ""
-"You just held down the Shift key for 8 seconds.  This is the shortcut for "
-"the Slow Keys feature, which affects the way your keyboard works."
-msgstr ""
-"Upravo ste držali pritisnutim tipku Shift 8 sekundi.  Ovo je kratica za "
-"osobinu spore tipke koja utječe na rad vaše tastature."
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:400
-msgid "Do you want to activate Slow Keys?"
-msgstr "Želite li aktivirati spore tipke?"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:401
-msgid "Do you want to deactivate Slow Keys?"
-msgstr "Želite li deaktivirati spore tipke?"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:410
-msgid "Sticky Keys Alert"
-msgstr "Upozorenje na ljepljive tipke"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:411
-msgid ""
-"You just pressed the Shift key 5 times in a row.  This is the shortcut for "
-"the Sticky Keys feature, which affects the way your keyboard works."
-msgstr ""
-"Upravo ste pritisnuli tipku Shift 5 puta za redom.  Ovo je kratica za "
-"osobinu ljepljive tipke koja utječe na rad vaše tastature."
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:413
-msgid ""
-"You just pressed two keys at once, or pressed the Shift key 5 times in a "
-"row.  This turns off the Sticky Keys feature, which affects the way your "
-"keyboard works."
-msgstr ""
-"Upravo ste istovremeno pritisnuli dvije tipke ili ste pritisnuli tipku Shift "
-"5 puta za redom. Ovo isključuje osobinu ljepljive tipke koja utječe na rad "
-"vaše tastature."
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:415
-msgid "Do you want to activate Sticky Keys?"
-msgstr "Da li želite aktivirati ljepljive tipke?"
-
-#: ../mate-settings-daemon/mate-settings-accessibility-keyboard.c:416
-msgid "Do you want to deactivate Sticky Keys?"
-msgstr "Da li želite deaktivirati ljepljive tipke?"
-
-#: ../mate-settings-daemon/mate-settings-font.c:107
-#, c-format
-msgid ""
-"Cannot create the directory \"%s\".\n"
-"This is needed to allow changing cursors."
-msgstr ""
-"Ne mogu napraviti direktorij \"%s\".\n"
-"Ovo je potrebno za mogućnost mijenjanja kursora."
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:209
-#, c-format
-msgid "Key Binding (%s) has its action defined multiple times\n"
-msgstr "Akcija kratice (%s) je definirana više puta\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:222
-#, c-format
-msgid "Key Binding (%s) has its binding defined multiple times\n"
-msgstr "Kratica (%s) je definirana više puta\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:228
-#, c-format
-msgid "Key Binding (%s) is incomplete\n"
-msgstr "Kratica (%s) je nepotpuna\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:256
-#, c-format
-msgid "Key Binding (%s) is invalid\n"
-msgstr "Kratica (%s) je nevažeća\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:292
-#, c-format
-msgid "It seems that another application already has access to key '%d'."
-msgstr "Izgleda da neka druga aplikacija već koristi tipku '%d'."
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:361
-#, c-format
-msgid "Key Binding (%s) is already in use\n"
-msgstr "Kratica (%s) je već u upotrebi\n"
-
-#: ../mate-settings-daemon/mate-settings-keybindings.c:436
-#, c-format
-msgid ""
-"Error while trying to run (%s)\n"
-"which is linked to the key (%s)"
-msgstr ""
-"Greška pri pokušaju pokretanja (%s)\n"
-"koje je vezano za tipku (%s)"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:103
-#, fuzzy, c-format
-msgid ""
-"Error activating XKB configuration.\n"
-"It can happen under various circumstances:\n"
-"- a bug in libxklavier library\n"
-"- a bug in X server (xkbcomp, xmodmap utilities)\n"
-"- X server with incompatible libxkbfile implementation\n"
-"\n"
-"X server version data:\n"
-"%s\n"
-"%d\n"
-"%s\n"
-"If you report this situation as a bug, please include:\n"
-"- The result of <b>%s</b>\n"
-"- The result of <b>%s</b>"
-msgstr ""
-"Greška pri aktiviranju podešavanja za XKB.\n"
-"Vjerovatno interni problem na X serveru.\n"
-"\n"
-"Podaci o verziji X servera:\n"
-"%s\n"
-"%d\n"
-"%s\n"
-"Ako želite prijaviti ovu situaciju kao grešku, molim dodajte:\n"
-"- Rezultat naredbe <b>xprop -root | grep XKB</b>\n"
-"- Rezultat naredbe <b>mateconftool-2 -R /desktop/mate/peripherals/keyboard/"
-"xkb</b>"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:117
-#, fuzzy
-msgid ""
-"You are using XFree 4.3.0.\n"
-"There are known problems with complex XKB configurations.\n"
-"Try using a simpler configuration or taking a fresher version of XFree "
-"software."
-msgstr ""
-"Vi koristite XFree 4.3.0.\n"
-"Postoje poznati problemi sa složenim konfiguracijama XKB-a.\n"
-"Pokušajte koristiti jednostavniju konfiguraciju ili uzmite noviju verziju "
-"XFree softvera."
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:227
-#, fuzzy
-msgid "Do _not show this warning again"
-msgstr "_Nemoj više prikazivati ovu poruku"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:238
-msgid ""
-"The X system keyboard settings differ from your current MATE keyboard "
-"settings.  Which set would you like to use?"
-msgstr ""
-"Postavke tastature sistema X se razlikuju od vaših trenutnih postavki "
-"tastature za MATE. Koje postavke želite koristiti?"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:251
-msgid "Use X settings"
-msgstr "Koristi postavke za X"
-
-#: ../mate-settings-daemon/mate-settings-keyboard-xkb.c:253
-msgid "Use MATE settings"
-msgstr "Koristi postavke za MATE"
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:129
-#, c-format
-msgid ""
-"Couldn't execute command: %s\n"
-"Verify that this command exists."
-msgstr ""
-"Nisam mogao izvršiti naredbu: %s\n"
-"Provjerite da li ova naredba postoji."
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:145
-msgid ""
-"Couldn't put the machine to sleep.\n"
-"Verify that the machine is correctly configured."
-msgstr ""
-"Nisam mogao staviti računar u spavajući modus.\n"
-"Provjerite da li je računar ispravno podešen."
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:155
-#, c-format
-msgid "Permissions on the file %s are broken\n"
-msgstr "Ovlaštenja datoteke %s su neispravna\n"
-
-#: ../mate-settings-daemon/mate-settings-multimedia-keys.c:200
-msgid ""
-"Couldn't load the Glade file.\n"
-"Make sure that this daemon is properly installed."
-msgstr ""
-"Nisam mogao učitati Glade datoteku.\n"
-"Provjerite da li je ovaj daemon ispravno instaliran."
-
-#: ../mate-settings-daemon/mate-settings-screensaver.c:113
-#, c-format
-msgid ""
-"There was an error starting up the screensaver:\n"
-"\n"
-"%s\n"
-"\n"
-"Screensaver functionality will not work in this session."
-msgstr ""
-"Dogodila se greška pri pokretanju zaštite ekrana:\n"
-"\n"
-"%s\n"
-"\n"
-"Zaštita ekrana neće raditi u ovoj sesiji."
-
-#: ../mate-settings-daemon/mate-settings-screensaver.c:123
-msgid "_Do not show this message again"
-msgstr "_Nemoj više prikazivati ovu poruku"
-
-#: ../mate-settings-daemon/mate-settings-sound.c:129
-#, c-format
-msgid "Couldn't load sound file %s as sample %s"
-msgstr "Nisam mogao učitati zvučnu datoteku %s kao uzorak %s"
-
-#: ../mate-settings-daemon/mate-settings-xrdb.c:214
-#: ../mate-settings-daemon/mate-settings-xrdb.c:262
-msgid "Cannot determine user's home directory"
-msgstr "Ne mogu odrediti početni direktorij korisnika"
-
-#: ../mate-settings-daemon/mate-settings-xsettings.c:215
-#, c-format
-msgid "MateConf key %s set to type %s but its expected type was %s\n"
-msgstr "MateConf ključ %s je postavljen na tip %s, a očekivani tip je %s\n"
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:1
-#, fuzzy
-msgid "A_vailable files:"
-msgstr "_Dostupni rasporedi:"
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:2
-#, fuzzy
-msgid "Do _not show this warning again."
-msgstr "_Nemoj više prikazivati ovu poruku"
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:3
-msgid "Load modmap files"
+#: ../capplets/windows/window-properties.desktop.in.in.h:2
+msgid "Set your window properties"
 msgstr ""
 
-#: ../mate-settings-daemon/modmap-dialog.glade.h:4
-msgid "Would you like to load the modmap file(s)?"
-msgstr ""
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:5
-msgid "_Load"
-msgstr ""
-
-#: ../mate-settings-daemon/modmap-dialog.glade.h:6
-#, fuzzy
-msgid "_Loaded files:"
-msgstr "Model"
-
-#: ../mate-settings-daemon/reaper.c:103
-msgid "Error creating signal pipe."
-msgstr "Greška pri pravljenju cijevi signala."
-
-#: ../libbackground/applier.c:255
-msgid "Type"
-msgstr "Tip"
-
-#: ../libbackground/applier.c:256
-msgid ""
-"Type of bg_applier: BG_APPLIER_ROOT for root window or BG_APPLIER_PREVIEW "
-"for preview"
-msgstr ""
-"Tip bg_applier-a: BG_APPLIER_ROOT za glavni prozor ili BG_APPLIER_PREVIEW za "
-"prethodni prikaz"
-
-#: ../libbackground/applier.c:263
-msgid "Preview Width"
-msgstr "Širina prethodnog prikaza"
-
-#: ../libbackground/applier.c:264
-msgid "Width if applier is a preview: Defaults to 64."
-msgstr ""
-"Širina ako je primjenitelj prethodni prikaz: Uobičajena vrijednost je 64."
-
-#: ../libbackground/applier.c:271
-msgid "Preview Height"
-msgstr "Visina prethodnog prikaza"
-
-#: ../libbackground/applier.c:272
-msgid "Height if applier is a preview: Defaults to 48."
-msgstr ""
-"Visina ako je primjenitelj prethodni prikaz: Uobičajena vrijednost je 48."
-
-#: ../libbackground/applier.c:279
-msgid "Screen"
-msgstr "Ekran"
-
-#: ../libbackground/applier.c:280
-msgid "Screen on which BGApplier is to draw"
-msgstr "Ekran na koji će BGApplier crtati"
-
-#: ../libgswitchit/gswitchit_config.c:1035
-#, fuzzy, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Dogodila se greška pri prikazivanju pomoći: %s"
-
-#: ../libsounds/sound-view.c:122 ../libsounds/sound-view.c:147
-msgid "The sound file for this event does not exist."
-msgstr "Zvučna datoteka za ovaj događaj ne postoji."
-
-#: ../libsounds/sound-view.c:149
-msgid ""
-"The sound file for this event does not exist.\n"
-"You may want to install the mate-audio package\n"
-"for a set of default sounds."
-msgstr ""
-"Zvučna datoteka za ovaj događaj ne postoji.\n"
-"Možete instalirati paket mate-audio za skup\n"
-"uobičajenih zvukova."
-
-#: ../libsounds/sound-view.c:224
-#, c-format
-msgid "The file %s is not a valid wav file"
-msgstr "Datoteka %s nije važeća wav datoteka"
-
-#: ../libsounds/sound-view.c:289
-msgid "Event"
-msgstr "Događaj"
-
-#: ../libsounds/sound-view.c:298
-msgid "Sound File"
-msgstr "Zvučna datoteka"
-
-#: ../libsounds/sound-view.c:314
-msgid "_Sounds:"
-msgstr "_Zvukovi:"
-
-#: ../libsounds/sound-view.c:328
-msgid "Sound _file:"
-msgstr "Zvučna _datoteka:"
-
-#: ../libsounds/sound-view.c:332
-msgid "Select Sound File"
-msgstr "Izaberite zvučnu datoteku"
-
-#: ../libsounds/sound-view.c:356
-msgid "_Play"
-msgstr "_Sviraj"
-
-#: ../libsounds/sound-view.c:366
-msgid "_Remove"
-msgstr "_Ukloni"
-
-#: ../libwindow-settings/mate-wm-manager.c:320
+#: ../libwindow-settings/mate-wm-manager.c:321
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Upravitelj prozora \"%s\" nema registriran alat za podešavanje\n"
-
-#: ../libwindow-settings/marco-window-manager.c:378
-msgid "Maximize"
-msgstr "Maksimiziraj"
 
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Smotaj"
 
-#: ../schemas/apps_mate_settings_daemon_default_editor.schemas.in.h:1
-msgid ""
-"If true, the mime handlers for text/plain and text/* will be kept in sync"
-msgstr ""
-"Ako je postavljeno, mime manipulatori za text/plain i text/* će biti "
-"usklađeni"
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "Maksimiziraj"
 
-#: ../schemas/apps_mate_settings_daemon_default_editor.schemas.in.h:2
-msgid "Sync text/plain and text/* handlers"
-msgstr "Uskladi text/plain i text/* manipulatore"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:1
-msgid "Brightness down"
-msgstr "Smanji svjetloću"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:2
-msgid "Brightness down's shortcut."
-msgstr "Kratica za smanjivanje svjetloće."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:3
-msgid "Brightness up"
-msgstr "Povećaj svjetloću"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:4
-msgid "Brightness up's shortcut."
-msgstr "Kratica za povećanje svjetloće."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:5
-msgid "E-mail"
-msgstr "E-mail"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:6
-msgid "E-mail's shortcut."
-msgstr "Kratica za e-mail."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:7
-msgid "Eject"
-msgstr "Izbaci"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:8
-msgid "Eject's shortcut."
-msgstr "Kratica za izbacivanje."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:9
-msgid "Home folder"
-msgstr "Početni direktorij"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:10
-msgid "Home folder's shortcut."
-msgstr "Kratica za početni direktorij."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:11
-msgid "Launch help browser"
-msgstr "Pokreni preglednik pomoći"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:12
-msgid "Launch help browser's shortcut."
-msgstr "Pokreni kraticu za preglednika pomoći."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:13
-msgid "Launch web browser"
-msgstr "Pokreni web preglednik"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:14
-msgid "Launch web browser's shortcut."
-msgstr "Pokreni kraticu za web preglednik."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:15
-msgid "Lock screen"
-msgstr "Zaključaj ekran"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:16
-msgid "Lock screen's shortcut."
-msgstr "Kratica za zaključavanje ekrana."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:17
-msgid "Log out"
-msgstr "Odjava"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:18
-msgid "Log out's shortcut."
-msgstr "Kratica za odjavu."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:19
-msgid "Next track key's shortcut."
-msgstr "Kratica za sljedeću pjesmu."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:20
-msgid "Pause"
-msgstr "Pauza"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:21
-msgid "Pause key's shortcut."
-msgstr "Kratica do tipke za pauzu."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:22
-msgid "Play (or play/pause)"
-msgstr "Sviraj (ili sviraj/pauza)"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:23
-msgid "Play (or play/pause) key's shortcut."
-msgstr "Kratica do tipke Sviraj (ili sviraj/pauza)."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:24
-msgid "Previous track key's shortcut."
-msgstr "Kratica do prethodne pjesme."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:25
-msgid "Search"
-msgstr "Traži"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:26
-msgid "Search's shortcut."
-msgstr "Kratica za pretragu."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:27
-msgid "Skip to next track"
-msgstr "Skoči na sljedeću pjesmu"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:28
-msgid "Skip to previous track"
-msgstr "Skoči na prethodnu pjesmu"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:29
-msgid "Sleep"
-msgstr "Spavaj"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:30
-msgid "Sleep's shortcut."
-msgstr "Kratica do spavanja."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:31
-msgid "Stop playback key"
-msgstr "Tipka za zaustavljanje reprodukcije"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:32
-msgid "Stop playback key's shortcut."
-msgstr "Kratica do tipke za zaustavljanje reprodukcije."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:33
-msgid "Volume down"
-msgstr "Smanji zvuk"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:34
-msgid "Volume down's shortcut."
-msgstr "Kratica za smanjivanje zvuka."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:35
-msgid "Volume mute"
-msgstr "Uguši zvuk"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:36
-msgid "Volume mute's shortcut"
-msgstr "Kratica za tipku za gušenje zvuka"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:37
-msgid "Volume step"
-msgstr "Korak jačine zvuka"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:38
-msgid "Volume step as percentage of volume."
-msgstr "Korak jačine zvuka kao procenat."
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:39
-msgid "Volume up"
-msgstr "Pojačaj zvuk"
-
-#: ../schemas/apps_mate_settings_daemon_keybindings.schemas.in.h:40
-msgid "Volume up's shortcut."
-msgstr "Kratica za tipku za pojačavanje zvuka."
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:1
-#, fuzzy
-msgid "Display a dialog when there are errors running the screensaver"
-msgstr "Prikaži dijalog kada se desi greška pri pokretanju XScreenSaver"
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:2
-#, fuzzy
-msgid "Run screensaver at login"
-msgstr "Pokreni XScreenSaver pri prijavi"
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:3
-msgid "Show Startup Errors"
-msgstr "Prikaži greške pri pokretanju"
-
-#: ../schemas/apps_mate_settings_daemon_screensaver.schemas.in.h:4
-#, fuzzy
-msgid "Start screensaver"
-msgstr "Pokreni XScreenSaver"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:3
-msgid "Default group, assigned on window creation"
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:4
-msgid "Keep and manage separate group per window"
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:5
-#, fuzzy
-msgid "Keyboard Update Handlers"
-msgstr "_Model tastature:"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:6
-#, fuzzy
-msgid "Keyboard layout"
-msgstr "XKB raspored tastature"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:7
-#, fuzzy
-msgid "Keyboard model"
-msgstr "_Model tastature:"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:8
-#, fuzzy
-msgid "Keyboard options"
-msgstr "Kratice tastature"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:9
-#, fuzzy
-msgid ""
-"Keyboard settings in mateconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr "XKB postavke u mateconf će biti prebrisane iz sistema ASAP"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:10
-msgid "Save/restore indicators together with layout groups"
+#: ../shell/control-center.c:61
+#, c-format
+msgid "%s key is empty\n"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:11
-msgid "Show layout names instead of group names"
+#: ../shell/control-center.c:161
+msgid "Hide on start (useful to preload the shell)"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:12
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
+#: ../shell/control-center.c:201
+msgid "Filter"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Suppress the \"X sysconfig changed\" warning message"
+#: ../shell/control-center.c:201
+msgid "Groups"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:14
-msgid ""
-"Very soon, keyboard settings in mateconf will be overridden (from the system "
-"configuration) This key has been deprecated since MATE 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
+#: ../shell/control-center.c:201
+msgid "Common Tasks"
 msgstr ""
 
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:15
-#, fuzzy
-msgid "keyboard layout"
-msgstr "XKB raspored tastature"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:16
-#, fuzzy
-msgid "keyboard model"
-msgstr "XKB model tastature"
-
-#: ../schemas/desktop_mate_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "modmap file list"
+#: ../shell/control-center.c:203 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/matecc.directory.in.h:1
+msgid "Control Center"
 msgstr ""
 
-#: ../typing-break/drw-break-window.c:212
-msgid "_Postpone break"
-msgstr "_Odgodi pauzu"
+#: ../shell/matecc.desktop.in.in.h:2
+msgid "The MATE configuration tool"
+msgstr "MATE alat za podešavanje"
 
-#: ../typing-break/drw-break-window.c:259
+#: ../typing-break/drw-break-window.c:190
+msgid "_Postpone Break"
+msgstr ""
+
+#: ../typing-break/drw-break-window.c:246
 msgid "Take a break!"
 msgstr "Vrijeme je za pauzu!"
 
-#. { N_("/_Enabled"),      NULL, GIF_CB (popup_enabled_cb),     POPUP_ITEM_ENABLED, "<ToggleItem>", NULL },
-#: ../typing-break/drwright.c:141
-msgid "/_Preferences"
-msgstr "/_Opcije"
+#: ../typing-break/drwright.c:136
+msgid "_Take a Break"
+msgstr ""
 
-#: ../typing-break/drwright.c:142
-msgid "/_About"
-msgstr "/_O"
+#: ../typing-break/drwright.c:507
+#, c-format
+msgid "Take a break now (next in %dm)"
+msgstr ""
 
-#: ../typing-break/drwright.c:144
-msgid "/_Take a Break"
-msgstr "/_Uzmi pauzu"
-
-#: ../typing-break/drwright.c:495
+#: ../typing-break/drwright.c:509
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
@@ -3243,269 +2489,223 @@ msgstr[0] "%d minuta do sljedeće pauze"
 msgstr[1] "%d minute do sljedeće pauze"
 msgstr[2] "%d minuta do sljedeće pauze"
 
-#: ../typing-break/drwright.c:499
+#: ../typing-break/drwright.c:515
+#, c-format
+msgid "Take a break now (next in less than one minute)"
+msgstr ""
+
+#: ../typing-break/drwright.c:517
+#, c-format
 msgid "Less than one minute until the next break"
 msgstr "Manje od jednog minuta do sljedeće pauze"
 
-#: ../typing-break/drwright.c:587
+#: ../typing-break/drwright.c:607
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
+msgstr "Ne mogu otvoriti dijalog s opcijama pauziranja zbog sljedeće greške: %s"
+
+#: ../typing-break/drwright.c:624
+msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr ""
-"Ne mogu otvoriti dijalog s opcijama pauziranja zbog sljedeće greške: %s"
 
-#: ../typing-break/drwright.c:635
-msgid "About MATE Typing Monitor"
-msgstr "O MATE nadzorniku kucanja"
-
-#: ../typing-break/drwright.c:659
-msgid "A computer break reminder."
-msgstr "Podsjetnik za pauzu od rada na računaru."
-
-#: ../typing-break/drwright.c:660
-msgid "Written by Richard Hult &lt;richard@imendio.com&gt;"
-msgstr "Napisao Richard Hult &lt;richard@imendio.com&gt;"
-
-#: ../typing-break/drwright.c:661
+#: ../typing-break/drwright.c:625
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Uljepšao Anders Carlsson"
 
-#: ../typing-break/drwright.c:837
-msgid "Break reminder"
-msgstr "Podsjetnik za pauzu"
+#: ../typing-break/drwright.c:634
+msgid "A computer break reminder."
+msgstr "Podsjetnik za pauzu od rada na računaru."
 
-#: ../typing-break/main.c:93
-msgid "The typing monitor is already running."
-msgstr "Nadzornik kucanja je već pokrenut."
+#: ../typing-break/drwright.c:636
+msgid "translator-credits"
+msgstr ""
 
-#: ../typing-break/main.c:106
-#, fuzzy
+#: ../typing-break/main.c:63
+msgid "Enable debugging code"
+msgstr ""
+
+#: ../typing-break/main.c:65
+msgid "Don't check whether the notification area exists"
+msgstr ""
+
+#: ../typing-break/main.c:91
+msgid "Typing Monitor"
+msgstr ""
+
+#: ../typing-break/main.c:108
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
 msgstr ""
-"Nadzornik kucanja koristi zonu za obavijesti za prikaz informacija. Vi "
-"izgleda nemate obavještajnu zonu na panelu. Možete je dodati klikajući "
-"desnim dugmetom miša na panel i biranjem 'Dodaj panelu -> Alati -> Zona za "
-"obavijesti'."
 
-#: ../vfs-methods/fontilus/font-view.c:115
-msgid "The quick brown fox jumps over the lazy dog. 0123456789"
-msgstr ""
-"A B C Č Ć D Dž Đ E F G H I J K L Lj M N Nj O P R S Š T U V Z Ž 0123456789"
-
-#: ../vfs-methods/fontilus/font-view.c:276
+#: ../font-viewer/font-view.c:299
 msgid "Name:"
 msgstr "Ime:"
 
-#: ../vfs-methods/fontilus/font-view.c:279
+#: ../font-viewer/font-view.c:302
 msgid "Style:"
 msgstr "Stil:"
 
-#: ../vfs-methods/fontilus/font-view.c:289
+#: ../font-viewer/font-view.c:315
 msgid "Type:"
 msgstr "Tip:"
 
-#: ../vfs-methods/fontilus/font-view.c:295
+#: ../font-viewer/font-view.c:319
 msgid "Size:"
 msgstr "Veličina:"
 
-#: ../vfs-methods/fontilus/font-view.c:339
-#: ../vfs-methods/fontilus/font-view.c:352
+#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
 msgid "Version:"
 msgstr "Verzija:"
 
-#: ../vfs-methods/fontilus/font-view.c:343
-#: ../vfs-methods/fontilus/font-view.c:354
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
 msgid "Copyright:"
 msgstr "Autorska prava:"
 
-#: ../vfs-methods/fontilus/font-view.c:347
+#: ../font-viewer/font-view.c:371
 msgid "Description:"
 msgstr "Opis:"
 
-#: ../vfs-methods/fontilus/font-view.c:408
+#: ../font-viewer/font-view.c:451
+msgid "Installed"
+msgstr ""
+
+#: ../font-viewer/font-view.c:454
+msgid "Install Failed"
+msgstr ""
+
+#: ../font-viewer/font-view.c:525
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "upotreba: %s datoteka fonta\n"
 
-#: ../vfs-methods/fontilus/fontilus-context-menu.c:132
-msgid "Set as Application Font"
-msgstr "Postavi kao font aplikacije"
-
-#: ../vfs-methods/fontilus/fontilus-context-menu.c:133
-#, fuzzy
-msgid "Sets the default application font"
-msgstr "Izaberite vaše uobičajene aplikacije"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:1
-msgid "If set to true, then OpenType fonts will be thumbnailed."
-msgstr "Ako je postavljeno, OpenType fontovi će biti prikazani umanjeni."
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:2
-msgid "If set to true, then PCF fonts will be thumbnailed."
-msgstr "Ako je postavljeno, PCF fontovi će biti prikazani umanjeni."
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:3
-msgid "If set to true, then TrueType fonts will be thumbnailed."
-msgstr "Ako je postavljeno, TrueType fontovi će biti prikazani umanjeni."
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:4
-msgid "If set to true, then Type1 fonts will be thumbnailed."
-msgstr "Ako je postavljeno, Type1 fontovi će biti prikazani umanjeni."
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:5
-msgid ""
-"Set this key to the command used to create thumbnails for OpenType fonts."
+#: ../font-viewer/font-view.c:596
+msgid "I_nstall Font"
 msgstr ""
-"Dodijeli ovu tipku naredbi koja se koristi za umanjeni prikaz OpenType "
-"fontova."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:6
-msgid "Set this key to the command used to create thumbnails for PCF fonts."
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+msgid "Font Viewer"
 msgstr ""
-"Dodijeli ovu tipku naredbi koja se koristi za umanjeni prikaz PCF fontova."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:7
-msgid ""
-"Set this key to the command used to create thumbnails for TrueType fonts."
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
+msgid "Preview fonts"
 msgstr ""
-"Dodijeli ovu tipku naredbi koja se koristi za umanjeni prikaz TrueType "
-"fontova."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:8
-msgid "Set this key to the command used to create thumbnails for Type1 fonts."
+#: ../font-viewer/font-thumbnailer.c:245
+msgid "Text to thumbnail (default: Aa)"
 msgstr ""
-"Dodijeli ovu tipku naredbi koja se koristi za umanjeni prikaz Type1 fontova."
 
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:9
-msgid "Thumbnail command for OpenType fonts"
-msgstr "Naredba za umanjeni prikaz OpenType fontova"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:10
-msgid "Thumbnail command for PCF fonts"
-msgstr "Naredba za umanjeni prikaz PCF fontova"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:11
-msgid "Thumbnail command for TrueType fonts"
-msgstr "Naredba za umanjeni prikaz TrueType fontova"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:12
-msgid "Thumbnail command for Type1 fonts"
-msgstr "Naredba za umanjeni prikaz Type1 fontova"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:13
-msgid "Whether to thumbnail OpenType fonts"
-msgstr "Da li prikazati umanjeno OpenType fontove"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:14
-msgid "Whether to thumbnail PCF fonts"
-msgstr "Da li prikazati umanjeno PCF fontove"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:15
-msgid "Whether to thumbnail TrueType fonts"
-msgstr "Da li prikazati umanjeno TrueType fontove"
-
-#: ../vfs-methods/fontilus/fontilus.schemas.in.h:16
-msgid "Whether to thumbnail Type1 fonts"
-msgstr "Da li prikazati umanjeno Type1 fontove"
-
-#: ../vfs-methods/fontilus/mate-font-viewer.desktop.in.in.h:1
-#, fuzzy
-msgid "MATE Font Viewer"
-msgstr "MATE Kontrolni centar"
-
-#: ../vfs-methods/themus/apply-font.glade.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Apply new font?</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Koristiti novi font?</span>"
-
-#: ../vfs-methods/themus/apply-font.glade.h:3
-msgid "Do _not apply font"
-msgstr "_Nemoj koristiti font"
-
-#: ../vfs-methods/themus/apply-font.glade.h:4
-msgid ""
-"The theme you have selected suggests a new font. A preview of the font is "
-"shown below."
+#: ../font-viewer/font-thumbnailer.c:245
+msgid "TEXT"
 msgstr ""
-"Tema koju ste izabrali predlaže novi font. Prethodni prikaz fonta je "
-"prikazan ispod."
 
-#: ../vfs-methods/themus/apply-font.glade.h:5
-msgid "_Apply font"
-msgstr "_Koristi font"
-
-#: ../vfs-methods/themus/theme-method.c:520
-msgid "Themes"
-msgstr "Teme"
-
-#: ../vfs-methods/themus/themus-properties-view.c:126
-msgid "Description"
-msgstr "Opis"
-
-#: ../vfs-methods/themus/themus-properties-view.c:133
-msgid "Control theme"
-msgstr "Tema upravitelja"
-
-#: ../vfs-methods/themus/themus-properties-view.c:139
-msgid "Window border theme"
-msgstr "Tema okvira prozora"
-
-#: ../vfs-methods/themus/themus-properties-view.c:145
-msgid "Icon theme"
-msgstr "Tema ikona"
-
-#. translators: you may want to include non-western chars here
-#: ../vfs-methods/themus/themus-theme-applier.c:78
-msgid "ABCDEFG"
-msgstr "ABCČĆĐŠŽ"
-
-#: ../vfs-methods/themus/themus-theme-applier.desktop.in.in.h:1
-#, fuzzy
-msgid "Apply theme"
-msgstr "_Koristi font"
-
-#: ../vfs-methods/themus/themus-theme-applier.desktop.in.in.h:2
-#, fuzzy
-msgid "Sets the default theme"
-msgstr "Vrati na _uobičajeno"
-
-#: ../vfs-methods/themus/themus.schemas.in.h:1
-msgid "If set to true, then installed themes will be thumbnailed."
-msgstr "Ako je postavljeno, onda će instalirane teme biti prikazane umanjenje."
-
-#: ../vfs-methods/themus/themus.schemas.in.h:2
-msgid "If set to true, then themes will be thumbnailed."
-msgstr "Ako je postavljeno, onda će teme biti prikazane umanjenje."
-
-#: ../vfs-methods/themus/themus.schemas.in.h:3
-msgid ""
-"Set this key to the command used to create thumbnails for installed themes."
+#: ../font-viewer/font-thumbnailer.c:247
+msgid "Font size (default: 64)"
 msgstr ""
-"Dodijeli ovu tipku naredbi koja se koristi za pravljenje umanjenih slika "
-"instaliranih tema."
 
-#: ../vfs-methods/themus/themus.schemas.in.h:4
-msgid "Set this key to the command used to create thumbnails for themes."
+#: ../font-viewer/font-thumbnailer.c:247
+msgid "SIZE"
 msgstr ""
-"Dodijeli ovu tipku naredbi koja se koristi za pravljenje umanjenih slika "
-"tema."
 
-#: ../vfs-methods/themus/themus.schemas.in.h:5
-msgid "Thumbnail command for installed themes"
-msgstr "Naredba za umanjene slike instaliranih tema"
+#: ../font-viewer/font-thumbnailer.c:249
+msgid "FONT-FILE OUTPUT-FILE"
+msgstr ""
 
-#: ../vfs-methods/themus/themus.schemas.in.h:6
-msgid "Thumbnail command for themes"
-msgstr "Naredba za umanjene slike tema"
+#: ../font-viewer/font-thumbnailer.c:268
+#, c-format
+msgid "Error parsing arguments: %s\n"
+msgstr ""
 
-#: ../vfs-methods/themus/themus.schemas.in.h:7
-msgid "Whether to thumbnail installed themes"
-msgstr "Da li umanjeno prikazati instalirane teme"
+#: ../libslab/app-shell.c:754
+#, c-format
+msgid "Your filter \"%s\" does not match any items."
+msgstr ""
 
-#: ../vfs-methods/themus/themus.schemas.in.h:8
-msgid "Whether to thumbnail themes"
-msgstr "Da li umanjeno prikazati teme"
+#: ../libslab/app-shell.c:756
+msgid "No matches found."
+msgstr ""
+
+#: ../libslab/app-shell.c:857
+msgid "New Applications"
+msgstr ""
+
+#: ../libslab/app-shell.c:912
+msgid "Other"
+msgstr ""
+
+#. make start action
+#: ../libslab/application-tile.c:340
+#, c-format
+msgid "Start %s"
+msgstr ""
+
+#: ../libslab/application-tile.c:361
+msgid "Help"
+msgstr ""
+
+#: ../libslab/application-tile.c:629
+msgid "Remove from Favorites"
+msgstr ""
+
+#: ../libslab/application-tile.c:631
+msgid "Add to Favorites"
+msgstr ""
+
+#: ../libslab/application-tile.c:716
+msgid "Remove from Startup Programs"
+msgstr ""
+
+#: ../libslab/application-tile.c:718
+msgid "Add to Startup Programs"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1091
+msgid "New Spreadsheet"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1096
+msgid "New Document"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1149
+msgctxt "Home folder"
+msgid "Home"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1156
+msgid "Documents"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1164
+msgid "Desktop"
+msgstr "Desktop"
+
+#: ../libslab/bookmark-agent.c:1171
+msgid "File System"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1175
+msgid "Network Servers"
+msgstr ""
+
+#: ../libslab/bookmark-agent.c:1204
+msgid "Search"
+msgstr "Traži"
+
+#: ../libslab/search-bar.c:255
+msgid "Find Now"
+msgstr ""
+
+#: ../libslab/system-tile.c:126
+#, c-format
+msgid "<b>Open %s</b>"
+msgstr ""
+
+#: ../libslab/system-tile.c:139
+#, c-format
+msgid "Remove from System Items"
+msgstr ""
