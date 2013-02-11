@@ -204,12 +204,14 @@ scrollmethod_gsettings_changed_event (GSettings *settings,
 				GtkBuilder *dialog)
 {
 	int scroll_method = g_settings_get_int (touchpad_settings, "scroll-method");
-	gtk_widget_set_sensitive (WID ("scroll_disabled_radio"),
+	gtk_toggle_button_set_active (WID ("scroll_disabled_radio"),
 				scroll_method == 0);
-	gtk_widget_set_sensitive (WID ("scroll_edge_radio"),
+	gtk_toggle_button_set_active (WID ("scroll_edge_radio"),
 				scroll_method == 1);
-	gtk_widget_set_sensitive (WID ("scroll_twofinger_radio"),
+	gtk_toggle_button_set_active (WID ("scroll_twofinger_radio"),
 				scroll_method == 2);
+	gtk_widget_set_sensitive (WID ("horiz_scroll_toggle"),
+				 scroll_method != 0);
 }
 
 static void
