@@ -252,12 +252,12 @@ static struct {
 } icons[] = {
 	{"web_browser_image",  "web-browser"},
 	{"mail_reader_image",  "emblem-mail"},
-	{"media_player_image", "audio-x-generic"}, /* applications-multimedia */
+	{"media_player_image", "audio-x-generic"},
 	{"visual_image",       "zoom-best-fit"},
 	{"mobility_image",     "preferences-desktop-accessibility"},
 	{"messenger_image",    "user-idle"},
 	{"filemanager_image",  "file-manager"},
-	{"imageviewer_image",  "eog"}, /* no hay otra... */
+	{"imageviewer_image",  "image-x-generic"},
 	{"video_image",        "video-x-generic"},
 	{"text_image",         "text-editor"},
 	{"terminal_image",     "terminal"},
