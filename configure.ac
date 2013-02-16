@@ -120,6 +120,7 @@ COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  glib-2.0 >= 2.17.4 dnl
  gthread-2.0 dnl
  gio-2.0 dnl
+ gio-unix-2.0 dnl
  libxml-2.0 dnl
  mate-desktop-2.0 >= 1.5.2"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)

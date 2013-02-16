@@ -27,6 +27,8 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
+#include <gio/gio.h>
+#include <gio/gdesktopappinfo.h>
 
 #include "mate-da-capplet.h"
 #include "capplet-util.h"
@@ -46,7 +48,7 @@ enum {
 	DA_N_COLUMNS
 };
 
-/* for combo box */
+/* For combo box */
 enum {
 	PIXBUF_COL,
 	TEXT_COL,
@@ -56,24 +58,11 @@ enum {
 };
 
 static void
-close_cb(GtkWidget* window, gint response, gpointer user_data)
-{
-	if (response == GTK_RESPONSE_HELP)
-	{
-		capplet_help(GTK_WINDOW(window), "prefs-preferredapps");
-	}
-	else
-	{
-		gtk_widget_destroy(window);
-		gtk_main_quit();
-	}
-}
-
-static void
 set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 {
 	guint index;
 	GAppInfo* item;
+	GSettings* settings;
 
 	index = gtk_combo_box_get_active(combo);
 
@@ -84,72 +73,94 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 		switch (type)
 		{
 			case DA_TYPE_WEB_BROWSER:
-			
-				/* establecemos el item */
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/http", NULL);
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/https", NULL);
-
-				/* about:config es usado por mozilla firefox y algunos otros con
-				 * webtoolkit */
+				/* about:config is used by firefox and others */
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/about", NULL);
 				break;
 
 			case DA_TYPE_EMAIL:
-				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/mailto", NULL);
+				g_app_info_set_as_default_for_type(item, "application/x-extension-eml", NULL);
+				g_app_info_set_as_default_for_type(item, "message/rfc822", NULL);
 				break;
 			
 			case DA_TYPE_FILE:
-				/* falta agregar más mime-types */
 				g_app_info_set_as_default_for_type(item, "inode/directory", NULL);
 				break;
 			
 			case DA_TYPE_TEXT:
-				/* falta agregar más mime-types */
 				g_app_info_set_as_default_for_type(item, "text/plain", NULL);
 				break;
 
 			case DA_TYPE_MEDIA:
-				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
-				g_app_info_set_as_default_for_type(item, "audio/x-vorbis+ogg", NULL);
-				g_app_info_set_as_default_for_type(item, "audio/x-scpls", NULL);
 				g_app_info_set_as_default_for_type(item, "audio/mpeg", NULL);
-				g_app_info_set_as_default_for_type(item, "audio/x-wav", NULL);
 				g_app_info_set_as_default_for_type(item, "audio/x-mpegurl", NULL);
-				g_app_info_set_as_default_for_type(item, "video/webm", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/x-scpls", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/x-vorbis+ogg", NULL);
+				g_app_info_set_as_default_for_type(item, "audio/x-wav", NULL);
 				break;
 				
 			case DA_TYPE_VIDEO:
-				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
+				g_app_info_set_as_default_for_type(item, "video/mp4", NULL);
 				g_app_info_set_as_default_for_type(item, "video/mpeg", NULL);
-				g_app_info_set_as_default_for_type(item, "video/x-mpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "video/mp2t", NULL);
 				g_app_info_set_as_default_for_type(item, "video/msvideo", NULL);
 				g_app_info_set_as_default_for_type(item, "video/quicktime", NULL);
-				g_app_info_set_as_default_for_type(item, "video/x-avi", NULL);
-				g_app_info_set_as_default_for_type(item, "video/x-ogm+ogg", NULL);
-				g_app_info_set_as_default_for_type(item, "video/x-matroska", NULL);
 				g_app_info_set_as_default_for_type(item, "video/webm", NULL);
-				g_app_info_set_as_default_for_type(item, "video/mp4", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-avi", NULL);
 				g_app_info_set_as_default_for_type(item, "video/x-flv", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-matroska", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-mpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "video/x-ogm+ogg", NULL);
 				break;
 
 			case DA_TYPE_IMAGE:
-				/* por alguna extraña razon, solo se usa mailto, en vez de mail. */
-				g_app_info_set_as_default_for_type(item, "image/png", NULL);
-				g_app_info_set_as_default_for_type(item, "image/jpeg", NULL);
-				g_app_info_set_as_default_for_type(item, "image/gif", NULL);
 				g_app_info_set_as_default_for_type(item, "image/bmp", NULL);
+				g_app_info_set_as_default_for_type(item, "image/gif", NULL);
+				g_app_info_set_as_default_for_type(item, "image/jpeg", NULL);
+				g_app_info_set_as_default_for_type(item, "image/png", NULL);
 				g_app_info_set_as_default_for_type(item, "image/tiff", NULL);
 				break;
-						
-						
-			default:;
+
+			case DA_TYPE_TERMINAL:
+				settings = g_settings_new (TERMINAL_SCHEMA);
+				g_settings_set_string (settings, TERMINAL_KEY, g_app_info_get_executable (item));
+				g_object_unref (settings);
+				break;
+
+			default:
 				break;
 		}
 	}
 }
 
-/* Combo box callbacks */
+static void
+close_cb(GtkWidget* window, gint response, MateDACapplet* capplet)
+{
+	if (response == GTK_RESPONSE_HELP)
+	{
+		capplet_help(GTK_WINDOW(window), "prefs-preferredapps");
+	}
+	else
+	{
+		set_changed(GTK_COMBO_BOX(capplet->web_combo_box), capplet, capplet->web_browsers, DA_TYPE_WEB_BROWSER);
+		set_changed(GTK_COMBO_BOX(capplet->mail_combo_box), capplet, capplet->mail_readers, DA_TYPE_EMAIL);
+		set_changed(GTK_COMBO_BOX(capplet->file_combo_box), capplet, capplet->file_managers, DA_TYPE_FILE);
+		set_changed(GTK_COMBO_BOX(capplet->text_combo_box), capplet, capplet->text_editors, DA_TYPE_TEXT);
+		set_changed(GTK_COMBO_BOX(capplet->media_combo_box), capplet, capplet->media_players, DA_TYPE_MEDIA);
+		set_changed(GTK_COMBO_BOX(capplet->video_combo_box), capplet, capplet->video_players, DA_TYPE_VIDEO);
+		set_changed(GTK_COMBO_BOX(capplet->term_combo_box), capplet, capplet->terminals, DA_TYPE_TERMINAL);
+		set_changed(GTK_COMBO_BOX(capplet->visual_combo_box), capplet, capplet->visual_ats, DA_TYPE_VISUAL);
+		set_changed(GTK_COMBO_BOX(capplet->mobility_combo_box), capplet, capplet->mobility_ats, DA_TYPE_MOBILITY);
+		set_changed(GTK_COMBO_BOX(capplet->image_combo_box), capplet, capplet->image_viewers, DA_TYPE_IMAGE);
+
+		gtk_widget_destroy(window);
+		gtk_main_quit();
+	}
+}
+
+/* Combo boxes callbacks */
 static void
 web_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 {
@@ -218,8 +229,11 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 	gboolean valid;
 	GdkPixbuf* pixbuf;
 	gchar* icon_name;
-	
+
 	model = gtk_combo_box_get_model(combo_box);
+
+	if (model == NULL)
+		return;
 
 	valid = gtk_tree_model_get_iter_first(model, &iter);
 	
@@ -263,7 +277,7 @@ static struct {
 	{"terminal_image",     "terminal"},
 };
 
-/* Esta funcion se llama cuando se cambia o actualizan los iconos */
+/* Callback for icon theme change */
 static void
 theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 {
@@ -287,6 +301,7 @@ theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->media_combo_box), capplet->media_players);
+	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->video_combo_box), capplet->video_players);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats);
@@ -322,8 +337,27 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	GtkTreeIter iter;
 	GdkPixbuf* pixbuf;
 	GAppInfo* default_app;
-	
-	default_app = g_app_info_get_default_for_type(mime, FALSE);
+
+	default_app = NULL;
+	if (g_strcmp0(mime, "terminal") == 0)
+	{
+		GSettings *terminal_settings = g_settings_new (TERMINAL_SCHEMA);
+		gchar *default_terminal = g_settings_get_string (terminal_settings, TERMINAL_KEY);
+		for (entry = app_list; entry != NULL; entry = g_list_next(entry))
+		{
+			GAppInfo* item = (GAppInfo*) entry->data;
+			if (g_strcmp0 (g_app_info_get_executable (item), default_terminal) == 0)
+			{
+				default_app = item;
+			}
+		}
+		g_free (default_terminal);
+		g_object_unref (terminal_settings);
+	}
+	else
+	{
+		default_app = g_app_info_get_default_for_type (mime, FALSE);
+	}
 
 	if (theme == NULL)
 	{
@@ -335,7 +369,7 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 
 	renderer = gtk_cell_renderer_pixbuf_new();
 
-	/* not all cells have a pixbuf, this prevents the combo box to shrink */
+	/* Not all cells have a pixbuf, this prevents the combo box to shrink */
 	gtk_cell_renderer_set_fixed_size(renderer, -1, 22);
 	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo_box), renderer, FALSE);
 	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(combo_box), renderer,
@@ -353,13 +387,14 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	{
 		GAppInfo* item = (GAppInfo*) entry->data;
 		
-		// icon
+		/* Icon */
 		GIcon* icon = g_app_info_get_icon(item);
 		gchar* icon_name = g_icon_to_string(icon);
 		
 		if (icon_name == NULL)
 		{
-			icon_name = g_strdup("binary"); // default icon
+			/* Default icon */
+			icon_name = g_strdup("binary");
 		}
 		
 		pixbuf = gtk_icon_theme_load_icon(theme, icon_name, 22, 0, NULL);
@@ -377,7 +412,7 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 			g_object_unref(pixbuf);
 		}
 		
-		/* set the index */
+		/* Set the index for the default app */
 		if (default_app != NULL && g_app_info_equal(item, default_app))
 		{
 			gtk_combo_box_set_active(combo_box, index);
@@ -422,7 +457,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 	capplet->window = get_widget("preferred_apps_dialog");
 
-	g_signal_connect(capplet->window, "response", G_CALLBACK(close_cb), NULL);
+	g_signal_connect(capplet->window, "response", G_CALLBACK(close_cb), capplet);
 
 	capplet->web_combo_box = get_widget("web_browser_combobox");
 	capplet->mail_combo_box = get_widget("mail_reader_combobox");
@@ -439,28 +474,44 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->window, "screen-changed", G_CALLBACK(screen_changed_cb), capplet);
 	screen_changed_cb(capplet->window, gdk_screen_get_default(), capplet);
 
-	// lists
+	/* Lists of default applications */
 	capplet->web_browsers = g_app_info_get_all_for_type("x-scheme-handler/http");
 	capplet->mail_readers = g_app_info_get_all_for_type("x-scheme-handler/mailto");
-	//capplet->terminals = g_app_info_get_all_for_type("inode/directory");
 	capplet->media_players = g_app_info_get_all_for_type("audio/x-vorbis+ogg");
 	capplet->video_players = g_app_info_get_all_for_type("video/x-ogm+ogg");
-	//capplet->visual_ats = g_app_info_get_all_for_type("inode/directory");
-	//capplet->mobility_ats = g_app_info_get_all_for_type("inode/directory");
 	capplet->text_editors = g_app_info_get_all_for_type("text/plain");
 	capplet->image_viewers = g_app_info_get_all_for_type("image/png");
 	capplet->file_managers = g_app_info_get_all_for_type("inode/directory");
-	
+	/* capplet->visual_ats = g_app_info_get_all_for_type("inode/directory"); */
+	/* capplet->mobility_ats = g_app_info_get_all_for_type("inode/directory"); */
+
+	/* Terminal havent mime types, so check in .desktop files for
+	   Categories=TerminalEmulator */
+	GList *entry;
+	GList *all_apps;
+	capplet->terminals = NULL;
+	all_apps = g_app_info_get_all();
+	for (entry = all_apps; entry != NULL; entry = g_list_next(entry))
+	{
+		GDesktopAppInfo* item = (GDesktopAppInfo*) entry->data;
+		if (g_desktop_app_info_get_categories (item) != NULL &&
+			g_strrstr (g_desktop_app_info_get_categories (item), "TerminalEmulator"))
+		{
+			capplet->terminals = g_list_prepend (capplet->terminals, item);
+		}
+	}
+	capplet->terminals = g_list_reverse (capplet->terminals);
+
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers, "x-scheme-handler/http");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers, "x-scheme-handler/mailto");
-	//fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals, "");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals, "terminal");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->media_combo_box), capplet->media_players, "audio/x-vorbis+ogg");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->video_combo_box), capplet->video_players, "video/x-ogm+ogg");
-	//fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats, NULL);
-	//fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats, NULL);
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->image_combo_box), capplet->image_viewers, "image/png");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->text_combo_box), capplet->text_editors, "text/plain");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->file_combo_box), capplet->file_managers, "inode/directory");
+	/* fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats, NULL); */
+	/* fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats, NULL); */
 
 	g_signal_connect(capplet->web_combo_box, "changed", G_CALLBACK(web_combo_changed_cb), capplet);
 	g_signal_connect(capplet->mail_combo_box, "changed", G_CALLBACK(mail_combo_changed_cb), capplet);
@@ -474,7 +525,6 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->file_combo_box, "changed", G_CALLBACK(file_combo_changed_cb), capplet);
 
 
-	/* TODO: fix the name icon */
 	gtk_window_set_icon_name(GTK_WINDOW (capplet->window), "preferences-desktop-default-applications");
 
 	if (start_page != NULL)
