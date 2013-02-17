@@ -1390,7 +1390,7 @@ accel_cleared_callback (GtkCellRendererText *cell,
   /* Unset the key */
   g_settings_set_string (key_entry->settings,
                          key_entry->gsettings_key,
-                         "");
+                         "disabled");
 }
 
 static void
@@ -1630,7 +1630,7 @@ add_custom_shortcut (GtkTreeView  *tree_view,
 
       /* store in gsettings */
       key_entry->settings = g_settings_new_with_path (CUSTOM_KEYBINDING_SCHEMA, key_entry->gsettings_path);
-      g_settings_set_string (key_entry->settings, key_entry->gsettings_key, "");
+      g_settings_set_string (key_entry->settings, key_entry->gsettings_key, "disabled");
       g_settings_set_string (key_entry->settings, key_entry->desc_gsettings_key, key_entry->description);
       g_settings_set_string (key_entry->settings, key_entry->cmd_gsettings_key, key_entry->command);
 
