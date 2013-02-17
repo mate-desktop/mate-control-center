@@ -1332,7 +1332,7 @@ static void accel_edited_callback(GtkCellRendererText* cell, const char* path_st
 
         if (response == GTK_RESPONSE_ACCEPT)
         {
-            g_settings_set_string (tmp_key.settings, tmp_key.gsettings_key, "");
+            g_settings_set_string (tmp_key.settings, tmp_key.gsettings_key, "disabled");
 
             str = binding_name (keyval, keycode, mask, FALSE);
             g_settings_set_string (key_entry->settings, key_entry->gsettings_key, str);
