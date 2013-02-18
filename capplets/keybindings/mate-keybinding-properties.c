@@ -1851,8 +1851,6 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
   GtkWidget *widget;
   GtkTreeView *treeview;
   GtkTreeSelection *selection;
-  GSettings *keybindings_settings;
-  gchar **allowed_keys;
 
   treeview = GTK_TREE_VIEW (gtk_builder_get_object (builder,
                                                     "shortcut_treeview"));
@@ -1916,16 +1914,6 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
   g_signal_connect (selection, "changed",
                     G_CALLBACK (selection_changed),
             _gtk_builder_get_widget (builder, "remove-button"));
-
-  keybindings_settings = g_settings_new ("org.mate.keybindings");
-  allowed_keys = g_settings_get_strv (keybindings_settings, "allowed-keys");
-  if (allowed_keys != NULL && allowed_keys[0] != NULL)
-    {
-      g_strfreev (allowed_keys);
-      gtk_widget_set_sensitive (_gtk_builder_get_widget (builder, "add-button"),
-                                FALSE);
-    }
-  g_object_unref (keybindings_settings);
 
   /* setup the custom shortcut dialog */
   custom_shortcut_dialog = _gtk_builder_get_widget (builder,
