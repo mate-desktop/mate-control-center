@@ -134,10 +134,10 @@ PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 gio-2.0 gtk+-2.0)
 PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon >= 1.5.2)
 PKG_CHECK_MODULES(GIO, gio-2.0)
 
-PKG_CHECK_MODULES([DCONF], [dconf >= 0.13],
-   [AC_DEFINE([HAVE_DCONF_0_13], [1], [Use DCONF >= 0.13])],
-   [PKG_CHECK_MODULES([DCONF], [dconf >= 0.10],
-       [AC_DEFINE([HAVE_DCONF_0_10], [1], [Use DCONF 0.10])
+PKG_CHECK_MODULES([DCONF], [dconf >= 0.13.4],
+   [AC_DEFINE([HAVE_DCONF_0_13], [1], [Use DCONF >= 0.13.4])],
+   [PKG_CHECK_MODULES([DCONF], [dconf >= 0.10.0],
+       [AC_DEFINE([HAVE_DCONF_0_10], [1], [Use DCONF 0.10.0])
     ])
 ])
 AC_SUBST(DCONF_CFLAGS)
