@@ -1034,7 +1034,7 @@ style_init (AppearanceData *data)
 
   window_theme_changed (data->marco_settings, MARCO_THEME_KEY, data);
   gtk_theme_changed (data->interface_settings, GTK_THEME_KEY, data);
-  icon_theme_changed (data->icon_theme_icon, ICON_THEME_KEY, data);
+  icon_theme_changed (data->interface_settings, ICON_THEME_KEY, data);
   cursor_theme_changed (data->mouse_settings, CURSOR_THEME_KEY, data);
 
   w = appearance_capplet_get_widget (data, "color_scheme_message_hbox");
