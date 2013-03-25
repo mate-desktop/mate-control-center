@@ -41,7 +41,7 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 uidir   = $(pkgdatadir)/ui
 ui_DATA = $(ui_files)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBEBOOK_CFLAGS) \
 	-DDATADIR="\"$(datadir)\"" \

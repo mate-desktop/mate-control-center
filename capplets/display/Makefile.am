@@ -51,7 +51,7 @@ desktopdir = $(datadir)/applications
 Desktop_in_files = display-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
-INCLUDES   = $(DISPLAY_CAPPLET_CFLAGS) \
+AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
              $(MATECC_CAPPLETS_CFLAGS) \
 	     -DSBINDIR="\"$(sbindir)\"" \
 	     -DUIDIR="\"$(uidir)\"" \

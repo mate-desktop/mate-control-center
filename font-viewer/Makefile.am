@@ -1,5 +1,5 @@
 
-INCLUDES = $(FONT_VIEWER_CFLAGS) $(MATECC_CAPPLETS_CFLAGS) -DDIRECTORY_DIR=\"$(directorydir)\" \
+AM_CPPFLAGS = $(FONT_VIEWER_CFLAGS) $(MATECC_CAPPLETS_CFLAGS) -DDIRECTORY_DIR=\"$(directorydir)\" \
   -DMATELOCALEDIR=\"$(datadir)/locale\"
 
 bin_PROGRAMS = mate-thumbnail-font mate-font-viewer

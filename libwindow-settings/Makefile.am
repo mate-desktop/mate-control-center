@@ -1,6 +1,6 @@
 WM_MODULE_DIR=$(libdir)/window-manager-settings
 
-INCLUDES = 								\
+AM_CPPFLAGS = 								\
 	-DMATELOCALEDIR="\"$(datadir)/locale\""			\
 	-DMATE_ICONDIR=\""$(datadir)/pixmaps"\"			\
 	-DG_LOG_DOMAIN=\"capplet-common\"				\
