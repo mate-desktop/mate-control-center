@@ -1,6 +1,6 @@
 EXTRA_DIST =
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""				\
 	-DMATELOCALEDIR="\"$(datadir)/locale\""			\
 	-DGTK_ENGINE_DIR="\"$(GTK_ENGINE_DIR)\"" 			\

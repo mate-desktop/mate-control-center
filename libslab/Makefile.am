@@ -1,7 +1,7 @@
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libslab.pc
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\
 	$(LIBSLAB_CFLAGS)			\
 	$(WARN_CFLAGS)

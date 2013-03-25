@@ -19,7 +19,7 @@ pixmap_DATA =					\
 uidir = $(pkgdatadir)/ui
 ui_DATA = at-enable-dialog.ui
 
-INCLUDES   = $(AT_CAPPLET_CFLAGS)     \
+AM_CPPFLAGS   = $(AT_CAPPLET_CFLAGS)     \
              $(MATECC_CAPPLETS_CFLAGS) \
 	     -DUIDIR=\""$(uidir)"\" \
 	     -DPIXMAPDIR=\""$(pixmapdir)"\" \

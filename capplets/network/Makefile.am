@@ -28,7 +28,7 @@ desktopdir = $(datadir)/applications
 desktop_in_files = mate-network-properties.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_UI_DIR="\"$(uidir)\""

@@ -18,7 +18,7 @@ desktopdir = $(datadir)/applications
 Desktop_in_files = window-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
-INCLUDES   = $(MATECC_CAPPLETS_CFLAGS)					\
+AM_CPPFLAGS   = $(MATECC_CAPPLETS_CFLAGS)					\
 	     -I$(top_srcdir)/libwindow-settings \
 	     -DMATE_WINDOW_MANAGER_MODULE_PATH=\""$(libdir)/window-manager-settings"\" \
 	     -DUIDIR=\""$(uidir)"\"  	\
