@@ -30,7 +30,7 @@ desktopdir = $(datadir)/applications
 Desktop_in_files = keyboard.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBMATEKBDUI_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \

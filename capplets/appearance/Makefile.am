@@ -45,7 +45,7 @@ gtkbuilderdir = $(pkgdatadir)/ui
 pixmapdir = $(pkgdatadir)/pixmaps
 wallpaperdir = $(datadir)/mate-background-properties
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(MARCO_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(FONT_CAPPLET_CFLAGS) \

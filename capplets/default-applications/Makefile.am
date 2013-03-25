@@ -19,7 +19,7 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 pkgconfigdir = $(datadir)/pkgconfig
 pkgconfig_DATA = mate-default-applications.pc
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(DEFAULT_APPLICATIONS_CAPPLET_CFLAGS) \
 	-DMATELOCALEDIR=\""$(datadir)/locale"\"\

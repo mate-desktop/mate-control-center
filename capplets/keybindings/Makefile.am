@@ -29,7 +29,7 @@ xml_DATA = $(xml_in_files:.xml.in=.xml)
 pkgconfigdir = $(datadir)/pkgconfig
 pkgconfig_DATA = mate-keybindings.pc
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
