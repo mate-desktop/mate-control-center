@@ -48,6 +48,7 @@ metacity_is_running()
     current_wm = wm_common_get_current_window_manager ();
 
     is_running = (g_strcmp0(current_wm, WM_COMMON_METACITY) == 0) ||
+                 (g_strcmp0(current_wm, WM_COMMON_COMPIZ_OLD) == 0) ||
                  (g_strcmp0(current_wm, WM_COMMON_COMPIZ) == 0);
 
     g_free (current_wm);
