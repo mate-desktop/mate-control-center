@@ -138,7 +138,8 @@ about_me_update_photo (MateAboutMe *me)
 		GdkPixbuf *pixbuf = NULL, *scaled = NULL;
 		int height, width;
 		gboolean do_scale = FALSE;
-		float scale;
+		float scale = 1.0;
+                float scalex = 1.0, scaley = 1.0;
 
 		e_image_chooser_get_image_data (E_IMAGE_CHOOSER (me->image_chooser), (char **) &data, &length);
 
@@ -158,11 +159,18 @@ about_me_update_photo (MateAboutMe *me)
 		height = gdk_pixbuf_get_height (pixbuf);
 		width = gdk_pixbuf_get_width (pixbuf);
 
-		if (height >= width && height > MAX_HEIGHT) {
-			scale = (float)MAX_HEIGHT/height;
+		if (width > MAX_WIDTH) {
+                        scalex = (float)MAX_WIDTH/width;
+			if (scalex < scale) {
+				scale = scalex;
+			}
 			do_scale = TRUE;
-		} else if (width > height && width > MAX_WIDTH) {
-			scale = (float)MAX_WIDTH/width;
+		}
+		if (height > MAX_HEIGHT) {
+			scaley = (float)MAX_HEIGHT/height;
+			if (scaley < scale) {
+				scale = scaley;
+			}
 			do_scale = TRUE;
 		}
 
