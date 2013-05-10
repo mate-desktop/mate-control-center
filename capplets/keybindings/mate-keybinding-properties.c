@@ -432,14 +432,13 @@ typedef struct {
 static gboolean key_match(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data)
 {
     KeyMatchData* match_data = data;
-    KeyEntry* element;
+    KeyEntry* element = NULL;
+    gchar *element_schema = NULL;
+    gchar *element_path = NULL;
 
     gtk_tree_model_get(model, iter,
         KEYENTRY_COLUMN, &element,
         -1);
-
-    gchar *element_schema;
-    gchar *element_path;
 
     if (element && element->settings && G_IS_SETTINGS(element->settings))
     {
@@ -449,10 +448,6 @@ static gboolean key_match(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* i
             g_object_get (element->settings, "schema", &element_schema, NULL);
         #endif
         g_object_get (element->settings, "path", &element_path, NULL);
-    }
-    else {
-        element_schema = NULL;
-        element_path = NULL;
     }
 
     if (element && g_strcmp0(element->gsettings_key, match_data->key) == 0
