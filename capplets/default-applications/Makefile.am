@@ -16,7 +16,7 @@ desktopdir = $(datadir)/applications
 Desktop_in_files = default-applications.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
-pkgconfigdir = $(datadir)/pkgconfig
+pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-default-applications.pc
 
 AM_CPPFLAGS = \
