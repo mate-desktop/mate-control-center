@@ -406,18 +406,12 @@ setup_dialog (GtkBuilder *dialog)
 			WID ("horiz_scroll_toggle"), "active",
 			G_SETTINGS_BIND_DEFAULT);
 
+		scrollmethod_gsettings_changed_event (touchpad_settings, "scroll-method", dialog);
+
 		radio = GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"));
 		GSList *radio_group = gtk_radio_button_get_group (radio);
-		GSList *item;
-		gint i;
-		gint scroll_method = g_settings_get_int(touchpad_settings, "scroll-method");
-		for (item = radio_group; item != NULL; item = item->next) {
-			if (i == scroll_method) {
-				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(item->data), TRUE);
-				break;
-			}
-			i++;
-		}
+		GSList *item = NULL;
+
 		synaptics_check_capabilities (dialog);
 		for (item = radio_group; item != NULL; item = item->next) {
 			g_signal_connect (G_OBJECT (item->data), "clicked",
