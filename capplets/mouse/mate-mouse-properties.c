@@ -460,21 +460,6 @@ create_dialog (void)
 	gtk_size_group_add_widget (size_group, WID ("threshold_small_label"));
 	gtk_size_group_add_widget (size_group, WID ("timeout_short_label"));
 
-	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget (size_group, WID ("simulated_delay_label"));
-	gtk_size_group_add_widget (size_group, WID ("dwell_delay_label"));
-	gtk_size_group_add_widget (size_group, WID ("dwell_threshold_label"));
-
-	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget (size_group, WID ("simulated_delay_short_label"));
-	gtk_size_group_add_widget (size_group, WID ("dwell_delay_short_label"));
-	gtk_size_group_add_widget (size_group, WID ("dwell_threshold_small_label"));
-
-	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget (size_group, WID ("simulated_delay_long_label"));
-	gtk_size_group_add_widget (size_group, WID ("dwell_delay_long_label"));
-	gtk_size_group_add_widget (size_group, WID ("dwell_threshold_large_label"));
-
 	return dialog;
 }
 
