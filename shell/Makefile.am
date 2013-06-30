@@ -1,10 +1,11 @@
 REAL_LIBSLAB_CFLAGS = -I$(top_srcdir)/libslab
 REAL_LIBSLAB_LIBS = $(top_builddir)/libslab/libslab.la
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\
-	$(REAL_LIBSLAB_CFLAGS)			\
-	$(MATECC_SHELL_CFLAGS)
+	$(REAL_LIBSLAB_CFLAGS)		\
+	$(MATECC_SHELL_CFLAGS)  	\
+	-DMATELOCALEDIR="\"$(datadir)/locale\""
 
 bin_PROGRAMS = mate-control-center 
 
@@ -14,9 +15,6 @@ mate_control_center_SOURCES =		\
 mate_control_center_LDADD =						\
 	$(MATECC_SHELL_LIBS)						\
 	$(REAL_LIBSLAB_LIBS)
-
-AM_CPPFLAGS =							\
-	-DMATELOCALEDIR="\"$(datadir)/locale\""
 
 sysdir = $(datadir)/applications
 sys_in_files = matecc.desktop.in
