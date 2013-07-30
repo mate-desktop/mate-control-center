@@ -33,7 +33,7 @@ CLEANFILES = $(desktop_in_files) $(desktop_DATA) \
   $(schemas_DATA) $(directory_DATA)
 
 EXTRA_DIST = \
-  fontilus.schemas.in \
+  $(thumbnailer_DATA) \
   mate-font-viewer.desktop.in.in
 
 -include $(top_srcdir)/git.mk

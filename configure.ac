@@ -4,7 +4,7 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-bzip2 tar-ustar])
+AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz tar-ustar])
 AM_MAINTAINER_MODE
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 

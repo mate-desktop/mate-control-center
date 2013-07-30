@@ -55,9 +55,9 @@ MAINTAINERCLEANFILES = \
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 EXTRA_DIST = \
-	$(gsettings_schemas_in_in) \
+	org.mate.control-center.gschema.xml.in.in \
+	org.mate.control-center.keybinding.gschema.xml.in.in \
 	$(convert_DATA) \
-	MAINTAINERS \
 	mate-doc-utils.make
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --disable-update-mimedb

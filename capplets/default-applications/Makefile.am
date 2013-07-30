@@ -15,7 +15,7 @@ uidir = $(pkgdatadir)/ui
 dist_ui_DATA = mate-default-applications-properties.ui
 
 desktopdir = $(datadir)/applications
-Desktop_in_files = mate-default-applications.desktop.in
+Desktop_in_files = mate-default-applications-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 pkgconfigdir = $(libdir)/pkgconfig
@@ -28,6 +28,6 @@ AM_CPPFLAGS = \
 	-DMATECC_UI_DIR=\""$(uidir)"\"
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA) $(autostart_DATA)
-EXTRA_DIST = mate-default-applications.pc.in ($man_MANS)
+EXTRA_DIST = mate-default-applications.pc.in mate-default-applications-properties.desktop.in.in $(man_MANS)
 
 -include $(top_srcdir)/git.mk
