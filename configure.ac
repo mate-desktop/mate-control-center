@@ -319,7 +319,7 @@ capplets/appearance/data/mate-appearance-properties.desktop.in
 capplets/appearance/data/mate-theme-installer.desktop.in
 capplets/common/Makefile
 capplets/default-applications/Makefile
-capplets/default-applications/default-applications.desktop.in
+capplets/default-applications/mate-default-applications-properties.desktop.in
 capplets/default-applications/mate-default-applications.pc
 capplets/display/Makefile
 capplets/display/display-properties.desktop.in
