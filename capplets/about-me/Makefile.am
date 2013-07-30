@@ -41,6 +41,8 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 uidir   = $(pkgdatadir)/ui
 ui_DATA = $(ui_files)
 
+man_MANS = mate-about-me.1
+
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBEBOOK_CFLAGS) \
@@ -51,6 +53,6 @@ AM_CPPFLAGS = \
 	-DMATELOCALEDIR="\"$(datadir)/locale\""
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(MARSHALFILES)
-EXTRA_DIST = $(ui_files) fprintd-marshal.list
+EXTRA_DIST = $(ui_files) $(man_MANS) fprintd-marshal.list
 
 -include $(top_srcdir)/git.mk
