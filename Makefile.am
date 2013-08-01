@@ -32,9 +32,6 @@ CLEANFILES = \
 	$(gsettings_SCHEMAS) \
 	*.gschema.valid
 
-DISTCLEANFILES = \
-	mate-doc-utils.make
-
 MAINTAINERCLEANFILES = \
 	$(srcdir)/INSTALL \
 	$(srcdir)/aclocal.m4 \

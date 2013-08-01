@@ -14,8 +14,8 @@ AM_PROG_CC_C_O
 AC_STDC_HEADERS
 AM_PROG_LIBTOOL
 
-# Use the MATE documentation framework
-MATE_DOC_INIT
+# Use the Yelp documentation framework
+YELP_HELP_INIT
 
 changequote(,)dnl
 if test "x$GCC" = "xyes"; then
