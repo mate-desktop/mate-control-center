@@ -32,8 +32,7 @@ CLEANFILES = \
 	$(gsettings_SCHEMAS) \
 	*.gschema.valid
 
-DISTCLEANFILES = \
-	mate-doc-utils.make
+DISTCLEANFILES = 
 
 MAINTAINERCLEANFILES = \
 	$(srcdir)/INSTALL \

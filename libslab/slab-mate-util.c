@@ -156,7 +156,7 @@ open_desktop_item_help (MateDesktopItem * desktop_item)
 
 	if (doc_path)
 	{
-		help_uri = g_strdup_printf ("ghelp:%s", doc_path);
+		help_uri = g_strdup_printf ("help:%s", doc_path);
 
 		error = NULL;
 		if (!gtk_show_uri (libslab_get_current_screen (), help_uri, gtk_get_current_event_time (), &error))
