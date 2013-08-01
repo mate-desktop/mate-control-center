@@ -80,7 +80,7 @@ capplet_help (GtkWindow *parent, char const *section)
 	else
 		screen = gtk_widget_get_screen (GTK_WIDGET (parent));
 
-	uri = g_strdup_printf ("ghelp:user-guide#%s", section);
+	uri = g_strdup_printf ("help:user-guide#%s", section);
 
 	if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error)) {
 		capplet_error_dialog (

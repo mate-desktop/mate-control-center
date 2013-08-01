@@ -219,7 +219,7 @@ libslab_mate_desktop_item_open_help (MateDesktopItem *item)
 	doc_path = libslab_mate_desktop_item_get_docpath (item);
 
 	if (doc_path) {
-		help_uri = g_strdup_printf ("ghelp:%s", doc_path);
+		help_uri = g_strdup_printf ("help:%s", doc_path);
 
 		if (!gtk_show_uri (libslab_get_current_screen (), help_uri, gtk_get_current_event_time (), &error)) {
 			g_warning ("error opening %s [%s]\n", help_uri, error->message);
