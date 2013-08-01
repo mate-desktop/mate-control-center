@@ -32,8 +32,6 @@ CLEANFILES = \
 	$(gsettings_SCHEMAS) \
 	*.gschema.valid
 
-DISTCLEANFILES = 
-
 MAINTAINERCLEANFILES = \
 	$(srcdir)/INSTALL \
 	$(srcdir)/aclocal.m4 \
