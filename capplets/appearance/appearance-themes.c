@@ -209,7 +209,7 @@ theme_load_from_gsettings (AppearanceData *data)
 
   theme->gtk_theme_name = g_settings_get_string (data->interface_settings, GTK_THEME_KEY);
   if (theme->gtk_theme_name == NULL)
-    theme->gtk_theme_name = g_strdup ("Clearlooks");
+    theme->gtk_theme_name = g_strdup ("Menta");
 
   scheme = g_settings_get_string (data->interface_settings, COLOR_SCHEME_KEY);
   if (scheme == NULL || !strcmp (scheme, "")) {
@@ -220,11 +220,11 @@ theme_load_from_gsettings (AppearanceData *data)
 
   theme->marco_theme_name = g_settings_get_string (data->marco_settings, MARCO_THEME_KEY);
   if (theme->marco_theme_name == NULL)
-    theme->marco_theme_name = g_strdup ("Clearlooks");
+    theme->marco_theme_name = g_strdup ("Menta");
 
   theme->icon_theme_name = g_settings_get_string (data->interface_settings, ICON_THEME_KEY);
   if (theme->icon_theme_name == NULL)
-    theme->icon_theme_name = g_strdup ("mate");
+    theme->icon_theme_name = g_strdup ("menta");
 
   /* We  need this because mate-control-center does not depend on mate-notification-daemon,
    * and if we try to get notification theme without schema installed, gsettings crashes
