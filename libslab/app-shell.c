@@ -987,8 +987,8 @@ check_specific_apps_hack (MateDesktopItem * item)
 		return TRUE;
 	}
 
-	/* discard mate-keyring-manager if CASA is installed */
-	if ((exec && !strcmp (exec, "mate-keyring-manager"))
+	/* discard gnome-keyring-manager if CASA is installed */
+	if ((exec && !strcmp (exec, "gnome-keyring-manager"))
 		&& (path = g_find_program_in_path ("CASAManager.sh")))
 	{
 		g_free (path);
