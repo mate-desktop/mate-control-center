@@ -27,7 +27,7 @@ dist_ui_DATA = mate-keyboard-properties-a11y-notifications.ui \
                mate-keyboard-properties-options-dialog.ui
 
 desktopdir = $(datadir)/applications
-Desktop_in_files = keyboard.desktop.in
+Desktop_in_files = mate-keyboard.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 AM_CPPFLAGS = \

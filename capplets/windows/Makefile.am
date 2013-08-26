@@ -15,7 +15,7 @@ uidir   = $(pkgdatadir)/ui
 ui_DATA = mate-window-properties.ui
 
 desktopdir = $(datadir)/applications
-Desktop_in_files = window-properties.desktop.in
+Desktop_in_files = mate-window-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 AM_CPPFLAGS   = $(MATECC_CAPPLETS_CFLAGS)					\
