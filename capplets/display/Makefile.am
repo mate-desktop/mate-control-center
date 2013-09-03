@@ -48,7 +48,7 @@ iconssvgdir = $(datadir)/icons/hicolor/scalable/apps
 dist_iconssvg_DATA = icons/scalable/mate-preferences-desktop-display.svg
 
 desktopdir = $(datadir)/applications
-Desktop_in_files = display-properties.desktop.in
+Desktop_in_files = mate-display-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
