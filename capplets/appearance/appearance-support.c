@@ -57,21 +57,34 @@ metacity_is_running()
 }
 
 static void
-metacity_theme_apply(const gchar *theme)
+metacity_theme_apply(const gchar *theme, const gchar *font)
 {
     /* set theme, we use gconf and gsettings binaries to avoid schemas and versions issues */
     if (is_program_in_path ("gconftool-2"))
     {
-        gchar *gconf_cmd = g_strdup_printf("gconftool-2 --set --type string /apps/metacity/general/theme '%s'", theme);
+        gchar *gconf_cmd = NULL;
+
+        gconf_cmd = g_strdup_printf("gconftool-2 --set --type string /apps/metacity/general/theme '%s'", theme);
+        g_spawn_command_line_async (gconf_cmd, NULL);
+        g_free (gconf_cmd);
+
+        gconf_cmd = g_strdup_printf("gconftool-2 --set --type string /apps/metacity/general/titlebar_font '%s'", font);
         g_spawn_command_line_async (gconf_cmd, NULL);
         g_free (gconf_cmd);
     }
 
     if (is_program_in_path ("gsettings"))
     {
-        gchar *gsettings_cmd = g_strdup_printf("gsettings set org.gnome.desktop.wm.preferences theme '%s'", theme);
+        gchar *gsettings_cmd = NULL;
+
+        gsettings_cmd = g_strdup_printf("gsettings set org.gnome.desktop.wm.preferences theme '%s'", theme);
         g_spawn_command_line_async (gsettings_cmd, NULL);
         g_free (gsettings_cmd);
+
+        gsettings_cmd = g_strdup_printf("gsettings set org.gnome.desktop.wm.preferences titlebar-font '%s'", font);
+        g_spawn_command_line_async (gsettings_cmd, NULL);
+        g_free (gsettings_cmd);
+
     }
 }
 
@@ -79,11 +92,14 @@ static void
 marco_theme_changed(GSettings *settings, gchar *key, AppearanceData* data)
 {
     gchar *theme = NULL;
+    gchar *font = NULL;
     if (metacity_is_running ())
     {
-        theme = g_settings_get_string (settings, key);
-        metacity_theme_apply (theme);
+        theme = g_settings_get_string (settings, MARCO_THEME_KEY);
+        font = g_settings_get_string (settings, WINDOW_TITLE_FONT_KEY);
+        metacity_theme_apply (theme, font);
         g_free (theme);
+        g_free (font);
     }
 }
 
@@ -92,12 +108,14 @@ support_init(AppearanceData* data)
 {
     /* needed for wm_common_get_current_window_manager() */
     wm_common_update_window ();
-    /* GSettings signal */
+    /* GSettings signals */
     g_signal_connect (data->marco_settings, "changed::" MARCO_THEME_KEY,
+                      G_CALLBACK (marco_theme_changed), data);
+    g_signal_connect (data->marco_settings, "changed::" WINDOW_TITLE_FONT_KEY,
                       G_CALLBACK (marco_theme_changed), data);
     /* apply theme at start */
     if (metacity_is_running ())
-        marco_theme_changed (data->marco_settings, MARCO_THEME_KEY, data);
+        marco_theme_changed (data->marco_settings, NULL, data);
 }
 
 void
