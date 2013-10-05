@@ -38,7 +38,9 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   GtkBuilder *ui;
   GError *err = NULL;
 
+#if !GLIB_CHECK_VERSION (2, 32, 0)
   g_thread_init (NULL);
+#endif
   gdk_threads_init ();
   gdk_threads_enter ();
   theme_thumbnail_factory_init (*argc, *argv);

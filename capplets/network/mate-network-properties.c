@@ -380,7 +380,6 @@ cb_ignore_hosts_gsettings_changed (GSettings *settings, gchar *key, gpointer use
 static void
 setup_dialog (GtkBuilder *builder)
 {
-	gint mode;
 	GSList *mode_group;
 	GtkListStore *store;
 
