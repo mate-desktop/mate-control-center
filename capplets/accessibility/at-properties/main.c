@@ -211,7 +211,6 @@ setup_dialog (GtkBuilder *builder, GSettings *settings)
 {
 	GtkWidget *widget;
 	GObject *object;
-	GObject *peditor;
 
 	object = gtk_builder_get_object (builder, "at_enable_toggle");
 	g_signal_connect (object, "toggled",
