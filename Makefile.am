@@ -54,8 +54,7 @@ MAINTAINERCLEANFILES = \
 EXTRA_DIST = \
 	org.mate.control-center.gschema.xml.in.in \
 	org.mate.control-center.keybinding.gschema.xml.in.in \
-	$(convert_DATA) \
-	mate-doc-utils.make
+	$(convert_DATA)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --disable-update-mimedb
 
