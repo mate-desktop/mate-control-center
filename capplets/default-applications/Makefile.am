@@ -1,5 +1,5 @@
 # This is used in MATECC_CAPPLETS_CFLAGS
-cappletname = default-applications
+cappletname = mate-default-applications-properties
 
 bin_PROGRAMS = mate-default-applications-properties
 
