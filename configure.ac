@@ -113,6 +113,7 @@ AC_CHECK_LIB(m, floor)
 dnl ==============================================
 dnl Check that we meet the  dependencies
 dnl ==============================================
+MATE_DESKTOP_REQUIRED=1.7.1
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
@@ -122,12 +123,12 @@ COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  gio-2.0 dnl
  gio-unix-2.0 dnl
  libxml-2.0 dnl
- mate-desktop-2.0 >= 1.5.2"
+ mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
 PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.1.0)
 PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu unique-1.0)
 PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
-PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0)
+PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0 >= MATE_DESKTOP_REQUIRED)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
 PKG_CHECK_MODULES(MARCO, libmarco-private >= 1.5.0)
 PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 gio-2.0 gtk+-2.0)
