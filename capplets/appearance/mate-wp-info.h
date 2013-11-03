@@ -22,7 +22,7 @@
 #define _MATE_WP_INFO_H_
 
 #include <glib.h>
-#include <libmateui/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-desktop-thumbnail.h>
 
 typedef struct _MateWPInfo {
 	char* uri;

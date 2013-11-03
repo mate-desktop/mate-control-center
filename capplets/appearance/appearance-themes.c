@@ -30,7 +30,7 @@
 #include <glib/gi18n.h>
 #include <libwindow-settings/mate-wm-manager.h>
 #include <string.h>
-#include <libmateui/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-desktop-thumbnail.h>
 
 #define CUSTOM_THEME_NAME "__custom__"
 

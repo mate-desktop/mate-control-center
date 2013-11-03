@@ -29,7 +29,7 @@
 #include <dbus/dbus-glib-bindings.h>
 
 #define MATE_DESKTOP_USE_UNSTABLE_API
-#include <libmateui/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-desktop-thumbnail.h>
 
 #include "e-image-chooser.h"
 #include "mate-about-me-password.h"

@@ -26,7 +26,7 @@
 #include <gio/gio.h>
 #define MATEMENU_I_KNOW_THIS_IS_UNSTABLE
 #include <matemenu-tree.h>
-#include <libmate/mate-desktop-item.h>
+#include <libmate-desktop/mate-desktop-item.h>
 
 #include <libslab/slab-section.h>
 #include <libslab/tile.h>

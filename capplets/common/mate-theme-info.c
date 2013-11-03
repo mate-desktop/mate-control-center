@@ -35,7 +35,7 @@
 #include <gdk/gdkx.h>
 #include <gio/gio.h>
 #include <string.h>
-#include <libmate/mate-desktop-item.h>
+#include <libmate-desktop/mate-desktop-item.h>
 #include "mate-theme-info.h"
 #include "gtkrc-utils.h"
 

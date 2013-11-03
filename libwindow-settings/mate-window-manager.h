@@ -28,7 +28,7 @@
 
 #include <glib-object.h>
 
-#include <libmate/mate-desktop-item.h>
+#include <libmate-desktop/mate-desktop-item.h>
 
 /* Increment if backward-incompatible changes are made, so we get a clean
  * error. In principle the libtool versioning handles this, but

@@ -23,7 +23,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
-#include <libmateui/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-desktop-thumbnail.h>
 
 #include "mate-theme-info.h"
 

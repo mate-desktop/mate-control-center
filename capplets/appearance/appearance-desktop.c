@@ -27,8 +27,8 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <string.h>
-#include <libmateui/mate-desktop-thumbnail.h>
-#include <libmateui/mate-bg.h>
+#include <libmate-desktop/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-bg.h>
 
 enum {
 	TARGET_URI_LIST,

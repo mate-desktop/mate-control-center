@@ -22,8 +22,8 @@
 #include <gio/gio.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
-#include <libmateui/mate-desktop-thumbnail.h>
-#include <libmateui/mate-bg.h>
+#include <libmate-desktop/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-bg.h>
 
 #include "mate-wp-info.h"
 

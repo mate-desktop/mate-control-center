@@ -23,7 +23,7 @@
 
 #include <libslab/nameplate-tile.h>
 
-#include <libmate/mate-desktop-item.h>
+#include <libmate-desktop/mate-desktop-item.h>
 
 #ifdef __cplusplus
 extern "C" {
