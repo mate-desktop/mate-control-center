@@ -229,7 +229,6 @@ add_key (GtkWidget *widget,
     GtkComboBox *box = GTK_COMBO_BOX (widget);
     GtkTreeModel *model = gtk_combo_box_get_model (box);
     GtkListStore *store = GTK_LIST_STORE (model);
-    gboolean retval;
 
     info.text = text;
     info.found = FALSE;
@@ -248,11 +247,6 @@ add_key (GtkWidget *widget,
                                            5, rotation,
                                            -1);
 
-	retval = TRUE;
-    }
-    else
-    {
-	retval = FALSE;
     }
 }
 
