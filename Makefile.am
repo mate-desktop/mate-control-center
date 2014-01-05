@@ -25,7 +25,7 @@ gsettings_SCHEMAS = \
 convertdir = $(datadir)/MateConf/gsettings
 convert_DATA = mate-control-center.convert
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
 CLEANFILES = \
 	$(gsettings_SCHEMAS_in) \
