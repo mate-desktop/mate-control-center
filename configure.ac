@@ -60,13 +60,6 @@ AC_CHECK_FUNC(XScreenSaverQueryInfo, [
 AC_SUBST(TYPING_BREAK)
 AC_SUBST(SCREENSAVER_LIBS)
 
-PKG_CHECK_MODULES(LIBCANBERRA_GTK, libcanberra-gtk, [
-  CANBERRA_GTK=1
-  AC_SUBST(LIBCANBERRA_GTK_CFLAGS)
-  AC_SUBST(LIBCANBERRA_GTK_LIBS)
-  ], [:])
-AM_CONDITIONAL(HAVE_LIBCANBERRA_GTK, test "x$CANBERRA_GTK" = "x1")
-
 AM_CONDITIONAL(HAVE_TYPING_BREAK, test "x$TYPING_BREAK" = xtyping-break)
 
 dnl app indicator
@@ -111,12 +104,49 @@ CPPFLAGS=$savecppflags
 AC_CHECK_LIB(m, floor)
 
 dnl ==============================================
+dnl Check GTK+ API version
+dnl ==============================================
+
+AC_MSG_CHECKING([which gtk+ version to compile against])
+AC_ARG_WITH([gtk],
+  [AS_HELP_STRING([--with-gtk=2.0|3.0],[which gtk+ version to compile against (default: 2.0)])],
+  [case "$with_gtk" in
+     2.0|3.0) ;;
+     *) AC_MSG_ERROR([invalid gtk version specified]) ;;
+   esac],
+  [with_gtk=2.0])
+AC_MSG_RESULT([$with_gtk])
+
+case "$with_gtk" in
+  2.0) GTK_API_VERSION=2.0
+       GTK_REQUIRED=2.24.0
+       LIBCANBERRA_API_VERSION=
+       LIBUNIQUE_API_VERSION=1.0
+       ENGINES_FOLDER="engines"
+       ;;
+  3.0) GTK_API_VERSION=3.0
+       GTK_REQUIRED=3.0.0
+       LIBCANBERRA_API_VERSION=3
+       LIBUNIQUE_API_VERSION=3.0
+       ENGINES_FOLDER="theming-engines"
+       ;;
+esac
+AC_SUBST(GTK_API_VERSION)
+
+PKG_CHECK_MODULES(LIBCANBERRA_GTK, libcanberra-gtk$LIBCANBERRA_API_VERSION, [
+    CANBERRA_GTK=1
+    AC_SUBST(LIBCANBERRA_GTK_CFLAGS)
+    AC_SUBST(LIBCANBERRA_GTK_LIBS)
+    ], [:])
+AM_CONDITIONAL(HAVE_LIBCANBERRA_GTK, test "x$CANBERRA_GTK" = "x1")
+
+dnl ==============================================
 dnl Check that we meet the  dependencies
 dnl ==============================================
-MATE_DESKTOP_REQUIRED=1.7.1
+MATE_DESKTOP_REQUIRED=1.7.3
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
-COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
+COMMON_MODULES="gtk+-$GTK_API_VERSION >= $GTK_REQUIRED dnl
  $GMODULE_ADD dnl
  glib-2.0 >= 2.17.4 dnl
  gthread-2.0 dnl
@@ -126,7 +156,7 @@ COMMON_MODULES="gtk+-2.0 >= 2.20.0 dnl
  mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
 PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.1.0)
-PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu unique-1.0)
+PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu unique-$LIBUNIQUE_API_VERSION)
 PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0 >= MATE_DESKTOP_REQUIRED)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
@@ -144,9 +174,9 @@ PKG_CHECK_MODULES([DCONF], [dconf >= 0.13.4],
 AC_SUBST(DCONF_CFLAGS)
 AC_SUBST(DCONF_LIBS)
 
-gtk_lib_dir=`$PKG_CONFIG --variable libdir gtk+-2.0`
-gtk_binary_version=`$PKG_CONFIG --variable gtk_binary_version gtk+-2.0`
-GTK_ENGINE_DIR="$gtk_lib_dir/gtk-2.0/$gtk_binary_version/engines"
+gtk_lib_dir=`$PKG_CONFIG --variable libdir gtk+-$GTK_API_VERSION`
+gtk_binary_version=`$PKG_CONFIG --variable gtk_binary_version gtk+-$GTK_API_VERSION`
+GTK_ENGINE_DIR="$gtk_lib_dir/gtk-$GTK_API_VERSION/$gtk_binary_version/$ENGINES_FOLDER"
 AC_SUBST(GTK_ENGINE_DIR)
 
 PKG_CHECK_MODULES(GLIB, glib-2.0 $GMODULE_ADD)
@@ -177,8 +207,8 @@ if $PKG_CONFIG --exists xft ; then
   AC_DEFINE(HAVE_XFT2,,[Define if Xft functionality is available])
 fi
 
-PKG_CHECK_MODULES(FONT_CAPPLET, $COMMON_MODULES $xft_modules)
-PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES $xft_modules)
+PKG_CHECK_MODULES(FONT_CAPPLET, $COMMON_MODULES $xft_modules fontconfig)
+PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES $xft_modules freetype2)
 
 PKG_CHECK_MODULES(AT_CAPPLET, $COMMON_MODULES)
 
@@ -358,6 +388,7 @@ dnl ---------------------------------------------------------------------------
 echo "
               mate-control-center
 
+        GTK+ API version:      ${GTK_API_VERSION}
         Appindicator:          ${enable_appindicator}
         Libslab:               ${have_libslab}
         XCursor support:       ${have_xcursor}
