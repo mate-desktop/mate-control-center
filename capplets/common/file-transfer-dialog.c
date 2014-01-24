@@ -337,7 +337,9 @@ file_transfer_dialog_init (FileTransferDialog *dlg)
 	gtk_dialog_add_button (GTK_DIALOG (dlg),
 			       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	gtk_dialog_set_has_separator (GTK_DIALOG (dlg), FALSE);
+#endif
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 6);
 
 	gtk_widget_show_all (content_area);

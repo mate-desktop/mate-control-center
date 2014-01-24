@@ -90,10 +90,16 @@ static int pipe_from_factory_fd[2];
 
 /* This draw the thumbnail of gtk
  */
+#if GTK_CHECK_VERSION (3, 0, 0)
+static void draw_window_on_pixbuf(GtkWidget* widget, GdkPixbuf* pixbuf)
+#else
 static GdkPixmap* draw_window_on_pixbuf(GtkWidget* widget)
+#endif
 {
 	GdkVisual* visual;
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	GdkPixmap* pixmap;
+#endif
 	GtkStyle* style;
 	GdkScreen* screen = gdk_screen_get_default();
 	GdkWindow* window;
@@ -109,29 +115,41 @@ static GdkPixmap* draw_window_on_pixbuf(GtkWidget* widget)
 	gtk_window_get_size(GTK_WINDOW(widget), &width, &height);
 
 	visual = gtk_widget_get_visual(widget);
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	pixmap = gdk_pixmap_new(NULL, width, height, visual->depth);
 	gdk_drawable_set_colormap(GDK_DRAWABLE(pixmap), gtk_widget_get_colormap(widget));
+#endif
 
 	window = gtk_widget_get_window(widget);
 
 	/* This is a hack for the default resize grip on Ubuntu.
-	 * Once again, thank you Ubuntu.
-	 *
 	 * We need to add a --enable-ubuntu for this.
+   * Resize grip is also default with GTK3.
 	 */
-	#ifdef UBUNTU
-		gtk_window_set_has_resize_grip(GTK_WINDOW(widget), FALSE);
-	#endif
+#if defined(UBUNTU) || GTK_CHECK_VERSION (3, 0, 0)
+	gtk_window_set_has_resize_grip(GTK_WINDOW(widget), FALSE);
+#endif
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	gdk_window_redirect_to_drawable(window, pixmap, 0, 0, 0, 0, width, height);
+#endif
 	gdk_window_set_override_redirect(window, TRUE);
 	gtk_window_move(GTK_WINDOW(widget), gdk_screen_get_width(screen), gdk_screen_get_height(screen));
 	gtk_widget_show(widget);
 
 	gdk_window_process_updates(window, TRUE);
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+	pixbuf = gdk_pixbuf_get_from_window (window, 0, 0, width, height);
+#endif
+
 	gtk_widget_hide(widget);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	return pixbuf;
+#else
 	return pixmap;
+#endif
 }
 
 static void pixbuf_apply_mask_region(GdkPixbuf* pixbuf, GdkRegion* region)
@@ -154,7 +172,11 @@ static void pixbuf_apply_mask_region(GdkPixbuf* pixbuf, GdkRegion* region)
   for (w = 0; w < gdk_pixbuf_get_width (pixbuf); ++w)
     for (h = 0; h < gdk_pixbuf_get_height (pixbuf); ++h)
     {
+#if GTK_CHECK_VERSION (3, 0, 0)
+      if (!cairo_region_contains_point (region, w, h))
+#else
       if (!gdk_region_point_in (region, w, h))
+#endif
       {
         p = pixels + h * rowstride + w * nchannels;
         if (G_BYTE_ORDER == G_BIG_ENDIAN)
@@ -231,7 +253,9 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   GtkRequisition requisition;
   GtkAllocation allocation;
   GtkAllocation vbox_allocation;
+#if !GTK_CHECK_VERSION (3, 0, 0)
   GdkPixmap *pixmap;
+#endif
   MetaFrameFlags flags;
   MetaTheme *theme;
   GdkPixbuf *pixbuf, *icon;
@@ -301,10 +325,15 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_widget_size_allocate (window, &allocation);
   gtk_widget_size_request (window, &requisition);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, META_THUMBNAIL_SIZE, META_THUMBNAIL_SIZE);
+  draw_window_on_pixbuf (window, pixbuf);
+#else
   pixmap = draw_window_on_pixbuf (window);
 
   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, META_THUMBNAIL_SIZE, META_THUMBNAIL_SIZE);
   gdk_pixbuf_get_from_drawable (pixbuf, pixmap, NULL, 0, 0, 0, 0, META_THUMBNAIL_SIZE, META_THUMBNAIL_SIZE);
+#endif
 
   gtk_widget_get_allocation (vbox, &vbox_allocation);
 
@@ -324,7 +353,9 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   g_object_unref (icon);
   gtk_widget_destroy (window);
   meta_theme_free (theme);
+#if !GTK_CHECK_VERSION (3, 0, 0)
   g_object_unref (pixmap);
+#endif
 
   return pixbuf;
 }
@@ -336,7 +367,9 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   GtkWidget *window, *vbox, *box, *stock_button, *checkbox, *radio;
   GtkRequisition requisition;
   GtkAllocation allocation;
+#if !GTK_CHECK_VERSION (3, 0, 0)
   GdkPixmap *pixmap;
+#endif
   GdkPixbuf *pixbuf, *retval;
   gint width, height;
 
@@ -380,10 +413,15 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   gtk_window_get_size (GTK_WINDOW (window), &width, &height);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
+  draw_window_on_pixbuf (window, pixbuf);
+#else
   pixmap = draw_window_on_pixbuf (window);
 
   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
   gdk_pixbuf_get_from_drawable (pixbuf, pixmap, NULL, 0, 0, 0, 0, width, height);
+#endif
 
   retval = gdk_pixbuf_scale_simple (pixbuf,
                                     GTK_THUMBNAIL_SIZE,
@@ -391,7 +429,9 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
                                     GDK_INTERP_BILINEAR);
   g_object_unref (pixbuf);
   gtk_widget_destroy (window);
+#if !GTK_CHECK_VERSION (3, 0, 0)
   g_object_unref (pixmap);
+#endif
 
   return retval;
 }
@@ -404,7 +444,9 @@ create_marco_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   MetaTheme *theme;
   GtkRequisition requisition;
   GtkAllocation allocation;
+#if !GTK_CHECK_VERSION (3, 0, 0)
   GdkPixmap *pixmap;
+#endif
   GdkPixbuf *pixbuf, *retval;
   GdkRegion *region;
 
@@ -448,10 +490,15 @@ create_marco_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_widget_size_allocate (window, &allocation);
   gtk_widget_size_request (window, &requisition);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, (int) MARCO_THUMBNAIL_WIDTH * 1.2, (int) MARCO_THUMBNAIL_HEIGHT * 1.2);
+  draw_window_on_pixbuf (window, pixbuf);
+#else
   pixmap = draw_window_on_pixbuf (window);
 
   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, (int) MARCO_THUMBNAIL_WIDTH * 1.2, (int) MARCO_THUMBNAIL_HEIGHT * 1.2);
   gdk_pixbuf_get_from_drawable (pixbuf, pixmap, NULL, 0, 0, 0, 0, (int) MARCO_THUMBNAIL_WIDTH * 1.2, (int) MARCO_THUMBNAIL_HEIGHT * 1.2);
+#endif
 
   region = meta_preview_get_clip_region (META_PREVIEW (preview),
       MARCO_THUMBNAIL_WIDTH * 1.2, MARCO_THUMBNAIL_HEIGHT * 1.2);
@@ -467,7 +514,9 @@ create_marco_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   gtk_widget_destroy (window);
   meta_theme_free (theme);
+#if !GTK_CHECK_VERSION (3, 0, 0)
   g_object_unref (pixmap);
+#endif
 
   return retval;
 }
