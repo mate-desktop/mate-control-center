@@ -70,7 +70,7 @@ set_model_text (GtkWidget * picker, gchar * value)
 	if (model == NULL) {
 		model = g_strdup(initial_config.model);
 		if (model == NULL)
-			model = "";
+			model = g_strdup("");
 	}
 
 	g_snprintf (ci->name, sizeof (ci->name), "%s", model);
