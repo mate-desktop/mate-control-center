@@ -48,6 +48,10 @@
 #include <X11/Xcursor/Xcursor.h>
 #endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+#define GtkFunction GSourceFunc
+#endif
+
 enum
 {
 	DOUBLE_CLICK_TEST_OFF,
