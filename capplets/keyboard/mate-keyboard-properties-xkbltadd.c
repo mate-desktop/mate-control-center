@@ -545,7 +545,11 @@ xkb_layout_choose (GtkBuilder * dialog)
 	} else
 #endif
 	{
+#if GTK_CHECK_VERSION (3, 0, 0)
+		gtk_widget_hide (CWID ("vboxPreview"));
+#else
 		gtk_widget_hide_all (CWID ("vboxPreview"));
+#endif
 		gtk_widget_hide (CWID ("btnPrint"));
 	}
 

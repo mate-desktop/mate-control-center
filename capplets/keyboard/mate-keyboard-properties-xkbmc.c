@@ -29,6 +29,11 @@
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 
+#include <gtk/gtk.h>
+#if GTK_CHECK_VERSION (3, 0, 0)
+#define gtk_widget_hide_all gtk_widget_hide
+#endif
+
 #include "capplet-util.h"
 
 #include "mate-keyboard-properties-xkb.h"
