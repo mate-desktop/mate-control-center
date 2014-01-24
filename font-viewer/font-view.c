@@ -93,7 +93,10 @@ check_font_contain_text (FT_Face face, const gchar *text)
     return TRUE;
 }
 
-
+#if GTK_CHECK_VERSION (3, 0, 0)
+    /* FIXME */
+    /* https://git.gnome.org/browse/gnome-control-center/commit/font-viewer?h=gnome-3-0&id=7ea3249a4a0fa9a176a120257355a4ca75593386 */
+#else
 static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, GdkPixmap *pixmap);
 
 static GdkPixmap *
@@ -228,6 +231,7 @@ create_text_pixmap(GtkWidget *drawing_area, FT_Face face)
     FcCharSetDestroy (charset);
     return pixmap;
 }
+#endif
 
 static void
 add_row(GtkWidget *table, gint *row_p,
@@ -379,6 +383,7 @@ add_face_info(GtkWidget *table, gint *row_p, const gchar *uri, FT_Face face)
     }
 }
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 static gboolean
 expose_event(GtkWidget *widget, GdkEventExpose *event, GdkPixmap *pixmap)
 {
@@ -390,6 +395,7 @@ expose_event(GtkWidget *widget, GdkEventExpose *event, GdkPixmap *pixmap)
 		      event->area.width, event->area.height);
     return FALSE;
 }
+#endif
 
 static void
 set_icon(GtkWindow *window, const gchar *uri)
@@ -511,7 +517,9 @@ main(int argc, char **argv)
     gchar *font_file, *title;
     gint row;
     GtkWidget *window, *hbox, *table, *swin, *drawing_area;
+#if !GTK_CHECK_VERSION (3, 0, 0)
     GdkPixmap *pixmap;
+#endif
     GdkColor white = { 0, 0xffff, 0xffff, 0xffff };
     GtkWidget *button, *align;
 
@@ -573,7 +581,9 @@ main(int argc, char **argv)
     gtk_widget_modify_bg(drawing_area, GTK_STATE_NORMAL, &white);
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(swin),
 					  drawing_area);
+#if !GTK_CHECK_VERSION (3, 0, 0)
     g_signal_connect (drawing_area, "realize", create_text_pixmap, face);
+#endif
 
     /* set the minimum size on the scrolled window to prevent
      * unnecessary scrolling */
