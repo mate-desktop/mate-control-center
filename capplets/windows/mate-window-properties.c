@@ -345,7 +345,7 @@ update_wm (GdkScreen *screen,
         }
 
         for (i = 0; i < n_double_click_actions; i++) {
-                gtk_combo_box_append_text (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
+                gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu),
                                            double_click_actions[i].human_readable_name);
         }
 
@@ -573,16 +573,28 @@ reload_mouse_modifiers (void)
         int min_keycode, max_keycode;
         int mod_meta, mod_super, mod_hyper;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+        XDisplayKeycodes (gdk_x11_display_get_xdisplay(gdk_display_get_default()),
+#else
         XDisplayKeycodes (gdk_display,
+#endif
                           &min_keycode,
                           &max_keycode);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+        keymap = XGetKeyboardMapping (gdk_x11_display_get_xdisplay(gdk_display_get_default()),
+#else
         keymap = XGetKeyboardMapping (gdk_display,
+#endif
                                       min_keycode,
                                       max_keycode - min_keycode,
                                       &keysyms_per_keycode);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+        modmap = XGetModifierMapping (gdk_x11_display_get_xdisplay(gdk_display_get_default()));
+#else
         modmap = XGetModifierMapping (gdk_display);
+#endif
 
         have_super = FALSE;
         have_meta = FALSE;
