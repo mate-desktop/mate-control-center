@@ -1065,12 +1065,12 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 	/* Initialize accelerators */
 	gtk_widget_add_accelerator (GTK_WIDGET (pdialog->current_password),
 								"activate", group,
-								GDK_Return, 0,
+								GDK_KEY_Return, 0,
 								0);
 
 	gtk_widget_add_accelerator (GTK_WIDGET (pdialog->new_password),
 								"activate", group,
-								GDK_Return, 0,
+								GDK_KEY_Return, 0,
 								0);
 
 	/* Activate authenticate-button when enter is pressed in current-password */

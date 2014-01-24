@@ -66,7 +66,11 @@ static void image_drag_data_received_cb (GtkWidget *widget,
 					 GtkSelectionData *selection_data,
 					 guint info, guint time, EImageChooser *chooser);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+static GObjectClass *parent_class = NULL;
+#else
 static GtkObjectClass *parent_class = NULL;
+#endif
 #define PARENT_TYPE GTK_TYPE_VBOX
 
 enum DndTargetType {
@@ -124,7 +128,11 @@ e_image_chooser_class_init (EImageChooserClass *klass)
 			      G_STRUCT_OFFSET (EImageChooserClass, changed),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
+#if GTK_CHECK_VERSION (3, 0, 0)
+			      G_TYPE_NONE, 0);
+#else
 			      GTK_TYPE_NONE, 0);
+#endif
 
 	object_class->dispose = e_image_chooser_dispose;
 }
@@ -273,7 +281,11 @@ image_drag_motion_cb (GtkWidget *widget,
 	if (!chooser->priv->editable)
 		return FALSE;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	for (p = gdk_drag_context_list_targets (context); p; p = p->next) {
+#else
 	for (p = context->targets; p != NULL; p = p->next) {
+#endif
 		char *possible_type;
 
 		possible_type = gdk_atom_name (GDK_POINTER_TO_ATOM (p->data));
@@ -299,11 +311,19 @@ image_drag_drop_cb (GtkWidget *widget,
 	if (!chooser->priv->editable)
 		return FALSE;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	if (gdk_drag_context_list_targets (context) == NULL) {
+#else
 	if (context->targets == NULL) {
+#endif
 		return FALSE;
 	}
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	for (p = gdk_drag_context_list_targets (context); p; p = p->next) {
+#else
 	for (p = context->targets; p != NULL; p = p->next) {
+#endif
 		char *possible_type;
 
 		possible_type = gdk_atom_name (GDK_POINTER_TO_ATOM (p->data));

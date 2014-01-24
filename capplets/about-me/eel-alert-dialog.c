@@ -356,7 +356,9 @@ eel_alert_dialog_new (GtkWindow     *parent,
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);		
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 14);
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	gtk_dialog_set_has_separator (dialog, FALSE);
+#endif
 
 	gtk_window_set_title (GTK_WINDOW (dialog),
 	                      (title != NULL) ? title : "");
