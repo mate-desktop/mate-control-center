@@ -37,6 +37,10 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-bindings.h>
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+#define GdkRegion cairo_region_t
+#endif
+
 typedef struct App App;
 typedef struct GrabInfo GrabInfo;
 
@@ -1486,7 +1490,11 @@ set_cursor (GtkWidget *widget, GdkCursorType type)
 	    gdk_window_set_cursor (window, cursor);
 
 	if (cursor)
+#if GTK_CHECK_VERSION (3, 0, 0)
+	    g_object_unref (cursor);
+#else
 	    gdk_cursor_unref (cursor);
+#endif
 }
 
 static void
@@ -2205,7 +2213,11 @@ get_output_for_window (MateRRConfig *configuration, GdkWindow *window)
     int largest_area;
     int largest_index;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gdk_window_get_geometry (window, &win_rect.x, &win_rect.y, &win_rect.width, &win_rect.height);
+#else
     gdk_window_get_geometry (window, &win_rect.x, &win_rect.y, &win_rect.width, &win_rect.height, NULL);
+#endif
     gdk_window_get_origin (window, &win_rect.x, &win_rect.y);
 
     largest_area = 0;

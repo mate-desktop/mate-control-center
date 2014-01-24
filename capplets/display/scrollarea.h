@@ -18,6 +18,21 @@
 #include <cairo.h>
 #include <gtk/gtk.h>
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+#define GdkRegion cairo_region_t
+#define gdk_region_new cairo_region_create
+#define gdk_region_destroy cairo_region_destroy
+#define gdk_region_rectangle cairo_region_create_rectangle
+#define gdk_region_subtract cairo_region_subtract
+#define gdk_region_intersect cairo_region_intersect
+#define gdk_region_empty cairo_region_is_empty
+#define gdk_region_copy cairo_region_copy
+#define gdk_region_get_clipbox cairo_region_get_extents
+#define gdk_region_offset cairo_region_translate
+#define gdk_region_point_in cairo_region_contains_point
+#define gdk_region_union cairo_region_union
+#endif
+
 #define FOO_TYPE_SCROLL_AREA            (foo_scroll_area_get_type ())
 #define FOO_SCROLL_AREA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FOO_TYPE_SCROLL_AREA, FooScrollArea))
 #define FOO_SCROLL_AREA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  FOO_TYPE_SCROLL_AREA, FooScrollAreaClass))
