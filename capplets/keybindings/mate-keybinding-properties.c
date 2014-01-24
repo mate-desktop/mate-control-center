@@ -12,6 +12,9 @@
 #include <X11/Xatom.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
+#if GTK_CHECK_VERSION (3, 0, 0)
+#include <gdk/gdkkeysyms-compat.h>
+#endif
 
 #include "wm-common.h"
 #include "capplet-util.h"

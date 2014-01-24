@@ -26,6 +26,10 @@
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+#include <gdk/gdkkeysyms-compat.h>
+#endif
+
 enum {
 	EGG_MODMAP_ENTRY_SHIFT   = 0,
 	EGG_MODMAP_ENTRY_LOCK    = 1,

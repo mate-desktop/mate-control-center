@@ -3,6 +3,9 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
+#if GTK_CHECK_VERSION (3, 0, 0)
+#include <gdk/gdkkeysyms-compat.h>
+#endif
 #include "eggcellrendererkeys.h"
 #include "eggaccelerators.h"
 
@@ -317,7 +320,11 @@ static gboolean is_modifier(guint keycode)
 	XModifierKeymap* mod_keymap;
 	gboolean retval = FALSE;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	mod_keymap = XGetModifierMapping(gdk_x11_display_get_xdisplay(gdk_display_get_default()));
+#else
 	mod_keymap = XGetModifierMapping(gdk_display);
+#endif
 
 	map_size = 8 * mod_keymap->max_keypermod;
 	i = 0;
