@@ -158,9 +158,9 @@ static void
 section_header_style_set (GtkWidget * widget, GtkStyle * prev_style, gpointer user_data)
 {
 	if (prev_style
-		&& widget->style->fg[GTK_STATE_SELECTED].green ==
+		&& gtk_widget_get_style (widget)->fg[GTK_STATE_SELECTED].green ==
 		prev_style->fg[GTK_STATE_SELECTED].green)
 		return;
 
-	gtk_widget_modify_fg (widget, GTK_STATE_NORMAL, &widget->style->bg[GTK_STATE_SELECTED]);
+	gtk_widget_modify_fg (widget, GTK_STATE_NORMAL, &gtk_widget_get_style (widget)->bg[GTK_STATE_SELECTED]);
 }

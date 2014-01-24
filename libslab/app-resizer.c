@@ -26,11 +26,16 @@
 
 static void app_resizer_class_init (AppResizerClass *);
 static void app_resizer_init (AppResizer *);
+#if !GTK_CHECK_VERSION (3, 0, 0)
 static void app_resizer_destroy (GtkObject *);
+#endif
 
 static void app_resizer_size_allocate (GtkWidget * resizer, GtkAllocation * allocation);
-static gboolean app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event,
-	AppShellData * app_data);
+#if GTK_CHECK_VERSION (3, 0, 0)
+static gboolean app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppShellData * app_data);
+#else
+static gboolean app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellData * app_data);
+#endif
 
 G_DEFINE_TYPE (AppResizer, app_resizer, GTK_TYPE_LAYOUT);
 
@@ -40,7 +45,9 @@ app_resizer_class_init (AppResizerClass * klass)
 {
 	GtkWidgetClass *widget_class;
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	((GtkObjectClass *) klass)->destroy = app_resizer_destroy;
+#endif
 
 	widget_class = GTK_WIDGET_CLASS (klass);
 	widget_class->size_allocate = app_resizer_size_allocate;
@@ -85,7 +92,12 @@ resize_table (GtkTable * table, gint columns, GList * launcher_list)
 static void
 relayout_table (GtkTable * table, GList * element_list)
 {
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gint maxcols, maxrows;
+	gtk_table_get_size (GTK_TABLE (table), &maxrows, &maxcols);
+#else
 	gint maxcols = (GTK_TABLE (table))->ncols;
+#endif
 	gint row = 0, col = 0;
 	do
 	{
@@ -139,9 +151,11 @@ calculate_num_cols (AppResizer * resizer, gint avail_width)
 			GtkTable *table = GTK_TABLE (resizer->cached_tables_list->data);
 			GList *children = gtk_container_get_children (GTK_CONTAINER (table));
 			GtkWidget *table_element = GTK_WIDGET (children->data);
+			GtkAllocation *allocation;
 			g_list_free (children);
 
-			resizer->cached_element_width = table_element->allocation.width;
+			gtk_widget_get_allocation (table_element, allocation);
+			resizer->cached_element_width = allocation->width;
 			resizer->cached_table_spacing = gtk_table_get_default_col_spacing (table);
 		}
 
@@ -190,10 +204,14 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 	/* printf("ENTER - app_resizer_size_allocate\n"); */
 	AppResizer *resizer = APP_RESIZER (widget);
 	GtkWidget *child = GTK_WIDGET (APP_RESIZER (resizer)->child);
+	GtkAllocation *widget_allocation;
+	GtkRequisition *child_requisition;
 
 	static gboolean first_time = TRUE;
 	gint new_num_cols;
 	gint useable_area;
+
+	gtk_widget_get_allocation (child, widget_allocation);
 
 	if (first_time)
 	{
@@ -202,10 +220,16 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 			(*GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate) (widget, allocation);
 
 		first_time = FALSE;
-		gtk_layout_set_size (GTK_LAYOUT (resizer), child->allocation.width,
-			child->allocation.height);
+		gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation->width,
+			widget_allocation->height);
 		return;
 	}
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_get_preferred_size (child, child_requisition, NULL);
+#else
+	child_requisition = &child->requisition;
+#endif
 
 	if (!resizer->cached_tables_list)	/* if everthing is currently filtered out - just return */
 	{
@@ -217,17 +241,24 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 		/* We want the message to center itself and only scroll if it's bigger than the available real size. */
 		child_allocation.x = 0;
 		child_allocation.y = 0;
-		child_allocation.width = MAX (allocation->width, child->requisition.width);
-		child_allocation.height = MAX (allocation->height, child->requisition.height);
+		child_allocation.width = MAX (allocation->width, child_requisition->width);
+		child_allocation.height = MAX (allocation->height, child_requisition->height);
 
 		gtk_widget_size_allocate (child, &child_allocation);
 		gtk_layout_set_size (GTK_LAYOUT (resizer), child_allocation.width,
 			child_allocation.height);
 		return;
 	}
+	GtkRequisition *other_requisiton;
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_get_preferred_size (GTK_WIDGET (resizer->cached_tables_list->data), other_requisiton, NULL);
+#else
+	other_requisiton = &GTK_WIDGET (resizer->cached_tables_list->data)->child_requisition;
+#endif
+
 	useable_area =
-		allocation->width - (child->requisition.width -
-		GTK_WIDGET (resizer->cached_tables_list->data)->requisition.width);
+		allocation->width - (child_requisition->width -
+		other_requisiton->width);
 	new_num_cols =
 		relayout_tables_if_needed (APP_RESIZER (resizer), useable_area,
 		resizer->cur_num_cols);
@@ -243,8 +274,8 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 
 	if (GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate)
 		(*GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate) (widget, allocation);
-	gtk_layout_set_size (GTK_LAYOUT (resizer), child->allocation.width,
-		child->allocation.height);
+	gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation->width,
+		widget_allocation->height);
 }
 
 GtkWidget *
@@ -263,8 +294,11 @@ app_resizer_new (GtkVBox * child, gint initial_num_columns, gboolean homogeneous
 	widget->setting_style = FALSE;
 	widget->app_data = app_data;
 
-	g_signal_connect (G_OBJECT (widget), "expose-event", G_CALLBACK (app_resizer_paint_window),
-		app_data);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	g_signal_connect (G_OBJECT (widget), "draw", G_CALLBACK (app_resizer_paint_window), app_data);
+#else
+	g_signal_connect (G_OBJECT (widget), "expose-event", G_CALLBACK (app_resizer_paint_window), app_data);
+#endif
 
 	gtk_container_add (GTK_CONTAINER (widget), GTK_WIDGET (child));
 	widget->child = child;
@@ -272,24 +306,32 @@ app_resizer_new (GtkVBox * child, gint initial_num_columns, gboolean homogeneous
 	return GTK_WIDGET (widget);
 }
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 static void
 app_resizer_destroy (GtkObject * obj)
 {
 }
+#endif
 
 void
 app_resizer_set_vadjustment_value (GtkWidget * widget, gdouble value)
 {
 	GtkAdjustment *adjust = gtk_layout_get_vadjustment (GTK_LAYOUT (widget));
-	if (value > adjust->upper - adjust->page_size)
+	gdouble upper = gtk_adjustment_get_upper (adjust);
+	gdouble page_size = gtk_adjustment_get_page_size (adjust);
+	if (value > upper - page_size)
 	{
-		value = adjust->upper - adjust->page_size;
+		value = upper - page_size;
 	}
 	gtk_adjustment_set_value (adjust, value);
 }
 
 static gboolean
+#if GTK_CHECK_VERSION (3, 0, 0)
+app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppShellData * app_data)
+#else
 app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellData * app_data)
+#endif
 {
 	/*
 	printf("ENTER - app_resizer_paint_window\n");
@@ -297,18 +339,46 @@ app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellDa
 	printf("Allocation:%d, %d, %d, %d\n\n", widget->allocation.x, widget->allocation.y, widget->allocation.width, widget->allocation.height);
 	*/
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	GdkRectangle *rect;
+	gdk_cairo_get_clip_rectangle (cr, rect);
+
+	gdk_cairo_set_source_color (cr, gtk_widget_get_style (gtk_layout_get_bin_window (GTK_LAYOUT (widget)))->base);
+	cairo_set_line_width(cr, 1);
+
+	cairo_rectangle(cr, 0, 0, rect->width, rect->height);
+	cairo_stroke_preserve(cr);
+	cairo_fill(cr);
+
+#else
 	gdk_draw_rectangle (GTK_LAYOUT (widget)->bin_window,
 		widget->style->base_gc[GTK_STATE_NORMAL], TRUE, event->area.x, event->area.y,
 		event->area.width, event->area.height);
+#endif
 
 	if (app_data->selected_group)
 	{
 		GtkWidget *selected_widget = GTK_WIDGET (app_data->selected_group);
+#if GTK_CHECK_VERSION (3, 0, 0)
+		GtkAllocation *widget_allocation;
+		GtkAllocation *selected_widget_allocation;
+
+		gtk_widget_get_allocation (widget, widget_allocation);
+		gtk_widget_get_allocation (selected_widget, selected_widget_allocation);
+
+		gdk_cairo_set_source_color (cr, gtk_widget_get_style (selected_widget)->light);
+		cairo_set_line_width(cr, 1);
+
+		cairo_rectangle(cr, selected_widget_allocation->x, selected_widget_allocation->y, widget_allocation->width, selected_widget_allocation->height);
+		cairo_stroke_preserve(cr);
+		cairo_fill(cr);
+#else
 		gdk_draw_rectangle (selected_widget->window,	/* drawing on child window and child coordinates */
 			selected_widget->style->light_gc[GTK_STATE_SELECTED], TRUE,
 			selected_widget->allocation.x, selected_widget->allocation.y,
 			widget->allocation.width,	/* drawing with our coordinates here to draw all the way to the edge. */
 			selected_widget->allocation.height);
+#endif
 	}
 
 	return FALSE;

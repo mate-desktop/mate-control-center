@@ -426,7 +426,7 @@ create_subheader (const gchar *desc)
 	gtk_widget_modify_fg (
 		subheader,
 		GTK_STATE_NORMAL,
-		& subheader->style->fg [GTK_STATE_INSENSITIVE]);
+		& gtk_widget_get_style (subheader)->fg [GTK_STATE_INSENSITIVE]);
 
 	return subheader;
 }

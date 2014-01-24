@@ -710,7 +710,7 @@ create_subheader (const gchar *desc)
 	gtk_label_set_ellipsize (GTK_LABEL (subheader), PANGO_ELLIPSIZE_END);
 	gtk_misc_set_alignment (GTK_MISC (subheader), 0.0, 0.5);
 	gtk_widget_modify_fg (subheader, GTK_STATE_NORMAL,
-		&subheader->style->fg[GTK_STATE_INSENSITIVE]);
+		&gtk_widget_get_style (subheader)->fg[GTK_STATE_INSENSITIVE]);
 
 	return subheader;
 }
@@ -1069,6 +1069,17 @@ user_docs_trigger (Tile *tile, TileEvent *event, TileAction *action)
 	update_user_list_menu_item (this);
 }
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+/*
+ * Set the DISPLAY variable, to be use by g_spawn_async.
+ */
+static void
+set_environment (gpointer display)
+{
+	g_setenv ("DISPLAY", display, TRUE);
+}
+#endif
+
 static void
 send_to_trigger (Tile *tile, TileEvent *event, TileAction *action)
 {
@@ -1109,8 +1120,17 @@ send_to_trigger (Tile *tile, TileEvent *event, TileAction *action)
 		}
 	}
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	char       *display;
+	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (tile)));
+
+	g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, set_environment,
+		&display, NULL, &error);
+	g_free (display);
+#else
 	gdk_spawn_on_screen (gtk_widget_get_screen (GTK_WIDGET (tile)), NULL, argv, NULL,
 		G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
+#endif
 
 	if (error)
 		handle_g_error (&error, "error in %s", G_STRFUNC);

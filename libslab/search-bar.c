@@ -87,7 +87,7 @@ nld_search_bar_init (NldSearchBar * search_bar)
 	GtkWidget *alignment;
 	GtkWidget *entry;
 
-	GTK_WIDGET_SET_FLAGS (search_bar, GTK_CAN_FOCUS);
+	gtk_widget_set_can_focus (GTK_WIDGET (search_bar), TRUE);
 
 	priv->hbox = gtk_hbox_new (FALSE, 3);
 	gtk_box_pack_start (GTK_BOX (search_bar), priv->hbox, TRUE, FALSE, 0);
@@ -129,7 +129,7 @@ nld_search_bar_has_focus (NldSearchBar * search_bar)
 {
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
 
-	return GTK_WIDGET_HAS_FOCUS (GTK_WIDGET (priv->entry));
+	return gtk_widget_has_focus (GTK_WIDGET (priv->entry));
 }
 
 static void
@@ -187,7 +187,7 @@ nld_search_bar_get_show_contexts (NldSearchBar * search_bar)
 {
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
 
-	return priv->context_picker && GTK_WIDGET_VISIBLE (priv->context_picker);
+	return priv->context_picker && gtk_widget_get_visible (GTK_WIDGET (priv->context_picker));
 }
 
 static NldSearchContextPicker *
@@ -344,7 +344,7 @@ nld_search_bar_get_context_id (NldSearchBar * search_bar)
 {
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
 
-	if (priv->context_picker && GTK_WIDGET_VISIBLE (priv->context_picker))
+	if (priv->context_picker && gtk_widget_get_visible (GTK_WIDGET (priv->context_picker)))
 		return nld_search_context_picker_get_context (priv->context_picker);
 	else
 		return -1;

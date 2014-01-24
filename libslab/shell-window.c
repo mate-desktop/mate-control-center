@@ -29,7 +29,11 @@ static void shell_window_init (ShellWindow *);
 static void shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
 	AppShellData * data);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+gboolean shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data);
+#else
 gboolean shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer data);
+#endif
 
 #define SHELL_WINDOW_BORDER_WIDTH 6
 
@@ -59,7 +63,11 @@ shell_window_new (AppShellData * app_data)
 	window->_hbox = GTK_BOX (gtk_hbox_new (FALSE, 0));
 	gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (window->_hbox));
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	g_signal_connect (G_OBJECT (window), "draw", G_CALLBACK (shell_window_paint_window),
+#else
 	g_signal_connect (G_OBJECT (window), "expose-event", G_CALLBACK (shell_window_paint_window),
+#endif
 		NULL);
 	window->resize_handler_id =
 		g_signal_connect (G_OBJECT (window), "size-request",
@@ -88,6 +96,13 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	AppShellData * app_data)
 {
 	gint height;
+	GtkRequisition *child_requisiton;
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), child_requisiton, NULL);
+#else
+	child_requisiton = GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition;
+#endif
 
 	/*
 	Fixme - counting on this being called after the real size request is done.
@@ -98,15 +113,12 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	printf("right side width:%d\n", GTK_WIDGET(APP_RESIZER(app_data->category_layout)->child)->requisition.width);
 	*/
 
-	requisition->width +=
-		GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition.width;
+	requisition->width += child_requisiton->width;
 
 	/* use the left side as a minimum height, if the right side is taller,
 	   use it up to SIZING_HEIGHT_PERCENT of the screen height
 	*/
-	height =
-		GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition.height +
-		10;
+	height = child_requisiton->height + 10;
 	if (height > requisition->height)
 	{
 		requisition->height =
@@ -131,17 +143,39 @@ shell_window_set_contents (ShellWindow * shell, GtkWidget * left_pane, GtkWidget
 }
 
 gboolean
+#if GTK_CHECK_VERSION (3, 0, 0)
+shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data)
+#else
 shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer data)
+#endif
 {
 	GtkWidget *left_pane, *right_pane;
+	GtkAllocation *allocation;
 
 	left_pane = SHELL_WINDOW (widget)->_left_pane;
 	right_pane = SHELL_WINDOW (widget)->_right_pane;
 
+	gtk_widget_get_allocation (left_pane, allocation);
+
 	/* draw left pane background */
-	gtk_paint_flat_box (widget->style, widget->window, widget->state, GTK_SHADOW_NONE, NULL, widget, "",
-		left_pane->allocation.x, left_pane->allocation.y, left_pane->allocation.width,
-		left_pane->allocation.height);
+	gtk_paint_flat_box (
+		gtk_widget_get_style (widget),
+#if GTK_CHECK_VERSION (3, 0, 0)
+		cr,
+#else
+		gtk_widget_get_window (widget),
+#endif
+		gtk_widget_get_state (widget),
+		GTK_SHADOW_NONE,
+#if !GTK_CHECK_VERSION (3, 0, 0)
+		NULL,
+#endif
+		widget,
+		"",
+		allocation->x,
+		allocation->y,
+		allocation->width,
+		allocation->height);
 
 	return FALSE;
 }

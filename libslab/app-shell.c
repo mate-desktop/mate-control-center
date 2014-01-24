@@ -24,7 +24,12 @@
 
 #include <libmate-desktop/mate-desktop-item.h>
 #include <gio/gio.h>
+#include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
+#if GTK_CHECK_VERSION (3, 0, 0)
+#include <gdk/gdkkeysyms-compat.h>
+#define gtk_widget_hide_all gtk_widget_hide
+#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string.h>
@@ -337,7 +342,7 @@ relayout_shell_partial (gpointer user_data)
 	populate_groups_section (app_data);
 
 	gtk_widget_show_all (app_data->category_layout);
-	gdk_window_set_cursor (app_data->shell->window, NULL);
+	gdk_window_set_cursor (gtk_widget_get_window (app_data->shell), NULL);
 
 	app_data->stop_incremental_relayout = TRUE;
 	return FALSE;
@@ -468,6 +473,7 @@ handle_group_clicked (Tile * tile, TileEvent * event, gpointer user_data)
 {
 	AppShellData *app_data = (AppShellData *) user_data;
 	GtkWidget *section = NULL;
+	GtkAllocation *allocation;
 
 	gint clicked_pos =
 		GPOINTER_TO_INT (g_object_get_data (G_OBJECT (tile), GROUP_POSITION_NUMBER_KEY));
@@ -489,7 +495,8 @@ handle_group_clicked (Tile * tile, TileEvent * event, gpointer user_data)
 
 		if (NULL != cat_data->filtered_launcher_list)
 		{
-			total += GTK_WIDGET (cat_data->section)->allocation.height +
+			gtk_widget_get_allocation (GTK_WIDGET (cat_data->section), allocation);
+			total += allocation->height +
 				CATEGORY_SPACING;
 		}
 	}
@@ -557,7 +564,7 @@ handle_filter_changed_delayed (gpointer user_data)
 	gtk_widget_hide (app_data->category_layout);
 	app_data->busy_cursor =
 		gdk_cursor_new_for_display (gtk_widget_get_display (app_data->shell), GDK_WATCH);
-	gdk_window_set_cursor (app_data->shell->window, app_data->busy_cursor);
+	gdk_window_set_cursor (gtk_widget_get_window (app_data->shell), app_data->busy_cursor);
 	gdk_cursor_unref (app_data->busy_cursor);
 
 	set_state (app_data, NULL);
