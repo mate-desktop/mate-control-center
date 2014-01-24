@@ -101,7 +101,7 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 #if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), child_requisiton, NULL);
 #else
-	child_requisiton = GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition;
+	child_requisiton = &GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition;
 #endif
 
 	/*

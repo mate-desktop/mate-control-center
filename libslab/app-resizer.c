@@ -253,7 +253,7 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 #if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_widget_get_preferred_size (GTK_WIDGET (resizer->cached_tables_list->data), other_requisiton, NULL);
 #else
-	other_requisiton = &GTK_WIDGET (resizer->cached_tables_list->data)->child_requisition;
+	other_requisiton = &GTK_WIDGET (resizer->cached_tables_list->data)->requisition;
 #endif
 
 	useable_area =

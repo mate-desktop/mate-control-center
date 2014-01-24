@@ -576,7 +576,7 @@ initialize_background (GtkWidget *widget,
     cairo_paint (cr);
 }
 
-#if GTK_CHECK_VERSION (3, 0, 0)
+#if !GTK_CHECK_VERSION (3, 0, 0)
 static void
 clip_to_region (cairo_t *cr, GdkRegion *region)
 {
