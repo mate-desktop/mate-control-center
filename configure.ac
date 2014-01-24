@@ -393,7 +393,6 @@ echo "
         Libslab:               ${have_libslab}
         XCursor support:       ${have_xcursor}
         XInput support:        ${have_xinput}
-        About-me:              ${enable_aboutme}
         Ubuntu hacks:          ${enable_ubuntu}
 
 "
