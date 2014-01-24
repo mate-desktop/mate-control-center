@@ -70,7 +70,11 @@ static void sample_size_request(GtkWidget* darea, GtkRequisition* requisition)
 	requisition->height = gdk_pixbuf_get_height(pixbuf) + 2;
 }
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+static void sample_draw(GtkWidget* darea, cairo_t* cr)
+#else
 static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
+#endif
 {
 	GtkAllocation allocation;
 	GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(darea), "sample-pixbuf");
@@ -84,10 +88,28 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 	int x = (allocation.width - width) / 2;
 	int y = (allocation.height - height) / 2;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	cairo_set_line_width(cr, 1);
+
+	cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
+	cairo_rectangle(cr, 0, 0, allocation.width, allocation.height);
+	cairo_stroke_preserve(cr);
+	cairo_fill(cr);
+
+	cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
+	cairo_rectangle(cr, 0, 0, allocation.width - 1, allocation.height - 1);
+	cairo_stroke_preserve(cr);
+	cairo_fill(cr);
+
+	gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+	cairo_paint(cr);
+	cairo_fill (cr);
+#else
 	gdk_draw_rectangle(window, style->white_gc, TRUE, 0, 0, allocation.width, allocation.height);
 	gdk_draw_rectangle(window, style->black_gc, FALSE, 0, 0, allocation.width - 1, allocation.height - 1);
 
 	gdk_draw_pixbuf(window, NULL, pixbuf, 0, 0, x, y, width, height, GDK_RGB_DITHER_NORMAL, 0, 0);
+#endif
 }
 
 typedef enum {
@@ -169,10 +191,18 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 
 	Display* xdisplay = gdk_x11_get_default_xdisplay();
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	Colormap xcolormap = DefaultColormap(xdisplay, 0);
+#else
 	GdkColormap* colormap = gdk_rgb_get_colormap();
 	Colormap xcolormap = GDK_COLORMAP_XCOLORMAP(colormap);
+#endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	GdkVisual* visual = gdk_visual_get_system ();
+#else
 	GdkVisual* visual = gdk_colormap_get_visual(colormap);
+#endif
 	Visual* xvisual = GDK_VISUAL_XVISUAL(visual);
 
 	FcPattern* pattern;
@@ -180,7 +210,9 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	XftFont* font2;
 	XGlyphInfo extents1 = { 0 };
 	XGlyphInfo extents2 = { 0 };
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	GdkPixmap* pixmap;
+#endif
 	XftDraw* draw;
 	GdkPixbuf* tmp_pixbuf;
 	GdkPixbuf* pixbuf;
@@ -225,9 +257,15 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	width = extents1.xOff + extents2.xOff + 4;
 	height = ascent + descent + 2;
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	pixmap = gdk_pixmap_new (NULL, width, height, visual->depth);
+#endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	draw = XftDrawCreate (xdisplay, GDK_WINDOW_XID (gtk_widget_get_window(darea)), xvisual, xcolormap);
+#else
 	draw = XftDrawCreate (xdisplay, GDK_DRAWABLE_XID (pixmap), xvisual, xcolormap);
+#endif
 
 	rendcolor.red = 0;
 	rendcolor.green = 0;
@@ -266,16 +304,26 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 		XftFontClose(xdisplay, font2);
 	}
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	tmp_pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE,8, width, height);
+#else
 	tmp_pixbuf = gdk_pixbuf_get_from_drawable(NULL, pixmap, colormap, 0, 0, 0, 0, width, height);
+#endif
 	pixbuf = gdk_pixbuf_scale_simple(tmp_pixbuf, 1 * width, 1 * height, GDK_INTERP_TILES);
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	g_object_unref(pixmap);
+#endif
 	g_object_unref(tmp_pixbuf);
 
 	g_object_set_data_full(G_OBJECT(darea), "sample-pixbuf", pixbuf, (GDestroyNotify) g_object_unref);
 
 	g_signal_connect(darea, "size_request", G_CALLBACK(sample_size_request), NULL);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	g_signal_connect(darea, "draw", G_CALLBACK(sample_draw), NULL);
+#else
 	g_signal_connect(darea, "expose_event", G_CALLBACK(sample_expose), NULL);
+#endif
 }
 
 /*
