@@ -262,7 +262,7 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 #endif
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-	draw = XftDrawCreate (xdisplay, GDK_WINDOW_XID (gtk_widget_get_window(darea)), xvisual, xcolormap);
+	draw = XftDrawCreate (xdisplay, GDK_WINDOW_XID (gdk_screen_get_root_window (gdk_screen_get_default ())), xvisual, xcolormap);
 #else
 	draw = XftDrawCreate (xdisplay, GDK_DRAWABLE_XID (pixmap), xvisual, xcolormap);
 #endif
