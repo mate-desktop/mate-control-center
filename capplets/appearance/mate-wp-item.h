@@ -53,6 +53,9 @@ struct _MateWPItem {
   /* Did the user remove us? */
   gboolean deleted;
 
+  /* Wallpaper author, if present */
+  gchar *artist;
+
   /* Width and Height of the original image */
   gint width;
   gint height;

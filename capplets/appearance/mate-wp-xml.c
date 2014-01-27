@@ -145,7 +145,7 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 		{
 			MateWPItem * wp;
 			char *pcolor = NULL, *scolor = NULL;
-			gboolean have_scale = FALSE, have_shade = FALSE;
+			gboolean have_scale = FALSE, have_shade = FALSE, have_artist = FALSE;
 
 			wp = g_new0(MateWPItem, 1);
 
@@ -242,6 +242,14 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 						scolor = g_strdup(g_strstrip ((char *)wpa->last->content));
 					}
 				}
+				else if (!strcmp ((char*) wpa->name, "artist"))
+				{
+					if (wpa->last != NULL)
+					{
+						wp->artist = g_strdup (g_strstrip ((char *)wpa->last->content));
+						have_artist = TRUE;
+					}
+				}
 				else if (!strcmp ((char*) wpa->name, "text"))
 				{
 					/* Do nothing here, libxml2 is being weird */
@@ -281,6 +289,11 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 			if (scolor == NULL)
 			{
 				scolor = g_settings_get_string (data->wp_settings, WP_SCOLOR_KEY);
+			}
+
+			if (!have_artist)
+			{
+				wp->artist = g_strdup ("(none)");
 			}
 
 			gdk_color_parse(pcolor, &color1);
@@ -541,6 +554,7 @@ void mate_wp_xml_save_list(AppearanceData* data)
 		xmlNewTextChild(wallpaper, NULL, (xmlChar*) "shade_type", (xmlChar*) shade);
 		xmlNewTextChild(wallpaper, NULL, (xmlChar*) "pcolor", (xmlChar*) pcolor);
 		xmlNewTextChild(wallpaper, NULL, (xmlChar*) "scolor", (xmlChar*) scolor);
+		xmlNewTextChild(wallpaper, NULL, (xmlChar*) "artist", (xmlChar*) wpitem->artist);
 
 		g_free(pcolor);
 		g_free(scolor);
