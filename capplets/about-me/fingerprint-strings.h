@@ -58,32 +58,6 @@ static const char *finger_str_to_msg(const char *finger_name, gboolean is_swipe)
 }
 
 /* Cases not handled:
- * verify-no-match
- * verify-match
- * verify-unknown-error
- */
-static const char *verify_result_str_to_msg(const char *result, gboolean is_swipe)
-{
-	if (result == NULL)
-		return NULL;
-
-	if (strcmp (result, "verify-retry-scan") == 0) {
-		if (is_swipe == FALSE)
-			return N_("Place your finger on the reader again");
-		else
-			return N_("Swipe your finger again");
-	}
-	if (strcmp (result, "verify-swipe-too-short") == 0)
-		return N_("Swipe was too short, try again");
-	if (strcmp (result, "verify-finger-not-centered") == 0)
-		return N_("Your finger was not centered, try swiping your finger again");
-	if (strcmp (result, "verify-remove-and-retry") == 0)
-		return N_("Remove your finger, and try swiping your finger again");
-
-	return NULL;
-}
-
-/* Cases not handled:
  * enroll-completed
  * enroll-failed
  * enroll-unknown-error

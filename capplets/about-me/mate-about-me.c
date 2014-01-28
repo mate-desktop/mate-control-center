@@ -41,8 +41,6 @@
 #define MAX_HEIGHT 100
 #define MAX_WIDTH  100
 
-#define EMAIL_SLOTS 4
-
 typedef struct {
 
 	GtkBuilder 	*dialog;

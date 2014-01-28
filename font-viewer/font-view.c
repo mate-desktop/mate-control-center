@@ -582,7 +582,7 @@ main(int argc, char **argv)
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(swin),
 					  drawing_area);
 #if !GTK_CHECK_VERSION (3, 0, 0)
-    g_signal_connect (drawing_area, "realize", create_text_pixmap, face);
+    g_signal_connect (drawing_area, "realize", G_CALLBACK(create_text_pixmap), face);
 #endif
 
     /* set the minimum size on the scrolled window to prevent

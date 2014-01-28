@@ -279,9 +279,15 @@ void mate_wp_item_update_description (MateWPItem * item) {
     const gchar *description;
     gchar *size;
     gchar *dirname = g_path_get_dirname (item->filename);
+    gchar *artist;
 
     description = NULL;
     size = NULL;
+
+    if (!item->artist || item->artist[0] == 0 || !g_strcmp0(item->artist, "(none)"))
+      artist = g_strdup (_("unknown"));
+    else
+      artist = g_strdup (item->artist);
 
     if (strcmp (item->fileinfo->mime_type, "application/xml") == 0)
       {
@@ -308,28 +314,35 @@ void mate_wp_item_update_description (MateWPItem * item) {
       /* translators: <b>wallpaper name</b>
        * mime type, size
        * Folder: /path/to/file
+       * Artist: wallpaper author
        */
       item->description = g_markup_printf_escaped (_("<b>%s</b>\n"
                                                      "%s, %s\n"
-                                                     "Folder: %s"),
+                                                     "Folder: %s\n"
+                                                     "Artist: %s"),
                                                    item->name,
                                                    description,
                                                    size,
-                                                   dirname);
+                                                   dirname,
+                                                   artist);
     } else {
       /* translators: <b>wallpaper name</b>
        * Image missing
        * Folder: /path/to/file
+       * Artist: wallpaper author
        */
       item->description = g_markup_printf_escaped (_("<b>%s</b>\n"
                                                      "%s\n"
-                                                     "Folder: %s"),
+                                                     "Folder: %s\n"
+                                                     "Artist: %s"),
                                                    item->name,
                                                    _("Image missing"),
-                                                   dirname);
+                                                   dirname,
+                                                   artist);
     }
 
     g_free (size);
     g_free (dirname);
+    g_free (artist);
   }
 }
