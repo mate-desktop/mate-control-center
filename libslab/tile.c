@@ -308,7 +308,7 @@ tile_enter (GtkButton * widget)
 static void
 tile_leave (GtkButton * widget)
 {
-	if (gtk_widget_has_focus (widget))
+	if (gtk_widget_has_focus (GTK_WIDGET (widget)))
 		gtk_widget_set_state (GTK_WIDGET (widget), TILE_STATE_FOCUSED);
 	else
 		gtk_widget_set_state (GTK_WIDGET (widget), GTK_STATE_NORMAL);

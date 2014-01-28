@@ -982,7 +982,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
   
   /* select in treeview the theme set in gsettings */
   GtkTreeModel *treemodel;
-  treemodel = gtk_tree_view_get_model (list);
+  treemodel = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
   gchar *theme = g_settings_get_string (settings, key);
   gchar *path = find_string_in_model (treemodel, theme, COL_NAME);
   if (path)
@@ -990,7 +990,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
     GtkTreeSelection *selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (list));
     GtkTreePath *treepath = gtk_tree_path_new_from_string (path);
     gtk_tree_selection_select_path (selection, treepath);
-    gtk_tree_view_scroll_to_cell (list, treepath, NULL, FALSE, 0, 0);
+    gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (list), treepath, NULL, FALSE, 0, 0);
     gtk_tree_path_free (treepath);
     g_free (path);
   }
