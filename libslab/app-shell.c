@@ -473,7 +473,7 @@ handle_group_clicked (Tile * tile, TileEvent * event, gpointer user_data)
 {
 	AppShellData *app_data = (AppShellData *) user_data;
 	GtkWidget *section = NULL;
-	GtkAllocation *allocation;
+	GtkAllocation allocation;
 
 	gint clicked_pos =
 		GPOINTER_TO_INT (g_object_get_data (G_OBJECT (tile), GROUP_POSITION_NUMBER_KEY));
@@ -495,8 +495,8 @@ handle_group_clicked (Tile * tile, TileEvent * event, gpointer user_data)
 
 		if (NULL != cat_data->filtered_launcher_list)
 		{
-			gtk_widget_get_allocation (GTK_WIDGET (cat_data->section), allocation);
-			total += allocation->height +
+			gtk_widget_get_allocation (GTK_WIDGET (cat_data->section), &allocation);
+			total += allocation.height +
 				CATEGORY_SPACING;
 		}
 	}
