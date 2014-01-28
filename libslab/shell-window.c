@@ -150,12 +150,12 @@ shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer 
 #endif
 {
 	GtkWidget *left_pane, *right_pane;
-	GtkAllocation *allocation;
+	GtkAllocation allocation;
 
 	left_pane = SHELL_WINDOW (widget)->_left_pane;
 	right_pane = SHELL_WINDOW (widget)->_right_pane;
 
-	gtk_widget_get_allocation (left_pane, allocation);
+	gtk_widget_get_allocation (left_pane, &allocation);
 
 	/* draw left pane background */
 	gtk_paint_flat_box (
@@ -172,10 +172,10 @@ shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer 
 #endif
 		widget,
 		"",
-		allocation->x,
-		allocation->y,
-		allocation->width,
-		allocation->height);
+		allocation.x,
+		allocation.y,
+		allocation.width,
+		allocation.height);
 
 	return FALSE;
 }

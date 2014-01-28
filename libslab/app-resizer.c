@@ -151,11 +151,11 @@ calculate_num_cols (AppResizer * resizer, gint avail_width)
 			GtkTable *table = GTK_TABLE (resizer->cached_tables_list->data);
 			GList *children = gtk_container_get_children (GTK_CONTAINER (table));
 			GtkWidget *table_element = GTK_WIDGET (children->data);
-			GtkAllocation *allocation;
+			GtkAllocation allocation;
 			g_list_free (children);
 
-			gtk_widget_get_allocation (table_element, allocation);
-			resizer->cached_element_width = allocation->width;
+			gtk_widget_get_allocation (table_element, &allocation);
+			resizer->cached_element_width = allocation.width;
 			resizer->cached_table_spacing = gtk_table_get_default_col_spacing (table);
 		}
 
@@ -204,14 +204,14 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 	/* printf("ENTER - app_resizer_size_allocate\n"); */
 	AppResizer *resizer = APP_RESIZER (widget);
 	GtkWidget *child = GTK_WIDGET (APP_RESIZER (resizer)->child);
-	GtkAllocation *widget_allocation;
+	GtkAllocation widget_allocation;
 	GtkRequisition *child_requisition;
 
 	static gboolean first_time = TRUE;
 	gint new_num_cols;
 	gint useable_area;
 
-	gtk_widget_get_allocation (child, widget_allocation);
+	gtk_widget_get_allocation (child, &widget_allocation);
 
 	if (first_time)
 	{
@@ -220,8 +220,8 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 			(*GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate) (widget, allocation);
 
 		first_time = FALSE;
-		gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation->width,
-			widget_allocation->height);
+		gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation.width,
+			widget_allocation.height);
 		return;
 	}
 
@@ -274,8 +274,8 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 
 	if (GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate)
 		(*GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate) (widget, allocation);
-	gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation->width,
-		widget_allocation->height);
+	gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation.width,
+		widget_allocation.height);
 }
 
 GtkWidget *
@@ -360,16 +360,16 @@ app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellDa
 	{
 		GtkWidget *selected_widget = GTK_WIDGET (app_data->selected_group);
 #if GTK_CHECK_VERSION (3, 0, 0)
-		GtkAllocation *widget_allocation;
-		GtkAllocation *selected_widget_allocation;
+		GtkAllocation widget_allocation;
+		GtkAllocation selected_widget_allocation;
 
-		gtk_widget_get_allocation (widget, widget_allocation);
-		gtk_widget_get_allocation (selected_widget, selected_widget_allocation);
+		gtk_widget_get_allocation (widget, &widget_allocation);
+		gtk_widget_get_allocation (selected_widget, &selected_widget_allocation);
 
 		gdk_cairo_set_source_color (cr, gtk_widget_get_style (selected_widget)->light);
 		cairo_set_line_width(cr, 1);
 
-		cairo_rectangle(cr, selected_widget_allocation->x, selected_widget_allocation->y, widget_allocation->width, selected_widget_allocation->height);
+		cairo_rectangle(cr, selected_widget_allocation.x, selected_widget_allocation.y, widget_allocation.width, selected_widget_allocation.height);
 		cairo_stroke_preserve(cr);
 		cairo_fill(cr);
 #else
