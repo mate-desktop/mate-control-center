@@ -94,18 +94,18 @@ static void
 menu_position_func (GtkMenu * menu, int *x, int *y, gboolean * push_in, gpointer picker)
 {
 	GtkWidget *widget = GTK_WIDGET (picker);
-	GtkAllocation *allocation;
+	GtkAllocation allocation;
 
-	gtk_widget_get_allocation (widget, allocation);
+	gtk_widget_get_allocation (widget, &allocation);
 	gdk_window_get_origin (gtk_widget_get_window (widget), x, y);
-	*x += allocation->x;
-	*y += allocation->y + allocation->height;
+	*x += allocation.x;
+	*y += allocation.y + allocation.height;
 
 	if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
 	{
 		GtkRequisition req;
 		gtk_widget_size_request (GTK_WIDGET (menu), &req);
-		*x += allocation->width - req.width;
+		*x += allocation.width - req.width;
 	}
 
 	*push_in = FALSE;
