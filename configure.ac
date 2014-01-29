@@ -60,6 +60,43 @@ AC_CHECK_FUNC(XScreenSaverQueryInfo, [
 AC_SUBST(TYPING_BREAK)
 AC_SUBST(SCREENSAVER_LIBS)
 
+dnl ==============================================
+dnl Check GTK+ API version
+dnl ==============================================
+
+AC_MSG_CHECKING([which gtk+ version to compile against])
+AC_ARG_WITH([gtk],
+  [AS_HELP_STRING([--with-gtk=2.0|3.0],[which gtk+ version to compile against (default: 2.0)])],
+  [case "$with_gtk" in
+     2.0|3.0) ;;
+     *) AC_MSG_ERROR([invalid gtk version specified]) ;;
+   esac],
+  [with_gtk=2.0])
+AC_MSG_RESULT([$with_gtk])
+
+case "$with_gtk" in
+  2.0) GTK_API_VERSION=2.0
+       GTK_REQUIRED=2.24.0
+       LIBCANBERRA_API_VERSION=
+       LIBUNIQUE_API_VERSION=1.0
+       ENGINES_FOLDER="engines"
+       ;;
+  3.0) GTK_API_VERSION=3.0
+       GTK_REQUIRED=3.0.0
+       LIBCANBERRA_API_VERSION=3
+       LIBUNIQUE_API_VERSION=3.0
+       ENGINES_FOLDER="theming-engines"
+       ;;
+esac
+AC_SUBST(GTK_API_VERSION)
+
+PKG_CHECK_MODULES(LIBCANBERRA_GTK, libcanberra-gtk$LIBCANBERRA_API_VERSION, [
+    CANBERRA_GTK=1
+    AC_SUBST(LIBCANBERRA_GTK_CFLAGS)
+    AC_SUBST(LIBCANBERRA_GTK_LIBS)
+    ], [:])
+AM_CONDITIONAL(HAVE_LIBCANBERRA_GTK, test "x$CANBERRA_GTK" = "x1")
+
 AM_CONDITIONAL(HAVE_TYPING_BREAK, test "x$TYPING_BREAK" = xtyping-break)
 
 dnl app indicator
@@ -104,43 +141,6 @@ CPPFLAGS=$savecppflags
 AC_CHECK_LIB(m, floor)
 
 dnl ==============================================
-dnl Check GTK+ API version
-dnl ==============================================
-
-AC_MSG_CHECKING([which gtk+ version to compile against])
-AC_ARG_WITH([gtk],
-  [AS_HELP_STRING([--with-gtk=2.0|3.0],[which gtk+ version to compile against (default: 2.0)])],
-  [case "$with_gtk" in
-     2.0|3.0) ;;
-     *) AC_MSG_ERROR([invalid gtk version specified]) ;;
-   esac],
-  [with_gtk=2.0])
-AC_MSG_RESULT([$with_gtk])
-
-case "$with_gtk" in
-  2.0) GTK_API_VERSION=2.0
-       GTK_REQUIRED=2.24.0
-       LIBCANBERRA_API_VERSION=
-       LIBUNIQUE_API_VERSION=1.0
-       ENGINES_FOLDER="engines"
-       ;;
-  3.0) GTK_API_VERSION=3.0
-       GTK_REQUIRED=3.0.0
-       LIBCANBERRA_API_VERSION=3
-       LIBUNIQUE_API_VERSION=3.0
-       ENGINES_FOLDER="theming-engines"
-       ;;
-esac
-AC_SUBST(GTK_API_VERSION)
-
-PKG_CHECK_MODULES(LIBCANBERRA_GTK, libcanberra-gtk$LIBCANBERRA_API_VERSION, [
-    CANBERRA_GTK=1
-    AC_SUBST(LIBCANBERRA_GTK_CFLAGS)
-    AC_SUBST(LIBCANBERRA_GTK_LIBS)
-    ], [:])
-AM_CONDITIONAL(HAVE_LIBCANBERRA_GTK, test "x$CANBERRA_GTK" = "x1")
-
-dnl ==============================================
 dnl Check that we meet the  dependencies
 dnl ==============================================
 MATE_DESKTOP_REQUIRED=1.7.3
@@ -161,7 +161,7 @@ PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0 >= MATE_DESKTOP_REQUIRED)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
 PKG_CHECK_MODULES(MARCO, libmarco-private >= 1.5.0)
-PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 gio-2.0 gtk+-2.0)
+PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 > 2.11 gio-2.0 gtk+-$GTK_API_VERSION)
 PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon >= 1.5.2)
 PKG_CHECK_MODULES(GIO, gio-2.0)
 
