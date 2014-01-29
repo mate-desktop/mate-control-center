@@ -205,7 +205,7 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 	AppResizer *resizer = APP_RESIZER (widget);
 	GtkWidget *child = GTK_WIDGET (APP_RESIZER (resizer)->child);
 	GtkAllocation widget_allocation;
-	GtkRequisition *child_requisition;
+	GtkRequisition child_requisition;
 
 	static gboolean first_time = TRUE;
 	gint new_num_cols;
@@ -226,9 +226,9 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 	}
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_get_preferred_size (child, child_requisition, NULL);
+	gtk_widget_get_preferred_size (child, &child_requisition, NULL);
 #else
-	child_requisition = &child->requisition;
+	child_requisition = child->requisition;
 #endif
 
 	if (!resizer->cached_tables_list)	/* if everthing is currently filtered out - just return */
@@ -241,24 +241,24 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 		/* We want the message to center itself and only scroll if it's bigger than the available real size. */
 		child_allocation.x = 0;
 		child_allocation.y = 0;
-		child_allocation.width = MAX (allocation->width, child_requisition->width);
-		child_allocation.height = MAX (allocation->height, child_requisition->height);
+		child_allocation.width = MAX (allocation->width, child_requisition.width);
+		child_allocation.height = MAX (allocation->height, child_requisition.height);
 
 		gtk_widget_size_allocate (child, &child_allocation);
 		gtk_layout_set_size (GTK_LAYOUT (resizer), child_allocation.width,
 			child_allocation.height);
 		return;
 	}
-	GtkRequisition *other_requisiton;
+	GtkRequisition other_requisiton;
 #if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_get_preferred_size (GTK_WIDGET (resizer->cached_tables_list->data), other_requisiton, NULL);
+	gtk_widget_get_preferred_size (GTK_WIDGET (resizer->cached_tables_list->data), &other_requisiton, NULL);
 #else
-	other_requisiton = &GTK_WIDGET (resizer->cached_tables_list->data)->requisition;
+	other_requisiton = GTK_WIDGET (resizer->cached_tables_list->data)->requisition;
 #endif
 
 	useable_area =
-		allocation->width - (child_requisition->width -
-		other_requisiton->width);
+		allocation->width - (child_requisition.width -
+		other_requisiton.width);
 	new_num_cols =
 		relayout_tables_if_needed (APP_RESIZER (resizer), useable_area,
 		resizer->cur_num_cols);
@@ -340,13 +340,13 @@ app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellDa
 	*/
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-	GdkRectangle *rect;
-	gdk_cairo_get_clip_rectangle (cr, rect);
+	GdkRectangle rect;
+	gdk_cairo_get_clip_rectangle (cr, &rect);
 
-	gdk_cairo_set_source_color (cr, gtk_widget_get_style (gtk_layout_get_bin_window (GTK_LAYOUT (widget)))->base);
+	gdk_cairo_set_source_color (cr, gtk_widget_get_style (widget)->base);
 	cairo_set_line_width(cr, 1);
 
-	cairo_rectangle(cr, 0, 0, rect->width, rect->height);
+	cairo_rectangle(cr, 0, 0, rect.width, rect.height);
 	cairo_stroke_preserve(cr);
 	cairo_fill(cr);
 

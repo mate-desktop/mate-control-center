@@ -69,9 +69,13 @@ shell_window_new (AppShellData * app_data)
 	g_signal_connect (G_OBJECT (window), "expose-event", G_CALLBACK (shell_window_paint_window),
 #endif
 		NULL);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	/* FIXME */
+#else
 	window->resize_handler_id =
 		g_signal_connect (G_OBJECT (window), "size-request",
 		G_CALLBACK (shell_window_handle_size_request), app_data);
+#endif
 
 	return GTK_WIDGET (window);
 }
@@ -96,12 +100,12 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	AppShellData * app_data)
 {
 	gint height;
-	GtkRequisition *child_requisiton;
+	GtkRequisition child_requisiton;
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), child_requisiton, NULL);
+	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), &child_requisiton, NULL);
 #else
-	child_requisiton = &GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition;
+	child_requisiton = GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition;
 #endif
 
 	/*
@@ -113,12 +117,12 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	printf("right side width:%d\n", GTK_WIDGET(APP_RESIZER(app_data->category_layout)->child)->requisition.width);
 	*/
 
-	requisition->width += child_requisiton->width;
+	requisition->width += child_requisiton.width;
 
 	/* use the left side as a minimum height, if the right side is taller,
 	   use it up to SIZING_HEIGHT_PERCENT of the screen height
 	*/
-	height = child_requisiton->height + 10;
+	height = child_requisiton.height + 10;
 	if (height > requisition->height)
 	{
 		requisition->height =
