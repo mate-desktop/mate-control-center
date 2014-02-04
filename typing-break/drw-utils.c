@@ -90,20 +90,29 @@ create_tile_pixbuf (GdkPixbuf    *dest_pixbuf,
 }
 
 static gboolean
+#if GTK_CHECK_VERSION (3, 0, 0)
+window_draw_event   (GtkWidget      *widget,
+		     cairo_t        *cr,
+#else
 window_expose_event (GtkWidget      *widget,
 		     GdkEventExpose *event,
+#endif
 		     gpointer        data)
 {
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	cairo_t         *context;
 	cairo_t         *cr;
 	cairo_surface_t *surface;
+#endif
 	int              width;
 	int              height;
 
+	gtk_window_get_size (GTK_WINDOW (widget), &width, &height);
+
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	context = gdk_cairo_create (gtk_widget_get_window (widget));
 
 	cairo_set_operator (context, CAIRO_OPERATOR_SOURCE);
-	gtk_window_get_size (GTK_WINDOW (widget), &width, &height);
 
 	surface = cairo_surface_create_similar (cairo_get_target (context),
 						CAIRO_CONTENT_COLOR_ALPHA,
@@ -118,6 +127,7 @@ window_expose_event (GtkWidget      *widget,
 	if (cairo_status (cr) != CAIRO_STATUS_SUCCESS) {
 		goto done;
 	}
+#endif
 	cairo_set_source_rgba (cr, 1.0, 1.0, 1.0, 0.0);
 	cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
 	cairo_paint (cr);
@@ -127,16 +137,17 @@ window_expose_event (GtkWidget      *widget,
 	cairo_set_source_rgba (cr, 0.2, 0.2, 0.2, 0.5);
 	cairo_fill (cr);
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	cairo_destroy (cr);
 
 	cairo_set_source_surface (context, surface, 0, 0);
 	cairo_paint (context);
-
  done:
 	if (surface != NULL) {
 		cairo_surface_destroy (surface);
 	}
 	cairo_destroy (context);
+#endif
 
 	return FALSE;
 }
@@ -146,7 +157,11 @@ set_pixmap_background (GtkWidget *window)
 {
 	GdkScreen    *screen;
 	GdkPixbuf    *tmp_pixbuf, *pixbuf, *tile_pixbuf;
+#if GTK_CHECK_VERSION (3, 0, 0)
+	cairo_t      *cr;
+#else
 	GdkPixmap    *pixmap;
+#endif
 	GdkRectangle  rect;
 	GdkColor      color;
 	gint          width, height;
@@ -157,6 +172,12 @@ set_pixmap_background (GtkWidget *window)
 	width = gdk_screen_get_width (screen);
 	height = gdk_screen_get_height (screen);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	tmp_pixbuf = gdk_pixbuf_get_from_window (gdk_screen_get_root_window (screen),
+						 0,
+						 0,
+						 width, height);
+#else
 	tmp_pixbuf = gdk_pixbuf_get_from_drawable (NULL,
 						   gdk_screen_get_root_window (screen),
 						   gdk_screen_get_system_colormap (screen),
@@ -165,6 +186,7 @@ set_pixmap_background (GtkWidget *window)
 						   0,
 						   0,
 						   width, height);
+#endif
 
 	pixbuf = gdk_pixbuf_new_from_file (IMAGEDIR "/ocean-stripes.png", NULL);
 
@@ -200,6 +222,11 @@ set_pixmap_background (GtkWidget *window)
 
 	g_object_unref (tile_pixbuf);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	cr = gdk_cairo_create (gtk_widget_get_window (window));
+	gdk_cairo_set_source_pixbuf (cr, tmp_pixbuf, 0, 0);
+	cairo_paint (cr);
+#else
 	pixmap = gdk_pixmap_new (gtk_widget_get_window (window),
 				 width,
 				 height,
@@ -217,21 +244,31 @@ set_pixmap_background (GtkWidget *window)
                          GDK_RGB_DITHER_NONE,
                          0,
                          0);
+#endif
 
 	g_object_unref (tmp_pixbuf);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	cairo_destroy (cr);
+#else
 	gdk_window_set_back_pixmap (gtk_widget_get_window (window), pixmap, FALSE);
 	g_object_unref (pixmap);
+#endif
 }
 
 void
 drw_setup_background (GtkWidget *window)
 {
 	GdkScreen    *screen;
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	GdkColormap  *colormap;
+#endif
 	gboolean      is_composited;
 
 	screen = gtk_widget_get_screen (window);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	is_composited = gdk_screen_is_composited (screen);
+#else
 	colormap = gdk_screen_get_rgba_colormap (screen);
 
 	if (colormap != NULL && gdk_screen_is_composited (screen)) {
@@ -240,9 +277,14 @@ drw_setup_background (GtkWidget *window)
 	} else {
 		is_composited = FALSE;
 	}
+#endif
 
 	if (is_composited) {
+#if GTK_CHECK_VERSION (3, 0, 0)
+		g_signal_connect (window, "draw", G_CALLBACK (window_draw_event), window);
+#else
 		g_signal_connect (window, "expose-event", G_CALLBACK (window_expose_event), window);
+#endif
 	} else {
 		set_pixmap_background (window);
 	}

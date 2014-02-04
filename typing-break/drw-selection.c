@@ -78,7 +78,11 @@ drw_selection_find_existing (DrwSelection *drw_selection)
 				  gdk_x11_get_xatom_by_name (SELECTION_NAME));
 	if (old) {
 		XSelectInput (xdisplay, old, StructureNotifyMask);
+#if GTK_CHECK_VERSION (3, 0, 0)
+		drw_selection->owner_window = gdk_x11_window_foreign_new_for_display (gdk_display_get_default (), old);
+#else
 		drw_selection->owner_window = gdk_window_foreign_new (old);
+#endif
 	}
 	XSync (xdisplay, False);
 

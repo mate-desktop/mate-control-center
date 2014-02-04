@@ -73,8 +73,13 @@ static gboolean     postpone_sensitize_cb          (DrwBreakWindow      *window)
 static gboolean     clock_timeout_cb               (DrwBreakWindow      *window);
 static void         postpone_clicked_cb            (GtkWidget           *button,
 						    GtkWidget           *window);
+#if GTK_CHECK_VERSION (3, 0, 0)
+static gboolean     label_draw_event_cb            (GtkLabel            *label,
+						    cairo_t             *cr,
+#else
 static gboolean     label_expose_event_cb          (GtkLabel            *label,
 						    GdkEventExpose      *event,
+#endif
 						    gpointer             user_data);
 static void         label_size_request_cb          (GtkLabel            *label,
 						    GtkRequisition      *requisition,
@@ -233,8 +238,13 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_widget_show (priv->break_label);
 
 	g_signal_connect (priv->break_label,
+#if GTK_CHECK_VERSION (3, 0, 0)
+			  "draw",
+			  G_CALLBACK (label_draw_event_cb),
+#else
 			  "expose_event",
 			  G_CALLBACK (label_expose_event_cb),
+#endif
 			  NULL);
 
 	g_signal_connect_after (priv->break_label,
@@ -256,8 +266,13 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_box_pack_start (GTK_BOX (vbox), priv->clock_label, TRUE, TRUE, 8);
 
 	g_signal_connect (priv->clock_label,
+#if GTK_CHECK_VERSION (3, 0, 0)
+			  "draw",
+			  G_CALLBACK (label_draw_event_cb),
+#else
 			  "expose_event",
 			  G_CALLBACK (label_expose_event_cb),
+#endif
 			  NULL);
 
 	g_signal_connect_after (priv->clock_label,
@@ -477,7 +492,7 @@ postpone_entry_key_press_event_cb (GtkEntry       *entry,
 
 	priv = window->priv;
 
-	if (event->keyval == GDK_Escape) {
+	if (event->keyval == GDK_KEY_Escape) {
 		if (priv->postpone_timeout_id) {
 			g_source_remove (priv->postpone_timeout_id);
 		}
@@ -576,15 +591,22 @@ get_layout_location (GtkLabel *label,
 }
 
 static gboolean
+#if GTK_CHECK_VERSION (3, 0, 0)
+label_draw_event_cb   (GtkLabel       *label,
+		       cairo_t        *cr,
+#else
 label_expose_event_cb (GtkLabel       *label,
 		       GdkEventExpose *event,
+#endif
 		       gpointer        user_data)
 {
 	gint       x, y;
 	GdkColor   color;
 	GtkWidget *widget;
 	GdkWindow *window;
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	GdkGC     *gc;
+#endif
 
 	color.red = 0;
 	color.green = 0;
@@ -596,10 +618,15 @@ label_expose_event_cb (GtkLabel       *label,
 	widget = GTK_WIDGET (label);
 	window = gtk_widget_get_window (widget);
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	gc = gdk_gc_new (window);
 	gdk_gc_set_rgb_fg_color (gc, &color);
 	gdk_gc_set_clip_rectangle (gc, &event->area);
+#endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	pango_cairo_show_layout (cr, gtk_label_get_layout (label));
+#else
 	gdk_draw_layout_with_colors (window,
 				     gc,
 				     x + 1,
@@ -608,12 +635,19 @@ label_expose_event_cb (GtkLabel       *label,
 				     &color,
 				     NULL);
 	g_object_unref (gc);
+#endif
 
 	gtk_paint_layout (gtk_widget_get_style (widget),
+#if GTK_CHECK_VERSION (3, 0, 0)
+			  cr,
+#else
 			  window,
+#endif
 			  gtk_widget_get_state (widget),
 			  FALSE,
+#if !GTK_CHECK_VERSION (3, 0, 0)
 			  &event->area,
+#endif
 			  widget,
 			  "label",
 			  x, y,

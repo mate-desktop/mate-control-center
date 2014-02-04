@@ -21,9 +21,10 @@ mate_typing_monitor_CPPFLAGS = \
 	$(AM_CPPFLAGS)
 mate_typing_monitor_CFLAGS = \
 	@TYPING_CFLAGS@	\
+	@MATE_DESKTOP_CFLAGS@ \
 	$(AM_CFLAGS)
 
-mate_typing_monitor_LDADD = @TYPING_LIBS@ @SCREENSAVER_LIBS@
+mate_typing_monitor_LDADD = @TYPING_LIBS@ @MATE_DESKTOP_LIBS@ @SCREENSAVER_LIBS@
 
 if HAVE_LIBCANBERRA_GTK
   mate_typing_monitor_CFLAGS += -DHAVE_CANBERRA_GTK @LIBCANBERRA_GTK_CFLAGS@ 
