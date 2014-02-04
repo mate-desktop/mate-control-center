@@ -1481,7 +1481,7 @@ static void mate_theme_info_find_all_helper(const gchar* key, GList* list, GList
 	}
 }
 
-gchar* gtk_theme_info_missing_engine(const gchar* gtk_theme, gboolean nameOnly)
+gchar* gtk_theme_info_missing_engine(const gchar* gtk_theme, gboolean name_only)
 {
 	gchar* engine = NULL;
 	gchar* gtkrc;
@@ -1514,7 +1514,7 @@ gchar* gtk_theme_info_missing_engine(const gchar* gtk_theme, gboolean nameOnly)
 
 			if (!found)
 			{
-				if (nameOnly)
+				if (name_only)
 				{
          			engine = g_strdup(l->data);
          			g_free(full);
@@ -1714,6 +1714,7 @@ gboolean mate_theme_meta_info_validate(const MateThemeMetaInfo* info, GError** e
 		return FALSE;
 	}
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	/* check for gtk theme engines */
 	engine = gtk_theme_info_missing_engine(info->gtk_theme_name, TRUE);
 
@@ -1725,6 +1726,7 @@ gboolean mate_theme_meta_info_validate(const MateThemeMetaInfo* info, GError** e
 		g_free (engine);
 		return FALSE;
 	}
+#endif
 
 	return TRUE;
 }
