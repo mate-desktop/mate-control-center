@@ -36,7 +36,7 @@
 #if GTK_CHECK_VERSION (3, 0, 0)
 #define MATE_DESKTOP_USE_UNSTABLE_API
 #include <libmate-desktop/mate-desktop-utils.h>
-#define gdk_spawn_command_line_on_screen() mate_gdk_spawn_command_line_on_screen()
+#define gdk_spawn_command_line_on_screen mate_gdk_spawn_command_line_on_screen
 #endif
 
 #include "drwright.h"
