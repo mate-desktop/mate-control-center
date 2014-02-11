@@ -52,6 +52,7 @@ MAINTAINERCLEANFILES = \
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 EXTRA_DIST = \
+	autogen.sh \
 	org.mate.control-center.gschema.xml.in.in \
 	org.mate.control-center.keybinding.gschema.xml.in.in \
 	$(convert_DATA)
