@@ -32,6 +32,10 @@
 #include <string.h>
 #include <mate-wm-manager.h>
 
+#include <gdk/gdkx.h>
+
+#include "mate-metacity-support.h"
+#include "wm-common.h"
 #include "capplet-util.h"
 
 typedef struct
@@ -426,6 +430,7 @@ main (int argc, char **argv)
 	MateWMSettings new_settings;
         GtkBuilder *builder;
         GError *error = NULL;
+        const char *name;
 	int rc = 0;
         int i;
 
@@ -442,6 +447,14 @@ main (int argc, char **argv)
         current_wm = mate_wm_manager_get_current (screen);
 
         if (current_wm == NULL) {
+                /* metacity support */
+                name = gdk_x11_screen_get_window_manager_name (screen);
+                if (g_strcmp0 (name, WM_COMMON_METACITY) == 0) {
+                        mate_metacity_config_tool ();
+                        return 0;
+                }
+
+                /* other window managers */
                 try_spawn_config_tool (screen);
                 goto out;
         }

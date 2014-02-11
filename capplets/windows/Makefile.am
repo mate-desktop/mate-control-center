@@ -6,7 +6,9 @@ bin_PROGRAMS = mate-window-properties
 mate_window_properties_LDADD = $(MATECC_CAPPLETS_LIBS) 	\
 	$(top_builddir)/libwindow-settings/libmate-window-settings.la
 
-mate_window_properties_SOURCES = 		\
+mate_window_properties_SOURCES = \
+	mate-metacity-support.h \
+	mate-metacity-support.c \
 	mate-window-properties.c
 
 @INTLTOOL_DESKTOP_RULE@
