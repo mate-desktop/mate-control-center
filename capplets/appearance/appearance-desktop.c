@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007,2008 The MATE Foundation
+ * Copyright (C) 2007,2008 The GNOME Foundation
  * Written by Rodney Dawes <dobey@ximian.com>
  *            Denis Washington <denisw@svn.gnome.org>
  *            Thomas Wood <thos@gnome.org>

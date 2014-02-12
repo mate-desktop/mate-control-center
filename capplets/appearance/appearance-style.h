@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The MATE Foundation
+ * Copyright (C) 2007 The GNOME Foundation
  * Written by Thomas Wood <thos@gnome.org>
  * All Rights Reserved
  *

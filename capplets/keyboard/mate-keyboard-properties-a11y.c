@@ -1,7 +1,7 @@
 /* -*- mode: c; style: linux -*- */
 
 /*
- * Copyright (C) 2007 The MATE Foundation
+ * Copyright (C) 2007 The GNOME Foundation
  * Written by Denis Washington <denisw@svn.gnome.org>
  * All Rights Reserved
  *
