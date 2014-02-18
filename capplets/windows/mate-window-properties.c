@@ -228,10 +228,7 @@ wm_changed_callback (GdkScreen *screen,
 
         current_wm = gdk_x11_screen_get_window_manager_name (screen);
 
-        if (g_strcmp0 (current_wm, WM_COMMON_MARCO) != 0) {
-                wm_unsupported ();
-                gtk_main_quit ();
-        }
+        gtk_widget_set_sensitive (dialog_win, g_strcmp0 (current_wm, WM_COMMON_MARCO) == 0);
 }
 
 static void
