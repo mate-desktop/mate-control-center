@@ -11,6 +11,7 @@
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="spacing">2</property>
+
         <child>
           <object class="GtkVBox" id="vbox1">
             <property name="visible">True</property>
@@ -106,6 +107,66 @@
                 <property name="position">0</property>
               </packing>
             </child>
+
+            <child>
+              <object class="GtkVBox" id="vbox12">
+                <property name="visible">True</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkLabel" id="label8">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Window Snapping</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkAlignment" id="alignment8">
+                    <property name="visible">True</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <object class="GtkVBox" id="vbox13">
+                        <property name="visible">True</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkCheckButton" id="side-by-side-tiling">
+                            <property name="label" translatable="yes">Enable side by side tiling</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+
             <child>
               <object class="GtkVBox" id="vbox2">
                 <property name="visible">True</property>
@@ -247,7 +308,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -322,7 +383,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -398,7 +459,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
@@ -406,6 +467,7 @@
             <property name="position">1</property>
           </packing>
         </child>
+
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
