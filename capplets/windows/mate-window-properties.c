@@ -49,6 +49,7 @@
 #define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
+#define MARCO_SIDE_BY_SIDE_TILING_KEY "side-by-side-tiling"
 
 /* keep following enums in sync with marco */
 enum
@@ -80,6 +81,7 @@ typedef struct
 static GtkWidget *dialog_win;
 static GObject *compositing_checkbutton;
 static GObject *compositing_fast_alt_tab_checkbutton;
+static GObject *side_by_side_tiling_checkbutton;
 static GObject *focus_mode_checkbutton;
 static GObject *autoraise_checkbutton;
 static GObject *autoraise_delay_slider;
@@ -285,6 +287,7 @@ main (int argc, char **argv)
     dialog_win = GTK_WIDGET (gtk_builder_get_object (builder,  "main-dialog"));
     compositing_checkbutton = gtk_builder_get_object (builder, "compositing-manager-checkbutton");
     compositing_fast_alt_tab_checkbutton = gtk_builder_get_object (builder, "compositing-fast-alt-tab-checkbutton");
+    side_by_side_tiling_checkbutton = gtk_builder_get_object (builder, "side-by-side-tiling");
     focus_mode_checkbutton = gtk_builder_get_object (builder, "focus-mode-checkbutton");
     autoraise_checkbutton = gtk_builder_get_object (builder, "autoraise-checkbutton");
     autoraise_delay_slider = gtk_builder_get_object (builder, "autoraise-delay-slider");
@@ -330,6 +333,12 @@ main (int argc, char **argv)
     g_settings_bind (marco_settings,
                      MARCO_COMPOSITING_FAST_ALT_TAB_KEY,
                      compositing_fast_alt_tab_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (marco_settings,
+                     MARCO_SIDE_BY_SIDE_TILING_KEY,
+                     side_by_side_tiling_checkbutton,
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
