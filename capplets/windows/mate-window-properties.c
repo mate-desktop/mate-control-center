@@ -30,13 +30,43 @@
 #include <stdlib.h>
 #include <glib/gi18n.h>
 #include <string.h>
-#include <mate-wm-manager.h>
 
 #include <gdk/gdkx.h>
 
 #include "mate-metacity-support.h"
 #include "wm-common.h"
 #include "capplet-util.h"
+
+#define MARCO_SCHEMA "org.mate.Marco.general"
+#define MARCO_THEME_KEY "theme"
+#define MARCO_FONT_KEY  "titlebar-font"
+#define MARCO_FOCUS_KEY "focus-mode"
+#define MARCO_USE_SYSTEM_FONT_KEY "titlebar-uses-system-font"
+#define MARCO_AUTORAISE_KEY "auto-raise"
+#define MARCO_AUTORAISE_DELAY_KEY "auto-raise-delay"
+#define MARCO_MOUSE_MODIFIER_KEY "mouse-button-modifier"
+#define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
+#define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
+#define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
+
+/* keep following enums in sync with marco */
+enum
+{
+        ACTION_TITLEBAR_TOGGLE_SHADE,
+        ACTION_TITLEBAR_TOGGLE_MAXIMIZE,
+        ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY,
+        ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY,
+        ACTION_TITLEBAR_MINIMIZE,
+        ACTION_TITLEBAR_NONE,
+        ACTION_TITLEBAR_LOWER,
+        ACTION_TITLEBAR_MENU
+};
+enum
+{
+        FOCUS_MODE_CLICK,
+        FOCUS_MODE_SLOPPY,
+        FOCUS_MODE_MOUSE
+};
 
 typedef struct
 {
@@ -46,7 +76,6 @@ typedef struct
         GtkWidget *radio;
 } MouseClickModifier;
 
-static MateWindowManager *current_wm; /* may be NULL */
 static GtkWidget *dialog_win;
 static GObject *compositing_checkbutton;
 static GObject *compositing_fast_alt_tab_checkbutton;
@@ -57,9 +86,7 @@ static GtkWidget *autoraise_delay_hbox;
 static GObject *double_click_titlebar_optionmenu;
 static GObject *alt_click_hbox;
 
-static MateWMSettings *settings;
-static const MateWMDoubleClickAction *double_click_actions = NULL;
-static int n_double_click_actions = 0;
+static GSettings *marco_settings;
 
 static MouseClickModifier *mouse_modifiers = NULL;
 static int n_mouse_modifiers = 0;
@@ -67,177 +94,101 @@ static int n_mouse_modifiers = 0;
 static void reload_mouse_modifiers (void);
 
 static void
-compositing_manager_toggled_callback (GtkWidget *button,
-                              void      *data)
+update_sensitivity ()
 {
-        MateWMSettings new_settings;
-
-        new_settings.flags = MATE_WM_SETTING_COMPOSITING_MANAGER;
-        new_settings.compositing_manager =
-                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-
-        if (current_wm != NULL && new_settings.compositing_manager != settings->compositing_manager)
-                mate_window_manager_change_settings (current_wm, &new_settings);
+        gtk_widget_set_sensitive (GTK_WIDGET (compositing_fast_alt_tab_checkbutton),
+                                  g_settings_get_boolean (marco_settings, MARCO_COMPOSITING_MANAGER_KEY));
+        gtk_widget_set_sensitive (GTK_WIDGET (autoraise_checkbutton),
+                                  g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
+        gtk_widget_set_sensitive (GTK_WIDGET (autoraise_delay_hbox),
+                                  g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK &&
+                                  g_settings_get_boolean (marco_settings, MARCO_AUTORAISE_KEY));
 }
 
 static void
-compositing_fast_alt_tab_toggled_callback (GtkWidget *button,
-                                           void      *data)
+marco_settings_changed_callback (GSettings *settings,
+                                 const gchar *key,
+                                 gpointer user_data)
 {
-        MateWMSettings new_settings;
-
-        new_settings.flags = MATE_WM_SETTING_COMPOSITING_ALTTAB;
-        new_settings.compositing_fast_alt_tab =
-                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-
-        if (current_wm != NULL && new_settings.compositing_fast_alt_tab != settings->compositing_fast_alt_tab)
-                mate_window_manager_change_settings (current_wm, &new_settings);
+        update_sensitivity ();
 }
 
 static void
 mouse_focus_toggled_callback (GtkWidget *button,
                               void      *data)
 {
-        MateWMSettings new_settings;
-
-        new_settings.flags = MATE_WM_SETTING_MOUSE_FOCUS;
-        new_settings.focus_follows_mouse =
-                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-
-        if (current_wm != NULL && new_settings.focus_follows_mouse != settings->focus_follows_mouse)
-                mate_window_manager_change_settings (current_wm, &new_settings);
+        g_settings_set_enum (marco_settings,
+                             MARCO_FOCUS_KEY,
+                             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)) ?
+                             FOCUS_MODE_SLOPPY : FOCUS_MODE_CLICK);
 }
 
 static void
-autoraise_toggled_callback (GtkWidget *button,
-                            void      *data)
+mouse_focus_changed_callback (GSettings *settings,
+                              const gchar *key,
+                              gpointer user_data)
 {
-        MateWMSettings new_settings;
-
-        new_settings.flags = MATE_WM_SETTING_AUTORAISE;
-        new_settings.autoraise =
-                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-
-        if (current_wm != NULL && new_settings.autoraise != settings->autoraise)
-                mate_window_manager_change_settings (current_wm, &new_settings);
-
+       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton),
+                                     g_settings_get_enum (settings, key) == FOCUS_MODE_SLOPPY);
 }
 
 static void
 autoraise_delay_value_changed_callback (GtkWidget *slider,
                                         void      *data)
 {
-        MateWMSettings new_settings;
-
-        new_settings.flags = MATE_WM_SETTING_AUTORAISE_DELAY;
-        new_settings.autoraise_delay =
-                gtk_range_get_value (GTK_RANGE (slider)) * 1000;
-
-        if (current_wm != NULL && new_settings.autoraise_delay != settings->autoraise_delay)
-                mate_window_manager_change_settings (current_wm, &new_settings);
+        g_settings_set_int (marco_settings,
+                            MARCO_AUTORAISE_DELAY_KEY,
+                            gtk_range_get_value (GTK_RANGE (slider)) * 1000);
 }
 
 static void
 double_click_titlebar_changed_callback (GtkWidget *optionmenu,
                                         void      *data)
 {
-        MateWMSettings new_settings;
-
-        new_settings.flags = MATE_WM_SETTING_DOUBLE_CLICK_ACTION;
-        new_settings.double_click_action =
-                gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu));
-
-        if (current_wm != NULL && new_settings.double_click_action != settings->double_click_action)
-                mate_window_manager_change_settings (current_wm, &new_settings);
+        g_settings_set_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY,
+                             gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
 }
 
 static void
 alt_click_radio_toggled_callback (GtkWidget *radio,
                                   void      *data)
 {
-        MateWMSettings new_settings;
-        gboolean active;
         MouseClickModifier *modifier = data;
+        gboolean active;
+        gchar *value;
 
-        new_settings.flags = MATE_WM_SETTING_MOUSE_MOVE_MODIFIER;
         active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (radio));
 
-        if (active && current_wm != NULL) {
-                new_settings.mouse_move_modifier = modifier->value;
-
-                if ((settings->mouse_move_modifier == NULL) ||
-                    (strcmp (new_settings.mouse_move_modifier,
-                             settings->mouse_move_modifier) != 0))
-                        mate_window_manager_change_settings (current_wm, &new_settings);
+        if (active) {
+                value = g_strdup_printf ("<%s>", modifier->value);
+                g_settings_set_string (marco_settings, MARCO_MOUSE_MODIFIER_KEY, value);
+                g_free (value);
         }
 }
 
 static void
-update_sensitivity (void)
-{
-        gtk_widget_set_sensitive (GTK_WIDGET (autoraise_checkbutton),
-                                  settings->focus_follows_mouse);
-
-        gtk_widget_set_sensitive (autoraise_delay_hbox,
-                                  settings->focus_follows_mouse && settings->autoraise);
-
-        gtk_widget_set_sensitive (GTK_WIDGET (double_click_titlebar_optionmenu),
-                                  n_double_click_actions > 1);
-
-        gtk_widget_set_sensitive (GTK_WIDGET (compositing_fast_alt_tab_checkbutton),
-                                  settings->compositing_manager);
-
-        /* disable the whole dialog while no WM is running, or
-         * a WM we don't understand is running. We should probably do
-         * something better. I don't want to just launch the config tool
-         * as we would on startup though, because then you'd get weirdness
-         * in the gap time between old and new WM.
-         */
-        gtk_widget_set_sensitive (dialog_win, current_wm != NULL);
-}
-
-static void
-init_settings_struct (MateWMSettings *settings)
-{
-        /* Init fields that weren't initialized */
-        if ((settings->flags & MATE_WM_SETTING_COMPOSITING_MANAGER) == 0)
-                settings->compositing_manager = FALSE;
-
-        if ((settings->flags & MATE_WM_SETTING_COMPOSITING_ALTTAB) == 0)
-                settings->compositing_fast_alt_tab = FALSE;
-
-        if ((settings->flags & MATE_WM_SETTING_MOUSE_FOCUS) == 0)
-                settings->focus_follows_mouse = FALSE;
-
-        if ((settings->flags & MATE_WM_SETTING_AUTORAISE) == 0)
-                settings->autoraise = FALSE;
-
-        if ((settings->flags & MATE_WM_SETTING_AUTORAISE_DELAY) == 0)
-                settings->autoraise_delay = 1000;
-
-        if ((settings->flags & MATE_WM_SETTING_MOUSE_MOVE_MODIFIER) == 0)
-                settings->mouse_move_modifier = "Super";
-
-        if ((settings->flags & MATE_WM_SETTING_DOUBLE_CLICK_ACTION) == 0)
-                settings->double_click_action = 0;
-}
-
-static void
-set_alt_click_value (const MateWMSettings *settings)
+set_alt_click_value ()
 {
 	gboolean match_found = FALSE;
+        gchar *mouse_move_modifier;
+        gchar *value;
 	int i;
 
+        mouse_move_modifier = g_settings_get_string (marco_settings, MARCO_MOUSE_MODIFIER_KEY);
+
 	/* We look for a matching modifier and set it. */
-	if (settings->mouse_move_modifier != NULL) {
-		for (i = 0; i < n_mouse_modifiers; i ++)
-			if (strcmp (mouse_modifiers[i].value,
-				    settings->mouse_move_modifier) == 0) {
+	if (mouse_move_modifier != NULL) {
+		for (i = 0; i < n_mouse_modifiers; i ++) {
+                        value = g_strdup_printf ("<%s>", mouse_modifiers[i].value);
+			if (strcmp (value, mouse_move_modifier) == 0) {
 				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (mouse_modifiers[i].radio),
 							      TRUE);
 				match_found = TRUE;
 				break;
 			}
+                        g_free (value);
+                }
+                g_free (mouse_move_modifier);
 	}
 
 	/* No matching modifier was found; we set all the toggle buttons to be
@@ -249,119 +200,38 @@ set_alt_click_value (const MateWMSettings *settings)
 }
 
 static void
-reload_settings (void)
+wm_unsupported ()
 {
-        MateWMSettings new_settings;
+        GtkWidget *no_tool_dialog;
 
-        g_assert (n_mouse_modifiers > 0);
+        no_tool_dialog =
+                gtk_message_dialog_new (NULL,
+                                        GTK_DIALOG_DESTROY_WITH_PARENT,
+                                        GTK_MESSAGE_ERROR,
+                                        GTK_BUTTONS_CLOSE,
+                                        " ");
+        gtk_window_set_title (GTK_WINDOW (no_tool_dialog), "");
+        gtk_window_set_resizable (GTK_WINDOW (no_tool_dialog), FALSE);
 
-        if (current_wm != NULL) {
-                new_settings.flags = 
-                        MATE_WM_SETTING_COMPOSITING_MANAGER |
-                        MATE_WM_SETTING_COMPOSITING_ALTTAB |
-                        MATE_WM_SETTING_MOUSE_FOCUS |
-                        MATE_WM_SETTING_AUTORAISE |
-                        MATE_WM_SETTING_AUTORAISE_DELAY |
-                        MATE_WM_SETTING_MOUSE_MOVE_MODIFIER |
-                        MATE_WM_SETTING_DOUBLE_CLICK_ACTION;
+        gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (no_tool_dialog), _("The current window manager is unsupported"));
 
-                /* this will clear any flags that don't get filled in */
-                mate_window_manager_get_settings (current_wm, &new_settings);
-        } else {
-                new_settings.flags = 0;
-        }
+        gtk_dialog_run (GTK_DIALOG (no_tool_dialog));
 
-        init_settings_struct (&new_settings);
-
-        if (new_settings.compositing_manager != settings->compositing_manager)
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (compositing_checkbutton),
-                                              new_settings.compositing_manager);
-
-        if (new_settings.compositing_fast_alt_tab != settings->compositing_fast_alt_tab)
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (compositing_fast_alt_tab_checkbutton),
-                                              new_settings.compositing_fast_alt_tab);
-
-        if (new_settings.focus_follows_mouse != settings->focus_follows_mouse)
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton),
-                                              new_settings.focus_follows_mouse);
-
-        if (new_settings.autoraise != settings->autoraise)
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (autoraise_checkbutton),
-                                              new_settings.autoraise);
-
-        if (new_settings.autoraise_delay != settings->autoraise_delay)
-                gtk_range_set_value (GTK_RANGE (autoraise_delay_slider),
-                                     new_settings.autoraise_delay / 1000.0);
-
-        if (n_double_click_actions > 0 &&
-            new_settings.double_click_action != settings->double_click_action) {
-                gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
-                                             new_settings.double_click_action);
-        }
-
-        if (settings->mouse_move_modifier == NULL ||
-            new_settings.mouse_move_modifier == NULL ||
-            strcmp (settings->mouse_move_modifier,
-                    new_settings.mouse_move_modifier) != 0) {
-                set_alt_click_value (&new_settings);
-        }
-
-	mate_wm_settings_free (settings);
-        settings = mate_wm_settings_copy (&new_settings);
-
-        update_sensitivity ();
-}
-
-static void
-wm_settings_changed_callback (MateWindowManager *wm,
-                              void               *data)
-{
-        reload_settings ();
-}
-
-static void
-update_wm (GdkScreen *screen,
-           gboolean   load_settings)
-{
-        int i;
-
-        g_assert (n_mouse_modifiers > 0);
-
-        if (current_wm != NULL) {
-                g_signal_handlers_disconnect_by_func (G_OBJECT (current_wm),
-                                                      G_CALLBACK (wm_settings_changed_callback),
-                                                      NULL);
-                current_wm = NULL;
-                double_click_actions = NULL;
-                n_double_click_actions = 0;
-        }
-
-        current_wm = mate_wm_manager_get_current (screen);
-
-        if (current_wm != NULL) {
-                g_signal_connect (G_OBJECT (current_wm), "settings_changed",
-                                  G_CALLBACK (wm_settings_changed_callback), NULL);
-
-                mate_window_manager_get_double_click_actions (current_wm,
-                                                               &double_click_actions,
-                                                               &n_double_click_actions);
-
-        }
-
-        for (i = 0; i < n_double_click_actions; i++) {
-                gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu),
-                                           double_click_actions[i].human_readable_name);
-        }
-
-        if (load_settings)
-                reload_settings ();
+        gtk_widget_destroy (no_tool_dialog);
 }
 
 static void
 wm_changed_callback (GdkScreen *screen,
                      void      *data)
 {
-        update_wm (screen, TRUE);
+        const char *current_wm;
+
+        current_wm = gdk_x11_screen_get_window_manager_name (screen);
+
+        if (g_strcmp0 (current_wm, WM_COMMON_MARCO) != 0) {
+                wm_unsupported ();
+                gtk_main_quit ();
+        }
 }
 
 static void
@@ -378,60 +248,13 @@ response_cb (GtkWidget *dialog_win,
         }
 }
 
-static void
-try_spawn_config_tool (GdkScreen *screen)
-{
-        GError *error;
-
-        error = NULL;
-        mate_wm_manager_spawn_config_tool_for_current (screen, &error);
-
-        if (error != NULL) {
-                GtkWidget *no_tool_dialog;
-                char *str;
-                char *escaped;
-
-                escaped = g_markup_escape_text (error->message, -1);
-
-                str = g_strdup_printf ("<b>%s</b>\n\n%s",
-                                       _("Cannot start the preferences application for your window manager"),
-                                       escaped);
-                g_free (escaped);
-
-                no_tool_dialog =
-                        gtk_message_dialog_new (NULL,
-                                                GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                GTK_MESSAGE_ERROR,
-                                                GTK_BUTTONS_CLOSE,
-                                                " ");
-                gtk_window_set_title (GTK_WINDOW (no_tool_dialog), "");
-                gtk_window_set_resizable (GTK_WINDOW (no_tool_dialog), FALSE);
-
-                gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (no_tool_dialog), str);
-
-                g_free (str);
-
-                gtk_dialog_run (GTK_DIALOG (no_tool_dialog));
-
-                gtk_widget_destroy (no_tool_dialog);
-                g_error_free (error);
-
-                exit (1);
-        }
-
-        /* exit, let the config tool handle it */
-        exit (0);
-}
-
 int
 main (int argc, char **argv)
 {
         GdkScreen *screen;
-	MateWMSettings new_settings;
         GtkBuilder *builder;
         GError *error = NULL;
-        const char *name;
-	int rc = 0;
+        const char *current_wm;
         int i;
 
         bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
@@ -440,24 +263,20 @@ main (int argc, char **argv)
 
         gtk_init (&argc, &argv);
 
-        mate_wm_manager_init ();
-
         screen = gdk_display_get_default_screen (gdk_display_get_default ());
+        current_wm = gdk_x11_screen_get_window_manager_name (screen);
 
-        current_wm = mate_wm_manager_get_current (screen);
-
-        if (current_wm == NULL) {
-                /* metacity support */
-                name = gdk_x11_screen_get_window_manager_name (screen);
-                if (g_strcmp0 (name, WM_COMMON_METACITY) == 0) {
-                        mate_metacity_config_tool ();
-                        return 0;
-                }
-
-                /* other window managers */
-                try_spawn_config_tool (screen);
-                goto out;
+        if (g_strcmp0 (current_wm, WM_COMMON_METACITY) == 0) {
+                mate_metacity_config_tool ();
+                return 0;
         }
+
+        if (g_strcmp0 (current_wm, WM_COMMON_MARCO) != 0) {
+                wm_unsupported ();
+                return 1;
+        }
+
+        marco_settings = g_settings_new (MARCO_SCHEMA);
 
         builder = gtk_builder_new ();
         gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
@@ -466,8 +285,7 @@ main (int argc, char **argv)
                 g_warning ("Could not parse UI file: %s", error->message);
                 g_error_free (error);
                 g_object_unref (builder);
-                rc = 1;
-                goto out;
+                return 1;
         }
 
         dialog_win = GTK_WIDGET (gtk_builder_get_object (builder,
@@ -494,20 +312,23 @@ main (int argc, char **argv)
         gtk_range_set_increments (GTK_RANGE (autoraise_delay_slider),
                                   0.2, 1.0);
 
-        new_settings.flags = 0;
-        init_settings_struct (&new_settings);
-	settings = mate_wm_settings_copy (&new_settings);
 
         reload_mouse_modifiers ();
-        update_wm (screen, FALSE);
 
-        set_alt_click_value (&new_settings);
-        gtk_range_set_value (GTK_RANGE (autoraise_delay_slider),
-                             new_settings.autoraise_delay / 1000.0);
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Roll up"));
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Maximize"));
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Maximize Horizontally"));
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Maximize Vertically"));
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Minimize"));
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("None"));
         gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
-                                  new_settings.double_click_action);
+                                  g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
 
-        reload_settings (); /* must come before below signal connections */
+        set_alt_click_value ();
+        gtk_range_set_value (GTK_RANGE (autoraise_delay_slider),
+                             g_settings_get_int (marco_settings, MARCO_AUTORAISE_DELAY_KEY) / 1000.0);
+        gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
+                                  g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
 
         g_signal_connect (G_OBJECT (dialog_win), "response",
                           G_CALLBACK (response_cb), NULL);
@@ -515,17 +336,31 @@ main (int argc, char **argv)
         g_signal_connect (G_OBJECT (dialog_win), "destroy",
                           G_CALLBACK (gtk_main_quit), NULL);
 
-        g_signal_connect (compositing_checkbutton, "toggled",
-                          G_CALLBACK (compositing_manager_toggled_callback), NULL);
+        g_signal_connect (marco_settings, "changed",
+                          G_CALLBACK (marco_settings_changed_callback), NULL);
 
-        g_signal_connect (compositing_fast_alt_tab_checkbutton, "toggled",
-                          G_CALLBACK (compositing_fast_alt_tab_toggled_callback), NULL);
+        g_settings_bind (marco_settings,
+                         MARCO_COMPOSITING_MANAGER_KEY,
+                         compositing_checkbutton,
+                         "active",
+                         G_SETTINGS_BIND_DEFAULT);
+
+        g_settings_bind (marco_settings,
+                         MARCO_COMPOSITING_FAST_ALT_TAB_KEY,
+                         compositing_fast_alt_tab_checkbutton,
+                         "active",
+                         G_SETTINGS_BIND_DEFAULT);
 
         g_signal_connect (focus_mode_checkbutton, "toggled",
                           G_CALLBACK (mouse_focus_toggled_callback), NULL);
+        g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
+                          G_CALLBACK (mouse_focus_changed_callback), NULL);
 
-        g_signal_connect (autoraise_checkbutton, "toggled",
-                          G_CALLBACK (autoraise_toggled_callback), NULL);
+        g_settings_bind (marco_settings,
+                         MARCO_AUTORAISE_KEY,
+                         autoraise_checkbutton,
+                         "active",
+                         G_SETTINGS_BIND_DEFAULT);
 
         g_signal_connect (autoraise_delay_slider, "value_changed",
                           G_CALLBACK (autoraise_delay_value_changed_callback), NULL);
@@ -544,15 +379,18 @@ main (int argc, char **argv)
                 ++i;
         }
 
+        /* update sensitivity */
+        update_sensitivity ();
+
         capplet_set_icon (dialog_win, "preferences-system-windows");
         gtk_widget_show (dialog_win);
 
         gtk_main ();
 
+        g_object_unref (marco_settings);
         g_object_unref (builder);
 
-out:
-        return rc;
+        return 0;
 }
 
 #include <X11/Xlib.h>
