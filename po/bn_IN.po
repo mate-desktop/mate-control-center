@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Runa Bhattacharjee <runabh@gmail.com>, 2006, 2007.
-# Runa Bhattacharjee <runab@redhat.com>, 2008, 2009, 2010.
+# runa <runabh@gmail.com>, 2006, 2007
+# runab <runab@redhat.com>, 2008, 2009, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
-"POT-Creation-Date: 2013-02-11 11:51+0100\n"
-"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-18 18:41+0100\n"
+"PO-Revision-Date: 2014-02-18 17:43+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
 "Language-Team: Bengali (India) (http://www.transifex.com/projects/p/MATE/language/bn_IN/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: ../org.mate.control-center.gschema.xml.in.in.h:1
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
-"Applications;default-applications.desktop' ]"
+"Applications;mate-default-applications-properties.desktop' ]"
 msgstr ""
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
@@ -153,25 +153,25 @@ msgstr "সতর্ককারী ডায়লগে প্রদর্শি�
 msgid "Show more _details"
 msgstr "অতিরিক্ত বিবরণ প্রদর্শন করা হবে (_d)"
 
-#: ../capplets/about-me/mate-about-me.c:282
+#: ../capplets/about-me/mate-about-me.c:288
 msgid "Select Image"
 msgstr "ছবি বেছে নিন"
 
-#: ../capplets/about-me/mate-about-me.c:284
+#: ../capplets/about-me/mate-about-me.c:290
 msgid "No Image"
 msgstr "কোনো ছবি নেই"
 
-#: ../capplets/about-me/mate-about-me.c:312
-#: ../capplets/appearance/appearance-desktop.c:646
+#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "ছবি"
 
-#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/about-me/mate-about-me.c:322
 #: ../capplets/appearance/theme-installer.c:774
 msgid "All Files"
 msgstr "সর্বধরনের ফাইল"
 
-#: ../capplets/about-me/mate-about-me.c:467
+#: ../capplets/about-me/mate-about-me.c:473
 #, c-format
 msgid "About %s"
 msgstr "%s পরিচিতি"
@@ -366,7 +366,6 @@ msgstr "অনুমোদিত!"
 #. This is a re-auth, and it failed.
 #. * The password must have been changed in the meantime!
 #. * Ask the user to re-authenticate
-#. 
 #. Update status message and auth state
 #. Authentication failure
 #: ../capplets/about-me/mate-about-me-password.c:475
@@ -491,7 +490,7 @@ msgid "Assistive Technologies Preferences"
 msgstr "সহায়ক প্রযুক্তি বিষয়ক পছন্দ"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "সহায়ক প্রযুক্তি"
 
@@ -545,44 +544,44 @@ msgstr "ব্যবহারযোগ্য লগ-ইন ডায়লগে �
 msgid "Close and _Log Out"
 msgstr "বন্ধ করে লগ-আউট করুন (_L)"
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "লগ-ইন করার সময়, বিশেষ ব্যবহারের কোনো ব্যবস্থাগুলি সক্রিয় করা হবে তা নির্বাচন করুন"
 
-#: ../capplets/appearance/appearance-desktop.c:615
+#: ../capplets/appearance/appearance-desktop.c:619
 msgid "Add Wallpaper"
 msgstr "ওয়াল-পেপার যোগ করুন"
 
-#: ../capplets/appearance/appearance-desktop.c:650
+#: ../capplets/appearance/appearance-desktop.c:654
 msgid "All files"
 msgstr "সর্বধরনের ফাইল"
 
-#: ../capplets/appearance/appearance-main.c:57
+#: ../capplets/appearance/appearance-main.c:59
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "ইউজার ইন্টারফেসের ফাইল লোড করতে ব্যর্থ: %s"
 
-#: ../capplets/appearance/appearance-main.c:153
+#: ../capplets/appearance/appearance-main.c:155
 msgid "Specify the filename of a theme to install"
 msgstr "ইনস্টল করার জন্য কোনো থিম ফাইলের নাম উল্লেখ করুন"
 
-#: ../capplets/appearance/appearance-main.c:154
+#: ../capplets/appearance/appearance-main.c:156
 msgid "filename"
 msgstr "ফাইলের নাম"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:161
+#: ../capplets/appearance/appearance-main.c:163
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "প্রদর্শনযোগ্য পৃষ্ঠার নাম চিহ্নিত করুন (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:525
-#: ../capplets/mouse/mate-mouse-properties.c:511
+#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/default-applications/mate-da-capplet.c:575
+#: ../capplets/mouse/mate-mouse-properties.c:496
 msgid "page"
 msgstr "পৃষ্ঠা"
 
-#: ../capplets/appearance/appearance-main.c:169
+#: ../capplets/appearance/appearance-main.c:171
 msgid "[WALLPAPER...]"
 msgstr "[WALLPAPER...]"
 
@@ -598,7 +597,7 @@ msgid "Install"
 msgstr "ইনস্টল করুন"
 
 #: ../capplets/appearance/appearance-style.c:255
-#: ../capplets/common/mate-theme-info.c:1723
+#: ../capplets/common/mate-theme-info.c:1724
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
@@ -988,26 +987,30 @@ msgstr "Mate Theme প্যাকেজ"
 msgid "No Desktop Background"
 msgstr "ডেস্কটপের কোনো পটভূমি প্রয়োগ করা হবে না"
 
-#: ../capplets/appearance/mate-wp-item.c:289
+#: ../capplets/appearance/mate-wp-item.c:288
+msgid "unknown"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "স্লাইড-শো"
 
-#: ../capplets/appearance/mate-wp-item.c:291
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "ছবি"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "একাধিক মাপ"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:300
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:302
-#: ../capplets/appearance/mate-wp-item.c:304
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "পিক্সেল"
@@ -1016,28 +1019,30 @@ msgstr[1] "পিক্সেল"
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:312
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s, %s\nফোল্ডার: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:324
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s\nফোল্ডার: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:328
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "ছবি অনুপস্থিত"
 
@@ -1135,7 +1140,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "এই থিমটি বর্তমানে উপস্থিত রয়েছে। এটি প্রতিস্থাপন করা হবে কি?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:451
+#: ../capplets/common/file-transfer-dialog.c:450
 msgid "_Overwrite"
 msgstr "নতুন করে লেখা হবে (_O)"
 
@@ -1230,16 +1235,16 @@ msgstr "সর্বমোট URI"
 msgid "Total number of URIs"
 msgstr "সর্বমোট URI-র সংখ্যা"
 
-#: ../capplets/common/file-transfer-dialog.c:445
+#: ../capplets/common/file-transfer-dialog.c:444
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "'%s' ফাইলটি বর্তমানে উপস্থিত রয়েছে। এটি প্রতিস্থাপন করা হবে কি?"
 
-#: ../capplets/common/file-transfer-dialog.c:448
+#: ../capplets/common/file-transfer-dialog.c:447
 msgid "_Skip"
 msgstr "উপেক্ষা করুন (_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:449
+#: ../capplets/common/file-transfer-dialog.c:448
 msgid "Overwrite _All"
 msgstr "সমস্ত নতুন করে লেখা হবে (_A)"
 
@@ -1292,29 +1297,29 @@ msgid ""
 " not installed."
 msgstr "আবশ্যক আইকন থিম '%s' ইনস্টল না থাকার ফলে চিহ্নিত থিমটি সঠিকরূপে প্রদর্শিত হবে না।"
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "পছন্দের অ্যাপলিকেশন"
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
 msgid "Select your default applications"
 msgstr "পছন্দসই অ্যাপ্লিকেশনগুলি নির্বাচন করুন"
 
-#: ../capplets/default-applications/mate-da-capplet.c:413
+#: ../capplets/default-applications/mate-da-capplet.c:448
 msgid "Could not load the main interface"
 msgstr "মূল ইন্টারফেস লোড করতে ব্যর্থ"
 
-#: ../capplets/default-applications/mate-da-capplet.c:414
+#: ../capplets/default-applications/mate-da-capplet.c:449
 msgid "Please make sure that the applet is properly installed"
 msgstr "অনুগ্রহ করে পরীক্ষা করুন অ্যাপ্লেটটি সঠিকরূপে ইনস্টল করা হয়েছে কি না"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:524
+#: ../capplets/default-applications/mate-da-capplet.c:574
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "প্রদর্শনযোগ্য পৃষ্ঠার নাম উল্লেখ করুন (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:530
+#: ../capplets/default-applications/mate-da-capplet.c:580
 msgid "- MATE Default Applications"
 msgstr "- MATE-র ডিফল্ট অ্যাপ্লিকেশন"
 
@@ -1458,7 +1463,7 @@ msgid "Off"
 msgstr "বন্ধ"
 
 #: ../capplets/display/display-capplet.ui.h:10
-#: ../capplets/display/xrandr-capplet.c:515
+#: ../capplets/display/xrandr-capplet.c:513
 msgid "Monitor"
 msgstr "মনিটর"
 
@@ -1475,18 +1480,18 @@ msgid "Make Default"
 msgstr ""
 
 #: ../capplets/display/display-capplet.ui.h:14
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:348
 msgid "Normal"
 msgstr "স্বাভাবিক"
 
 #: ../capplets/display/display-capplet.ui.h:15
-#: ../capplets/display/xrandr-capplet.c:312
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Left"
 msgstr "বাঁদিকে"
 
 #: ../capplets/display/display-capplet.ui.h:16
-#: ../capplets/display/xrandr-capplet.c:313
+#: ../capplets/display/xrandr-capplet.c:311
 msgid "Right"
 msgstr "ডানদিকে"
 
@@ -1494,11 +1499,11 @@ msgstr "ডানদিকে"
 msgid "Upside-down"
 msgstr "উলটো"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Monitors"
 msgstr ""
 
-#: ../capplets/display/display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
 msgid "Change resolution and position of monitors"
 msgstr ""
 
@@ -1592,11 +1597,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:312
 msgid "Upside Down"
 msgstr "উলটো"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:354
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1605,139 +1610,137 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#. 
-#: ../capplets/display/xrandr-capplet.c:504
-#: ../capplets/display/xrandr-capplet.c:1650
+#: ../capplets/display/xrandr-capplet.c:502
+#: ../capplets/display/xrandr-capplet.c:1652
 msgid "Mirror Screens"
 msgstr "পর্দার অনুলিপি তৈরি করা হবে"
 
-#: ../capplets/display/xrandr-capplet.c:506
+#: ../capplets/display/xrandr-capplet.c:504
 #, c-format
 msgid "Monitor: %s"
 msgstr "মনিটর: %s"
 
-#: ../capplets/display/xrandr-capplet.c:584
+#: ../capplets/display/xrandr-capplet.c:582
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1506
+#: ../capplets/display/xrandr-capplet.c:1508
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2071
+#: ../capplets/display/xrandr-capplet.c:2073
 msgid "Could not save the monitor configuration"
 msgstr "মনিটর সংক্রান্ত কনফিগারেশন সংরক্ষণ করতে ব্যর্থ"
 
-#: ../capplets/display/xrandr-capplet.c:2093
+#: ../capplets/display/xrandr-capplet.c:2095
 msgid "Could not get session bus while applying display configuration"
 msgstr "ডিসপ্লে কনফিগারেশন প্রয়োগ করার সময় সেশান বাস পাওয়া যায়নি"
 
-#: ../capplets/display/xrandr-capplet.c:2135
+#: ../capplets/display/xrandr-capplet.c:2137
 msgid "Could not detect displays"
 msgstr "ডিসপ্লে সনাক্ত করতে ব্যর্থ"
 
-#: ../capplets/display/xrandr-capplet.c:2328
+#: ../capplets/display/xrandr-capplet.c:2334
 msgid "The monitor configuration has been saved"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2330
+#: ../capplets/display/xrandr-capplet.c:2336
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2339
+#: ../capplets/display/xrandr-capplet.c:2345
 msgid "Could not set the default configuration for monitors"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2423
+#: ../capplets/display/xrandr-capplet.c:2429
 msgid "Could not get screen information"
 msgstr "পর্দা সংক্রান্ত পরিবর্তন প্রাপ্ত করতে ব্যর্থ"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: ../capplets/keybindings/eggcellrendererkeys.c:24
 msgid "New shortcut..."
 msgstr "নতুন শর্টকাট..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: ../capplets/keybindings/eggcellrendererkeys.c:160
+#: ../capplets/keybindings/eggcellrendererkeys.c:161
 msgid "Accelerator key"
 msgstr "অ্যাকসেলেরেটর-কি"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: ../capplets/keybindings/eggcellrendererkeys.c:170
+#: ../capplets/keybindings/eggcellrendererkeys.c:171
 msgid "Accelerator modifiers"
 msgstr "অ্যাকসেলেরেটর পরিবর্তক"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: ../capplets/keybindings/eggcellrendererkeys.c:179
+#: ../capplets/keybindings/eggcellrendererkeys.c:180
 msgid "Accelerator keycode"
 msgstr "অ্যাকসেলেরেটের কি-কোড"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: ../capplets/keybindings/eggcellrendererkeys.c:190
 msgid "Accel Mode"
 msgstr "অ্যাকসেলেরেটরের মোড"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: ../capplets/keybindings/eggcellrendererkeys.c:191
 msgid "The type of accelerator."
 msgstr "অ্যাকসেলেরেটরের ধরন"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../typing-break/drwright.c:498
+#: ../capplets/keybindings/eggcellrendererkeys.c:234
+#: ../capplets/keybindings/mate-keybinding-properties.c:137
+#: ../typing-break/drwright.c:504
 msgid "Disabled"
 msgstr "নিষ্ক্রিয়"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:219
 msgid "<Unknown Action>"
 msgstr "<Unknown Action>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1028
-#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+#: ../capplets/keybindings/mate-keybinding-properties.c:1026
+#: ../capplets/keybindings/mate-keybinding-properties.c:1624
 msgid "Custom Shortcuts"
 msgstr "স্বনির্ধারিত শর্ট-কাট"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+#: ../capplets/keybindings/mate-keybinding-properties.c:1204
 msgid "Error saving the new shortcut"
 msgstr "নতুন শর্ট-কাট সংরক্ষণে সমস্যা"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1282
+#: ../capplets/keybindings/mate-keybinding-properties.c:1280
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "শর্টকাট-কি হিসেবে \"%s\" ব্যবহার করা যাবে না কারণ এর ফলে এই কি ব্যবহার করে কিছু টাইপ করা যাবে না।\nঅনুগ্রহ করে Control, Alt অথবা Shift কি-র একত্রিত ব্যবহারের প্রচেষ্টা করুন।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1312
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "শর্টকাট \"%s\" বর্তমানে\n\"%s\"-র জন্য ব্যবহৃত হচ্ছে"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1321
+#: ../capplets/keybindings/mate-keybinding-properties.c:1319
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "\"%s\"-এ শর্ট-কাট স্থাপন করা হলে, \"%s\" শর্ট-কাটটি নিষ্ক্রিয় করা হবে।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+#: ../capplets/keybindings/mate-keybinding-properties.c:1324
 msgid "_Reassign"
 msgstr "পুনরায় নির্ধারণ (_R)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+#: ../capplets/keybindings/mate-keybinding-properties.c:1579
 msgid "Too many custom shortcuts"
 msgstr "অত্যাধিক স্বনির্ধারিত শর্ট-কাট"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1871
+#: ../capplets/keybindings/mate-keybinding-properties.c:1867
 msgid "Action"
 msgstr "কাজ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1893
+#: ../capplets/keybindings/mate-keybinding-properties.c:1889
 msgid "Shortcut"
 msgstr "শর্ট-কাট"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
-#. 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
@@ -2114,11 +2117,11 @@ msgstr "অজানা"
 msgid "Layout"
 msgstr "বিন্যাস"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "বিক্রেতা"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:239
 msgid "Models"
 msgstr "মডেল"
 
@@ -2126,20 +2129,20 @@ msgstr "মডেল"
 msgid "Default"
 msgstr "ডিফল্ট"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
 msgid "Keyboard"
 msgstr "কি-বোর্ড"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "কি-বোর্ড সম্পর্কিত পছন্দ নির্ধারণ করুন"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:510
+#: ../capplets/mouse/mate-mouse-properties.c:495
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:500
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE মাউস সংক্রান্ত পছন্দ"
 
@@ -2324,23 +2327,67 @@ msgstr "উপেক্ষিত হোস্টের তালিকা"
 msgid "Ignored Hosts"
 msgstr "উপেক্ষিত হোস্ট"
 
-#: ../capplets/windows/mate-window-properties.c:393
-msgid "Cannot start the preferences application for your window manager"
-msgstr "ব্যবহৃত উইন্ডো পরিচালন ব্যবস্থার জন্য পছন্দের অ্যাপ্লিকেশন আরম্ভ করতে ব্যর্থ"
+#: ../capplets/windows/mate-metacity-support.c:40
+msgid "Metacity Preferences"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:661
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
+
+#: ../capplets/windows/mate-metacity-support.c:58
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:216
+msgid "The current window manager is unsupported"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:303
+#: ../libwindow-settings/marco-window-manager.c:379
+msgid "Roll up"
+msgstr "গুটিয়ে ফেলুন"
+
+#: ../capplets/windows/mate-window-properties.c:304
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "বড় করুন"
+
+#: ../capplets/windows/mate-window-properties.c:305
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
+msgstr "অনুভূমিক দিশায় সর্বোচ্চ মাপ নির্ধারণ"
+
+#: ../capplets/windows/mate-window-properties.c:306
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
+msgstr "উলম্ব দিশায় সর্বোচ্চ মাপ নির্ধারণ"
+
+#: ../capplets/windows/mate-window-properties.c:307
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
+msgstr "ছোট করুন"
+
+#: ../capplets/windows/mate-window-properties.c:308
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
+msgstr "শূণ্য"
+
+#: ../capplets/windows/mate-window-properties.c:506
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:667
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "H_yper"
 msgstr "হাইপার (_y)"
 
-#: ../capplets/windows/mate-window-properties.c:674
+#: ../capplets/windows/mate-window-properties.c:519
 msgid "S_uper (or \"Windows logo\")"
 msgstr "সুপার (অথবা \"Windows লোগো\") (_u)"
 
-#: ../capplets/windows/mate-window-properties.c:681
+#: ../capplets/windows/mate-window-properties.c:526
 msgid "_Meta"
 msgstr "মিটা (_M)"
 
@@ -2348,59 +2395,59 @@ msgstr "মিটা (_M)"
 msgid "Window Preferences"
 msgstr "উইন্ডো সংক্রান্ত পছন্দ"
 
-#: ../capplets/windows/mate-window-properties.ui.h:2
-msgid "Compositing Manager"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:3
-msgid "Enable software _compositing window manager"
-msgstr ""
-
 #: ../capplets/windows/mate-window-properties.ui.h:4
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Snapping"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
+msgid "Enable side by side tiling"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:7
 msgid "Window Selection"
 msgstr "উইন্ডো নির্বাচন"
 
-#: ../capplets/windows/mate-window-properties.ui.h:6
+#: ../capplets/windows/mate-window-properties.ui.h:8
 msgid "_Select windows when the mouse moves over them"
 msgstr "উইন্ডোর উপরে মাউস চলাচল করলে সংশ্লিষ্ট উইন্ডোগুলি নির্বাচন করা হবে (_S)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:7
+#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "_Raise selected windows after an interval"
 msgstr "নির্বাচিত উইন্ডোগুলিকে একটি নির্দিষ্ট সময় পরে বড় করা হবে (_R)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:8
+#: ../capplets/windows/mate-window-properties.ui.h:10
 msgid "_Interval before raising:"
 msgstr "বড় করার পূর্বের বিরতি: (_I)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:11
 msgid "seconds"
 msgstr "সেকেন্ড"
 
-#: ../capplets/windows/mate-window-properties.ui.h:10
+#: ../capplets/windows/mate-window-properties.ui.h:12
 msgid "Titlebar Action"
 msgstr "শিরোনামের-বার সংক্রান্ত কর্ম"
 
-#: ../capplets/windows/mate-window-properties.ui.h:11
+#: ../capplets/windows/mate-window-properties.ui.h:13
 msgid "_Double-click titlebar to perform this action:"
 msgstr "এই কাজটি করার জন্য টাইটেল-বারে দুইবার ক্লিক করুন: (_D)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:12
+#: ../capplets/windows/mate-window-properties.ui.h:14
 msgid "Movement Key"
 msgstr "বিচলনের-কি"
 
-#: ../capplets/windows/mate-window-properties.ui.h:13
+#: ../capplets/windows/mate-window-properties.ui.h:15
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "উইন্ডো স্থানান্তর করার সময়, এই কি-টি টিপে উইন্ডোটি আরুদ্ধ করুন:"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "উইন্ডো"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
 msgid "Set your window properties"
 msgstr "উইন্ডোর বৈশিষ্ট্য নির্ধারণ করুন"
 
@@ -2408,30 +2455,6 @@ msgstr "উইন্ডোর বৈশিষ্ট্য নির্ধার�
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "\"%s\" উইন্ডো পরিচালনব্যবস্থা দ্বারা কনফিগারেশনের কোনো সামগ্রী নিবন্ধন করা হয়নি\n"
-
-#: ../libwindow-settings/marco-window-manager.c:379
-msgid "Roll up"
-msgstr "গুটিয়ে ফেলুন"
-
-#: ../libwindow-settings/marco-window-manager.c:380
-msgid "Maximize"
-msgstr "বড় করুন"
-
-#: ../libwindow-settings/marco-window-manager.c:381
-msgid "Maximize Horizontally"
-msgstr "অনুভূমিক দিশায় সর্বোচ্চ মাপ নির্ধারণ"
-
-#: ../libwindow-settings/marco-window-manager.c:382
-msgid "Maximize Vertically"
-msgstr "উলম্ব দিশায় সর্বোচ্চ মাপ নির্ধারণ"
-
-#: ../libwindow-settings/marco-window-manager.c:383
-msgid "Minimize"
-msgstr "ছোট করুন"
-
-#: ../libwindow-settings/marco-window-manager.c:384
-msgid "None"
-msgstr "শূণ্য"
 
 #: ../shell/control-center.c:61
 #, c-format
@@ -2463,76 +2486,76 @@ msgstr "Control Center"
 msgid "The MATE configuration tool"
 msgstr "MATE কনফিগারেশন ব্যবস্থা"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:195
 msgid "_Postpone Break"
 msgstr "বিরাম স্থগিত করা হবে (_P)"
 
-#: ../typing-break/drw-break-window.c:246
+#: ../typing-break/drw-break-window.c:256
 msgid "Take a break!"
 msgstr "অনেক কাজ করেছেন - এখন একটা বিরতি নিয়ে একটু জিরিয়ে নিন!"
 
-#: ../typing-break/drwright.c:136
+#: ../typing-break/drwright.c:142
 msgid "_Take a Break"
 msgstr "বিরতি নিন (_T)"
 
-#: ../typing-break/drwright.c:507
+#: ../typing-break/drwright.c:513
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr ""
 
-#: ../typing-break/drwright.c:509
+#: ../typing-break/drwright.c:515
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "পরবর্তী বিরতি %d মিনিট পরে"
 msgstr[1] "পরবর্তী বিরতি %d মিনিট পরে"
 
-#: ../typing-break/drwright.c:515
+#: ../typing-break/drwright.c:521
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr ""
 
-#: ../typing-break/drwright.c:517
+#: ../typing-break/drwright.c:523
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "পরবর্তী বিরতি আর মিনিট খানেকের মধ্যেই"
 
-#: ../typing-break/drwright.c:607
+#: ../typing-break/drwright.c:613
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "নিম্নোক্ত সমস্যার কারণে টাইপিং বিরতির বৈশিষ্টাসূচক ডায়লগটিকে প্রদর্শন করা সম্ভব হয়নি: %s"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:630
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "এই প্রোগ্রামটি তৈরি করেছেন রিচার্ড হাল্ট <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:625
+#: ../typing-break/drwright.c:631
 msgid "Eye candy added by Anders Carlsson"
 msgstr "সুদৃশ্য করেছেন অ্যান্ডার্স কার্লসন"
 
-#: ../typing-break/drwright.c:634
+#: ../typing-break/drwright.c:640
 msgid "A computer break reminder."
 msgstr "বিরতি স্মরণ করিয়ে দেওয়ার একটি কম্পিউটার প্রোগ্রাম।"
 
-#: ../typing-break/drwright.c:636
+#: ../typing-break/drwright.c:642
 msgid "translator-credits"
 msgstr "প্রজ্ঞা (progga@bengalinux.org)\nরুণা ভট্টাচার্য্য (runabh@gmail.com)"
 
-#: ../typing-break/main.c:63
+#: ../typing-break/main.c:67
 msgid "Enable debugging code"
 msgstr "কোড ডিবাগ ব্যবস্থা সক্রিয় করা হবে"
 
-#: ../typing-break/main.c:65
+#: ../typing-break/main.c:69
 msgid "Don't check whether the notification area exists"
 msgstr "বিজ্ঞপ্তিস্থলের উপস্থিতি পরীক্ষা করা হবে না"
 
-#: ../typing-break/main.c:91
+#: ../typing-break/main.c:95
 msgid "Typing Monitor"
 msgstr "টাইপ নিরীক্ষণ"
 
-#: ../typing-break/main.c:108
+#: ../typing-break/main.c:112
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -2540,48 +2563,48 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "টাইপিং মনিটর দ্বারা বিজ্ঞপ্তিস্থলে তথ্য প্রদর্শন করা হয়।  সম্ভবত, প্যানেলের মধ্যে কোনো বিজ্ঞপ্তিস্থল উপস্থিত নেই।  এটি যোগ করার জন্য প্যানেলের উপর মাউসের ডান বাটন ক্লিক করে 'প্যানেলে যোগ করুন' বেছে নিয়ে 'বিজ্ঞপ্তিস্থল' নির্বাচন করুন ও এরপর 'যোগ করুন' শীর্ষক বাটনে ক্লিক করুন।"
 
-#: ../font-viewer/font-view.c:299
+#: ../font-viewer/font-view.c:303
 msgid "Name:"
 msgstr "নাম:"
 
-#: ../font-viewer/font-view.c:302
+#: ../font-viewer/font-view.c:306
 msgid "Style:"
 msgstr "বিন্যাস:"
 
-#: ../font-viewer/font-view.c:315
+#: ../font-viewer/font-view.c:319
 msgid "Type:"
 msgstr "ধরন:"
 
-#: ../font-viewer/font-view.c:319
+#: ../font-viewer/font-view.c:323
 msgid "Size:"
 msgstr "মাপ:"
 
-#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:380
 msgid "Version:"
 msgstr "সংস্করণ:"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
+#: ../font-viewer/font-view.c:371 ../font-viewer/font-view.c:382
 msgid "Copyright:"
 msgstr "স্বত্বাধিকার:"
 
-#: ../font-viewer/font-view.c:371
+#: ../font-viewer/font-view.c:375
 msgid "Description:"
 msgstr "বর্ণনা:"
 
-#: ../font-viewer/font-view.c:451
+#: ../font-viewer/font-view.c:457
 msgid "Installed"
 msgstr "ইনস্টল করা হয়েছে"
 
-#: ../font-viewer/font-view.c:454
+#: ../font-viewer/font-view.c:460
 msgid "Install Failed"
 msgstr "ইনস্টল করা যায়নি"
 
-#: ../font-viewer/font-view.c:525
+#: ../font-viewer/font-view.c:533
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "ব্যবহারপ্রণালী: %s fontfile\n"
 
-#: ../font-viewer/font-view.c:596
+#: ../font-viewer/font-view.c:606
 msgid "I_nstall Font"
 msgstr "ফন্ট ইনস্টল করুন (_n)"
 
@@ -2613,25 +2636,25 @@ msgstr "SIZE"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FONT-FILE OUTPUT-FILE"
 
-#: ../font-viewer/font-thumbnailer.c:268
+#: ../font-viewer/font-thumbnailer.c:272
 #, c-format
 msgid "Error parsing arguments: %s\n"
 msgstr "আর্গুমেন্ট পার্স করতে সমস্যা: %s\n"
 
-#: ../libslab/app-shell.c:754
+#: ../libslab/app-shell.c:761
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "চিহ্নিত ফিল্টার \"%s\" অনুযায়ী কোনো বস্তু পাওয়া যায়নি।"
 
-#: ../libslab/app-shell.c:756
+#: ../libslab/app-shell.c:763
 msgid "No matches found."
 msgstr "কোনো মিল পাওয়া যায়নি।"
 
-#: ../libslab/app-shell.c:857
+#: ../libslab/app-shell.c:864
 msgid "New Applications"
 msgstr ""
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:919
 msgid "Other"
 msgstr "অন্যান্য"
 
@@ -2645,11 +2668,11 @@ msgstr "%s আরম্ভ করুন"
 msgid "Help"
 msgstr "সাহায্য"
 
-#: ../libslab/application-tile.c:629
+#: ../libslab/application-tile.c:629 ../libslab/document-tile.c:735
 msgid "Remove from Favorites"
 msgstr "পছন্দের তালিকা থেকে সরিয়ে ফেলুন"
 
-#: ../libslab/application-tile.c:631
+#: ../libslab/application-tile.c:631 ../libslab/document-tile.c:737
 msgid "Add to Favorites"
 msgstr "পছন্দের তালিকা যোগ করুন"
 
@@ -2693,6 +2716,92 @@ msgstr "নেটওয়ার্ক সার্ভার"
 #: ../libslab/bookmark-agent.c:1204
 msgid "Search"
 msgstr "অনুসন্ধান"
+
+#. make open with default action
+#: ../libslab/directory-tile.c:176
+#, c-format
+msgid "<b>Open</b>"
+msgstr ""
+
+#. make rename action
+#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
+msgid "Rename..."
+msgstr ""
+
+#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
+#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
+msgid "Send To..."
+msgstr ""
+
+#. make move to trash action
+#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
+msgid "Move to Trash"
+msgstr ""
+
+#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
+#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
+msgid "Delete"
+msgstr ""
+
+#: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr ""
+
+#: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
+msgid "If you delete an item, it is permanently lost."
+msgstr ""
+
+#: ../libslab/document-tile.c:200
+#, c-format
+msgid "Open with \"%s\""
+msgstr ""
+
+#: ../libslab/document-tile.c:214
+msgid "Open with Default Application"
+msgstr ""
+
+#: ../libslab/document-tile.c:225
+msgid "Open in File Manager"
+msgstr ""
+
+#. clean item from menu
+#: ../libslab/document-tile.c:309
+msgid "Remove from recent menu"
+msgstr ""
+
+#. clean all the items from menu
+#: ../libslab/document-tile.c:317
+msgid "Purge all the recent items"
+msgstr ""
+
+#: ../libslab/document-tile.c:631
+msgid "?"
+msgstr ""
+
+#: ../libslab/document-tile.c:638
+msgid "%l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:646
+msgid "Today %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:656
+msgid "Yesterday %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:668
+msgid "%a %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:676
+msgid "%b %d %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:678
+msgid "%b %d %Y"
+msgstr ""
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

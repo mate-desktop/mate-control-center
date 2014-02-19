@@ -3,18 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aurimas Černius <aurisc4@gmail.com>, 2010.
-# Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007.
-# Justina Klingaitė <justina.klingaite@gmail.com>, 2005.
-# Vaidotas Zemlys <mpiktas@delfi.lt>, 2003.
-# Vytautas Liuolia <vytautas.liuolia@gmail.com>, 2008.
-# Žygimantas Beručka <zygis@gnome.org>, 2003-2007, 2009, 2010.
+# aurisc4 <aurisc4@gmail.com>, 2010
+# Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007
+# Justina Klingaitė <justina.klingaite@gmail.com>, 2005
+# Vaidotas Zemlys <mpiktas@delfi.lt>, 2003
+# Vytautas Liuolia <vytautas.liuolia@gmail.com>, 2008
+# Žygimantas Beručka <zygis@gnome.org>, 2003-2007, 2009, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
-"POT-Creation-Date: 2013-02-11 11:51+0100\n"
-"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-18 18:41+0100\n"
+"PO-Revision-Date: 2014-02-18 17:43+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/MATE/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: ../org.mate.control-center.gschema.xml.in.in.h:1
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
-"Applications;default-applications.desktop' ]"
+"Applications;mate-default-applications-properties.desktop' ]"
 msgstr ""
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
@@ -157,25 +157,25 @@ msgstr "Perspėjimo dialoge rodomi mygtukai"
 msgid "Show more _details"
 msgstr "Rodyti _išsamiau"
 
-#: ../capplets/about-me/mate-about-me.c:282
+#: ../capplets/about-me/mate-about-me.c:288
 msgid "Select Image"
 msgstr "Pasirinkite paveikslėlį"
 
-#: ../capplets/about-me/mate-about-me.c:284
+#: ../capplets/about-me/mate-about-me.c:290
 msgid "No Image"
 msgstr "Nėra paveikslėlio"
 
-#: ../capplets/about-me/mate-about-me.c:312
-#: ../capplets/appearance/appearance-desktop.c:646
+#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "Paveikslėliai"
 
-#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/about-me/mate-about-me.c:322
 #: ../capplets/appearance/theme-installer.c:774
 msgid "All Files"
 msgstr "Visi failai"
 
-#: ../capplets/about-me/mate-about-me.c:467
+#: ../capplets/about-me/mate-about-me.c:473
 #, c-format
 msgid "About %s"
 msgstr "Apie %s"
@@ -370,7 +370,6 @@ msgstr "Tapatybė patvirtinta!"
 #. This is a re-auth, and it failed.
 #. * The password must have been changed in the meantime!
 #. * Ask the user to re-authenticate
-#. 
 #. Update status message and auth state
 #. Authentication failure
 #: ../capplets/about-me/mate-about-me-password.c:475
@@ -495,7 +494,7 @@ msgid "Assistive Technologies Preferences"
 msgstr "Pagalbinių technologijų nustatymai"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "Pagalbinės technologijos"
 
@@ -549,44 +548,44 @@ msgstr "Pereiti prie Neįgaliesiems pritaikyto prisijungimo dialogo"
 msgid "Close and _Log Out"
 msgstr "Užverti ir _atsijungti"
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Pasirinkti, kurias pritaikymo neįgaliesiems savybes įjungti prisijungiant"
 
-#: ../capplets/appearance/appearance-desktop.c:615
+#: ../capplets/appearance/appearance-desktop.c:619
 msgid "Add Wallpaper"
 msgstr "Pridėti darbastalio paveikslėlį"
 
-#: ../capplets/appearance/appearance-desktop.c:650
+#: ../capplets/appearance/appearance-desktop.c:654
 msgid "All files"
 msgstr "Visi failai"
 
-#: ../capplets/appearance/appearance-main.c:57
+#: ../capplets/appearance/appearance-main.c:59
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Nepavyko įkelti naudotojo sąsajos failo: %s"
 
-#: ../capplets/appearance/appearance-main.c:153
+#: ../capplets/appearance/appearance-main.c:155
 msgid "Specify the filename of a theme to install"
 msgstr "Nurodykite įdiegtinos temos failo pavadinimą"
 
-#: ../capplets/appearance/appearance-main.c:154
+#: ../capplets/appearance/appearance-main.c:156
 msgid "filename"
 msgstr "failo pavadinimas"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:161
+#: ../capplets/appearance/appearance-main.c:163
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Nurodykite rodytino puslapio pavadinimą (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:525
-#: ../capplets/mouse/mate-mouse-properties.c:511
+#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/default-applications/mate-da-capplet.c:575
+#: ../capplets/mouse/mate-mouse-properties.c:496
 msgid "page"
 msgstr "puslapis"
 
-#: ../capplets/appearance/appearance-main.c:169
+#: ../capplets/appearance/appearance-main.c:171
 msgid "[WALLPAPER...]"
 msgstr "[DARBASTALIO PAVEIKSLĖLIS...]"
 
@@ -602,7 +601,7 @@ msgid "Install"
 msgstr "Įdiegti"
 
 #: ../capplets/appearance/appearance-style.c:255
-#: ../capplets/common/mate-theme-info.c:1723
+#: ../capplets/common/mate-theme-info.c:1724
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
@@ -992,26 +991,30 @@ msgstr "Mate temų paketas"
 msgid "No Desktop Background"
 msgstr "Nėra darbastalio fono"
 
-#: ../capplets/appearance/mate-wp-item.c:289
+#: ../capplets/appearance/mate-wp-item.c:288
+msgid "unknown"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "Skaidrių rodymas"
 
-#: ../capplets/appearance/mate-wp-item.c:291
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "Paveikslėlis"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "keli dydžiai"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:300
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s su %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:302
-#: ../capplets/appearance/mate-wp-item.c:304
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "taškelis"
@@ -1021,28 +1024,30 @@ msgstr[2] "taškelių"
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:312
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s, %s\nAplankas: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:324
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s\nAplankas: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:328
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "Trūksta paveikslėlio"
 
@@ -1140,7 +1145,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Ši tema jau egzistuoja. Ar norite ją perrašyti?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:451
+#: ../capplets/common/file-transfer-dialog.c:450
 msgid "_Overwrite"
 msgstr "Pe_rrašyti"
 
@@ -1235,16 +1240,16 @@ msgstr "URI skaičius"
 msgid "Total number of URIs"
 msgstr "Kiek iš viso yra URI"
 
-#: ../capplets/common/file-transfer-dialog.c:445
+#: ../capplets/common/file-transfer-dialog.c:444
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Failas „%s“ jau egzistuoja. Ar norite jį perrašyti?"
 
-#: ../capplets/common/file-transfer-dialog.c:448
+#: ../capplets/common/file-transfer-dialog.c:447
 msgid "_Skip"
 msgstr "_Praleisti"
 
-#: ../capplets/common/file-transfer-dialog.c:449
+#: ../capplets/common/file-transfer-dialog.c:448
 msgid "Overwrite _All"
 msgstr "Perrašyti _visus"
 
@@ -1297,29 +1302,29 @@ msgid ""
 " not installed."
 msgstr "Ši tema neatrodys taip, kaip turėtų, nes reikiama piktogramų tema „%s“ neįdiegta."
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "Pageidaujamos programos"
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
 msgid "Select your default applications"
 msgstr "Parinkite savo numatytąsias programas"
 
-#: ../capplets/default-applications/mate-da-capplet.c:413
+#: ../capplets/default-applications/mate-da-capplet.c:448
 msgid "Could not load the main interface"
 msgstr "Nepavyko įkelti pagrindinės sąsajos"
 
-#: ../capplets/default-applications/mate-da-capplet.c:414
+#: ../capplets/default-applications/mate-da-capplet.c:449
 msgid "Please make sure that the applet is properly installed"
 msgstr "Įsitikinkite, kad šis įtaisas yra įdiegtas tinkamai"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:524
+#: ../capplets/default-applications/mate-da-capplet.c:574
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Nurodykite rodytino puslapio pavadinimą (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:530
+#: ../capplets/default-applications/mate-da-capplet.c:580
 msgid "- MATE Default Applications"
 msgstr "– MATE numatytosios programos"
 
@@ -1463,7 +1468,7 @@ msgid "Off"
 msgstr "Išjungta"
 
 #: ../capplets/display/display-capplet.ui.h:10
-#: ../capplets/display/xrandr-capplet.c:515
+#: ../capplets/display/xrandr-capplet.c:513
 msgid "Monitor"
 msgstr "Vaizduoklis"
 
@@ -1480,18 +1485,18 @@ msgid "Make Default"
 msgstr "Padaryti numatytuoju"
 
 #: ../capplets/display/display-capplet.ui.h:14
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:348
 msgid "Normal"
 msgstr "Normali"
 
 #: ../capplets/display/display-capplet.ui.h:15
-#: ../capplets/display/xrandr-capplet.c:312
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Left"
 msgstr "Kairė"
 
 #: ../capplets/display/display-capplet.ui.h:16
-#: ../capplets/display/xrandr-capplet.c:313
+#: ../capplets/display/xrandr-capplet.c:311
 msgid "Right"
 msgstr "Dešinė"
 
@@ -1499,11 +1504,11 @@ msgstr "Dešinė"
 msgid "Upside-down"
 msgstr "Apversta"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Monitors"
 msgstr "Vaizduokliai"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
 msgid "Change resolution and position of monitors"
 msgstr "Pakeisti vaizduoklių raišką ir poziciją"
 
@@ -1597,11 +1602,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "Reikia patvirtinti tapatybę, norint įdiegti daugelio vaizduoklių nustatymus visiems naudotojams"
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:312
 msgid "Upside Down"
 msgstr "Apversta"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:354
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1610,139 +1615,137 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#. 
-#: ../capplets/display/xrandr-capplet.c:504
-#: ../capplets/display/xrandr-capplet.c:1650
+#: ../capplets/display/xrandr-capplet.c:502
+#: ../capplets/display/xrandr-capplet.c:1652
 msgid "Mirror Screens"
 msgstr "Dublikuoti ekranai"
 
-#: ../capplets/display/xrandr-capplet.c:506
+#: ../capplets/display/xrandr-capplet.c:504
 #, c-format
 msgid "Monitor: %s"
 msgstr "Vaizduoklis: %s"
 
-#: ../capplets/display/xrandr-capplet.c:584
+#: ../capplets/display/xrandr-capplet.c:582
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1506
+#: ../capplets/display/xrandr-capplet.c:1508
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "Norėdami pakeisti vaizduoklio savybes, pasirinkite jį, vilkite norėdami pertvarkyti jo poziciją."
 
-#: ../capplets/display/xrandr-capplet.c:2071
+#: ../capplets/display/xrandr-capplet.c:2073
 msgid "Could not save the monitor configuration"
 msgstr "Nepavyko įrašyti vaizduoklio konfigūracijos"
 
-#: ../capplets/display/xrandr-capplet.c:2093
+#: ../capplets/display/xrandr-capplet.c:2095
 msgid "Could not get session bus while applying display configuration"
 msgstr "Nepavyko gauti seanso magistralės pritaikant ekrano konfigūraciją"
 
-#: ../capplets/display/xrandr-capplet.c:2135
+#: ../capplets/display/xrandr-capplet.c:2137
 msgid "Could not detect displays"
 msgstr "Nepavyko aptikti ekranų"
 
-#: ../capplets/display/xrandr-capplet.c:2328
+#: ../capplets/display/xrandr-capplet.c:2334
 msgid "The monitor configuration has been saved"
 msgstr "Vaizduoklio konfigūracijos išsaugota"
 
-#: ../capplets/display/xrandr-capplet.c:2330
+#: ../capplets/display/xrandr-capplet.c:2336
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Ši konfigūracija bus naudojama kitą kartą kam nors prisijungus."
 
-#: ../capplets/display/xrandr-capplet.c:2339
+#: ../capplets/display/xrandr-capplet.c:2345
 msgid "Could not set the default configuration for monitors"
 msgstr "Nepavyko nustatyti numatytosios vaizduoklių konfigūracijos"
 
-#: ../capplets/display/xrandr-capplet.c:2423
+#: ../capplets/display/xrandr-capplet.c:2429
 msgid "Could not get screen information"
 msgstr "Nepavyko gauti ekrano informacijos"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: ../capplets/keybindings/eggcellrendererkeys.c:24
 msgid "New shortcut..."
 msgstr "Naujas susiejimas..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: ../capplets/keybindings/eggcellrendererkeys.c:160
+#: ../capplets/keybindings/eggcellrendererkeys.c:161
 msgid "Accelerator key"
 msgstr "Spartusis klavišas"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: ../capplets/keybindings/eggcellrendererkeys.c:170
+#: ../capplets/keybindings/eggcellrendererkeys.c:171
 msgid "Accelerator modifiers"
 msgstr "Sparčiojo klavišo modifikatoriai"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: ../capplets/keybindings/eggcellrendererkeys.c:179
+#: ../capplets/keybindings/eggcellrendererkeys.c:180
 msgid "Accelerator keycode"
 msgstr "Sparčiojo klavišo kodas"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: ../capplets/keybindings/eggcellrendererkeys.c:190
 msgid "Accel Mode"
 msgstr "Sp. klavišo tipas"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: ../capplets/keybindings/eggcellrendererkeys.c:191
 msgid "The type of accelerator."
 msgstr "Sparčiojo klavišo tipas."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../typing-break/drwright.c:498
+#: ../capplets/keybindings/eggcellrendererkeys.c:234
+#: ../capplets/keybindings/mate-keybinding-properties.c:137
+#: ../typing-break/drwright.c:504
 msgid "Disabled"
 msgstr "Išjungta"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:219
 msgid "<Unknown Action>"
 msgstr "<Nežinomas veiksmas>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1028
-#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+#: ../capplets/keybindings/mate-keybinding-properties.c:1026
+#: ../capplets/keybindings/mate-keybinding-properties.c:1624
 msgid "Custom Shortcuts"
 msgstr "Pasirinktiniai susiejimai"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+#: ../capplets/keybindings/mate-keybinding-properties.c:1204
 msgid "Error saving the new shortcut"
 msgstr "Klaida įrašant naują susiejimą"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1282
+#: ../capplets/keybindings/mate-keybinding-properties.c:1280
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "Negalima naudoti sparčiojo klavišo „%s“, kadangi nebegalėsite spausdinti šiuo klavišu.\nBandykite klavišą kartu su tokiais klavišai kaip Control, Alt ar Shift."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1312
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Susiejimas „%s“ jau yra naudojamas\n„%s“"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1321
+#: ../capplets/keybindings/mate-keybinding-properties.c:1319
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Jei priskirsite spartųjį klavišą komandai „%s“, „%s“ bus išjungtas."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+#: ../capplets/keybindings/mate-keybinding-properties.c:1324
 msgid "_Reassign"
 msgstr "_Priskirti iš naujo"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+#: ../capplets/keybindings/mate-keybinding-properties.c:1579
 msgid "Too many custom shortcuts"
 msgstr "Per daug pasirinktinių susiejimų"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1871
+#: ../capplets/keybindings/mate-keybinding-properties.c:1867
 msgid "Action"
 msgstr "Veiksmas"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1893
+#: ../capplets/keybindings/mate-keybinding-properties.c:1889
 msgid "Shortcut"
 msgstr "Susiejimas"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
-#. 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
@@ -2119,11 +2122,11 @@ msgstr "Nežinomas"
 msgid "Layout"
 msgstr "Išdėstymas"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "Pardavėjai"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:239
 msgid "Models"
 msgstr "Modeliai"
 
@@ -2131,20 +2134,20 @@ msgstr "Modeliai"
 msgid "Default"
 msgstr "Numatytasis"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
 msgid "Keyboard"
 msgstr "Klaviatūra"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "Keisti klaviatūros nustatymus"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:510
+#: ../capplets/mouse/mate-mouse-properties.c:495
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:500
 msgid "- MATE Mouse Preferences"
 msgstr "– MATE pelės nustatymai"
 
@@ -2329,23 +2332,67 @@ msgstr "Nepaisyti kompiuterių sąrašo"
 msgid "Ignored Hosts"
 msgstr "Nepaisomi kompiuteriai"
 
-#: ../capplets/windows/mate-window-properties.c:393
-msgid "Cannot start the preferences application for your window manager"
-msgstr "Nepavyko paleisti langų tvarkyklės nustatymo programos"
+#: ../capplets/windows/mate-metacity-support.c:40
+msgid "Metacity Preferences"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:661
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
+
+#: ../capplets/windows/mate-metacity-support.c:58
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:216
+msgid "The current window manager is unsupported"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:303
+#: ../libwindow-settings/marco-window-manager.c:379
+msgid "Roll up"
+msgstr "Suvyniojama"
+
+#: ../capplets/windows/mate-window-properties.c:304
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "Išdidinama"
+
+#: ../capplets/windows/mate-window-properties.c:305
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
+msgstr "Išdidinti horizontaliai"
+
+#: ../capplets/windows/mate-window-properties.c:306
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
+msgstr "Išdidinti vertikaliai"
+
+#: ../capplets/windows/mate-window-properties.c:307
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
+msgstr "Suskleidžiama"
+
+#: ../capplets/windows/mate-window-properties.c:308
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
+msgstr "Joks"
+
+#: ../capplets/windows/mate-window-properties.c:506
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:667
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:674
+#: ../capplets/windows/mate-window-properties.c:519
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (arba „Windows logo“)"
 
-#: ../capplets/windows/mate-window-properties.c:681
+#: ../capplets/windows/mate-window-properties.c:526
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2353,59 +2400,59 @@ msgstr "_Meta"
 msgid "Window Preferences"
 msgstr "Langų nustatymai"
 
-#: ../capplets/windows/mate-window-properties.ui.h:2
-msgid "Compositing Manager"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:3
-msgid "Enable software _compositing window manager"
-msgstr ""
-
 #: ../capplets/windows/mate-window-properties.ui.h:4
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Snapping"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
+msgid "Enable side by side tiling"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:7
 msgid "Window Selection"
 msgstr "Langų pasirinkimas"
 
-#: ../capplets/windows/mate-window-properties.ui.h:6
+#: ../capplets/windows/mate-window-properties.ui.h:8
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Pasirinkti langus, kai virš jų yra pelės žymeklis"
 
-#: ../capplets/windows/mate-window-properties.ui.h:7
+#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "_Raise selected windows after an interval"
 msgstr "_Iškelti pasirinktus langus po tam tikro laiko tarpo"
 
-#: ../capplets/windows/mate-window-properties.ui.h:8
+#: ../capplets/windows/mate-window-properties.ui.h:10
 msgid "_Interval before raising:"
 msgstr "_Delsa prieš iškeliant:"
 
-#: ../capplets/windows/mate-window-properties.ui.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:11
 msgid "seconds"
 msgstr "sekundžių"
 
-#: ../capplets/windows/mate-window-properties.ui.h:10
+#: ../capplets/windows/mate-window-properties.ui.h:12
 msgid "Titlebar Action"
 msgstr "Lango antraštės veiksmas"
 
-#: ../capplets/windows/mate-window-properties.ui.h:11
+#: ../capplets/windows/mate-window-properties.ui.h:13
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Du kartus spustelėjus antraštės juostą, atliekamas šis veiksmas:"
 
-#: ../capplets/windows/mate-window-properties.ui.h:12
+#: ../capplets/windows/mate-window-properties.ui.h:14
 msgid "Movement Key"
 msgstr "Judėjimo klavišas"
 
-#: ../capplets/windows/mate-window-properties.ui.h:13
+#: ../capplets/windows/mate-window-properties.ui.h:15
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Norėdami perkelti langą, laikykite nuspaudę šį klavišą, tada tempkite langą:"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "Langai"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
 msgid "Set your window properties"
 msgstr "Nustatyti langų ypatybes"
 
@@ -2413,30 +2460,6 @@ msgstr "Nustatyti langų ypatybes"
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Langų tvarkyklė „%s“ nepriregistravo savo konfigūravimo įrankio\n"
-
-#: ../libwindow-settings/marco-window-manager.c:379
-msgid "Roll up"
-msgstr "Suvyniojama"
-
-#: ../libwindow-settings/marco-window-manager.c:380
-msgid "Maximize"
-msgstr "Išdidinama"
-
-#: ../libwindow-settings/marco-window-manager.c:381
-msgid "Maximize Horizontally"
-msgstr "Išdidinti horizontaliai"
-
-#: ../libwindow-settings/marco-window-manager.c:382
-msgid "Maximize Vertically"
-msgstr "Išdidinti vertikaliai"
-
-#: ../libwindow-settings/marco-window-manager.c:383
-msgid "Minimize"
-msgstr "Suskleidžiama"
-
-#: ../libwindow-settings/marco-window-manager.c:384
-msgid "None"
-msgstr "Joks"
 
 #: ../shell/control-center.c:61
 #, c-format
@@ -2468,24 +2491,24 @@ msgstr "Valdymo centras"
 msgid "The MATE configuration tool"
 msgstr "MATE konfigūravimo įrankis"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:195
 msgid "_Postpone Break"
 msgstr "_Atidėti pertraukėlę"
 
-#: ../typing-break/drw-break-window.c:246
+#: ../typing-break/drw-break-window.c:256
 msgid "Take a break!"
 msgstr "Pailsėkite!"
 
-#: ../typing-break/drwright.c:136
+#: ../typing-break/drwright.c:142
 msgid "_Take a Break"
 msgstr "_Pailsėti"
 
-#: ../typing-break/drwright.c:507
+#: ../typing-break/drwright.c:513
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Padaryti pertrauką dabar (kita po %dm)"
 
-#: ../typing-break/drwright.c:509
+#: ../typing-break/drwright.c:515
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
@@ -2493,52 +2516,52 @@ msgstr[0] "%d minutė iki kitos pertraukėlės"
 msgstr[1] "%d minutės iki kitos pertraukėlės"
 msgstr[2] "%d minučių iki kitos pertraukėlės"
 
-#: ../typing-break/drwright.c:515
+#: ../typing-break/drwright.c:521
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Padaryti pertrauką dabar (kita mažiau nei po minutės)"
 
-#: ../typing-break/drwright.c:517
+#: ../typing-break/drwright.c:523
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Mažiau nei viena minutė iki kitos pertraukėlės"
 
-#: ../typing-break/drwright.c:607
+#: ../typing-break/drwright.c:613
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "Nepavyko parodyti spausdinimo pertraukos nustatymų dialogo dėl šios klaidos: %s"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:630
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Sukurė Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:625
+#: ../typing-break/drwright.c:631
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Gražią išvaizdą pridėjo Anders Carlsson"
 
-#: ../typing-break/drwright.c:634
+#: ../typing-break/drwright.c:640
 msgid "A computer break reminder."
 msgstr "Priminimas apie poilsį nuo kompiuterio."
 
-#: ../typing-break/drwright.c:636
+#: ../typing-break/drwright.c:642
 msgid "translator-credits"
 msgstr "Žygimantas Beručka <zygis@gnome.org>,\nGintautas Miliauskas <gintas@akl.lt>,\nJustina Klingaitė <justina.klingaite@gmail.com>,\nVaidotas Zemlys <mpiktas@delfi.lt>,\nGediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: ../typing-break/main.c:63
+#: ../typing-break/main.c:67
 msgid "Enable debugging code"
 msgstr "Įjungti derinimo kodą"
 
-#: ../typing-break/main.c:65
+#: ../typing-break/main.c:69
 msgid "Don't check whether the notification area exists"
 msgstr "Netikrinti, ar yra pranešimų vieta"
 
-#: ../typing-break/main.c:91
+#: ../typing-break/main.c:95
 msgid "Typing Monitor"
 msgstr "Spausdinimo monitorius"
 
-#: ../typing-break/main.c:108
+#: ../typing-break/main.c:112
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -2546,48 +2569,48 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Spausdinimo monitorius informacijos rodymui naudoja skydelio pranešimų vietą. Nepanašu, kad Jūsų skydelyje ši vieta yra. Galite ją įdėti ant skydelio spustelėję dešinįjį pelės mygtuką ir pasirinkę „Įdėti į skydelį“, „Pranešimų vieta“ ir paspaudę „Pridėti“."
 
-#: ../font-viewer/font-view.c:299
+#: ../font-viewer/font-view.c:303
 msgid "Name:"
 msgstr "Pavadinimas:"
 
-#: ../font-viewer/font-view.c:302
+#: ../font-viewer/font-view.c:306
 msgid "Style:"
 msgstr "Stilius:"
 
-#: ../font-viewer/font-view.c:315
+#: ../font-viewer/font-view.c:319
 msgid "Type:"
 msgstr "Tipas:"
 
-#: ../font-viewer/font-view.c:319
+#: ../font-viewer/font-view.c:323
 msgid "Size:"
 msgstr "Dydis:"
 
-#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:380
 msgid "Version:"
 msgstr "Versija:"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
+#: ../font-viewer/font-view.c:371 ../font-viewer/font-view.c:382
 msgid "Copyright:"
 msgstr "Autorinės teisės:"
 
-#: ../font-viewer/font-view.c:371
+#: ../font-viewer/font-view.c:375
 msgid "Description:"
 msgstr "Aprašymas:"
 
-#: ../font-viewer/font-view.c:451
+#: ../font-viewer/font-view.c:457
 msgid "Installed"
 msgstr "Įdiegta"
 
-#: ../font-viewer/font-view.c:454
+#: ../font-viewer/font-view.c:460
 msgid "Install Failed"
 msgstr "Įdiegti nepavyko"
 
-#: ../font-viewer/font-view.c:525
+#: ../font-viewer/font-view.c:533
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "naudojimas: %s šriftofailas\n"
 
-#: ../font-viewer/font-view.c:596
+#: ../font-viewer/font-view.c:606
 msgid "I_nstall Font"
 msgstr "Į_diegti šriftą"
 
@@ -2619,25 +2642,25 @@ msgstr "DYDIS"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ŠRIFTO-FAILAS IŠVESTIES-FAILAS"
 
-#: ../font-viewer/font-thumbnailer.c:268
+#: ../font-viewer/font-thumbnailer.c:272
 #, c-format
 msgid "Error parsing arguments: %s\n"
 msgstr "Klaida skaitant argumentus: %s\n"
 
-#: ../libslab/app-shell.c:754
+#: ../libslab/app-shell.c:761
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filtras „%s“ neatitinka jokių įrašų."
 
-#: ../libslab/app-shell.c:756
+#: ../libslab/app-shell.c:763
 msgid "No matches found."
 msgstr "Atitikmenų nerasta."
 
-#: ../libslab/app-shell.c:857
+#: ../libslab/app-shell.c:864
 msgid "New Applications"
 msgstr ""
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:919
 msgid "Other"
 msgstr "Kita"
 
@@ -2651,11 +2674,11 @@ msgstr "Paleisti %s"
 msgid "Help"
 msgstr "Žinynas"
 
-#: ../libslab/application-tile.c:629
+#: ../libslab/application-tile.c:629 ../libslab/document-tile.c:735
 msgid "Remove from Favorites"
 msgstr "Pašalinti mėgiamiausiųjų"
 
-#: ../libslab/application-tile.c:631
+#: ../libslab/application-tile.c:631 ../libslab/document-tile.c:737
 msgid "Add to Favorites"
 msgstr "Įtraukti į mėgiamiausiuosius"
 
@@ -2699,6 +2722,92 @@ msgstr "Tinklo serveris"
 #: ../libslab/bookmark-agent.c:1204
 msgid "Search"
 msgstr "Ieškoti"
+
+#. make open with default action
+#: ../libslab/directory-tile.c:176
+#, c-format
+msgid "<b>Open</b>"
+msgstr ""
+
+#. make rename action
+#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
+msgid "Rename..."
+msgstr ""
+
+#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
+#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
+msgid "Send To..."
+msgstr ""
+
+#. make move to trash action
+#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
+msgid "Move to Trash"
+msgstr ""
+
+#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
+#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
+msgid "Delete"
+msgstr ""
+
+#: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr ""
+
+#: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
+msgid "If you delete an item, it is permanently lost."
+msgstr ""
+
+#: ../libslab/document-tile.c:200
+#, c-format
+msgid "Open with \"%s\""
+msgstr ""
+
+#: ../libslab/document-tile.c:214
+msgid "Open with Default Application"
+msgstr ""
+
+#: ../libslab/document-tile.c:225
+msgid "Open in File Manager"
+msgstr ""
+
+#. clean item from menu
+#: ../libslab/document-tile.c:309
+msgid "Remove from recent menu"
+msgstr ""
+
+#. clean all the items from menu
+#: ../libslab/document-tile.c:317
+msgid "Purge all the recent items"
+msgstr ""
+
+#: ../libslab/document-tile.c:631
+msgid "?"
+msgstr ""
+
+#: ../libslab/document-tile.c:638
+msgid "%l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:646
+msgid "Today %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:656
+msgid "Yesterday %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:668
+msgid "%a %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:676
+msgid "%b %d %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:678
+msgid "%b %d %Y"
+msgstr ""
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

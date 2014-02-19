@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-11 11:51+0100\n"
-"PO-Revision-Date: 2013-04-07 22:35+0000\n"
-"Last-Translator: CroatianFan <meluksic@yahoo.com>\n"
+"POT-Creation-Date: 2014-02-18 18:41+0100\n"
+"PO-Revision-Date: 2014-02-18 17:44+0000\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/MATE/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,8 +22,8 @@ msgstr ""
 #: ../org.mate.control-center.gschema.xml.in.in.h:1
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
-"Applications;default-applications.desktop' ]"
-msgstr "[ 'Promijeni temu;mate-appearance-properties.desktop', 'Odredi pretpostavljene programe;default-applications.desktop' ]"
+"Applications;mate-default-applications-properties.desktop' ]"
+msgstr ""
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
 msgid "Task names and associated .desktop files"
@@ -153,25 +153,25 @@ msgstr "Gumbi prikazani u prozorčiću upozorenja"
 msgid "Show more _details"
 msgstr "Pokaži više _pojedinosti"
 
-#: ../capplets/about-me/mate-about-me.c:282
+#: ../capplets/about-me/mate-about-me.c:288
 msgid "Select Image"
 msgstr "Odaberi sliku"
 
-#: ../capplets/about-me/mate-about-me.c:284
+#: ../capplets/about-me/mate-about-me.c:290
 msgid "No Image"
 msgstr "Bez slike"
 
-#: ../capplets/about-me/mate-about-me.c:312
-#: ../capplets/appearance/appearance-desktop.c:646
+#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "Slike"
 
-#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/about-me/mate-about-me.c:322
 #: ../capplets/appearance/theme-installer.c:774
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: ../capplets/about-me/mate-about-me.c:467
+#: ../capplets/about-me/mate-about-me.c:473
 #, c-format
 msgid "About %s"
 msgstr "O %s"
@@ -490,7 +490,7 @@ msgid "Assistive Technologies Preferences"
 msgstr "Prilagodbe pomoćnih tehnologija"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "Pomoćne tehnologije"
 
@@ -544,44 +544,44 @@ msgstr "Prebaci se na prozorčić dostupne prijave"
 msgid "Close and _Log Out"
 msgstr "Zatvori i _odjavi se"
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Odaberi koje značajke pristupačnosti omogućiti prigodom tvoje prijave"
 
-#: ../capplets/appearance/appearance-desktop.c:615
+#: ../capplets/appearance/appearance-desktop.c:619
 msgid "Add Wallpaper"
 msgstr "Dodaj pozadinsku sliku"
 
-#: ../capplets/appearance/appearance-desktop.c:650
+#: ../capplets/appearance/appearance-desktop.c:654
 msgid "All files"
 msgstr "Sve datoteke"
 
-#: ../capplets/appearance/appearance-main.c:57
+#: ../capplets/appearance/appearance-main.c:59
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Nije moguće učitati datoteku korisničkog sučelja: %s"
 
-#: ../capplets/appearance/appearance-main.c:153
+#: ../capplets/appearance/appearance-main.c:155
 msgid "Specify the filename of a theme to install"
 msgstr "Navedi datotečni naziv teme za ugradnju"
 
-#: ../capplets/appearance/appearance-main.c:154
+#: ../capplets/appearance/appearance-main.c:156
 msgid "filename"
 msgstr "naziv datoteke"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:161
+#: ../capplets/appearance/appearance-main.c:163
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Navedi naziv stranice za prikaz (tema|pozadina|pisma|sučelje)"
 
-#: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:525
-#: ../capplets/mouse/mate-mouse-properties.c:511
+#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/default-applications/mate-da-capplet.c:575
+#: ../capplets/mouse/mate-mouse-properties.c:496
 msgid "page"
 msgstr "stranica"
 
-#: ../capplets/appearance/appearance-main.c:169
+#: ../capplets/appearance/appearance-main.c:171
 msgid "[WALLPAPER...]"
 msgstr "[POZADINSKA SLIKA...]"
 
@@ -597,7 +597,7 @@ msgid "Install"
 msgstr "Ugradi"
 
 #: ../capplets/appearance/appearance-style.c:255
-#: ../capplets/common/mate-theme-info.c:1723
+#: ../capplets/common/mate-theme-info.c:1724
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
@@ -987,26 +987,30 @@ msgstr "Paket teme MATE-a"
 msgid "No Desktop Background"
 msgstr "Bez pozadine radne površine"
 
-#: ../capplets/appearance/mate-wp-item.c:289
+#: ../capplets/appearance/mate-wp-item.c:288
+msgid "unknown"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "Klizni prikaz"
 
-#: ../capplets/appearance/mate-wp-item.c:291
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "Slika"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "višestruke veličine"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:300
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s po %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:302
-#: ../capplets/appearance/mate-wp-item.c:304
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "točka"
@@ -1016,26 +1020,30 @@ msgstr[2] "točke"
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
 #. * Folder: /path/to/file
-#: ../capplets/appearance/mate-wp-item.c:312
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s, %s\nMapa: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
 #. * Folder: /path/to/file
-#: ../capplets/appearance/mate-wp-item.c:324
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s\nMapa: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:328
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "Slika nedostaje"
 
@@ -1133,7 +1141,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Tema već postoji. Želiš li je zamijeniti?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:451
+#: ../capplets/common/file-transfer-dialog.c:450
 msgid "_Overwrite"
 msgstr "_Prepiši"
 
@@ -1228,16 +1236,16 @@ msgstr "Ukupno URI-ja"
 msgid "Total number of URIs"
 msgstr "Ukupni broj URI-ja"
 
-#: ../capplets/common/file-transfer-dialog.c:445
+#: ../capplets/common/file-transfer-dialog.c:444
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Datoteka '%s' već postoji. Želiš li je prepisati?"
 
-#: ../capplets/common/file-transfer-dialog.c:448
+#: ../capplets/common/file-transfer-dialog.c:447
 msgid "_Skip"
 msgstr "_Preskoči"
 
-#: ../capplets/common/file-transfer-dialog.c:449
+#: ../capplets/common/file-transfer-dialog.c:448
 msgid "Overwrite _All"
 msgstr "Prepiši preko _svega"
 
@@ -1290,29 +1298,29 @@ msgid ""
 " not installed."
 msgstr "Ova tema ne će izgledati kako je predviđeno jer potrebna tema sličica '%s' nije ugrađena."
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "Pretpostavljeni programi"
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
 msgid "Select your default applications"
 msgstr "Odaberi vlastite zadane programe"
 
-#: ../capplets/default-applications/mate-da-capplet.c:413
+#: ../capplets/default-applications/mate-da-capplet.c:448
 msgid "Could not load the main interface"
 msgstr "Nije moguće učitati glavno sučelje"
 
-#: ../capplets/default-applications/mate-da-capplet.c:414
+#: ../capplets/default-applications/mate-da-capplet.c:449
 msgid "Please make sure that the applet is properly installed"
 msgstr "Molim provjeri je li programčić pravilno ugrađen"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:524
+#: ../capplets/default-applications/mate-da-capplet.c:574
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Navedi naziv stranice za prikaz (internet|multimedija|sustav|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:530
+#: ../capplets/default-applications/mate-da-capplet.c:580
 msgid "- MATE Default Applications"
 msgstr "- Zadani programi MATE-a"
 
@@ -1456,7 +1464,7 @@ msgid "Off"
 msgstr "Isključeno"
 
 #: ../capplets/display/display-capplet.ui.h:10
-#: ../capplets/display/xrandr-capplet.c:515
+#: ../capplets/display/xrandr-capplet.c:513
 msgid "Monitor"
 msgstr "Zaslon"
 
@@ -1473,18 +1481,18 @@ msgid "Make Default"
 msgstr "Učini zadanim"
 
 #: ../capplets/display/display-capplet.ui.h:14
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:348
 msgid "Normal"
 msgstr "Uobičajeno"
 
 #: ../capplets/display/display-capplet.ui.h:15
-#: ../capplets/display/xrandr-capplet.c:312
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Left"
 msgstr "Lijevo"
 
 #: ../capplets/display/display-capplet.ui.h:16
-#: ../capplets/display/xrandr-capplet.c:313
+#: ../capplets/display/xrandr-capplet.c:311
 msgid "Right"
 msgstr "Desno"
 
@@ -1492,11 +1500,11 @@ msgstr "Desno"
 msgid "Upside-down"
 msgstr "Obrnuto"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Monitors"
 msgstr "Zasloni"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
 msgid "Change resolution and position of monitors"
 msgstr "Promijeni razlučivost i položaj zaslona"
 
@@ -1590,11 +1598,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "Ovjera je neophodna za ugradnju višezaslonskih postavki za sve korisnike"
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:312
 msgid "Upside Down"
 msgstr "Obrni"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:354
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1603,133 +1611,133 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:504
-#: ../capplets/display/xrandr-capplet.c:1650
+#: ../capplets/display/xrandr-capplet.c:502
+#: ../capplets/display/xrandr-capplet.c:1652
 msgid "Mirror Screens"
 msgstr "Zrcalni zasloni"
 
-#: ../capplets/display/xrandr-capplet.c:506
+#: ../capplets/display/xrandr-capplet.c:504
 #, c-format
 msgid "Monitor: %s"
 msgstr "Zaslon: %s"
 
-#: ../capplets/display/xrandr-capplet.c:584
+#: ../capplets/display/xrandr-capplet.c:582
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1506
+#: ../capplets/display/xrandr-capplet.c:1508
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "Odaberi zaslon za promjenu njegovih svojstava; dovuci ga za preuređenje njegova smještaja."
 
-#: ../capplets/display/xrandr-capplet.c:2071
+#: ../capplets/display/xrandr-capplet.c:2073
 msgid "Could not save the monitor configuration"
 msgstr "Nije moguće spremiti postavke zaslona"
 
-#: ../capplets/display/xrandr-capplet.c:2093
+#: ../capplets/display/xrandr-capplet.c:2095
 msgid "Could not get session bus while applying display configuration"
 msgstr "Nije moguće uhvatiti sabirnicu prijave tijekom primjenjivanja zaslonskih postavki"
 
-#: ../capplets/display/xrandr-capplet.c:2135
+#: ../capplets/display/xrandr-capplet.c:2137
 msgid "Could not detect displays"
 msgstr "Nije moguće prepoznati zaslone"
 
-#: ../capplets/display/xrandr-capplet.c:2328
+#: ../capplets/display/xrandr-capplet.c:2334
 msgid "The monitor configuration has been saved"
 msgstr "Postavke zaslona su spremljene"
 
-#: ../capplets/display/xrandr-capplet.c:2330
+#: ../capplets/display/xrandr-capplet.c:2336
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Ove postavke će biti korištene kada se sljedeći put netko prijavi."
 
-#: ../capplets/display/xrandr-capplet.c:2339
+#: ../capplets/display/xrandr-capplet.c:2345
 msgid "Could not set the default configuration for monitors"
 msgstr "Nije moguće odrediti zadane postavke za zaslone"
 
-#: ../capplets/display/xrandr-capplet.c:2423
+#: ../capplets/display/xrandr-capplet.c:2429
 msgid "Could not get screen information"
 msgstr "Nije moguće pribaviti podatke o zaslonu"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: ../capplets/keybindings/eggcellrendererkeys.c:24
 msgid "New shortcut..."
 msgstr "Novi prečac..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: ../capplets/keybindings/eggcellrendererkeys.c:160
+#: ../capplets/keybindings/eggcellrendererkeys.c:161
 msgid "Accelerator key"
 msgstr "Tipkovnički prečac"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: ../capplets/keybindings/eggcellrendererkeys.c:170
+#: ../capplets/keybindings/eggcellrendererkeys.c:171
 msgid "Accelerator modifiers"
 msgstr "Izmjenjivači tipkovničkih prečaca"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: ../capplets/keybindings/eggcellrendererkeys.c:179
+#: ../capplets/keybindings/eggcellrendererkeys.c:180
 msgid "Accelerator keycode"
 msgstr "Kod tipkovničkog prečaca"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: ../capplets/keybindings/eggcellrendererkeys.c:190
 msgid "Accel Mode"
 msgstr "Način rada putem prečaca"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: ../capplets/keybindings/eggcellrendererkeys.c:191
 msgid "The type of accelerator."
 msgstr "Vrsta tipkovničkog prečaca."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../typing-break/drwright.c:498
+#: ../capplets/keybindings/eggcellrendererkeys.c:234
+#: ../capplets/keybindings/mate-keybinding-properties.c:137
+#: ../typing-break/drwright.c:504
 msgid "Disabled"
 msgstr "Onemogućeno"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:219
 msgid "<Unknown Action>"
 msgstr "<Nepoznata radnja>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1028
-#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+#: ../capplets/keybindings/mate-keybinding-properties.c:1026
+#: ../capplets/keybindings/mate-keybinding-properties.c:1624
 msgid "Custom Shortcuts"
 msgstr "Prilagođeni prečaci"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+#: ../capplets/keybindings/mate-keybinding-properties.c:1204
 msgid "Error saving the new shortcut"
 msgstr "Pogrješka u pohrani novoga prečaca"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1282
+#: ../capplets/keybindings/mate-keybinding-properties.c:1280
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "Prečac \"%s\" se ne može upotrijebiti jer će postati nemoguće pisati koristeći ovu tipku.\nMolim pokušaj s tipkom poput Control, Alt ili Shift istovremeno."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1312
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Prečac \"%s\" se već koristi za\n\"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1321
+#: ../capplets/keybindings/mate-keybinding-properties.c:1319
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Ako iznova pridružiš prečac na \"%s\", prečac \"%s\" će biti onemogućen."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+#: ../capplets/keybindings/mate-keybinding-properties.c:1324
 msgid "_Reassign"
 msgstr "_Iznova priduži"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+#: ../capplets/keybindings/mate-keybinding-properties.c:1579
 msgid "Too many custom shortcuts"
 msgstr "Previše prilagođenih prečaca"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1871
+#: ../capplets/keybindings/mate-keybinding-properties.c:1867
 msgid "Action"
 msgstr "Radnja"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1893
+#: ../capplets/keybindings/mate-keybinding-properties.c:1889
 msgid "Shortcut"
 msgstr "Prečac"
 
@@ -2110,11 +2118,11 @@ msgstr "Nepoznato"
 msgid "Layout"
 msgstr "Raspored"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "Isporučitelji"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:239
 msgid "Models"
 msgstr "Modeli"
 
@@ -2122,20 +2130,20 @@ msgstr "Modeli"
 msgid "Default"
 msgstr "Zadano"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
 msgid "Keyboard"
 msgstr "Tipkovnica"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "Postavi vlastite prilagodbe tipkovnice"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:510
+#: ../capplets/mouse/mate-mouse-properties.c:495
 msgid "Specify the name of the page to show (general)"
 msgstr "Odredi naziv stranice za prikaz (opći)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:500
 msgid "- MATE Mouse Preferences"
 msgstr "- Prilagodbe miša u MATE-u"
 
@@ -2320,23 +2328,67 @@ msgstr "Zanemari popis umreženih računala"
 msgid "Ignored Hosts"
 msgstr "Zanemarena umrežena računala"
 
-#: ../capplets/windows/mate-window-properties.c:393
-msgid "Cannot start the preferences application for your window manager"
-msgstr "Nije moguće pokrenuti program za prilagodbe tvog upravitelja prozora"
+#: ../capplets/windows/mate-metacity-support.c:40
+msgid "Metacity Preferences"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:661
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr "Upravitelj efekata"
+
+#: ../capplets/windows/mate-metacity-support.c:58
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr "Omogući softverskog upravitelja prozorskih efekata"
+
+#: ../capplets/windows/mate-window-properties.c:216
+msgid "The current window manager is unsupported"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:303
+#: ../libwindow-settings/marco-window-manager.c:379
+msgid "Roll up"
+msgstr "Smotaj"
+
+#: ../capplets/windows/mate-window-properties.c:304
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "Povećaj"
+
+#: ../capplets/windows/mate-window-properties.c:305
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
+msgstr "Povećaj vodoravno"
+
+#: ../capplets/windows/mate-window-properties.c:306
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
+msgstr "Povećaj okomito"
+
+#: ../capplets/windows/mate-window-properties.c:307
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
+msgstr "Smanji"
+
+#: ../capplets/windows/mate-window-properties.c:308
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
+msgstr "Ništa"
+
+#: ../capplets/windows/mate-window-properties.c:506
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:667
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "H_yper"
 msgstr "H_iper"
 
-#: ../capplets/windows/mate-window-properties.c:674
+#: ../capplets/windows/mate-window-properties.c:519
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (ili \"znak Windowsa\")"
 
-#: ../capplets/windows/mate-window-properties.c:681
+#: ../capplets/windows/mate-window-properties.c:526
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2344,59 +2396,59 @@ msgstr "_Meta"
 msgid "Window Preferences"
 msgstr "Prilagodbe prozora"
 
-#: ../capplets/windows/mate-window-properties.ui.h:2
-msgid "Compositing Manager"
-msgstr "Upravitelj efekata"
-
-#: ../capplets/windows/mate-window-properties.ui.h:3
-msgid "Enable software _compositing window manager"
-msgstr "Omogući softverskog upravitelja prozorskih efekata"
-
 #: ../capplets/windows/mate-window-properties.ui.h:4
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Onemogući _sličice u Alt-Tab"
 
 #: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Snapping"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
+msgid "Enable side by side tiling"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:7
 msgid "Window Selection"
 msgstr "Odabir prozora"
 
-#: ../capplets/windows/mate-window-properties.ui.h:6
+#: ../capplets/windows/mate-window-properties.ui.h:8
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Odaberi prozore kada se miš pomakne preko njih"
 
-#: ../capplets/windows/mate-window-properties.ui.h:7
+#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "_Raise selected windows after an interval"
 msgstr "_Podigni odabrane prozore nakon međuvremena"
 
-#: ../capplets/windows/mate-window-properties.ui.h:8
+#: ../capplets/windows/mate-window-properties.ui.h:10
 msgid "_Interval before raising:"
 msgstr "_Međuvrijeme prije podizanja:"
 
-#: ../capplets/windows/mate-window-properties.ui.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:11
 msgid "seconds"
 msgstr "sekunde"
 
-#: ../capplets/windows/mate-window-properties.ui.h:10
+#: ../capplets/windows/mate-window-properties.ui.h:12
 msgid "Titlebar Action"
 msgstr "Radnja naslovne trake"
 
-#: ../capplets/windows/mate-window-properties.ui.h:11
+#: ../capplets/windows/mate-window-properties.ui.h:13
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Dvoklikni naslovnu traku za izvršenje ove radnje:"
 
-#: ../capplets/windows/mate-window-properties.ui.h:12
+#: ../capplets/windows/mate-window-properties.ui.h:14
 msgid "Movement Key"
 msgstr "Tipka pomicanja"
 
-#: ../capplets/windows/mate-window-properties.ui.h:13
+#: ../capplets/windows/mate-window-properties.ui.h:15
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Za pomicanje prozora, pritisni i zadrži ovu tipku, a onda uhvati prozor:"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "Prozori"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
 msgid "Set your window properties"
 msgstr "Postavi vlastita svojstva prozora"
 
@@ -2404,30 +2456,6 @@ msgstr "Postavi vlastita svojstva prozora"
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Upravitelj prozora \"%s\" nije zabilježio pomagalo za postavljanje\n"
-
-#: ../libwindow-settings/marco-window-manager.c:379
-msgid "Roll up"
-msgstr "Smotaj"
-
-#: ../libwindow-settings/marco-window-manager.c:380
-msgid "Maximize"
-msgstr "Povećaj"
-
-#: ../libwindow-settings/marco-window-manager.c:381
-msgid "Maximize Horizontally"
-msgstr "Povećaj vodoravno"
-
-#: ../libwindow-settings/marco-window-manager.c:382
-msgid "Maximize Vertically"
-msgstr "Povećaj okomito"
-
-#: ../libwindow-settings/marco-window-manager.c:383
-msgid "Minimize"
-msgstr "Smanji"
-
-#: ../libwindow-settings/marco-window-manager.c:384
-msgid "None"
-msgstr "Ništa"
 
 #: ../shell/control-center.c:61
 #, c-format
@@ -2459,24 +2487,24 @@ msgstr "Nadzorno središte"
 msgid "The MATE configuration tool"
 msgstr "Pomagalo za postavljanje MATE-a"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:195
 msgid "_Postpone Break"
 msgstr "_Odgodi stanku"
 
-#: ../typing-break/drw-break-window.c:246
+#: ../typing-break/drw-break-window.c:256
 msgid "Take a break!"
 msgstr "Uzmi stanku!"
 
-#: ../typing-break/drwright.c:136
+#: ../typing-break/drwright.c:142
 msgid "_Take a Break"
 msgstr "Uzmi stanku"
 
-#: ../typing-break/drwright.c:507
+#: ../typing-break/drwright.c:513
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Uzmi stanku sada (sljedeća u %dm)"
 
-#: ../typing-break/drwright.c:509
+#: ../typing-break/drwright.c:515
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
@@ -2484,52 +2512,52 @@ msgstr[0] "%d minuta do sljedeće stanke"
 msgstr[1] "%d minute do sljedeće stanke"
 msgstr[2] "%d minuta do sljedeće stanke"
 
-#: ../typing-break/drwright.c:515
+#: ../typing-break/drwright.c:521
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Uzmi stanku sada (sljedeća za manje od jedne minute)"
 
-#: ../typing-break/drwright.c:517
+#: ../typing-break/drwright.c:523
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Manje od minute do sljedeće stanke"
 
-#: ../typing-break/drwright.c:607
+#: ../typing-break/drwright.c:613
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "Nije moguće pokazati prozorčić sa svojstvima stanke u tipkanju uz sljedeću pogrješku: %s"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:630
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Sastavio Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:625
+#: ../typing-break/drwright.c:631
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Ukras dodao Anders Carlsson"
 
-#: ../typing-break/drwright.c:634
+#: ../typing-break/drwright.c:640
 msgid "A computer break reminder."
 msgstr "Podsjetnik na stanku računala."
 
-#: ../typing-break/drwright.c:636
+#: ../typing-break/drwright.c:642
 msgid "translator-credits"
 msgstr "Hrvatski prijevod na Transifexu:\n   Mislav E. Lukšić <croatianfan@gmail.com>\n\nlokalizacija@linux.hr\n  Automatski prijevod <>\n  Danijel Studen <dstuden@vuka.hr>\n  Denis Lackovic <delacko@linux.hr>\n  Robert Sedak <robert.sedak@sk.t-com.hr>\n  Vedran Vyroubal <vedran.vyroubal@inet.hr>\n  Miroslav Sabljić <civija@ubuntu-hr.org>\n\nPrinosi na Launchpadu:\n  Ante Karamatić https://launchpad.net/~ivoks\n  Bojan Sudarević https://launchpad.net/~sudarevic\n  Danijel Šnajder https://launchpad.net/~phantomlord\n  Krešo Kunjas https://launchpad.net/~deresh\n  Launchpad Translations Administrators https://launchpad.net/~rosetta-admins\n  Miroslav Sabljić https://launchpad.net/~civija\n  Valentin Vidic https://launchpad.net/~vvidic\n  alja https://launchpad.net/~alja\n  civix https://launchpad.net/~civix\n  young https://launchpad.net/~davorin-sego"
 
-#: ../typing-break/main.c:63
+#: ../typing-break/main.c:67
 msgid "Enable debugging code"
 msgstr "Omogući kod ispravljanja pogrješaka"
 
-#: ../typing-break/main.c:65
+#: ../typing-break/main.c:69
 msgid "Don't check whether the notification area exists"
 msgstr "Ne provjeravaj postoji li dojavno područje"
 
-#: ../typing-break/main.c:91
+#: ../typing-break/main.c:95
 msgid "Typing Monitor"
 msgstr "Nadzornik tipkanja"
 
-#: ../typing-break/main.c:108
+#: ../typing-break/main.c:112
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -2537,48 +2565,48 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Nadzornik tipkanja koristi dojavno područje za prikaz obavijesti. Izgleda da nemaš dojavno područje na vlastitoj ploči. Možeš ga dodati desnim klikom na vlastitu ploču i odabirom 'Dodaj na ploču', odabirući 'Dojavno područje' uz klik 'Dodaj'."
 
-#: ../font-viewer/font-view.c:299
+#: ../font-viewer/font-view.c:303
 msgid "Name:"
 msgstr "Naziv:"
 
-#: ../font-viewer/font-view.c:302
+#: ../font-viewer/font-view.c:306
 msgid "Style:"
 msgstr "Slog:"
 
-#: ../font-viewer/font-view.c:315
+#: ../font-viewer/font-view.c:319
 msgid "Type:"
 msgstr "Vrsta:"
 
-#: ../font-viewer/font-view.c:319
+#: ../font-viewer/font-view.c:323
 msgid "Size:"
 msgstr "Veličina:"
 
-#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:380
 msgid "Version:"
 msgstr "Inačica:"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
+#: ../font-viewer/font-view.c:371 ../font-viewer/font-view.c:382
 msgid "Copyright:"
 msgstr "Autorska prava:"
 
-#: ../font-viewer/font-view.c:371
+#: ../font-viewer/font-view.c:375
 msgid "Description:"
 msgstr "Opis:"
 
-#: ../font-viewer/font-view.c:451
+#: ../font-viewer/font-view.c:457
 msgid "Installed"
 msgstr "Ugrađeno"
 
-#: ../font-viewer/font-view.c:454
+#: ../font-viewer/font-view.c:460
 msgid "Install Failed"
 msgstr "Ugradnja neuspjela"
 
-#: ../font-viewer/font-view.c:525
+#: ../font-viewer/font-view.c:533
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "uporaba: datoteka pisma %s\n"
 
-#: ../font-viewer/font-view.c:596
+#: ../font-viewer/font-view.c:606
 msgid "I_nstall Font"
 msgstr "U_gradi pismo"
 
@@ -2610,25 +2638,25 @@ msgstr "VELIČINA"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "DATOTEKA-PISMA IZLAZNA-DATOTEKA"
 
-#: ../font-viewer/font-thumbnailer.c:268
+#: ../font-viewer/font-thumbnailer.c:272
 #, c-format
 msgid "Error parsing arguments: %s\n"
 msgstr "Pogrješka pri raščlambi vrijednosti: %s\n"
 
-#: ../libslab/app-shell.c:754
+#: ../libslab/app-shell.c:761
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Tvoja pretraga \"%s\" se ne podudara s nijednom stavkom."
 
-#: ../libslab/app-shell.c:756
+#: ../libslab/app-shell.c:763
 msgid "No matches found."
 msgstr "Nisu pronađene podudarnosti."
 
-#: ../libslab/app-shell.c:857
+#: ../libslab/app-shell.c:864
 msgid "New Applications"
 msgstr "Novi programi"
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:919
 msgid "Other"
 msgstr "Ostalo"
 
@@ -2642,11 +2670,11 @@ msgstr "Pokreni %s"
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../libslab/application-tile.c:629
+#: ../libslab/application-tile.c:629 ../libslab/document-tile.c:735
 msgid "Remove from Favorites"
 msgstr "Ukloni iz omiljenog"
 
-#: ../libslab/application-tile.c:631
+#: ../libslab/application-tile.c:631 ../libslab/document-tile.c:737
 msgid "Add to Favorites"
 msgstr "Dodaj u omiljeno"
 
@@ -2690,6 +2718,92 @@ msgstr "Mrežni poslužitelji"
 #: ../libslab/bookmark-agent.c:1204
 msgid "Search"
 msgstr "Traži"
+
+#. make open with default action
+#: ../libslab/directory-tile.c:176
+#, c-format
+msgid "<b>Open</b>"
+msgstr ""
+
+#. make rename action
+#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
+msgid "Rename..."
+msgstr ""
+
+#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
+#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
+msgid "Send To..."
+msgstr ""
+
+#. make move to trash action
+#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
+msgid "Move to Trash"
+msgstr ""
+
+#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
+#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
+msgid "Delete"
+msgstr ""
+
+#: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr ""
+
+#: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
+msgid "If you delete an item, it is permanently lost."
+msgstr ""
+
+#: ../libslab/document-tile.c:200
+#, c-format
+msgid "Open with \"%s\""
+msgstr ""
+
+#: ../libslab/document-tile.c:214
+msgid "Open with Default Application"
+msgstr ""
+
+#: ../libslab/document-tile.c:225
+msgid "Open in File Manager"
+msgstr ""
+
+#. clean item from menu
+#: ../libslab/document-tile.c:309
+msgid "Remove from recent menu"
+msgstr ""
+
+#. clean all the items from menu
+#: ../libslab/document-tile.c:317
+msgid "Purge all the recent items"
+msgstr ""
+
+#: ../libslab/document-tile.c:631
+msgid "?"
+msgstr ""
+
+#: ../libslab/document-tile.c:638
+msgid "%l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:646
+msgid "Today %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:656
+msgid "Yesterday %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:668
+msgid "%a %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:676
+msgid "%b %d %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:678
+msgid "%b %d %Y"
+msgstr ""
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

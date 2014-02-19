@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Rajesh Ranjan <rajesh672@gmail.com>, 2009.
-# Rajesh Ranjan <rranjan@redhat.com>, 2005, 2006, 2008, 2009.
-# Ravishankar Shrivastava <raviratlami@yahoo.com>, 2003, 2004.
+# Rajesh Ranjan <rajesh672@gmail.com>, 2009
+# Rajesh Ranjan <rranjan@redhat.com>, 2005, 2006, 2008, 2009
+# Ravishankar Shrivastava <raviratlami@yahoo.com>, 2003, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
-"POT-Creation-Date: 2013-02-11 11:51+0100\n"
-"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-18 18:41+0100\n"
+"PO-Revision-Date: 2014-02-18 17:43+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
 "Language-Team: Hindi (http://www.transifex.com/projects/p/MATE/language/hi/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../org.mate.control-center.gschema.xml.in.in.h:1
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
-"Applications;default-applications.desktop' ]"
+"Applications;mate-default-applications-properties.desktop' ]"
 msgstr ""
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
@@ -154,25 +154,25 @@ msgstr "चेतावनी संवाद में प्रदर्शि
 msgid "Show more _details"
 msgstr "अधिक विवरण दिखाएँ (_d)"
 
-#: ../capplets/about-me/mate-about-me.c:282
+#: ../capplets/about-me/mate-about-me.c:288
 msgid "Select Image"
 msgstr "छवि चुनें"
 
-#: ../capplets/about-me/mate-about-me.c:284
+#: ../capplets/about-me/mate-about-me.c:290
 msgid "No Image"
 msgstr "कोई छवि नहीं"
 
-#: ../capplets/about-me/mate-about-me.c:312
-#: ../capplets/appearance/appearance-desktop.c:646
+#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "बिंब"
 
-#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/about-me/mate-about-me.c:322
 #: ../capplets/appearance/theme-installer.c:774
 msgid "All Files"
 msgstr "सभी फ़ाइलें"
 
-#: ../capplets/about-me/mate-about-me.c:467
+#: ../capplets/about-me/mate-about-me.c:473
 #, c-format
 msgid "About %s"
 msgstr "के बारे में %s"
@@ -367,7 +367,6 @@ msgstr "सत्यापित!"
 #. This is a re-auth, and it failed.
 #. * The password must have been changed in the meantime!
 #. * Ask the user to re-authenticate
-#. 
 #. Update status message and auth state
 #. Authentication failure
 #: ../capplets/about-me/mate-about-me-password.c:475
@@ -492,7 +491,7 @@ msgid "Assistive Technologies Preferences"
 msgstr "सहायक तकनालॉज़ी वरीयताएँ"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "सहायक तकनालॉज़ी"
 
@@ -546,44 +545,44 @@ msgstr "अभिगम्य लॉगिन संवाद पर जाए�
 msgid "Close and _Log Out"
 msgstr "बंद कर लॉगआउट करें (_L)"
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "चुनें कि आपकी लॉगिन के दौरान किस पहुँच फीचर को सक्रिय करना है"
 
-#: ../capplets/appearance/appearance-desktop.c:615
+#: ../capplets/appearance/appearance-desktop.c:619
 msgid "Add Wallpaper"
 msgstr "वालपेपर जोड़ें"
 
-#: ../capplets/appearance/appearance-desktop.c:650
+#: ../capplets/appearance/appearance-desktop.c:654
 msgid "All files"
 msgstr "सभी फ़ाइलें"
 
-#: ../capplets/appearance/appearance-main.c:57
+#: ../capplets/appearance/appearance-main.c:59
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "उपयोक्ता अंतरफलक फ़ाइल को लोड नहीं कर सका: %s"
 
-#: ../capplets/appearance/appearance-main.c:153
+#: ../capplets/appearance/appearance-main.c:155
 msgid "Specify the filename of a theme to install"
 msgstr "संस्थापित करने हेतु कोई प्रसंग फ़ाइल स्थान निर्दिष्ट नहीं किया है"
 
-#: ../capplets/appearance/appearance-main.c:154
+#: ../capplets/appearance/appearance-main.c:156
 msgid "filename"
 msgstr "फाइलनाम"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:161
+#: ../capplets/appearance/appearance-main.c:163
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "दिखाने के लिए पृष्ठ का नाम निर्दिष्ट करें (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:525
-#: ../capplets/mouse/mate-mouse-properties.c:511
+#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/default-applications/mate-da-capplet.c:575
+#: ../capplets/mouse/mate-mouse-properties.c:496
 msgid "page"
 msgstr "पृष्ठ"
 
-#: ../capplets/appearance/appearance-main.c:169
+#: ../capplets/appearance/appearance-main.c:171
 msgid "[WALLPAPER...]"
 msgstr "[WALLPAPER...]"
 
@@ -599,7 +598,7 @@ msgid "Install"
 msgstr "संस्थापित करें"
 
 #: ../capplets/appearance/appearance-style.c:255
-#: ../capplets/common/mate-theme-info.c:1723
+#: ../capplets/common/mate-theme-info.c:1724
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
@@ -989,26 +988,30 @@ msgstr "गनोम प्रसंग संकुल"
 msgid "No Desktop Background"
 msgstr "कोई डेस्कटॉप पृष्ठभूमि"
 
-#: ../capplets/appearance/mate-wp-item.c:289
+#: ../capplets/appearance/mate-wp-item.c:288
+msgid "unknown"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "स्लाइड शो"
 
-#: ../capplets/appearance/mate-wp-item.c:291
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "छवि"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "बहुत आकार"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:300
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:302
-#: ../capplets/appearance/mate-wp-item.c:304
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "पिक्सेल"
@@ -1017,28 +1020,30 @@ msgstr[1] "पिक्सेल"
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:312
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s, %s\nफोल्डर: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:324
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s\n"
-"Folder: %s"
+"Folder: %s\n"
+"Artist: %s"
 msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:328
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr ""
 
@@ -1136,7 +1141,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "थीम पहले से मौजूद है. क्या आप इसे स्थानांतरित करना चाहते हैं?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:451
+#: ../capplets/common/file-transfer-dialog.c:450
 msgid "_Overwrite"
 msgstr "मिटाकर लिखें (_O)"
 
@@ -1231,16 +1236,16 @@ msgstr "कुल यूआरआई"
 msgid "Total number of URIs"
 msgstr "कुल यूआरआई क्रमांक"
 
-#: ../capplets/common/file-transfer-dialog.c:445
+#: ../capplets/common/file-transfer-dialog.c:444
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "'%s' फ़ाइल पहले से मौजूद है. क्या आप इसके ऊपर लिखना चाहते हैं?"
 
-#: ../capplets/common/file-transfer-dialog.c:448
+#: ../capplets/common/file-transfer-dialog.c:447
 msgid "_Skip"
 msgstr "छोड़ें (_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:449
+#: ../capplets/common/file-transfer-dialog.c:448
 msgid "Overwrite _All"
 msgstr "मिटाकर लिखें (_A)"
 
@@ -1293,29 +1298,29 @@ msgid ""
 " not installed."
 msgstr "यह प्रसंग वांछित रूप में दिखेगा क्योंकि जरूरी प्रतीक प्रसंग '%s' संस्थापित नहीं है."
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "पसन्दीदा अनुप्रयोग"
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
 msgid "Select your default applications"
 msgstr "अपने डिफ़ॉल्ट अनुप्रयोग चुनें"
 
-#: ../capplets/default-applications/mate-da-capplet.c:413
+#: ../capplets/default-applications/mate-da-capplet.c:448
 msgid "Could not load the main interface"
 msgstr "मुख्य अंतरफलक लोड न कर सका"
 
-#: ../capplets/default-applications/mate-da-capplet.c:414
+#: ../capplets/default-applications/mate-da-capplet.c:449
 msgid "Please make sure that the applet is properly installed"
 msgstr "सुनिश्चित करें कि यह एप्पलेट ठीक से स्थापित है"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:524
+#: ../capplets/default-applications/mate-da-capplet.c:574
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "दिखाने के लिए पृष्ठ का नाम बताएँ (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:530
+#: ../capplets/default-applications/mate-da-capplet.c:580
 msgid "- MATE Default Applications"
 msgstr "- गनोम तयशुदा अनुप्रयोग"
 
@@ -1459,7 +1464,7 @@ msgid "Off"
 msgstr "बंद"
 
 #: ../capplets/display/display-capplet.ui.h:10
-#: ../capplets/display/xrandr-capplet.c:515
+#: ../capplets/display/xrandr-capplet.c:513
 msgid "Monitor"
 msgstr "मॉनीटर"
 
@@ -1476,18 +1481,18 @@ msgid "Make Default"
 msgstr ""
 
 #: ../capplets/display/display-capplet.ui.h:14
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:348
 msgid "Normal"
 msgstr "सामान्य"
 
 #: ../capplets/display/display-capplet.ui.h:15
-#: ../capplets/display/xrandr-capplet.c:312
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Left"
 msgstr "बायाँ"
 
 #: ../capplets/display/display-capplet.ui.h:16
-#: ../capplets/display/xrandr-capplet.c:313
+#: ../capplets/display/xrandr-capplet.c:311
 msgid "Right"
 msgstr "दाहिना"
 
@@ -1495,11 +1500,11 @@ msgstr "दाहिना"
 msgid "Upside-down"
 msgstr "उलटा नीचे"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Monitors"
 msgstr ""
 
-#: ../capplets/display/display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
 msgid "Change resolution and position of monitors"
 msgstr ""
 
@@ -1593,11 +1598,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:312
 msgid "Upside Down"
 msgstr "उलटा नीचे"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:354
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1606,139 +1611,137 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#. 
-#: ../capplets/display/xrandr-capplet.c:504
-#: ../capplets/display/xrandr-capplet.c:1650
+#: ../capplets/display/xrandr-capplet.c:502
+#: ../capplets/display/xrandr-capplet.c:1652
 msgid "Mirror Screens"
 msgstr "मिरर स्क्रीम"
 
-#: ../capplets/display/xrandr-capplet.c:506
+#: ../capplets/display/xrandr-capplet.c:504
 #, c-format
 msgid "Monitor: %s"
 msgstr "मॉनिटर: %s"
 
-#: ../capplets/display/xrandr-capplet.c:584
+#: ../capplets/display/xrandr-capplet.c:582
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1506
+#: ../capplets/display/xrandr-capplet.c:1508
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2071
+#: ../capplets/display/xrandr-capplet.c:2073
 msgid "Could not save the monitor configuration"
 msgstr "मॉनिटर विन्यास सहेज नहीं सका"
 
-#: ../capplets/display/xrandr-capplet.c:2093
+#: ../capplets/display/xrandr-capplet.c:2095
 msgid "Could not get session bus while applying display configuration"
 msgstr "प्रदर्शन विन्यास लागू करने के दौरान सत्र बस नहीं पा सका"
 
-#: ../capplets/display/xrandr-capplet.c:2135
+#: ../capplets/display/xrandr-capplet.c:2137
 msgid "Could not detect displays"
 msgstr "प्रदर्शन पता नहीं कर सका"
 
-#: ../capplets/display/xrandr-capplet.c:2328
+#: ../capplets/display/xrandr-capplet.c:2334
 msgid "The monitor configuration has been saved"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2330
+#: ../capplets/display/xrandr-capplet.c:2336
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2339
+#: ../capplets/display/xrandr-capplet.c:2345
 msgid "Could not set the default configuration for monitors"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2423
+#: ../capplets/display/xrandr-capplet.c:2429
 msgid "Could not get screen information"
 msgstr "स्क्रीन सूचना नहीं पा सका"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: ../capplets/keybindings/eggcellrendererkeys.c:24
 msgid "New shortcut..."
 msgstr "नया शार्टकट..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: ../capplets/keybindings/eggcellrendererkeys.c:160
+#: ../capplets/keybindings/eggcellrendererkeys.c:161
 msgid "Accelerator key"
 msgstr "त्वरक कुंजी"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: ../capplets/keybindings/eggcellrendererkeys.c:170
+#: ../capplets/keybindings/eggcellrendererkeys.c:171
 msgid "Accelerator modifiers"
 msgstr "त्वरक परिवर्धक"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: ../capplets/keybindings/eggcellrendererkeys.c:179
+#: ../capplets/keybindings/eggcellrendererkeys.c:180
 msgid "Accelerator keycode"
 msgstr "त्वरक कुंजीकोड"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: ../capplets/keybindings/eggcellrendererkeys.c:190
 msgid "Accel Mode"
 msgstr "त्वरक मोड"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: ../capplets/keybindings/eggcellrendererkeys.c:191
 msgid "The type of accelerator."
 msgstr "त्वरक प्रकार"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../typing-break/drwright.c:498
+#: ../capplets/keybindings/eggcellrendererkeys.c:234
+#: ../capplets/keybindings/mate-keybinding-properties.c:137
+#: ../typing-break/drwright.c:504
 msgid "Disabled"
 msgstr "अक्षम"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:219
 msgid "<Unknown Action>"
 msgstr "<अज्ञात क्रिया>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1028
-#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+#: ../capplets/keybindings/mate-keybinding-properties.c:1026
+#: ../capplets/keybindings/mate-keybinding-properties.c:1624
 msgid "Custom Shortcuts"
 msgstr "पसंदीदा शार्टकट"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+#: ../capplets/keybindings/mate-keybinding-properties.c:1204
 msgid "Error saving the new shortcut"
 msgstr "नए शॉर्टकट सहेजने में त्रुटि"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1282
+#: ../capplets/keybindings/mate-keybinding-properties.c:1280
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "शॉर्टकट \"%s\" प्रयोग नहीं की जा सकती है क्योंकि इस कुंजी के प्रयोग से इसे टाइप करना असंभव होगा.\nकृपया Control, Alt या Shift कुंजी को एक साथ कोशिश करें."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1312
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "यह शार्टकट \"%s\" पहले से ही:\n \"%s\" हेतु प्रयुक्त है"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1321
+#: ../capplets/keybindings/mate-keybinding-properties.c:1319
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "यदि आप \"%s\" को फिर नियत करते हैं, \"%s\" शॉर्टकट को निष्क्रिय किया जाएगा."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+#: ../capplets/keybindings/mate-keybinding-properties.c:1324
 msgid "_Reassign"
 msgstr "फिर नियत करें (_R)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+#: ../capplets/keybindings/mate-keybinding-properties.c:1579
 msgid "Too many custom shortcuts"
 msgstr "कई मनपसंद शॉर्टकट"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1871
+#: ../capplets/keybindings/mate-keybinding-properties.c:1867
 msgid "Action"
 msgstr "कार्य"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1893
+#: ../capplets/keybindings/mate-keybinding-properties.c:1889
 msgid "Shortcut"
 msgstr "शार्टकट"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
-#. 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
@@ -2115,11 +2118,11 @@ msgstr "अज्ञात"
 msgid "Layout"
 msgstr "अभिन्यास"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "विक्रेता"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:239
 msgid "Models"
 msgstr "मॉडल"
 
@@ -2127,20 +2130,20 @@ msgstr "मॉडल"
 msgid "Default"
 msgstr "तयशुदा"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
 msgid "Keyboard"
 msgstr "कुंजीपटल"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "कुंजी पटल की वरीयताएँ नियत करें"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:510
+#: ../capplets/mouse/mate-mouse-properties.c:495
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:500
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE माउस वरीयता"
 
@@ -2325,23 +2328,67 @@ msgstr "मेजबान सूची अनदेखा करें"
 msgid "Ignored Hosts"
 msgstr "अनदेखा किया मेजबान"
 
-#: ../capplets/windows/mate-window-properties.c:393
-msgid "Cannot start the preferences application for your window manager"
-msgstr "आपके विंडो प्रबंधक हेतु वरीयता अनुप्रयोग प्रारंभ नहीं कर सका"
+#: ../capplets/windows/mate-metacity-support.c:40
+msgid "Metacity Preferences"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:661
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
+
+#: ../capplets/windows/mate-metacity-support.c:58
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:216
+msgid "The current window manager is unsupported"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:303
+#: ../libwindow-settings/marco-window-manager.c:379
+msgid "Roll up"
+msgstr "रोल अप"
+
+#: ../capplets/windows/mate-window-properties.c:304
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "अधिकतम"
+
+#: ../capplets/windows/mate-window-properties.c:305
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
+msgstr "क्षैतिज रूप से अधिकतम करें"
+
+#: ../capplets/windows/mate-window-properties.c:306
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
+msgstr "लंबवत रूप से अधिकतम करें"
+
+#: ../capplets/windows/mate-window-properties.c:307
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
+msgstr "छोटा करें"
+
+#: ../capplets/windows/mate-window-properties.c:308
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
+msgstr "कुछ नहीं"
+
+#: ../capplets/windows/mate-window-properties.c:506
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:667
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "H_yper"
 msgstr "हाइपर (_y)"
 
-#: ../capplets/windows/mate-window-properties.c:674
+#: ../capplets/windows/mate-window-properties.c:519
 msgid "S_uper (or \"Windows logo\")"
 msgstr "सुपर (या \"विंडोज़ लोगो\") (_u)"
 
-#: ../capplets/windows/mate-window-properties.c:681
+#: ../capplets/windows/mate-window-properties.c:526
 msgid "_Meta"
 msgstr "मेटा (_M)"
 
@@ -2349,59 +2396,59 @@ msgstr "मेटा (_M)"
 msgid "Window Preferences"
 msgstr "विंडो वरीयताएँ"
 
-#: ../capplets/windows/mate-window-properties.ui.h:2
-msgid "Compositing Manager"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:3
-msgid "Enable software _compositing window manager"
-msgstr ""
-
 #: ../capplets/windows/mate-window-properties.ui.h:4
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Snapping"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
+msgid "Enable side by side tiling"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:7
 msgid "Window Selection"
 msgstr "विन्डो चयन"
 
-#: ../capplets/windows/mate-window-properties.ui.h:6
+#: ../capplets/windows/mate-window-properties.ui.h:8
 msgid "_Select windows when the mouse moves over them"
 msgstr "जब माउस विंडोज़ पर घूमेगा तो उन्हें चुनें (_S)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:7
+#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "_Raise selected windows after an interval"
 msgstr "एक अन्तराल के बाद चुने गए विंडोज़ को ऊपर उठाएँ  (_R)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:8
+#: ../capplets/windows/mate-window-properties.ui.h:10
 msgid "_Interval before raising:"
 msgstr "उठाने से पहले अन्तराल: (_I)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:11
 msgid "seconds"
 msgstr "सेकण्ड्स"
 
-#: ../capplets/windows/mate-window-properties.ui.h:10
+#: ../capplets/windows/mate-window-properties.ui.h:12
 msgid "Titlebar Action"
 msgstr "शीर्षक-पट्टी क्रिया"
 
-#: ../capplets/windows/mate-window-properties.ui.h:11
+#: ../capplets/windows/mate-window-properties.ui.h:13
 msgid "_Double-click titlebar to perform this action:"
 msgstr "इस क्रिया हेतु शीर्षक-पट्टी को दोहरा क्लिक करें: (_D)"
 
-#: ../capplets/windows/mate-window-properties.ui.h:12
+#: ../capplets/windows/mate-window-properties.ui.h:14
 msgid "Movement Key"
 msgstr "गतिविधि कुंजी"
 
-#: ../capplets/windows/mate-window-properties.ui.h:13
+#: ../capplets/windows/mate-window-properties.ui.h:15
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "किसी विंडो को खिसकाने हेतु इस कुंजी को दबाए रखें फिर विंडो पकड़ें"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "विंडोज़"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
 msgid "Set your window properties"
 msgstr "अपना विंडो गुण सेट करें"
 
@@ -2409,30 +2456,6 @@ msgstr "अपना विंडो गुण सेट करें"
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "विंडो प्रबंधक \"%s\" ने कॉन्फ़िगरेशन उपकरण रजिस्टर नहीं किया है\n"
-
-#: ../libwindow-settings/marco-window-manager.c:379
-msgid "Roll up"
-msgstr "रोल अप"
-
-#: ../libwindow-settings/marco-window-manager.c:380
-msgid "Maximize"
-msgstr "अधिकतम"
-
-#: ../libwindow-settings/marco-window-manager.c:381
-msgid "Maximize Horizontally"
-msgstr "क्षैतिज रूप से अधिकतम करें"
-
-#: ../libwindow-settings/marco-window-manager.c:382
-msgid "Maximize Vertically"
-msgstr "लंबवत रूप से अधिकतम करें"
-
-#: ../libwindow-settings/marco-window-manager.c:383
-msgid "Minimize"
-msgstr "छोटा करें"
-
-#: ../libwindow-settings/marco-window-manager.c:384
-msgid "None"
-msgstr "कुछ नहीं"
 
 #: ../shell/control-center.c:61
 #, c-format
@@ -2464,76 +2487,76 @@ msgstr "नियंत्रण केंद्र"
 msgid "The MATE configuration tool"
 msgstr "गनोम कॉन्फ़िगरेशन उपकरण"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:195
 msgid "_Postpone Break"
 msgstr "ब्रेक स्थगित करें (_P)"
 
-#: ../typing-break/drw-break-window.c:246
+#: ../typing-break/drw-break-window.c:256
 msgid "Take a break!"
 msgstr "एक ब्रेक लें!"
 
-#: ../typing-break/drwright.c:136
+#: ../typing-break/drwright.c:142
 msgid "_Take a Break"
 msgstr "एक ब्रेक लें (_T)"
 
-#: ../typing-break/drwright.c:507
+#: ../typing-break/drwright.c:513
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr ""
 
-#: ../typing-break/drwright.c:509
+#: ../typing-break/drwright.c:515
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "अगले ब्रेक तक %d मिनट"
 msgstr[1] "अगले ब्रेक तक %d मिनट"
 
-#: ../typing-break/drwright.c:515
+#: ../typing-break/drwright.c:521
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr ""
 
-#: ../typing-break/drwright.c:517
+#: ../typing-break/drwright.c:523
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "अगले ब्रेक के लिए एक मिनट से भी कम समय"
 
-#: ../typing-break/drwright.c:607
+#: ../typing-break/drwright.c:613
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "टाइपिंग ब्रेक गुण संवाद लाने में निम्न त्रुटि के साथ असफल: %s"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:630
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "रिचर्ड हुल्ट द्वारा लिखित <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:625
+#: ../typing-break/drwright.c:631
 msgid "Eye candy added by Anders Carlsson"
 msgstr "आई कैण्डी जोड़ा गया है ऑन्देर्स कार्लसन द्वारा"
 
-#: ../typing-break/drwright.c:634
+#: ../typing-break/drwright.c:640
 msgid "A computer break reminder."
 msgstr "कम्प्यूटर ब्रेक स्मरण."
 
-#: ../typing-break/drwright.c:636
+#: ../typing-break/drwright.c:642
 msgid "translator-credits"
 msgstr "रविशंकर श्रीवास्तव (raviratlami@yahoo.com)\nराजेश रंजन (rajeshkajha@yahoo.com)"
 
-#: ../typing-break/main.c:63
+#: ../typing-break/main.c:67
 msgid "Enable debugging code"
 msgstr "डिबगिंग कोड सक्रिय करें"
 
-#: ../typing-break/main.c:65
+#: ../typing-break/main.c:69
 msgid "Don't check whether the notification area exists"
 msgstr "मत जाँच कि क्या अधिसूचना क्षेत्र मौजूद है"
 
-#: ../typing-break/main.c:91
+#: ../typing-break/main.c:95
 msgid "Typing Monitor"
 msgstr "टाइपिंग मॉनीटर"
 
-#: ../typing-break/main.c:108
+#: ../typing-break/main.c:112
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -2541,48 +2564,48 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "टाइपिंग निरीक्षक सूचना दिखाने के लिये सूचना क्षेत्र का प्रयोग करती है. आप अपने पटल पर सूचना क्षेत्र को नहीं रखता प्रतीत होते हैं. आप अपने पटल पर दाहिने क्लिक करके और 'पटल में जोड़ें' चुनकर, सूचना क्षेत्र और जोड़ें पर क्लिक करके."
 
-#: ../font-viewer/font-view.c:299
+#: ../font-viewer/font-view.c:303
 msgid "Name:"
 msgstr "नाम:"
 
-#: ../font-viewer/font-view.c:302
+#: ../font-viewer/font-view.c:306
 msgid "Style:"
 msgstr "शैली:"
 
-#: ../font-viewer/font-view.c:315
+#: ../font-viewer/font-view.c:319
 msgid "Type:"
 msgstr "प्रकार:"
 
-#: ../font-viewer/font-view.c:319
+#: ../font-viewer/font-view.c:323
 msgid "Size:"
 msgstr "आकार:"
 
-#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:380
 msgid "Version:"
 msgstr "संस्करण:"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
+#: ../font-viewer/font-view.c:371 ../font-viewer/font-view.c:382
 msgid "Copyright:"
 msgstr "सर्वाधिकार:"
 
-#: ../font-viewer/font-view.c:371
+#: ../font-viewer/font-view.c:375
 msgid "Description:"
 msgstr "विवरण:"
 
-#: ../font-viewer/font-view.c:451
+#: ../font-viewer/font-view.c:457
 msgid "Installed"
 msgstr "संस्थापित"
 
-#: ../font-viewer/font-view.c:454
+#: ../font-viewer/font-view.c:460
 msgid "Install Failed"
 msgstr "संस्थापन विफल"
 
-#: ../font-viewer/font-view.c:525
+#: ../font-viewer/font-view.c:533
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "उपयोग: %s फ़ॉन्ट-फ़ाइल\n"
 
-#: ../font-viewer/font-view.c:596
+#: ../font-viewer/font-view.c:606
 msgid "I_nstall Font"
 msgstr "फ़ॉन्ट संस्थापित करें (_n)"
 
@@ -2614,25 +2637,25 @@ msgstr "आकार"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FONT-FILE OUTPUT-FILE"
 
-#: ../font-viewer/font-thumbnailer.c:268
+#: ../font-viewer/font-thumbnailer.c:272
 #, c-format
 msgid "Error parsing arguments: %s\n"
 msgstr "त्रुटि विश्लेषण में त्रुटि: %s\n"
 
-#: ../libslab/app-shell.c:754
+#: ../libslab/app-shell.c:761
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "आपका \"%s\" फ़िल्टर किसी मद में मेल नहीं खाती है."
 
-#: ../libslab/app-shell.c:756
+#: ../libslab/app-shell.c:763
 msgid "No matches found."
 msgstr "कोई जोड़ नहीं मिला."
 
-#: ../libslab/app-shell.c:857
+#: ../libslab/app-shell.c:864
 msgid "New Applications"
 msgstr ""
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:919
 msgid "Other"
 msgstr "अन्य"
 
@@ -2646,11 +2669,11 @@ msgstr "आरंभ %s"
 msgid "Help"
 msgstr "मदद"
 
-#: ../libslab/application-tile.c:629
+#: ../libslab/application-tile.c:629 ../libslab/document-tile.c:735
 msgid "Remove from Favorites"
 msgstr "मनपसंद से हटाएं"
 
-#: ../libslab/application-tile.c:631
+#: ../libslab/application-tile.c:631 ../libslab/document-tile.c:737
 msgid "Add to Favorites"
 msgstr "मनपसंद में जोड़ें"
 
@@ -2694,6 +2717,92 @@ msgstr "संजाल सर्वर"
 #: ../libslab/bookmark-agent.c:1204
 msgid "Search"
 msgstr "ढूंढें"
+
+#. make open with default action
+#: ../libslab/directory-tile.c:176
+#, c-format
+msgid "<b>Open</b>"
+msgstr ""
+
+#. make rename action
+#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
+msgid "Rename..."
+msgstr ""
+
+#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
+#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
+msgid "Send To..."
+msgstr ""
+
+#. make move to trash action
+#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
+msgid "Move to Trash"
+msgstr ""
+
+#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
+#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
+msgid "Delete"
+msgstr ""
+
+#: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr ""
+
+#: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
+msgid "If you delete an item, it is permanently lost."
+msgstr ""
+
+#: ../libslab/document-tile.c:200
+#, c-format
+msgid "Open with \"%s\""
+msgstr ""
+
+#: ../libslab/document-tile.c:214
+msgid "Open with Default Application"
+msgstr ""
+
+#: ../libslab/document-tile.c:225
+msgid "Open in File Manager"
+msgstr ""
+
+#. clean item from menu
+#: ../libslab/document-tile.c:309
+msgid "Remove from recent menu"
+msgstr ""
+
+#. clean all the items from menu
+#: ../libslab/document-tile.c:317
+msgid "Purge all the recent items"
+msgstr ""
+
+#: ../libslab/document-tile.c:631
+msgid "?"
+msgstr ""
+
+#: ../libslab/document-tile.c:638
+msgid "%l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:646
+msgid "Today %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:656
+msgid "Yesterday %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:668
+msgid "%a %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:676
+msgid "%b %d %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:678
+msgid "%b %d %Y"
+msgstr ""
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

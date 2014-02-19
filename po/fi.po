@@ -6,11 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/\n"
-"POT-Creation-Date: 2013-02-11 11:51+0100\n"
-"PO-Revision-Date: 2013-02-11 10:51+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-18 18:41+0100\n"
+"PO-Revision-Date: 2014-02-18 17:43+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/MATE/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: ../org.mate.control-center.gschema.xml.in.in.h:1
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
-"Applications;default-applications.desktop' ]"
+"Applications;mate-default-applications-properties.desktop' ]"
 msgstr ""
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
@@ -151,25 +151,25 @@ msgstr "Varoitusikkunassa näytettävät painikkeet"
 msgid "Show more _details"
 msgstr "Näytä _lisää tietoja"
 
-#: ../capplets/about-me/mate-about-me.c:282
+#: ../capplets/about-me/mate-about-me.c:288
 msgid "Select Image"
 msgstr "Valitse kuva"
 
-#: ../capplets/about-me/mate-about-me.c:284
+#: ../capplets/about-me/mate-about-me.c:290
 msgid "No Image"
 msgstr "Ei kuvaa"
 
-#: ../capplets/about-me/mate-about-me.c:312
-#: ../capplets/appearance/appearance-desktop.c:646
+#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "Kuvat"
 
-#: ../capplets/about-me/mate-about-me.c:316
+#: ../capplets/about-me/mate-about-me.c:322
 #: ../capplets/appearance/theme-installer.c:774
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../capplets/about-me/mate-about-me.c:467
+#: ../capplets/about-me/mate-about-me.c:473
 #, c-format
 msgid "About %s"
 msgstr "%s tiedot"
@@ -364,7 +364,6 @@ msgstr "Tunnistauduttu:"
 #. This is a re-auth, and it failed.
 #. * The password must have been changed in the meantime!
 #. * Ask the user to re-authenticate
-#. 
 #. Update status message and auth state
 #. Authentication failure
 #: ../capplets/about-me/mate-about-me-password.c:475
@@ -489,7 +488,7 @@ msgid "Assistive Technologies Preferences"
 msgstr "Esteettömyystekniikoiden asetukset"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "Esteettömyystekniikat"
 
@@ -543,44 +542,44 @@ msgstr "Siirry esteetön kirjautuminen -ikkunaan"
 msgid "Close and _Log Out"
 msgstr "Sulje ja _kirjaudu ulos"
 
-#: ../capplets/accessibility/at-properties/at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Valitse sisäänkirjauduttaessa käyttöön otettavat esteettömyysominaisuudet"
 
-#: ../capplets/appearance/appearance-desktop.c:615
+#: ../capplets/appearance/appearance-desktop.c:619
 msgid "Add Wallpaper"
 msgstr "Lisää tausta"
 
-#: ../capplets/appearance/appearance-desktop.c:650
+#: ../capplets/appearance/appearance-desktop.c:654
 msgid "All files"
 msgstr "Kaikki tiedostot"
 
-#: ../capplets/appearance/appearance-main.c:57
+#: ../capplets/appearance/appearance-main.c:59
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Käyttöliittymätiedostoa ei voitu ladata: %s"
 
-#: ../capplets/appearance/appearance-main.c:153
+#: ../capplets/appearance/appearance-main.c:155
 msgid "Specify the filename of a theme to install"
 msgstr "Anna asennettavan teeman sisältävän tiedoston nimi"
 
-#: ../capplets/appearance/appearance-main.c:154
+#: ../capplets/appearance/appearance-main.c:156
 msgid "filename"
 msgstr "tiedostonimi"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:161
+#: ../capplets/appearance/appearance-main.c:163
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Annan näytettävän sivun nimi (teema|tausta|kirjasimet|käyttöliittymä)"
 
-#: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:525
-#: ../capplets/mouse/mate-mouse-properties.c:511
+#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/default-applications/mate-da-capplet.c:575
+#: ../capplets/mouse/mate-mouse-properties.c:496
 msgid "page"
 msgstr "sivu"
 
-#: ../capplets/appearance/appearance-main.c:169
+#: ../capplets/appearance/appearance-main.c:171
 msgid "[WALLPAPER...]"
 msgstr "[TAUSTAKUVA…]"
 
@@ -596,7 +595,7 @@ msgid "Install"
 msgstr "Asenna"
 
 #: ../capplets/appearance/appearance-style.c:255
-#: ../capplets/common/mate-theme-info.c:1723
+#: ../capplets/common/mate-theme-info.c:1724
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
@@ -986,26 +985,30 @@ msgstr "Maten teemapaketti"
 msgid "No Desktop Background"
 msgstr "Ei työpöydän taustaa"
 
-#: ../capplets/appearance/mate-wp-item.c:289
+#: ../capplets/appearance/mate-wp-item.c:288
+msgid "unknown"
+msgstr ""
+
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "Diaesitys"
 
-#: ../capplets/appearance/mate-wp-item.c:291
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "Kuva"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "useita kokoja"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:300
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s × %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:302
-#: ../capplets/appearance/mate-wp-item.c:304
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "kuvapiste"
@@ -1014,28 +1017,30 @@ msgstr[1] "kuvapistettä"
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:312
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s, %s\nKansio: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
 #. * Folder: /path/to/file
-#. 
-#: ../capplets/appearance/mate-wp-item.c:324
+#. * Artist: wallpaper author
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "%s\n"
-"Folder: %s"
-msgstr "<b>%s</b>\n%s\nKansio: %s"
+"Folder: %s\n"
+"Artist: %s"
+msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:328
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "Kuva puuttuu"
 
@@ -1133,7 +1138,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Teema on jo olemassa. Haluatko korvata sen?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:451
+#: ../capplets/common/file-transfer-dialog.c:450
 msgid "_Overwrite"
 msgstr "_Kirjoita yli"
 
@@ -1228,16 +1233,16 @@ msgstr "URI:eja yhteensä"
 msgid "Total number of URIs"
 msgstr "URI:ien määrä yhteensä"
 
-#: ../capplets/common/file-transfer-dialog.c:445
+#: ../capplets/common/file-transfer-dialog.c:444
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Tiedosto ”%s” on jo olemassa. Haluatko korvata sen?"
 
-#: ../capplets/common/file-transfer-dialog.c:448
+#: ../capplets/common/file-transfer-dialog.c:447
 msgid "_Skip"
 msgstr "O_hita"
 
-#: ../capplets/common/file-transfer-dialog.c:449
+#: ../capplets/common/file-transfer-dialog.c:448
 msgid "Overwrite _All"
 msgstr "_Kirjoita kaikkien yli"
 
@@ -1290,29 +1295,29 @@ msgid ""
 " not installed."
 msgstr "Tämä teema ei näytä siltä miltä sen pitäisi, koska vaadittua kuvaketeemaa ”%s” ei ole asennettu."
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "Oletussovellukset"
 
-#: ../capplets/default-applications/default-applications.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
 msgid "Select your default applications"
 msgstr "Valitse oletusohjelmasi"
 
-#: ../capplets/default-applications/mate-da-capplet.c:413
+#: ../capplets/default-applications/mate-da-capplet.c:448
 msgid "Could not load the main interface"
 msgstr "Käyttöliittymän pääikkunaa ei voi ladata"
 
-#: ../capplets/default-applications/mate-da-capplet.c:414
+#: ../capplets/default-applications/mate-da-capplet.c:449
 msgid "Please make sure that the applet is properly installed"
 msgstr "Varmista, että sovelma on oikein asennettu"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:524
+#: ../capplets/default-applications/mate-da-capplet.c:574
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Annan näytettävän sivun nimi (internet|multimedia|system|ally)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:530
+#: ../capplets/default-applications/mate-da-capplet.c:580
 msgid "- MATE Default Applications"
 msgstr "- Maten oletussovellukset"
 
@@ -1456,7 +1461,7 @@ msgid "Off"
 msgstr "Pois päältä"
 
 #: ../capplets/display/display-capplet.ui.h:10
-#: ../capplets/display/xrandr-capplet.c:515
+#: ../capplets/display/xrandr-capplet.c:513
 msgid "Monitor"
 msgstr "Näyttö"
 
@@ -1473,18 +1478,18 @@ msgid "Make Default"
 msgstr ""
 
 #: ../capplets/display/display-capplet.ui.h:14
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:348
 msgid "Normal"
 msgstr "Tavallinen"
 
 #: ../capplets/display/display-capplet.ui.h:15
-#: ../capplets/display/xrandr-capplet.c:312
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Left"
 msgstr "Vasen"
 
 #: ../capplets/display/display-capplet.ui.h:16
-#: ../capplets/display/xrandr-capplet.c:313
+#: ../capplets/display/xrandr-capplet.c:311
 msgid "Right"
 msgstr "Oikea"
 
@@ -1492,11 +1497,11 @@ msgstr "Oikea"
 msgid "Upside-down"
 msgstr "Ylösalaisin"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Monitors"
 msgstr "Näytöt"
 
-#: ../capplets/display/display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
 msgid "Change resolution and position of monitors"
 msgstr "Muuta resoluutiota ja näyttöjen sijaintia"
 
@@ -1590,11 +1595,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:312
 msgid "Upside Down"
 msgstr "Ylösalaisin"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:354
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1603,139 +1608,137 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#. 
-#: ../capplets/display/xrandr-capplet.c:504
-#: ../capplets/display/xrandr-capplet.c:1650
+#: ../capplets/display/xrandr-capplet.c:502
+#: ../capplets/display/xrandr-capplet.c:1652
 msgid "Mirror Screens"
 msgstr "Peilaa näytöt"
 
-#: ../capplets/display/xrandr-capplet.c:506
+#: ../capplets/display/xrandr-capplet.c:504
 #, c-format
 msgid "Monitor: %s"
 msgstr "Näyttö: %s"
 
-#: ../capplets/display/xrandr-capplet.c:584
+#: ../capplets/display/xrandr-capplet.c:582
 #, c-format
 msgid "%d x %d"
 msgstr "%d × %d"
 
-#: ../capplets/display/xrandr-capplet.c:1506
+#: ../capplets/display/xrandr-capplet.c:1508
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "Valitse näyttö sen ominaisuuksien muuttamiseksi; raahaa sitä hiirellä muuttaksesi sen sijaintia."
 
-#: ../capplets/display/xrandr-capplet.c:2071
+#: ../capplets/display/xrandr-capplet.c:2073
 msgid "Could not save the monitor configuration"
 msgstr "Näyttöasetuksia ei voitu tallentaa"
 
-#: ../capplets/display/xrandr-capplet.c:2093
+#: ../capplets/display/xrandr-capplet.c:2095
 msgid "Could not get session bus while applying display configuration"
 msgstr "Istuntoväylään ei päästy käsiksi toteutettaessa näyttöasetuksia"
 
-#: ../capplets/display/xrandr-capplet.c:2135
+#: ../capplets/display/xrandr-capplet.c:2137
 msgid "Could not detect displays"
 msgstr "Näyttöjä ei havaittu"
 
-#: ../capplets/display/xrandr-capplet.c:2328
+#: ../capplets/display/xrandr-capplet.c:2334
 msgid "The monitor configuration has been saved"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2330
+#: ../capplets/display/xrandr-capplet.c:2336
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2339
+#: ../capplets/display/xrandr-capplet.c:2345
 msgid "Could not set the default configuration for monitors"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2423
+#: ../capplets/display/xrandr-capplet.c:2429
 msgid "Could not get screen information"
 msgstr "Näytön tietoja ei saatu"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: ../capplets/keybindings/eggcellrendererkeys.c:24
 msgid "New shortcut..."
 msgstr "Uusi pikanäppäin…"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: ../capplets/keybindings/eggcellrendererkeys.c:160
+#: ../capplets/keybindings/eggcellrendererkeys.c:161
 msgid "Accelerator key"
 msgstr "Pikanäppäin"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: ../capplets/keybindings/eggcellrendererkeys.c:170
+#: ../capplets/keybindings/eggcellrendererkeys.c:171
 msgid "Accelerator modifiers"
 msgstr "Pikanäppäimen muunnosnäppäimet"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: ../capplets/keybindings/eggcellrendererkeys.c:179
+#: ../capplets/keybindings/eggcellrendererkeys.c:180
 msgid "Accelerator keycode"
 msgstr "Pikanäppäinkoodi"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: ../capplets/keybindings/eggcellrendererkeys.c:190
 msgid "Accel Mode"
 msgstr "Pikanäppäintila"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: ../capplets/keybindings/eggcellrendererkeys.c:191
 msgid "The type of accelerator."
 msgstr "Pikanäppäimen tyyppi."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../typing-break/drwright.c:498
+#: ../capplets/keybindings/eggcellrendererkeys.c:234
+#: ../capplets/keybindings/mate-keybinding-properties.c:137
+#: ../typing-break/drwright.c:504
 msgid "Disabled"
 msgstr "Ei käytössä"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:219
 msgid "<Unknown Action>"
 msgstr "<Tuntematon toiminto>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1028
-#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+#: ../capplets/keybindings/mate-keybinding-properties.c:1026
+#: ../capplets/keybindings/mate-keybinding-properties.c:1624
 msgid "Custom Shortcuts"
 msgstr "Omat pikanäppäimet"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+#: ../capplets/keybindings/mate-keybinding-properties.c:1204
 msgid "Error saving the new shortcut"
 msgstr "Virhe tallennettaessa uutta pikanäppäintä"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1282
+#: ../capplets/keybindings/mate-keybinding-properties.c:1280
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "Pikanäppäintä ”%s” ei voi käyttää, koska tällöin kyseistä näppäintä ei enää voi käyttää kirjoittamiseen.\nKokeile yhdistämällä näppäin esimerkiksi Control-, Alt- tai vaihtonäppäimeen."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1312
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Pikanäppäin ”%s” on jo kytketty toimintoon\n”%s”"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1321
+#: ../capplets/keybindings/mate-keybinding-properties.c:1319
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Jos siirrät pikanäppäimen toimintoon \"%s\", poistetaan pikanäppäin \"%s\" käytöstä."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+#: ../capplets/keybindings/mate-keybinding-properties.c:1324
 msgid "_Reassign"
 msgstr "_Siirrä"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+#: ../capplets/keybindings/mate-keybinding-properties.c:1579
 msgid "Too many custom shortcuts"
 msgstr "Liian monta omaa pikanäppäintä"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1871
+#: ../capplets/keybindings/mate-keybinding-properties.c:1867
 msgid "Action"
 msgstr "Toiminto"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1893
+#: ../capplets/keybindings/mate-keybinding-properties.c:1889
 msgid "Shortcut"
 msgstr "Pikanäppäin"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
-#. 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
@@ -2112,11 +2115,11 @@ msgstr "Tuntematon"
 msgid "Layout"
 msgstr "Asettelu"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:168
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "Valmistajat"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:239
 msgid "Models"
 msgstr "Mallit"
 
@@ -2124,20 +2127,20 @@ msgstr "Mallit"
 msgid "Default"
 msgstr "Oletus"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
-#: ../capplets/keyboard/keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "Muuta näppäimistöasetuksia"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:510
+#: ../capplets/mouse/mate-mouse-properties.c:495
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:500
 msgid "- MATE Mouse Preferences"
 msgstr "- Maten hiiriasetukset"
 
@@ -2322,23 +2325,67 @@ msgstr "Ohitettavien tietokoneiden luettelo"
 msgid "Ignored Hosts"
 msgstr "Ohitetut tietokoneet"
 
-#: ../capplets/windows/mate-window-properties.c:393
-msgid "Cannot start the preferences application for your window manager"
-msgstr "Ikkunointiohjelmasi asetusohjelmaa ei voi käynnistää"
+#: ../capplets/windows/mate-metacity-support.c:40
+msgid "Metacity Preferences"
+msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:661
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.ui.h:2
+msgid "Compositing Manager"
+msgstr ""
+
+#: ../capplets/windows/mate-metacity-support.c:58
+#: ../capplets/windows/mate-window-properties.ui.h:3
+msgid "Enable software _compositing window manager"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:216
+msgid "The current window manager is unsupported"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:303
+#: ../libwindow-settings/marco-window-manager.c:379
+msgid "Roll up"
+msgstr "Rullaa"
+
+#: ../capplets/windows/mate-window-properties.c:304
+#: ../libwindow-settings/marco-window-manager.c:380
+msgid "Maximize"
+msgstr "Suurenna"
+
+#: ../capplets/windows/mate-window-properties.c:305
+#: ../libwindow-settings/marco-window-manager.c:381
+msgid "Maximize Horizontally"
+msgstr "Suurenna vaakasuunnassa"
+
+#: ../capplets/windows/mate-window-properties.c:306
+#: ../libwindow-settings/marco-window-manager.c:382
+msgid "Maximize Vertically"
+msgstr "Suurenna pystysuunnassa"
+
+#: ../capplets/windows/mate-window-properties.c:307
+#: ../libwindow-settings/marco-window-manager.c:383
+msgid "Minimize"
+msgstr "Pienennä"
+
+#: ../capplets/windows/mate-window-properties.c:308
+#: ../libwindow-settings/marco-window-manager.c:384
+msgid "None"
+msgstr "Ei mikään"
+
+#: ../capplets/windows/mate-window-properties.c:506
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:667
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:674
+#: ../capplets/windows/mate-window-properties.c:519
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (tai ”Windows-logo”)"
 
-#: ../capplets/windows/mate-window-properties.c:681
+#: ../capplets/windows/mate-window-properties.c:526
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2346,59 +2393,59 @@ msgstr "_Meta"
 msgid "Window Preferences"
 msgstr "Ikkuna-asetukset"
 
-#: ../capplets/windows/mate-window-properties.ui.h:2
-msgid "Compositing Manager"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:3
-msgid "Enable software _compositing window manager"
-msgstr ""
-
 #: ../capplets/windows/mate-window-properties.ui.h:4
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #: ../capplets/windows/mate-window-properties.ui.h:5
+msgid "Window Snapping"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:6
+msgid "Enable side by side tiling"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.ui.h:7
 msgid "Window Selection"
 msgstr "Ikkunoiden valinta"
 
-#: ../capplets/windows/mate-window-properties.ui.h:6
+#: ../capplets/windows/mate-window-properties.ui.h:8
 msgid "_Select windows when the mouse moves over them"
 msgstr "V_alitse ikkunat, kun hiiri liikkuu niiden päälle"
 
-#: ../capplets/windows/mate-window-properties.ui.h:7
+#: ../capplets/windows/mate-window-properties.ui.h:9
 msgid "_Raise selected windows after an interval"
 msgstr "_Nosta valitut ikkunat tietyn ajan kuluttua"
 
-#: ../capplets/windows/mate-window-properties.ui.h:8
+#: ../capplets/windows/mate-window-properties.ui.h:10
 msgid "_Interval before raising:"
 msgstr "_Viive ennen nostoa:"
 
-#: ../capplets/windows/mate-window-properties.ui.h:9
+#: ../capplets/windows/mate-window-properties.ui.h:11
 msgid "seconds"
 msgstr "sekuntia"
 
-#: ../capplets/windows/mate-window-properties.ui.h:10
+#: ../capplets/windows/mate-window-properties.ui.h:12
 msgid "Titlebar Action"
 msgstr "Otsikkopalkin toiminta"
 
-#: ../capplets/windows/mate-window-properties.ui.h:11
+#: ../capplets/windows/mate-window-properties.ui.h:13
 msgid "_Double-click titlebar to perform this action:"
 msgstr "Ikkunan _otsikkoa kaksoisnapsauttamalla käynnistyy tämä komento:"
 
-#: ../capplets/windows/mate-window-properties.ui.h:12
+#: ../capplets/windows/mate-window-properties.ui.h:14
 msgid "Movement Key"
 msgstr "Liikuttamisnäppäin"
 
-#: ../capplets/windows/mate-window-properties.ui.h:13
+#: ../capplets/windows/mate-window-properties.ui.h:15
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Siirrä ikkunoita hiirellä tarttumalla painettaessa näppäintä:"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
 msgstr "Ikkunat"
 
-#: ../capplets/windows/window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
 msgid "Set your window properties"
 msgstr "Muuta ikkunaominaisuuksia"
 
@@ -2406,30 +2453,6 @@ msgstr "Muuta ikkunaominaisuuksia"
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Ikkunointiohjelma ”%s” ei ole ilmoittanut hallintatyökalua\n"
-
-#: ../libwindow-settings/marco-window-manager.c:379
-msgid "Roll up"
-msgstr "Rullaa"
-
-#: ../libwindow-settings/marco-window-manager.c:380
-msgid "Maximize"
-msgstr "Suurenna"
-
-#: ../libwindow-settings/marco-window-manager.c:381
-msgid "Maximize Horizontally"
-msgstr "Suurenna vaakasuunnassa"
-
-#: ../libwindow-settings/marco-window-manager.c:382
-msgid "Maximize Vertically"
-msgstr "Suurenna pystysuunnassa"
-
-#: ../libwindow-settings/marco-window-manager.c:383
-msgid "Minimize"
-msgstr "Pienennä"
-
-#: ../libwindow-settings/marco-window-manager.c:384
-msgid "None"
-msgstr "Ei mikään"
 
 #: ../shell/control-center.c:61
 #, c-format
@@ -2461,76 +2484,76 @@ msgstr "Hallintakeskus"
 msgid "The MATE configuration tool"
 msgstr "Maten hallintatyökalu"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:195
 msgid "_Postpone Break"
 msgstr "_Lykkää taukoa"
 
-#: ../typing-break/drw-break-window.c:246
+#: ../typing-break/drw-break-window.c:256
 msgid "Take a break!"
 msgstr "Pidäpä tauko!"
 
-#: ../typing-break/drwright.c:136
+#: ../typing-break/drwright.c:142
 msgid "_Take a Break"
 msgstr "_Pidä tauko"
 
-#: ../typing-break/drwright.c:507
+#: ../typing-break/drwright.c:513
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr ""
 
-#: ../typing-break/drwright.c:509
+#: ../typing-break/drwright.c:515
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minuutti seuraavaan taukoon"
 msgstr[1] "%d minuuttia seuraavaan taukoon"
 
-#: ../typing-break/drwright.c:515
+#: ../typing-break/drwright.c:521
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr ""
 
-#: ../typing-break/drwright.c:517
+#: ../typing-break/drwright.c:523
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Alle yksi minuutti seuraavaan taukoon"
 
-#: ../typing-break/drwright.c:607
+#: ../typing-break/drwright.c:613
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "Kirjoitustaukojen ominaisuusikkunan avaaminen ei onnistunut, sillä seuraava virhe tapahtui: %s"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:630
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Kirjoittanut Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:625
+#: ../typing-break/drwright.c:631
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Anders Carlsson lisäsi silmänruokaa"
 
-#: ../typing-break/drwright.c:634
+#: ../typing-break/drwright.c:640
 msgid "A computer break reminder."
 msgstr "Tietokoneen käyttötauoista muistuttava ohjelma."
 
-#: ../typing-break/drwright.c:636
+#: ../typing-break/drwright.c:642
 msgid "translator-credits"
 msgstr "Ilkka Tuohela, 2005-2008\nTimo Jyrinki, 2008\nPauli Virtanen 2000-2004\nMikko Rauhala -2000\n\nhttp://www.mate.fi/\n\nLaunchpad Contributions:\n  Birunthan Mohanathas https://launchpad.net/~biru\n  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n  Jussi Aalto https://launchpad.net/~jtaalto\n  Mikko Nissinen https://launchpad.net/~mikko\n  Timo Jyrinki https://launchpad.net/~timo-jyrinki\n  Tommi Vainikainen https://launchpad.net/~thv\n  maxpagels https://launchpad.net/~max-pagels1\n  papukaija https://launchpad.net/~papukaija"
 
-#: ../typing-break/main.c:63
+#: ../typing-break/main.c:67
 msgid "Enable debugging code"
 msgstr "Ota vianetsintäkoodi käyttöön"
 
-#: ../typing-break/main.c:65
+#: ../typing-break/main.c:69
 msgid "Don't check whether the notification area exists"
 msgstr "Älä tarkista, onko ilmoitusalue olemassa"
 
-#: ../typing-break/main.c:91
+#: ../typing-break/main.c:95
 msgid "Typing Monitor"
 msgstr "Kirjoituksen tarkkailija"
 
-#: ../typing-break/main.c:108
+#: ../typing-break/main.c:112
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -2538,48 +2561,48 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Kirjoituksen tarkkailimen viestit näkyvät ilmoitusalueessa, jota tällä hetkellä ei ole paneelissa. Voit lisätä ilmoitusalueen paneeliin napsauttamalla paneelia hiiren oikealla painikkeella ja valitsemalla ”Lisää paneeliin” ja valitsemalla ”Ilmoitusalue”."
 
-#: ../font-viewer/font-view.c:299
+#: ../font-viewer/font-view.c:303
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ../font-viewer/font-view.c:302
+#: ../font-viewer/font-view.c:306
 msgid "Style:"
 msgstr "Tyyli:"
 
-#: ../font-viewer/font-view.c:315
+#: ../font-viewer/font-view.c:319
 msgid "Type:"
 msgstr "Tyyppi:"
 
-#: ../font-viewer/font-view.c:319
+#: ../font-viewer/font-view.c:323
 msgid "Size:"
 msgstr "Koko:"
 
-#: ../font-viewer/font-view.c:363 ../font-viewer/font-view.c:376
+#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:380
 msgid "Version:"
 msgstr "Versio:"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:378
+#: ../font-viewer/font-view.c:371 ../font-viewer/font-view.c:382
 msgid "Copyright:"
 msgstr "Tekijänoikeus:"
 
-#: ../font-viewer/font-view.c:371
+#: ../font-viewer/font-view.c:375
 msgid "Description:"
 msgstr "Kuvaus:"
 
-#: ../font-viewer/font-view.c:451
+#: ../font-viewer/font-view.c:457
 msgid "Installed"
 msgstr "Asennettu"
 
-#: ../font-viewer/font-view.c:454
+#: ../font-viewer/font-view.c:460
 msgid "Install Failed"
 msgstr "Asennus epäonnistui"
 
-#: ../font-viewer/font-view.c:525
+#: ../font-viewer/font-view.c:533
 #, c-format
 msgid "usage: %s fontfile\n"
 msgstr "käyttö: %s kirjasinlajitiedosto\n"
 
-#: ../font-viewer/font-view.c:596
+#: ../font-viewer/font-view.c:606
 msgid "I_nstall Font"
 msgstr "Ase_nna kirjasin"
 
@@ -2611,25 +2634,25 @@ msgstr "KOKO"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "KIRJASINTIEDOSTO TULOSTIEDOSTO"
 
-#: ../font-viewer/font-thumbnailer.c:268
+#: ../font-viewer/font-thumbnailer.c:272
 #, c-format
 msgid "Error parsing arguments: %s\n"
 msgstr "Virhe tulkittaessa valitsimia: %s\n"
 
-#: ../libslab/app-shell.c:754
+#: ../libslab/app-shell.c:761
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Suodattimesi ”%s” ei täsmää yhteenkään kohteeseen."
 
-#: ../libslab/app-shell.c:756
+#: ../libslab/app-shell.c:763
 msgid "No matches found."
 msgstr "Ei osumia."
 
-#: ../libslab/app-shell.c:857
+#: ../libslab/app-shell.c:864
 msgid "New Applications"
 msgstr ""
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:919
 msgid "Other"
 msgstr "Muut"
 
@@ -2643,11 +2666,11 @@ msgstr "Käynnistä %s"
 msgid "Help"
 msgstr "Ohje"
 
-#: ../libslab/application-tile.c:629
+#: ../libslab/application-tile.c:629 ../libslab/document-tile.c:735
 msgid "Remove from Favorites"
 msgstr "Poista suosikeista"
 
-#: ../libslab/application-tile.c:631
+#: ../libslab/application-tile.c:631 ../libslab/document-tile.c:737
 msgid "Add to Favorites"
 msgstr "Lisää suosikkeihin"
 
@@ -2691,6 +2714,92 @@ msgstr "Verkkopalvelimet"
 #: ../libslab/bookmark-agent.c:1204
 msgid "Search"
 msgstr "Etsi"
+
+#. make open with default action
+#: ../libslab/directory-tile.c:176
+#, c-format
+msgid "<b>Open</b>"
+msgstr ""
+
+#. make rename action
+#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
+msgid "Rename..."
+msgstr ""
+
+#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
+#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
+msgid "Send To..."
+msgstr ""
+
+#. make move to trash action
+#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
+msgid "Move to Trash"
+msgstr ""
+
+#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
+#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
+msgid "Delete"
+msgstr ""
+
+#: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr ""
+
+#: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
+msgid "If you delete an item, it is permanently lost."
+msgstr ""
+
+#: ../libslab/document-tile.c:200
+#, c-format
+msgid "Open with \"%s\""
+msgstr ""
+
+#: ../libslab/document-tile.c:214
+msgid "Open with Default Application"
+msgstr ""
+
+#: ../libslab/document-tile.c:225
+msgid "Open in File Manager"
+msgstr ""
+
+#. clean item from menu
+#: ../libslab/document-tile.c:309
+msgid "Remove from recent menu"
+msgstr ""
+
+#. clean all the items from menu
+#: ../libslab/document-tile.c:317
+msgid "Purge all the recent items"
+msgstr ""
+
+#: ../libslab/document-tile.c:631
+msgid "?"
+msgstr ""
+
+#: ../libslab/document-tile.c:638
+msgid "%l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:646
+msgid "Today %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:656
+msgid "Yesterday %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:668
+msgid "%a %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:676
+msgid "%b %d %l:%M %p"
+msgstr ""
+
+#: ../libslab/document-tile.c:678
+msgid "%b %d %Y"
+msgstr ""
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
