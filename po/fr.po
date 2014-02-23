@@ -24,9 +24,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-19 12:45+0000\n"
-"Last-Translator: mauron\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-23 15:43+0000\n"
+"Last-Translator: Tubuntu\n"
 "Language-Team: French (http://www.transifex.com/projects/p/MATE/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1800,6 +1800,7 @@ msgstr "Accessibilité du clavier : retour sonore"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "Général"
 
@@ -2346,117 +2347,140 @@ msgstr "Hôtes à ignorer"
 msgid "Metacity Preferences"
 msgstr "Préférences de Metacity"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Gestionnaire de composition"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Activer le gestionnaire de fenêtres avec _composition logicielle"
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
 msgstr "Le gestionnaire de fenêtres actuel n'est pas supporté"
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Paramètres des fenêtres"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Comportement"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Placement"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Désactiver les _vignettes dans Alt-Tab"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Nouvelles fenêtres"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Centrer les _nouvelles fenêtres"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr "Magnétisme des fenêtres"
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr "Ac_tiver la mosaïque côte à côte"
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Sélection des fenêtres"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "_Sélectionner la fenêtre lorsque la souris est au-dessus"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "_Mettre en avant la fenêtre sélectionnée après un délai"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "Déla_i avant mise en avant :"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "secondes"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Action de la barre de titre"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "Un _double-clic sur la barre de titre effectue l'action :"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Touche de mouvement"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Pour déplacer une fenêtre, pressez et maintenez cette touche enfoncée\npuis saisissez la fenêtre :"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Replier"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Agrandir"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Agrandir horizontalement"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Agrandir verticalement"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Minimiser"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Aucun"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (ou le « logo Windows »)"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Paramètres des fenêtres"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Désactiver les _vignettes dans Alt-Tab"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr "Magnétisme des fenêtres"
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr "Activer le mode mosaïque côte à côte"
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Sélection des fenêtres"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "_Sélectionner la fenêtre lorsque la souris est au-dessus"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "_Mettre en avant la fenêtre sélectionnée après un délai"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "Déla_i avant mise en avant :"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "secondes"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Action de la barre de titre"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "Un _double-clic sur la barre de titre effectue l'action :"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Touche de mouvement"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Pour déplacer une fenêtre, pressez et maintenez cette touche enfoncée\npuis saisissez la fenêtre :"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"

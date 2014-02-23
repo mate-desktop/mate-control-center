@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 21:38+0000\n"
-"Last-Translator: Ján Ďanovský <dagsoftware@yahoo.com>\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-23 16:31+0000\n"
+"Last-Translator: tibbi <tibbbi2@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/projects/p/MATE/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1793,6 +1793,7 @@ msgstr "Zvuková spätná väzba sprístupnenia klávesnice"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "Všeobecné"
 
@@ -2339,117 +2340,140 @@ msgstr "Ignorovaní hostitelia"
 msgid "Metacity Preferences"
 msgstr "Nastavenia Metacity"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Kompozitný správca"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Povoliť softvérového kompozitného správcu okien"
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
 msgstr "Aktuálny správca okien nie je podporovaný"
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Predvoľby okien"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Správanie"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Umiestnenie"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Zakázať náhľady v Alt-_Tab"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Nové okná"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Vycentrovať _nové okná"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr "Priťahovanie okien"
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr "Povoliť pokrývanie zo s_trany na stranu"
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Výber okna"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "Vybrať okno pod _kurzorom myši"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "P_resunúť vybrané okno vpred po danej dobe"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "_Interval pred presunom vpred:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "sekúnd"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Operácia záhlavia okna"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "_Dvojité kliknutie na titulku vyvolá akciu:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Pohybová klávesa"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Pre presun okna stlačte a držte tento kláves, potom ťahajte:"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Zabaliť"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Maximalizovať"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Maximalizovať vodorovne"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Maximalizovať zvislo"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Minimalizovať"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Nič"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (alebo „logo Okná“)"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Predvoľby okien"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Zakázať náhľady v Alt-_Tab"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr "Priťahovanie okien"
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr "Povoliť obkladanie zo strany na stranu"
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Výber okna"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "Vybrať okno pod _kurzorom myši"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "P_resunúť vybrané okno vpred po danej dobe"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "_Interval pred presunom vpred:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "sekúnd"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Operácia záhlavia okna"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Dvojité kliknutie na titulku vyvolá akciu:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Pohybová klávesa"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Pre presun okna stlačte a držte tento kláves, potom ťahajte:"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
