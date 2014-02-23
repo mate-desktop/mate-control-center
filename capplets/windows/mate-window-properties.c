@@ -50,6 +50,7 @@
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
 #define MARCO_SIDE_BY_SIDE_TILING_KEY "side-by-side-tiling"
+#define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
 
 /* keep following enums in sync with marco */
 enum
@@ -79,15 +80,16 @@ typedef struct
 } MouseClickModifier;
 
 static GtkWidget *dialog_win;
-static GObject *compositing_checkbutton;
-static GObject *compositing_fast_alt_tab_checkbutton;
-static GObject *side_by_side_tiling_checkbutton;
-static GObject *focus_mode_checkbutton;
-static GObject *autoraise_checkbutton;
-static GObject *autoraise_delay_slider;
+static GtkWidget *compositing_checkbutton;
+static GtkWidget *compositing_fast_alt_tab_checkbutton;
+static GtkWidget *side_by_side_tiling_checkbutton;
+static GtkWidget *center_new_windows_checkbutton;
+static GtkWidget *focus_mode_checkbutton;
+static GtkWidget *autoraise_checkbutton;
+static GtkWidget *autoraise_delay_slider;
 static GtkWidget *autoraise_delay_hbox;
-static GObject *double_click_titlebar_optionmenu;
-static GObject *alt_click_hbox;
+static GtkWidget *double_click_titlebar_optionmenu;
+static GtkWidget *alt_click_hbox;
 
 static GSettings *marco_settings;
 
@@ -244,12 +246,36 @@ response_cb (GtkWidget *dialog_win,
     }
 }
 
+GtkWidget*
+title_label_new (const char* title)
+{
+    GtkWidget *widget;
+    gchar *str;
+
+    str = g_strdup_printf ("<b>%s</b>", _(title));
+    widget = gtk_label_new (str);
+    g_free (str);
+
+    gtk_label_set_use_markup (GTK_LABEL (widget), TRUE);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0, 0);
+
+    return widget;
+}
+
 int
 main (int argc, char **argv)
 {
     GdkScreen *screen;
-    GtkBuilder *builder;
-    GError *error = NULL;
+    GtkNotebook *nb;
+    GtkWidget *general_vbox;
+    GtkWidget *behaviour_vbox;
+    GtkWidget *placement_vbox;
+    GtkWidget *widget;
+    GtkWidget *vbox;
+    GtkWidget *vbox1;
+    GtkWidget *hbox;
+    GtkWidget *hbox1;
+    GtkWidget *hbox2;
     const char *current_wm;
     int i;
 
@@ -274,29 +300,127 @@ main (int argc, char **argv)
 
     marco_settings = g_settings_new (MARCO_SCHEMA);
 
-    builder = gtk_builder_new ();
-    gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
+    /* Window */
+    dialog_win = gtk_dialog_new_with_buttons (_("Window Preferences"),
+                                              NULL,
+                                              GTK_DIALOG_MODAL,
+                                              GTK_STOCK_HELP,
+                                              GTK_RESPONSE_HELP,
+                                              GTK_STOCK_CLOSE,
+                                              GTK_RESPONSE_CLOSE,
+                                              NULL);
+    //gtk_window_set_resizable (GTK_WINDOW (dialog_win), FALSE);
+    gtk_window_set_icon_name (GTK_WINDOW (dialog_win), "preferences-system-windows");
 
-    if (gtk_builder_add_from_file (builder, UIDIR "/mate-window-properties.ui", &error) == 0) {
-        g_warning ("Could not parse UI file: %s", error->message);
-        g_error_free (error);
-        g_object_unref (builder);
-        return 1;
-    }
+    nb = gtk_notebook_new ();
+    general_vbox = gtk_vbox_new (FALSE, 0);
+    behaviour_vbox = gtk_vbox_new (FALSE, 0);
+    placement_vbox = gtk_vbox_new (FALSE, 0);
+    widget = gtk_label_new (_("General"));
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), general_vbox, FALSE, FALSE, 6);
+    gtk_notebook_append_page (nb, hbox, widget);
+    widget = gtk_label_new (_("Behaviour"));
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), behaviour_vbox, FALSE, FALSE, 6);
+    gtk_notebook_append_page (nb, hbox, widget);
+    widget = gtk_label_new (_("Placement"));
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), placement_vbox, FALSE, FALSE, 6);
+    gtk_notebook_append_page (nb, hbox, widget);
 
-    dialog_win = GTK_WIDGET (gtk_builder_get_object (builder,  "main-dialog"));
-    compositing_checkbutton = gtk_builder_get_object (builder, "compositing-manager-checkbutton");
-    compositing_fast_alt_tab_checkbutton = gtk_builder_get_object (builder, "compositing-fast-alt-tab-checkbutton");
-    side_by_side_tiling_checkbutton = gtk_builder_get_object (builder, "side-by-side-tiling");
-    focus_mode_checkbutton = gtk_builder_get_object (builder, "focus-mode-checkbutton");
-    autoraise_checkbutton = gtk_builder_get_object (builder, "autoraise-checkbutton");
-    autoraise_delay_slider = gtk_builder_get_object (builder, "autoraise-delay-slider");
-    autoraise_delay_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise-delay-hbox"));
-    double_click_titlebar_optionmenu = gtk_builder_get_object (builder, "double-click-titlebar-optionmenu");
-    alt_click_hbox = gtk_builder_get_object (builder, "alt-click-box");
+    /* Compositing manager */
+    widget = title_label_new (N_("Compositing Manager"));
+    gtk_box_pack_start (GTK_BOX (general_vbox), widget, FALSE, FALSE, 6);
 
-    gtk_range_set_range (GTK_RANGE (autoraise_delay_slider), 0, 10);
+    vbox = gtk_vbox_new (FALSE, 0);
+    hbox = gtk_hbox_new (FALSE, 0);
+    hbox1 = gtk_hbox_new (FALSE, 0);
+    compositing_checkbutton = gtk_check_button_new_with_mnemonic (_("Enable software _compositing window manager"));
+    compositing_fast_alt_tab_checkbutton = gtk_check_button_new_with_mnemonic (_("Disable _thumbnails in Alt-Tab"));
+    gtk_box_pack_start (GTK_BOX (vbox), compositing_checkbutton, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox1), compositing_fast_alt_tab_checkbutton, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox1, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (general_vbox), hbox, FALSE, FALSE, 6);
+
+    /* New Windows */
+    widget = title_label_new (N_("New Windows"));
+    gtk_box_pack_start (GTK_BOX (placement_vbox), widget, FALSE, FALSE, 6);
+
+    hbox = gtk_hbox_new (FALSE, 0);
+    center_new_windows_checkbutton = gtk_check_button_new_with_mnemonic (_("Center _new windows"));
+    gtk_box_pack_start (GTK_BOX (hbox), center_new_windows_checkbutton, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (placement_vbox), hbox, FALSE, FALSE, 6);
+
+    /* Window Snapping */
+    widget = title_label_new (N_("Window Snapping"));
+    gtk_box_pack_start (GTK_BOX (placement_vbox), widget, FALSE, FALSE, 6);
+
+    hbox = gtk_hbox_new (FALSE, 0);
+    side_by_side_tiling_checkbutton = gtk_check_button_new_with_mnemonic (_("Enable side by side _tiling"));
+    gtk_box_pack_start (GTK_BOX (hbox), side_by_side_tiling_checkbutton, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (placement_vbox), hbox, FALSE, FALSE, 6);
+
+    /* Window Selection */
+    widget = title_label_new (N_("Window Selection"));
+    gtk_box_pack_start (GTK_BOX (behaviour_vbox), widget, FALSE, FALSE, 6);
+
+    vbox = gtk_vbox_new (FALSE, 0);
+    vbox1 = gtk_vbox_new (FALSE, 0);
+    hbox = gtk_hbox_new (FALSE, 0);
+    hbox1 = gtk_hbox_new (FALSE, 0);
+    hbox2 = gtk_hbox_new (FALSE, 0);
+
+    focus_mode_checkbutton = gtk_check_button_new_with_mnemonic (_("_Select windows when the mouse moves over them"));
+    gtk_box_pack_start (GTK_BOX (vbox), focus_mode_checkbutton, FALSE, FALSE, 6);
+
+    autoraise_checkbutton = gtk_check_button_new_with_mnemonic (_("_Raise selected windows after an interval"));
+    gtk_box_pack_start (GTK_BOX (hbox1), autoraise_checkbutton, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 6);
+
+    autoraise_delay_hbox = gtk_hbox_new (FALSE, 0);
+    autoraise_delay_slider = gtk_hscale_new_with_range (0, 10, 0.2);
+    widget = gtk_label_new_with_mnemonic (_("_Interval before raising:"));
+    gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), widget, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), autoraise_delay_slider, TRUE, TRUE, 6);
+    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), autoraise_delay_slider);
+    widget = gtk_label_new (_("seconds"));
     gtk_range_set_increments (GTK_RANGE (autoraise_delay_slider), 0.2, 1.0);
+    gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), widget, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (vbox1), autoraise_delay_hbox, FALSE, FALSE, 6);
+
+    gtk_box_pack_start (GTK_BOX (hbox2), vbox1, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
+
+    /* Titlebar Action */
+    widget = title_label_new (N_("Titlebar Action"));
+    gtk_box_pack_start (GTK_BOX (behaviour_vbox), widget, FALSE, FALSE, 6);
+
+    hbox = gtk_hbox_new (FALSE, 0);
+    widget = gtk_label_new_with_mnemonic (_("_Double-click titlebar to perform this action:"));
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 6);
+    double_click_titlebar_optionmenu = gtk_combo_box_text_new ();
+    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), double_click_titlebar_optionmenu);
+    gtk_box_pack_start (GTK_BOX (hbox), double_click_titlebar_optionmenu, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
+
+    /* Movement Key */
+    widget = title_label_new (N_("Movement Key"));
+    gtk_box_pack_start (GTK_BOX (behaviour_vbox), widget, FALSE, FALSE, 6);
+
+    vbox = gtk_vbox_new (FALSE, 0);
+    hbox = gtk_hbox_new (FALSE, 0);
+    widget = gtk_label_new_with_mnemonic (_("To move a window, press-and-hold this key then grab the window:"));
+    gtk_misc_set_alignment (GTK_MISC (widget), 0, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 6);
+    alt_click_hbox = gtk_vbox_new (FALSE, 6);
+    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), alt_click_hbox);
+    gtk_box_pack_start (GTK_BOX (vbox), alt_click_hbox, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
 
     reload_mouse_modifiers ();
 
@@ -342,6 +466,12 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
+    g_settings_bind (marco_settings,
+                     MARCO_CENTER_NEW_WINDOWS_KEY,
+                     center_new_windows_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
     g_signal_connect (focus_mode_checkbutton, "toggled",
                       G_CALLBACK (mouse_focus_toggled_callback), NULL);
     g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
@@ -374,12 +504,12 @@ main (int argc, char **argv)
     update_sensitivity ();
 
     capplet_set_icon (dialog_win, "preferences-system-windows");
-    gtk_widget_show (dialog_win);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog_win)), GTK_WIDGET (nb), TRUE, TRUE, 0);
+    gtk_widget_show_all (dialog_win);
 
     gtk_main ();
 
     g_object_unref (marco_settings);
-    g_object_unref (builder);
 
     return 0;
 }
