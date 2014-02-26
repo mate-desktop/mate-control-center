@@ -23,7 +23,6 @@
 
 #include <string.h>
 #include <gio/gio.h>
-#include <mate-wm-manager.h>
 #include "mate-theme-apply.h"
 #include "gtkrc-utils.h"
 
@@ -32,6 +31,9 @@
 #define COLOR_SCHEME_KEY        "gtk-color-scheme"
 #define ICON_THEME_KEY          "icon-theme"
 #define FONT_KEY                "font-name"
+
+#define MARCO_SCHEMA            "org.mate.Marco.general"
+#define MARCO_THEME_KEY         "theme"
 
 #define MOUSE_SCHEMA            "org.mate.peripherals-mouse"
 #define CURSOR_FONT_KEY         "cursor-font"
@@ -47,6 +49,7 @@ void
 mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 {
   GSettings *interface_settings;
+  GSettings *marco_settings;
   GSettings *mouse_settings;
   GSettings *notification_settings = NULL;
   const char * const *schemas;
@@ -54,14 +57,9 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   gint i;
   gchar *old_key;
   gint old_key_int;
-  MateWindowManager *window_manager;
-  MateWMSettings wm_settings;
-
-  mate_wm_manager_init ();
-
-  window_manager = mate_wm_manager_get_current (gdk_display_get_default_screen (gdk_display_get_default ()));
 
   interface_settings = g_settings_new (INTERFACE_SCHEMA);
+  marco_settings = g_settings_new (MARCO_SCHEMA);
   mouse_settings = g_settings_new (MOUSE_SCHEMA);
   
   /* We  need this because mate-control-center does not depend on mate-notification-daemon,
@@ -112,10 +110,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   g_free (old_key);
 
   /* Set the wm key */
-  wm_settings.flags = MATE_WM_SETTING_THEME;
-  wm_settings.theme = meta_theme_info->marco_theme_name;
-  if (window_manager)
-    mate_window_manager_change_settings (window_manager, &wm_settings);
+  g_settings_set_string (marco_settings, MARCO_THEME_KEY, meta_theme_info->marco_theme_name);
 
   /* set the icon theme */
   old_key = g_settings_get_string (interface_settings, ICON_THEME_KEY);
@@ -162,6 +157,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 
   g_free (old_key);
   g_object_unref (interface_settings);
+  g_object_unref (marco_settings);
   g_object_unref (mouse_settings);
   if (notification_settings != NULL)
     g_object_unref (notification_settings);
