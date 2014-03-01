@@ -8,6 +8,7 @@
 # Art O. Pal <artopal@fastmail.fm>, 2012
 # Carlos Perelló Marín <carlos@mate-db.org>, 2001
 # Claudio Saavedra <csaavedra@alumnos.utalca.cl>, 2007
+# ebray187 <ebray187@gmail.com>, 2014
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003, 2004, 2005, 2006
 # Héctor García Álvarez <hector@scouts-es.org>, 2001
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010
@@ -15,14 +16,15 @@
 # Lluís Tusquellas <lutusq@gmail.com>, 2013
 # Lucas Di Pentima <lucas@lunix.com.ar>, 2002
 # Lluís Tusquellas <lutusq@gmail.com>, 2012
+# elio <micta2003@hotmail.com>, 2014
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com>, 2002, 2003
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 17:44+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-26 00:04+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitoschido@ubuntu.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/MATE/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +36,7 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr ""
+msgstr "[ 'Cambiar el tema;mate-appearance-properties.desktop', 'Establecer aplicaciones preferidas;mate-default-applications-properties.desktop' ]"
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
 msgid "Task names and associated .desktop files"
@@ -94,7 +96,7 @@ msgstr "Indica si debe cerrarse la consola cuando se ha ejecutado una acción de
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:14
 msgid "More backgrounds URL"
-msgstr "Obtener más fondos en línea"
+msgstr "URL para obtener más fondos "
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:15
 msgid ""
@@ -134,7 +136,7 @@ msgstr "Nombre"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.in.h:6
 msgid "Description associated with a custom keybinding."
-msgstr "Descriión asociada a  un acceso directo personalizado."
+msgstr "Descripción asociada a un acceso directo personalizado."
 
 #: ../capplets/about-me/eel-alert-dialog.c:110
 msgid "Image/label border"
@@ -1000,7 +1002,7 @@ msgstr "Sin fondo de escritorio"
 
 #: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
-msgstr ""
+msgstr "desconocido"
 
 #: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
@@ -1038,7 +1040,7 @@ msgid ""
 "%s, %s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s, %s\nCarpeta: %s\nArtista: %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1051,7 +1053,7 @@ msgid ""
 "%s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s\nCarpeta: %s\nArtista: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1796,6 +1798,7 @@ msgstr "Comentarios sobre los sonidos de accesibilidad del teclado"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "General"
 
@@ -2340,119 +2343,142 @@ msgstr "Anfitriones ignorados"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
-msgstr ""
+msgstr "Preferencias de Metacity"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Gestor de composición"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Habilitar  gestor de ventanas de composición por software"
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
-msgstr ""
+msgstr "El actual gestor de ventanas no está soportado"
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Preferencias de ventanas"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Comportamiento"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Ubicación"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Desactivar _thumbnails con Alt-Tab"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Ventanas nuevas"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Centrar _ventanas nuevas"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr "Ajuste de ventanas"
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr "Activar posicionamien_to de ventanas lado a lado"
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Selección de ventana"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "_Seleccionar las ventanas cuando el ratón se mueve sobre ellas"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "_Elevar las ventanas seleccionadas tras un intervalo"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "_Intervalo antes de elevar:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "segundos"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Acción de la barra de título"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "Pulse _dos veces sobre la barra del título de la ventana para realizar esta acción:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Tecla de movimiento"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Para mover una ventana, mantenga pulsada esta tecla y luego arrastre la ventana:"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Enrollar"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Maximizar horizontalmente"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Maximizar verticalmente"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Ninguna"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "_Hiper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "_Super (o «Logo de Windows»)"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Preferencias de ventanas"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Desactivar _thumbnails con Alt-Tab"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Selección de ventana"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "_Seleccionar las ventanas cuando el ratón se mueve sobre ellas"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "_Elevar las ventanas seleccionadas tras un intervalo"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "_Intervalo antes de elevar:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "segundos"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Acción de la barra de título"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "Pulse _dos veces sobre la barra del título de la ventana para realizar esta acción:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Tecla de movimiento"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Para mover una ventana, mantenga pulsada esta tecla y luego arrastre la ventana:"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
@@ -2732,87 +2758,87 @@ msgstr "Buscar"
 #: ../libslab/directory-tile.c:176
 #, c-format
 msgid "<b>Open</b>"
-msgstr ""
+msgstr "<b>Abrir</b>"
 
 #. make rename action
 #: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
 msgid "Rename..."
-msgstr ""
+msgstr "Renombrar…"
 
 #: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
 #: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
 msgid "Send To..."
-msgstr ""
+msgstr "Enviar a..."
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
 msgid "Move to Trash"
-msgstr ""
+msgstr "Mover a la papelera"
 
 #: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
 #: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr ""
+msgstr "¿Está seguro que desea eliminar «%s» de forma permanente?"
 
 #: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
 msgid "If you delete an item, it is permanently lost."
-msgstr ""
+msgstr "Si elimina un elemento se perderá permanentemente."
 
 #: ../libslab/document-tile.c:200
 #, c-format
 msgid "Open with \"%s\""
-msgstr ""
+msgstr "Abrir con «%s»"
 
 #: ../libslab/document-tile.c:214
 msgid "Open with Default Application"
-msgstr ""
+msgstr "Abrir con la aplicación predeterminada"
 
 #: ../libslab/document-tile.c:225
 msgid "Open in File Manager"
-msgstr ""
+msgstr "Abrir en el gestor de archivos"
 
 #. clean item from menu
 #: ../libslab/document-tile.c:309
 msgid "Remove from recent menu"
-msgstr ""
+msgstr "Quitar del menú recientes"
 
 #. clean all the items from menu
 #: ../libslab/document-tile.c:317
 msgid "Purge all the recent items"
-msgstr ""
+msgstr "Elimina todos los elementos recientes"
 
 #: ../libslab/document-tile.c:631
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: ../libslab/document-tile.c:638
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%H:%M"
 
 #: ../libslab/document-tile.c:646
 msgid "Today %l:%M %p"
-msgstr ""
+msgstr "Hoy %H:%M"
 
 #: ../libslab/document-tile.c:656
 msgid "Yesterday %l:%M %p"
-msgstr ""
+msgstr "Ayer %H:%M"
 
 #: ../libslab/document-tile.c:668
 msgid "%a %l:%M %p"
-msgstr ""
+msgstr "%a %H:%M"
 
 #: ../libslab/document-tile.c:676
 msgid "%b %d %l:%M %p"
-msgstr ""
+msgstr "%d %b %H:%M"
 
 #: ../libslab/document-tile.c:678
 msgid "%b %d %Y"
-msgstr ""
+msgstr "%d %b %Y"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 17:43+0000\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-23 15:29+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
 "Language-Team: Malayalam (http://www.transifex.com/projects/p/MATE/language/ml/)\n"
 "MIME-Version: 1.0\n"
@@ -1789,6 +1789,7 @@ msgstr "കീബോര്‍ഡ് ആക്സസിബിളിറ്റി �
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "സാധാരണ"
 
@@ -2335,117 +2336,140 @@ msgstr "<b>അവഗണിക്കപ്പെട്ട ഹോസ്റ്റ�
 msgid "Metacity Preferences"
 msgstr ""
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr ""
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "ജാലക മുന്‍ഗണനകള്‍"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr ""
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr ""
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr ""
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "ജാലകം തെരഞ്ഞെടുക്കല്‍"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "മൌസ് ജാലകത്തിന്റെ മുകളിലൂടെ നീങ്ങുമ്പോള്‍ അത് _തെരഞ്ഞെടുക്കുക"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "തെരഞ്ഞെടുത്ത ജാലകങ്ങള്‍ ഒരിടവേളക്ക് ശേഷം _ഉയര്‍ത്തുക"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "ഉയര്‍ത്തുന്നതിന് മുമ്പുള്ള _ഇടവേള:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "സെക്കന്‍ഡുകള്‍"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "ടൈറ്റില്‍ ബാര്‍ പ്രവൃത്തി"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "ഈ പ്രവര്‍ത്തി ചെയ്യുന്നതിനായി ടൈറ്റില്‍ ബാറില്‍ _രണ്ടു തവണ ക്ലിക്ക് ചെയ്യുക:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "ചലനങ്ങള്‍ക്കുളള കീ"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "ജാലകം നീക്കുവാന്‍ ഈ കീ അമര്‍ത്തിപ്പിടിച്ച് ജാലകം വലിക്കുക."
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "ചുരുട്ടുക"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "വലുതാക്കുക"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "കുറുകേ വലുതാക്കുക"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "നേരെ വലുതാക്കുക"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "ചെറുതാക്കുക"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "ഒന്നുമില്ല"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (or \"Windows logo\")"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "ജാലക മുന്‍ഗണനകള്‍"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "ജാലകം തെരഞ്ഞെടുക്കല്‍"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "മൌസ് ജാലകത്തിന്റെ മുകളിലൂടെ നീങ്ങുമ്പോള്‍ അത് _തെരഞ്ഞെടുക്കുക"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "തെരഞ്ഞെടുത്ത ജാലകങ്ങള്‍ ഒരിടവേളക്ക് ശേഷം _ഉയര്‍ത്തുക"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "ഉയര്‍ത്തുന്നതിന് മുമ്പുള്ള _ഇടവേള:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "സെക്കന്‍ഡുകള്‍"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "ടൈറ്റില്‍ ബാര്‍ പ്രവൃത്തി"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "ഈ പ്രവര്‍ത്തി ചെയ്യുന്നതിനായി ടൈറ്റില്‍ ബാറില്‍ _രണ്ടു തവണ ക്ലിക്ക് ചെയ്യുക:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "ചലനങ്ങള്‍ക്കുളള കീ"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "ജാലകം നീക്കുവാന്‍ ഈ കീ അമര്‍ത്തിപ്പിടിച്ച് ജാലകം വലിക്കുക."
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"

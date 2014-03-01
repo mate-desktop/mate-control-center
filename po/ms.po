@@ -5,14 +5,14 @@
 # Translators:
 # 1. Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>, 2002
 # 2. Khairulanuar Abd Majid (khai) <khairul@ikhlas.com>, 2002
-# abuyop <abuyop@gmail.com>, 2013
+# abuyop <abuyop@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 17:44+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-26 13:42+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/projects/p/MATE/language/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr ""
+msgstr "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred Applications;mate-default-applications-properties.desktop' ]"
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
 msgid "Task names and associated .desktop files"
@@ -990,7 +990,7 @@ msgstr "Tiada Latar Belakang Desktop"
 
 #: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
-msgstr ""
+msgstr "tidak diketahui"
 
 #: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
@@ -1027,7 +1027,7 @@ msgid ""
 "%s, %s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s, %s\nFolder: %s\nArtis: %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1040,7 +1040,7 @@ msgid ""
 "%s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s\nFolder: %s\nArtis: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1785,6 +1785,7 @@ msgstr "Maklumbalas Audio Kebolehcapaian Papan Kekunci"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "Am"
 
@@ -2329,119 +2330,142 @@ msgstr "Hos Diabaikan"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
-msgstr ""
+msgstr "Keutamaan Metacity"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Pengurus Penggubahan"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Benarkan pengurus tetingkap pen_ggubahan perisian"
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
-msgstr ""
+msgstr "Pengurus tetingkap semasa tidak disokong"
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Keutamaan Tetingkap"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Kelakuan"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Penggantian"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Lumpuhkan _lakaran kenit dalam Alt-Tab"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Tetingkap Baharu"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Tengahkan tetingkap _baharu"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr "Pelekatan Tetingkap"
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr "Benarkan pen_jubinan sebelah menyebelah"
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Pemilihan Tertingkap"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "_Pilih tetingkap bila penuding tetikus di atasnya"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "_Naikkan tetingkap terpilih selepas satu sela"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "_Sela sebelum menaik:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "saat"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Tindakan Palang Tajuk"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "_Dwi-klik palang tajuk untuk membuat tindakan ini:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Kekunci Gerakan"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Untuk alihkan tetingkap, tekan-dan-tahan kekunci ini dan pegang tetingkap:"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Gulung"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Maksimum"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Maksimum Secara Mengufuk"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Maksimum Secara Menegak"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Minimumkan"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Tiada"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_iper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (atau \"Logo Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Keutamaan Tetingkap"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Lumpuhkan _lakaran kenit dalam Alt-Tab"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Pemilihan Tertingkap"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "_Pilih tetingkap bila penuding tetikus di atasnya"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "_Naikkan tetingkap terpilih selepas satu sela"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "_Sela sebelum menaik:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "saat"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Tindakan Palang Tajuk"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Dwi-klik palang tajuk untuk membuat tindakan ini:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Kekunci Gerakan"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Untuk alihkan tetingkap, tekan-dan-tahan kekunci ini dan pegang tetingkap:"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
@@ -2720,87 +2744,87 @@ msgstr "Gelintar"
 #: ../libslab/directory-tile.c:176
 #, c-format
 msgid "<b>Open</b>"
-msgstr ""
+msgstr "<b>Buka</b>"
 
 #. make rename action
 #: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
 msgid "Rename..."
-msgstr ""
+msgstr "Nama Semula..."
 
 #: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
 #: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
 msgid "Send To..."
-msgstr ""
+msgstr "Hantar Ke..."
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
 msgid "Move to Trash"
-msgstr ""
+msgstr "Alih ke Tong Sampah"
 
 #: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
 #: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
 msgid "Delete"
-msgstr ""
+msgstr "Padam"
 
 #: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr ""
+msgstr "Anda pasti ingin memadam \"%s\" secara kekal?"
 
 #: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
 msgid "If you delete an item, it is permanently lost."
-msgstr ""
+msgstr "Jika anda padam item, ia hilang secara kekal."
 
 #: ../libslab/document-tile.c:200
 #, c-format
 msgid "Open with \"%s\""
-msgstr ""
+msgstr "Buka dengan \"%s\""
 
 #: ../libslab/document-tile.c:214
 msgid "Open with Default Application"
-msgstr ""
+msgstr "Buka dengan Aplikasi Lalai"
 
 #: ../libslab/document-tile.c:225
 msgid "Open in File Manager"
-msgstr ""
+msgstr "Buka dalam Pengurus Fail"
 
 #. clean item from menu
 #: ../libslab/document-tile.c:309
 msgid "Remove from recent menu"
-msgstr ""
+msgstr "Buang dari menu baru-baru ini"
 
 #. clean all the items from menu
 #: ../libslab/document-tile.c:317
 msgid "Purge all the recent items"
-msgstr ""
+msgstr "Singkir semua item baru-baru ini"
 
 #: ../libslab/document-tile.c:631
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: ../libslab/document-tile.c:638
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%l:%M %p"
 
 #: ../libslab/document-tile.c:646
 msgid "Today %l:%M %p"
-msgstr ""
+msgstr "Hari ini %l:%M %p"
 
 #: ../libslab/document-tile.c:656
 msgid "Yesterday %l:%M %p"
-msgstr ""
+msgstr "Semalam %l:%M %p"
 
 #: ../libslab/document-tile.c:668
 msgid "%a %l:%M %p"
-msgstr ""
+msgstr "%a %l:%M %p"
 
 #: ../libslab/document-tile.c:676
 msgid "%b %d %l:%M %p"
-msgstr ""
+msgstr "%b %d %l:%M %p"
 
 #: ../libslab/document-tile.c:678
 msgid "%b %d %Y"
-msgstr ""
+msgstr "%b %d %Y"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

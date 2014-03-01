@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 18:15+0000\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-23 23:53+0000\n"
 "Last-Translator: thunk <thunk77@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/MATE/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -630,7 +630,7 @@ msgstr "Επαναφορά γραμματοσειράς"
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
-msgstr "Αυτό το θέμα προτείνει ένα παρασκήνιο και μια γραμματοσειρά. Ακόμα υπάρχει η δυνατότητα επιστροφής στην προηγούμενη πρόταση γραμματοσειράς."
+msgstr "Αυτό το θέμα προτείνει ένα παρασκήνιο και μια γραμματοσειρά. Επίσης, υπάρχει η δυνατότητα επιστροφής στην προηγούμενη πρόταση γραμματοσειράς."
 
 #: ../capplets/appearance/appearance-themes.c:703
 msgid ""
@@ -1795,6 +1795,7 @@ msgstr "Ηχητική ανάδραση προσιτότητας πληκτρο�
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "Γενικά"
 
@@ -2341,117 +2342,140 @@ msgstr "Αγνόηση λίστας κεντρικού συστήματος"
 msgid "Metacity Preferences"
 msgstr "Προτιμήσεις του Metacity"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Διαχειριστής Compositing"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Ενεργοποίηση Λογισμικού διαχειριστή παραθύρων "
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
 msgstr "Ο τωρινός διαχειριστής παραθύρων δεν υποστηρίζεται"
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Προτιμήσεις παραθύρων"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Συμπεριφορά"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Τοποθέτηση"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Απενεργοποίηση Μικρογραφιών σε Alt-Tab"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Νέα Παράθυρα"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Νέα παράθυρα_στο κέντρο"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr "Σπάσιμο Παραθύρων"
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr "Ενεργοποίηση πλακόστρωτου_πλάι πλάι"
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Επιλογή παραθύρου"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "_Επιλογή παραθύρων όταν το ποντίκι περνάει από επάνω τους"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "_Ανασήκωση επιλεγμένων παραθύρων μετά από ένα χρονικό διάστημα"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "_Χρονικό διάστημα πριν την ανασήκωση:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Ενέργεια μπάρας τίτλου"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "_Διπλό κλικ στη μπάρα τίτλου για την εκτέλεση αυτής της ενέργειας:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Πλήκτρο κίνησης"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Για να μετακινήσετε ένα παράθυρο, πατήστε και κρατήστε αυτό το πλήκτρο και μετά σύρετε το παράθυρο:"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Δίπλωση πάνω"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Μεγιστοποίηση"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Οριζόντια μεγιστοποίηση"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Κάθετη μεγιστοποίηση"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Ελαχιστοποίηση"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Κανένα"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (ή \"λογότυπο των Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Προτιμήσεις παραθύρων"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Απενεργοποίηση Μικρογραφιών σε Alt-Tab"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr "Σπάσιμο Παραθύρων"
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr "Ενεργοποίηση πλακόστρωτου πλάι πλάι "
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Επιλογή παραθύρου"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "_Επιλογή παραθύρων όταν το ποντίκι περνάει από επάνω τους"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "_Ανασήκωση επιλεγμένων παραθύρων μετά από ένα χρονικό διάστημα"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "_Χρονικό διάστημα πριν την ανασήκωση:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "δευτερόλεπτα"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Ενέργεια μπάρας τίτλου"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Διπλό κλικ στη μπάρα τίτλου για την εκτέλεση αυτής της ενέργειας:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Πλήκτρο κίνησης"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Για να μετακινήσετε ένα παράθυρο, πατήστε και κρατήστε αυτό το πλήκτρο και μετά σύρετε το παράθυρο:"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"

@@ -9,13 +9,14 @@
 # Yuri Syrota <rasta@renome.rovno.ua>, 1999
 # zubr139 <zubr139@ukr.net>, 2012
 # zubr139 <zubr139@ukr.net>, 2012
+# Koljan1970 <Stuartlittle1970@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 17:44+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-24 15:54+0000\n"
+"Last-Translator: Koljan1970 <Stuartlittle1970@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/MATE/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr ""
+msgstr "[ 'Змінити тему;mate-appearance-properties.desktop', 'Виставити бажані додатки;mate-default-applications.desktop']"
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
 msgid "Task names and associated .desktop files"
@@ -993,7 +994,7 @@ msgstr "Без тла стільниці"
 
 #: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
-msgstr ""
+msgstr "невідомо"
 
 #: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
@@ -1032,7 +1033,7 @@ msgid ""
 "%s, %s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s, %s\nТека: %s\nАртист: %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1045,7 +1046,7 @@ msgid ""
 "%s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s\nТека: %s\nАртист: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1790,6 +1791,7 @@ msgstr "Допоміжні звукові можливості _клавіату
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "Загальне"
 
@@ -2334,119 +2336,142 @@ msgstr "Ігноровані вузли"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
-msgstr ""
+msgstr "Параметри Metacity"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Композитний менеджер"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Увімкнути програмний _композитний віконний менеджер"
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
-msgstr ""
+msgstr "Поточний віконний менеджер не підтримується"
 
-#: ../capplets/windows/mate-window-properties.c:303
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Параметри вікон"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Поведінка"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Розміщення"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Вимкнути _ескізи у Alt-Tab"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Нові вікна"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Центр_ нових вікон"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
+msgstr "Прив’язка вікон"
+
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr "Увімкнути тайлінговий режим"
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Вибір вікон"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "Пере_микатися на вікна, коли над ними проходить курсор"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "_Піднімати вибране вікно після певної затримки"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "За_трика перед підйомом:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "секунд"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Клац по заголовку"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "Под_війне клацання на заголовку виконує таку дію:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Клавіша переміщення"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Для переміщення вікна, натиснути та тримати цю клавішу, а потім захопити вікно:"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Згорнути"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Максимізувати"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Розтягнути горизонтально"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Розтягнути вертикально"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Максимізувати"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Немає"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (чи \"Емблема Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Параметри вікон"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Вимкнути _ескізи у Alt-Tab"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Вибір вікон"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "Пере_микатися на вікна, коли над ними проходить курсор"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "_Піднімати вибране вікно після певної затримки"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "За_трика перед підйомом:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "секунд"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Клац по заголовку"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "Под_війне клацання на заголовку виконує таку дію:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Клавіша переміщення"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Для переміщення вікна, натиснути та тримати цю клавішу, а потім захопити вікно:"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
@@ -2727,87 +2752,87 @@ msgstr "Пошук"
 #: ../libslab/directory-tile.c:176
 #, c-format
 msgid "<b>Open</b>"
-msgstr ""
+msgstr "<b>Відкрити</b>"
 
 #. make rename action
 #: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
 msgid "Rename..."
-msgstr ""
+msgstr "Перейменувати..."
 
 #: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
 #: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
 msgid "Send To..."
-msgstr ""
+msgstr "Надіслати до..."
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
 msgid "Move to Trash"
-msgstr ""
+msgstr "Перемістити у смітник"
 
 #: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
 #: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
 msgid "Delete"
-msgstr ""
+msgstr "Вилучити"
 
 #: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr ""
+msgstr "Ви справді бажаєте остаточно вилучити \"%s\"?"
 
 #: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
 msgid "If you delete an item, it is permanently lost."
-msgstr ""
+msgstr "Якщо ви вилучите елемент, він буде остаточно втрачений."
 
 #: ../libslab/document-tile.c:200
 #, c-format
 msgid "Open with \"%s\""
-msgstr ""
+msgstr "Відкрити з \"%s\""
 
 #: ../libslab/document-tile.c:214
 msgid "Open with Default Application"
-msgstr ""
+msgstr "Відкрити у типовій програмі"
 
 #: ../libslab/document-tile.c:225
 msgid "Open in File Manager"
-msgstr ""
+msgstr "Відкрити у менеджері файлів"
 
 #. clean item from menu
 #: ../libslab/document-tile.c:309
 msgid "Remove from recent menu"
-msgstr ""
+msgstr "Вилучити з нещодавніх"
 
 #. clean all the items from menu
 #: ../libslab/document-tile.c:317
 msgid "Purge all the recent items"
-msgstr ""
+msgstr "Вичистити усі нещодавно використані елементи"
 
 #: ../libslab/document-tile.c:631
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: ../libslab/document-tile.c:638
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%l:%M %p"
 
 #: ../libslab/document-tile.c:646
 msgid "Today %l:%M %p"
-msgstr ""
+msgstr "Сьогодні %l:%M %p"
 
 #: ../libslab/document-tile.c:656
 msgid "Yesterday %l:%M %p"
-msgstr ""
+msgstr "Вчора %l:%M %p"
 
 #: ../libslab/document-tile.c:668
 msgid "%a %l:%M %p"
-msgstr ""
+msgstr "%a %l:%M %p"
 
 #: ../libslab/document-tile.c:676
 msgid "%b %d %l:%M %p"
-msgstr ""
+msgstr "%b %d %l:%M %p"
 
 #: ../libslab/document-tile.c:678
 msgid "%b %d %Y"
-msgstr ""
+msgstr "%b %d %Y"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"

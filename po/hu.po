@@ -8,18 +8,19 @@
 # Gabor Kelemen <kelemeng at mate dot hu>, 2004-2010
 # Gabor Sari <saga at mate dot hu>, 2003
 # i_sty <szollosi.istv4n@gmail.com>, 2014
+# i_sty <szollosi.istv4n@gmail.com>, 2014
 # Laszlo Dvornik <dvornik at mate dot hu>, 2004
 # Mate ORY <orymate at gmail d0t com>, 2006
 # Peter Doma <zelin at pointernet dot hu>, 2002
-# Rezső Páder <rezso@rezso.net>, 2013
+# Rezső Páder <rezso@rezso.net>, 2013-2014
 # Szabolcs Ban <shooby at mate dot hu>, 1998-2000
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 18:41+0100\n"
-"PO-Revision-Date: 2014-02-18 17:44+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"POT-Creation-Date: 2014-02-23 16:27+0100\n"
+"PO-Revision-Date: 2014-02-23 15:52+0000\n"
+"Last-Translator: Rezső Páder <rezso@rezso.net>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/MATE/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr ""
+msgstr "[ 'Téma módosítása;mate-appearance-properties.desktop', 'Alapértelmezett alkalmazások beállítása;mate-default-applications-properties.desktop' ]"
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
 msgid "Task names and associated .desktop files"
@@ -997,7 +998,7 @@ msgstr "Nincs asztalháttér"
 
 #: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
@@ -1035,7 +1036,7 @@ msgid ""
 "%s, %s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s, %s\nMappa: %s\nSzerző: %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1048,7 +1049,7 @@ msgid ""
 "%s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s\nMappa: %s\nSzerző: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1793,6 +1794,7 @@ msgstr "Billentyűzet hangos akadálymentesítési visszajelzése"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/windows/mate-window-properties.c:319
 msgid "General"
 msgstr "Általános"
 
@@ -2337,119 +2339,142 @@ msgstr "Mellőzött kiszolgálók"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
-msgstr ""
+msgstr "Metacity beállításai"
 
+#. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.ui.h:2
+#: ../capplets/windows/mate-window-properties.c:333
 msgid "Compositing Manager"
 msgstr "Kompozíciókezelő"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.ui.h:3
+#: ../capplets/windows/mate-window-properties.c:339
 msgid "Enable software _compositing window manager"
 msgstr "Szoftveres kompoziciónálási alapú ablakkezelő bekapcsolása"
 
-#: ../capplets/windows/mate-window-properties.c:216
+#: ../capplets/windows/mate-window-properties.c:218
 msgid "The current window manager is unsupported"
+msgstr "A jelenlegi ablakkezelő nem támogatott"
+
+#. Window
+#: ../capplets/windows/mate-window-properties.c:304
+msgid "Window Preferences"
+msgstr "Az ablak beállításai"
+
+#: ../capplets/windows/mate-window-properties.c:323
+msgid "Behaviour"
+msgstr "Viselkedés"
+
+#: ../capplets/windows/mate-window-properties.c:327
+msgid "Placement"
+msgstr "Elhelyezés"
+
+#: ../capplets/windows/mate-window-properties.c:340
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Bélyegképek _tiltása Alt-Tab esetén"
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:348
+msgid "New Windows"
+msgstr "Új ablakok"
+
+#: ../capplets/windows/mate-window-properties.c:352
+msgid "Center _new windows"
+msgstr "Új a_blakok középre"
+
+#. Window Snapping
+#: ../capplets/windows/mate-window-properties.c:357
+msgid "Window Snapping"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:303
+#: ../capplets/windows/mate-window-properties.c:361
+msgid "Enable side by side _tiling"
+msgstr ""
+
+#. Window Selection
+#: ../capplets/windows/mate-window-properties.c:366
+msgid "Window Selection"
+msgstr "Ablakkijelölés"
+
+#: ../capplets/windows/mate-window-properties.c:375
+msgid "_Select windows when the mouse moves over them"
+msgstr "_Ablakok kiválasztása, ha az egér föléjük ér"
+
+#: ../capplets/windows/mate-window-properties.c:378
+msgid "_Raise selected windows after an interval"
+msgstr "Kij_elölt ablakok előtérbe hozásának késleltetése"
+
+#: ../capplets/windows/mate-window-properties.c:384
+msgid "_Interval before raising:"
+msgstr "Késleltetés az előtérbe ho_zás előtt:"
+
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "seconds"
+msgstr "másodperc"
+
+#. Titlebar Action
+#: ../capplets/windows/mate-window-properties.c:399
+msgid "Titlebar Action"
+msgstr "Címsorművelet"
+
+#: ../capplets/windows/mate-window-properties.c:403
+msgid "_Double-click titlebar to perform this action:"
+msgstr "_Kattintson duplán a címsoron a művelet végrehajtásához:"
+
+#. Movement Key
+#: ../capplets/windows/mate-window-properties.c:411
+msgid "Movement Key"
+msgstr "Mozgásbillentyű"
+
+#: ../capplets/windows/mate-window-properties.c:416
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "Ablak áthelyezéséhez tartsa lenyomva ezt a billentyűt és húzza el az ablakot:"
+
+#: ../capplets/windows/mate-window-properties.c:427
 #: ../libwindow-settings/marco-window-manager.c:379
 msgid "Roll up"
 msgstr "Felgördítés"
 
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:428
 #: ../libwindow-settings/marco-window-manager.c:380
 msgid "Maximize"
 msgstr "Maximalizálás"
 
-#: ../capplets/windows/mate-window-properties.c:305
+#: ../capplets/windows/mate-window-properties.c:429
 #: ../libwindow-settings/marco-window-manager.c:381
 msgid "Maximize Horizontally"
 msgstr "Vízszintes maximalizálás"
 
-#: ../capplets/windows/mate-window-properties.c:306
+#: ../capplets/windows/mate-window-properties.c:430
 #: ../libwindow-settings/marco-window-manager.c:382
 msgid "Maximize Vertically"
 msgstr "Függőleges maximalizálás"
 
-#: ../capplets/windows/mate-window-properties.c:307
+#: ../capplets/windows/mate-window-properties.c:431
 #: ../libwindow-settings/marco-window-manager.c:383
 msgid "Minimize"
 msgstr "Minimalizálás"
 
-#: ../capplets/windows/mate-window-properties.c:308
+#: ../capplets/windows/mate-window-properties.c:432
 #: ../libwindow-settings/marco-window-manager.c:384
 msgid "None"
 msgstr "Nincs"
 
-#: ../capplets/windows/mate-window-properties.c:506
+#: ../capplets/windows/mate-window-properties.c:636
 msgid "_Alt"
 msgstr "Al_t"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:642
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:649
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (vagy „Windows logó”)"
 
-#: ../capplets/windows/mate-window-properties.c:526
+#: ../capplets/windows/mate-window-properties.c:656
 msgid "_Meta"
 msgstr "_Meta"
-
-#: ../capplets/windows/mate-window-properties.ui.h:1
-msgid "Window Preferences"
-msgstr "Az ablak beállításai"
-
-#: ../capplets/windows/mate-window-properties.ui.h:4
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Bélyegképek _tiltása Alt-Tab esetén"
-
-#: ../capplets/windows/mate-window-properties.ui.h:5
-msgid "Window Snapping"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:6
-msgid "Enable side by side tiling"
-msgstr ""
-
-#: ../capplets/windows/mate-window-properties.ui.h:7
-msgid "Window Selection"
-msgstr "Ablakkijelölés"
-
-#: ../capplets/windows/mate-window-properties.ui.h:8
-msgid "_Select windows when the mouse moves over them"
-msgstr "_Ablakok kiválasztása, ha az egér föléjük ér"
-
-#: ../capplets/windows/mate-window-properties.ui.h:9
-msgid "_Raise selected windows after an interval"
-msgstr "Kij_elölt ablakok előtérbe hozásának késleltetése"
-
-#: ../capplets/windows/mate-window-properties.ui.h:10
-msgid "_Interval before raising:"
-msgstr "Késleltetés az előtérbe ho_zás előtt:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:11
-msgid "seconds"
-msgstr "másodperc"
-
-#: ../capplets/windows/mate-window-properties.ui.h:12
-msgid "Titlebar Action"
-msgstr "Címsorművelet"
-
-#: ../capplets/windows/mate-window-properties.ui.h:13
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Kattintson duplán a címsoron a művelet végrehajtásához:"
-
-#: ../capplets/windows/mate-window-properties.ui.h:14
-msgid "Movement Key"
-msgstr "Mozgásbillentyű"
-
-#: ../capplets/windows/mate-window-properties.ui.h:15
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "Ablak áthelyezéséhez tartsa lenyomva ezt a billentyűt és húzza el az ablakot:"
 
 #: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
 msgid "Windows"
@@ -2729,87 +2754,87 @@ msgstr "Keresés"
 #: ../libslab/directory-tile.c:176
 #, c-format
 msgid "<b>Open</b>"
-msgstr ""
+msgstr "<b>Megnyitás</b>"
 
 #. make rename action
 #: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
 msgid "Rename..."
-msgstr ""
+msgstr "Átnevezés..."
 
 #: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
 #: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
 msgid "Send To..."
-msgstr ""
+msgstr "Küldés..."
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
 msgid "Move to Trash"
-msgstr ""
+msgstr "Áthelyezés a kukába"
 
 #: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
 #: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr ""
+msgstr "Biztos, hogy véglegesen törli ezt: \"%s\"?"
 
 #: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
 msgid "If you delete an item, it is permanently lost."
-msgstr ""
+msgstr "Ha töröl egy elemet, az véglegesen elvész."
 
 #: ../libslab/document-tile.c:200
 #, c-format
 msgid "Open with \"%s\""
-msgstr ""
+msgstr "Megnyitás ezzel: \"%s\""
 
 #: ../libslab/document-tile.c:214
 msgid "Open with Default Application"
-msgstr ""
+msgstr "Megnyitás az alapértelmezett alkalmazással"
 
 #: ../libslab/document-tile.c:225
 msgid "Open in File Manager"
-msgstr ""
+msgstr "Megnyitás a fájlkezelőben"
 
 #. clean item from menu
 #: ../libslab/document-tile.c:309
 msgid "Remove from recent menu"
-msgstr ""
+msgstr "Törlés az előzményekből"
 
 #. clean all the items from menu
 #: ../libslab/document-tile.c:317
 msgid "Purge all the recent items"
-msgstr ""
+msgstr "Minden előzmény törlése"
 
 #: ../libslab/document-tile.c:631
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: ../libslab/document-tile.c:638
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%H:%M"
 
 #: ../libslab/document-tile.c:646
 msgid "Today %l:%M %p"
-msgstr ""
+msgstr "Ma, %H:%M"
 
 #: ../libslab/document-tile.c:656
 msgid "Yesterday %l:%M %p"
-msgstr ""
+msgstr "Tegnap, %H:%M"
 
 #: ../libslab/document-tile.c:668
 msgid "%a %l:%M %p"
-msgstr ""
+msgstr "%a, %H:%M"
 
 #: ../libslab/document-tile.c:676
 msgid "%b %d %l:%M %p"
-msgstr ""
+msgstr "%b %d, %H:%M"
 
 #: ../libslab/document-tile.c:678
 msgid "%b %d %Y"
-msgstr ""
+msgstr "%Y. %b %d"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
