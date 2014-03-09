@@ -311,6 +311,7 @@ main (int argc, char **argv)
                                               NULL);
     //gtk_window_set_resizable (GTK_WINDOW (dialog_win), FALSE);
     gtk_window_set_icon_name (GTK_WINDOW (dialog_win), "preferences-system-windows");
+    gtk_container_set_border_width (GTK_CONTAINER (dialog_win), 10);
 
     nb = gtk_notebook_new ();
     general_vbox = gtk_vbox_new (FALSE, 0);
