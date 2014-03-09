@@ -129,6 +129,18 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				g_object_unref (settings);
 				break;
 
+			case DA_TYPE_VISUAL:
+				settings = g_settings_new (VISUAL_SCHEMA);
+				g_settings_set_string (settings, VISUAL_KEY, g_app_info_get_executable (item));
+				g_object_unref (settings);
+				break;
+
+			case DA_TYPE_MOBILITY:
+				settings = g_settings_new (MOBILITY_SCHEMA);
+				g_settings_set_string (settings, MOBILITY_KEY, g_app_info_get_executable (item));
+				g_object_unref (settings);
+				break;
+
 			default:
 				break;
 		}
@@ -354,6 +366,36 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		g_free (default_terminal);
 		g_object_unref (terminal_settings);
 	}
+	else if (g_strcmp0(mime, "visual") == 0)
+	{
+		GSettings *visual_settings = g_settings_new (VISUAL_SCHEMA);
+		gchar *default_visual = g_settings_get_string (visual_settings, VISUAL_KEY);
+		for (entry = app_list; entry != NULL; entry = g_list_next(entry))
+		{
+			GAppInfo* item = (GAppInfo*) entry->data;
+			if (g_strcmp0 (g_app_info_get_executable (item), default_visual) == 0)
+			{
+				default_app = item;
+			}
+		}
+		g_free (default_visual);
+		g_object_unref (visual_settings);
+	}
+	else if (g_strcmp0(mime, "mobility") == 0)
+	{
+		GSettings *mobility_settings = g_settings_new (MOBILITY_SCHEMA);
+		gchar *default_mobility = g_settings_get_string (mobility_settings, MOBILITY_KEY);
+		for (entry = app_list; entry != NULL; entry = g_list_next(entry))
+		{
+			GAppInfo* item = (GAppInfo*) entry->data;
+			if (g_strcmp0 (g_app_info_get_executable (item), default_mobility) == 0)
+			{
+				default_app = item;
+			}
+		}
+		g_free (default_mobility);
+		g_object_unref (mobility_settings);
+	}
 	else
 	{
 		default_app = g_app_info_get_default_for_type (mime, FALSE);
@@ -424,6 +466,19 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	}
 }
 
+static GList*
+fill_list_from_desktop_file (GList* app_list, const gchar *desktop_id)
+{
+	GList* list = app_list;
+	GDesktopAppInfo* appinfo;
+
+	appinfo = g_desktop_app_info_new_from_filename (desktop_id);
+	if (appinfo != NULL) {
+		list = g_list_prepend (list, appinfo);
+	}
+	return list;
+}
+
 static void
 show_dialog(MateDACapplet* capplet, const gchar* start_page)
 {
@@ -482,8 +537,16 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->text_editors = g_app_info_get_all_for_type("text/plain");
 	capplet->image_viewers = g_app_info_get_all_for_type("image/png");
 	capplet->file_managers = g_app_info_get_all_for_type("inode/directory");
-	/* capplet->visual_ats = g_app_info_get_all_for_type("inode/directory"); */
-	/* capplet->mobility_ats = g_app_info_get_all_for_type("inode/directory"); */
+
+	capplet->visual_ats = NULL;
+	capplet->visual_ats = fill_list_from_desktop_file (capplet->visual_ats, APPLICATIONSDIR "/orca.desktop");
+	capplet->visual_ats = g_list_reverse (capplet->visual_ats);
+
+	capplet->mobility_ats = NULL;
+	capplet->mobility_ats = fill_list_from_desktop_file (capplet->mobility_ats, APPLICATIONSDIR "/dasher.desktop");
+	capplet->mobility_ats = fill_list_from_desktop_file (capplet->mobility_ats, APPLICATIONSDIR "/gok.desktop");
+	capplet->mobility_ats = fill_list_from_desktop_file (capplet->mobility_ats, APPLICATIONSDIR "/onboard.desktop");
+	capplet->mobility_ats = g_list_reverse (capplet->mobility_ats);
 
 	/* Terminal havent mime types, so check in .desktop files for
 	   Categories=TerminalEmulator */
@@ -510,8 +573,8 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->image_combo_box), capplet->image_viewers, "image/png");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->text_combo_box), capplet->text_editors, "text/plain");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->file_combo_box), capplet->file_managers, "inode/directory");
-	/* fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats, NULL); */
-	/* fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats, NULL); */
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats, "visual");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats, "mobility");
 
 	g_signal_connect(capplet->web_combo_box, "changed", G_CALLBACK(web_combo_changed_cb), capplet);
 	g_signal_connect(capplet->mail_combo_box, "changed", G_CALLBACK(mail_combo_changed_cb), capplet);

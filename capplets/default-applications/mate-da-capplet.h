@@ -27,6 +27,12 @@
 #define TERMINAL_SCHEMA "org.mate.applications-terminal"
 #define TERMINAL_KEY    "exec"
 
+#define VISUAL_SCHEMA   "org.mate.applications-at-visual"
+#define VISUAL_KEY      "exec"
+
+#define MOBILITY_SCHEMA "org.mate.applications-at-mobility"
+#define MOBILITY_KEY    "exec"
+
 typedef struct _MateDACapplet {
 	GtkBuilder* builder;
 
