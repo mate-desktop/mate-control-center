@@ -24,14 +24,16 @@
 
 #include <gtk/gtk.h>
 
-#define TERMINAL_SCHEMA "org.mate.applications-terminal"
-#define TERMINAL_KEY    "exec"
+#define TERMINAL_SCHEMA       "org.mate.applications-terminal"
+#define TERMINAL_KEY          "exec"
 
-#define VISUAL_SCHEMA   "org.mate.applications-at-visual"
-#define VISUAL_KEY      "exec"
+#define VISUAL_SCHEMA         "org.mate.applications-at-visual"
+#define VISUAL_KEY            "exec"
+#define VISUAL_STARTUP_KEY    "startup"
 
-#define MOBILITY_SCHEMA "org.mate.applications-at-mobility"
-#define MOBILITY_KEY    "exec"
+#define MOBILITY_SCHEMA       "org.mate.applications-at-mobility"
+#define MOBILITY_KEY          "exec"
+#define MOBILITY_STARTUP_KEY  "startup"
 
 typedef struct _MateDACapplet {
 	GtkBuilder* builder;
@@ -117,6 +119,11 @@ typedef struct _MateDACapplet {
 	GList* file_managers;
 	GList* text_editors;
 	GList* image_viewers;
+
+	/* Settings objects */
+	GSettings* terminal_settings;
+	GSettings* visual_settings;
+	GSettings* mobility_settings;
 } MateDACapplet;
 
 #endif

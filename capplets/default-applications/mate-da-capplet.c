@@ -124,21 +124,15 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				break;
 
 			case DA_TYPE_TERMINAL:
-				settings = g_settings_new (TERMINAL_SCHEMA);
-				g_settings_set_string (settings, TERMINAL_KEY, g_app_info_get_executable (item));
-				g_object_unref (settings);
+				g_settings_set_string (capplet->terminal_settings, TERMINAL_KEY, g_app_info_get_executable (item));
 				break;
 
 			case DA_TYPE_VISUAL:
-				settings = g_settings_new (VISUAL_SCHEMA);
-				g_settings_set_string (settings, VISUAL_KEY, g_app_info_get_executable (item));
-				g_object_unref (settings);
+				g_settings_set_string (capplet->visual_settings, VISUAL_KEY, g_app_info_get_executable (item));
 				break;
 
 			case DA_TYPE_MOBILITY:
-				settings = g_settings_new (MOBILITY_SCHEMA);
-				g_settings_set_string (settings, MOBILITY_KEY, g_app_info_get_executable (item));
-				g_object_unref (settings);
+				g_settings_set_string (capplet->mobility_settings, MOBILITY_KEY, g_app_info_get_executable (item));
 				break;
 
 			default:
@@ -525,6 +519,8 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->file_combo_box = get_widget("filemanager_combobox");
 	capplet->image_combo_box = get_widget("image_combobox");
 
+	capplet->visual_startup_checkbutton = get_widget("visual_start_checkbutton");
+	capplet->mobility_startup_checkbutton = get_widget("mobility_start_checkbutton");
 
 	g_signal_connect(capplet->window, "screen-changed", G_CALLBACK(screen_changed_cb), capplet);
 	screen_changed_cb(capplet->window, gdk_screen_get_default(), capplet);
@@ -587,6 +583,8 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->text_combo_box, "changed", G_CALLBACK(text_combo_changed_cb), capplet);
 	g_signal_connect(capplet->file_combo_box, "changed", G_CALLBACK(file_combo_changed_cb), capplet);
 
+	g_settings_bind (capplet->mobility_settings, MOBILITY_STARTUP_KEY, capplet->mobility_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (capplet->visual_settings, VISUAL_STARTUP_KEY, capplet->visual_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
 
 	gtk_window_set_icon_name(GTK_WINDOW (capplet->window), "preferences-desktop-default-applications");
 
@@ -647,10 +645,18 @@ main(int argc, char** argv)
 
 	MateDACapplet* capplet = g_new0(MateDACapplet, 1);
 
+	capplet->terminal_settings = g_settings_new (TERMINAL_SCHEMA);
+	capplet->mobility_settings = g_settings_new (MOBILITY_SCHEMA);
+	capplet->visual_settings = g_settings_new (VISUAL_SCHEMA);
+
 	show_dialog(capplet, start_page);
 	g_free(start_page);
 
 	gtk_main();
+
+	g_object_unref (capplet->terminal_settings);
+	g_object_unref (capplet->mobility_settings);
+	g_object_unref (capplet->visual_settings);
 
 	return 0;
 }
