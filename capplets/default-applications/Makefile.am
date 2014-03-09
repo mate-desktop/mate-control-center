@@ -24,6 +24,7 @@ pkgconfig_DATA = mate-default-applications.pc
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(DEFAULT_APPLICATIONS_CAPPLET_CFLAGS) \
+	-DAPPLICATIONSDIR=\""$(datadir)/applications"\"\
 	-DMATELOCALEDIR=\""$(datadir)/locale"\"\
 	-DMATECC_UI_DIR=\""$(uidir)"\"
 
