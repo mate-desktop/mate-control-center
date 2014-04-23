@@ -250,6 +250,7 @@ static void update_message_area(AppearanceData* data)
 		gtk_box_pack_start (GTK_BOX (parent), data->style_message_area, FALSE, FALSE, 0);
 	}
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	if (engine != NULL)
 	{
 		gchar* message = g_strdup_printf(_("This theme will not look as intended because the required GTK+ theme engine '%s' is not installed."), engine);
@@ -273,6 +274,9 @@ static void update_message_area(AppearanceData* data)
 	{
 		gtk_widget_hide(data->style_message_area);
 	}
+#else
+  gtk_widget_hide(data->style_message_area);
+#endif
 }
 
 static void
