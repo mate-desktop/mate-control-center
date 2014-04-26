@@ -132,7 +132,9 @@ create_main_window (AppShellData * app_data, const gchar * app_name, const gchar
 	app_data->main_app = main_app;
 	gtk_widget_set_name (main_app, app_name);
 	gtk_window_set_title (GTK_WINDOW (main_app), title);
-	/* gtk_window_set_default_size(GTK_WINDOW(main_app), width, height); */
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_window_set_default_size(GTK_WINDOW(main_app), width, height);
+#endif
 	gtk_window_set_icon_name (GTK_WINDOW (main_app), window_icon);
 	gtk_container_add (GTK_CONTAINER (main_app), app_data->shell);
 

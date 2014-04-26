@@ -340,16 +340,17 @@ app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellDa
 	*/
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-	GdkRectangle rect;
-	gdk_cairo_get_clip_rectangle (cr, &rect);
+	cairo_save(cr);
+
+	GtkAllocation widget_allocation;
+	gtk_widget_get_allocation (widget, &widget_allocation);
 
 	gdk_cairo_set_source_color (cr, gtk_widget_get_style (widget)->base);
 	cairo_set_line_width(cr, 1);
 
-	cairo_rectangle(cr, 0, 0, rect.width, rect.height);
+	cairo_rectangle(cr, widget_allocation.x, widget_allocation.y, widget_allocation.width, widget_allocation.height);
 	cairo_stroke_preserve(cr);
 	cairo_fill(cr);
-
 #else
 	gdk_draw_rectangle (GTK_LAYOUT (widget)->bin_window,
 		widget->style->base_gc[GTK_STATE_NORMAL], TRUE, event->area.x, event->area.y,
@@ -360,16 +361,14 @@ app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellDa
 	{
 		GtkWidget *selected_widget = GTK_WIDGET (app_data->selected_group);
 #if GTK_CHECK_VERSION (3, 0, 0)
-		GtkAllocation widget_allocation;
 		GtkAllocation selected_widget_allocation;
 
-		gtk_widget_get_allocation (widget, &widget_allocation);
 		gtk_widget_get_allocation (selected_widget, &selected_widget_allocation);
 
 		gdk_cairo_set_source_color (cr, gtk_widget_get_style (selected_widget)->light);
 		cairo_set_line_width(cr, 1);
 
-		cairo_rectangle(cr, selected_widget_allocation.x, selected_widget_allocation.y, widget_allocation.width, selected_widget_allocation.height);
+		cairo_rectangle(cr, selected_widget_allocation.x, selected_widget_allocation.y, selected_widget_allocation.width, selected_widget_allocation.height);
 		cairo_stroke_preserve(cr);
 		cairo_fill(cr);
 #else
@@ -380,6 +379,10 @@ app_resizer_paint_window (GtkWidget * widget, GdkEventExpose * event, AppShellDa
 			selected_widget->allocation.height);
 #endif
 	}
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+	cairo_restore(cr);
+#endif
 
 	return FALSE;
 }
