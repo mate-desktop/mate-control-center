@@ -1062,8 +1062,8 @@ marco_dir_changed (GFileMonitor              *monitor,
 
   affected_file = g_file_get_basename (file);
 
-  /* The only file we care about is marco-theme-1.xml */
-  if (!strcmp (affected_file, "metacity-theme-1.xml")) {
+  /* The only file we care about is metacity-theme-(1|2).xml */
+  if (!strcmp (affected_file, "metacity-theme-1.xml") || !strcmp (affected_file, "metacity-theme-2.xml")) {
     update_marco_index (file, monitor_data->priority);
   }
 
@@ -1180,9 +1180,16 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
 
   /* marco theme subdir */
   subdir = g_file_get_child (theme_dir_uri, "metacity-1");
-  uri = g_file_get_child (subdir, "metacity-theme-1.xml");
+  uri = g_file_get_child (subdir, "metacity-theme-2.xml");
   if (g_file_query_exists (uri, NULL)) {
     update_marco_index (uri, monitor_data->priority);
+  }
+  else {
+    g_object_unref (uri);
+    uri = g_file_get_child (subdir, "metacity-theme-1.xml");
+    if (g_file_query_exists (uri, NULL)) {
+      update_marco_index (uri, monitor_data->priority);
+    }
   }
   g_object_unref (uri);
 

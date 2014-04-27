@@ -121,16 +121,31 @@ add_themes_from_dir (GList *current_list, const char *path)
                 return current_list;
         
         for (entry = readdir (theme_dir); entry != NULL; entry = readdir (theme_dir)) {
-                theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-1.xml", NULL);
+                theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-2.xml", NULL);
 
                 if (g_file_test (theme_file_path, G_FILE_TEST_EXISTS)) {
 
                         for (node = current_list; (node != NULL) && (!found); node = node->next) {
                                 found = (strcmp (node->data, entry->d_name) == 0);
                         }
-      
+
                         if (!found) {
                                 current_list = g_list_prepend (current_list, g_strdup (entry->d_name));
+                        }
+                }
+                else {
+                        g_free (theme_file_path);
+                        theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-1.xml", NULL);
+
+                        if (g_file_test (theme_file_path, G_FILE_TEST_EXISTS)) {
+
+                                for (node = current_list; (node != NULL) && (!found); node = node->next) {
+                                        found = (strcmp (node->data, entry->d_name) == 0);
+                                }
+
+                                if (!found) {
+                                        current_list = g_list_prepend (current_list, g_strdup (entry->d_name));
+                                }
                         }
                 }
 
