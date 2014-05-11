@@ -182,20 +182,20 @@ AC_SUBST(GTK_ENGINE_DIR)
 PKG_CHECK_MODULES(GLIB, glib-2.0 $GMODULE_ADD)
 
 dnl
-dnl Check dependencies of libslab
+dnl Check dependencies of libmate-slab
 dnl
 PKG_CHECK_MODULES(LIBSLAB, [
 			   gio-2.0 mate-desktop-2.0 librsvg-2.0 libmate-menu pango
 			   ],
-			   have_libslab=yes,
-			   have_libslab=no)
+			   have_libmateslab=yes,
+			   have_libmateslab=no)
 WARN_CFLAGS="-Wall"
 
-AC_SUBST(LIBSLAB_CFLAGS)
-AC_SUBST(LIBSLAB_LIBS)
+AC_SUBST(LIBMATESLAB_CFLAGS)
+AC_SUBST(LIBMATESLAB_LIBS)
 AC_SUBST(WARN_CFLAGS)
 
-AM_CONDITIONAL(HAVE_LIBSLAB, [test $have_libslab = yes])
+AM_CONDITIONAL(HAVE_LIBMATESLAB, [test $have_libmateslab = yes])
 
 dnl
 dnl Check for Xft version 2; we build in extra functionality to the font capplet
@@ -371,7 +371,7 @@ help/Makefile
 libwindow-settings/Makefile
 libwindow-settings/mate-window-settings-2.0.pc
 po/Makefile.in
-libslab/libslab.pc
+libslab/mate-slab.pc
 libslab/Makefile
 shell/Makefile
 shell/matecc.desktop.in
@@ -390,7 +390,7 @@ echo "
 
         GTK+ API version:      ${GTK_API_VERSION}
         Appindicator:          ${enable_appindicator}
-        Libslab:               ${have_libslab}
+        Libmate-slab:          ${have_libmateslab}
         XCursor support:       ${have_xcursor}
         XInput support:        ${have_xinput}
         Ubuntu hacks:          ${enable_ubuntu}

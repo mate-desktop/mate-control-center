@@ -22,24 +22,24 @@
 #ifndef __SLAB_H__
 #define __SLAB_H__
 
-#include <libslab/app-resizer.h>
-#include <libslab/app-shell.h>
-#include <libslab/application-tile.h>
-#include <libslab/bookmark-agent.h>
-#include <libslab/directory-tile.h>
-#include <libslab/document-tile.h>
-#include <libslab/double-click-detector.h>
-#include <libslab/mate-utils.h>
-#include <libslab/libslab-utils.h>
-#include <libslab/nameplate-tile.h>
-#include <libslab/search-bar.h>
-#include <libslab/search-context-picker.h>
-#include <libslab/search-entry.h>
-#include <libslab/shell-window.h>
-#include <libslab/slab-mate-util.h>
-#include <libslab/slab-section.h>
-#include <libslab/system-tile.h>
-#include <libslab/tile.h>
+#include "app-resizer.h"
+#include "app-shell.h"
+#include "application-tile.h"
+#include "bookmark-agent.h"
+#include "directory-tile.h"
+#include "document-tile.h"
+#include "double-click-detector.h"
+#include "mate-utils.h"
+#include "libslab-utils.h"
+#include "nameplate-tile.h"
+#include "search-bar.h"
+#include "search-context-picker.h"
+#include "search-entry.h"
+#include "shell-window.h"
+#include "slab-mate-util.h"
+#include "slab-section.h"
+#include "system-tile.h"
+#include "tile.h"
 
 #endif /* __SLAB_H__ */
 

@@ -1,5 +1,5 @@
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libslab.pc
+pkgconfig_DATA = mate-slab.pc
 
 AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\
@@ -28,9 +28,9 @@ HEADER_FILES=					\
 	system-tile.h				\
 	tile.h
 
-lib_LTLIBRARIES = libslab.la
+lib_LTLIBRARIES = libmate-slab.la
 
-libslab_la_SOURCES =				\
+libmate_slab_la_SOURCES =			\
 	$(MARSHAL_GENERATED)			\
 	app-resizer.c				\
 	app-shell.c				\
@@ -55,9 +55,9 @@ libslab_la_SOURCES =				\
 	tile-action.c				\
 	tile.c
 
-libslab_includedir = $(includedir)/libslab
-libslab_include_HEADERS = $(HEADER_FILES)
-libslab_la_LIBADD = $(LIBSLAB_LIBS)
+libmate_slab_includedir = $(includedir)/libmate-slab
+libmate_slab_include_HEADERS = $(HEADER_FILES)
+libmate_slab_la_LIBADD = $(LIBSLAB_LIBS)
 
 search-entry-watermark.h: search-entry-watermark.svg
 	echo '#define SEARCH_ENTRY_WATERMARK_SVG "\' > $@; \

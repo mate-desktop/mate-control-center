@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#include <libslab/app-shell.h>
+#include "app-shell.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -28,8 +28,8 @@
 #include <matemenu-tree.h>
 #include <libmate-desktop/mate-desktop-item.h>
 
-#include <libslab/slab-section.h>
-#include <libslab/tile.h>
+#include "slab-section.h"
+#include "tile.h"
 
 #ifdef __cplusplus
 extern "C" {

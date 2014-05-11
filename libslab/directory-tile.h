@@ -23,7 +23,7 @@
 
 #include <time.h>
 
-#include <libslab/nameplate-tile.h>
+#include "nameplate-tile.h"
 
 #ifdef __cplusplus
 extern "C" {

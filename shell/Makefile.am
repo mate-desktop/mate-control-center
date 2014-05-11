@@ -1,5 +1,5 @@
 REAL_LIBSLAB_CFLAGS = -I$(top_srcdir)/libslab
-REAL_LIBSLAB_LIBS = $(top_builddir)/libslab/libslab.la
+REAL_LIBSLAB_LIBS = $(top_builddir)/libslab/libmate-slab.la
 
 AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\

@@ -21,7 +21,7 @@
 #ifndef __NAMEPLATE_TILE_H__
 #define __NAMEPLATE_TILE_H__
 
-#include <libslab/tile.h>
+#include "tile.h"
 
 #include <gtk/gtk.h>
 
