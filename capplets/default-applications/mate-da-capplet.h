@@ -56,59 +56,10 @@ typedef struct _MateDACapplet {
 	GtkWidget* word_combo_box;
 	GtkWidget* spreadsheet_combo_box;
 
-	/* Web Browser
-	 * at the moment default,new_win,new_tab arent used */
-	GtkWidget* web_browser_command_entry;
-	GtkWidget* web_browser_command_label;
-	GtkWidget* web_browser_terminal_checkbutton;
-	GtkWidget* default_radiobutton;
-	GtkWidget* new_win_radiobutton;
-	GtkWidget* new_tab_radiobutton;
-
-	/* File Manager */
-	GtkWidget* file_manager_command_entry;
-	GtkWidget* file_manager_command_label;
-	GtkWidget* file_manager_terminal_checkbutton;
-
-	/* Text Editor */
-	GtkWidget* text_editor_command_entry;
-	GtkWidget* text_editor_command_label;
-	GtkWidget* text_editor_terminal_checkbutton;
-
-	/* Mail Client */
-	GtkWidget* mail_reader_command_entry;
-	GtkWidget* mail_reader_command_label;
-	GtkWidget* mail_reader_terminal_checkbutton;
-
-	/* Terminal */
-	GtkWidget* terminal_command_entry;
-	GtkWidget* terminal_command_label;
-	GtkWidget* terminal_exec_flag_entry;
-	GtkWidget* terminal_exec_flag_label;
-
-	/* Image Viewer */
-	GtkWidget* image_viewer_command_entry;
-	GtkWidget* image_viewer_command_label;
-	GtkWidget* image_viewer_terminal_checkbutton;
-
-	/* Audio Player */
-	GtkWidget* media_player_command_entry;
-	GtkWidget* media_player_command_label;
-	GtkWidget* media_player_terminal_checkbutton;
-
-	/* Video Player */
-	GtkWidget* video_player_command_entry;
-	GtkWidget* video_player_command_label;
-	GtkWidget* video_player_terminal_checkbutton;
-
 	/* Visual Accessibility */
-	GtkWidget* visual_command_entry;
-	GtkWidget* visual_command_label;
 	GtkWidget* visual_startup_checkbutton;
 
 	/* Mobility Accessibility */
-	GtkWidget* mobility_command_entry;
-	GtkWidget* mobility_command_label;
 	GtkWidget* mobility_startup_checkbutton;
 
 	/* Lists of available apps */
