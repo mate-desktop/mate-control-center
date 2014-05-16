@@ -583,8 +583,8 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->image_viewers = g_app_info_get_all_for_type("image/png");
 	capplet->file_managers = g_app_info_get_all_for_type("inode/directory");
 	capplet->document_viewers = g_app_info_get_all_for_type("application/pdf");
-	capplet->word_editors = g_app_info_get_all_for_type("application/vnd.oasis.opendocument.text");
-	capplet->spreadsheet_editors = g_app_info_get_all_for_type("application/vnd.oasis.opendocument.spreadsheet");
+	capplet->word_editors = g_app_info_get_all_for_type("application/msword");
+	capplet->spreadsheet_editors = g_app_info_get_all_for_type("application/vnd.ms-excel");
 
 	capplet->visual_ats = NULL;
 	capplet->visual_ats = fill_list_from_desktop_file (capplet->visual_ats, APPLICATIONSDIR "/orca.desktop");
