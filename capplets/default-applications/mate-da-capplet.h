@@ -52,6 +52,9 @@ typedef struct _MateDACapplet {
 	GtkWidget* file_combo_box;
 	GtkWidget* text_combo_box;
 	GtkWidget* image_combo_box;
+	GtkWidget* document_combo_box;
+	GtkWidget* word_combo_box;
+	GtkWidget* spreadsheet_combo_box;
 
 	/* Web Browser
 	 * at the moment default,new_win,new_tab arent used */
@@ -119,6 +122,9 @@ typedef struct _MateDACapplet {
 	GList* file_managers;
 	GList* text_editors;
 	GList* image_viewers;
+	GList* document_viewers;
+	GList* word_editors;
+	GList* spreadsheet_editors;
 
 	/* Settings objects */
 	GSettings* terminal_settings;

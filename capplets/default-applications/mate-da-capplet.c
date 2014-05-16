@@ -45,6 +45,9 @@ enum {
 	DA_TYPE_IMAGE,
 	DA_TYPE_TEXT,
 	DA_TYPE_FILE,
+	DA_TYPE_DOCUMENT,
+	DA_TYPE_WORD,
+	DA_TYPE_SPREADSHEET,
 	DA_N_COLUMNS
 };
 
@@ -123,6 +126,22 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				g_app_info_set_as_default_for_type(item, "image/tiff", NULL);
 				break;
 
+			case DA_TYPE_DOCUMENT:
+				g_app_info_set_as_default_for_type(item, "application/pdf", NULL);
+				break;
+
+			case DA_TYPE_WORD:
+				g_app_info_set_as_default_for_type(item, "application/vnd.oasis.opendocument.text", NULL);
+				g_app_info_set_as_default_for_type(item, "application/msword", NULL);
+				g_app_info_set_as_default_for_type(item, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", NULL);
+				break;
+
+			case DA_TYPE_SPREADSHEET:
+				g_app_info_set_as_default_for_type(item, "application/vnd.oasis.opendocument.spreadsheet", NULL);
+				g_app_info_set_as_default_for_type(item, "application/vnd.ms-excel", NULL);
+				g_app_info_set_as_default_for_type(item, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", NULL);
+				break;
+
 			case DA_TYPE_TERMINAL:
 				g_settings_set_string (capplet->terminal_settings, TERMINAL_KEY, g_app_info_get_executable (item));
 				break;
@@ -160,6 +179,9 @@ close_cb(GtkWidget* window, gint response, MateDACapplet* capplet)
 		set_changed(GTK_COMBO_BOX(capplet->visual_combo_box), capplet, capplet->visual_ats, DA_TYPE_VISUAL);
 		set_changed(GTK_COMBO_BOX(capplet->mobility_combo_box), capplet, capplet->mobility_ats, DA_TYPE_MOBILITY);
 		set_changed(GTK_COMBO_BOX(capplet->image_combo_box), capplet, capplet->image_viewers, DA_TYPE_IMAGE);
+		set_changed(GTK_COMBO_BOX(capplet->document_combo_box), capplet, capplet->document_viewers, DA_TYPE_DOCUMENT);
+		set_changed(GTK_COMBO_BOX(capplet->word_combo_box), capplet, capplet->word_editors, DA_TYPE_WORD);
+		set_changed(GTK_COMBO_BOX(capplet->spreadsheet_combo_box), capplet, capplet->spreadsheet_editors, DA_TYPE_SPREADSHEET);
 
 		gtk_widget_destroy(window);
 		gtk_main_quit();
@@ -228,6 +250,24 @@ image_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 }
 
 static void
+document_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->document_viewers, DA_TYPE_DOCUMENT);
+}
+
+static void
+word_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->word_editors, DA_TYPE_WORD);
+}
+
+static void
+spreadsheet_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+	set_changed(combo, capplet, capplet->spreadsheet_editors, DA_TYPE_SPREADSHEET);
+}
+
+static void
 refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list)
 {
 	GtkTreeIter iter;
@@ -281,6 +321,9 @@ static struct {
 	{"video_image",        "video-x-generic"},
 	{"text_image",         "text-editor"},
 	{"terminal_image",     "terminal"},
+	{"document_image",     "application-pdf"},
+	{"word_image",         "office-document"},
+	{"spreadsheet_image",  "office-spreadsheet"},
 };
 
 /* Callback for icon theme change */
@@ -313,6 +356,9 @@ theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->file_combo_box), capplet->file_managers);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->text_combo_box), capplet->text_editors);
+	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->document_combo_box), capplet->document_viewers);
+	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->word_combo_box), capplet->word_editors);
+	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->spreadsheet_combo_box), capplet->spreadsheet_editors);
 }
 
 static void
@@ -518,6 +564,9 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->text_combo_box = get_widget("text_combobox");
 	capplet->file_combo_box = get_widget("filemanager_combobox");
 	capplet->image_combo_box = get_widget("image_combobox");
+	capplet->document_combo_box = get_widget("document_combobox");
+	capplet->word_combo_box = get_widget("word_combobox");
+	capplet->spreadsheet_combo_box = get_widget("spreadsheet_combobox");
 
 	capplet->visual_startup_checkbutton = get_widget("visual_start_checkbutton");
 	capplet->mobility_startup_checkbutton = get_widget("mobility_start_checkbutton");
@@ -533,6 +582,9 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->text_editors = g_app_info_get_all_for_type("text/plain");
 	capplet->image_viewers = g_app_info_get_all_for_type("image/png");
 	capplet->file_managers = g_app_info_get_all_for_type("inode/directory");
+	capplet->document_viewers = g_app_info_get_all_for_type("application/pdf");
+	capplet->word_editors = g_app_info_get_all_for_type("application/vnd.oasis.opendocument.text");
+	capplet->spreadsheet_editors = g_app_info_get_all_for_type("application/vnd.oasis.opendocument.spreadsheet");
 
 	capplet->visual_ats = NULL;
 	capplet->visual_ats = fill_list_from_desktop_file (capplet->visual_ats, APPLICATIONSDIR "/orca.desktop");
@@ -571,6 +623,9 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->file_combo_box), capplet->file_managers, "inode/directory");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->visual_combo_box), capplet->visual_ats, "visual");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mobility_combo_box), capplet->mobility_ats, "mobility");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->document_combo_box), capplet->document_viewers, "application/pdf");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->word_combo_box), capplet->word_editors, "application/vnd.oasis.opendocument.text");
+	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->spreadsheet_combo_box), capplet->spreadsheet_editors, "application/vnd.oasis.opendocument.spreadsheet");
 
 	g_signal_connect(capplet->web_combo_box, "changed", G_CALLBACK(web_combo_changed_cb), capplet);
 	g_signal_connect(capplet->mail_combo_box, "changed", G_CALLBACK(mail_combo_changed_cb), capplet);
@@ -582,6 +637,9 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->image_combo_box, "changed", G_CALLBACK(image_combo_changed_cb), capplet);
 	g_signal_connect(capplet->text_combo_box, "changed", G_CALLBACK(text_combo_changed_cb), capplet);
 	g_signal_connect(capplet->file_combo_box, "changed", G_CALLBACK(file_combo_changed_cb), capplet);
+	g_signal_connect(capplet->document_combo_box, "changed", G_CALLBACK(document_combo_changed_cb), capplet);
+	g_signal_connect(capplet->word_combo_box, "changed", G_CALLBACK(word_combo_changed_cb), capplet);
+	g_signal_connect(capplet->spreadsheet_combo_box, "changed", G_CALLBACK(spreadsheet_combo_changed_cb), capplet);
 
 	g_settings_bind (capplet->mobility_settings, MOBILITY_STARTUP_KEY, capplet->mobility_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
 	g_settings_bind (capplet->visual_settings, VISUAL_STARTUP_KEY, capplet->visual_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);

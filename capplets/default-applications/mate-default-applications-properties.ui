@@ -714,6 +714,226 @@
 								<property name="tab_fill">False</property>
 							</packing>
 						</child>
+
+						<child>
+							<object class="GtkVBox" id="office_vbox">
+								<property name="visible">True</property>
+								<property name="border_width">12</property>
+								<property name="spacing">18</property>
+
+								<!-- Document Viewer -->
+								<child>
+									<object class="GtkVBox" id="document_vbox">
+										<property name="visible">True</property>
+										<property name="spacing">6</property>
+										<child>
+											<object class="GtkLabel" id="document_label">
+												<property name="visible">True</property>
+												<property name="xalign">0</property>
+												<property name="label" translatable="yes">Document Viewer</property>
+												<attributes>
+													<attribute name="weight" value="bold" />
+												</attributes>
+											</object>
+											<packing>
+												<property name="expand">False</property>
+												<property name="fill">False</property>
+												<property name="position">0</property>
+											</packing>
+										</child>
+										<child>
+											<object class="GtkHBox" id="document_hbox">
+												<property name="visible">True</property>
+												<property name="spacing">12</property>
+												<child>
+													<object class="GtkImage" id="document_image">
+														<property name="visible">True</property>
+														<property name="yalign">0</property>
+													</object>
+													<packing>
+														<property name="expand">False</property>
+														<property name="fill">False</property>
+														<property name="position">0</property>
+													</packing>
+												</child>
+												<child>
+													<object class="GtkVBox" id="document_options_vbox">
+														<property name="visible">True</property>
+														<property name="spacing">6</property>
+														<child>
+															<object class="GtkComboBox" id="document_combobox">
+																<property name="visible">True</property>
+															</object>
+															<packing>
+																<property name="expand">False</property>
+																<property name="position">0</property>
+															</packing>
+														</child>
+													</object>
+													<packing>
+														<property name="position">1</property>
+													</packing>
+												</child>
+											</object>
+											<packing>
+												<property name="position">1</property>
+											</packing>
+										</child>
+									</object>
+									<packing>
+										<property name="expand">False</property>
+										<property name="position">0</property>
+									</packing>
+								</child>
+								<!-- / Document Viewer -->
+
+								<!-- Word Processor -->
+								<child>
+									<object class="GtkVBox" id="word_vbox">
+										<property name="visible">True</property>
+										<property name="spacing">6</property>
+										<child>
+											<object class="GtkLabel" id="word_label">
+												<property name="visible">True</property>
+												<property name="xalign">0</property>
+												<property name="label" translatable="yes">Word Processor</property>
+												<attributes>
+													<attribute name="weight" value="bold" />
+												</attributes>
+											</object>
+											<packing>
+												<property name="expand">False</property>
+												<property name="fill">False</property>
+												<property name="position">0</property>
+											</packing>
+										</child>
+										<child>
+											<object class="GtkHBox" id="word_hbox">
+												<property name="visible">True</property>
+												<property name="spacing">12</property>
+												<child>
+													<object class="GtkImage" id="word_image">
+														<property name="visible">True</property>
+														<property name="yalign">0</property>
+													</object>
+													<packing>
+														<property name="expand">False</property>
+														<property name="fill">False</property>
+														<property name="position">0</property>
+													</packing>
+												</child>
+												<child>
+													<object class="GtkVBox" id="word_options_vbox">
+														<property name="visible">True</property>
+														<property name="spacing">6</property>
+														<child>
+															<object class="GtkComboBox" id="word_combobox">
+																<property name="visible">True</property>
+															</object>
+															<packing>
+																<property name="expand">False</property>
+																<property name="position">0</property>
+															</packing>
+														</child>
+													</object>
+													<packing>
+														<property name="position">1</property>
+													</packing>
+												</child>
+											</object>
+											<packing>
+												<property name="position">1</property>
+											</packing>
+										</child>
+									</object>
+									<packing>
+										<property name="expand">False</property>
+										<property name="position">1</property>
+									</packing>
+								</child>
+								<!-- / Word Processor -->
+
+								<!-- Spreadsheet Editor -->
+								<child>
+									<object class="GtkVBox" id="spreadsheet_vbox">
+										<property name="visible">True</property>
+										<property name="spacing">6</property>
+										<child>
+											<object class="GtkLabel" id="spreadsheet_label">
+												<property name="visible">True</property>
+												<property name="xalign">0</property>
+												<property name="label" translatable="yes">Spreadsheet Editor</property>
+												<attributes>
+													<attribute name="weight" value="bold" />
+												</attributes>
+											</object>
+											<packing>
+												<property name="expand">False</property>
+												<property name="fill">False</property>
+												<property name="position">0</property>
+											</packing>
+										</child>
+										<child>
+											<object class="GtkHBox" id="spreadsheet_hbox">
+												<property name="visible">True</property>
+												<property name="spacing">12</property>
+												<child>
+													<object class="GtkImage" id="spreadsheet_image">
+														<property name="visible">True</property>
+														<property name="yalign">0</property>
+													</object>
+													<packing>
+														<property name="expand">False</property>
+														<property name="fill">False</property>
+														<property name="position">0</property>
+													</packing>
+												</child>
+												<child>
+													<object class="GtkVBox" id="spreadsheet_options_vbox">
+														<property name="visible">True</property>
+														<property name="spacing">6</property>
+														<child>
+															<object class="GtkComboBox" id="spreadsheet_combobox">
+																<property name="visible">True</property>
+															</object>
+															<packing>
+																<property name="expand">False</property>
+																<property name="position">0</property>
+															</packing>
+														</child>
+													</object>
+													<packing>
+														<property name="position">1</property>
+													</packing>
+												</child>
+											</object>
+											<packing>
+												<property name="position">1</property>
+											</packing>
+										</child>
+									</object>
+									<packing>
+										<property name="expand">False</property>
+										<property name="position">2</property>
+									</packing>
+								</child>
+								<!-- / Spreadsheet Editor -->
+							</object>
+							<packing>
+								<property name="position">3</property>
+							</packing>
+						</child>
+						<child type="tab">
+							<object class="GtkLabel" id="office_label">
+								<property name="visible">True</property>
+								<property name="label" translatable="yes">Office</property>
+							</object>
+							<packing>
+								<property name="position">2</property>
+								<property name="tab_fill">False</property>
+							</packing>
+						</child>
+
 						<child>
 							<object class="GtkVBox" id="a11y_vbox">
 								<property name="visible">True</property>
@@ -873,7 +1093,7 @@
 								</child>
 							</object>
 							<packing>
-								<property name="position">3</property>
+								<property name="position">4</property>
 							</packing>
 						</child>
 						<child type="tab">
@@ -882,7 +1102,7 @@
 								<property name="label" translatable="yes">Accessibility</property>
 							</object>
 							<packing>
-								<property name="position">3</property>
+								<property name="position">4</property>
 								<property name="tab_fill">False</property>
 							</packing>
 						</child>
