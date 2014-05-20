@@ -417,11 +417,7 @@ void mate_wp_xml_load_list(AppearanceData* data)
 	char* wpdbfile;
 	gint i;
 
-	#if GLIB_CHECK_VERSION(2, 6, 0)
 		wpdbfile = g_build_filename(g_get_user_config_dir(), "mate", "backgrounds.xml", NULL);
-	#else // glib version < 2.6.0
-		wpdbfile = g_build_filename(g_get_home_dir(), ".config", "mate", "backgrounds.xml", NULL);
-	#endif
 
 	if (g_file_test(wpdbfile, G_FILE_TEST_EXISTS))
 	{
@@ -431,11 +427,7 @@ void mate_wp_xml_load_list(AppearanceData* data)
 	{
 		g_free (wpdbfile);
 
-		#if GLIB_CHECK_VERSION(2, 6, 0)
 			wpdbfile = g_build_filename(g_get_user_config_dir(), "mate", "wp-list.xml", NULL);
-		#else // glib version < 2.6.0
-			wpdbfile = g_build_filename(g_get_home_dir(), ".config", "mate", "wp-list.xml", NULL);
-		#endif
 
 		if (g_file_test(wpdbfile, G_FILE_TEST_EXISTS))
 		{
@@ -508,11 +500,7 @@ void mate_wp_xml_save_list(AppearanceData* data)
 	g_hash_table_destroy(data->wp_hash);
 	list = g_slist_reverse(list);
 
-	#if GLIB_CHECK_VERSION(2, 6, 0)
 		wpfile = g_build_filename(g_get_user_config_dir(), "mate", "backgrounds.xml", NULL);
-	#else // glib version < 2.6.0
-		wpfile = g_build_filename(g_get_home_dir(), ".config", "mate", "backgrounds.xml", NULL);
-	#endif
 
 	xmlKeepBlanksDefault(0);
 

@@ -78,9 +78,7 @@ main (int argc, char *argv[])
 	textdomain (GETTEXT_PACKAGE);
 
         option_context = g_option_context_new (NULL);
-#if GLIB_CHECK_VERSION (2, 12, 0)
         g_option_context_set_translation_domain (option_context, GETTEXT_PACKAGE);
-#endif
         g_option_context_add_main_entries (option_context, options, GETTEXT_PACKAGE);
         g_option_context_add_group (option_context, gtk_get_option_group (TRUE));
  

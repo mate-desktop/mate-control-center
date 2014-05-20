@@ -445,11 +445,7 @@ static gboolean key_match(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* i
 
     if (element && element->settings && G_IS_SETTINGS(element->settings))
     {
-        #if GLIB_CHECK_VERSION (2, 32, 0)
             g_object_get (element->settings, "schema-id", &element_schema, NULL);
-        #else
-            g_object_get (element->settings, "schema", &element_schema, NULL);
-        #endif
         g_object_get (element->settings, "path", &element_path, NULL);
     }
 
@@ -1111,21 +1107,13 @@ static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, 
 
     if (new_key && new_key->settings)
     {
-        #if GLIB_CHECK_VERSION (2, 32, 0)
             g_object_get (new_key->settings, "schema-id", &new_key_schema, NULL);
-        #else
-            g_object_get (new_key->settings, "schema", &new_key_schema, NULL);
-        #endif
         g_object_get (new_key->settings, "path", &new_key_path, NULL);
     }
     
     if (element->settings)
     {
-        #if GLIB_CHECK_VERSION (2, 32, 0)
             g_object_get (element->settings, "schema-id", &element_schema, NULL);
-        #else
-            g_object_get (element->settings, "schema", &element_schema, NULL);
-        #endif
         g_object_get (element->settings, "path", &element_path, NULL);
     }
 
@@ -1938,9 +1926,6 @@ main (int argc, char *argv[])
   GtkBuilder *builder;
   GSettings *marco_settings;
 
-#if !GLIB_CHECK_VERSION (2, 32, 0)
-  g_thread_init (NULL);
-#endif
   gtk_init (&argc, &argv);
 
   bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
