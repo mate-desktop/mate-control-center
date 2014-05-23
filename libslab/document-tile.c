@@ -1069,7 +1069,6 @@ user_docs_trigger (Tile *tile, TileEvent *event, TileAction *action)
 	update_user_list_menu_item (this);
 }
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 /*
  * Set the DISPLAY variable, to be use by g_spawn_async.
  */
@@ -1078,7 +1077,6 @@ set_environment (gpointer display)
 {
 	g_setenv ("DISPLAY", display, TRUE);
 }
-#endif
 
 static void
 send_to_trigger (Tile *tile, TileEvent *event, TileAction *action)
@@ -1120,17 +1118,12 @@ send_to_trigger (Tile *tile, TileEvent *event, TileAction *action)
 		}
 	}
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	char       *display;
 	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (tile)));
 
 	g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, set_environment,
 		&display, NULL, &error);
 	g_free (display);
-#else
-	gdk_spawn_on_screen (gtk_widget_get_screen (GTK_WIDGET (tile)), NULL, argv, NULL,
-		G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
-#endif
 
 	if (error)
 		handle_g_error (&error, "error in %s", G_STRFUNC);
