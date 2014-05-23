@@ -319,7 +319,7 @@ add_face_info(GtkWidget *table, gint *row_p, const gchar *uri, FT_Face face)
         add_row (table, row_p, _("Type:"), s, FALSE, FALSE);
         g_free (s);
 
-        s = g_format_size_for_display (g_file_info_get_size (info));
+        s = g_format_size (g_file_info_get_size (info));
         add_row (table, row_p, _("Size:"), s, FALSE, FALSE);
         g_free (s);
 
