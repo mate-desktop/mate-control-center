@@ -9,7 +9,6 @@ main (int argc, char *argv[])
 {
   GList *themes, *list;
 
-  g_thread_init (NULL);
   gtk_init (&argc, &argv);
   mate_theme_init ();
 
