@@ -281,11 +281,7 @@ image_drag_motion_cb (GtkWidget *widget,
 	if (!chooser->priv->editable)
 		return FALSE;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	for (p = gdk_drag_context_list_targets (context); p; p = p->next) {
-#else
-	for (p = context->targets; p != NULL; p = p->next) {
-#endif
 		char *possible_type;
 
 		possible_type = gdk_atom_name (GDK_POINTER_TO_ATOM (p->data));
@@ -311,19 +307,11 @@ image_drag_drop_cb (GtkWidget *widget,
 	if (!chooser->priv->editable)
 		return FALSE;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	if (gdk_drag_context_list_targets (context) == NULL) {
-#else
-	if (context->targets == NULL) {
-#endif
 		return FALSE;
 	}
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	for (p = gdk_drag_context_list_targets (context); p; p = p->next) {
-#else
-	for (p = context->targets; p != NULL; p = p->next) {
-#endif
 		char *possible_type;
 
 		possible_type = gdk_atom_name (GDK_POINTER_TO_ATOM (p->data));

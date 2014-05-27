@@ -28,7 +28,6 @@
 #include <gdk/gdkkeysyms.h>
 #if GTK_CHECK_VERSION (3, 0, 0)
 #include <gdk/gdkkeysyms-compat.h>
-#define gtk_widget_hide_all gtk_widget_hide
 #endif
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -112,7 +111,7 @@ show_shell (AppShellData * app_data)
 {
 	gtk_widget_show_all (app_data->main_app);
 	if (!app_data->static_actions)
-		gtk_widget_hide_all (app_data->actions_section);  /* don't show unless a launcher is selected */
+		gtk_widget_hide (app_data->actions_section);  /* don't show unless a launcher is selected */
 
 	if (app_data->main_app_window_shown_once)
 		gtk_window_move (GTK_WINDOW (app_data->main_app),
@@ -381,7 +380,7 @@ relayout_shell (AppShellData * app_data)
 
 	gtk_widget_show_all (shell);
 	if (!app_data->static_actions && !app_data->last_clicked_launcher)
-		gtk_widget_hide_all (app_data->actions_section);  /* don't show unless a launcher is selected */
+		gtk_widget_hide (app_data->actions_section);  /* don't show unless a launcher is selected */
 }
 
 static GtkWidget *

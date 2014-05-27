@@ -30,9 +30,6 @@
 #include <glib/gi18n.h>
 
 #include <gtk/gtk.h>
-#if GTK_CHECK_VERSION (3, 0, 0)
-#define gtk_widget_hide_all gtk_widget_hide
-#endif
 
 #include "capplet-util.h"
 
@@ -332,8 +329,8 @@ choose_model (GtkBuilder * dialog)
 	prepare_models_list (chooser_dialog);
 
 	if (!fill_vendors_list (chooser_dialog)) {
-		gtk_widget_hide_all (CWID ("vendors_label"));
-		gtk_widget_hide_all (CWID ("vendors_scrolledwindow"));
+		gtk_widget_hide (CWID ("vendors_label"));
+		gtk_widget_hide (CWID ("vendors_scrolledwindow"));
 		current_vendor_name = NULL;
 		fill_models_list (chooser_dialog);
 	}

@@ -191,11 +191,7 @@ libslab_get_current_screen (void)
 	event = gtk_get_current_event ();
 	if (event) {
 		if (event->any.window)
-#if GTK_CHECK_VERSION (3, 0, 0)
 			screen = gtk_window_get_screen (GTK_WINDOW (event->any.window));
-#else
-			screen = gdk_drawable_get_screen (GDK_DRAWABLE (event->any.window));
-#endif
 
 		gdk_event_free (event);
 	}

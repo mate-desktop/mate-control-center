@@ -35,11 +35,7 @@ gboolean debug = FALSE;
 static gboolean
 have_tray (void)
 {
-#if GTK_CHECK_VERSION (3, 0, 0)
 	Screen *xscreen = DefaultScreenOfDisplay (gdk_x11_display_get_xdisplay(gdk_display_get_default()));
-#else
-	Screen *xscreen = DefaultScreenOfDisplay (gdk_display);
-#endif
 	Atom    selection_atom;
 	char   *selection_atom_name;
 	
