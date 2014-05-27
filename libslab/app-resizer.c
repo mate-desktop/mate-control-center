@@ -26,10 +26,6 @@
 
 static void app_resizer_class_init (AppResizerClass *);
 static void app_resizer_init (AppResizer *);
-#if !GTK_CHECK_VERSION (3, 0, 0)
-static void app_resizer_destroy (GtkObject *);
-#endif
-
 static void app_resizer_size_allocate (GtkWidget * resizer, GtkAllocation * allocation);
 #if GTK_CHECK_VERSION (3, 0, 0)
 static gboolean app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppShellData * app_data);
@@ -44,10 +40,6 @@ static void
 app_resizer_class_init (AppResizerClass * klass)
 {
 	GtkWidgetClass *widget_class;
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	((GtkObjectClass *) klass)->destroy = app_resizer_destroy;
-#endif
 
 	widget_class = GTK_WIDGET_CLASS (klass);
 	widget_class->size_allocate = app_resizer_size_allocate;
@@ -305,13 +297,6 @@ app_resizer_new (GtkVBox * child, gint initial_num_columns, gboolean homogeneous
 
 	return GTK_WIDGET (widget);
 }
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
-static void
-app_resizer_destroy (GtkObject * obj)
-{
-}
-#endif
 
 void
 app_resizer_set_vadjustment_value (GtkWidget * widget, gdouble value)
