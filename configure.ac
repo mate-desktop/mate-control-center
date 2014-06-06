@@ -370,6 +370,7 @@ font-viewer/mate-font-viewer.desktop.in
 help/Makefile
 libwindow-settings/Makefile
 libwindow-settings/mate-window-settings-2.0.pc
+man/Makefile
 po/Makefile.in
 libslab/mate-slab.pc
 libslab/Makefile

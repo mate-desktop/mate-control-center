@@ -3,8 +3,6 @@ cappletname = mate-default-applications-properties
 
 bin_PROGRAMS = mate-default-applications-properties
 
-man_MANS = mate-default-applications-properties.1
-
 mate_default_applications_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 mate_default_applications_properties_SOURCES = \
 	mate-da-capplet.c mate-da-capplet.h
@@ -29,6 +27,6 @@ AM_CPPFLAGS = \
 	-DMATECC_UI_DIR=\""$(uidir)"\"
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA) $(autostart_DATA)
-EXTRA_DIST = mate-default-applications.pc.in mate-default-applications-properties.desktop.in.in $(man_MANS)
+EXTRA_DIST = mate-default-applications.pc.in mate-default-applications-properties.desktop.in.in
 
 -include $(top_srcdir)/git.mk

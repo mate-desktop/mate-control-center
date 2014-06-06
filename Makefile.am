@@ -1,5 +1,5 @@
-SUBDIRS = po libwindow-settings capplets font-viewer help
-DIST_SUBDIRS = po libwindow-settings capplets font-viewer help libslab shell typing-break
+SUBDIRS = po libwindow-settings capplets font-viewer help man
+DIST_SUBDIRS = po libwindow-settings capplets font-viewer help libslab shell typing-break man
 
 if HAVE_LIBMATESLAB
 SUBDIRS += libslab

@@ -53,9 +53,7 @@ if ENABLE_UPDATE_MIMEDB
 	$(UPDATE_MIME_DATABASE) "$(DESTDIR)$(datadir)/mime"
 endif
 
-man_MANS = mate-appearance-properties.1
-
-EXTRA_DIST = $(xml_in_files) $(man_MANS)
+EXTRA_DIST = $(xml_in_files)
 
 
 CLEANFILES = $(desktop_in_files) $(desktop_DATA) $(mime_DATA)
