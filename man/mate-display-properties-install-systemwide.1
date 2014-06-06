@@ -1,0 +1,47 @@
+.\" Copyright (C) 2014 Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+.\"
+.\" This is free software; you may redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2,
+.\" or (at your option) any later version.
+.\"
+.\" This is distributed in the hope that it will be useful, but
+.\" WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\"You should have received a copy of the GNU General Public License along
+.\"with this program; if not, write to the Free Software Foundation, Inc.,
+.\"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+.TH mate-display-properties-install-systemwide 1 "2014\-05\-02" "MATE"
+.\"
+.SH "NAME"
+mate-display-properties-install-systemwide \- customize MATE display behavor
+.SH "SYNOPSIS"
+.B mate-display-properties-install-systemwide
+\fI<SOURCE_FILE> <DEST_NAME>\fR
+.SH "DESCRIPTION"
+This executable is part of the package 'mate\-control\-center': The MATE Control Center.
+.PP
+This command line tool installs a RANDR profile for multi-monitor setups into
+a systemwide location.  The resulting profile will get used when
+the RANDR plug-in gets run in \fBmate-settings-daemon\fR.
+.TP
+\fI<SOURCE_FILE>\fR
+a full pathname, typically /home/username/.config/monitors.xml
+.TP
+\fI<DEST_NAME>\fR
+relative name for the installed file.  This will get put in
+the systemwide directory for RANDR configurations,
+so the result will typically be /etc/mate-settings-daemon/xrandr/DEST_NAME
+.SH AUTHORS
+This manual page was writtenby Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+for the Debian project (but may be used by others).
+.SH "SEE ALSO"
+.PP
+Latest version of the MATE Desktop User Guide for your platform.
+.PP
+.BR "mate-control-center" (1),
+.BR "mate-display-properties" (1),
+.BR "mate-settings-daemon" (1),

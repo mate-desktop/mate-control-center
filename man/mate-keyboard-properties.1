@@ -1,0 +1,50 @@
+.\" Copyright (C) 2007 Sven Arvidsson <sa@whiz.se>
+.\" Copyright (C) 2014 Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+.\"
+.\" This is free software; you may redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2,
+.\" or (at your option) any later version.
+.\"
+.\" This is distributed in the hope that it will be useful, but
+.\" WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\"You should have received a copy of the GNU General Public License along
+.\"with this program; if not, write to the Free Software Foundation, Inc.,
+.\"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+.TH mate-keyboard-properties 1 "2014\-05\-02" "MATE"
+.SH NAME
+mate-keyboard-properties \- manage keyboard behaviour in MATE
+.SH SYNOPSIS
+.B mate-keyboard-properties
+.RI [ OPTIONS... ]
+.SH DESCRIPTION
+This executable is part of the package 'mate\-control\-center': The MATE Control Center.
+.PP
+Keyboard Preferences manages all settings related to the keyboard in a
+MATE environment. This includes key repeat delay, cursor blinking,
+layouts and layout options. You can also configure a typing break
+which locks the screen and enforces a break from work.
+.SH OPTIONS
+.TP
+.B \-\-apply
+Just apply settings and quit (compatibility only; now handled by daemon)
+.TP
+.B \-\-init\-session\-settings
+Just apply settings and quit (compatibility only; now handled by daemon)
+.TP
+.B \-\-get\-legacy
+Retrieve and store legacy settings
+.TP
+.B \-\-typing-break
+Start the page with the typing break settings showing
+.P
+This program also accepts the standard MATE and GTK options.
+.SH AUTHORS
+This manual page was writtenby Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+for the Debian project (but may be used by others).
+.SH SEE ALSO
+.BR "mate-control-center" (1),
+.BR "gtk-options" (7)
