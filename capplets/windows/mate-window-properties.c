@@ -54,7 +54,7 @@
 #define MARCO_BUTTON_LAYOUT_KEY "button-layout"
 
 #define MARCO_BUTTON_LAYOUT_RIGHT "menu:minimize,maximize,close"
-#define MARCO_BUTTON_LAYOUT_LEFT "close,maximize,minimize:menu"
+#define MARCO_BUTTON_LAYOUT_LEFT "close,minimize,maximize:"
 
 /* keep following enums in sync with marco */
 enum
