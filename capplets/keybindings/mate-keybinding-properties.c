@@ -1000,6 +1000,7 @@ append_keys_to_tree_from_gsettings (GtkBuilder *builder, const gchar *gsettings_
           key.name = g_strdup("binding");
           key.cmd_key = g_strdup("action");
           key.description_key = g_strdup("name");
+          key.schema = NULL;
           g_array_append_val (entries, key);
         }
     }
