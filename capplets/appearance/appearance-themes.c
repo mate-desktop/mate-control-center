@@ -31,6 +31,7 @@
 #include <libwindow-settings/mate-wm-manager.h>
 #include <string.h>
 #include <libmate-desktop/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-gsettings.h>
 
 #define CUSTOM_THEME_NAME "__custom__"
 
@@ -201,9 +202,6 @@ theme_load_from_gsettings (AppearanceData *data)
 {
   MateThemeMetaInfo *theme;
   gchar *scheme;
-  const char * const *schemas;
-  gboolean schema_exists;
-  gint i;
 
   theme = mate_theme_meta_info_new ();
 
@@ -226,18 +224,7 @@ theme_load_from_gsettings (AppearanceData *data)
   if (theme->icon_theme_name == NULL)
     theme->icon_theme_name = g_strdup ("menta");
 
-  /* We  need this because mate-control-center does not depend on mate-notification-daemon,
-   * and if we try to get notification theme without schema installed, gsettings crashes
-   * see https://bugzilla.gnome.org/show_bug.cgi?id=651225 */
-  schemas = g_settings_list_schemas ();
-  schema_exists = FALSE;
-  for (i = 0; schemas[i] != NULL; i++) {
-    if (g_strcmp0 (schemas[i], NOTIFICATION_SCHEMA) == 0) {
-      schema_exists = TRUE;
-      break;
-      }
-  }
-  if (schema_exists == TRUE) {
+  if (mate_gsettings_schema_exists (NOTIFICATION_SCHEMA)) {
     GSettings *notification_settings;
     notification_settings = g_settings_new (NOTIFICATION_SCHEMA);
     theme->notification_theme_name = g_settings_get_string (notification_settings, NOTIFICATION_THEME_KEY);
@@ -465,7 +452,7 @@ theme_message_area_response_cb (GtkWidget *w,
         data->revert_documents_font = NULL;
       }
 
-      if (data->revert_desktop_font != NULL) {
+      if (data->caja_settings && data->revert_desktop_font != NULL) {
         g_settings_set_string (data->caja_settings, DESKTOP_FONT_KEY, data->revert_desktop_font);
         g_free (data->revert_desktop_font);
         data->revert_desktop_font = NULL;
@@ -513,7 +500,7 @@ theme_message_area_response_cb (GtkWidget *w,
         g_settings_set_string (data->interface_settings, DOCUMENT_FONT_KEY, theme->documents_font);
       }
 
-      if (theme->desktop_font) {
+      if (data->caja_settings && theme->desktop_font) {
         tmpfont = g_settings_get_string (data->caja_settings, DESKTOP_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_desktop_font);
@@ -617,7 +604,7 @@ theme_message_area_update (AppearanceData *data)
       g_free (font);
     }
 
-    if (!show_apply_font && theme->desktop_font) {
+    if (data->caja_settings && !show_apply_font && theme->desktop_font) {
       font = g_settings_get_string (data->caja_settings, DESKTOP_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
@@ -1131,7 +1118,10 @@ void themes_init(AppearanceData* data)
   g_signal_connect (data->wp_settings, "changed::" WP_FILE_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" GTK_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" DOCUMENT_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
-  g_signal_connect (data->caja_settings, "changed::" DESKTOP_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+
+  if (data->caja_settings)
+    g_signal_connect (data->caja_settings, "changed::" DESKTOP_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+
   g_signal_connect (data->marco_settings, "changed::" WINDOW_TITLE_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" MONOSPACE_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
 

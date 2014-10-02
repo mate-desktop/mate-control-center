@@ -19,6 +19,7 @@
  */
 
 #include <glib/gi18n.h>
+#include <libmate-desktop/mate-gsettings.h>
 #include "appearance.h"
 #include "appearance-desktop.h"
 #include "appearance-font.h"
@@ -62,7 +63,12 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
       data = g_new (AppearanceData, 1);
       data->settings = g_settings_new (APPEARANCE_SCHEMA);
       data->wp_settings = g_settings_new (WP_SCHEMA);
-      data->caja_settings = g_settings_new (CAJA_SCHEMA);
+
+      if (mate_gsettings_schema_exists (CAJA_SCHEMA))
+        data->caja_settings = g_settings_new (CAJA_SCHEMA);
+      else
+        data->caja_settings = NULL;
+
       data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
       data->marco_settings = g_settings_new (MARCO_SCHEMA);
       data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
@@ -95,7 +101,10 @@ main_window_response (GtkWidget *widget,
     g_object_unref (data->thumb_factory);
     g_object_unref (data->settings);
     g_object_unref (data->wp_settings);
-    g_object_unref (data->caja_settings);
+
+    if (data->caja_settings)
+      g_object_unref (data->caja_settings);
+
     g_object_unref (data->interface_settings);
     g_object_unref (data->marco_settings);
     g_object_unref (data->mouse_settings);
