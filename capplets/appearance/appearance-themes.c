@@ -465,7 +465,7 @@ theme_message_area_response_cb (GtkWidget *w,
         data->revert_documents_font = NULL;
       }
 
-      if (data->revert_desktop_font != NULL) {
+      if (data->caja_settings && data->revert_desktop_font != NULL) {
         g_settings_set_string (data->caja_settings, DESKTOP_FONT_KEY, data->revert_desktop_font);
         g_free (data->revert_desktop_font);
         data->revert_desktop_font = NULL;
@@ -513,7 +513,7 @@ theme_message_area_response_cb (GtkWidget *w,
         g_settings_set_string (data->interface_settings, DOCUMENT_FONT_KEY, theme->documents_font);
       }
 
-      if (theme->desktop_font) {
+      if (data->caja_settings && theme->desktop_font) {
         tmpfont = g_settings_get_string (data->caja_settings, DESKTOP_FONT_KEY);
         if (tmpfont != NULL) {
           g_free (data->revert_desktop_font);
@@ -617,7 +617,7 @@ theme_message_area_update (AppearanceData *data)
       g_free (font);
     }
 
-    if (!show_apply_font && theme->desktop_font) {
+    if (data->caja_settings && !show_apply_font && theme->desktop_font) {
       font = g_settings_get_string (data->caja_settings, DESKTOP_FONT_KEY);
       show_apply_font =
           (!font || strcmp (theme->application_font, font) != 0);
@@ -1131,7 +1131,10 @@ void themes_init(AppearanceData* data)
   g_signal_connect (data->wp_settings, "changed::" WP_FILE_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" GTK_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" DOCUMENT_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
-  g_signal_connect (data->caja_settings, "changed::" DESKTOP_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+
+  if (data->caja_settings)
+    g_signal_connect (data->caja_settings, "changed::" DESKTOP_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
+
   g_signal_connect (data->marco_settings, "changed::" WINDOW_TITLE_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" MONOSPACE_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
 

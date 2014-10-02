@@ -759,11 +759,15 @@ void font_init(AppearanceData* data)
 			 G_SETTINGS_BIND_DEFAULT);
 
 	widget = appearance_capplet_get_widget (data, "desktop_font");
-	g_settings_bind (data->caja_settings,
-			 DESKTOP_FONT_KEY,
-			 G_OBJECT (widget),
-			 "font-name",
-			 G_SETTINGS_BIND_DEFAULT);
+
+	if (data->caja_settings)
+		g_settings_bind (data->caja_settings,
+				 DESKTOP_FONT_KEY,
+				 G_OBJECT (widget),
+				 "font-name",
+				 G_SETTINGS_BIND_DEFAULT);
+	else
+		gtk_widget_set_sensitive (widget, FALSE);
 
 	widget = appearance_capplet_get_widget (data, "window_title_font");
 	g_settings_bind (data->marco_settings,
