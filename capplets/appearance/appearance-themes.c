@@ -31,6 +31,7 @@
 #include <libwindow-settings/mate-wm-manager.h>
 #include <string.h>
 #include <libmate-desktop/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-gsettings.h>
 
 #define CUSTOM_THEME_NAME "__custom__"
 
@@ -201,9 +202,6 @@ theme_load_from_gsettings (AppearanceData *data)
 {
   MateThemeMetaInfo *theme;
   gchar *scheme;
-  const char * const *schemas;
-  gboolean schema_exists;
-  gint i;
 
   theme = mate_theme_meta_info_new ();
 
@@ -226,18 +224,7 @@ theme_load_from_gsettings (AppearanceData *data)
   if (theme->icon_theme_name == NULL)
     theme->icon_theme_name = g_strdup ("menta");
 
-  /* We  need this because mate-control-center does not depend on mate-notification-daemon,
-   * and if we try to get notification theme without schema installed, gsettings crashes
-   * see https://bugzilla.gnome.org/show_bug.cgi?id=651225 */
-  schemas = g_settings_list_schemas ();
-  schema_exists = FALSE;
-  for (i = 0; schemas[i] != NULL; i++) {
-    if (g_strcmp0 (schemas[i], NOTIFICATION_SCHEMA) == 0) {
-      schema_exists = TRUE;
-      break;
-      }
-  }
-  if (schema_exists == TRUE) {
+  if (mate_gsettings_schema_exists (NOTIFICATION_SCHEMA)) {
     GSettings *notification_settings;
     notification_settings = g_settings_new (NOTIFICATION_SCHEMA);
     theme->notification_theme_name = g_settings_get_string (notification_settings, NOTIFICATION_THEME_KEY);
