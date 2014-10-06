@@ -637,11 +637,7 @@ read_current_cursor_font (void)
   gchar *dir_name;
   struct dirent *file_dirent;
 
-	#if GLIB_CHECK_VERSION(2, 6, 0)
-		dir_name = g_build_filename(g_get_user_config_dir(), "mate", "share", "cursor-fonts", NULL);
-	#else // glib version < 2.6.0
-		dir_name = g_build_filename(g_get_home_dir(), ".config", "mate", "share", "cursor-fonts", NULL);
-	#endif
+	dir_name = g_build_filename(g_get_user_config_dir(), "mate", "share", "cursor-fonts", NULL);
 
   if (! g_file_test (dir_name, G_FILE_TEST_EXISTS)) {
     g_free (dir_name);

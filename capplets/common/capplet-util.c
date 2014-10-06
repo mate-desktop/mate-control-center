@@ -190,9 +190,7 @@ capplet_init (GOptionContext *context,
 #endif
 
 	if (context) {
-#if GLIB_CHECK_VERSION (2, 12, 0)
 		g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
-#endif
 		g_option_context_add_group (context, gtk_get_option_group (TRUE));
 
 		if (!g_option_context_parse (context, argc, argv, &err)) {
