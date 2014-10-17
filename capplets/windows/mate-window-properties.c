@@ -523,6 +523,8 @@ main (int argc, char **argv)
                       G_CALLBACK (mouse_focus_toggled_callback), NULL);
     g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
                       G_CALLBACK (mouse_focus_changed_callback), NULL);
+    /* Initialize the checkbox state appropriately */
+    mouse_focus_changed_callback(marco_settings, MARCO_FOCUS_KEY, NULL);
 
     g_settings_bind (marco_settings,
                      MARCO_AUTORAISE_KEY,
