@@ -56,7 +56,7 @@ static void     drw_monitor_finalize      (GObject         *object);
 static gboolean drw_monitor_setup         (DrwMonitor      *monitor);
 
 static GObjectClass *parent_class;
-static guint signals[LAST_SIGNAL];
+static guint signals[LAST_SIGNAL] = { 0 };
 
 
 GType
