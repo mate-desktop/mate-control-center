@@ -48,7 +48,7 @@ enum {
 };
 
 
-static gint image_chooser_signals [LAST_SIGNAL] = { 0 };
+static guint image_chooser_signals [LAST_SIGNAL] = { 0 };
 
 static void e_image_chooser_init	 (EImageChooser		 *chooser);
 static void e_image_chooser_class_init	 (EImageChooserClass	 *klass);
