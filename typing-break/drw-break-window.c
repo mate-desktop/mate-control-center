@@ -87,7 +87,7 @@ static void         label_size_request_cb          (GtkLabel            *label,
 
 G_DEFINE_TYPE (DrwBreakWindow, drw_break_window, GTK_TYPE_WINDOW)
 
-static guint signals[LAST_SIGNAL];
+static guint signals[LAST_SIGNAL] = { 0 };
 
 static void
 drw_break_window_class_init (DrwBreakWindowClass *klass)
