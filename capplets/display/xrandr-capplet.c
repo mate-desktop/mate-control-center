@@ -493,7 +493,11 @@ static void
 rebuild_current_monitor_label (App *app)
 {
 	char *str, *tmp;
+#if GTK_CHECK_VERSION (3, 0, 0)
+	GdkRGBA color;
+#else
 	GdkColor color;
+#endif
 	gboolean use_color;
 
 	if (app->current_output)
@@ -504,7 +508,11 @@ rebuild_current_monitor_label (App *app)
 		tmp = g_strdup_printf (_("Monitor: %s"), app->current_output->display_name);
 
 	    str = g_strdup_printf ("<b>%s</b>", tmp);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	    mate_rr_labeler_get_rgba_for_output (app->labeler, app->current_output, &color);
+#else
 	    mate_rr_labeler_get_color_for_output (app->labeler, app->current_output, &color);
+#endif
 	    use_color = TRUE;
 	    g_free (tmp);
 	}
@@ -519,6 +527,17 @@ rebuild_current_monitor_label (App *app)
 
 	if (use_color)
 	{
+#if GTK_CHECK_VERSION (3, 0, 0)
+	    GdkRGBA black = { 0, 0, 0, 1.0 };
+
+	    gtk_widget_override_background_color (app->current_monitor_event_box, gtk_widget_get_state_flags (app->current_monitor_event_box), &color);
+
+	    /* Make the label explicitly black.  We don't want it to follow the
+	     * theme's colors, since the label is always shown against a light
+	     * pastel background.  See bgo#556050
+	     */
+	    gtk_widget_override_color (app->current_monitor_label, gtk_widget_get_state_flags (app->current_monitor_label), &black);
+#else
 	    GdkColor black = { 0, 0, 0, 0 };
 
 	    gtk_widget_modify_bg (app->current_monitor_event_box, gtk_widget_get_state (app->current_monitor_event_box), &color);
@@ -528,7 +547,9 @@ rebuild_current_monitor_label (App *app)
 	     * pastel background.  See bgo#556050
 	     */
 	    gtk_widget_modify_fg (app->current_monitor_label, gtk_widget_get_state (app->current_monitor_label), &black);
+#endif
 	}
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	else
 	{
 	    /* Remove any modifications we did on the label's color */
@@ -537,6 +558,7 @@ rebuild_current_monitor_label (App *app)
 	    reset_rc_style = gtk_rc_style_new ();
 	    gtk_widget_modify_style (app->current_monitor_label, reset_rc_style); /* takes ownership of, and destroys, the rc style */
 	}
+#endif
 
 	gtk_event_box_set_visible_window (GTK_EVENT_BOX (app->current_monitor_event_box), use_color);
 }
@@ -1663,17 +1685,36 @@ paint_background (FooScrollArea *area,
 {
     GdkRectangle viewport;
     GtkWidget *widget;
+#if GTK_CHECK_VERSION (3, 0, 0)
+    GtkStyleContext *widget_style;
+    GdkRGBA *base_color = NULL;
+    GdkRGBA dark_color;
+#else
     GtkStyle *widget_style;
+#endif
 
     widget = GTK_WIDGET (area);
 
     foo_scroll_area_get_viewport (area, &viewport);
-    widget_style = gtk_widget_get_style (widget);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    widget_style = gtk_widget_get_style_context (widget);
+#else
+    widget_style = gtk_widget_get_style (widget);
+#endif
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_style_context_get (widget_style, GTK_STATE_FLAG_SELECTED,
+			   GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &base_color,
+			   NULL);
+    gdk_cairo_set_source_rgba(cr, base_color);
+    gdk_rgba_free (base_color);
+#else
     cairo_set_source_rgb (cr,
                           widget_style->base[GTK_STATE_SELECTED].red / 65535.0,
                           widget_style->base[GTK_STATE_SELECTED].green / 65535.0,
                           widget_style->base[GTK_STATE_SELECTED].blue / 65535.0);
+#endif
 
     cairo_rectangle (cr,
 		     viewport.x, viewport.y,
@@ -1683,10 +1724,15 @@ paint_background (FooScrollArea *area,
 
     foo_scroll_area_add_input_from_fill (area, cr, on_canvas_event, NULL);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    mate_desktop_gtk_style_get_dark_color (widget_style, GTK_STATE_FLAG_SELECTED, &dark_color);
+    gdk_cairo_set_source_rgba (cr, &dark_color);
+#else
     cairo_set_source_rgb (cr,
                           widget_style->dark[GTK_STATE_SELECTED].red / 65535.0,
                           widget_style->dark[GTK_STATE_SELECTED].green / 65535.0,
                           widget_style->dark[GTK_STATE_SELECTED].blue / 65535.0);
+#endif
 
     cairo_stroke (cr);
 }
@@ -1703,7 +1749,11 @@ paint_output (App *app, cairo_t *cr, int i)
     PangoLayout *layout = get_display_name (app, output);
     PangoRectangle ink_extent, log_extent;
     GdkRectangle viewport;
+#if GTK_CHECK_VERSION (3, 0, 0)
+    GdkRGBA output_color;
+#else
     GdkColor output_color;
+#endif
     double r, g, b;
     double available_w;
     double factor;
@@ -1733,8 +1783,6 @@ paint_output (App *app, cairo_t *cr, int i)
     g_debug ("%f %f %f %f", x, y, w * scale + 0.5, h * scale + 0.5);
 #endif
 
-    cairo_save (cr);
-
     cairo_translate (cr,
 		     x + (w * scale + 0.5) / 2,
 		     y + (h * scale + 0.5) / 2);
@@ -1755,10 +1803,17 @@ paint_output (App *app, cairo_t *cr, int i)
     cairo_rectangle (cr, x, y, w * scale + 0.5, h * scale + 0.5);
     cairo_clip_preserve (cr);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    mate_rr_labeler_get_rgba_for_output (app->labeler, output, &output_color);
+    r = output_color.red;
+    g = output_color.green;
+    b = output_color.blue;
+#else
     mate_rr_labeler_get_color_for_output (app->labeler, output, &output_color);
     r = output_color.red / 65535.0;
     g = output_color.green / 65535.0;
     b = output_color.blue / 65535.0;
+#endif
 
     if (!output->on)
     {
@@ -1818,12 +1873,19 @@ paint_output (App *app, cairo_t *cr, int i)
     g_object_unref (layout);
 }
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+static void
+on_area_paint (FooScrollArea *area,
+	       cairo_t	     *cr,
+	       gpointer	      data)
+#else
 static void
 on_area_paint (FooScrollArea *area,
 	       cairo_t	     *cr,
 	       GdkRectangle  *extent,
 	       GdkRegion     *region,
 	       gpointer	      data)
+#endif
 {
     App *app = data;
     double scale;

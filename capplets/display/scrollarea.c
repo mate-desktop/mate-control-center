@@ -325,9 +325,14 @@ foo_scroll_area_class_init (FooScrollAreaClass *class)
 				       paint),
 		      NULL, NULL,
 		      foo_marshal_VOID__POINTER_BOXED_POINTER,
-		      G_TYPE_NONE, 3,
+		      G_TYPE_NONE,
+#if GTK_CHECK_VERSION (3, 0, 0)
+                      1,
+#else
+                      3,
 		      G_TYPE_POINTER,
 		      GDK_TYPE_RECTANGLE, 
+#endif
 		      G_TYPE_POINTER);
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
@@ -620,15 +625,15 @@ simple_draw_drawable (GdkDrawable *dst,
 static gboolean
 #if GTK_CHECK_VERSION (3, 0, 0)
 foo_scroll_area_draw (GtkWidget *widget,
-		      cairo_t *cr)
+		      cairo_t *widget_cr)
 #else
 foo_scroll_area_expose (GtkWidget *widget,
 			GdkEventExpose *expose)
 #endif
 {
     FooScrollArea *scroll_area = FOO_SCROLL_AREA (widget);
-#if !GTK_CHECK_VERSION (3, 0, 0)
     cairo_t *cr;
+#if !GTK_CHECK_VERSION (3, 0, 0)
     GdkGC *gc;
     GdkRectangle extents;
     GdkWindow *window = gtk_widget_get_window (widget);
@@ -661,7 +666,7 @@ foo_scroll_area_expose (GtkWidget *widget,
 
     /* Setup input areas */
     clear_exposed_input_region (scroll_area, scroll_area->priv->update_region);
-    
+
     scroll_area->priv->current_input = g_new0 (InputRegion, 1);
     scroll_area->priv->current_input->region = gdk_region_copy (scroll_area->priv->update_region);
     scroll_area->priv->current_input->paths = NULL;
@@ -676,6 +681,8 @@ foo_scroll_area_expose (GtkWidget *widget,
     cr = gdk_cairo_create (scroll_area->priv->pixmap);
     translate_cairo_device (cr, -x_offset, -y_offset);
     clip_to_region (cr, region);
+#else
+    cr = cairo_create (scroll_area->priv->surface);
 #endif
     initialize_background (widget, cr);
 
@@ -690,10 +697,8 @@ foo_scroll_area_expose (GtkWidget *widget,
     g_signal_emit (widget, signals[PAINT], 0, cr, &extents, region);
 #endif
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
     /* Destroy stuff */
     cairo_destroy (cr);
-#endif
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
     scroll_area->priv->expose_region = NULL;
@@ -702,8 +707,8 @@ foo_scroll_area_expose (GtkWidget *widget,
 
     /* Finally draw the backing pixmap */
 #if GTK_CHECK_VERSION (3, 0, 0)
-    cairo_set_source_surface (cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
-    cairo_paint (cr);
+    cairo_set_source_surface (widget_cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
+    cairo_paint (widget_cr);
 #else
     gc = gdk_gc_new (window);
 
