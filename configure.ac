@@ -77,12 +77,14 @@ AC_MSG_RESULT([$with_gtk])
 case "$with_gtk" in
   2.0) GTK_API_VERSION=2.0
        GTK_REQUIRED=2.24.0
+       MATE_DESKTOP_REQUIRED=1.7.3
        LIBCANBERRA_API_VERSION=
        LIBUNIQUE_API_VERSION=1.0
        ENGINES_FOLDER="engines"
        ;;
   3.0) GTK_API_VERSION=3.0
        GTK_REQUIRED=3.0.0
+       MATE_DESKTOP_REQUIRED=1.9.3
        LIBCANBERRA_API_VERSION=3
        LIBUNIQUE_API_VERSION=3.0
        ENGINES_FOLDER="theming-engines"
@@ -143,7 +145,6 @@ AC_CHECK_LIB(m, floor)
 dnl ==============================================
 dnl Check that we meet the  dependencies
 dnl ==============================================
-MATE_DESKTOP_REQUIRED=1.7.3
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 COMMON_MODULES="gtk+-$GTK_API_VERSION >= $GTK_REQUIRED dnl
