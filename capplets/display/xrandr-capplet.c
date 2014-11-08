@@ -2494,7 +2494,7 @@ run_application (App *app)
     }
 
     app->screen = mate_rr_screen_new (gdk_screen_get_default (), &error);
-    g_signal_connect (app->screen, "screen-changed", G_CALLBACK (on_screen_changed), app);
+    g_signal_connect (app->screen, "changed", G_CALLBACK (on_screen_changed), app);
     if (!app->screen)
     {
 	error_message (NULL, _("Could not get screen information"), error->message);
