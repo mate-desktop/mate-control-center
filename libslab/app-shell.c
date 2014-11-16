@@ -1184,6 +1184,12 @@ generate_new_apps (AppShellData * app_data)
 				{
 					g_object_unref (file);
 					g_warning ("Cant get vfs info for %s\n", uri);
+					if (new_apps_category) {
+						g_free (new_apps_category->category);
+						g_free (new_apps_category);
+					}
+					g_free (all_apps_file_name);
+					g_strfreev (all_apps_split);
 					return;
 				}
 				filetime = (long) g_file_info_get_attribute_uint64 (info,

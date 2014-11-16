@@ -93,8 +93,14 @@ system_tile_new (const gchar *desktop_item_id, const gchar *title)
 				mate_desktop_item_get_localestring (desktop_item, "Name"));
 	}
 
-	if (! uri)
+	if (!uri) {
+		g_free (header_txt);
+		g_free (image_id);
+		if (desktop_item) {
+			mate_desktop_item_unref (desktop_item);
+		}
 		return NULL;
+	}
 
 	header = create_header (header_txt);
 

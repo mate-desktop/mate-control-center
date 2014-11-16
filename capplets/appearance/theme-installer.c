@@ -689,6 +689,8 @@ mate_theme_install (GFile *file,
 		return;
 	}
 
+	g_free (path);
+
 	base = g_file_get_basename (file);
 
 	if (g_str_has_suffix (base, ".tar.gz")
