@@ -58,7 +58,6 @@ static gboolean in_change = FALSE;
 
 #ifdef HAVE_XFT2
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
 /*
  * Code for displaying previews of font rendering with various Xft options
  */
@@ -70,7 +69,6 @@ static void sample_size_request(GtkWidget* darea, GtkRequisition* requisition)
 	requisition->width = gdk_pixbuf_get_width(pixbuf) + 2;
 	requisition->height = gdk_pixbuf_get_height(pixbuf) + 2;
 }
-#endif
 
 #if GTK_CHECK_VERSION (3, 0, 0)
 static void sample_draw(GtkWidget* darea, cairo_t* cr)
@@ -80,19 +78,15 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 {
 	GtkAllocation allocation;
 	GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(darea), "sample-pixbuf");
-#if !GTK_CHECK_VERSION (3, 0, 0)
 	GdkWindow* window = gtk_widget_get_window(darea);
 	GtkStyle* style = gtk_widget_get_style(darea);
 	int width = gdk_pixbuf_get_width(pixbuf);
 	int height = gdk_pixbuf_get_height(pixbuf);
-#endif
 
 	gtk_widget_get_allocation (darea, &allocation);
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
 	int x = (allocation.width - width) / 2;
 	int y = (allocation.height - height) / 2;
-#endif
 
 #if GTK_CHECK_VERSION (3, 0, 0)
 	cairo_set_line_width(cr, 1);
@@ -324,11 +318,10 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 
 	g_object_set_data_full(G_OBJECT(darea), "sample-pixbuf", pixbuf, (GDestroyNotify) g_object_unref);
 
+	g_signal_connect(darea, "size_request", G_CALLBACK(sample_size_request), NULL);
 #if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_set_size_request  (GTK_WIDGET(darea), width + 2, height + 2);
 	g_signal_connect(darea, "draw", G_CALLBACK(sample_draw), NULL);
 #else
-	g_signal_connect(darea, "size_request", G_CALLBACK(sample_size_request), NULL);
 	g_signal_connect(darea, "expose_event", G_CALLBACK(sample_expose), NULL);
 #endif
 }
