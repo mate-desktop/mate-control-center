@@ -510,7 +510,7 @@ enum_group_create (GSettings           *settings,
 
   group = g_new (EnumGroup, 1);
 
-  group->settings = settings;
+  group->settings = g_object_ref (settings);
   group->settings_key = g_strdup (settings_key);
   group->items = NULL;
 
@@ -548,8 +548,8 @@ enum_group_create (GSettings           *settings,
 static void
 enum_group_destroy (EnumGroup *group)
 {
-  group->settings = NULL;
   g_signal_handler_disconnect (group->settings, group->settings_signal_id);
+  g_clear_object (&group->settings);
   group->settings_signal_id = 0;
   g_free (group->settings_key);
 
