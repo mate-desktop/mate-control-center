@@ -1073,43 +1073,40 @@ create_doc_item (BookmarkAgent *this, const gchar *uri)
 	BookmarkAgentPrivate *priv = PRIVATE (this);
 
 	gchar *uri_new = NULL;
-	gchar *path;
-	gchar *dir;
-	gchar *file;
-	gchar *template = NULL;
-	gsize  length;
-	gchar *contents;
 
+	if ((strcmp (uri, "BLANK_SPREADSHEET") == 0) || (strcmp (uri, "BLANK_DOCUMENT") == 0)) {
+		gchar *template = NULL;
+		gchar *file;
 
-	if (! (strcmp (uri, "BLANK_SPREADSHEET") && strcmp (uri, "BLANK_DOCUMENT"))) {
-		dir = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS));
-		if (! dir)
+		gchar *dir = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS));
+		if (!dir)
 			dir = g_build_filename (g_get_home_dir (), "Documents", NULL);
 
-		if (! strcmp (uri, "BLANK_SPREADSHEET")) {
+		if (strcmp (uri, "BLANK_SPREADSHEET") == 0) {
 			g_bookmark_file_set_title (priv->store, uri, "BLANK_SPREADSHEET");
 			file = g_strconcat (_("New Spreadsheet"), ".ots", NULL);
 			template = find_package_data_file (CALC_TEMPLATE_FILE_NAME);
-		}
-		else {
+		} else {
 			g_bookmark_file_set_title (priv->store, uri, "BLANK_DOCUMENT");
 			file = g_strconcat (_("New Document"), ".ott", NULL);
 			template = find_package_data_file (WRITER_TEMPLATE_FILE_NAME);
 		}
 
-		path = g_build_filename (dir, file, NULL);
-
-		if (! g_file_test (path, G_FILE_TEST_EXISTS)) {
+		gchar *path = g_build_filename (dir, file, NULL);
+		if (!g_file_test (path, G_FILE_TEST_EXISTS)) {
 			g_mkdir_with_parents (dir, 0700);
 
 			if (template != NULL) {
-				if (g_file_get_contents (template, & contents, & length, NULL))
+				gchar *contents;
+				gsize length;
+
+				if (g_file_get_contents (template, &contents, &length, NULL))
 					g_file_set_contents (path, contents, length, NULL);
 
 				g_free (contents);
-			}
-			else
+			} else {
 				fclose (g_fopen (path, "w"));
+			}
 		}
 
 		uri_new = g_filename_to_uri (path, NULL, NULL);
@@ -1120,7 +1117,7 @@ create_doc_item (BookmarkAgent *this, const gchar *uri)
 		g_free (template);
 	}
 
-	if (! uri_new)
+	if (!uri_new)
 		return;
 
 	if (libslab_strcmp (uri, uri_new))
@@ -1135,52 +1132,49 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 	BookmarkAgentPrivate *priv = PRIVATE (this);
 
 	gchar *uri_new = NULL;
-	gchar *path;
+	gchar *path = NULL;
 	gchar *name = NULL;
 	gchar *icon = NULL;
 
-	gchar *buf;
-	gchar *tag_open_ptr  = NULL;
-	gchar *tag_close_ptr = NULL;
 	gchar *search_string = NULL;
 
-	if (! strcmp (uri, "HOME")) {
+	gboolean gotta_free_name = FALSE;
+
+	if (strcmp (uri, "HOME") == 0) {
 		uri_new = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
-		name    = g_strdup (C_("Home folder", "Home"));
-		icon    = "user-home";
-	}
-	else if (! strcmp (uri, "DOCUMENTS")) {
+		name = g_strdup (C_("Home folder", "Home"));
+		gotta_free_name = TRUE;
+		icon = "user-home";
+	} else if (strcmp (uri, "DOCUMENTS") == 0) {
 		path = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS));
-		if (! path)
+		if (!path)
 			path = g_build_filename (g_get_home_dir (), "Documents", NULL);
 		name = _("Documents");
 		uri_new = g_filename_to_uri (path, NULL, NULL);
-		g_free (path);
-	}
-	else if (! strcmp (uri, "DESKTOP")) {
+	} else if (strcmp (uri, "DESKTOP") == 0) {
 		path = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP));
-		if (! path)
+		if (!path)
 			path = g_build_filename (g_get_home_dir (), "Desktop", NULL);
 		name = _("Desktop");
 		uri_new = g_filename_to_uri (path, NULL, NULL);
 		icon = "user-desktop";
-		g_free (path);
-	}
-	else if (! strcmp (uri, "file:///")) {
+	} else if (strcmp (uri, "file:///") == 0) {
 		icon = "drive-harddisk";
 		name = _("File System");
-	}
-	else if (! strcmp (uri, "network:")) {
+	} else if (strcmp (uri, "network:") == 0) {
 		icon = "network-workgroup";
 		name = _("Network Servers");
-	}
-	else if (g_str_has_prefix (uri, "x-caja-search")) {
+	} else if (g_str_has_prefix (uri, "x-caja-search")) {
 		icon = "system-search";
 
 		path = g_build_filename (g_get_home_dir (), ".caja", "searches", & uri [21], NULL);
 
 		if (g_file_test (path, G_FILE_TEST_EXISTS)) {
-			g_file_get_contents (path, & buf, NULL, NULL);
+			gchar *buf = NULL;
+			g_file_get_contents (path, &buf, NULL, NULL);
+
+			gchar *tag_open_ptr  = NULL;
+			gchar *tag_close_ptr = NULL;
 
 			if (buf) {
 				tag_open_ptr  = strstr (buf, "<text>");
@@ -1189,21 +1183,19 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 
 			if (tag_open_ptr && tag_close_ptr) {
 				tag_close_ptr [0] = '\0';
-
-				search_string = g_strdup_printf ("\"%s\"", & tag_open_ptr [6]);
-
 				tag_close_ptr [0] = 'a';
+				search_string = g_strdup_printf ("\"%s\"", &tag_open_ptr[6]);
 			}
 
 			g_free (buf);
 		}
 
-		if (search_string)
+		if (search_string) {
 			name = search_string;
-		else
+			gotta_free_name = TRUE;
+		} else {
 			name = _("Search");
-
-		g_free (path);
+		}
 	}
 
 	if (icon)
@@ -1215,6 +1207,11 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 	if (uri_new && libslab_strcmp (uri, uri_new))
 		g_bookmark_file_move_item (priv->store, uri, uri_new, NULL);
 
+	if (gotta_free_name) {
+		g_free (name);
+	}
+
+	g_free (path);
 	g_free (uri_new);
 }
 
