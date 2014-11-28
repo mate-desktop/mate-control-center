@@ -61,10 +61,8 @@ set_model_text (GtkWidget * picker, gchar * value)
 	XklConfigItem *ci = xkl_config_item_new ();
 	char *model = NULL;
 
-	if (value != NULL) {
+	if (value != NULL && value[0] != '\0') {
 		model = g_strdup(value);
-		if (model != NULL && model[0] == '\0')
-			model = NULL;
 	}
 
 	if (model == NULL) {
