@@ -63,4 +63,8 @@ void       e_image_chooser_set_editable   (EImageChooser *chooser, gboolean edit
 
 gboolean   e_image_chooser_get_image_data (EImageChooser *chooser, char **data, gsize *data_length);
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* _E_IMAGE_CHOOSER_H_ */
