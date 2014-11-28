@@ -357,7 +357,6 @@ make_rate_string (int hz)
 static void
 rebuild_rate_combo (App *app)
 {
-    GHashTable *rates;
     MateRRMode **modes;
     int best;
     int i;
@@ -370,9 +369,6 @@ rebuild_rate_combo (App *app)
     if (!app->current_output
         || !(modes = get_current_modes (app)))
 	return;
-
-    rates = g_hash_table_new_full (
-	g_str_hash, g_str_equal, (GFreeFunc) g_free, NULL);
 
     best = -1;
     for (i = 0; modes[i] != NULL; ++i)
