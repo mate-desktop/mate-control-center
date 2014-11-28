@@ -176,12 +176,13 @@ static void
 cb_add_url (GtkButton *button, gpointer data)
 {
 	GtkBuilder *builder = GTK_BUILDER (data);
-	gchar *new_url = NULL;
 
-	new_url = g_strdup (gtk_entry_get_text (GTK_ENTRY (gtk_builder_get_object (builder, "entry_url"))));
-	if (strlen (new_url) == 0)
+	const gchar *entry_text = gtk_entry_get_text (GTK_ENTRY (gtk_builder_get_object (builder, "entry_url")));
+	if (entry_text == NULL || strlen (entry_text) == 0) {
 		return;
-	ignore_hosts = g_slist_append(ignore_hosts, new_url);
+	}
+
+	ignore_hosts = g_slist_append(ignore_hosts, g_strdup (entry_text));
 	populate_listmodel(GTK_LIST_STORE(model), ignore_hosts);
 	gtk_entry_set_text(GTK_ENTRY (gtk_builder_get_object (builder,
 							     "entry_url")), "");
