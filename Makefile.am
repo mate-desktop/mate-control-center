@@ -57,7 +57,7 @@ EXTRA_DIST = \
 	org.mate.control-center.keybinding.gschema.xml.in.in \
 	$(convert_DATA)
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --disable-update-mimedb
+DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb
 
 GITIGNOREFILES=m4
 
