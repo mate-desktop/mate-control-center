@@ -149,7 +149,7 @@ dnl ==============================================
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 COMMON_MODULES="gtk+-$GTK_API_VERSION >= $GTK_REQUIRED dnl
  $GMODULE_ADD dnl
- glib-2.0 >= 2.32 dnl
+ glib-2.0 >= 2.36 dnl
  gthread-2.0 dnl
  gio-2.0 dnl
  gio-unix-2.0 dnl
