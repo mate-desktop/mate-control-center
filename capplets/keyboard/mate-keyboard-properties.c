@@ -61,7 +61,7 @@ create_dialog (void)
 	static const gchar *uifile = MATECC_UI_DIR "/mate-keyboard-properties-dialog.ui";
 
 	dialog = gtk_builder_new ();
-    if (gtk_builder_add_from_file (dialog, uifile, &error) == 0) {
+	if (gtk_builder_add_from_file (dialog, uifile, &error) == 0) {
 		g_warning ("Could not load UI: %s", error->message);
 		g_error_free (error);
 		g_object_unref (dialog);
