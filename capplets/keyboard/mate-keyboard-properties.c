@@ -28,6 +28,7 @@
 #  include <config.h>
 #endif
 
+#include <stdlib.h>
 #include <gio/gio.h>
 
 #include "capplet-util.h"
@@ -56,11 +57,16 @@ create_dialog (void)
 	GtkBuilder *dialog;
 	GtkSizeGroup *size_group;
 	GtkWidget *image;
+	GError *error = NULL;
+	static const gchar *uifile = MATECC_UI_DIR "/mate-keyboard-properties-dialog.ui";
 
 	dialog = gtk_builder_new ();
-    gtk_builder_add_from_file (dialog, MATECC_UI_DIR
-                               "/mate-keyboard-properties-dialog.ui",
-                               NULL);
+    if (gtk_builder_add_from_file (dialog, uifile, &error) == 0) {
+		g_warning ("Could not load UI: %s", error->message);
+		g_error_free (error);
+		g_object_unref (dialog);
+		return NULL;
+	}
 
 	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 	gtk_size_group_add_widget (size_group, WID ("repeat_slow_label"));
@@ -234,6 +240,9 @@ main (int argc, char **argv)
 	typing_break_settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
 	dialog = create_dialog ();
+	if (!dialog) /* Warning was already printed to console */
+		exit (EXIT_FAILURE);
+
 	setup_dialog (dialog);
 	if (switch_to_typing_break_page) {
 		gtk_notebook_set_current_page (GTK_NOTEBOOK
