@@ -319,4 +319,19 @@ setup_a11y_tabs (GtkBuilder *dialog)
 					 gtk_range_get_adjustment (GTK_RANGE (WID ("mousekeys_init_delay_slide"))),
 					 "value",
 					 G_SETTINGS_BIND_DEFAULT);
+
+#if !GTK_CHECK_VERSION (3, 0, 0)
+	const char *range_names[] = {
+		"slowkeys_delay_slide",
+		"bouncekeys_delay_slide",
+		"mousekeys_accel_time_slide",
+		"mousekeys_max_speed_slide",
+		"mousekeys_init_delay_slide"
+	};
+
+	int i;
+	for (i = 0; i < 5; ++i) {
+		gtk_range_set_update_policy (GTK_RANGE (WID (range_names[i])), GTK_UPDATE_DISCONTINUOUS);
+	}
+#endif
 }
