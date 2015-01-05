@@ -1751,7 +1751,7 @@ paint_output (App *app, cairo_t *cr, int i)
     MateRRRotation rotation;
     int total_w, total_h;
     GList *connected_outputs = list_connected_outputs (app, &total_w, &total_h);
-    MateRROutputInfo *output = g_list_nth (connected_outputs, i)->data;
+    MateRROutputInfo *output = g_list_nth_data (connected_outputs, i);
     PangoLayout *layout = get_display_name (app, output);
     PangoRectangle ink_extent, log_extent;
     GdkRectangle viewport;
