@@ -33,11 +33,8 @@
 #include <libappindicator/app-indicator.h>
 #endif /* HAVE_APP_INDICATOR */
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 #define MATE_DESKTOP_USE_UNSTABLE_API
 #include <libmate-desktop/mate-desktop-utils.h>
-#define gdk_spawn_command_line_on_screen mate_gdk_spawn_command_line_on_screen
-#endif
 
 #include "drwright.h"
 #include "drw-break-window.h"
@@ -604,7 +601,7 @@ popup_preferences_cb (GtkAction *action, DrWright *dr)
 	menu = gtk_ui_manager_get_widget (dr->ui_manager, "/Pop");
 	screen = gtk_widget_get_screen (menu);
 
-	if (!gdk_spawn_command_line_on_screen (screen, "mate-keyboard-properties --typing-break", &error)) {
+	if (!mate_gdk_spawn_command_line_on_screen (screen, "mate-keyboard-properties --typing-break", &error)) {
 		GtkWidget *error_dialog;
 
 		error_dialog = gtk_message_dialog_new (NULL, 0,
