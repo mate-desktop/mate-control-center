@@ -41,14 +41,14 @@
  */
 
 /*
- * FIXME use enum from gsettings-desktop-schema
+ * use enum from gsettings-desktop-schema
  * http://git.gnome.org/browse/gsettings-desktop-schemas/tree/headers/gdesktop-enums.h#n26
  */
-enum ProxyMode
+enum GDesktopProxyMode
 {
-	PROXYMODE_NONE,
-	PROXYMODE_MANUAL,
-	PROXYMODE_AUTO
+	G_DESKTOP_PROXY_MODE_NONE,
+	G_DESKTOP_PROXY_MODE_MANUAL,
+	G_DESKTOP_PROXY_MODE_AUTO
 };
 
 enum {
@@ -319,16 +319,16 @@ proxy_mode_gsettings_changed (GSettings *settings,
 {
 	int mode;
 	mode = g_settings_get_enum (settings, PROXY_MODE_KEY);
-	if (mode == PROXYMODE_NONE)
+	if (mode == G_DESKTOP_PROXY_MODE_NONE)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object(builder, "none_radiobutton")), TRUE);
-	else if (mode == PROXYMODE_AUTO)
+	else if (mode == G_DESKTOP_PROXY_MODE_AUTO)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object(builder, "auto_radiobutton")), TRUE);
-	else if (mode == PROXYMODE_MANUAL)
+	else if (mode == G_DESKTOP_PROXY_MODE_MANUAL)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object(builder, "manual_radiobutton")), TRUE);
 	gtk_widget_set_sensitive (_gtk_builder_get_widget (builder, "manual_box"),
-				  mode == PROXYMODE_MANUAL);
+				  mode == G_DESKTOP_PROXY_MODE_MANUAL);
 	gtk_widget_set_sensitive (_gtk_builder_get_widget (builder, "auto_box"),
-				  mode == PROXYMODE_AUTO);
+				  mode == G_DESKTOP_PROXY_MODE_AUTO);
 }
 
 static void
