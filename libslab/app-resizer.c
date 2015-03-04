@@ -48,6 +48,10 @@ app_resizer_class_init (AppResizerClass * klass)
 static void
 app_resizer_init (AppResizer * window)
 {
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (window)),
+                                 GTK_STYLE_CLASS_VIEW);
+#endif
 }
 
 void
