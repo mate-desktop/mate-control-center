@@ -127,7 +127,7 @@ open_desktop_item_exec (MateDesktopItem * desktop_item)
 	if (!desktop_item)
 		return FALSE;
 
-	mate_desktop_item_launch (desktop_item, NULL, MATE_DESKTOP_ITEM_LAUNCH_ONLY_ONE, &error);
+	mate_desktop_item_launch (desktop_item, NULL, MATE_DESKTOP_ITEM_LAUNCH_ONLY_ONE | MATE_DESKTOP_ITEM_LAUNCH_DO_NOT_REAP_CHILD, &error);
 
 	if (error)
 	{
