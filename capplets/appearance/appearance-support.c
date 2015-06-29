@@ -77,6 +77,7 @@ metacity_theme_apply(const gchar *theme, const gchar *font)
     {
         gchar *gsettings_cmd = NULL;
 
+        /* for metacity <= 3.12 */
         gsettings_cmd = g_strdup_printf("gsettings set org.gnome.desktop.wm.preferences theme '%s'", theme);
         g_spawn_command_line_async (gsettings_cmd, NULL);
         g_free (gsettings_cmd);
@@ -85,6 +86,10 @@ metacity_theme_apply(const gchar *theme, const gchar *font)
         g_spawn_command_line_async (gsettings_cmd, NULL);
         g_free (gsettings_cmd);
 
+        /* for metacity >= 3.16 */
+        gsettings_cmd = g_strdup_printf("gsettings set org.gnome.metacity theme '%s'", theme);
+        g_spawn_command_line_async (gsettings_cmd, NULL);
+        g_free (gsettings_cmd);
     }
 }
 
