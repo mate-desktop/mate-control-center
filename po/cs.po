@@ -6,8 +6,9 @@
 # Andre Klapper <ak-47@gmx.net>, 2009
 # David Šauer <davids@penguin.cz>, 1999
 # Jakub Friedl <jfriedl@suse.cz>, 2006, 2007
+# jakubtalich, 2014
 # Jiří Lebl <jirka@5z.cz>, 2002
-# segfault <lukas.kvidera@seznam.cz>, 2013
+# Lukáš Kvídera <lukas.kvidera@seznam.cz>, 2013
 # Lukas Novotny <lukasnov@cvs.gnome.org>, 2006
 # Michal Bukovjan <bukm@centrum.cz>, 2002, 2003
 # Michal Procházka <mich.procha@seznam.cz>, 2012
@@ -18,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 16:27+0100\n"
-"PO-Revision-Date: 2014-02-23 15:29+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>\n"
+"POT-Creation-Date: 2015-07-01 11:41+0200\n"
+"PO-Revision-Date: 2015-07-01 09:43+0000\n"
+"Last-Translator: infirit <infirit@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/MATE/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +33,7 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr ""
+msgstr "[ 'Změnit motiv;mate-appearance-properties.desktop', 'Nastavit upřednostňované aplikace;mate-default-applications.desktop' ]"
 
 #: ../org.mate.control-center.gschema.xml.in.in.h:2
 msgid "Task names and associated .desktop files"
@@ -176,7 +177,7 @@ msgid "Images"
 msgstr "Obrázky"
 
 #: ../capplets/about-me/mate-about-me.c:322
-#: ../capplets/appearance/theme-installer.c:774
+#: ../capplets/appearance/theme-installer.c:783
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -565,101 +566,101 @@ msgstr "Přidat tapetu"
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: ../capplets/appearance/appearance-main.c:59
+#: ../capplets/appearance/appearance-main.c:57
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Nelze načíst soubor uživatelského rozhraní: %s"
 
-#: ../capplets/appearance/appearance-main.c:155
+#: ../capplets/appearance/appearance-main.c:161
 msgid "Specify the filename of a theme to install"
 msgstr "Určit název souboru motivu, který má být nainstalován"
 
-#: ../capplets/appearance/appearance-main.c:156
+#: ../capplets/appearance/appearance-main.c:162
 msgid "filename"
 msgstr "název souboru"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:163
+#: ../capplets/appearance/appearance-main.c:169
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Určit název stránky, která má být zobrazena (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:164
-#: ../capplets/default-applications/mate-da-capplet.c:575
+#: ../capplets/appearance/appearance-main.c:170
+#: ../capplets/default-applications/mate-da-capplet.c:694
 #: ../capplets/mouse/mate-mouse-properties.c:496
 msgid "page"
 msgstr "stránka"
 
-#: ../capplets/appearance/appearance-main.c:171
+#: ../capplets/appearance/appearance-main.c:177
 msgid "[WALLPAPER...]"
 msgstr "[TAPETA...]"
 
 #: ../capplets/appearance/appearance-style.c:171
 #: ../capplets/common/mate-theme-info.c:497
-#: ../capplets/common/mate-theme-info.c:694
+#: ../capplets/common/mate-theme-info.c:690
 msgid "Default Pointer"
 msgstr "Výchozí kurzor"
 
 #: ../capplets/appearance/appearance-style.c:233
-#: ../capplets/appearance/appearance-themes.c:674
+#: ../capplets/appearance/appearance-themes.c:661
 msgid "Install"
 msgstr "Instalovat"
 
-#: ../capplets/appearance/appearance-style.c:255
-#: ../capplets/common/mate-theme-info.c:1724
+#: ../capplets/appearance/appearance-style.c:256
+#: ../capplets/common/mate-theme-info.c:1727
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
 "'%s' is not installed."
 msgstr "Tento motiv nebude zobrazen jak bylo zamýšleno, protože požadovaný systém motivu GTK+ \"%s\" není nainstalován."
 
-#: ../capplets/appearance/appearance-themes.c:662
+#: ../capplets/appearance/appearance-themes.c:649
 msgid "Apply Background"
 msgstr "Použít pozadí"
 
-#: ../capplets/appearance/appearance-themes.c:666
+#: ../capplets/appearance/appearance-themes.c:653
 msgid "Apply Font"
 msgstr "Použít písmo"
 
-#: ../capplets/appearance/appearance-themes.c:670
+#: ../capplets/appearance/appearance-themes.c:657
 msgid "Revert Font"
 msgstr "Vrátit písmo"
 
-#: ../capplets/appearance/appearance-themes.c:701
+#: ../capplets/appearance/appearance-themes.c:688
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "Aktuální motiv navrhuje pozadí a písmo. Také může být vráceno naposledy použité písmo."
 
-#: ../capplets/appearance/appearance-themes.c:703
+#: ../capplets/appearance/appearance-themes.c:690
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "Aktuální motiv navrhuje pozadí. Také může být vráceno naposledy použité písmo."
 
-#: ../capplets/appearance/appearance-themes.c:705
+#: ../capplets/appearance/appearance-themes.c:692
 msgid "The current theme suggests a background and a font."
 msgstr "Aktuální motiv navrhuje pozadí a písmo."
 
-#: ../capplets/appearance/appearance-themes.c:707
+#: ../capplets/appearance/appearance-themes.c:694
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "Aktuální motiv navrhuje písmo. Také může být vráceno naposledy použité písmo."
 
-#: ../capplets/appearance/appearance-themes.c:709
+#: ../capplets/appearance/appearance-themes.c:696
 msgid "The current theme suggests a background."
 msgstr "Aktuální motiv navrhuje pozadí."
 
-#: ../capplets/appearance/appearance-themes.c:711
+#: ../capplets/appearance/appearance-themes.c:698
 msgid "The last applied font suggestion can be reverted."
 msgstr "Může být vráceno naposledy použité písmo."
 
-#: ../capplets/appearance/appearance-themes.c:713
+#: ../capplets/appearance/appearance-themes.c:700
 msgid "The current theme suggests a font."
 msgstr "Aktuální motiv navrhuje písmo."
 
-#: ../capplets/appearance/appearance-themes.c:1029
+#: ../capplets/appearance/appearance-themes.c:1016
 msgid "Custom"
 msgstr "Vlastní"
 
@@ -998,7 +999,7 @@ msgstr "Bez pozadí pracovní plochy"
 
 #: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
-msgstr ""
+msgstr "neznámý"
 
 #: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
@@ -1037,7 +1038,7 @@ msgid ""
 "%s, %s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s, %s\nSložka: %s\nUmělec: %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1050,93 +1051,93 @@ msgid ""
 "%s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr ""
+msgstr "<b>%s</b>\n%s\nSložka: %s\nUmělec: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "Chybí obrázek"
 
-#: ../capplets/appearance/theme-installer.c:178
-#: ../capplets/appearance/theme-installer.c:234
+#: ../capplets/appearance/theme-installer.c:185
+#: ../capplets/appearance/theme-installer.c:241
 msgid "Cannot install theme"
 msgstr "Nelze nainstalovat motiv"
 
-#: ../capplets/appearance/theme-installer.c:180
+#: ../capplets/appearance/theme-installer.c:187
 #, c-format
 msgid "The %s utility is not installed."
 msgstr "Nástroj %s není nainstalován."
 
-#: ../capplets/appearance/theme-installer.c:236
+#: ../capplets/appearance/theme-installer.c:243
 msgid "There was a problem while extracting the theme."
 msgstr "Při rozbalování motivu se vyskytla chyba."
 
-#: ../capplets/appearance/theme-installer.c:264
+#: ../capplets/appearance/theme-installer.c:271
 msgid "There was an error installing the selected file"
 msgstr "Při instalování vybraného souboru došlo k chybě"
 
-#: ../capplets/appearance/theme-installer.c:265
+#: ../capplets/appearance/theme-installer.c:272
 #, c-format
 msgid "\"%s\" does not appear to be a valid theme."
 msgstr "\"%s\" se nezdá být platným motivem."
 
-#: ../capplets/appearance/theme-installer.c:266
+#: ../capplets/appearance/theme-installer.c:273
 #, c-format
 msgid ""
 "\"%s\" does not appear to be a valid theme. It may be a theme engine which "
 "you need to compile."
 msgstr "Zdá se, že \"%s\" není platným motivem. Může se jednat o systém motivů, který je nutný přeložit."
 
-#: ../capplets/appearance/theme-installer.c:372
+#: ../capplets/appearance/theme-installer.c:379
 #, c-format
 msgid "Installation for theme \"%s\" failed."
 msgstr "Instalace motivu \"%s\" selhala."
 
-#: ../capplets/appearance/theme-installer.c:411
+#: ../capplets/appearance/theme-installer.c:418
 #, c-format
 msgid "The theme \"%s\" has been installed."
 msgstr "Motiv \"%s\" byl nainstalován."
 
-#: ../capplets/appearance/theme-installer.c:421
+#: ../capplets/appearance/theme-installer.c:428
 msgid "Would you like to apply it now, or keep your current theme?"
 msgstr "Přejete si jej nyní použít, nebo ponechat stávající motiv?"
 
-#: ../capplets/appearance/theme-installer.c:424
+#: ../capplets/appearance/theme-installer.c:431
 msgid "Keep Current Theme"
 msgstr "Ponechat stávající motiv"
 
-#: ../capplets/appearance/theme-installer.c:427
+#: ../capplets/appearance/theme-installer.c:434
 msgid "Apply New Theme"
 msgstr "Použít nový motiv"
 
-#: ../capplets/appearance/theme-installer.c:479
+#: ../capplets/appearance/theme-installer.c:486
 #, c-format
 msgid "MATE Theme %s correctly installed"
 msgstr "Motiv MATE %s korektně nainstalován"
 
-#: ../capplets/appearance/theme-installer.c:541
+#: ../capplets/appearance/theme-installer.c:548
 msgid "Failed to create temporary directory"
 msgstr "Nezdařilo se vytvoření dočasného adresáře"
 
-#: ../capplets/appearance/theme-installer.c:604
+#: ../capplets/appearance/theme-installer.c:611
 msgid "New themes have been successfully installed."
 msgstr "Nové motivy byly úspěšně nainstalovány."
 
-#: ../capplets/appearance/theme-installer.c:654
+#: ../capplets/appearance/theme-installer.c:661
 msgid "No theme file location specified to install"
 msgstr "K instalaci neurčeno žádné umístění souboru motivu"
 
-#: ../capplets/appearance/theme-installer.c:678
+#: ../capplets/appearance/theme-installer.c:685
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
 msgstr "Nedostatečná oprávnění k instalaci motivu do:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:756
+#: ../capplets/appearance/theme-installer.c:765
 msgid "Select Theme"
 msgstr "Vybrat motiv"
 
-#: ../capplets/appearance/theme-installer.c:767
+#: ../capplets/appearance/theme-installer.c:776
 msgid "Theme Packages"
 msgstr "Balíčky motivů"
 
@@ -1258,49 +1259,49 @@ msgstr "Pře_skočit"
 msgid "Overwrite _All"
 msgstr "Přeps_at vše"
 
-#: ../capplets/common/mate-theme-info.c:695
+#: ../capplets/common/mate-theme-info.c:691
 msgid "Default Pointer - Current"
 msgstr "Výchozí kurzor - Aktuální"
 
-#: ../capplets/common/mate-theme-info.c:699
+#: ../capplets/common/mate-theme-info.c:695
 msgid "White Pointer"
 msgstr "Bílý kurzor"
 
-#: ../capplets/common/mate-theme-info.c:700
+#: ../capplets/common/mate-theme-info.c:696
 msgid "White Pointer - Current"
 msgstr "Bílý kurzor - Aktuální"
 
-#: ../capplets/common/mate-theme-info.c:704
+#: ../capplets/common/mate-theme-info.c:700
 msgid "Large Pointer"
 msgstr "Velký kurzor"
 
-#: ../capplets/common/mate-theme-info.c:705
+#: ../capplets/common/mate-theme-info.c:701
 msgid "Large Pointer - Current"
 msgstr "Velký kurzor - Aktuální"
 
-#: ../capplets/common/mate-theme-info.c:709
+#: ../capplets/common/mate-theme-info.c:705
 msgid "Large White Pointer - Current"
 msgstr "Velký bílý kurzor - Aktuální"
 
-#: ../capplets/common/mate-theme-info.c:710
+#: ../capplets/common/mate-theme-info.c:706
 msgid "Large White Pointer"
 msgstr "Velký bílý kurzor"
 
-#: ../capplets/common/mate-theme-info.c:1694
+#: ../capplets/common/mate-theme-info.c:1697
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
 " not installed."
 msgstr "Tento motiv nebude zobrazen jak bylo zamýšleno, protože požadovaný motiv GTK+ \"%s\" není nainstalován."
 
-#: ../capplets/common/mate-theme-info.c:1704
+#: ../capplets/common/mate-theme-info.c:1707
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
 "theme '%s' is not installed."
 msgstr "Tento motiv nebude zobrazen jak bylo zamýšleno, protože požadovaný motiv správce oken \"%s\" není nainstalován."
 
-#: ../capplets/common/mate-theme-info.c:1712
+#: ../capplets/common/mate-theme-info.c:1715
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1316,20 +1317,20 @@ msgstr "Preferované aplikace"
 msgid "Select your default applications"
 msgstr "Umožní si vybrat výchozí aplikace"
 
-#: ../capplets/default-applications/mate-da-capplet.c:448
+#: ../capplets/default-applications/mate-da-capplet.c:543
 msgid "Could not load the main interface"
 msgstr "Nelze načíst hlavní rozhraní"
 
-#: ../capplets/default-applications/mate-da-capplet.c:449
+#: ../capplets/default-applications/mate-da-capplet.c:544
 msgid "Please make sure that the applet is properly installed"
 msgstr "Zkontrolujte prosím, že je applet správně nainstalován"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:574
+#: ../capplets/default-applications/mate-da-capplet.c:693
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Určete název stránky, která má být zobrazena (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:580
+#: ../capplets/default-applications/mate-da-capplet.c:699
 msgid "- MATE Default Applications"
 msgstr "- výchozí aplikace MATE"
 
@@ -1337,101 +1338,96 @@ msgstr "- výchozí aplikace MATE"
 msgid "Web Browser"
 msgstr "Prohlížeč WWW"
 
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:3
+msgid "Mail Reader"
+msgstr "Poštovní program"
+
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
+msgid "Instant Messenger"
+msgstr "Program pro rychlé zasílání zpráv"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
+msgid "Co_mmand:"
+msgstr "Pří_kaz:"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
 #, no-c-format
 msgid "All %s occurrences will be replaced with actual link"
 msgstr "Všechny výskyty %s budou nahrazeny aktuálním odkazem"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
 msgid "Run in t_erminal"
 msgstr "Spouštět v _terminálu"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
-msgid "Open link with web browser _default"
-msgstr "Otevírat odkaz _podle prohlížeče WWW"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
-msgid "Open link in new _tab"
-msgstr "Ote_vírat odkaz na nové kartě"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
-msgid "Open link in new _window"
-msgstr "Otevírat odkaz v novém _okně"
-
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-msgid "C_ommand:"
-msgstr "_Příkaz:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
-msgid "Mail Reader"
-msgstr "Poštovní program"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
-msgid "Co_mmand:"
-msgstr "Pří_kaz:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
-msgid "Instant Messenger"
-msgstr "Program pro rychlé zasílání zpráv"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
 msgid "Internet"
 msgstr "Internet"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
 msgid "Multimedia Player"
 msgstr "Multimediální přehrávač"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
 msgid "Video Player"
 msgstr "Přehrávač videa"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
 msgid "Multimedia"
 msgstr "Multimédia"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
 msgid "Text Editor"
 msgstr "Textový editor"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
 msgid "Terminal Emulator"
 msgstr "Emulátor terminálu"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
-msgid "E_xecute flag:"
-msgstr "Příznak _spouštění:"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
 msgid "File Manager"
 msgstr "Správce souborů"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
 msgid "System"
 msgstr "Systém"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+msgid "Document Viewer"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+msgid "Word Processor"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+msgid "Spreadsheet Editor"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+msgid "Office"
+msgstr ""
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
 msgid "Visual"
 msgstr "Vizuální"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
 msgid "_Run at start"
 msgstr "Spust_it při startu"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
 msgid "Mobility"
 msgstr "Pohyblivost"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
 msgid "Run at st_art"
 msgstr "Spouštět při st_artu"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
 msgid "Accessibility"
 msgstr "Zpřístupnění"
@@ -1473,7 +1469,7 @@ msgid "Off"
 msgstr "Vypnuto"
 
 #: ../capplets/display/display-capplet.ui.h:10
-#: ../capplets/display/xrandr-capplet.c:513
+#: ../capplets/display/xrandr-capplet.c:520
 msgid "Monitor"
 msgstr "Monitor"
 
@@ -1497,11 +1493,13 @@ msgstr "Běžné"
 
 #: ../capplets/display/display-capplet.ui.h:15
 #: ../capplets/display/xrandr-capplet.c:310
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "Left"
 msgstr "Vlevo"
 
 #: ../capplets/display/display-capplet.ui.h:16
 #: ../capplets/display/xrandr-capplet.c:311
+#: ../capplets/windows/mate-window-properties.c:467
 msgid "Right"
 msgstr "Vpravo"
 
@@ -1510,12 +1508,12 @@ msgid "Upside-down"
 msgstr "Převrátit"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
-msgid "Monitors"
-msgstr "Monitory"
+msgid "Displays"
+msgstr ""
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:2
-msgid "Change resolution and position of monitors"
-msgstr "Změnit rozlišení a polohu monitorů"
+msgid "Change resolution and position of monitors and projectors"
+msgstr ""
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:44
 #, c-format
@@ -1620,52 +1618,52 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:502
-#: ../capplets/display/xrandr-capplet.c:1652
+#: ../capplets/display/xrandr-capplet.c:505
+#: ../capplets/display/xrandr-capplet.c:1678
 msgid "Mirror Screens"
 msgstr "Zrcadlící obrazovky"
 
-#: ../capplets/display/xrandr-capplet.c:504
+#: ../capplets/display/xrandr-capplet.c:507
 #, c-format
 msgid "Monitor: %s"
 msgstr "Monitor: %s"
 
-#: ../capplets/display/xrandr-capplet.c:582
+#: ../capplets/display/xrandr-capplet.c:603
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1508
+#: ../capplets/display/xrandr-capplet.c:1535
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "Výběrem monitoru změníte jeho vlastnosti; umístění upravíte jeho přetažením."
 
-#: ../capplets/display/xrandr-capplet.c:2073
+#: ../capplets/display/xrandr-capplet.c:2143
 msgid "Could not save the monitor configuration"
 msgstr "Nelze uložit nastavení monitoru"
 
-#: ../capplets/display/xrandr-capplet.c:2095
+#: ../capplets/display/xrandr-capplet.c:2165
 msgid "Could not get session bus while applying display configuration"
 msgstr "Při aplikování nastavení displeje se nezdařilo získání sběrnice sezení"
 
-#: ../capplets/display/xrandr-capplet.c:2137
+#: ../capplets/display/xrandr-capplet.c:2207
 msgid "Could not detect displays"
 msgstr "Displeje nelze rozpoznat"
 
-#: ../capplets/display/xrandr-capplet.c:2334
+#: ../capplets/display/xrandr-capplet.c:2401
 msgid "The monitor configuration has been saved"
 msgstr "Nastavení monitoru bylo uloženo"
 
-#: ../capplets/display/xrandr-capplet.c:2336
+#: ../capplets/display/xrandr-capplet.c:2403
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Toto nastavení bude použito při dalším přihlášení některého z uživatelů."
 
-#: ../capplets/display/xrandr-capplet.c:2345
+#: ../capplets/display/xrandr-capplet.c:2412
 msgid "Could not set the default configuration for monitors"
 msgstr "Nelze nastavit výchozí nastavení monitorů"
 
-#: ../capplets/display/xrandr-capplet.c:2429
+#: ../capplets/display/xrandr-capplet.c:2496
 msgid "Could not get screen information"
 msgstr "Nelze získat informace o obrazovce"
 
@@ -1698,7 +1696,7 @@ msgstr "Typ klávesové zkratky."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:234
 #: ../capplets/keybindings/mate-keybinding-properties.c:137
-#: ../typing-break/drwright.c:504
+#: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Vypnuto"
 
@@ -1706,47 +1704,47 @@ msgstr "Vypnuto"
 msgid "<Unknown Action>"
 msgstr "<Neznámá akce>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1026
-#: ../capplets/keybindings/mate-keybinding-properties.c:1624
+#: ../capplets/keybindings/mate-keybinding-properties.c:1023
+#: ../capplets/keybindings/mate-keybinding-properties.c:1613
 msgid "Custom Shortcuts"
 msgstr "Vlastní zkratky"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1204
+#: ../capplets/keybindings/mate-keybinding-properties.c:1193
 msgid "Error saving the new shortcut"
 msgstr "Chyba při ukládání nové zkratky"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1280
+#: ../capplets/keybindings/mate-keybinding-properties.c:1269
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "Klávesovou zkratku \"%s\" nelze použít, protože nebude možné tuto klávesu používat k psaní.\nZkuste to prosím v kombinaci s klávesou jako Control, Alt nebo Shift."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1312
+#: ../capplets/keybindings/mate-keybinding-properties.c:1301
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Zkratka \"%s\" se již používá pro:\n \"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1319
+#: ../capplets/keybindings/mate-keybinding-properties.c:1308
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Změníte-li přiřazení zkratky k \"%s\", zkratka \"%s\" bude vypnuta."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1324
+#: ../capplets/keybindings/mate-keybinding-properties.c:1313
 msgid "_Reassign"
 msgstr "Z_měnit přiřazení"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1579
+#: ../capplets/keybindings/mate-keybinding-properties.c:1568
 msgid "Too many custom shortcuts"
 msgstr "Příliš mnoho vlastních zkratek"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1867
+#: ../capplets/keybindings/mate-keybinding-properties.c:1856
 msgid "Action"
 msgstr "Akce"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1889
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Shortcut"
 msgstr "Zkratka"
 
@@ -1766,25 +1764,29 @@ msgstr "Zkratku upravíte kliknutím na odpovídající řádek a zadáním nov�
 msgid "Custom Shortcut"
 msgstr "Vlastní zkratka"
 
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+msgid "C_ommand:"
+msgstr "_Příkaz:"
+
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "Přiřadí klávesové zkratky k příkazům"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:203
-#: ../capplets/keyboard/mate-keyboard-properties.c:208
+#: ../capplets/keyboard/mate-keyboard-properties.c:213
+#: ../capplets/keyboard/mate-keyboard-properties.c:218
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "Pouze použít nastavení a skončit (jen kvůli kompatibilitě; nyní zpracováváno démonem)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
+#: ../capplets/keyboard/mate-keyboard-properties.c:223
 msgid "Start the page with the typing break settings showing"
 msgstr "Spustit se zobrazenou kartou nastavení přestávky ve psaní"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "Start the page with the accessibility settings showing"
 msgstr "Spustit stránku se zobrazeným nastavením zpřístupnění"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:224
+#: ../capplets/keyboard/mate-keyboard-properties.c:234
 msgid "- MATE Keyboard Preferences"
 msgstr "- předvolby klávesnice MATE"
 
@@ -1795,7 +1797,7 @@ msgstr "Zvuková zpětná vazba zpřístupnění klávesnice"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
-#: ../capplets/windows/mate-window-properties.c:319
+#: ../capplets/windows/mate-window-properties.c:348
 msgid "General"
 msgstr "Obecné"
 
@@ -2120,7 +2122,7 @@ msgstr "_Modely:"
 msgid "Keyboard Layout Options"
 msgstr "Možnosti rozložení klávesnice"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:85
+#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
 msgstr "Neznámé"
 
@@ -2128,11 +2130,11 @@ msgstr "Neznámé"
 msgid "Layout"
 msgstr "Rozložení"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
 msgid "Vendors"
 msgstr "Dodavatelé"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:239
+#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
 msgid "Models"
 msgstr "Modely"
 
@@ -2340,140 +2342,149 @@ msgstr "Ignorované počítače"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
-msgstr ""
+msgstr "Předvolby metacity"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:333
+#: ../capplets/windows/mate-window-properties.c:362
 msgid "Compositing Manager"
 msgstr "Správce funkcí kompozitoru"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:339
+#: ../capplets/windows/mate-window-properties.c:368
 msgid "Enable software _compositing window manager"
 msgstr "Povolit správce softwarového _vykreslování oken"
 
-#: ../capplets/windows/mate-window-properties.c:218
+#: ../capplets/windows/mate-window-properties.c:245
 msgid "The current window manager is unsupported"
-msgstr ""
+msgstr "Aktuální správce oken je nepodporovaný"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:304
+#: ../capplets/windows/mate-window-properties.c:332
 msgid "Window Preferences"
 msgstr "Předvolby oken"
 
-#: ../capplets/windows/mate-window-properties.c:323
+#: ../capplets/windows/mate-window-properties.c:352
 msgid "Behaviour"
-msgstr ""
+msgstr "Chování"
 
-#: ../capplets/windows/mate-window-properties.c:327
+#: ../capplets/windows/mate-window-properties.c:356
 msgid "Placement"
-msgstr ""
+msgstr "Umístění"
 
-#: ../capplets/windows/mate-window-properties.c:340
+#: ../capplets/windows/mate-window-properties.c:369
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Zakázat Alt-Tab _náhledy "
 
-#. New Windows
-#: ../capplets/windows/mate-window-properties.c:348
-msgid "New Windows"
+#. Titlebar buttons
+#: ../capplets/windows/mate-window-properties.c:377
+msgid "Titlebar Buttons"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:352
-msgid "Center _new windows"
+#: ../capplets/windows/mate-window-properties.c:381
+msgid "Position:"
 msgstr ""
+
+#. New Windows
+#: ../capplets/windows/mate-window-properties.c:388
+msgid "New Windows"
+msgstr "Nová okna"
+
+#: ../capplets/windows/mate-window-properties.c:392
+msgid "Center _new windows"
+msgstr "Umístit _nová okna na střed"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:357
+#: ../capplets/windows/mate-window-properties.c:397
 msgid "Window Snapping"
-msgstr ""
+msgstr "Přichytávání oken"
 
-#: ../capplets/windows/mate-window-properties.c:361
+#: ../capplets/windows/mate-window-properties.c:401
 msgid "Enable side by side _tiling"
-msgstr ""
+msgstr "Povolit obkládání bok po boku"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:366
+#: ../capplets/windows/mate-window-properties.c:406
 msgid "Window Selection"
 msgstr "Výběr oken"
 
-#: ../capplets/windows/mate-window-properties.c:375
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Vybírat okna, pokud se nad ně přesune ukazatel myši"
 
-#: ../capplets/windows/mate-window-properties.c:378
+#: ../capplets/windows/mate-window-properties.c:418
 msgid "_Raise selected windows after an interval"
 msgstr "Zvyšovat vyb_raná okna po intervalu"
 
-#: ../capplets/windows/mate-window-properties.c:384
+#: ../capplets/windows/mate-window-properties.c:424
 msgid "_Interval before raising:"
 msgstr "_Interval před zvýšením:"
 
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:428
 msgid "seconds"
 msgstr "sekund"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:399
+#: ../capplets/windows/mate-window-properties.c:439
 msgid "Titlebar Action"
 msgstr "Akce záhlaví okna"
 
-#: ../capplets/windows/mate-window-properties.c:403
+#: ../capplets/windows/mate-window-properties.c:443
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Dvojité kliknutí na záhlaví okna provede tuto akci:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:411
+#: ../capplets/windows/mate-window-properties.c:451
 msgid "Movement Key"
 msgstr "Pohybová klávesa"
 
-#: ../capplets/windows/mate-window-properties.c:416
+#: ../capplets/windows/mate-window-properties.c:456
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Přesunování okna stisknutím a držením této klávesy a následným táhnutím okna:"
 
-#: ../capplets/windows/mate-window-properties.c:427
-#: ../libwindow-settings/marco-window-manager.c:379
+#: ../capplets/windows/mate-window-properties.c:474
+#: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Svinout"
 
-#: ../capplets/windows/mate-window-properties.c:428
-#: ../libwindow-settings/marco-window-manager.c:380
+#: ../capplets/windows/mate-window-properties.c:475
+#: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximalizovat"
 
-#: ../capplets/windows/mate-window-properties.c:429
-#: ../libwindow-settings/marco-window-manager.c:381
+#: ../capplets/windows/mate-window-properties.c:476
+#: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximalizovat vodorovně"
 
-#: ../capplets/windows/mate-window-properties.c:430
-#: ../libwindow-settings/marco-window-manager.c:382
+#: ../capplets/windows/mate-window-properties.c:477
+#: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximalizovat svisle"
 
-#: ../capplets/windows/mate-window-properties.c:431
-#: ../libwindow-settings/marco-window-manager.c:383
+#: ../capplets/windows/mate-window-properties.c:478
+#: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimalizovat"
 
-#: ../capplets/windows/mate-window-properties.c:432
-#: ../libwindow-settings/marco-window-manager.c:384
+#: ../capplets/windows/mate-window-properties.c:479
+#: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Žádná"
 
-#: ../capplets/windows/mate-window-properties.c:636
+#: ../capplets/windows/mate-window-properties.c:676
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:642
+#: ../capplets/windows/mate-window-properties.c:682
 msgid "H_yper"
 msgstr "_Hyper"
 
-#: ../capplets/windows/mate-window-properties.c:649
+#: ../capplets/windows/mate-window-properties.c:689
 msgid "S_uper (or \"Windows logo\")"
 msgstr "_Super (nebo \"logo Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:656
+#: ../capplets/windows/mate-window-properties.c:696
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2485,7 +2496,7 @@ msgstr "Okna"
 msgid "Set your window properties"
 msgstr "Nastaví vlastnosti oken"
 
-#: ../libwindow-settings/mate-wm-manager.c:321
+#: ../libwindow-settings/mate-wm-manager.c:317
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Správce oken \"%s\" nemá registrovaný nástroj nastavení\n"
@@ -2528,16 +2539,16 @@ msgstr "_Odložit přestávku"
 msgid "Take a break!"
 msgstr "Udělejte si přestávku!"
 
-#: ../typing-break/drwright.c:142
+#: ../typing-break/drwright.c:139
 msgid "_Take a Break"
 msgstr "_Udělat si přestávku"
 
-#: ../typing-break/drwright.c:513
+#: ../typing-break/drwright.c:510
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Udělat si právě teď přestávku (další za %dm)"
 
-#: ../typing-break/drwright.c:515
+#: ../typing-break/drwright.c:512
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
@@ -2545,52 +2556,52 @@ msgstr[0] "%d minuta do další přestávky"
 msgstr[1] "%d minuty do další přestávky"
 msgstr[2] "%d minut do další přestávky"
 
-#: ../typing-break/drwright.c:521
+#: ../typing-break/drwright.c:518
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Udělat si právě teď přestávku (další za méně než minutu)"
 
-#: ../typing-break/drwright.c:523
+#: ../typing-break/drwright.c:520
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Méně než jedna minuta do další přestávky"
 
-#: ../typing-break/drwright.c:613
+#: ../typing-break/drwright.c:610
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "Nelze zobrazit dialog vlastností přestávky ve psaní kvůli následující chybě: %s"
 
-#: ../typing-break/drwright.c:630
+#: ../typing-break/drwright.c:627
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Napsal Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:631
+#: ../typing-break/drwright.c:628
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Pastvu pro oči přidal Anders Carlsson"
 
-#: ../typing-break/drwright.c:640
+#: ../typing-break/drwright.c:637
 msgid "A computer break reminder."
 msgstr "Upomínka na počítačové přestávky."
 
-#: ../typing-break/drwright.c:642
+#: ../typing-break/drwright.c:639
 msgid "translator-credits"
 msgstr "David Šauer <davids@penguin.cz>\nJiří Lebl <jirka@5z.cz>\nMichal Bukovjan <bukm@centrum.cz>\nMiloslav Trmač <mitr@volny.cz>\nJakub Friedl <jfriedl@suse.cz>\nPetr Tomeš <ptomes@gmail.com>\nLukáš Novotný <lukasnov@cvs.gnome.org>\nPetr Kovář <pknbe@volny.cz>"
 
-#: ../typing-break/main.c:67
+#: ../typing-break/main.c:63
 msgid "Enable debugging code"
 msgstr "Zapnout ladění kódu"
 
-#: ../typing-break/main.c:69
+#: ../typing-break/main.c:65
 msgid "Don't check whether the notification area exists"
 msgstr "Nekontrolovat, zda existuje oznamovací oblast"
 
-#: ../typing-break/main.c:95
+#: ../typing-break/main.c:89
 msgid "Typing Monitor"
 msgstr "Sledování psaní"
 
-#: ../typing-break/main.c:112
+#: ../typing-break/main.c:106
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -2671,25 +2682,25 @@ msgstr "VELIKOST"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "SOUBOR-PÍSMA VÝSTUPNÍ-SOUBOR"
 
-#: ../font-viewer/font-thumbnailer.c:272
+#: ../font-viewer/font-thumbnailer.c:265
 #, c-format
 msgid "Error parsing arguments: %s\n"
 msgstr "Chyba při analýze argumentů: %s\n"
 
-#: ../libslab/app-shell.c:761
+#: ../libslab/app-shell.c:762
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filtr \"%s\" se neshoduje s žádnými položkami."
 
-#: ../libslab/app-shell.c:763
+#: ../libslab/app-shell.c:764
 msgid "No matches found."
 msgstr "Nenalezena žádná shoda."
 
-#: ../libslab/app-shell.c:864
+#: ../libslab/app-shell.c:865
 msgid "New Applications"
 msgstr "Nové aplikace"
 
-#: ../libslab/app-shell.c:919
+#: ../libslab/app-shell.c:920
 msgid "Other"
 msgstr "Ostatní"
 
@@ -2719,36 +2730,36 @@ msgstr "Odstranit z Programů po spuštění"
 msgid "Add to Startup Programs"
 msgstr "Přidat do Programů po spuštění"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1087
 msgid "New Spreadsheet"
 msgstr "Nový sešit"
 
-#: ../libslab/bookmark-agent.c:1096
+#: ../libslab/bookmark-agent.c:1091
 msgid "New Document"
 msgstr "Nový dokument"
 
-#: ../libslab/bookmark-agent.c:1149
+#: ../libslab/bookmark-agent.c:1145
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Domov"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1152
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: ../libslab/bookmark-agent.c:1164
+#: ../libslab/bookmark-agent.c:1158
 msgid "Desktop"
 msgstr "Plocha"
 
-#: ../libslab/bookmark-agent.c:1171
+#: ../libslab/bookmark-agent.c:1163
 msgid "File System"
 msgstr "Systém souborů"
 
-#: ../libslab/bookmark-agent.c:1175
+#: ../libslab/bookmark-agent.c:1166
 msgid "Network Servers"
 msgstr "Síťové servery"
 
-#: ../libslab/bookmark-agent.c:1204
+#: ../libslab/bookmark-agent.c:1197
 msgid "Search"
 msgstr "Hledat"
 
@@ -2756,98 +2767,98 @@ msgstr "Hledat"
 #: ../libslab/directory-tile.c:176
 #, c-format
 msgid "<b>Open</b>"
-msgstr ""
+msgstr "<b>Otevřít</b>"
 
 #. make rename action
 #: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
 msgid "Rename..."
-msgstr ""
+msgstr "Přejmenovat..."
 
 #: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
 #: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
 msgid "Send To..."
-msgstr ""
+msgstr "Odeslat do..."
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
 msgid "Move to Trash"
-msgstr ""
+msgstr "Přesunout do koše"
 
 #: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:453
 #: ../libslab/document-tile.c:300 ../libslab/document-tile.c:851
 msgid "Delete"
-msgstr ""
+msgstr "Odstranit"
 
 #: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1014
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr ""
+msgstr "Jste si jisti, že chcete trvale smazat \"%s\"?"
 
 #: ../libslab/directory-tile.c:531 ../libslab/document-tile.c:1015
 msgid "If you delete an item, it is permanently lost."
-msgstr ""
+msgstr "Smažete-li položku, bude navždy ztracena."
 
 #: ../libslab/document-tile.c:200
 #, c-format
 msgid "Open with \"%s\""
-msgstr ""
+msgstr "Otevřít s „%s“."
 
 #: ../libslab/document-tile.c:214
 msgid "Open with Default Application"
-msgstr ""
+msgstr "Otevřít ve výchozí aplikaci"
 
 #: ../libslab/document-tile.c:225
 msgid "Open in File Manager"
-msgstr ""
+msgstr "Otevřít ve správci souborů"
 
 #. clean item from menu
 #: ../libslab/document-tile.c:309
 msgid "Remove from recent menu"
-msgstr ""
+msgstr "Odstranit z nabídky nedávných položek"
 
 #. clean all the items from menu
 #: ../libslab/document-tile.c:317
 msgid "Purge all the recent items"
-msgstr ""
+msgstr "Vyprázdnit všechny nedávné položky"
 
 #: ../libslab/document-tile.c:631
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: ../libslab/document-tile.c:638
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%H:%M"
 
 #: ../libslab/document-tile.c:646
 msgid "Today %l:%M %p"
-msgstr ""
+msgstr "Dnes v %H:%M"
 
 #: ../libslab/document-tile.c:656
 msgid "Yesterday %l:%M %p"
-msgstr ""
+msgstr "Včera v %H:%M"
 
 #: ../libslab/document-tile.c:668
 msgid "%a %l:%M %p"
-msgstr ""
+msgstr "%a %l:%M %p"
 
 #: ../libslab/document-tile.c:676
 msgid "%b %d %l:%M %p"
-msgstr ""
+msgstr "%b %d %l:%M %p"
 
 #: ../libslab/document-tile.c:678
 msgid "%b %d %Y"
-msgstr ""
+msgstr "%b %d %Y"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
 msgstr "Najít nyní"
 
-#: ../libslab/system-tile.c:126
+#: ../libslab/system-tile.c:132
 #, c-format
 msgid "<b>Open %s</b>"
 msgstr "<b>Otevřít %s</b>"
 
-#: ../libslab/system-tile.c:139
+#: ../libslab/system-tile.c:145
 #, c-format
 msgid "Remove from System Items"
 msgstr "Odstranit ze systémových položek"
