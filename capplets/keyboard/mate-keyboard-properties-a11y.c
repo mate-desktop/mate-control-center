@@ -121,7 +121,8 @@ static void
 a11y_notifications_dialog_response_cb (GtkWidget *w, gint response)
 {
 	if (response == GTK_RESPONSE_HELP) {
-
+		capplet_help (GTK_WINDOW (w),
+		              "prefs-keyboard#goscustdesk-TBL-86");
 	}
 	else {
 		gtk_widget_destroy (w);
