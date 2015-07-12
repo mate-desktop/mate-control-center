@@ -603,25 +603,6 @@ clip_to_region (cairo_t *cr, GdkRegion *region)
 }
 #endif
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-static void
-simple_draw_drawable (GdkDrawable *dst,
-		      GdkDrawable *src,
-		      int	   src_x,
-		      int	   src_y,
-		      int          dst_x,
-		      int          dst_y,
-		      int          width,
-		      int          height)
-{
-    GdkGC *gc = gdk_gc_new (dst);
-
-    gdk_draw_drawable (dst, gc, src, src_x, src_y, dst_x, dst_y, width, height);
-
-    g_object_unref (gc);
-}
-#endif
-
 static gboolean
 #if GTK_CHECK_VERSION (3, 0, 0)
 foo_scroll_area_draw (GtkWidget *widget,
@@ -634,7 +615,6 @@ foo_scroll_area_expose (GtkWidget *widget,
     FooScrollArea *scroll_area = FOO_SCROLL_AREA (widget);
     cairo_t *cr;
 #if !GTK_CHECK_VERSION (3, 0, 0)
-    GdkGC *gc;
     GdkRectangle extents;
     GdkWindow *window = gtk_widget_get_window (widget);
 #endif
@@ -710,16 +690,14 @@ foo_scroll_area_expose (GtkWidget *widget,
     cairo_set_source_surface (widget_cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
     cairo_paint (widget_cr);
 #else
-    gc = gdk_gc_new (window);
-
-    gdk_gc_set_clip_region (gc, expose->region);
-
     gtk_widget_get_allocation (widget, &widget_allocation);
-    gdk_draw_drawable (window, gc, scroll_area->priv->pixmap,
-		       0, 0, widget_allocation.x, widget_allocation.y,
-		       widget_allocation.width, widget_allocation.height);
 
-    g_object_unref (gc);
+    cr = gdk_cairo_create (window);
+    gdk_cairo_set_source_pixmap (cr, scroll_area->priv->pixmap,
+                                 widget_allocation.x, widget_allocation.y);
+    gdk_cairo_region (cr, expose->region);
+    cairo_fill (cr);
+    cairo_destroy (cr);
 #endif
     gdk_region_destroy (region);
     
@@ -894,6 +872,7 @@ create_new_pixmap (GtkWidget *widget,
     cairo_surface_t *new;
 #else
     GdkPixmap *new;
+    cairo_t *cr;
 #endif
 
     gtk_widget_get_allocation (widget, &widget_allocation);
@@ -918,15 +897,17 @@ create_new_pixmap (GtkWidget *widget,
      * That might just work, actually. We need to make sure marco uses
      * static gravity for the window before this will be useful.
      */
+
 #if GTK_CHECK_VERSION (3, 0, 0)
     cr = cairo_create (new);
     cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
     cairo_set_source_surface (cr, old, 0, 0);
+#else
+    cr = gdk_cairo_create (new);
+    gdk_cairo_set_source_pixmap (cr, old, 0, 0);
+#endif
     cairo_paint (cr);
     cairo_destroy (cr);
-#else
-    simple_draw_drawable (new, old, 0, 0, 0, 0, -1, -1);
-#endif
 
     return new;
 }
@@ -1264,9 +1245,13 @@ foo_scroll_area_scroll (FooScrollArea *area,
     if (gdk_rectangle_intersect (&allocation, &src_area, &move_area))
     {
 	GdkRegion *move_region;
+	cairo_t *cr;
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-	cairo_t *cr = cairo_create (area->priv->surface);
+	cr = cairo_create (area->priv->surface);
+#else
+	cr = gdk_cairo_create (area->priv->pixmap);
+#endif
 
 	/* Cairo doesn't allow self-copies, so we do this little trick instead:
 	* 1) Clip so the group size is small.
@@ -1276,7 +1261,11 @@ foo_scroll_area_scroll (FooScrollArea *area,
 	cairo_clip (cr);
 	cairo_push_group (cr);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
 	cairo_set_source_surface (cr, area->priv->surface, dx, dy);
+#else
+	gdk_cairo_set_source_pixmap (cr, area->priv->pixmap, dx, dy);
+#endif
 	gdk_cairo_rectangle (cr, &move_area);
 	cairo_fill (cr);
 
@@ -1284,12 +1273,7 @@ foo_scroll_area_scroll (FooScrollArea *area,
 	cairo_paint (cr);
 
 	cairo_destroy (cr);
-#else
-	simple_draw_drawable (area->priv->pixmap, area->priv->pixmap,
-			      move_area.x, move_area.y,
-			      move_area.x + dx, move_area.y + dy,
-			      move_area.width, move_area.height);
-#endif
+
 	gtk_widget_queue_draw (GTK_WIDGET (area));
 	
 	move_region = gdk_region_rectangle (&move_area);
