@@ -157,7 +157,6 @@ set_pixmap_background (GtkWidget *window)
 {
 	GdkScreen    *screen;
 	GdkPixbuf    *tmp_pixbuf, *pixbuf, *tile_pixbuf;
-	GdkPixmap    *pixmap;
 	GdkRectangle  rect;
 	GdkColor      color;
 	gint          width, height;
@@ -219,30 +218,13 @@ set_pixmap_background (GtkWidget *window)
 
 	g_object_unref (tile_pixbuf);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	cr = gdk_cairo_create (gtk_widget_get_window (window));
 	gdk_cairo_set_source_pixbuf (cr, tmp_pixbuf, 0, 0);
 	cairo_paint (cr);
-#else
-	pixmap = gdk_pixmap_new (gtk_widget_get_window (window),
-				 width,
-				 height,
-				 -1);
-
-	cr = gdk_cairo_create (pixmap);
-        gdk_cairo_set_source_pixbuf (cr, tmp_pixbuf, 0, 0);
-        cairo_paint (cr);
-        cairo_destroy (cr);
-#endif
 
 	g_object_unref (tmp_pixbuf);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	cairo_destroy (cr);
-#else
-	gdk_window_set_back_pixmap (gtk_widget_get_window (window), pixmap, FALSE);
-	g_object_unref (pixmap);
-#endif
 }
 
 void
