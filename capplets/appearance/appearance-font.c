@@ -80,41 +80,34 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 {
 	GtkAllocation allocation;
 	GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(darea), "sample-pixbuf");
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	GdkWindow* window = gtk_widget_get_window(darea);
-	GtkStyle* style = gtk_widget_get_style(darea);
 	int width = gdk_pixbuf_get_width(pixbuf);
 	int height = gdk_pixbuf_get_height(pixbuf);
-#endif
 
 	gtk_widget_get_allocation (darea, &allocation);
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
 	int x = (allocation.width - width) / 2;
 	int y = (allocation.height - height) / 2;
+
+	GdkColor black, white;
+	gdk_color_parse ("black", &black);
+	gdk_color_parse ("white", &white);
+
+#if !GTK_CHECK_VERSION (3, 0, 0)
+	cairo_t *cr = gdk_cairo_create (expose->window);
 #endif
+	cairo_set_line_width (cr, 1);
+	cairo_set_line_cap (cr, CAIRO_LINE_CAP_SQUARE);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-	cairo_set_line_width(cr, 1);
+	gdk_cairo_set_source_color (cr, &white);
+	cairo_rectangle (cr, 0, 0, allocation.width, allocation.height);
+	cairo_fill_preserve (cr);
+	gdk_cairo_set_source_color (cr, &black);
+	cairo_stroke (cr);
 
-	cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
-	cairo_rectangle(cr, 0, 0, allocation.width, allocation.height);
-	cairo_stroke_preserve(cr);
-	cairo_fill(cr);
-
-	cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
-	cairo_rectangle(cr, 0, 0, allocation.width - 1, allocation.height - 1);
-	cairo_stroke_preserve(cr);
-	cairo_fill(cr);
-
-	gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+	gdk_cairo_set_source_pixbuf(cr, pixbuf, x, y);
 	cairo_paint(cr);
-	cairo_fill (cr);
-#else
-	gdk_draw_rectangle(window, style->white_gc, TRUE, 0, 0, allocation.width, allocation.height);
-	gdk_draw_rectangle(window, style->black_gc, FALSE, 0, 0, allocation.width - 1, allocation.height - 1);
 
-	gdk_draw_pixbuf(window, NULL, pixbuf, 0, 0, x, y, width, height, GDK_RGB_DITHER_NORMAL, 0, 0);
+#if !GTK_CHECK_VERSION (3, 0, 0)
+	cairo_destroy (cr);
 #endif
 }
 
