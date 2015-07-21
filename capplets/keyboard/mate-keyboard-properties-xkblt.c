@@ -359,7 +359,6 @@ show_selected_layout (GtkWidget * button, GtkBuilder * dialog)
 		char *descr = xkb_layout_description_utf8 (id);
 		GtkWidget *parent = WID ("keyboard_dialog");
 		GtkWidget *popup = matekbd_keyboard_drawing_new_dialog (idx, descr);
-		gtk_widget_set_parent (popup, parent);
 		clear_xkb_elements_list (layouts_list);
 		g_free (descr);
 	}
