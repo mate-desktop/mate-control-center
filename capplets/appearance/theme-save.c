@@ -172,6 +172,7 @@ write_theme_to_disk (MateThemeMetaInfo  *theme_info,
 		     const gchar         *theme_name,
 		     const gchar         *theme_description,
 		     gboolean		  save_background,
+		     gboolean		  save_notification,
 		     GError             **error)
 {
 	gchar* dir;
@@ -237,7 +238,7 @@ write_theme_to_disk (MateThemeMetaInfo  *theme_info,
     g_free (str);
   }
 
-  if (theme_info->notification_theme_name) {
+  if (theme_info->notification_theme_name && save_notification) {
     str = g_strdup_printf ("NotificationTheme=%s\n", theme_info->notification_theme_name);
     g_output_stream_write (output, str, strlen (str), NULL, NULL);
     g_free (str);
@@ -272,6 +273,7 @@ save_theme_to_disk (MateThemeMetaInfo  *theme_info,
 		    const gchar         *theme_name,
 		    const gchar         *theme_description,
 		    gboolean		 save_background,
+		    gboolean             save_notification,
 		    GError             **error)
 {
   if (!check_theme_name (theme_name, error))
@@ -280,7 +282,7 @@ save_theme_to_disk (MateThemeMetaInfo  *theme_info,
   if (!setup_directory_structure (theme_name, error))
     return FALSE;
 
-  if (!write_theme_to_disk (theme_info, theme_name, theme_description, save_background, error))
+  if (!write_theme_to_disk (theme_info, theme_name, theme_description, save_background, save_notification, error))
     return FALSE;
 
   return TRUE;
@@ -302,6 +304,7 @@ save_dialog_response (GtkWidget      *save_dialog,
     gchar *theme_description = NULL;
     gchar *theme_name = NULL;
     gboolean save_background;
+    gboolean save_notification;
     GError *error = NULL;
 
     entry = appearance_capplet_get_widget (data, "save_dialog_entry");
@@ -317,8 +320,10 @@ save_dialog_response (GtkWidget      *save_dialog,
     theme_info = (MateThemeMetaInfo *) g_object_get_data (G_OBJECT (save_dialog), "meta-theme-info");
     save_background = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (
 		      appearance_capplet_get_widget (data, "save_background_checkbutton")));
+    save_notification = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (
+			appearance_capplet_get_widget (data, "save_notification_checkbutton")));
 
-    if (save_theme_to_disk (theme_info, theme_name, theme_description, save_background, &error)) {
+    if (save_theme_to_disk (theme_info, theme_name, theme_description, save_background, save_notification, &error)) {
       /* remove the custom theme */
       GtkTreeIter iter;
 
