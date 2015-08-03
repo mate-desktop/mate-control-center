@@ -116,7 +116,7 @@ static GdkPixmap* draw_window_on_pixbuf(GtkWidget* widget)
 
 	visual = gtk_widget_get_visual(widget);
 #if !GTK_CHECK_VERSION (3, 0, 0)
-	pixmap = gdk_pixmap_new(NULL, width, height, visual->depth);
+	pixmap = gdk_pixmap_new(NULL, width, height, gdk_visual_get_depth (visual));
 	gdk_drawable_set_colormap(GDK_DRAWABLE(pixmap), gtk_widget_get_colormap(widget));
 #endif
 
