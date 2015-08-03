@@ -2,7 +2,7 @@
 #include <config.h>
 #endif
 
-#include <mate-settings-daemon/mate-settings-client.h>
+#include <mate-settings-client.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 
