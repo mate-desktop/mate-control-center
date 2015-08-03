@@ -257,7 +257,7 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	height = ascent + descent + 2;
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
-	pixmap = gdk_pixmap_new (NULL, width, height, visual->depth);
+	pixmap = gdk_pixmap_new (NULL, width, height, gdk_visual_get_depth (visual));
 #endif
 
 #if GTK_CHECK_VERSION (3, 0, 0)
