@@ -12,9 +12,6 @@
 #include <X11/Xatom.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
-#if GTK_CHECK_VERSION (3, 0, 0)
-#include <gdk/gdkkeysyms-compat.h>
-#endif
 
 #include "wm-common.h"
 #include "capplet-util.h"
@@ -1149,22 +1146,22 @@ static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, 
 
 static const guint forbidden_keyvals[] = {
     /* Navigation keys */
-    GDK_Home,
-    GDK_Left,
-    GDK_Up,
-    GDK_Right,
-    GDK_Down,
-    GDK_Page_Up,
-    GDK_Page_Down,
-    GDK_End,
-    GDK_Tab,
+    GDK_KEY_Home,
+    GDK_KEY_Left,
+    GDK_KEY_Up,
+    GDK_KEY_Right,
+    GDK_KEY_Down,
+    GDK_KEY_Page_Up,
+    GDK_KEY_Page_Down,
+    GDK_KEY_End,
+    GDK_KEY_Tab,
 
     /* Return */
-    GDK_KP_Enter,
-    GDK_Return,
+    GDK_KEY_KP_Enter,
+    GDK_KEY_Return,
 
-    GDK_space,
-    GDK_Mode_switch
+    GDK_KEY_space,
+    GDK_KEY_Mode_switch
 };
 
 static gboolean keyval_is_forbidden(guint keyval)
@@ -1242,17 +1239,17 @@ static void accel_edited_callback(GtkCellRendererText* cell, const char* path_st
     /* Check for unmodified keys */
     if (tmp_key.mask == 0 && tmp_key.keycode != 0)
     {
-        if ((tmp_key.keyval >= GDK_a && tmp_key.keyval <= GDK_z)
-            || (tmp_key.keyval >= GDK_A && tmp_key.keyval <= GDK_Z)
-            || (tmp_key.keyval >= GDK_0 && tmp_key.keyval <= GDK_9)
-            || (tmp_key.keyval >= GDK_kana_fullstop && tmp_key.keyval <= GDK_semivoicedsound)
-            || (tmp_key.keyval >= GDK_Arabic_comma && tmp_key.keyval <= GDK_Arabic_sukun)
-            || (tmp_key.keyval >= GDK_Serbian_dje && tmp_key.keyval <= GDK_Cyrillic_HARDSIGN)
-            || (tmp_key.keyval >= GDK_Greek_ALPHAaccent && tmp_key.keyval <= GDK_Greek_omega)
-            || (tmp_key.keyval >= GDK_hebrew_doublelowline && tmp_key.keyval <= GDK_hebrew_taf)
-            || (tmp_key.keyval >= GDK_Thai_kokai && tmp_key.keyval <= GDK_Thai_lekkao)
-            || (tmp_key.keyval >= GDK_Hangul && tmp_key.keyval <= GDK_Hangul_Special)
-            || (tmp_key.keyval >= GDK_Hangul_Kiyeog && tmp_key.keyval <= GDK_Hangul_J_YeorinHieuh)
+        if ((tmp_key.keyval >= GDK_KEY_a && tmp_key.keyval <= GDK_KEY_z)
+            || (tmp_key.keyval >= GDK_KEY_A && tmp_key.keyval <= GDK_KEY_Z)
+            || (tmp_key.keyval >= GDK_KEY_0 && tmp_key.keyval <= GDK_KEY_9)
+            || (tmp_key.keyval >= GDK_KEY_kana_fullstop && tmp_key.keyval <= GDK_KEY_semivoicedsound)
+            || (tmp_key.keyval >= GDK_KEY_Arabic_comma && tmp_key.keyval <= GDK_KEY_Arabic_sukun)
+            || (tmp_key.keyval >= GDK_KEY_Serbian_dje && tmp_key.keyval <= GDK_KEY_Cyrillic_HARDSIGN)
+            || (tmp_key.keyval >= GDK_KEY_Greek_ALPHAaccent && tmp_key.keyval <= GDK_KEY_Greek_omega)
+            || (tmp_key.keyval >= GDK_KEY_hebrew_doublelowline && tmp_key.keyval <= GDK_KEY_hebrew_taf)
+            || (tmp_key.keyval >= GDK_KEY_Thai_kokai && tmp_key.keyval <= GDK_KEY_Thai_lekkao)
+            || (tmp_key.keyval >= GDK_KEY_Hangul && tmp_key.keyval <= GDK_KEY_Hangul_Special)
+            || (tmp_key.keyval >= GDK_KEY_Hangul_Kiyeog && tmp_key.keyval <= GDK_KEY_Hangul_J_YeorinHieuh)
             || keyval_is_forbidden (tmp_key.keyval))
         {
 

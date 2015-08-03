@@ -26,9 +26,6 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#if GTK_CHECK_VERSION (3, 0, 0)
-#include <gdk/gdkkeysyms-compat.h>
-#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string.h>
@@ -198,7 +195,7 @@ launch_selected_app (AppShellData * app_data)
 static gboolean
 main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * app_data)
 {
-	if (event->keyval == GDK_Return)
+	if (event->keyval == GDK_KEY_Return)
 	{
 		SlabSection *section = SLAB_SECTION (app_data->filter_section);
 		NldSearchBar *search_bar;
@@ -214,9 +211,9 @@ main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * 
 	}
 
 	/* quit on ESC or Ctl-W or Ctl-Q */
-	if (event->keyval == GDK_Escape ||
-		((event->keyval == GDK_w || event->keyval == GDK_W)	&& (event->state & GDK_CONTROL_MASK)) ||
-		((event->keyval == GDK_q || event->keyval == GDK_Q) && (event->state & GDK_CONTROL_MASK)))
+	if (event->keyval == GDK_KEY_Escape ||
+		((event->keyval == GDK_KEY_w || event->keyval == GDK_KEY_W)	&& (event->state & GDK_CONTROL_MASK)) ||
+		((event->keyval == GDK_KEY_q || event->keyval == GDK_KEY_Q) && (event->state & GDK_CONTROL_MASK)))
 	{
 		if (app_data->exit_on_close)
 			gtk_main_quit ();

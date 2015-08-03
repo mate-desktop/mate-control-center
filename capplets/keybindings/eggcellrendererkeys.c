@@ -3,9 +3,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
-#if GTK_CHECK_VERSION (3, 0, 0)
-#include <gdk/gdkkeysyms-compat.h>
-#endif
 #include "eggcellrendererkeys.h"
 #include "eggaccelerators.h"
 
@@ -402,9 +399,9 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 	upper = event->keyval;
 	accel_keyval = gdk_keyval_to_lower(upper);
 
-	if (accel_keyval == GDK_ISO_Left_Tab)
+	if (accel_keyval == GDK_KEY_ISO_Left_Tab)
 	{
-		accel_keyval = GDK_Tab;
+		accel_keyval = GDK_KEY_Tab;
 	}
 
 	/* Put shift back if it changed the case of the key, not otherwise. */
@@ -441,13 +438,13 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 		g_assert_not_reached();
 	}
 
-	if (accel_mods == 0 && accel_keyval == GDK_Escape)
+	if (accel_mods == 0 && accel_keyval == GDK_KEY_Escape)
 	{
 		goto out; /* cancel */
 	}
 
 	/* clear the accelerator on Backspace */
-	if (accel_mods == 0 && accel_keyval == GDK_BackSpace)
+	if (accel_mods == 0 && accel_keyval == GDK_KEY_BackSpace)
 	{
 		cleared = TRUE;
 		goto out;
