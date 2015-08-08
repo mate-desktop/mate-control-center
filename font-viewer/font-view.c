@@ -1,6 +1,10 @@
-/* -*- mode: C; c-basic-offset: 4 -*-
- * fontilus - a collection of font utilities for MATE
+/* -*- mode: C; c-basic-offset: 4 -*- */
+
+/*
+ * font-view: a font viewer for MATE
+ *
  * Copyright (C) 2002-2003  James Henstridge <james@daa.com.au>
+ * Copyright (C) 2010 Cosimo Cecchi <cosimoc@gnome.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,122 +30,75 @@
 #include FT_TYPE1_TABLES_H
 #include FT_SFNT_NAMES_H
 #include FT_TRUETYPE_IDS_H
-#include <X11/Xlib.h>
-#include <X11/Xft/Xft.h>
-
+#include <cairo/cairo-ft.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <gdk/gdkx.h>
 #include <glib/gi18n.h>
 
-FT_Error FT_New_Face_From_URI(FT_Library library,
-			      const gchar *uri,
-			      FT_Long face_index,
-			      FT_Face *aface);
+#include "ftstream-vfs.h"
 
 static const gchar lowercase_text[] = "abcdefghijklmnopqrstuvwxyz";
 static const gchar uppercase_text[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 static const gchar punctuation_text[] = "0123456789.:,;(*!?')";
 
-static inline XftFont *
-get_font(Display *xdisplay, FT_Face face, gint size, FcCharSet *charset)
+static void
+draw_string (cairo_t *cr,
+	     const gchar *text,
+	     gint *pos_y)
 {
-    FcPattern *pattern;
-    XftFont *font;
-    int screen = DefaultScreen (xdisplay);
+    GdkColor black = { 0, 0, 0, 0 };
+    cairo_text_extents_t extents;
 
-    pattern = FcPatternBuild(NULL,
-			     FC_FT_FACE, FcTypeFTFace, face,
-			     FC_PIXEL_SIZE, FcTypeDouble, (double)size,
-			     NULL);
+    gdk_cairo_set_source_color (cr, &black);
 
-    if (charset)
-	FcPatternAddCharSet (pattern, "charset", charset);
+    cairo_text_extents (cr, text, &extents);
+    cairo_move_to (cr, 4, *pos_y);
+    cairo_show_text (cr, text);
 
-    FcConfigSubstitute (NULL, pattern, FcMatchPattern);
-    XftDefaultSubstitute (xdisplay, screen, pattern);
-
-    font = XftFontOpenPattern(xdisplay, pattern);
-
-    return font;
-}
-
-static inline void
-draw_string(Display *xdisplay, XftDraw *draw, XftFont *font, XftColor *colour,
-	    const gchar *text, gint *pos_y)
-{
-    XGlyphInfo extents;
-    gint len = strlen(text);
-
-    XftTextExtentsUtf8(xdisplay, font, (guchar *)text, len, &extents);
-    XftDrawStringUtf8(draw, colour, font, 4, *pos_y + extents.y, (guchar *)text, len);
-    *pos_y += extents.height + 4;
+    *pos_y += extents.height + extents.y_advance + 4;
 }
 
 static gboolean
 check_font_contain_text (FT_Face face, const gchar *text)
 {
-    while (text && *text)
-	{
+    while (text && *text) {
 	    gunichar wc = g_utf8_get_char (text);
+
 	    if (!FT_Get_Char_Index (face, wc))
 		return FALSE;
 
 	    text = g_utf8_next_char (text);
-	}
+    }
 
     return TRUE;
 }
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-    /* FIXME */
-    /* https://git.gnome.org/browse/gnome-control-center/commit/font-viewer?h=gnome-3-0&id=7ea3249a4a0fa9a176a120257355a4ca75593386 */
-#else
-static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, GdkPixmap *pixmap);
-
-static GdkPixmap *
-create_text_pixmap(GtkWidget *drawing_area, FT_Face face)
+static const gchar *
+get_sample_string (FT_Face face)
 {
-    gint i, pixmap_width, pixmap_height, pos_y, textlen;
-    GdkPixmap *pixmap = NULL;
     const gchar *text;
-    Display *xdisplay;
-    Drawable xdrawable;
-    Visual *xvisual;
-    Colormap xcolormap;
-    XftDraw *draw;
-    XftColor colour;
-    XGlyphInfo extents;
-    XftFont *font;
-    gint *sizes = NULL, n_sizes, alpha_size;
-    FcCharSet *charset = NULL;
-    cairo_t *cr;
-    GdkWindow *window = gtk_widget_get_window (drawing_area);
 
-    text = pango_language_get_sample_string(NULL);
-    if (! check_font_contain_text (face, text))
-	{
-	    pango_language_get_sample_string (pango_language_from_string ("en_US"));
-	}
+    text = pango_language_get_sample_string (NULL);
 
-    textlen = strlen(text);
+    if (!check_font_contain_text (face, text)) {
+	text = pango_language_get_sample_string (pango_language_from_string ("en_US"));
+    }
 
-    /* create the XftDraw */
-    xdisplay = GDK_PIXMAP_XDISPLAY(window);
+    return text;
+}
 
-	#if GTK_CHECK_VERSION(3, 0, 0)
-		xvisual = GDK_VISUAL_XVISUAL(gdk_window_get_visual(window));
-	#else
-		xvisual = GDK_VISUAL_XVISUAL(gdk_drawable_get_visual(window));
-	#endif
-
-    xcolormap = GDK_COLORMAP_XCOLORMAP(gdk_drawable_get_colormap(window));
-    XftColorAllocName(xdisplay, xvisual, xcolormap, "black", &colour);
+static gint *
+build_sizes_table (FT_Face face,
+		   gint *n_sizes,
+		   gint *alpha_size)
+{
+    gint *sizes = NULL;
+    gint i;
 
     /* work out what sizes to render */
-    if (FT_IS_SCALABLE(face)) {
-	n_sizes = 8;
-	sizes = g_new(gint, n_sizes);
+    if (FT_IS_SCALABLE (face)) {
+	*n_sizes = 8;
+	sizes = g_new (gint, *n_sizes);
 	sizes[0] = 8;
 	sizes[1] = 10;
 	sizes[2] = 12;
@@ -150,108 +107,150 @@ create_text_pixmap(GtkWidget *drawing_area, FT_Face face)
 	sizes[5] = 36;
 	sizes[6] = 48;
 	sizes[7] = 72;
-	alpha_size = 24;
+	*alpha_size = 24;
     } else {
 	/* use fixed sizes */
-	n_sizes = face->num_fixed_sizes;
-	sizes = g_new(gint, n_sizes);
-	alpha_size = 0;
+	*n_sizes = face->num_fixed_sizes;
+	sizes = g_new (gint, *n_sizes);
+	*alpha_size = 0;
+
 	for (i = 0; i < face->num_fixed_sizes; i++) {
 	    sizes[i] = face->available_sizes[i].height;
 
 	    /* work out which font size to render */
 	    if (face->available_sizes[i].height <= 24)
-		alpha_size = face->available_sizes[i].height;
+		*alpha_size = face->available_sizes[i].height;
 	}
     }
+
+    return sizes;
+}
+
+static void
+realize_callback (GtkWidget *drawing_area,
+		  FT_Face face)
+{
+    gint i, pixmap_width, pixmap_height;
+    const gchar *text;
+    cairo_text_extents_t extents;
+    cairo_font_face_t *font;
+    gint *sizes = NULL, n_sizes, alpha_size;
+    cairo_t *cr;
+
+    cr = gdk_cairo_create (gtk_widget_get_window (drawing_area));
+
+    text = get_sample_string (face);
+    sizes = build_sizes_table (face, &n_sizes, &alpha_size);
 
     /* calculate size of pixmap to use (with 4 pixels padding) ... */
     pixmap_width = 8;
     pixmap_height = 8;
 
-    font = get_font(xdisplay, face, alpha_size, charset);
-    charset = FcCharSetCopy (font->charset);
-    XftTextExtentsUtf8(xdisplay, font,
-		       (guchar *)lowercase_text, strlen(lowercase_text), &extents);
+    font = cairo_ft_font_face_create_for_ft_face (face, 0);
+    cairo_set_font_face (cr, font);
+    cairo_set_font_size (cr, alpha_size);
+    cairo_font_face_destroy (font);
+
+    cairo_text_extents (cr, lowercase_text, &extents);
     pixmap_height += extents.height + 4;
-    pixmap_width = MAX(pixmap_width, 8 + extents.width);
-    XftTextExtentsUtf8(xdisplay, font,
-		       (guchar *)uppercase_text, strlen(uppercase_text), &extents);
+    pixmap_width = MAX (pixmap_width, 8 + extents.width);
+
+    cairo_text_extents (cr, uppercase_text, &extents);
     pixmap_height += extents.height + 4;
-    pixmap_width = MAX(pixmap_width, 8 + extents.width);
-    XftTextExtentsUtf8(xdisplay, font,
-		       (guchar *)punctuation_text, strlen(punctuation_text), &extents);
+    pixmap_width = MAX (pixmap_width, 8 + extents.width);
+
+    cairo_text_extents (cr, punctuation_text, &extents);
     pixmap_height += extents.height + 4;
-    pixmap_width = MAX(pixmap_width, 8 + extents.width);
-    XftFontClose(xdisplay, font);
+    pixmap_width = MAX (pixmap_width, 8 + extents.width);
 
     pixmap_height += 8;
 
     for (i = 0; i < n_sizes; i++) {
-	font = get_font(xdisplay, face, sizes[i], charset);
-	if (!font) continue;
-	XftTextExtentsUtf8(xdisplay, font, (guchar *)text, textlen, &extents);
+	cairo_set_font_size (cr, sizes[i]);
+	cairo_text_extents (cr, text, &extents);
 	pixmap_height += extents.height + 4;
-	pixmap_width = MAX(pixmap_width, 8 + extents.width);
-	XftFontClose(xdisplay, font);
+	pixmap_width = MAX (pixmap_width, 8 + extents.width);
     }
 
-    /* create pixmap */
-    gtk_widget_set_size_request(drawing_area, pixmap_width, pixmap_height);
-    pixmap = gdk_pixmap_new(window,
-			    pixmap_width, pixmap_height, -1);
-    if (!pixmap)
-	goto end;
-    cr = gdk_cairo_create (pixmap);
-    cairo_set_source_rgb (cr, 1, 1, 1);
-    cairo_paint (cr);
-    cairo_destroy (cr);
+    gtk_widget_set_size_request (drawing_area, pixmap_width, pixmap_height);
 
-    xdrawable = GDK_DRAWABLE_XID(pixmap);
-    draw = XftDrawCreate(xdisplay, xdrawable, xvisual, xcolormap);
+    cairo_destroy (cr);
+    g_free (sizes);
+}
+
+static void
+draw (GtkWidget *drawing_area,
+      cairo_t *cr,
+      FT_Face face)
+{
+    cairo_font_extents_t font_extents;
+    gint *sizes = NULL, n_sizes, alpha_size, pos_y, i;
+    const gchar *text;
+    cairo_font_face_t *font;
+
+    text = get_sample_string (face);
+    sizes = build_sizes_table (face, &n_sizes, &alpha_size);
+
+    font = cairo_ft_font_face_create_for_ft_face (face, 0);
+    cairo_set_font_face (cr, font);
+    cairo_font_extents (cr, &font_extents);
+    cairo_font_face_destroy (font);
 
     /* draw text */
-    pos_y = 4;
-    font = get_font(xdisplay, face, alpha_size, charset);
-    draw_string(xdisplay, draw, font, &colour, lowercase_text, &pos_y);
-    draw_string(xdisplay, draw, font, &colour, uppercase_text, &pos_y);
-    draw_string(xdisplay, draw, font, &colour, punctuation_text, &pos_y);
-    XftFontClose(xdisplay, font);
+    pos_y = MAX (font_extents.height, 32) + 4;
+    cairo_set_font_size (cr, alpha_size);
+    draw_string (cr, lowercase_text, &pos_y);
+    draw_string (cr, uppercase_text, &pos_y);
+    draw_string (cr, punctuation_text, &pos_y);
 
     pos_y += 8;
     for (i = 0; i < n_sizes; i++) {
-	font = get_font(xdisplay, face, sizes[i], charset);
-	if (!font) continue;
-	draw_string(xdisplay, draw, font, &colour, text, &pos_y);
-	XftFontClose(xdisplay, font);
+	cairo_set_font_size (cr, sizes[i]);
+	draw_string (cr, text, &pos_y);
     }
 
-    g_signal_connect(drawing_area, "expose-event", G_CALLBACK(expose_event),
-                     pixmap);
+    g_free (sizes);
+}
 
- end:
-    g_free(sizes);
-    FcCharSetDestroy (charset);
-    return pixmap;
+#if GTK_CHECK_VERSION (3, 0, 0)
+static void
+draw_callback (GtkWidget *drawing_area,
+	       cairo_t *cr,
+	       FT_Face face)
+{
+    draw (drawing_area, cr, face);
+}
+#else
+static void
+expose_callback (GtkWidget *drawing_area,
+		 GdkEventExpose *event,
+		 FT_Face face)
+{
+    cairo_t *cr = gdk_cairo_create (event->window);
+    draw (drawing_area, cr, face);
+    cairo_destroy (cr);
 }
 #endif
 
 static void
-add_row(GtkWidget *table, gint *row_p,
-	const gchar *name, const gchar *value, gboolean multiline,
-        gboolean expand)
+add_row (GtkWidget *table,
+	 gint *row_p,
+	 const gchar *name,
+	 const gchar *value,
+	 gboolean multiline,
+	 gboolean expand)
 {
     gchar *bold_name;
     GtkWidget *name_w;
 
-    bold_name = g_strconcat("<b>", name, "</b>", NULL);
-    name_w = gtk_label_new(bold_name);
-    g_free(bold_name);
-    gtk_misc_set_alignment(GTK_MISC(name_w), 0.0, 0.0);
-    gtk_label_set_use_markup(GTK_LABEL(name_w), TRUE);
+    bold_name = g_strconcat ("<b>", name, "</b>", NULL);
+    name_w = gtk_label_new (bold_name);
+    g_free (bold_name);
+    gtk_misc_set_alignment (GTK_MISC (name_w), 0.0, 0.0);
+    gtk_label_set_use_markup (GTK_LABEL (name_w), TRUE);
 
-    gtk_table_attach(GTK_TABLE(table), name_w, 0, 1, *row_p, *row_p + 1,
-		     GTK_FILL, GTK_FILL, 0, 0);
+    gtk_table_attach (GTK_TABLE(table), name_w, 0, 1, *row_p, *row_p + 1,
+		      GTK_FILL, GTK_FILL, 0, 0);
 
     if (multiline) {
 	GtkWidget *label, *viewport;
@@ -264,52 +263,56 @@ add_row(GtkWidget *table, gint *row_p,
         gtk_widget_set_size_request (label, 200, -1);
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
 
-
-        swin = GTK_SCROLLED_WINDOW(gtk_scrolled_window_new(NULL, NULL));
-        gtk_scrolled_window_set_policy(swin,
-                                       GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+        swin = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
+        gtk_scrolled_window_set_policy (swin,
+					GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
 
         viewport = gtk_viewport_new (gtk_scrolled_window_get_hadjustment (swin),
                                      gtk_scrolled_window_get_vadjustment (swin));
         gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_NONE);
 
-        gtk_container_add (GTK_CONTAINER(swin), viewport);
+        gtk_container_add (GTK_CONTAINER (swin), viewport);
         (*row_p)++;
+
         if (expand)
-          flags = GTK_FILL|GTK_EXPAND;
+          flags = GTK_FILL | GTK_EXPAND;
         else
           flags = GTK_FILL;
-        gtk_table_attach(GTK_TABLE(table), GTK_WIDGET(swin), 0, 2, *row_p, *row_p + 1,
-                         GTK_FILL|GTK_EXPAND, flags, 0, 0);
+
+        gtk_table_attach (GTK_TABLE (table), GTK_WIDGET (swin),
+			  0, 2, *row_p, *row_p + 1,
+			  GTK_FILL | GTK_EXPAND, flags, 0, 0);
 
         gtk_container_add (GTK_CONTAINER (viewport), label);
     } else {
-        GtkWidget *label = gtk_label_new(value);
-        gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-	gtk_label_set_selectable(GTK_LABEL(label), TRUE);
-        gtk_table_attach(GTK_TABLE(table), label, 1, 2, *row_p, *row_p + 1,
-                         GTK_FILL|GTK_EXPAND, GTK_FILL, 0, 0);
+        GtkWidget *label = gtk_label_new (value);
+        gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_selectable (GTK_LABEL(label), TRUE);
+        gtk_table_attach (GTK_TABLE (table), label,
+			  1, 2, *row_p, *row_p + 1,
+			  GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
     }
-
 
     (*row_p)++;
 }
 
 static void
-add_face_info(GtkWidget *table, gint *row_p, const gchar *uri, FT_Face face)
+add_face_info (GtkWidget *table,
+	       gint *row_p,
+	       const gchar *uri,
+	       FT_Face face)
 {
     gchar *s;
     GFile *file;
     GFileInfo *info;
     PS_FontInfoRec ps_info;
 
-    add_row(table, row_p, _("Name:"), face->family_name, FALSE, FALSE);
+    add_row (table, row_p, _("Name:"), face->family_name, FALSE, FALSE);
 
     if (face->style_name)
-	add_row(table, row_p, _("Style:"), face->style_name, FALSE, FALSE);
+	add_row (table, row_p, _("Style:"), face->style_name, FALSE, FALSE);
 
     file = g_file_new_for_uri (uri);
-
     info = g_file_query_info (file,
                               G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
                               G_FILE_ATTRIBUTE_STANDARD_SIZE,
@@ -317,7 +320,7 @@ add_face_info(GtkWidget *table, gint *row_p, const gchar *uri, FT_Face face)
                               NULL, NULL);
     g_object_unref (file);
 
-    if (info) {
+    if (info != NULL) {
         s = g_content_type_get_description (g_file_info_get_content_type (info));
         add_row (table, row_p, _("Type:"), s, FALSE, FALSE);
         g_free (s);
@@ -329,15 +332,15 @@ add_face_info(GtkWidget *table, gint *row_p, const gchar *uri, FT_Face face)
         g_object_unref (info);
     }
 
-    if (FT_IS_SFNT(face)) {
+    if (FT_IS_SFNT (face)) {
 	gint i, len;
 	gchar *version = NULL, *copyright = NULL, *description = NULL;
 
-	len = FT_Get_Sfnt_Name_Count(face);
+	len = FT_Get_Sfnt_Name_Count (face);
 	for (i = 0; i < len; i++) {
 	    FT_SfntName sname;
 
-	    if (FT_Get_Sfnt_Name(face, i, &sname) != 0)
+	    if (FT_Get_Sfnt_Name (face, i, &sname) != 0)
 		continue;
 
 	    /* only handle the unicode names for US langid */
@@ -348,62 +351,47 @@ add_face_info(GtkWidget *table, gint *row_p, const gchar *uri, FT_Face face)
 
 	    switch (sname.name_id) {
 	    case TT_NAME_ID_COPYRIGHT:
-		g_free(copyright);
-		copyright = g_convert((gchar *)sname.string, sname.string_len,
-				      "UTF-8", "UTF-16BE", NULL, NULL, NULL);
+		g_free (copyright);
+		copyright = g_convert ((gchar *)sname.string, sname.string_len,
+				       "UTF-8", "UTF-16BE", NULL, NULL, NULL);
 		break;
 	    case TT_NAME_ID_VERSION_STRING:
-		g_free(version);
-		version = g_convert((gchar *)sname.string, sname.string_len,
-				    "UTF-8", "UTF-16BE", NULL, NULL, NULL);
+		g_free (version);
+		version = g_convert ((gchar *)sname.string, sname.string_len,
+				     "UTF-8", "UTF-16BE", NULL, NULL, NULL);
 		break;
 	    case TT_NAME_ID_DESCRIPTION:
-		g_free(description);
-		description = g_convert((gchar *)sname.string, sname.string_len,
-					"UTF-8", "UTF-16BE", NULL, NULL, NULL);
+		g_free (description);
+		description = g_convert ((gchar *)sname.string, sname.string_len,
+					 "UTF-8", "UTF-16BE", NULL, NULL, NULL);
 		break;
 	    default:
 		break;
 	    }
 	}
 	if (version) {
-	    add_row(table, row_p, _("Version:"), version, FALSE, FALSE);
-	    g_free(version);
+	    add_row (table, row_p, _("Version:"), version, FALSE, FALSE);
+	    g_free (version);
 	}
 	if (copyright) {
-	    add_row(table, row_p, _("Copyright:"), copyright, TRUE, TRUE);
-	    g_free(copyright);
+	    add_row (table, row_p, _("Copyright:"), copyright, TRUE, TRUE);
+	    g_free (copyright);
 	}
 	if (description) {
-	    add_row(table, row_p, _("Description:"), description, TRUE, TRUE);
-	    g_free(description);
+	    add_row (table, row_p, _("Description:"), description, TRUE, TRUE);
+	    g_free (description);
 	}
-    } else if (FT_Get_PS_Font_Info(face, &ps_info) == 0) {
-	if (ps_info.version && g_utf8_validate(ps_info.version, -1, NULL))
-	    add_row(table, row_p, _("Version:"), ps_info.version, FALSE, FALSE);
-	if (ps_info.notice && g_utf8_validate(ps_info.notice, -1, NULL))
-	    add_row(table, row_p, _("Copyright:"), ps_info.notice, TRUE, FALSE);
+    } else if (FT_Get_PS_Font_Info (face, &ps_info) == 0) {
+	if (ps_info.version && g_utf8_validate (ps_info.version, -1, NULL))
+	    add_row (table, row_p, _("Version:"), ps_info.version, FALSE, FALSE);
+	if (ps_info.notice && g_utf8_validate (ps_info.notice, -1, NULL))
+	    add_row (table, row_p, _("Copyright:"), ps_info.notice, TRUE, FALSE);
     }
 }
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-static gboolean
-expose_event(GtkWidget *widget, GdkEventExpose *event, GdkPixmap *pixmap)
-{
-    cairo_t *cr;
-    cr = gdk_cairo_create (gtk_widget_get_window (widget));
-    gdk_cairo_set_source_pixmap (cr, pixmap, 0, 0);
-    gdk_cairo_region (cr, event->region);
-    cairo_fill (cr);
-
-    cairo_destroy (cr);
-
-    return FALSE;
-}
-#endif
-
 static void
-set_icon(GtkWindow *window, const gchar *uri)
+set_icon (GtkWindow *window,
+	  const gchar *uri)
 {
     GFile *file;
     GIcon *icon;
@@ -416,12 +404,11 @@ set_icon(GtkWindow *window, const gchar *uri)
     icon_theme = gtk_icon_theme_get_for_screen (screen);
 
     file = g_file_new_for_uri (uri);
-
     info = g_file_query_info (file, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
                               G_FILE_QUERY_INFO_NONE, NULL, NULL);
     g_object_unref (file);
 
-    if (! info)
+    if (info == NULL)
 	return;
 
     content_type = g_file_info_get_content_type (info);
@@ -460,22 +447,21 @@ font_install_finished_cb (GObject      *source_object,
 
     if (!err) {
         gtk_button_set_label (GTK_BUTTON (data), _("Installed"));
-    }
-    else {
+    } else {
         gtk_button_set_label (GTK_BUTTON (data), _("Install Failed"));
         g_debug ("Install failed: %s", err->message);
         g_error_free (err);
     }
+
     gtk_widget_set_sensitive (GTK_WIDGET (data), FALSE);
 }
 
 static void
-install_button_clicked_cb (GtkButton   *button,
+install_button_clicked_cb (GtkButton *button,
                            const gchar *font_file)
 {
     GFile *src, *dest;
     gchar *dest_path, *dest_filename;
-
     GError *err = NULL;
 
     /* first check if ~/.fonts exists */
@@ -498,7 +484,8 @@ install_button_clicked_cb (GtkButton   *button,
     src = g_file_new_for_uri (font_file);
 
     dest_filename = g_file_get_basename (src);
-    dest_path = g_build_filename (g_get_home_dir (), ".fonts", dest_filename, NULL);
+    dest_path = g_build_filename (g_get_home_dir (), ".fonts", dest_filename,
+				  NULL);
     g_free (dest_filename);
 
     dest = g_file_new_for_path (dest_path);
@@ -513,7 +500,8 @@ install_button_clicked_cb (GtkButton   *button,
 }
 
 int
-main(int argc, char **argv)
+main (int argc,
+      char **argv)
 {
     FT_Error error;
     FT_Library library;
@@ -525,25 +513,20 @@ main(int argc, char **argv)
     GdkColor white = { 0, 0xffff, 0xffff, 0xffff };
     GtkWidget *button, *align;
 
-    bindtextdomain(GETTEXT_PACKAGE, MATELOCALEDIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain(GETTEXT_PACKAGE);
+    bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
 
-    gtk_init(&argc, &argv);
+    gtk_init (&argc, &argv);
 
     if (argc != 2) {
-	g_printerr(_("usage: %s fontfile\n"), argv[0]);
+	g_printerr (_("Usage: %s fontfile\n"), argv[0]);
 	return 1;
     }
 
-    if (!XftInitFtLibrary()) {
-	g_printerr("could not initialise freetype library\n");
-	return 1;
-    }
-
-    error = FT_Init_FreeType(&library);
+    error = FT_Init_FreeType (&library);
     if (error) {
-	g_printerr("could not initialise freetype\n");
+	g_printerr("Could not initialise freetype\n");
 	return 1;
     }
 
@@ -552,69 +535,76 @@ main(int argc, char **argv)
     g_object_unref (file);
 
     if (!font_file) {
-	g_printerr("could not parse argument into a URI\n");
+	g_printerr("Could not parse argument into a URI\n");
 	return 1;
     }
 
-    error = FT_New_Face_From_URI(library, font_file, 0, &face);
+    error = FT_New_Face_From_URI (library, font_file, 0, &face);
     if (error) {
-	g_printerr("could not load face '%s'\n", font_file);
+	g_printerr("Could not load face '%s'\n", font_file);
 	return 1;
     }
 
-    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    title = g_strconcat(face->family_name,
-			face->style_name ? ", " : "",
-			face->style_name, NULL);
-    gtk_window_set_title(GTK_WINDOW(window), title);
-    set_icon(GTK_WINDOW(window), font_file);
-    g_free(title);
-    gtk_window_set_resizable(GTK_WINDOW(window), TRUE);
+    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    title = g_strconcat (face->family_name,
+			 face->style_name ? ", " : "",
+			 face->style_name, NULL);
+    gtk_window_set_title (GTK_WINDOW (window), title);
+    set_icon (GTK_WINDOW (window), font_file);
+    g_free (title);
+    gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
 
-    hbox = gtk_hbox_new(FALSE, 0);
-    gtk_container_add(GTK_CONTAINER(window), hbox);
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_container_add (GTK_CONTAINER (window), hbox);
 
-    swin = gtk_scrolled_window_new(NULL, NULL);
-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swin),
-				   GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
-    gtk_box_pack_start(GTK_BOX(hbox), swin, TRUE, TRUE, 0);
+    swin = gtk_scrolled_window_new (NULL, NULL);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
+				    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
+    gtk_box_pack_start (GTK_BOX (hbox), swin, TRUE, TRUE, 0);
 
-    drawing_area = gtk_drawing_area_new();
-    gtk_widget_modify_bg(drawing_area, GTK_STATE_NORMAL, &white);
-    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(swin),
-					  drawing_area);
-#if !GTK_CHECK_VERSION (3, 0, 0)
-    g_signal_connect (drawing_area, "realize", G_CALLBACK(create_text_pixmap), face);
+    drawing_area = gtk_drawing_area_new ();
+    gtk_widget_modify_bg (drawing_area, GTK_STATE_NORMAL, &white);
+    gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (swin),
+					   drawing_area);
+    g_signal_connect (drawing_area, "realize",
+		      G_CALLBACK (realize_callback), face);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    g_signal_connect (drawing_area, "draw",
+		      G_CALLBACK (draw_callback), face);
+#else
+    g_signal_connect (drawing_area, "expose-event",
+		      G_CALLBACK (expose_callback), face);
 #endif
 
     /* set the minimum size on the scrolled window to prevent
      * unnecessary scrolling */
-    gtk_widget_set_size_request(swin, 500, -1);
+    gtk_widget_set_size_request (swin, 500, -1);
 
-    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect (window, "destroy",
+		      G_CALLBACK (gtk_main_quit), NULL);
 
-    table = gtk_table_new(1, 2, FALSE);
-    gtk_container_set_border_width(GTK_CONTAINER(table), 5);
-    gtk_box_pack_start(GTK_BOX(hbox), table, FALSE, TRUE, 0);
+    table = gtk_table_new (1, 2, FALSE);
+    gtk_container_set_border_width (GTK_CONTAINER (table), 5);
+    gtk_box_pack_start (GTK_BOX (hbox), table, FALSE, TRUE, 0);
 
     row = 0;
-    add_face_info(table, &row, font_file, face);
+    add_face_info (table, &row, font_file, face);
 
     /* add install button */
     align = gtk_alignment_new (1.0, 0.5, 0.0, 0.0);
     gtk_table_attach (GTK_TABLE (table), align, 0, 2, row, row + 1,
-                      GTK_FILL|GTK_EXPAND, GTK_FILL, 0, 0);
+                      GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
 
     button = gtk_button_new_with_mnemonic (_("I_nstall Font"));
     g_signal_connect (button, "clicked",
                       G_CALLBACK (install_button_clicked_cb), font_file);
     gtk_container_add (GTK_CONTAINER (align), button);
 
+    gtk_table_set_col_spacings (GTK_TABLE (table), 8);
+    gtk_table_set_row_spacings (GTK_TABLE (table), 2);
+    gtk_widget_show_all (window);
 
-    gtk_table_set_col_spacings(GTK_TABLE(table), 8);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 2);
-    gtk_widget_show_all(window);
+    gtk_main ();
 
-    gtk_main();
     return 0;
 }

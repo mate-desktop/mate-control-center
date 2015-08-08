@@ -1,5 +1,8 @@
-/* -*- mode: C; c-basic-offset: 4 -*-
- * fontilus - a collection of font utilities for MATE
+/* -*- mode: C; c-basic-offset: 4 -*- */
+
+/*
+ * ftstream-vfs: a FreeType/GIO stream bridge
+ *
  * Copyright (C) 2002-2003  James Henstridge <james@daa.com.au>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,20 +30,23 @@
 
 #include <gio/gio.h>
 
+#include "ftstream-vfs.h"
+
 static unsigned long
-vfs_stream_read(FT_Stream stream,
-		unsigned long offset,
-		unsigned char *buffer,
-		unsigned long count)
+vfs_stream_read (FT_Stream stream,
+		 unsigned long offset,
+		 unsigned char *buffer,
+		 unsigned long count)
 {
-    GFileInputStream *handle = (GFileInputStream *)stream->descriptor.pointer;
+    GFileInputStream *handle = stream->descriptor.pointer;
     gssize bytes_read = 0;
 
-    if (! g_seekable_seek (G_SEEKABLE (handle), offset, G_SEEK_SET, NULL, NULL))
+    if (!g_seekable_seek (G_SEEKABLE (handle), offset, G_SEEK_SET, NULL, NULL))
         return 0;
 
     if (count > 0) {
-        bytes_read = g_input_stream_read (G_INPUT_STREAM (handle), buffer, count, NULL, NULL);
+        bytes_read = g_input_stream_read (G_INPUT_STREAM (handle), buffer,
+					  count, NULL, NULL);
 
         if (bytes_read == -1)
             return 0;
@@ -50,51 +56,44 @@ vfs_stream_read(FT_Stream stream,
 }
 
 static void
-vfs_stream_close(FT_Stream stream)
+vfs_stream_close (FT_Stream stream)
 {
-    GFileInputStream *handle = (GFileInputStream *)stream->descriptor.pointer;
+    GFileInputStream *handle = stream->descriptor.pointer;
 
-    if (! handle)
+    if (handle == NULL)
         return;
 
+    /* this also closes the stream */
     g_object_unref (handle);
 
     stream->descriptor.pointer = NULL;
-    stream->size               = 0;
-    stream->base               = NULL;
+    stream->size = 0;
+    stream->base = NULL;
 }
 
 static FT_Error
-vfs_stream_open(FT_Stream stream,
-		const char *uri)
+vfs_stream_open (FT_Stream stream,
+		 const char *uri)
 {
     GFile *file;
-    GError *error = NULL;
     GFileInfo *info;
     GFileInputStream *handle;
 
-    if (!stream)
-        return FT_Err_Invalid_Stream_Handle;
-
     file = g_file_new_for_uri (uri);
+    handle = g_file_read (file, NULL, NULL);
 
-    handle = g_file_read (file, NULL, &error);
-    if (! handle) {
-        g_message ("%s", error->message);
+    if (handle == NULL) {
 	g_object_unref (file);
-
-        g_error_free (error);
         return FT_Err_Cannot_Open_Resource;
     }
 
-    info = g_file_query_info (file, G_FILE_ATTRIBUTE_STANDARD_SIZE,
-                              G_FILE_QUERY_INFO_NONE, NULL, &error);
+    info = g_file_query_info (file,
+			      G_FILE_ATTRIBUTE_STANDARD_SIZE,
+                              G_FILE_QUERY_INFO_NONE, NULL,
+			      NULL);
     g_object_unref (file);
 
-    if (! info) {
-        g_warning ("%s", error->message);
-
-        g_error_free (error);
+    if (info == NULL) {
         return FT_Err_Cannot_Open_Resource;
     }
 
@@ -103,10 +102,10 @@ vfs_stream_open(FT_Stream stream,
     g_object_unref (info);
 
     stream->descriptor.pointer = handle;
-    stream->pathname.pointer   = NULL;
-    stream->pos                = 0;
+    stream->pathname.pointer = NULL;
+    stream->pos = 0;
 
-    stream->read  = vfs_stream_read;
+    stream->read = vfs_stream_read;
     stream->close = vfs_stream_close;
 
     return FT_Err_Ok;
@@ -114,36 +113,37 @@ vfs_stream_open(FT_Stream stream,
 
 /* load a typeface from a URI */
 FT_Error
-FT_New_Face_From_URI(FT_Library           library,
-		     const gchar*         uri,
-		     FT_Long              face_index,
-		     FT_Face             *aface)
+FT_New_Face_From_URI (FT_Library library,
+		      const gchar* uri,
+		      FT_Long face_index,
+		      FT_Face *aface)
 {
     FT_Open_Args args;
     FT_Stream stream;
     FT_Error error;
 
-    if ((stream = calloc(1, sizeof(*stream))) == NULL)
+    stream = calloc (1, sizeof (*stream));
+
+    if (stream == NULL)
 	return FT_Err_Out_Of_Memory;
 
-    error = vfs_stream_open(stream, uri);
+    error = vfs_stream_open (stream, uri);
+
     if (error != FT_Err_Ok) {
-	free(stream);
+	free (stream);
 	return error;
     }
 
-    /* freetype-2.1.3 accidentally broke compatibility. */
-#if defined(FT_OPEN_STREAM) && !defined(ft_open_stream)
-#  define ft_open_stream FT_OPEN_STREAM
-#endif
-    args.flags  = ft_open_stream;
+    args.flags = FT_OPEN_STREAM;
     args.stream = stream;
 
-    error = FT_Open_Face(library, &args, face_index, aface);
+    error = FT_Open_Face (library, &args, face_index, aface);
 
     if (error != FT_Err_Ok) {
-	if (stream->close) stream->close(stream);
-	free(stream);
+	if (stream->close != NULL)
+	    stream->close(stream);
+
+	free (stream);
 	return error;
     }
 
