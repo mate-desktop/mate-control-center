@@ -162,8 +162,8 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	pango_layout_set_markup (layout, str, -1);
 
 	pango_layout_get_extents (layout, NULL, &extents);
-	width = PANGO_PIXELS(extents.width);
-	height = PANGO_PIXELS(extents.height);
+	width = PANGO_PIXELS(extents.width) + 4;
+	height = PANGO_PIXELS(extents.height) + 2;
 
 	surface = cairo_image_surface_create (CAIRO_FORMAT_A8, width, height);
 	cr = cairo_create (surface);
