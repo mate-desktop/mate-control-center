@@ -32,6 +32,7 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <cairo-ft.h>
 
 #include "capplet-util.h"
 
@@ -65,10 +66,10 @@ static gboolean in_change = FALSE;
 
 static void sample_size_request(GtkWidget* darea, GtkRequisition* requisition)
 {
-	GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(darea), "sample-pixbuf");
+	cairo_surface_t* surface = g_object_get_data(G_OBJECT(darea), "sample-surface");
 
-	requisition->width = gdk_pixbuf_get_width(pixbuf) + 2;
-	requisition->height = gdk_pixbuf_get_height(pixbuf) + 2;
+	requisition->width = cairo_image_surface_get_width(surface) + 2;
+	requisition->height = cairo_image_surface_get_height(surface) + 2;
 }
 #endif
 
@@ -79,17 +80,14 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 #endif
 {
 	GtkAllocation allocation;
-	GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(darea), "sample-pixbuf");
-	int width = gdk_pixbuf_get_width(pixbuf);
-	int height = gdk_pixbuf_get_height(pixbuf);
+	cairo_surface_t* surface = g_object_get_data(G_OBJECT(darea), "sample-surface");
+
+	int width = cairo_image_surface_get_width(surface);
+	int height = cairo_image_surface_get_height(surface);
 
 	gtk_widget_get_allocation (darea, &allocation);
 	int x = (allocation.width - width) / 2;
 	int y = (allocation.height - height) / 2;
-
-	GdkColor black, white;
-	gdk_color_parse ("black", &black);
-	gdk_color_parse ("white", &white);
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
 	cairo_t *cr = gdk_cairo_create (expose->window);
@@ -97,13 +95,13 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 	cairo_set_line_width (cr, 1);
 	cairo_set_line_cap (cr, CAIRO_LINE_CAP_SQUARE);
 
-	gdk_cairo_set_source_color (cr, &white);
+	cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
 	cairo_rectangle (cr, 0, 0, allocation.width, allocation.height);
 	cairo_fill_preserve (cr);
-	gdk_cairo_set_source_color (cr, &black);
+	cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
 	cairo_stroke (cr);
 
-	gdk_cairo_set_source_pixbuf(cr, pixbuf, x, y);
+	cairo_set_source_surface (cr, surface, x, y);
 	cairo_paint(cr);
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
@@ -131,7 +129,7 @@ typedef enum {
 	RGBA_VBGR
 } RgbaOrder;
 
-static XftFont* open_pattern(FcPattern* pattern, Antialiasing antialiasing, Hinting hinting)
+static cairo_font_face_t* open_pattern(FcPattern* pattern, Antialiasing antialiasing, Hinting hinting)
 {
 	#ifdef FC_HINT_STYLE
 		static const int hintstyles[] = {
@@ -141,13 +139,12 @@ static XftFont* open_pattern(FcPattern* pattern, Antialiasing antialiasing, Hint
 
 	FcPattern* res_pattern;
 	FcResult result;
-	XftFont* font;
 
 	Display* xdisplay = gdk_x11_get_default_xdisplay();
 	int screen = gdk_x11_get_default_screen();
 
 	res_pattern = XftFontMatch(xdisplay, screen, pattern, &result);
-	
+
 	if (res_pattern == NULL)
 	{
 		return NULL;
@@ -170,14 +167,14 @@ static XftFont* open_pattern(FcPattern* pattern, Antialiasing antialiasing, Hint
 	FcPatternDel(res_pattern, FC_DPI);
 	FcPatternAddInteger(res_pattern, FC_DPI, 96);
 
-	font = XftFontOpenPattern(xdisplay, res_pattern);
-	
-	if (!font)
+	cairo_font_face_t* font_face = cairo_ft_font_face_create_for_pattern (res_pattern);
+
+	if (!font_face)
 	{
 		FcPatternDestroy(res_pattern);
 	}
 
-	return font;
+	return font_face;
 }
 
 static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinting hinting)
@@ -185,36 +182,11 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	const char* string1 = "abcfgop AO ";
 	const char* string2 = "abcfgop";
 
-	XftColor black, white;
-	XRenderColor rendcolor;
-
-	Display* xdisplay = gdk_x11_get_default_xdisplay();
-
-#if GTK_CHECK_VERSION (3, 0, 0)
-	Colormap xcolormap = DefaultColormap(xdisplay, 0);
-#else
-	GdkColormap* colormap = gdk_rgb_get_colormap();
-	Colormap xcolormap = GDK_COLORMAP_XCOLORMAP(colormap);
-#endif
-
-#if GTK_CHECK_VERSION (3, 0, 0)
-	GdkVisual* visual = gdk_visual_get_system ();
-#else
-	GdkVisual* visual = gdk_colormap_get_visual(colormap);
-#endif
-	Visual* xvisual = GDK_VISUAL_XVISUAL(visual);
-
 	FcPattern* pattern;
-	XftFont* font1;
-	XftFont* font2;
-	XGlyphInfo extents1 = { 0 };
-	XGlyphInfo extents2 = { 0 };
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	GdkPixmap* pixmap;
-#endif
-	XftDraw* draw;
-	GdkPixbuf* tmp_pixbuf;
-	GdkPixbuf* pixbuf;
+	cairo_font_face_t* font1;
+	cairo_font_face_t* font2;
+	cairo_text_extents_t te1;
+	cairo_text_extents_t te2;
 
 	int width, height;
 	int ascent, descent;
@@ -237,85 +209,80 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 
 	ascent = 0;
 	descent = 0;
-	
-	if (font1)
 	{
-		XftTextExtentsUtf8 (xdisplay, font1, (unsigned char*) string1,
-		strlen (string1), &extents1);
-		ascent = MAX (ascent, font1->ascent);
-		descent = MAX (descent, font1->descent);
+		// temporary surface to get font/text extents
+		cairo_surface_t *surface = cairo_image_surface_create (CAIRO_FORMAT_RGB24, 1, 1);
+		cairo_t *cr = cairo_create (surface);
+
+		if (font1)
+		{
+			cairo_font_extents_t extents;
+
+			cairo_set_font_face (cr, font1);
+			cairo_set_font_size (cr, 18);
+
+			cairo_font_extents (cr, &extents);
+			cairo_text_extents (cr, string1, &te1);
+			ascent = MAX (ascent, extents.ascent);
+			descent = MAX (descent, extents.descent);
+		}
+
+		if (font2)
+		{
+			cairo_font_extents_t extents;
+			cairo_set_font_face (cr, font2);
+			cairo_font_extents( cr, &extents);
+			cairo_text_extents (cr, string2, &te2);
+				ascent = MAX (ascent, extents.ascent);
+			descent = MAX (descent, extents.descent);
+		}
+
+		cairo_destroy (cr);
+		cairo_surface_destroy (surface);
 	}
 
-	if (font2)
-	{
-		XftTextExtentsUtf8 (xdisplay, font2, (unsigned char*) string2, strlen (string2), &extents2);
-		ascent = MAX (ascent, font2->ascent);
-		descent = MAX (descent, font2->descent);
-	}
 
-	width = extents1.xOff + extents2.xOff + 4;
+	width = te2.x_advance + te1.x_advance + 4;
 	height = ascent + descent + 2;
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	pixmap = gdk_pixmap_new (NULL, width, height, gdk_visual_get_depth (visual));
-#endif
+	cairo_surface_t *surface = cairo_image_surface_create (CAIRO_FORMAT_RGB24, width, height);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-	draw = XftDrawCreate (xdisplay, GDK_WINDOW_XID (gdk_screen_get_root_window (gdk_screen_get_default ())), xvisual, xcolormap);
-#else
-	draw = XftDrawCreate (xdisplay, GDK_DRAWABLE_XID (pixmap), xvisual, xcolormap);
-#endif
+	cairo_t* cr = cairo_create (surface);
 
-	rendcolor.red = 0;
-	rendcolor.green = 0;
-	rendcolor.blue = 0;
-	rendcolor.alpha = 0xffff;
-	
-	XftColorAllocValue(xdisplay, xvisual, xcolormap, &rendcolor, &black);
+	cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
+	cairo_rectangle (cr, 0, 0, width, height);
+	cairo_fill (cr);
 
-	rendcolor.red = 0xffff;
-	rendcolor.green = 0xffff;
-	rendcolor.blue = 0xffff;
-	rendcolor.alpha = 0xffff;
-	
-	XftColorAllocValue(xdisplay, xvisual, xcolormap, &rendcolor, &white);
-	XftDrawRect(draw, &white, 0, 0, width, height);
-	
 	if (font1)
 	{
-		XftDrawStringUtf8(draw, &black, font1, 2, 2 + ascent, (unsigned char*) string1, strlen(string1));
+		cairo_set_source_rgb (cr, 0, 0, 0);
+		cairo_set_font_size (cr, 18);
+		cairo_set_font_face (cr, font1);
+		cairo_move_to (cr, 2, 2 + ascent);
+		cairo_show_text (cr, string1);
 	}
 	
 	if (font2)
 	{
-		XftDrawStringUtf8(draw, &black, font2, 2 + extents1.xOff, 2 + ascent, (unsigned char*) string2, strlen(string2));
+		cairo_set_source_rgb (cr, 0, 0, 0);
+		cairo_set_font_face (cr, font2);
+		cairo_move_to (cr, 2 + te1.x_advance, 2 + ascent);
+		cairo_show_text (cr, string2);
 	}
-
-	XftDrawDestroy(draw);
 
 	if (font1)
 	{
-		XftFontClose(xdisplay, font1);
+		cairo_font_face_destroy (font1);
 	}
 	
 	if (font2)
 	{
-		XftFontClose(xdisplay, font2);
+		cairo_font_face_destroy (font2);
 	}
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-	tmp_pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE,8, width, height);
-#else
-	tmp_pixbuf = gdk_pixbuf_get_from_drawable(NULL, pixmap, colormap, 0, 0, 0, 0, width, height);
-#endif
-	pixbuf = gdk_pixbuf_scale_simple(tmp_pixbuf, 1 * width, 1 * height, GDK_INTERP_TILES);
+	cairo_destroy (cr);
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	g_object_unref(pixmap);
-#endif
-	g_object_unref(tmp_pixbuf);
-
-	g_object_set_data_full(G_OBJECT(darea), "sample-pixbuf", pixbuf, (GDestroyNotify) g_object_unref);
+	g_object_set_data_full(G_OBJECT(darea), "sample-surface", surface, (GDestroyNotify) cairo_surface_destroy);
 
 #if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_widget_set_size_request  (GTK_WIDGET(darea), width + 2, height + 2);
