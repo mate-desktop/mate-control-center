@@ -414,20 +414,6 @@ count_active_outputs (App *app)
     return count;
 }
 
-#if 0
-static int
-count_all_outputs (MateRRConfig *config)
-{
-    int i;
-    MateRROutputInfo **outputs = mate_rr_config_get_outputs (config);
-
-    for (i = 0; outputs[i] != NULL; i++)
-	;
-
-    return i;
-}
-#endif
-
 /* Computes whether "Mirror Screens" (clone mode) is supported based on these criteria:
  *
  * 1. There is an available size for cloning.
@@ -2171,29 +2157,6 @@ apply (App *app)
 
     begin_version2_apply_configuration (app, gtk_widget_get_window (app->dialog), app->apply_button_clicked_timestamp);
 }
-
-#if 0
-/* Returns whether the graphics driver doesn't advertise RANDR 1.2 features, and just 1.0 */
-static gboolean
-driver_is_randr_10 (MateRRConfig *config)
-{
-    /* In the Xorg code, see xserver/randr/rrinfo.c:RRScanOldConfig().  It gets
-     * called when the graphics driver doesn't support RANDR 1.2 yet, just 1.0.
-     * In that case, the X server's base code (which supports RANDR 1.2) will
-     * simulate having a single output called "default".  For drivers that *do*
-     * support RANDR 1.2, the separate outputs will be named differently, we
-     * hope.
-     *
-     * This heuristic is courtesy of Dirk Mueller <dmueller@suse.de>
-     *
-     * FIXME: however, we don't even check for XRRQueryVersion() returning 1.2, neither
-     * here nor in mate-desktop/libmatedesktop*.c.  Do we need to check for that,
-     * or is mate_rr_screen_new()'s return value sufficient?
-     */
-
-    return (count_all_outputs (config) == 1 && strcmp (mate_rr_output_info_get_name (mate_rr_config_get_outputs (config)[0]), "default") == 0);
-}
-#endif
 
 static void
 on_detect_displays (GtkWidget *widget, gpointer data)
