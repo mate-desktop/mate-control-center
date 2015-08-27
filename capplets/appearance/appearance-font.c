@@ -186,6 +186,7 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	surface = cairo_image_surface_create (CAIRO_FORMAT_A8, width, height);
 	cr = cairo_create (surface);
 
+	cairo_move_to (cr, 2, 1);
 	pango_cairo_show_layout (cr, layout);
 	g_object_unref (layout);
 	cairo_destroy (cr);
