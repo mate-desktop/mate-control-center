@@ -117,18 +117,36 @@ static void set_fontoptions(PangoContext *context, Antialiasing antialiasing, Hi
 	cairo_hint_style_t hs;
 	
 	switch (antialiasing) {
-		case ANTIALIAS_NONE:			aa = CAIRO_ANTIALIAS_NONE; break;
-		case ANTIALIAS_GRAYSCALE:		aa = CAIRO_ANTIALIAS_GRAY; break;
-		case ANTIALIAS_RGBA:			aa = CAIRO_ANTIALIAS_SUBPIXEL; break;
-		default:						aa = CAIRO_ANTIALIAS_DEFAULT; break;
+	case ANTIALIAS_NONE:
+		aa = CAIRO_ANTIALIAS_NONE;
+		break;
+	case ANTIALIAS_GRAYSCALE:
+		aa = CAIRO_ANTIALIAS_GRAY;
+		break;
+	case ANTIALIAS_RGBA:
+		aa = CAIRO_ANTIALIAS_SUBPIXEL;
+		break;
+	default:
+		aa = CAIRO_ANTIALIAS_DEFAULT;
+		break;
 	}
 
 	switch (hinting) {
-		case HINT_NONE:					hs = CAIRO_HINT_STYLE_NONE; break;
-		case HINT_SLIGHT:				hs = CAIRO_HINT_STYLE_SLIGHT; break;
-		case HINT_MEDIUM:				hs = CAIRO_HINT_STYLE_MEDIUM; break;
-		case HINT_FULL:					hs = CAIRO_HINT_STYLE_FULL; break;
-		default:						hs = CAIRO_HINT_STYLE_DEFAULT; break;
+	case HINT_NONE:
+		hs = CAIRO_HINT_STYLE_NONE;
+		break;
+	case HINT_SLIGHT:
+		hs = CAIRO_HINT_STYLE_SLIGHT;
+		break;
+	case HINT_MEDIUM:
+		hs = CAIRO_HINT_STYLE_MEDIUM;
+		break;
+	case HINT_FULL:
+		hs = CAIRO_HINT_STYLE_FULL;
+		break;
+	default:
+		hs = CAIRO_HINT_STYLE_DEFAULT;
+		break;
 	}
 
 	opt = cairo_font_options_create ();
