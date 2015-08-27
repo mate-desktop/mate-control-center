@@ -53,18 +53,12 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 #endif
 {
 	cairo_surface_t* surface = g_object_get_data(G_OBJECT(darea), "sample-surface");
-
+	GtkAllocation allocation;
 	int x, y, w, h;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-	x = gtk_widget_get_allocated_width (darea);
-	y = gtk_widget_get_allocated_height (darea);
-#else
-	GtkAllocation allocation;
 	gtk_widget_get_allocation (darea, &allocation);
 	x = allocation.width;
 	y = allocation.height;
-#endif
 	w = cairo_image_surface_get_width (surface);
 	h = cairo_image_surface_get_height (surface);
 
