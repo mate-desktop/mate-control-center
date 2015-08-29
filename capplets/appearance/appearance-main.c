@@ -72,9 +72,7 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
       data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
       data->marco_settings = g_settings_new (MARCO_SCHEMA);
       data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
-#ifdef HAVE_XFT2
       data->font_settings = g_settings_new (FONT_RENDER_SCHEMA);
-#endif /* HAVE_XFT2 */
       data->ui = ui;
       data->thumb_factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
     }
@@ -108,9 +106,7 @@ main_window_response (GtkWidget *widget,
     g_object_unref (data->interface_settings);
     g_object_unref (data->marco_settings);
     g_object_unref (data->mouse_settings);
-#ifdef HAVE_XFT2
     g_object_unref (data->font_settings);
-#endif /* HAVE_XFT2 */
     g_object_unref (data->ui);
   }
   else if (response_id == GTK_RESPONSE_HELP)

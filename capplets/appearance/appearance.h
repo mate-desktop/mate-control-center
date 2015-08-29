@@ -65,13 +65,11 @@
 #define CURSOR_THEME_KEY             "cursor-theme"
 #define CURSOR_SIZE_KEY              "cursor-size"
 
-#ifdef HAVE_XFT2
 #define FONT_RENDER_SCHEMA           "org.mate.font-rendering"
 #define FONT_ANTIALIASING_KEY        "antialiasing"
 #define FONT_HINTING_KEY             "hinting"
 #define FONT_RGBA_ORDER_KEY          "rgba-order"
 #define FONT_DPI_KEY                 "dpi"
-#endif /* HAVE_XFT2 */
 
 typedef struct {
 	GSettings* settings;
@@ -80,9 +78,7 @@ typedef struct {
 	GSettings* interface_settings;
 	GSettings* marco_settings;
 	GSettings* mouse_settings;
-#ifdef HAVE_XFT2
 	GSettings* font_settings;
-#endif /* HAVE_XFT2 */
 	GtkBuilder* ui;
 	MateDesktopThumbnailFactory* thumb_factory;
 	gulong screen_size_handler;
