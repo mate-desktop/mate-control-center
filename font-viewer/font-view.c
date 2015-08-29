@@ -652,7 +652,12 @@ main (int argc,
 
     /* set the minimum size on the scrolled window to prevent
      * unnecessary scrolling */
+    /* 800 is better for GtkGrid */
+#if GTK_CHECK_VERSION (3, 4, 0)
+    gtk_widget_set_size_request (swin, 800, -1);
+#else
     gtk_widget_set_size_request (swin, 500, -1);
+#endif
 
     g_signal_connect (window, "destroy",
 		      G_CALLBACK (gtk_main_quit), NULL);
