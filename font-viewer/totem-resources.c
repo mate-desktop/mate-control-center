@@ -112,7 +112,7 @@ totem_resources_monitor_start (const char *input, gint wall_clock_time)
 		sleep_time = wall_clock_time;
 
 	finished = FALSE;
-	g_thread_create (time_monitor, (gpointer) input, FALSE, NULL);
+	g_thread_new ("time-monitor", time_monitor, (gpointer) input);
 }
 
 void
