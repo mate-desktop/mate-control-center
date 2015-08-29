@@ -48,10 +48,6 @@
 #include <X11/Xcursor/Xcursor.h>
 #endif
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-#define GtkFunction GSourceFunc
-#endif
-
 enum
 {
 	DOUBLE_CLICK_TEST_OFF,
@@ -151,14 +147,14 @@ event_box_button_press_event (GtkWidget   *widget,
 		double_click_state = DOUBLE_CLICK_TEST_MAYBE;
 		data.image = image;
 		data.timeout_id = &test_maybe_timeout_id;
-		test_maybe_timeout_id = g_timeout_add (double_click_time, (GtkFunction) test_maybe_timeout, &data);
+		test_maybe_timeout_id = g_timeout_add (double_click_time, (GSourceFunc) test_maybe_timeout, &data);
 		break;
 	case DOUBLE_CLICK_TEST_MAYBE:
 		if (event->time - double_click_timestamp < double_click_time) {
 			double_click_state = DOUBLE_CLICK_TEST_ON;
 			data.image = image;
 			data.timeout_id = &test_on_timeout_id;
-			test_on_timeout_id = g_timeout_add (2500, (GtkFunction) test_maybe_timeout, &data);
+			test_on_timeout_id = g_timeout_add (2500, (GSourceFunc) test_maybe_timeout, &data);
 		}
 		break;
 	case DOUBLE_CLICK_TEST_ON:
