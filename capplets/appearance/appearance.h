@@ -45,6 +45,10 @@
 #define GTK_THEME_KEY                "gtk-theme"
 #define ICON_THEME_KEY               "icon-theme"
 #define COLOR_SCHEME_KEY             "gtk-color-scheme"
+#define ACCEL_CHANGE_KEY             "can-change-accels"
+#define MENU_ICONS_KEY               "menus-have-icons"
+#define TOOLBAR_DETACHABLE_KEY       "toolbar-detachable"
+#define TOOLBAR_STYLE_KEY            "toolbar-style"
 #define GTK_FONT_DEFAULT_VALUE       "Sans 10"
 
 #define LOCKDOWN_SCHEMA              "org.mate.lockdown"

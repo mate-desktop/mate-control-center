@@ -25,6 +25,7 @@
 #include "appearance-font.h"
 #include "appearance-themes.h"
 #include "appearance-style.h"
+#include "appearance-ui.h"
 #include "appearance-support.h"
 #include "theme-installer.h"
 #include "theme-thumbnail.h"
@@ -188,6 +189,7 @@ main (int argc, char **argv)
   desktop_init (data, (const gchar **) wallpaper_files);
   g_strfreev (wallpaper_files);
   font_init (data);
+  ui_init (data);
 
   /* init support for other window managers */
   support_init (data);
