@@ -16,6 +16,8 @@ mate_appearance_properties_SOURCES = \
 	appearance-themes.h \
 	appearance-style.c \
 	appearance-style.h \
+	appearance-ui.c \
+	appearance-ui.h \
 	appearance-support.c \
 	appearance-support.h \
 	mate-wp-info.c \
