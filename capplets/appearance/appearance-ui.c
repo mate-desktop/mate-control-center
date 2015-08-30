@@ -33,11 +33,11 @@ show_handlebar (AppearanceData *data, gboolean show)
   g_object_ref (handlebox);
   g_object_ref (toolbar);
 
-  if (GTK_BIN (align)->child)
-    gtk_container_remove (GTK_CONTAINER (align), GTK_BIN (align)->child);
+  if (gtk_bin_get_child (GTK_BIN (align)))
+    gtk_container_remove (GTK_CONTAINER (align), gtk_bin_get_child (GTK_BIN (align)));
 
-  if (GTK_BIN (handlebox)->child)
-    gtk_container_remove (GTK_CONTAINER (handlebox), GTK_BIN (handlebox)->child);
+  if (gtk_bin_get_child (GTK_BIN (handlebox)))
+    gtk_container_remove (GTK_CONTAINER (handlebox), gtk_bin_get_child (GTK_BIN (handlebox)));
 
   if (show) {
     gtk_container_add (GTK_CONTAINER (align), handlebox);
