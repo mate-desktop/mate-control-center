@@ -50,6 +50,7 @@ show_handlebar (AppearanceData *data, gboolean show)
   g_object_unref (toolbar);
 }
 
+#if !GTK_CHECK_VERSION (3, 10, 0)
 static void
 set_toolbar_style (AppearanceData *data, const char *value)
 {
@@ -62,6 +63,7 @@ set_toolbar_style (AppearanceData *data, const char *value)
   gtk_toolbar_set_style (GTK_TOOLBAR (appearance_capplet_get_widget (data, "toolbar_toolbar")),
 			 gtk_toolbar_styles[enum_val]);
 }
+#endif
 
 static void
 set_have_icons (AppearanceData *data, gboolean value)
@@ -101,6 +103,7 @@ set_have_icons (AppearanceData *data, gboolean value)
 
 /** GConf Callbacks and Conversions **/
 
+#if !GTK_CHECK_VERSION (3, 10, 0)
 static gboolean
 toolbar_to_widget (GValue *value, GVariant *variant, gpointer user_data)
 {
@@ -138,6 +141,7 @@ toolbar_style_cb (GSettings *settings,
 {
   set_toolbar_style (data, g_settings_get_string (settings, key));
 }
+#endif
 
 static void
 menus_have_icons_cb (GSettings *settings,
@@ -171,14 +175,16 @@ void
 ui_init (AppearanceData *data)
 {
   GtkWidget* widget;
-  char* toolbar_style;
 
-  widget = appearance_capplet_get_widget(data, "menu_accel_toggle");
-	g_settings_bind (data->interface_settings,
-			 ACCEL_CHANGE_KEY,
-			 G_OBJECT (widget),
-			 "active",
-			 G_SETTINGS_BIND_DEFAULT);
+#if GTK_CHECK_VERSION (3, 10, 0)
+  GtkWidget* container = appearance_capplet_get_widget(data, "vbox24");
+
+  // Remove menu accels and toolbar style toggles for new GTK versions
+  gtk_container_remove((GtkContainer *) container,
+			 appearance_capplet_get_widget(data, "menu_accel_toggle"));
+  gtk_container_remove((GtkContainer *) container,
+			 appearance_capplet_get_widget(data, "hbox11"));
+#endif
 
   widget = appearance_capplet_get_widget(data, "menu_icons_toggle");
 	g_settings_bind (data->interface_settings,
@@ -192,6 +198,14 @@ ui_init (AppearanceData *data)
   set_have_icons (data,
     g_settings_get_boolean (data->interface_settings,
 			   MENU_ICONS_KEY));
+
+#if !GTK_CHECK_VERSION (3, 10, 0)
+  widget = appearance_capplet_get_widget(data, "menu_accel_toggle");
+	g_settings_bind (data->interface_settings,
+			 ACCEL_CHANGE_KEY,
+			 G_OBJECT (widget),
+			 "active",
+			 G_SETTINGS_BIND_DEFAULT);
 
   widget = appearance_capplet_get_widget(data, "toolbar_style_select");
 	g_settings_bind_with_mapping (data->interface_settings,
@@ -207,6 +221,15 @@ ui_init (AppearanceData *data)
   g_signal_connect (data->interface_settings, "changed::" TOOLBAR_STYLE_KEY,
 		    (GCallback) toolbar_style_cb, data);
 
+  char* toolbar_style;
+
+  toolbar_style = g_settings_get_string
+    (data->interface_settings,
+     TOOLBAR_STYLE_KEY);
+  set_toolbar_style (data, toolbar_style);
+  g_free (toolbar_style);
+#endif
+
   g_signal_connect (appearance_capplet_get_widget (data, "toolbar_handlebox"),
 		    "button_press_event",
 		    (GCallback) button_press_block_cb, NULL);
@@ -214,12 +237,6 @@ ui_init (AppearanceData *data)
   show_handlebar (data,
     g_settings_get_boolean (data->interface_settings,
 			   TOOLBAR_DETACHABLE_KEY));
-
-  toolbar_style = g_settings_get_string
-    (data->interface_settings,
-     TOOLBAR_STYLE_KEY);
-  set_toolbar_style (data, toolbar_style);
-  g_free (toolbar_style);
 
   /* no ui for detachable toolbars */
   g_signal_connect (data->interface_settings,
