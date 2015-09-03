@@ -212,6 +212,8 @@ scrollmethod_gsettings_changed_event (GSettings *settings,
 				scroll_method == 2);
 	gtk_widget_set_sensitive (WID ("horiz_scroll_toggle"),
 				 scroll_method != 0);
+	gtk_widget_set_sensitive (WID ("natural_scroll_toggle"),
+				 scroll_method != 0);
 }
 
 static void
@@ -221,6 +223,9 @@ scrollmethod_clicked_event (GtkWidget *widget,
 	GtkToggleButton *disabled = GTK_TOGGLE_BUTTON (WID ("scroll_disabled_radio"));
 
 	gtk_widget_set_sensitive (WID ("horiz_scroll_toggle"),
+				  !gtk_toggle_button_get_active (disabled));
+
+	gtk_widget_set_sensitive (WID ("natural_scroll_toggle"),
 				  !gtk_toggle_button_get_active (disabled));
 
 	GSList *radio_group;
@@ -347,6 +352,14 @@ find_synaptics (void)
 	return ret;
 }
 
+static void
+comboxbox_changed_callback (GtkWidget *combobox, void *data)
+{
+    gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
+    gchar *key = (char *) data;
+    g_settings_set_int (touchpad_settings, key, value);
+}
+
 /* Set up the property editors in the dialog. */
 static void
 setup_dialog (GtkBuilder *dialog)
@@ -405,8 +418,30 @@ setup_dialog (GtkBuilder *dialog)
 		g_settings_bind (touchpad_settings, "horiz-scroll-enabled",
 			WID ("horiz_scroll_toggle"), "active",
 			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "natural-scroll",
+			WID ("natural_scroll_toggle"), "active",
+			G_SETTINGS_BIND_DEFAULT);
 
 		scrollmethod_gsettings_changed_event (touchpad_settings, "scroll-method", dialog);
+
+		char * emulation_values[] = { _("Disabled"), _("Left button"), _("Middle button"), _("Right button") };
+
+		GtkWidget *two_click_comboxbox = gtk_combo_box_text_new ();
+		GtkWidget *three_click_comboxbox = gtk_combo_box_text_new ();
+		gtk_box_pack_start (GTK_BOX (WID ("hbox_two_finger_click")), two_click_comboxbox, FALSE, FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (WID ("hbox_three_finger_click")), three_click_comboxbox, FALSE, FALSE, 6);
+		int i;
+		for (i=0; i<4; i++) {
+			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (two_click_comboxbox), emulation_values[i]);	
+			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (three_click_comboxbox), emulation_values[i]);	
+		}
+		
+		gtk_combo_box_set_active (GTK_COMBO_BOX (two_click_comboxbox), g_settings_get_int (touchpad_settings, "two-finger-click"));
+		gtk_combo_box_set_active (GTK_COMBO_BOX (three_click_comboxbox), g_settings_get_int (touchpad_settings, "three-finger-click"));
+		gtk_widget_show (two_click_comboxbox);
+		gtk_widget_show (three_click_comboxbox);
+		g_signal_connect (two_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "two-finger-click");
+		g_signal_connect (three_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "three-finger-click");
 
 		radio = GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"));
 		GSList *radio_group = gtk_radio_button_get_group (radio);
