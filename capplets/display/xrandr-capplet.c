@@ -1665,7 +1665,7 @@ get_display_name (App *app,
         text = _("Mirror Screens");
     } 
     else {
-        text = g_strdup_printf ("%s\n<small>%s</small>", mate_rr_output_info_get_display_name (output), mate_rr_output_info_get_name (output));
+        text = g_strdup_printf ("<b>%s</b>\n<small>%s</small>", mate_rr_output_info_get_display_name (output), mate_rr_output_info_get_name (output));
     }
     layout = gtk_widget_create_pango_layout (GTK_WIDGET (app->area), text);
     pango_layout_set_markup (layout, text, -1);
@@ -1845,7 +1845,7 @@ paint_output (App *app, cairo_t *cr, int i)
     cairo_stroke (cr);
     cairo_set_line_width (cr, 2);
 
-    layout_set_font (layout, "Sans Bold 12");
+    layout_set_font (layout, "Sans 12");
     pango_layout_get_pixel_extents (layout, &ink_extent, &log_extent);
 
     available_w = w * scale + 0.5 - 6; /* Same as the inner rectangle's width, minus 1 pixel of padding on each side */
