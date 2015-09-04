@@ -5,9 +5,9 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
-#define GSM_SERVICE_DBUS   "org.mate.SessionManager"
-#define GSM_PATH_DBUS      "/org/mate/SessionManager"
-#define GSM_INTERFACE_DBUS "org.mate.SessionManager"
+#define GSM_SERVICE_DBUS   "org.gnome.SessionManager"
+#define GSM_PATH_DBUS      "/org/gnome/SessionManager"
+#define GSM_INTERFACE_DBUS "org.gnome.SessionManager"
 
 enum {
         GSM_LOGOUT_MODE_NORMAL = 0,
