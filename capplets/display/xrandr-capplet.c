@@ -1653,20 +1653,25 @@ static PangoLayout *
 get_display_name (App *app,
 		  MateRROutputInfo *output)
 {
-    const char *text;
+    char *text;
+    PangoLayout * layout;
 
     if (mate_rr_config_get_clone (app->current_configuration)) {
-	/* Translators:  this is the feature where what you see on your laptop's
-	 * screen is the same as your external monitor.  Here, "Mirror" is being
-	 * used as an adjective, not as a verb.  For example, the Spanish
-	 * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-	 */
-	text = _("Mirror Screens");
-    } else
-	text = mate_rr_output_info_get_display_name (output);
-
-    return gtk_widget_create_pango_layout (
-	GTK_WIDGET (app->area), text);
+    /* Translators:  this is the feature where what you see on your laptop's
+     * screen is the same as your external monitor.  Here, "Mirror" is being
+     * used as an adjective, not as a verb.  For example, the Spanish
+     * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
+     */
+        text = _("Mirror Screens");
+    } 
+    else {
+        text = g_strdup_printf ("%s\n<small>%s</small>", mate_rr_output_info_get_display_name (output), mate_rr_output_info_get_name (output));
+    }
+    layout = gtk_widget_create_pango_layout (GTK_WIDGET (app->area), text);
+    pango_layout_set_markup (layout, text, -1);
+    g_free (text);
+    pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
+    return layout;
 }
 
 static void
