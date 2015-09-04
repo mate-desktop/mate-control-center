@@ -63,6 +63,7 @@ struct App
     GtkWidget	   *panel_checkbox;
     GtkWidget	   *clone_checkbox;
     GtkWidget	   *show_icon_checkbox;
+    GtkWidget      *primary_button;    
 
     /* We store the event timestamp when the Apply button is clicked */
     GtkWidget      *apply_button;
@@ -689,6 +690,8 @@ rebuild_gui (App *app)
     g_debug ("sensitive: %d, on: %d", sensitive, mate_rr_output_info_is_active (app->current_output));
 #endif
     gtk_widget_set_sensitive (app->panel_checkbox, sensitive);
+
+    gtk_widget_set_sensitive (app->primary_button, app->current_output && !mate_rr_output_info_get_primary(app->current_output));
 
     app->ignore_gui_changes = FALSE;
 }
@@ -2178,6 +2181,24 @@ on_detect_displays (GtkWidget *widget, gpointer data)
     }
 }
 
+static void
+set_primary (GtkWidget *widget, gpointer data)
+{
+    App *app = data;
+    int i;
+    MateRROutputInfo **outputs;
+
+    if (!app->current_output)
+        return;
+
+    outputs = mate_rr_config_get_outputs (app->current_configuration);
+    for (i=0; outputs[i]!=NULL; i++) {
+        mate_rr_output_info_set_primary (outputs[i], outputs[i] == app->current_output);
+    }
+
+    gtk_widget_set_sensitive (app->primary_button, !mate_rr_output_info_get_primary(app->current_output));
+}
+
 #define MSD_XRANDR_SCHEMA                 "org.mate.SettingsDaemon.plugins.xrandr"
 #define SHOW_ICON_KEY                     "show-notification-icon"
 #define DEFAULT_CONFIGURATION_FILE_KEY    "default-configuration-file"
@@ -2510,6 +2531,10 @@ run_application (App *app)
 
     g_signal_connect (_gtk_builder_get_widget (builder, "detect_displays_button"),
 		      "clicked", G_CALLBACK (on_detect_displays), app);
+
+    app->primary_button = _gtk_builder_get_widget (builder, "primary_button");
+
+    g_signal_connect (app->primary_button, "clicked", G_CALLBACK (set_primary), app);
 
     app->show_icon_checkbox = _gtk_builder_get_widget (builder,
 						      "show_notification_icon");
