@@ -14,13 +14,12 @@ SUBDIRS += typing-break
 endif
 
 @INTLTOOL_XML_NOMERGE_RULE@
-gsettings_SCHEMAS = \
-	org.mate.control-center.gschema.xml \
-	org.mate.control-center.keybinding.gschema.xml
-@GSETTINGS_RULES@
+gsettingsschema_in_files = \
+	org.mate.control-center.gschema.xml.in \
+	org.mate.control-center.keybinding.gschema.xml.in
 
-%.gschema.xml.in: %.gschema.xml.in.in Makefile
-	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
+@GSETTINGS_RULES@
 
 convertdir = $(datadir)/MateConf/gsettings
 convert_DATA = mate-control-center.convert
@@ -28,7 +27,6 @@ convert_DATA = mate-control-center.convert
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
 CLEANFILES = \
-	$(gsettings_SCHEMAS_in) \
 	$(gsettings_SCHEMAS) \
 	*.gschema.valid
 
@@ -53,8 +51,7 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	autogen.sh \
-	org.mate.control-center.gschema.xml.in.in \
-	org.mate.control-center.keybinding.gschema.xml.in.in \
+	$(gsettingsschema_in_files) \
 	$(convert_DATA)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb

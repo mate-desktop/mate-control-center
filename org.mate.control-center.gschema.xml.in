@@ -1,0 +1,47 @@
+<schemalist gettext-domain="@GETTEXT_PACKAGE@">
+    <schema id="org.mate.control-center" path="/org/mate/control-center/">
+        <child name="appearance" schema="org.mate.control-center.appearance" />
+        <key name="cc-actions-list" type="as">
+            <default l10n="messages">[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred Applications;mate-default-applications-properties.desktop' ]</default>
+            <summary>Task names and associated .desktop files</summary>
+            <description>The task name to be displayed in the control-center followed by a ";" separator then the filename of an associated .desktop file to launch for that task.</description>
+        </key>
+        <key name="cc-exit-shell-on-static-action" type="b">
+            <default>false</default>
+            <summary>Close the control-center when a task is activated</summary>
+            <description>if true, the control-center will close when a "Common Task" is activated.</description>
+        </key>
+        <key name="cc-exit-shell-on-action-start" type="b">
+            <default>false</default>
+            <summary>Exit shell on start action performed</summary>
+            <description>Indicates whether to close the shell when a start action is performed.</description>
+        </key>
+        <key name="cc-exit-shell-on-action-help" type="b">
+            <default>false</default>
+            <summary>Exit shell on help action performed</summary>
+            <description>Indicates whether to close the shell when a help action is performed.</description>
+        </key>
+        <key name="cc-exit-shell-on-action-add-remove" type="b">
+            <default>false</default>
+            <summary>Exit shell on add or remove action performed</summary>
+            <description>Indicates whether to close the shell when an add or remove action is performed.</description>
+        </key>
+        <key name="cc-exit-shell-on-action-upgrade-uninstall" type="b">
+            <default>false</default>
+            <summary>Exit shell on upgrade or uninstall action performed</summary>
+            <description>Indicates whether to close the shell when an upgrade or uninstall action is performed.</description>
+        </key>
+    </schema>
+    <schema id="org.mate.control-center.appearance" path="/org/mate/control-center/appearance/">
+        <key name="more-backgrounds-url" type="s">
+            <default>'http://mate-desktop.org/backgrounds/'</default>
+            <summary>More backgrounds URL</summary>
+            <description>URL for where to get more desktop backgrounds.  If set to an empty string the link will not appear.</description>
+        </key>
+        <key name="more-themes-url" type="s">
+            <default>'http://mate-desktop.org/themes/'</default>
+            <summary>More themes URL</summary>
+            <description>URL for where to get more desktop themes.  If set to an empty string the link will not appear.</description>
+        </key>
+    </schema>
+</schemalist>
