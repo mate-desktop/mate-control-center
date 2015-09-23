@@ -303,6 +303,11 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_widget_size_request (window, &requisition);
 #endif
 
+  gtk_widget_queue_draw (window);
+
+  while (gtk_events_pending ())
+   gtk_main_iteration ();
+
   pixbuf = gtk_offscreen_window_get_pixbuf (GTK_OFFSCREEN_WINDOW(window));
 
   gtk_widget_get_allocation (vbox, &vbox_allocation);
@@ -395,6 +400,11 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   gtk_window_get_size (GTK_WINDOW (window), &width, &height);
 
+  gtk_widget_queue_draw (window);
+
+  while (gtk_events_pending ())
+   gtk_main_iteration ();
+
   pixbuf = gtk_offscreen_window_get_pixbuf (GTK_OFFSCREEN_WINDOW(window));
 
   retval = gdk_pixbuf_scale_simple (pixbuf,
@@ -467,6 +477,11 @@ create_marco_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 #else
   gtk_widget_size_request (window, &requisition);
 #endif
+
+  gtk_widget_queue_draw (window);
+
+  while (gtk_events_pending ())
+   gtk_main_iteration ();
 
   pixbuf = gtk_offscreen_window_get_pixbuf (GTK_OFFSCREEN_WINDOW(window));
 
