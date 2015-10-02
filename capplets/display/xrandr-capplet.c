@@ -756,7 +756,7 @@ on_rate_changed (GtkComboBox *box, gpointer data)
 	return;
 
     if (get_mode (app->refresh_combo, NULL, NULL, &rate, NULL))
-	rate = mate_rr_output_info_get_refresh_rate (app->current_output);
+	mate_rr_output_info_set_refresh_rate (app->current_output, rate);
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
