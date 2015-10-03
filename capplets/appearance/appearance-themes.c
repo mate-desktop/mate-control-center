@@ -775,11 +775,11 @@ theme_selection_changed_cb (GtkWidget *icon_view, AppearanceData *data)
     g_free (name);
     g_list_foreach (selection, (GFunc) gtk_tree_path_free, NULL);
     g_list_free (selection);
-  }
 
-  gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "theme_delete"),
+    gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "theme_delete"),
 			    theme_is_writable (theme));
-  gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "theme_save"), is_custom);
+    gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "theme_save"), is_custom);
+    }
 }
 
 static void
