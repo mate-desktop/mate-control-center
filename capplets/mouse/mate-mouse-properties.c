@@ -408,6 +408,15 @@ setup_dialog (GtkBuilder *dialog)
 	if (find_synaptics () == FALSE)
 		gtk_notebook_remove_page (GTK_NOTEBOOK (WID ("prefs_widget")), -1);
 	else {
+		g_settings_bind (touchpad_settings, "touchpad-enabled",
+			WID ("touchpad_enable"), "active",
+			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "touchpad-enabled",
+			WID ("vbox_touchpad_general"), "sensitive",
+			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "touchpad-enabled",
+			WID ("vbox_touchpad_scrolling"), "sensitive",
+			G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "disable-while-typing",
 			WID ("disable_w_typing_toggle"), "active",
 			G_SETTINGS_BIND_DEFAULT);
