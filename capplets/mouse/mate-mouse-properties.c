@@ -34,7 +34,6 @@
 #include "capplet-util.h"
 #include "activate-settings-daemon.h"
 #include "capplet-stock-icons.h"
-//#include "mate-mouse-accessibility.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -543,7 +542,6 @@ main (int argc, char **argv)
 
 	if (dialog) {
 		setup_dialog (dialog);
-		//setup_accessibility (dialog);
 
 		dialog_win = WID ("mouse_properties_dialog");
 		g_signal_connect (dialog_win, "response",
