@@ -136,10 +136,14 @@ event_box_button_press_event (GtkWidget   *widget,
 
 	double_click_time = g_settings_get_int (mouse_settings, DOUBLE_CLICK_KEY);
 
-	if (test_maybe_timeout_id != 0)
+	if (test_maybe_timeout_id != 0) {
 		g_source_remove  (test_maybe_timeout_id);
-	if (test_on_timeout_id != 0)
+		test_maybe_timeout_id = 0;
+	}
+	if (test_on_timeout_id != 0) {
 		g_source_remove (test_on_timeout_id);
+		test_on_timeout_id = 0;
+	}
 
 	switch (double_click_state) {
 	case DOUBLE_CLICK_TEST_OFF:
