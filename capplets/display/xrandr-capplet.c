@@ -1665,7 +1665,7 @@ get_display_name (App *app,
      * used as an adjective, not as a verb.  For example, the Spanish
      * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
      */
-        text = _("Mirror Screens");
+        text = g_strdup_printf (_("Mirror Screens"));
     } 
     else {
         text = g_strdup_printf ("<b>%s</b>\n<small>%s</small>", mate_rr_output_info_get_display_name (output), mate_rr_output_info_get_name (output));
