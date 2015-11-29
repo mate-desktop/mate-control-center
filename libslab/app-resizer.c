@@ -207,8 +207,6 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 	gint new_num_cols;
 	gint useable_area;
 
-	gtk_widget_get_allocation (child, &widget_allocation);
-
 	if (first_time)
 	{
 		/* we are letting the first show be the "natural" size of the child widget so do nothing. */
@@ -216,6 +214,7 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 			(*GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate) (widget, allocation);
 
 		first_time = FALSE;
+		gtk_widget_get_allocation (child, &widget_allocation);
 		gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation.width,
 			widget_allocation.height);
 		return;
@@ -270,6 +269,7 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 
 	if (GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate)
 		(*GTK_WIDGET_CLASS (app_resizer_parent_class)->size_allocate) (widget, allocation);
+	gtk_widget_get_allocation (child, &widget_allocation);
 	gtk_layout_set_size (GTK_LAYOUT (resizer), widget_allocation.width,
 		widget_allocation.height);
 }
