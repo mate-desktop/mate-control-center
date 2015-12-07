@@ -361,13 +361,11 @@ about_me_icon_theme_changed (GtkWindow    *window,
 	GtkIconInfo *icon;
 
 	icon = gtk_icon_theme_lookup_icon (me->theme, "stock_person", 80, 0);
-	if (icon == NULL) {
-		g_debug ("Icon not found");
+	if (icon != NULL) {
+		g_free (me->person);
+		me->person = g_strdup (gtk_icon_info_get_filename (icon));
+		gtk_icon_info_free (icon);
 	}
-	g_free (me->person);
-	me->person = g_strdup (gtk_icon_info_get_filename (icon));
-
-	gtk_icon_info_free (icon);
 
 	if (me->have_image)
 		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
