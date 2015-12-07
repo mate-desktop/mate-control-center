@@ -100,21 +100,21 @@ static void
 about_me_load_photo (MateAboutMe *me)
 {
 	gchar         *file;
-        GError        *error = NULL;
+	GError        *error = NULL;
 
 	file = g_build_filename (g_get_home_dir (), ".face", NULL);
-        me->image = gdk_pixbuf_new_from_file(file, &error);
+	me->image = gdk_pixbuf_new_from_file(file, &error);
 
-        if (me->image != NULL) {
+	if (me->image != NULL) {
 		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), file);
-                me->have_image = TRUE;
-        } else {
-                me->have_image = FALSE;
-                g_warning ("Could not load %s: %s", file, error->message);
-                g_error_free (error);
-        }
+		me->have_image = TRUE;
+	} else {
+		me->have_image = FALSE;
+		g_warning ("Could not load %s: %s", file, error->message);
+		g_error_free (error);
+	}
 
-        g_free (file);
+	g_free (file);
 }
 
 static void
@@ -123,13 +123,12 @@ about_me_update_photo (MateAboutMe *me)
 	GtkBuilder    *dialog;
 	gchar         *file;
 	GError        *error;
-        gboolean       result;
+	gboolean       result;
 
 	guchar 	      *data;
 	gsize 	       length;
 
 	dialog = me->dialog;
-
 
 	if (me->image_changed && me->have_image) {
 		GdkPixbufLoader *loader = gdk_pixbuf_loader_new ();
@@ -137,7 +136,7 @@ about_me_update_photo (MateAboutMe *me)
 		int height, width;
 		gboolean do_scale = FALSE;
 		float scale = 1.0;
-                float scalex = 1.0, scaley = 1.0;
+		float scalex = 1.0, scaley = 1.0;
 
 		e_image_chooser_get_image_data (E_IMAGE_CHOOSER (me->image_chooser), (char **) &data, &length);
 
@@ -158,12 +157,13 @@ about_me_update_photo (MateAboutMe *me)
 		width = gdk_pixbuf_get_width (pixbuf);
 
 		if (width > MAX_WIDTH) {
-                        scalex = (float)MAX_WIDTH/width;
+			scalex = (float)MAX_WIDTH/width;
 			if (scalex < scale) {
 				scale = scalex;
 			}
 			do_scale = TRUE;
 		}
+
 		if (height > MAX_HEIGHT) {
 			scaley = (float)MAX_HEIGHT/height;
 			if (scaley < scale) {
@@ -189,7 +189,7 @@ about_me_update_photo (MateAboutMe *me)
 		/* FIXME: I would have to read the default used by the mdmgreeter program */
 		error = NULL;
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
-                if (g_file_set_contents (file, (gchar *)data, length, &error) == TRUE) {
+		if (g_file_set_contents (file, (gchar *)data, length, &error) == TRUE) {
 			g_chmod (file, 0644);
 		} else {
 			g_warning ("Could not create %s: %s", file, error->message);
@@ -197,8 +197,7 @@ about_me_update_photo (MateAboutMe *me)
 		}
 
 		g_free (file);
-                g_object_unref (pixbuf);
-
+		g_object_unref (pixbuf);
 	} else if (me->image_changed && !me->have_image) {
 		/* Update the image in the card */
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
@@ -417,7 +416,7 @@ about_me_setup_dialog (void)
 	gchar        *str;
 
 	me = g_new0 (MateAboutMe, 1);
-        me->image = NULL;
+	me->image = NULL;
 
 	dialog = gtk_builder_new ();
 	gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-about-me-dialog.ui", NULL);
