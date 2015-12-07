@@ -376,16 +376,12 @@ about_me_icon_theme_changed (GtkWindow    *window,
 static void
 about_me_button_clicked_cb (GtkDialog *dialog, gint response_id, MateAboutMe *me)
 {
-	if (response_id == GTK_RESPONSE_HELP)
-		g_print ("Help goes here");
-	else {
-		if (me->commit_timeout_id) {
-			g_source_remove (me->commit_timeout_id);
-		}
-
-		about_me_destroy ();
-		gtk_main_quit ();
+	if (me->commit_timeout_id) {
+		g_source_remove (me->commit_timeout_id);
 	}
+
+	about_me_destroy ();
+	gtk_main_quit ();
 }
 
 static void
