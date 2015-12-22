@@ -29,7 +29,7 @@ wm_common_get_window_manager_property (Atom atom)
   if (wm_window == None)
     return NULL;
 
-  utf8_string = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "UTF8_STRING", False);
+  utf8_string = gdk_x11_get_xatom_by_name ("UTF8_STRING");
 
   gdk_error_trap_push ();
 
@@ -62,7 +62,7 @@ wm_common_get_window_manager_property (Atom atom)
 char*
 wm_common_get_current_window_manager (void)
 {
-  Atom atom = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_NET_WM_NAME", False);
+  Atom atom = gdk_x11_get_xatom_by_name ("_NET_WM_NAME");
   char *result;
 
   result = wm_common_get_window_manager_property (atom);
@@ -75,7 +75,7 @@ wm_common_get_current_window_manager (void)
 char**
 wm_common_get_current_keybindings (void)
 {
-  Atom keybindings_atom = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_MATE_WM_KEYBINDINGS", False);
+  Atom keybindings_atom = gdk_x11_get_xatom_by_name ("_MATE_WM_KEYBINDINGS");
   char *keybindings = wm_common_get_window_manager_property (keybindings_atom);
   char **results;
 
@@ -89,7 +89,7 @@ wm_common_get_current_keybindings (void)
     }
   else
     {
-      Atom wm_atom = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_NET_WM_NAME", False);
+      Atom wm_atom = gdk_x11_get_xatom_by_name ("_NET_WM_NAME");
       char *wm_name = wm_common_get_window_manager_property (wm_atom);
       char *to_copy[] = { NULL, NULL };
 
@@ -112,7 +112,7 @@ update_wm_window (void)
   gulong bytes_after;
 
   XGetWindowProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), GDK_ROOT_WINDOW (),
-		      XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_NET_SUPPORTING_WM_CHECK", False),
+		      gdk_x11_get_xatom_by_name ("_NET_SUPPORTING_WM_CHECK"),
 		      0, G_MAXLONG, False, XA_WINDOW, &type, &format,
 		      &nitems, &bytes_after, (guchar **) &xwindow);
 
@@ -149,10 +149,10 @@ wm_window_event_filter (GdkXEvent *xev,
        wm_window != None && xevent->xany.window == wm_window) ||
       (xevent->type == PropertyNotify &&
        xevent->xany.window == GDK_ROOT_WINDOW () &&
-       xevent->xproperty.atom == (XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),  "_NET_SUPPORTING_WM_CHECK", False))) ||
+       xevent->xproperty.atom == (gdk_x11_get_xatom_by_name ("_NET_SUPPORTING_WM_CHECK"))) ||
       (xevent->type == PropertyNotify &&
        wm_window != None && xevent->xany.window == wm_window &&
-       xevent->xproperty.atom == (XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_NET_WM_NAME", False))))
+       xevent->xproperty.atom == (gdk_x11_get_xatom_by_name ("_NET_WM_NAME"))))
     {
       update_wm_window ();
       (* ncb_data->func) ((gpointer)wm_common_get_current_window_manager(),

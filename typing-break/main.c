@@ -41,7 +41,7 @@ have_tray (void)
 	
 	selection_atom_name = g_strdup_printf ("_NET_SYSTEM_TRAY_S%d",
 					       XScreenNumberOfScreen (xscreen));
-	selection_atom = XInternAtom (DisplayOfScreen (xscreen), selection_atom_name, False);
+	selection_atom = gdk_x11_get_xatom_by_name (selection_atom_name);
 	g_free (selection_atom_name);
 	
 	if (XGetSelectionOwner (DisplayOfScreen (xscreen), selection_atom)) {
