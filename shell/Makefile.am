@@ -27,9 +27,9 @@ directory_DATA = $(directory_in_files:.directory.in=.directory)
 @INTLTOOL_DIRECTORY_RULE@
 
 menudir = $(sysconfdir)/xdg/menus
-menu_DATA = matecc.menu mate-preferences-categories.menu
+menu_DATA = matecc.menu
 
-EXTRA_DIST = matecc.desktop.in.in matecc.directory.in matecc.menu mate-preferences-categories.menu
+EXTRA_DIST = matecc.desktop.in.in matecc.directory.in matecc.menu
 
 DISTCLEANFILES = matecc.desktop matecc.desktop.in matecc.directory
 
