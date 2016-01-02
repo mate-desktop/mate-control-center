@@ -21,9 +21,6 @@ gsettingsschema_in_files = \
 gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
 @GSETTINGS_RULES@
 
-convertdir = $(datadir)/MateConf/gsettings
-convert_DATA = mate-control-center.convert
-
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
 CLEANFILES = \
@@ -51,8 +48,7 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	autogen.sh \
-	$(gsettingsschema_in_files) \
-	$(convert_DATA)
+	$(gsettingsschema_in_files)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb
 
