@@ -972,7 +972,7 @@ passdlg_process_response (PasswordDialog *pdialog, gint response_id)
 		}
 
 		/* Check that the backend is still running, or that an error
-		 * hass occurred but it has not yet exited */
+		 * has occurred but it has not yet exited */
 		if (pdialog->backend_pid == -1) {
 			/* If it is not, re-run authentication */
 
