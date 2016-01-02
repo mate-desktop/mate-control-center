@@ -198,7 +198,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 								   &my_stderr,						/* Stderr */
 								   error)) {					/* GError */
 
-		/* An error occured */
+		/* An error occurred */
 		free_passwd_resources (pdialog);
 
 		return FALSE;
@@ -566,7 +566,7 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 				reinit = TRUE;
 
 				if (msg != NULL) {
-					/* An error occured! */
+					/* An error occurred! */
 					passdlg_set_status (pdialog, msg);
 					g_free (msg);
 
@@ -964,7 +964,7 @@ passdlg_process_response (PasswordDialog *pdialog, gint response_id)
 		/* Set busy as this can be a long process */
 		passdlg_set_busy (pdialog, TRUE);
 
-		/* Stop passwd if an error occured and it is still running */
+		/* Stop passwd if an error occurred and it is still running */
 		if (pdialog->backend_state == PASSWD_STATE_ERR) {
 
 			/* Stop passwd, free resources */
@@ -972,7 +972,7 @@ passdlg_process_response (PasswordDialog *pdialog, gint response_id)
 		}
 
 		/* Check that the backend is still running, or that an error
-		 * hass occured but it has not yet exited */
+		 * hass occurred but it has not yet exited */
 		if (pdialog->backend_pid == -1) {
 			/* If it is not, re-run authentication */
 

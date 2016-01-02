@@ -101,7 +101,7 @@ get_reason_for_error (const char *dbus_error)
 	if (g_str_equal (dbus_error, "net.reactivated.Fprint.Error.AlreadyInUse"))
 		return N_("The device is already in use.");
 	if (g_str_equal (dbus_error, "net.reactivated.Fprint.Error.Internal"))
-		return N_("An internal error occured");
+		return N_("An internal error occurred");
 
 	return NULL;
 }
