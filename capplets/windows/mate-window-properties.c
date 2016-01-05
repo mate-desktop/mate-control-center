@@ -7,6 +7,7 @@
  * Written by: Seth Nickell <snickell@stanford.edu>
  *             Havoc Pennington <hp@redhat.com>
  *             Stefano Karapetsas <stefano@karapetsas.com>
+ *             Friedrich Herbst <frimam@web.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,6 +90,7 @@ static GtkWidget *compositing_fast_alt_tab_checkbutton;
 static GtkWidget *side_by_side_tiling_checkbutton;
 static GtkWidget *center_new_windows_checkbutton;
 static GtkWidget *focus_mode_checkbutton;
+static GtkWidget *focus_mode_mouse_checkbutton;
 static GtkWidget *autoraise_checkbutton;
 static GtkWidget *autoraise_delay_slider;
 static GtkWidget *autoraise_delay_hbox;
@@ -110,6 +112,8 @@ update_sensitivity ()
 
     gtk_widget_set_sensitive (GTK_WIDGET (compositing_fast_alt_tab_checkbutton),
                               g_settings_get_boolean (marco_settings, MARCO_COMPOSITING_MANAGER_KEY));
+    gtk_widget_set_sensitive (GTK_WIDGET (focus_mode_mouse_checkbutton),
+                              g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
     gtk_widget_set_sensitive (GTK_WIDGET (autoraise_checkbutton),
                               g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
     gtk_widget_set_sensitive (GTK_WIDGET (autoraise_delay_hbox),
@@ -135,10 +139,15 @@ static void
 mouse_focus_toggled_callback (GtkWidget *button,
                               void      *data)
 {
-    g_settings_set_enum (marco_settings,
-                         MARCO_FOCUS_KEY,
-                         gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)) ?
-                         FOCUS_MODE_SLOPPY : FOCUS_MODE_CLICK);
+    if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton))) {
+        g_settings_set_enum (marco_settings,
+                             MARCO_FOCUS_KEY,
+                             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton)) ?
+                             FOCUS_MODE_MOUSE : FOCUS_MODE_SLOPPY);
+    }
+    else {
+        g_settings_set_enum (marco_settings, MARCO_FOCUS_KEY, FOCUS_MODE_CLICK);
+    }
 }
 
 static void
@@ -146,8 +155,18 @@ mouse_focus_changed_callback (GSettings *settings,
                               const gchar *key,
                               gpointer user_data)
 {
-       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton),
-                                     g_settings_get_enum (settings, key) == FOCUS_MODE_SLOPPY);
+    if (g_settings_get_enum (settings, key) == FOCUS_MODE_MOUSE) {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton), TRUE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton), TRUE);
+    }
+    else if (g_settings_get_enum (settings, key) == FOCUS_MODE_SLOPPY) {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton), TRUE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton), FALSE);
+    }
+    else {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton), FALSE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton), FALSE);
+    }
 }
 
 static void
@@ -303,6 +322,7 @@ main (int argc, char **argv)
     GtkWidget *hbox;
     GtkWidget *hbox1;
     GtkWidget *hbox2;
+    GtkWidget *hbox3;
     gchar *str;
     const char *current_wm;
     int i;
@@ -411,13 +431,18 @@ main (int argc, char **argv)
     hbox = gtk_hbox_new (FALSE, 0);
     hbox1 = gtk_hbox_new (FALSE, 0);
     hbox2 = gtk_hbox_new (FALSE, 0);
+    hbox3 = gtk_hbox_new (FALSE, 0);
 
     focus_mode_checkbutton = gtk_check_button_new_with_mnemonic (_("_Select windows when the mouse moves over them"));
     gtk_box_pack_start (GTK_BOX (vbox), focus_mode_checkbutton, FALSE, FALSE, 6);
 
-    autoraise_checkbutton = gtk_check_button_new_with_mnemonic (_("_Raise selected windows after an interval"));
-    gtk_box_pack_start (GTK_BOX (hbox1), autoraise_checkbutton, FALSE, FALSE, 6);
+    focus_mode_mouse_checkbutton = gtk_check_button_new_with_mnemonic (_("_Unselect windows when the mouse leaves them"));
+    gtk_box_pack_start (GTK_BOX (hbox1), focus_mode_mouse_checkbutton, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 6);
+
+    autoraise_checkbutton = gtk_check_button_new_with_mnemonic (_("_Raise selected windows after an interval"));
+    gtk_box_pack_start (GTK_BOX (hbox2), autoraise_checkbutton, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (vbox1), hbox2, FALSE, FALSE, 6);
 
     autoraise_delay_hbox = gtk_hbox_new (FALSE, 0);
     autoraise_delay_slider = gtk_hscale_new_with_range (0, 10, 0.2);
@@ -430,8 +455,8 @@ main (int argc, char **argv)
     gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), widget, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (vbox1), autoraise_delay_hbox, FALSE, FALSE, 6);
 
-    gtk_box_pack_start (GTK_BOX (hbox2), vbox1, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox3), vbox1, FALSE, FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox3, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
 
@@ -519,12 +544,15 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    g_signal_connect (focus_mode_checkbutton, "toggled",
-                      G_CALLBACK (mouse_focus_toggled_callback), NULL);
     g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
                       G_CALLBACK (mouse_focus_changed_callback), NULL);
     /* Initialize the checkbox state appropriately */
     mouse_focus_changed_callback(marco_settings, MARCO_FOCUS_KEY, NULL);
+
+    g_signal_connect (focus_mode_checkbutton, "toggled",
+                      G_CALLBACK (mouse_focus_toggled_callback), NULL);
+    g_signal_connect (focus_mode_mouse_checkbutton, "toggled",
+                      G_CALLBACK (mouse_focus_toggled_callback), NULL);
 
     g_settings_bind (marco_settings,
                      MARCO_AUTORAISE_KEY,
