@@ -7,6 +7,7 @@
  * Written by: Seth Nickell <snickell@stanford.edu>
  *             Havoc Pennington <hp@redhat.com>
  *             Stefano Karapetsas <stefano@karapetsas.com>
+ *             Friedrich Herbst <frimam@web.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
