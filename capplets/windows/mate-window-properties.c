@@ -155,10 +155,18 @@ mouse_focus_changed_callback (GSettings *settings,
                               const gchar *key,
                               gpointer user_data)
 {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton),
-                                  g_settings_get_enum (settings, key) != FOCUS_MODE_CLICK);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton),
-                                  g_settings_get_enum (settings, key) == FOCUS_MODE_MOUSE);
+    if (g_settings_get_enum (settings, key) == FOCUS_MODE_MOUSE) {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton), TRUE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton), TRUE);
+    }
+    else if (g_settings_get_enum (settings, key) == FOCUS_MODE_SLOPPY) {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton), TRUE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton), FALSE);
+    }
+    else {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_checkbutton), FALSE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_mode_mouse_checkbutton), FALSE);
+    }
 }
 
 static void
