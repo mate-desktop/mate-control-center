@@ -436,7 +436,7 @@ main (int argc, char **argv)
     focus_mode_checkbutton = gtk_check_button_new_with_mnemonic (_("_Select windows when the mouse moves over them"));
     gtk_box_pack_start (GTK_BOX (vbox), focus_mode_checkbutton, FALSE, FALSE, 6);
 
-    focus_mode_mouse_checkbutton = gtk_check_button_new_with_mnemonic (_("_Unselect windows when the mouse leaves them"));
+    focus_mode_mouse_checkbutton = gtk_check_button_new_with_mnemonic (_("U_nselect windows when the mouse leaves them"));
     gtk_box_pack_start (GTK_BOX (hbox1), focus_mode_mouse_checkbutton, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 6);
 
