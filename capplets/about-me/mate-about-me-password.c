@@ -428,7 +428,6 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 	GError		*error = NULL;
 
 	gchar		*msg = NULL;		/* Status error message */
-	GtkBuilder	*dialog = NULL;
 
 	gboolean	reinit = FALSE;
 
@@ -436,8 +435,6 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 	if (str == NULL) {
 		str = g_string_new ("");
 	}
-
-	dialog = pdialog->ui;
 
 	if (g_io_channel_read_chars (source, buf, BUFSIZE, &bytes_read, &error) != G_IO_STATUS_NORMAL) {
 		g_warning ("IO Channel read error: %s", error->message);
@@ -873,11 +870,8 @@ passdlg_authenticate (GtkButton *button, PasswordDialog *pdialog)
 static guint
 passdlg_validate_passwords (PasswordDialog *pdialog)
 {
-	GtkBuilder	*dialog = NULL;
 	const gchar	*new_password, *retyped_password;
 	glong			nlen, rlen;
-
-	dialog = pdialog->ui;
 
 	new_password = gtk_entry_get_text (pdialog->new_password);
 	retyped_password = gtk_entry_get_text (pdialog->retyped_password);

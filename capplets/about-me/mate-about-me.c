@@ -66,21 +66,6 @@ typedef struct {
 
 static MateAboutMe *me = NULL;
 
-/*** Utility functions ***/
-static void
-about_me_error (GtkWindow *parent, gchar *str)
-{
-	GtkWidget *dialog;
-
-	dialog = gtk_message_dialog_new (parent,
-				         GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR,
-				         GTK_BUTTONS_OK, "%s", str);
-
-	gtk_dialog_run (GTK_DIALOG (dialog));
-	gtk_widget_destroy (dialog);
-}
-
-/********************/
 static void
 about_me_destroy (void)
 {
@@ -120,15 +105,11 @@ about_me_load_photo (MateAboutMe *me)
 static void
 about_me_update_photo (MateAboutMe *me)
 {
-	GtkBuilder    *dialog;
 	gchar         *file;
 	GError        *error;
-	gboolean       result;
 
 	guchar 	      *data;
 	gsize 	       length;
-
-	dialog = me->dialog;
 
 	if (me->image_changed && me->have_image) {
 		GdkPixbufLoader *loader = gdk_pixbuf_loader_new ();
@@ -406,7 +387,6 @@ about_me_setup_dialog (void)
 	GtkWidget    *main_dialog;
 	GtkIconInfo  *icon;
 	GtkBuilder   *dialog;
-	GError 	     *error = NULL;
 	gchar        *str;
 
 	me = g_new0 (MateAboutMe, 1);
