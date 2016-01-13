@@ -129,56 +129,60 @@ nld_search_entry_realize (GtkWidget * widget)
 	rsvg_handle_free (rsvg);
 }
 
-static gboolean
 #if GTK_CHECK_VERSION (3, 0, 0)
+static gboolean
 nld_search_entry_draw (GtkWidget * widget, cairo_t * cr)
-#else
-nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event)
-#endif
 {
 	NldSearchEntryPrivate *priv = NLD_SEARCH_ENTRY_GET_PRIVATE (widget);
-#if GTK_CHECK_VERSION (3, 0, 0)
 	GdkRectangle text_area;
 
 	gtk_entry_get_text_area (GTK_ENTRY (widget), &text_area);
-	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->draw (widget, cr);
-#else
-	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->expose_event (widget, event);
-#endif
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
+	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->draw (widget, cr);
+
+	int width, x;
+
+	if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
+	{
+		width = text_area.width;
+		x = width - priv->width - 1;
+	}
+	else
+		x = 1;
+
+	gdk_cairo_set_source_pixbuf (cr, priv->watermark, x, 1);
+	cairo_paint (cr);
+
+	return FALSE;
+}
+#else
+static gboolean
+nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event)
+{
+	NldSearchEntryPrivate *priv = NLD_SEARCH_ENTRY_GET_PRIVATE (widget);
+
+	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->expose_event (widget, event);
+
 	if (event->window == GTK_ENTRY (widget)->text_area)
 	{
-#endif
 		int width, height, x;
 
 		if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
 		{
-#if GTK_CHECK_VERSION(3, 0, 0)
-			width = text_area.width;
-			height = text_area.height;
-#else
 			gdk_drawable_get_size(event->window, &width, &height);
-#endif
 			x = width - priv->width - 1;
 		}
 		else
 			x = 1;
-#if GTK_CHECK_VERSION (3, 0, 0)
-		gdk_cairo_set_source_pixbuf (cr, priv->watermark, x, 1);
-		cairo_paint (cr);
-#else
+
 		gdk_draw_pixbuf (event->window, widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
 			priv->watermark, 0, 0, x, 1, priv->width, priv->height,
 			GDK_RGB_DITHER_NORMAL, 0, 0);
-#endif
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
 	}
-#endif
 
 	return FALSE;
 }
+#endif
 
 GtkWidget *
 nld_search_entry_new (void)
