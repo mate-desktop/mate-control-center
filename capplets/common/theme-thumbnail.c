@@ -145,9 +145,7 @@ static GdkPixmap* draw_window_on_pixbuf(GtkWidget* widget)
 
 	gtk_widget_hide(widget);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-	return pixbuf;
-#else
+#if !GTK_CHECK_VERSION (3, 0, 0)
 	return pixmap;
 #endif
 }
