@@ -575,10 +575,10 @@ main (int argc,
     FT_Face face;
     GFile *file;
     gchar *font_file, *title;
-    gint row;
 #if GTK_CHECK_VERSION (3, 4, 0)
     GtkWidget *window, *hbox, *grid, *swin, *drawing_area;
 #else
+    gint row;
     GtkWidget *window, *hbox, *table, *swin, *drawing_area;
 #endif
     GdkColor white = { 0, 0xffff, 0xffff, 0xffff };
