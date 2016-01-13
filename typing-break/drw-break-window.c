@@ -92,10 +92,10 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 drw_break_window_class_init (DrwBreakWindowClass *klass)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-        object_class->finalize = drw_break_window_finalize;
-        object_class->dispose = drw_break_window_dispose;
+	object_class->finalize = drw_break_window_finalize;
+	object_class->dispose = drw_break_window_dispose;
 
 	signals[POSTPONE] =
 		g_signal_new ("postpone",
@@ -319,7 +319,7 @@ drw_break_window_finalize (GObject *object)
 
 	if (G_OBJECT_CLASS (drw_break_window_parent_class)->finalize) {
 		(* G_OBJECT_CLASS (drw_break_window_parent_class)->finalize) (object);
-        }
+	}
 }
 
 static void
@@ -623,19 +623,19 @@ label_expose_event_cb (GtkLabel       *label,
 #else
 	cr = gdk_cairo_create (window);
 
-        gdk_cairo_rectangle (cr, &event->area);
-        cairo_clip (cr);
+	gdk_cairo_rectangle (cr, &event->area);
+	cairo_clip (cr);
 
-        cairo_set_source_rgb (cr, 0, 0, 0);
+	cairo_set_source_rgb (cr, 0, 0, 0);
 
-        /* Can't use pango_cairo_show_layout() here as we need to override
-         * the layout's colors with our shadow color.
-         */
-        cairo_move_to (cr, x + 1, y + 1);
-        pango_cairo_layout_path (cr, gtk_label_get_layout (label));
-        cairo_fill (cr);
+	/* Can't use pango_cairo_show_layout() here as we need to override
+	 * the layout's colors with our shadow color.
+	 */
+	cairo_move_to (cr, x + 1, y + 1);
+	pango_cairo_layout_path (cr, gtk_label_get_layout (label));
+	cairo_fill (cr);
 
-        cairo_destroy (cr);
+	cairo_destroy (cr);
 #endif
 
 	gtk_paint_layout (gtk_widget_get_style (widget),
