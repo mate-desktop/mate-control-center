@@ -382,7 +382,6 @@ static void
 setup_dialog (GtkBuilder *builder)
 {
 	GSList *mode_group;
-	GtkListStore *store;
 
 	g_signal_connect (proxy_settings, "changed::" IGNORE_HOSTS_KEY,
 			G_CALLBACK (cb_ignore_hosts_gsettings_changed), NULL);

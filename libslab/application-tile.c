@@ -274,7 +274,6 @@ application_tile_setup (ApplicationTile *this)
 
 	const gchar *comment;
 
-	const gchar *key;
 	gchar *markup;
 	gchar *str;
 

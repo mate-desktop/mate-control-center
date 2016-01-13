@@ -65,7 +65,6 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 {
 	guint index;
 	GAppInfo* item;
-	GSettings* settings;
 
 	index = gtk_combo_box_get_active(combo);
 
