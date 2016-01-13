@@ -601,18 +601,11 @@ label_expose_event_cb (GtkLabel       *label,
 		       gpointer        user_data)
 {
 	gint       x, y;
-	GdkColor   color;
 	GtkWidget *widget;
 	GdkWindow *window;
 #if !GTK_CHECK_VERSION (3, 0, 0)
 	cairo_t *cr;
 #endif
-
-	color.red = 0;
-	color.green = 0;
-	color.blue = 0;
-	color.pixel = 0;
-
 	get_layout_location (label, &x, &y);
 
 	widget = GTK_WIDGET (label);
@@ -628,9 +621,6 @@ label_expose_event_cb (GtkLabel       *label,
 
 	cairo_set_source_rgb (cr, 0, 0, 0);
 
-	/* Can't use pango_cairo_show_layout() here as we need to override
-	 * the layout's colors with our shadow color.
-	 */
 	cairo_move_to (cr, x + 1, y + 1);
 	pango_cairo_layout_path (cr, gtk_label_get_layout (label));
 	cairo_fill (cr);
