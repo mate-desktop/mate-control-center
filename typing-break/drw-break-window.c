@@ -590,30 +590,48 @@ get_layout_location (GtkLabel *label,
 	}
 }
 
-static gboolean
 #if GTK_CHECK_VERSION (3, 0, 0)
-label_draw_event_cb   (GtkLabel       *label,
-		       cairo_t        *cr,
+static gboolean
+label_draw_event_cb (GtkLabel *label,
+                     cairo_t  *cr,
+                     gpointer  user_data)
+{
+	gint       x, y;
+	GtkWidget *widget;
+
+	get_layout_location (label, &x, &y);
+
+	widget = GTK_WIDGET (label);
+
+	pango_cairo_show_layout (cr, gtk_label_get_layout (label));
+
+	gtk_paint_layout (gtk_widget_get_style (widget),
+			  cr,
+			  gtk_widget_get_state (widget),
+			  FALSE,
+			  widget,
+			  "label",
+			  x, y,
+			  gtk_label_get_layout (label));
+
+	return TRUE;
+}
 #else
+static gboolean
 label_expose_event_cb (GtkLabel       *label,
-		       GdkEventExpose *event,
-#endif
-		       gpointer        user_data)
+                       GdkEventExpose *event,
+                       gpointer        user_data)
 {
 	gint       x, y;
 	GtkWidget *widget;
 	GdkWindow *window;
-#if !GTK_CHECK_VERSION (3, 0, 0)
 	cairo_t *cr;
-#endif
+
 	get_layout_location (label, &x, &y);
 
 	widget = GTK_WIDGET (label);
 	window = gtk_widget_get_window (widget);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-	pango_cairo_show_layout (cr, gtk_label_get_layout (label));
-#else
 	cr = gdk_cairo_create (window);
 
 	gdk_cairo_rectangle (cr, &event->area);
@@ -626,19 +644,12 @@ label_expose_event_cb (GtkLabel       *label,
 	cairo_fill (cr);
 
 	cairo_destroy (cr);
-#endif
 
 	gtk_paint_layout (gtk_widget_get_style (widget),
-#if GTK_CHECK_VERSION (3, 0, 0)
-			  cr,
-#else
 			  window,
-#endif
 			  gtk_widget_get_state (widget),
 			  FALSE,
-#if !GTK_CHECK_VERSION (3, 0, 0)
 			  &event->area,
-#endif
 			  widget,
 			  "label",
 			  x, y,
@@ -646,6 +657,7 @@ label_expose_event_cb (GtkLabel       *label,
 
 	return TRUE;
 }
+#endif
 
 static void
 label_size_request_cb (GtkLabel       *label,
