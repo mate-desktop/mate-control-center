@@ -874,36 +874,20 @@ foo_scroll_area_unrealize (GtkWidget *widget)
 #if GTK_CHECK_VERSION (3, 0, 0)
 static cairo_surface_t *
 create_new_surface (GtkWidget *widget,
-		    cairo_surface_t *old)
-#else
-static GdkPixmap *
-create_new_pixmap (GtkWidget *widget,
-		   GdkPixmap *old)
-#endif
+                    cairo_surface_t *old)
 {
     GtkAllocation widget_allocation;
-#if GTK_CHECK_VERSION (3, 0, 0)
     cairo_t *cr;
     cairo_surface_t *new;
-#else
-    GdkPixmap *new;
-    cairo_t *cr;
-#endif
 
     gtk_widget_get_allocation (widget, &widget_allocation);
-#if GTK_CHECK_VERSION (3, 0, 0)
+
     cr = gdk_cairo_create (gtk_widget_get_window (widget));
     new = cairo_surface_create_similar (cairo_get_target (cr),
 					CAIRO_CONTENT_COLOR,
 					widget_allocation.width,
 					widget_allocation.height);
     cairo_destroy (cr);
-#else
-    new = gdk_pixmap_new (gtk_widget_get_window (widget),
-			  widget_allocation.width,
-			  widget_allocation.height,
-			  -1);
-#endif
 
     /* Unfortunately we don't know in which direction we were resized,
      * so we just assume we were dragged from the south-east corner.
@@ -913,19 +897,48 @@ create_new_pixmap (GtkWidget *widget,
      * static gravity for the window before this will be useful.
      */
 
-#if GTK_CHECK_VERSION (3, 0, 0)
     cr = cairo_create (new);
     cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
     cairo_set_source_surface (cr, old, 0, 0);
-#else
-    cr = gdk_cairo_create (new);
-    gdk_cairo_set_source_pixmap (cr, old, 0, 0);
-#endif
+
     cairo_paint (cr);
     cairo_destroy (cr);
 
     return new;
 }
+#else
+static GdkPixmap *
+create_new_pixmap (GtkWidget *widget,
+                   GdkPixmap *old)
+{
+    GtkAllocation widget_allocation;
+    GdkPixmap *new;
+    cairo_t *cr;
+
+    gtk_widget_get_allocation (widget, &widget_allocation);
+
+    new = gdk_pixmap_new (gtk_widget_get_window (widget),
+			  widget_allocation.width,
+			  widget_allocation.height,
+			  -1);
+
+    /* Unfortunately we don't know in which direction we were resized,
+     * so we just assume we were dragged from the south-east corner.
+     *
+     * Although, maybe we could get the root coordinates of the input-window?
+     * That might just work, actually. We need to make sure marco uses
+     * static gravity for the window before this will be useful.
+     */
+
+    cr = gdk_cairo_create (new);
+    gdk_cairo_set_source_pixmap (cr, old, 0, 0);
+
+    cairo_paint (cr);
+    cairo_destroy (cr);
+
+    return new;
+}
+#endif
  
 static void
 allocation_to_canvas_region (FooScrollArea *area,
