@@ -713,7 +713,11 @@ wp_drag_received (GtkWidget *widget,
       cursor = gdk_cursor_new_for_display (gdk_display_get_default (),
              GDK_WATCH);
       gdk_window_set_cursor (window, cursor);
+#if GTK_CHECK_VERSION (3, 0, 0)
+      g_object_unref (cursor);
+#else
       gdk_cursor_unref (cursor);
+#endif
 
       for (uri = uris; *uri; ++uri)
       {
