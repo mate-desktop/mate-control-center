@@ -437,30 +437,6 @@ void mate_wp_xml_load_list(AppearanceData* data)
 
 	g_free (wpdbfile);
 
-	/* This is obsoleto.
-	 * Do not store stuff in ~/.mate2/ */
-	#ifndef MATE_DISABLE_DEPRECATED
-	/*wpdbfile = g_build_filename(g_get_home_dir(), ".mate2", "backgrounds.xml", NULL);
-
-	if (g_file_test(wpdbfile, G_FILE_TEST_EXISTS))
-	{
-		mate_wp_xml_load_xml(data, wpdbfile);
-	}
-	else
-	{
-		g_free (wpdbfile);
-
-		wpdbfile = g_build_filename(g_get_home_dir(), ".mate2", "wp-list.xml", NULL);
-
-		if (g_file_test(wpdbfile, G_FILE_TEST_EXISTS))
-		{
-			mate_wp_xml_load_xml(data, wpdbfile);
-		}
-	}
-
-	g_free(wpdbfile);*/
-	#endif /* MATE_DISABLE_DEPRECATED */
-
 	datadir = g_build_filename(g_get_user_data_dir(), "mate-background-properties", NULL);
 	mate_wp_xml_load_from_dir(datadir, data);
 	g_free(datadir);
