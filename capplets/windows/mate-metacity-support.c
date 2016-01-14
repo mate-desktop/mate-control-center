@@ -52,7 +52,12 @@ mate_metacity_config_tool ()
     widget = gtk_label_new (str);
     g_free (str);
     gtk_label_set_use_markup (GTK_LABEL (widget), TRUE);
-    gtk_misc_set_alignment (GTK_MISC (widget), 0, 0.5);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_widget_set_halign (widget, GTK_ALIGN_START);
+    gtk_widget_set_valign (widget, GTK_ALIGN_CENTER);
+#else
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+#endif
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
 
     widget = gtk_check_button_new_with_label (_("Enable software _compositing window manager"));

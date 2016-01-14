@@ -303,7 +303,12 @@ title_label_new (const char* title)
     g_free (str);
 
     gtk_label_set_use_markup (GTK_LABEL (widget), TRUE);
-    gtk_misc_set_alignment (GTK_MISC (widget), 0, 0);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_widget_set_halign (widget, GTK_ALIGN_START);
+    gtk_widget_set_valign (widget, GTK_ALIGN_START);
+#else
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.0);
+#endif
 
     return widget;
 }
@@ -480,7 +485,12 @@ main (int argc, char **argv)
     vbox = gtk_vbox_new (FALSE, 0);
     hbox = gtk_hbox_new (FALSE, 0);
     widget = gtk_label_new_with_mnemonic (_("To move a window, press-and-hold this key then grab the window:"));
-    gtk_misc_set_alignment (GTK_MISC (widget), 0, 0);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_widget_set_halign (widget, GTK_ALIGN_START);
+    gtk_widget_set_valign (widget, GTK_ALIGN_START);
+#else
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.0);
+#endif
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 6);
     alt_click_hbox = gtk_vbox_new (FALSE, 6);
     gtk_label_set_mnemonic_widget (GTK_LABEL (widget), alt_click_hbox);
