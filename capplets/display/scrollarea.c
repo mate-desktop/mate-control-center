@@ -617,9 +617,9 @@ foo_scroll_area_expose (GtkWidget *widget,
 #if !GTK_CHECK_VERSION (3, 0, 0)
     GdkRectangle extents;
     GdkWindow *window = gtk_widget_get_window (widget);
+    int x_offset, y_offset;
 #endif
     GdkRegion *region;
-    int x_offset, y_offset;
     GtkAllocation widget_allocation;
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
@@ -637,10 +637,10 @@ foo_scroll_area_expose (GtkWidget *widget,
      * priv->{x,y}_offset.
      */
     
+#if !GTK_CHECK_VERSION (3, 0, 0)
     x_offset = scroll_area->priv->x_offset;
     y_offset = scroll_area->priv->y_offset;
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
     scroll_area->priv->expose_region = expose->region;
 #endif
 

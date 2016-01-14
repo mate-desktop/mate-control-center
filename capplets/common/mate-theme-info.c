@@ -1685,7 +1685,6 @@ void mate_theme_meta_info_free(MateThemeMetaInfo* meta_theme_info)
 gboolean mate_theme_meta_info_validate(const MateThemeMetaInfo* info, GError** error)
 {
 	MateThemeInfo* theme;
-	gchar* engine;
 
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -1719,7 +1718,7 @@ gboolean mate_theme_meta_info_validate(const MateThemeMetaInfo* info, GError** e
 
 #if !GTK_CHECK_VERSION (3, 0, 0)
 	/* check for gtk theme engines */
-	engine = gtk_theme_info_missing_engine(info->gtk_theme_name, TRUE);
+	gchar *engine = gtk_theme_info_missing_engine(info->gtk_theme_name, TRUE);
 
 	if (engine != NULL)
 	{
