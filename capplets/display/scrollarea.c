@@ -603,29 +603,62 @@ clip_to_region (cairo_t *cr, GdkRegion *region)
 }
 #endif
 
-static gboolean
 #if GTK_CHECK_VERSION (3, 0, 0)
+static gboolean
 foo_scroll_area_draw (GtkWidget *widget,
-		      cairo_t *widget_cr)
-#else
-foo_scroll_area_expose (GtkWidget *widget,
-			GdkEventExpose *expose)
-#endif
+                      cairo_t *widget_cr)
 {
     FooScrollArea *scroll_area = FOO_SCROLL_AREA (widget);
     cairo_t *cr;
-#if !GTK_CHECK_VERSION (3, 0, 0)
-    GdkRectangle extents;
-    GdkWindow *window = gtk_widget_get_window (widget);
-    int x_offset, y_offset;
-#endif
     GdkRegion *region;
     GtkAllocation widget_allocation;
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
+    /* Setup input areas */
+    clear_exposed_input_region (scroll_area, scroll_area->priv->update_region);
+
+    scroll_area->priv->current_input = g_new0 (InputRegion, 1);
+    scroll_area->priv->current_input->region = gdk_region_copy (scroll_area->priv->update_region);
+    scroll_area->priv->current_input->paths = NULL;
+    g_ptr_array_add (scroll_area->priv->input_regions,
+		     scroll_area->priv->current_input);
+
+    region = scroll_area->priv->update_region;
+    scroll_area->priv->update_region = gdk_region_new ();
+
+    /* Create cairo context */
+    cr = cairo_create (scroll_area->priv->surface);
+    initialize_background (widget, cr);
+
+    g_signal_emit (widget, signals[PAINT], 0, cr);
+
+    /* Destroy stuff */
+    cairo_destroy (cr);
+
+    scroll_area->priv->current_input = NULL;
+
+    /* Finally draw the backing pixmap */
+    cairo_set_source_surface (widget_cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
+    cairo_paint (widget_cr);
+
+    gdk_region_destroy (region);
+
+    return TRUE;
+}
+#else
+static gboolean
+foo_scroll_area_expose (GtkWidget *widget,
+                        GdkEventExpose *expose)
+{
+    FooScrollArea *scroll_area = FOO_SCROLL_AREA (widget);
+    cairo_t *cr;
+    GdkRectangle extents;
+    GdkWindow *window = gtk_widget_get_window (widget);
+    GdkRegion *region;
+    int x_offset, y_offset;
+    GtkAllocation widget_allocation;
+
     /* I don't think expose can ever recurse for the same area */
     g_assert (!scroll_area->priv->expose_region);
-#endif
 
     /* Note that this function can be called at a time
      * where the adj->value is different from x_offset. 
@@ -637,12 +670,10 @@ foo_scroll_area_expose (GtkWidget *widget,
      * priv->{x,y}_offset.
      */
     
-#if !GTK_CHECK_VERSION (3, 0, 0)
     x_offset = scroll_area->priv->x_offset;
     y_offset = scroll_area->priv->y_offset;
 
     scroll_area->priv->expose_region = expose->region;
-#endif
 
     /* Setup input areas */
     clear_exposed_input_region (scroll_area, scroll_area->priv->update_region);
@@ -657,39 +688,23 @@ foo_scroll_area_expose (GtkWidget *widget,
     scroll_area->priv->update_region = gdk_region_new ();
     
     /* Create cairo context */
-#if !GTK_CHECK_VERSION (3, 0, 0)
     cr = gdk_cairo_create (scroll_area->priv->pixmap);
     translate_cairo_device (cr, -x_offset, -y_offset);
     clip_to_region (cr, region);
-#else
-    cr = cairo_create (scroll_area->priv->surface);
-#endif
     initialize_background (widget, cr);
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
     /* Create regions */
     gdk_region_get_clipbox (region, &extents);
-#endif
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-    g_signal_emit (widget, signals[PAINT], 0, cr);
-#else
     g_signal_emit (widget, signals[PAINT], 0, cr, &extents, region);
-#endif
 
     /* Destroy stuff */
     cairo_destroy (cr);
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
     scroll_area->priv->expose_region = NULL;
-#endif
     scroll_area->priv->current_input = NULL;
 
     /* Finally draw the backing pixmap */
-#if GTK_CHECK_VERSION (3, 0, 0)
-    cairo_set_source_surface (widget_cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
-    cairo_paint (widget_cr);
-#else
     gtk_widget_get_allocation (widget, &widget_allocation);
 
     cr = gdk_cairo_create (window);
@@ -698,11 +713,11 @@ foo_scroll_area_expose (GtkWidget *widget,
     gdk_cairo_region (cr, expose->region);
     cairo_fill (cr);
     cairo_destroy (cr);
-#endif
     gdk_region_destroy (region);
     
     return TRUE;
 }
+#endif
 
 void
 foo_scroll_area_get_viewport (FooScrollArea *scroll_area,
