@@ -312,7 +312,7 @@ int
 main (int argc, char **argv)
 {
     GdkScreen *screen;
-    GtkNotebook *nb;
+    GtkWidget *nb;
     GtkWidget *general_vbox;
     GtkWidget *behaviour_vbox;
     GtkWidget *placement_vbox;
@@ -323,6 +323,7 @@ main (int argc, char **argv)
     GtkWidget *hbox1;
     GtkWidget *hbox2;
     GtkWidget *hbox3;
+    GtkWidget *content_area;
     gchar *str;
     const char *current_wm;
     int i;
@@ -368,15 +369,15 @@ main (int argc, char **argv)
     widget = gtk_label_new (_("General"));
     hbox = gtk_hbox_new (FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), general_vbox, FALSE, FALSE, 6);
-    gtk_notebook_append_page (nb, hbox, widget);
+    gtk_notebook_append_page (GTK_NOTEBOOK (nb), hbox, widget);
     widget = gtk_label_new (_("Behaviour"));
     hbox = gtk_hbox_new (FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), behaviour_vbox, FALSE, FALSE, 6);
-    gtk_notebook_append_page (nb, hbox, widget);
+    gtk_notebook_append_page (GTK_NOTEBOOK (nb), hbox, widget);
     widget = gtk_label_new (_("Placement"));
     hbox = gtk_hbox_new (FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), placement_vbox, FALSE, FALSE, 6);
-    gtk_notebook_append_page (nb, hbox, widget);
+    gtk_notebook_append_page (GTK_NOTEBOOK (nb), hbox, widget);
 
     /* Compositing manager */
     widget = title_label_new (N_("Compositing Manager"));
@@ -584,7 +585,8 @@ main (int argc, char **argv)
     update_sensitivity ();
 
     capplet_set_icon (dialog_win, "preferences-system-windows");
-    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog_win)), GTK_WIDGET (nb), TRUE, TRUE, 0);
+    content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog_win));
+    gtk_box_pack_start (GTK_BOX (content_area), nb, TRUE, TRUE, 0);
     gtk_widget_show_all (dialog_win);
 
     gtk_main ();
