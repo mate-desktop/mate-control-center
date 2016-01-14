@@ -46,10 +46,15 @@ draw_string (cairo_t *cr,
 	     const gchar *text,
 	     gint *pos_y)
 {
-    GdkColor black = { 0, 0, 0, 0 };
     cairo_text_extents_t extents;
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
+    gdk_cairo_set_source_rgba (cr, &black);
+#else
+    GdkColor black = { 0, 0, 0, 0 };
     gdk_cairo_set_source_color (cr, &black);
+#endif
 
     cairo_text_extents (cr, text, &extents);
     cairo_move_to (cr, 4, *pos_y);
@@ -250,7 +255,12 @@ add_row (GtkWidget *table,
     bold_name = g_strconcat ("<b>", name, "</b>", NULL);
     name_w = gtk_label_new (bold_name);
     g_free (bold_name);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_widget_set_halign (name_w, GTK_ALIGN_START);
+    gtk_widget_set_valign (name_w, GTK_ALIGN_START);
+#else
     gtk_misc_set_alignment (GTK_MISC (name_w), 0.0, 0.0);
+#endif
     gtk_label_set_use_markup (GTK_LABEL (name_w), TRUE);
 
 #if GTK_CHECK_VERSION (3, 4, 0)
@@ -269,7 +279,12 @@ add_row (GtkWidget *table,
         gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
         gtk_label_set_selectable (GTK_LABEL (label), TRUE);
         gtk_widget_set_size_request (label, 200, -1);
+#if GTK_CHECK_VERSION (3, 0, 0)
+        gtk_widget_set_halign (label, GTK_ALIGN_START);
+        gtk_widget_set_valign (label, GTK_ALIGN_START);
+#else
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
+#endif
 
         swin = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
         gtk_scrolled_window_set_policy (swin,
@@ -305,7 +320,12 @@ add_row (GtkWidget *table,
         gtk_container_add (GTK_CONTAINER (viewport), label);
     } else {
         GtkWidget *label = gtk_label_new (value);
+#if GTK_CHECK_VERSION (3, 0, 0)
+        gtk_widget_set_halign (label, GTK_ALIGN_START);
+        gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
+#else
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+#endif
         gtk_label_set_selectable (GTK_LABEL(label), TRUE);
 #if GTK_CHECK_VERSION (3, 4, 0)
         gtk_grid_attach_next_to (GTK_GRID (grid), label,
