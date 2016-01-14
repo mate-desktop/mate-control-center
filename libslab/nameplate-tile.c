@@ -283,7 +283,7 @@ nameplate_tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 		break;
 
 	case GTK_IMAGE_ICON_NAME:
-		gtk_image_get_icon_name (image, name, NULL);
+		gtk_image_get_icon_name (image, &name, NULL);
 		if (name)
 			gtk_drag_set_icon_name (context, name, 0, 0);
 
