@@ -851,9 +851,9 @@ wp_update_preview (GtkFileChooser *chooser,
     }
     else
     {
-      gtk_image_set_from_stock (GTK_IMAGE (data->wp_image),
-                                "gtk-dialog-question",
-                                GTK_ICON_SIZE_DIALOG);
+      gtk_image_set_from_icon_name (GTK_IMAGE (data->wp_image),
+                                    "dialog-question",
+                                    GTK_ICON_SIZE_DIALOG);
     }
   }
 
@@ -1332,7 +1332,7 @@ desktop_init (AppearanceData *data,
 
   add_button = appearance_capplet_get_widget (data, "wp_add_button");
   gtk_button_set_image (GTK_BUTTON (add_button),
-                        gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON));
+                        gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_BUTTON));
 
   g_signal_connect (add_button, "clicked",
                     (GCallback) wp_file_open_dialog, data);

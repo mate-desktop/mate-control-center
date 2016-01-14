@@ -237,7 +237,7 @@ static void update_message_area(AppearanceData* data)
 		gtk_misc_set_alignment (GTK_MISC (data->style_message_label), 0.0, 0.5);
 
 		hbox = gtk_hbox_new (FALSE, 9);
-		icon = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+		icon = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
 		gtk_misc_set_alignment (GTK_MISC (icon), 0.5, 0);
 		gtk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
 		gtk_box_pack_start (GTK_BOX (hbox), data->style_message_label, TRUE, TRUE, 0);
@@ -1046,8 +1046,8 @@ style_init (AppearanceData *data)
 
   w = appearance_capplet_get_widget (data, "color_scheme_defaults_button");
   gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_stock (GTK_STOCK_REVERT_TO_SAVED,
-                                                  GTK_ICON_SIZE_BUTTON));
+                        gtk_image_new_from_icon_name ("document-revert",
+                                                      GTK_ICON_SIZE_BUTTON));
 
   settings = gtk_settings_get_default ();
   g_signal_connect (settings, "notify::gtk-color-scheme", (GCallback) color_scheme_changed, data);

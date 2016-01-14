@@ -668,8 +668,8 @@ theme_message_area_update (AppearanceData *data)
 
     hbox = gtk_hbox_new (FALSE, 9);
     gtk_widget_show (hbox);
-    data->theme_info_icon = gtk_image_new_from_stock (GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DIALOG);
-    data->theme_error_icon = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+    data->theme_info_icon = gtk_image_new_from_icon_name ("dialog-information", GTK_ICON_SIZE_DIALOG);
+    data->theme_error_icon = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
     gtk_misc_set_alignment (GTK_MISC (data->theme_info_icon), 0.5, 0);
     gtk_misc_set_alignment (GTK_MISC (data->theme_error_icon), 0.5, 0);
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_info_icon, FALSE, FALSE, 0);
@@ -1075,12 +1075,12 @@ void themes_init(AppearanceData* data)
 
   w = appearance_capplet_get_widget (data, "theme_install");
   gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON));
+                        gtk_image_new_from_icon_name ("document-open", GTK_ICON_SIZE_BUTTON));
   g_signal_connect (w, "clicked", (GCallback) theme_install_cb, data);
 
   w = appearance_capplet_get_widget (data, "theme_save");
   gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_stock (GTK_STOCK_SAVE_AS, GTK_ICON_SIZE_BUTTON));
+                        gtk_image_new_from_icon_name ("document-save-as", GTK_ICON_SIZE_BUTTON));
   g_signal_connect (w, "clicked", (GCallback) theme_save_cb, data);
 
   w = appearance_capplet_get_widget (data, "theme_custom");
