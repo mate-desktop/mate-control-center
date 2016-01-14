@@ -290,7 +290,12 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 
 			XFree (data);
 		}
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+		gdk_error_trap_pop_ignored ();
+#else
 		gdk_error_trap_pop ();
+#endif
 
 		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
 	}
@@ -341,7 +346,12 @@ find_synaptics (void)
 			XFree (data);
 			ret = TRUE;
 		}
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+		gdk_error_trap_pop_ignored ();
+#else
 		gdk_error_trap_pop ();
+#endif
 
 		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
 
