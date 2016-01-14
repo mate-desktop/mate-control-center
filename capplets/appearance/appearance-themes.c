@@ -664,14 +664,30 @@ theme_message_area_update (AppearanceData *data)
     data->theme_message_label = gtk_label_new (NULL);
     gtk_widget_show (data->theme_message_label);
     gtk_label_set_line_wrap (GTK_LABEL (data->theme_message_label), TRUE);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_widget_set_halign (data->theme_message_label, GTK_ALIGN_START);
+    gtk_widget_set_valign (data->theme_message_label, GTK_ALIGN_CENTER);
+#else
     gtk_misc_set_alignment (GTK_MISC (data->theme_message_label), 0.0, 0.5);
+#endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 9);
+#else
     hbox = gtk_hbox_new (FALSE, 9);
+#endif
     gtk_widget_show (hbox);
     data->theme_info_icon = gtk_image_new_from_icon_name ("dialog-information", GTK_ICON_SIZE_DIALOG);
     data->theme_error_icon = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
-    gtk_misc_set_alignment (GTK_MISC (data->theme_info_icon), 0.5, 0);
-    gtk_misc_set_alignment (GTK_MISC (data->theme_error_icon), 0.5, 0);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_widget_set_halign (data->theme_info_icon, GTK_ALIGN_CENTER);
+    gtk_widget_set_valign (data->theme_info_icon, GTK_ALIGN_START);
+    gtk_widget_set_halign (data->theme_error_icon, GTK_ALIGN_CENTER);
+    gtk_widget_set_valign (data->theme_error_icon, GTK_ALIGN_START);
+#else
+    gtk_misc_set_alignment (GTK_MISC (data->theme_info_icon), 0.5, 0.0);
+    gtk_misc_set_alignment (GTK_MISC (data->theme_error_icon), 0.5, 0.0);
+#endif
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_info_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_error_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_message_label, TRUE, TRUE, 0);
