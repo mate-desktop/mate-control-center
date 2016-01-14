@@ -292,14 +292,22 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_container_add (GTK_CONTAINER (window), preview);
   gtk_widget_realize (window);
   gtk_widget_realize (preview);
+#if GTK_CHECK_VERSION (3, 0, 0)
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+#else
   vbox = gtk_vbox_new (FALSE, 6);
+#endif
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_container_add (GTK_CONTAINER (preview), vbox);
   align = gtk_alignment_new (0, 0, 0.0, 0.0);
   gtk_box_pack_start (GTK_BOX (vbox), align, FALSE, FALSE, 0);
   stock_button = gtk_button_new_from_stock (GTK_STOCK_OPEN);
   gtk_container_add (GTK_CONTAINER (align), stock_button);
+#if GTK_CHECK_VERSION (3, 0, 0)
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
   box = gtk_hbox_new (FALSE, 0);
+#endif
   gtk_box_pack_start (GTK_BOX (vbox), box, FALSE, FALSE, 0);
   checkbox = gtk_check_button_new ();
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), TRUE);
@@ -378,9 +386,17 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
   vbox = gtk_vbox_new (FALSE, 0);
+#endif
   gtk_container_add (GTK_CONTAINER (window), vbox);
+#if GTK_CHECK_VERSION (3, 0, 0)
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+#else
   box = gtk_hbox_new (FALSE, 6);
+#endif
   gtk_container_set_border_width (GTK_CONTAINER (box), 6);
   gtk_box_pack_start (GTK_BOX (vbox), box, FALSE, FALSE, 0);
   stock_button = gtk_button_new_from_stock (GTK_STOCK_OPEN);
