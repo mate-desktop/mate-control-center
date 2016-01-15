@@ -83,7 +83,12 @@ tile_action_set_menu_item_label (TileAction * this, const gchar * markup)
 	{
 		label = gtk_label_new (markup);
 		gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+#if GTK_CHECK_VERSION (3, 0, 0)
+		gtk_widget_set_halign (label, GTK_ALIGN_START);
+		gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
+#else
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+#endif
 
 		this->menu_item = GTK_MENU_ITEM (gtk_menu_item_new ());
 		gtk_container_add (GTK_CONTAINER (this->menu_item), label);

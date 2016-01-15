@@ -242,7 +242,12 @@ create_header (const gchar *name)
 
 	header = gtk_label_new (name);
 	gtk_label_set_use_underline (GTK_LABEL (header), TRUE);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_set_halign (header, GTK_ALIGN_START);
+	gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#else
 	gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
+#endif
 
 	return header;
 }

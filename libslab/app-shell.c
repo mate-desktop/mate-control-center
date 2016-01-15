@@ -406,7 +406,12 @@ create_actions_section (AppShellData * app_data, const gchar * title,
 
 			action = (AppAction *) actions->data;
 			header = gtk_label_new (action->name);
-			gtk_misc_set_alignment (GTK_MISC (header), 0, 0.5);
+#if GTK_CHECK_VERSION (3, 0, 0)
+			gtk_widget_set_halign (header, GTK_ALIGN_START);
+			gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#else
+			gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
+#endif
 			launcher = nameplate_tile_new (NULL, NULL, header, NULL);
 
 			g_object_set_data (G_OBJECT (launcher), APP_ACTION_KEY, action->item);
@@ -697,7 +702,12 @@ create_application_category_sections (AppShellData * app_data)
 		GtkWidget *hbox;
 		GtkWidget *table;
 
-		gtk_misc_set_alignment (GTK_MISC (header), 0, 0.5);
+#if GTK_CHECK_VERSION (3, 0, 0)
+		gtk_widget_set_halign (header, GTK_ALIGN_START);
+		gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#else
+		gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
+#endif
 		data->group_launcher = TILE (nameplate_tile_new (NULL, NULL, header, NULL));
 		g_object_ref (data->group_launcher);
 
