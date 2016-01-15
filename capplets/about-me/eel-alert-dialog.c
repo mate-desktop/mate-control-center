@@ -159,29 +159,57 @@ eel_alert_dialog_init (EelAlertDialog *dialog)
 	dialog->details->secondary_label = gtk_label_new (NULL);
 	dialog->details->details_label = gtk_label_new (NULL);
 	dialog->details->image = gtk_image_new_from_stock (NULL, GTK_ICON_SIZE_DIALOG);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_set_halign (dialog->details->image, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign (dialog->details->image, GTK_ALIGN_START);
+#else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->image), 0.5, 0.0);
+#endif
 
 	gtk_label_set_line_wrap (GTK_LABEL (dialog->details->primary_label), TRUE);
 	gtk_label_set_selectable (GTK_LABEL (dialog->details->primary_label), TRUE);
 	gtk_label_set_use_markup (GTK_LABEL (dialog->details->primary_label), TRUE);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_set_halign (dialog->details->primary_label, GTK_ALIGN_START);
+	gtk_widget_set_valign (dialog->details->primary_label, GTK_ALIGN_CENTER);
+#else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->primary_label), 0.0, 0.5);
+#endif
 
 	gtk_label_set_line_wrap (GTK_LABEL (dialog->details->secondary_label), TRUE);
 	gtk_label_set_selectable (GTK_LABEL (dialog->details->secondary_label), TRUE);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_set_halign (dialog->details->secondary_label, GTK_ALIGN_START);
+	gtk_widget_set_valign (dialog->details->secondary_label, GTK_ALIGN_CENTER);
+#else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->secondary_label), 0.0, 0.5);
+#endif
 
 	gtk_label_set_line_wrap (GTK_LABEL (dialog->details->details_label), TRUE);
 	gtk_label_set_selectable (GTK_LABEL (dialog->details->details_label), TRUE);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_set_halign (dialog->details->details_label, GTK_ALIGN_START);
+	gtk_widget_set_valign (dialog->details->details_label, GTK_ALIGN_CENTER);
+#else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->details_label), 0.0, 0.5);
+#endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+#else
 	hbox = gtk_hbox_new (FALSE, 12);
+#endif
 	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
 
 	gtk_box_pack_start (GTK_BOX (hbox), dialog->details->image,
 	                    FALSE, FALSE, 0);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+#else
 	vbox = gtk_vbox_new (FALSE, 12);
-	
+#endif
+
 	gtk_box_pack_start (GTK_BOX (hbox), vbox,
 	                    FALSE, FALSE, 0);
 
