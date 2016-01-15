@@ -243,8 +243,8 @@ about_me_update_preview (GtkFileChooser *chooser,
 			gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
 			g_object_unref (pixbuf);
 		} else {
-			gtk_image_set_from_stock (GTK_IMAGE (image),
-						  "gtk-dialog-question",
+			gtk_image_set_from_icon_name (GTK_IMAGE (image),
+						  "dialog-question",
 						  GTK_ICON_SIZE_DIALOG);
 		}
 	}
