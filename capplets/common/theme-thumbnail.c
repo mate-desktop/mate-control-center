@@ -213,7 +213,11 @@ create_folder_icon (char *icon_theme_name)
   if (folder_icon_info != NULL)
   {
     folder_icon = gtk_icon_info_load_icon (folder_icon_info, NULL);
+#if GTK_CHECK_VERSION (3, 8, 0)
+    g_object_unref (folder_icon_info);
+#else
     gtk_icon_info_free (folder_icon_info);
+#endif
   }
 
   g_object_unref (icon_theme);
