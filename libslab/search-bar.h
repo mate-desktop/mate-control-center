@@ -36,12 +36,12 @@ extern "C" {
 
 typedef struct
 {
-	GtkVBox parent;
+	GtkBox parent;
 } NldSearchBar;
 
 typedef struct
 {
-	GtkVBoxClass parent_class;
+	GtkBoxClass parent_class;
 
 	void (*search) (NldSearchBar *, int context_id, const char *text);
 } NldSearchBarClass;

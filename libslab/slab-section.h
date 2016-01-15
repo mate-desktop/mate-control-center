@@ -47,7 +47,7 @@ typedef enum
 
 typedef struct
 {
-	GtkVBox parent_vbox;
+	GtkBox parent_vbox;
 
 	GtkWidget *title;
 	GtkWidget *contents;
@@ -59,7 +59,7 @@ typedef struct
 
 typedef struct
 {
-	GtkVBoxClass parent_class;
+	GtkBoxClass parent_class;
 } SlabSectionClass;
 
 GType slab_section_get_type (void);

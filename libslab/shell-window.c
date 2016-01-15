@@ -60,7 +60,11 @@ shell_window_new (AppShellData * app_data)
 	gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 	gtk_frame_set_shadow_type(GTK_FRAME(window), GTK_SHADOW_NONE);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	window->_hbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+#else
 	window->_hbox = GTK_BOX (gtk_hbox_new (FALSE, 0));
+#endif
 	gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (window->_hbox));
 
 #if GTK_CHECK_VERSION (3, 0, 0)

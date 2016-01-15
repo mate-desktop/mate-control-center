@@ -256,7 +256,11 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 	app_data->shell = shell_window_new (app_data);
 	app_data->static_actions = actions;
 
-	right_vbox = gtk_vbox_new (FALSE, CATEGORY_SPACING);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	right_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
+	right_vbox = gtk_vbox_new (FALSE, 0);
+#endif
 
 	num_cols = SIZING_SCREEN_WIDTH_LARGE_NUMCOLS;
 	if (gdk_screen_width () <= SIZING_SCREEN_WIDTH_LARGE)
@@ -267,7 +271,7 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 			num_cols = SIZING_SCREEN_WIDTH_MEDIUM_NUMCOLS;
 	}
 	app_data->category_layout =
-		app_resizer_new (GTK_VBOX (right_vbox), num_cols, TRUE, app_data);
+		app_resizer_new (GTK_BOX (right_vbox), num_cols, TRUE, app_data);
 
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw), GTK_POLICY_AUTOMATIC,
@@ -285,7 +289,11 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 	gtk_container_set_focus_vadjustment (GTK_CONTAINER (right_vbox),
 		gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (sw)));
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	left_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 15);
+#else
 	left_vbox = gtk_vbox_new (FALSE, 15);
+#endif
 
 	filter_section = create_filter_section (app_data, filter_title);
 	app_data->filter_section = filter_section;
@@ -307,7 +315,7 @@ static gboolean
 relayout_shell_partial (gpointer user_data)
 {
 	AppShellData *app_data = (AppShellData *) user_data;
-	GtkVBox *vbox = APP_RESIZER (app_data->category_layout)->child;
+	GtkBox *vbox = APP_RESIZER (app_data->category_layout)->child;
 	CategoryData *data;
 
 	if (app_data->stop_incremental_relayout)
@@ -321,7 +329,7 @@ relayout_shell_partial (gpointer user_data)
 		{
 			populate_application_category_section (app_data, data->section,
 				data->filtered_launcher_list);
-			gtk_box_pack_start (GTK_BOX (vbox), GTK_WIDGET (data->section), TRUE, TRUE,
+			gtk_box_pack_start (vbox, GTK_WIDGET (data->section), TRUE, TRUE,
 				0);
 			app_data->filtered_out_everything = FALSE;
 		}
@@ -349,7 +357,7 @@ relayout_shell_partial (gpointer user_data)
 static void
 relayout_shell_incremental (AppShellData * app_data)
 {
-	GtkVBox *vbox = APP_RESIZER (app_data->category_layout)->child;
+	GtkBox *vbox = APP_RESIZER (app_data->category_layout)->child;
 
 	app_data->stop_incremental_relayout = FALSE;
 	app_data->filtered_out_everything = TRUE;
@@ -368,7 +376,7 @@ static void
 relayout_shell (AppShellData * app_data)
 {
 	GtkWidget *shell = app_data->shell;
-	GtkVBox *vbox = APP_RESIZER (app_data->category_layout)->child;
+	GtkBox *vbox = APP_RESIZER (app_data->category_layout)->child;
 
 	populate_application_category_sections (app_data, GTK_WIDGET (vbox));
 	app_resizer_set_table_cache (APP_RESIZER (app_data->category_layout),
@@ -395,7 +403,11 @@ create_actions_section (AppShellData * app_data, const gchar * title,
 	section = slab_section_new (title, Style1);
 	g_object_ref (section);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
 	vbox = gtk_vbox_new (FALSE, 0);
+#endif
 	slab_section_set_contents (SLAB_SECTION (section), vbox);
 
 	if (app_data->static_actions)
@@ -438,7 +450,11 @@ create_groups_section (AppShellData * app_data, const gchar * title)
 	section = slab_section_new (title, Style1);
 	g_object_ref (section);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
 	vbox = gtk_vbox_new (FALSE, 0);
+#endif
 	slab_section_set_contents (SLAB_SECTION (section), vbox);
 
 	return section;
@@ -448,13 +464,10 @@ static void
 populate_groups_section (AppShellData * app_data)
 {
 	SlabSection *section = SLAB_SECTION (app_data->groups_section);
-	GtkVBox *vbox;
+	GtkBox *vbox;
 	GList *cat_list;
 
-	/* Make sure our implementation has not changed and it's still a GtkVBox */
-	g_assert (GTK_IS_VBOX (section->contents));
-
-	vbox = GTK_VBOX (section->contents);
+	vbox = GTK_BOX (section->contents);
 	remove_container_entries (GTK_CONTAINER (vbox));
 
 	cat_list = app_data->categories_list;
@@ -464,7 +477,7 @@ populate_groups_section (AppShellData * app_data)
 		if (NULL != data->filtered_launcher_list)
 		{
 			gtk_widget_set_state (GTK_WIDGET (data->group_launcher), GTK_STATE_NORMAL);
-			gtk_box_pack_start (GTK_BOX (vbox), GTK_WIDGET (data->group_launcher),
+			gtk_box_pack_start (vbox, GTK_WIDGET (data->group_launcher),
 				FALSE, FALSE, 0);
 		}
 	}
@@ -499,8 +512,7 @@ handle_group_clicked (Tile * tile, TileEvent * event, gpointer user_data)
 		if (NULL != cat_data->filtered_launcher_list)
 		{
 			gtk_widget_get_allocation (GTK_WIDGET (cat_data->section), &allocation);
-			total += allocation.height +
-				CATEGORY_SPACING;
+			total += allocation.height;
 		}
 	}
 	while (NULL != (cat_list = g_list_next (cat_list)));
@@ -731,7 +743,11 @@ create_application_category_sections (AppShellData * app_data)
 		g_object_ref (data->section);
 		g_free (markup);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
 		hbox = gtk_hbox_new (FALSE, 0);
+#endif
 		table = gtk_table_new (0, 0, TRUE);
 		gtk_table_set_col_spacings (GTK_TABLE (table), 5);
 		gtk_table_set_row_spacings (GTK_TABLE (table), 5);
@@ -757,7 +773,11 @@ show_no_results_message (AppShellData * app_data, GtkWidget * containing_vbox)
 		app_data->filtered_out_everything_widget = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
 		g_object_ref (app_data->filtered_out_everything_widget);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
 		hbox = gtk_hbox_new (FALSE, 0);
+#endif
 		image = themed_icon_new ("face-surprise", GTK_ICON_SIZE_DIALOG);
 		gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
 
@@ -818,7 +838,6 @@ populate_application_category_section (AppShellData * app_data, SlabSection * se
 	GtkTable *table;
 	GList *children;
 
-	g_assert (GTK_IS_HBOX (section->contents));
 	hbox = GTK_WIDGET (section->contents);
 
 	children = gtk_container_get_children (GTK_CONTAINER (hbox));

@@ -232,8 +232,13 @@ nameplate_tile_setup (NameplateTile *this)
 	priv->header_ctnr = GTK_CONTAINER (gtk_alignment_new (0.0, 0.5, 1.0, 1.0));
 	priv->subheader_ctnr = GTK_CONTAINER (gtk_alignment_new (0.0, 0.5, 1.0, 1.0));
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
 	hbox = gtk_hbox_new (FALSE, 6);
 	vbox = gtk_vbox_new (FALSE, 0);
+#endif
 
 	alignment = gtk_alignment_new (0.0, 0.5, 1.0, 0.0);
 

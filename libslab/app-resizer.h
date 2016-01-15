@@ -45,7 +45,7 @@ struct _AppResizer
 {
 	GtkLayout parent;
 
-	GtkVBox *child;
+	GtkBox *child;
 	GList *cached_tables_list;
 	gint cached_element_width;
 	gint cached_table_spacing;
@@ -64,7 +64,7 @@ void app_resizer_set_homogeneous (AppResizer * widget, gboolean value);
 void remove_container_entries (GtkContainer * widget);
 
 GType app_resizer_get_type (void);
-GtkWidget *app_resizer_new (GtkVBox * child, gint initial_num_columns, gboolean homogeneous,
+GtkWidget *app_resizer_new (GtkBox * child, gint initial_num_columns, gboolean homogeneous,
 	AppShellData * app_data);
 void app_resizer_set_table_cache (AppResizer * widget, GList * cache_list);
 void app_resizer_layout_table_default (AppResizer * widget, GtkTable * table, GList * element_list);

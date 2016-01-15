@@ -35,7 +35,6 @@
 extern "C" {
 #endif
 
-#define CATEGORY_SPACING 0
 #define GROUP_POSITION_NUMBER_KEY "Unique Group Position Number"
 #define APP_ACTION_KEY  "Unique Application Action Key"
 
