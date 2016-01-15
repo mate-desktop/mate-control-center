@@ -68,13 +68,20 @@ nld_search_context_picker_init (NldSearchContextPicker * picker)
 {
 	NldSearchContextPickerPrivate *priv = NLD_SEARCH_CONTEXT_PICKER_GET_PRIVATE (picker);
 	GtkBox *hbox;
+	GtkWidget *separator;
 
 	hbox = GTK_BOX (gtk_hbox_new (FALSE, 10));
 	gtk_container_add (GTK_CONTAINER (picker), GTK_WIDGET (hbox));
 
 	priv->cur_icon = GTK_IMAGE (gtk_image_new ());
 	gtk_box_pack_start (hbox, GTK_WIDGET (priv->cur_icon), FALSE, FALSE, 0);
-	gtk_box_pack_start (hbox, gtk_vseparator_new (), FALSE, FALSE, 0);
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+	separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
+#else
+	separator = gtk_vseparator_new ();
+#endif
+	gtk_box_pack_start (hbox, separator, FALSE, FALSE, 0);
 	gtk_box_pack_start (hbox, gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE), FALSE, FALSE, 0);
 
 	gtk_widget_show_all (GTK_WIDGET (hbox));
