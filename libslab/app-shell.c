@@ -568,7 +568,11 @@ handle_filter_changed_delayed (gpointer user_data)
 	app_data->busy_cursor =
 		gdk_cursor_new_for_display (gtk_widget_get_display (app_data->shell), GDK_WATCH);
 	gdk_window_set_cursor (gtk_widget_get_window (app_data->shell), app_data->busy_cursor);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	g_object_unref (app_data->busy_cursor);
+#else
 	gdk_cursor_unref (app_data->busy_cursor);
+#endif
 
 	set_state (app_data, NULL);
 	app_resizer_set_vadjustment_value (app_data->category_layout, 0);
