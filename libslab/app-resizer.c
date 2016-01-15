@@ -305,7 +305,14 @@ app_resizer_new (GtkVBox * child, gint initial_num_columns, gboolean homogeneous
 void
 app_resizer_set_vadjustment_value (GtkWidget * widget, gdouble value)
 {
-	GtkAdjustment *adjust = gtk_layout_get_vadjustment (GTK_LAYOUT (widget));
+	GtkAdjustment *adjust;
+
+#if GTK_CHECK_VERSION (3, 0, 0)
+	adjust = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+#else
+	adjust = gtk_layout_get_vadjustment (GTK_LAYOUT (widget));
+#endif
+
 	gdouble upper = gtk_adjustment_get_upper (adjust);
 	gdouble page_size = gtk_adjustment_get_page_size (adjust);
 	if (value > upper - page_size)
