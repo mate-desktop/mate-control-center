@@ -327,7 +327,11 @@ xkb_options_add_group (XklConfigRegistry * config_registry,
 	g_free (titlemarkup);
 	align = gtk_alignment_new (0, 0, 1, 1);
 	gtk_alignment_set_padding (GTK_ALIGNMENT (align), 6, 12, 12, 0);
+#if GTK_CHECK_VERSION (3, 0, 0)
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+#else
 	vbox = gtk_vbox_new (TRUE, 6);
+#endif
 	gtk_container_add (GTK_CONTAINER (align), vbox);
 	gtk_container_add (GTK_CONTAINER (current_expander), align);
 
