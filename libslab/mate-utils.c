@@ -37,7 +37,7 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 			g_object_unref (pixbuf);
 		}
 		else
-			gtk_image_set_from_stock (image, "gtk-missing-image", size);
+			gtk_image_set_from_icon_name (image, "image-missing", size);
 	}
 	else
 	{
@@ -61,7 +61,7 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 		if (icon_exists)
 			gtk_image_set_from_icon_name (image, id, size);
 		else
-			gtk_image_set_from_stock (image, "gtk-missing-image", size);
+			gtk_image_set_from_icon_name (image, "image-missing", size);
 
 	}
 

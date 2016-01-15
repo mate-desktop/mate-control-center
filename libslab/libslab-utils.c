@@ -55,7 +55,7 @@ libslab_gtk_image_set_by_id (GtkImage *image, const gchar *id)
 			g_object_unref (pixbuf);
 		}
 		else
-			gtk_image_set_from_stock (image, "gtk-missing-image", size);
+			gtk_image_set_from_icon_name (image, "image-missing", size);
 	}
 	else {
 		tmp = g_strdup (id);
@@ -79,7 +79,7 @@ libslab_gtk_image_set_by_id (GtkImage *image, const gchar *id)
 		if (found)
 			gtk_image_set_from_icon_name (image, tmp, size);
 		else
-			gtk_image_set_from_stock (image, "gtk-missing-image", size);
+			gtk_image_set_from_icon_name (image, "image-missing", size);
 
 		g_free (tmp);
 	}
