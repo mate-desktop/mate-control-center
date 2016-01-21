@@ -96,7 +96,7 @@ static GtkWidget *autoraise_delay_slider;
 static GtkWidget *autoraise_delay_hbox;
 static GtkWidget *double_click_titlebar_optionmenu;
 static GtkWidget *titlebar_layout_optionmenu;
-static GtkWidget *alt_click_hbox;
+static GtkWidget *alt_click_vbox;
 
 static GSettings *marco_settings;
 
@@ -559,12 +559,12 @@ main (int argc, char **argv)
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 6);
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-    alt_click_hbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+    alt_click_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 #else
-    alt_click_hbox = gtk_vbox_new (FALSE, 6);
+    alt_click_vbox = gtk_vbox_new (FALSE, 6);
 #endif
-    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), alt_click_hbox);
-    gtk_box_pack_start (GTK_BOX (vbox), alt_click_hbox, FALSE, FALSE, 6);
+    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), alt_click_vbox);
+    gtk_box_pack_start (GTK_BOX (vbox), alt_click_vbox, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
 
@@ -685,7 +685,7 @@ fill_radio (GtkRadioButton     *group,
         MouseClickModifier *modifier)
 {
     modifier->radio = gtk_radio_button_new_with_mnemonic_from_widget (group, modifier->name);
-    gtk_box_pack_start (GTK_BOX (alt_click_hbox), modifier->radio, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (alt_click_vbox), modifier->radio, FALSE, FALSE, 0);
 
     gtk_widget_show (modifier->radio);
 }
