@@ -46,7 +46,11 @@ mate_metacity_config_tool ()
     gtk_window_set_icon_name (GTK_WINDOW (dialog), "preferences-system-windows");
     gtk_window_set_default_size (GTK_WINDOW (dialog), 350, 150);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+#else
     vbox = gtk_vbox_new (FALSE, 6);
+#endif
 
     str = g_strdup_printf ("<b>%s</b>", _("Compositing Manager"));
     widget = gtk_label_new (str);
