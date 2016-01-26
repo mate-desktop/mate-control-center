@@ -664,9 +664,9 @@ theme_message_area_update (AppearanceData *data)
     data->theme_message_label = gtk_label_new (NULL);
     gtk_widget_show (data->theme_message_label);
     gtk_label_set_line_wrap (GTK_LABEL (data->theme_message_label), TRUE);
-#if GTK_CHECK_VERSION (3, 0, 0)
-    gtk_widget_set_halign (data->theme_message_label, GTK_ALIGN_START);
-    gtk_widget_set_valign (data->theme_message_label, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gtk_label_set_xalign (GTK_LABEL (data->theme_message_label), 0.0);
+	gtk_label_set_yalign (GTK_LABEL (data->theme_message_label), 0.5);
 #else
     gtk_misc_set_alignment (GTK_MISC (data->theme_message_label), 0.0, 0.5);
 #endif

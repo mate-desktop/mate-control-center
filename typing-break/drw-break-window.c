@@ -282,9 +282,9 @@ drw_break_window_init (DrwBreakWindow *window)
 
 
 	priv->clock_label = gtk_label_new (NULL);
-#if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_set_halign (priv->clock_label, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (priv->clock_label, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gtk_label_set_xalign (GTK_LABEL (priv->clock_label), 0.5);
+	gtk_label_set_yalign (GTK_LABEL (priv->clock_label), 0.5);
 #else
 	gtk_misc_set_alignment (GTK_MISC (priv->clock_label), 0.5, 0.5);
 #endif

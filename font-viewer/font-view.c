@@ -279,9 +279,9 @@ add_row (GtkWidget *table,
         gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
         gtk_label_set_selectable (GTK_LABEL (label), TRUE);
         gtk_widget_set_size_request (label, 200, -1);
-#if GTK_CHECK_VERSION (3, 0, 0)
-        gtk_widget_set_halign (label, GTK_ALIGN_START);
-        gtk_widget_set_valign (label, GTK_ALIGN_START);
+#if GTK_CHECK_VERSION (3, 16, 0)
+        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+        gtk_label_set_yalign (GTK_LABEL (label), 0.0);
 #else
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
 #endif
@@ -320,9 +320,9 @@ add_row (GtkWidget *table,
         gtk_container_add (GTK_CONTAINER (viewport), label);
     } else {
         GtkWidget *label = gtk_label_new (value);
-#if GTK_CHECK_VERSION (3, 0, 0)
-        gtk_widget_set_halign (label, GTK_ALIGN_START);
-        gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+        gtk_label_set_yalign (GTK_LABEL (label), 0.5);
 #else
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 #endif
