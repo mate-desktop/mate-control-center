@@ -224,22 +224,15 @@ create_folder_icon (char *icon_theme_name)
 #endif
   }
 
-  g_object_unref (icon_theme);
-  g_free (example_icon_name);
-
-  /* render the icon to the thumbnail */
   if (folder_icon == NULL)
   {
-    GtkWidget *dummy;
-    dummy = gtk_label_new ("");
-
-    folder_icon = gtk_widget_render_icon (dummy,
-                                          GTK_STOCK_MISSING_IMAGE,
-                                          GTK_ICON_SIZE_DIALOG,
-                                          NULL);
-
-    gtk_widget_destroy (dummy);
+    folder_icon = gtk_icon_theme_load_icon (icon_theme,
+                                            "image-missing",
+                                            48, 0, NULL);
   }
+
+  g_object_unref (icon_theme);
+  g_free (example_icon_name);
 
   return folder_icon;
 }
