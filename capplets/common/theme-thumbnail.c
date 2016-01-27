@@ -19,6 +19,10 @@
 #include "gtkrc-utils.h"
 #include "capplet-util.h"
 
+#if !GTK_CHECK_VERSION (3, 0, 0)
+#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
+#endif
+
 typedef struct {
 	gboolean set;
 	gint thumbnail_width;
@@ -327,13 +331,13 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   gtk_window_set_default_size (GTK_WINDOW (window), META_THUMBNAIL_SIZE, META_THUMBNAIL_SIZE);
 
-  gtk_widget_size_request (window, &requisition);
+  gtk_widget_get_preferred_size (window, &requisition, NULL);
   allocation.x = 0;
   allocation.y = 0;
   allocation.width = META_THUMBNAIL_SIZE;
   allocation.height = META_THUMBNAIL_SIZE;
   gtk_widget_size_allocate (window, &allocation);
-  gtk_widget_size_request (window, &requisition);
+  gtk_widget_get_preferred_size (window, &requisition, NULL);
 
 #if GTK_CHECK_VERSION (3, 0, 0)
   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, META_THUMBNAIL_SIZE, META_THUMBNAIL_SIZE);
@@ -421,13 +425,13 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_widget_map (checkbox);
   gtk_widget_map (radio);
 
-  gtk_widget_size_request (window, &requisition);
+  gtk_widget_get_preferred_size (window, &requisition, NULL);
   allocation.x = 0;
   allocation.y = 0;
   allocation.width = requisition.width;
   allocation.height = requisition.height;
   gtk_widget_size_allocate (window, &allocation);
-  gtk_widget_size_request (window, &requisition);
+  gtk_widget_get_preferred_size (window, &requisition, NULL);
 
   gtk_window_get_size (GTK_WINDOW (window), &width, &height);
 
@@ -500,13 +504,13 @@ create_marco_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_widget_show_all (preview);
   gtk_widget_map (dummy);
 
-  gtk_widget_size_request (window, &requisition);
+  gtk_widget_get_preferred_size (window, &requisition, NULL);
   allocation.x = 0;
   allocation.y = 0;
   allocation.width = (int) MARCO_THUMBNAIL_WIDTH * 1.2;
   allocation.height = (int) MARCO_THUMBNAIL_HEIGHT * 1.2;
   gtk_widget_size_allocate (window, &allocation);
-  gtk_widget_size_request (window, &requisition);
+  gtk_widget_get_preferred_size (window, &requisition, NULL);
 
 #if GTK_CHECK_VERSION (3, 0, 0)
   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, (int) MARCO_THUMBNAIL_WIDTH * 1.2, (int) MARCO_THUMBNAIL_HEIGHT * 1.2);
