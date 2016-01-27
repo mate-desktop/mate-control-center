@@ -547,16 +547,16 @@ create_icon_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
 
 static void
-handle_bytes (const gchar        *buffer,
+handle_bytes (const guint8       *buffer,
               gint                bytes_read,
               ThemeThumbnailData *theme_thumbnail_data)
 {
-  const gchar *ptr;
+  const guint8 *ptr;
   ptr = buffer;
 
   while (bytes_read > 0)
   {
-    char *nil;
+    guint8 *nil;
 
     switch (theme_thumbnail_data->status)
     {
@@ -685,7 +685,7 @@ message_from_capplet (GIOChannel   *source,
   switch (status)
   {
     case G_IO_STATUS_NORMAL:
-      handle_bytes (buffer, bytes_read, theme_thumbnail_data);
+      handle_bytes ((guint8 *) buffer, bytes_read, theme_thumbnail_data);
 
       if (theme_thumbnail_data->status == WRITING_PIXBUF_DATA)
       {

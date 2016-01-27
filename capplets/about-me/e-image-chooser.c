@@ -189,7 +189,7 @@ set_image_from_data (EImageChooser *chooser,
 	GdkPixbufLoader *loader = gdk_pixbuf_loader_new ();
 	GdkPixbuf *pixbuf;
 
-	gdk_pixbuf_loader_write (loader, data, length, NULL);
+	gdk_pixbuf_loader_write (loader, (guchar *) data, length, NULL);
 	gdk_pixbuf_loader_close (loader, NULL);
 
 	pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
@@ -338,7 +338,7 @@ image_drag_data_received_cb (GtkWidget *widget,
 	target_type = gdk_atom_name (gtk_selection_data_get_target (selection_data));
 
 	if (!strcmp (target_type, URI_LIST_TYPE)) {
-		const char *data = gtk_selection_data_get_data (selection_data);
+		const char *data = (const char *) gtk_selection_data_get_data (selection_data);
 		char *uri;
 		GFile *file;
 		GInputStream *istream;
