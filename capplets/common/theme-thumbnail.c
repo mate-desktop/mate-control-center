@@ -120,14 +120,6 @@ draw_window_on_pixbuf(GtkWidget* widget)
 
 	window = gtk_widget_get_window(widget);
 
-	/* This is a hack for the default resize grip on Ubuntu.
-	 * We need to add a --enable-ubuntu for this.
-	 * Resize grip is also default with GTK3.
-	 */
-#if defined(UBUNTU)
-	gtk_window_set_has_resize_grip(GTK_WINDOW(widget), FALSE);
-#endif
-
 	gdk_window_redirect_to_drawable(window, pixmap, 0, 0, 0, 0, width, height);
 	gdk_window_set_override_redirect(window, TRUE);
 	gtk_window_move(GTK_WINDOW(widget), gdk_screen_get_width(screen), gdk_screen_get_height(screen));

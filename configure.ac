@@ -310,21 +310,6 @@ AC_ARG_ENABLE(update-mimedb,
                    enable_update_mimedb=yes)
 AM_CONDITIONAL(ENABLE_UPDATE_MIMEDB, test x$enable_update_mimedb = xyes)
 
-dnl ****************************************************************************
-dnl * using Ubuntu hacks
-dnl ****************************************************************************
-AC_ARG_ENABLE(ubuntu,
-	AS_HELP_STRING([--enable-ubuntu], [Enable Ubuntu Counter Hacks]), enable_ubuntu=yes, enable_ubuntu=no)
-
-if test "x$enable_ubuntu" = "xyes" ; then
-	# we define a UBUNTU on code
-	MATE_DESKTOP_CFLAGS="$MATE_DESKTOP_CFLAGS -DUBUNTU"
-
-	ENABLE_UBUNTU=yes
-else
-	ENABLE_UBUNTU=no
-fi
-
 AC_CONFIG_FILES([
 Makefile
 org.mate.control-center.gschema.xml
@@ -386,6 +371,4 @@ echo "
         Libmate-slab:          ${have_libmateslab}
         XCursor support:       ${have_xcursor}
         XInput support:        ${have_xinput}
-        Ubuntu hacks:          ${enable_ubuntu}
-
 "
