@@ -157,11 +157,10 @@ shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data)
 shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer data)
 #endif
 {
-	GtkWidget *left_pane, *right_pane;
+	GtkWidget *left_pane;
 	GtkAllocation allocation;
 
 	left_pane = SHELL_WINDOW (widget)->_left_pane;
-	right_pane = SHELL_WINDOW (widget)->_right_pane;
 
 	gtk_widget_get_allocation (left_pane, &allocation);
 
