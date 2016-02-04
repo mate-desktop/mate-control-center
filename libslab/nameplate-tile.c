@@ -22,7 +22,6 @@
 
 static void nameplate_tile_class_init (NameplateTileClass *);
 static void nameplate_tile_init (NameplateTile *);
-static void nameplate_tile_finalize (GObject *);
 static void nameplate_tile_get_property (GObject *, guint, GValue *, GParamSpec *);
 static void nameplate_tile_set_property (GObject *, guint, const GValue *, GParamSpec *);
 static GObject *nameplate_tile_constructor (GType, guint, GObjectConstructParam *);
@@ -71,7 +70,6 @@ nameplate_tile_class_init (NameplateTileClass * this_class)
 	g_obj_class->constructor = nameplate_tile_constructor;
 	g_obj_class->get_property = nameplate_tile_get_property;
 	g_obj_class->set_property = nameplate_tile_set_property;
-	g_obj_class->finalize = nameplate_tile_finalize;
 
 	widget_class->drag_begin = nameplate_tile_drag_begin;
 
@@ -104,18 +102,6 @@ nameplate_tile_constructor (GType type, guint n_param, GObjectConstructParam * p
 	nameplate_tile_setup (NAMEPLATE_TILE (g_obj));
 
 	return g_obj;
-}
-
-static void
-nameplate_tile_finalize (GObject * g_object)
-{
-	NameplateTile *np_tile;
-	NameplateTilePrivate *priv;
-
-	np_tile = NAMEPLATE_TILE (g_object);
-	priv = NAMEPLATE_TILE_GET_PRIVATE (np_tile);
-
-	(*G_OBJECT_CLASS (nameplate_tile_parent_class)->finalize) (g_object);
 }
 
 static void
