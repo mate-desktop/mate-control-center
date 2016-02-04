@@ -402,9 +402,8 @@ create_header (const gchar *name)
 
 	header = gtk_label_new (name);
 	gtk_label_set_line_wrap (GTK_LABEL (header), TRUE);
-#if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_set_halign (header, GTK_ALIGN_START);
-	gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gtk_label_set_xalign (GTK_LABEL (header), 0.0);
 #else
 	gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
 #endif
@@ -426,9 +425,8 @@ create_subheader (const gchar *desc)
 
 	subheader = gtk_label_new (desc);
 	gtk_label_set_ellipsize (GTK_LABEL (subheader), PANGO_ELLIPSIZE_END);
-#if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_set_halign (subheader, GTK_ALIGN_START);
-	gtk_widget_set_valign (subheader, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gtk_label_set_xalign (GTK_LABEL (subheader), 0.0);
 #else
 	gtk_misc_set_alignment (GTK_MISC (subheader), 0.0, 0.5);
 #endif

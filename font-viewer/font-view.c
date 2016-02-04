@@ -255,9 +255,9 @@ add_row (GtkWidget *table,
     bold_name = g_strconcat ("<b>", name, "</b>", NULL);
     name_w = gtk_label_new (bold_name);
     g_free (bold_name);
-#if GTK_CHECK_VERSION (3, 0, 0)
-    gtk_widget_set_halign (name_w, GTK_ALIGN_START);
-    gtk_widget_set_valign (name_w, GTK_ALIGN_START);
+#if GTK_CHECK_VERSION (3, 16, 0)
+    gtk_label_set_xalign (GTK_LABEL (name_w), 0.0);
+    gtk_label_set_yalign (GTK_LABEL (name_w), 0.0);
 #else
     gtk_misc_set_alignment (GTK_MISC (name_w), 0.0, 0.0);
 #endif

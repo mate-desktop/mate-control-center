@@ -418,9 +418,8 @@ create_actions_section (AppShellData * app_data, const gchar * title,
 
 			action = (AppAction *) actions->data;
 			header = gtk_label_new (action->name);
-#if GTK_CHECK_VERSION (3, 0, 0)
-			gtk_widget_set_halign (header, GTK_ALIGN_START);
-			gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+			gtk_label_set_xalign (GTK_LABEL (header), 0.0);
 #else
 			gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
 #endif
@@ -718,9 +717,8 @@ create_application_category_sections (AppShellData * app_data)
 		GtkWidget *hbox;
 		GtkWidget *table;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-		gtk_widget_set_halign (header, GTK_ALIGN_START);
-		gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+		gtk_label_set_xalign (GTK_LABEL (header), 0.0);
 #else
 		gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
 #endif

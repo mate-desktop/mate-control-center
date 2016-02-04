@@ -342,9 +342,8 @@ create_header (const gchar *name)
 
 	header = gtk_label_new (name);
 	gtk_label_set_ellipsize (GTK_LABEL (header), PANGO_ELLIPSIZE_END);
-#if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_set_halign (header, GTK_ALIGN_START);
-	gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gtk_label_set_xalign (GTK_LABEL (header), 0.0);
 #else
 	gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
 #endif
@@ -414,9 +413,8 @@ rename_entry_activate_cb (GtkEntry *entry, gpointer user_data)
 	g_object_unref (dst_file);
 
 	header = gtk_label_new (priv->basename);
-#if GTK_CHECK_VERSION (3, 0, 0)
-	gtk_widget_set_halign (header, GTK_ALIGN_START);
-	gtk_widget_set_valign (header, GTK_ALIGN_CENTER);
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gtk_label_set_xalign (GTK_LABEL (header), 0.0);
 #else
 	gtk_misc_set_alignment (GTK_MISC (header), 0.0, 0.5);
 #endif
