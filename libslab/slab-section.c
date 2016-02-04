@@ -157,7 +157,6 @@ slab_section_new_with_markup (const gchar * title_markup, SlabStyle style)
 	gtk_label_set_use_markup (GTK_LABEL (section->title), TRUE);
 #if GTK_CHECK_VERSION (3, 16, 0)
 	gtk_label_set_xalign (GTK_LABEL (section->title), 0.0);
-	gtk_label_set_yalign (GTK_LABEL (section->title), 0.5);
 #else
 	gtk_misc_set_alignment (GTK_MISC (section->title), 0.0, 0.5);
 #endif

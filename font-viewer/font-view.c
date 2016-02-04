@@ -322,7 +322,6 @@ add_row (GtkWidget *table,
         GtkWidget *label = gtk_label_new (value);
 #if GTK_CHECK_VERSION (3, 16, 0)
         gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-        gtk_label_set_yalign (GTK_LABEL (label), 0.5);
 #else
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 #endif

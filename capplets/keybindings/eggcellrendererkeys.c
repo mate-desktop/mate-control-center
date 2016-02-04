@@ -593,7 +593,6 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
   label = gtk_label_new (NULL);
 #if GTK_CHECK_VERSION (3, 16, 0)
   gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
 #else
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 #endif

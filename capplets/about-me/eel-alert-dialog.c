@@ -171,7 +171,6 @@ eel_alert_dialog_init (EelAlertDialog *dialog)
 	gtk_label_set_use_markup (GTK_LABEL (dialog->details->primary_label), TRUE);
 #if GTK_CHECK_VERSION (3, 16, 0)
 	gtk_label_set_xalign (GTK_LABEL (dialog->details->primary_label), 0.0);
-	gtk_label_set_yalign (GTK_LABEL (dialog->details->primary_label), 0.5);
 #else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->primary_label), 0.0, 0.5);
 #endif
@@ -180,7 +179,6 @@ eel_alert_dialog_init (EelAlertDialog *dialog)
 	gtk_label_set_selectable (GTK_LABEL (dialog->details->secondary_label), TRUE);
 #if GTK_CHECK_VERSION (3, 16, 0)
 	gtk_label_set_xalign (GTK_LABEL (dialog->details->secondary_label), 0.0);
-	gtk_label_set_yalign (GTK_LABEL (dialog->details->secondary_label), 0.5);
 #else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->secondary_label), 0.0, 0.5);
 #endif
@@ -189,7 +187,6 @@ eel_alert_dialog_init (EelAlertDialog *dialog)
 	gtk_label_set_selectable (GTK_LABEL (dialog->details->details_label), TRUE);
 #if GTK_CHECK_VERSION (3, 16, 0)
 	gtk_label_set_xalign (GTK_LABEL (dialog->details->details_label), 0.0);
-	gtk_label_set_yalign (GTK_LABEL (dialog->details->details_label), 0.5);
 #else
 	gtk_misc_set_alignment (GTK_MISC (dialog->details->details_label), 0.0, 0.5);
 #endif
