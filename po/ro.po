@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
-# Daniel <danny34ever@yahoo.com>, 2015
+# Daniel <danny34ever@yahoo.com>, 2015-2016
 # Lucian Adrian Grijincu https://launchpad.net/~lucian.grijincu, 2009
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010
 # Mișu Moldovan <dumol@mate.ro> 2003, 2004
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-03 16:59+0300\n"
-"PO-Revision-Date: 2015-11-18 17:52+0000\n"
+"POT-Creation-Date: 2016-01-06 20:54+0300\n"
+"PO-Revision-Date: 2016-01-24 15:48+0000\n"
 "Last-Translator: Daniel <danny34ever@yahoo.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/mate/MATE/language/ro/)\n"
 "MIME-Version: 1.0\n"
@@ -158,25 +158,25 @@ msgstr "Butoanele afișate în dialogul de alertă"
 msgid "Show more _details"
 msgstr "Arată mai multe _detalii"
 
-#: ../capplets/about-me/mate-about-me.c:288
+#: ../capplets/about-me/mate-about-me.c:287
 msgid "Select Image"
 msgstr "Selectează imaginea"
 
-#: ../capplets/about-me/mate-about-me.c:290
+#: ../capplets/about-me/mate-about-me.c:289
 msgid "No Image"
 msgstr "Fără imagine"
 
-#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/about-me/mate-about-me.c:317
 #: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "Imagini"
 
-#: ../capplets/about-me/mate-about-me.c:322
+#: ../capplets/about-me/mate-about-me.c:321
 #: ../capplets/appearance/theme-installer.c:783
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../capplets/about-me/mate-about-me.c:473
+#: ../capplets/about-me/mate-about-me.c:466
 #, c-format
 msgid "About %s"
 msgstr "Despre %s"
@@ -224,8 +224,8 @@ msgid "The device is already in use."
 msgstr "Acest dispozitiv este deja folosit."
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:104
-msgid "An internal error occured"
-msgstr "A apărut o eroare internă."
+msgid "An internal error occurred"
+msgstr "S-a produs o eroare internă"
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:221
 msgid "Delete registered fingerprints?"
@@ -555,7 +555,7 @@ msgstr "Alegeți ce opțiuni de accesibilitate să fie activate la autentificare
 
 #: ../capplets/appearance/appearance-desktop.c:619
 msgid "Add Wallpaper"
-msgstr "Adăugă imagine de fundal"
+msgstr "Adăugare tapet"
 
 #: ../capplets/appearance/appearance-desktop.c:654
 msgid "All files"
@@ -582,13 +582,13 @@ msgstr "Specifică numele pagini pentru afișare (theme|background|fonts|interfa
 
 #: ../capplets/appearance/appearance-main.c:167
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:535
+#: ../capplets/mouse/mate-mouse-properties.c:539
 msgid "page"
 msgstr "pagină"
 
 #: ../capplets/appearance/appearance-main.c:174
 msgid "[WALLPAPER...]"
-msgstr "[FUNDAL...]"
+msgstr "[TAPET...]"
 
 #: ../capplets/appearance/appearance-style.c:171
 #: ../capplets/common/mate-theme-info.c:497
@@ -947,7 +947,7 @@ msgstr "Text"
 
 #: ../capplets/appearance/data/appearance.ui.h:76
 msgid "_Reset to Defaults"
-msgstr "_Revenire la valorile implicite"
+msgstr "_Restabilire la valorile implicite"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
 msgid "Colors"
@@ -1540,13 +1540,13 @@ msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:18
 #: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/windows/mate-window-properties.c:468
+#: ../capplets/windows/mate-window-properties.c:493
 msgid "Left"
 msgstr "Stânga"
 
 #: ../capplets/display/display-capplet.ui.h:19
 #: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:492
 msgid "Right"
 msgstr "Dreapta"
 
@@ -1667,6 +1667,7 @@ msgstr "%d Hz"
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../capplets/display/xrandr-capplet.c:492
 #: ../capplets/display/xrandr-capplet.c:1668
+#, c-format
 msgid "Mirror Screens"
 msgstr "Oglindire ecrane"
 
@@ -1743,7 +1744,7 @@ msgstr "Tipul de accelerator."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Dezactivat"
@@ -1845,7 +1846,7 @@ msgstr "Reacție audio pentru accesibilitatea tastaturii"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:348
+#: ../capplets/windows/mate-window-properties.c:368
 msgid "General"
 msgstr "Generale"
 
@@ -2029,7 +2030,7 @@ msgstr "Vizualizați și editați opțiunile de aranjament de tastatură"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
 msgid "Reset to De_faults"
-msgstr "Resetează la _valorile implicite"
+msgstr "Restabilește la _valorile implicite"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:32
 msgid ""
@@ -2200,24 +2201,24 @@ msgstr "Tastatură"
 msgid "Set your keyboard preferences"
 msgstr "Schimbați opțiunile de tastare"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Left button"
 msgstr "Butonul stâng"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Middle button"
 msgstr "Butonul mijlociu"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Right button"
 msgstr "Butonul drept"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:534
+#: ../capplets/mouse/mate-mouse-properties.c:538
 msgid "Specify the name of the page to show (general)"
 msgstr "Specificați numele paginii de afișat (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:539
+#: ../capplets/mouse/mate-mouse-properties.c:543
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferințe maus MATE"
 
@@ -2273,7 +2274,7 @@ msgstr "Pra_g:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:25
 msgid "Double-Click Timeout"
-msgstr "Timp alocat pentru dublu-clic"
+msgstr "Timp alocat pentru clic dublu"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:26
 msgid "_Timeout:"
@@ -2282,7 +2283,7 @@ msgstr "_Timp expirare:"
 #: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
-msgstr "Pentru a testa configurațiile, încercați să efectuați un dublu-clic pe bec."
+msgstr "Pentru a testa configurațiile, încercați să efectuați un clic dublu pe bec."
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Enable _touchpad"
@@ -2426,145 +2427,149 @@ msgstr "Preferințe Metacity"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:362
+#: ../capplets/windows/mate-window-properties.c:382
 msgid "Compositing Manager"
 msgstr "Administrator de alcătuire compoziție"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:368
+#: ../capplets/windows/mate-window-properties.c:388
 msgid "Enable software _compositing window manager"
 msgstr "Activează administratorul de ferestre cu _compoziționare software"
 
-#: ../capplets/windows/mate-window-properties.c:245
+#: ../capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
 msgstr "Administratorul curent de ferestre nu este compatibil"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:332
+#: ../capplets/windows/mate-window-properties.c:352
 msgid "Window Preferences"
 msgstr "Preferințe fereastră"
 
-#: ../capplets/windows/mate-window-properties.c:352
+#: ../capplets/windows/mate-window-properties.c:372
 msgid "Behaviour"
 msgstr "Comportament"
 
-#: ../capplets/windows/mate-window-properties.c:356
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "Placement"
 msgstr "Amplasare"
 
-#: ../capplets/windows/mate-window-properties.c:369
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Dezactivează _miniaturi în Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:397
 msgid "Titlebar Buttons"
 msgstr "Butoane bară de titlu"
 
-#: ../capplets/windows/mate-window-properties.c:381
+#: ../capplets/windows/mate-window-properties.c:401
 msgid "Position:"
 msgstr "Poziție:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "New Windows"
 msgstr "Ferestre noi"
 
-#: ../capplets/windows/mate-window-properties.c:392
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Center _new windows"
 msgstr "Centrează ferestrele _noi"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:397
+#: ../capplets/windows/mate-window-properties.c:417
 msgid "Window Snapping"
 msgstr "Aranjare ferestre la marginea ecranului"
 
-#: ../capplets/windows/mate-window-properties.c:401
+#: ../capplets/windows/mate-window-properties.c:421
 msgid "Enable side by side _tiling"
 msgstr "Activează aranjarea prin juxtapunere"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:406
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Window Selection"
 msgstr "Selecția ferestrelor"
 
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:436
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Selectează ferestrele când ajung sub maus"
 
-#: ../capplets/windows/mate-window-properties.c:418
+#: ../capplets/windows/mate-window-properties.c:439
+msgid "U_nselect windows when the mouse leaves them"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:443
 msgid "_Raise selected windows after an interval"
 msgstr "_Ridică ferestrele alese după un interval de timp"
 
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:449
 msgid "_Interval before raising:"
 msgstr "_Interval de timp înainte de ridicare:"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "seconds"
 msgstr "secunde"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "Titlebar Action"
 msgstr "Acțiune bară de titlu"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "_Double-click titlebar to perform this action:"
 msgstr "Un clic _dublu pe bara de titlu efectuează acțiunea:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:451
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Movement Key"
 msgstr "Tasta de mutare"
 
-#: ../capplets/windows/mate-window-properties.c:456
+#: ../capplets/windows/mate-window-properties.c:481
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Pentru a muta o fereastră, înainte de a o apuca, țineți apăsată această tastă:"
 
-#: ../capplets/windows/mate-window-properties.c:474
+#: ../capplets/windows/mate-window-properties.c:499
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Înfășoară"
 
-#: ../capplets/windows/mate-window-properties.c:475
+#: ../capplets/windows/mate-window-properties.c:500
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximizează"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:501
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximizează orizontal"
 
-#: ../capplets/windows/mate-window-properties.c:477
+#: ../capplets/windows/mate-window-properties.c:502
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximizează vertical"
 
-#: ../capplets/windows/mate-window-properties.c:478
+#: ../capplets/windows/mate-window-properties.c:503
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimizează"
 
-#: ../capplets/windows/mate-window-properties.c:479
+#: ../capplets/windows/mate-window-properties.c:504
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Niciuna"
 
-#: ../capplets/windows/mate-window-properties.c:676
+#: ../capplets/windows/mate-window-properties.c:704
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:682
+#: ../capplets/windows/mate-window-properties.c:710
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:689
+#: ../capplets/windows/mate-window-properties.c:717
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (sau „Siglă Windows”)"
 
-#: ../capplets/windows/mate-window-properties.c:696
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2900,7 +2905,7 @@ msgstr "Elimină toate elementele recente"
 
 #: ../libslab/document-tile.c:631
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: ../libslab/document-tile.c:638
 msgid "%l:%M %p"

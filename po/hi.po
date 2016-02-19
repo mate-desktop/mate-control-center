@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-03 16:59+0300\n"
-"PO-Revision-Date: 2015-11-03 14:04+0000\n"
+"POT-Creation-Date: 2016-01-06 20:54+0300\n"
+"PO-Revision-Date: 2016-01-06 17:58+0000\n"
 "Last-Translator: Vlad Orlov <monsta@inbox.ru>\n"
 "Language-Team: Hindi (http://www.transifex.com/mate/MATE/language/hi/)\n"
 "MIME-Version: 1.0\n"
@@ -154,25 +154,25 @@ msgstr "चेतावनी संवाद में प्रदर्शि
 msgid "Show more _details"
 msgstr "अधिक विवरण दिखाएँ (_d)"
 
-#: ../capplets/about-me/mate-about-me.c:288
+#: ../capplets/about-me/mate-about-me.c:287
 msgid "Select Image"
 msgstr "छवि चुनें"
 
-#: ../capplets/about-me/mate-about-me.c:290
+#: ../capplets/about-me/mate-about-me.c:289
 msgid "No Image"
 msgstr "कोई छवि नहीं"
 
-#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/about-me/mate-about-me.c:317
 #: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "बिंब"
 
-#: ../capplets/about-me/mate-about-me.c:322
+#: ../capplets/about-me/mate-about-me.c:321
 #: ../capplets/appearance/theme-installer.c:783
 msgid "All Files"
 msgstr "सभी फ़ाइलें"
 
-#: ../capplets/about-me/mate-about-me.c:473
+#: ../capplets/about-me/mate-about-me.c:466
 #, c-format
 msgid "About %s"
 msgstr "के बारे में %s"
@@ -220,8 +220,8 @@ msgid "The device is already in use."
 msgstr "यह युक्ति पहले से प्रयोग में है."
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:104
-msgid "An internal error occured"
-msgstr "आंतरिक त्रुटि पैदा हुआ"
+msgid "An internal error occurred"
+msgstr ""
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:221
 msgid "Delete registered fingerprints?"
@@ -578,7 +578,7 @@ msgstr "दिखाने के लिए पृष्ठ का नाम न
 
 #: ../capplets/appearance/appearance-main.c:167
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:535
+#: ../capplets/mouse/mate-mouse-properties.c:539
 msgid "page"
 msgstr "पृष्ठ"
 
@@ -1535,13 +1535,13 @@ msgstr "सामान्य"
 
 #: ../capplets/display/display-capplet.ui.h:18
 #: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/windows/mate-window-properties.c:468
+#: ../capplets/windows/mate-window-properties.c:493
 msgid "Left"
 msgstr "बायाँ"
 
 #: ../capplets/display/display-capplet.ui.h:19
 #: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:492
 msgid "Right"
 msgstr "दाहिना"
 
@@ -1662,6 +1662,7 @@ msgstr "%d Hz"
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../capplets/display/xrandr-capplet.c:492
 #: ../capplets/display/xrandr-capplet.c:1668
+#, c-format
 msgid "Mirror Screens"
 msgstr "मिरर स्क्रीम"
 
@@ -1738,7 +1739,7 @@ msgstr "त्वरक प्रकार"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "अक्षम"
@@ -1840,7 +1841,7 @@ msgstr "कुंजीपटल एक्सेसिबिलिटी ऑड�
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:348
+#: ../capplets/windows/mate-window-properties.c:368
 msgid "General"
 msgstr "सामान्य"
 
@@ -2195,24 +2196,24 @@ msgstr "कुंजीपटल"
 msgid "Set your keyboard preferences"
 msgstr "कुंजी पटल की वरीयताएँ नियत करें"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Left button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Middle button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Right button"
 msgstr ""
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:534
+#: ../capplets/mouse/mate-mouse-properties.c:538
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:539
+#: ../capplets/mouse/mate-mouse-properties.c:543
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE माउस वरीयता"
 
@@ -2421,145 +2422,149 @@ msgstr ""
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:362
+#: ../capplets/windows/mate-window-properties.c:382
 msgid "Compositing Manager"
 msgstr ""
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:368
+#: ../capplets/windows/mate-window-properties.c:388
 msgid "Enable software _compositing window manager"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:245
+#: ../capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
 msgstr ""
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:332
+#: ../capplets/windows/mate-window-properties.c:352
 msgid "Window Preferences"
 msgstr "विंडो वरीयताएँ"
 
-#: ../capplets/windows/mate-window-properties.c:352
+#: ../capplets/windows/mate-window-properties.c:372
 msgid "Behaviour"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:356
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "Placement"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:369
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:397
 msgid "Titlebar Buttons"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:381
+#: ../capplets/windows/mate-window-properties.c:401
 msgid "Position:"
 msgstr ""
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "New Windows"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:392
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Center _new windows"
 msgstr ""
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:397
+#: ../capplets/windows/mate-window-properties.c:417
 msgid "Window Snapping"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:401
+#: ../capplets/windows/mate-window-properties.c:421
 msgid "Enable side by side _tiling"
 msgstr ""
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:406
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Window Selection"
 msgstr "विन्डो चयन"
 
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:436
 msgid "_Select windows when the mouse moves over them"
 msgstr "जब माउस विंडोज़ पर घूमेगा तो उन्हें चुनें (_S)"
 
-#: ../capplets/windows/mate-window-properties.c:418
+#: ../capplets/windows/mate-window-properties.c:439
+msgid "U_nselect windows when the mouse leaves them"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:443
 msgid "_Raise selected windows after an interval"
 msgstr "एक अन्तराल के बाद चुने गए विंडोज़ को ऊपर उठाएँ  (_R)"
 
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:449
 msgid "_Interval before raising:"
 msgstr "उठाने से पहले अन्तराल: (_I)"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "seconds"
 msgstr "सेकण्ड्स"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "Titlebar Action"
 msgstr "शीर्षक-पट्टी क्रिया"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "_Double-click titlebar to perform this action:"
 msgstr "इस क्रिया हेतु शीर्षक-पट्टी को दोहरा क्लिक करें: (_D)"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:451
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Movement Key"
 msgstr "गतिविधि कुंजी"
 
-#: ../capplets/windows/mate-window-properties.c:456
+#: ../capplets/windows/mate-window-properties.c:481
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "किसी विंडो को खिसकाने हेतु इस कुंजी को दबाए रखें फिर विंडो पकड़ें"
 
-#: ../capplets/windows/mate-window-properties.c:474
+#: ../capplets/windows/mate-window-properties.c:499
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "रोल अप"
 
-#: ../capplets/windows/mate-window-properties.c:475
+#: ../capplets/windows/mate-window-properties.c:500
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "अधिकतम"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:501
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "क्षैतिज रूप से अधिकतम करें"
 
-#: ../capplets/windows/mate-window-properties.c:477
+#: ../capplets/windows/mate-window-properties.c:502
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "लंबवत रूप से अधिकतम करें"
 
-#: ../capplets/windows/mate-window-properties.c:478
+#: ../capplets/windows/mate-window-properties.c:503
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "छोटा करें"
 
-#: ../capplets/windows/mate-window-properties.c:479
+#: ../capplets/windows/mate-window-properties.c:504
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "कुछ नहीं"
 
-#: ../capplets/windows/mate-window-properties.c:676
+#: ../capplets/windows/mate-window-properties.c:704
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:682
+#: ../capplets/windows/mate-window-properties.c:710
 msgid "H_yper"
 msgstr "हाइपर (_y)"
 
-#: ../capplets/windows/mate-window-properties.c:689
+#: ../capplets/windows/mate-window-properties.c:717
 msgid "S_uper (or \"Windows logo\")"
 msgstr "सुपर (या \"विंडोज़ लोगो\") (_u)"
 
-#: ../capplets/windows/mate-window-properties.c:696
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Meta"
 msgstr "मेटा (_M)"
 

@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-03 16:59+0300\n"
-"PO-Revision-Date: 2015-11-03 14:05+0000\n"
+"POT-Creation-Date: 2016-01-06 20:54+0300\n"
+"PO-Revision-Date: 2016-01-06 17:58+0000\n"
 "Last-Translator: Vlad Orlov <monsta@inbox.ru>\n"
 "Language-Team: Galician (http://www.transifex.com/mate/MATE/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -163,25 +163,25 @@ msgstr "Os botóns amosados no diálogo de alerta"
 msgid "Show more _details"
 msgstr "Amosar máis _detalles"
 
-#: ../capplets/about-me/mate-about-me.c:288
+#: ../capplets/about-me/mate-about-me.c:287
 msgid "Select Image"
 msgstr "Seleccionar unha imaxe"
 
-#: ../capplets/about-me/mate-about-me.c:290
+#: ../capplets/about-me/mate-about-me.c:289
 msgid "No Image"
 msgstr "Sen imaxe"
 
-#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/about-me/mate-about-me.c:317
 #: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "Imaxes"
 
-#: ../capplets/about-me/mate-about-me.c:322
+#: ../capplets/about-me/mate-about-me.c:321
 #: ../capplets/appearance/theme-installer.c:783
 msgid "All Files"
 msgstr "Todos os ficheiros"
 
-#: ../capplets/about-me/mate-about-me.c:473
+#: ../capplets/about-me/mate-about-me.c:466
 #, c-format
 msgid "About %s"
 msgstr "Sobre %s"
@@ -229,8 +229,8 @@ msgid "The device is already in use."
 msgstr "O dispositivo xa se está usando."
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:104
-msgid "An internal error occured"
-msgstr "Produciuse un erro interno"
+msgid "An internal error occurred"
+msgstr ""
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:221
 msgid "Delete registered fingerprints?"
@@ -587,7 +587,7 @@ msgstr "Especificar o nome da páxina que hai que amosar (tema|fondo|tipos de le
 
 #: ../capplets/appearance/appearance-main.c:167
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:535
+#: ../capplets/mouse/mate-mouse-properties.c:539
 msgid "page"
 msgstr "páxina"
 
@@ -1544,13 +1544,13 @@ msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:18
 #: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/windows/mate-window-properties.c:468
+#: ../capplets/windows/mate-window-properties.c:493
 msgid "Left"
 msgstr "Esquerda"
 
 #: ../capplets/display/display-capplet.ui.h:19
 #: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:492
 msgid "Right"
 msgstr "Dereita"
 
@@ -1671,6 +1671,7 @@ msgstr "%d Hz"
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../capplets/display/xrandr-capplet.c:492
 #: ../capplets/display/xrandr-capplet.c:1668
+#, c-format
 msgid "Mirror Screens"
 msgstr "Pantallas en espello"
 
@@ -1747,7 +1748,7 @@ msgstr "O tipo de tecla rápida."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Desactivado"
@@ -1849,7 +1850,7 @@ msgstr "Retroacción do audio de accesibilidade do teclado"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:348
+#: ../capplets/windows/mate-window-properties.c:368
 msgid "General"
 msgstr "Xeral"
 
@@ -2204,24 +2205,24 @@ msgstr "Teclado"
 msgid "Set your keyboard preferences"
 msgstr "Estabeleza as súas preferencias do teclado"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Left button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Middle button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Right button"
 msgstr ""
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:534
+#: ../capplets/mouse/mate-mouse-properties.c:538
 msgid "Specify the name of the page to show (general)"
 msgstr "Especifique o nome da páxina que amosar (xeral)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:539
+#: ../capplets/mouse/mate-mouse-properties.c:543
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferencias do rato do MATE"
 
@@ -2430,145 +2431,149 @@ msgstr "Preferencias de Metacity"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:362
+#: ../capplets/windows/mate-window-properties.c:382
 msgid "Compositing Manager"
 msgstr "Xestor de composición"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:368
+#: ../capplets/windows/mate-window-properties.c:388
 msgid "Enable software _compositing window manager"
 msgstr "Activar o software de _composición do xestor de xanelas"
 
-#: ../capplets/windows/mate-window-properties.c:245
+#: ../capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
 msgstr "O xestor de xanelas actual non é compatíbel"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:332
+#: ../capplets/windows/mate-window-properties.c:352
 msgid "Window Preferences"
 msgstr "Preferencias das xanelas"
 
-#: ../capplets/windows/mate-window-properties.c:352
+#: ../capplets/windows/mate-window-properties.c:372
 msgid "Behaviour"
 msgstr "Comportamento"
 
-#: ../capplets/windows/mate-window-properties.c:356
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "Placement"
 msgstr "Posicionamento"
 
-#: ../capplets/windows/mate-window-properties.c:369
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Desactivar as _Miniaturas en Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:397
 msgid "Titlebar Buttons"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:381
+#: ../capplets/windows/mate-window-properties.c:401
 msgid "Position:"
 msgstr ""
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "New Windows"
 msgstr "Xanelas novas"
 
-#: ../capplets/windows/mate-window-properties.c:392
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Center _new windows"
 msgstr "Centrar as xanelas _novas"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:397
+#: ../capplets/windows/mate-window-properties.c:417
 msgid "Window Snapping"
 msgstr "Aliñamento de xanelas"
 
-#: ../capplets/windows/mate-window-properties.c:401
+#: ../capplets/windows/mate-window-properties.c:421
 msgid "Enable side by side _tiling"
 msgstr "Activar o _mosaico de lado a lado"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:406
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Window Selection"
 msgstr "Selección de xanela"
 
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:436
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Seleccionar as xanelas cando o rato se mova sobre elas"
 
-#: ../capplets/windows/mate-window-properties.c:418
+#: ../capplets/windows/mate-window-properties.c:439
+msgid "U_nselect windows when the mouse leaves them"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:443
 msgid "_Raise selected windows after an interval"
 msgstr "_Elevar as xanelas seleccionadas despois dun intervalo"
 
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:449
 msgid "_Interval before raising:"
 msgstr "_Intervalo antes de elevar:"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "seconds"
 msgstr "segundos"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "Titlebar Action"
 msgstr "Acción da barra de título"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "_Double-click titlebar to perform this action:"
 msgstr "Prema _dúas veces sobre o título da barra para executar esta acción:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:451
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Movement Key"
 msgstr "Tecla de movemento"
 
-#: ../capplets/windows/mate-window-properties.c:456
+#: ../capplets/windows/mate-window-properties.c:481
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Para mover unha xanela, manteña premida esta tecla e despois arrastre a xanela:"
 
-#: ../capplets/windows/mate-window-properties.c:474
+#: ../capplets/windows/mate-window-properties.c:499
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Enrolar"
 
-#: ../capplets/windows/mate-window-properties.c:475
+#: ../capplets/windows/mate-window-properties.c:500
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:501
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximizar horizontalmente"
 
-#: ../capplets/windows/mate-window-properties.c:477
+#: ../capplets/windows/mate-window-properties.c:502
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximizar verticalmente"
 
-#: ../capplets/windows/mate-window-properties.c:478
+#: ../capplets/windows/mate-window-properties.c:503
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: ../capplets/windows/mate-window-properties.c:479
+#: ../capplets/windows/mate-window-properties.c:504
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Ningún"
 
-#: ../capplets/windows/mate-window-properties.c:676
+#: ../capplets/windows/mate-window-properties.c:704
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:682
+#: ../capplets/windows/mate-window-properties.c:710
 msgid "H_yper"
 msgstr "H_iper"
 
-#: ../capplets/windows/mate-window-properties.c:689
+#: ../capplets/windows/mate-window-properties.c:717
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (ou «Logotipo de Windows»)"
 
-#: ../capplets/windows/mate-window-properties.c:696
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Meta"
 msgstr "_Tecla meta"
 

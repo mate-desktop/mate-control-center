@@ -6,6 +6,7 @@
 # Christian Rose <menthos@menthos.com>, 2000, 2001, 2002, 2003, 2004, 2005
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010
 # Gaius Anderson <gaius.ankh@gmail.com>, 2015
+# Henrik Mattsson-Mårn <h@reglage.net>, 2016
 # Kristoffer Grundström <kristoffer.grundstrom1983@gmail.com>, 2015
 # Martin Wahlen <mva@sbbs.se>, 1998, 1999
 # Patrik Nilsson <asavartzeth@gmail.com>, 2014
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-03 16:59+0300\n"
-"PO-Revision-Date: 2015-11-03 14:05+0000\n"
+"POT-Creation-Date: 2016-01-06 20:54+0300\n"
+"PO-Revision-Date: 2016-02-10 17:36+0000\n"
 "Last-Translator: Vlad Orlov <monsta@inbox.ru>\n"
 "Language-Team: Swedish (http://www.transifex.com/mate/MATE/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -157,25 +158,25 @@ msgstr "Knapparna som visas i varningsdialogen"
 msgid "Show more _details"
 msgstr "Visa fler _detaljer"
 
-#: ../capplets/about-me/mate-about-me.c:288
+#: ../capplets/about-me/mate-about-me.c:287
 msgid "Select Image"
 msgstr "Välj bild"
 
-#: ../capplets/about-me/mate-about-me.c:290
+#: ../capplets/about-me/mate-about-me.c:289
 msgid "No Image"
 msgstr "Ingen bild"
 
-#: ../capplets/about-me/mate-about-me.c:318
+#: ../capplets/about-me/mate-about-me.c:317
 #: ../capplets/appearance/appearance-desktop.c:650
 msgid "Images"
 msgstr "Bilder"
 
-#: ../capplets/about-me/mate-about-me.c:322
+#: ../capplets/about-me/mate-about-me.c:321
 #: ../capplets/appearance/theme-installer.c:783
 msgid "All Files"
 msgstr "Alla filer"
 
-#: ../capplets/about-me/mate-about-me.c:473
+#: ../capplets/about-me/mate-about-me.c:466
 #, c-format
 msgid "About %s"
 msgstr "Om %s"
@@ -223,8 +224,8 @@ msgid "The device is already in use."
 msgstr "Enheten används redan."
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:104
-msgid "An internal error occured"
-msgstr "Ett internt fel har inträffat"
+msgid "An internal error occurred"
+msgstr ""
 
 #: ../capplets/about-me/mate-about-me-fingerprint.c:221
 msgid "Delete registered fingerprints?"
@@ -581,7 +582,7 @@ msgstr "Ange namnet på sidan som ska visas (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:167
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:535
+#: ../capplets/mouse/mate-mouse-properties.c:539
 msgid "page"
 msgstr "sida"
 
@@ -1428,7 +1429,7 @@ msgstr "System"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
 msgid "Document Viewer"
-msgstr ""
+msgstr "Dokumentvisare"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
 msgid "Word Processor"
@@ -1538,13 +1539,13 @@ msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:18
 #: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/windows/mate-window-properties.c:468
+#: ../capplets/windows/mate-window-properties.c:493
 msgid "Left"
 msgstr "Vänster"
 
 #: ../capplets/display/display-capplet.ui.h:19
 #: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:492
 msgid "Right"
 msgstr "Höger"
 
@@ -1554,7 +1555,7 @@ msgstr "Upp och ned"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Displays"
-msgstr ""
+msgstr "Bildskärmar"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:2
 msgid "Change resolution and position of monitors and projectors"
@@ -1665,6 +1666,7 @@ msgstr "%d Hz"
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../capplets/display/xrandr-capplet.c:492
 #: ../capplets/display/xrandr-capplet.c:1668
+#, c-format
 msgid "Mirror Screens"
 msgstr "Spegla skärmar"
 
@@ -1741,7 +1743,7 @@ msgstr "Typen av snabbtangent."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Inaktiverad"
@@ -1843,7 +1845,7 @@ msgstr "Ljudåterkoppling för tangentbordshjälpmedel"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:348
+#: ../capplets/windows/mate-window-properties.c:368
 msgid "General"
 msgstr "Allmänt"
 
@@ -2198,24 +2200,24 @@ msgstr "Tangentbord"
 msgid "Set your keyboard preferences"
 msgstr "Ställ in dina tangentbordsinställningar"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Left button"
-msgstr ""
+msgstr "Vänster knapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Middle button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:435
+#: ../capplets/mouse/mate-mouse-properties.c:439
 msgid "Right button"
-msgstr ""
+msgstr "Höger knapp"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:534
+#: ../capplets/mouse/mate-mouse-properties.c:538
 msgid "Specify the name of the page to show (general)"
 msgstr "Ange namnet på sidan som ska visas (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:539
+#: ../capplets/mouse/mate-mouse-properties.c:543
 msgid "- MATE Mouse Preferences"
 msgstr "- Musinställningar för MATE"
 
@@ -2424,145 +2426,149 @@ msgstr "Inställningar för Metacity "
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:362
+#: ../capplets/windows/mate-window-properties.c:382
 msgid "Compositing Manager"
 msgstr "Kompositeringshanterare"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:368
+#: ../capplets/windows/mate-window-properties.c:388
 msgid "Enable software _compositing window manager"
 msgstr "Aktivera mjukvarubaserad _kompositerande fönsterhanterare"
 
-#: ../capplets/windows/mate-window-properties.c:245
+#: ../capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
 msgstr "Ingen support för vald fönsterhanterare"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:332
+#: ../capplets/windows/mate-window-properties.c:352
 msgid "Window Preferences"
 msgstr "Fönsterinställningar"
 
-#: ../capplets/windows/mate-window-properties.c:352
+#: ../capplets/windows/mate-window-properties.c:372
 msgid "Behaviour"
 msgstr "Beteende"
 
-#: ../capplets/windows/mate-window-properties.c:356
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "Placement"
 msgstr "Placering"
 
-#: ../capplets/windows/mate-window-properties.c:369
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Avaktivera _miniatyrer i Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:397
 msgid "Titlebar Buttons"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:381
+#: ../capplets/windows/mate-window-properties.c:401
 msgid "Position:"
 msgstr ""
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "New Windows"
 msgstr "Nya fönster"
 
-#: ../capplets/windows/mate-window-properties.c:392
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Center _new windows"
 msgstr "Centrera _nya fönster"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:397
+#: ../capplets/windows/mate-window-properties.c:417
 msgid "Window Snapping"
 msgstr "Fönstersnäpp"
 
-#: ../capplets/windows/mate-window-properties.c:401
+#: ../capplets/windows/mate-window-properties.c:421
 msgid "Enable side by side _tiling"
 msgstr "Aktivera sida vid sida"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:406
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Window Selection"
 msgstr "Fönstermarkering"
 
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:436
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Markera fönster när muspekaren rör sig över dem"
 
-#: ../capplets/windows/mate-window-properties.c:418
+#: ../capplets/windows/mate-window-properties.c:439
+msgid "U_nselect windows when the mouse leaves them"
+msgstr ""
+
+#: ../capplets/windows/mate-window-properties.c:443
 msgid "_Raise selected windows after an interval"
 msgstr "_Höj markerade fönster efter en fördröjning"
 
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:449
 msgid "_Interval before raising:"
 msgstr "_Fördröjning innan upphöjning:"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "seconds"
 msgstr "sekunder"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "Titlebar Action"
 msgstr "Titelliståtgärd"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Dubbelklicka på titelraden för att utföra denna åtgärd:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:451
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Movement Key"
 msgstr "Förflyttningstangent"
 
-#: ../capplets/windows/mate-window-properties.c:456
+#: ../capplets/windows/mate-window-properties.c:481
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "För att flytta ett fönster trycker du på och håller ned denna tangent och tar sedan tag i fönstret:"
 
-#: ../capplets/windows/mate-window-properties.c:474
+#: ../capplets/windows/mate-window-properties.c:499
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Rulla upp"
 
-#: ../capplets/windows/mate-window-properties.c:475
+#: ../capplets/windows/mate-window-properties.c:500
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximera"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:501
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximera horisontellt"
 
-#: ../capplets/windows/mate-window-properties.c:477
+#: ../capplets/windows/mate-window-properties.c:502
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximera vertikalt"
 
-#: ../capplets/windows/mate-window-properties.c:478
+#: ../capplets/windows/mate-window-properties.c:503
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimera"
 
-#: ../capplets/windows/mate-window-properties.c:479
+#: ../capplets/windows/mate-window-properties.c:504
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Ingen"
 
-#: ../capplets/windows/mate-window-properties.c:676
+#: ../capplets/windows/mate-window-properties.c:704
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:682
+#: ../capplets/windows/mate-window-properties.c:710
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:689
+#: ../capplets/windows/mate-window-properties.c:717
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (eller \"Windows-logotypen\")"
 
-#: ../capplets/windows/mate-window-properties.c:696
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Meta"
 msgstr "_Meta"
 
