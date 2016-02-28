@@ -1703,9 +1703,13 @@ paint_background (FooScrollArea *area,
 #endif
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-    gtk_style_context_get (widget_style, GTK_STATE_FLAG_SELECTED,
-			   GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &base_color,
-			   NULL);
+    gtk_style_context_save (widget_style);
+    gtk_style_context_set_state (widget_style, GTK_STATE_FLAG_SELECTED);
+    gtk_style_context_get (widget_style,
+                           gtk_style_context_get_state (widget_style),
+                           GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &base_color,
+                           NULL);
+    gtk_style_context_restore (widget_style);
     gdk_cairo_set_source_rgba(cr, base_color);
     gdk_rgba_free (base_color);
 #else
@@ -1724,7 +1728,12 @@ paint_background (FooScrollArea *area,
     foo_scroll_area_add_input_from_fill (area, cr, on_canvas_event, NULL);
 
 #if GTK_CHECK_VERSION (3, 0, 0)
-    mate_desktop_gtk_style_get_dark_color (widget_style, GTK_STATE_FLAG_SELECTED, &dark_color);
+    gtk_style_context_save (widget_style);
+    gtk_style_context_set_state (widget_style, GTK_STATE_FLAG_SELECTED);
+    mate_desktop_gtk_style_get_dark_color (widget_style,
+                                           gtk_style_context_get_state (widget_style),
+                                           &dark_color);
+    gtk_style_context_restore (widget_style);
     gdk_cairo_set_source_rgba (cr, &dark_color);
 #else
     cairo_set_source_rgb (cr,
