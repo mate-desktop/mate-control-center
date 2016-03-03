@@ -202,53 +202,6 @@ orientation_radio_button_toggled (GtkToggleButton *togglebutton,
 }
 
 static void
-scrollmethod_gsettings_changed_event (GSettings *settings,
-				gchar *key,
-				GtkBuilder *dialog)
-{
-	int scroll_method = g_settings_get_int (touchpad_settings, "scroll-method");
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WID ("scroll_disabled_radio")),
-				scroll_method == 0);
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WID ("scroll_edge_radio")),
-				scroll_method == 1);
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WID ("scroll_twofinger_radio")),
-				scroll_method == 2);
-	gtk_widget_set_sensitive (WID ("horiz_scroll_toggle"),
-				 scroll_method != 0);
-	gtk_widget_set_sensitive (WID ("natural_scroll_toggle"),
-				 scroll_method != 0);
-}
-
-static void
-scrollmethod_clicked_event (GtkWidget *widget,
-				GtkBuilder *dialog)
-{
-	GtkToggleButton *disabled = GTK_TOGGLE_BUTTON (WID ("scroll_disabled_radio"));
-
-	gtk_widget_set_sensitive (WID ("horiz_scroll_toggle"),
-				  !gtk_toggle_button_get_active (disabled));
-
-	gtk_widget_set_sensitive (WID ("natural_scroll_toggle"),
-				  !gtk_toggle_button_get_active (disabled));
-
-	GSList *radio_group;
-	int new_scroll_method;
-	int old_scroll_method = g_settings_get_int (touchpad_settings, "scroll-method");
-
-	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(widget)))
-		return;
-
-	radio_group = g_slist_copy (gtk_radio_button_get_group
-		(GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"))));
-	radio_group = g_slist_reverse (radio_group);
-	new_scroll_method = g_slist_index (radio_group, widget);
-	g_slist_free (radio_group);
-	
-	if (new_scroll_method != old_scroll_method)
-		g_settings_set_int (touchpad_settings, "scroll-method", new_scroll_method);
-}
-
-static void
 synaptics_check_capabilities (GtkBuilder *dialog)
 {
 #ifdef HAVE_XINPUT
@@ -284,9 +237,6 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WID ("tap_to_click_toggle")), TRUE);
 				gtk_widget_set_sensitive (WID ("tap_to_click_toggle"), FALSE);
 			}
-
-			if (!data[3])
-				gtk_widget_set_sensitive (WID ("scroll_twofinger_radio"), FALSE);
 
 			XFree (data);
 		}
@@ -437,14 +387,11 @@ setup_dialog (GtkBuilder *dialog)
 		g_settings_bind (touchpad_settings, "tap-to-click",
 			WID ("tap_to_click_toggle"), "active",
 			G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "horiz-scroll-enabled",
-			WID ("horiz_scroll_toggle"), "active",
-			G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "natural-scroll",
-			WID ("natural_scroll_toggle"), "active",
-			G_SETTINGS_BIND_DEFAULT);
-
-		scrollmethod_gsettings_changed_event (touchpad_settings, "scroll-method", dialog);
+		g_settings_bind (touchpad_settings, "vertical-edge-scrolling", WID ("vert_edge_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "horizontal-edge-scrolling", WID ("horiz_edge_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "vertical-two-finger-scrolling", WID ("vert_twofinger_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "horizontal-two-finger-scrolling", WID ("horiz_twofinger_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "natural-scroll", WID ("natural_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
 
 		char * emulation_values[] = { _("Disabled"), _("Left button"), _("Middle button"), _("Right button") };
 
@@ -465,20 +412,7 @@ setup_dialog (GtkBuilder *dialog)
 		g_signal_connect (two_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "two-finger-click");
 		g_signal_connect (three_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "three-finger-click");
 
-		radio = GTK_RADIO_BUTTON (WID ("scroll_disabled_radio"));
-		GSList *radio_group = gtk_radio_button_get_group (radio);
-		GSList *item = NULL;
-
 		synaptics_check_capabilities (dialog);
-		for (item = radio_group; item != NULL; item = item->next) {
-			g_signal_connect (G_OBJECT (item->data), "clicked",
-				  G_CALLBACK(scrollmethod_clicked_event),
-				  dialog);
-		}
-		g_signal_connect (touchpad_settings,
-			"changed::scroll-method",
-			G_CALLBACK(scrollmethod_gsettings_changed_event),
-			dialog);
 	}
 
 }
