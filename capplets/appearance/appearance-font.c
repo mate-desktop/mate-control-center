@@ -562,10 +562,10 @@ cb_show_details (GtkWidget *button,
 	NULL);
     data->font_groups = g_slist_prepend (data->font_groups, group);
 
-    setup_font_sample (appearance_capplet_get_widget (data, "hint_none_sample"),   ANTIALIAS_GRAYSCALE, HINT_NONE);
-    setup_font_sample (appearance_capplet_get_widget (data, "hint_slight_sample"), ANTIALIAS_GRAYSCALE, HINT_SLIGHT);
-    setup_font_sample (appearance_capplet_get_widget (data, "hint_medium_sample"), ANTIALIAS_GRAYSCALE, HINT_MEDIUM);
-    setup_font_sample (appearance_capplet_get_widget (data, "hint_full_sample"),   ANTIALIAS_GRAYSCALE, HINT_FULL);
+    setup_font_sample (appearance_capplet_get_widget (data, "hint_none_sample"),   ANTIALIAS_RGBA, HINT_NONE);
+    setup_font_sample (appearance_capplet_get_widget (data, "hint_slight_sample"), ANTIALIAS_RGBA, HINT_SLIGHT);
+    setup_font_sample (appearance_capplet_get_widget (data, "hint_medium_sample"), ANTIALIAS_RGBA, HINT_MEDIUM);
+    setup_font_sample (appearance_capplet_get_widget (data, "hint_full_sample"),   ANTIALIAS_RGBA, HINT_FULL);
 
     group = enum_group_create (data->font_settings, FONT_HINTING_KEY,
                                appearance_capplet_get_widget (data, "hint_none_radio"),   HINT_NONE,
