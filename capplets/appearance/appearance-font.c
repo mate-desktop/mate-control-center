@@ -550,9 +550,9 @@ cb_show_details (GtkWidget *button,
 
     g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), widget);
 
-    setup_font_sample (appearance_capplet_get_widget (data, "antialias_none_sample"),      ANTIALIAS_NONE,      HINT_FULL);
-    setup_font_sample (appearance_capplet_get_widget (data, "antialias_grayscale_sample"), ANTIALIAS_GRAYSCALE, HINT_FULL);
-    setup_font_sample (appearance_capplet_get_widget (data, "antialias_subpixel_sample"),  ANTIALIAS_RGBA,      HINT_FULL);
+    setup_font_sample (appearance_capplet_get_widget (data, "antialias_none_sample"),      ANTIALIAS_NONE,      HINT_SLIGHT);
+    setup_font_sample (appearance_capplet_get_widget (data, "antialias_grayscale_sample"), ANTIALIAS_GRAYSCALE, HINT_SLIGHT);
+    setup_font_sample (appearance_capplet_get_widget (data, "antialias_subpixel_sample"),  ANTIALIAS_RGBA,      HINT_SLIGHT);
 
     group = enum_group_create (
     	data->font_settings, FONT_ANTIALIASING_KEY,
@@ -659,7 +659,7 @@ void font_init(AppearanceData* data)
 	setup_font_pair(appearance_capplet_get_widget(data, "monochrome_radio"), appearance_capplet_get_widget (data, "monochrome_sample"), ANTIALIAS_NONE, HINT_FULL);
 	setup_font_pair(appearance_capplet_get_widget(data, "best_shapes_radio"), appearance_capplet_get_widget (data, "best_shapes_sample"), ANTIALIAS_GRAYSCALE, HINT_MEDIUM);
 	setup_font_pair(appearance_capplet_get_widget(data, "best_contrast_radio"), appearance_capplet_get_widget (data, "best_contrast_sample"), ANTIALIAS_GRAYSCALE, HINT_FULL);
-	setup_font_pair(appearance_capplet_get_widget(data, "subpixel_radio"), appearance_capplet_get_widget (data, "subpixel_sample"), ANTIALIAS_RGBA, HINT_FULL);
+	setup_font_pair(appearance_capplet_get_widget(data, "subpixel_radio"), appearance_capplet_get_widget (data, "subpixel_sample"), ANTIALIAS_RGBA, HINT_SLIGHT);
 
 	font_render_load (data->font_settings);
 
