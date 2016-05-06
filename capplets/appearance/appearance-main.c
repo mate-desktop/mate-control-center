@@ -147,6 +147,9 @@ main (int argc, char **argv)
 {
   AppearanceData *data;
   GtkWidget *w;
+#if GTK_CHECK_VERSION(3, 0, 0)
+  GtkStyleContext *context;
+#endif
 
   gchar *install_filename = NULL;
   gchar *start_page = NULL;
@@ -199,6 +202,10 @@ main (int argc, char **argv)
 
   /* prepare the main window */
   w = appearance_capplet_get_widget (data, "appearance_window");
+#if GTK_CHECK_VERSION(3, 0, 0)
+  context = gtk_widget_get_style_context (GTK_WIDGET (w));
+  gtk_style_context_add_class (context, "appearance-window");
+#endif
   capplet_set_icon (w, "preferences-desktop-theme");
   gtk_widget_show_all (w);
 
