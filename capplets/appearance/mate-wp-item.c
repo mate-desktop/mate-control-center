@@ -118,7 +118,11 @@ void mate_wp_item_ensure_mate_bg (MateWPItem *item)
 
 void mate_wp_item_update (MateWPItem *item) {
   GSettings *settings;
+#if GTK_CHECK_VERSION (3, 0, 0)
+  GdkRGBA color1 = { 0, 0, 0, 1.0 }, color2 = { 0, 0, 0, 1.0 };
+#else
   GdkColor color1 = { 0, 0, 0, 0 }, color2 = { 0, 0, 0, 0 };
+#endif
   gchar *s;
 
   settings = g_settings_new (WP_SCHEMA);
@@ -129,26 +133,45 @@ void mate_wp_item_update (MateWPItem *item) {
 
   s = g_settings_get_string (settings, WP_PCOLOR_KEY);
   if (s != NULL) {
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gdk_rgba_parse (&color1, s);
+#else
     gdk_color_parse (s, &color1);
+#endif
     g_free (s);
   }
 
   s = g_settings_get_string (settings, WP_SCOLOR_KEY);
   if (s != NULL) {
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gdk_rgba_parse (&color2, s);
+#else
     gdk_color_parse (s, &color2);
+#endif
     g_free (s);
   }
 
   g_object_unref (settings);
 
   if (item->pcolor != NULL)
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gdk_rgba_free (item->pcolor);
+#else
     gdk_color_free (item->pcolor);
+#endif
 
   if (item->scolor != NULL)
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gdk_rgba_free (item->scolor);
+
+  item->pcolor = gdk_rgba_copy (&color1);
+  item->scolor = gdk_rgba_copy (&color2);
+#else
     gdk_color_free (item->scolor);
 
   item->pcolor = gdk_color_copy (&color1);
   item->scolor = gdk_color_copy (&color2);
+#endif
 }
 
 MateWPItem * mate_wp_item_new (const gchar * filename,
@@ -192,10 +215,17 @@ void mate_wp_item_free (MateWPItem * item) {
   g_free (item->description);
 
   if (item->pcolor != NULL)
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gdk_rgba_free (item->pcolor);
+
+  if (item->scolor != NULL)
+    gdk_rgba_free (item->scolor);
+#else
     gdk_color_free (item->pcolor);
 
   if (item->scolor != NULL)
     gdk_color_free (item->scolor);
+#endif
 
   mate_wp_info_free (item->fileinfo);
   if (item->bg)
