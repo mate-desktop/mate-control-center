@@ -45,8 +45,13 @@ struct _MateWPItem {
   GtkTreeRowReference * rowref;
 
   /* Real colors */
+#if GTK_CHECK_VERSION (3, 0, 0)
+  GdkRGBA * pcolor;
+  GdkRGBA * scolor;
+#else
   GdkColor * pcolor;
   GdkColor * scolor;
+#endif
 
   MateWPInfo * fileinfo;
 
