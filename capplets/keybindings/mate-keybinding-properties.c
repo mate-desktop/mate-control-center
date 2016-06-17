@@ -19,6 +19,10 @@
 #include "activate-settings-daemon.h"
 #include "dconf-util.h"
 
+#if !GTK_CHECK_VERSION(3,0,0)
+#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
+#endif
+
 #define GSETTINGS_KEYBINDINGS_DIR "/org/mate/desktop/keybindings/"
 #define CUSTOM_KEYBINDING_SCHEMA "org.mate.control-center.keybinding"
 
@@ -537,7 +541,7 @@ ensure_scrollbar (GtkBuilder *builder, int i)
       GtkWidget *treeview = _gtk_builder_get_widget (builder,
                                                      "shortcut_treeview");
       gtk_widget_ensure_style (treeview);
-      gtk_widget_size_request (treeview, &rectangle);
+      gtk_widget_get_preferred_size (treeview, &rectangle, NULL);
       gtk_widget_set_size_request (treeview, -1, rectangle.height);
       gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (actions_swindow),
                       GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
