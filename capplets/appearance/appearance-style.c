@@ -295,7 +295,11 @@ static void update_message_area(AppearanceData* data)
 static void
 update_color_buttons_from_string (const gchar *color_scheme, AppearanceData *data)
 {
+#if GTK_CHECK_VERSION (3, 0, 0)
+  GdkRGBA colors[NUM_SYMBOLIC_COLORS];
+#else
   GdkColor colors[NUM_SYMBOLIC_COLORS];
+#endif
   GtkWidget *widget;
   gint i;
 
@@ -305,7 +309,11 @@ update_color_buttons_from_string (const gchar *color_scheme, AppearanceData *dat
   /* now set all the buttons to the correct settings */
   for (i = 0; i < NUM_SYMBOLIC_COLORS; ++i) {
     widget = appearance_capplet_get_widget (data, symbolic_names[i]);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (widget), &colors[i]);
+#else
     gtk_color_button_set_color (GTK_COLOR_BUTTON (widget), &colors[i]);
+#endif
   }
 }
 
@@ -376,7 +384,11 @@ static void
 color_button_clicked_cb (GtkWidget *colorbutton, AppearanceData *data)
 {
   GtkWidget *widget;
+#if GTK_CHECK_VERSION (3, 0, 0)
+  GdkRGBA color;
+#else
   GdkColor color;
+#endif
   GString *scheme = g_string_new (NULL);
   gchar *colstr;
   gchar *old_scheme = NULL;
@@ -384,9 +396,17 @@ color_button_clicked_cb (GtkWidget *colorbutton, AppearanceData *data)
 
   for (i = 0; i < NUM_SYMBOLIC_COLORS; ++i) {
     widget = appearance_capplet_get_widget (data, symbolic_names[i]);
+#if GTK_CHECK_VERSION (3, 0, 0)
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (widget), &color);
+#else
     gtk_color_button_get_color (GTK_COLOR_BUTTON (widget), &color);
+#endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+    colstr = gdk_rgba_to_string (&color);
+#else
     colstr = gdk_color_to_string (&color);
+#endif
     g_string_append_printf (scheme, "%s:%s\n", symbolic_names[i], colstr);
     g_free (colstr);
   }
