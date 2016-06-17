@@ -22,6 +22,10 @@
 
 #include <gtk/gtk.h>
 
+#if !GTK_CHECK_VERSION(3,0,0)
+#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
+#endif
+
 typedef struct
 {
 	GtkImage *cur_icon;
@@ -115,7 +119,7 @@ menu_position_func (GtkMenu * menu, int *x, int *y, gboolean * push_in, gpointer
 	if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
 	{
 		GtkRequisition req;
-		gtk_widget_size_request (GTK_WIDGET (menu), &req);
+		gtk_widget_get_preferred_size (GTK_WIDGET (menu), &req, NULL);
 		*x += allocation.width - req.width;
 	}
 
