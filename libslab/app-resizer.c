@@ -24,6 +24,10 @@
 #include "app-shell.h"
 #include "app-resizer.h"
 
+#if !GTK_CHECK_VERSION(3,0,0)
+#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
+#endif
+
 static void app_resizer_class_init (AppResizerClass *);
 static void app_resizer_init (AppResizer *);
 static void app_resizer_size_allocate (GtkWidget * resizer, GtkAllocation * allocation);
@@ -262,7 +266,7 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 		GtkRequisition req;
 
 		/* Have to do this so that it requests, and thus gets allocated, new amount */
-		gtk_widget_size_request (child, &req);
+		gtk_widget_get_preferred_size (child, &req, NULL);
 
 		resizer->cur_num_cols = new_num_cols;
 	}
