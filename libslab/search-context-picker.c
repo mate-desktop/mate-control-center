@@ -86,11 +86,13 @@ nld_search_context_picker_init (NldSearchContextPicker * picker)
 
 #if GTK_CHECK_VERSION (3, 0, 0)
 	separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
+	gtk_box_pack_start (GTK_BOX (hbox), separator, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox), gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU), FALSE, FALSE, 0);
 #else
 	separator = gtk_vseparator_new ();
-#endif
 	gtk_box_pack_start (GTK_BOX (hbox), separator, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (hbox), gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE), FALSE, FALSE, 0);
+#endif
 
 	gtk_widget_show_all (hbox);
 
