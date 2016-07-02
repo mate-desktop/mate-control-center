@@ -78,7 +78,7 @@ AC_MSG_RESULT([$with_gtk])
 case "$with_gtk" in
   2.0) GTK_API_VERSION=2.0
        GTK_REQUIRED=2.24.0
-       MATE_DESKTOP_REQUIRED=1.11.0
+       MATE_DESKTOP_REQUIRED=1.15.1
        LIBCANBERRA_API_VERSION=
        LIBUNIQUE_API_VERSION=1.0
        ENGINES_FOLDER="engines"
@@ -86,7 +86,7 @@ case "$with_gtk" in
        ;;
   3.0) GTK_API_VERSION=3.0
        GTK_REQUIRED=3.0.0
-       MATE_DESKTOP_REQUIRED=1.11.0
+       MATE_DESKTOP_REQUIRED=1.15.1
        LIBCANBERRA_API_VERSION=3
        LIBUNIQUE_API_VERSION=3.0
        ENGINES_FOLDER="theming-engines"
