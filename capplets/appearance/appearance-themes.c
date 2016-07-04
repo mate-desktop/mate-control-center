@@ -1064,7 +1064,7 @@ void themes_init(AppearanceData* data)
   renderer = gtk_cell_renderer_pixbuf_new ();
   g_object_set (renderer, "xpad", 5, "ypad", 5,
                           "xalign", 0.5, "yalign", 1.0, NULL);
-  gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (icon_view), renderer, FALSE);
+  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (icon_view), renderer, FALSE);
   gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view), renderer,
                                   "pixbuf", COL_THUMBNAIL, NULL);
 
