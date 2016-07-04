@@ -1073,7 +1073,20 @@ void themes_init(AppearanceData* data)
                           "wrap-mode", PANGO_WRAP_WORD_CHAR,
                           "wrap-width", gtk_icon_view_get_item_width (icon_view),
                           "width", gtk_icon_view_get_item_width (icon_view),
+#if GTK_CHECK_VERSION (3, 0, 0)
+                          /* The xalign property should be 0.5 here, but due to a bug
+                           * which was never fixed in GTK+2, it was set to 0.0.
+                           * In GTK+3 the bug is fixed, so this workaround causes
+                           * theme name to be left-aligned instead of being centered.
+                           * So set it to 0.5 for GTK+3.
+                           *
+                           * The fix was applied in
+                           * https://git.gnome.org/browse/gtk+/commit?id=09bf05b
+                           */
+                          "xalign", 0.5, "yalign", 0.0, NULL);
+#else
                           "xalign", 0.0, "yalign", 0.0, NULL);
+#endif
   gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (icon_view), renderer, FALSE);
   gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view), renderer,
                                   "markup", COL_LABEL, NULL);
