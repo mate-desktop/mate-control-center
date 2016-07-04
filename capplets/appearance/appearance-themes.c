@@ -408,16 +408,16 @@ theme_set_custom_from_theme (const MateThemeMetaInfo *info, AppearanceData *data
 
 static void custom_font_cb(GtkWidget* button, AppearanceData* data)
 {
-	g_free(data->revert_application_font);
-	g_free(data->revert_documents_font);
-	g_free(data->revert_desktop_font);
-	g_free(data->revert_windowtitle_font);
-	g_free(data->revert_monospace_font);
-	data->revert_application_font = NULL;
-	data->revert_documents_font = NULL;
-	data->revert_desktop_font = NULL;
-	data->revert_windowtitle_font = NULL;
-	data->revert_monospace_font = NULL;
+  g_free(data->revert_application_font);
+  g_free(data->revert_documents_font);
+  g_free(data->revert_desktop_font);
+  g_free(data->revert_windowtitle_font);
+  g_free(data->revert_monospace_font);
+  data->revert_application_font = NULL;
+  data->revert_documents_font = NULL;
+  data->revert_desktop_font = NULL;
+  data->revert_windowtitle_font = NULL;
+  data->revert_monospace_font = NULL;
 }
 
 static void
@@ -543,19 +543,17 @@ theme_message_area_response_cb (GtkWidget *w,
       }
       break;
 
-		case RESPONSE_INSTALL_ENGINE:
+    case RESPONSE_INSTALL_ENGINE:
+      engine_path = gtk_theme_info_missing_engine(theme->gtk_theme_name, FALSE);
 
-			engine_path = gtk_theme_info_missing_engine(theme->gtk_theme_name, FALSE);
+      if (engine_path != NULL) {
+        theme_install_file(GTK_WINDOW(gtk_widget_get_toplevel(data->install_button)), engine_path);
+        g_free (engine_path);
+      }
 
-			if (engine_path != NULL)
-			{
-				theme_install_file(GTK_WINDOW(gtk_widget_get_toplevel(data->install_button)), engine_path);
-				g_free (engine_path);
-			}
-
-			theme_message_area_update(data);
-			break;
-	}
+      theme_message_area_update(data);
+      break;
+  }
 }
 
 static void
@@ -665,7 +663,7 @@ theme_message_area_update (AppearanceData *data)
     gtk_widget_show (data->theme_message_label);
     gtk_label_set_line_wrap (GTK_LABEL (data->theme_message_label), TRUE);
 #if GTK_CHECK_VERSION (3, 16, 0)
-	gtk_label_set_xalign (GTK_LABEL (data->theme_message_label), 0.0);
+    gtk_label_set_xalign (GTK_LABEL (data->theme_message_label), 0.0);
 #else
     gtk_misc_set_alignment (GTK_MISC (data->theme_message_label), 0.0, 0.5);
 #endif
@@ -794,7 +792,7 @@ theme_selection_changed_cb (GtkWidget *icon_view, AppearanceData *data)
     gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "theme_delete"),
 			    theme_is_writable (theme));
     gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "theme_save"), is_custom);
-    }
+  }
 }
 
 static void
@@ -1072,10 +1070,10 @@ void themes_init(AppearanceData* data)
 
   renderer = gtk_cell_renderer_text_new ();
   g_object_set (renderer, "alignment", PANGO_ALIGN_CENTER,
-			  "wrap-mode", PANGO_WRAP_WORD_CHAR,
-			  "wrap-width", gtk_icon_view_get_item_width (icon_view),
-			  "width", gtk_icon_view_get_item_width (icon_view),
-			  "xalign", 0.0, "yalign", 0.0, NULL);
+                          "wrap-mode", PANGO_WRAP_WORD_CHAR,
+                          "wrap-width", gtk_icon_view_get_item_width (icon_view),
+                          "width", gtk_icon_view_get_item_width (icon_view),
+                          "xalign", 0.0, "yalign", 0.0, NULL);
   gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (icon_view), renderer, FALSE);
   gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view), renderer,
                                   "markup", COL_LABEL, NULL);
