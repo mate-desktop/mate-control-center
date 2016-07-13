@@ -23,7 +23,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
-#include <libmate-desktop/mate-desktop-item.h>
 #include <unique/unique.h>
 
 #include <libslab/slab.h>

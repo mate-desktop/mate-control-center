@@ -22,7 +22,6 @@
 #define __MATE_UTILS_H__
 
 #include <gtk/gtk.h>
-#include <libmate-desktop/mate-desktop-item.h>
 
 #ifdef __cplusplus
 extern "C" {

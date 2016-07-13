@@ -23,7 +23,6 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <libmate-desktop/mate-desktop-item.h>
 
 #include "app-shell.h"
 

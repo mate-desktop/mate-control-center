@@ -1,7 +1,6 @@
 #include <config.h>
 #include <gtk/gtk.h>
 #include <string.h>
-#include <libmate-desktop/mate-desktop-item.h>
 #include "mate-theme-info.h"
 
 int
