@@ -50,7 +50,9 @@ EXTRA_DIST = \
 	autogen.sh \
 	$(gsettingsschema_in_files)
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb
+DISTCHECK_CONFIGURE_FLAGS = \
+	--disable-update-mimedb \
+	--with-gtk=$(GTK_API_VERSION)
 
 GITIGNOREFILES=m4
 
