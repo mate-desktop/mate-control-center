@@ -508,7 +508,7 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 							  "case",
 							  "wrapped",
 							  "recovered",
-							  "recent"
+							  "recent",
 							  "unchanged",
 							  "match",
 							  "1 numeric or special",
