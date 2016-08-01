@@ -426,7 +426,8 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 		GDK_BUTTON2_MASK |
 		GDK_BUTTON3_MASK |
 		GDK_BUTTON4_MASK |
-		GDK_BUTTON5_MASK;
+		GDK_BUTTON5_MASK |
+		GDK_LOCK_MASK;
 
 	/* filter consumed/ignored modifiers */
 	if (keys->accel_mode == EGG_CELL_RENDERER_KEYS_MODE_GTK)
