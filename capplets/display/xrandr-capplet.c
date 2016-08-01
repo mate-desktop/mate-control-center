@@ -2433,7 +2433,11 @@ make_default (App *app)
 
     source_filename = mate_rr_config_get_intended_filename ();
 
+#ifdef __sun__
+    command_line = g_strdup_printf ("/usr/bin/gksu -u root %s/mate-display-properties-install-systemwide %s %s",
+#else
     command_line = g_strdup_printf ("pkexec %s/mate-display-properties-install-systemwide %s %s",
+#endif
 				    SBINDIR,
 				    source_filename,
 				    dest_basename);

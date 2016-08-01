@@ -130,8 +130,10 @@ main (int argc, char **argv)
 	uid_t uid, euid;
 	const char *source_filename;
 	const char *dest_name;
+#ifndef __sun__
 	const char *pkexec_uid_str;
 	int pkexec_uid;
+#endif
 	struct stat statbuf;
 	int err;
 	int source_fd;
@@ -197,6 +199,7 @@ main (int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
+#ifndef __sun__
 	/* We only copy files that are really owned by the calling user */
 
 	pkexec_uid_str = g_getenv ("PKEXEC_UID");
@@ -215,6 +218,7 @@ main (int argc, char **argv)
 		g_print (_("%s must be owned by you\n"), source_filename);
 		return EXIT_FAILURE;
 	}
+#endif
 
 	/* We only accept basenames for the destination */
 
