@@ -50,7 +50,11 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   activate_settings_daemon ();
 
   /* set up the data */
+#if GTK_CHECK_VERSION (3, 0, 0)
+  uifile = g_build_filename (MATECC_GTKBUILDER_DIR, "appearance-gtk3.ui",
+#else
   uifile = g_build_filename (MATECC_GTKBUILDER_DIR, "appearance.ui",
+#endif
                              NULL);
   ui = gtk_builder_new ();
   gtk_builder_add_from_file (ui, uifile, &err);
