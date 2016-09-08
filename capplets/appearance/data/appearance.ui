@@ -2037,6 +2037,7 @@
     <property name="title" translatable="yes">Customize Theme</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
+    <property name="default_height">450</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -2045,6 +2046,7 @@
         <property name="spacing">2</property>
         <child>
           <object class="GtkNotebook" id="notebook2">
+            <property name="expand">True</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -2064,6 +2066,7 @@
                     <property name="spacing">6</property>
                     <child>
                       <object class="GtkScrolledWindow" id="scrolledwindow3">
+                        <property name="height_request">200</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -2072,7 +2075,6 @@
                         <property name="shadow_type">in</property>
                         <child>
                           <object class="GtkTreeView" id="gtk_themes_list">
-                            <property name="height_request">300</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -2440,6 +2442,7 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow5">
+                    <property name="height_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -2512,6 +2515,7 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow6">
+                    <property name="height_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -2620,6 +2624,7 @@
                 </child>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow8">
+                    <property name="height_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>

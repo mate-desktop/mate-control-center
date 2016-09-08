@@ -1074,6 +1074,11 @@ style_init (AppearanceData *data)
   icon_theme_changed (data->interface_settings, ICON_THEME_KEY, data);
   cursor_theme_changed (data->mouse_settings, CURSOR_THEME_KEY, data);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+  GtkNotebook *style_nb = GTK_NOTEBOOK (appearance_capplet_get_widget (data, "notebook2"));
+  gtk_notebook_remove_page (style_nb, 1);
+#endif
+
   w = appearance_capplet_get_widget (data, "color_scheme_message_hbox");
   gtk_widget_set_no_show_all (w, TRUE);
 
