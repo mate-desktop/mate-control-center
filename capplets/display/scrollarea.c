@@ -324,7 +324,11 @@ foo_scroll_area_class_init (FooScrollAreaClass *class)
 		      G_STRUCT_OFFSET (FooScrollAreaClass,
 				       paint),
 		      NULL, NULL,
+#if GTK_CHECK_VERSION (3, 0, 0)
+		      g_cclosure_marshal_VOID__POINTER,
+#else
 		      foo_marshal_VOID__POINTER_BOXED_POINTER,
+#endif
 		      G_TYPE_NONE,
 #if GTK_CHECK_VERSION (3, 0, 0)
                       1,
