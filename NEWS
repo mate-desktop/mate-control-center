@@ -1,36 +1,24 @@
-1.15.2
-
+1.16.0
+  * Build: drop dconf 0.10 compatibility
+  * Appearance: change default hinting style to slight and render
+    antialiasing samples using that style
+  * Appearance: render hinting samples using RGBA antialiasing
+  * Appearance: place theme name below theme preview in GTK+3 build to
+    match GTK+2 one
+  * Appearance: center theme name in GTK+3 build to match GTK+2 one
+  * Appearance: hide Colors tab in Customize Theme dialog in GTK+3 build
+    as changing theme colors won't work in GTK+3
+  * GTK+3: fix build with appindicator support enabled
+  * GTK+3: fix showing monitors in display properties with glib 2.49.6
+  * GTK+3: fix various deprecations
+  * Some code cleanups
   * Translations update
-  * GTK+3 appearance: don't show Colors tab in Customize Theme dialog
-  * distcheck: explicitly use currently selected GTK+ version
-  * drop dconf 0.10 compatibility (it's ancient)
-  * appearance: make theme name centered in GTK+3 too
-  * appearance: place theme name below theme preview in GTK+3 too
 
-1.15.1
-
-  * bump mate-desktop requires version
+1.14.1
+  * About me: add some space between username and buttons
+  * About me: fix UI freeze when changing the password
   * Translations update
-  * GTK+-3 mate-theme-info: port GdkColor to GdkRGBA
-  * GTK+-3 appearance-style: port GdkColor to GdkRGBA
-  * GTK+-3 mate-wp-xml: port GdkColor to GdkRGBA
-  * GTK+3 appearance-desktop: port GdkColor to GdkRGBA
-  * GTK+3 mate-wp-item: port GdkColor to GdkRGBA
-  * configure: fix build with libappindicator3
-  * GTK+-3 search-context-picker: do not use deprecated gtk_arrow_new ()
-  * GTK+-search-context-picker: don't use deprecated gtk_widget_size_request
-  * GTK+-3 app-resizer: don't use deprecated gtk_widget_size_request
-  * GTK+-3 e-image-chooser: don't use deprecated gtk_widget_size_request
-  * GTK+-3 eggcellrenderkeys: don't use deprecated gtk_widget_size_request
-  * GTK+-3 keybinding-properties: don't use deprecated gtk_widget_size_request
-  * GTK+-3 theme-installer: do not use deprecated gdk_threads_{enter/leave} ()
-
-1.15.0
-
-  * Translations update
-  * Change default hinting style of 'Subpixel smoothing' mode to slight
-  * Render hinting samples using ANTIALIAS_RGBA
-  * add style class appearance-window
+  * Make distcheck use currently selected GTK+ version
 
 1.14.0
   * Drop MateConf migration script
