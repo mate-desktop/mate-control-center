@@ -195,6 +195,9 @@ launch_selected_app (AppShellData * app_data)
 static gboolean
 main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * app_data)
 {
+#if GTK_CHECK_VERSION(3,0,0)
+	GApplication *app;
+#endif
 	if (event->keyval == GDK_KEY_Return)
 	{
 		SlabSection *section = SLAB_SECTION (app_data->filter_section);
@@ -216,7 +219,14 @@ main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * 
 		((event->keyval == GDK_KEY_q || event->keyval == GDK_KEY_Q) && (event->state & GDK_CONTROL_MASK)))
 	{
 		if (app_data->exit_on_close)
+#if GTK_CHECK_VERSION(3,0,0)
+		{
+			app=g_application_get_default();
+			g_application_quit(app);
+		}
+#else
 			gtk_main_quit ();
+#endif
 		else
 			hide_shell (app_data);
 		return TRUE;
@@ -227,9 +237,18 @@ main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * 
 static gboolean
 main_delete_callback (GtkWidget * widget, GdkEvent * event, AppShellData * app_data)
 {
+#if GTK_CHECK_VERSION(3,0,0)
+	GApplication *app;
+#endif
 	if (app_data->exit_on_close)
 	{
-		gtk_main_quit ();
+		/*avoid "gtk_main_quit: assertion 'main_loops != NULL' failed" critical here */
+#if GTK_CHECK_VERSION(3,0,0)
+		app=g_application_get_default();
+		g_application_quit(app);
+#else
+		gtk_main_quit();
+#endif
 		return FALSE;
 	}
 
@@ -1385,6 +1404,9 @@ tile_activated_cb (Tile * tile, TileEvent * event, gpointer user_data)
 static void
 handle_launcher_single_clicked (Tile * launcher, gpointer data)
 {
+#if GTK_CHECK_VERSION(3,0,0)
+	GApplication *app;
+#endif
 	AppShellData *app_data = (AppShellData *) data;
 
 	tile_trigger_action (launcher, launcher->actions[APPLICATION_TILE_ACTION_START]);
@@ -1392,7 +1414,14 @@ handle_launcher_single_clicked (Tile * launcher, gpointer data)
 	if (g_settings_get_boolean (app_data->settings, EXIT_SHELL_ON_ACTION_START))
 	{
 		if (app_data->exit_on_close)
-			gtk_main_quit ();
+#if GTK_CHECK_VERSION(3,0,0)
+		{
+			app=g_application_get_default();
+			g_application_quit(app);
+		}
+#else
+			gtk_main_quit();
+#endif
 		else
 			hide_shell (app_data);
 	}
@@ -1402,6 +1431,9 @@ static void
 handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * action,
 	gpointer data)
 {
+#if GTK_CHECK_VERSION(3,0,0)
+	GApplication *app;
+#endif
 	AppShellData *app_data = (AppShellData *) data;
 	gchar *temp;
 
@@ -1433,7 +1465,14 @@ handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * a
 		if (g_settings_get_boolean (app_data->settings, temp))
 		{
 			if (app_data->exit_on_close)
-				gtk_main_quit ();
+#if GTK_CHECK_VERSION(3,0,0)
+			{
+				app=g_application_get_default();
+				g_application_quit(app);
+			}
+#else
+				gtk_main_quit();
+#endif
 			else
 				hide_shell (app_data);
 		}
