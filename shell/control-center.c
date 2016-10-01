@@ -23,8 +23,9 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
+#if !GTK_CHECK_VERSION(3,0,0)
 #include <unique/unique.h>
-
+#endif
 #include <libslab/slab.h>
 
 void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data);
@@ -118,6 +119,40 @@ void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data)
 	g_object_unref(settings);
 }
 
+#if GTK_CHECK_VERSION(3,0,0)
+static void
+activate (GtkApplication *app)
+{
+	GList *list;
+	GSList* actions;
+	gboolean hidden = FALSE;
+
+	list = gtk_application_get_windows (app);
+
+	AppShellData* app_data = appshelldata_new("matecc.menu", GTK_ICON_SIZE_DND, FALSE, TRUE, 0);
+
+	generate_categories(app_data);
+
+	actions = get_actions_list();
+	layout_shell(app_data, _("Filter"), _("Groups"), _("Common Tasks"), actions, handle_static_action_clicked);
+
+	if (list)
+	{
+		gtk_window_present (GTK_WINDOW (list->data));
+	}
+	else
+	{
+		create_main_window(app_data, "MyControlCenter", _("Control Center"), "preferences-desktop", 975, 600, hidden);
+		gtk_application_add_window (app, GTK_WINDOW(app_data->main_app));
+    }
+}
+
+static void
+quit (GApplication *app)
+{
+	g_application_quit(app);
+}
+#else
 static UniqueResponse message_received_cb(UniqueApp* app, UniqueCommand command, UniqueMessageData* message, guint time, gpointer user_data)
 {
 	UniqueResponse res;
@@ -148,24 +183,30 @@ static UniqueResponse message_received_cb(UniqueApp* app, UniqueCommand command,
 
 	return res;
 }
-
+#endif
 int main(int argc, char* argv[])
 {
 	gboolean hidden = FALSE;
+#if GTK_CHECK_VERSION(3,0,0)
+	GtkApplication *app;
+	gint retval;
+	app = gtk_application_new ("org.mate.mate-control-center.shell", 0);
+#else
 	UniqueApp* unique_app;
 	AppShellData* app_data;
 	GSList* actions;
+#endif
 	GError* error;
 	GOptionEntry options[] = {
 		{"hide", 0, 0, G_OPTION_ARG_NONE, &hidden, N_("Hide on start (useful to preload the shell)"), NULL},
 		{NULL}
 	};
 
-	#ifdef ENABLE_NLS
+#ifdef ENABLE_NLS
 		bindtextdomain(GETTEXT_PACKAGE, MATELOCALEDIR);
 		bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 		textdomain(GETTEXT_PACKAGE);
-	#endif
+#endif
 
 	error = NULL;
 
@@ -175,7 +216,12 @@ int main(int argc, char* argv[])
 		g_error_free(error);
 		return 1;
 	}
-
+#if GTK_CHECK_VERSION(3,0,0)
+    g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
+    g_signal_connect (app, "window-removed", G_CALLBACK (quit), NULL);
+    retval = g_application_run (G_APPLICATION (app), argc, argv);
+    return retval;
+#else
 	unique_app = unique_app_new("org.mate.mate-control-center.shell", NULL);
 
 	if (unique_app_is_running(unique_app))
@@ -204,9 +250,9 @@ int main(int argc, char* argv[])
 	unique_app_watch_window(unique_app, GTK_WINDOW(app_data->main_app));
 	g_signal_connect(unique_app, "message-received", G_CALLBACK(message_received_cb), app_data);
 
-	gtk_main();
-
+    gtk_main();
 	g_object_unref(unique_app);
 
 	return 0;
+#endif
 }

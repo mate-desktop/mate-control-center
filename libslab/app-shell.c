@@ -229,7 +229,10 @@ main_delete_callback (GtkWidget * widget, GdkEvent * event, AppShellData * app_d
 {
 	if (app_data->exit_on_close)
 	{
+	/*avoid "gtk_main_quit: assertion 'main_loops != NULL' failed" critical here */
+#if !GTK_CHECK_VERSION(3,0,0)
 		gtk_main_quit ();
+#endif
 		return FALSE;
 	}
 
