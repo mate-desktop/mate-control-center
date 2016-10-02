@@ -94,7 +94,9 @@ void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data)
 	AppShellData* app_data = (AppShellData*) data;
 	MateDesktopItem* item = (MateDesktopItem*) g_object_get_data(G_OBJECT(tile), APP_ACTION_KEY);
 	GSettings *settings;
-
+#if GTK_CHECK_VERSION(3,0,0)
+	GApplication *app;
+#endif
 	if (event->type == TILE_EVENT_ACTIVATED_DOUBLE_CLICK)
 	{
 		return;
@@ -108,7 +110,12 @@ void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data)
 	{
 		if (app_data->exit_on_close)
 		{
+#if GTK_CHECK_VERSION(3,0,0)
+			app=g_application_get_default();
+			g_application_quit(app);
+#else
 			gtk_main_quit();
+#endif
 		}
 		else
 		{
