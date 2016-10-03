@@ -219,7 +219,14 @@ main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * 
 		((event->keyval == GDK_KEY_q || event->keyval == GDK_KEY_Q) && (event->state & GDK_CONTROL_MASK)))
 	{
 		if (app_data->exit_on_close)
+#if GTK_CHECK_VERSION(3,0,0)
+			{
+			app=g_application_get_default();
+			g_application_quit(app);
+			}
+#else
 			gtk_main_quit ();
+#endif
 		else
 			hide_shell (app_data);
 		return TRUE;
