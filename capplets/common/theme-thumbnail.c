@@ -23,6 +23,11 @@
 #define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
 #endif
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+#define GdkRegion cairo_region_t
+#define gdk_region_destroy cairo_region_destroy
+#endif
+
 typedef struct {
 	gboolean set;
 	gint thumbnail_width;
