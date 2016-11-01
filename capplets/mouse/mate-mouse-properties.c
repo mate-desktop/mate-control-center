@@ -66,31 +66,6 @@ static gint double_click_state = DOUBLE_CLICK_TEST_OFF;
 static GSettings *mouse_settings = NULL;
 static GSettings *touchpad_settings = NULL;
 
-static void
-get_default_mouse_info (int *default_numerator, int *default_denominator, int *default_threshold)
-{
-	int numerator, denominator;
-	int threshold;
-	int tmp_num, tmp_den, tmp_threshold;
-
-	/* Query X for the default value */
-	XGetPointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numerator, &denominator,
-			    &threshold);
-	XChangePointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), True, True, -1, -1, -1);
-	XGetPointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &tmp_num, &tmp_den, &tmp_threshold);
-	XChangePointerControl (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), True, True, numerator, denominator, threshold);
-
-	if (default_numerator)
-		*default_numerator = tmp_num;
-
-	if (default_denominator)
-		*default_denominator = tmp_den;
-
-	if (default_threshold)
-		*default_threshold = tmp_threshold;
-
-}
-
 /* Double Click handling */
 
 struct test_data_t
