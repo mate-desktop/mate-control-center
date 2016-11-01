@@ -38,10 +38,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
-#ifdef HAVE_XINPUT
+
 #include <X11/Xatom.h>
 #include <X11/extensions/XInput.h>
-#endif
 
 #ifdef HAVE_XCURSOR
 #include <X11/Xcursor/Xcursor.h>
@@ -204,7 +203,6 @@ orientation_radio_button_toggled (GtkToggleButton *togglebutton,
 static void
 synaptics_check_capabilities (GtkBuilder *dialog)
 {
-#ifdef HAVE_XINPUT
 	int numdevices, i;
 	XDeviceInfo *devicelist;
 	Atom realtype, prop;
@@ -250,14 +248,12 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
 	}
 	XFreeDeviceList (devicelist);
-#endif
 }
 
 static gboolean
 find_synaptics (void)
 {
 	gboolean ret = FALSE;
-#ifdef HAVE_XINPUT
 	int numdevices, i;
 	XDeviceInfo *devicelist;
 	Atom realtype, prop;
@@ -311,7 +307,7 @@ find_synaptics (void)
 
 	XFree (version);
 	XFreeDeviceList (devicelist);
-#endif
+
 	return ret;
 }
 

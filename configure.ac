@@ -240,17 +240,11 @@ fi
 
 CAPPLET_LIBS="$CAPPLET_LIBS $XCURSOR_LIBS"
 
-dnl =============================================
-dnl X Input library >= 1.2 with property support
-dnl =============================================
-have_xinput=no
-PKG_CHECK_MODULES(XINPUT, [xi >= 1.2],
-	have_xinput=yes
-	AC_DEFINE(HAVE_XINPUT, 1, [Define if the XInput extension is available]),
-	have_xinput=no)
-AM_CONDITIONAL(HAVE_XINPUT, [test $have_xinput=yes])
-AC_SUBST(XINPUT_CFLAGS)
-AC_SUBST(XINPUT_LIBS)
+dnl ======================
+dnl X Input library >= 1.5
+dnl ======================
+
+PKG_CHECK_MODULES(XINPUT, xi >= 1.5)
 
 CAPPLET_LIBS="$CAPPLET_LIBS $XINPUT_LIBS"
 
@@ -374,5 +368,4 @@ echo "
         Appindicator:          ${enable_appindicator}
         Libmate-slab:          ${have_libmateslab}
         XCursor support:       ${have_xcursor}
-        XInput support:        ${have_xinput}
 "
