@@ -37,7 +37,6 @@
 #define MARCO_THEME_KEY         "theme"
 
 #define MOUSE_SCHEMA            "org.mate.peripherals-mouse"
-#define CURSOR_FONT_KEY         "cursor-font"
 #define CURSOR_THEME_KEY        "cursor-theme"
 #define CURSOR_SIZE_KEY         "cursor-size"
 
@@ -123,7 +122,6 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
     }
 
   /* Set the cursor theme key */
-#ifdef HAVE_XCURSOR
   old_key = g_settings_get_string (mouse_settings, CURSOR_THEME_KEY);
   if (compare (old_key, meta_theme_info->cursor_theme_name))
     {
@@ -135,13 +133,6 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
     {
       g_settings_set_int (mouse_settings, CURSOR_SIZE_KEY, meta_theme_info->cursor_size);
     }
-#else
-  old_key = g_settings_get_string (mouse_settings, CURSOR_FONT_KEY);
-  if (compare (old_key, meta_theme_info->cursor_theme_name))
-    {
-      g_settings_set_string (mouse_settings, CURSOR_FONT_KEY, meta_theme_info->cursor_theme_name);
-    }
-#endif
 
   g_free (old_key);
   g_object_unref (interface_settings);

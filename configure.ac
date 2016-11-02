@@ -212,31 +212,9 @@ DISPLAY_CAPPLET_LIBS="$DISPLAY_CAPPLET_LIBS"
 CAPPLET_LIBS="$CAPPLET_LIBS $x_libs"
 MATECC_LIBS="$MATECC_LIBS $x_libs"
 
-dnl
-dnl Check for XCursor support.  If it exists, then we compile the
-dnl mouse capplet with support for it turned on
-dnl
-have_xcursor=no
-PKG_CHECK_MODULES(XCURSOR, [
-	xcursor
-	],
-	have_xcursor=yes
-	AC_DEFINE(HAVE_XCURSOR, 1, [Define if the Xcursor extension is available]),
-	have_xcursor=no)
-AM_CONDITIONAL(HAVE_XCURSOR, [test $have_xcursor=yes])
-AC_SUBST(XCURSOR_CFLAGS)
-AC_SUBST(XCURSOR_LIBS)
-
-if test x$have_xcursor = xyes; then
-  AC_MSG_CHECKING([for XCURSOR cursor location])
-  XCURSOR_ICONDIR=$($PKG_CONFIG --variable=icondir xcursor)
-  if test "x$XCURSOR_ICONDIR" != x; then
-    AC_DEFINE_UNQUOTED(XCURSOR_ICONDIR, "${XCURSOR_ICONDIR}", [Define to the xcursor icon path])
-  else
-    XCURSOR_ICONDIR=none
-  fi
-  AC_MSG_RESULT([${XCURSOR_ICONDIR}])
-fi
+PKG_CHECK_MODULES(XCURSOR, xcursor)
+XCURSOR_ICONDIR=$($PKG_CONFIG --variable=icondir xcursor)
+AC_DEFINE_UNQUOTED(XCURSOR_ICONDIR, "${XCURSOR_ICONDIR}", [Define to the xcursor icon path])
 
 CAPPLET_LIBS="$CAPPLET_LIBS $XCURSOR_LIBS"
 
@@ -367,5 +345,4 @@ echo "
         GTK+ API version:      ${GTK_API_VERSION}
         Appindicator:          ${enable_appindicator}
         Libmate-slab:          ${have_libmateslab}
-        XCursor support:       ${have_xcursor}
 "

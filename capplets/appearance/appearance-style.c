@@ -509,7 +509,6 @@ icon_theme_changed (GSettings *settings, gchar *key, AppearanceData *data)
 			    theme_is_writable (theme));
 }
 
-#ifdef HAVE_XCURSOR
 static void
 cursor_size_changed_cb (int size, AppearanceData *data)
 {
@@ -536,13 +535,11 @@ cursor_size_scale_value_changed_cb (GtkRange *range, AppearanceData *data)
     cursor_size_changed_cb (size, data);
   }
 }
-#endif
 
 static void
 update_cursor_size_scale (MateThemeCursorInfo *theme,
                           AppearanceData *data)
 {
-#ifdef HAVE_XCURSOR
   GtkWidget *cursor_size_scale;
   GtkWidget *cursor_size_label;
   GtkWidget *cursor_size_small_label;
@@ -610,7 +607,6 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
 
   if (size != gsettings_size)
     cursor_size_changed_cb (size, data);
-#endif
 }
 
 static void
@@ -1090,7 +1086,6 @@ style_init (AppearanceData *data)
   settings = gtk_settings_get_default ();
   g_signal_connect (settings, "notify::gtk-color-scheme", (GCallback) color_scheme_changed, data);
 
-#ifdef HAVE_XCURSOR
   w = appearance_capplet_get_widget (data, "cursor_size_scale");
   g_signal_connect (w, "value-changed", (GCallback) cursor_size_scale_value_changed_cb, data);
 
@@ -1103,13 +1098,6 @@ style_init (AppearanceData *data)
   label = g_strdup_printf ("<small><i>%s</i></small>", gtk_label_get_text (GTK_LABEL (w)));
   gtk_label_set_markup (GTK_LABEL (w), label);
   g_free (label);
-#else
-  w = appearance_capplet_get_widget (data, "cursor_size_hbox");
-  gtk_widget_set_no_show_all (w, TRUE);
-  gtk_widget_hide (w);
-  gtk_widget_show (appearance_capplet_get_widget (data, "cursor_message_hbox"));
-  gtk_box_set_spacing (GTK_BOX (appearance_capplet_get_widget (data, "cursor_vbox")), 12);
-#endif
 
   /* connect signals */
   /* color buttons */

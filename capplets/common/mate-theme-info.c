@@ -39,9 +39,7 @@
 #include "mate-theme-info.h"
 #include "gtkrc-utils.h"
 
-#ifdef HAVE_XCURSOR
-	#include <X11/Xcursor/Xcursor.h>
-#endif
+#include <X11/Xcursor/Xcursor.h>
 
 #define THEME_NAME "X-GNOME-Metatheme/Name"
 #define THEME_COMMENT "X-GNOME-Metatheme/Comment"
@@ -485,7 +483,6 @@ read_icon_theme (GFile *icon_theme_uri)
   return icon_theme_info;
 }
 
-#ifdef HAVE_XCURSOR
 static void
 add_default_cursor_theme ()
 {
@@ -627,117 +624,6 @@ read_cursor_theme (GFile *cursor_theme_uri)
 
   return cursor_theme_info;
 }
-
-#else /* !HAVE_XCURSOR */
-
-static gchar *
-read_current_cursor_font (void)
-{
-  DIR *dir;
-  gchar *dir_name;
-  struct dirent *file_dirent;
-
-	dir_name = g_build_filename(g_get_user_config_dir(), "mate", "share", "cursor-fonts", NULL);
-
-  if (! g_file_test (dir_name, G_FILE_TEST_EXISTS)) {
-    g_free (dir_name);
-    return NULL;
-  }
-
-  dir = opendir (dir_name);
-
-  while ((file_dirent = readdir (dir)) != NULL) {
-    struct stat st;
-    gchar *link_name;
-
-    link_name = g_build_filename (dir_name, file_dirent->d_name, NULL);
-    if (lstat (link_name, &st)) {
-      g_free (link_name);
-      continue;
-    }
-
-    if (S_ISLNK (st.st_mode)) {
-      gint length;
-      gchar target[256];
-
-      length = readlink (link_name, target, 255);
-      if (length > 0) {
-        gchar *retval;
-        target[length] = '\0';
-        retval = g_strdup (target);
-        g_free (link_name);
-        closedir (dir);
-        return retval;
-      }
-
-    }
-    g_free (link_name);
-  }
-  g_free (dir_name);
-  closedir (dir);
-  return NULL;
-}
-
-static void
-read_cursor_fonts (void)
-{
-  gchar *cursor_font;
-  gint i;
-
-  const gchar *builtins[][4] = {
-    {
-      "mate/cursor-fonts/cursor-normal.pcf",
-      N_("Default Pointer"),
-      N_("Default Pointer - Current"),
-      "mouse-cursor-normal.png"
-    }, {
-      "mate/cursor-fonts/cursor-white.pcf",
-      N_("White Pointer"),
-      N_("White Pointer - Current"),
-      "mouse-cursor-white.png"
-    }, {
-      "mate/cursor-fonts/cursor-large.pcf",
-      N_("Large Pointer"),
-      N_("Large Pointer - Current"),
-      "mouse-cursor-normal-large.png"
-    }, {
-      "mate/cursor-fonts/cursor-large-white.pcf",
-      N_("Large White Pointer - Current"),
-      N_("Large White Pointer"),
-      "mouse-cursor-white-large.png"
-    }
-  };
-
-  cursor_font = read_current_cursor_font();
-
-  if (!cursor_font)
-    cursor_font = g_strdup (builtins[0][0]);
-
-  for (i = 0; i < G_N_ELEMENTS (builtins); i++) {
-    MateThemeCursorInfo *theme_info;
-    gchar *filename;
-
-    theme_info = mate_theme_cursor_info_new ();
-
-    filename = g_build_filename (MATECC_DATA_DIR, "pixmaps", builtins[i][3], NULL);
-    theme_info->thumbnail = gdk_pixbuf_new_from_file (filename, NULL);
-    g_free (filename);
-
-    theme_info->path = g_build_filename (MATECC_DATA_DIR, builtins[i][0], NULL);
-    theme_info->name = g_strdup (theme_info->path);
-
-    if (!strcmp (theme_info->path, cursor_font))
-      theme_info->readable_name = g_strdup (_(builtins[i][2]));
-    else
-      theme_info->readable_name = g_strdup (_(builtins[i][1]));
-
-    g_hash_table_insert (cursor_theme_hash_by_uri, theme_info->path, theme_info);
-    add_theme_to_hash_by_name (cursor_theme_hash_by_name, theme_info);
-  }
-
-  g_free (cursor_font);
-}
-#endif /* HAVE_XCURSOR */
 
 static void
 handle_change_signal (gpointer             data,
@@ -934,12 +820,10 @@ update_common_theme_dir_index (GFile         *theme_index_uri,
     }
 
   }
-#ifdef HAVE_XCURSOR
   /* cursor themes don't necessarily have an index file, so try those in any case */
   else {
     theme_info = (MateThemeCommonInfo *) read_cursor_theme (theme_index_uri);
   }
-#endif
 
   if (theme_info) {
     theme_info->priority = priority;
@@ -1004,9 +888,7 @@ static void
 update_cursor_theme_index (GFile *cursor_theme_index_uri,
                            gint   priority)
 {
-#ifdef HAVE_XCURSOR
   update_common_theme_dir_index (cursor_theme_index_uri, MATE_THEME_TYPE_CURSOR, priority);
-#endif
 }
 
 static void
@@ -1979,7 +1861,6 @@ mate_theme_init ()
   }
   g_strfreev (search_path);
 
-#ifdef XCURSOR_ICONDIR
   /* if there's a separate xcursors dir, add that as well */
   if (strcmp (XCURSOR_ICONDIR, top_theme_dir_string) &&
       strcmp (XCURSOR_ICONDIR, "/usr/share/icons")) {
@@ -1987,16 +1868,10 @@ mate_theme_init ()
     add_top_icon_theme_dir_monitor (top_theme_dir, 1, NULL);
     g_object_unref (top_theme_dir);
   }
-#endif
 
-#ifdef HAVE_XCURSOR
   /* make sure we have the default theme */
   if (!mate_theme_cursor_info_find ("default"))
     add_default_cursor_theme ();
-#else
-  /* If we don't have Xcursor, use the built-in cursor fonts instead */
-  read_cursor_fonts ();
-#endif
 
   /* done */
   initted = TRUE;

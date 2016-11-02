@@ -234,9 +234,8 @@ theme_load_from_gsettings (AppearanceData *data)
     theme->notification_theme_name = NULL;
 
   theme->cursor_theme_name = g_settings_get_string (data->mouse_settings, CURSOR_THEME_KEY);
-#ifdef HAVE_XCURSOR
   theme->cursor_size = g_settings_get_int (data->mouse_settings, CURSOR_SIZE_KEY);
-#endif
+
   if (theme->cursor_theme_name == NULL)
     theme->cursor_theme_name = g_strdup ("default");
 
@@ -1138,9 +1137,7 @@ void themes_init(AppearanceData* data)
   /* listen to gsettings changes, too */
   g_signal_connect (data->marco_settings, "changed::" MARCO_THEME_KEY, G_CALLBACK (theme_gsettings_changed), data);
   g_signal_connect (data->mouse_settings, "changed::" CURSOR_THEME_KEY, G_CALLBACK (theme_gsettings_changed), data);
-#ifdef HAVE_XCURSOR
   g_signal_connect (data->mouse_settings, "changed::" CURSOR_SIZE_KEY, G_CALLBACK (theme_gsettings_changed), data);
-#endif
   g_signal_connect (data->wp_settings, "changed::" WP_FILE_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" GTK_FONT_KEY, G_CALLBACK (background_or_font_changed), data);
   g_signal_connect (data->interface_settings, "changed::" DOCUMENT_FONT_KEY, G_CALLBACK (background_or_font_changed), data);

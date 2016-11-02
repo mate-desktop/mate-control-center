@@ -17,12 +17,6 @@ dist_pixmap_DATA = \
         mouse-cursor-white.png \
         mouse-cursor-white-large.png
 
-cursorfontdir   = $(datadir)/mate/cursor-fonts
-dist_cursorfont_DATA = \
-	cursor-large.pcf		\
-	cursor-white.pcf		\
-	cursor-large-white.pcf
-
 @INTLTOOL_DESKTOP_RULE@
 
 desktopdir = $(datadir)/applications

@@ -226,14 +226,10 @@ write_theme_to_disk (MateThemeMetaInfo  *theme_info,
   }
 
   if (theme_info->cursor_theme_name) {
-#ifdef HAVE_XCURSOR
     str = g_strdup_printf ("CursorTheme=%s\n"
                            "CursorSize=%i\n",
                            theme_info->cursor_theme_name,
                            theme_info->cursor_size);
-#else
-    str = g_strdup_printf ("CursorFont=%s\n", theme_info->cursor_theme_name);
-#endif
     g_output_stream_write (output, str, strlen (str), NULL, NULL);
     g_free (str);
   }
