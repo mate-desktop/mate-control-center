@@ -42,10 +42,6 @@
 #include <X11/Xatom.h>
 #include <X11/extensions/XInput.h>
 
-#ifdef HAVE_XCURSOR
-#include <X11/Xcursor/Xcursor.h>
-#endif
-
 enum
 {
 	DOUBLE_CLICK_TEST_OFF,
