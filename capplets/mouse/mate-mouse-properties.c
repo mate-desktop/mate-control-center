@@ -348,6 +348,9 @@ setup_dialog (GtkBuilder *dialog)
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
 			WID ("vbox_touchpad_scrolling"), "sensitive",
 			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "touchpad-enabled",
+			WID ("vbox_touchpad_pointer_speed"), "sensitive",
+			G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "disable-while-typing",
 			WID ("disable_w_typing_toggle"), "active",
 			G_SETTINGS_BIND_DEFAULT);
@@ -378,6 +381,14 @@ setup_dialog (GtkBuilder *dialog)
 		gtk_widget_show (three_click_comboxbox);
 		g_signal_connect (two_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "two-finger-click");
 		g_signal_connect (three_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "three-finger-click");
+
+		/* speed */
+		g_settings_bind (touchpad_settings, "motion-acceleration",
+			gtk_range_get_adjustment (GTK_RANGE (WID ("touchpad_accel_scale"))), "value",
+			G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "motion-threshold",
+			gtk_range_get_adjustment (GTK_RANGE (WID ("touchpad_sensitivity_scale"))), "value",
+			G_SETTINGS_BIND_DEFAULT);
 
 		synaptics_check_capabilities (dialog);
 	}
