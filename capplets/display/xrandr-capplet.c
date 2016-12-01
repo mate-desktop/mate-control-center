@@ -38,10 +38,6 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-bindings.h>
 
-#if GTK_CHECK_VERSION (3, 0, 0)
-#define GdkRegion cairo_region_t
-#endif
-
 typedef struct App App;
 typedef struct GrabInfo GrabInfo;
 
