@@ -19,10 +19,6 @@
 #include "activate-settings-daemon.h"
 #include "dconf-util.h"
 
-#if !GTK_CHECK_VERSION(3,0,0)
-#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
-#endif
-
 #define GSETTINGS_KEYBINDINGS_DIR "/org/mate/desktop/keybindings/"
 #define CUSTOM_KEYBINDING_SCHEMA "org.mate.control-center.keybinding"
 
@@ -1891,13 +1887,11 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
   /* set up the dialog */
   reload_key_entries (builder);
 
-#if GTK_CHECK_VERSION(3, 0, 0)
   widget = _gtk_builder_get_widget (builder, "mate-keybinding-dialog");
   gtk_window_set_default_size (GTK_WINDOW (widget), 400, 500);
   widget = _gtk_builder_get_widget (builder, "label-suggest");
   gtk_label_set_line_wrap (GTK_LABEL (widget), TRUE);
   gtk_label_set_max_width_chars (GTK_LABEL (widget), 60);
-#endif
 
   widget = _gtk_builder_get_widget (builder, "mate-keybinding-dialog");
   capplet_set_icon (widget, "preferences-desktop-keyboard-shortcuts");

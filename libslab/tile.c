@@ -47,11 +47,7 @@ static void tile_clicked (GtkButton *widget);
 
 static gboolean tile_focus_in (GtkWidget *, GdkEventFocus *);
 static gboolean tile_focus_out (GtkWidget *, GdkEventFocus *);
-#if GTK_CHECK_VERSION (3, 0, 0)
 static gboolean tile_draw (GtkWidget *, cairo_t *);
-#else
-static gboolean tile_expose (GtkWidget *, GdkEventExpose *);
-#endif
 static gboolean tile_button_release (GtkWidget *, GdkEventButton *);
 static gboolean tile_key_release (GtkWidget *, GdkEventKey *);
 static gboolean tile_popup_menu (GtkWidget *);
@@ -105,11 +101,7 @@ tile_class_init (TileClass * this_class)
 
 	widget_class->focus_in_event = tile_focus_in;
 	widget_class->focus_out_event = tile_focus_out;
-#if GTK_CHECK_VERSION (3, 0, 0)
 	widget_class->draw = tile_draw;
-#else
-	widget_class->expose_event = tile_expose;
-#endif
 	widget_class->button_release_event = tile_button_release;
 	widget_class->key_release_event = tile_key_release;
 	widget_class->drag_begin = tile_drag_begin;
@@ -351,11 +343,7 @@ tile_focus_out (GtkWidget * widget, GdkEventFocus * event)
 }
 
 static gboolean
-#if GTK_CHECK_VERSION (3, 0, 0)
 tile_draw (GtkWidget * widget, cairo_t * cr)
-#else
-tile_expose (GtkWidget * widget, GdkEventExpose * event)
-#endif
 {
 	/* FIXME: there ought to be a better way to prevent the focus from being rendered. */
 
@@ -363,24 +351,12 @@ tile_expose (GtkWidget * widget, GdkEventExpose * event)
 	gboolean retval;
 
 	if ((has_focus = gtk_widget_has_focus (widget)))
-#if GTK_CHECK_VERSION (3, 0, 0)
 		gtk_widget_unset_state_flags (widget, GTK_STATE_FLAG_FOCUSED);
-#else
-		GTK_WIDGET_UNSET_FLAGS (widget, GTK_HAS_FOCUS);
-#endif
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	retval = (*GTK_WIDGET_CLASS (tile_parent_class)->draw) (widget, cr);
-#else
-	retval = (*GTK_WIDGET_CLASS (tile_parent_class)->expose_event) (widget, event);
-#endif
 
 	if (has_focus)
-#if GTK_CHECK_VERSION (3, 0, 0)
 		gtk_widget_set_state_flags (widget, GTK_STATE_FLAG_FOCUSED, TRUE);
-#else
-		GTK_WIDGET_SET_FLAGS (widget, GTK_HAS_FOCUS);
-#endif
 
 	return retval;
 }
@@ -464,11 +440,7 @@ tile_popup_menu_position (GtkMenu * menu, gint * x, gint * y, gboolean * push_in
 	if (!gtk_widget_get_realized (GTK_WIDGET (tile)))
 		return;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_widget_get_preferred_size (GTK_WIDGET (menu), &req, NULL);
-#else
-	gtk_widget_size_request (GTK_WIDGET (menu), &req);
-#endif
 	gtk_widget_get_allocation (GTK_WIDGET (menu), &all);
 
 	top = gtk_widget_get_toplevel (GTK_WIDGET (tile));

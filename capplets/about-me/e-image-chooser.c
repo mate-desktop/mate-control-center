@@ -29,10 +29,6 @@
 
 #include "e-image-chooser.h"
 
-#if !GTK_CHECK_VERSION(3,0,0)
-#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
-#endif
-
 struct _EImageChooserPrivate {
 
 	GtkWidget *image;
@@ -128,11 +124,7 @@ e_image_chooser_class_init (EImageChooserClass *klass)
 			      G_STRUCT_OFFSET (EImageChooserClass, changed),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
-#if GTK_CHECK_VERSION (3, 0, 0)
 			      G_TYPE_NONE, 0);
-#else
-			      GTK_TYPE_NONE, 0);
-#endif
 
 	object_class->dispose = e_image_chooser_dispose;
 }

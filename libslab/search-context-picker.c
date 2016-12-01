@@ -22,10 +22,6 @@
 
 #include <gtk/gtk.h>
 
-#if !GTK_CHECK_VERSION(3,0,0)
-#define gtk_widget_get_preferred_size(x,y,z) gtk_widget_size_request(x,y)
-#endif
-
 typedef struct
 {
 	GtkImage *cur_icon;
@@ -74,25 +70,15 @@ nld_search_context_picker_init (NldSearchContextPicker * picker)
 	GtkWidget *hbox;
 	GtkWidget *separator;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-#else
-	hbox = gtk_hbox_new (FALSE, 10);
-#endif
 	gtk_container_add (GTK_CONTAINER (picker), hbox);
 
 	priv->cur_icon = GTK_IMAGE (gtk_image_new ());
 	gtk_box_pack_start (GTK_BOX (hbox), GTK_WIDGET (priv->cur_icon), FALSE, FALSE, 0);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
 	gtk_box_pack_start (GTK_BOX (hbox), separator, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (hbox), gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU), FALSE, FALSE, 0);
-#else
-	separator = gtk_vseparator_new ();
-	gtk_box_pack_start (GTK_BOX (hbox), separator, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (hbox), gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE), FALSE, FALSE, 0);
-#endif
 
 	gtk_widget_show_all (hbox);
 

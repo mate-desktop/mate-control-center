@@ -218,13 +218,8 @@ nameplate_tile_setup (NameplateTile *this)
 	priv->header_ctnr = GTK_CONTAINER (gtk_alignment_new (0.0, 0.5, 1.0, 1.0));
 	priv->subheader_ctnr = GTK_CONTAINER (gtk_alignment_new (0.0, 0.5, 1.0, 1.0));
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#else
-	hbox = gtk_hbox_new (FALSE, 6);
-	vbox = gtk_vbox_new (FALSE, 0);
-#endif
 
 	alignment = gtk_alignment_new (0.0, 0.5, 1.0, 0.0);
 
@@ -253,9 +248,7 @@ nameplate_tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 {
 	NameplateTile *this = NAMEPLATE_TILE (widget);
 	GtkImage *image;
-#if GTK_CHECK_VERSION (3, 0, 0)
 	const gchar *name;
-#endif
 
 	(*GTK_WIDGET_CLASS (nameplate_tile_parent_class)->drag_begin) (widget, context);
 
@@ -264,7 +257,6 @@ nameplate_tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 
 	image = GTK_IMAGE (this->image);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	switch (gtk_image_get_storage_type (image))
 	{
 	case GTK_IMAGE_PIXBUF:
@@ -283,23 +275,4 @@ nameplate_tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 	default:
 		break;
 	}
-#else
-	switch (image->storage_type)
-	{
-	case GTK_IMAGE_PIXBUF:
-		if (image->data.pixbuf.pixbuf)
-			gtk_drag_set_icon_pixbuf (context, image->data.pixbuf.pixbuf, 0, 0);
-
-		break;
-
-	case GTK_IMAGE_ICON_NAME:
-		if (image->data.name.pixbuf)
-			gtk_drag_set_icon_pixbuf (context, image->data.name.pixbuf, 0, 0);
-
-		break;
-
-	default:
-		break;
-	}
-#endif
 }

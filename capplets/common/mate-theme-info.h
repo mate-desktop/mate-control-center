@@ -183,13 +183,8 @@ void                mate_theme_init                       (void);
 void                mate_theme_info_register_theme_change (ThemeChangedCallback func,
 							    gpointer             data);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 gboolean            mate_theme_color_scheme_parse         (const gchar         *scheme,
 							    GdkRGBA             *colors);
-#else
-gboolean            mate_theme_color_scheme_parse         (const gchar         *scheme,
-							    GdkColor            *colors);
-#endif
 gboolean            mate_theme_color_scheme_equal         (const gchar         *s1,
 							    const gchar         *s2);
 

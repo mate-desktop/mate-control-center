@@ -51,8 +51,7 @@ EXTRA_DIST = \
 	$(gsettingsschema_in_files)
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--disable-update-mimedb \
-	--with-gtk=$(GTK_API_VERSION)
+	--disable-update-mimedb
 
 GITIGNOREFILES=m4
 

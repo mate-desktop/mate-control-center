@@ -240,18 +240,10 @@ static void update_message_area(AppearanceData* data)
 		gtk_misc_set_alignment (GTK_MISC (data->style_message_label), 0.0, 0.5);
 #endif
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 9);
-#else
-		hbox = gtk_hbox_new (FALSE, 9);
-#endif
 		icon = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
-#if GTK_CHECK_VERSION (3, 0, 0)
 		gtk_widget_set_halign (icon, GTK_ALIGN_CENTER);
 		gtk_widget_set_valign (icon, GTK_ALIGN_START);
-#else
-		gtk_misc_set_alignment (GTK_MISC (icon), 0.5, 0.0);
-#endif
 		gtk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
 		gtk_box_pack_start (GTK_BOX (hbox), data->style_message_label, TRUE, TRUE, 0);
 		content = gtk_info_bar_get_content_area (GTK_INFO_BAR (data->style_message_area));
@@ -263,43 +255,13 @@ static void update_message_area(AppearanceData* data)
 		gtk_box_pack_start (GTK_BOX (parent), data->style_message_area, FALSE, FALSE, 0);
 	}
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	if (engine != NULL)
-	{
-		gchar* message = g_strdup_printf(_("This theme will not look as intended because the required GTK+ theme engine '%s' is not installed."), engine);
-		gtk_label_set_text(GTK_LABEL(data->style_message_label), message);
-		g_free(message);
-		g_free(engine);
-
-   		if (packagekit_available())
-   		{
-     		gtk_widget_show(data->style_install_button);
-     	}
-   		else
-      	{
-      		gtk_widget_hide(data->style_install_button);
-      	}
-
-    	gtk_widget_show(data->style_message_area);
-   		gtk_widget_queue_draw(data->style_message_area);
-	}
-	else
-	{
-		gtk_widget_hide(data->style_message_area);
-	}
-#else
   gtk_widget_hide(data->style_message_area);
-#endif
 }
 
 static void
 update_color_buttons_from_string (const gchar *color_scheme, AppearanceData *data)
 {
-#if GTK_CHECK_VERSION (3, 0, 0)
   GdkRGBA colors[NUM_SYMBOLIC_COLORS];
-#else
-  GdkColor colors[NUM_SYMBOLIC_COLORS];
-#endif
   GtkWidget *widget;
   gint i;
 
@@ -309,11 +271,7 @@ update_color_buttons_from_string (const gchar *color_scheme, AppearanceData *dat
   /* now set all the buttons to the correct settings */
   for (i = 0; i < NUM_SYMBOLIC_COLORS; ++i) {
     widget = appearance_capplet_get_widget (data, symbolic_names[i]);
-#if GTK_CHECK_VERSION (3, 0, 0)
     gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (widget), &colors[i]);
-#else
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (widget), &colors[i]);
-#endif
   }
 }
 
@@ -384,11 +342,7 @@ static void
 color_button_clicked_cb (GtkWidget *colorbutton, AppearanceData *data)
 {
   GtkWidget *widget;
-#if GTK_CHECK_VERSION (3, 0, 0)
   GdkRGBA color;
-#else
-  GdkColor color;
-#endif
   GString *scheme = g_string_new (NULL);
   gchar *colstr;
   gchar *old_scheme = NULL;
@@ -396,17 +350,9 @@ color_button_clicked_cb (GtkWidget *colorbutton, AppearanceData *data)
 
   for (i = 0; i < NUM_SYMBOLIC_COLORS; ++i) {
     widget = appearance_capplet_get_widget (data, symbolic_names[i]);
-#if GTK_CHECK_VERSION (3, 0, 0)
     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (widget), &color);
-#else
-    gtk_color_button_get_color (GTK_COLOR_BUTTON (widget), &color);
-#endif
 
-#if GTK_CHECK_VERSION (3, 0, 0)
     colstr = gdk_rgba_to_string (&color);
-#else
-    colstr = gdk_color_to_string (&color);
-#endif
     g_string_append_printf (scheme, "%s:%s\n", symbolic_names[i], colstr);
     g_free (colstr);
   }
@@ -1070,10 +1016,8 @@ style_init (AppearanceData *data)
   icon_theme_changed (data->interface_settings, ICON_THEME_KEY, data);
   cursor_theme_changed (data->mouse_settings, CURSOR_THEME_KEY, data);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
   GtkNotebook *style_nb = GTK_NOTEBOOK (appearance_capplet_get_widget (data, "notebook2"));
   gtk_notebook_remove_page (style_nb, 1);
-#endif
 
   w = appearance_capplet_get_widget (data, "color_scheme_message_hbox");
   gtk_widget_set_no_show_all (w, TRUE);

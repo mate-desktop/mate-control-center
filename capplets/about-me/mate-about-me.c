@@ -345,11 +345,7 @@ about_me_icon_theme_changed (GtkWindow    *window,
 	if (icon != NULL) {
 		g_free (me->person);
 		me->person = g_strdup (gtk_icon_info_get_filename (icon));
-#if GTK_CHECK_VERSION (3, 8, 0)
 		g_object_unref (icon);
-#else
-		gtk_icon_info_free (icon);
-#endif
 	}
 
 	if (me->have_image)
@@ -424,11 +420,7 @@ about_me_setup_dialog (void)
 	icon = gtk_icon_theme_lookup_icon (me->theme, "stock_person", 80, 0);
 	if (icon != NULL) {
 		me->person = g_strdup (gtk_icon_info_get_filename (icon));
-#if GTK_CHECK_VERSION (3, 8, 0)
 		g_object_unref (icon);
-#else
-		gtk_icon_info_free (icon);
-#endif
 	}
 
 	g_signal_connect_object (me->theme, "changed",

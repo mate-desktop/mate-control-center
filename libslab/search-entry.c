@@ -37,11 +37,7 @@ static void nld_search_entry_init (NldSearchEntry *);
 static void nld_search_entry_finalize (GObject *);
 
 static void nld_search_entry_realize (GtkWidget * widget);
-#if GTK_CHECK_VERSION (3, 0, 0)
 static gboolean nld_search_entry_draw (GtkWidget * widget, cairo_t * cr);
-#else
-static gboolean nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event);
-#endif
 
 G_DEFINE_TYPE (NldSearchEntry, nld_search_entry, GTK_TYPE_ENTRY)
 
@@ -53,11 +49,7 @@ static void nld_search_entry_class_init (NldSearchEntryClass * nld_search_entry_
 	g_type_class_add_private (nld_search_entry_class, sizeof (NldSearchEntryPrivate));
 
 	widget_class->realize = nld_search_entry_realize;
-#if GTK_CHECK_VERSION (3, 0, 0)
 	widget_class->draw = nld_search_entry_draw;
-#else
-	widget_class->expose_event = nld_search_entry_expose_event;
-#endif
 
 	g_obj_class->finalize = nld_search_entry_finalize;
 }
@@ -95,18 +87,12 @@ nld_search_entry_realize (GtkWidget * widget)
 	GdkColor *gdkcolor;
 	char *svg, color[7];
 	RsvgHandle *rsvg;
-#if GTK_CHECK_VERSION (3, 0, 0)
 	GdkRectangle text_area;
-#endif
 
 	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->realize (widget);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_entry_get_text_area (GTK_ENTRY (widget), &text_area);
 	height = text_area.height;
-#else
-	gdk_window_get_geometry (GTK_ENTRY (widget)->text_area, NULL, NULL, NULL, &height, NULL);
-#endif
 
 	if (height - 2 == priv->height)
 		return;
@@ -129,7 +115,6 @@ nld_search_entry_realize (GtkWidget * widget)
 	rsvg_handle_free (rsvg);
 }
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 static gboolean
 nld_search_entry_draw (GtkWidget * widget, cairo_t * cr)
 {
@@ -155,34 +140,6 @@ nld_search_entry_draw (GtkWidget * widget, cairo_t * cr)
 
 	return FALSE;
 }
-#else
-static gboolean
-nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event)
-{
-	NldSearchEntryPrivate *priv = NLD_SEARCH_ENTRY_GET_PRIVATE (widget);
-
-	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->expose_event (widget, event);
-
-	if (event->window == GTK_ENTRY (widget)->text_area)
-	{
-		int width, height, x;
-
-		if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
-		{
-			gdk_drawable_get_size(event->window, &width, &height);
-			x = width - priv->width - 1;
-		}
-		else
-			x = 1;
-
-		gdk_draw_pixbuf (event->window, widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
-			priv->watermark, 0, 0, x, 1, priv->width, priv->height,
-			GDK_RGB_DITHER_NORMAL, 0, 0);
-	}
-
-	return FALSE;
-}
-#endif
 
 GtkWidget *
 nld_search_entry_new (void)

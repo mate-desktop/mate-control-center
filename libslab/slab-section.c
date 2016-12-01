@@ -146,11 +146,7 @@ slab_section_new_with_markup (const gchar * title_markup, SlabStyle style)
 	}
 	gtk_box_pack_start (GTK_BOX (section), align, TRUE, TRUE, 0);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	section->childbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_VERTICAL, 10));
-#else
-	section->childbox = GTK_BOX (gtk_vbox_new (FALSE, 10));
-#endif
 	gtk_container_add (GTK_CONTAINER (align), GTK_WIDGET (section->childbox));
 
 	section->title = gtk_label_new (title_markup);

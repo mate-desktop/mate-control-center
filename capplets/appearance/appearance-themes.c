@@ -667,23 +667,14 @@ theme_message_area_update (AppearanceData *data)
     gtk_misc_set_alignment (GTK_MISC (data->theme_message_label), 0.0, 0.5);
 #endif
 
-#if GTK_CHECK_VERSION (3, 0, 0)
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 9);
-#else
-    hbox = gtk_hbox_new (FALSE, 9);
-#endif
     gtk_widget_show (hbox);
     data->theme_info_icon = gtk_image_new_from_icon_name ("dialog-information", GTK_ICON_SIZE_DIALOG);
     data->theme_error_icon = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
-#if GTK_CHECK_VERSION (3, 0, 0)
     gtk_widget_set_halign (data->theme_info_icon, GTK_ALIGN_CENTER);
     gtk_widget_set_valign (data->theme_info_icon, GTK_ALIGN_START);
     gtk_widget_set_halign (data->theme_error_icon, GTK_ALIGN_CENTER);
     gtk_widget_set_valign (data->theme_error_icon, GTK_ALIGN_START);
-#else
-    gtk_misc_set_alignment (GTK_MISC (data->theme_info_icon), 0.5, 0.0);
-    gtk_misc_set_alignment (GTK_MISC (data->theme_error_icon), 0.5, 0.0);
-#endif
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_info_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_error_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), data->theme_message_label, TRUE, TRUE, 0);
@@ -1072,20 +1063,8 @@ void themes_init(AppearanceData* data)
                           "wrap-mode", PANGO_WRAP_WORD_CHAR,
                           "wrap-width", gtk_icon_view_get_item_width (icon_view),
                           "width", gtk_icon_view_get_item_width (icon_view),
-#if GTK_CHECK_VERSION (3, 0, 0)
-                          /* The xalign property should be 0.5 here, but due to a bug
-                           * which was never fixed in GTK+2, it was set to 0.0.
-                           * In GTK+3 the bug is fixed, so this workaround causes
-                           * theme name to be left-aligned instead of being centered.
-                           * So set it to 0.5 for GTK+3.
-                           *
-                           * The fix was applied in
-                           * https://git.gnome.org/browse/gtk+/commit?id=09bf05b
-                           */
                           "xalign", 0.5, "yalign", 0.0, NULL);
-#else
-                          "xalign", 0.0, "yalign", 0.0, NULL);
-#endif
+
   gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (icon_view), renderer, FALSE);
   gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view), renderer,
                                   "markup", COL_LABEL, NULL);

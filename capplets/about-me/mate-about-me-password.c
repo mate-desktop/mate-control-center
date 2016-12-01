@@ -685,11 +685,7 @@ passdlg_set_busy (PasswordDialog *pdialog, gboolean busy)
 	gdk_display_flush (display);
 
 	if (busy) {
-#if GTK_CHECK_VERSION (3, 0, 0)
 		g_object_unref (cursor);
-#else
-		gdk_cursor_unref (cursor);
-#endif
 	}
 
 	/* Disable/Enable UI */

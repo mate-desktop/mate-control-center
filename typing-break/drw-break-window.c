@@ -73,13 +73,8 @@ static gboolean     postpone_sensitize_cb          (DrwBreakWindow      *window)
 static gboolean     clock_timeout_cb               (DrwBreakWindow      *window);
 static void         postpone_clicked_cb            (GtkWidget           *button,
 						    GtkWidget           *window);
-#if GTK_CHECK_VERSION (3, 0, 0)
 static gboolean     label_draw_event_cb            (GtkLabel            *label,
 						    cairo_t             *cr,
-#else
-static gboolean     label_expose_event_cb          (GtkLabel            *label,
-						    GdkEventExpose      *event,
-#endif
 						    gpointer             user_data);
 static void         label_size_request_cb          (GtkLabel            *label,
 						    GtkRequisition      *requisition,
@@ -167,11 +162,7 @@ drw_break_window_init (DrwBreakWindow *window)
 	align = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
 	gtk_widget_show (align);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	outer_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#else
-	outer_vbox = gtk_vbox_new (FALSE, 0);
-#endif
 	gtk_widget_show (outer_vbox);
 
 	right_padding = gdk_screen_get_width (screen) - monitor.width - monitor.x;
@@ -191,11 +182,7 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_box_pack_start (GTK_BOX (outer_vbox), align, TRUE, TRUE, 0);
 
 	if (allow_postpone) {
-#if GTK_CHECK_VERSION (3, 0, 0)
 		button_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#else
-		button_box = gtk_hbox_new (FALSE, 0);
-#endif
 		gtk_widget_show (button_box);
 
 		gtk_container_set_border_width (GTK_CONTAINER (button_box), 12);
@@ -228,30 +215,18 @@ drw_break_window_init (DrwBreakWindow *window)
 		gtk_box_pack_end (GTK_BOX (outer_vbox), button_box, FALSE, TRUE, 0);
 	}
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#else
-	vbox = gtk_vbox_new (FALSE, 0);
-#endif
 	gtk_widget_show (vbox);
 
 	gtk_container_add (GTK_CONTAINER (align), vbox);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#else
-	hbox = gtk_hbox_new (FALSE, 0);
-#endif
 	gtk_widget_show (hbox);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, FALSE, 0);
 
 	priv->image = gtk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_DIALOG);
-#if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_widget_set_halign (priv->image, GTK_ALIGN_END);
 	gtk_widget_set_valign (priv->image, GTK_ALIGN_CENTER);
-#else
-	gtk_misc_set_alignment (GTK_MISC (priv->image), 1.0, 0.5);
-#endif
 	gtk_widget_show (priv->image);
 	gtk_box_pack_start (GTK_BOX (hbox), priv->image, TRUE, TRUE, 8);
 
@@ -259,13 +234,8 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_widget_show (priv->break_label);
 
 	g_signal_connect (priv->break_label,
-#if GTK_CHECK_VERSION (3, 0, 0)
 			  "draw",
 			  G_CALLBACK (label_draw_event_cb),
-#else
-			  "expose_event",
-			  G_CALLBACK (label_expose_event_cb),
-#endif
 			  NULL);
 
 	g_signal_connect_after (priv->break_label,
@@ -286,13 +256,8 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_box_pack_start (GTK_BOX (vbox), priv->clock_label, TRUE, TRUE, 8);
 
 	g_signal_connect (priv->clock_label,
-#if GTK_CHECK_VERSION (3, 0, 0)
 			  "draw",
 			  G_CALLBACK (label_draw_event_cb),
-#else
-			  "expose_event",
-			  G_CALLBACK (label_expose_event_cb),
-#endif
 			  NULL);
 
 	g_signal_connect_after (priv->clock_label,
@@ -610,7 +575,6 @@ get_layout_location (GtkLabel *label,
 	}
 }
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 static gboolean
 label_draw_event_cb (GtkLabel *label,
                      cairo_t  *cr,
@@ -636,48 +600,6 @@ label_draw_event_cb (GtkLabel *label,
 
 	return TRUE;
 }
-#else
-static gboolean
-label_expose_event_cb (GtkLabel       *label,
-                       GdkEventExpose *event,
-                       gpointer        user_data)
-{
-	gint       x, y;
-	GtkWidget *widget;
-	GdkWindow *window;
-	cairo_t *cr;
-
-	get_layout_location (label, &x, &y);
-
-	widget = GTK_WIDGET (label);
-	window = gtk_widget_get_window (widget);
-
-	cr = gdk_cairo_create (window);
-
-	gdk_cairo_rectangle (cr, &event->area);
-	cairo_clip (cr);
-
-	cairo_set_source_rgb (cr, 0, 0, 0);
-
-	cairo_move_to (cr, x + 1, y + 1);
-	pango_cairo_layout_path (cr, gtk_label_get_layout (label));
-	cairo_fill (cr);
-
-	cairo_destroy (cr);
-
-	gtk_paint_layout (gtk_widget_get_style (widget),
-			  window,
-			  gtk_widget_get_state (widget),
-			  FALSE,
-			  &event->area,
-			  widget,
-			  "label",
-			  x, y,
-			  gtk_label_get_layout (label));
-
-	return TRUE;
-}
-#endif
 
 static void
 label_size_request_cb (GtkLabel       *label,

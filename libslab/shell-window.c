@@ -29,11 +29,7 @@ static void shell_window_init (ShellWindow *);
 static void shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
 	AppShellData * data);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 gboolean shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data);
-#else
-gboolean shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer data);
-#endif
 
 #define SHELL_WINDOW_BORDER_WIDTH 6
 
@@ -60,22 +56,14 @@ shell_window_new (AppShellData * app_data)
 	gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 	gtk_frame_set_shadow_type(GTK_FRAME(window), GTK_SHADOW_NONE);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	window->_hbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-#else
-	window->_hbox = GTK_BOX (gtk_hbox_new (FALSE, 0));
-#endif
 	gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (window->_hbox));
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	g_signal_connect (G_OBJECT (window), "draw", G_CALLBACK (shell_window_paint_window),
-#else
-	g_signal_connect (G_OBJECT (window), "expose-event", G_CALLBACK (shell_window_paint_window),
-#endif
 		NULL);
-#if GTK_CHECK_VERSION (3, 0, 0)
-	/* FIXME */
-#else
+
+/* FIXME add some replacement for GTK+3, or just remove this code? */
+#if 0
 	window->resize_handler_id =
 		g_signal_connect (G_OBJECT (window), "size-request",
 		G_CALLBACK (shell_window_handle_size_request), app_data);
@@ -106,11 +94,7 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	gint height;
 	GtkRequisition child_requisiton;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), &child_requisiton, NULL);
-#else
-	child_requisiton = GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition;
-#endif
 
 	/*
 	Fixme - counting on this being called after the real size request is done.
@@ -151,11 +135,7 @@ shell_window_set_contents (ShellWindow * shell, GtkWidget * left_pane, GtkWidget
 }
 
 gboolean
-#if GTK_CHECK_VERSION (3, 0, 0)
 shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data)
-#else
-shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer data)
-#endif
 {
 	GtkWidget *left_pane;
 	GtkAllocation allocation;
@@ -167,16 +147,9 @@ shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer 
 	/* draw left pane background */
 	gtk_paint_flat_box (
 		gtk_widget_get_style (widget),
-#if GTK_CHECK_VERSION (3, 0, 0)
 		cr,
-#else
-		gtk_widget_get_window (widget),
-#endif
 		gtk_widget_get_state (widget),
 		GTK_SHADOW_NONE,
-#if !GTK_CHECK_VERSION (3, 0, 0)
-		NULL,
-#endif
 		widget,
 		"",
 		allocation.x,

@@ -40,11 +40,6 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   GtkBuilder *ui;
   GError *err = NULL;
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-  gdk_threads_init ();
-  gdk_threads_enter ();
-#endif
-
   theme_thumbnail_factory_init (*argc, *argv);
   capplet_init (context, argc, argv);
   activate_settings_daemon ();
@@ -147,9 +142,7 @@ main (int argc, char **argv)
 {
   AppearanceData *data;
   GtkWidget *w;
-#if GTK_CHECK_VERSION(3, 0, 0)
   GtkStyleContext *context;
-#endif
 
   gchar *install_filename = NULL;
   gchar *start_page = NULL;
@@ -202,10 +195,9 @@ main (int argc, char **argv)
 
   /* prepare the main window */
   w = appearance_capplet_get_widget (data, "appearance_window");
-#if GTK_CHECK_VERSION(3, 0, 0)
   context = gtk_widget_get_style_context (GTK_WIDGET (w));
   gtk_style_context_add_class (context, "appearance-window");
-#endif
+
   capplet_set_icon (w, "preferences-desktop-theme");
   gtk_widget_show_all (w);
 
@@ -246,10 +238,6 @@ main (int argc, char **argv)
 
   /* start the mainloop */
   gtk_main ();
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
-  gdk_threads_leave ();
-#endif
 
   /* free stuff */
   g_free (data);

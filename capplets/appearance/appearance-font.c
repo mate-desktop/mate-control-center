@@ -46,11 +46,7 @@
 
 static gboolean in_change = FALSE;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 static void sample_draw(GtkWidget* darea, cairo_t* cr)
-#else
-static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
-#endif
 {
 	cairo_surface_t* surface = g_object_get_data(G_OBJECT(darea), "sample-surface");
 	GtkAllocation allocation;
@@ -61,10 +57,6 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 	y = allocation.height;
 	w = cairo_image_surface_get_width (surface);
 	h = cairo_image_surface_get_height (surface);
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	cairo_t *cr = gdk_cairo_create (expose->window);
-#endif
 
 	cairo_set_line_width (cr, 1);
 	cairo_set_line_cap (cr, CAIRO_LINE_CAP_SQUARE);
@@ -78,10 +70,6 @@ static void sample_expose(GtkWidget* darea, GdkEventExpose* expose)
 	cairo_set_source_surface (cr, surface, (x - w) / 2, (y - h) / 2);
 
 	cairo_paint(cr);
-
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	cairo_destroy (cr);
-#endif
 }
 
 typedef enum {
@@ -188,11 +176,7 @@ static void setup_font_sample(GtkWidget* darea, Antialiasing antialiasing, Hinti
 	g_object_set_data_full(G_OBJECT(darea), "sample-surface", surface, (GDestroyNotify) cairo_surface_destroy);
 
 	gtk_widget_set_size_request (GTK_WIDGET(darea), width + 2, height + 2);
-#if GTK_CHECK_VERSION (3, 0, 0)
 	g_signal_connect(darea, "draw", G_CALLBACK(sample_draw), NULL);
-#else
-	g_signal_connect(darea, "expose_event", G_CALLBACK(sample_expose), NULL);
-#endif
 }
 
 /*

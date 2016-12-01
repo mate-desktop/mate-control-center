@@ -186,10 +186,6 @@ setup_dialog (GtkBuilder * dialog)
 		gtk_notebook_remove_page (nb, tb_page);
 	}
 
-#if !GTK_CHECK_VERSION (3, 0, 0)
-	gtk_range_set_update_policy (GTK_RANGE (WID ("cursor_blink_time_scale")), GTK_UPDATE_DISCONTINUOUS);
-#endif
-
 	g_signal_connect (WID ("keyboard_dialog"), "response",
 			  (GCallback) dialog_response, NULL);
 

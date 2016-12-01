@@ -128,9 +128,7 @@ create_main_window (AppShellData * app_data, const gchar * app_name, const gchar
 	app_data->main_app = main_app;
 	gtk_widget_set_name (main_app, app_name);
 	gtk_window_set_title (GTK_WINDOW (main_app), title);
-#if GTK_CHECK_VERSION (3, 0, 0)
 	gtk_window_set_default_size(GTK_WINDOW(main_app), width, height);
-#endif
 	gtk_window_set_icon_name (GTK_WINDOW (main_app), window_icon);
 	gtk_container_add (GTK_CONTAINER (main_app), app_data->shell);
 
@@ -195,9 +193,8 @@ launch_selected_app (AppShellData * app_data)
 static gboolean
 main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * app_data)
 {
-#if GTK_CHECK_VERSION(3,0,0)
 	GApplication *app;
-#endif
+
 	if (event->keyval == GDK_KEY_Return)
 	{
 		SlabSection *section = SLAB_SECTION (app_data->filter_section);
@@ -219,16 +216,13 @@ main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * 
 		((event->keyval == GDK_KEY_q || event->keyval == GDK_KEY_Q) && (event->state & GDK_CONTROL_MASK)))
 	{
 		if (app_data->exit_on_close)
-#if GTK_CHECK_VERSION(3,0,0)
 		{
 			app=g_application_get_default();
 			g_application_quit(app);
 		}
-#else
-			gtk_main_quit ();
-#endif
 		else
 			hide_shell (app_data);
+
 		return TRUE;
 	}
 	return FALSE;
@@ -237,18 +231,12 @@ main_keypress_callback (GtkWidget * widget, GdkEventKey * event, AppShellData * 
 static gboolean
 main_delete_callback (GtkWidget * widget, GdkEvent * event, AppShellData * app_data)
 {
-#if GTK_CHECK_VERSION(3,0,0)
 	GApplication *app;
-#endif
+
 	if (app_data->exit_on_close)
 	{
-		/*avoid "gtk_main_quit: assertion 'main_loops != NULL' failed" critical here */
-#if GTK_CHECK_VERSION(3,0,0)
 		app=g_application_get_default();
 		g_application_quit(app);
-#else
-		gtk_main_quit();
-#endif
 		return FALSE;
 	}
 
@@ -275,11 +263,7 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 	app_data->shell = shell_window_new (app_data);
 	app_data->static_actions = actions;
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	right_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#else
-	right_vbox = gtk_vbox_new (FALSE, 0);
-#endif
 
 	num_cols = SIZING_SCREEN_WIDTH_LARGE_NUMCOLS;
 	if (gdk_screen_width () <= SIZING_SCREEN_WIDTH_LARGE)
@@ -308,11 +292,7 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 	gtk_container_set_focus_vadjustment (GTK_CONTAINER (right_vbox),
 		gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (sw)));
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	left_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 15);
-#else
-	left_vbox = gtk_vbox_new (FALSE, 15);
-#endif
 
 	filter_section = create_filter_section (app_data, filter_title);
 	app_data->filter_section = filter_section;
@@ -422,11 +402,7 @@ create_actions_section (AppShellData * app_data, const gchar * title,
 	section = slab_section_new (title, Style1);
 	g_object_ref (section);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#else
-	vbox = gtk_vbox_new (FALSE, 0);
-#endif
 	slab_section_set_contents (SLAB_SECTION (section), vbox);
 
 	if (app_data->static_actions)
@@ -468,11 +444,7 @@ create_groups_section (AppShellData * app_data, const gchar * title)
 	section = slab_section_new (title, Style1);
 	g_object_ref (section);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#else
-	vbox = gtk_vbox_new (FALSE, 0);
-#endif
 	slab_section_set_contents (SLAB_SECTION (section), vbox);
 
 	return section;
@@ -598,11 +570,7 @@ handle_filter_changed_delayed (gpointer user_data)
 	app_data->busy_cursor =
 		gdk_cursor_new_for_display (gtk_widget_get_display (app_data->shell), GDK_WATCH);
 	gdk_window_set_cursor (gtk_widget_get_window (app_data->shell), app_data->busy_cursor);
-#if GTK_CHECK_VERSION (3, 0, 0)
 	g_object_unref (app_data->busy_cursor);
-#else
-	gdk_cursor_unref (app_data->busy_cursor);
-#endif
 
 	set_state (app_data, NULL);
 	app_resizer_set_vadjustment_value (app_data->category_layout, 0);
@@ -760,11 +728,7 @@ create_application_category_sections (AppShellData * app_data)
 		g_object_ref (data->section);
 		g_free (markup);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#else
-		hbox = gtk_hbox_new (FALSE, 0);
-#endif
 		table = gtk_table_new (0, 0, TRUE);
 		gtk_table_set_col_spacings (GTK_TABLE (table), 5);
 		gtk_table_set_row_spacings (GTK_TABLE (table), 5);
@@ -790,11 +754,7 @@ show_no_results_message (AppShellData * app_data, GtkWidget * containing_vbox)
 		app_data->filtered_out_everything_widget = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
 		g_object_ref (app_data->filtered_out_everything_widget);
 
-#if GTK_CHECK_VERSION (3, 0, 0)
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#else
-		hbox = gtk_hbox_new (FALSE, 0);
-#endif
 		image = themed_icon_new ("face-surprise", GTK_ICON_SIZE_DIALOG);
 		gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
 
@@ -1404,9 +1364,7 @@ tile_activated_cb (Tile * tile, TileEvent * event, gpointer user_data)
 static void
 handle_launcher_single_clicked (Tile * launcher, gpointer data)
 {
-#if GTK_CHECK_VERSION(3,0,0)
 	GApplication *app;
-#endif
 	AppShellData *app_data = (AppShellData *) data;
 
 	tile_trigger_action (launcher, launcher->actions[APPLICATION_TILE_ACTION_START]);
@@ -1414,14 +1372,10 @@ handle_launcher_single_clicked (Tile * launcher, gpointer data)
 	if (g_settings_get_boolean (app_data->settings, EXIT_SHELL_ON_ACTION_START))
 	{
 		if (app_data->exit_on_close)
-#if GTK_CHECK_VERSION(3,0,0)
 		{
 			app=g_application_get_default();
 			g_application_quit(app);
 		}
-#else
-			gtk_main_quit();
-#endif
 		else
 			hide_shell (app_data);
 	}
@@ -1431,9 +1385,7 @@ static void
 handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * action,
 	gpointer data)
 {
-#if GTK_CHECK_VERSION(3,0,0)
 	GApplication *app;
-#endif
 	AppShellData *app_data = (AppShellData *) data;
 	gchar *temp;
 
@@ -1465,14 +1417,10 @@ handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * a
 		if (g_settings_get_boolean (app_data->settings, temp))
 		{
 			if (app_data->exit_on_close)
-#if GTK_CHECK_VERSION(3,0,0)
 			{
 				app=g_application_get_default();
 				g_application_quit(app);
 			}
-#else
-				gtk_main_quit();
-#endif
 			else
 				hide_shell (app_data);
 		}
