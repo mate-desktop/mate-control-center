@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-27 23:13+0300\n"
-"PO-Revision-Date: 2016-05-01 01:35+0000\n"
+"POT-Creation-Date: 2016-11-02 16:41+0300\n"
+"PO-Revision-Date: 2016-11-19 14:40+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/mate/MATE/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr "[ 'Change Theme;mate-appearance-properties.desktop', 'Angi foretrukne programmer;mate-default-applications-properties.desktop' ]"
+msgstr "[ 'Endre drakt;mate-appearance-properties.desktop', 'Angi foretrukne programmer;mate-default-applications-properties.desktop' ]"
 
 #: ../org.mate.control-center.gschema.xml.in.h:2
 msgid "Task names and associated .desktop files"
@@ -95,7 +95,7 @@ msgstr "Nettadresse der ytterligere skrivebordsbakgrunner kan hentes. Hvis satt 
 
 #: ../org.mate.control-center.gschema.xml.in.h:16
 msgid "More themes URL"
-msgstr "URL til flere tema"
+msgstr "URL til flere drakter"
 
 #: ../org.mate.control-center.gschema.xml.in.h:17
 msgid ""
@@ -164,12 +164,12 @@ msgid "No Image"
 msgstr "Ingen bilder"
 
 #: ../capplets/about-me/mate-about-me.c:298
-#: ../capplets/appearance/appearance-desktop.c:650
+#: ../capplets/appearance/appearance-desktop.c:692
 msgid "Images"
 msgstr "Bilder"
 
 #: ../capplets/about-me/mate-about-me.c:302
-#: ../capplets/appearance/theme-installer.c:783
+#: ../capplets/appearance/theme-installer.c:787
 msgid "All Files"
 msgstr "Alle filer"
 
@@ -375,7 +375,7 @@ msgstr "Autentisert!"
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
-msgstr "Passordet ditt er endret siden første autentisering! Vennligst autentiser på nytt."
+msgstr "Passordet ditt er endret siden første autentisering! Autentiser på nytt."
 
 #: ../capplets/about-me/mate-about-me-password.c:474
 msgid "That password was incorrect."
@@ -441,13 +441,13 @@ msgstr "Klikk <b>Endre passord</b> for å endre passord."
 
 #: ../capplets/about-me/mate-about-me-password.c:941
 msgid "Please type your password in the <b>New password</b> field."
-msgstr "Vennligst skriv inn passordet i feltet <b>Nytt passord</b>."
+msgstr "Skriv inn passordet i feltet <b>Nytt passord</b>."
 
 #: ../capplets/about-me/mate-about-me-password.c:944
 #: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
-msgstr "Vennligst oppgi passordet på nytt i feltet <b>Oppgi nytt passord igjen</b>."
+msgstr "Oppgi passordet på nytt i feltet <b>Oppgi nytt passord igjen</b>."
 
 #: ../capplets/about-me/mate-about-me-password.c:947
 msgid "The two passwords are not equal."
@@ -550,11 +550,11 @@ msgstr "Lukk og _logg ut"
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Velg hvilke funksjoner for tilgjengelighet som skal aktiveres når du logger inn"
 
-#: ../capplets/appearance/appearance-desktop.c:619
+#: ../capplets/appearance/appearance-desktop.c:661
 msgid "Add Wallpaper"
 msgstr "Legg til bakgrunn"
 
-#: ../capplets/appearance/appearance-desktop.c:654
+#: ../capplets/appearance/appearance-desktop.c:696
 msgid "All files"
 msgstr "Alle filer"
 
@@ -563,96 +563,95 @@ msgstr "Alle filer"
 msgid "Could not load user interface file: %s"
 msgstr "Kunne ikke laste brukergrensesnittfil: %s"
 
-#: ../capplets/appearance/appearance-main.c:161
+#: ../capplets/appearance/appearance-main.c:164
 msgid "Specify the filename of a theme to install"
-msgstr "Oppgi filnavn på et tema som skal installeres"
+msgstr "Oppgi filnavn på en drakt som skal installeres"
 
-#: ../capplets/appearance/appearance-main.c:162
+#: ../capplets/appearance/appearance-main.c:165
 msgid "filename"
 msgstr "filnavn"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:169
+#: ../capplets/appearance/appearance-main.c:172
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Oppgi navn på fanen som skal vises (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:170
+#: ../capplets/appearance/appearance-main.c:173
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:483
+#: ../capplets/mouse/mate-mouse-properties.c:450
 msgid "page"
 msgstr "side"
 
-#: ../capplets/appearance/appearance-main.c:177
+#: ../capplets/appearance/appearance-main.c:180
 msgid "[WALLPAPER...]"
 msgstr "[BAKGRUNN…]"
 
 #: ../capplets/appearance/appearance-style.c:171
-#: ../capplets/common/mate-theme-info.c:497
-#: ../capplets/common/mate-theme-info.c:690
+#: ../capplets/common/mate-theme-info.c:494
 msgid "Default Pointer"
 msgstr "Forvalgt peker"
 
 #: ../capplets/appearance/appearance-style.c:233
-#: ../capplets/appearance/appearance-themes.c:661
+#: ../capplets/appearance/appearance-themes.c:658
 msgid "Install"
 msgstr "Installer"
 
 #: ../capplets/appearance/appearance-style.c:269
-#: ../capplets/common/mate-theme-info.c:1726
+#: ../capplets/common/mate-theme-info.c:1608
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme engine "
 "'%s' is not installed."
-msgstr "Dette temaet vil ikke se ut som tenkt fordi temamotor «%s» for GTK+ ikke er installert."
+msgstr "Denne drakten vil ikke se ut som tiltenkt fordi draktmotoren «%s» for GTK+ ikke er installert."
 
-#: ../capplets/appearance/appearance-themes.c:649
+#: ../capplets/appearance/appearance-themes.c:646
 msgid "Apply Background"
 msgstr "Bruk bakgrunn"
 
-#: ../capplets/appearance/appearance-themes.c:653
+#: ../capplets/appearance/appearance-themes.c:650
 msgid "Apply Font"
 msgstr "Bruk skrift"
 
-#: ../capplets/appearance/appearance-themes.c:657
+#: ../capplets/appearance/appearance-themes.c:654
 msgid "Revert Font"
 msgstr "Forkast skrift"
 
-#: ../capplets/appearance/appearance-themes.c:703
+#: ../capplets/appearance/appearance-themes.c:700
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
-msgstr "Aktivt tema foreslår en bakgrunn og en skrift. I tillegg kan sist brukte skriftforslag forkastes."
+msgstr "Aktiv drakt foreslår en bakgrunn og en skrift. I tillegg kan sist brukte skriftforslag forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:705
+#: ../capplets/appearance/appearance-themes.c:702
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
-msgstr "Aktivt tema foreslår en bakgrunn. Sist valgte skriftforslag kan også forkastes."
+msgstr "Aktiv drakt foreslår en bakgrunn. Sist valgte skriftforslag kan også forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:707
+#: ../capplets/appearance/appearance-themes.c:704
 msgid "The current theme suggests a background and a font."
-msgstr "Aktivt tema foreslår en bakgrunn og en skrift."
+msgstr "Aktiv drakt foreslår en bakgrunn og en skrift."
 
-#: ../capplets/appearance/appearance-themes.c:709
+#: ../capplets/appearance/appearance-themes.c:706
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
-msgstr "Aktivt tema foreslår også en skrift. Skriften kan også forkastes."
+msgstr "Aktiv drakt foreslår også en skrift. Skriften kan også forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:711
+#: ../capplets/appearance/appearance-themes.c:708
 msgid "The current theme suggests a background."
-msgstr "Aktivt tema foreslår en bakgrunn."
+msgstr "Aktiv drakt foreslår en bakgrunn."
 
-#: ../capplets/appearance/appearance-themes.c:713
+#: ../capplets/appearance/appearance-themes.c:710
 msgid "The last applied font suggestion can be reverted."
 msgstr "Sist valgte skriftforslag kan forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:715
+#: ../capplets/appearance/appearance-themes.c:712
 msgid "The current theme suggests a font."
-msgstr "Aktivt tema foreslår en skrift."
+msgstr "Aktiv drakt foreslår en skrift."
 
-#: ../capplets/appearance/appearance-themes.c:1031
+#: ../capplets/appearance/appearance-themes.c:1028
 msgid "Custom"
 msgstr "Egendefinert"
 
@@ -747,11 +746,11 @@ msgstr "_Installer …"
 
 #: ../capplets/appearance/data/appearance.ui.h:27
 msgid "Get more themes online"
-msgstr "Hent flere tema på nettet"
+msgstr "Hent flere drakter på nettet"
 
 #: ../capplets/appearance/data/appearance.ui.h:28
 msgid "Theme"
-msgstr "Tema"
+msgstr "Drakt"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
 msgid "_Style:"
@@ -832,7 +831,7 @@ msgstr "Menyer og verktøylinjer"
 
 #: ../capplets/appearance/data/appearance.ui.h:48
 msgid "Show _icons in menus"
-msgstr "Vis _miniatyrbilder i menyer"
+msgstr "Vis _ikoner i menyer"
 
 #: ../capplets/appearance/data/appearance.ui.h:49
 msgid "_Editable menu shortcut keys"
@@ -912,7 +911,7 @@ msgstr "Kun tekst"
 
 #: ../capplets/appearance/data/appearance.ui.h:68
 msgid "Customize Theme"
-msgstr "Tilpass tema"
+msgstr "Tilpass drakt"
 
 #: ../capplets/appearance/data/appearance.ui.h:69
 msgid "Controls"
@@ -920,7 +919,7 @@ msgstr "Kontroller"
 
 #: ../capplets/appearance/data/appearance.ui.h:70
 msgid "The current controls theme does not support color schemes."
-msgstr "Aktivt tema for kontroller støtter ikke fargeskjema."
+msgstr "Aktivt drakt for kontroller støtter ikke fargeskjema."
 
 #: ../capplets/appearance/data/appearance.ui.h:71
 msgid "_Tooltips:"
@@ -959,47 +958,43 @@ msgid "Icons"
 msgstr "Ikoner"
 
 #: ../capplets/appearance/data/appearance.ui.h:80
-msgid "Changing your cursor theme takes effect the next time you log in."
-msgstr "Endringer i tema for peker trer i kraft neste gang du logger inn."
-
-#: ../capplets/appearance/data/appearance.ui.h:81
 msgid "_Size:"
 msgstr "_Størrelse:"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:82
+#: ../capplets/appearance/data/appearance.ui.h:81
 #: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Small"
 msgstr "Liten"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:82
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Large"
 msgstr "Stor"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:83
 msgid "Pointer"
 msgstr "Peker"
 
-#: ../capplets/appearance/data/appearance.ui.h:85
+#: ../capplets/appearance/data/appearance.ui.h:84
 msgid "Save Theme As..."
-msgstr "Lagre tema som …"
+msgstr "Lagre drakt som …"
 
-#: ../capplets/appearance/data/appearance.ui.h:86
+#: ../capplets/appearance/data/appearance.ui.h:85
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
 msgid "_Name:"
 msgstr "_Navn:"
 
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:86
 msgid "_Description:"
 msgstr "_Beskrivelse:"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:87
 msgid "Save _background image"
 msgstr "Lagre _bakgrunnsbilde"
 
-#: ../capplets/appearance/data/appearance.ui.h:89
+#: ../capplets/appearance/data/appearance.ui.h:88
 msgid "Save _notification theme"
 msgstr "Lagre _påminnelsesdrakt"
 
@@ -1013,44 +1008,44 @@ msgstr "Tilpass utseende for skrivebordet"
 
 #: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:1
 msgid "Theme Installer"
-msgstr "Installering av tema"
+msgstr "Installering av drakt"
 
 #: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
 msgid "Installs themes packages for various parts of the desktop"
-msgstr "Installerer temapakker for forskjellige deler av skrivebordet"
+msgstr "Installerer draktpakker for forskjellige deler av skrivebordet"
 
 #: ../capplets/appearance/data/mate-theme-package.xml.in.h:1
 msgid "Mate Theme Package"
-msgstr "MATE temapakke"
+msgstr "MATE draktpakke"
 
 #: ../capplets/appearance/mate-wp-info.c:51
 msgid "No Desktop Background"
 msgstr "Ingen skrivebordsbakgrunn"
 
-#: ../capplets/appearance/mate-wp-item.c:288
+#: ../capplets/appearance/mate-wp-item.c:318
 msgid "unknown"
 msgstr "ukjent"
 
-#: ../capplets/appearance/mate-wp-item.c:295
+#: ../capplets/appearance/mate-wp-item.c:325
 msgid "Slide Show"
 msgstr "Lysbildevisning"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: ../capplets/appearance/mate-wp-item.c:327
 msgid "Image"
 msgstr "Bilde"
 
-#: ../capplets/appearance/mate-wp-item.c:303
+#: ../capplets/appearance/mate-wp-item.c:333
 msgid "multiple sizes"
 msgstr "flere størrelser"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:306
+#: ../capplets/appearance/mate-wp-item.c:336
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s ganger %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:308
-#: ../capplets/appearance/mate-wp-item.c:310
+#: ../capplets/appearance/mate-wp-item.c:338
+#: ../capplets/appearance/mate-wp-item.c:340
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "piksel"
@@ -1060,7 +1055,7 @@ msgstr[1] "piksler"
 #. * mime type, size
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:319
+#: ../capplets/appearance/mate-wp-item.c:349
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1073,7 +1068,7 @@ msgstr "<b>%s</b>\n%s, %s\nMappe: %s\nArtist: %s"
 #. * Image missing
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:334
+#: ../capplets/appearance/mate-wp-item.c:364
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1082,14 +1077,14 @@ msgid ""
 "Artist: %s"
 msgstr "<b>%s</b>\n%s\n\\Mappe: %s\nArtist: %s"
 
-#: ../capplets/appearance/mate-wp-item.c:339
+#: ../capplets/appearance/mate-wp-item.c:369
 msgid "Image missing"
 msgstr "Bilde mangler"
 
 #: ../capplets/appearance/theme-installer.c:185
 #: ../capplets/appearance/theme-installer.c:241
 msgid "Cannot install theme"
-msgstr "Kan ikke installere tema"
+msgstr "Kan ikke installere drakt"
 
 #: ../capplets/appearance/theme-installer.c:187
 #, c-format
@@ -1098,7 +1093,7 @@ msgstr "Verktøyet %s er ikke installert."
 
 #: ../capplets/appearance/theme-installer.c:243
 msgid "There was a problem while extracting the theme."
-msgstr "Det oppsto et problem under utpakking av tema."
+msgstr "Det oppsto et problem under utpakking av drakt."
 
 #: ../capplets/appearance/theme-installer.c:271
 msgid "There was an error installing the selected file"
@@ -1107,41 +1102,41 @@ msgstr "Det oppsto en feil under installering av valgt fil"
 #: ../capplets/appearance/theme-installer.c:272
 #, c-format
 msgid "\"%s\" does not appear to be a valid theme."
-msgstr "«%s» ser ikke ut til å være et gyldig tema."
+msgstr "«%s» ser ikke ut til å være en gyldig drakt."
 
 #: ../capplets/appearance/theme-installer.c:273
 #, c-format
 msgid ""
 "\"%s\" does not appear to be a valid theme. It may be a theme engine which "
 "you need to compile."
-msgstr "«%s» ser ikke ut til å være et gyldig tema. Det kan være en temamotor som du må kompilere."
+msgstr "«%s» ser ikke ut til å være en gyldig drakt. Det kan være en draktmotor som du må kompilere."
 
 #: ../capplets/appearance/theme-installer.c:379
 #, c-format
 msgid "Installation for theme \"%s\" failed."
-msgstr "Installasjon av tema «%s» feilet."
+msgstr "Installasjon av drakten «%s» feilet."
 
 #: ../capplets/appearance/theme-installer.c:418
 #, c-format
 msgid "The theme \"%s\" has been installed."
-msgstr "Tema «%s» er installert."
+msgstr "Drakten «%s» er installert."
 
 #: ../capplets/appearance/theme-installer.c:428
 msgid "Would you like to apply it now, or keep your current theme?"
-msgstr "Vil du bruke det nå, eller beholde aktivt tema?"
+msgstr "Vil du bruke det nå, eller beholde aktiv drakt?"
 
 #: ../capplets/appearance/theme-installer.c:431
 msgid "Keep Current Theme"
-msgstr "Behold nåværende tema"
+msgstr "Behold nåværende drakt"
 
 #: ../capplets/appearance/theme-installer.c:434
 msgid "Apply New Theme"
-msgstr "Bruk nytt tema"
+msgstr "Bruk ny drakt"
 
 #: ../capplets/appearance/theme-installer.c:486
 #, c-format
 msgid "MATE Theme %s correctly installed"
-msgstr "MATE tema %s ble korrekt installert"
+msgstr "MATE-drakten %s ble installert"
 
 #: ../capplets/appearance/theme-installer.c:548
 msgid "Failed to create temporary directory"
@@ -1149,35 +1144,35 @@ msgstr "Kunne ikke opprette midlertidig katalog"
 
 #: ../capplets/appearance/theme-installer.c:611
 msgid "New themes have been successfully installed."
-msgstr "Nye tema ble installert."
+msgstr "Nye drakter ble installert."
 
-#: ../capplets/appearance/theme-installer.c:661
+#: ../capplets/appearance/theme-installer.c:665
 msgid "No theme file location specified to install"
-msgstr "Ingen lokasjon oppgitt for installasjon av temafil"
+msgstr "Ingen plassering oppgitt for installasjon av draktafil"
 
-#: ../capplets/appearance/theme-installer.c:685
+#: ../capplets/appearance/theme-installer.c:689
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
-msgstr "Ikke nok rettigheter til å installere tema i:\n%s"
+msgstr "Ikke nok rettigheter til å installere drakt i:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:765
+#: ../capplets/appearance/theme-installer.c:769
 msgid "Select Theme"
-msgstr "Velg tema"
+msgstr "Velg drakt"
 
-#: ../capplets/appearance/theme-installer.c:776
+#: ../capplets/appearance/theme-installer.c:780
 msgid "Theme Packages"
-msgstr "Temapakker"
+msgstr "Draktpakker"
 
 #: ../capplets/appearance/theme-save.c:94
 #, c-format
 msgid "Theme name must be present"
-msgstr "Navn på tema må oppgis"
+msgstr "Navn på drakt må oppgis"
 
 #: ../capplets/appearance/theme-save.c:157
 msgid "The theme already exists. Would you like to replace it?"
-msgstr "Tema eksisterer allerede. Vil du erstatte det?"
+msgstr "Drakten finnes allerede. Vil du erstatte den?"
 
 #: ../capplets/appearance/theme-save.c:158
 #: ../capplets/common/file-transfer-dialog.c:466
@@ -1186,15 +1181,15 @@ msgstr "_Overskriv"
 
 #: ../capplets/appearance/theme-util.c:73
 msgid "Would you like to delete this theme?"
-msgstr "Vil du slette dette temaet?"
+msgstr "Vil du slette denne drakten?"
 
 #: ../capplets/appearance/theme-util.c:123
 msgid "Theme cannot be deleted"
-msgstr "Tema kan ikke slettes"
+msgstr "Drakten kan ikke slettes"
 
 #: ../capplets/appearance/theme-util.c:249
 msgid "Could not install theme engine"
-msgstr "Kan ikke installere temamotor"
+msgstr "Kan ikke installere draktmotor"
 
 #: ../capplets/common/activate-settings-daemon.c:16
 msgid ""
@@ -1278,7 +1273,7 @@ msgstr "Totalt antall URIer"
 #: ../capplets/common/file-transfer-dialog.c:460
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
-msgstr "Fil «%s» eksisterer allerede. Vil du erstatte den?"
+msgstr "Fila «%s» finnes allerede. Vil du erstatte den?"
 
 #: ../capplets/common/file-transfer-dialog.c:463
 msgid "_Skip"
@@ -1288,54 +1283,26 @@ msgstr "_Hopp over"
 msgid "Overwrite _All"
 msgstr "Overskriv _alle"
 
-#: ../capplets/common/mate-theme-info.c:691
-msgid "Default Pointer - Current"
-msgstr "Forvalgt peker - nåværende"
-
-#: ../capplets/common/mate-theme-info.c:695
-msgid "White Pointer"
-msgstr "Hvit peker"
-
-#: ../capplets/common/mate-theme-info.c:696
-msgid "White Pointer - Current"
-msgstr "Hvit peker - nåværende"
-
-#: ../capplets/common/mate-theme-info.c:700
-msgid "Large Pointer"
-msgstr "Stor peker"
-
-#: ../capplets/common/mate-theme-info.c:701
-msgid "Large Pointer - Current"
-msgstr "Stor peker - nåværende"
-
-#: ../capplets/common/mate-theme-info.c:705
-msgid "Large White Pointer - Current"
-msgstr "Stor hvit peker - nåværende"
-
-#: ../capplets/common/mate-theme-info.c:706
-msgid "Large White Pointer"
-msgstr "Stor hvit peker"
-
-#: ../capplets/common/mate-theme-info.c:1696
+#: ../capplets/common/mate-theme-info.c:1578
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
 " not installed."
-msgstr "Dette temaet vil ikke se ut som det var tenkt fordi GTK+-tema «%s» ikke er installert."
+msgstr "Denne drakten vil ikke se ut som tiltenkt fordi GTK+drakten «%s» ikke er installert."
 
-#: ../capplets/common/mate-theme-info.c:1706
+#: ../capplets/common/mate-theme-info.c:1588
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
 "theme '%s' is not installed."
-msgstr "Dette temaet vil ikke se ut som det var tenkt fordi tema «%s» for vindushåndtereren ikke er installert."
+msgstr "Denne drakten vil ikke se ut som tiltenkt fordi påkrevd drakt «%s» for vindushåndtereren ikke er installert."
 
-#: ../capplets/common/mate-theme-info.c:1714
+#: ../capplets/common/mate-theme-info.c:1596
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
 " not installed."
-msgstr "Dette temaet vil ikke vises som tiltenkt fordi ikontemaet «%s» ikke er installert."
+msgstr "Denne drakten vil ikke vises som tiltenkt fordi ikondrakten «%s» ikke er installert."
 
 #: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
@@ -1685,11 +1652,11 @@ msgstr "Velg en skjerm for å endre egenskaper for denne. Dra den rundt for å b
 
 #: ../capplets/display/xrandr-capplet.c:2147
 msgid "Could not save the monitor configuration"
-msgstr "Kunne ikke lagre skjermkonfigurasjon"
+msgstr "Kunne ikke lagre skjermoppsett"
 
 #: ../capplets/display/xrandr-capplet.c:2169
 msgid "Could not get session bus while applying display configuration"
-msgstr "Kunne ikke finne sesjonsbussen under aktivering av skjermkonfigurasjon"
+msgstr "Kunne ikke finne øktbussen under aktivering av skjermoppsett"
 
 #: ../capplets/display/xrandr-capplet.c:2188
 msgid "Could not detect displays"
@@ -1697,99 +1664,99 @@ msgstr "Kunne ikke søke etter skjermer"
 
 #: ../capplets/display/xrandr-capplet.c:2400
 msgid "The monitor configuration has been saved"
-msgstr "Skjermkonfigurasjonen er lagret"
+msgstr "Skjermoppsett lagret"
 
 #: ../capplets/display/xrandr-capplet.c:2402
 msgid "This configuration will be used the next time someone logs in."
-msgstr "Denne konfigurasjonen vil bli brukt neste gang noen logger inn."
+msgstr "Dette oppsettet vil bli brukt neste gang noen logger inn."
 
 #: ../capplets/display/xrandr-capplet.c:2411
 msgid "Could not set the default configuration for monitors"
-msgstr "Kunne ikke sette forvalgt konfigurasjon for skjermer"
+msgstr "Kunne ikke sette forvalgt oppsett for skjermer"
 
 #: ../capplets/display/xrandr-capplet.c:2495
 msgid "Could not get screen information"
 msgstr "Fant ikke informasjon om skjermen"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: ../capplets/keybindings/eggcellrendererkeys.c:25
 msgid "New shortcut..."
 msgstr "Ny snarvei …"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: ../capplets/keybindings/eggcellrendererkeys.c:161
+#: ../capplets/keybindings/eggcellrendererkeys.c:162
 msgid "Accelerator key"
 msgstr "Hurtigtast"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: ../capplets/keybindings/eggcellrendererkeys.c:171
+#: ../capplets/keybindings/eggcellrendererkeys.c:172
 msgid "Accelerator modifiers"
 msgstr "Endringstaster for hurtigtaster"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: ../capplets/keybindings/eggcellrendererkeys.c:180
+#: ../capplets/keybindings/eggcellrendererkeys.c:181
 msgid "Accelerator keycode"
 msgstr "Tastekode for hurtigtast"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: ../capplets/keybindings/eggcellrendererkeys.c:191
 msgid "Accel Mode"
 msgstr "Akselleratormodus"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: ../capplets/keybindings/eggcellrendererkeys.c:192
 msgid "The type of accelerator."
 msgstr "Type hurtigtast."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/keybindings/eggcellrendererkeys.c:235
+#: ../capplets/keybindings/mate-keybinding-properties.c:138
+#: ../capplets/mouse/mate-mouse-properties.c:363
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Slått av"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:220
 msgid "<Unknown Action>"
 msgstr "<Ukjent handling>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1020
-#: ../capplets/keybindings/mate-keybinding-properties.c:1610
+#: ../capplets/keybindings/mate-keybinding-properties.c:1024
+#: ../capplets/keybindings/mate-keybinding-properties.c:1614
 msgid "Custom Shortcuts"
 msgstr "Egendefinerte snarveier"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1190
+#: ../capplets/keybindings/mate-keybinding-properties.c:1194
 msgid "Error saving the new shortcut"
 msgstr "Feil ved lagring av ny snarvei"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1266
+#: ../capplets/keybindings/mate-keybinding-properties.c:1270
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
-msgstr "Snarveien «%s» kan ikke brukes fordi den vil være umulig å skrive med denne tasten.\nVennligst prøv igjen med en tastekombinasjon som inneholder Control, Alt eller Shift."
+msgstr "Snarveien «%s» kan ikke brukes fordi den vil være umulig å skrive med denne tasten.\nPrøv igjen med en tastekombinasjon som inneholder Ctrl, Alt eller Shift."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1298
+#: ../capplets/keybindings/mate-keybinding-properties.c:1302
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Snarveien «%s» er allerede brukt for\n«%s»"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1305
+#: ../capplets/keybindings/mate-keybinding-properties.c:1309
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Hvis du omfordeler snarveien til «%s» vil snarvei «%s» bli slått av."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1310
+#: ../capplets/keybindings/mate-keybinding-properties.c:1314
 msgid "_Reassign"
 msgstr "_Tildel på nytt"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1565
+#: ../capplets/keybindings/mate-keybinding-properties.c:1569
 msgid "Too many custom shortcuts"
 msgstr "For mange egendefinerte snarveier"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1857
 msgid "Action"
 msgstr "Handling"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1879
 msgid "Shortcut"
 msgstr "Snarvei"
 
@@ -2197,24 +2164,24 @@ msgstr "Tastatur"
 msgid "Set your keyboard preferences"
 msgstr "Sett dine brukervalg for tastatur"
 
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:363
 msgid "Left button"
 msgstr "Venstre knapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:363
 msgid "Middle button"
 msgstr "Midterste knapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:363
 msgid "Right button"
 msgstr "Høyre knapp"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:482
+#: ../capplets/mouse/mate-mouse-properties.c:449
 msgid "Specify the name of the page to show (general)"
 msgstr "Angi navnet for siden som skal vises (generelt)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:487
+#: ../capplets/mouse/mate-mouse-properties.c:454
 msgid "- MATE Mouse Preferences"
 msgstr "- Brukervalg for mus"
 
@@ -2451,7 +2418,7 @@ msgstr "Plassering"
 
 #: ../capplets/windows/mate-window-properties.c:423
 msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Skru av _miniatyrbilder for Alt+Tab"
+msgstr "Skru av _miniatyrbilder i Alt+Tab"
 
 #. Titlebar buttons
 #: ../capplets/windows/mate-window-properties.c:431
@@ -2587,26 +2554,26 @@ msgstr "Vindushåndterer «%s» har ikke registrert et konfigurasjonsverktøy\n"
 msgid "%s key is empty\n"
 msgstr "%s-tasten er tom\n"
 
-#: ../shell/control-center.c:161
-msgid "Hide on start (useful to preload the shell)"
-msgstr "Skjul ved oppstart (nyttig ved forhåndslasting av skallet)"
-
-#: ../shell/control-center.c:201
+#: ../shell/control-center.c:144 ../shell/control-center.c:253
 msgid "Filter"
 msgstr "Filter"
 
-#: ../shell/control-center.c:201
+#: ../shell/control-center.c:144 ../shell/control-center.c:253
 msgid "Groups"
 msgstr "Grupper"
 
-#: ../shell/control-center.c:201
+#: ../shell/control-center.c:144 ../shell/control-center.c:253
 msgid "Common Tasks"
 msgstr "Vanlige oppgaver"
 
-#: ../shell/control-center.c:203 ../shell/matecc.desktop.in.in.h:1
-#: ../shell/matecc.directory.in.h:1
+#: ../shell/control-center.c:152 ../shell/control-center.c:255
+#: ../shell/matecc.desktop.in.in.h:1 ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "Kontrollsenter"
+
+#: ../shell/control-center.c:208
+msgid "Hide on start (useful to preload the shell)"
+msgstr "Skjul ved oppstart (nyttig ved forhåndslasting av skallet)"
 
 #: ../shell/matecc.desktop.in.in.h:2
 msgid "The MATE configuration tool"
@@ -2675,7 +2642,7 @@ msgstr "Aktiver feilsøkingsmodus"
 
 #: ../typing-break/main.c:65
 msgid "Don't check whether the notification area exists"
-msgstr "Ikke sjekk om varslingsområde eksisterer"
+msgstr "Ikke sjekk hvorvidt varslingsområdet finnes"
 
 #: ../typing-break/main.c:89
 msgid "Typing Monitor"
@@ -2713,7 +2680,7 @@ msgstr "Versjon:"
 #: ../font-viewer/font-view.c:448 ../font-viewer/font-view.c:450
 #: ../font-viewer/font-view.c:471 ../font-viewer/font-view.c:473
 msgid "Copyright:"
-msgstr "Opphavsrett:"
+msgstr "Kopirett:"
 
 #: ../font-viewer/font-view.c:456 ../font-viewer/font-view.c:458
 msgid "Description:"
@@ -2764,20 +2731,20 @@ msgstr "STØRRELSE"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "SKRIFTFIL UTDATA-FIL"
 
-#: ../libslab/app-shell.c:791
+#: ../libslab/app-shell.c:810
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filter «%s» gir ingen treff."
 
-#: ../libslab/app-shell.c:793
+#: ../libslab/app-shell.c:812
 msgid "No matches found."
 msgstr "Ingen treff funnet."
 
-#: ../libslab/app-shell.c:893
+#: ../libslab/app-shell.c:912
 msgid "New Applications"
 msgstr "Nye programmer"
 
-#: ../libslab/app-shell.c:948
+#: ../libslab/app-shell.c:967
 msgid "Other"
 msgstr "Annet"
 
