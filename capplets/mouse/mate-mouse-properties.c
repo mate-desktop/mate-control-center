@@ -277,9 +277,9 @@ find_synaptics (void)
 static void
 comboxbox_changed_callback (GtkWidget *combobox, void *data)
 {
-    gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
-    gchar *key = (char *) data;
-    g_settings_set_int (touchpad_settings, key, value);
+	gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
+	gchar *key = (char *) data;
+	g_settings_set_int (touchpad_settings, key, value);
 }
 
 /* Set up the property editors in the dialog. */
