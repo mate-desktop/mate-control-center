@@ -234,12 +234,12 @@ find_synaptics (void)
 	if (!version->present ||
 		(version->major_version * 1000 + version->minor_version) < 1005) {
 		XFree (version);
-		return False;
+		return FALSE;
 	}
 
 	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "Synaptics Off", True);
 	if (!prop)
-		return False;
+		return FALSE;
 
 	devicelist = XListInputDevices (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numdevices);
 	for (i = 0; i < numdevices; i++) {
