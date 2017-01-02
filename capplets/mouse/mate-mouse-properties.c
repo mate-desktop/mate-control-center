@@ -218,6 +218,20 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 }
 
 static gboolean
+have_xinput_extension (void)
+{
+	XExtensionVersion *version;
+	gboolean result;
+
+	/* Input device properties require version 1.5 or higher */
+	version = XGetExtensionVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), "XInputExtension");
+	result = version->present && ((version->major_version * 1000 + version->minor_version) >= 1005);
+	XFree (version);
+
+	return result;
+}
+
+static gboolean
 find_synaptics (void)
 {
 	gboolean ret = FALSE;
@@ -227,15 +241,9 @@ find_synaptics (void)
 	int realformat;
 	unsigned long nitems, bytes_after;
 	unsigned char *data;
-	XExtensionVersion *version;
 
-	/* Input device properties require version 1.5 or higher */
-	version = XGetExtensionVersion (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "XInputExtension");
-	if (!version->present ||
-		(version->major_version * 1000 + version->minor_version) < 1005) {
-		XFree (version);
+	if (!have_xinput_extension ())
 		return FALSE;
-	}
 
 	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "Synaptics Off", True);
 	if (!prop)
@@ -268,7 +276,6 @@ find_synaptics (void)
 			break;
 	}
 
-	XFree (version);
 	XFreeDeviceList (devicelist);
 
 	return ret;
