@@ -34,6 +34,7 @@
 #include "capplet-util.h"
 #include "activate-settings-daemon.h"
 #include "capplet-stock-icons.h"
+#include "msd-input-helper.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -217,70 +218,6 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 	XFreeDeviceList (devicelist);
 }
 
-static gboolean
-have_xinput_extension (void)
-{
-	XExtensionVersion *version;
-	gboolean result;
-
-	/* Input device properties require version 1.5 or higher */
-	version = XGetExtensionVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), "XInputExtension");
-	result = version->present && ((version->major_version * 1000 + version->minor_version) >= 1005);
-	XFree (version);
-
-	return result;
-}
-
-static gboolean
-find_synaptics (void)
-{
-	gboolean ret = FALSE;
-	int numdevices, i;
-	XDeviceInfo *devicelist;
-	Atom realtype, prop;
-	int realformat;
-	unsigned long nitems, bytes_after;
-	unsigned char *data;
-
-	if (!have_xinput_extension ())
-		return FALSE;
-
-	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "Synaptics Off", True);
-	if (!prop)
-		return FALSE;
-
-	devicelist = XListInputDevices (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numdevices);
-	for (i = 0; i < numdevices; i++) {
-		if (devicelist[i].use != IsXExtensionPointer)
-			continue;
-
-		gdk_error_trap_push();
-		XDevice *device = XOpenDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
-					       devicelist[i].id);
-		if (gdk_error_trap_pop ())
-			continue;
-
-		gdk_error_trap_push ();
-		if ((XGetDeviceProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device, prop, 0, 1, False,
-					 XA_INTEGER, &realtype, &realformat, &nitems,
-					 &bytes_after, &data) == Success) && (realtype != None)) {
-			XFree (data);
-			ret = TRUE;
-		}
-
-		gdk_error_trap_pop_ignored ();
-
-		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
-
-		if (ret)
-			break;
-	}
-
-	XFreeDeviceList (devicelist);
-
-	return ret;
-}
-
 static void
 comboxbox_changed_callback (GtkWidget *combobox, void *data)
 {
@@ -335,7 +272,7 @@ setup_dialog (GtkBuilder *dialog)
 		G_SETTINGS_BIND_DEFAULT);
 
 	/* Trackpad page */
-	if (find_synaptics () == FALSE)
+	if (touchpad_is_present () == FALSE)
 		gtk_notebook_remove_page (GTK_NOTEBOOK (WID ("prefs_widget")), -1);
 	else {
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
