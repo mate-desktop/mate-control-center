@@ -5,7 +5,9 @@ bin_PROGRAMS = mate-mouse-properties
 
 mate_mouse_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 mate_mouse_properties_SOURCES =	\
-	mate-mouse-properties.c
+	mate-mouse-properties.c	\
+	msd-input-helper.c	\
+	msd-input-helper.h
 
 @INTLTOOL_DESKTOP_RULE@
 
