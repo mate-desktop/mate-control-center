@@ -114,7 +114,6 @@ create_thumbnail (GIOSchedulerJob *job,
     }
 
   g_object_unref (info);
-  g_object_unref (file);
   g_object_unref (factory);
   g_clear_object (&pixbuf);
 
@@ -351,19 +350,18 @@ thumb_file_read_async_ready_cb (GObject *source,
 }
 
 static void
-ensure_thumbnail (FontViewModel *self,
-                  const gchar *path)
+thumbnail_query_info_cb (GObject *source,
+                         GAsyncResult *res,
+                         gpointer user_data)
 {
-    GFile *file, *thumb_file = NULL;
+    FontViewModel *self = user_data;
+    GFile *file = G_FILE (source);
+    GFile *thumb_file = NULL;
     GFileInfo *info;
     const gchar *thumb_path;
     LoadThumbnailData *data;
 
-    file = g_file_new_for_path (path);
-    info = g_file_query_info (file, G_FILE_ATTRIBUTE_THUMBNAIL_PATH ","
-                              G_FILE_ATTRIBUTE_THUMBNAILING_FAILED,
-                              G_FILE_QUERY_INFO_NONE,
-                              NULL, NULL);
+    info = g_file_query_info_finish (file, res, NULL);
 
     if (!info ||
         g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED)) {
@@ -389,8 +387,23 @@ ensure_thumbnail (FontViewModel *self,
     }
 
  out:
-    g_clear_object (&file);
     g_clear_object (&info);
+}
+
+static void
+ensure_thumbnail (FontViewModel *self,
+                  const gchar *path)
+{
+    GFile *file;
+
+    file = g_file_new_for_path (path);
+    g_file_query_info_async (file,
+                             G_FILE_ATTRIBUTE_THUMBNAIL_PATH ","
+                             G_FILE_ATTRIBUTE_THUMBNAILING_FAILED,
+                             G_FILE_QUERY_INFO_NONE,
+                             G_PRIORITY_DEFAULT, NULL,
+                             thumbnail_query_info_cb, self);
+    g_object_unref (file);
 }
 
 /* make sure the font list is valid */
