@@ -822,8 +822,6 @@ font_view_application_class_init (FontViewApplicationClass *klass)
 static GApplication *
 font_view_application_new (void)
 {
-    g_type_init ();
-
     if (!FcInit ())
         g_critical ("Can't initialize fontconfig library");
 

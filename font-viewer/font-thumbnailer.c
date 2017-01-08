@@ -200,8 +200,6 @@ main (int argc,
 
     setlocale (LC_ALL, "");
 
-    g_type_init ();
-
     context = g_option_context_new (NULL);
     g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
 
