@@ -388,14 +388,6 @@ static void
 font_view_application_do_open (FontViewApplication *self)
 {
     gchar *uri;
-    GtkWidget *font_widget;
-    GdkRGBA white = { 1.0, 1.0, 1.0, 1.0 };
-    GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
-    GtkWidget *w;
-
-    w = gtk_bin_get_child (GTK_BIN (self->swin_preview));
-    if (w)
-        gtk_widget_destroy (w);
 
     self->info_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
                                                     NULL, _("Info"), 
@@ -420,20 +412,29 @@ font_view_application_do_open (FontViewApplication *self)
     gtk_widget_set_vexpand (self->toolbar, FALSE);
 
     uri = g_file_get_uri (self->font_file);
-    self->font_widget = font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
+    if (self->font_widget == NULL) {
+        GdkRGBA white = { 1.0, 1.0, 1.0, 1.0 };
+        GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
+        GtkWidget *w;
 
-    gtk_widget_override_color (font_widget, GTK_STATE_NORMAL, &black);
-    gtk_widget_override_background_color (font_widget, GTK_STATE_FLAG_NORMAL, &white);
+        self->font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
+
+        gtk_widget_override_color (self->font_widget, GTK_STATE_NORMAL, &black);
+        gtk_widget_override_background_color (self->font_widget, GTK_STATE_FLAG_NORMAL, &white);
+
+        w = gtk_viewport_new (NULL, NULL);
+        gtk_viewport_set_shadow_type (GTK_VIEWPORT (w), GTK_SHADOW_NONE);
+
+        gtk_container_add (GTK_CONTAINER (w), self->font_widget);
+        gtk_container_add (GTK_CONTAINER (self->swin_preview), w);
+
+        g_signal_connect (self->font_widget, "loaded",
+                          G_CALLBACK (font_widget_loaded_cb), self);
+    } else {
+        g_object_set (self->font_widget, "uri", uri, NULL);
+    }
+
     g_free (uri);
-
-    w = gtk_viewport_new (NULL, NULL);
-    gtk_viewport_set_shadow_type (GTK_VIEWPORT (w), GTK_SHADOW_NONE);
-
-    gtk_container_add (GTK_CONTAINER (w), font_widget);
-    gtk_container_add (GTK_CONTAINER (self->swin_preview), w);
-
-    g_signal_connect (font_widget, "loaded",
-                      G_CALLBACK (font_widget_loaded_cb), self);
 
     gtk_widget_show_all (self->swin_preview);
     gtk_notebook_set_current_page (GTK_NOTEBOOK (self->notebook), 1);
