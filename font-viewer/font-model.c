@@ -98,6 +98,8 @@ create_thumbnail (GIOSchedulerJob *job,
     }
   else
     {
+      mate_desktop_thumbnail_factory_create_failed_thumbnail (factory,
+                                                               uri, (time_t) mtime);
       g_simple_async_result_set_op_res_gboolean (result, FALSE);
     }
 
@@ -203,19 +205,51 @@ thumbnail_ready_cb (GObject *source,
                     gpointer user_data)
 {
     FontViewModel *self = user_data;
-    gboolean result;
     gchar *path;
     GFile *file;
 
-    result = gd_queue_thumbnail_job_for_file_finish (G_ASYNC_RESULT (res));
+    gd_queue_thumbnail_job_for_file_finish (G_ASYNC_RESULT (res));
+    file = G_FILE (source);
+    path = g_file_get_path (file);
+    ensure_thumbnail (self, path);
 
-    if (result) {
-        file = G_FILE (source);
-        path = g_file_get_path (file);
-        ensure_thumbnail (self, path);
+    g_free (path);
+}
 
-        g_free (path);
-    }
+static void
+set_fallback_icon (FontViewModel *self,
+                   GFile *file)
+{
+    GtkTreeIter iter;
+    GtkIconTheme *icon_theme;
+    GtkIconInfo *icon_info;
+    GdkPixbuf *pix;
+    gchar *path;
+    GIcon *icon = NULL;
+
+    icon_theme = gtk_icon_theme_get_default ();
+    icon = g_content_type_get_icon ("application/x-font-ttf");
+    icon_info = gtk_icon_theme_lookup_by_gicon (icon_theme, icon, 
+                                                128, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+    g_object_unref (icon);
+
+    if (!icon_info)
+        return;
+
+    pix = gtk_icon_info_load_icon (icon_info, NULL);
+    gtk_icon_info_free (icon_info);
+
+    if (!pix)
+        return;
+
+    path = g_file_get_path (file);
+    if (font_view_model_get_iter_for_file (self, path, &iter))
+        gtk_list_store_set (GTK_LIST_STORE (self), &iter,
+                            COLUMN_ICON, pix,
+                            -1);
+
+    g_free (path);
+    g_object_unref (pix);
 }
 
 static void
@@ -277,10 +311,11 @@ ensure_thumbnail (FontViewModel *self,
                               G_FILE_QUERY_INFO_NONE,
                               NULL, NULL);
 
-    if (!info)
+    if (!info ||
+        g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED)) {
+        set_fallback_icon (self, file);
         goto out;
-    if (g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED))
-        goto out;
+    }
 
     thumb_path = g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
     if (thumb_path)
