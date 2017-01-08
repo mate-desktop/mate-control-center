@@ -741,6 +741,11 @@ font_view_application_startup (GApplication *application)
     g_object_unref (menu);
 
     self->main_window = window = gtk_application_window_new (GTK_APPLICATION (application));
+
+    GtkStyleContext *context;
+    context = gtk_widget_get_style_context (GTK_WIDGET (self->main_window));
+    gtk_style_context_add_class (context, "font-viewer");
+
     gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
     gtk_window_set_default_size (GTK_WINDOW (window), 800, 600);
     gtk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
