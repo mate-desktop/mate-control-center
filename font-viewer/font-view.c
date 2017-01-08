@@ -301,40 +301,81 @@ install_button_clicked_cb (GtkButton *button,
                            gpointer user_data)
 {
     FontViewApplication *self = user_data;
-    GFile *dest;
-    gchar *dest_path, *dest_filename;
+    gchar *dest_filename;
     GError *err = NULL;
+    FcConfig *config;
+    FcStrList *str_list;
+    FcChar8 *path;
+    GFile *xdg_prefix, *home_prefix, *file;
+    GFile *xdg_location = NULL, *home_location = NULL;
+    GFile *dest_location = NULL, *dest_file;
 
-    /* first check if ~/.fonts exists */
-    dest_path = g_build_filename (g_get_home_dir (), ".fonts", NULL);
-    if (!g_file_test (dest_path, G_FILE_TEST_EXISTS)) {
-        GFile *f = g_file_new_for_path (dest_path);
-        g_file_make_directory_with_parents (f, NULL, &err);
-        g_object_unref (f);
+    config = FcConfigGetCurrent ();
+    str_list = FcConfigGetFontDirs (config);
+
+    home_prefix = g_file_new_for_path (g_get_home_dir ());
+    xdg_prefix = g_file_new_for_path (g_get_user_data_dir ());
+
+    /* pick the XDG location, if any, or fallback to the first location
+     * under the home directory.
+     */
+    while ((path = FcStrListNext (str_list)) != NULL) {
+        file = g_file_new_for_path ((const gchar *) path);
+
+        if (g_file_has_prefix (file, xdg_prefix)) {
+            xdg_location = file;
+            break;
+        }
+
+        if ((home_location == NULL) &&
+            g_file_has_prefix (file, home_prefix)) {
+            home_location = file;
+            break;
+        }
+
+        g_object_unref (file);
+    }
+
+    FcStrListDone (str_list);
+    g_object_unref (home_prefix);
+    g_object_unref (xdg_prefix);
+
+    if (xdg_location != NULL)
+        dest_location = g_object_ref (xdg_location);
+    else if (home_location != NULL)
+        dest_location = g_object_ref (home_location);
+
+    g_clear_object (&home_location);
+    g_clear_object (&xdg_location);
+
+    if (dest_location == NULL) {
+        g_warning ("Install failed: can't find any configured user font directory.");
+        return;
+    }
+
+    if (!g_file_query_exists (dest_location, NULL)) {
+        g_file_make_directory_with_parents (dest_location, NULL, &err);
         if (err) {
             /* TODO: show error dialog */
             g_warning ("Could not create fonts directory: %s", err->message);
             g_error_free (err);
-            g_free (dest_path);
+            g_object_unref (dest_location);
             return;
         }
     }
-    g_free (dest_path);
 
     /* create destination filename */
     dest_filename = g_file_get_basename (self->font_file);
-    dest_path = g_build_filename (g_get_home_dir (), ".fonts", dest_filename,
-				  NULL);
+    dest_file = g_file_get_child (dest_location, dest_filename);
     g_free (dest_filename);
 
-    dest = g_file_new_for_path (dest_path);
 
     /* TODO: show error dialog if file exists */
-    g_file_copy_async (self->font_file, dest, G_FILE_COPY_NONE, 0, NULL, NULL, NULL,
+    g_file_copy_async (self->font_file, dest_file, G_FILE_COPY_NONE, 0, NULL, NULL, NULL,
                        font_install_finished_cb, self);
 
-    g_object_unref (dest);
-    g_free (dest_path);
+    g_object_unref (dest_file);
+    g_object_unref (dest_location);
 }
 
 static void
