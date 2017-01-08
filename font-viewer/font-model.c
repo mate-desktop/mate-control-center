@@ -46,7 +46,16 @@ struct _FontViewModelPrivate {
     FcFontSet *font_list;
 
     FT_Library library;
+
+    GList *monitors;
 };
+
+enum {
+    CONFIG_CHANGED,
+    NUM_SIGNALS
+};
+
+static guint signals[NUM_SIGNALS] = { 0, };
 
 static void ensure_thumbnail (FontViewModel *self, const gchar *path);
 
@@ -381,6 +390,17 @@ ensure_font_list (FontViewModel *self)
     FcChar8 *file;
     gchar *font_name;
 
+    if (self->priv->font_list) {
+            FcFontSetDestroy (self->priv->font_list);
+            self->priv->font_list = NULL;
+    }
+
+    gtk_list_store_clear (GTK_LIST_STORE (self));
+
+    /* always reinitialize the font database */
+    if (!FcInitReinitialize())
+        return;
+
     pat = FcPatternCreate ();
     os = FcObjectSetBuild (FC_FILE, FC_FAMILY, FC_WEIGHT, FC_SLANT, NULL);
 
@@ -433,6 +453,52 @@ font_view_model_sort_func (GtkTreeModel *model,
 }
 
 static void
+file_monitor_changed_cb (GFileMonitor *monitor,
+                         GFile *file,
+                         GFile *other_file,
+                         GFileMonitorEvent event,
+                         gpointer user_data)
+{
+    FontViewModel *self = user_data;
+
+    if (event == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT ||
+        event == G_FILE_MONITOR_EVENT_DELETED ||
+        event == G_FILE_MONITOR_EVENT_CREATED) {
+        ensure_font_list (self);
+        g_signal_emit (self, signals[CONFIG_CHANGED], 0);
+    }
+}
+
+static void
+create_file_monitors (FontViewModel *self)
+{
+    FcConfig *config;
+    FcStrList *str_list;
+    FcChar8 *path;
+    GFile *file;
+    GFileMonitor *monitor;
+
+    config = FcConfigGetCurrent ();
+    str_list = FcConfigGetFontDirs (config);
+
+    while ((path = FcStrListNext (str_list)) != NULL) {
+        file = g_file_new_for_path ((const gchar *) path);
+        monitor = g_file_monitor (file, G_FILE_MONITOR_NONE,
+                                  NULL, NULL);
+
+        if (monitor != NULL) {
+            self->priv->monitors = g_list_prepend (self->priv->monitors, monitor);
+            g_signal_connect (monitor, "changed",
+                              G_CALLBACK (file_monitor_changed_cb), self);
+        }
+
+        g_object_unref (file);
+    }
+
+    FcStrListDone (str_list);
+}
+
+static void
 font_view_model_init (FontViewModel *self)
 {
     GType types[NUM_COLUMNS] =
@@ -453,7 +519,10 @@ font_view_model_init (FontViewModel *self)
                                      COLUMN_NAME,
                                      font_view_model_sort_func,
                                      NULL, NULL);
+
+
     ensure_font_list (self);
+    create_file_monitors (self);
 }
 
 static void
@@ -471,6 +540,8 @@ font_view_model_finalize (GObject *obj)
         self->priv->library = NULL;
     }
 
+    g_list_free_full (self->priv->monitors, (GDestroyNotify) g_object_unref);
+
     G_OBJECT_CLASS (font_view_model_parent_class)->finalize (obj);
 }
 
@@ -479,6 +550,13 @@ font_view_model_class_init (FontViewModelClass *klass)
 {
     GObjectClass *oclass = G_OBJECT_CLASS (klass);
     oclass->finalize = font_view_model_finalize;
+
+    signals[CONFIG_CHANGED] = 
+        g_signal_new ("config-changed",
+                      FONT_VIEW_TYPE_MODEL,
+                      G_SIGNAL_RUN_FIRST,
+                      0, NULL, NULL, NULL,
+                      G_TYPE_NONE, 0);
 
     g_type_class_add_private (klass, sizeof (FontViewModelPrivate));
 }
