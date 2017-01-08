@@ -149,7 +149,7 @@ load_thumbnail_data_free (LoadThumbnailData *data)
 }
 
 static gboolean
-ensure_thumbnail_job_done (gpointer user_data)
+one_thumbnail_done (gpointer user_data)
 {
     LoadThumbnailData *data = user_data;
 
@@ -208,83 +208,72 @@ create_thumbnail (LoadThumbnailData *data)
 }
 
 static gboolean
-ensure_thumbnail_job (GIOSchedulerJob *job,
-                      GCancellable *cancellable,
-                      gpointer user_data)
+ensure_thumbnails_job (GIOSchedulerJob *job,
+                       GCancellable *cancellable,
+                       gpointer user_data)
 {
-    LoadThumbnailData *data = user_data;
-    gboolean thumb_failed;
-    const gchar *thumb_path;
+    GList *thumbnails = user_data, *l;
 
-    GError *error = NULL;
-    GFile *thumb_file = NULL;
-    GFileInputStream *is = NULL;
-    GFileInfo *info = NULL;
+    for (l = thumbnails; l != NULL; l = l->next) {
+        gboolean thumb_failed;
+        const gchar *thumb_path;
+        LoadThumbnailData *data = l->data;
 
-    info = g_file_query_info (data->font_file,
-                              ATTRIBUTES_FOR_EXISTING_THUMBNAIL,
-                              G_FILE_QUERY_INFO_NONE,
-                              NULL, &error);
+        GError *error = NULL;
+        GFile *thumb_file = NULL;
+        GFileInputStream *is = NULL;
+        GFileInfo *info = NULL;
 
-    if (error != NULL) {
-        g_debug ("Can't query info for file %s: %s\n", data->font_path, error->message);
-        goto out;
-    }
-
-    thumb_failed = g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED);
-    if (thumb_failed)
-        goto out;
-
-    thumb_path = g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
-
-    if (thumb_path != NULL) {
-        thumb_file = g_file_new_for_path (thumb_path);
-        is = g_file_read (thumb_file, NULL, &error);
+        info = g_file_query_info (data->font_file,
+                                  ATTRIBUTES_FOR_EXISTING_THUMBNAIL,
+                                  G_FILE_QUERY_INFO_NONE,
+                                  NULL, &error);
 
         if (error != NULL) {
-            g_debug ("Can't read file %s: %s\n", thumb_path, error->message);
-            goto out;
+            g_debug ("Can't query info for file %s: %s\n", data->font_path, error->message);
+            goto next;
         }
 
-        data->pixbuf = gdk_pixbuf_new_from_stream_at_scale (G_INPUT_STREAM (is),
-                                                            128, 128, TRUE,
-                                                            NULL, &error);
+        thumb_failed = g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED);
+        if (thumb_failed)
+            goto next;
 
-        if (error != NULL) {
-            g_debug ("Can't read thumbnail pixbuf %s: %s\n", thumb_path, error->message);
-            goto out;
+        thumb_path = g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
+
+        if (thumb_path != NULL) {
+            thumb_file = g_file_new_for_path (thumb_path);
+            is = g_file_read (thumb_file, NULL, &error);
+
+            if (error != NULL) {
+                g_debug ("Can't read file %s: %s\n", thumb_path, error->message);
+                goto next;
+            }
+
+            data->pixbuf = gdk_pixbuf_new_from_stream_at_scale (G_INPUT_STREAM (is),
+                                                                128, 128, TRUE,
+                                                                NULL, &error);
+
+            if (error != NULL) {
+                g_debug ("Can't read thumbnail pixbuf %s: %s\n", thumb_path, error->message);
+                goto next;
+            }
+        } else {
+            data->pixbuf = create_thumbnail (data);
         }
-    } else {
-        data->pixbuf = create_thumbnail (data);
+
+    next:
+        g_clear_error (&error);
+        g_clear_object (&is);
+        g_clear_object (&thumb_file);
+        g_clear_object (&info);
+
+        g_io_scheduler_job_send_to_mainloop_async (job, one_thumbnail_done,
+                                                   data, NULL);
     }
 
- out:
-    g_clear_error (&error);
-    g_clear_object (&is);
-    g_clear_object (&thumb_file);
-    g_clear_object (&info);
-
-    g_io_scheduler_job_send_to_mainloop_async (job, ensure_thumbnail_job_done,
-                                               data, NULL);
+    g_list_free (thumbnails);
 
     return FALSE;
-}
-
-static void
-ensure_thumbnail (FontViewModel *self,
-                  const gchar *path,
-                  GtkTreeIter *iter)
-{
-    LoadThumbnailData *data;
-
-    data = g_slice_new0 (LoadThumbnailData);
-    data->self = g_object_ref (self);
-    data->font_file = g_file_new_for_path (path);
-    data->font_path = g_strdup (path);
-    data->iter = *iter;
-
-    g_io_scheduler_push_job (ensure_thumbnail_job, data,
-                             NULL, G_PRIORITY_DEFAULT, NULL);
 }
 
 /* make sure the font list is valid */
@@ -296,6 +285,7 @@ ensure_font_list (FontViewModel *self)
     gint i;
     FcChar8 *file;
     gchar *font_name, *collation_key;
+    GList *thumbnails = NULL;
 
     if (self->priv->font_list) {
             FcFontSetDestroy (self->priv->font_list);
@@ -321,6 +311,7 @@ ensure_font_list (FontViewModel *self)
 
     for (i = 0; i < self->priv->font_list->nfont; i++) {
         GtkTreeIter iter;
+        LoadThumbnailData *data;
 
 	FcPatternGetString (self->priv->font_list->fonts[i], FC_FILE, 0, &file);
         font_name = font_utils_get_font_name_for_file (self->priv->library, (const gchar *) file);
@@ -338,11 +329,20 @@ ensure_font_list (FontViewModel *self)
                                            COLUMN_COLLATION_KEY, collation_key,
                                            -1);
 
-        ensure_thumbnail (self, (const gchar *) file, &iter);
+        data = g_slice_new0 (LoadThumbnailData);
+        data->font_file = g_file_new_for_path (file);
+        data->font_path = g_strdup (file);
+        data->iter = iter;
+        data->self = g_object_ref (self);
+
+        thumbnails = g_list_prepend (thumbnails, data);
 
         g_free (font_name);
         g_free (collation_key);
     }
+
+    g_io_scheduler_push_job (ensure_thumbnails_job, thumbnails,
+                             NULL, G_PRIORITY_DEFAULT, NULL);
 }
 
 static gboolean
