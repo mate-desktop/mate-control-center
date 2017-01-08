@@ -138,12 +138,14 @@ add_row (GtkWidget *grid,
 
     name_w = gtk_label_new (name);
     gtk_style_context_add_class (gtk_widget_get_style_context (name_w), "dim-label");
-    gtk_misc_set_alignment (GTK_MISC (name_w), 1.0, 0.0);
+    gtk_widget_set_halign (name_w, GTK_ALIGN_END);
+    gtk_widget_set_valign (name_w, GTK_ALIGN_START);
 
     gtk_container_add (GTK_CONTAINER (grid), name_w);
 
     label = gtk_label_new (value);
-    gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
+    gtk_widget_set_halign (label, GTK_ALIGN_START);
+    gtk_widget_set_valign (label, GTK_ALIGN_START);
     gtk_label_set_selectable (GTK_LABEL(label), TRUE);
 
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
@@ -450,8 +452,8 @@ info_button_clicked_cb (GtkButton *button,
     gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_VERTICAL);
     g_object_set (grid,
                   "margin-top", 6,
-                  "margin-left", 16,
-                  "margin-right", 16,
+                  "margin-start", 16,
+                  "margin-end", 16,
                   "margin-bottom", 6,
                   NULL);
     gtk_grid_set_column_spacing (GTK_GRID (grid), 8);

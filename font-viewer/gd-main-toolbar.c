@@ -264,7 +264,7 @@ gd_main_toolbar_constructed (GObject *obj)
 
   /* left section */
   self->priv->left_group = gtk_tool_item_new ();
-  gtk_widget_set_margin_right (GTK_WIDGET (self->priv->left_group), 12);
+  gtk_widget_set_margin_end (GTK_WIDGET (self->priv->left_group), 12);
   gtk_toolbar_insert (tb, self->priv->left_group, -1);
   gtk_size_group_add_widget (self->priv->vertical_size_group,
                              GTK_WIDGET (self->priv->left_group));
@@ -310,7 +310,7 @@ gd_main_toolbar_constructed (GObject *obj)
 
   /* right section */
   self->priv->right_group = gtk_tool_item_new ();
-  gtk_widget_set_margin_left (GTK_WIDGET (self->priv->right_group), 12);
+  gtk_widget_set_margin_start (GTK_WIDGET (self->priv->right_group), 12);
   gtk_toolbar_insert (tb, self->priv->right_group, -1);
   gtk_size_group_add_widget (self->priv->vertical_size_group,
                              GTK_WIDGET (self->priv->right_group));
