@@ -388,7 +388,8 @@ font_view_application_do_open (FontViewApplication *self)
 {
     gchar *uri;
     GtkWidget *font_widget;
-    GdkColor white = { 0, 0xffff, 0xffff, 0xffff };
+    GdkRGBA white = { 1.0, 1.0, 1.0, 1.0 };
+    GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
     GtkWidget *w;
 
     w = gtk_bin_get_child (GTK_BIN (self->swin_preview));
@@ -420,7 +421,8 @@ font_view_application_do_open (FontViewApplication *self)
     uri = g_file_get_uri (self->font_file);
     self->font_widget = font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
 
-    gtk_widget_modify_bg (font_widget, GTK_STATE_NORMAL, &white);
+    gtk_widget_override_color (font_widget, GTK_STATE_NORMAL, &black);
+    gtk_widget_override_background_color (font_widget, GTK_STATE_FLAG_NORMAL, &white);
     g_free (uri);
 
     w = gtk_viewport_new (NULL, NULL);
