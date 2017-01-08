@@ -288,6 +288,16 @@ font_install_finished_cb (GObject      *source_object,
 }
 
 static void
+font_model_config_changed_cb (FontViewModel *model,
+                              gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+
+    if (self->font_file != NULL)
+        install_button_refresh_appearance (self, NULL);
+}
+
+static void
 install_button_clicked_cb (GtkButton *button,
                            gpointer user_data)
 {
@@ -612,6 +622,8 @@ font_view_application_startup (GApplication *application)
     g_object_unref (menu);
 
     self->model = font_view_model_new ();
+    g_signal_connect (self->model, "config-changed",
+                      G_CALLBACK (font_model_config_changed_cb), self);
 
     self->main_window = window = gtk_application_window_new (GTK_APPLICATION (application));
     gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
