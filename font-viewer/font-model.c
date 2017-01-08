@@ -345,6 +345,8 @@ font_infos_loaded (gpointer user_data)
         thumb_infos = g_list_prepend (thumb_infos, thumb_info);
     }
 
+    g_signal_emit (self, signals[CONFIG_CHANGED], 0);
+
     g_io_scheduler_push_job (ensure_thumbnails_job,
                              thumb_infos, NULL,
                              G_PRIORITY_DEFAULT, NULL);
@@ -491,10 +493,8 @@ file_monitor_changed_cb (GFileMonitor *monitor,
 
     if (event == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT ||
         event == G_FILE_MONITOR_EVENT_DELETED ||
-        event == G_FILE_MONITOR_EVENT_CREATED) {
+        event == G_FILE_MONITOR_EVENT_CREATED)
         ensure_font_list (self);
-        g_signal_emit (self, signals[CONFIG_CHANGED], 0);
-    }
 }
 
 static void
