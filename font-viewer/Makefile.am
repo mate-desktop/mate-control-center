@@ -11,8 +11,8 @@ font_loader_SOURCES = \
 mate_thumbnail_font_LDADD = $(MATECC_CAPPLETS_LIBS) $(FONT_VIEWER_LIBS)
 mate_thumbnail_font_SOURCES = $(font_loader_SOURCES) font-thumbnailer.c totem-resources.c totem-resources.h
 
-mate_font_viewer_LDADD = $(MATECC_CAPPLETS_LIBS) $(FONT_VIEWER_LIBS)
-mate_font_viewer_SOURCES = $(font_loader_SOURCES) sushi-font-widget.h sushi-font-widget.c font-view.c
+mate_font_viewer_LDADD = $(MATECC_CAPPLETS_LIBS) -lm $(FONT_VIEWER_LIBS)
+mate_font_viewer_SOURCES = gd-main-toolbar.c gd-main-toolbar.h $(font_loader_SOURCES) sushi-font-widget.h sushi-font-widget.c font-view.c
 
 thumbnailerdir = $(datadir)/thumbnailers
 thumbnailer_DATA = mate-font-viewer.thumbnailer
