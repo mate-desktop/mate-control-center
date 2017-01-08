@@ -35,6 +35,7 @@ typedef enum {
   COLUMN_POINTER,
   COLUMN_PATH,
   COLUMN_ICON,
+  COLUMN_COLLATION_KEY,
   NUM_COLUMNS
 } FontViewModelColumns;
 

@@ -342,7 +342,7 @@ ensure_font_list (FontViewModel *self)
     FcObjectSet *os;
     gint i;
     FcChar8 *file;
-    gchar *font_name;
+    gchar *font_name, *collation_key;
     GdkPixbuf *pix;
 
     if (self->priv->font_list) {
@@ -375,15 +375,20 @@ ensure_font_list (FontViewModel *self)
             continue;
 
         pix = get_fallback_icon ();
+        collation_key = g_utf8_collate_key (font_name, -1);
+
         gtk_list_store_insert_with_values (GTK_LIST_STORE (self), NULL, -1,
                                            COLUMN_NAME, font_name,
                                            COLUMN_POINTER, self->priv->font_list->fonts[i],
                                            COLUMN_PATH, file,
                                            COLUMN_ICON, pix,
+                                           COLUMN_COLLATION_KEY, collation_key,
                                            -1);
 
         ensure_thumbnail (self, (const gchar *) file);
+
         g_free (font_name);
+        g_free (collation_key);
         g_object_unref (pix);
     }
 }
@@ -403,20 +408,20 @@ font_view_model_sort_func (GtkTreeModel *model,
                            GtkTreeIter *b,
                            gpointer user_data)
 {
-    gchar *name_a = NULL, *name_b = NULL;
+    gchar *key_a = NULL, *key_b = NULL;
     int retval;
 
     gtk_tree_model_get (model, a,
-                        COLUMN_NAME, &name_a,
+                        COLUMN_COLLATION_KEY, &key_a,
                         -1);
     gtk_tree_model_get (model, b,
-                        COLUMN_NAME, &name_b,
+                        COLUMN_COLLATION_KEY, &key_b,
                         -1);
 
-    retval = g_strcmp0 (name_a, name_b);
+    retval = g_strcmp0 (key_a, key_b);
 
-    g_free (name_a);
-    g_free (name_b);
+    g_free (key_a);
+    g_free (key_b);
 
     return retval;
 }
@@ -471,7 +476,7 @@ static void
 font_view_model_init (FontViewModel *self)
 {
     GType types[NUM_COLUMNS] =
-        { G_TYPE_STRING, G_TYPE_POINTER, G_TYPE_STRING, GDK_TYPE_PIXBUF };
+        { G_TYPE_STRING, G_TYPE_POINTER, G_TYPE_STRING, GDK_TYPE_PIXBUF, G_TYPE_STRING };
 
     self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, FONT_VIEW_TYPE_MODEL, FontViewModelPrivate);
 
