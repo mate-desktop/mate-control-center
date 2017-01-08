@@ -35,6 +35,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 
+#include "font-model.h"
 #include "gd-main-toolbar.h"
 #include "sushi-font-widget.h"
 
@@ -51,6 +52,15 @@ typedef struct {
     GtkWidget *title_label;
     GtkWidget *side_grid;
     GtkWidget *font_widget;
+    GtkWidget *info_button;
+    GtkWidget *install_button;
+    GtkWidget *back_button;
+    GtkWidget *notebook;
+    GtkWidget *swin_view;
+    GtkWidget *swin_preview;
+    GtkWidget *icon_view;
+
+    GtkTreeModel *model;
 
     GFile *font_file;
 } FontViewApplication;
@@ -60,6 +70,13 @@ typedef struct {
 } FontViewApplicationClass;
 
 G_DEFINE_TYPE (FontViewApplication, font_view_application, GTK_TYPE_APPLICATION);
+
+static void font_view_application_do_overview (FontViewApplication *self);
+
+#define VIEW_ITEM_WIDTH 140
+#define VIEW_ITEM_WRAP_WIDTH 128
+#define VIEW_COLUMN_SPACING 36
+#define VIEW_MARGIN 16
 
 #define WHITESPACE_CHARS "\f \t"
 
@@ -213,23 +230,44 @@ populate_grid (FontViewApplication *self,
 }
 
 static void
+install_button_refresh_appearance (FontViewApplication *self,
+                                   GError *error)
+{
+    gchar *path;
+
+    if (error != NULL) {
+        gtk_button_set_label (GTK_BUTTON (self->install_button), _("Install Failed"));
+        gtk_widget_set_sensitive (self->install_button, FALSE);
+    } else {
+        path = g_file_get_path (self->font_file);
+
+        if (font_view_model_get_iter_for_file (FONT_VIEW_MODEL (self->model), path, NULL)) {
+            gtk_button_set_label (GTK_BUTTON (self->install_button), _("Installed"));
+            gtk_widget_set_sensitive (self->install_button, FALSE);
+        } else {
+            gtk_button_set_label (GTK_BUTTON (self->install_button), _("Install"));
+            gtk_widget_set_sensitive (self->install_button, TRUE);
+        }
+
+        g_free (path);
+    }
+}
+
+static void
 font_install_finished_cb (GObject      *source_object,
                           GAsyncResult *res,
-                          gpointer      data)
+                          gpointer      user_data)
 {
+    FontViewApplication *self = user_data;
     GError *err = NULL;
 
     g_file_copy_finish (G_FILE (source_object), res, &err);
+    install_button_refresh_appearance (self, err);
 
-    if (!err) {
-        gtk_button_set_label (GTK_BUTTON (data), _("Installed"));
-    } else {
-        gtk_button_set_label (GTK_BUTTON (data), _("Install Failed"));
+    if (err != NULL) {
         g_debug ("Install failed: %s", err->message);
         g_error_free (err);
     }
-
-    gtk_widget_set_sensitive (GTK_WIDGET (data), FALSE);
 }
 
 static void
@@ -267,10 +305,18 @@ install_button_clicked_cb (GtkButton *button,
 
     /* TODO: show error dialog if file exists */
     g_file_copy_async (self->font_file, dest, G_FILE_COPY_NONE, 0, NULL, NULL, NULL,
-                       font_install_finished_cb, button);
+                       font_install_finished_cb, self);
 
     g_object_unref (dest);
     g_free (dest_path);
+}
+
+static void
+back_button_clicked_cb (GtkButton *button,
+                        gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+    font_view_application_do_overview (self);
 }
 
 static void
@@ -322,52 +368,38 @@ info_button_clicked_cb (GtkButton *button,
 }
 
 static void
-font_view_application_open (GApplication *application,
-                            GFile **files,
-                            gint n_files,
-                            const gchar *hint)
+font_view_application_do_open (FontViewApplication *self)
 {
-    FontViewApplication *self = FONT_VIEW_APPLICATION (application);
     gchar *uri;
-    GtkWidget *window, *swin, *font_widget;
+    GtkWidget *font_widget;
     GdkColor white = { 0, 0xffff, 0xffff, 0xffff };
     GtkWidget *w;
 
-    self->font_file = g_object_ref (files[0]);
+    w = gtk_bin_get_child (GTK_BIN (self->swin_preview));
+    if (w)
+        gtk_widget_destroy (w);
 
-    self->main_window = window = gtk_application_window_new (GTK_APPLICATION (application));
-    gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
-    gtk_window_set_default_size (GTK_WINDOW (window), 850, -1);
-    gtk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
-    gtk_window_set_title (GTK_WINDOW (window), _("Font Viewer"));
-
-    self->main_grid = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER (self->main_window), self->main_grid);
-
-    self->toolbar = gd_main_toolbar_new ();
-    gtk_style_context_add_class (gtk_widget_get_style_context (self->toolbar), "menubar");
-    gtk_container_add (GTK_CONTAINER (self->main_grid), self->toolbar);
-
-    w = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                    NULL, _("Info"), 
-                                    FALSE);
-    g_signal_connect (w, "clicked",
+    self->info_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                                    NULL, _("Info"), 
+                                                    FALSE);
+    g_signal_connect (self->info_button, "clicked",
                       G_CALLBACK (info_button_clicked_cb), self);
 
     /* add install button */
-    w = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                    NULL, _("Install"), 
-                                    FALSE);
-    g_signal_connect (w, "clicked",
+    self->install_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                                       NULL, _("Install"), 
+                                                       FALSE);
+    install_button_refresh_appearance (self, NULL);
+    g_signal_connect (self->install_button, "clicked",
                       G_CALLBACK (install_button_clicked_cb), self);
 
-    gtk_widget_set_vexpand (self->toolbar, FALSE);
+    self->back_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                                    "go-previous-symbolic", _("Back"),
+                                                    TRUE);
+    g_signal_connect (self->back_button, "clicked",
+                      G_CALLBACK (back_button_clicked_cb), self);
 
-    swin = gtk_scrolled_window_new (NULL, NULL);
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
-				    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (swin), GTK_SHADOW_IN);
-    gtk_container_add (GTK_CONTAINER (self->main_grid), swin);
+    gtk_widget_set_vexpand (self->toolbar, FALSE);
 
     uri = g_file_get_uri (self->font_file);
     self->font_widget = font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
@@ -379,10 +411,166 @@ font_view_application_open (GApplication *application,
     gtk_viewport_set_shadow_type (GTK_VIEWPORT (w), GTK_SHADOW_NONE);
 
     gtk_container_add (GTK_CONTAINER (w), font_widget);
-    gtk_container_add (GTK_CONTAINER (swin), w);
+    gtk_container_add (GTK_CONTAINER (self->swin_preview), w);
 
     g_signal_connect (font_widget, "loaded",
                       G_CALLBACK (font_widget_loaded_cb), self);
+
+    gtk_widget_show_all (self->swin_preview);
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (self->notebook), 1);
+}
+
+static gboolean
+icon_view_release_cb (GtkWidget *widget,
+                      GdkEventButton *event,
+                      gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+    GtkTreePath *path;
+    GtkTreeIter iter;
+    gchar *font_path;
+
+    /* eat double/triple click events */
+    if (event->type != GDK_BUTTON_RELEASE)
+        return TRUE;
+
+    path = gtk_icon_view_get_path_at_pos (GTK_ICON_VIEW (widget),
+                                          event->x, event->y);
+
+    if (path != NULL &&
+        gtk_tree_model_get_iter (self->model, &iter, path)) {
+        gtk_tree_model_get (self->model, &iter,
+                            COLUMN_PATH, &font_path,
+                            -1);
+
+        if (font_path != NULL) {
+            self->font_file = g_file_new_for_path (font_path);
+            font_view_application_do_open (self);
+        }
+        gtk_tree_path_free (path);
+        g_free (font_path);
+    }
+
+    return FALSE;
+}
+
+static void
+font_view_application_do_overview (FontViewApplication *self)
+{
+    g_clear_object (&self->font_file);
+
+    if (self->back_button) {
+        gtk_widget_destroy (self->back_button);
+        self->back_button = NULL;
+    }
+
+    if (self->info_button) {
+        gtk_widget_destroy (self->info_button);
+        self->info_button = NULL;
+    }
+
+    if (self->install_button) {
+        gtk_widget_destroy (self->install_button);
+        self->install_button = NULL;
+    }
+
+    gd_main_toolbar_set_labels (GD_MAIN_TOOLBAR (self->toolbar), _("All Fonts"), NULL);
+
+    if (self->icon_view == NULL) {
+        GtkWidget *icon_view;
+        GtkCellRenderer *cell;
+
+        self->icon_view = icon_view = gtk_icon_view_new_with_model (self->model);
+        g_object_set (icon_view,
+                      "column-spacing", VIEW_COLUMN_SPACING,
+                      "margin", VIEW_MARGIN,
+                      NULL);
+
+        gtk_widget_set_vexpand (GTK_WIDGET (icon_view), TRUE);
+        gtk_icon_view_set_selection_mode (GTK_ICON_VIEW (icon_view), GTK_SELECTION_NONE);
+        gtk_container_add (GTK_CONTAINER (self->swin_view), icon_view);
+
+        cell = gtk_cell_renderer_pixbuf_new ();
+        g_object_set (cell,
+                      "xalign", 0.5,
+                      "yalign", 0.5,
+                      NULL);
+
+        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (icon_view), cell, FALSE);
+        gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (icon_view), cell,
+                                       "pixbuf", COLUMN_ICON);
+        
+        cell = gtk_cell_renderer_text_new ();
+        g_object_set (cell,
+                      "alignment", PANGO_ALIGN_CENTER,
+                      "xalign", 0.5,
+                      "wrap-mode", PANGO_WRAP_WORD_CHAR,
+                      "wrap-width", VIEW_ITEM_WRAP_WIDTH,
+                      NULL);
+        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (icon_view), cell, FALSE);
+        gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (icon_view), cell,
+                                       "text", COLUMN_NAME);
+
+        g_signal_connect (icon_view, "button-release-event",
+                          G_CALLBACK (icon_view_release_cb), self);
+    }
+
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (self->notebook), 0);
+    gtk_widget_show_all (self->swin_view);
+}
+
+static void
+font_view_application_open (GApplication *application,
+                            GFile **files,
+                            gint n_files,
+                            const gchar *hint)
+{
+    FontViewApplication *self = FONT_VIEW_APPLICATION (application);
+
+    self->font_file = g_object_ref (files[0]);
+    font_view_application_do_open (self);
+}
+
+static void
+font_view_application_startup (GApplication *application)
+{
+    FontViewApplication *self = FONT_VIEW_APPLICATION (application);
+    GtkWidget *window, *swin;
+
+    G_APPLICATION_CLASS (font_view_application_parent_class)->startup (application);
+
+    self->model = font_view_model_new ();
+
+    self->main_window = window = gtk_application_window_new (GTK_APPLICATION (application));
+    gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
+    gtk_window_set_default_size (GTK_WINDOW (window), 800, 600);
+    gtk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
+    gtk_window_set_title (GTK_WINDOW (window), _("Font Viewer"));
+
+    self->main_grid = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add (GTK_CONTAINER (self->main_window), self->main_grid);
+
+    self->toolbar = gd_main_toolbar_new ();
+    gtk_style_context_add_class (gtk_widget_get_style_context (self->toolbar), "menubar");
+    gtk_container_add (GTK_CONTAINER (self->main_grid), self->toolbar);
+
+    self->notebook = gtk_notebook_new ();
+    gtk_container_add (GTK_CONTAINER (self->main_grid), self->notebook);
+    gtk_widget_set_hexpand (self->notebook, TRUE);
+    gtk_widget_set_vexpand (self->notebook, TRUE);
+    gtk_notebook_set_show_tabs (GTK_NOTEBOOK (self->notebook), FALSE);
+
+    self->swin_view = swin = gtk_scrolled_window_new (NULL, NULL);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (swin), GTK_SHADOW_IN);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
+				    GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    gtk_container_add (GTK_CONTAINER (self->notebook), swin);
+
+    self->swin_preview = swin = gtk_scrolled_window_new (NULL, NULL);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (swin), GTK_SHADOW_IN);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
+         			    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
+    gtk_container_add (GTK_CONTAINER (self->notebook), swin);
 
     gtk_widget_show_all (window);
 }
@@ -390,8 +578,10 @@ font_view_application_open (GApplication *application,
 static void
 font_view_application_activate (GApplication *application)
 {
-    g_printerr (_("Usage: mate-font-viewer FONTFILE\n"));
-    g_application_quit (G_APPLICATION (application));
+    FontViewApplication *self = FONT_VIEW_APPLICATION (application);
+
+    G_APPLICATION_CLASS (font_view_application_parent_class)->activate (application);
+    font_view_application_do_overview (self);
 }
 
 static void
@@ -399,7 +589,8 @@ font_view_application_dispose (GObject *obj)
 {
     FontViewApplication *self = FONT_VIEW_APPLICATION (obj);
 
-    g_clear_object (&self->font_file);
+    g_clear_object (&self->model);
+
     G_OBJECT_CLASS (font_view_application_parent_class)->dispose (obj);
 }
 
@@ -416,6 +607,7 @@ font_view_application_class_init (FontViewApplicationClass *klass)
     GApplicationClass *aclass = G_APPLICATION_CLASS (klass);
 
     aclass->activate = font_view_application_activate;
+    aclass->startup = font_view_application_startup;
     aclass->open = font_view_application_open;
 
     oclass->dispose = font_view_application_dispose;
