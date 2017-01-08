@@ -440,8 +440,6 @@ font_view_model_init (FontViewModel *self)
 
     self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, FONT_VIEW_TYPE_MODEL, FontViewModelPrivate);
 
-    if (!FcInit())
-        g_critical ("Can't initialize fontconfig library");
     if (FT_Init_FreeType (&self->priv->library) != FT_Err_Ok)
         g_critical ("Can't initialize FreeType library");
 
