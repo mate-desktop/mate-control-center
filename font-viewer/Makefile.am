@@ -4,11 +4,15 @@ AM_CPPFLAGS = $(FONT_VIEWER_CFLAGS) $(MATECC_CAPPLETS_CFLAGS) -DDIRECTORY_DIR=\"
 
 bin_PROGRAMS = mate-thumbnail-font mate-font-viewer
 
+font_loader_SOURCES = \
+	sushi-font-loader.h \
+	sushi-font-loader.c
+
 mate_thumbnail_font_LDADD = $(MATECC_CAPPLETS_LIBS) $(FONT_VIEWER_LIBS)
-mate_thumbnail_font_SOURCES = ftstream-vfs.c ftstream-vfs.h font-thumbnailer.c totem-resources.c totem-resources.h
+mate_thumbnail_font_SOURCES = ftstream-vfs.c ftstream-vfs.h $(font_loader_SOURCES) font-thumbnailer.c totem-resources.c totem-resources.h
 
 mate_font_viewer_LDADD = $(MATECC_CAPPLETS_LIBS) $(FONT_VIEWER_LIBS)
-mate_font_viewer_SOURCES = ftstream-vfs.c ftstream-vfs.h font-view.c
+mate_font_viewer_SOURCES = ftstream-vfs.c ftstream-vfs.h $(font_loader_SOURCES) sushi-font-widget.h sushi-font-widget.c font-view.c
 
 thumbnailerdir = $(datadir)/thumbnailers
 thumbnailer_DATA = mate-font-viewer.thumbnailer
