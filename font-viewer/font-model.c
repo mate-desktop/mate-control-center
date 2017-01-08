@@ -49,6 +49,7 @@ struct _FontViewModelPrivate {
     FT_Library library;
 
     GList *monitors;
+    GdkPixbuf *fallback_icon;
 };
 
 enum {
@@ -170,29 +171,6 @@ load_thumbnail_data_free (LoadThumbnailData *data)
     g_free (data->font_path);
 
     g_slice_free (LoadThumbnailData, data);
-}
-
-static GdkPixbuf *
-get_fallback_icon (void)
-{
-    GtkIconTheme *icon_theme;
-    GtkIconInfo *icon_info;
-    GdkPixbuf *pix;
-    GIcon *icon = NULL;
-
-    icon_theme = gtk_icon_theme_get_default ();
-    icon = g_content_type_get_icon ("application/x-font-ttf");
-    icon_info = gtk_icon_theme_lookup_by_gicon (icon_theme, icon, 
-                                                128, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
-    g_object_unref (icon);
-
-    if (!icon_info)
-        return NULL;
-
-    pix = gtk_icon_info_load_icon (icon_info, NULL);
-    gtk_icon_info_free (icon_info);
-
-    return pix;
 }
 
 static gboolean
@@ -343,7 +321,6 @@ ensure_font_list (FontViewModel *self)
     gint i;
     FcChar8 *file;
     gchar *font_name, *collation_key;
-    GdkPixbuf *pix;
 
     if (self->priv->font_list) {
             FcFontSetDestroy (self->priv->font_list);
@@ -374,14 +351,13 @@ ensure_font_list (FontViewModel *self)
         if (!font_name)
             continue;
 
-        pix = get_fallback_icon ();
         collation_key = g_utf8_collate_key (font_name, -1);
 
         gtk_list_store_insert_with_values (GTK_LIST_STORE (self), NULL, -1,
                                            COLUMN_NAME, font_name,
                                            COLUMN_POINTER, self->priv->font_list->fonts[i],
                                            COLUMN_PATH, file,
-                                           COLUMN_ICON, pix,
+                                           COLUMN_ICON, self->priv->fallback_icon,
                                            COLUMN_COLLATION_KEY, collation_key,
                                            -1);
 
@@ -389,7 +365,6 @@ ensure_font_list (FontViewModel *self)
 
         g_free (font_name);
         g_free (collation_key);
-        g_object_unref (pix);
     }
 }
 
@@ -472,6 +447,29 @@ create_file_monitors (FontViewModel *self)
     FcStrListDone (str_list);
 }
 
+static GdkPixbuf *
+get_fallback_icon (void)
+{
+    GtkIconTheme *icon_theme;
+    GtkIconInfo *icon_info;
+    GdkPixbuf *pix;
+    GIcon *icon = NULL;
+
+    icon_theme = gtk_icon_theme_get_default ();
+    icon = g_content_type_get_icon ("application/x-font-ttf");
+    icon_info = gtk_icon_theme_lookup_by_gicon (icon_theme, icon,
+                                                128, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+    g_object_unref (icon);
+
+    if (!icon_info)
+        return NULL;
+
+    pix = gtk_icon_info_load_icon (icon_info, NULL);
+    gtk_icon_info_free (icon_info);
+
+    return pix;
+}
+
 static void
 font_view_model_init (FontViewModel *self)
 {
@@ -494,6 +492,9 @@ font_view_model_init (FontViewModel *self)
                                      font_view_model_sort_func,
                                      NULL, NULL);
 
+
+    self->priv->fallback_icon = get_fallback_icon ();
+
     g_idle_add (ensure_font_list_idle, self);
     create_file_monitors (self);
 }
@@ -513,6 +514,7 @@ font_view_model_finalize (GObject *obj)
         self->priv->library = NULL;
     }
 
+    g_clear_object (&self->priv->fallback_icon);
     g_list_free_full (self->priv->monitors, (GDestroyNotify) g_object_unref);
 
     G_OBJECT_CLASS (font_view_model_parent_class)->finalize (obj);
