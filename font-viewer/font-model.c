@@ -544,7 +544,7 @@ get_fallback_icon (void)
         return NULL;
 
     pix = gtk_icon_info_load_icon (icon_info, NULL);
-    gtk_icon_info_free (icon_info);
+    g_object_unref (icon_info);
 
     return pix;
 }
