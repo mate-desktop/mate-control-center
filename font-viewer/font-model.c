@@ -289,11 +289,6 @@ typedef struct {
     gchar *font_name;
 } FontInfoData;
 
-typedef struct {
-    GList *font_infos;
-    FontViewModel *self;
-} LoadFontInfosData;
-
 static void
 font_info_data_free (gpointer user_data)
 {
@@ -305,31 +300,23 @@ font_info_data_free (gpointer user_data)
 }
 
 static void
-load_font_infos_data_free (gpointer user_data)
+font_infos_loaded (GObject *source_object,
+                   GAsyncResult *result,
+                   gpointer user_data)
 {
-    LoadFontInfosData *data = user_data;
-
-    g_list_free_full (data->font_infos, font_info_data_free);
-    g_object_unref (data->self);
-    g_slice_free (LoadFontInfosData, data);
-}
-
-static gboolean
-font_infos_loaded (gpointer user_data)
-{
-    LoadFontInfosData *data = user_data;
-    FontViewModel *self = data->self;
+    FontViewModel *self = FONT_VIEW_MODEL (source_object);
     GTask *task = NULL;
     GList *l, *thumb_infos = NULL;
+    GList *font_infos = g_task_propagate_pointer (G_TASK (result), NULL);
 
-    for (l = data->font_infos; l != NULL; l = l->next) {
+    for (l = font_infos; l != NULL; l = l->next) {
         FontInfoData *font_info = l->data;
         gchar *collation_key;
         GtkTreeIter iter;
         ThumbInfoData *thumb_info;
 
         collation_key = g_utf8_collate_key (font_info->font_name, -1);
-        gtk_list_store_insert_with_values (GTK_LIST_STORE (data->self), &iter, -1,
+        gtk_list_store_insert_with_values (GTK_LIST_STORE (self), &iter, -1,
                                            COLUMN_NAME, font_info->font_name,
                                            COLUMN_PATH, font_info->font_path,
                                            COLUMN_ICON, self->priv->fallback_icon,
@@ -342,33 +329,28 @@ font_infos_loaded (gpointer user_data)
         thumb_info->iter = iter;
         thumb_info->self = g_object_ref (self);
 
+        font_info_data_free (font_info);
         thumb_infos = g_list_prepend (thumb_infos, thumb_info);
     }
 
     g_signal_emit (self, signals[CONFIG_CHANGED], 0);
+    g_list_free (font_infos);
 
     task = g_task_new (NULL, NULL, NULL, NULL);
-
     g_task_set_task_data (task, thumb_infos, NULL);
-
     g_task_run_in_thread (task, ensure_thumbnails_job);
     g_object_unref (task);
-
-    return FALSE;
 }
 
-static gboolean
-load_font_infos (GIOSchedulerJob *job,
-                 GCancellable *cancellable,
-                 gpointer user_data)
+static void
+load_font_infos (GTask *task,
+                 gpointer source_object,
+                 gpointer user_data,
+                 GCancellable *cancellable)
 {
-    FontViewModel *self = user_data;
-    LoadFontInfosData *data;
+    FontViewModel *self = FONT_VIEW_MODEL (source_object);
     gint i, n_fonts;
     GList *font_infos = NULL;
-
-    if (g_cancellable_is_cancelled (cancellable))
-        return FALSE;
 
     n_fonts = self->priv->font_list->nfont;
 
@@ -396,17 +378,7 @@ load_font_infos (GIOSchedulerJob *job,
         font_infos = g_list_prepend (font_infos, font_info);
     }
 
-    data = g_slice_new0 (LoadFontInfosData);
-    data->self = g_object_ref (self);
-    data->font_infos = font_infos;
-
-    if (g_cancellable_is_cancelled (cancellable))
-        load_font_infos_data_free (data);
-    else
-        g_main_context_invoke_full (NULL, G_PRIORITY_DEFAULT, font_infos_loaded,
-                                    data, load_font_infos_data_free);
-
-    return FALSE;
+    g_task_return_pointer (task, font_infos, NULL);
 }
 
 /* make sure the font list is valid */
@@ -415,6 +387,7 @@ ensure_font_list (FontViewModel *self)
 {
     FcPattern *pat;
     FcObjectSet *os;
+    GTask *task;
 
     /* always reinitialize the font database */
     if (!FcInitReinitialize())
@@ -448,8 +421,10 @@ ensure_font_list (FontViewModel *self)
         return;
 
     self->priv->cancellable = g_cancellable_new ();
-    g_io_scheduler_push_job (load_font_infos, self, NULL,
-                             G_PRIORITY_DEFAULT, self->priv->cancellable);
+
+    task = g_task_new (self, self->priv->cancellable, font_infos_loaded, NULL);
+    g_task_set_return_on_cancel (task, TRUE);
+    g_task_run_in_thread (task, load_font_infos);
 }
 
 static gboolean
