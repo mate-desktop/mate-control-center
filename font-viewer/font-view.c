@@ -387,6 +387,35 @@ back_button_clicked_cb (GtkButton *button,
 }
 
 static void
+font_view_show_font_error (FontViewApplication *self,
+                           const gchar *message)
+{
+    GtkWidget *dialog;
+
+    dialog = gtk_message_dialog_new (GTK_WINDOW (self->main_window),
+                                     GTK_DIALOG_MODAL,
+                                     GTK_MESSAGE_ERROR,
+                                     GTK_BUTTONS_CLOSE,
+                                     _("This font could not be displayed."));
+    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                              "%s",
+                                              message);
+    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+    gtk_widget_show (dialog);
+}
+
+static void
+font_widget_error_cb (SushiFontWidget *font_widget,
+                      const gchar *message,
+                      gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+
+    font_view_application_do_overview (self);
+    font_view_show_font_error (self, message);
+}
+
+static void
 font_widget_loaded_cb (SushiFontWidget *font_widget,
                        gpointer user_data)
 {
@@ -481,6 +510,8 @@ font_view_application_do_open (FontViewApplication *self)
 
         g_signal_connect (self->font_widget, "loaded",
                           G_CALLBACK (font_widget_loaded_cb), self);
+        g_signal_connect (self->font_widget, "error",
+                          G_CALLBACK (font_widget_error_cb), self);
     } else {
         g_object_set (self->font_widget, "uri", uri, NULL);
     }
