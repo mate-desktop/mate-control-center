@@ -1,9 +1,9 @@
 /* -*- mode: C; c-basic-offset: 4 -*- */
-
 /*
  * font-thumbnailer: a thumbnailer for font files, using FreeType
  *
  * Copyright (C) 2002-2003  James Henstridge <james@daa.com.au>
+ * Copyright (C) 2012 Cosimo Cecchi <cosimoc@gnome.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,11 +27,15 @@
 #include <stdio.h>
 #include <locale.h>
 #include <ft2build.h>
+#include <math.h>
 #include FT_FREETYPE_H
 
+#include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gio/gio.h>
 #include <glib/gi18n.h>
+
+#include <cairo/cairo-ft.h>
 
 #include "sushi-font-loader.h"
 #include "totem-resources.h"
@@ -50,194 +54,110 @@ get_ft_error (FT_Error error)
     }
 }
 
-#define FONT_SIZE 64
-#define PAD_PIXELS 4
+#define THUMB_SIZE 128
+#define PADDING_VERTICAL 2
+#define PADDING_HORIZONTAL 4
 
-static void
-draw_bitmap (GdkPixbuf *pixbuf,
-	     FT_Bitmap *bitmap,
-	     gint off_x,
-	     gint off_y)
+static gboolean
+check_font_contain_text (FT_Face face,
+                         const gchar *text)
 {
-    guchar *buffer;
-    gint p_width, p_height, p_rowstride;
-    gint i, j;
+  gunichar *string;
+  glong len, idx, map;
+  FT_CharMap charmap;
+  gboolean retval;
 
-    buffer = gdk_pixbuf_get_pixels (pixbuf);
-    p_width = gdk_pixbuf_get_width (pixbuf);
-    p_height = gdk_pixbuf_get_height (pixbuf);
-    p_rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+  string = g_utf8_to_ucs4_fast (text, -1, &len);
 
-    for (j = 0; j < bitmap->rows; j++) {
-	if (j + off_y < 0 || j + off_y >= p_height)
-	    continue;
+  for (map = 0; map < face->num_charmaps; map++) {
+    charmap = face->charmaps[map];
+    FT_Set_Charmap (face, charmap);
 
-	for (i = 0; i < bitmap->width; i++) {
-	    guchar pixel;
-	    gint pos;
+    retval = TRUE;
 
-	    if (i + off_x < 0 || i + off_x >= p_width)
-		continue;
+    for (idx = 0; idx < len; idx++) {
+      gunichar c = string[idx];
 
-	    switch (bitmap->pixel_mode) {
-	    case ft_pixel_mode_mono:
-		pixel = bitmap->buffer[j * bitmap->pitch + i / 8];
-		pixel = 255 - ((pixel >> (7 - i % 8)) & 0x1) * 255;
-		break;
-	    case ft_pixel_mode_grays:
-		pixel = 255 - bitmap->buffer[j * bitmap->pitch + i];
-		break;
-	    default:
-		pixel = 255;
-	    }
-	    pos = (j + off_y) * p_rowstride + 3 * (i + off_x);
-	    buffer[pos] = pixel;
-	    buffer[pos + 1] = pixel;
-	    buffer[pos + 2] = pixel;
-	}
+      if (!FT_Get_Char_Index (face, c)) {
+        retval = FALSE;
+        break;
+      }
+    }
+
+    if (retval)
+      break;
+  }
+
+  g_free (string);
+
+  return retval;
+}
+
+static gchar *
+check_for_ascii_glyph_numbers (FT_Face face,
+                               gboolean *found_ascii)
+{
+    GString *ascii_string, *string;
+    gulong c;
+    guint glyph, found = 0;
+
+    string = g_string_new (NULL);
+    ascii_string = g_string_new (NULL);
+    *found_ascii = FALSE;
+
+    c = FT_Get_First_Char (face, &glyph);
+
+    do {
+        if (glyph == 65 || glyph == 97) {
+            g_string_append_unichar (ascii_string, (gunichar) c);
+            found++;
+        }
+
+        if (found == 2)
+            break;
+
+        g_string_append_unichar (string, (gunichar) c);
+        c = FT_Get_Next_Char (face, c, &glyph);
+    } while (glyph != 0);
+
+    if (found == 2) {
+        *found_ascii = TRUE;
+        g_string_free (string, TRUE);
+        return g_string_free (ascii_string, FALSE);
+    } else {
+        g_string_free (ascii_string, TRUE);
+        return g_string_free (string, FALSE);
     }
 }
 
-static void
-draw_char (GdkPixbuf *pixbuf,
-	   FT_Face face,
-	   FT_UInt glyph_index,
-	   gint *pen_x,
-	   gint *pen_y)
+static gchar *
+build_fallback_thumbstr (FT_Face face)
 {
-    FT_Error error;
-    FT_GlyphSlot slot;
+    gchar *chars;
+    gint idx, total_chars;
+    GString *retval;
+    gchar *ptr, *end;
+    gboolean found_ascii;
 
-    slot = face->glyph;
+    chars = check_for_ascii_glyph_numbers (face, &found_ascii);
 
-    error = FT_Load_Glyph (face, glyph_index, FT_LOAD_DEFAULT);
-    if (error) {
-	g_printerr ("Could not load glyph index '%ud': %s\n", glyph_index,
-		    get_ft_error (error));
-	return;
+    if (found_ascii)
+        return chars;
+
+    idx = 0;
+    retval = g_string_new (NULL);
+    total_chars = g_utf8_strlen (chars, -1);
+
+    while (idx < 2) {
+        total_chars = (gint) floor (total_chars / 2.0);
+        ptr = g_utf8_offset_to_pointer (chars, total_chars);
+        end = g_utf8_find_next_char (ptr, NULL);
+
+        g_string_append_len (retval, ptr, end - ptr);
+        idx++;
     }
 
-    error = FT_Render_Glyph (slot, ft_render_mode_normal);
-    if (error) {
-	g_printerr("Could not render glyph index '%ud': %s\n", glyph_index,
-		   get_ft_error (error));
-	return;
-    }
-
-    draw_bitmap (pixbuf, &slot->bitmap,
-		 *pen_x + slot->bitmap_left,
-		 *pen_y - slot->bitmap_top);
-
-    *pen_x += slot->advance.x >> 6;
-}
-
-static void
-save_pixbuf (GdkPixbuf *pixbuf,
-	     const gchar *filename)
-{
-    guchar *buffer;
-    gint p_width, p_height, p_rowstride;
-    gint i, j;
-    gint trim_left, trim_right, trim_top, trim_bottom;
-    GdkPixbuf *subpixbuf;
-
-    buffer = gdk_pixbuf_get_pixels (pixbuf);
-    p_width = gdk_pixbuf_get_width (pixbuf);
-    p_height = gdk_pixbuf_get_height (pixbuf);
-    p_rowstride = gdk_pixbuf_get_rowstride (pixbuf);
-
-    for (i = 0; i < p_width; i++) {
-	gboolean seen_pixel = FALSE;
-
-	for (j = 0; j < p_height; j++) {
-	    gint offset = j * p_rowstride + 3 * i;
-
-	    seen_pixel = (buffer[offset] != 0xff ||
-			  buffer[offset + 1] != 0xff ||
-			  buffer[offset + 2] != 0xff);
-
-	    if (seen_pixel)
-		break;
-	}
-
-	if (seen_pixel)
-	    break;
-    }
-
-    trim_left = MIN (p_width, i);
-    trim_left = MAX (trim_left - PAD_PIXELS, 0);
-
-    for (i = p_width - 1; i >= trim_left; i--) {
-	gboolean seen_pixel = FALSE;
-
-	for (j = 0; j < p_height; j++) {
-	    gint offset = j * p_rowstride + 3 * i;
-
-	    seen_pixel = (buffer[offset] != 0xff ||
-			  buffer[offset + 1] != 0xff ||
-			  buffer[offset + 2] != 0xff);
-
-	    if (seen_pixel)
-		break;
-	}
-
-	if (seen_pixel)
-	    break;
-    }
-
-    trim_right = MAX (trim_left, i);
-    trim_right = MIN (trim_right + PAD_PIXELS, p_width - 1);
-
-    for (j = 0; j < p_height; j++) {
-	gboolean seen_pixel = FALSE;
-
-	for (i = 0; i < p_width; i++) {
-	    gint offset = j * p_rowstride + 3 * i;
-
-	    seen_pixel = (buffer[offset] != 0xff ||
-			  buffer[offset + 1] != 0xff ||
-			  buffer[offset + 2] != 0xff);
-
-	    if (seen_pixel)
-		break;
-	}
-
-	if (seen_pixel)
-	    break;
-    }
-
-    trim_top = MIN (p_height, j);
-    trim_top = MAX (trim_top - PAD_PIXELS, 0);
-
-    for (j = p_height - 1; j >= trim_top; j--) {
-	gboolean seen_pixel = FALSE;
-
-	for (i = 0; i < p_width; i++) {
-	    gint offset = j * p_rowstride + 3 * i;
-
-	    seen_pixel = (buffer[offset] != 0xff ||
-			  buffer[offset + 1] != 0xff ||
-			  buffer[offset + 2] != 0xff);
-
-	    if (seen_pixel)
-		break;
-	}
-
-	if (seen_pixel)
-	    break;
-    }
-
-    trim_bottom = MAX (trim_top, j);
-    trim_bottom = MIN (trim_bottom + PAD_PIXELS, p_height - 1);
-
-    subpixbuf = gdk_pixbuf_new_subpixbuf (pixbuf,
-					  trim_left, trim_top,
-					  trim_right - trim_left,
-					  trim_bottom - trim_top);
-
-    gdk_pixbuf_save (subpixbuf, filename,
-		     "png", NULL, NULL);
-    g_object_unref (subpixbuf);
+  return g_string_free (retval, FALSE);
 }
 
 int
@@ -247,14 +167,8 @@ main (int argc,
     FT_Error error;
     FT_Library library;
     FT_Face face;
-    FT_UInt glyph_index1, glyph_index2;
     GFile *file;
-    GdkPixbuf *pixbuf;
-    guchar *buffer;
-    gint i, len, pen_x, pen_y;
-    gunichar *thumbstr = NULL;
-    glong thumbstr_len = 2;
-    gint font_size = FONT_SIZE;
+    gint font_size, thumb_size = THUMB_SIZE;
     gchar *thumbstr_utf8 = NULL, *help, *uri;
     gchar **arguments = NULL;
     GOptionContext *context;
@@ -262,12 +176,20 @@ main (int argc,
     gchar *contents = NULL;
     gboolean retval, default_thumbstr = TRUE;
     gint rv = 1;
+    GdkRGBA white = { 1.0, 1.0, 1.0, 1.0 };
+    GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
+    cairo_surface_t *surface;
+    cairo_t *cr;
+    cairo_text_extents_t text_extents;
+    cairo_font_face_t *font;
+    gchar *str;
+    gdouble scale, scale_x, scale_y;
 
     const GOptionEntry options[] = {
 	    { "text", 't', 0, G_OPTION_ARG_STRING, &thumbstr_utf8,
 	      N_("Text to thumbnail (default: Aa)"), N_("TEXT") },
-	    { "size", 's', 0, G_OPTION_ARG_INT, &font_size,
-	      N_("Font size (default: 64)"), N_("SIZE") },
+	    { "size", 's', 0, G_OPTION_ARG_INT, &thumb_size,
+	      N_("Thumbnail size (default: 128)"), N_("SIZE") },
 	    { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &arguments,
 	      NULL, N_("FONT-FILE OUTPUT-FILE") },
 	    { NULL }
@@ -278,6 +200,8 @@ main (int argc,
     textdomain (GETTEXT_PACKAGE);
 
     setlocale (LC_ALL, "");
+
+    g_type_init ();
 
     context = g_option_context_new (NULL);
     g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
@@ -301,19 +225,8 @@ main (int argc,
 
     g_option_context_free (context);
 
-    if (thumbstr_utf8 != NULL) {
-	/* build ucs4 version of string to thumbnail */
-	gerror = NULL;
-	thumbstr = g_utf8_to_ucs4 (thumbstr_utf8, strlen (thumbstr_utf8),
-				   NULL, &thumbstr_len, &gerror);
+    if (thumbstr_utf8 != NULL)
 	default_thumbstr = FALSE;
-
-	if (gerror != NULL) {
-	    g_printerr ("Failed to convert: %s\n", gerror->message);
-	    g_error_free (gerror);
-	    goto out;
-	}
-    }
 
     error = FT_Init_FreeType (&library);
     if (error) {
@@ -338,78 +251,57 @@ main (int argc,
 
     g_free (uri);
 
-    error = FT_Set_Pixel_Sizes (face, 0, font_size);
-    if (error) {
-	g_printerr ("Could not set pixel size: %s\n", get_ft_error (error));
-	goto out;
-    }
-
-    for (i = 0; i < face->num_charmaps; i++) {
-	if (face->charmaps[i]->encoding == ft_encoding_latin_1 ||
-	    face->charmaps[i]->encoding == ft_encoding_unicode ||
-	    face->charmaps[i]->encoding == ft_encoding_apple_roman) {
-	    error = FT_Set_Charmap (face, face->charmaps[i]);
-	    if (error) {
-		g_printerr("Could not set charmap: %s\n", get_ft_error(error));
-		goto out;
-	    }
-	    break;
-	}
-    }
-
-    pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
-			     FALSE, /* has-alpha */
-			     8, /* bits-per-sample */
-			     font_size * 3 * thumbstr_len / 2, /* width */
-			     font_size * 1.5); /* height */
-    if (!pixbuf) {
-	g_printerr ("Could not create pixbuf\n");
-	goto out;
-    }
-
-    buffer = gdk_pixbuf_get_pixels (pixbuf);
-    len = gdk_pixbuf_get_rowstride (pixbuf) * gdk_pixbuf_get_height (pixbuf);
-
-    /* fill the pixbuf buffer to make it white */
-    for (i = 0; i < len; i++)
-	buffer[i] = 255;
-
-    pen_x = font_size / 2;
-    pen_y = font_size;
-
     if (default_thumbstr) {
-	glyph_index1 = FT_Get_Char_Index (face, 'A');
-	glyph_index2 = FT_Get_Char_Index (face, 'a');
-
-	/* if the glyphs for those letters don't exist, pick some other
-	* glyphs. */
-	if (glyph_index1 == 0)
-	    glyph_index1 = MIN (65, face->num_glyphs - 1);
-
-	if (glyph_index2 == 0)
-	    glyph_index2 = MIN (97, face->num_glyphs - 1);
-
-	draw_char (pixbuf, face, glyph_index1, &pen_x, &pen_y);
-	draw_char (pixbuf, face, glyph_index2, &pen_x, &pen_y);
+        if (check_font_contain_text (face, "Aa"))
+            str = g_strdup ("Aa");
+        else
+            str = build_fallback_thumbstr (face);
     } else {
-	const gunichar *p = thumbstr;
-	FT_Select_Charmap (face, FT_ENCODING_UNICODE);
-	i = 0;
-
-	while (i < thumbstr_len) {
-	    glyph_index1 = FT_Get_Char_Index (face, *p);
-	    draw_char (pixbuf, face, glyph_index1, &pen_x, &pen_y);
-	    i++;
-	    p++;
-	}
+        str = thumbstr_utf8;
     }
 
-    save_pixbuf (pixbuf, arguments[1]);
-    g_object_unref (pixbuf);
+    surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
+                                          thumb_size, thumb_size);
+    cr = cairo_create (surface);
+
+    gdk_cairo_set_source_rgba (cr, &white);
+    cairo_paint (cr);
+
+    font = cairo_ft_font_face_create_for_ft_face (face, 0);
+    cairo_set_font_face (cr, font);
+    cairo_font_face_destroy (font);
+
+    font_size = thumb_size - 2 * PADDING_VERTICAL;
+    cairo_set_font_size (cr, font_size);
+    cairo_text_extents (cr, str, &text_extents);
+
+    if ((text_extents.width) > (thumb_size - 2 * PADDING_HORIZONTAL)) {
+        scale_x = (gdouble) (thumb_size - 2 * PADDING_HORIZONTAL) / (text_extents.width);
+    } else {
+        scale_x = 1.0;
+    }
+
+    if ((text_extents.height) > (thumb_size - 2 * PADDING_VERTICAL)) {
+        scale_y = (gdouble) (thumb_size - 2 * PADDING_VERTICAL) / (text_extents.height);
+    } else {
+        scale_y = 1.0;
+    }
+
+    scale = MIN (scale_x, scale_y);
+    cairo_scale (cr, scale, scale);
+    cairo_translate (cr, 
+                     PADDING_HORIZONTAL - text_extents.x_bearing + (thumb_size - scale * text_extents.width) / 2.0,
+                     PADDING_VERTICAL - text_extents.y_bearing + (thumb_size - scale * text_extents.height) / 2.0);
+
+    gdk_cairo_set_source_rgba (cr, &black);
+    cairo_show_text (cr, str);
+    cairo_destroy (cr);
+
+    cairo_surface_write_to_png (surface, arguments[1]);
+    cairo_surface_destroy (surface);
 
     totem_resources_monitor_stop ();
 
-    /* freeing the face causes a crash I haven't tracked down yet */
     error = FT_Done_Face (face);
     if (error) {
 	g_printerr("Could not unload face: %s\n", get_ft_error (error));
@@ -428,9 +320,9 @@ main (int argc,
   out:
 
     g_strfreev (arguments);
-    g_free (thumbstr);
-    g_free (thumbstr_utf8);
+    g_free (str);
     g_free (contents);
 
     return rv;
 }
+

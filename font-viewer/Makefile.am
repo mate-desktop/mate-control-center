@@ -8,7 +8,7 @@ font_loader_SOURCES = \
 	sushi-font-loader.h \
 	sushi-font-loader.c
 
-mate_thumbnail_font_LDADD = $(MATECC_CAPPLETS_LIBS) $(FONT_VIEWER_LIBS)
+mate_thumbnail_font_LDADD = $(MATECC_CAPPLETS_LIBS) -lm $(FONT_VIEWER_LIBS)
 mate_thumbnail_font_SOURCES = \
 	$(font_loader_SOURCES) \
 	font-thumbnailer.c \
