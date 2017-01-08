@@ -62,91 +62,12 @@ static void ensure_thumbnail (FontViewModel *self, const gchar *path);
 
 G_DEFINE_TYPE (FontViewModel, font_view_model, GTK_TYPE_LIST_STORE);
 
-#define ATTRIBUTES_FOR_THUMBNAIL \
-  G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE"," \
-  G_FILE_ATTRIBUTE_TIME_MODIFIED
-
-static gboolean
-create_thumbnail (GIOSchedulerJob *job,
-                  GCancellable *cancellable,
-                  gpointer user_data)
-{
-  GSimpleAsyncResult *result = user_data;
-  GFile *file = G_FILE (g_async_result_get_source_object (G_ASYNC_RESULT (result)));
-  MateDesktopThumbnailFactory *factory;
-  GFileInfo *info;
-  gchar *uri;
-  GdkPixbuf *pixbuf;
-  guint64 mtime;
-
-  uri = g_file_get_uri (file);
-  info = g_file_query_info (file, ATTRIBUTES_FOR_THUMBNAIL,
-                            G_FILE_QUERY_INFO_NONE,
-                            NULL, NULL);
-
-  /* we don't care about reporting errors here, just fail the
-   * thumbnail.
-   */
-  if (info == NULL)
-    {
-      g_simple_async_result_set_op_res_gboolean (result, FALSE);
-      goto out;
-    }
-
-  mtime = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
-
-  factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
-  pixbuf = mate_desktop_thumbnail_factory_generate_thumbnail
-    (factory, 
-     uri, g_file_info_get_content_type (info));
-
-  if (pixbuf != NULL)
-    {
-      mate_desktop_thumbnail_factory_save_thumbnail (factory, pixbuf,
-                                                      uri, (time_t) mtime);
-      g_simple_async_result_set_op_res_gboolean (result, TRUE);
-    }
-  else
-    {
-      mate_desktop_thumbnail_factory_create_failed_thumbnail (factory,
-                                                               uri, (time_t) mtime);
-      g_simple_async_result_set_op_res_gboolean (result, FALSE);
-    }
-
-  g_object_unref (info);
-  g_object_unref (factory);
-  g_clear_object (&pixbuf);
-
- out:
-  g_simple_async_result_complete_in_idle (result);
-  g_object_unref (result);
-
-  return FALSE;
-}
-
-static void
-gd_queue_thumbnail_job_for_file_async (GFile *file,
-                                       GAsyncReadyCallback callback,
-                                       gpointer user_data)
-{
-  GSimpleAsyncResult *result;
-
-  result = g_simple_async_result_new (G_OBJECT (file),
-                                      callback, user_data, 
-                                      gd_queue_thumbnail_job_for_file_async);
-
-  g_io_scheduler_push_job (create_thumbnail,
-                           result, NULL,
-                           G_PRIORITY_DEFAULT, NULL);
-}
-
-static gboolean
-gd_queue_thumbnail_job_for_file_finish (GAsyncResult *res)
-{
-  GSimpleAsyncResult *simple = G_SIMPLE_ASYNC_RESULT (res);
-
-  return g_simple_async_result_get_op_res_gboolean (simple);
-}
+#define ATTRIBUTES_FOR_CREATING_THUMBNAIL \
+    G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE"," \
+    G_FILE_ATTRIBUTE_TIME_MODIFIED
+#define ATTRIBUTES_FOR_EXISTING_THUMBNAIL \
+    G_FILE_ATTRIBUTE_THUMBNAIL_PATH"," \
+    G_FILE_ATTRIBUTE_THUMBNAILING_FAILED
 
 typedef struct {
     const gchar *file;
@@ -235,43 +156,28 @@ font_view_model_get_iter_for_face (FontViewModel *self,
 
 typedef struct {
     FontViewModel *self;
+    GFile *font_file;
     gchar *font_path;
+    GdkPixbuf *pixbuf;
 } LoadThumbnailData;
 
 static void
 load_thumbnail_data_free (LoadThumbnailData *data)
 {
     g_object_unref (data->self);
+    g_object_unref (data->font_file);
+    g_clear_object (&data->pixbuf);
     g_free (data->font_path);
+
     g_slice_free (LoadThumbnailData, data);
 }
 
-static void
-thumbnail_ready_cb (GObject *source,
-                    GAsyncResult *res,
-                    gpointer user_data)
+static GdkPixbuf *
+get_fallback_icon (void)
 {
-    FontViewModel *self = user_data;
-    gchar *path;
-    GFile *file;
-
-    gd_queue_thumbnail_job_for_file_finish (G_ASYNC_RESULT (res));
-    file = G_FILE (source);
-    path = g_file_get_path (file);
-    ensure_thumbnail (self, path);
-
-    g_free (path);
-}
-
-static void
-set_fallback_icon (FontViewModel *self,
-                   GFile *file)
-{
-    GtkTreeIter iter;
     GtkIconTheme *icon_theme;
     GtkIconInfo *icon_info;
     GdkPixbuf *pix;
-    gchar *path;
     GIcon *icon = NULL;
 
     icon_theme = gtk_icon_theme_get_default ();
@@ -281,129 +187,151 @@ set_fallback_icon (FontViewModel *self,
     g_object_unref (icon);
 
     if (!icon_info)
-        return;
+        return NULL;
 
     pix = gtk_icon_info_load_icon (icon_info, NULL);
     gtk_icon_info_free (icon_info);
 
-    if (!pix)
-        return;
+    return pix;
+}
 
-    path = g_file_get_path (file);
-    if (font_view_model_get_iter_for_file (self, path, &iter))
-        gtk_list_store_set (GTK_LIST_STORE (self), &iter,
-                            COLUMN_ICON, pix,
+static gboolean
+ensure_thumbnail_job_done (gpointer user_data)
+{
+    LoadThumbnailData *data = user_data;
+    GtkTreeIter iter;
+
+    if ((data->pixbuf != NULL) &&
+        (font_view_model_get_iter_for_file (data->self, data->font_path, &iter)))
+        gtk_list_store_set (GTK_LIST_STORE (data->self), &iter,
+                            COLUMN_ICON, data->pixbuf,
                             -1);
 
-    g_free (path);
-    g_object_unref (pix);
-}
-
-static void
-pixbuf_async_ready_cb (GObject *source,
-                       GAsyncResult *res,
-                       gpointer user_data)
-{
-    LoadThumbnailData *data = user_data;
-    GdkPixbuf *pix;
-    GtkTreeIter iter;
-    GFile *file;
-
-    pix = gdk_pixbuf_new_from_stream_finish (res, NULL);
-
-    if (pix != NULL) {
-        if (font_view_model_get_iter_for_file (data->self, data->font_path, &iter))
-            gtk_list_store_set (GTK_LIST_STORE (data->self), &iter,
-                                COLUMN_ICON, pix,
-                                -1);
-
-        g_object_unref (pix);
-    } else {
-        file = g_file_new_for_path (data->font_path);
-        set_fallback_icon (data->self, file);
-        g_object_unref (file);
-    }
-
     load_thumbnail_data_free (data);
+
+    return FALSE;
 }
 
-static void
-thumb_file_read_async_ready_cb (GObject *source,
-                                GAsyncResult *res,
-                                gpointer user_data)
+static GdkPixbuf *
+create_thumbnail (LoadThumbnailData *data)
+{
+    GFile *file = data->font_file;
+    MateDesktopThumbnailFactory *factory;
+    gchar *uri;
+    guint64 mtime;
+
+    GdkPixbuf *pixbuf = NULL;
+    GFileInfo *info = NULL;
+
+    uri = g_file_get_uri (file);
+    info = g_file_query_info (file, ATTRIBUTES_FOR_CREATING_THUMBNAIL,
+                              G_FILE_QUERY_INFO_NONE,
+                              NULL, NULL);
+
+    /* we don't care about reporting errors here, just fail the
+     * thumbnail.
+     */
+    if (info == NULL)
+        goto out;
+
+    mtime = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+
+    factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
+    pixbuf = mate_desktop_thumbnail_factory_generate_thumbnail
+        (factory,
+         uri, g_file_info_get_content_type (info));
+
+    if (pixbuf != NULL)
+        mate_desktop_thumbnail_factory_save_thumbnail (factory, pixbuf,
+                                                        uri, (time_t) mtime);
+    else
+        mate_desktop_thumbnail_factory_create_failed_thumbnail (factory,
+                                                                 uri, (time_t) mtime);
+
+  g_object_unref (factory);
+
+ out:
+  g_clear_object (&info);
+
+  return pixbuf;
+}
+
+static gboolean
+ensure_thumbnail_job (GIOSchedulerJob *job,
+                      GCancellable *cancellable,
+                      gpointer user_data)
 {
     LoadThumbnailData *data = user_data;
-    GFileInputStream *is;
-
-    is = g_file_read_finish (G_FILE (source),
-                             res, NULL);
-
-    if (is != NULL) {
-        gdk_pixbuf_new_from_stream_at_scale_async (G_INPUT_STREAM (is),
-                                                   128, 128, TRUE,
-                                                   NULL, pixbuf_async_ready_cb, data);
-        g_object_unref (is);
-    } else {
-        set_fallback_icon (data->self, G_FILE (source));
-        load_thumbnail_data_free (data);
-    }
-}
-
-static void
-thumbnail_query_info_cb (GObject *source,
-                         GAsyncResult *res,
-                         gpointer user_data)
-{
-    FontViewModel *self = user_data;
-    GFile *file = G_FILE (source);
-    GFile *thumb_file = NULL;
-    GFileInfo *info;
+    gboolean thumb_failed;
     const gchar *thumb_path;
-    LoadThumbnailData *data;
 
-    info = g_file_query_info_finish (file, res, NULL);
+    GError *error = NULL;
+    GFile *thumb_file = NULL;
+    GFileInputStream *is = NULL;
+    GFileInfo *info = NULL;
 
-    if (!info ||
-        g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED)) {
-        set_fallback_icon (self, file);
+    info = g_file_query_info (data->font_file,
+                              ATTRIBUTES_FOR_EXISTING_THUMBNAIL,
+                              G_FILE_QUERY_INFO_NONE,
+                              NULL, &error);
+
+    if (error != NULL) {
+        g_debug ("Can't query info for file %s: %s\n", data->font_path, error->message);
         goto out;
     }
 
+    thumb_failed = g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_THUMBNAILING_FAILED);
+    if (thumb_failed)
+        goto out;
+
     thumb_path = g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
-    if (thumb_path)
+
+    if (thumb_path != NULL) {
         thumb_file = g_file_new_for_path (thumb_path);
-    else
-        gd_queue_thumbnail_job_for_file_async (file, thumbnail_ready_cb, self);
+        is = g_file_read (thumb_file, NULL, &error);
 
-    if (thumb_file != NULL) {
-        data = g_slice_new0 (LoadThumbnailData);
-        data->self = g_object_ref (self);
-        data->font_path = g_file_get_path (file);
+        if (error != NULL) {
+            g_debug ("Can't read file %s: %s\n", thumb_path, error->message);
+            goto out;
+        }
 
-        g_file_read_async (thumb_file, G_PRIORITY_DEFAULT, NULL,
-                           thumb_file_read_async_ready_cb, data);
+        data->pixbuf = gdk_pixbuf_new_from_stream_at_scale (G_INPUT_STREAM (is),
+                                                            128, 128, TRUE,
+                                                            NULL, &error);
 
-        g_object_unref (thumb_file);
+        if (error != NULL) {
+            g_debug ("Can't read thumbnail pixbuf %s: %s\n", thumb_path, error->message);
+            goto out;
+        }
+    } else {
+        data->pixbuf = create_thumbnail (data);
     }
 
  out:
+    g_clear_error (&error);
+    g_clear_object (&is);
+    g_clear_object (&thumb_file);
     g_clear_object (&info);
+
+    g_io_scheduler_job_send_to_mainloop_async (job, ensure_thumbnail_job_done,
+                                               data, NULL);
+
+    return FALSE;
 }
 
 static void
 ensure_thumbnail (FontViewModel *self,
                   const gchar *path)
 {
-    GFile *file;
+    LoadThumbnailData *data;
 
-    file = g_file_new_for_path (path);
-    g_file_query_info_async (file,
-                             G_FILE_ATTRIBUTE_THUMBNAIL_PATH ","
-                             G_FILE_ATTRIBUTE_THUMBNAILING_FAILED,
-                             G_FILE_QUERY_INFO_NONE,
-                             G_PRIORITY_DEFAULT, NULL,
-                             thumbnail_query_info_cb, self);
-    g_object_unref (file);
+    data = g_slice_new0 (LoadThumbnailData);
+    data->self = g_object_ref (self);
+    data->font_file = g_file_new_for_path (path);
+    data->font_path = g_strdup (path);
+
+    g_io_scheduler_push_job (ensure_thumbnail_job, data,
+                             NULL, G_PRIORITY_DEFAULT, NULL);
 }
 
 /* make sure the font list is valid */
@@ -413,9 +341,9 @@ ensure_font_list (FontViewModel *self)
     FcPattern *pat;
     FcObjectSet *os;
     gint i;
-    GtkTreeIter iter;
     FcChar8 *file;
     gchar *font_name;
+    GdkPixbuf *pix;
 
     if (self->priv->font_list) {
             FcFontSetDestroy (self->priv->font_list);
@@ -446,16 +374,27 @@ ensure_font_list (FontViewModel *self)
         if (!font_name)
             continue;
 
-        gtk_list_store_append (GTK_LIST_STORE (self), &iter);
-        gtk_list_store_set (GTK_LIST_STORE (self), &iter,
-                            COLUMN_NAME, font_name,
-                            COLUMN_POINTER, self->priv->font_list->fonts[i],
-                            COLUMN_PATH, file,
-                            -1);
+        pix = get_fallback_icon ();
+        gtk_list_store_insert_with_values (GTK_LIST_STORE (self), NULL, -1,
+                                           COLUMN_NAME, font_name,
+                                           COLUMN_POINTER, self->priv->font_list->fonts[i],
+                                           COLUMN_PATH, file,
+                                           COLUMN_ICON, pix,
+                                           -1);
 
         ensure_thumbnail (self, (const gchar *) file);
         g_free (font_name);
+        g_object_unref (pix);
     }
+}
+
+static gboolean
+ensure_font_list_idle (gpointer user_data)
+{
+    FontViewModel *self = user_data;
+    ensure_font_list (self);
+
+    return FALSE;
 }
 
 static int
@@ -550,8 +489,7 @@ font_view_model_init (FontViewModel *self)
                                      font_view_model_sort_func,
                                      NULL, NULL);
 
-
-    ensure_font_list (self);
+    g_idle_add (ensure_font_list_idle, self);
     create_file_monitors (self);
 }
 
