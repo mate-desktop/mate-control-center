@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 Red Hat, Inc.
+ * Copyright (c) 2011, 2012 Red Hat, Inc.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by 
@@ -54,13 +54,6 @@ typedef struct _GdMainToolbar GdMainToolbar;
 typedef struct _GdMainToolbarClass GdMainToolbarClass;
 typedef struct _GdMainToolbarPrivate GdMainToolbarPrivate;
 
-typedef enum {
-  GD_MAIN_TOOLBAR_MODE_INVALID,
-  GD_MAIN_TOOLBAR_MODE_OVERVIEW,
-  GD_MAIN_TOOLBAR_MODE_SELECTION,
-  GD_MAIN_TOOLBAR_MODE_PREVIEW
-} GdMainToolbarMode;
-
 struct _GdMainToolbar
 {
   GtkToolbar parent;
@@ -77,18 +70,41 @@ GType gd_main_toolbar_get_type (void) G_GNUC_CONST;
 
 GtkWidget     *gd_main_toolbar_new (void);
 
-void           gd_main_toolbar_set_mode (GdMainToolbar *self,
-                                         GdMainToolbarMode mode);
-GdMainToolbarMode gd_main_toolbar_get_mode (GdMainToolbar *self);
-void           gd_main_toolbar_set_labels (GdMainToolbar *self,
-                                           const gchar *primary,
-                                           const gchar *detail);
-void           gd_main_toolbar_set_back_visible (GdMainToolbar *self,
-                                                 gboolean visible);
+void        gd_main_toolbar_set_labels (GdMainToolbar *self,
+                                        const gchar *primary,
+                                        const gchar *detail);
+
+void        gd_main_toolbar_set_labels_menu (GdMainToolbar *self,
+                                             GMenuModel    *menu);
+
+GtkWidget * gd_main_toolbar_add_mode (GdMainToolbar *self,
+                                      const gchar *label);
+
+void        gd_main_toolbar_clear (GdMainToolbar *self);
+
 GtkWidget * gd_main_toolbar_add_button (GdMainToolbar *self,
                                         const gchar *icon_name,
                                         const gchar *label,
                                         gboolean pack_start);
+
+GtkWidget * gd_main_toolbar_add_toggle (GdMainToolbar *self,
+                                        const gchar *icon_name,
+                                        const gchar *label,
+                                        gboolean pack_start);
+
+GtkWidget * gd_main_toolbar_add_menu (GdMainToolbar *self,
+                                      const gchar *icon_name,
+                                      const gchar *label,
+                                      gboolean pack_start);
+
+void        gd_main_toolbar_add_widget (GdMainToolbar *self,
+                                        GtkWidget *widget,
+                                        gboolean pack_start);
+
+gboolean    gd_main_toolbar_get_show_modes (GdMainToolbar *self);
+
+void        gd_main_toolbar_set_show_modes (GdMainToolbar *self,
+                                            gboolean show_modes);
 
 G_END_DECLS
 
