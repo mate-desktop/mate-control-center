@@ -250,23 +250,21 @@ static void
 install_button_refresh_appearance (FontViewApplication *self,
                                    GError *error)
 {
-    gchar *path;
+    FT_Face face;
 
     if (error != NULL) {
         gtk_button_set_label (GTK_BUTTON (self->install_button), _("Install Failed"));
         gtk_widget_set_sensitive (self->install_button, FALSE);
     } else {
-        path = g_file_get_path (self->font_file);
+        face = sushi_font_widget_get_ft_face (SUSHI_FONT_WIDGET (self->font_widget));
 
-        if (font_view_model_get_iter_for_file (FONT_VIEW_MODEL (self->model), path, NULL)) {
+        if (font_view_model_get_iter_for_face (FONT_VIEW_MODEL (self->model), face, NULL)) {
             gtk_button_set_label (GTK_BUTTON (self->install_button), _("Installed"));
             gtk_widget_set_sensitive (self->install_button, FALSE);
         } else {
             gtk_button_set_label (GTK_BUTTON (self->install_button), _("Install"));
             gtk_widget_set_sensitive (self->install_button, TRUE);
         }
-
-        g_free (path);
     }
 }
 
@@ -279,9 +277,10 @@ font_install_finished_cb (GObject      *source_object,
     GError *err = NULL;
 
     g_file_copy_finish (G_FILE (source_object), res, &err);
-    install_button_refresh_appearance (self, err);
 
     if (err != NULL) {
+        install_button_refresh_appearance (self, err);
+
         g_debug ("Install failed: %s", err->message);
         g_error_free (err);
     }
@@ -358,6 +357,8 @@ font_widget_loaded_cb (SushiFontWidget *font_widget,
 
     gd_main_toolbar_set_labels (GD_MAIN_TOOLBAR (self->toolbar),
                                 face->family_name, face->style_name);
+
+    install_button_refresh_appearance (self, NULL);
 }
 
 static void
@@ -409,7 +410,6 @@ font_view_application_do_open (FontViewApplication *self)
     self->install_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
                                                        NULL, _("Install"), 
                                                        FALSE);
-    install_button_refresh_appearance (self, NULL);
     g_signal_connect (self->install_button, "clicked",
                       G_CALLBACK (install_button_clicked_cb), self);
 
