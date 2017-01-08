@@ -33,7 +33,7 @@
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 
-#include "ftstream-vfs.h"
+#include "sushi-font-loader.h"
 #include "totem-resources.h"
 
 static const gchar *
@@ -259,6 +259,7 @@ main (int argc,
     gchar **arguments = NULL;
     GOptionContext *context;
     GError *gerror = NULL;
+    gchar *contents = NULL;
     gboolean retval, default_thumbstr = TRUE;
     gint rv = 1;
 
@@ -326,11 +327,12 @@ main (int argc,
     uri = g_file_get_uri (file);
     g_object_unref (file);
 
-    error = FT_New_Face_From_URI (library, uri, 0, &face);
-    if (error) {
+    face = sushi_new_ft_face_from_uri (library, uri, &contents, &gerror);
+    if (gerror) {
 	g_printerr ("Could not load face '%s': %s\n", uri,
-		    get_ft_error (error));
+		    gerror->message);
         g_free (uri);
+        g_error_free (gerror);
 	goto out;
     }
 
@@ -428,6 +430,7 @@ main (int argc,
     g_strfreev (arguments);
     g_free (thumbstr);
     g_free (thumbstr_utf8);
+    g_free (contents);
 
     return rv;
 }
