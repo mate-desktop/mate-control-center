@@ -421,9 +421,13 @@ font_widget_loaded_cb (SushiFontWidget *font_widget,
 {
     FontViewApplication *self = user_data;
     FT_Face face = sushi_font_widget_get_ft_face (font_widget);
+    const gchar *uri;
 
     if (face == NULL)
         return;
+
+    uri = sushi_font_widget_get_uri (font_widget);
+    self->font_file = g_file_new_for_uri (uri);
 
     gd_main_toolbar_set_labels (GD_MAIN_TOOLBAR (self->toolbar),
                                 face->family_name, face->style_name);
@@ -466,9 +470,20 @@ info_button_clicked_cb (GtkButton *button,
 }
 
 static void
-font_view_application_do_open (FontViewApplication *self)
+font_view_ensure_model (FontViewApplication *self)
+{
+    self->model = font_view_model_new ();
+    g_signal_connect (self->model, "config-changed",
+                      G_CALLBACK (font_model_config_changed_cb), self);
+}
+
+static void
+font_view_application_do_open (FontViewApplication *self,
+                               GFile *file)
 {
     gchar *uri;
+
+    font_view_ensure_model (self);
 
     self->info_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
                                                     NULL, _("Info"), 
@@ -491,7 +506,8 @@ font_view_application_do_open (FontViewApplication *self)
 
     gtk_widget_set_vexpand (self->toolbar, FALSE);
 
-    uri = g_file_get_uri (self->font_file);
+    uri = g_file_get_uri (file);
+
     if (self->font_widget == NULL) {
         GdkRGBA white = { 1.0, 1.0, 1.0, 1.0 };
         GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
@@ -531,6 +547,7 @@ icon_view_release_cb (GtkWidget *widget,
     GtkTreePath *path;
     GtkTreeIter iter;
     gchar *font_path;
+    GFile *file;
 
     /* eat double/triple click events */
     if (event->type != GDK_BUTTON_RELEASE)
@@ -546,8 +563,9 @@ icon_view_release_cb (GtkWidget *widget,
                             -1);
 
         if (font_path != NULL) {
-            self->font_file = g_file_new_for_path (font_path);
-            font_view_application_do_open (self);
+            file = g_file_new_for_path (font_path);
+            font_view_application_do_open (self, file);
+            g_object_unref (file);
         }
         gtk_tree_path_free (path);
         g_free (font_path);
@@ -575,6 +593,8 @@ font_view_application_do_overview (FontViewApplication *self)
         gtk_widget_destroy (self->install_button);
         self->install_button = NULL;
     }
+
+    font_view_ensure_model (self);
 
     gd_main_toolbar_set_labels (GD_MAIN_TOOLBAR (self->toolbar), _("All Fonts"), NULL);
 
@@ -622,15 +642,37 @@ font_view_application_do_overview (FontViewApplication *self)
 }
 
 static void
+query_info_ready_cb (GObject *object,
+                     GAsyncResult *res,
+                     gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+    GFileInfo *info;
+    GError *error = NULL;
+
+    info = g_file_query_info_finish (G_FILE (object), res, &error);
+    if (error != NULL) {
+        font_view_application_do_overview (self);
+        font_view_show_font_error (self, error->message);
+        g_error_free (error);
+    } else {
+        font_view_application_do_open (self, G_FILE (object));
+    }
+
+    g_clear_object (&info);
+}
+
+static void
 font_view_application_open (GApplication *application,
                             GFile **files,
                             gint n_files,
                             const gchar *hint)
 {
     FontViewApplication *self = FONT_VIEW_APPLICATION (application);
-
-    self->font_file = g_object_ref (files[0]);
-    font_view_application_do_open (self);
+    g_file_query_info_async (files[0], G_FILE_ATTRIBUTE_STANDARD_NAME,
+                             G_FILE_QUERY_INFO_NONE,
+                             G_PRIORITY_DEFAULT, NULL,
+                             query_info_ready_cb, self);
 }
 
 static void
@@ -692,10 +734,6 @@ font_view_application_startup (GApplication *application)
 
     g_object_unref (builder);
     g_object_unref (menu);
-
-    self->model = font_view_model_new ();
-    g_signal_connect (self->model, "config-changed",
-                      G_CALLBACK (font_model_config_changed_cb), self);
 
     self->main_window = window = gtk_application_window_new (GTK_APPLICATION (application));
     gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
