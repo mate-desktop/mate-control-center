@@ -211,10 +211,11 @@ create_thumbnail (ThumbInfoData *thumb_info)
   return pixbuf;
 }
 
-static gboolean
-ensure_thumbnails_job (GIOSchedulerJob *job,
-                       GCancellable *cancellable,
-                       gpointer user_data)
+static void
+ensure_thumbnails_job (GTask *task,
+                       gpointer source_object,
+                       gpointer user_data,
+                       GCancellable *cancellable)
 {
     GList *thumb_infos = user_data, *l;
 
@@ -281,8 +282,6 @@ ensure_thumbnails_job (GIOSchedulerJob *job,
     }
 
     g_list_free (thumb_infos);
-
-    return FALSE;
 }
 
 typedef struct {
@@ -320,6 +319,7 @@ font_infos_loaded (gpointer user_data)
 {
     LoadFontInfosData *data = user_data;
     FontViewModel *self = data->self;
+    GTask *task = NULL;
     GList *l, *thumb_infos = NULL;
 
     for (l = data->font_infos; l != NULL; l = l->next) {
@@ -347,9 +347,12 @@ font_infos_loaded (gpointer user_data)
 
     g_signal_emit (self, signals[CONFIG_CHANGED], 0);
 
-    g_io_scheduler_push_job (ensure_thumbnails_job,
-                             thumb_infos, NULL,
-                             G_PRIORITY_DEFAULT, NULL);
+    task = g_task_new (NULL, NULL, NULL, NULL);
+
+    g_task_set_task_data (task, thumb_infos, NULL);
+
+    g_task_run_in_thread (task, ensure_thumbnails_job);
+    g_object_unref (task);
 
     return FALSE;
 }
