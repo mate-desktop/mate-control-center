@@ -35,6 +35,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 
+#include "gd-main-toolbar.h"
 #include "sushi-font-widget.h"
 
 #define FONT_VIEW_TYPE_APPLICATION font_view_application_get_type()
@@ -44,8 +45,13 @@
 typedef struct {
     GtkApplication parent;
 
-    GtkWidget *main_window;;
+    GtkWidget *main_window;
+    GtkWidget *main_grid;
+    GtkWidget *toolbar;
+    GtkWidget *title_label;
     GtkWidget *side_grid;
+    GtkWidget *font_widget;
+
     GFile *font_file;
 } FontViewApplication;
 
@@ -107,7 +113,12 @@ add_row (GtkWidget *grid,
     gtk_label_set_selectable (GTK_LABEL(label), TRUE);
 
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-    gtk_label_set_max_width_chars (GTK_LABEL (label), 30);
+
+    if (multiline && g_utf8_strlen (value, -1) > 64) {
+        gtk_label_set_width_chars (GTK_LABEL (label), 64);
+        gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+    }
+    gtk_label_set_max_width_chars (GTK_LABEL (label), 64);
 
     gtk_grid_attach_next_to (GTK_GRID (grid), label, 
                              name_w, GTK_POS_RIGHT,
@@ -115,17 +126,18 @@ add_row (GtkWidget *grid,
 }
 
 static void
-add_face_info (FontViewApplication *self,
+populate_grid (FontViewApplication *self,
+               GtkWidget *grid,
 	       FT_Face face)
 {
     gchar *s;
     GFileInfo *info;
     PS_FontInfoRec ps_info;
 
-    add_row (self->side_grid, _("Name"), face->family_name, FALSE);
+    add_row (grid, _("Name"), face->family_name, FALSE);
 
     if (face->style_name)
-      add_row (self->side_grid, _("Style"), face->style_name, FALSE);
+        add_row (grid, _("Style"), face->style_name, FALSE);
 
     info = g_file_query_info (self->font_file,
                               G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
@@ -135,7 +147,7 @@ add_face_info (FontViewApplication *self,
 
     if (info != NULL) {
         s = g_content_type_get_description (g_file_info_get_content_type (info));
-        add_row (self->side_grid, _("Type"), s, FALSE);
+        add_row (grid, _("Type"), s, FALSE);
         g_free (s);
 
         g_object_unref (info);
@@ -180,7 +192,7 @@ add_face_info (FontViewApplication *self,
         }
 
 	if (version) {
-	    add_row (self->side_grid, _("Version"), version, FALSE);
+	    add_row (grid, _("Version"), version, FALSE);
 	    g_free (version);
 	}
 	if (copyright) {
@@ -189,14 +201,14 @@ add_face_info (FontViewApplication *self,
 	    g_free (copyright);
 	}
 	if (description) {
-	    add_row (self->side_grid, _("Description"), description, TRUE);
+	    add_row (grid, _("Description"), description, TRUE);
 	    g_free (description);
 	}
     } else if (FT_Get_PS_Font_Info (face, &ps_info) == 0) {
 	if (ps_info.version && g_utf8_validate (ps_info.version, -1, NULL))
-	    add_row (self->side_grid, _("Version"), ps_info.version, FALSE);
+	    add_row (grid, _("Version"), ps_info.version, FALSE);
 	if (ps_info.notice && g_utf8_validate (ps_info.notice, -1, NULL))
-	    add_row (self->side_grid, _("Copyright"), ps_info.notice, TRUE);
+	    add_row (grid, _("Copyright"), ps_info.notice, TRUE);
     }
 }
 
@@ -267,33 +279,46 @@ font_widget_loaded_cb (SushiFontWidget *font_widget,
 {
     FontViewApplication *self = user_data;
     FT_Face face = sushi_font_widget_get_ft_face (font_widget);
-    GtkWidget *w;
-    gchar *title;
 
     if (face == NULL)
         return;
 
-    title = g_strconcat (face->family_name,
-			 face->style_name ? ", " : "",
-			 face->style_name, NULL);
-    gtk_window_set_title (GTK_WINDOW (self->main_window), title);
-    g_free (title);
+    gd_main_toolbar_set_labels (GD_MAIN_TOOLBAR (self->toolbar),
+                                face->family_name, face->style_name);
+}
 
-    add_face_info (self, face);
+static void
+info_button_clicked_cb (GtkButton *button,
+                        gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+    GtkWidget *grid, *dialog;
+    FT_Face face = sushi_font_widget_get_ft_face (SUSHI_FONT_WIDGET (self->font_widget));
 
-    /* add install button */
-    w = gtk_button_new_with_mnemonic (_("I_nstall Font"));
-    gtk_widget_set_margin_top (w, 10);
-    gtk_widget_set_halign (w, GTK_ALIGN_START);
+    if (face == NULL)
+        return;
 
-    g_signal_connect (w, "clicked",
-                      G_CALLBACK (install_button_clicked_cb), self);
-    gtk_container_add_with_properties (GTK_CONTAINER (self->side_grid), w,
-                                       "left-attach", 0,
-                                       "width", 2,
-                                       NULL);
+    grid = gtk_grid_new ();
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_VERTICAL);
+    g_object_set (grid,
+                  "margin-top", 6,
+                  "margin-left", 16,
+                  "margin-right", 16,
+                  "margin-bottom", 6,
+                  NULL);
+    gtk_grid_set_column_spacing (GTK_GRID (grid), 8);
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 2);
 
-    gtk_widget_show_all (self->side_grid);
+    populate_grid (self, grid, face);
+
+    dialog = gtk_dialog_new_with_buttons (NULL, GTK_WINDOW (self->main_window),
+                                          GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                          NULL);
+    gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), grid);
+    g_signal_connect (dialog, "response",
+                      G_CALLBACK (gtk_widget_destroy), NULL);
+    gtk_widget_show_all (dialog);
 }
 
 static void
@@ -304,7 +329,7 @@ font_view_application_open (GApplication *application,
 {
     FontViewApplication *self = FONT_VIEW_APPLICATION (application);
     gchar *uri;
-    GtkWidget *window, *box, *grid, *swin, *font_widget;
+    GtkWidget *window, *swin, *font_widget;
     GdkColor white = { 0, 0xffff, 0xffff, 0xffff };
     GtkWidget *w;
 
@@ -313,42 +338,51 @@ font_view_application_open (GApplication *application,
     self->main_window = window = gtk_application_window_new (GTK_APPLICATION (application));
     gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
     gtk_window_set_default_size (GTK_WINDOW (window), 850, -1);
+    gtk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
+    gtk_window_set_title (GTK_WINDOW (window), _("Font Viewer"));
 
-    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_container_add (GTK_CONTAINER (window), box);
+    self->main_grid = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add (GTK_CONTAINER (self->main_window), self->main_grid);
+
+    self->toolbar = gd_main_toolbar_new ();
+    gtk_style_context_add_class (gtk_widget_get_style_context (self->toolbar), "menubar");
+    gtk_container_add (GTK_CONTAINER (self->main_grid), self->toolbar);
+
+    w = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                    NULL, _("Info"), 
+                                    FALSE);
+    g_signal_connect (w, "clicked",
+                      G_CALLBACK (info_button_clicked_cb), self);
+
+    /* add install button */
+    w = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                    NULL, _("Install"), 
+                                    FALSE);
+    g_signal_connect (w, "clicked",
+                      G_CALLBACK (install_button_clicked_cb), self);
+
+    gtk_widget_set_vexpand (self->toolbar, FALSE);
 
     swin = gtk_scrolled_window_new (NULL, NULL);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
 				    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (swin), GTK_SHADOW_IN);
-    gtk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (swin), 600);
-    gtk_box_pack_start (GTK_BOX (box), swin, TRUE, TRUE, 0);
-    gtk_widget_set_hexpand (swin, TRUE);
+    gtk_container_add (GTK_CONTAINER (self->main_grid), swin);
 
     uri = g_file_get_uri (self->font_file);
-    font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
+    self->font_widget = font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
 
     gtk_widget_modify_bg (font_widget, GTK_STATE_NORMAL, &white);
     g_free (uri);
 
     w = gtk_viewport_new (NULL, NULL);
     gtk_viewport_set_shadow_type (GTK_VIEWPORT (w), GTK_SHADOW_NONE);
+
     gtk_container_add (GTK_CONTAINER (w), font_widget);
     gtk_container_add (GTK_CONTAINER (swin), w);
 
     g_signal_connect (font_widget, "loaded",
                       G_CALLBACK (font_widget_loaded_cb), self);
-
-    self->side_grid = grid = gtk_grid_new ();
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_VERTICAL);
-    g_object_set (grid,
-                  "margin-top", 5,
-                  "margin-left", 16,
-                  "margin-right", 16,
-                  NULL);
-    gtk_box_pack_start (GTK_BOX (box), grid, FALSE, FALSE, 0);
-    gtk_grid_set_column_spacing (GTK_GRID (grid), 8);
-    gtk_grid_set_row_spacing (GTK_GRID (grid), 2);
 
     gtk_widget_show_all (window);
 }
