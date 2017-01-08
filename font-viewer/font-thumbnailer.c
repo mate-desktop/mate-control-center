@@ -181,7 +181,7 @@ main (int argc,
     cairo_t *cr;
     cairo_text_extents_t text_extents;
     cairo_font_face_t *font;
-    gchar *str;
+    gchar *str = NULL;
     gdouble scale, scale_x, scale_y;
 
     const GOptionEntry options[] = {
