@@ -73,6 +73,22 @@ G_DEFINE_TYPE (FontViewApplication, font_view_application, GTK_TYPE_APPLICATION)
 
 static void font_view_application_do_overview (FontViewApplication *self);
 
+static const gchar *app_menu =
+    "<interface>"
+    "  <menu id=\"app-menu\">"
+    "    <section>"
+    "      <item>"
+    "        <attribute name=\"action\">app.about</attribute>"
+    "	     <attribute name=\"label\" translatable=\"yes\">About Font Viewer</attribute>"
+    "      </item>"
+    "      <item>"
+    "       <attribute name=\"action\">app.quit</attribute>"
+    "	    <attribute name=\"label\" translatable=\"yes\">Quit</attribute>"
+    "      </item>"
+    "    </section>"
+    "  <menu>"
+    "</interface>";
+
 #define VIEW_ITEM_WIDTH 140
 #define VIEW_ITEM_WRAP_WIDTH 128
 #define VIEW_COLUMN_SPACING 36
@@ -532,12 +548,64 @@ font_view_application_open (GApplication *application,
 }
 
 static void
+action_quit (GSimpleAction *action,
+             GVariant *parameter,
+             gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+    gtk_widget_destroy (self->main_window);
+}
+
+static void
+action_about (GSimpleAction *action,
+              GVariant *parameter,
+              gpointer user_data)
+{
+    FontViewApplication *self = user_data;
+    const gchar *authors[] = {
+        "Mate Developer",
+        "Cosimo Cecchi",
+        "James Henstridge",
+        NULL
+    };
+
+    gtk_show_about_dialog (GTK_WINDOW (self->main_window),
+                           "version", VERSION,
+                           "authors", authors,
+                           "program-name", _("Font Viewer"),
+                           "comments", _("View fonts on your system"),
+                           "logo-icon-name", "preferences-desktop-font",
+                           "translator-credits", _("translator-credits"),
+                           "license-type", GTK_LICENSE_GPL_2_0,
+                           "wrap-license", TRUE,
+                           NULL);
+                           
+}
+
+static GActionEntry action_entries[] = {
+    { "about", action_about, NULL, NULL, NULL },
+    { "quit", action_quit, NULL, NULL, NULL }
+};
+
+static void
 font_view_application_startup (GApplication *application)
 {
     FontViewApplication *self = FONT_VIEW_APPLICATION (application);
     GtkWidget *window, *swin;
+    GtkBuilder *builder;
+    GMenuModel *menu;
 
     G_APPLICATION_CLASS (font_view_application_parent_class)->startup (application);
+
+    g_action_map_add_action_entries (G_ACTION_MAP (self), action_entries, 
+                                     G_N_ELEMENTS (action_entries), self);
+    builder = gtk_builder_new ();
+    gtk_builder_add_from_string (builder, app_menu, -1, NULL);
+    menu = G_MENU_MODEL (gtk_builder_get_object (builder, "app-menu"));
+    gtk_application_set_app_menu (GTK_APPLICATION (self), menu);
+
+    g_object_unref (builder);
+    g_object_unref (menu);
 
     self->model = font_view_model_new ();
 
