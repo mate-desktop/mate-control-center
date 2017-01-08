@@ -50,6 +50,7 @@ struct _FontViewModelPrivate {
 
     GList *monitors;
     GdkPixbuf *fallback_icon;
+    GCancellable *cancellable;
 };
 
 enum {
@@ -360,10 +361,16 @@ load_font_infos (GIOSchedulerJob *job,
     gint i;
     GList *font_infos = NULL;
 
+    if (g_cancellable_is_cancelled (cancellable))
+        return FALSE;
+
     for (i = 0; i < self->priv->font_list->nfont; i++) {
         FontInfoData *font_info;
         FcChar8 *file;
         gchar *font_name;
+
+        if (g_cancellable_is_cancelled (cancellable))
+            break;
 
 	FcPatternGetString (self->priv->font_list->fonts[i], FC_FILE, 0, &file);
         font_name = font_utils_get_font_name_for_file (self->priv->library, (const gchar *) file);
@@ -382,8 +389,11 @@ load_font_infos (GIOSchedulerJob *job,
     data->self = g_object_ref (self);
     data->font_infos = font_infos;
 
-    g_io_scheduler_job_send_to_mainloop_async (job, font_infos_loaded,
-                                               data, load_font_infos_data_free);
+    if (g_cancellable_is_cancelled (cancellable))
+        load_font_infos_data_free (data);
+    else
+        g_io_scheduler_job_send_to_mainloop_async (job, font_infos_loaded,
+                                                   data, load_font_infos_data_free);
 
     return FALSE;
 }
@@ -396,8 +406,13 @@ ensure_font_list (FontViewModel *self)
     FcObjectSet *os;
 
     if (self->priv->font_list) {
-            FcFontSetDestroy (self->priv->font_list);
-            self->priv->font_list = NULL;
+        FcFontSetDestroy (self->priv->font_list);
+        self->priv->font_list = NULL;
+    }
+
+    if (self->priv->cancellable) {
+        g_cancellable_cancel (self->priv->cancellable);
+        g_clear_object (&self->priv->cancellable);
     }
 
     gtk_list_store_clear (GTK_LIST_STORE (self));
@@ -418,7 +433,7 @@ ensure_font_list (FontViewModel *self)
         return;
 
     g_io_scheduler_push_job (load_font_infos, self, NULL,
-                             G_PRIORITY_DEFAULT, NULL);
+                             G_PRIORITY_DEFAULT, self->priv->cancellable);
 }
 
 static gboolean
@@ -556,6 +571,11 @@ static void
 font_view_model_finalize (GObject *obj)
 {
     FontViewModel *self = FONT_VIEW_MODEL (obj);
+
+    if (self->priv->cancellable) {
+        g_cancellable_cancel (self->priv->cancellable);
+        g_clear_object (&self->priv->cancellable);
+    }
 
     if (self->priv->font_list) {
             FcFontSetDestroy (self->priv->font_list);
