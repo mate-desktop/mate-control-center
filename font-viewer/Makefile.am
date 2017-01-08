@@ -20,6 +20,8 @@ mate_font_viewer_SOURCES = \
 	$(font_loader_SOURCES) \
 	font-model.h \
 	font-model.c \
+	font-utils.h \
+	font-utils.c \
 	gd-main-toolbar.h \
 	gd-main-toolbar.c \
 	sushi-font-widget.h \

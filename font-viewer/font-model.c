@@ -39,6 +39,7 @@
 #include <libmate-desktop/mate-desktop-thumbnail.h>
 
 #include "font-model.h"
+#include "font-utils.h"
 #include "sushi-font-loader.h"
 
 struct _FontViewModelPrivate {
@@ -150,6 +151,7 @@ gd_queue_thumbnail_job_for_file_finish (GAsyncResult *res)
 
 typedef struct {
     const gchar *file;
+    FT_Face face;
     GtkTreeIter iter;
     gboolean found;
 } IterForFileData;
@@ -161,15 +163,24 @@ iter_for_file_foreach (GtkTreeModel *model,
                        gpointer user_data)
 {
     IterForFileData *data = user_data;
-    gchar *font_path;
+    gchar *font_path, *font_name, *match_name;
     gboolean retval;
 
     gtk_tree_model_get (GTK_TREE_MODEL (model), iter,
+                        COLUMN_NAME, &font_name,
                         COLUMN_PATH, &font_path,
                         -1);
 
-    retval = (g_strcmp0 (font_path, data->file) == 0);
+    if (data->file) {
+        retval = (g_strcmp0 (font_path, data->file) == 0);
+    } else if (data->face) {
+        match_name = font_utils_get_font_name (data->face);
+        retval = (g_strcmp0 (font_name, match_name) == 0);
+        g_free (match_name);
+    }
+
     g_free (font_path);
+    g_free (font_name);
 
     if (retval) {
         data->iter = *iter;
@@ -179,15 +190,17 @@ iter_for_file_foreach (GtkTreeModel *model,
     return retval;
 }
 
-gboolean
-font_view_model_get_iter_for_file (FontViewModel *self,
+static gboolean
+font_view_model_get_iter_internal (FontViewModel *self,
                                    const gchar *file,
+                                   FT_Face face,
                                    GtkTreeIter *iter)
 {
     IterForFileData *data = g_slice_new0 (IterForFileData);
     gboolean found;
 
     data->file = file;
+    data->face = face;
     data->found = FALSE;
 
     gtk_tree_model_foreach (GTK_TREE_MODEL (self),
@@ -201,6 +214,24 @@ font_view_model_get_iter_for_file (FontViewModel *self,
     g_slice_free (IterForFileData, data);
 
     return found;
+}
+
+gboolean
+font_view_model_get_iter_for_file (FontViewModel *self,
+                                   const gchar *file,
+                                   GtkTreeIter *iter)
+{
+    return font_view_model_get_iter_internal
+        (self, file, NULL, iter);
+}
+
+gboolean
+font_view_model_get_iter_for_face (FontViewModel *self,
+                                   FT_Face face,
+                                   GtkTreeIter *iter)
+{
+    return font_view_model_get_iter_internal
+        (self, NULL, face, iter);
 }
 
 typedef struct {
@@ -348,37 +379,6 @@ ensure_thumbnail (FontViewModel *self,
     g_clear_object (&info);
 }
 
-static gchar *
-get_font_name (FontViewModel *self,
-               const gchar *path)
-{
-    GFile *file;
-    gchar *uri, *contents = NULL, *name = NULL;
-    GError *error = NULL;
-    FT_Face face;
-
-    file = g_file_new_for_path (path);
-    uri = g_file_get_uri (file);
-
-    face = sushi_new_ft_face_from_uri (self->priv->library, uri, &contents, &error);
-    if (face != NULL) {
-        if (g_strcmp0 (face->style_name, "Regular") == 0)
-            name = g_strdup (face->family_name);
-        else
-            name = g_strconcat (face->family_name, ", ", face->style_name, NULL);
-        FT_Done_Face (face);
-    } else if (error != NULL) {
-        g_warning ("Can't get font name: %s\n", error->message);
-        g_error_free (error);
-    }
-
-    g_free (uri);
-    g_object_unref (file);
-    g_free (contents);
-
-    return name;
-}
-
 /* make sure the font list is valid */
 static void
 ensure_font_list (FontViewModel *self)
@@ -414,7 +414,7 @@ ensure_font_list (FontViewModel *self)
 
     for (i = 0; i < self->priv->font_list->nfont; i++) {
 	FcPatternGetString (self->priv->font_list->fonts[i], FC_FILE, 0, &file);
-        font_name = get_font_name (self, (const gchar *) file);
+        font_name = font_utils_get_font_name_for_file (self->priv->library, (const gchar *) file);
 
         gtk_list_store_append (GTK_LIST_STORE (self), &iter);
         gtk_list_store_set (GTK_LIST_STORE (self), &iter,

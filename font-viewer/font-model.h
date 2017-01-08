@@ -60,6 +60,9 @@ GtkTreeModel * font_view_model_new (void);
 gboolean font_view_model_get_iter_for_file (FontViewModel *self,
                                             const gchar *file,
                                             GtkTreeIter *iter);
+gboolean font_view_model_get_iter_for_face (FontViewModel *self,
+                                            FT_Face face,
+                                            GtkTreeIter *iter);
 
 G_END_DECLS
 
