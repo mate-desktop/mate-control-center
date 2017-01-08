@@ -472,6 +472,9 @@ info_button_clicked_cb (GtkButton *button,
 static void
 font_view_ensure_model (FontViewApplication *self)
 {
+    if (self->model != NULL)
+        return;
+
     self->model = font_view_model_new ();
     g_signal_connect (self->model, "config-changed",
                       G_CALLBACK (font_model_config_changed_cb), self);
