@@ -141,9 +141,7 @@ font_load_job (GIOSchedulerJob *sched_job,
   if (error != NULL)
     g_simple_async_result_take_error (job->result, error);
 
-  g_io_scheduler_job_send_to_mainloop_async (sched_job,
-                                             font_load_job_callback,
-                                             job, NULL);
+  g_main_context_invoke (NULL, font_load_job_callback, job);
 
   return FALSE;
 }

@@ -276,8 +276,8 @@ ensure_thumbnails_job (GIOSchedulerJob *job,
         g_clear_object (&thumb_file);
         g_clear_object (&info);
 
-        g_io_scheduler_job_send_to_mainloop_async (job, one_thumbnail_done,
-                                                   thumb_info, NULL);
+        g_main_context_invoke (NULL, one_thumbnail_done,
+                               thumb_info);
     }
 
     g_list_free (thumb_infos);
@@ -400,8 +400,8 @@ load_font_infos (GIOSchedulerJob *job,
     if (g_cancellable_is_cancelled (cancellable))
         load_font_infos_data_free (data);
     else
-        g_io_scheduler_job_send_to_mainloop_async (job, font_infos_loaded,
-                                                   data, load_font_infos_data_free);
+        g_main_context_invoke_full (NULL, G_PRIORITY_DEFAULT, font_infos_loaded,
+                                    data, load_font_infos_data_free);
 
     return FALSE;
 }
