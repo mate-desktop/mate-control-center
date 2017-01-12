@@ -1013,9 +1013,9 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
   conv_data->thumbnail = thumbnail;
   
   /* set useful data for callbacks */
-  g_object_set_data (G_OBJECT (list), THEME_DATA, conv_data);
+  g_object_set_data_full (G_OBJECT (list), THEME_DATA, conv_data, g_free);
   g_object_set_data (G_OBJECT (list), GSETTINGS_SETTINGS, settings);
-  g_object_set_data (G_OBJECT (list), GSETTINGS_KEY, g_strdup(key));
+  g_object_set_data_full (G_OBJECT (list), GSETTINGS_KEY, g_strdup(key), g_free);
   
   /* select in treeview the theme set in gsettings */
   GtkTreeModel *treemodel;
