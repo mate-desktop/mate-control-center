@@ -1038,6 +1038,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
   gchar *signal_name = g_strdup_printf("changed::%s", key);
   g_signal_connect (settings, signal_name,
       G_CALLBACK (treeview_gsettings_changed_callback), list);
+  g_signal_connect (settings, signal_name, callback, data);
   g_free (signal_name);
 
   /* connect to treeview change event */
