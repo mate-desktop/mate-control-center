@@ -413,6 +413,8 @@ create_actions_section (AppShellData * app_data, const gchar * title,
 
 			action = (AppAction *) actions->data;
 			header = gtk_label_new (action->name);
+			gtk_label_set_line_wrap (GTK_LABEL (header), TRUE);
+			gtk_label_set_max_width_chars (GTK_LABEL (header), 0);
 #if GTK_CHECK_VERSION (3, 16, 0)
 			gtk_label_set_xalign (GTK_LABEL (header), 0.0);
 #else
