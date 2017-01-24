@@ -21,6 +21,7 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 	id = g_strdup (image_id);
 
 	gtk_icon_size_lookup (size, &width, &height);
+	gtk_image_set_pixel_size (image, width);
 
 	if (g_path_is_absolute (id))
 	{
