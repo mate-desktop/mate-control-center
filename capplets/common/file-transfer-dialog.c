@@ -292,7 +292,6 @@ file_transfer_dialog_init (FileTransferDialog *dlg)
 	GtkWidget *vbox;
 	GtkWidget *hbox;
 	GtkWidget *progress_vbox;
-	GtkWidget *table;
 	char      *markup;
 	GtkWidget *content_area;
 
@@ -326,11 +325,6 @@ file_transfer_dialog_init (FileTransferDialog *dlg)
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 
-	table = gtk_table_new (2, 2, FALSE);
-	gtk_table_set_row_spacings (GTK_TABLE (table), 4);
-	gtk_table_set_col_spacings (GTK_TABLE (table), 4);
-
-	gtk_box_pack_start (GTK_BOX (vbox), GTK_WIDGET (table), FALSE, FALSE, 0);
 	progress_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_box_pack_start (GTK_BOX (vbox), progress_vbox, FALSE, FALSE, 0);
 
