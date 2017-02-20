@@ -61,8 +61,6 @@ enum {
 
 static guint signals[NUM_SIGNALS] = { 0, };
 
-static void ensure_thumbnail (FontViewModel *self, const gchar *path);
-
 G_DEFINE_TYPE (FontViewModel, font_view_model, GTK_TYPE_LIST_STORE);
 
 #define ATTRIBUTES_FOR_CREATING_THUMBNAIL \
