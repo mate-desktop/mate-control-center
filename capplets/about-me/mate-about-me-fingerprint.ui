@@ -1,7 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.14"/>
+  <!-- interface-license-type gplv2 -->
+  <!-- interface-name mate-about-me-fingerprint -->
+  <!-- interface-description about me fingerprint dialog window -->
+  <!-- interface-copyright MATE Developer -->
+  <!-- interface-authors Wolfgang Ulbrich -->
   <object class="GtkListStore" id="model1">
     <columns>
       <!-- column-name gchararray -->
@@ -35,35 +40,41 @@
     </data>
   </object>
   <object class="GtkAssistant" id="assistant">
+    <property name="can_focus">False</property>
     <property name="border_width">12</property>
     <property name="title" translatable="yes">Enable Fingerprint Login</property>
     <child>
       <placeholder/>
     </child>
     <child>
-      <object class="GtkVBox" id="page1">
+      <object class="GtkBox" id="page1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="border_width">12</property>
         <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <child>
-          <object class="GtkHBox" id="hbox74">
+          <object class="GtkBox" id="hbox74">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkImage" id="image">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="stock">gtk-dialog-info</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkLabel" id="intro-label">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="label">To enable fingerprint login, you need to save one of your fingerprints, using the Acme Foobar 5000.</property>
                 <property name="wrap">True</property>
               </object>
@@ -75,12 +86,15 @@
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
             <property name="position">0</property>
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox70">
+          <object class="GtkBox" id="vbox70">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkRadioButton" id="radiobutton1">
@@ -88,6 +102,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
+                <property name="halign">start</property>
                 <property name="use_underline">True</property>
                 <property name="active">True</property>
                 <property name="draw_indicator">True</property>
@@ -104,6 +119,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
+                <property name="halign">start</property>
                 <property name="use_underline">True</property>
                 <property name="draw_indicator">True</property>
                 <property name="group">radiobutton1</property>
@@ -115,14 +131,16 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox77">
+              <object class="GtkBox" id="hbox77">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <child>
                   <object class="GtkRadioButton" id="radiobutton3">
                     <property name="label" translatable="yes">Other finger: </property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
+                    <property name="halign">start</property>
                     <property name="use_underline">True</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">radiobutton1</property>
@@ -137,6 +155,8 @@
                   <object class="GtkComboBox" id="finger_combobox">
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="model">model1</property>
                     <child>
                       <object class="GtkCellRendererText" id="renderer1"/>
@@ -147,32 +167,39 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">2</property>
               </packing>
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>
       </object>
       <packing>
         <property name="title" translatable="yes">Select finger</property>
+        <property name="has_padding">False</property>
       </packing>
     </child>
     <child>
-      <object class="GtkVBox" id="page2">
+      <object class="GtkBox" id="page2">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkLabel" id="enroll-label">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="label">In order to save your fingerprints, you need to swipe your thumb on the "Acme foobar" device.</property>
             <property name="wrap">True</property>
           </object>
@@ -183,58 +210,74 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHBox" id="enroll_hbox">
+          <object class="GtkBox" id="enroll_hbox">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <child>
               <placeholder/>
             </child>
             <child>
               <object class="GtkImage" id="image1">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="stock">gtk-no</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkImage" id="image2">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="stock">gtk-no</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkImage" id="image3">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="stock">gtk-no</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">3</property>
               </packing>
             </child>
             <child>
               <object class="GtkImage" id="image4">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="stock">gtk-no</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">4</property>
               </packing>
             </child>
             <child>
               <object class="GtkImage" id="image5">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="stock">gtk-no</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
                 <property name="position">5</property>
               </packing>
             </child>
@@ -243,12 +286,15 @@
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel" id="status-label">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -259,17 +305,28 @@
       </object>
       <packing>
         <property name="title">Swipe finger on reader</property>
+        <property name="has_padding">False</property>
       </packing>
     </child>
     <child>
       <object class="GtkLabel" id="page3">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="label" translatable="yes">Your fingerprint was successfully saved. You should now be able to log in using your fingerprint reader.</property>
         <property name="wrap">True</property>
       </object>
       <packing>
         <property name="page_type">summary</property>
         <property name="title" translatable="yes">Done!</property>
+        <property name="has_padding">False</property>
+      </packing>
+    </child>
+    <child internal-child="action_area">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="has_padding">False</property>
       </packing>
     </child>
   </object>

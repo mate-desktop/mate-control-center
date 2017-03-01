@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
+  <requires lib="gtk+" version="3.14"/>
+  <!-- interface-license-type gplv2 -->
+  <!-- interface-name mate-about-me-dialog -->
+  <!-- interface-description about me dialog window -->
+  <!-- interface-copyright MATE Developers -->
+  <!-- interface-authors Wolfgang Ulbrich -->
   <object class="GtkDialog" id="about-me-dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -41,18 +47,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox55">
+          <object class="GtkBox" id="vbox55">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkHBox" id="hbox58">
+              <object class="GtkBox" id="hbox58">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="spacing">48</property>
                 <child>
-                  <object class="GtkHBox" id="hbox59">
+                  <object class="GtkBox" id="hbox59">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="spacing">12</property>
@@ -78,7 +85,7 @@
                       <object class="GtkLabel" id="fullname">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
                         <property name="label" translatable="yes">Full Name</property>
                       </object>
                       <packing>
@@ -95,12 +102,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkVBox" id="buttons_vbox">
+                  <object class="GtkBox" id="buttons_vbox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkHBox" id="hbox60">
+                      <object class="GtkBox" id="hbox60">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="spacing">12</property>
@@ -108,7 +116,7 @@
                           <object class="GtkLabel" id="label1012">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="yalign">0</property>
+                            <property name="valign">start</property>
                             <property name="label" translatable="yes">User name:</property>
                           </object>
                           <packing>
@@ -121,7 +129,7 @@
                           <object class="GtkLabel" id="login">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="yalign">0</property>
+                            <property name="valign">start</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
