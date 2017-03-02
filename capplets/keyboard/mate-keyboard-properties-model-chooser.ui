@@ -1,9 +1,16 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.14"/>
+  <!-- interface-license-type gplv2 -->
+  <!-- interface-name mate-keyboard-properties-model-chooser -->
+  <!-- interface-description keyboard model chooser dialog window -->
+  <!-- interface-copyright MATE Developer -->
+  <!-- interface-authors Wolfgang Ulbrich -->
   <object class="GtkDialog" id="xkb_model_chooser">
+    <property name="name">xkb-model-chooser</property>
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Choose a Keyboard Model</property>
     <property name="modal">True</property>
@@ -11,92 +18,15 @@
     <property name="default_height">380</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox2">
+      <object class="GtkBox" id="dialog-vbox2">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
-        <child>
-          <object class="GtkVBox" id="xkb_model_chooser_pane">
-            <property name="visible">True</property>
-            <property name="border_width">5</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">6</property>
-            <child>
-              <object class="GtkLabel" id="vendors_label">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">_Vendors:</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="vendors_scrolledwindow">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
-                <property name="height_request">130</property>
-                <property name="shadow_type">in</property>
-                <child>
-                  <object class="GtkTreeView" id="vendors_list">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="headers_visible">False</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label7">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">_Models:</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow3">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">never</property>
-                <property name="vscrollbar_policy">automatic</property>
-                <property name="shadow_type">in</property>
-                <property name="height_request">130</property>
-                <child>
-                  <object class="GtkTreeView" id="models_list">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="headers_visible">False</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="position">3</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="cancelbutton1">
@@ -131,8 +61,98 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="xkb_model_chooser_pane">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkLabel" id="vendors_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">_Vendors:</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="vendors_scrolledwindow">
+                <property name="height_request">130</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="vendors_list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="headers_visible">False</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection"/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label7">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">_Models:</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow3">
+                <property name="height_request">130</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">never</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="models_list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="headers_visible">False</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection"/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
