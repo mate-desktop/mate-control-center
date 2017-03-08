@@ -476,7 +476,7 @@ gd_main_toolbar_set_labels_menu (GdMainToolbar *self,
       gtk_container_add (GTK_CONTAINER (grid), self->priv->labels_grid);
       g_object_unref (self->priv->labels_grid);
 
-      w = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+      w = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
       gtk_container_add (GTK_CONTAINER (grid), w);
 
       self->priv->center_menu = button = gtk_menu_button_new ();
