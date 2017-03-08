@@ -364,7 +364,9 @@ load_font_infos (GTask *task,
         FcPatternGetString (self->priv->font_list->fonts[i], FC_FILE, 0, &file);
         g_mutex_unlock (&self->priv->font_list_mutex);
 
-        font_name = font_utils_get_font_name_for_file (self->priv->library, (const gchar *) file);
+        font_name = font_utils_get_font_name_for_file (self->priv->library,
+                                                       (const gchar *) file,
+                                                       0);
 
         if (!font_name)
             continue;
