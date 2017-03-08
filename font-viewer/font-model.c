@@ -513,7 +513,7 @@ get_fallback_icon (void)
     icon_theme = gtk_icon_theme_get_default ();
     icon = g_content_type_get_icon ("application/x-font-ttf");
     icon_info = gtk_icon_theme_lookup_by_gicon (icon_theme, icon,
-                                                128, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+                                                128, 0);
     g_object_unref (icon);
 
     if (!icon_info)
