@@ -492,7 +492,8 @@ font_view_ensure_model (FontViewApplication *self)
 
 static void
 font_view_application_do_open (FontViewApplication *self,
-                               GFile *file)
+                               GFile *file,
+                               gint face_index)
 {
     gchar *uri;
 
@@ -526,7 +527,7 @@ font_view_application_do_open (FontViewApplication *self,
         GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
         GtkWidget *w;
 
-        self->font_widget = GTK_WIDGET (sushi_font_widget_new (uri, 0));
+        self->font_widget = GTK_WIDGET (sushi_font_widget_new (uri, face_index));
 
         gtk_widget_override_color (self->font_widget, GTK_STATE_NORMAL, &black);
         gtk_widget_override_background_color (self->font_widget, GTK_STATE_FLAG_NORMAL, &white);
@@ -542,7 +543,7 @@ font_view_application_do_open (FontViewApplication *self,
         g_signal_connect (self->font_widget, "error",
                           G_CALLBACK (font_widget_error_cb), self);
     } else {
-        g_object_set (self->font_widget, "uri", uri, "face-index", 0, NULL);
+        g_object_set (self->font_widget, "uri", uri, "face-index", face_index, NULL);
         sushi_font_widget_load (SUSHI_FONT_WIDGET (self->font_widget));
     }
 
@@ -561,6 +562,7 @@ icon_view_release_cb (GtkWidget *widget,
     GtkTreePath *path;
     GtkTreeIter iter;
     gchar *font_path;
+    gint face_index;
     GFile *file;
 
     /* eat double/triple click events */
@@ -574,11 +576,12 @@ icon_view_release_cb (GtkWidget *widget,
         gtk_tree_model_get_iter (self->model, &iter, path)) {
         gtk_tree_model_get (self->model, &iter,
                             COLUMN_PATH, &font_path,
+                            COLUMN_FACE_INDEX, &face_index,
                             -1);
 
         if (font_path != NULL) {
             file = g_file_new_for_path (font_path);
-            font_view_application_do_open (self, file);
+            font_view_application_do_open (self, file, face_index);
             g_object_unref (file);
         }
         gtk_tree_path_free (path);
@@ -670,7 +673,7 @@ query_info_ready_cb (GObject *object,
         font_view_show_font_error (self, error->message);
         g_error_free (error);
     } else {
-        font_view_application_do_open (self, G_FILE (object));
+        font_view_application_do_open (self, G_FILE (object), 0);
     }
 
     g_clear_object (&info);
