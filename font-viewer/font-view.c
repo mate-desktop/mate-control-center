@@ -98,7 +98,7 @@ static const gchar *app_menu =
 #define WHITESPACE_CHARS "\f \t"
 
 static void
-strip_whitespace (gchar **copyright)
+strip_whitespace (gchar **original)
 {
     GString *reassembled;
     gchar **split;
@@ -106,7 +106,7 @@ strip_whitespace (gchar **copyright)
     gint idx, n_stripped;
     size_t len;
 
-    split = g_strsplit (*copyright, "\n", -1);
+    split = g_strsplit (*original, "\n", -1);
     reassembled = g_string_new (NULL);
     n_stripped = 0;
 
@@ -117,15 +117,39 @@ strip_whitespace (gchar **copyright)
         if (len)
             str += len;
 
+        if (strlen (str) == 0 &&
+            ((split[idx + 1] == NULL) || strlen (split[idx + 1]) == 0))
+            continue;
+
         if (n_stripped++ > 0)
             g_string_append (reassembled, "\n");
         g_string_append (reassembled, str);
     }
 
     g_strfreev (split);
-    g_free (*copyright);
+    g_free (*original);
 
-    *copyright = g_string_free (reassembled, FALSE);
+    *original = g_string_free (reassembled, FALSE);
+}
+
+#define MATCH_VERSION_STR "Version"
+
+static void
+strip_version (gchar **original)
+{
+    gchar *ptr, *stripped;
+
+    ptr = g_strstr_len (*original, -1, MATCH_VERSION_STR);
+    if (!ptr)
+        return;
+
+    ptr += strlen (MATCH_VERSION_STR);
+    stripped = g_strdup (ptr);
+
+    strip_whitespace (&stripped);
+
+    g_free (*original);
+    *original = stripped;
 }
 
 static void
@@ -236,15 +260,17 @@ populate_grid (FontViewApplication *self,
         }
 
 	if (version) {
-	    add_row (grid, _("Version"), version, FALSE);
+            strip_version (&version);
+            add_row (grid, _("Version"), version, FALSE);
 	    g_free (version);
 	}
 	if (copyright) {
 	    strip_whitespace (&copyright);
-	    add_row (self->side_grid, _("Copyright"), copyright, TRUE);
+	    add_row (grid, _("Copyright"), copyright, TRUE);
 	    g_free (copyright);
 	}
 	if (description) {
+	    strip_whitespace (&description);
 	    add_row (grid, _("Description"), description, TRUE);
 	    g_free (description);
 	}
