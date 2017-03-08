@@ -138,14 +138,22 @@ add_row (GtkWidget *grid,
 
     name_w = gtk_label_new (name);
     gtk_style_context_add_class (gtk_widget_get_style_context (name_w), "dim-label");
-    gtk_widget_set_halign (name_w, GTK_ALIGN_END);
-    gtk_widget_set_valign (name_w, GTK_ALIGN_START);
+#if GTK_CHECK_VERSION (3, 16, 0)
+    gtk_label_set_xalign (GTK_LABEL (name_w), 1.0);
+    gtk_label_set_yalign (GTK_LABEL (name_w), 0.0);
+ #else
+    gtk_misc_set_alignment (GTK_MISC (name_w), 1.0, 0.0);
+ #endif
 
     gtk_container_add (GTK_CONTAINER (grid), name_w);
 
     label = gtk_label_new (value);
-    gtk_widget_set_halign (label, GTK_ALIGN_START);
-    gtk_widget_set_valign (label, GTK_ALIGN_START);
+#if GTK_CHECK_VERSION (3, 16, 0)
+    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+    gtk_label_set_yalign (GTK_LABEL (label), 0.0);
+ #else
+    gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
+ #endif
     gtk_label_set_selectable (GTK_LABEL(label), TRUE);
 
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
