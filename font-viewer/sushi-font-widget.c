@@ -574,6 +574,7 @@ load_font_face (SushiFontWidget *self)
 {
   sushi_new_ft_face_from_uri_async (self->priv->library,
                                     self->priv->uri,
+                                    0,
                                     font_face_async_ready_cb,
                                     self);
 }

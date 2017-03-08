@@ -237,7 +237,7 @@ main (int argc,
     uri = g_file_get_uri (file);
     g_object_unref (file);
 
-    face = sushi_new_ft_face_from_uri (library, uri, &contents, &gerror);
+    face = sushi_new_ft_face_from_uri (library, uri, 0, &contents, &gerror);
     if (gerror) {
 	g_printerr ("Could not load face '%s': %s\n", uri,
 		    gerror->message);

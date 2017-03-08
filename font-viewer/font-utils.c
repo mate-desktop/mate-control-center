@@ -47,7 +47,7 @@ font_utils_get_font_name_for_file (FT_Library library,
     file = g_file_new_for_path (path);
     uri = g_file_get_uri (file);
 
-    face = sushi_new_ft_face_from_uri (library, uri, &contents, &error);
+    face = sushi_new_ft_face_from_uri (library, uri, 0, &contents, &error);
     if (face != NULL) {
         name = font_utils_get_font_name (face);
         FT_Done_Face (face);
