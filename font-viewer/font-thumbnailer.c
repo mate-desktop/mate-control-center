@@ -183,6 +183,8 @@ main (int argc,
     cairo_font_face_t *font;
     gchar *str = NULL;
     gdouble scale, scale_x, scale_y;
+    gint face_index = 0;
+    gchar *fragment;
 
     const GOptionEntry options[] = {
 	    { "text", 't', 0, G_OPTION_ARG_STRING, &thumbstr_utf8,
@@ -233,11 +235,15 @@ main (int argc,
 
     totem_resources_monitor_start (arguments[0], 30 * G_USEC_PER_SEC);
 
+    fragment = strrchr (arguments[0], '#');
+    if (fragment)
+	face_index = strtol (fragment + 1, NULL, 0);
+
     file = g_file_new_for_commandline_arg (arguments[0]);
     uri = g_file_get_uri (file);
     g_object_unref (file);
 
-    face = sushi_new_ft_face_from_uri (library, uri, 0, &contents, &gerror);
+    face = sushi_new_ft_face_from_uri (library, uri, face_index, &contents, &gerror);
     if (gerror) {
 	g_printerr ("Could not load face '%s': %s\n", uri,
 		    gerror->message);
