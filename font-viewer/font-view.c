@@ -526,7 +526,7 @@ font_view_application_do_open (FontViewApplication *self,
         GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
         GtkWidget *w;
 
-        self->font_widget = GTK_WIDGET (sushi_font_widget_new (uri));
+        self->font_widget = GTK_WIDGET (sushi_font_widget_new (uri, 0));
 
         gtk_widget_override_color (self->font_widget, GTK_STATE_NORMAL, &black);
         gtk_widget_override_background_color (self->font_widget, GTK_STATE_FLAG_NORMAL, &white);
@@ -542,7 +542,8 @@ font_view_application_do_open (FontViewApplication *self,
         g_signal_connect (self->font_widget, "error",
                           G_CALLBACK (font_widget_error_cb), self);
     } else {
-        g_object_set (self->font_widget, "uri", uri, NULL);
+        g_object_set (self->font_widget, "uri", uri, "face-index", 0, NULL);
+        sushi_font_widget_load (SUSHI_FONT_WIDGET (self->font_widget));
     }
 
     g_free (uri);
