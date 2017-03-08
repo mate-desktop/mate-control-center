@@ -171,7 +171,6 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   GtkWidget *window;
   GtkWidget *preview;
   GtkWidget *vbox;
-  GtkWidget *align;
   GtkWidget *box;
   GtkWidget *stock_button;
   GtkWidget *checkbox;
@@ -221,10 +220,11 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_container_add (GTK_CONTAINER (preview), vbox);
-  align = gtk_alignment_new (0, 0, 0.0, 0.0);
-  gtk_box_pack_start (GTK_BOX (vbox), align, FALSE, FALSE, 0);
   stock_button = gtk_button_new_from_stock (GTK_STOCK_OPEN);
-  gtk_container_add (GTK_CONTAINER (align), stock_button);
+  gtk_widget_set_halign (stock_button, GTK_ALIGN_START);
+  gtk_widget_set_valign (stock_button, GTK_ALIGN_START);
+  gtk_widget_show (stock_button);
+  gtk_box_pack_start (GTK_BOX (vbox), stock_button, FALSE, FALSE, 0);
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_box_pack_start (GTK_BOX (vbox), box, FALSE, FALSE, 0);
   checkbox = gtk_check_button_new ();
