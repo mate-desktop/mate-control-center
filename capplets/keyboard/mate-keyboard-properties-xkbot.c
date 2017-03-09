@@ -304,7 +304,7 @@ static void
 xkb_options_add_group (XklConfigRegistry * config_registry,
 		       XklConfigItem * config_item, GtkBuilder * dialog)
 {
-	GtkWidget *align, *vbox, *option_check;
+	GtkWidget *vbox, *option_check;
 	gboolean allow_multiple_selection =
 	    GPOINTER_TO_INT (g_object_get_data (G_OBJECT (config_item),
 						XCI_PROP_ALLOW_MULTIPLE_SELECTION));
@@ -325,11 +325,15 @@ xkb_options_add_group (XklConfigRegistry * config_registry,
 				g_strdup (config_item->name), g_free);
 
 	g_free (titlemarkup);
-	align = gtk_alignment_new (0, 0, 1, 1);
-	gtk_alignment_set_padding (GTK_ALIGNMENT (align), 6, 12, 12, 0);
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_container_add (GTK_CONTAINER (align), vbox);
-	gtk_container_add (GTK_CONTAINER (current_expander), align);
+	gtk_widget_set_halign (vbox, GTK_ALIGN_FILL);
+	gtk_widget_set_valign (vbox, GTK_ALIGN_START);
+	gtk_widget_set_hexpand (vbox, TRUE);
+	gtk_widget_set_vexpand (vbox, TRUE);
+	gtk_widget_set_margin_top (vbox, 6);
+	gtk_widget_set_margin_bottom (vbox, 12);
+	gtk_widget_set_margin_start (vbox, 12);
+	gtk_container_add (GTK_CONTAINER (current_expander), vbox);
 
 	current_multi_select = (gboolean) allow_multiple_selection;
 	current_radio_group = NULL;
