@@ -1,34 +1,32 @@
-### mate-control-center 1.17.4
+### mate-control-center 1.18.0
 
-### mate-control-center 1.17.3
-
-  * re-work of font-viewer
-
-### mate-control-center 1.17.2
-
-  * mouse: use input helper to detect both libinput and synaptics touchpads
-  * mouse: add input helper from m-s-d
-
-### mate-control-center 1.17.1
-
-  * mouse: move xinput check into separate function
-  * mouse: use gboolean return values where they're expected to be
-  * mouse: fix indent a bit
-  * keyboard: fix vertical expand of content with window resize
-
-### mate-control-center 1.17.0
-
+  * NEWS: use consistent, project wide, markdown-like formatting to make
+    generating release announcements easier
+  * Build: require libmatekbd, libmate-desktop, marco, m-s-d >= 1.17
+  * Build: require XCursor and XInput unconditionally
+  * Move to GTK+3 (require GTK+ >= 3.14), drop GTK+2 code and --with-gtk
+    build option
+  * Port from libunique to GtkApplication
+  * Rework font-viewer: add font browsing mode, support for TTC fonts,
+    and make it appear in the menus
+  * Add libinput support for mouse and touchpad
+  * Mouse: add separate touchpad motion settings on touchpad tab
+  * Mouse: change tab label from General to Mouse
+  * Mouse: change natural scroll mnemonic from 'a' to 'n'
+  * Fix lots of GTK+ deprecations
+  * Some more fixes and cleanups
   * Translations update
-  * move to GTK+3 (>= 3.14), drop GTK+2 code and --with-gtk build option
-  * mouse: add separate touchpad motion settings on touchpad tab
-  * mouse: use GtkAlignment instead of labels with spaces
-  * mouse: change natural scroll mnemonic from 'a' to 'n'
-  * mouse: change tab label from General to Mouse
-  * build: require XCursor unconditionally
-  * mouse: remove dead code
-  * build: require XInput unconditionally - same as done in m-s-d
-  * GTK3: port libunique->GtkApplication
-  * GTK+3: fix build failure with marco 1.17 (which is GTK+3 only now)
+
+### mate-control-center 1.16.1
+
+  * Appearance: fix live updating of the various theme details
+  * Appearance: fix vertical expand of content on window resize in
+    GTK+3 build
+  * Keyboard: fix vertical expand of content on window resize in
+    GTK+3 build
+  * Shell: force icon size in libslab to avoid huge icons
+  * GTK+3: fix build with marco 1.17
+  * Fix a couple of memleaks
 
 ### mate-control-center 1.16.0
 
