@@ -5,21 +5,22 @@
 # Translators:
 # Evolve32 <evolve32@yandex.ru>, 2015
 # mauron, 2015
-# Микола Ткач <Stuartlittle1970@gmail.com>, 2013
+# Микола Ткач <znadibnyk@gmail.com>, 2013
 # Stefano Karapetsas <stefano@karapetsas.com>, 2012
 # Wanderlust <wanderlust@ukr.net>, 2009
 # Yuri Syrota <rasta@renome.rovno.ua>, 1999
 # zubr139, 2012
 # zubr139, 2012
-# Микола Ткач <Stuartlittle1970@gmail.com>, 2014-2016
+# Микола Ткач <znadibnyk@gmail.com>, 2014-2016
+# Микола Ткач <znadibnyk@gmail.com>, 2017
 # Шаповалов Анатолій Романович <elrond.716.smith@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 16:41+0300\n"
-"PO-Revision-Date: 2016-11-02 13:43+0000\n"
-"Last-Translator: monsta <monsta@inbox.ru>\n"
+"POT-Creation-Date: 2017-03-08 15:40+0100\n"
+"PO-Revision-Date: 2017-03-09 11:35+0000\n"
+"Last-Translator: Микола Ткач <znadibnyk@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/mate/MATE/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -126,6 +127,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Команда, що асоціюється з користувацькими сполученнями клявіш."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
+#: ../font-viewer/font-view.c:181
 msgid "Name"
 msgstr "Назва"
 
@@ -157,7 +159,7 @@ msgstr "Кнопки попередження"
 msgid "The buttons shown in the alert dialog"
 msgstr "Кнопки, що показуються у вікні попередження"
 
-#: ../capplets/about-me/eel-alert-dialog.c:219
+#: ../capplets/about-me/eel-alert-dialog.c:207
 msgid "Show more _details"
 msgstr "_Докладніше"
 
@@ -170,16 +172,16 @@ msgid "No Image"
 msgstr "Немає зображення"
 
 #: ../capplets/about-me/mate-about-me.c:298
-#: ../capplets/appearance/appearance-desktop.c:692
+#: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Зображення"
 
 #: ../capplets/about-me/mate-about-me.c:302
-#: ../capplets/appearance/theme-installer.c:787
+#: ../capplets/appearance/theme-installer.c:780
 msgid "All Files"
 msgstr "Усі файли"
 
-#: ../capplets/about-me/mate-about-me.c:454
+#: ../capplets/about-me/mate-about-me.c:446
 #, c-format
 msgid "About %s"
 msgstr "Про проґраму %s"
@@ -423,39 +425,39 @@ msgid "The new password has already been used recently."
 msgstr "Новий пароль вже використовувався раніше."
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:829
+#: ../capplets/about-me/mate-about-me-password.c:825
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Не вдається запустити %s: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:833
+#: ../capplets/about-me/mate-about-me-password.c:829
 msgid "Unable to launch backend"
 msgstr "Не вдається запустити службову проґраму"
 
-#: ../capplets/about-me/mate-about-me-password.c:834
+#: ../capplets/about-me/mate-about-me-password.c:830
 msgid "A system error has occurred"
 msgstr "Системна помилка"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:854
+#: ../capplets/about-me/mate-about-me-password.c:850
 msgid "Checking password..."
 msgstr "Перевірка паролю..."
 
-#: ../capplets/about-me/mate-about-me-password.c:938
+#: ../capplets/about-me/mate-about-me-password.c:934
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Щоб змінити пароль натисніть <b>Змінити пароль</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:941
+#: ../capplets/about-me/mate-about-me-password.c:937
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Уведіть пароль у полі <b>Новий пароль</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:944
-#: ../capplets/about-me/mate-about-me-password.ui.h:9
+#: ../capplets/about-me/mate-about-me-password.c:940
+#: ../capplets/about-me/mate-about-me-password.ui.h:10
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "Уведіть пароль знову, у полі <b>Схвалення паролю</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:947
+#: ../capplets/about-me/mate-about-me-password.c:943
 msgid "The two passwords are not equal."
 msgstr "Паролі не збігаються."
 
@@ -464,132 +466,132 @@ msgid "Change password"
 msgstr "Змінити пароль"
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:2
+msgid "Change pa_ssword"
+msgstr "Змінити _пароль"
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
 msgid "Change your password"
 msgstr "Змінити пароль"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:3
+#: ../capplets/about-me/mate-about-me-password.ui.h:4
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
 msgstr "Щоб змінити Ваш пароль, уведіть поточний пароль у наведеному нижче полі та натисніть <b>Розпізнання</b>.\nПісля розпізнання, уведіть новий пароль, повторіть його для перевірки та натисніть <b>Змінити пароль</b>."
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:5
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
 msgid "Current _password:"
 msgstr "_Поточний пароль:"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:6
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
 msgid "_New password:"
 msgstr "_Новий пароль:"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:7
+#: ../capplets/about-me/mate-about-me-password.ui.h:8
 msgid "_Retype new password:"
 msgstr "Схва_лення паролю: "
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:8
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid "_Authenticate"
 msgstr "_Розпізнання"
-
-#: ../capplets/about-me/mate-about-me-password.ui.h:10
-msgid "Change pa_ssword"
-msgstr "Змінити _пароль"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
 msgid "Assistive Technologies Preferences"
 msgstr "Параметри технологій доступности"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+msgid "Close and _Log Out"
+msgstr "Закрити та _вийти з системи"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "Можливости доступности"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
 msgid "_Preferred Applications"
 msgstr "_Стандартні проґрами"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
 msgid "Jump to Preferred Applications dialog"
 msgstr "Перейти до діялоґу Стандартні проґрами"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
 msgid "_Enable assistive technologies"
 msgstr "_Увімкнути допоміжні технології"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
 msgstr "Зміна цього параметру не матиме дії до наступного входу у сеанс."
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
 msgid "Preferences"
 msgstr "Параметри"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
 msgid "_Keyboard Accessibility"
 msgstr "Допоміжні можливости _набірниці"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
 msgid "Jump to the Keyboard Accessibility dialog"
 msgstr "Перейти до діялоґу Допоміжні можливости набірниці"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
 msgid "_Mouse Accessibility"
 msgstr "Можливости доступности _миші"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
 msgid "Jump to the Mouse Accessibility dialog"
 msgstr "Перейти до діялоґу Допоміжні можливости миші"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
 msgid "Accessible Lo_gin"
 msgstr "В_хід з використанням допоміжних можливостей"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
 msgid "Jump to the Accessible Login dialog"
 msgstr "Перейти до діялоґу Вхід з використанням допоміжних технологій"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
-msgid "Close and _Log Out"
-msgstr "Закрити та _вийти з системи"
 
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Вибрати можливості доступності, що запускаються при вході до системи"
 
-#: ../capplets/appearance/appearance-desktop.c:661
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "Додавання малюнку тла"
 
-#: ../capplets/appearance/appearance-desktop.c:696
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "All files"
 msgstr "Усі файли"
 
-#: ../capplets/appearance/appearance-main.c:61
+#: ../capplets/appearance/appearance-main.c:56
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Не вдається завантажити файл інтерфейсу: %s"
 
-#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/appearance/appearance-main.c:157
 msgid "Specify the filename of a theme to install"
 msgstr "Вкажіть назву файлу теми для встановлення"
 
-#: ../capplets/appearance/appearance-main.c:165
+#: ../capplets/appearance/appearance-main.c:158
 msgid "filename"
 msgstr "ім'я файлу"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:172
+#: ../capplets/appearance/appearance-main.c:165
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Вкажіть назву сторінки для показу (теми|тла|шрифтів|інтерфейсу)"
 
-#: ../capplets/appearance/appearance-main.c:173
+#: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:450
+#: ../capplets/mouse/mate-mouse-properties.c:397
 msgid "page"
 msgstr "сторінка"
 
-#: ../capplets/appearance/appearance-main.c:180
+#: ../capplets/appearance/appearance-main.c:173
 msgid "[WALLPAPER...]"
 msgstr "[МАЛЮНОК ТЛА...]"
 
@@ -600,16 +602,9 @@ msgstr "Типовий вказівник"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
+#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
 msgid "Install"
 msgstr "Встановити"
-
-#: ../capplets/appearance/appearance-style.c:269
-#: ../capplets/common/mate-theme-info.c:1608
-#, c-format
-msgid ""
-"This theme will not look as intended because the required GTK+ theme engine "
-"'%s' is not installed."
-msgstr "Ця тема не буде виглядати так, як задумано, бо потрібний модуль GTK+ «%s» не встановлено."
 
 #: ../capplets/appearance/appearance-themes.c:646
 msgid "Apply Background"
@@ -623,41 +618,41 @@ msgstr "Застосувати шрифт"
 msgid "Revert Font"
 msgstr "Повернути шрифт"
 
-#: ../capplets/appearance/appearance-themes.c:700
+#: ../capplets/appearance/appearance-themes.c:691
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "Параметри поточної теми пропонують встановити тло стільниці та шрифти. Зауважте, останні застосовані параметри шрифтів можуть бути скасовані."
 
-#: ../capplets/appearance/appearance-themes.c:702
+#: ../capplets/appearance/appearance-themes.c:693
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "Параметри поточної теми пропонують встановити тло стільниці. Зауважте, останні застосовані параметри шрифтів можуть бути скасовані."
 
-#: ../capplets/appearance/appearance-themes.c:704
+#: ../capplets/appearance/appearance-themes.c:695
 msgid "The current theme suggests a background and a font."
 msgstr "У поточній темі пропонується тло та шрифт."
 
-#: ../capplets/appearance/appearance-themes.c:706
+#: ../capplets/appearance/appearance-themes.c:697
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "Параметри поточної теми пропонують встановити тло стільниці. Зауважте, останні застосовані параметри шрифтів можуть бути скасовані."
 
-#: ../capplets/appearance/appearance-themes.c:708
+#: ../capplets/appearance/appearance-themes.c:699
 msgid "The current theme suggests a background."
 msgstr "У поточній темі пропонується тло."
 
-#: ../capplets/appearance/appearance-themes.c:710
+#: ../capplets/appearance/appearance-themes.c:701
 msgid "The last applied font suggestion can be reverted."
 msgstr "Останні застосовані параметри шрифтів можуть бути скасовані."
 
-#: ../capplets/appearance/appearance-themes.c:712
+#: ../capplets/appearance/appearance-themes.c:703
 msgid "The current theme suggests a font."
 msgstr "У поточній темі пропонується шрифт:"
 
-#: ../capplets/appearance/appearance-themes.c:1028
+#: ../capplets/appearance/appearance-themes.c:1019
 msgid "Custom"
 msgstr "Иньший"
 
@@ -724,285 +719,285 @@ msgstr "_RGB"
 msgid "_BGR"
 msgstr "_BGR"
 
-#. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:20
-msgid "_VRGB"
-msgstr "_VRGB"
-
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "VB_GR"
 msgstr "VB_GR"
 
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "_VRGB"
+msgstr "_VRGB"
+
 #: ../capplets/appearance/data/appearance.ui.h:23
-msgid "Appearance Preferences"
-msgstr "Параметри вигляду"
-
-#: ../capplets/appearance/data/appearance.ui.h:24
-msgid "Save _As..."
-msgstr "Зберегти _як..."
-
-#: ../capplets/appearance/data/appearance.ui.h:25
-msgid "C_ustomize..."
-msgstr "_Налаштувати..."
-
-#: ../capplets/appearance/data/appearance.ui.h:26
-msgid "_Install..."
-msgstr "_Встановити..."
-
-#: ../capplets/appearance/data/appearance.ui.h:27
-msgid "Get more themes online"
-msgstr "Отримати теми з мережі"
-
-#: ../capplets/appearance/data/appearance.ui.h:28
-msgid "Theme"
-msgstr "Тема"
-
-#: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Style:"
-msgstr "_Стиль:"
-
-#: ../capplets/appearance/data/appearance.ui.h:30
-msgid "C_olors:"
-msgstr "_Кольори:"
-
-#: ../capplets/appearance/data/appearance.ui.h:31
-msgid "Open a dialog to specify the color"
-msgstr "Відкрити діялоґ для вказування кольору"
-
-#: ../capplets/appearance/data/appearance.ui.h:32
-msgid "Get more backgrounds online"
-msgstr "Отримати зображення для тла з мережі"
-
-#: ../capplets/appearance/data/appearance.ui.h:33
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
-msgid "_Add..."
-msgstr "_Додати..."
-
-#: ../capplets/appearance/data/appearance.ui.h:34
-msgid "Background"
-msgstr "Тло"
-
-#: ../capplets/appearance/data/appearance.ui.h:35
-msgid "_Document font:"
-msgstr "Шрифт _документу:"
-
-#: ../capplets/appearance/data/appearance.ui.h:36
-msgid "Des_ktop font:"
-msgstr "Шрифт _стільниці:"
-
-#: ../capplets/appearance/data/appearance.ui.h:37
-msgid "_Window title font:"
-msgstr "Шрифт за_головку вікна:"
-
-#: ../capplets/appearance/data/appearance.ui.h:38
-msgid "_Fixed width font:"
-msgstr "Моно_ширинний шрифт:"
-
-#: ../capplets/appearance/data/appearance.ui.h:39
-msgid "_Application font:"
-msgstr "Шрифт п_роґрам:"
-
-#: ../capplets/appearance/data/appearance.ui.h:40
-msgid "Rendering"
-msgstr "Режим виводу шрифтів"
-
-#: ../capplets/appearance/data/appearance.ui.h:41
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "С_убпіксельне згладжування (РК-монітори)"
-
-#: ../capplets/appearance/data/appearance.ui.h:42
-msgid "Best co_ntrast"
-msgstr "Найкраща _контрастність"
-
-#: ../capplets/appearance/data/appearance.ui.h:43
-msgid "Best _shapes"
-msgstr "Найкраща _форма"
-
-#: ../capplets/appearance/data/appearance.ui.h:44
-msgid "_Monochrome"
-msgstr "_Монохромний"
-
-#: ../capplets/appearance/data/appearance.ui.h:45
-msgid "D_etails..."
-msgstr "_Подробиці..."
-
-#: ../capplets/appearance/data/appearance.ui.h:46
-msgid "Fonts"
-msgstr "Шрифти"
-
-#: ../capplets/appearance/data/appearance.ui.h:47
-msgid "Menus and Toolbars"
-msgstr "Меню і панелі знарядь"
-
-#: ../capplets/appearance/data/appearance.ui.h:48
-msgid "Show _icons in menus"
-msgstr "Показувати _піктограми в меню"
-
-#: ../capplets/appearance/data/appearance.ui.h:49
-msgid "_Editable menu shortcut keys"
-msgstr "_Редаговані меню гарячих клявіш"
-
-#: ../capplets/appearance/data/appearance.ui.h:50
-msgid "Toolbar _button labels:"
-msgstr "Позначки _кнопок панелі знарядь"
-
-#: ../capplets/appearance/data/appearance.ui.h:51
-msgid "Preview"
-msgstr "Перегляд"
-
-#: ../capplets/appearance/data/appearance.ui.h:52
-msgid "_File"
-msgstr "_Файл"
-
-#: ../capplets/appearance/data/appearance.ui.h:53
-msgid "Edit"
-msgstr "Зміни"
-
-#: ../capplets/appearance/data/appearance.ui.h:54
-msgid "Interface"
-msgstr "Інтерфейс"
-
-#: ../capplets/appearance/data/appearance.ui.h:55
-msgid "Tile"
-msgstr "Черепицею"
-
-#: ../capplets/appearance/data/appearance.ui.h:56
-msgid "Zoom"
-msgstr "Мірило"
-
-#: ../capplets/appearance/data/appearance.ui.h:57
-msgid "Center"
-msgstr "У центрі"
-
-#: ../capplets/appearance/data/appearance.ui.h:58
-msgid "Scale"
-msgstr "Припасовувати"
-
-#: ../capplets/appearance/data/appearance.ui.h:59
-msgid "Stretch"
-msgstr "Розтягувати"
-
-#: ../capplets/appearance/data/appearance.ui.h:60
-msgid "Span"
-msgstr "Заповнення"
-
-#: ../capplets/appearance/data/appearance.ui.h:61
-msgid "Solid color"
-msgstr "Суцільний колір"
-
-#: ../capplets/appearance/data/appearance.ui.h:62
-msgid "Horizontal gradient"
-msgstr "Горизонтальний градієнт"
-
-#: ../capplets/appearance/data/appearance.ui.h:63
-msgid "Vertical gradient"
-msgstr "Вертикальний градієнт"
-
-#: ../capplets/appearance/data/appearance.ui.h:64
-msgid "Text below items"
-msgstr "Текст під піктогр."
-
-#: ../capplets/appearance/data/appearance.ui.h:65
-msgid "Text beside items"
-msgstr "Текст поруч з піктогр."
-
-#: ../capplets/appearance/data/appearance.ui.h:66
-msgid "Icons only"
-msgstr "Лише піктограми"
-
-#: ../capplets/appearance/data/appearance.ui.h:67
-msgid "Text only"
-msgstr "Лише текст"
-
-#: ../capplets/appearance/data/appearance.ui.h:68
 msgid "Customize Theme"
 msgstr "Иньша тема"
 
-#: ../capplets/appearance/data/appearance.ui.h:69
+#: ../capplets/appearance/data/appearance.ui.h:24
 msgid "Controls"
 msgstr "Елементи керування"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
+#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "The current controls theme does not support color schemes."
 msgstr "Поточна тема елементів керування не підтримує схеми кольорів."
 
-#: ../capplets/appearance/data/appearance.ui.h:71
+#: ../capplets/appearance/data/appearance.ui.h:26
 msgid "_Tooltips:"
 msgstr "_Підказки:"
 
-#: ../capplets/appearance/data/appearance.ui.h:72
-msgid "_Selected items:"
-msgstr "_Виділені елементи:"
-
-#: ../capplets/appearance/data/appearance.ui.h:73
-msgid "_Input boxes:"
-msgstr "_Поля вводу:"
-
-#: ../capplets/appearance/data/appearance.ui.h:74
-msgid "_Windows:"
-msgstr "_Вікна:"
-
-#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/appearance/data/appearance.ui.h:27
 msgid "Text"
 msgstr "Текст"
 
-#: ../capplets/appearance/data/appearance.ui.h:76
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Background"
+msgstr "Тло"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Windows:"
+msgstr "_Вікна:"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "_Input boxes:"
+msgstr "_Поля вводу:"
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "_Selected items:"
+msgstr "_Виділені елементи:"
+
+#: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
 msgstr "Скинути на _типові значення"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:33
 msgid "Colors"
 msgstr "Кольори"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:34
 msgid "Window Border"
 msgstr "Рамка вікна"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:35
 msgid "Icons"
 msgstr "Піктограми"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:36
 msgid "_Size:"
 msgstr "_Розмір:"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:37
 #: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Small"
 msgstr "Малий"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:82
+#: ../capplets/appearance/data/appearance.ui.h:38
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Large"
 msgstr "Великий"
 
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:39
 msgid "Pointer"
 msgstr "Вказівник"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:40
 msgid "Save Theme As..."
 msgstr "Зберегти тему як..."
 
-#: ../capplets/appearance/data/appearance.ui.h:85
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
-msgid "_Name:"
-msgstr "_Назва:"
-
-#: ../capplets/appearance/data/appearance.ui.h:86
-msgid "_Description:"
-msgstr "_Опис:"
-
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:41
 msgid "Save _background image"
 msgstr "Зберегти _зображення тла"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save _notification theme"
 msgstr "Зберегти тему _сповіщення"
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+msgid "_Name:"
+msgstr "_Назва:"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Description:"
+msgstr "_Опис:"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "Text below items"
+msgstr "Текст під піктогр."
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Text beside items"
+msgstr "Текст поруч з піктогр."
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Icons only"
+msgstr "Лише піктограми"
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Text only"
+msgstr "Лише текст"
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Solid color"
+msgstr "Суцільний колір"
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Horizontal gradient"
+msgstr "Горизонтальний градієнт"
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Vertical gradient"
+msgstr "Вертикальний градієнт"
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Tile"
+msgstr "Черепицею"
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Zoom"
+msgstr "Мірило"
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Center"
+msgstr "У центрі"
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Scale"
+msgstr "Припасовувати"
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Stretch"
+msgstr "Розтягувати"
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Span"
+msgstr "Заповнення"
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Appearance Preferences"
+msgstr "Параметри вигляду"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Save _As..."
+msgstr "Зберегти _як..."
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "C_ustomize..."
+msgstr "_Налаштувати..."
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "_Install..."
+msgstr "_Встановити..."
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "Get more themes online"
+msgstr "Отримати теми з мережі"
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "Theme"
+msgstr "Тема"
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Style:"
+msgstr "_Стиль:"
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "C_olors:"
+msgstr "_Кольори:"
+
+#: ../capplets/appearance/data/appearance.ui.h:66
+msgid "Open a dialog to specify the color"
+msgstr "Відкрити діялоґ для вказування кольору"
+
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Get more backgrounds online"
+msgstr "Отримати зображення для тла з мережі"
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr "_Додати..."
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "_Application font:"
+msgstr "Шрифт п_роґрам:"
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "_Document font:"
+msgstr "Шрифт _документу:"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Des_ktop font:"
+msgstr "Шрифт _стільниці:"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "_Window title font:"
+msgstr "Шрифт за_головку вікна:"
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Fixed width font:"
+msgstr "Моно_ширинний шрифт:"
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+msgid "Rendering"
+msgstr "Режим виводу шрифтів"
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "С_убпіксельне згладжування (РК-монітори)"
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Best _shapes"
+msgstr "Найкраща _форма"
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Best co_ntrast"
+msgstr "Найкраща _контрастність"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "_Monochrome"
+msgstr "_Монохромний"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "D_etails..."
+msgstr "_Подробиці..."
+
+#: ../capplets/appearance/data/appearance.ui.h:80
+msgid "Fonts"
+msgstr "Шрифти"
+
+#: ../capplets/appearance/data/appearance.ui.h:81
+msgid "Menus and Toolbars"
+msgstr "Меню і панелі знарядь"
+
+#: ../capplets/appearance/data/appearance.ui.h:82
+msgid "Show _icons in menus"
+msgstr "Показувати _піктограми в меню"
+
+#: ../capplets/appearance/data/appearance.ui.h:83
+msgid "_Editable menu shortcut keys"
+msgstr "_Редаговані меню гарячих клявіш"
+
+#: ../capplets/appearance/data/appearance.ui.h:84
+msgid "Toolbar _button labels:"
+msgstr "Позначки _кнопок панелі знарядь"
+
+#: ../capplets/appearance/data/appearance.ui.h:85
+msgid "Preview"
+msgstr "Перегляд"
+
+#: ../capplets/appearance/data/appearance.ui.h:86
+msgid "_File"
+msgstr "_Файл"
+
+#: ../capplets/appearance/data/appearance.ui.h:87
+msgid "Edit"
+msgstr "Зміни"
+
+#: ../capplets/appearance/data/appearance.ui.h:88
+msgid "Interface"
+msgstr "Інтерфейс"
 
 #: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
 msgid "Appearance"
@@ -1028,30 +1023,30 @@ msgstr "Пакунок тем MATE"
 msgid "No Desktop Background"
 msgstr "Без тла стільниці"
 
-#: ../capplets/appearance/mate-wp-item.c:318
+#: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
 msgstr "невідомо"
 
-#: ../capplets/appearance/mate-wp-item.c:325
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "Показ слайдів"
 
-#: ../capplets/appearance/mate-wp-item.c:327
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "Зображення"
 
-#: ../capplets/appearance/mate-wp-item.c:333
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "декілька розмірів"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:336
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s на %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:338
-#: ../capplets/appearance/mate-wp-item.c:340
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "піксель"
@@ -1062,7 +1057,7 @@ msgstr[2] "пікселів"
 #. * mime type, size
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:349
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1075,7 +1070,7 @@ msgstr "<b>%s</b>\n%s, %s\nТека: %s\nАртист: %s"
 #. * Image missing
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:364
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1084,7 +1079,7 @@ msgid ""
 "Artist: %s"
 msgstr "<b>%s</b>\n%s\nТека: %s\nАртист: %s"
 
-#: ../capplets/appearance/mate-wp-item.c:369
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "Зображення відсутнє"
 
@@ -1153,22 +1148,22 @@ msgstr "Не вдається створити тимчасовий катало
 msgid "New themes have been successfully installed."
 msgstr "Нові теми було успішно встановлено."
 
-#: ../capplets/appearance/theme-installer.c:665
+#: ../capplets/appearance/theme-installer.c:658
 msgid "No theme file location specified to install"
 msgstr "Не вказано файл теми для встановлення"
 
-#: ../capplets/appearance/theme-installer.c:689
+#: ../capplets/appearance/theme-installer.c:682
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
 msgstr "Немає прав для встановлення теми у:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:769
+#: ../capplets/appearance/theme-installer.c:762
 msgid "Select Theme"
 msgstr "Виберіть зображення"
 
-#: ../capplets/appearance/theme-installer.c:780
+#: ../capplets/appearance/theme-installer.c:773
 msgid "Theme Packages"
 msgstr "Пакунки тем"
 
@@ -1182,7 +1177,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Тема вже існує. Бажаєте її замінити?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:466
+#: ../capplets/common/file-transfer-dialog.c:446
 msgid "_Overwrite"
 msgstr "_Перезаписати"
 
@@ -1225,7 +1220,7 @@ msgid "Copying '%s'"
 msgstr "Копіювання '%s'"
 
 #: ../capplets/common/file-transfer-dialog.c:185
-#: ../capplets/common/file-transfer-dialog.c:317
+#: ../capplets/common/file-transfer-dialog.c:312
 msgid "Copying files"
 msgstr "Копіювання файлів"
 
@@ -1277,16 +1272,16 @@ msgstr "Загалом URI"
 msgid "Total number of URIs"
 msgstr "Загальна кількість URI"
 
-#: ../capplets/common/file-transfer-dialog.c:460
+#: ../capplets/common/file-transfer-dialog.c:440
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Файл «%s» вже існує. Переписати його?"
 
-#: ../capplets/common/file-transfer-dialog.c:463
+#: ../capplets/common/file-transfer-dialog.c:443
 msgid "_Skip"
 msgstr "_Пропустити"
 
-#: ../capplets/common/file-transfer-dialog.c:464
+#: ../capplets/common/file-transfer-dialog.c:444
 msgid "Overwrite _All"
 msgstr "Переписати _усі"
 
@@ -1482,7 +1477,7 @@ msgid "Off"
 msgstr "Вимкнено"
 
 #: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:508
+#: ../capplets/display/xrandr-capplet.c:496
 msgid "Monitor"
 msgstr "Монітор"
 
@@ -1503,20 +1498,20 @@ msgid "Sets the selected monitor as primary."
 msgstr "Встановлює вибраний монітор як головний."
 
 #: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
 msgid "Normal"
 msgstr "Звичайний"
 
 #: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:574
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "Left"
 msgstr "Обернений наліво"
 
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:313
-#: ../capplets/windows/mate-window-properties.c:573
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Right"
 msgstr "Обернений направо"
 
@@ -1622,11 +1617,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "Для встановлення багатомоніторних налаштувань для усіх користувачів потрібне розпізнання"
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Upside Down"
 msgstr "Згори вниз"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:352
 #, c-format
 msgid "%d Hz"
 msgstr "%d Гц"
@@ -1635,177 +1630,177 @@ msgstr "%d Гц"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:493
-#: ../capplets/display/xrandr-capplet.c:1669
+#: ../capplets/display/xrandr-capplet.c:485
+#: ../capplets/display/xrandr-capplet.c:1631
 #, c-format
 msgid "Mirror Screens"
 msgstr "Дублювати зображення"
 
-#: ../capplets/display/xrandr-capplet.c:495
+#: ../capplets/display/xrandr-capplet.c:487
 #, c-format
 msgid "Monitor: %s"
 msgstr "Монітор %s"
 
-#: ../capplets/display/xrandr-capplet.c:591
+#: ../capplets/display/xrandr-capplet.c:557
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1525
+#: ../capplets/display/xrandr-capplet.c:1487
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "Виберіть монітор для зміни його параметрів; перетягніть його для зміни його положення."
 
-#: ../capplets/display/xrandr-capplet.c:2147
+#: ../capplets/display/xrandr-capplet.c:2067
 msgid "Could not save the monitor configuration"
 msgstr "Не вдається зберегти конфігурацію монітору"
 
-#: ../capplets/display/xrandr-capplet.c:2169
+#: ../capplets/display/xrandr-capplet.c:2089
 msgid "Could not get session bus while applying display configuration"
 msgstr "Не вдається отримати доступ до системної шини повідомлень для зміни параметрів екрану"
 
-#: ../capplets/display/xrandr-capplet.c:2188
+#: ../capplets/display/xrandr-capplet.c:2108
 msgid "Could not detect displays"
 msgstr "Не вдається визначити характеристики екранів"
 
-#: ../capplets/display/xrandr-capplet.c:2400
+#: ../capplets/display/xrandr-capplet.c:2316
 msgid "The monitor configuration has been saved"
 msgstr "Конфігурацію монітору збережено"
 
-#: ../capplets/display/xrandr-capplet.c:2402
+#: ../capplets/display/xrandr-capplet.c:2318
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Ця конфігурація буде використана при наступному вході у систему."
 
-#: ../capplets/display/xrandr-capplet.c:2411
+#: ../capplets/display/xrandr-capplet.c:2327
 msgid "Could not set the default configuration for monitors"
 msgstr "Не вдалося зберегти типову конфігурацію для моніторів"
 
-#: ../capplets/display/xrandr-capplet.c:2495
+#: ../capplets/display/xrandr-capplet.c:2411
 msgid "Could not get screen information"
 msgstr "Не вдається отримати інформацію про екран"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:25
+#: ../capplets/keybindings/eggcellrendererkeys.c:21
 msgid "New shortcut..."
 msgstr "Нове сполучення клявіш..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:161
-#: ../capplets/keybindings/eggcellrendererkeys.c:162
+#: ../capplets/keybindings/eggcellrendererkeys.c:157
+#: ../capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "Клявіша"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:171
-#: ../capplets/keybindings/eggcellrendererkeys.c:172
+#: ../capplets/keybindings/eggcellrendererkeys.c:167
+#: ../capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "Модифікатор"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:180
-#: ../capplets/keybindings/eggcellrendererkeys.c:181
+#: ../capplets/keybindings/eggcellrendererkeys.c:176
+#: ../capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "Код клявіші-прискорювача"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:191
+#: ../capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "Режим прискорювача"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:192
+#: ../capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "Тип прискорювача."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:235
-#: ../capplets/keybindings/mate-keybinding-properties.c:138
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/keybindings/eggcellrendererkeys.c:231
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
+#: ../capplets/mouse/mate-mouse-properties.c:302
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Немає"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:220
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<Невідома дія>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1024
-#: ../capplets/keybindings/mate-keybinding-properties.c:1614
+#: ../capplets/keybindings/mate-keybinding-properties.c:1020
+#: ../capplets/keybindings/mate-keybinding-properties.c:1610
 msgid "Custom Shortcuts"
 msgstr "Власне сполучення клявіш"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1194
+#: ../capplets/keybindings/mate-keybinding-properties.c:1190
 msgid "Error saving the new shortcut"
 msgstr "Помилка при збереженні нового сполучення клявіш"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1270
+#: ../capplets/keybindings/mate-keybinding-properties.c:1266
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "Сполучення клявіш \"%s\" не можна використовувати, бо використання цієї клявіші для звичайного вводу стане неможливим.\nСпробуйте з такими клявішами, як Control, Alt чи Shift одночасно."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1302
+#: ../capplets/keybindings/mate-keybinding-properties.c:1298
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Сполучення клявіш \"%s\" вже використовується для\n \"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1309
+#: ../capplets/keybindings/mate-keybinding-properties.c:1305
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Після перепризначення сполучення клявіш «%s» на «%s» вона буде вимкнена."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1310
 msgid "_Reassign"
 msgstr "_Перепризначити"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1569
+#: ../capplets/keybindings/mate-keybinding-properties.c:1565
 msgid "Too many custom shortcuts"
 msgstr "Забагато сполучень клявіш"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1857
+#: ../capplets/keybindings/mate-keybinding-properties.c:1853
 msgid "Action"
 msgstr "Дія"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1879
+#: ../capplets/keybindings/mate-keybinding-properties.c:1875
 msgid "Shortcut"
 msgstr "Сполучення клявіш"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+msgid "Custom Shortcut"
+msgstr "Власне сполучення клявіш"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "C_ommand:"
+msgstr "К_оманда:"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Сполучення клявіш"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
 msgstr "Щоб змінити сполучення клявіш, клацніть у відповідному рядку та уведіть новий прискорювач, або натисніть Backspace для очищення."
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
-msgid "Custom Shortcut"
-msgstr "Власне сполучення клявіш"
-
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-msgid "C_ommand:"
-msgstr "К_оманда:"
-
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "Пов'язати сполучення клявіш з командами"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:209
+#: ../capplets/keyboard/mate-keyboard-properties.c:214
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "Лише вжити параметри та вийти (лише для сумісности; тепер опрацьовується службою)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:219
 msgid "Start the page with the typing break settings showing"
 msgstr "Починати сторінку з показу параметрів перерви у роботі"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:228
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
 msgid "Start the page with the accessibility settings showing"
 msgstr "Починати сторінку з показу параметрів допоміжних технологій"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:234
+#: ../capplets/keyboard/mate-keyboard-properties.c:230
 msgid "- MATE Keyboard Preferences"
 msgstr "- Параметри набірниці MATE"
 
@@ -1815,8 +1810,8 @@ msgstr "Допоміжні звукові можливости _набірниц
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "General"
 msgstr "Загальне"
 
@@ -1829,55 +1824,55 @@ msgid "Beep when a _toggle key is pressed"
 msgstr "Подавати сигнал, коли _перемикач натиснуто"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
-msgid "Visual cues for sounds"
-msgstr "Ефекти для звуків"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
-msgid "Show _visual feedback for the alert sound"
-msgstr "Показувати ефекти на _екрані для звуків сповіщень"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
-msgid "Flash _window titlebar"
-msgstr "Блимання _заголовку вікна"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
-msgid "Flash entire _screen"
-msgstr "Блимання _екрану"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
-msgid "Slow Keys"
-msgstr "\"Повільні\" клявіші"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
-msgid "Beep when a key is pr_essed"
-msgstr "Подавати сигнал, коли _клявішу натиснуто"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-msgid "Beep when key is _accepted"
-msgstr "Подавати сигнал, коли клявішу при_йнято"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
-msgid "Beep when key is _rejected"
-msgstr "Подавати сигнал, коли клявішу відк_инуто"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
-msgid "Bounce Keys"
-msgstr "Пружні клявіші"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
-msgid "Beep when a key is reje_cted"
-msgstr "Подавати сигнал, коли клявішу від_кинуто"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
 msgid "Sticky Keys"
 msgstr "\"Липкі\" клявіші"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
 msgid "Beep when a _modifier key is pressed"
 msgstr "Подавати сигнал, коли _модифікатор натиснуто"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Visual cues for sounds"
+msgstr "Ефекти для звуків"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Show _visual feedback for the alert sound"
+msgstr "Показувати ефекти на _екрані для звуків сповіщень"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+msgid "Flash _window titlebar"
+msgstr "Блимання _заголовку вікна"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Flash entire _screen"
+msgstr "Блимання _екрану"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "Slow Keys"
+msgstr "\"Повільні\" клявіші"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when a key is pr_essed"
+msgstr "Подавати сигнал, коли _клявішу натиснуто"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+msgid "Beep when key is _accepted"
+msgstr "Подавати сигнал, коли клявішу при_йнято"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when key is _rejected"
+msgstr "Подавати сигнал, коли клявішу відк_инуто"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr "Пружні клявіші"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+msgid "Beep when a key is reje_cted"
+msgstr "Подавати сигнал, коли клявішу від_кинуто"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
@@ -1906,7 +1901,7 @@ msgstr "Менше"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "Slow"
 msgstr "Повільно"
 
@@ -1921,7 +1916,7 @@ msgstr "Більше"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Fast"
 msgstr "Швидко"
 
@@ -2104,12 +2099,12 @@ msgid "Choose a Layout"
 msgstr "Оберіть розкладку"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
-msgid "_Variants:"
-msgstr "Вар_іянти:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
 msgid "_Country:"
 msgstr "К_раїна:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+msgid "_Variants:"
+msgstr "Вар_іянти:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
 msgid "By _country"
@@ -2171,24 +2166,24 @@ msgstr "Набірниця"
 msgid "Set your keyboard preferences"
 msgstr "Встановити параметри набірниці"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Left button"
 msgstr "Ліва кнопка"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Middle button"
 msgstr "Середня кнопка"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Right button"
 msgstr "Права кнопка"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:449
+#: ../capplets/mouse/mate-mouse-properties.c:396
 msgid "Specify the name of the page to show (general)"
 msgstr "Вкажіть назву сторінки що показується (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:454
+#: ../capplets/mouse/mate-mouse-properties.c:401
 msgid "- MATE Mouse Preferences"
 msgstr "- параметри миші"
 
@@ -2220,19 +2215,19 @@ msgstr "По_казувати позицію вказівника при нат�
 msgid "Pointer Speed"
 msgstr "Швидкість вказівника"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
-msgid "_Sensitivity:"
-msgstr "_Чутливість:"
-
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Low"
 msgstr "Низька"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "High"
 msgstr "Висока"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "_Sensitivity:"
+msgstr "_Чутливість:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "Drag and Drop"
@@ -2255,57 +2250,58 @@ msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "Для перевірки подвійного клацання, спробуйте виконати подвійне клацання на лямпочці."
 
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
+msgid "Mouse"
+msgstr "Миша"
+
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Enable _touchpad"
 msgstr "Увімкнути _тачпад"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Disable touchpad _while typing"
 msgstr "Вимикати тачпад під час набору на набірниці"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Увімкнути _клацання за допомогою точпаду"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Two-finger click emulation:"
 msgstr "Емуляція клацу натисканням двома пальцями:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Three-finger click emulation:"
 msgstr "Емуляція клацу натисканням трьома пальцями:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Scrolling"
 msgstr "Гортання"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "_Vertical edge scrolling"
 msgstr "_Вертикальне крайове гортання"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "H_orizontal edge scrolling"
 msgstr "_Горизонтальне крайове гортання"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "V_ertical two-finger scrolling"
 msgstr "Верти_кальне двопальцеве гортання"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Гориз_онтальне двопальцеве гортання"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
-msgid "Enable n_atural scrolling"
-msgstr "Увімкнути природнє гортання"
-
 #: ../capplets/mouse/mate-mouse-properties.ui.h:42
+msgid "Enable _natural scrolling"
+msgstr "Увімкнути _природнє гортання"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Touchpad"
 msgstr "Точпад"
-
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
-msgid "Mouse"
-msgstr "Миша"
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
 msgid "Set your mouse preferences"
@@ -2320,89 +2316,89 @@ msgid "Set your network proxy preferences"
 msgstr "Діялоґ налаштовування проксі-сервера"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
-msgid "HTTP Proxy Details"
-msgstr "Порт HTTP проксі"
-
-#: ../capplets/network/mate-network-properties.ui.h:2
-msgid "<b>_Use authentication</b>"
-msgstr "<b>_Використовувати розпізнання</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:3
-msgid "U_sername:"
-msgstr "_Користувач:"
-
-#: ../capplets/network/mate-network-properties.ui.h:4
-msgid "_Password:"
-msgstr "_Пароль:"
-
-#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "Network Proxy Preferences"
 msgstr "Параметри проксі-серверів"
 
-#: ../capplets/network/mate-network-properties.ui.h:6
+#: ../capplets/network/mate-network-properties.ui.h:2
 msgid "<b>Di_rect internet connection</b>"
 msgstr "<b>Пр_яме з'єднання з Тенетами</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:7
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "<b>_Manual proxy configuration</b>"
 msgstr "<b>Р_учна конфігурація проксі</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:8
-msgid "H_TTP proxy:"
-msgstr "Проксі _HTTP"
-
-#: ../capplets/network/mate-network-properties.ui.h:9
-msgid "_Secure HTTP proxy:"
-msgstr "Б_езпечний проксі HTTP"
-
-#: ../capplets/network/mate-network-properties.ui.h:10
-msgid "_FTP proxy:"
-msgstr "Проксі _FTP"
-
-#: ../capplets/network/mate-network-properties.ui.h:11
-msgid "S_ocks host:"
-msgstr "Вузол _SOCKS:"
-
-#: ../capplets/network/mate-network-properties.ui.h:12
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "Port:"
 msgstr "Порт:"
 
-#: ../capplets/network/mate-network-properties.ui.h:13
+#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "_Details"
 msgstr "Под_робиці"
 
-#: ../capplets/network/mate-network-properties.ui.h:14
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "H_TTP proxy:"
+msgstr "Проксі _HTTP"
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "_Secure HTTP proxy:"
+msgstr "Б_езпечний проксі HTTP"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "_FTP proxy:"
+msgstr "Проксі _FTP"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
+msgid "S_ocks host:"
+msgstr "Вузол _SOCKS:"
+
+#: ../capplets/network/mate-network-properties.ui.h:10
 msgid "<b>_Automatic proxy configuration</b>"
 msgstr "<b>Ав_томатична конфігурація проксі</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:15
+#: ../capplets/network/mate-network-properties.ui.h:11
 msgid "Autoconfiguration _URL:"
 msgstr "_URL автоконфігурації:"
 
-#: ../capplets/network/mate-network-properties.ui.h:16
+#: ../capplets/network/mate-network-properties.ui.h:12
 msgid "Proxy Configuration"
 msgstr "Параметри проксі"
 
-#: ../capplets/network/mate-network-properties.ui.h:17
+#: ../capplets/network/mate-network-properties.ui.h:13
 msgid "Ignore Host List"
 msgstr "Нехтувані вузли"
 
-#: ../capplets/network/mate-network-properties.ui.h:18
+#: ../capplets/network/mate-network-properties.ui.h:14
 msgid "Ignored Hosts"
 msgstr "Нехтувані вузли"
+
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "HTTP Proxy Details"
+msgstr "Порт HTTP проксі"
+
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "<b>_Use authentication</b>"
+msgstr "<b>_Використовувати розпізнання</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "U_sername:"
+msgstr "_Користувач:"
+
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "_Password:"
+msgstr "_Пароль:"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
 msgstr "Параметри Metacity"
 
 #. Compositing manager
-#: ../capplets/windows/mate-metacity-support.c:55
-#: ../capplets/windows/mate-window-properties.c:410
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.c:392
 msgid "Compositing Manager"
 msgstr "Керівник композитингом"
 
-#: ../capplets/windows/mate-metacity-support.c:66
-#: ../capplets/windows/mate-window-properties.c:422
+#: ../capplets/windows/mate-metacity-support.c:62
+#: ../capplets/windows/mate-window-properties.c:399
 msgid "Enable software _compositing window manager"
 msgstr "Увімкнути проґрамний _композитний керівник вікнами"
 
@@ -2415,131 +2411,131 @@ msgstr "Поточний керівник вікнами не підтримує
 msgid "Window Preferences"
 msgstr "Параметри вікон"
 
-#: ../capplets/windows/mate-window-properties.c:391
+#: ../capplets/windows/mate-window-properties.c:381
 msgid "Behaviour"
 msgstr "Поведінка"
 
-#: ../capplets/windows/mate-window-properties.c:400
+#: ../capplets/windows/mate-window-properties.c:386
 msgid "Placement"
 msgstr "Розміщення"
 
-#: ../capplets/windows/mate-window-properties.c:423
+#: ../capplets/windows/mate-window-properties.c:400
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Вимкнути _ескізи у Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:431
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "Titlebar Buttons"
 msgstr "Кнопки заголовку"
 
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Position:"
 msgstr "Розташування:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:419
 msgid "New Windows"
 msgstr "Нові вікна"
 
-#: ../capplets/windows/mate-window-properties.c:454
+#: ../capplets/windows/mate-window-properties.c:423
 msgid "Center _new windows"
 msgstr "Центр_ нових вікон"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:459
+#: ../capplets/windows/mate-window-properties.c:428
 msgid "Window Snapping"
 msgstr "Прив’язка вікон"
 
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:432
 msgid "Enable side by side _tiling"
 msgstr "Увімкнути тайлінговий режим"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:437
 msgid "Window Selection"
 msgstr "Вибір вікон"
 
-#: ../capplets/windows/mate-window-properties.c:492
+#: ../capplets/windows/mate-window-properties.c:447
 msgid "_Select windows when the mouse moves over them"
 msgstr "Пере_микатися на вікна, коли над ними проходить вказівник"
 
-#: ../capplets/windows/mate-window-properties.c:495
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "З_няти виділення вікон, коли миша покидає їх"
 
-#: ../capplets/windows/mate-window-properties.c:499
+#: ../capplets/windows/mate-window-properties.c:454
 msgid "_Raise selected windows after an interval"
 msgstr "_Піднімати вибране вікно після певної затримки"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:461
 msgid "_Interval before raising:"
 msgstr "За_тримка перед підйомом:"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:465
 msgid "seconds"
 msgstr "секунд"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:525
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Titlebar Action"
 msgstr "Клац по заголовку"
 
-#: ../capplets/windows/mate-window-properties.c:533
+#: ../capplets/windows/mate-window-properties.c:480
 msgid "_Double-click titlebar to perform this action:"
 msgstr "Под_війне клацання на заголовку виконує таку дію:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:541
+#: ../capplets/windows/mate-window-properties.c:488
 msgid "Movement Key"
 msgstr "Клявіша переміщення"
 
-#: ../capplets/windows/mate-window-properties.c:552
+#: ../capplets/windows/mate-window-properties.c:494
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "Для переміщення вікна, натиснути та тримати цю клявішу, а потім захопити вікно:"
 
-#: ../capplets/windows/mate-window-properties.c:580
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Згорнути"
 
-#: ../capplets/windows/mate-window-properties.c:581
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Максимізувати"
 
-#: ../capplets/windows/mate-window-properties.c:582
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Розтягнути горизонтально"
 
-#: ../capplets/windows/mate-window-properties.c:583
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Розтягнути вертикально"
 
-#: ../capplets/windows/mate-window-properties.c:584
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Мінімізувати"
 
-#: ../capplets/windows/mate-window-properties.c:585
+#: ../capplets/windows/mate-window-properties.c:523
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Немає"
 
-#: ../capplets/windows/mate-window-properties.c:786
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:792
+#: ../capplets/windows/mate-window-properties.c:730
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:799
+#: ../capplets/windows/mate-window-properties.c:737
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (чи \"Емблема Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:806
+#: ../capplets/windows/mate-window-properties.c:744
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2556,29 +2552,29 @@ msgstr "Налаштовування параметрів вікон"
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Керівник вікнами \"%s\" не зареєстрував знаряддя налаштовування\n"
 
-#: ../shell/control-center.c:61
+#: ../shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
 msgstr "Ключ %s порожній\n"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Filter"
 msgstr "Фільтр"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Groups"
 msgstr "Групи"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Common Tasks"
 msgstr "Спільні завдання"
 
-#: ../shell/control-center.c:152 ../shell/control-center.c:255
-#: ../shell/matecc.desktop.in.in.h:1 ../shell/matecc.directory.in.h:1
+#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "Центр керування"
 
-#: ../shell/control-center.c:208
+#: ../shell/control-center.c:162
 msgid "Hide on start (useful to preload the shell)"
 msgstr "Приховувати на старті (корисно для попереднього завантаження оболонки)"
 
@@ -2586,11 +2582,11 @@ msgstr "Приховувати на старті (корисно для попе
 msgid "The MATE configuration tool"
 msgstr "Засіб налаштовування MATE"
 
-#: ../typing-break/drw-break-window.c:203
+#: ../typing-break/drw-break-window.c:190
 msgid "_Postpone Break"
 msgstr "_Відкласти перерву"
 
-#: ../typing-break/drw-break-window.c:277
+#: ../typing-break/drw-break-window.c:247
 msgid "Take a break!"
 msgstr "Зробити перерву!"
 
@@ -2640,7 +2636,7 @@ msgstr "Дизайн: Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Проґрама нагадування про перерву."
 
-#: ../typing-break/drwright.c:639
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
 msgid "translator-credits"
 msgstr "Максим Дзюманенко <dziumanenko@gmail.com>\nМикола Ткач <Stuartlittle1970@gmail.com>"
 
@@ -2664,95 +2660,97 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Монітор набору для показу інформації використовує ділянку сповіщення. Схоже, що у Вашій панелі немає ділянки сповіщення. Її можна додати, якщо натиснути правою кнопкою на панелі та вибрати \"Додати до панелі -> Засіб -> Ділянка сповіщення\"."
 
-#: ../font-viewer/font-view.c:360 ../font-viewer/font-view.c:362
-msgid "Name:"
-msgstr "Назва:"
+#: ../font-viewer/font-view.c:184
+msgid "Style"
+msgstr "_Стиль:"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:369
-msgid "Style:"
-msgstr "Стиль:"
+#: ../font-viewer/font-view.c:194
+msgid "Type"
+msgstr "Тип"
 
-#: ../font-viewer/font-view.c:383 ../font-viewer/font-view.c:385
-msgid "Type:"
-msgstr "Тип:"
+#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+msgid "Version"
+msgstr "Версія"
 
-#: ../font-viewer/font-view.c:391 ../font-viewer/font-view.c:393
-msgid "Size:"
-msgstr "Розмір:"
+#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+msgid "Copyright"
+msgstr "Авторське право"
 
-#: ../font-viewer/font-view.c:440 ../font-viewer/font-view.c:442
-#: ../font-viewer/font-view.c:465 ../font-viewer/font-view.c:467
-msgid "Version:"
-msgstr "Версія:"
+#: ../font-viewer/font-view.c:248
+msgid "Description"
+msgstr "Опис"
 
-#: ../font-viewer/font-view.c:448 ../font-viewer/font-view.c:450
-#: ../font-viewer/font-view.c:471 ../font-viewer/font-view.c:473
-msgid "Copyright:"
-msgstr "Авторські права:"
-
-#: ../font-viewer/font-view.c:456 ../font-viewer/font-view.c:458
-msgid "Description:"
-msgstr "Опис:"
-
-#: ../font-viewer/font-view.c:535
-msgid "Installed"
-msgstr "Встановлено"
-
-#: ../font-viewer/font-view.c:537
+#: ../font-viewer/font-view.c:266
 msgid "Install Failed"
 msgstr "Помилка при встановленні"
 
-#: ../font-viewer/font-view.c:613
-#, c-format
-msgid "Usage: %s fontfile\n"
-msgstr "Використання: %s файл шрифту\n"
+#: ../font-viewer/font-view.c:272
+msgid "Installed"
+msgstr "Встановлено"
 
-#: ../font-viewer/font-view.c:713
-msgid "I_nstall Font"
-msgstr "_Встановити шрифт"
+#: ../font-viewer/font-view.c:409
+msgid "This font could not be displayed."
+msgstr "Цей шрифт не може бути показаний."
 
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+msgid "Info"
+msgstr "Інформація"
+
+#: ../font-viewer/font-view.c:515
+msgid "Back"
+msgstr "Назад"
+
+#: ../font-viewer/font-view.c:612
+msgid "All Fonts"
+msgstr "Усі шрифти"
+
+#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
 msgid "Font Viewer"
 msgstr "Перегляд шрифтів"
 
+#: ../font-viewer/font-view.c:717
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
-msgid "Preview fonts"
-msgstr "Попередній перегляд шрифтів"
+msgid "View fonts on your system"
+msgstr "Перегляд шрифтів у Вашій системі  "
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+msgid "MATE Font Viewer"
+msgstr "Проґрама перегляду шрифтів МАТЕ"
+
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Текст до мініатюри (типово: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "TEXT"
 msgstr "ТЕКСТ"
 
-#: ../font-viewer/font-thumbnailer.c:269
-msgid "Font size (default: 64)"
-msgstr "Розмір шрифту (типово: 64)"
+#: ../font-viewer/font-thumbnailer.c:191
+msgid "Thumbnail size (default: 128)"
+msgstr "Розмір мініатюри (типово: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:269
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "SIZE"
 msgstr "РОЗМІР"
 
-#: ../font-viewer/font-thumbnailer.c:271
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ФАЙЛ-ШРИФТУ ФАЙЛ-ВИВОДУ"
 
-#: ../libslab/app-shell.c:810
+#: ../libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Ваш фільтр \"%s\" не збігається з жодним пунктом."
 
-#: ../libslab/app-shell.c:812
+#: ../libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "Збігів не виявлено."
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Нові додатки"
 
-#: ../libslab/app-shell.c:967
+#: ../libslab/app-shell.c:929
 msgid "Other"
 msgstr "Иньше"
 
@@ -2901,7 +2899,7 @@ msgstr "%b %d %l:%M %p"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: ../libslab/search-bar.c:260
+#: ../libslab/search-bar.c:256
 msgid "Find Now"
 msgstr "Знайти зараз"
 

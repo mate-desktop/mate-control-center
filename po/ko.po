@@ -7,16 +7,16 @@
 # Changwoo Ryu <cwryu@debian.org>, 2007, 2008, 2009, 2010
 # Jinkyu Yi <jincreator@jincreator.net>, 2013
 # 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2015-2016
-# 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2016
+# 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2016-2017
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2014
 # Young-Ho Cha <ganadist@chollian.net>, 2002,2006
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 16:41+0300\n"
-"PO-Revision-Date: 2016-11-02 13:43+0000\n"
-"Last-Translator: monsta <monsta@inbox.ru>\n"
+"POT-Creation-Date: 2017-03-08 15:40+0100\n"
+"PO-Revision-Date: 2017-03-13 14:16+0000\n"
+"Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/mate/MATE/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,6 +123,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "사용자 지정 단축키 지정에 연결할 명령입니다."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
+#: ../font-viewer/font-view.c:181
 msgid "Name"
 msgstr "이름"
 
@@ -154,7 +155,7 @@ msgstr "경고 단추"
 msgid "The buttons shown in the alert dialog"
 msgstr "경고 대화상자에 단추 보이기"
 
-#: ../capplets/about-me/eel-alert-dialog.c:219
+#: ../capplets/about-me/eel-alert-dialog.c:207
 msgid "Show more _details"
 msgstr "더 자세히 표시(_D)"
 
@@ -167,16 +168,16 @@ msgid "No Image"
 msgstr "그림 없음"
 
 #: ../capplets/about-me/mate-about-me.c:298
-#: ../capplets/appearance/appearance-desktop.c:692
+#: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "그림"
 
 #: ../capplets/about-me/mate-about-me.c:302
-#: ../capplets/appearance/theme-installer.c:787
+#: ../capplets/appearance/theme-installer.c:780
 msgid "All Files"
 msgstr "모든 파일"
 
-#: ../capplets/about-me/mate-about-me.c:454
+#: ../capplets/about-me/mate-about-me.c:446
 #, c-format
 msgid "About %s"
 msgstr "%s 정보"
@@ -420,39 +421,39 @@ msgid "The new password has already been used recently."
 msgstr "해당 새 암호는 이미 최근에 사용한 암호입니다."
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:829
+#: ../capplets/about-me/mate-about-me-password.c:825
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "%s(을)를 실행할 수 없습니다: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:833
+#: ../capplets/about-me/mate-about-me-password.c:829
 msgid "Unable to launch backend"
 msgstr "백엔드를 실행할 수 없습니다"
 
-#: ../capplets/about-me/mate-about-me-password.c:834
+#: ../capplets/about-me/mate-about-me-password.c:830
 msgid "A system error has occurred"
 msgstr "시스템 오류가 발생했습니다"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:854
+#: ../capplets/about-me/mate-about-me-password.c:850
 msgid "Checking password..."
 msgstr "암호를 검사하는 중입니다..."
 
-#: ../capplets/about-me/mate-about-me-password.c:938
+#: ../capplets/about-me/mate-about-me-password.c:934
 msgid "Click <b>Change password</b> to change your password."
 msgstr "암호를 바꾸려면 <b>암호 바꾸기</b>를 누르십시오."
 
-#: ../capplets/about-me/mate-about-me-password.c:941
+#: ../capplets/about-me/mate-about-me-password.c:937
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "<b>새 암호</b>에서 암호를 입력하십시오."
 
-#: ../capplets/about-me/mate-about-me-password.c:944
-#: ../capplets/about-me/mate-about-me-password.ui.h:9
+#: ../capplets/about-me/mate-about-me-password.c:940
+#: ../capplets/about-me/mate-about-me-password.ui.h:10
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "<b>암호 다시 입력</b>에서 암호를 다시 입력하십시오."
 
-#: ../capplets/about-me/mate-about-me-password.c:947
+#: ../capplets/about-me/mate-about-me-password.c:943
 msgid "The two passwords are not equal."
 msgstr "두 암호가 같지 않습니다."
 
@@ -461,132 +462,132 @@ msgid "Change password"
 msgstr "암호 바꾸기"
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:2
+msgid "Change pa_ssword"
+msgstr "암호 바꾸기(_S)"
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
 msgid "Change your password"
 msgstr "암호 바꾸기"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:3
+#: ../capplets/about-me/mate-about-me-password.ui.h:4
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
 msgstr "암호를 바꾸려면, 현재 암호를 아래 칸에 입력하고 <b>인증</b>을 누르십시오.\n인증한 후에, 새 암호를 입력하시고 확인을 위해 다시 입력한 다음 <b>암호 바꾸기</b>를 누르십시오."
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:5
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
 msgid "Current _password:"
 msgstr "현재 암호(_P):"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:6
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
 msgid "_New password:"
 msgstr "새 암호(_N):"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:7
+#: ../capplets/about-me/mate-about-me-password.ui.h:8
 msgid "_Retype new password:"
 msgstr "암호 다시 입력(_R):"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:8
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid "_Authenticate"
 msgstr "인증(_A)"
-
-#: ../capplets/about-me/mate-about-me-password.ui.h:10
-msgid "Change pa_ssword"
-msgstr "암호 바꾸기(_S)"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
 msgid "Assistive Technologies Preferences"
 msgstr "보조 기술 기본 설정"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+msgid "Close and _Log Out"
+msgstr "닫기 그리고 로그아웃(_L)"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "보조 기술"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
 msgid "_Preferred Applications"
 msgstr "기본 프로그램(_P)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
 msgid "Jump to Preferred Applications dialog"
 msgstr "기본 프로그램 대화 창으로 이동"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
 msgid "_Enable assistive technologies"
 msgstr "보조 기술 사용하기(_E)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
 msgstr "보조 기술 사용 여부를 바꿔도 다음 번 로그인하기 전까지 아무 효과가 없습니다."
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
 msgid "Preferences"
 msgstr "기본 설정"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
 msgid "_Keyboard Accessibility"
 msgstr "키보드 접근성(_K)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
 msgid "Jump to the Keyboard Accessibility dialog"
 msgstr "키보드 접근성 대화 창으로 이동"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
 msgid "_Mouse Accessibility"
 msgstr "마우스 접근성(_M)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
 msgid "Jump to the Mouse Accessibility dialog"
 msgstr "마우스 접근성 대화 창으로 이동"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
 msgid "Accessible Lo_gin"
 msgstr "접근성 로그인(_G)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
 msgid "Jump to the Accessible Login dialog"
 msgstr "접근성 로그인 대화 창으로 이동"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
-msgid "Close and _Log Out"
-msgstr "닫기 그리고 로그아웃(_L)"
 
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "로그인할 때 어느 접근성 기능을 사용할 지 선택"
 
-#: ../capplets/appearance/appearance-desktop.c:661
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "바탕 무늬 추가"
 
-#: ../capplets/appearance/appearance-desktop.c:696
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "All files"
 msgstr "모든 파일"
 
-#: ../capplets/appearance/appearance-main.c:61
+#: ../capplets/appearance/appearance-main.c:56
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "사용자 인터페이스 파일을 읽어들일 수 없습니다: %s"
 
-#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/appearance/appearance-main.c:157
 msgid "Specify the filename of a theme to install"
 msgstr "설치할 테마 이름을 지정하십시오"
 
-#: ../capplets/appearance/appearance-main.c:165
+#: ../capplets/appearance/appearance-main.c:158
 msgid "filename"
 msgstr "파일 이름"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:172
+#: ../capplets/appearance/appearance-main.c:165
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "보여줄 페이지 이름을 지정합니다(theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:173
+#: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:450
+#: ../capplets/mouse/mate-mouse-properties.c:397
 msgid "page"
 msgstr "페이지"
 
-#: ../capplets/appearance/appearance-main.c:180
+#: ../capplets/appearance/appearance-main.c:173
 msgid "[WALLPAPER...]"
 msgstr "[배경...]"
 
@@ -597,16 +598,9 @@ msgstr "기본 포인터"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
+#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
 msgid "Install"
 msgstr "설치"
-
-#: ../capplets/appearance/appearance-style.c:269
-#: ../capplets/common/mate-theme-info.c:1608
-#, c-format
-msgid ""
-"This theme will not look as intended because the required GTK+ theme engine "
-"'%s' is not installed."
-msgstr "필요한 '%s' GTK+ 테마 엔진을 설치하지 않았으므로 이 테마는 의도한 대로 보이지 않습니다."
 
 #: ../capplets/appearance/appearance-themes.c:646
 msgid "Apply Background"
@@ -620,41 +614,41 @@ msgstr "글꼴 적용"
 msgid "Revert Font"
 msgstr "글꼴 되돌리기"
 
-#: ../capplets/appearance/appearance-themes.c:700
+#: ../capplets/appearance/appearance-themes.c:691
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "이 테마는 배경과 글꼴이 있습니다. 또 마지막에 적용한 글꼴은 되돌릴 수 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:702
+#: ../capplets/appearance/appearance-themes.c:693
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "이 테마는 배경이 있습니다. 또 마지막에 적용한 글꼴은 되돌릴 수 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:704
+#: ../capplets/appearance/appearance-themes.c:695
 msgid "The current theme suggests a background and a font."
 msgstr "이 테마는 배경과 글꼴이 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:706
+#: ../capplets/appearance/appearance-themes.c:697
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "이 테마는 글꼴이 있습니다. 또 마지막에 적용한 글꼴은 되돌릴 수 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:708
+#: ../capplets/appearance/appearance-themes.c:699
 msgid "The current theme suggests a background."
 msgstr "이 테마는 배경이 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:710
+#: ../capplets/appearance/appearance-themes.c:701
 msgid "The last applied font suggestion can be reverted."
 msgstr "마지막에 적용한 글꼴은 되돌릴 수 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:712
+#: ../capplets/appearance/appearance-themes.c:703
 msgid "The current theme suggests a font."
 msgstr "이 테마는 글꼴이 있습니다."
 
-#: ../capplets/appearance/appearance-themes.c:1028
+#: ../capplets/appearance/appearance-themes.c:1019
 msgid "Custom"
 msgstr "사용자 설정"
 
@@ -721,285 +715,285 @@ msgstr "_RGB"
 msgid "_BGR"
 msgstr "_BGR"
 
-#. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:20
-msgid "_VRGB"
-msgstr "_VRGB"
-
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "VB_GR"
 msgstr "VB_GR"
 
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "_VRGB"
+msgstr "_VRGB"
+
 #: ../capplets/appearance/data/appearance.ui.h:23
-msgid "Appearance Preferences"
-msgstr "모양 기본 설정"
-
-#: ../capplets/appearance/data/appearance.ui.h:24
-msgid "Save _As..."
-msgstr "다른 이름으로 저장(_A)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:25
-msgid "C_ustomize..."
-msgstr "사용자 설정(_U)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:26
-msgid "_Install..."
-msgstr "설치(_I)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:27
-msgid "Get more themes online"
-msgstr "인터넷에서 테마 받기"
-
-#: ../capplets/appearance/data/appearance.ui.h:28
-msgid "Theme"
-msgstr "테마"
-
-#: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Style:"
-msgstr "모양(_S):"
-
-#: ../capplets/appearance/data/appearance.ui.h:30
-msgid "C_olors:"
-msgstr "색(_O):"
-
-#: ../capplets/appearance/data/appearance.ui.h:31
-msgid "Open a dialog to specify the color"
-msgstr "지정한 색으로 대화상자 열기"
-
-#: ../capplets/appearance/data/appearance.ui.h:32
-msgid "Get more backgrounds online"
-msgstr "인터넷에서 배경 받기"
-
-#: ../capplets/appearance/data/appearance.ui.h:33
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
-msgid "_Add..."
-msgstr "추가(_A)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:34
-msgid "Background"
-msgstr "배경"
-
-#: ../capplets/appearance/data/appearance.ui.h:35
-msgid "_Document font:"
-msgstr "문서 글꼴(_D):"
-
-#: ../capplets/appearance/data/appearance.ui.h:36
-msgid "Des_ktop font:"
-msgstr "바탕 화면 글꼴(_K):"
-
-#: ../capplets/appearance/data/appearance.ui.h:37
-msgid "_Window title font:"
-msgstr "창 제목 글꼴(_W):"
-
-#: ../capplets/appearance/data/appearance.ui.h:38
-msgid "_Fixed width font:"
-msgstr "고정폭 글꼴(_F):"
-
-#: ../capplets/appearance/data/appearance.ui.h:39
-msgid "_Application font:"
-msgstr "응용프로그램 글꼴(_A):"
-
-#: ../capplets/appearance/data/appearance.ui.h:40
-msgid "Rendering"
-msgstr "글꼴 그리기"
-
-#: ../capplets/appearance/data/appearance.ui.h:41
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "LCD용(_P)"
-
-#: ../capplets/appearance/data/appearance.ui.h:42
-msgid "Best co_ntrast"
-msgstr "밝기 위주(_N)"
-
-#: ../capplets/appearance/data/appearance.ui.h:43
-msgid "Best _shapes"
-msgstr "모양 위주(_S)"
-
-#: ../capplets/appearance/data/appearance.ui.h:44
-msgid "_Monochrome"
-msgstr "흑백(_M)"
-
-#: ../capplets/appearance/data/appearance.ui.h:45
-msgid "D_etails..."
-msgstr "자세히(_E)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:46
-msgid "Fonts"
-msgstr "글꼴"
-
-#: ../capplets/appearance/data/appearance.ui.h:47
-msgid "Menus and Toolbars"
-msgstr "메뉴와 도구 모음"
-
-#: ../capplets/appearance/data/appearance.ui.h:48
-msgid "Show _icons in menus"
-msgstr "메뉴에 아이콘 보이기(_I)"
-
-#: ../capplets/appearance/data/appearance.ui.h:49
-msgid "_Editable menu shortcut keys"
-msgstr "설정 가능한 메뉴 단축키(_E)"
-
-#: ../capplets/appearance/data/appearance.ui.h:50
-msgid "Toolbar _button labels:"
-msgstr "도구 모음 단추 이름표(_B):"
-
-#: ../capplets/appearance/data/appearance.ui.h:51
-msgid "Preview"
-msgstr "미리 보기"
-
-#: ../capplets/appearance/data/appearance.ui.h:52
-msgid "_File"
-msgstr "파일(_F)"
-
-#: ../capplets/appearance/data/appearance.ui.h:53
-msgid "Edit"
-msgstr "편집"
-
-#: ../capplets/appearance/data/appearance.ui.h:54
-msgid "Interface"
-msgstr "인터페이스"
-
-#: ../capplets/appearance/data/appearance.ui.h:55
-msgid "Tile"
-msgstr "바둑판"
-
-#: ../capplets/appearance/data/appearance.ui.h:56
-msgid "Zoom"
-msgstr "확대"
-
-#: ../capplets/appearance/data/appearance.ui.h:57
-msgid "Center"
-msgstr "가운데"
-
-#: ../capplets/appearance/data/appearance.ui.h:58
-msgid "Scale"
-msgstr "크기 조정"
-
-#: ../capplets/appearance/data/appearance.ui.h:59
-msgid "Stretch"
-msgstr "늘리기"
-
-#: ../capplets/appearance/data/appearance.ui.h:60
-msgid "Span"
-msgstr "걸치기"
-
-#: ../capplets/appearance/data/appearance.ui.h:61
-msgid "Solid color"
-msgstr "단색"
-
-#: ../capplets/appearance/data/appearance.ui.h:62
-msgid "Horizontal gradient"
-msgstr "가로 그라데이션"
-
-#: ../capplets/appearance/data/appearance.ui.h:63
-msgid "Vertical gradient"
-msgstr "세로 그라데이션"
-
-#: ../capplets/appearance/data/appearance.ui.h:64
-msgid "Text below items"
-msgstr "항목 아래 글자"
-
-#: ../capplets/appearance/data/appearance.ui.h:65
-msgid "Text beside items"
-msgstr "항목 옆에 글자"
-
-#: ../capplets/appearance/data/appearance.ui.h:66
-msgid "Icons only"
-msgstr "아이콘만"
-
-#: ../capplets/appearance/data/appearance.ui.h:67
-msgid "Text only"
-msgstr "글자만"
-
-#: ../capplets/appearance/data/appearance.ui.h:68
 msgid "Customize Theme"
 msgstr "사용자 테마"
 
-#: ../capplets/appearance/data/appearance.ui.h:69
+#: ../capplets/appearance/data/appearance.ui.h:24
 msgid "Controls"
 msgstr "컨트롤"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
+#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "The current controls theme does not support color schemes."
 msgstr "현재 컨트롤 테마는 색상 변경을 지원 하지 않습니다."
 
-#: ../capplets/appearance/data/appearance.ui.h:71
+#: ../capplets/appearance/data/appearance.ui.h:26
 msgid "_Tooltips:"
 msgstr "풍선 도움말(_T):"
 
-#: ../capplets/appearance/data/appearance.ui.h:72
-msgid "_Selected items:"
-msgstr "선택한 항목(_S):"
-
-#: ../capplets/appearance/data/appearance.ui.h:73
-msgid "_Input boxes:"
-msgstr "입력 상자(_I):"
-
-#: ../capplets/appearance/data/appearance.ui.h:74
-msgid "_Windows:"
-msgstr "창(_W):"
-
-#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/appearance/data/appearance.ui.h:27
 msgid "Text"
 msgstr "글자"
 
-#: ../capplets/appearance/data/appearance.ui.h:76
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Background"
+msgstr "배경"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Windows:"
+msgstr "창(_W):"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "_Input boxes:"
+msgstr "입력 상자(_I):"
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "_Selected items:"
+msgstr "선택한 항목(_S):"
+
+#: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
 msgstr "기본값으로 초기화(_R)"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:33
 msgid "Colors"
 msgstr "색상"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:34
 msgid "Window Border"
 msgstr "창 가장자리"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:35
 msgid "Icons"
 msgstr "아이콘"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:36
 msgid "_Size:"
 msgstr "크기(_S):"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:37
 #: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Small"
 msgstr "작게"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:82
+#: ../capplets/appearance/data/appearance.ui.h:38
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Large"
 msgstr "크게"
 
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:39
 msgid "Pointer"
 msgstr "포인터"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:40
 msgid "Save Theme As..."
 msgstr "다른 이름으로 테마 저장..."
 
-#: ../capplets/appearance/data/appearance.ui.h:85
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
-msgid "_Name:"
-msgstr "이름(_N):"
-
-#: ../capplets/appearance/data/appearance.ui.h:86
-msgid "_Description:"
-msgstr "설명(_D):"
-
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:41
 msgid "Save _background image"
 msgstr "배경 그림 저장(_B)"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save _notification theme"
 msgstr "알림 테마 저장하기(_N)"
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+msgid "_Name:"
+msgstr "이름(_N):"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Description:"
+msgstr "설명(_D):"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "Text below items"
+msgstr "항목 아래 글자"
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Text beside items"
+msgstr "항목 옆에 글자"
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Icons only"
+msgstr "아이콘만"
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Text only"
+msgstr "글자만"
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Solid color"
+msgstr "단색"
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Horizontal gradient"
+msgstr "가로 그라데이션"
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Vertical gradient"
+msgstr "세로 그라데이션"
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Tile"
+msgstr "바둑판"
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Zoom"
+msgstr "확대"
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Center"
+msgstr "가운데"
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Scale"
+msgstr "크기 조정"
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Stretch"
+msgstr "늘리기"
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Span"
+msgstr "걸치기"
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Appearance Preferences"
+msgstr "모양 기본 설정"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Save _As..."
+msgstr "다른 이름으로 저장(_A)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "C_ustomize..."
+msgstr "사용자 설정(_U)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "_Install..."
+msgstr "설치(_I)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "Get more themes online"
+msgstr "인터넷에서 테마 받기"
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "Theme"
+msgstr "테마"
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Style:"
+msgstr "모양(_S):"
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "C_olors:"
+msgstr "색(_O):"
+
+#: ../capplets/appearance/data/appearance.ui.h:66
+msgid "Open a dialog to specify the color"
+msgstr "지정한 색으로 대화상자 열기"
+
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Get more backgrounds online"
+msgstr "인터넷에서 배경 받기"
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr "추가(_A)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "_Application font:"
+msgstr "응용프로그램 글꼴(_A):"
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "_Document font:"
+msgstr "문서 글꼴(_D):"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Des_ktop font:"
+msgstr "바탕 화면 글꼴(_K):"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "_Window title font:"
+msgstr "창 제목 글꼴(_W):"
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Fixed width font:"
+msgstr "고정폭 글꼴(_F):"
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+msgid "Rendering"
+msgstr "글꼴 그리기"
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "LCD용(_P)"
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Best _shapes"
+msgstr "모양 위주(_S)"
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Best co_ntrast"
+msgstr "밝기 위주(_N)"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "_Monochrome"
+msgstr "흑백(_M)"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "D_etails..."
+msgstr "자세히(_E)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:80
+msgid "Fonts"
+msgstr "글꼴"
+
+#: ../capplets/appearance/data/appearance.ui.h:81
+msgid "Menus and Toolbars"
+msgstr "메뉴와 도구 모음"
+
+#: ../capplets/appearance/data/appearance.ui.h:82
+msgid "Show _icons in menus"
+msgstr "메뉴에 아이콘 보이기(_I)"
+
+#: ../capplets/appearance/data/appearance.ui.h:83
+msgid "_Editable menu shortcut keys"
+msgstr "설정 가능한 메뉴 단축키(_E)"
+
+#: ../capplets/appearance/data/appearance.ui.h:84
+msgid "Toolbar _button labels:"
+msgstr "도구 모음 단추 이름표(_B):"
+
+#: ../capplets/appearance/data/appearance.ui.h:85
+msgid "Preview"
+msgstr "미리 보기"
+
+#: ../capplets/appearance/data/appearance.ui.h:86
+msgid "_File"
+msgstr "파일(_F)"
+
+#: ../capplets/appearance/data/appearance.ui.h:87
+msgid "Edit"
+msgstr "편집"
+
+#: ../capplets/appearance/data/appearance.ui.h:88
+msgid "Interface"
+msgstr "인터페이스"
 
 #: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
 msgid "Appearance"
@@ -1025,30 +1019,30 @@ msgstr "마테 테마 꾸러미"
 msgid "No Desktop Background"
 msgstr "바탕 화면 배경 없음"
 
-#: ../capplets/appearance/mate-wp-item.c:318
+#: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
 msgstr "알 수 없음"
 
-#: ../capplets/appearance/mate-wp-item.c:325
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "슬라이드 쇼"
 
-#: ../capplets/appearance/mate-wp-item.c:327
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "그림"
 
-#: ../capplets/appearance/mate-wp-item.c:333
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "여러 개 크기"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:336
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d%s x %d%s"
 
-#: ../capplets/appearance/mate-wp-item.c:338
-#: ../capplets/appearance/mate-wp-item.c:340
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "픽셀"
@@ -1057,7 +1051,7 @@ msgstr[0] "픽셀"
 #. * mime type, size
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:349
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1070,7 +1064,7 @@ msgstr "<b>%s</b>\n%s, %s\n폴더: %s\n작가: %s"
 #. * Image missing
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:364
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1079,7 +1073,7 @@ msgid ""
 "Artist: %s"
 msgstr "<b>%s</b>\n%s\n폴더: %s\n작가: %s"
 
-#: ../capplets/appearance/mate-wp-item.c:369
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "그림이 없습니다"
 
@@ -1148,22 +1142,22 @@ msgstr "임시 디렉터리를 만드는 데 실패했습니다"
 msgid "New themes have been successfully installed."
 msgstr "\"%s\" 테마를 새로 설치했습니다."
 
-#: ../capplets/appearance/theme-installer.c:665
+#: ../capplets/appearance/theme-installer.c:658
 msgid "No theme file location specified to install"
 msgstr "테마를 파일을 설치할 위치를 지정하지 않았습니다"
 
-#: ../capplets/appearance/theme-installer.c:689
+#: ../capplets/appearance/theme-installer.c:682
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
 msgstr "다음에 테마를 설치하는 데 필요한 권한이 없습니다:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:769
+#: ../capplets/appearance/theme-installer.c:762
 msgid "Select Theme"
 msgstr "테마 선택"
 
-#: ../capplets/appearance/theme-installer.c:780
+#: ../capplets/appearance/theme-installer.c:773
 msgid "Theme Packages"
 msgstr "테마 꾸러미"
 
@@ -1177,7 +1171,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "테마가 벌써 있습니다. 바꾸시겠습니까?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:466
+#: ../capplets/common/file-transfer-dialog.c:446
 msgid "_Overwrite"
 msgstr "덮어 쓰기(_O)"
 
@@ -1220,7 +1214,7 @@ msgid "Copying '%s'"
 msgstr "'%s' 복사 중"
 
 #: ../capplets/common/file-transfer-dialog.c:185
-#: ../capplets/common/file-transfer-dialog.c:317
+#: ../capplets/common/file-transfer-dialog.c:312
 msgid "Copying files"
 msgstr "파일 복사 중"
 
@@ -1272,16 +1266,16 @@ msgstr "전체 URI"
 msgid "Total number of URIs"
 msgstr "전체 URI의 개수"
 
-#: ../capplets/common/file-transfer-dialog.c:460
+#: ../capplets/common/file-transfer-dialog.c:440
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "'%s' 파일이 벌써 있습니다. 덮어 쓰시겠습니까?"
 
-#: ../capplets/common/file-transfer-dialog.c:463
+#: ../capplets/common/file-transfer-dialog.c:443
 msgid "_Skip"
 msgstr "건너 뛰기(_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:464
+#: ../capplets/common/file-transfer-dialog.c:444
 msgid "Overwrite _All"
 msgstr "모두 덮어 쓰기(_A)"
 
@@ -1477,7 +1471,7 @@ msgid "Off"
 msgstr "끄기"
 
 #: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:508
+#: ../capplets/display/xrandr-capplet.c:496
 msgid "Monitor"
 msgstr "모니터"
 
@@ -1498,20 +1492,20 @@ msgid "Sets the selected monitor as primary."
 msgstr "선택한 모니터를 기본 모니터로 지정합니다."
 
 #: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
 msgid "Normal"
 msgstr "보통"
 
 #: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:574
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "Left"
 msgstr "왼쪽"
 
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:313
-#: ../capplets/windows/mate-window-properties.c:573
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Right"
 msgstr "오른쪽"
 
@@ -1617,11 +1611,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "모든 사용자에게 적용할 다중 모니터 설정을 하려면 관리자 인증이 필요합니다"
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Upside Down"
 msgstr "위 아래"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:352
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1630,177 +1624,177 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:493
-#: ../capplets/display/xrandr-capplet.c:1669
+#: ../capplets/display/xrandr-capplet.c:485
+#: ../capplets/display/xrandr-capplet.c:1631
 #, c-format
 msgid "Mirror Screens"
 msgstr "동일한 화면"
 
-#: ../capplets/display/xrandr-capplet.c:495
+#: ../capplets/display/xrandr-capplet.c:487
 #, c-format
 msgid "Monitor: %s"
 msgstr "모니터: %s"
 
-#: ../capplets/display/xrandr-capplet.c:591
+#: ../capplets/display/xrandr-capplet.c:557
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1525
+#: ../capplets/display/xrandr-capplet.c:1487
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "속성을 바꾸려는 모니터를 선택하십시오. 위치를 바꾸려면 끌어 놓으십시오."
 
-#: ../capplets/display/xrandr-capplet.c:2147
+#: ../capplets/display/xrandr-capplet.c:2067
 msgid "Could not save the monitor configuration"
 msgstr "모니터 설정을 저장할 수 없습니다"
 
-#: ../capplets/display/xrandr-capplet.c:2169
+#: ../capplets/display/xrandr-capplet.c:2089
 msgid "Could not get session bus while applying display configuration"
 msgstr "화면 설정을 적용할 때 세션 버스를 읽어 올 수 없습니다"
 
-#: ../capplets/display/xrandr-capplet.c:2188
+#: ../capplets/display/xrandr-capplet.c:2108
 msgid "Could not detect displays"
 msgstr "디스플레이를 검색할 수 없습니다"
 
-#: ../capplets/display/xrandr-capplet.c:2400
+#: ../capplets/display/xrandr-capplet.c:2316
 msgid "The monitor configuration has been saved"
 msgstr "모니터 설정을 저장했습니다"
 
-#: ../capplets/display/xrandr-capplet.c:2402
+#: ../capplets/display/xrandr-capplet.c:2318
 msgid "This configuration will be used the next time someone logs in."
 msgstr "이 설정은 다음번에 로그인할 때 사용합니다."
 
-#: ../capplets/display/xrandr-capplet.c:2411
+#: ../capplets/display/xrandr-capplet.c:2327
 msgid "Could not set the default configuration for monitors"
 msgstr "모니터를 기본값으로 설정할 수 없습니다"
 
-#: ../capplets/display/xrandr-capplet.c:2495
+#: ../capplets/display/xrandr-capplet.c:2411
 msgid "Could not get screen information"
 msgstr "화면 정보를 읽어 올 수 없습니다"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:25
+#: ../capplets/keybindings/eggcellrendererkeys.c:21
 msgid "New shortcut..."
 msgstr "새 바로 가기..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:161
-#: ../capplets/keybindings/eggcellrendererkeys.c:162
+#: ../capplets/keybindings/eggcellrendererkeys.c:157
+#: ../capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "바로 가기 키"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:171
-#: ../capplets/keybindings/eggcellrendererkeys.c:172
+#: ../capplets/keybindings/eggcellrendererkeys.c:167
+#: ../capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "바로 가기 키 변경 키"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:180
-#: ../capplets/keybindings/eggcellrendererkeys.c:181
+#: ../capplets/keybindings/eggcellrendererkeys.c:176
+#: ../capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "바로 가기 키코드"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:191
+#: ../capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "바로 가기 모드"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:192
+#: ../capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "바로 가기 키의 형식."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:235
-#: ../capplets/keybindings/mate-keybinding-properties.c:138
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/keybindings/eggcellrendererkeys.c:231
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
+#: ../capplets/mouse/mate-mouse-properties.c:302
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "사용 않음"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:220
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<알 수 없는 동작>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1024
-#: ../capplets/keybindings/mate-keybinding-properties.c:1614
+#: ../capplets/keybindings/mate-keybinding-properties.c:1020
+#: ../capplets/keybindings/mate-keybinding-properties.c:1610
 msgid "Custom Shortcuts"
 msgstr "사용자 설정 바로 가기"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1194
+#: ../capplets/keybindings/mate-keybinding-properties.c:1190
 msgid "Error saving the new shortcut"
 msgstr "새 바로 가기 키를 저장하는 데 오류"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1270
+#: ../capplets/keybindings/mate-keybinding-properties.c:1266
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "\"%s\" 바로 가기 키를 사용할 수 없습니다. 이 키만으로는 입력할 수 없습니다.\nControl이나 Alt, Shift키와 동시에 사용해 보십시오."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1302
+#: ../capplets/keybindings/mate-keybinding-properties.c:1298
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "\"%s\" 바로 가기 키는 \"%s\"에 쓰고\n있습니다"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1309
+#: ../capplets/keybindings/mate-keybinding-properties.c:1305
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "바로 가기 키를 \"%s\"에 다시 설정하면, \"%s\" 바로 가기는 없어집니다."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1310
 msgid "_Reassign"
 msgstr "다시 설정(_R)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1569
+#: ../capplets/keybindings/mate-keybinding-properties.c:1565
 msgid "Too many custom shortcuts"
 msgstr "사용자 설정 바로 가기 키가 너무 많습니다"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1857
+#: ../capplets/keybindings/mate-keybinding-properties.c:1853
 msgid "Action"
 msgstr "동작"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1879
+#: ../capplets/keybindings/mate-keybinding-properties.c:1875
 msgid "Shortcut"
 msgstr "바로 가기"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+msgid "Custom Shortcut"
+msgstr "사용자 설정 바로 가기 키"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "C_ommand:"
+msgstr "명령(_O):"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "키보드 바로 가기"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
 msgstr "바로 가기를 편집하려면, 해당 줄에 클릭하고 새 바로 가기 키를 누르십시오. 지우려면 백스페이스를 누르십시오."
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
-msgid "Custom Shortcut"
-msgstr "사용자 설정 바로 가기 키"
-
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-msgid "C_ommand:"
-msgstr "명령(_O):"
-
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "명령어에 단축 키를 지정합니다"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:209
+#: ../capplets/keyboard/mate-keyboard-properties.c:214
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "설정을 적용하고 마칩니다(호환성; 이제 데몬이 처리합니다)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:219
 msgid "Start the page with the typing break settings showing"
 msgstr "입력 휴식 설정을 보여주는 페이지로 시작합니다"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:228
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
 msgid "Start the page with the accessibility settings showing"
 msgstr "접근성 설정을 보여주는 페이지로 시작합니다"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:234
+#: ../capplets/keyboard/mate-keyboard-properties.c:230
 msgid "- MATE Keyboard Preferences"
 msgstr "- 마테 키보드 설정"
 
@@ -1810,8 +1804,8 @@ msgstr "키보드 접근성 오디오 피드백"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "General"
 msgstr "일반"
 
@@ -1824,55 +1818,55 @@ msgid "Beep when a _toggle key is pressed"
 msgstr "토글 키를 눌렀을 때 삑 소리(_T)"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
-msgid "Visual cues for sounds"
-msgstr "사운드에 시각 신호"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
-msgid "Show _visual feedback for the alert sound"
-msgstr "알림 사운드에 대해 시각적으로 표시(_V)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
-msgid "Flash _window titlebar"
-msgstr "창 제목 표시줄 번쩍이기(_W)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
-msgid "Flash entire _screen"
-msgstr "전체 화면 번쩍이기(_S)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
-msgid "Slow Keys"
-msgstr "느린 키"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
-msgid "Beep when a key is pr_essed"
-msgstr "키를 눌렀을 때 삑 소리(_E)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-msgid "Beep when key is _accepted"
-msgstr "키를 받아들일 때 삑 소리(_A)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
-msgid "Beep when key is _rejected"
-msgstr "키가 거부되었을 때 삑 소리(_R)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
-msgid "Bounce Keys"
-msgstr "탄력 키"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
-msgid "Beep when a key is reje_cted"
-msgstr "키가 거부되었을 때 삑 소리(_C)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
 msgid "Sticky Keys"
 msgstr "고정 키"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
 msgid "Beep when a _modifier key is pressed"
 msgstr "변경 키를 눌렀을 때 삑 소리(_M)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Visual cues for sounds"
+msgstr "사운드에 시각 신호"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Show _visual feedback for the alert sound"
+msgstr "알림 사운드에 대해 시각적으로 표시(_V)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+msgid "Flash _window titlebar"
+msgstr "창 제목 표시줄 번쩍이기(_W)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Flash entire _screen"
+msgstr "전체 화면 번쩍이기(_S)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "Slow Keys"
+msgstr "느린 키"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when a key is pr_essed"
+msgstr "키를 눌렀을 때 삑 소리(_E)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+msgid "Beep when key is _accepted"
+msgstr "키를 받아들일 때 삑 소리(_A)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when key is _rejected"
+msgstr "키가 거부되었을 때 삑 소리(_R)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr "탄력 키"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+msgid "Beep when a key is reje_cted"
+msgstr "키가 거부되었을 때 삑 소리(_C)"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
@@ -1901,7 +1895,7 @@ msgstr "짧게"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "Slow"
 msgstr "느리게"
 
@@ -1916,7 +1910,7 @@ msgstr "길게"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Fast"
 msgstr "빠르게"
 
@@ -2099,12 +2093,12 @@ msgid "Choose a Layout"
 msgstr "키보드 배치 선택"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
-msgid "_Variants:"
-msgstr "변종(_V):"
-
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
 msgid "_Country:"
 msgstr "국가(_C):"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+msgid "_Variants:"
+msgstr "변종(_V):"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
 msgid "By _country"
@@ -2166,24 +2160,24 @@ msgstr "키보드"
 msgid "Set your keyboard preferences"
 msgstr "키보드를 설정합니다"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Left button"
 msgstr "왼쪽 버튼"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Middle button"
 msgstr "가운데 버튼"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Right button"
 msgstr "오른쪽 버튼"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:449
+#: ../capplets/mouse/mate-mouse-properties.c:396
 msgid "Specify the name of the page to show (general)"
 msgstr "보여줄 페이지 이름을 지정하십시오(일반)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:454
+#: ../capplets/mouse/mate-mouse-properties.c:401
 msgid "- MATE Mouse Preferences"
 msgstr "- 마테 마우스 설정"
 
@@ -2215,19 +2209,19 @@ msgstr "Control 키를 눌렀을 때 포인터 위치를 표시(_O)"
 msgid "Pointer Speed"
 msgstr "포인터 속도"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
-msgid "_Sensitivity:"
-msgstr "민감도(_S):"
-
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Low"
 msgstr "낮게"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "High"
 msgstr "높게"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "_Sensitivity:"
+msgstr "민감도(_S):"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "Drag and Drop"
@@ -2250,57 +2244,58 @@ msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "두 번 누르기 설정을 테스트하려면, 오른쪽 전구 위에서 두 번 눌러 보십시오."
 
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
+msgid "Mouse"
+msgstr "마우스"
+
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Enable _touchpad"
 msgstr "터치패드 사용(_T)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Disable touchpad _while typing"
 msgstr "타이핑할 때 터치패드 사용 않기(_W)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Enable _mouse clicks with touchpad"
 msgstr "터치패드로 마우스 단추 누르기 사용(_M)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Two-finger click emulation:"
 msgstr "두 손가락 클릭 에뮬레이션:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Three-finger click emulation:"
 msgstr "세 손가락 클릭 에뮬레이션:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Scrolling"
 msgstr "스크롤"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "_Vertical edge scrolling"
 msgstr "세로 가장자리 스크롤(_V)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "H_orizontal edge scrolling"
 msgstr "가로 가장자리 스크롤(_O)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "V_ertical two-finger scrolling"
 msgstr "세로 두 손가락 스크롤(_E)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Hor_izontal two-finger scrolling"
 msgstr "가로 두 손가락 스크롤(_E)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
-msgid "Enable n_atural scrolling"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+msgid "Enable _natural scrolling"
 msgstr "자연스러운 스크롤 사용(_N)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Touchpad"
 msgstr "터치패드"
-
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
-msgid "Mouse"
-msgstr "마우스"
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
 msgid "Set your mouse preferences"
@@ -2315,89 +2310,89 @@ msgid "Set your network proxy preferences"
 msgstr "네트워크 프록시를 설정합니다"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
-msgid "HTTP Proxy Details"
-msgstr "HTTP 프록시 설정"
-
-#: ../capplets/network/mate-network-properties.ui.h:2
-msgid "<b>_Use authentication</b>"
-msgstr "<b>인증 사용(_U)</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:3
-msgid "U_sername:"
-msgstr "사용자 이름(_S):"
-
-#: ../capplets/network/mate-network-properties.ui.h:4
-msgid "_Password:"
-msgstr "암호(_P):"
-
-#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "Network Proxy Preferences"
 msgstr "네트워크 프록시 기본 설정"
 
-#: ../capplets/network/mate-network-properties.ui.h:6
+#: ../capplets/network/mate-network-properties.ui.h:2
 msgid "<b>Di_rect internet connection</b>"
 msgstr "<b>직접 인터넷 연결(_R)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:7
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "<b>_Manual proxy configuration</b>"
 msgstr "<b>수동 프록시 설정(_M)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:8
-msgid "H_TTP proxy:"
-msgstr "HTTP 프록시(_T):"
-
-#: ../capplets/network/mate-network-properties.ui.h:9
-msgid "_Secure HTTP proxy:"
-msgstr "보안 HTTP 프록시(_S):"
-
-#: ../capplets/network/mate-network-properties.ui.h:10
-msgid "_FTP proxy:"
-msgstr "FTP 프록시(_F):"
-
-#: ../capplets/network/mate-network-properties.ui.h:11
-msgid "S_ocks host:"
-msgstr "Socks 호스트(_O):"
-
-#: ../capplets/network/mate-network-properties.ui.h:12
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "Port:"
 msgstr "포트:"
 
-#: ../capplets/network/mate-network-properties.ui.h:13
+#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "_Details"
 msgstr "설정(_D)"
 
-#: ../capplets/network/mate-network-properties.ui.h:14
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "H_TTP proxy:"
+msgstr "HTTP 프록시(_T):"
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "_Secure HTTP proxy:"
+msgstr "보안 HTTP 프록시(_S):"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "_FTP proxy:"
+msgstr "FTP 프록시(_F):"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
+msgid "S_ocks host:"
+msgstr "Socks 호스트(_O):"
+
+#: ../capplets/network/mate-network-properties.ui.h:10
 msgid "<b>_Automatic proxy configuration</b>"
 msgstr "<b>자동 프록시 설정(_A)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:15
+#: ../capplets/network/mate-network-properties.ui.h:11
 msgid "Autoconfiguration _URL:"
 msgstr "자동 설정 URL(_U):"
 
-#: ../capplets/network/mate-network-properties.ui.h:16
+#: ../capplets/network/mate-network-properties.ui.h:12
 msgid "Proxy Configuration"
 msgstr "프록시 설정"
 
-#: ../capplets/network/mate-network-properties.ui.h:17
+#: ../capplets/network/mate-network-properties.ui.h:13
 msgid "Ignore Host List"
 msgstr "무시 호스트 목록"
 
-#: ../capplets/network/mate-network-properties.ui.h:18
+#: ../capplets/network/mate-network-properties.ui.h:14
 msgid "Ignored Hosts"
 msgstr "무시할 호스트"
+
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "HTTP Proxy Details"
+msgstr "HTTP 프록시 설정"
+
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "<b>_Use authentication</b>"
+msgstr "<b>인증 사용(_U)</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "U_sername:"
+msgstr "사용자 이름(_S):"
+
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "_Password:"
+msgstr "암호(_P):"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
 msgstr "메타시티 기본 설정"
 
 #. Compositing manager
-#: ../capplets/windows/mate-metacity-support.c:55
-#: ../capplets/windows/mate-window-properties.c:410
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.c:392
 msgid "Compositing Manager"
 msgstr "합성 효과 관리자"
 
-#: ../capplets/windows/mate-metacity-support.c:66
-#: ../capplets/windows/mate-window-properties.c:422
+#: ../capplets/windows/mate-metacity-support.c:62
+#: ../capplets/windows/mate-window-properties.c:399
 msgid "Enable software _compositing window manager"
 msgstr "소프트웨어 합성 효과 창 관리자 활성화(_C)"
 
@@ -2410,131 +2405,131 @@ msgstr "현재 창 관리자를 지원하지 않습니다"
 msgid "Window Preferences"
 msgstr "창 기본 설정"
 
-#: ../capplets/windows/mate-window-properties.c:391
+#: ../capplets/windows/mate-window-properties.c:381
 msgid "Behaviour"
 msgstr "동작"
 
-#: ../capplets/windows/mate-window-properties.c:400
+#: ../capplets/windows/mate-window-properties.c:386
 msgid "Placement"
 msgstr "위치"
 
-#: ../capplets/windows/mate-window-properties.c:423
+#: ../capplets/windows/mate-window-properties.c:400
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Alt-Tab에서 미리 보기 비활성화(_T)"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:431
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "Titlebar Buttons"
 msgstr "제목 표시줄 단추"
 
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Position:"
 msgstr "위치:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:419
 msgid "New Windows"
 msgstr "새 창"
 
-#: ../capplets/windows/mate-window-properties.c:454
+#: ../capplets/windows/mate-window-properties.c:423
 msgid "Center _new windows"
 msgstr "새 창을 가운데로(_N)"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:459
+#: ../capplets/windows/mate-window-properties.c:428
 msgid "Window Snapping"
 msgstr "창 맞추기"
 
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:432
 msgid "Enable side by side _tiling"
 msgstr "가장자리 별로 바둑판 배치 활성화(_T)"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:437
 msgid "Window Selection"
 msgstr "창 선택"
 
-#: ../capplets/windows/mate-window-properties.c:492
+#: ../capplets/windows/mate-window-properties.c:447
 msgid "_Select windows when the mouse moves over them"
 msgstr "창 위에 마우스가 지나가면 그 창을 선택(_S)"
 
-#: ../capplets/windows/mate-window-properties.c:495
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "마우스를 떼면 창 선택 해제(_N)"
 
-#: ../capplets/windows/mate-window-properties.c:499
+#: ../capplets/windows/mate-window-properties.c:454
 msgid "_Raise selected windows after an interval"
 msgstr "창을 띄우기 전에 지연(_R)"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:461
 msgid "_Interval before raising:"
 msgstr "창을 띄울 때 지연(_I):"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:465
 msgid "seconds"
 msgstr "초"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:525
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Titlebar Action"
 msgstr "제목 표시줄 동작"
 
-#: ../capplets/windows/mate-window-properties.c:533
+#: ../capplets/windows/mate-window-properties.c:480
 msgid "_Double-click titlebar to perform this action:"
 msgstr "제목 표시줄을 두번 눌렀을 때(_D):"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:541
+#: ../capplets/windows/mate-window-properties.c:488
 msgid "Movement Key"
 msgstr "옮기기 키"
 
-#: ../capplets/windows/mate-window-properties.c:552
+#: ../capplets/windows/mate-window-properties.c:494
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "창을 움직일 때, 이 키를 눌러서 창을 끌어 옮기기:"
 
-#: ../capplets/windows/mate-window-properties.c:580
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "말아 올리기"
 
-#: ../capplets/windows/mate-window-properties.c:581
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "최대화"
 
-#: ../capplets/windows/mate-window-properties.c:582
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "가로 최대화"
 
-#: ../capplets/windows/mate-window-properties.c:583
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "세로 최대화"
 
-#: ../capplets/windows/mate-window-properties.c:584
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "최소화"
 
-#: ../capplets/windows/mate-window-properties.c:585
+#: ../capplets/windows/mate-window-properties.c:523
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "없음"
 
-#: ../capplets/windows/mate-window-properties.c:786
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:792
+#: ../capplets/windows/mate-window-properties.c:730
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:799
+#: ../capplets/windows/mate-window-properties.c:737
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (윈도우 키)"
 
-#: ../capplets/windows/mate-window-properties.c:806
+#: ../capplets/windows/mate-window-properties.c:744
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2551,29 +2546,29 @@ msgstr "창 속성을 설정합니다"
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "창 관리자 \"%s\"(이)가 설정 도구에 등록되지 않았습니다\n"
 
-#: ../shell/control-center.c:61
+#: ../shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
 msgstr "%s 키가 비어있습니다\n"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Filter"
 msgstr "필터"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Groups"
 msgstr "모음"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Common Tasks"
 msgstr "일반 작업"
 
-#: ../shell/control-center.c:152 ../shell/control-center.c:255
-#: ../shell/matecc.desktop.in.in.h:1 ../shell/matecc.directory.in.h:1
+#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "제어 센터"
 
-#: ../shell/control-center.c:208
+#: ../shell/control-center.c:162
 msgid "Hide on start (useful to preload the shell)"
 msgstr "시작할 때 감추기(셸을 미리 읽어들이는데 유용함)"
 
@@ -2581,11 +2576,11 @@ msgstr "시작할 때 감추기(셸을 미리 읽어들이는데 유용함)"
 msgid "The MATE configuration tool"
 msgstr "마테 설정 도구"
 
-#: ../typing-break/drw-break-window.c:203
+#: ../typing-break/drw-break-window.c:190
 msgid "_Postpone Break"
 msgstr "휴식 시간 미루기(_P)"
 
-#: ../typing-break/drw-break-window.c:277
+#: ../typing-break/drw-break-window.c:247
 msgid "Take a break!"
 msgstr "휴식 시간!"
 
@@ -2633,7 +2628,7 @@ msgstr "Anders Carlsson이 눈요기 거리 추가"
 msgid "A computer break reminder."
 msgstr "컴퓨터 휴식 시간 알려주기 프로그램입니다."
 
-#: ../typing-break/drwright.c:639
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
 msgid "translator-credits"
 msgstr "차영호 <ganadist@gmail.com>\n류창우 <cwryu@debian.org>\n이진규 <jincreator@jincreator.net>\n조성호 <darkcircle.0426@gmail.com>\nMATE Desktop Environment Team <https://www.transifex.com/mate/teams/13566/ko/>"
 
@@ -2657,95 +2652,97 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "입력 정보에서는 알림 영역에서 정보를 보여줍니다. 하지만 패널에 알림 영역이 없습니다. 패널에 오른쪽 클릭을 해서 '패널에 추가'를 선택한 다음 '알림 영역'을 선택하고 '추가'를 누르면 알림 영역을 추가할 수 있습니다."
 
-#: ../font-viewer/font-view.c:360 ../font-viewer/font-view.c:362
-msgid "Name:"
-msgstr "이름:"
+#: ../font-viewer/font-view.c:184
+msgid "Style"
+msgstr "모양"
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:369
-msgid "Style:"
-msgstr "모양:"
+#: ../font-viewer/font-view.c:194
+msgid "Type"
+msgstr "형식"
 
-#: ../font-viewer/font-view.c:383 ../font-viewer/font-view.c:385
-msgid "Type:"
-msgstr "형식:"
+#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+msgid "Version"
+msgstr "버전"
 
-#: ../font-viewer/font-view.c:391 ../font-viewer/font-view.c:393
-msgid "Size:"
-msgstr "크기:"
+#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+msgid "Copyright"
+msgstr "저작권"
 
-#: ../font-viewer/font-view.c:440 ../font-viewer/font-view.c:442
-#: ../font-viewer/font-view.c:465 ../font-viewer/font-view.c:467
-msgid "Version:"
-msgstr "버전:"
+#: ../font-viewer/font-view.c:248
+msgid "Description"
+msgstr "설명"
 
-#: ../font-viewer/font-view.c:448 ../font-viewer/font-view.c:450
-#: ../font-viewer/font-view.c:471 ../font-viewer/font-view.c:473
-msgid "Copyright:"
-msgstr "저작권:"
-
-#: ../font-viewer/font-view.c:456 ../font-viewer/font-view.c:458
-msgid "Description:"
-msgstr "설명:"
-
-#: ../font-viewer/font-view.c:535
-msgid "Installed"
-msgstr "설치함"
-
-#: ../font-viewer/font-view.c:537
+#: ../font-viewer/font-view.c:266
 msgid "Install Failed"
 msgstr "설치 실패"
 
-#: ../font-viewer/font-view.c:613
-#, c-format
-msgid "Usage: %s fontfile\n"
-msgstr "사용: %s 글꼴 파일\n"
+#: ../font-viewer/font-view.c:272
+msgid "Installed"
+msgstr "설치함"
 
-#: ../font-viewer/font-view.c:713
-msgid "I_nstall Font"
-msgstr "글꼴 설치(_N)"
+#: ../font-viewer/font-view.c:409
+msgid "This font could not be displayed."
+msgstr "이 글꼴을 표시할 수 없습니다."
 
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+msgid "Info"
+msgstr "정보"
+
+#: ../font-viewer/font-view.c:515
+msgid "Back"
+msgstr "뒤로"
+
+#: ../font-viewer/font-view.c:612
+msgid "All Fonts"
+msgstr "모든 글꼴"
+
+#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
 msgid "Font Viewer"
 msgstr "글꼴 보기"
 
+#: ../font-viewer/font-view.c:717
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
-msgid "Preview fonts"
-msgstr "글꼴 미리 보기"
+msgid "View fonts on your system"
+msgstr "시스템에서 글꼴 보기"
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+msgid "MATE Font Viewer"
+msgstr "마테 글꼴 보기"
+
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "Text to thumbnail (default: Aa)"
 msgstr "미리보기에 붙을 텍스트(기본값: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "TEXT"
 msgstr "<텍스트>"
 
-#: ../font-viewer/font-thumbnailer.c:269
-msgid "Font size (default: 64)"
-msgstr "글꼴 크기(기본값: 64)"
+#: ../font-viewer/font-thumbnailer.c:191
+msgid "Thumbnail size (default: 128)"
+msgstr "썸네일 크기 (기본: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:269
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "SIZE"
 msgstr "<크기>"
 
-#: ../font-viewer/font-thumbnailer.c:271
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "<글꼴파일> <출력파일>"
 
-#: ../libslab/app-shell.c:810
+#: ../libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "\"%s\" 필터에 맞는 항목이 없습니다."
 
-#: ../libslab/app-shell.c:812
+#: ../libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "맞는 항목이 없습니다."
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "새 프로그램"
 
-#: ../libslab/app-shell.c:967
+#: ../libslab/app-shell.c:929
 msgid "Other"
 msgstr "기타"
 
@@ -2894,7 +2891,7 @@ msgstr "%b %d일 %p %l:%M "
 msgid "%b %d %Y"
 msgstr "%Y년 %b %d일"
 
-#: ../libslab/search-bar.c:260
+#: ../libslab/search-bar.c:256
 msgid "Find Now"
 msgstr "지금 찾기"
 

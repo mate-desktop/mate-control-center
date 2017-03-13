@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Allan Nordhøy <epost@anotheragency.no>, 2016
+# Allan Nordhøy <epost@anotheragency.no>, 2016-2017
 # Håvard Havdal <haavard@havdal.net>, 2012
 # Kenneth Jenssen <kennethjenssen@yahoo.com>, 2016
 # Terance Edward Sola <terance@lyse.net>, 2005
@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 16:41+0300\n"
-"PO-Revision-Date: 2016-11-19 14:40+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"POT-Creation-Date: 2017-03-08 15:40+0100\n"
+"PO-Revision-Date: 2017-03-08 14:44+0000\n"
+"Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/mate/MATE/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,6 +120,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Kommando forbundet med en tilpasset tastatursnarvei."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
+#: ../font-viewer/font-view.c:181
 msgid "Name"
 msgstr "Navn"
 
@@ -151,7 +152,7 @@ msgstr "Advarselknapper"
 msgid "The buttons shown in the alert dialog"
 msgstr "Knappene som blir vist i advarseldialogen"
 
-#: ../capplets/about-me/eel-alert-dialog.c:219
+#: ../capplets/about-me/eel-alert-dialog.c:207
 msgid "Show more _details"
 msgstr "Vis flere _detaljer"
 
@@ -164,16 +165,16 @@ msgid "No Image"
 msgstr "Ingen bilder"
 
 #: ../capplets/about-me/mate-about-me.c:298
-#: ../capplets/appearance/appearance-desktop.c:692
+#: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Bilder"
 
 #: ../capplets/about-me/mate-about-me.c:302
-#: ../capplets/appearance/theme-installer.c:787
+#: ../capplets/appearance/theme-installer.c:780
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../capplets/about-me/mate-about-me.c:454
+#: ../capplets/about-me/mate-about-me.c:446
 #, c-format
 msgid "About %s"
 msgstr "Om %s"
@@ -417,39 +418,39 @@ msgid "The new password has already been used recently."
 msgstr "Det nye passordet har vært brukt nylig."
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:829
+#: ../capplets/about-me/mate-about-me-password.c:825
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Kan ikke starte %s: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:833
+#: ../capplets/about-me/mate-about-me-password.c:829
 msgid "Unable to launch backend"
 msgstr "Kunne ikke kjøre bakstykke"
 
-#: ../capplets/about-me/mate-about-me-password.c:834
+#: ../capplets/about-me/mate-about-me-password.c:830
 msgid "A system error has occurred"
 msgstr "En systemfeil har oppstått"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:854
+#: ../capplets/about-me/mate-about-me-password.c:850
 msgid "Checking password..."
 msgstr "Sjekker passord …"
 
-#: ../capplets/about-me/mate-about-me-password.c:938
+#: ../capplets/about-me/mate-about-me-password.c:934
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Klikk <b>Endre passord</b> for å endre passord."
 
-#: ../capplets/about-me/mate-about-me-password.c:941
+#: ../capplets/about-me/mate-about-me-password.c:937
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Skriv inn passordet i feltet <b>Nytt passord</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:944
-#: ../capplets/about-me/mate-about-me-password.ui.h:9
+#: ../capplets/about-me/mate-about-me-password.c:940
+#: ../capplets/about-me/mate-about-me-password.ui.h:10
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "Oppgi passordet på nytt i feltet <b>Oppgi nytt passord igjen</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:947
+#: ../capplets/about-me/mate-about-me-password.c:943
 msgid "The two passwords are not equal."
 msgstr "De to passordene er ikke like."
 
@@ -458,132 +459,132 @@ msgid "Change password"
 msgstr "Endre passord"
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:2
+msgid "Change pa_ssword"
+msgstr "Endre pa_ssord"
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
 msgid "Change your password"
 msgstr "Bytt ditt passord"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:3
+#: ../capplets/about-me/mate-about-me-password.ui.h:4
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
 msgstr "For å endre passord må du oppgi ditt nåværende passord i feltet under og klikke på <b>Autentiser</b>.\nEtter at du er autentisert kan du skrive det nye passordet, gjenta det for verifisering og klikke <b>Endre passord</b>."
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:5
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
 msgid "Current _password:"
 msgstr "Gjeldende _passord:"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:6
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
 msgid "_New password:"
 msgstr "_Nytt passord:"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:7
+#: ../capplets/about-me/mate-about-me-password.ui.h:8
 msgid "_Retype new password:"
 msgstr "Sk_riv nytt passord på nytt:"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:8
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid "_Authenticate"
 msgstr "_Autentiser"
-
-#: ../capplets/about-me/mate-about-me-password.ui.h:10
-msgid "Change pa_ssword"
-msgstr "Endre pa_ssord"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
 msgid "Assistive Technologies Preferences"
 msgstr "Brukervalg for hjelpeteknologi"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+msgid "Close and _Log Out"
+msgstr "Lukk og _logg ut"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "Hjelpeteknologier"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
 msgid "_Preferred Applications"
 msgstr "_Foretrukne programmer"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
 msgid "Jump to Preferred Applications dialog"
 msgstr "Gå til dialog for forvalgte programmer"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
 msgid "_Enable assistive technologies"
 msgstr "_Aktiver hjelpeteknologi"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
 msgstr "Endring for å aktivere hjelpeteknologi vil ikke tre i kraft før du logger inn neste gang."
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
 msgid "Preferences"
 msgstr "Brukervalg"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
 msgid "_Keyboard Accessibility"
 msgstr "Tilg_jengelighet for tastatur"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
 msgid "Jump to the Keyboard Accessibility dialog"
 msgstr "Gå til dialog for tilgjengelighet for tastatur"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
 msgid "_Mouse Accessibility"
 msgstr "Tilgjengelighet for _mus"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
 msgid "Jump to the Mouse Accessibility dialog"
 msgstr "Gå til dialog for tilgjengelighet for mus"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
 msgid "Accessible Lo_gin"
 msgstr "Pålo_gging med hjelpeteknologi"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
 msgid "Jump to the Accessible Login dialog"
 msgstr "Gå til dialog for pålogging med tilgjengelighet"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
-msgid "Close and _Log Out"
-msgstr "Lukk og _logg ut"
 
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Velg hvilke funksjoner for tilgjengelighet som skal aktiveres når du logger inn"
 
-#: ../capplets/appearance/appearance-desktop.c:661
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "Legg til bakgrunn"
 
-#: ../capplets/appearance/appearance-desktop.c:696
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "All files"
 msgstr "Alle filer"
 
-#: ../capplets/appearance/appearance-main.c:61
+#: ../capplets/appearance/appearance-main.c:56
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Kunne ikke laste brukergrensesnittfil: %s"
 
-#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/appearance/appearance-main.c:157
 msgid "Specify the filename of a theme to install"
 msgstr "Oppgi filnavn på en drakt som skal installeres"
 
-#: ../capplets/appearance/appearance-main.c:165
+#: ../capplets/appearance/appearance-main.c:158
 msgid "filename"
 msgstr "filnavn"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:172
+#: ../capplets/appearance/appearance-main.c:165
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "Oppgi navn på fanen som skal vises (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:173
+#: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:450
+#: ../capplets/mouse/mate-mouse-properties.c:397
 msgid "page"
 msgstr "side"
 
-#: ../capplets/appearance/appearance-main.c:180
+#: ../capplets/appearance/appearance-main.c:173
 msgid "[WALLPAPER...]"
 msgstr "[BAKGRUNN…]"
 
@@ -594,16 +595,9 @@ msgstr "Forvalgt peker"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
+#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
 msgid "Install"
 msgstr "Installer"
-
-#: ../capplets/appearance/appearance-style.c:269
-#: ../capplets/common/mate-theme-info.c:1608
-#, c-format
-msgid ""
-"This theme will not look as intended because the required GTK+ theme engine "
-"'%s' is not installed."
-msgstr "Denne drakten vil ikke se ut som tiltenkt fordi draktmotoren «%s» for GTK+ ikke er installert."
 
 #: ../capplets/appearance/appearance-themes.c:646
 msgid "Apply Background"
@@ -617,41 +611,41 @@ msgstr "Bruk skrift"
 msgid "Revert Font"
 msgstr "Forkast skrift"
 
-#: ../capplets/appearance/appearance-themes.c:700
+#: ../capplets/appearance/appearance-themes.c:691
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "Aktiv drakt foreslår en bakgrunn og en skrift. I tillegg kan sist brukte skriftforslag forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:702
+#: ../capplets/appearance/appearance-themes.c:693
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "Aktiv drakt foreslår en bakgrunn. Sist valgte skriftforslag kan også forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:704
+#: ../capplets/appearance/appearance-themes.c:695
 msgid "The current theme suggests a background and a font."
 msgstr "Aktiv drakt foreslår en bakgrunn og en skrift."
 
-#: ../capplets/appearance/appearance-themes.c:706
+#: ../capplets/appearance/appearance-themes.c:697
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "Aktiv drakt foreslår også en skrift. Skriften kan også forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:708
+#: ../capplets/appearance/appearance-themes.c:699
 msgid "The current theme suggests a background."
 msgstr "Aktiv drakt foreslår en bakgrunn."
 
-#: ../capplets/appearance/appearance-themes.c:710
+#: ../capplets/appearance/appearance-themes.c:701
 msgid "The last applied font suggestion can be reverted."
 msgstr "Sist valgte skriftforslag kan forkastes."
 
-#: ../capplets/appearance/appearance-themes.c:712
+#: ../capplets/appearance/appearance-themes.c:703
 msgid "The current theme suggests a font."
 msgstr "Aktiv drakt foreslår en skrift."
 
-#: ../capplets/appearance/appearance-themes.c:1028
+#: ../capplets/appearance/appearance-themes.c:1019
 msgid "Custom"
 msgstr "Egendefinert"
 
@@ -718,285 +712,285 @@ msgstr "_RGB"
 msgid "_BGR"
 msgstr "_BGR"
 
-#. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:20
-msgid "_VRGB"
-msgstr "_VRGB"
-
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "VB_GR"
 msgstr "VB_GR"
 
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "_VRGB"
+msgstr "_VRGB"
+
 #: ../capplets/appearance/data/appearance.ui.h:23
-msgid "Appearance Preferences"
-msgstr "Brukervalg for utseende"
-
-#: ../capplets/appearance/data/appearance.ui.h:24
-msgid "Save _As..."
-msgstr "Lagre _som …"
-
-#: ../capplets/appearance/data/appearance.ui.h:25
-msgid "C_ustomize..."
-msgstr "Til_pass …"
-
-#: ../capplets/appearance/data/appearance.ui.h:26
-msgid "_Install..."
-msgstr "_Installer …"
-
-#: ../capplets/appearance/data/appearance.ui.h:27
-msgid "Get more themes online"
-msgstr "Hent flere drakter på nettet"
-
-#: ../capplets/appearance/data/appearance.ui.h:28
-msgid "Theme"
-msgstr "Drakt"
-
-#: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Style:"
-msgstr "_Stil:"
-
-#: ../capplets/appearance/data/appearance.ui.h:30
-msgid "C_olors:"
-msgstr "F_arger:"
-
-#: ../capplets/appearance/data/appearance.ui.h:31
-msgid "Open a dialog to specify the color"
-msgstr "Åpne et dialogvindu for å angi farge"
-
-#: ../capplets/appearance/data/appearance.ui.h:32
-msgid "Get more backgrounds online"
-msgstr "Hent flere bakgrunnsbilder på nettet"
-
-#: ../capplets/appearance/data/appearance.ui.h:33
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
-msgid "_Add..."
-msgstr "_Legg til …"
-
-#: ../capplets/appearance/data/appearance.ui.h:34
-msgid "Background"
-msgstr "Bakgrunn"
-
-#: ../capplets/appearance/data/appearance.ui.h:35
-msgid "_Document font:"
-msgstr "Skrift for _dokumenter:"
-
-#: ../capplets/appearance/data/appearance.ui.h:36
-msgid "Des_ktop font:"
-msgstr "S_krift for skrivebord:"
-
-#: ../capplets/appearance/data/appearance.ui.h:37
-msgid "_Window title font:"
-msgstr "Skrift for _vindutittel:"
-
-#: ../capplets/appearance/data/appearance.ui.h:38
-msgid "_Fixed width font:"
-msgstr "Skrift med _fast bredde:"
-
-#: ../capplets/appearance/data/appearance.ui.h:39
-msgid "_Application font:"
-msgstr "Skrift for _programmer:"
-
-#: ../capplets/appearance/data/appearance.ui.h:40
-msgid "Rendering"
-msgstr "Rendring"
-
-#: ../capplets/appearance/data/appearance.ui.h:41
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "Utjevning under pikselnivå (LCDer)"
-
-#: ../capplets/appearance/data/appearance.ui.h:42
-msgid "Best co_ntrast"
-msgstr "Best ko_ntrast"
-
-#: ../capplets/appearance/data/appearance.ui.h:43
-msgid "Best _shapes"
-msgstr "Beste _former"
-
-#: ../capplets/appearance/data/appearance.ui.h:44
-msgid "_Monochrome"
-msgstr "_Monokrom"
-
-#: ../capplets/appearance/data/appearance.ui.h:45
-msgid "D_etails..."
-msgstr "D_etaljer …"
-
-#: ../capplets/appearance/data/appearance.ui.h:46
-msgid "Fonts"
-msgstr "Skrifter"
-
-#: ../capplets/appearance/data/appearance.ui.h:47
-msgid "Menus and Toolbars"
-msgstr "Menyer og verktøylinjer"
-
-#: ../capplets/appearance/data/appearance.ui.h:48
-msgid "Show _icons in menus"
-msgstr "Vis _ikoner i menyer"
-
-#: ../capplets/appearance/data/appearance.ui.h:49
-msgid "_Editable menu shortcut keys"
-msgstr "_Redigerbare menytastatursnarveiknapper"
-
-#: ../capplets/appearance/data/appearance.ui.h:50
-msgid "Toolbar _button labels:"
-msgstr "Verktøyslinjens _knappemerkelapper:"
-
-#: ../capplets/appearance/data/appearance.ui.h:51
-msgid "Preview"
-msgstr "Forhåndsvisning"
-
-#: ../capplets/appearance/data/appearance.ui.h:52
-msgid "_File"
-msgstr "_Fil"
-
-#: ../capplets/appearance/data/appearance.ui.h:53
-msgid "Edit"
-msgstr "Rediger"
-
-#: ../capplets/appearance/data/appearance.ui.h:54
-msgid "Interface"
-msgstr "Grensesnitt"
-
-#: ../capplets/appearance/data/appearance.ui.h:55
-msgid "Tile"
-msgstr "Flislegg"
-
-#: ../capplets/appearance/data/appearance.ui.h:56
-msgid "Zoom"
-msgstr "Zoom"
-
-#: ../capplets/appearance/data/appearance.ui.h:57
-msgid "Center"
-msgstr "Midtstill"
-
-#: ../capplets/appearance/data/appearance.ui.h:58
-msgid "Scale"
-msgstr "Skaler"
-
-#: ../capplets/appearance/data/appearance.ui.h:59
-msgid "Stretch"
-msgstr "Strekk"
-
-#: ../capplets/appearance/data/appearance.ui.h:60
-msgid "Span"
-msgstr "Spennvidde"
-
-#: ../capplets/appearance/data/appearance.ui.h:61
-msgid "Solid color"
-msgstr "Helfylt farge"
-
-#: ../capplets/appearance/data/appearance.ui.h:62
-msgid "Horizontal gradient"
-msgstr "Horisontal gradient"
-
-#: ../capplets/appearance/data/appearance.ui.h:63
-msgid "Vertical gradient"
-msgstr "Vertikal gradient"
-
-#: ../capplets/appearance/data/appearance.ui.h:64
-msgid "Text below items"
-msgstr "Tekst under oppføringer"
-
-#: ../capplets/appearance/data/appearance.ui.h:65
-msgid "Text beside items"
-msgstr "Tekst ved siden av oppføringer"
-
-#: ../capplets/appearance/data/appearance.ui.h:66
-msgid "Icons only"
-msgstr "Kun ikoner"
-
-#: ../capplets/appearance/data/appearance.ui.h:67
-msgid "Text only"
-msgstr "Kun tekst"
-
-#: ../capplets/appearance/data/appearance.ui.h:68
 msgid "Customize Theme"
 msgstr "Tilpass drakt"
 
-#: ../capplets/appearance/data/appearance.ui.h:69
+#: ../capplets/appearance/data/appearance.ui.h:24
 msgid "Controls"
 msgstr "Kontroller"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
+#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "The current controls theme does not support color schemes."
 msgstr "Aktivt drakt for kontroller støtter ikke fargeskjema."
 
-#: ../capplets/appearance/data/appearance.ui.h:71
+#: ../capplets/appearance/data/appearance.ui.h:26
 msgid "_Tooltips:"
 msgstr "Verk_tøytips:"
 
-#: ../capplets/appearance/data/appearance.ui.h:72
-msgid "_Selected items:"
-msgstr "_Valgte oppføringer:"
-
-#: ../capplets/appearance/data/appearance.ui.h:73
-msgid "_Input boxes:"
-msgstr "_Inndatabokser:"
-
-#: ../capplets/appearance/data/appearance.ui.h:74
-msgid "_Windows:"
-msgstr "_Vinduer:"
-
-#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/appearance/data/appearance.ui.h:27
 msgid "Text"
 msgstr "Tekst"
 
-#: ../capplets/appearance/data/appearance.ui.h:76
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Background"
+msgstr "Bakgrunn"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Windows:"
+msgstr "_Vinduer:"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "_Input boxes:"
+msgstr "_Inndatabokser:"
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "_Selected items:"
+msgstr "_Valgte oppføringer:"
+
+#: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
 msgstr "Sett til fo_rvalg"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:33
 msgid "Colors"
 msgstr "Farger"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:34
 msgid "Window Border"
 msgstr "Vinduskant"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:35
 msgid "Icons"
 msgstr "Ikoner"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:36
 msgid "_Size:"
 msgstr "_Størrelse:"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:37
 #: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Small"
 msgstr "Liten"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:82
+#: ../capplets/appearance/data/appearance.ui.h:38
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Large"
 msgstr "Stor"
 
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:39
 msgid "Pointer"
 msgstr "Peker"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:40
 msgid "Save Theme As..."
 msgstr "Lagre drakt som …"
 
-#: ../capplets/appearance/data/appearance.ui.h:85
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
-msgid "_Name:"
-msgstr "_Navn:"
-
-#: ../capplets/appearance/data/appearance.ui.h:86
-msgid "_Description:"
-msgstr "_Beskrivelse:"
-
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:41
 msgid "Save _background image"
 msgstr "Lagre _bakgrunnsbilde"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save _notification theme"
 msgstr "Lagre _påminnelsesdrakt"
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+msgid "_Name:"
+msgstr "_Navn:"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Description:"
+msgstr "_Beskrivelse:"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "Text below items"
+msgstr "Tekst under oppføringer"
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Text beside items"
+msgstr "Tekst ved siden av oppføringer"
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Icons only"
+msgstr "Kun ikoner"
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Text only"
+msgstr "Kun tekst"
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Solid color"
+msgstr "Helfylt farge"
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Horizontal gradient"
+msgstr "Horisontal gradient"
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Vertical gradient"
+msgstr "Vertikal gradient"
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Tile"
+msgstr "Flislegg"
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Zoom"
+msgstr "Zoom"
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Center"
+msgstr "Midtstill"
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Scale"
+msgstr "Skaler"
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Stretch"
+msgstr "Strekk"
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Span"
+msgstr "Spennvidde"
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Appearance Preferences"
+msgstr "Brukervalg for utseende"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Save _As..."
+msgstr "Lagre _som …"
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "C_ustomize..."
+msgstr "Til_pass …"
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "_Install..."
+msgstr "_Installer …"
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "Get more themes online"
+msgstr "Hent flere drakter på nettet"
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "Theme"
+msgstr "Drakt"
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Style:"
+msgstr "_Stil:"
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "C_olors:"
+msgstr "F_arger:"
+
+#: ../capplets/appearance/data/appearance.ui.h:66
+msgid "Open a dialog to specify the color"
+msgstr "Åpne et dialogvindu for å angi farge"
+
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Get more backgrounds online"
+msgstr "Hent flere bakgrunnsbilder på nettet"
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr "_Legg til …"
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "_Application font:"
+msgstr "Skrift for _programmer:"
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "_Document font:"
+msgstr "Skrift for _dokumenter:"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Des_ktop font:"
+msgstr "S_krift for skrivebord:"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "_Window title font:"
+msgstr "Skrift for _vindutittel:"
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Fixed width font:"
+msgstr "Skrift med _fast bredde:"
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+msgid "Rendering"
+msgstr "Rendring"
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "Utjevning under pikselnivå (LCDer)"
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Best _shapes"
+msgstr "Beste _former"
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Best co_ntrast"
+msgstr "Best ko_ntrast"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "_Monochrome"
+msgstr "_Monokrom"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "D_etails..."
+msgstr "D_etaljer …"
+
+#: ../capplets/appearance/data/appearance.ui.h:80
+msgid "Fonts"
+msgstr "Skrifter"
+
+#: ../capplets/appearance/data/appearance.ui.h:81
+msgid "Menus and Toolbars"
+msgstr "Menyer og verktøylinjer"
+
+#: ../capplets/appearance/data/appearance.ui.h:82
+msgid "Show _icons in menus"
+msgstr "Vis _ikoner i menyer"
+
+#: ../capplets/appearance/data/appearance.ui.h:83
+msgid "_Editable menu shortcut keys"
+msgstr "_Redigerbare menytastatursnarveiknapper"
+
+#: ../capplets/appearance/data/appearance.ui.h:84
+msgid "Toolbar _button labels:"
+msgstr "Verktøyslinjens _knappemerkelapper:"
+
+#: ../capplets/appearance/data/appearance.ui.h:85
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+#: ../capplets/appearance/data/appearance.ui.h:86
+msgid "_File"
+msgstr "_Fil"
+
+#: ../capplets/appearance/data/appearance.ui.h:87
+msgid "Edit"
+msgstr "Rediger"
+
+#: ../capplets/appearance/data/appearance.ui.h:88
+msgid "Interface"
+msgstr "Grensesnitt"
 
 #: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
 msgid "Appearance"
@@ -1022,30 +1016,30 @@ msgstr "MATE draktpakke"
 msgid "No Desktop Background"
 msgstr "Ingen skrivebordsbakgrunn"
 
-#: ../capplets/appearance/mate-wp-item.c:318
+#: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
 msgstr "ukjent"
 
-#: ../capplets/appearance/mate-wp-item.c:325
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "Lysbildevisning"
 
-#: ../capplets/appearance/mate-wp-item.c:327
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "Bilde"
 
-#: ../capplets/appearance/mate-wp-item.c:333
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "flere størrelser"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:336
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s ganger %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:338
-#: ../capplets/appearance/mate-wp-item.c:340
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "piksel"
@@ -1055,7 +1049,7 @@ msgstr[1] "piksler"
 #. * mime type, size
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:349
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1068,7 +1062,7 @@ msgstr "<b>%s</b>\n%s, %s\nMappe: %s\nArtist: %s"
 #. * Image missing
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:364
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1077,7 +1071,7 @@ msgid ""
 "Artist: %s"
 msgstr "<b>%s</b>\n%s\n\\Mappe: %s\nArtist: %s"
 
-#: ../capplets/appearance/mate-wp-item.c:369
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "Bilde mangler"
 
@@ -1114,7 +1108,7 @@ msgstr "«%s» ser ikke ut til å være en gyldig drakt. Det kan være en draktm
 #: ../capplets/appearance/theme-installer.c:379
 #, c-format
 msgid "Installation for theme \"%s\" failed."
-msgstr "Installasjon av drakten «%s» feilet."
+msgstr "Installasjon av drakten «%s» mislyktes."
 
 #: ../capplets/appearance/theme-installer.c:418
 #, c-format
@@ -1146,22 +1140,22 @@ msgstr "Kunne ikke opprette midlertidig katalog"
 msgid "New themes have been successfully installed."
 msgstr "Nye drakter ble installert."
 
-#: ../capplets/appearance/theme-installer.c:665
+#: ../capplets/appearance/theme-installer.c:658
 msgid "No theme file location specified to install"
 msgstr "Ingen plassering oppgitt for installasjon av draktafil"
 
-#: ../capplets/appearance/theme-installer.c:689
+#: ../capplets/appearance/theme-installer.c:682
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
 msgstr "Ikke nok rettigheter til å installere drakt i:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:769
+#: ../capplets/appearance/theme-installer.c:762
 msgid "Select Theme"
 msgstr "Velg drakt"
 
-#: ../capplets/appearance/theme-installer.c:780
+#: ../capplets/appearance/theme-installer.c:773
 msgid "Theme Packages"
 msgstr "Draktpakker"
 
@@ -1175,7 +1169,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Drakten finnes allerede. Vil du erstatte den?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:466
+#: ../capplets/common/file-transfer-dialog.c:446
 msgid "_Overwrite"
 msgstr "_Overskriv"
 
@@ -1218,7 +1212,7 @@ msgid "Copying '%s'"
 msgstr "Kopierer «%s»"
 
 #: ../capplets/common/file-transfer-dialog.c:185
-#: ../capplets/common/file-transfer-dialog.c:317
+#: ../capplets/common/file-transfer-dialog.c:312
 msgid "Copying files"
 msgstr "Kopierer filer"
 
@@ -1270,16 +1264,16 @@ msgstr "Totalt antall URIer"
 msgid "Total number of URIs"
 msgstr "Totalt antall URIer"
 
-#: ../capplets/common/file-transfer-dialog.c:460
+#: ../capplets/common/file-transfer-dialog.c:440
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Fila «%s» finnes allerede. Vil du erstatte den?"
 
-#: ../capplets/common/file-transfer-dialog.c:463
+#: ../capplets/common/file-transfer-dialog.c:443
 msgid "_Skip"
 msgstr "_Hopp over"
 
-#: ../capplets/common/file-transfer-dialog.c:464
+#: ../capplets/common/file-transfer-dialog.c:444
 msgid "Overwrite _All"
 msgstr "Overskriv _alle"
 
@@ -1475,7 +1469,7 @@ msgid "Off"
 msgstr "Av"
 
 #: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:508
+#: ../capplets/display/xrandr-capplet.c:496
 msgid "Monitor"
 msgstr "Skjerm"
 
@@ -1496,20 +1490,20 @@ msgid "Sets the selected monitor as primary."
 msgstr "Angir valgt skjerm som primærskjerm."
 
 #: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
 msgid "Normal"
 msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:574
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "Left"
 msgstr "Venstre"
 
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:313
-#: ../capplets/windows/mate-window-properties.c:573
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Right"
 msgstr "Høyre:"
 
@@ -1615,11 +1609,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "Autentisering kreves for å installere innstillinger for flere skjermer for alle brukere"
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Upside Down"
 msgstr "Opp-ned"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:352
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1628,177 +1622,177 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:493
-#: ../capplets/display/xrandr-capplet.c:1669
+#: ../capplets/display/xrandr-capplet.c:485
+#: ../capplets/display/xrandr-capplet.c:1631
 #, c-format
 msgid "Mirror Screens"
 msgstr "Speil skjermer"
 
-#: ../capplets/display/xrandr-capplet.c:495
+#: ../capplets/display/xrandr-capplet.c:487
 #, c-format
 msgid "Monitor: %s"
 msgstr "Skjerm: %s"
 
-#: ../capplets/display/xrandr-capplet.c:591
+#: ../capplets/display/xrandr-capplet.c:557
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1525
+#: ../capplets/display/xrandr-capplet.c:1487
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "Velg en skjerm for å endre egenskaper for denne. Dra den rundt for å bytte plassering."
 
-#: ../capplets/display/xrandr-capplet.c:2147
+#: ../capplets/display/xrandr-capplet.c:2067
 msgid "Could not save the monitor configuration"
 msgstr "Kunne ikke lagre skjermoppsett"
 
-#: ../capplets/display/xrandr-capplet.c:2169
+#: ../capplets/display/xrandr-capplet.c:2089
 msgid "Could not get session bus while applying display configuration"
 msgstr "Kunne ikke finne øktbussen under aktivering av skjermoppsett"
 
-#: ../capplets/display/xrandr-capplet.c:2188
+#: ../capplets/display/xrandr-capplet.c:2108
 msgid "Could not detect displays"
 msgstr "Kunne ikke søke etter skjermer"
 
-#: ../capplets/display/xrandr-capplet.c:2400
+#: ../capplets/display/xrandr-capplet.c:2316
 msgid "The monitor configuration has been saved"
 msgstr "Skjermoppsett lagret"
 
-#: ../capplets/display/xrandr-capplet.c:2402
+#: ../capplets/display/xrandr-capplet.c:2318
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Dette oppsettet vil bli brukt neste gang noen logger inn."
 
-#: ../capplets/display/xrandr-capplet.c:2411
+#: ../capplets/display/xrandr-capplet.c:2327
 msgid "Could not set the default configuration for monitors"
 msgstr "Kunne ikke sette forvalgt oppsett for skjermer"
 
-#: ../capplets/display/xrandr-capplet.c:2495
+#: ../capplets/display/xrandr-capplet.c:2411
 msgid "Could not get screen information"
 msgstr "Fant ikke informasjon om skjermen"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:25
+#: ../capplets/keybindings/eggcellrendererkeys.c:21
 msgid "New shortcut..."
 msgstr "Ny snarvei …"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:161
-#: ../capplets/keybindings/eggcellrendererkeys.c:162
+#: ../capplets/keybindings/eggcellrendererkeys.c:157
+#: ../capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "Hurtigtast"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:171
-#: ../capplets/keybindings/eggcellrendererkeys.c:172
+#: ../capplets/keybindings/eggcellrendererkeys.c:167
+#: ../capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "Endringstaster for hurtigtaster"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:180
-#: ../capplets/keybindings/eggcellrendererkeys.c:181
+#: ../capplets/keybindings/eggcellrendererkeys.c:176
+#: ../capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "Tastekode for hurtigtast"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:191
+#: ../capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "Akselleratormodus"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:192
+#: ../capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "Type hurtigtast."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:235
-#: ../capplets/keybindings/mate-keybinding-properties.c:138
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/keybindings/eggcellrendererkeys.c:231
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
+#: ../capplets/mouse/mate-mouse-properties.c:302
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "Slått av"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:220
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<Ukjent handling>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1024
-#: ../capplets/keybindings/mate-keybinding-properties.c:1614
+#: ../capplets/keybindings/mate-keybinding-properties.c:1020
+#: ../capplets/keybindings/mate-keybinding-properties.c:1610
 msgid "Custom Shortcuts"
 msgstr "Egendefinerte snarveier"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1194
+#: ../capplets/keybindings/mate-keybinding-properties.c:1190
 msgid "Error saving the new shortcut"
 msgstr "Feil ved lagring av ny snarvei"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1270
+#: ../capplets/keybindings/mate-keybinding-properties.c:1266
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "Snarveien «%s» kan ikke brukes fordi den vil være umulig å skrive med denne tasten.\nPrøv igjen med en tastekombinasjon som inneholder Ctrl, Alt eller Shift."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1302
+#: ../capplets/keybindings/mate-keybinding-properties.c:1298
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "Snarveien «%s» er allerede brukt for\n«%s»"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1309
+#: ../capplets/keybindings/mate-keybinding-properties.c:1305
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Hvis du omfordeler snarveien til «%s» vil snarvei «%s» bli slått av."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1310
 msgid "_Reassign"
 msgstr "_Tildel på nytt"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1569
+#: ../capplets/keybindings/mate-keybinding-properties.c:1565
 msgid "Too many custom shortcuts"
 msgstr "For mange egendefinerte snarveier"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1857
+#: ../capplets/keybindings/mate-keybinding-properties.c:1853
 msgid "Action"
 msgstr "Handling"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1879
+#: ../capplets/keybindings/mate-keybinding-properties.c:1875
 msgid "Shortcut"
 msgstr "Snarvei"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+msgid "Custom Shortcut"
+msgstr "Egendefinert snarvei"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "C_ommand:"
+msgstr "K_ommando:"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Tastatursnarveier"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
-msgstr "Klikk på tilhørende rad og skriv inn en ny hurtigtast for å redigere en snarveitast, eller trykk slett for å fjerne."
-
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
-msgid "Custom Shortcut"
-msgstr "Egendefinert snarvei"
-
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-msgid "C_ommand:"
-msgstr "K_ommando:"
+msgstr "Klikk på tilhørende rad og skriv inn en ny hurtigtast for å redigere en snarveitast, eller trykk rettetasten for å tømme."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "Tilegn snarveitaster til kommandoer"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:209
+#: ../capplets/keyboard/mate-keyboard-properties.c:214
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "Bare aktiver innstillinger og avslutt (kun for kompatibilitet; håndteres av en daemon nå)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:219
 msgid "Start the page with the typing break settings showing"
 msgstr "Start siden med innstillingene for skrivepause fremme"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:228
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
 msgid "Start the page with the accessibility settings showing"
 msgstr "Vis siden med innstillingene for tilgjengelighet"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:234
+#: ../capplets/keyboard/mate-keyboard-properties.c:230
 msgid "- MATE Keyboard Preferences"
 msgstr "- Brukervalg for tastatur"
 
@@ -1808,8 +1802,8 @@ msgstr "Tilbakemelding via lyd for tilgjengelighet for tastatur"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "General"
 msgstr "Generelt"
 
@@ -1822,55 +1816,55 @@ msgid "Beep when a _toggle key is pressed"
 msgstr "Pip når endrings_tast trykkes ned"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
-msgid "Visual cues for sounds"
-msgstr "Visuelle hint for lyder"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
-msgid "Show _visual feedback for the alert sound"
-msgstr "Vis _visuell tilbakemelding for varsellyden"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
-msgid "Flash _window titlebar"
-msgstr "La _tittelfeltet i vinduet blinke"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
-msgid "Flash entire _screen"
-msgstr "La hele _skjermen blinke"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
-msgid "Slow Keys"
-msgstr "Trege taster"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
-msgid "Beep when a key is pr_essed"
-msgstr "Pip når tast trykkes n_ed"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-msgid "Beep when key is _accepted"
-msgstr "Pip når tast er godt_as"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
-msgid "Beep when key is _rejected"
-msgstr "Pip nå_r tast avvises"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
-msgid "Bounce Keys"
-msgstr "Sprettetaster"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
-msgid "Beep when a key is reje_cted"
-msgstr "Pip når tast a_vvises"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
 msgid "Sticky Keys"
 msgstr "Klebrige taster"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
 msgid "Beep when a _modifier key is pressed"
 msgstr "Pip når _endringstast trykkes ned"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Visual cues for sounds"
+msgstr "Visuelle hint for lyder"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Show _visual feedback for the alert sound"
+msgstr "Vis _visuell tilbakemelding for varsellyden"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+msgid "Flash _window titlebar"
+msgstr "La _tittelfeltet i vinduet blinke"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Flash entire _screen"
+msgstr "La hele _skjermen blinke"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "Slow Keys"
+msgstr "Trege taster"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when a key is pr_essed"
+msgstr "Pip når tast trykkes n_ed"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+msgid "Beep when key is _accepted"
+msgstr "Pip når tast er godt_as"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when key is _rejected"
+msgstr "Pip nå_r tast avvises"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr "Sprettetaster"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+msgid "Beep when a key is reje_cted"
+msgstr "Pip når tast a_vvises"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
@@ -1899,7 +1893,7 @@ msgstr "Kort"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "Slow"
 msgstr "Treg"
 
@@ -1914,7 +1908,7 @@ msgstr "Lang"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Fast"
 msgstr "Rask"
 
@@ -2097,12 +2091,12 @@ msgid "Choose a Layout"
 msgstr "Velg en utforming"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
-msgid "_Variants:"
-msgstr "_Varianter:"
-
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
 msgid "_Country:"
 msgstr "La_nd:"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+msgid "_Variants:"
+msgstr "_Varianter:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
 msgid "By _country"
@@ -2164,24 +2158,24 @@ msgstr "Tastatur"
 msgid "Set your keyboard preferences"
 msgstr "Sett dine brukervalg for tastatur"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Left button"
 msgstr "Venstre knapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Middle button"
 msgstr "Midterste knapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Right button"
 msgstr "Høyre knapp"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:449
+#: ../capplets/mouse/mate-mouse-properties.c:396
 msgid "Specify the name of the page to show (general)"
 msgstr "Angi navnet for siden som skal vises (generelt)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:454
+#: ../capplets/mouse/mate-mouse-properties.c:401
 msgid "- MATE Mouse Preferences"
 msgstr "- Brukervalg for mus"
 
@@ -2213,19 +2207,19 @@ msgstr "Vis pekerens p_osisjon når Ctrl trykkes ned"
 msgid "Pointer Speed"
 msgstr "Pekerhastighet"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
-msgid "_Sensitivity:"
-msgstr "_Følsomhet:"
-
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Low"
 msgstr "Lav"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "High"
 msgstr "Høy"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "_Sensitivity:"
+msgstr "_Følsomhet:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "Drag and Drop"
@@ -2248,57 +2242,58 @@ msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "Klikk på lyspæren for å teste dine innstillinger for dobbeltklikk."
 
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
+msgid "Mouse"
+msgstr "Mus"
+
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Enable _touchpad"
 msgstr "Aktiver _pekeplate"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Disable touchpad _while typing"
 msgstr "Skru av pekeplate _når det skrives"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Aktiver _musklikk med pekeplaten"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Two-finger click emulation:"
 msgstr "Emulering av to-fingersklikk:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Three-finger click emulation:"
 msgstr "Emulering av tre-fingersklikk"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Scrolling"
 msgstr "Rulling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "_Vertical edge scrolling"
 msgstr "_Loddrett kantrulling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "H_orizontal edge scrolling"
 msgstr "V_annrett kantrulling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "V_ertical two-finger scrolling"
 msgstr "L_oddrett tofingerrulling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Van_nrett tofingerrulling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
-msgid "Enable n_atural scrolling"
-msgstr "Skru på _naturlig rulling"
-
 #: ../capplets/mouse/mate-mouse-properties.ui.h:42
+msgid "Enable _natural scrolling"
+msgstr "Skru på n_aturlig rulling"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Touchpad"
 msgstr "Pekeplate"
-
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
-msgid "Mouse"
-msgstr "Mus"
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
 msgid "Set your mouse preferences"
@@ -2313,91 +2308,91 @@ msgid "Set your network proxy preferences"
 msgstr "Sett dine brukervalg for nettverksmellomtjener"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
-msgid "HTTP Proxy Details"
-msgstr "Detaljer for HTTP-mellomtjener"
-
-#: ../capplets/network/mate-network-properties.ui.h:2
-msgid "<b>_Use authentication</b>"
-msgstr "<b>Br_uk autentisering</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:3
-msgid "U_sername:"
-msgstr "Br_ukernavn:"
-
-#: ../capplets/network/mate-network-properties.ui.h:4
-msgid "_Password:"
-msgstr "_Passord:"
-
-#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "Network Proxy Preferences"
 msgstr "Brukervalg for nettverksmellomtjener"
 
-#: ../capplets/network/mate-network-properties.ui.h:6
+#: ../capplets/network/mate-network-properties.ui.h:2
 msgid "<b>Di_rect internet connection</b>"
 msgstr "<b>Di_rekte internettforbindelse</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:7
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "<b>_Manual proxy configuration</b>"
 msgstr "<b>_Manuelt oppsett av mellomtjener</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:8
-msgid "H_TTP proxy:"
-msgstr "H_TTP-mellomtjener:"
-
-#: ../capplets/network/mate-network-properties.ui.h:9
-msgid "_Secure HTTP proxy:"
-msgstr "_Sikker HTTP-mellomtjener:"
-
-#: ../capplets/network/mate-network-properties.ui.h:10
-msgid "_FTP proxy:"
-msgstr "_FTP-mellomtjener:"
-
-#: ../capplets/network/mate-network-properties.ui.h:11
-msgid "S_ocks host:"
-msgstr "S_ocks-vert:"
-
-#: ../capplets/network/mate-network-properties.ui.h:12
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "Port:"
 msgstr "Port:"
 
-#: ../capplets/network/mate-network-properties.ui.h:13
+#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "_Details"
 msgstr "_Detaljer"
 
-#: ../capplets/network/mate-network-properties.ui.h:14
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "H_TTP proxy:"
+msgstr "H_TTP-mellomtjener:"
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "_Secure HTTP proxy:"
+msgstr "_Sikker HTTP-mellomtjener:"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "_FTP proxy:"
+msgstr "_FTP-mellomtjener:"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
+msgid "S_ocks host:"
+msgstr "S_ocks-vert:"
+
+#: ../capplets/network/mate-network-properties.ui.h:10
 msgid "<b>_Automatic proxy configuration</b>"
 msgstr "<b>_Automatisk oppsett av mellomtjener</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:15
+#: ../capplets/network/mate-network-properties.ui.h:11
 msgid "Autoconfiguration _URL:"
 msgstr "_URL for automatisk konfigurasjon:"
 
-#: ../capplets/network/mate-network-properties.ui.h:16
+#: ../capplets/network/mate-network-properties.ui.h:12
 msgid "Proxy Configuration"
 msgstr "Oppsett av mellomtjener"
 
-#: ../capplets/network/mate-network-properties.ui.h:17
+#: ../capplets/network/mate-network-properties.ui.h:13
 msgid "Ignore Host List"
 msgstr "Liste med ignorerte verter"
 
-#: ../capplets/network/mate-network-properties.ui.h:18
+#: ../capplets/network/mate-network-properties.ui.h:14
 msgid "Ignored Hosts"
 msgstr "Ignorerte verter"
+
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "HTTP Proxy Details"
+msgstr "Detaljer for HTTP-mellomtjener"
+
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "<b>_Use authentication</b>"
+msgstr "<b>Br_uk autentisering</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "U_sername:"
+msgstr "Br_ukernavn:"
+
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "_Password:"
+msgstr "_Passord:"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
 msgstr "Metacity-innstillinger"
 
 #. Compositing manager
-#: ../capplets/windows/mate-metacity-support.c:55
-#: ../capplets/windows/mate-window-properties.c:410
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.c:392
 msgid "Compositing Manager"
-msgstr "Komposisjonsbehandler"
+msgstr "Kompositeringsbehandler"
 
-#: ../capplets/windows/mate-metacity-support.c:66
-#: ../capplets/windows/mate-window-properties.c:422
+#: ../capplets/windows/mate-metacity-support.c:62
+#: ../capplets/windows/mate-window-properties.c:399
 msgid "Enable software _compositing window manager"
-msgstr "Skru på _komposisjonsvindushåndtering via programvare"
+msgstr "Skru på programvarebasert _kompositering av vinduer"
 
 #: ../capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
@@ -2408,131 +2403,131 @@ msgstr "Nåværende vindusbehandler støttes ikke"
 msgid "Window Preferences"
 msgstr "Brukervalg for vinduer"
 
-#: ../capplets/windows/mate-window-properties.c:391
+#: ../capplets/windows/mate-window-properties.c:381
 msgid "Behaviour"
 msgstr "Oppførsel"
 
-#: ../capplets/windows/mate-window-properties.c:400
+#: ../capplets/windows/mate-window-properties.c:386
 msgid "Placement"
 msgstr "Plassering"
 
-#: ../capplets/windows/mate-window-properties.c:423
+#: ../capplets/windows/mate-window-properties.c:400
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Skru av _miniatyrbilder i Alt+Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:431
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "Titlebar Buttons"
 msgstr "Knapper på tittellinjen"
 
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Position:"
 msgstr "Posisjon:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:419
 msgid "New Windows"
 msgstr "Nye vinduer"
 
-#: ../capplets/windows/mate-window-properties.c:454
+#: ../capplets/windows/mate-window-properties.c:423
 msgid "Center _new windows"
 msgstr "Midtjuster _nye vinduer"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:459
+#: ../capplets/windows/mate-window-properties.c:428
 msgid "Window Snapping"
 msgstr "Vindusfastsetting"
 
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:432
 msgid "Enable side by side _tiling"
 msgstr "Skru på _flislegging side om side"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:437
 msgid "Window Selection"
 msgstr "Vindusvalg"
 
-#: ../capplets/windows/mate-window-properties.c:492
+#: ../capplets/windows/mate-window-properties.c:447
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Velg vinduer når pekeren beveger seg over dem"
 
-#: ../capplets/windows/mate-window-properties.c:495
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "_Fravelg vinduer når pekeren forlater dem"
 
-#: ../capplets/windows/mate-window-properties.c:499
+#: ../capplets/windows/mate-window-properties.c:454
 msgid "_Raise selected windows after an interval"
 msgstr "_Hev valgte vinduer etter en pause"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:461
 msgid "_Interval before raising:"
 msgstr "_Pause før heving:"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:465
 msgid "seconds"
 msgstr "sekunder"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:525
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Titlebar Action"
 msgstr "Handling for tittellinje"
 
-#: ../capplets/windows/mate-window-properties.c:533
+#: ../capplets/windows/mate-window-properties.c:480
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Dobbeltklikk tittellinjen for å utføre denne handlingen:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:541
+#: ../capplets/windows/mate-window-properties.c:488
 msgid "Movement Key"
 msgstr "Tast for bevegelse"
 
-#: ../capplets/windows/mate-window-properties.c:552
+#: ../capplets/windows/mate-window-properties.c:494
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "For å flytte et vindu trykk og hold denne tasten og ta tak i vinduet:"
 
-#: ../capplets/windows/mate-window-properties.c:580
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Rull opp"
 
-#: ../capplets/windows/mate-window-properties.c:581
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maksimer"
 
-#: ../capplets/windows/mate-window-properties.c:582
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maksimer horisontalt"
 
-#: ../capplets/windows/mate-window-properties.c:583
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maksimer vertikalt"
 
-#: ../capplets/windows/mate-window-properties.c:584
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimer"
 
-#: ../capplets/windows/mate-window-properties.c:585
+#: ../capplets/windows/mate-window-properties.c:523
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Ingen"
 
-#: ../capplets/windows/mate-window-properties.c:786
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:792
+#: ../capplets/windows/mate-window-properties.c:730
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:799
+#: ../capplets/windows/mate-window-properties.c:737
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (eller «Windows-tast»)"
 
-#: ../capplets/windows/mate-window-properties.c:806
+#: ../capplets/windows/mate-window-properties.c:744
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2549,29 +2544,29 @@ msgstr "Egenskaper for vinduer"
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Vindushåndterer «%s» har ikke registrert et konfigurasjonsverktøy\n"
 
-#: ../shell/control-center.c:61
+#: ../shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
 msgstr "%s-tasten er tom\n"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Filter"
 msgstr "Filter"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Groups"
 msgstr "Grupper"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Common Tasks"
 msgstr "Vanlige oppgaver"
 
-#: ../shell/control-center.c:152 ../shell/control-center.c:255
-#: ../shell/matecc.desktop.in.in.h:1 ../shell/matecc.directory.in.h:1
+#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "Kontrollsenter"
 
-#: ../shell/control-center.c:208
+#: ../shell/control-center.c:162
 msgid "Hide on start (useful to preload the shell)"
 msgstr "Skjul ved oppstart (nyttig ved forhåndslasting av skallet)"
 
@@ -2579,11 +2574,11 @@ msgstr "Skjul ved oppstart (nyttig ved forhåndslasting av skallet)"
 msgid "The MATE configuration tool"
 msgstr "Konfigurasjonsverktøy for MATE"
 
-#: ../typing-break/drw-break-window.c:203
+#: ../typing-break/drw-break-window.c:190
 msgid "_Postpone Break"
 msgstr "_Utsett pause"
 
-#: ../typing-break/drw-break-window.c:277
+#: ../typing-break/drw-break-window.c:247
 msgid "Take a break!"
 msgstr "Ta en pause!"
 
@@ -2632,7 +2627,7 @@ msgstr "Eye candy lagt til av Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Påminnelse om pause fra datamaskinen."
 
-#: ../typing-break/drwright.c:639
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>\nEspen Stefansen <libbe AT stefansen DOT net>\nAllan Nordhøy <epost@anotheragency.no>"
 
@@ -2656,95 +2651,97 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Skrivepause bruker varselområdet for å vise informasjon. Du ser ikke ut til å ha et varslingsområde på ditt panel. Du kan legge dette til ved å høyreklikke på panelet og velge «Legg til på panelet» og velge «Varslingsområde»."
 
-#: ../font-viewer/font-view.c:360 ../font-viewer/font-view.c:362
-msgid "Name:"
-msgstr "Navn:"
+#: ../font-viewer/font-view.c:184
+msgid "Style"
+msgstr ""
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:369
-msgid "Style:"
-msgstr "Stil:"
+#: ../font-viewer/font-view.c:194
+msgid "Type"
+msgstr ""
 
-#: ../font-viewer/font-view.c:383 ../font-viewer/font-view.c:385
-msgid "Type:"
-msgstr "Type:"
+#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+msgid "Version"
+msgstr ""
 
-#: ../font-viewer/font-view.c:391 ../font-viewer/font-view.c:393
-msgid "Size:"
-msgstr "Størrelse:"
+#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+msgid "Copyright"
+msgstr ""
 
-#: ../font-viewer/font-view.c:440 ../font-viewer/font-view.c:442
-#: ../font-viewer/font-view.c:465 ../font-viewer/font-view.c:467
-msgid "Version:"
-msgstr "Versjon:"
+#: ../font-viewer/font-view.c:248
+msgid "Description"
+msgstr ""
 
-#: ../font-viewer/font-view.c:448 ../font-viewer/font-view.c:450
-#: ../font-viewer/font-view.c:471 ../font-viewer/font-view.c:473
-msgid "Copyright:"
-msgstr "Kopirett:"
+#: ../font-viewer/font-view.c:266
+msgid "Install Failed"
+msgstr "Installering mislyktes"
 
-#: ../font-viewer/font-view.c:456 ../font-viewer/font-view.c:458
-msgid "Description:"
-msgstr "Beskrivelse:"
-
-#: ../font-viewer/font-view.c:535
+#: ../font-viewer/font-view.c:272
 msgid "Installed"
 msgstr "Installert"
 
-#: ../font-viewer/font-view.c:537
-msgid "Install Failed"
-msgstr "Installering feilet"
+#: ../font-viewer/font-view.c:409
+msgid "This font could not be displayed."
+msgstr ""
 
-#: ../font-viewer/font-view.c:613
-#, c-format
-msgid "Usage: %s fontfile\n"
-msgstr "Bruk: %s skrifttypefil\n"
+#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+msgid "Info"
+msgstr ""
 
-#: ../font-viewer/font-view.c:713
-msgid "I_nstall Font"
-msgstr "I_nstaller skrift"
+#: ../font-viewer/font-view.c:515
+msgid "Back"
+msgstr ""
 
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+#: ../font-viewer/font-view.c:612
+msgid "All Fonts"
+msgstr ""
+
+#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
 msgid "Font Viewer"
 msgstr "Skriftvisning"
 
+#: ../font-viewer/font-view.c:717
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
-msgid "Preview fonts"
-msgstr "Forhåndsvis skrifter:"
+msgid "View fonts on your system"
+msgstr ""
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+msgid "MATE Font Viewer"
+msgstr ""
+
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Tekst for miniatyrbilde (forvalg: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "TEXT"
 msgstr "TEKST"
 
-#: ../font-viewer/font-thumbnailer.c:269
-msgid "Font size (default: 64)"
-msgstr "Skriftstørrelse (forvalg: 64)"
+#: ../font-viewer/font-thumbnailer.c:191
+msgid "Thumbnail size (default: 128)"
+msgstr ""
 
-#: ../font-viewer/font-thumbnailer.c:269
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "SIZE"
 msgstr "STØRRELSE"
 
-#: ../font-viewer/font-thumbnailer.c:271
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "SKRIFTFIL UTDATA-FIL"
 
-#: ../libslab/app-shell.c:810
+#: ../libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filter «%s» gir ingen treff."
 
-#: ../libslab/app-shell.c:812
+#: ../libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "Ingen treff funnet."
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Nye programmer"
 
-#: ../libslab/app-shell.c:967
+#: ../libslab/app-shell.c:929
 msgid "Other"
 msgstr "Annet"
 
@@ -2893,7 +2890,7 @@ msgstr "%d. %b %l:%M %p"
 msgid "%b %d %Y"
 msgstr "%d. %b %Y"
 
-#: ../libslab/search-bar.c:260
+#: ../libslab/search-bar.c:256
 msgid "Find Now"
 msgstr "Finn nå"
 

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 16:41+0300\n"
-"PO-Revision-Date: 2016-11-02 13:43+0000\n"
-"Last-Translator: monsta <monsta@inbox.ru>\n"
+"POT-Creation-Date: 2017-03-08 15:40+0100\n"
+"PO-Revision-Date: 2017-03-08 14:44+0000\n"
+"Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
 "Language-Team: Oriya (http://www.transifex.com/mate/MATE/language/or/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,6 +118,7 @@ msgid "Command associated with a custom keybinding."
 msgstr ""
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
+#: ../font-viewer/font-view.c:181
 msgid "Name"
 msgstr ""
 
@@ -149,7 +150,7 @@ msgstr "ଚେତାବନୀ ଚାବିଗୁଡ଼ିକ"
 msgid "The buttons shown in the alert dialog"
 msgstr "ଚେତାବନୀ ସଂଳାପରେ ପ୍ରଦର୍ଶିତ ଚାବିଗୁଡ଼ିକ"
 
-#: ../capplets/about-me/eel-alert-dialog.c:219
+#: ../capplets/about-me/eel-alert-dialog.c:207
 msgid "Show more _details"
 msgstr "ଅଧିକ ବିସ୍ତୃତ ବିବରଣୀ ଦେଖାନ୍ତୁ (_d)"
 
@@ -162,16 +163,16 @@ msgid "No Image"
 msgstr "କୌଣସି ପ୍ରତିଛବି ନାହିଁ"
 
 #: ../capplets/about-me/mate-about-me.c:298
-#: ../capplets/appearance/appearance-desktop.c:692
+#: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "ପ୍ରତିଛବି"
 
 #: ../capplets/about-me/mate-about-me.c:302
-#: ../capplets/appearance/theme-installer.c:787
+#: ../capplets/appearance/theme-installer.c:780
 msgid "All Files"
 msgstr "ସମସ୍ତ ଫାଇଲ"
 
-#: ../capplets/about-me/mate-about-me.c:454
+#: ../capplets/about-me/mate-about-me.c:446
 #, c-format
 msgid "About %s"
 msgstr "%s ବିଷୟରେ"
@@ -415,39 +416,39 @@ msgid "The new password has already been used recently."
 msgstr ""
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:829
+#: ../capplets/about-me/mate-about-me-password.c:825
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "%s କୁ ଆରମ୍ଭ କରିବାରେ ଅସମର୍ଥ: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:833
+#: ../capplets/about-me/mate-about-me-password.c:829
 msgid "Unable to launch backend"
 msgstr "ପୃଷ୍ଠଭାଗକୁ ଚଳାଇବାରେ ଅସମର୍ଥ"
 
-#: ../capplets/about-me/mate-about-me-password.c:834
+#: ../capplets/about-me/mate-about-me-password.c:830
 msgid "A system error has occurred"
 msgstr "ଗୋଟିଏ ତନ୍ତ୍ର ତୃଟି ପରିଲିଖିତ ହେଲା"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:854
+#: ../capplets/about-me/mate-about-me-password.c:850
 msgid "Checking password..."
 msgstr "ପ୍ରବେଶ ସଙ୍କେତକୁ ଯାଞ୍ଚ କରୁଅଛି..."
 
-#: ../capplets/about-me/mate-about-me-password.c:938
+#: ../capplets/about-me/mate-about-me-password.c:934
 msgid "Click <b>Change password</b> to change your password."
 msgstr "ଆପଣଙ୍କର ପ୍ରବେଶ ସଙ୍କେତକୁ ବଦଳାଇବା ପାଇଁ <b>ପ୍ରବେଶ ସଙ୍କେତ ପରିବର୍ତ୍ତନ କରନ୍ତୁ</b> କୁ ଦବାନ୍ତୁ।"
 
-#: ../capplets/about-me/mate-about-me-password.c:941
+#: ../capplets/about-me/mate-about-me-password.c:937
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "ଦୟାକରି ଆପଣଙ୍କ ପ୍ରବେଶ ସଙ୍କେତକୁ <b>ନୂତନ ପ୍ରବେଶ ସଙ୍କେତ</b> କ୍ଷେତ୍ରରେ ଟାଇପ କରନ୍ତୁ।"
 
-#: ../capplets/about-me/mate-about-me-password.c:944
-#: ../capplets/about-me/mate-about-me-password.ui.h:9
+#: ../capplets/about-me/mate-about-me-password.c:940
+#: ../capplets/about-me/mate-about-me-password.ui.h:10
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "ଦୟାକରି ଆପଣଙ୍କ ପ୍ରବେଶ ସଙ୍କେତକୁ ପୁନର୍ବାର <b>ନୂତନ ପ୍ରବେଶ ସଙ୍କେତ ପୁନଃ ଟାଇପ କରନ୍ତୁ</b> କ୍ଷେତ୍ରରେ ଟାଇପ କରନ୍ତୁ।"
 
-#: ../capplets/about-me/mate-about-me-password.c:947
+#: ../capplets/about-me/mate-about-me-password.c:943
 msgid "The two passwords are not equal."
 msgstr "ପ୍ରବେଶ ସଙ୍କେତ ଦ୍ବୟ ଏକପ୍ରକାରର ନୁହଁନ୍ତି।"
 
@@ -456,132 +457,132 @@ msgid "Change password"
 msgstr "ପ୍ରବେଶ ସଙ୍କେତ ବଦଳାନ୍ତୁ"
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:2
+msgid "Change pa_ssword"
+msgstr "ପ୍ରବେଶ ସଙ୍କେତ ବଦଳାନ୍ତୁ (_s)"
+
+#: ../capplets/about-me/mate-about-me-password.ui.h:3
 msgid "Change your password"
 msgstr "ଆପଣଙ୍କର ପ୍ରବେଶ ସଙ୍କେତ ବଦଳାନ୍ତୁ"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:3
+#: ../capplets/about-me/mate-about-me-password.ui.h:4
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
 msgstr "ଆପଣଙ୍କର ଗୁପ୍ତଶବ୍ଦକୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ, ତଳ କ୍ଷେତ୍ରରେ ଆପଣଙ୍କର ଚଳିତ ଗୁପ୍ତଶବ୍ଦକୁ ପ୍ରବିଷ୍ଟ କରନ୍ତୁ ଏବଂ  <b>ପ୍ରମାଣିତକର</b>ରେ କ୍ଲିକ କରନ୍ତୁ\nଆପଣ ପ୍ରମାଣିତ କରିବା ପରେ, ଆପଣଙ୍କର ନୂଆ ଗୁପ୍ତଶବ୍ଦକୁ ପ୍ରବିଷ୍ଟ କରନ୍ତୁ, ପରୀକ୍ଷା କରିବା ପାଇଁ ଏହାକୁ ପୁନଃଟାଇପ କରନ୍ତୁ ଏବଂ<b>ଗୁପ୍ତଶବ୍ଦ ପରିବର୍ତ୍ତନ</b>ରେ କ୍ଲିକ କରନ୍ତୁ ।"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:5
+#: ../capplets/about-me/mate-about-me-password.ui.h:6
 msgid "Current _password:"
 msgstr "ସାମ୍ପ୍ରତିକ ପ୍ରବେଶ ସଙ୍କେତ (_p):"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:6
+#: ../capplets/about-me/mate-about-me-password.ui.h:7
 msgid "_New password:"
 msgstr "ନୂତନ ପ୍ରବେଶ ସଙ୍କେତ (_N):"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:7
+#: ../capplets/about-me/mate-about-me-password.ui.h:8
 msgid "_Retype new password:"
 msgstr "ନୂତନ ପ୍ରବେଶ ସଙ୍କେତକୁ ପୁନର୍ବାର ଟାଇପ କିନ୍ତୁ (_R):"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:8
+#: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid "_Authenticate"
 msgstr "ବୈଧିକରଣ (_A)"
-
-#: ../capplets/about-me/mate-about-me-password.ui.h:10
-msgid "Change pa_ssword"
-msgstr "ପ୍ରବେଶ ସଙ୍କେତ ବଦଳାନ୍ତୁ (_s)"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
 msgid "Assistive Technologies Preferences"
 msgstr "ସହକାରୀ ପ୍ରଯୁକ୍ତିବିଜ୍ଞାନ ପସନ୍ଦ"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+msgid "Close and _Log Out"
+msgstr "ବନ୍ଦ ଏବଂ ଲଗଆଉଟ କରନ୍ତୁ (_L)"
+
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
 msgid "Assistive Technologies"
 msgstr "ସହକାରୀ ପ୍ରଯୁକ୍ତିବିଜ୍ଞାନ"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
 msgid "_Preferred Applications"
 msgstr "ମନପସନ୍ଦ ପ୍ରୟୋଗଗୁଡ଼ିକ (_P)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
 msgid "Jump to Preferred Applications dialog"
 msgstr "ମନପସନ୍ଦ ପ୍ରୟୋଗଗୁଡ଼ିକର ସଂଳାପକୁ ଯାଆନ୍ତୁ"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
 msgid "_Enable assistive technologies"
 msgstr "ସହକାରୀ ପ୍ରଯୁକ୍ତିଜ୍ଞାନକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
 msgstr "ସହାୟକ ପ୍ରଯୁକ୍ତିଜ୍ଞାନକୁ ସକ୍ରିୟ କରିବା ପାଇଁ ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ଆପଣଙ୍କର ପରବର୍ତ୍ତି ଲଗଇନ ପର୍ଯ୍ୟନ୍ତ କାର୍ଯ୍ୟକାରୀ ହୋଇନାହିଁ।"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
 msgid "Preferences"
 msgstr "ପସନ୍ଦ"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
 msgid "_Keyboard Accessibility"
 msgstr "କି-ବୋର୍ଡ ଅଭିଗମ୍ଯତା (_K)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
 msgid "Jump to the Keyboard Accessibility dialog"
 msgstr "କି-ବୋର୍ଡ ଅଭିଗମ୍ଯତା ସଂଳାପକୁ ଯାଆନ୍ତୁ"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
 msgid "_Mouse Accessibility"
 msgstr "ମାଉସ ଅଭିଗମ୍ଯତା (_M)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
 msgid "Jump to the Mouse Accessibility dialog"
 msgstr "ମାଉସ ଅଭିଗମ୍ଯ ସଂଳାପକୁ ଯାଆନ୍ତୁ"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
 msgid "Accessible Lo_gin"
 msgstr "ଅଭିଗମ୍ୟ ଲଗଇନ (_g)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
 msgid "Jump to the Accessible Login dialog"
 msgstr "ଅଭିଗମ୍ୟ ଲଗଇନ ସଂଳାପକୁ ଯାଆନ୍ତୁ"
-
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
-msgid "Close and _Log Out"
-msgstr "ବନ୍ଦ ଏବଂ ଲଗଆଉଟ କରନ୍ତୁ (_L)"
 
 #: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "ଆପଣ ଲଗଇନ ହେବା ସମୟରେ କେଉଁ ଅଭିଗମ୍ୟ ବିଶେଷଗୁଣକୁ ସକ୍ରିୟ କରିବେ ବାଛନ୍ତୁ"
 
-#: ../capplets/appearance/appearance-desktop.c:661
+#: ../capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "ପ୍ରାଚୀର ପତ୍ର ଯୋଗ କରନ୍ତୁ"
 
-#: ../capplets/appearance/appearance-desktop.c:696
+#: ../capplets/appearance/appearance-desktop.c:650
 msgid "All files"
 msgstr "ସମସ୍ତ ଫାଇଲଗୁଡ଼ିକ"
 
-#: ../capplets/appearance/appearance-main.c:61
+#: ../capplets/appearance/appearance-main.c:56
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "ଚାଳକ ଅନ୍ତରାପୃଷ୍ଠ ଫାଇଲକୁ ଧାରଣ କରିପାରିଲା ନାହିଁ: %s"
 
-#: ../capplets/appearance/appearance-main.c:164
+#: ../capplets/appearance/appearance-main.c:157
 msgid "Specify the filename of a theme to install"
 msgstr "ପ୍ରତିଷ୍ଠାପନ କରିବା ପାଇଁ ଗୋଟିଏ ଥିମର ଫାଇଲ ନାମ ନିର୍ଦ୍ଦିଷ୍ଟ କର"
 
-#: ../capplets/appearance/appearance-main.c:165
+#: ../capplets/appearance/appearance-main.c:158
 msgid "filename"
 msgstr "ଫାଇଲ ନାମ"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:172
+#: ../capplets/appearance/appearance-main.c:165
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "ଦର୍ଶାଇବାକୁ ଥିବା ପୃଷ୍ଠାର ନାମ ଉଲ୍ଲେଖ କରନ୍ତୁ (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:173
+#: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:450
+#: ../capplets/mouse/mate-mouse-properties.c:397
 msgid "page"
 msgstr "ପୃଷ୍ଠା"
 
-#: ../capplets/appearance/appearance-main.c:180
+#: ../capplets/appearance/appearance-main.c:173
 msgid "[WALLPAPER...]"
 msgstr "[WALLPAPER...]"
 
@@ -592,16 +593,9 @@ msgstr "ଡିଫଲ୍ଟ ପଏଣ୍ଟର"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
+#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
 msgid "Install"
 msgstr "ସ୍ଥାପନ କରନ୍ତୁ"
-
-#: ../capplets/appearance/appearance-style.c:269
-#: ../capplets/common/mate-theme-info.c:1608
-#, c-format
-msgid ""
-"This theme will not look as intended because the required GTK+ theme engine "
-"'%s' is not installed."
-msgstr "ପ୍ରସଙ୍ଗଟି ଆଶାକରାଯାଇଥିବା ପରି ଦୃଶ୍ୟମାନ ହେଉନାହିଁ କାରଣ ଆବଶ୍ୟକୀୟ GTK+ ପ୍ରସଙ୍ଗ ଯନ୍ତ୍ର '%s' ସ୍ଥାପିତ ହୋଇନାହିଁ।"
 
 #: ../capplets/appearance/appearance-themes.c:646
 msgid "Apply Background"
@@ -615,41 +609,41 @@ msgstr "ଅକ୍ଷରରୂପ ପ୍ରୟୋଗ କରନ୍ତୁ"
 msgid "Revert Font"
 msgstr "ଅକ୍ଷରରୂପକୁ ପ୍ରତ୍ଯାବୃତ କରନ୍ତୁ"
 
-#: ../capplets/appearance/appearance-themes.c:700
+#: ../capplets/appearance/appearance-themes.c:691
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "ପ୍ରଚଳିତ ପ୍ରସଙ୍ଗ ଗୋଟିଏ ପ୍ରଚ୍ଛଦ ଭୂମି ଏବଂ ଗୋଟିଏ ଅକ୍ଷରରୂପ ପାଇଁ ପ୍ରସ୍ତାବ ଦେଇଥାଏ। ଏବଂ ମଧ୍ଯ, ଶେଷ ପ୍ରୟୋଗ ଅକ୍ଷରରୂପ ପ୍ରସ୍ତାବକୁ କଢ଼ାଯାଇପାରିବ।"
 
-#: ../capplets/appearance/appearance-themes.c:702
+#: ../capplets/appearance/appearance-themes.c:693
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "ପ୍ରଚଳିତ ପ୍ରସଙ୍ଗ ଗୋଟିଏ ପ୍ରଚ୍ଛଦଭୂମିକୁ ପ୍ରସ୍ଥାବ ଦେଇଥାଏ। ଏବଂ ମଧ୍ଯ, ଶେଷ ପ୍ରୟୋଗ ଅକ୍ଷରରୂପ ପ୍ରସ୍ଥାବକୁ କଢ଼ାଯାଇପାରିବ।"
 
-#: ../capplets/appearance/appearance-themes.c:704
+#: ../capplets/appearance/appearance-themes.c:695
 msgid "The current theme suggests a background and a font."
 msgstr "ପ୍ରଚଳିତ ପ୍ରସଙ୍ଗ ଗୋଟିଏ ପୃଷ୍ଠଭୂମି ଏବଂ ଗୋଟିଏ ଅକ୍ଷରରୂପର ପ୍ରସ୍ତାବ ଦେଇଥାଏ।"
 
-#: ../capplets/appearance/appearance-themes.c:706
+#: ../capplets/appearance/appearance-themes.c:697
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "ପ୍ରଚଳିତ ପ୍ରସଙ୍ଗ ଗୋଟିଏ ପୃଷ୍ଠଭୂମି ଏବଂ ଗୋଟିଏ ଅକ୍ଷରରୂପର ପ୍ରସ୍ତାବ ଦେଇଥାଏ। ଏବଂ ମଧ୍ଯ, ଶେଷ ପ୍ରୟୋଗ ଅକ୍ଷରରୂପ ପ୍ରସ୍ଥାବକୁ କଢ଼ାଯାଇପାରିବ।"
 
-#: ../capplets/appearance/appearance-themes.c:708
+#: ../capplets/appearance/appearance-themes.c:699
 msgid "The current theme suggests a background."
 msgstr "ପ୍ରଚଳିତ ପ୍ରସଙ୍ଗ ଗୋଟିଏ ପୃଷ୍ଠଭୂମିର ପ୍ରସ୍ତାବ ଦେଇଥାଏ।"
 
-#: ../capplets/appearance/appearance-themes.c:710
+#: ../capplets/appearance/appearance-themes.c:701
 msgid "The last applied font suggestion can be reverted."
 msgstr "ଶେଷ ରେ ପ୍ରୟୋଗ କରାଯାଇଥିବା ଅକ୍ଷରରୂପ ପ୍ରସ୍ତାବକୁ ପ୍ରତ୍ୟାବର୍ତ୍ତନ କରାଯାଇପାରିବ।"
 
-#: ../capplets/appearance/appearance-themes.c:712
+#: ../capplets/appearance/appearance-themes.c:703
 msgid "The current theme suggests a font."
 msgstr "ପ୍ରଚଳିତ ପ୍ରସଙ୍ଗ ଗୋଟିଏ ଅକ୍ଷରରୂପର ପ୍ରସ୍ତାବ ଦେଇଥାଏ।"
 
-#: ../capplets/appearance/appearance-themes.c:1028
+#: ../capplets/appearance/appearance-themes.c:1019
 msgid "Custom"
 msgstr "ଇଚ୍ଛାରୂପଣ"
 
@@ -716,284 +710,284 @@ msgstr "_RGB"
 msgid "_BGR"
 msgstr "_BGR"
 
-#. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:20
-msgid "_VRGB"
-msgstr "_VRGB"
-
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "VB_GR"
 msgstr "VB_GR"
 
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "_VRGB"
+msgstr "_VRGB"
+
 #: ../capplets/appearance/data/appearance.ui.h:23
-msgid "Appearance Preferences"
-msgstr "ଦୃଶ୍ୟ ପସନ୍ଦ"
-
-#: ../capplets/appearance/data/appearance.ui.h:24
-msgid "Save _As..."
-msgstr "ନୂଆ ନାମରେ ସଂରକ୍ଷଣ କରନ୍ତୁ... (_A)"
-
-#: ../capplets/appearance/data/appearance.ui.h:25
-msgid "C_ustomize..."
-msgstr "ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ (_u)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:26
-msgid "_Install..."
-msgstr "_ପ୍ରତିଷ୍ଠାପନକର..."
-
-#: ../capplets/appearance/data/appearance.ui.h:27
-msgid "Get more themes online"
-msgstr "ଅନଲାଇନରେ ଅଧିକ ପ୍ରସଙ୍ଗ ଗ୍ରହଣ କରନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:28
-msgid "Theme"
-msgstr "ଥିମ"
-
-#: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Style:"
-msgstr "ଶୈଳୀ (_S):"
-
-#: ../capplets/appearance/data/appearance.ui.h:30
-msgid "C_olors:"
-msgstr "ରଙ୍ଗ (_o):"
-
-#: ../capplets/appearance/data/appearance.ui.h:31
-msgid "Open a dialog to specify the color"
-msgstr "ରଙ୍ଗକୁ ଉଲ୍ଲେଖ କରିବା ପାଇଁ ଗୋଟିଏ ସଂଳାପକୁ ଖୋଲନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:32
-msgid "Get more backgrounds online"
-msgstr "ଅନଲାଇନରେ ଅଧିକ ପୃଷ୍ଠଭୂମି ଗ୍ରହଣ କରନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:33
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
-msgid "_Add..."
-msgstr "ଯୋଗ କରନ୍ତୁ (_A)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:34
-msgid "Background"
-msgstr "ପ୍ରୁଷ୍ଠଭୂମି"
-
-#: ../capplets/appearance/data/appearance.ui.h:35
-msgid "_Document font:"
-msgstr "_ଦଲିଲ ଫଣ୍ଟ:"
-
-#: ../capplets/appearance/data/appearance.ui.h:36
-msgid "Des_ktop font:"
-msgstr "ଡେସ୍କଟପ ଅକ୍ଷରରୂପ (_k):"
-
-#: ../capplets/appearance/data/appearance.ui.h:37
-msgid "_Window title font:"
-msgstr "_ଉଇଣ୍ଡୋ ଶୀର୍ଷକ ଫଣ୍ଟ:"
-
-#: ../capplets/appearance/data/appearance.ui.h:38
-msgid "_Fixed width font:"
-msgstr "_ସ୍ଥିର ଓସାର ଫଣ୍ଟ:"
-
-#: ../capplets/appearance/data/appearance.ui.h:39
-msgid "_Application font:"
-msgstr "_ପ୍ରଯୋଗ ଫଣ୍ଟ :"
-
-#: ../capplets/appearance/data/appearance.ui.h:40
-msgid "Rendering"
-msgstr "ଚିତ୍ରଣକରୁଛି"
-
-#: ../capplets/appearance/data/appearance.ui.h:41
-msgid "Sub_pixel smoothing (LCDs)"
-msgstr "ଉପ ପିକସେଲ ସରଳିକରଣ (LCDs) (_p)"
-
-#: ../capplets/appearance/data/appearance.ui.h:42
-msgid "Best co_ntrast"
-msgstr "ଉତ୍ତମ ଭେଦ (_n)"
-
-#: ../capplets/appearance/data/appearance.ui.h:43
-msgid "Best _shapes"
-msgstr "ଉତ୍ତମ ଆକାର (_s)"
-
-#: ../capplets/appearance/data/appearance.ui.h:44
-msgid "_Monochrome"
-msgstr "_ମନୋକ୍ରୋମ"
-
-#: ../capplets/appearance/data/appearance.ui.h:45
-msgid "D_etails..."
-msgstr "ବିବରଣୀ (_e)..."
-
-#: ../capplets/appearance/data/appearance.ui.h:46
-msgid "Fonts"
-msgstr "ଅକ୍ଷରରୂପଗୁଡ଼ିକ"
-
-#: ../capplets/appearance/data/appearance.ui.h:47
-msgid "Menus and Toolbars"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:48
-msgid "Show _icons in menus"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:49
-msgid "_Editable menu shortcut keys"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:50
-msgid "Toolbar _button labels:"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:51
-msgid "Preview"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:52
-msgid "_File"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:53
-msgid "Edit"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:54
-msgid "Interface"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:55
-msgid "Tile"
-msgstr "ଟାଇଲ"
-
-#: ../capplets/appearance/data/appearance.ui.h:56
-msgid "Zoom"
-msgstr "ସାନବଡ କରନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:57
-msgid "Center"
-msgstr "କେନ୍ଦ୍ର"
-
-#: ../capplets/appearance/data/appearance.ui.h:58
-msgid "Scale"
-msgstr "ମପାଯାଇଛି"
-
-#: ../capplets/appearance/data/appearance.ui.h:59
-msgid "Stretch"
-msgstr "ଲମ୍ବାନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:60
-msgid "Span"
-msgstr "ସ୍ପାନ"
-
-#: ../capplets/appearance/data/appearance.ui.h:61
-msgid "Solid color"
-msgstr "କଠିନ ରଙ୍ଗ"
-
-#: ../capplets/appearance/data/appearance.ui.h:62
-msgid "Horizontal gradient"
-msgstr "ସମାନ୍ତରାଳ ଅନୁପାତ"
-
-#: ../capplets/appearance/data/appearance.ui.h:63
-msgid "Vertical gradient"
-msgstr "ଭୂଲମ୍ବ ଅନୁପାତ"
-
-#: ../capplets/appearance/data/appearance.ui.h:64
-msgid "Text below items"
-msgstr "ନିମ୍ନ ବସ୍ତୁଗୁଡ଼ିକରେ ପାଠ୍ୟ ଲେଖନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:65
-msgid "Text beside items"
-msgstr "ବସ୍ତୁଗୁଡ଼ିକ ପାଖରେ ଲେଖନ୍ତୁ"
-
-#: ../capplets/appearance/data/appearance.ui.h:66
-msgid "Icons only"
-msgstr "କେବଳ ଚିତ୍ରସଂକେତଗୁଡିକ"
-
-#: ../capplets/appearance/data/appearance.ui.h:67
-msgid "Text only"
-msgstr "କେବଳ ପାଠ୍ଯ"
-
-#: ../capplets/appearance/data/appearance.ui.h:68
 msgid "Customize Theme"
 msgstr "ପ୍ରସଙ୍ଗକୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
 
-#: ../capplets/appearance/data/appearance.ui.h:69
+#: ../capplets/appearance/data/appearance.ui.h:24
 msgid "Controls"
 msgstr "ନିୟନ୍ତ୍ରଣ"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
+#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "The current controls theme does not support color schemes."
 msgstr "ପ୍ରଚଳିତ ନିୟନ୍ତ୍ରଣ ପ୍ରସଙ୍ଗ ରଙ୍ଗ ଯୋଜନାକୁ ସମର୍ଥନ କରେନାହିଁ।"
 
-#: ../capplets/appearance/data/appearance.ui.h:71
+#: ../capplets/appearance/data/appearance.ui.h:26
 msgid "_Tooltips:"
 msgstr "ଉପକରଣ ସୂଚନା (_T):"
 
-#: ../capplets/appearance/data/appearance.ui.h:72
-msgid "_Selected items:"
-msgstr "ବଚ୍ଛିତ ବସ୍ତୁଗୁଡ଼ିକ (_S):"
-
-#: ../capplets/appearance/data/appearance.ui.h:73
-msgid "_Input boxes:"
-msgstr "ନିବେଶ ବାକ୍ସଗୁଡ଼ିକ (_I):"
-
-#: ../capplets/appearance/data/appearance.ui.h:74
-msgid "_Windows:"
-msgstr "ୱିଣ୍ଡୋଗୁଡ଼ିକ (_W):"
-
-#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/appearance/data/appearance.ui.h:27
 msgid "Text"
 msgstr "ପାଠ୍ଯ"
 
-#: ../capplets/appearance/data/appearance.ui.h:76
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Background"
+msgstr "ପ୍ରୁଷ୍ଠଭୂମି"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "_Windows:"
+msgstr "ୱିଣ୍ଡୋଗୁଡ଼ିକ (_W):"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "_Input boxes:"
+msgstr "ନିବେଶ ବାକ୍ସଗୁଡ଼ିକ (_I):"
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "_Selected items:"
+msgstr "ବଚ୍ଛିତ ବସ୍ତୁଗୁଡ଼ିକ (_S):"
+
+#: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତରେ ପୁନଃସ୍ଥାପନ କରନ୍ତୁ (_R)"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:33
 msgid "Colors"
 msgstr "ରଙ୍ଗ"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:34
 msgid "Window Border"
 msgstr "ଉଇଣ୍ଡୋ ସୀମାନ୍ତ"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:35
 msgid "Icons"
 msgstr "ଚିତ୍ରସଙ୍କେତ"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:36
 msgid "_Size:"
 msgstr "ଆକାର (_S):"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:37
 #: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Small"
 msgstr "ଛୋଟ"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:82
+#: ../capplets/appearance/data/appearance.ui.h:38
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Large"
 msgstr "ବଡ"
 
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:39
 msgid "Pointer"
 msgstr "ସୂଚକ"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:40
 msgid "Save Theme As..."
 msgstr "ପ୍ରସଙ୍ଗକୁ ଏହିପରି ସଂରକ୍ଷଣ କରନ୍ତୁ..."
 
-#: ../capplets/appearance/data/appearance.ui.h:85
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
-msgid "_Name:"
-msgstr "ନାମ (_N):"
-
-#: ../capplets/appearance/data/appearance.ui.h:86
-msgid "_Description:"
-msgstr "ବର୍ଣ୍ଣନା (_D):"
-
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:41
 msgid "Save _background image"
 msgstr "ପୃଷ୍ଠଭୂମି ପ୍ରତିଛବିକୁ ସଂରକ୍ଷଣ କରନ୍ତୁ (_b)"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save _notification theme"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:43
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+msgid "_Name:"
+msgstr "ନାମ (_N):"
+
+#: ../capplets/appearance/data/appearance.ui.h:44
+msgid "_Description:"
+msgstr "ବର୍ଣ୍ଣନା (_D):"
+
+#: ../capplets/appearance/data/appearance.ui.h:45
+msgid "Text below items"
+msgstr "ନିମ୍ନ ବସ୍ତୁଗୁଡ଼ିକରେ ପାଠ୍ୟ ଲେଖନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:46
+msgid "Text beside items"
+msgstr "ବସ୍ତୁଗୁଡ଼ିକ ପାଖରେ ଲେଖନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:47
+msgid "Icons only"
+msgstr "କେବଳ ଚିତ୍ରସଂକେତଗୁଡିକ"
+
+#: ../capplets/appearance/data/appearance.ui.h:48
+msgid "Text only"
+msgstr "କେବଳ ପାଠ୍ଯ"
+
+#: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Solid color"
+msgstr "କଠିନ ରଙ୍ଗ"
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Horizontal gradient"
+msgstr "ସମାନ୍ତରାଳ ଅନୁପାତ"
+
+#: ../capplets/appearance/data/appearance.ui.h:51
+msgid "Vertical gradient"
+msgstr "ଭୂଲମ୍ବ ଅନୁପାତ"
+
+#: ../capplets/appearance/data/appearance.ui.h:52
+msgid "Tile"
+msgstr "ଟାଇଲ"
+
+#: ../capplets/appearance/data/appearance.ui.h:53
+msgid "Zoom"
+msgstr "ସାନବଡ କରନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:54
+msgid "Center"
+msgstr "କେନ୍ଦ୍ର"
+
+#: ../capplets/appearance/data/appearance.ui.h:55
+msgid "Scale"
+msgstr "ମପାଯାଇଛି"
+
+#: ../capplets/appearance/data/appearance.ui.h:56
+msgid "Stretch"
+msgstr "ଲମ୍ବାନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:57
+msgid "Span"
+msgstr "ସ୍ପାନ"
+
+#: ../capplets/appearance/data/appearance.ui.h:58
+msgid "Appearance Preferences"
+msgstr "ଦୃଶ୍ୟ ପସନ୍ଦ"
+
+#: ../capplets/appearance/data/appearance.ui.h:59
+msgid "Save _As..."
+msgstr "ନୂଆ ନାମରେ ସଂରକ୍ଷଣ କରନ୍ତୁ... (_A)"
+
+#: ../capplets/appearance/data/appearance.ui.h:60
+msgid "C_ustomize..."
+msgstr "ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ (_u)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:61
+msgid "_Install..."
+msgstr "_ପ୍ରତିଷ୍ଠାପନକର..."
+
+#: ../capplets/appearance/data/appearance.ui.h:62
+msgid "Get more themes online"
+msgstr "ଅନଲାଇନରେ ଅଧିକ ପ୍ରସଙ୍ଗ ଗ୍ରହଣ କରନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:63
+msgid "Theme"
+msgstr "ଥିମ"
+
+#: ../capplets/appearance/data/appearance.ui.h:64
+msgid "_Style:"
+msgstr "ଶୈଳୀ (_S):"
+
+#: ../capplets/appearance/data/appearance.ui.h:65
+msgid "C_olors:"
+msgstr "ରଙ୍ଗ (_o):"
+
+#: ../capplets/appearance/data/appearance.ui.h:66
+msgid "Open a dialog to specify the color"
+msgstr "ରଙ୍ଗକୁ ଉଲ୍ଲେଖ କରିବା ପାଇଁ ଗୋଟିଏ ସଂଳାପକୁ ଖୋଲନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:67
+msgid "Get more backgrounds online"
+msgstr "ଅନଲାଇନରେ ଅଧିକ ପୃଷ୍ଠଭୂମି ଗ୍ରହଣ କରନ୍ତୁ"
+
+#: ../capplets/appearance/data/appearance.ui.h:68
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+msgid "_Add..."
+msgstr "ଯୋଗ କରନ୍ତୁ (_A)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:69
+msgid "_Application font:"
+msgstr "_ପ୍ରଯୋଗ ଫଣ୍ଟ :"
+
+#: ../capplets/appearance/data/appearance.ui.h:70
+msgid "_Document font:"
+msgstr "_ଦଲିଲ ଫଣ୍ଟ:"
+
+#: ../capplets/appearance/data/appearance.ui.h:71
+msgid "Des_ktop font:"
+msgstr "ଡେସ୍କଟପ ଅକ୍ଷରରୂପ (_k):"
+
+#: ../capplets/appearance/data/appearance.ui.h:72
+msgid "_Window title font:"
+msgstr "_ଉଇଣ୍ଡୋ ଶୀର୍ଷକ ଫଣ୍ଟ:"
+
+#: ../capplets/appearance/data/appearance.ui.h:73
+msgid "_Fixed width font:"
+msgstr "_ସ୍ଥିର ଓସାର ଫଣ୍ଟ:"
+
+#: ../capplets/appearance/data/appearance.ui.h:74
+msgid "Rendering"
+msgstr "ଚିତ୍ରଣକରୁଛି"
+
+#: ../capplets/appearance/data/appearance.ui.h:75
+msgid "Sub_pixel smoothing (LCDs)"
+msgstr "ଉପ ପିକସେଲ ସରଳିକରଣ (LCDs) (_p)"
+
+#: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Best _shapes"
+msgstr "ଉତ୍ତମ ଆକାର (_s)"
+
+#: ../capplets/appearance/data/appearance.ui.h:77
+msgid "Best co_ntrast"
+msgstr "ଉତ୍ତମ ଭେଦ (_n)"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "_Monochrome"
+msgstr "_ମନୋକ୍ରୋମ"
+
+#: ../capplets/appearance/data/appearance.ui.h:79
+msgid "D_etails..."
+msgstr "ବିବରଣୀ (_e)..."
+
+#: ../capplets/appearance/data/appearance.ui.h:80
+msgid "Fonts"
+msgstr "ଅକ୍ଷରରୂପଗୁଡ଼ିକ"
+
+#: ../capplets/appearance/data/appearance.ui.h:81
+msgid "Menus and Toolbars"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:82
+msgid "Show _icons in menus"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:83
+msgid "_Editable menu shortcut keys"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:84
+msgid "Toolbar _button labels:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:85
+msgid "Preview"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:86
+msgid "_File"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:87
+msgid "Edit"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:88
+msgid "Interface"
 msgstr ""
 
 #: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
@@ -1020,30 +1014,30 @@ msgstr "Mate ପ୍ରସଙ୍ଗ ପ୍ୟାକେଜ"
 msgid "No Desktop Background"
 msgstr "କୌଣସି ଡେସ୍କଟପ ପୃଷ୍ଠଭୂମି ନାହିଁ"
 
-#: ../capplets/appearance/mate-wp-item.c:318
+#: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
 msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:325
+#: ../capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "ସ୍ଲାଇଡ୍ ଦେଖାଅ"
 
-#: ../capplets/appearance/mate-wp-item.c:327
+#: ../capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "ପ୍ରତିଛବି"
 
-#: ../capplets/appearance/mate-wp-item.c:333
+#: ../capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "ଏକାଧିକ ଆକାର"
 
 #. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:336
+#: ../capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s by %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:338
-#: ../capplets/appearance/mate-wp-item.c:340
+#: ../capplets/appearance/mate-wp-item.c:308
+#: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "ପିକ୍ସେଲ"
@@ -1053,7 +1047,7 @@ msgstr[1] "ପିକ୍ସେଲ"
 #. * mime type, size
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:349
+#: ../capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1066,7 +1060,7 @@ msgstr ""
 #. * Image missing
 #. * Folder: /path/to/file
 #. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:364
+#: ../capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1075,7 +1069,7 @@ msgid ""
 "Artist: %s"
 msgstr ""
 
-#: ../capplets/appearance/mate-wp-item.c:369
+#: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "ପ୍ରତିଛବି ଅନୁପସ୍ଥିତ ଅଛି"
 
@@ -1144,22 +1138,22 @@ msgstr "ଅସ୍ଥାଯୀ ବିବରଣୀପଞ୍ଜିକା ସୃଷ�
 msgid "New themes have been successfully installed."
 msgstr "ନୂତନ ପ୍ରସଙ୍ଗ ସଫଳତାର ସହିତ ସ୍ଥାପିତ ହୋଇଛି।"
 
-#: ../capplets/appearance/theme-installer.c:665
+#: ../capplets/appearance/theme-installer.c:658
 msgid "No theme file location specified to install"
 msgstr "ପ୍ରତିଷ୍ଠାପନ କରିବା ପାଇଁ କୌଣସି ଥିମ ଫାଇଲ ଅବସ୍ଥାନ ନିର୍ଦ୍ଦିଷ୍ଟ ହୋଇ ନାହିଁ ।"
 
-#: ../capplets/appearance/theme-installer.c:689
+#: ../capplets/appearance/theme-installer.c:682
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
 msgstr "ରେ ଥିମକୁ ପ୍ରତିଷ୍ଠାପନ କରିବା ପାଇଁ ଅୟଥେଷ୍ଟ ଅନୁମତି:\n%s"
 
-#: ../capplets/appearance/theme-installer.c:769
+#: ../capplets/appearance/theme-installer.c:762
 msgid "Select Theme"
 msgstr "ପ୍ରସଙ୍ଗ ଚୟନ କରନ୍ତୁ"
 
-#: ../capplets/appearance/theme-installer.c:780
+#: ../capplets/appearance/theme-installer.c:773
 msgid "Theme Packages"
 msgstr "ପ୍ରସଙ୍ଗ ପ୍ୟାକେଜଗୁଡ଼ିକ"
 
@@ -1173,7 +1167,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "ଥିମ ପୂର୍ବରୁ ବିଦ୍ଯମାନ ଅଛି । ଆପଣ ଏହାକୁ ପୁନଃସ୍ଥାପିତ କରିବାକୁ ଚାହିଁବେ କି  ?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:466
+#: ../capplets/common/file-transfer-dialog.c:446
 msgid "_Overwrite"
 msgstr "ନବଲିଖନ କରନ୍ତୁ (_O)"
 
@@ -1216,7 +1210,7 @@ msgid "Copying '%s'"
 msgstr "'%s' କୁ ନକଲ କରନ୍ତୁ"
 
 #: ../capplets/common/file-transfer-dialog.c:185
-#: ../capplets/common/file-transfer-dialog.c:317
+#: ../capplets/common/file-transfer-dialog.c:312
 msgid "Copying files"
 msgstr "ଫାଇଲ ମାନଙ୍କୁ ନକଲ କରୁଅଛି"
 
@@ -1268,16 +1262,16 @@ msgstr "ସର୍ବମୋଟ ୟୁ.ଆର.ଆଇ."
 msgid "Total number of URIs"
 msgstr "ସର୍ବମୋଟ ସଂଖ୍ଯକ ୟୁ.ଆର.ଆଇ."
 
-#: ../capplets/common/file-transfer-dialog.c:460
+#: ../capplets/common/file-transfer-dialog.c:440
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "ଫାଇଲ '%s' ପୂର୍ବରୁ ଅବସ୍ଥିତ ଅଛି। ଆପଣ ଏହାକୁ ନବଲିଖନ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../capplets/common/file-transfer-dialog.c:463
+#: ../capplets/common/file-transfer-dialog.c:443
 msgid "_Skip"
 msgstr "ଏଡାଇ ଦିଅନ୍ତୁ (_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:464
+#: ../capplets/common/file-transfer-dialog.c:444
 msgid "Overwrite _All"
 msgstr "ସମସ୍ତଙ୍କୁ ନବଲିଖନ କରନ୍ତୁ (_A)"
 
@@ -1473,7 +1467,7 @@ msgid "Off"
 msgstr "ଅଫ୍"
 
 #: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:508
+#: ../capplets/display/xrandr-capplet.c:496
 msgid "Monitor"
 msgstr "ମନିଟର"
 
@@ -1494,20 +1488,20 @@ msgid "Sets the selected monitor as primary."
 msgstr ""
 
 #: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:311
-#: ../capplets/display/xrandr-capplet.c:350
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
 msgid "Normal"
 msgstr "ସାଧାରଣ"
 
 #: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:312
-#: ../capplets/windows/mate-window-properties.c:574
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:512
 msgid "Left"
 msgstr "ବାମ"
 
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:313
-#: ../capplets/windows/mate-window-properties.c:573
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Right"
 msgstr "ଡାହାଣ"
 
@@ -1613,11 +1607,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:314
+#: ../capplets/display/xrandr-capplet.c:310
 msgid "Upside Down"
 msgstr "ଉପରୁ ତଳକୁ"
 
-#: ../capplets/display/xrandr-capplet.c:356
+#: ../capplets/display/xrandr-capplet.c:352
 #, c-format
 msgid "%d Hz"
 msgstr "%d ହର୍ଜ"
@@ -1626,177 +1620,177 @@ msgstr "%d ହର୍ଜ"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:493
-#: ../capplets/display/xrandr-capplet.c:1669
+#: ../capplets/display/xrandr-capplet.c:485
+#: ../capplets/display/xrandr-capplet.c:1631
 #, c-format
 msgid "Mirror Screens"
 msgstr "ପ୍ରତିଫଳକ ପରଦାଗୁଡ଼ିକ"
 
-#: ../capplets/display/xrandr-capplet.c:495
+#: ../capplets/display/xrandr-capplet.c:487
 #, c-format
 msgid "Monitor: %s"
 msgstr "ପ୍ରଦର୍ଶିକା: %s"
 
-#: ../capplets/display/xrandr-capplet.c:591
+#: ../capplets/display/xrandr-capplet.c:557
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1525
+#: ../capplets/display/xrandr-capplet.c:1487
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2147
+#: ../capplets/display/xrandr-capplet.c:2067
 msgid "Could not save the monitor configuration"
 msgstr "ପ୍ରଦର୍ଶିକା ସଂରଚନାକୁ ସଂରକ୍ଷଣ କରିପାରିଲା ନାହିଁ"
 
-#: ../capplets/display/xrandr-capplet.c:2169
+#: ../capplets/display/xrandr-capplet.c:2089
 msgid "Could not get session bus while applying display configuration"
 msgstr "ପ୍ରଦର୍ଶନୀ ବିନ୍ୟାସ ପାଇଁ ପ୍ରୟୋଗ କରିବା ସମୟରେ ଅଧିବେଶନ ବସ ପାଇଲା ନାହିଁ"
 
-#: ../capplets/display/xrandr-capplet.c:2188
+#: ../capplets/display/xrandr-capplet.c:2108
 msgid "Could not detect displays"
 msgstr "ପ୍ରଦର୍ଶନଗୁଡ଼ିକୁ ଯାଞ୍ଚକରିପାରିଲା ନାହିଁ"
 
-#: ../capplets/display/xrandr-capplet.c:2400
+#: ../capplets/display/xrandr-capplet.c:2316
 msgid "The monitor configuration has been saved"
 msgstr "ପ୍ରଦର୍ଶିକା ସଂରଚନାକୁ ସଂରକ୍ଷଣ କରାଯାଇଛି"
 
-#: ../capplets/display/xrandr-capplet.c:2402
+#: ../capplets/display/xrandr-capplet.c:2318
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2411
+#: ../capplets/display/xrandr-capplet.c:2327
 msgid "Could not set the default configuration for monitors"
 msgstr "ପ୍ରଦର୍ଶିକା ପାଇଁ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ସଂରଚନାକୁ ସଂରକ୍ଷଣ କରିପାରିଲା ନାହିଁ"
 
-#: ../capplets/display/xrandr-capplet.c:2495
+#: ../capplets/display/xrandr-capplet.c:2411
 msgid "Could not get screen information"
 msgstr "ପରଦା ସୂଚନା ପାଇପାରିଲା ନାହିଁ"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:25
+#: ../capplets/keybindings/eggcellrendererkeys.c:21
 msgid "New shortcut..."
 msgstr "ନୂତନ ସଂକ୍ଷିପ୍ତ ପଥ..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:161
-#: ../capplets/keybindings/eggcellrendererkeys.c:162
+#: ../capplets/keybindings/eggcellrendererkeys.c:157
+#: ../capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "ବେଗବର୍ଦ୍ଧକ କି"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:171
-#: ../capplets/keybindings/eggcellrendererkeys.c:172
+#: ../capplets/keybindings/eggcellrendererkeys.c:167
+#: ../capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "ତ୍ୱରକ ପରିବର୍ତ୍ତନ କାରୀ"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:180
-#: ../capplets/keybindings/eggcellrendererkeys.c:181
+#: ../capplets/keybindings/eggcellrendererkeys.c:176
+#: ../capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "ତ୍ୱରକ କି ସଂକେତ"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:191
+#: ../capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "ଏକ୍ସେଲ ମୋଡ"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:192
+#: ../capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "ବେଗବର୍ଦ୍ଧକର ପ୍ରକାର"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:235
-#: ../capplets/keybindings/mate-keybinding-properties.c:138
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/keybindings/eggcellrendererkeys.c:231
+#: ../capplets/keybindings/mate-keybinding-properties.c:134
+#: ../capplets/mouse/mate-mouse-properties.c:302
 #: ../typing-break/drwright.c:501
 msgid "Disabled"
 msgstr "ନିଷ୍କ୍ରିୟ ହୋଇଗଲା"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:220
+#: ../capplets/keybindings/mate-keybinding-properties.c:216
 msgid "<Unknown Action>"
 msgstr "<ଅଜ୍ଞାତ କାର୍ୟ୍ଯ>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1024
-#: ../capplets/keybindings/mate-keybinding-properties.c:1614
+#: ../capplets/keybindings/mate-keybinding-properties.c:1020
+#: ../capplets/keybindings/mate-keybinding-properties.c:1610
 msgid "Custom Shortcuts"
 msgstr "ସଂକ୍ଷିପ୍ତ ପଥକୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1194
+#: ../capplets/keybindings/mate-keybinding-properties.c:1190
 msgid "Error saving the new shortcut"
 msgstr "ନୂତନ ସଂକ୍ଷିପ୍ତ ପଥକୁ ସଂରକ୍ଷଣ କରିବାରେ ତ୍ରୁଟି"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1270
+#: ../capplets/keybindings/mate-keybinding-properties.c:1266
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 msgstr "ସକ୍ଷିପ୍ତ ପଥ \"%s\" କୁ ବ୍ୟବହାର କରାଯାଇପାରିବ ନାହିଁ କାରଣ ଏହାକୁ ଏହି କି ବ୍ୟବହାର କରି ଟାଇପ କରିବା ଅସମ୍ଭବ।\nଦୟାକରି ଏକା ସମୟରେ Control, Alt କିମ୍ବା Shift କି ସାହାଯ୍ୟରେ ଚେଷ୍ଟାକରନ୍ତୁ।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1302
+#: ../capplets/keybindings/mate-keybinding-properties.c:1298
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 msgstr "ସଂକ୍ଷିପ୍ତ ପଥ \"%s\" ଟି ପୂର୍ବରୁ \n\"%s\" ପାଇଁ ବ୍ୟବହୃତ ହୋଇଛି"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1309
+#: ../capplets/keybindings/mate-keybinding-properties.c:1305
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "ଯଦି ଆପଣ \"%s\"ରେ ସଂକ୍ଷିପ୍ତ ପଥକୁ ପୁଣିଥରେ ନିର୍ଦ୍ଦିଷ୍ଟ କରନ୍ତି, ତେବେ \"%s\" ସଂକ୍ଷିପ୍ତ ପଥଟି ନିଷ୍କ୍ରିୟ ହୋଇଯିବ।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: ../capplets/keybindings/mate-keybinding-properties.c:1310
 msgid "_Reassign"
 msgstr "ପୁଣିଥରେ ନିର୍ଦ୍ଦିଷ୍ଟ କରିବା (_R)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1569
+#: ../capplets/keybindings/mate-keybinding-properties.c:1565
 msgid "Too many custom shortcuts"
 msgstr "ଅତ୍ୟଧିକ ଇଚ୍ଛାମୁତାବକ ସଂକ୍ଷିପ୍ତ ପଥ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1857
+#: ../capplets/keybindings/mate-keybinding-properties.c:1853
 msgid "Action"
 msgstr "କାର୍ଯ୍ଯ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1879
+#: ../capplets/keybindings/mate-keybinding-properties.c:1875
 msgid "Shortcut"
 msgstr "ସଂକ୍ଷିପ୍ତ ପଥ"
 
 #. * vim: sw=2 ts=8 cindent noai bs=2
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+msgid "Custom Shortcut"
+msgstr "ସଂକ୍ଷିପ୍ତ ପଥକୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+msgid "C_ommand:"
+msgstr "ନିର୍ଦ୍ଦେଶ (_o):"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "କିବୋର୍ଡ ସର୍ଟକଟଗୁଡିକ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
 msgstr "ଗୋଟିଏ ସକ୍ଷିପ୍ତ ପଥ କିକୁ ସମ୍ପାଦନ କରିବା ପାଇଁ, ନିମ୍ନଲିଖିତ ଧାଡ଼ି ଉପରେ କ୍ଲିକ କରନ୍ତୁ ଏବଂ ଗୋଟିଏ ନୂତନ କି-ଯୁଗଳ ଟାଇପ କରନ୍ତୁ, କିମ୍ବା ସଫାକରିବା ପାଇଁ backspace ଉପରେ ଦବାନ୍ତୁ।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
-msgid "Custom Shortcut"
-msgstr "ସଂକ୍ଷିପ୍ତ ପଥକୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
-
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-msgid "C_ommand:"
-msgstr "ନିର୍ଦ୍ଦେଶ (_o):"
-
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "ଆଦେଶଗୁଡିକୁ ସର୍ଟକଟ କିଗୁଡିକ ପ୍ରଦାନ କର"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:209
+#: ../capplets/keyboard/mate-keyboard-properties.c:214
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "କେବଳ ସେଟିଙ୍ଗଗୁଡିକୁ ପ୍ରଯୋଗ କରନ୍ତୁ ଏବଂ ପ୍ରସ୍ଥାନ କରନ୍ତୁ (କେବଳ ଅନୁରୂପୟୋଗ୍ଯତା; ବର୍ତ୍ତମାନ ଡିମୋନ ଦ୍ବାରା ପରିଚାଳିତ)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:219
 msgid "Start the page with the typing break settings showing"
 msgstr "ଟାଇପିଙ୍ଗ ଭଙ୍ଗ ସେଟିଙ୍ଗ ଦର୍ଶାଇବା ସହିତ ପୃଷ୍ଠା ଆରମ୍ଭ କର"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:228
+#: ../capplets/keyboard/mate-keyboard-properties.c:224
 msgid "Start the page with the accessibility settings showing"
 msgstr "ଦର୍ଶାଯାଇଥିବା ଅଭିଗମ୍ୟ ବିନ୍ୟାସ ପରି ପୃଷ୍ଠାକୁ ଆରମ୍ଭ କରନ୍ତୁ"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:234
+#: ../capplets/keyboard/mate-keyboard-properties.c:230
 msgid "- MATE Keyboard Preferences"
 msgstr "- MATE କି-ବୋର୍ଡ ପସନ୍ଦ"
 
@@ -1806,8 +1800,8 @@ msgstr "କି-ବୋର୍ଡ ଅଭିଗମ୍ଯତା ଧ୍ୱନି ପ�
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/windows/mate-window-properties.c:376
 msgid "General"
 msgstr "ସାଧାରଣ"
 
@@ -1820,55 +1814,55 @@ msgid "Beep when a _toggle key is pressed"
 msgstr "ଆଗପଛ କି ଦବାଇବା ସମୟରେ ଦପଦପ କରନ୍ତୁ (_t)"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
-msgid "Visual cues for sounds"
-msgstr "ଧ୍ୱନି ପାଇଁ ଦୃଷ୍ଟିସଂକ୍ରାନ୍ତୀୟ ଧାଡ଼ି"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
-msgid "Show _visual feedback for the alert sound"
-msgstr "ସତର୍କ ଧ୍ୱନି ପାଇଁ ଦୃଶ୍ୟମାନ ପ୍ରତି ସୂଚନା ଦର୍ଶାନ୍ତୁ (_v)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
-msgid "Flash _window titlebar"
-msgstr "ଉଇଣ୍ଡୋ ଶୀର୍ଷକ ବାରକୁ _ଆଲୋକିତ କର"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
-msgid "Flash entire _screen"
-msgstr "ସମଗ୍ର ପରଦାକୁ ଫ୍ଲାଶ କରନ୍ତୁ (_s)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
-msgid "Slow Keys"
-msgstr "ମନ୍ଥର କିଗୁଡ଼ିକ"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
-msgid "Beep when a key is pr_essed"
-msgstr "ଯଦି କି କୁ ଦବାଇଲେ ମିଟିମିଟି କରେ (_e)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-msgid "Beep when key is _accepted"
-msgstr "କି କୁ ଗ୍ରହଣ କରାଗଲେ ମିଟିମିଟି କରିବ (_a)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
-msgid "Beep when key is _rejected"
-msgstr "କି କୁ ପ୍ରତ୍ୟାଖାନ କରାଗଲେ ମିଟିମିଟି କରିବ (_r)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
-msgid "Bounce Keys"
-msgstr "ଡେଉଁଥିବା କିଗୁଡ଼ିକ"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
-msgid "Beep when a key is reje_cted"
-msgstr "ଯଦି କି କୁ ପ୍ରତ୍ଯାଖାନ କରାଗଲେ ମିଟିମିଟି କରିବ (_c)"
-
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
 msgid "Sticky Keys"
 msgstr "ସାମୟିକ କିଗୁଡ଼ିକ"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
 msgid "Beep when a _modifier key is pressed"
 msgstr "ଯଦି ପରିବର୍ତ୍ତକ କି କୁ ଦବାଯାଇଛି ତାହାହେଲେ ମିଟିମିଟି କରିବ (_m)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+msgid "Visual cues for sounds"
+msgstr "ଧ୍ୱନି ପାଇଁ ଦୃଷ୍ଟିସଂକ୍ରାନ୍ତୀୟ ଧାଡ଼ି"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+msgid "Show _visual feedback for the alert sound"
+msgstr "ସତର୍କ ଧ୍ୱନି ପାଇଁ ଦୃଶ୍ୟମାନ ପ୍ରତି ସୂଚନା ଦର୍ଶାନ୍ତୁ (_v)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+msgid "Flash _window titlebar"
+msgstr "ଉଇଣ୍ଡୋ ଶୀର୍ଷକ ବାରକୁ _ଆଲୋକିତ କର"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+msgid "Flash entire _screen"
+msgstr "ସମଗ୍ର ପରଦାକୁ ଫ୍ଲାଶ କରନ୍ତୁ (_s)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "Slow Keys"
+msgstr "ମନ୍ଥର କିଗୁଡ଼ିକ"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+msgid "Beep when a key is pr_essed"
+msgstr "ଯଦି କି କୁ ଦବାଇଲେ ମିଟିମିଟି କରେ (_e)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+msgid "Beep when key is _accepted"
+msgstr "କି କୁ ଗ୍ରହଣ କରାଗଲେ ମିଟିମିଟି କରିବ (_a)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+msgid "Beep when key is _rejected"
+msgstr "କି କୁ ପ୍ରତ୍ୟାଖାନ କରାଗଲେ ମିଟିମିଟି କରିବ (_r)"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "Bounce Keys"
+msgstr "ଡେଉଁଥିବା କିଗୁଡ଼ିକ"
+
+#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+msgid "Beep when a key is reje_cted"
+msgstr "ଯଦି କି କୁ ପ୍ରତ୍ଯାଖାନ କରାଗଲେ ମିଟିମିଟି କରିବ (_c)"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
@@ -1897,7 +1891,7 @@ msgstr "ସଂକ୍ଷିପ୍ତ ପଥ"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "Slow"
 msgstr "ମନ୍ଥର"
 
@@ -1912,7 +1906,7 @@ msgstr "ଲମ୍ବା"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Fast"
 msgstr "ଦ୍ରୁତ"
 
@@ -2095,12 +2089,12 @@ msgid "Choose a Layout"
 msgstr "ଗୋଟିଏ ବିରଚନା ବାଛ"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
-msgid "_Variants:"
-msgstr "ଭିନ୍ନତା (_V):"
-
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
 msgid "_Country:"
 msgstr "ଦେଶ (_C):"
+
+#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+msgid "_Variants:"
+msgstr "ଭିନ୍ନତା (_V):"
 
 #: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
 msgid "By _country"
@@ -2162,24 +2156,24 @@ msgstr "କି-ବୋର୍ଡ"
 msgid "Set your keyboard preferences"
 msgstr "ଆପଣଙ୍କର କିବୋର୍ଡ ପସନ୍ଦ ସ୍ଥିର କରନ୍ତୁ"
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Left button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Middle button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:363
+#: ../capplets/mouse/mate-mouse-properties.c:302
 msgid "Right button"
 msgstr ""
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:449
+#: ../capplets/mouse/mate-mouse-properties.c:396
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:454
+#: ../capplets/mouse/mate-mouse-properties.c:401
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE ମାଉସ ପସନ୍ଦ"
 
@@ -2211,19 +2205,19 @@ msgstr "ନିୟନ୍ତ୍ରଣ କି କୁ ଦବାଇବା ସମୟ�
 msgid "Pointer Speed"
 msgstr "ସୂଚକ ଗତି"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
-msgid "_Sensitivity:"
-msgstr "_ସଂବେଦନଶୀଳତା:"
-
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Low"
 msgstr "ଧୀର"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "High"
 msgstr "ବ୍ରୁହତ"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+msgid "_Sensitivity:"
+msgstr "_ସଂବେଦନଶୀଳତା:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "Drag and Drop"
@@ -2246,57 +2240,58 @@ msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "ଆପଣଙ୍କର ଦୁଇଥର କ୍ଲିକ ସଂରଚନାକୁ ପରୀକ୍ଷା କରିବା ପାଇଁ, ଆଲୋକ ପେଣ୍ଡୁ ଉପରେ ଦୁଇଥର କ୍ଲିକ କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"
 
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
+msgid "Mouse"
+msgstr "ମାଉସ"
+
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Enable _touchpad"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Disable touchpad _while typing"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Enable _mouse clicks with touchpad"
 msgstr "ମାଉସ କ୍ଲିକଗୁଡ଼ିକୁ ଟଚପ୍ୟାଡ ସହିତ ସକ୍ରିୟ କରନ୍ତୁ (_m)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Two-finger click emulation:"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Three-finger click emulation:"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Scrolling"
 msgstr "ସ୍କ୍ରୋଲ କରୁଛି"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "_Vertical edge scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "H_orizontal edge scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "V_ertical two-finger scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Hor_izontal two-finger scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
-msgid "Enable n_atural scrolling"
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+msgid "Enable _natural scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Touchpad"
 msgstr "ଟଚପ୍ୟାଡ"
-
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
-msgid "Mouse"
-msgstr "ମାଉସ"
 
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
 msgid "Set your mouse preferences"
@@ -2311,89 +2306,89 @@ msgid "Set your network proxy preferences"
 msgstr "ଆପଣଙ୍କର ନେଟୱର୍କ ପ୍ରକ୍ସି ପସନ୍ଦକୁ ସେଟକରନ୍ତୁ"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
-msgid "HTTP Proxy Details"
-msgstr "HTTP ପ୍ରକ୍ସି ବିବରଣୀ"
-
-#: ../capplets/network/mate-network-properties.ui.h:2
-msgid "<b>_Use authentication</b>"
-msgstr "<b>ବୈଧିକରଣ ବ୍ୟବହାର କରନ୍ତୁ (_U)</b>"
-
-#: ../capplets/network/mate-network-properties.ui.h:3
-msgid "U_sername:"
-msgstr "ଚାଳକ ନାମ (_s):"
-
-#: ../capplets/network/mate-network-properties.ui.h:4
-msgid "_Password:"
-msgstr "ପ୍ରବେଶ ସଂଙ୍କେତ (_P):"
-
-#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "Network Proxy Preferences"
 msgstr "ନେଟୱର୍କ ପ୍ରକ୍ସି ପସନ୍ଦଗୁଡ଼ିକ"
 
-#: ../capplets/network/mate-network-properties.ui.h:6
+#: ../capplets/network/mate-network-properties.ui.h:2
 msgid "<b>Di_rect internet connection</b>"
 msgstr "<b>ସିଧାସଳଖ ଇଣ୍ଟରନେଟ ସଂଯୋଗ (_r)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:7
+#: ../capplets/network/mate-network-properties.ui.h:3
 msgid "<b>_Manual proxy configuration</b>"
 msgstr "<b>ହସ୍ତଚାଳିତ ପ୍ରକ୍ସି ବିନ୍ୟାସ (_M)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:8
-msgid "H_TTP proxy:"
-msgstr "HTTP ପ୍ରକ୍ସି (_T):"
-
-#: ../capplets/network/mate-network-properties.ui.h:9
-msgid "_Secure HTTP proxy:"
-msgstr "_ HTTP ପ୍ରୋକ୍ସି ସୁରକ୍ଷିତକର:"
-
-#: ../capplets/network/mate-network-properties.ui.h:10
-msgid "_FTP proxy:"
-msgstr "FTP ପ୍ରୋକ୍ସି (_F):"
-
-#: ../capplets/network/mate-network-properties.ui.h:11
-msgid "S_ocks host:"
-msgstr "ଶକ୍ସ ଆଧାର (_o):"
-
-#: ../capplets/network/mate-network-properties.ui.h:12
+#: ../capplets/network/mate-network-properties.ui.h:4
 msgid "Port:"
 msgstr "ସଂଯୋଗିକୀ:"
 
-#: ../capplets/network/mate-network-properties.ui.h:13
+#: ../capplets/network/mate-network-properties.ui.h:5
 msgid "_Details"
 msgstr "ବିସ୍ତ୍ରୁତ ବିବରଣୀ (_D)"
 
-#: ../capplets/network/mate-network-properties.ui.h:14
+#: ../capplets/network/mate-network-properties.ui.h:6
+msgid "H_TTP proxy:"
+msgstr "HTTP ପ୍ରକ୍ସି (_T):"
+
+#: ../capplets/network/mate-network-properties.ui.h:7
+msgid "_Secure HTTP proxy:"
+msgstr "_ HTTP ପ୍ରୋକ୍ସି ସୁରକ୍ଷିତକର:"
+
+#: ../capplets/network/mate-network-properties.ui.h:8
+msgid "_FTP proxy:"
+msgstr "FTP ପ୍ରୋକ୍ସି (_F):"
+
+#: ../capplets/network/mate-network-properties.ui.h:9
+msgid "S_ocks host:"
+msgstr "ଶକ୍ସ ଆଧାର (_o):"
+
+#: ../capplets/network/mate-network-properties.ui.h:10
 msgid "<b>_Automatic proxy configuration</b>"
 msgstr "<b>ସ୍ୱୟଂଚାଳିତ ପ୍ରକ୍ସି ବିନ୍ୟାସ (_A)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:15
+#: ../capplets/network/mate-network-properties.ui.h:11
 msgid "Autoconfiguration _URL:"
 msgstr "ସ୍ୱୟଂବିନ୍ୟାସିତ URL (_U):"
 
-#: ../capplets/network/mate-network-properties.ui.h:16
+#: ../capplets/network/mate-network-properties.ui.h:12
 msgid "Proxy Configuration"
 msgstr "ପ୍ରକ୍ସି ସଂରଚନା"
 
-#: ../capplets/network/mate-network-properties.ui.h:17
+#: ../capplets/network/mate-network-properties.ui.h:13
 msgid "Ignore Host List"
 msgstr "ଆଧାର ତାଲିକାକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ"
 
-#: ../capplets/network/mate-network-properties.ui.h:18
+#: ../capplets/network/mate-network-properties.ui.h:14
 msgid "Ignored Hosts"
 msgstr "ଅଗ୍ରାହ୍ୟ କରାଯାଇଥିବା ଆଧାରଗୁଡ଼ିକ"
+
+#: ../capplets/network/mate-network-properties.ui.h:15
+msgid "HTTP Proxy Details"
+msgstr "HTTP ପ୍ରକ୍ସି ବିବରଣୀ"
+
+#: ../capplets/network/mate-network-properties.ui.h:16
+msgid "<b>_Use authentication</b>"
+msgstr "<b>ବୈଧିକରଣ ବ୍ୟବହାର କରନ୍ତୁ (_U)</b>"
+
+#: ../capplets/network/mate-network-properties.ui.h:17
+msgid "U_sername:"
+msgstr "ଚାଳକ ନାମ (_s):"
+
+#: ../capplets/network/mate-network-properties.ui.h:18
+msgid "_Password:"
+msgstr "ପ୍ରବେଶ ସଂଙ୍କେତ (_P):"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
 msgstr ""
 
 #. Compositing manager
-#: ../capplets/windows/mate-metacity-support.c:55
-#: ../capplets/windows/mate-window-properties.c:410
+#: ../capplets/windows/mate-metacity-support.c:51
+#: ../capplets/windows/mate-window-properties.c:392
 msgid "Compositing Manager"
 msgstr ""
 
-#: ../capplets/windows/mate-metacity-support.c:66
-#: ../capplets/windows/mate-window-properties.c:422
+#: ../capplets/windows/mate-metacity-support.c:62
+#: ../capplets/windows/mate-window-properties.c:399
 msgid "Enable software _compositing window manager"
 msgstr ""
 
@@ -2406,131 +2401,131 @@ msgstr ""
 msgid "Window Preferences"
 msgstr "ଉଇଣ୍ଡୋ ପସନ୍ଦଗୁଡିକ"
 
-#: ../capplets/windows/mate-window-properties.c:391
+#: ../capplets/windows/mate-window-properties.c:381
 msgid "Behaviour"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:400
+#: ../capplets/windows/mate-window-properties.c:386
 msgid "Placement"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:423
+#: ../capplets/windows/mate-window-properties.c:400
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:431
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "Titlebar Buttons"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:439
+#: ../capplets/windows/mate-window-properties.c:412
 msgid "Position:"
 msgstr ""
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:419
 msgid "New Windows"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:454
+#: ../capplets/windows/mate-window-properties.c:423
 msgid "Center _new windows"
 msgstr ""
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:459
+#: ../capplets/windows/mate-window-properties.c:428
 msgid "Window Snapping"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:467
+#: ../capplets/windows/mate-window-properties.c:432
 msgid "Enable side by side _tiling"
 msgstr ""
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:437
 msgid "Window Selection"
 msgstr "ୱିଣ୍ଡୋ ଚୟନ"
 
-#: ../capplets/windows/mate-window-properties.c:492
+#: ../capplets/windows/mate-window-properties.c:447
 msgid "_Select windows when the mouse moves over them"
 msgstr "_ଉଇଣ୍ଡୋକୁ ମନୋନୀତ କର ୟେବେ ମାଉସ ସେଗୁଡିକ ଉପରେ ଘୁଞ୍ଚେ "
 
-#: ../capplets/windows/mate-window-properties.c:495
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "U_nselect windows when the mouse leaves them"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:499
+#: ../capplets/windows/mate-window-properties.c:454
 msgid "_Raise selected windows after an interval"
 msgstr "_ଏକ ଅନ୍ତରାଳ ପରେ ମନୋନୀତ ଉଇଣ୍ଡୋକୁ ଉପରକୁ ଉଠାଅ"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:461
 msgid "_Interval before raising:"
 msgstr "_ଉଠିବା ପୂର୍ବରୁ ଅନ୍ତରାଳ:"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:465
 msgid "seconds"
 msgstr "ସେକେଣ୍ଡ"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:525
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "Titlebar Action"
 msgstr "ଶୀର୍ଷକ ପଟି କାର୍ଯ୍ଯ"
 
-#: ../capplets/windows/mate-window-properties.c:533
+#: ../capplets/windows/mate-window-properties.c:480
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_ଏହି କାର୍ୟ୍ଯକୁ କରିବା ପାଇଁ ଶୀର୍ଷକବାରକୁ ଦୁଇଥର କ୍ଲିକ କର:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:541
+#: ../capplets/windows/mate-window-properties.c:488
 msgid "Movement Key"
 msgstr "ଗତିବିଧି କି"
 
-#: ../capplets/windows/mate-window-properties.c:552
+#: ../capplets/windows/mate-window-properties.c:494
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "ଗୋଟିଏ ଉଇଣ୍ଡୋକୁ ଘୁଞ୍ଚାଇବା ପାଇଁ, ଏହି କିକୁ ଧରି ରଖ ତାପରେ ଉଇଣ୍ଡୋକୁ ଟାଣିଆଣ :"
 
-#: ../capplets/windows/mate-window-properties.c:580
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "ଘୂର୍ଣ୍ଣନ ଉପର"
 
-#: ../capplets/windows/mate-window-properties.c:581
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "  ବଡ କର"
 
-#: ../capplets/windows/mate-window-properties.c:582
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "ସମାନ୍ତରାଳରେ ବୃଦ୍ଧିକରନ୍ତୁ"
 
-#: ../capplets/windows/mate-window-properties.c:583
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "ଭୂଲମ୍ବରେ ବୃଦ୍ଧିକରନ୍ତୁ"
 
-#: ../capplets/windows/mate-window-properties.c:584
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr " ଛୋଟ କର"
 
-#: ../capplets/windows/mate-window-properties.c:585
+#: ../capplets/windows/mate-window-properties.c:523
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "କିଛି ନୁହେଁ"
 
-#: ../capplets/windows/mate-window-properties.c:786
+#: ../capplets/windows/mate-window-properties.c:724
 msgid "_Alt"
 msgstr "ଅଲ୍ଟ (_Alt)"
 
-#: ../capplets/windows/mate-window-properties.c:792
+#: ../capplets/windows/mate-window-properties.c:730
 msgid "H_yper"
 msgstr "ଅତି_"
 
-#: ../capplets/windows/mate-window-properties.c:799
+#: ../capplets/windows/mate-window-properties.c:737
 msgid "S_uper (or \"Windows logo\")"
 msgstr "ସୁପର_(କିମ୍ବା \"ଉଇଣ୍ଡୋ ଲୋଗୋ\")"
 
-#: ../capplets/windows/mate-window-properties.c:806
+#: ../capplets/windows/mate-window-properties.c:744
 msgid "_Meta"
 msgstr "_ମେଟା"
 
@@ -2547,29 +2542,29 @@ msgstr "ଆପଣଙ୍କର ଉଇଣ୍ଡୋ ବିଶେଷତାଗୁଡ�
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "ଉଇଣ୍ଡୋ ପ୍ରବନ୍ଧକ\"%s\" ଗୋଟିଏ କନଫିଗରେସନ ଉପକରଣ ପଞ୍ଜିକୃତ କରି ନାହିଁ \n"
 
-#: ../shell/control-center.c:61
+#: ../shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
 msgstr ""
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Filter"
 msgstr "ଛାଣକ"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Groups"
 msgstr "ସମୂହ"
 
-#: ../shell/control-center.c:144 ../shell/control-center.c:253
+#: ../shell/control-center.c:135
 msgid "Common Tasks"
 msgstr "ସାଧାରଣ କାର୍ୟ୍ଯଗୁଡିକ"
 
-#: ../shell/control-center.c:152 ../shell/control-center.c:255
-#: ../shell/matecc.desktop.in.in.h:1 ../shell/matecc.directory.in.h:1
+#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "ନିୟନ୍ତ୍ରଣ କେନ୍ଦ୍ର"
 
-#: ../shell/control-center.c:208
+#: ../shell/control-center.c:162
 msgid "Hide on start (useful to preload the shell)"
 msgstr "ଆରମ୍ଭ ସମୟରେ ଲୁଚାନ୍ତୁ (ସେଲକୁ ପୁନର୍ଦ୍ଧାରଣ କରିବା ପାଇଁ ଉପଯୋଗୀ)"
 
@@ -2577,11 +2572,11 @@ msgstr "ଆରମ୍ଭ ସମୟରେ ଲୁଚାନ୍ତୁ (ସେଲକ�
 msgid "The MATE configuration tool"
 msgstr "MATE କନଫିଗରେସନ୍ ଉପକରଣ"
 
-#: ../typing-break/drw-break-window.c:203
+#: ../typing-break/drw-break-window.c:190
 msgid "_Postpone Break"
 msgstr "ବିରାମ ସମୟକୁ ଆଗକୁ କରନ୍ତୁ (_P)"
 
-#: ../typing-break/drw-break-window.c:277
+#: ../typing-break/drw-break-window.c:247
 msgid "Take a break!"
 msgstr "ଏକ ବିରାମ ନିଅ !"
 
@@ -2630,7 +2625,7 @@ msgstr "ଆଇ କାଣ୍ଡି ଆଣ୍ଡରସନ କାର୍ଲସନଙ
 msgid "A computer break reminder."
 msgstr "ଏକ କମ୍ପ୍ଯୁଟର ଭଙ୍ଗ ମନେପକାଏ"
 
-#: ../typing-break/drwright.c:639
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
 msgid "translator-credits"
 msgstr "ଶୁଭ୍ରାଂଶୁ ବେହେରା <arya_subhransu@yahoo.co.in>"
 
@@ -2654,95 +2649,97 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "ଟାଇପିଙ୍ଗ ନିରୀକ୍ଷକ ବିଜ୍ଞପ୍ତି ଅଂଚଳକୁ ସୂଚନା ପ୍ରଦର୍ଶନ କରିବା ପାଇଁ ଉପୟୋଗ କରେ । ଆପଣଙ୍କର ପ୍ଯାନେଲରେ ଗୋଟିଏ ବିଜ୍ଞପ୍ତି ଅଂଚଳ ଥିଲା ପରି ମନେହେଉନାହିଁ ।  ଆପଣ ଏହାକୁ ପ୍ଯାନେଲରେ ଡାହାଣ କ୍ଲିକ କରି ଏବଂ 'ପ୍ଯାନେଲକୁ ୟୋଗକର'କୁ ବାଛି, 'ବିଜ୍ଞାପ୍ତି ଅଂଚଳ' କୁ ମନୋନୀତ କରି ଏବଂ  'ୟୋଗକର' କୁ କ୍ଲିକ କରି ୟୋଗ କରିପାରିବେ ।"
 
-#: ../font-viewer/font-view.c:360 ../font-viewer/font-view.c:362
-msgid "Name:"
-msgstr "ନାମ:"
+#: ../font-viewer/font-view.c:184
+msgid "Style"
+msgstr ""
 
-#: ../font-viewer/font-view.c:367 ../font-viewer/font-view.c:369
-msgid "Style:"
-msgstr "ଶୈଳୀ:"
+#: ../font-viewer/font-view.c:194
+msgid "Type"
+msgstr ""
 
-#: ../font-viewer/font-view.c:383 ../font-viewer/font-view.c:385
-msgid "Type:"
-msgstr "ପ୍ରକାର:"
+#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+msgid "Version"
+msgstr ""
 
-#: ../font-viewer/font-view.c:391 ../font-viewer/font-view.c:393
-msgid "Size:"
-msgstr "ଆକାର:"
+#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+msgid "Copyright"
+msgstr ""
 
-#: ../font-viewer/font-view.c:440 ../font-viewer/font-view.c:442
-#: ../font-viewer/font-view.c:465 ../font-viewer/font-view.c:467
-msgid "Version:"
-msgstr "ସଂସ୍କରଣ:"
+#: ../font-viewer/font-view.c:248
+msgid "Description"
+msgstr ""
 
-#: ../font-viewer/font-view.c:448 ../font-viewer/font-view.c:450
-#: ../font-viewer/font-view.c:471 ../font-viewer/font-view.c:473
-msgid "Copyright:"
-msgstr "ସ୍ବତ୍ତ୍ବାଧୀକାର:"
-
-#: ../font-viewer/font-view.c:456 ../font-viewer/font-view.c:458
-msgid "Description:"
-msgstr "ବର୍ଣ୍ଣନା:"
-
-#: ../font-viewer/font-view.c:535
-msgid "Installed"
-msgstr "ସ୍ଥାପିତ"
-
-#: ../font-viewer/font-view.c:537
+#: ../font-viewer/font-view.c:266
 msgid "Install Failed"
 msgstr "ସ୍ଥାପନ କ୍ରିୟା ବିଫଳ ହୋଇଛି"
 
-#: ../font-viewer/font-view.c:613
-#, c-format
-msgid "Usage: %s fontfile\n"
+#: ../font-viewer/font-view.c:272
+msgid "Installed"
+msgstr "ସ୍ଥାପିତ"
+
+#: ../font-viewer/font-view.c:409
+msgid "This font could not be displayed."
 msgstr ""
 
-#: ../font-viewer/font-view.c:713
-msgid "I_nstall Font"
-msgstr "ଅକ୍ଷରରୂପ ସ୍ଥାପନ କରନ୍ତୁ (_n)"
+#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+msgid "Info"
+msgstr ""
 
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+#: ../font-viewer/font-view.c:515
+msgid "Back"
+msgstr ""
+
+#: ../font-viewer/font-view.c:612
+msgid "All Fonts"
+msgstr ""
+
+#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
 msgid "Font Viewer"
 msgstr "ଅକ୍ଷରରୂପ ପ୍ରଦର୍ଶକ"
 
+#: ../font-viewer/font-view.c:717
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
-msgid "Preview fonts"
-msgstr "ପୂର୍ବାବଲୋକନ ଅକ୍ଷରରୂପ"
+msgid "View fonts on your system"
+msgstr ""
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+msgid "MATE Font Viewer"
+msgstr ""
+
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "Text to thumbnail (default: Aa)"
 msgstr "ପାଠ୍ୟରୁ କ୍ଷୁଦ୍ରଚିତ୍ର (ପୂର୍ବନିର୍ଦ୍ଧାରିତ: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:267
+#: ../font-viewer/font-thumbnailer.c:189
 msgid "TEXT"
 msgstr "TEXT"
 
-#: ../font-viewer/font-thumbnailer.c:269
-msgid "Font size (default: 64)"
-msgstr "ଅକ୍ଷରରୂପ ଆକାର (ପୂର୍ବନିର୍ଦ୍ଧାରିତ: 64)"
+#: ../font-viewer/font-thumbnailer.c:191
+msgid "Thumbnail size (default: 128)"
+msgstr ""
 
-#: ../font-viewer/font-thumbnailer.c:269
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "SIZE"
 msgstr "SIZE"
 
-#: ../font-viewer/font-thumbnailer.c:271
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FONT-FILE OUTPUT-FILE"
 
-#: ../libslab/app-shell.c:810
+#: ../libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "ଆପଣଙ୍କର ଛାଣକ \"%s\" କୌଣସି ବସ୍ତୁ ସହିତ ମେଳ ଖାଇନଥାଏ।"
 
-#: ../libslab/app-shell.c:812
+#: ../libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "କୌଣସି ମେଳକ ମିଳିଲା ନାହିଁ।"
 
-#: ../libslab/app-shell.c:912
+#: ../libslab/app-shell.c:874
 msgid "New Applications"
 msgstr ""
 
-#: ../libslab/app-shell.c:967
+#: ../libslab/app-shell.c:929
 msgid "Other"
 msgstr "ଅନ୍ଯାନ୍ଯ"
 
@@ -2891,7 +2888,7 @@ msgstr ""
 msgid "%b %d %Y"
 msgstr ""
 
-#: ../libslab/search-bar.c:260
+#: ../libslab/search-bar.c:256
 msgid "Find Now"
 msgstr "ବର୍ତ୍ତମାନ ଖୋଜନ୍ତୁ"
 
