@@ -1828,6 +1828,30 @@ selection_changed (GtkTreeSelection *selection, gpointer data)
 }
 
 static void
+cb_app_dialog_response (GtkWidget *dialog, gint response_id, gpointer data)
+{
+  if (response_id == GTK_RESPONSE_OK)
+    {
+      GAppInfo *info;
+      const gchar *custom_name;
+
+      info = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog));
+
+      gtk_entry_set_text (custom_shortcut_command_entry,
+                          g_app_info_get_executable (info));
+      /* if name isn't set yet, use the associated one */
+      custom_name = gtk_entry_get_text (GTK_ENTRY (custom_shortcut_name_entry));
+      if (! custom_name || custom_name[0] == '\0')
+        gtk_entry_set_text (custom_shortcut_name_entry,
+                            g_app_info_get_display_name (info));
+
+      g_object_unref (info);
+    }
+
+  gtk_widget_hide (dialog);
+}
+
+static void
 setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
 {
   GtkCellRenderer *renderer;
@@ -1835,6 +1859,7 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
   GtkWidget *widget;
   GtkTreeView *treeview;
   GtkTreeSelection *selection;
+  GtkWidget *button;
 
   treeview = GTK_TREE_VIEW (gtk_builder_get_object (builder,
                                                     "shortcut_treeview"));
@@ -1916,6 +1941,12 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
                    GTK_RESPONSE_OK);
   gtk_window_set_transient_for (GTK_WINDOW (custom_shortcut_dialog),
                                 GTK_WINDOW (widget));
+  button = _gtk_builder_get_widget (builder, "custom-shortcut-command-button");
+  widget = _gtk_builder_get_widget (builder, "custom-shortcut-application-dialog");
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_dialog_run), widget);
+  g_signal_connect (widget, "response", G_CALLBACK (cb_app_dialog_response), NULL);
+  widget = gtk_app_chooser_dialog_get_widget (GTK_APP_CHOOSER_DIALOG (widget));
+  gtk_app_chooser_widget_set_show_all (GTK_APP_CHOOSER_WIDGET (widget), TRUE);
 }
 
 static void
