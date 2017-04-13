@@ -112,7 +112,7 @@ nld_search_entry_realize (GtkWidget * widget)
 	if (priv->watermark)
 		g_object_unref (priv->watermark);
 	priv->watermark = rsvg_handle_get_pixbuf (rsvg);
-	rsvg_handle_free (rsvg);
+	g_object_unref (rsvg);
 }
 
 static gboolean
