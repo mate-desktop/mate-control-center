@@ -84,7 +84,6 @@ static void
 nld_search_bar_init (NldSearchBar * search_bar)
 {
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-	GtkWidget *alignment;
 	GtkWidget *entry;
 
 	gtk_widget_set_can_focus (GTK_WIDGET (search_bar), TRUE);
@@ -93,13 +92,12 @@ nld_search_bar_init (NldSearchBar * search_bar)
 	priv->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
 	gtk_box_pack_start (GTK_BOX (search_bar), priv->hbox, TRUE, FALSE, 0);
 
-	alignment = gtk_alignment_new (0.0, 0.5, 1.0, 0.0);
-	gtk_box_pack_start (GTK_BOX (priv->hbox), alignment, TRUE, TRUE, 0);
-
 	entry = nld_search_entry_new ();
+	gtk_widget_set_halign (entry, GTK_ALIGN_START);
+	gtk_widget_set_valign (entry, GTK_ALIGN_CENTER);
 	priv->entry = GTK_ENTRY (entry);
 	gtk_widget_show (entry);
-	gtk_container_add (GTK_CONTAINER (alignment), entry);
+	gtk_box_pack_start (GTK_BOX (priv->hbox), entry, TRUE, TRUE, 0);
 
 	g_signal_connect (entry, "activate", G_CALLBACK (emit_search_callback), search_bar);
 
