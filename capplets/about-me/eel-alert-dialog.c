@@ -158,7 +158,8 @@ eel_alert_dialog_init (EelAlertDialog *dialog)
 	dialog->details->primary_label = gtk_label_new (NULL);
 	dialog->details->secondary_label = gtk_label_new (NULL);
 	dialog->details->details_label = gtk_label_new (NULL);
-	dialog->details->image = gtk_image_new_from_stock (NULL, GTK_ICON_SIZE_DIALOG);
+//	dialog->details->image = gtk_image_new_from_stock (NULL, GTK_ICON_SIZE_DIALOG);
+	dialog->details->image = gtk_image_new_from_icon_name (NULL, GTK_ICON_SIZE_DIALOG);
 	gtk_widget_set_halign (dialog->details->image, GTK_ALIGN_CENTER);
 	gtk_widget_set_valign (dialog->details->image, GTK_ALIGN_START);
 
@@ -225,36 +226,35 @@ static void
 setup_type (EelAlertDialog *dialog,
 	    GtkMessageType  type)
 {
-	const gchar *stock_id = NULL;
-	GtkStockItem item;
+	const gchar *icon_name = NULL;
 
 	switch (type) {
 		case GTK_MESSAGE_INFO:
-			stock_id = GTK_STOCK_DIALOG_INFO;
+			icon_name = "dialog-information";
 			break;
 		case GTK_MESSAGE_QUESTION:
-			stock_id = GTK_STOCK_DIALOG_QUESTION;
+			icon_name = "dialog-question";
 			break;
 		case GTK_MESSAGE_WARNING:
-			stock_id = GTK_STOCK_DIALOG_WARNING;
+			icon_name = "dialog-warning";
 			break;
 		case GTK_MESSAGE_ERROR:
-			stock_id = GTK_STOCK_DIALOG_ERROR;
+			icon_name = "dialog-error";
 			break;
 		default:
 			g_warning ("Unknown GtkMessageType %d", type);
 			break;
 	}
 
-	if (stock_id == NULL) {
-		stock_id = GTK_STOCK_DIALOG_INFO;
+	if (icon_name == NULL) {
+		icon_name = "dialog-information";
   	}
 	
-	if (gtk_stock_lookup (stock_id, &item)) {
-		gtk_image_set_from_stock (GTK_IMAGE (dialog->details->image), stock_id,
-		                          GTK_ICON_SIZE_DIALOG);
+	if (icon_name) {
+		gtk_image_set_from_icon_name (GTK_IMAGE (dialog->details->image), icon_name,
+		                              GTK_ICON_SIZE_DIALOG);
 	} else {
-		g_warning ("Stock dialog ID doesn't exist?");
+		g_warning ("Dialog icon-name doesn't exist?");
 	}
 }
 
