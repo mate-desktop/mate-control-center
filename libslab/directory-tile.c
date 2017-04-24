@@ -646,7 +646,7 @@ open_with_default_trigger (Tile *tile, TileEvent *event, TileAction *action)
 	{
 		uris = g_list_append (uris, TILE (tile)->uri);
 		
-		launch_context = gdk_app_launch_context_new ();
+		launch_context = gdk_display_get_app_launch_context (gtk_widget_get_display (GTK_WIDGET (tile)));
 		gdk_app_launch_context_set_screen (launch_context,
 						   gtk_widget_get_screen (GTK_WIDGET (tile)));
 		gdk_app_launch_context_set_timestamp (launch_context,
