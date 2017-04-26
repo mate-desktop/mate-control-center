@@ -43,7 +43,7 @@
 #define CALC_TEMPLATE_FILE_NAME   "empty.ots"
 #define WRITER_TEMPLATE_FILE_NAME "empty.ott"
 
-#define GTK_BOOKMARKS_FILE ".gtk-bookmarks"
+#define GTK_BOOKMARKS_FILE "bookmarks"
 
 #define TYPE_IS_RECENT(type) ((type) == BOOKMARK_STORE_RECENT_APPS || (type) == BOOKMARK_STORE_RECENT_DOCS)
 
@@ -509,7 +509,8 @@ bookmark_agent_new (BookmarkStoreType type)
 
 			priv->load_store = load_places_store;
 
-			priv->gtk_store_path = g_build_filename (g_get_home_dir (), GTK_BOOKMARKS_FILE, NULL);
+			priv->gtk_store_path = g_build_filename (g_get_user_config_dir (),
+                                                     "gtk-3.0", GTK_BOOKMARKS_FILE, NULL);
 			gtk_store_file = g_file_new_for_path (priv->gtk_store_path);
 			priv->gtk_store_monitor = g_file_monitor_file (gtk_store_file,
 								       0, NULL, NULL);
@@ -527,7 +528,7 @@ bookmark_agent_new (BookmarkStoreType type)
 			priv->user_modifiable = TRUE;
 			priv->reorderable     = FALSE;
 
-			priv->store_path = g_build_filename (g_get_home_dir (), ".recently-used.xbel", NULL);
+			priv->store_path = g_build_filename (g_get_user_data_dir (), "recently-used.xbel", NULL);
 
 			break;
 
@@ -1167,7 +1168,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 	} else if (g_str_has_prefix (uri, "x-caja-search")) {
 		icon = "system-search";
 
-		path = g_build_filename (g_get_home_dir (), ".caja", "searches", & uri [21], NULL);
+		path = g_build_filename (g_get_user_data_dir (), "caja", "searches", & uri [21], NULL);
 
 		if (g_file_test (path, G_FILE_TEST_EXISTS)) {
 			gchar *buf = NULL;
