@@ -81,7 +81,7 @@ resize_table (GtkTable * table, gint columns, GList * launcher_list)
 static void
 relayout_table (GtkTable * table, GList * element_list)
 {
-	gint maxcols, maxrows;
+	guint maxcols, maxrows;
 	gtk_table_get_size (GTK_TABLE (table), &maxrows, &maxcols);
 	gint row = 0, col = 0;
 	do
