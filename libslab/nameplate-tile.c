@@ -213,9 +213,13 @@ nameplate_tile_setup (NameplateTile *this)
 	GtkWidget *hbox;
 	GtkWidget *vbox;
 
-	priv->image_ctnr = GTK_CONTAINER (gtk_alignment_new (0.5, 0.5, 1.0, 1.0));
-	priv->header_ctnr = GTK_CONTAINER (gtk_alignment_new (0.0, 0.5, 1.0, 1.0));
-	priv->subheader_ctnr = GTK_CONTAINER (gtk_alignment_new (0.0, 0.5, 1.0, 1.0));
+	priv->image_ctnr = GTK_CONTAINER (gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
+	gtk_widget_set_valign (GTK_WIDGET (priv->image_ctnr), GTK_ALIGN_CENTER);
+
+	priv->header_ctnr = GTK_CONTAINER (gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
+
+	priv->subheader_ctnr = GTK_CONTAINER (gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
+	gtk_widget_set_halign (GTK_WIDGET (priv->subheader_ctnr), GTK_ALIGN_START);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
