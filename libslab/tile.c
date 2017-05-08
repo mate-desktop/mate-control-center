@@ -292,7 +292,7 @@ tile_setup (Tile * tile)
 static void
 tile_enter (GtkButton * widget)
 {
-	gtk_widget_set_state (GTK_WIDGET (widget), TILE_STATE_ENTERED);
+	gtk_widget_set_state_flags (GTK_WIDGET (widget), TILE_STATE_ENTERED, TRUE);
 
 	TILE (widget)->entered = TRUE;
 }
@@ -301,9 +301,9 @@ static void
 tile_leave (GtkButton * widget)
 {
 	if (gtk_widget_has_focus (GTK_WIDGET (widget)))
-		gtk_widget_set_state (GTK_WIDGET (widget), TILE_STATE_FOCUSED);
+		gtk_widget_set_state_flags (GTK_WIDGET (widget), TILE_STATE_FOCUSED, TRUE);
 	else
-		gtk_widget_set_state (GTK_WIDGET (widget), GTK_STATE_NORMAL);
+		gtk_widget_set_state_flags (GTK_WIDGET (widget), GTK_STATE_FLAG_NORMAL, TRUE);
 
 	TILE (widget)->entered = FALSE;
 }
@@ -326,7 +326,7 @@ tile_clicked (GtkButton * widget)
 static gboolean
 tile_focus_in (GtkWidget * widget, GdkEventFocus * event)
 {
-	gtk_widget_set_state (widget, TILE_STATE_FOCUSED);
+	gtk_widget_set_state_flags (widget, TILE_STATE_FOCUSED, TRUE);
 
 	return FALSE;
 }
@@ -335,9 +335,9 @@ static gboolean
 tile_focus_out (GtkWidget * widget, GdkEventFocus * event)
 {
 	if (TILE (widget)->entered)
-		gtk_widget_set_state (widget, TILE_STATE_ENTERED);
+		gtk_widget_set_state_flags (widget, TILE_STATE_ENTERED, TRUE);
 	else
-		gtk_widget_set_state (widget, GTK_STATE_NORMAL);
+		gtk_widget_set_state_flags (widget, GTK_STATE_FLAG_NORMAL, TRUE);
 
 	return FALSE;
 }

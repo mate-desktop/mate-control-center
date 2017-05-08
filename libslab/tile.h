@@ -41,8 +41,8 @@ extern "C" {
 #define IS_TILE_ACTION_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), TILE_ACTION_TYPE))
 #define TILE_ACTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), TILE_ACTION_TYPE, TileActionClass))
 #define TILE_ACTION_CHECK_FLAG(action,flag) ((TILE_ACTION (action)->flags & (flag)) != 0)
-#define TILE_STATE_ENTERED GTK_STATE_PRELIGHT
-#define TILE_STATE_FOCUSED GTK_STATE_PRELIGHT
+#define TILE_STATE_ENTERED GTK_STATE_FLAG_PRELIGHT
+#define TILE_STATE_FOCUSED GTK_STATE_FLAG_PRELIGHT
 
 typedef struct _Tile Tile;
 typedef struct _TileClass TileClass;
