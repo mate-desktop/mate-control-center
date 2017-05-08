@@ -749,23 +749,21 @@ show_no_results_message (AppShellData * app_data, GtkWidget * containing_vbox)
 
 	if (!app_data->filtered_out_everything_widget)
 	{
-		GtkWidget *hbox;
 		GtkWidget *image;
 		GtkWidget *label;
 
-		app_data->filtered_out_everything_widget = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
+		app_data->filtered_out_everything_widget = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		gtk_widget_set_halign (app_data->filtered_out_everything_widget, GTK_ALIGN_CENTER);
+		gtk_widget_set_valign (app_data->filtered_out_everything_widget, GTK_ALIGN_CENTER);
 		g_object_ref (app_data->filtered_out_everything_widget);
 
-		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 		image = themed_icon_new ("face-surprise", GTK_ICON_SIZE_DIALOG);
-		gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (app_data->filtered_out_everything_widget), image, FALSE, FALSE, 0);
 
 		label = gtk_label_new (NULL);
 		gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-		gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 15);
+		gtk_box_pack_start (GTK_BOX (app_data->filtered_out_everything_widget), label, TRUE, TRUE, 15);
 		app_data->filtered_out_everything_widget_label = GTK_LABEL (label);
-
-		gtk_container_add (GTK_CONTAINER (app_data->filtered_out_everything_widget), hbox);
 	}
 
 	str1 = g_markup_printf_escaped ("<b>%s</b>", app_data->filter_string);
