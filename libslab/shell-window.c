@@ -121,11 +121,13 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 void
 shell_window_set_contents (ShellWindow * shell, GtkWidget * left_pane, GtkWidget * right_pane)
 {
-	shell->_left_pane = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
-	shell->_right_pane = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
+	shell->_left_pane = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	gtk_widget_set_margin_top (GTK_WIDGET (shell->_left_pane), 15);
+	gtk_widget_set_margin_bottom (GTK_WIDGET (shell->_left_pane), 15);
+	gtk_widget_set_margin_start (GTK_WIDGET (shell->_left_pane), 15);
+	gtk_widget_set_margin_end (GTK_WIDGET (shell->_left_pane), 15);
 
-	gtk_alignment_set_padding (GTK_ALIGNMENT (shell->_left_pane), 15, 15, 15, 15);
-	gtk_alignment_set_padding (GTK_ALIGNMENT (shell->_right_pane), 0, 0, 0, 0);	/* space for vertical line */
+	shell->_right_pane = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
 	gtk_box_pack_start (shell->_hbox, shell->_left_pane, FALSE, FALSE, 0);
 	gtk_box_pack_start (shell->_hbox, shell->_right_pane, TRUE, TRUE, 0);	/* this one takes any extra space */
