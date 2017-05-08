@@ -119,7 +119,6 @@ GtkWidget *
 slab_section_new_with_markup (const gchar * title_markup, SlabStyle style)
 {
 	SlabSection *section;
-	GtkWidget *align;
 	gchar * widget_theming_name;
 
 	section = g_object_new (SLAB_SECTION_TYPE, NULL);
@@ -129,25 +128,23 @@ slab_section_new_with_markup (const gchar * title_markup, SlabStyle style)
 	section->style = style;
 	section->selected = FALSE;
 
-	align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
+	section->childbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_VERTICAL, 10));
 	switch (style)
 	{
 	case Style1:
-		gtk_alignment_set_padding (GTK_ALIGNMENT (align), 0, 0, 0, 0);
 		widget_theming_name = "slab_section_style1";
 		break;
 	case Style2:
-		gtk_alignment_set_padding (GTK_ALIGNMENT (align), SLAB_TOP_PADDING,
-			SLAB_BOTTOM_PADDING, SLAB_LEFT_PADDING, 0);
+		gtk_widget_set_margin_top (GTK_WIDGET (section->childbox), SLAB_TOP_PADDING);
+		gtk_widget_set_margin_bottom (GTK_WIDGET (section->childbox), SLAB_BOTTOM_PADDING);
+		gtk_widget_set_margin_start (GTK_WIDGET (section->childbox), SLAB_LEFT_PADDING);
+		gtk_widget_set_margin_end (GTK_WIDGET (section->childbox), 0);
 		widget_theming_name = "slab_section_style2";
 		break;
 	default:
 		g_assert_not_reached ();
 	}
-	gtk_box_pack_start (GTK_BOX (section), align, TRUE, TRUE, 0);
-
-	section->childbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_VERTICAL, 10));
-	gtk_container_add (GTK_CONTAINER (align), GTK_WIDGET (section->childbox));
+	gtk_box_pack_start (GTK_BOX (section), GTK_WIDGET (section->childbox), TRUE, TRUE, 0);
 
 	section->title = gtk_label_new (title_markup);
 	gtk_label_set_use_markup (GTK_LABEL (section->title), TRUE);
