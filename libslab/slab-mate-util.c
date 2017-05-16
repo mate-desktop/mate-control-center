@@ -24,14 +24,6 @@
 #include <gio/gio.h>
 #include <string.h>
 
-void
-free_list_of_strings (GList * string_list)
-{
-	g_assert (string_list != NULL);
-	g_list_foreach (string_list, (GFunc) g_free, NULL);
-	g_list_free (string_list);
-}
-
 MateDesktopItem *
 load_desktop_item_from_unknown (const gchar *id)
 {
@@ -84,39 +76,6 @@ load_desktop_item_from_unknown (const gchar *id)
 	}
 
 	return NULL;
-}
-
-gchar *
-get_package_name_from_desktop_item (MateDesktopItem * desktop_item)
-{
-	gchar *argv[6];
-	gchar *package_name;
-	gint retval;
-	GError *error;
-
-	argv[0] = "rpm";
-	argv[1] = "-qf";
-	argv[2] = "--qf";
-	argv[3] = "%{NAME}";
-	argv[4] = g_filename_from_uri (mate_desktop_item_get_location (desktop_item), NULL, NULL);
-	argv[5] = NULL;
-
-	error = NULL;
-
-	if (!g_spawn_sync (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &package_name, NULL,
-			&retval, &error))
-	{
-		g_warning ("error: [%s]\n", error->message);
-		g_error_free (error);
-		retval = -1;
-	}
-
-	g_free (argv[4]);
-
-	if (!retval)
-		return package_name;
-	else
-		return NULL;
 }
 
 gboolean
@@ -174,27 +133,6 @@ open_desktop_item_help (MateDesktopItem * desktop_item)
 		return FALSE;
 
 	return TRUE;
-}
-
-gint
-desktop_item_location_compare (gconstpointer a_obj, gconstpointer b_obj)
-{
-	const gchar *a;
-	const gchar *b;
-
-	gint offset;
-
-	a = (const gchar *) a_obj;
-	b = (const gchar *) b_obj;
-
-	offset = strlen (a) - strlen (b);
-
-	if (offset > 0)
-		return strcmp (&a[offset], b);
-	else if (offset < 0)
-		return strcmp (a, &b[-offset]);
-	else
-		return strcmp (a, b);
 }
 
 gboolean
