@@ -1837,12 +1837,12 @@ cb_app_dialog_response (GtkWidget *dialog, gint response_id, gpointer data)
 
       info = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog));
 
-      gtk_entry_set_text (custom_shortcut_command_entry,
+      gtk_entry_set_text (GTK_ENTRY (custom_shortcut_command_entry),
                           g_app_info_get_executable (info));
       /* if name isn't set yet, use the associated one */
       custom_name = gtk_entry_get_text (GTK_ENTRY (custom_shortcut_name_entry));
       if (! custom_name || custom_name[0] == '\0')
-        gtk_entry_set_text (custom_shortcut_name_entry,
+        gtk_entry_set_text (GTK_ENTRY (custom_shortcut_name_entry),
                             g_app_info_get_display_name (info));
 
       g_object_unref (info);
