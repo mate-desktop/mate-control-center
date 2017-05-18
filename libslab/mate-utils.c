@@ -55,10 +55,11 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 		else
 			icon_theme = gtk_icon_theme_get_default ();
 
-		icon_exists = gtk_icon_theme_has_icon (icon_theme, id);
-
-		if (icon_exists)
-			gtk_image_set_from_icon_name (image, id, size);
+		pixbuf = gtk_icon_theme_load_icon (icon_theme, id, width, 0, NULL);
+		if (pixbuf != NULL) {
+			gtk_image_set_from_pixbuf (image, pixbuf);
+			g_object_unref (pixbuf);
+		}
 		else
 			gtk_image_set_from_icon_name (image, "image-missing", size);
 
