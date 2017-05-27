@@ -29,7 +29,7 @@ static void themed_icon_get_property (GObject *, guint, GValue *, GParamSpec *);
 static void themed_icon_set_property (GObject *, guint, const GValue *, GParamSpec *);
 
 static void themed_icon_show (GtkWidget *);
-static void themed_icon_style_set (GtkWidget *, GtkStyle *);
+static void themed_icon_style_updated (GtkWidget *);
 
 enum
 {
@@ -57,7 +57,7 @@ static void themed_icon_class_init (ThemedIconClass * themed_icon_class)
 	g_obj_class->finalize = themed_icon_finalize;
 
 	widget_class->show = themed_icon_show;
-	widget_class->style_set = themed_icon_style_set;
+	widget_class->style_updated = themed_icon_style_updated;
 
 	g_type_class_add_private (themed_icon_class, sizeof (ThemedIconPrivate));
 
@@ -157,7 +157,7 @@ themed_icon_show (GtkWidget * widget)
 }
 
 static void
-themed_icon_style_set (GtkWidget * widget, GtkStyle * prev_style)
+themed_icon_style_updated (GtkWidget * widget)
 {
 	ThemedIcon *icon = THEMED_ICON (widget);
 
