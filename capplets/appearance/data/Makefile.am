@@ -1,6 +1,8 @@
 
 gtkbuilderdir = $(pkgdatadir)/ui
-dist_gtkbuilder_DATA = appearance.ui
+dist_gtkbuilder_DATA = \
+        appearance.ui \
+        appearance-gtk3.ui
 
 pixmapdir = $(pkgdatadir)/pixmaps
 dist_pixmap_DATA = \
@@ -47,7 +49,9 @@ if ENABLE_UPDATE_MIMEDB
 	$(UPDATE_MIME_DATABASE) "$(DESTDIR)$(datadir)/mime"
 endif
 
-EXTRA_DIST = $(xml_in_files)
+EXTRA_DIST = \
+        $(xml_in_files) \
+        $(dist_gtkbuilder_DATA)
 
 
 CLEANFILES = $(desktop_in_files) $(desktop_DATA) $(mime_DATA)
