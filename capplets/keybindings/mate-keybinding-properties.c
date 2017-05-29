@@ -26,6 +26,7 @@
 #define MAX_CUSTOM_SHORTCUTS 1000
 #define RESPONSE_ADD 0
 #define RESPONSE_REMOVE 1
+#define ignore_modifiers ( GDK_LOCK_MASK )
 
 typedef struct {
   /* The untranslated name, combine with ->package to translate */
@@ -1091,6 +1092,8 @@ static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, 
     gtk_tree_model_get (new_key->model, iter,
         KEYENTRY_COLUMN, &element,
         -1);
+
+    new_key->mask = new_key->mask & ~(ignore_modifiers);
 
     /* no conflict for : blanks, different modifiers, or ourselves */
     if (element == NULL || new_key->mask != element->mask)
