@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
-"PO-Revision-Date: 2017-03-11 03:58+0000\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
+"PO-Revision-Date: 2017-04-12 01:32+0000\n"
 "Last-Translator: samson <sambelet@yahoo.com>\n"
 "Language-Team: Amharic (http://www.transifex.com/mate/MATE/language/am/)\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +118,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "ትእዛዝ የ ተዛመደ ከ ቁልፍ ማጣመሪያ ማስተካከያ ጋር"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "ስም "
 
@@ -593,7 +593,7 @@ msgstr "ነባር ጠቋሚ "
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "መግጠሚያ"
 
@@ -664,16 +664,16 @@ msgid "Smoothing"
 msgstr "ማለስለሻ"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "_ምንም"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "ጥቁር_እና ነጭ"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "ንዑስ_ፒክስል (LCDs)"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "_ምንም"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -689,12 +689,12 @@ msgid "_Slight"
 msgstr "_ትንሽ"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "መሀከለኛ "
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "_ሙሉ "
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "መሀከለኛ "
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -745,16 +745,16 @@ msgid "Background"
 msgstr "መደብ"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "_መስኮቶች:"
+msgid "_Selected items:"
+msgstr "የ _ተመረጡት እቃዎች:"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "_ማስገቢያ ሳጥኖች:"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "የ _ተመረጡት እቃዎች:"
+msgid "_Windows:"
+msgstr "_መስኮቶች:"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -943,12 +943,12 @@ msgid "Best _shapes"
 msgstr "በ ጥሩ _ቅርጽ :"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "በ ጥሩ ማነ_ፃጸሪያ"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "ጥቁር እና ነጭ"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "በ ጥሩ ማነ_ፃጸሪያ"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -1187,7 +1187,7 @@ msgstr "የ ገጽታ ሞተር መግጠም አልተቻለም"
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
-msgstr ""
+msgstr "የ ሜት ማሰናጃ አስተዳዳሪ ማስጀመር አልተቻለም ለ 'ሜት-ማሰናጃ-እረዳት'.\nያለ ሜት ማሰናጃ አስተዳዳሪ ማስኬድ: አንዳንድ ምርጫዎች በ ትክክል ላይሰሩ ይችላሉ: ይህ ችግር የሚያመለክተው የ DBus, ወይንም የ ምንም-ሜት ያልሆነ ነው (ለምሳሌ: KDE) ማሰናጃ አስተዳዳሪ ምናልባት ንቁ ይሆናል እና ይጋጫል ከ ሜት ማሰናጃ አስተዳዳሪ ጋር:"
 
 #: ../capplets/common/capplet-stock-icons.c:66
 #, c-format
@@ -1432,7 +1432,7 @@ msgstr "በ ስርአቱ-ሙሉ መፈጸሚያ"
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
-msgstr ""
+msgstr "የ አሁኑን ማሰናጃ ለ ሌሎች ሜት ተጠቃሚዎች መፈጸሚያ በ ኮምፒዩተሩ ላይ: ማስታወሻ ይህ በ መግቢያ መመልከቻ እና በ ዴስክቶፕ አካባቢ ላይ ተጽእኖ አይፈጥርም"
 
 #: ../capplets/display/display-capplet.ui.h:4
 msgid "Sa_me image in all monitors"
@@ -1531,7 +1531,7 @@ msgid ""
 "DEST_NAME - relative name for the installed file.  This will get put in\n"
 "            the systemwide directory for RANDR configurations,\n"
 "            so the result will typically be %s/DEST_NAME\n"
-msgstr ""
+msgstr "Usage: %s SOURCE_FILE DEST_NAME\n\nThis program installs a RANDR profile for multi-monitor setups into\na systemwide location.  The resulting profile will get used when\nthe RANDR plug-in gets run in mate-settings-daemon.\n\nSOURCE_FILE - a full pathname, typically /home/username/.config/monitors.xml\n\nDEST_NAME - relative name for the installed file.  This will get put in\n            the systemwide directory for RANDR configurations,\n            so the result will typically be %s/DEST_NAME\n"
 
 #. Translators: only able to install RANDR profiles as root
 #: ../capplets/display/mate-display-properties-install-systemwide.c:151
@@ -2625,7 +2625,7 @@ msgstr "የ አይን ከረሜላ የ ተጨመረው በ Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "የ ኮምፒዩተር እረፍት አስታዋሽ"
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "ምስጋና-ለተርጓሚዎች "
 
@@ -2647,57 +2647,57 @@ msgid ""
 "don't seem to have a notification area on your panel. You can add it by "
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
-msgstr ""
+msgstr "የ መጻፊያ መቆጣጠሪያ የሚጠቀመው የ ማስታወቂያ ቦታ መረጃ ለማሳየት ነው: እርስዎ የ ማስታወቂያ ቦታ በ ክፍል ውስጥ አላሰናዱም: እርስዎ አሁን ማሰናዳት ይችላሉ በ ቀኝ-ይጫኑ በ እርስዎ ክፍል ላይ እና ይምረጡ 'ወደ ክፍል መጨመሪያ', በ መምረጥ 'የ ማስታወቂያ ቦታ' እና ይጫኑ 'መጨመሪያ'."
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
 msgstr "ዘዴ"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
 msgstr "አይነት"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
 msgstr "እትም"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
 msgstr "መግለጫ"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "መግጠም አልተቻለም"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "ተገጥሟል"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
 msgstr "ይህን ፊደል ማሳየት አልተቻለም"
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
 msgstr "መረጃ"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
 msgstr "ወደ ኋላ"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
 msgstr "ሁሉንም ፊደሎች"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "ፊደል መመልከቻ"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "በ እርስዎ ስርአት ላይ ፊደሎች መመልከቻ"
@@ -2706,23 +2706,23 @@ msgstr "በ እርስዎ ስርአት ላይ ፊደሎች መመልከቻ"
 msgid "MATE Font Viewer"
 msgstr "የ ሜት ፊደል መመልከቻ"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "ጽሁፍ በ አውራ ጥፍር ልክ (ነባር: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "ጽሁፍ"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
 msgstr "በ አውራ ጥፍር ልክ መጠን (ነባር: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "መጠን "
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "የ ፊደል-ፋይል ውጤት-ፋይል"
 

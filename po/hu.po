@@ -6,12 +6,13 @@
 # Andras Timar <timar at mate dot hu>, 2001-2003
 # Balázs Meskó <meskobalazs@gmail.com>, 2016
 # Emese Kovacs <emese at mate dot hu>, 2001
+# Falu <info@falu.me>, 2017
 # Falu <info@falu.me>, 2015
 # Gabor Kelemen <kelemeng at mate dot hu>, 2004-2010
 # Gabor Sari <saga at mate dot hu>, 2003
 # István Szőllősi <szollosi.istv4n@gmail.com>, 2014
 # István Szőllősi <szollosi.istv4n@gmail.com>, 2014
-# kami911 <kami911@gmail.com>, 2014,2016
+# kami911 <kami911@gmail.com>, 2014,2016-2017
 # Laszlo Dvornik <dvornik at mate dot hu>, 2004
 # Mate ORY <orymate at gmail d0t com>, 2006
 # Peter Doma <zelin at pointernet dot hu>, 2002
@@ -21,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
-"PO-Revision-Date: 2017-03-08 14:44+0000\n"
-"Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
+"PO-Revision-Date: 2017-05-06 07:29+0000\n"
+"Last-Translator: kami911 <kami911@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/mate/MATE/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,7 +131,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "A parancs hozzárendelve az egyéni billentyűparancshoz."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "Név"
 
@@ -605,7 +606,7 @@ msgstr "Alapértelmezett egérmutató"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "Telepítés"
 
@@ -676,16 +677,16 @@ msgid "Smoothing"
 msgstr "Simítás"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "_Nincs"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "_Szürkeárnyalatos"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "_Képponton belül (LCD)"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "_Nincs"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -701,12 +702,12 @@ msgid "_Slight"
 msgstr "_Enyhe"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "Kö_zepes"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "_Teljes"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "Kö_zepes"
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -757,16 +758,16 @@ msgid "Background"
 msgstr "Háttér"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "_Ablakok:"
+msgid "_Selected items:"
+msgstr "Ki_választott elemek:"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "Be_meneti mezők:"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "Ki_választott elemek:"
+msgid "_Windows:"
+msgstr "_Ablakok:"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -955,12 +956,12 @@ msgid "Best _shapes"
 msgstr "A le_gszebb betűforma"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "A legjobb _kontraszt"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "_Fekete-fehér"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "A legjobb _kontraszt"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -2291,15 +2292,15 @@ msgstr "_Vízszintes peremgörgetés"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "V_ertical two-finger scrolling"
-msgstr "Ví_zszintes kétujjas görgetés"
+msgstr "Függő_leges kétujjas görgetés"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Hor_izontal two-finger scrolling"
-msgstr "Fü_ggőleges kétujjas görgetés"
+msgstr "Ví_zszintes kétujjas görgetés"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Enable _natural scrolling"
-msgstr ""
+msgstr "Természetes görgetés bek_apcsolása"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Touchpad"
@@ -2637,7 +2638,7 @@ msgstr "A csinosításokat Anders Carlsson végezte"
 msgid "A computer break reminder."
 msgstr "Emlékeztető gépelési szünet tartására."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Dvornik László <dvornik at mate dot hu>\nKelemen Gábor <kelemeng at mate dot hu>\nTímár András <timar at mate dot hu>"
 
@@ -2661,80 +2662,80 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "A gépelésfigyelő az értesítési területet használja információk megjelenítésére. Úgy tűnik, az Ön paneljén nincs értesítési terület. A panel helyi menüjében a „Hozzáadás” pont alatt az „Értesítési terület” elemet kiválasztva hozzáadhatja a panelhez."
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
-msgstr ""
+msgstr "Stílus"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
-msgstr ""
+msgstr "Verzió"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
-msgstr ""
+msgstr "Szerzői jog"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "A telepítés meghiúsult"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "Telepítve"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
-msgstr ""
+msgstr "Ez a betűkészlet nem jeleníthető meg."
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
-msgstr ""
+msgstr "Infó"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
-msgstr ""
+msgstr "Vissza"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
-msgstr ""
+msgstr "Minden betűkészlet"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "Betűkészlet-megjelenítő"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
-msgstr ""
+msgstr "A rendszer betűkészleteinek megtekintése"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
-msgstr ""
+msgstr "MATE Betűkészlet-megjelenítő"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Bélyegkép szövege (alapértelmezés: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "SZÖVEG"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
-msgstr ""
+msgstr "Bélyegkép méret (alapértelmezett: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "MÉRET"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "BETŰKÉSZLETFÁJL KIMENETIFÁJL"
 
