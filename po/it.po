@@ -6,6 +6,7 @@
 # Alessio Dessì <alkex@inwind.it>, 2003, 2004, 2005, 2006, 2007
 # Christopher R. Gabriel, 2001, 2002
 # talorno <giovanni.talorno@gmail.com>, 2012
+# Giuseppe Pignataro (Fasbyte01) <rogepix@gmail.com>, 2017
 # Giuseppe Pignataro (Fasbyte01) <rogepix@gmail.com>, 2015
 # Dario Di Nucci <linkin88mail@gmail.com>, 2015
 # Luca Ferretti <elle.uca@infinito.it>, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
@@ -19,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
-"PO-Revision-Date: 2017-03-08 14:44+0000\n"
-"Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
+"PO-Revision-Date: 2017-04-05 23:48+0000\n"
+"Last-Translator: Giuseppe Pignataro (Fasbyte01) <rogepix@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/mate/MATE/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,7 +129,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Comando relativo a un'associazione tasti personalizzata."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "Nome"
 
@@ -603,7 +604,7 @@ msgstr "Puntatore predefinito"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "Installa"
 
@@ -674,16 +675,16 @@ msgid "Smoothing"
 msgstr "Sfumatura"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "_Nessuna"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "_Scala di grigi"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "Subpi_xel (LCD)"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "_Nessuna"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -699,12 +700,12 @@ msgid "_Slight"
 msgstr "_Leggera"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "_Media"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "Com_pleta"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "_Media"
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -755,16 +756,16 @@ msgid "Background"
 msgstr "Sfondo"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "_Finestre:"
+msgid "_Selected items:"
+msgstr "_Elementi selezionati:"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "C_aselle di input:"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "_Elementi selezionati:"
+msgid "_Windows:"
+msgstr "_Finestre:"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -953,12 +954,12 @@ msgid "Best _shapes"
 msgstr "_Ottimizza forma"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "Ottimizza cont_rasto"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "_Monocromatico"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "Ottimizza cont_rasto"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -2635,7 +2636,7 @@ msgstr "Abbellimenti grafici per le pause aggiunti da Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Un programma per la gestione delle pause al computer."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Milo Casagrande <milo@ubuntu.com>\nAlessio Dessì <alkex@inwind.it>\nLuca Ferretti <elle.uca@libero.it>"
 
@@ -2659,80 +2660,80 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Il programma per il controllo della digitazione utilizza l'area di notifica per visualizzare le informazioni. Non è stata trovata alcuna area di notifica nel pannello. Può essere aggiunta facendo clic col pulsante destro sul pannello e scegliendo «Aggiungi al pannello» selezionando «Area di notifica» e premendo il pulsante «Aggiungi»."
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
-msgstr ""
+msgstr "Stile"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
-msgstr ""
+msgstr "Versione"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "Installazione non riuscita"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "Installato"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
-msgstr ""
+msgstr "Questo font non può essere visualizzato."
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
-msgstr ""
+msgstr "Informazioni"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
-msgstr ""
+msgstr "Indietro"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
-msgstr ""
+msgstr "Tutti i caratteri"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "Visualizzatore tipo di carattere"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
-msgstr ""
+msgstr "Visualizza caratteri nel tuo sistema"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
-msgstr ""
+msgstr "Visualizzatore di caratteri MATE"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Anteprima testo (predefinito: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "TESTO"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
-msgstr ""
+msgstr "Dimensione Anteprima (predefinito: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "DIMENSIONE"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FILE-CARATTERE FILE-OUTPUT"
 

@@ -8,6 +8,7 @@
 # geost <george.stefanakis@gmail.com>, 2012
 # Jennie Petoumenou <epetoumenou@gmail.com>, 2009
 # Kostas Papadimas <pkst@gnome.org>, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010
+# monsta <monsta@inbox.ru>, 2017
 # Nikos Charonitakis <charosn@her.forthnet.gr>, 2002, 2003, 2004, 2005
 # Petros Freris (Πέτρος Φρέρης) <petrosfreris@gmail.com>, 2013
 # Petros Freris (Πέτρος Φρέρης) <petrosfreris@gmail.com>, 2013
@@ -22,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
-"PO-Revision-Date: 2017-03-10 16:41+0000\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
+"PO-Revision-Date: 2017-05-01 11:45+0000\n"
 "Last-Translator: Αλέξανδρος Καπετάνιος <alexandros@gnugr.org>\n"
 "Language-Team: Greek (http://www.transifex.com/mate/MATE/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -131,7 +132,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Εντολή συσχετισμένη με συγκεκριμένο συνδυασμό πλήκτρων"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "Όνομα"
 
@@ -606,7 +607,7 @@ msgstr "Προεπιλεγμένος δείκτης"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "Εγκατάσταση"
 
@@ -677,16 +678,16 @@ msgid "Smoothing"
 msgstr "Εξομάλυνση"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "_Κανένα"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "Κλίμακα του _γκρι"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "Sub_pixel (LCDs)"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "_Κανένα"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -702,12 +703,12 @@ msgid "_Slight"
 msgstr "_Ελαφρύ"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "_Μέτριο"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "_Πλήρες"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "_Μέτριο"
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -758,16 +759,16 @@ msgid "Background"
 msgstr "Παρασκήνιο"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "_Παράθυρα:"
+msgid "_Selected items:"
+msgstr "Ε_πιλεγμένα αντικείμενα:"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "Πλαίσια ει_σόδου:"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "Ε_πιλεγμένα αντικείμενα:"
+msgid "_Windows:"
+msgstr "_Παράθυρα:"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -956,12 +957,12 @@ msgid "Best _shapes"
 msgstr "Βέλτιστα _σχήματα"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "Βέλτιστη αντί_θεση"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "_Μονόχρωμο"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "Βέλτιστη αντί_θεση"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -1200,7 +1201,7 @@ msgstr "Αδυναμία εγκατάστασης μηχανής θέματος"
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
-msgstr "Αδυναμία εκκίνησης του διαχειριστή ρυθμίσεων 'mate-settings-daemon'.\nΑν δεν τρέχει ο διαχειριστής ρυθμίσεων MATE ορισμένες από τις προτιμήσεις δε θα πραγματοποιηθούν. Αυτό μάλλον σημαίνει ότι υπάρχει πρόβλημα με το MateComponent, ή ένας εκτός-MATE διαχειριστής ρυθμίσεων (π.χ. KDE) είναι ήδη ενεργός και είναι σε σύγκρουση με το διαχειριστή ρυθμίσεων MATE."
+msgstr "Αδυναμία εκκίνησης του διαχειριστή ρυθμίσεων 'mate-settings-daemon'.\nΑν δεν τρέχει ο διαχειριστής ρυθμίσεων MATE ορισμένες από τις προτιμήσεις δε θα πραγματοποιηθούν. Αυτό μάλλον σημαίνει ότι υπάρχει πρόβλημα με το DBus, ή ένας εκτός-MATE διαχειριστής ρυθμίσεων (π.χ. KDE) είναι ήδη ενεργός και είναι σε σύγκρουση με το διαχειριστή ρυθμίσεων MATE."
 
 #: ../capplets/common/capplet-stock-icons.c:66
 #, c-format
@@ -2638,7 +2639,7 @@ msgstr "Γραφικά προστέθηκαν από τον Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Μια υπενθύμιση για διάλειμμα από τον υπολογιστή."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Ελληνική μεταφραστική ομάδα MATE\n Spiros Papadimitriou <spapadim+@cs.cmu.edu>\n Simos Xenitellis <simos@hellug.gr>\n Nikos Charonitakis <nikosx@gmail.com>\n Τα πάντα ρει <ta_panta_rei@flashmail.com>\n Κώστας Παπαδήμας <pkst@gnome.org> \n Τζένη Πετούμενου <epetoumenou@gmail.com>\n\nΓια περισσότερες πληροφορίες, επισκεφθείτε την σελίδα http://www.mate.gr/"
 
@@ -2662,55 +2663,55 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Η παρακολούθηση πληκτρολόγησης χρησιμοποιεί την περιοχή ειδοποίησης για να προβάλλει πληροφορίες. Φαίνεται ότι δεν έχετε την περιοχή ειδοποίησης στον πίνακα εφαρμογών σας. Μπορείτε να την προσθέσετε κάνοντας δεξί κλικ στο πίνακα εφαρμογών και επιλέγοντας 'Προσθήκη στον πίνακα εφαρμογών', διαλέγοντας 'Περιοχή ειδοποίησης' και πατώντας 'Προσθήκη'."
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
 msgstr "Στυλ"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
 msgstr "Τύπος"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
 msgstr "Έκδοση"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
 msgstr "Πνευματικά δικαιώματα"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "Η εγκατάσταση απέτυχε"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "Εγκατεστημένο"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
 msgstr "Δε μπορεί να εμφανιστεί αυτή η γραμματοσειρά."
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
 msgstr "Πληροφορίες"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
 msgstr "Πίσω"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
 msgstr "Όλες οι γραμματοσειρές"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "Εφαρμογή προβολής γραμματοσειρών"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "Δείτε τις γραμματοσειρές του συστήματος σας"
@@ -2719,23 +2720,23 @@ msgstr "Δείτε τις γραμματοσειρές του συστήματο
 msgid "MATE Font Viewer"
 msgstr "Εφαρμογή προβολής γραμματοσειρών ΜΑΤΕ"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Κείμενο μικρογραφίας (προεπιλογή: Αα)"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "ΚΕΙΜΕΝΟ"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
 msgstr "Μέγεθος μικρογραφίας (προεπιλογή: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "ΜΕΓΕΘΟΣ"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ΑΡΧΕΙΟ-ΓΡΣΕΙΡΑΣ ΑΡΧΕΙΟ-ΕΞΟΔΟΥ"
 

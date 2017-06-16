@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Dušan Kazik <prescott66@gmail.com>, 2015-2016
+# Dušan Kazik <prescott66@gmail.com>, 2015-2017
 # Ján Ďanovský <dagsoftware@yahoo.com>, 2013-2016
 # Marcel Telka <marcel@telka.sk>, 2005
 # Pavol Šimo <palo.simo@gmail.com>, 2007-2009,2015-2016
@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
-"PO-Revision-Date: 2017-03-08 14:44+0000\n"
-"Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
+"PO-Revision-Date: 2017-03-19 07:41+0000\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/mate/MATE/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -126,7 +126,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Príkaz asociovaný s vlastnou klávesovou skratkou"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "Názov"
 
@@ -601,7 +601,7 @@ msgstr "Predvolený kurzor"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "Inštalovať"
 
@@ -672,16 +672,16 @@ msgid "Smoothing"
 msgstr "Vyhladzovanie"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "Žiadn_e"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "Od_tiene sivej"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "Sub-pi_xely (LCD)"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "Žiadn_e"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -697,12 +697,12 @@ msgid "_Slight"
 msgstr "_Jemná"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "_Stredná"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "Úpl_ná"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "_Stredná"
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -753,16 +753,16 @@ msgid "Background"
 msgstr "Pozadie"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "_Okná:"
+msgid "_Selected items:"
+msgstr "_Vybrané položky:"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "Vs_tupné polia:"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "_Vybrané položky:"
+msgid "_Windows:"
+msgstr "_Okná:"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -951,12 +951,12 @@ msgid "Best _shapes"
 msgstr "Najlepšie _tvary"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "Najlepší _kontrast"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "Čierno_bielo"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "Najlepší _kontrast"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -2635,7 +2635,7 @@ msgstr "Ozdoby pridal Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Upozornenie na to, že si máte urobiť prestávku."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Marcel Telka <marcel@telka.sk>\nPeter Tuhársky <tuharsky@misbb.sk>\nPavol Šimo <palo.simo@gmail.com>\nJán Ďanovský <dagsoftware@yahoo.com>\nTibor Kaputa <tibbbi2@gmail.com>"
 
@@ -2659,80 +2659,80 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Sledovač písania používa oblasť upozornení pre zobrazovanie informácií. Zdá sa, že váš panel túto oblasť neobsahuje. Môžete ju pridať kliknutím pravým tlačidlom na vašom paneli a vybraním „Pridať do panelu“, zvolením „Oblasť upozornení“ a kliknutím na „Pridať“."
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
-msgstr ""
+msgstr "Štýl"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
-msgstr ""
+msgstr "Verzia"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
-msgstr ""
+msgstr "Autorské práva"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "Inštalácia zlyhala"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "Nainštalované"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
-msgstr ""
+msgstr "Toto písmo sa nepodarilo zobraziť."
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
-msgstr ""
+msgstr "Informácie"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
-msgstr ""
+msgstr "Späť"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
-msgstr ""
+msgstr "Všetky písma"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "Prehliadač písiem"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
-msgstr ""
+msgstr "Zobrazuje písma vášho systému"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
-msgstr ""
+msgstr "Prehliadač písiem MATE"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Text pre miniatúru (predvolené: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "TEXT"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
-msgstr ""
+msgstr "Veľkosť miniatúr (predvolená: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "VEĽKOSŤ"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "SÚBOR-PÍSMA VÝSTUPNÝ-SÚBOR"
 

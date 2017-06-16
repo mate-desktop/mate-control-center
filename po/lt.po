@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
-"PO-Revision-Date: 2017-03-08 21:24+0000\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
+"PO-Revision-Date: 2017-03-16 10:15+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/mate/MATE/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +126,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Komanda, susijusi su savitu klavišų susiejimu."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "Pavadinimas"
 
@@ -140,23 +140,23 @@ msgstr "Paveikslo / užrašo rėmelis"
 
 #: ../capplets/about-me/eel-alert-dialog.c:111
 msgid "Width of border around the label and image in the alert dialog"
-msgstr "Rėmelio aplink užrašą ir paveikslą perspėjimo dialoge plotis"
+msgstr "Rėmelio aplink užrašą ir paveikslą įspėjimo dialoge plotis"
 
 #: ../capplets/about-me/eel-alert-dialog.c:120
 msgid "Alert Type"
-msgstr "Perspėjimo tipas"
+msgstr "Įspėjimo tipas"
 
 #: ../capplets/about-me/eel-alert-dialog.c:121
 msgid "The type of alert"
-msgstr "Perspėjimo tipas"
+msgstr "Įspėjimo tipas"
 
 #: ../capplets/about-me/eel-alert-dialog.c:129
 msgid "Alert Buttons"
-msgstr "Perspėjimo mygtukai"
+msgstr "Įspėjimo mygtukai"
 
 #: ../capplets/about-me/eel-alert-dialog.c:130
 msgid "The buttons shown in the alert dialog"
-msgstr "Perspėjimo dialoge rodomi mygtukai"
+msgstr "Įspėjimo dialoge rodomi mygtukai"
 
 #: ../capplets/about-me/eel-alert-dialog.c:207
 msgid "Show more _details"
@@ -601,7 +601,7 @@ msgstr "Numatytasis žymeklis"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "Įdiegti"
 
@@ -672,16 +672,16 @@ msgid "Smoothing"
 msgstr "Glotninimas"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "_Joks"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "P_ilkumo pustonių"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "Po_pikselinis (LCD)"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "_Joks"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -697,12 +697,12 @@ msgid "_Slight"
 msgstr "_Nežymi"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "_Vidutinė"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "_Visa"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "_Vidutinė"
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -753,16 +753,16 @@ msgid "Background"
 msgstr "Fonas"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "_Langai:"
+msgid "_Selected items:"
+msgstr "Pa_sirinkti elementai:"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "Į_vesties laukeliai:"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "Pa_sirinkti elementai:"
+msgid "_Windows:"
+msgstr "_Langai:"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -951,12 +951,12 @@ msgid "Best _shapes"
 msgstr "Geriausia _forma"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "Geriausias ko_ntrastas"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "_Vienspalvis"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "Geriausias ko_ntrastas"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -1837,7 +1837,7 @@ msgstr "Vaizdiniai garsų ženklai"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
 msgid "Show _visual feedback for the alert sound"
-msgstr "Vietoj perspėjimo garso rodyti _vaizdinį atsaką"
+msgstr "Vietoj įspėjimo garso rodyti _vaizdinį atsaką"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
 msgid "Flash _window titlebar"
@@ -1986,11 +1986,11 @@ msgstr "Klaviatūros _modelis:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:29
 msgid "_Options..."
-msgstr "_Parinktys..."
+msgstr "_Parametrai..."
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:30
 msgid "View and edit keyboard layout options"
-msgstr "Rodyti ir keisti klaviatūros išdėstymo parinktis"
+msgstr "Rodyti ir keisti klaviatūros išdėstymo parametrus"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
 msgid "Reset to De_faults"
@@ -2135,7 +2135,7 @@ msgstr "_Modelis:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-options-dialog.ui.h:1
 msgid "Keyboard Layout Options"
-msgstr "Klaviatūros išdėstymo parinktys"
+msgstr "Klaviatūros išdėstymo parametrai"
 
 #: ../capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
@@ -2635,7 +2635,7 @@ msgstr "Gražią išvaizdą pridėjo Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Priminimas apie poilsį nuo kompiuterio."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Žygimantas Beručka <zygis@gnome.org>,\nGintautas Miliauskas <gintas@akl.lt>,\nJustina Klingaitė <justina.klingaite@gmail.com>,\nVaidotas Zemlys <mpiktas@delfi.lt>,\nGediminas Paulauskas <menesis@chatsubo.lt>"
 
@@ -2659,55 +2659,55 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "Teksto rinkimo monitorius informacijos rodymui naudoja skydelio pranešimų vietą. Nepanašu, kad jūsų skydelyje ši vieta yra. Galite ją įdėti, ant skydelio spustelėję dešinįjį pelės mygtuką ir pasirinkę „Įdėti į skydelį“, „Pranešimų vieta“ ir paspaudę „Pridėti“."
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
 msgstr "Stilius"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
 msgstr "Tipas"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
 msgstr "Versija"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
 msgstr "Autorių teisės"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
 msgstr "Aprašymas"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "Įdiegti nepavyko"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "Įdiegta"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
 msgstr "Šio šrifto nepavyko parodyti."
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
 msgstr "Informacija"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
 msgstr "Atgal"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
 msgstr "Visi šriftai"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "Šriftų peržiūros programa"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "Žiūrėti šriftus jūsų sistemoje"
@@ -2716,23 +2716,23 @@ msgstr "Žiūrėti šriftus jūsų sistemoje"
 msgid "MATE Font Viewer"
 msgstr "MATE šriftų peržiūros programa"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Tekstas į miniatiūrą (įprasta: Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "TEKSTAS"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
 msgstr "Miniatiūrų dydis (numatytasis: 128)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "DYDIS"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ŠRIFTO-FAILAS IŠVESTIES-FAILAS"
 

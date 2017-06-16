@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 15:40+0100\n"
+"POT-Creation-Date: 2017-03-13 18:43+0300\n"
 "PO-Revision-Date: 2017-03-08 23:12+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/mate/MATE/language/zh_TW/)\n"
@@ -121,7 +121,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "自訂按鍵繫結所關聯的命令。"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:181
+#: ../font-viewer/font-view.c:205
 msgid "Name"
 msgstr "名稱"
 
@@ -596,7 +596,7 @@ msgstr "預設鼠標"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:275 ../font-viewer/font-view.c:509
+#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
 msgid "Install"
 msgstr "安裝"
 
@@ -667,16 +667,16 @@ msgid "Smoothing"
 msgstr "平滑化"
 
 #: ../capplets/appearance/data/appearance.ui.h:5
-msgid "_None"
-msgstr "沒有(_N)"
-
-#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Gra_yscale"
 msgstr "灰階(_Y)"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Sub_pixel (LCDs)"
 msgstr "次像素(sub_pixel) [LCD]"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_None"
+msgstr "沒有(_N)"
 
 #. font hinting
 #: ../capplets/appearance/data/appearance.ui.h:9
@@ -692,12 +692,12 @@ msgid "_Slight"
 msgstr "輕微(_S)"
 
 #: ../capplets/appearance/data/appearance.ui.h:12
-msgid "_Medium"
-msgstr "中(_M)"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Full"
 msgstr "完整(_F)"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "_Medium"
+msgstr "中(_M)"
 
 #: ../capplets/appearance/data/appearance.ui.h:14
 msgid "Subpixel Order"
@@ -748,16 +748,16 @@ msgid "Background"
 msgstr "背景"
 
 #: ../capplets/appearance/data/appearance.ui.h:29
-msgid "_Windows:"
-msgstr "視窗(_W):"
+msgid "_Selected items:"
+msgstr "已選項目(_S):"
 
 #: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Input boxes:"
 msgstr "輸入視窗(_I):"
 
 #: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "已選項目(_S):"
+msgid "_Windows:"
+msgstr "視窗(_W):"
 
 #: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Reset to Defaults"
@@ -946,12 +946,12 @@ msgid "Best _shapes"
 msgstr "最佳形狀(_S)"
 
 #: ../capplets/appearance/data/appearance.ui.h:77
-msgid "Best co_ntrast"
-msgstr "最佳對比(_N)"
-
-#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "_Monochrome"
 msgstr "不平滑化(_M)"
+
+#: ../capplets/appearance/data/appearance.ui.h:78
+msgid "Best co_ntrast"
+msgstr "最佳對比(_N)"
 
 #: ../capplets/appearance/data/appearance.ui.h:79
 msgid "D_etails..."
@@ -2626,7 +2626,7 @@ msgstr "由 Anders Carlsson 加入視覺效果"
 msgid "A computer break reminder."
 msgstr "在使用電腦時發出休息提示的小工具。"
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:719
+#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "黃柏諺 <s8321414@yahoo.com.tw>,2013-14\n趙惟倫 <bluebat@member.fsf.org>, 2012\nWoodman Tuen <wmtuen@gmail.com>, 2004-07"
 
@@ -2650,55 +2650,55 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr "休息提示小程式需要透過程式狀態通知區來顯示資訊，可是面板中並沒有該區域。您可以在面板上按滑鼠右邊按鈕，選取「加入至面板」及其中的「程式狀態通知區」後，再按「新增」。"
 
-#: ../font-viewer/font-view.c:184
+#: ../font-viewer/font-view.c:208
 msgid "Style"
 msgstr "風格"
 
-#: ../font-viewer/font-view.c:194
+#: ../font-viewer/font-view.c:218
 msgid "Type"
 msgstr "類型"
 
-#: ../font-viewer/font-view.c:239 ../font-viewer/font-view.c:253
+#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
 msgid "Version"
 msgstr "版本"
 
-#: ../font-viewer/font-view.c:244 ../font-viewer/font-view.c:255
+#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
 msgid "Copyright"
 msgstr "版權所有"
 
-#: ../font-viewer/font-view.c:248
+#: ../font-viewer/font-view.c:274
 msgid "Description"
 msgstr "描述"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:292
 msgid "Install Failed"
 msgstr "安裝失敗"
 
-#: ../font-viewer/font-view.c:272
+#: ../font-viewer/font-view.c:298
 msgid "Installed"
 msgstr "已安裝"
 
-#: ../font-viewer/font-view.c:409
+#: ../font-viewer/font-view.c:435
 msgid "This font could not be displayed."
 msgstr "本字型無法顯示。"
 
-#: ../font-viewer/font-view.c:472 ../font-viewer/font-view.c:502
+#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
 msgid "Info"
 msgstr "資訊"
 
-#: ../font-viewer/font-view.c:515
+#: ../font-viewer/font-view.c:542
 msgid "Back"
 msgstr "後退"
 
-#: ../font-viewer/font-view.c:612
+#: ../font-viewer/font-view.c:642
 msgid "All Fonts"
 msgstr "所有字型"
 
-#: ../font-viewer/font-view.c:716 ../font-viewer/font-view.c:760
+#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
 msgid "Font Viewer"
 msgstr "字型檢視程式"
 
-#: ../font-viewer/font-view.c:717
+#: ../font-viewer/font-view.c:747
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "在您的系統上檢視字型"
@@ -2707,23 +2707,23 @@ msgstr "在您的系統上檢視字型"
 msgid "MATE Font Viewer"
 msgstr "MATE 字型檢視器"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "文字轉為縮圖（預設：Aa）"
 
-#: ../font-viewer/font-thumbnailer.c:189
+#: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "文字"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
 msgstr "縮圖大小（預設：128）"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "大小"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: ../font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "字型檔 輸出檔"
 
