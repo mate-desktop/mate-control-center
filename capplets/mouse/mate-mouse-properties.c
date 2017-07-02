@@ -219,11 +219,30 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 }
 
 static void
-comboxbox_changed_callback (GtkWidget *combobox, void *data)
+comboxbox_changed (GtkWidget *combobox, GtkBuilder *dialog, const char *key)
 {
 	gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
-	gchar *key = (char *) data;
-	g_settings_set_int (touchpad_settings, key, value);
+	gint value2, value3;
+	GtkLabel *warn = GTK_LABEL (WID ("multi_finger_warning"));
+
+	g_settings_set_int (touchpad_settings, (const gchar *) key, value);
+
+	/* Show warning if some multi-finger click emulation is enabled. */
+	value2 = g_settings_get_int (touchpad_settings, "two-finger-click");
+	value3 = g_settings_get_int (touchpad_settings, "three-finger-click");
+	gtk_widget_set_opacity (warn, (value2 || value3)?  1.0: 0.0);
+}
+
+static void
+comboxbox_two_finger_changed_callback (GtkWidget *combobox, void *data)
+{
+	comboxbox_changed (combobox, GTK_BUILDER (data), "two-finger-click");
+}
+
+static void
+comboxbox_three_finger_changed_callback (GtkWidget *combobox, void *data)
+{
+	comboxbox_changed (combobox, GTK_BUILDER (data), "three-finger-click");
 }
 
 /* Set up the property editors in the dialog. */
@@ -311,12 +330,12 @@ setup_dialog (GtkBuilder *dialog)
 			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (three_click_comboxbox), emulation_values[i]);	
 		}
 		
+		g_signal_connect (two_click_comboxbox, "changed", G_CALLBACK (comboxbox_two_finger_changed_callback), dialog);
+		g_signal_connect (three_click_comboxbox, "changed", G_CALLBACK (comboxbox_three_finger_changed_callback), dialog);
 		gtk_combo_box_set_active (GTK_COMBO_BOX (two_click_comboxbox), g_settings_get_int (touchpad_settings, "two-finger-click"));
 		gtk_combo_box_set_active (GTK_COMBO_BOX (three_click_comboxbox), g_settings_get_int (touchpad_settings, "three-finger-click"));
 		gtk_widget_show (two_click_comboxbox);
 		gtk_widget_show (three_click_comboxbox);
-		g_signal_connect (two_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "two-finger-click");
-		g_signal_connect (three_click_comboxbox, "changed", G_CALLBACK (comboxbox_changed_callback), "three-finger-click");
 
 		/* speed */
 		g_settings_bind (touchpad_settings, "motion-acceleration",
