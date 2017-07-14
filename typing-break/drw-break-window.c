@@ -531,19 +531,36 @@ get_layout_location (GtkLabel *label,
                      gint     *xp,
                      gint     *yp)
 {
+#if !GTK_CHECK_VERSION (3, 16, 0)
 	GtkMisc        *misc;
+#endif
 	GtkWidget      *widget;
 	GtkAllocation  widget_allocation;
 	GtkRequisition widget_requisition;
 	gfloat         xalign, yalign;
 	gint           x, y;
 	gint           xpad, ypad;
+#if GTK_CHECK_VERSION (3, 16, 0)
+	gint           margin_start, margin_end, margin_top, margin_bottom;
 
+	widget = GTK_WIDGET (label);
+
+	xalign = gtk_label_get_xalign (GTK_LABEL (label));
+	yalign = gtk_label_get_yalign (GTK_LABEL (label));
+	margin_start = gtk_widget_get_margin_start (widget);
+	margin_end = gtk_widget_get_margin_end (widget);
+	margin_top = gtk_widget_get_margin_top (widget);
+	margin_bottom = gtk_widget_get_margin_bottom (widget);
+
+	xpad = margin_start + margin_end;
+	ypad = margin_top + margin_bottom;
+#else
 	misc = GTK_MISC (label);
 	widget = GTK_WIDGET (label);
 
 	gtk_misc_get_alignment (misc, &xalign, &yalign);
 	gtk_misc_get_padding (misc, &xpad, &ypad);
+#endif
 	gtk_widget_get_allocation (widget, &widget_allocation);
 	gtk_widget_get_requisition (widget, &widget_requisition);
 
