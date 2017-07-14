@@ -230,7 +230,7 @@ comboxbox_changed (GtkWidget *combobox, GtkBuilder *dialog, const char *key)
 	/* Show warning if some multi-finger click emulation is enabled. */
 	value2 = g_settings_get_int (touchpad_settings, "two-finger-click");
 	value3 = g_settings_get_int (touchpad_settings, "three-finger-click");
-	gtk_widget_set_opacity (warn, (value2 || value3)?  1.0: 0.0);
+	gtk_widget_set_opacity (GTK_WIDGET (warn), (value2 || value3)?  1.0: 0.0);
 }
 
 static void
