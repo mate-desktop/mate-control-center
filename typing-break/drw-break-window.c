@@ -119,8 +119,6 @@ drw_break_window_init (DrwBreakWindow *window)
 	DrwBreakWindowPrivate *priv;
 	GtkWidget             *vbox;
 	GtkWidget             *hbox;
-	GtkWidget             *align;
-	GtkWidget             *monitor_box;
 	gchar                 *str;
 	GtkWidget             *outer_vbox;
 	GtkWidget             *button_box;
@@ -159,27 +157,19 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 	drw_setup_background (GTK_WIDGET (window));
 
-	align = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
-	gtk_widget_show (align);
-
-	outer_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-	gtk_widget_show (outer_vbox);
-
 	right_padding = gdk_screen_get_width (screen) - monitor.width - monitor.x;
 	bottom_padding = gdk_screen_get_height (screen) - monitor.height - monitor.y;
 
-	monitor_box = gtk_alignment_new (0.5, 0.5, 1, 1);
-	gtk_alignment_set_padding (GTK_ALIGNMENT (monitor_box),
-				   monitor.y,
-				   bottom_padding,
-				   monitor.x,
-				   right_padding);
-	gtk_widget_show (monitor_box);
+	outer_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	gtk_widget_set_hexpand (outer_vbox, TRUE);
+	gtk_widget_set_vexpand (outer_vbox, TRUE);
+	gtk_widget_set_margin_top (outer_vbox, monitor.y);
+	gtk_widget_set_margin_bottom (outer_vbox, bottom_padding);
+	gtk_widget_set_margin_start (outer_vbox, monitor.x);
+	gtk_widget_set_margin_end (outer_vbox, right_padding);
+	gtk_widget_show (outer_vbox);
 
-	gtk_container_add (GTK_CONTAINER (window), monitor_box);
-	gtk_container_add (GTK_CONTAINER (monitor_box), outer_vbox);
-
-	gtk_box_pack_start (GTK_BOX (outer_vbox), align, TRUE, TRUE, 0);
+	gtk_container_add (GTK_CONTAINER (window), outer_vbox);
 
 	if (allow_postpone) {
 		button_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
@@ -216,9 +206,11 @@ drw_break_window_init (DrwBreakWindow *window)
 	}
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	gtk_widget_set_halign (vbox, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign (vbox, GTK_ALIGN_CENTER);
 	gtk_widget_show (vbox);
 
-	gtk_container_add (GTK_CONTAINER (align), vbox);
+	gtk_box_pack_start (GTK_BOX (outer_vbox), vbox, TRUE, TRUE, 0);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show (hbox);
