@@ -77,6 +77,7 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 			case DA_TYPE_WEB_BROWSER:
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/http", NULL);
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/https", NULL);
+				g_app_info_set_as_default_for_type(item, "text/html", NULL);
 				/* about:config is used by firefox and others */
 				g_app_info_set_as_default_for_type(item, "x-scheme-handler/about", NULL);
 				break;
