@@ -71,18 +71,26 @@ capplet_help (GtkWindow *parent, char const *section)
 {
 	GError *error = NULL;
 	char *uri;
+#if !GTK_CHECK_VERSION (3, 22, 0)
 	GdkScreen *screen;
+#endif
 
 	g_return_if_fail (section != NULL);
 
+#if !GTK_CHECK_VERSION (3, 22, 0)
 	if (!parent)
 		screen = gdk_screen_get_default ();
 	else
 		screen = gtk_widget_get_screen (GTK_WIDGET (parent));
+#endif
 
 	uri = g_strdup_printf ("help:mate-user-guide/%s", section);
 
+#if GTK_CHECK_VERSION (3, 22, 0)
+	if (!gtk_show_uri_on_window (parent , uri, gtk_get_current_event_time (), &error)) {
+#else
 	if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error)) {
+#endif
 		capplet_error_dialog (
 			parent,
 			_("There was an error displaying help: %s"),
