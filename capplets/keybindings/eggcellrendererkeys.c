@@ -378,6 +378,14 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 	GdkModifierType consumed_modifiers;
 	guint upper;
 	GdkModifierType ignored_modifiers;
+	GdkDisplay *display;
+#if GTK_CHECK_VERSION (3, 20, 0)
+	GdkSeat *seat;
+#else
+	GdkDevice *pointer;
+	GdkDevice *keyboard;
+	GdkDeviceManager *device_manager;
+#endif
 
 	keys = EGG_CELL_RENDERER_KEYS(data);
 
@@ -463,8 +471,19 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 
 	out:
 
-	gdk_keyboard_ungrab(event->time);
-	gdk_pointer_ungrab(event->time);
+	display = gtk_widget_get_display (widget);
+#if GTK_CHECK_VERSION(3, 20, 0)
+	seat = gdk_display_get_default_seat (display);
+
+	gdk_seat_ungrab (seat);
+#else
+	device_manager = gdk_display_get_device_manager (display);
+	keyboard = gdk_device_get_associated_device (pointer);
+	pointer = gdk_device_manager_get_client_pointer (device_manager);
+
+	gdk_device_ungrab (keyboard, event->time);
+	gdk_device_ungrab (pointer, event->time);
+#endif
 
 	path = g_strdup(g_object_get_data(G_OBJECT(keys->edit_widget), EGG_CELL_RENDERER_TEXT_PATH));
 
@@ -489,9 +508,28 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 static void ungrab_stuff(GtkWidget* widget, gpointer data)
 {
 	EggCellRendererKeys* keys = EGG_CELL_RENDERER_KEYS(data);
+	GdkDisplay *display;
+#if GTK_CHECK_VERSION (3, 20, 0)
+	GdkSeat *seat;
+#else
+	GdkDevice *keyboard;
+	GdkDevice *pointer;
+	GdkDeviceManager *device_manager;
+#endif
 
-	gdk_keyboard_ungrab(GDK_CURRENT_TIME);
-	gdk_pointer_ungrab(GDK_CURRENT_TIME);
+	display = gtk_widget_get_display (widget);
+#if GTK_CHECK_VERSION(3, 20, 0)
+	seat = gdk_display_get_default_seat (display);
+
+	gdk_seat_ungrab (seat);
+#else
+	device_manager = gdk_display_get_device_manager (display);
+	keyboard = gdk_device_get_associated_device (pointer);
+	pointer = gdk_device_manager_get_client_pointer (device_manager);
+
+	gdk_device_ungrab (keyboard, GDK_CURRENT_TIME);
+	gdk_device_ungrab (pointer, GDK_CURRENT_TIME);
+#endif
 
 	g_signal_handlers_disconnect_by_func(G_OBJECT(keys->grab_widget), G_CALLBACK(grab_key_callback), data);
 }
@@ -551,6 +589,14 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
 {
   GtkCellRendererText *celltext;
   EggCellRendererKeys *keys;
+  GdkDisplay *display;
+#if GTK_CHECK_VERSION (3, 20, 0)
+  GdkSeat *seat;
+#else
+  GdkDeviceManager *device_manager;
+  GdkDevice *keyboard;
+  GdkDevice *pointer;
+#endif
   GtkWidget *label;
   GtkWidget *eventbox;
   GValue celltext_editable = {0};
@@ -565,18 +611,45 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
     return NULL;
   g_return_val_if_fail (gtk_widget_get_window (widget) != NULL, NULL);
 
-  if (gdk_keyboard_grab (gtk_widget_get_window (widget), FALSE,
-                         gdk_event_get_time (event)) != GDK_GRAB_SUCCESS)
+  display = gtk_widget_get_display (widget);
+#if GTK_CHECK_VERSION (3, 20, 0)
+  seat = gdk_display_get_default_seat (display);
+
+  if (gdk_seat_grab (seat,
+                     gtk_widget_get_window (widget),
+                     GDK_SEAT_CAPABILITY_ALL,
+                     FALSE,
+                     NULL,
+                     event,
+                     NULL,
+                     NULL) != GDK_GRAB_SUCCESS)
+    return NULL;
+#else
+  device_manager = gdk_display_get_device_manager (display);
+  pointer = gdk_device_manager_get_client_pointer (device_manager);
+  keyboard = gdk_device_get_associated_device (pointer);
+
+  if (gdk_device_grab (keyboard,
+                       gtk_widget_get_window (widget),
+                       GDK_OWNERSHIP_NONE,
+                       FALSE,
+                       GDK_KEY_PRESS_MASK,
+                       NULL,
+                       gdk_event_get_time (event)) != GDK_GRAB_SUCCESS)
     return NULL;
 
-  if (gdk_pointer_grab (gtk_widget_get_window (widget), FALSE,
-                        GDK_BUTTON_PRESS_MASK,
-                        NULL, NULL,
-                        gdk_event_get_time (event)) != GDK_GRAB_SUCCESS)
+  if (gdk_device_grab (pointer,
+                       gtk_widget_get_window (widget),
+                       GDK_OWNERSHIP_NONE,
+                       FALSE,
+                       GDK_BUTTON_PRESS_MASK,
+                       NULL,
+                       gdk_event_get_time (event)) != GDK_GRAB_SUCCESS)
     {
-      gdk_keyboard_ungrab (gdk_event_get_time (event));
+      gdk_device_ungrab (keyboard, gdk_event_get_time (event));
       return NULL;
     }
+#endif
 
   keys->grab_widget = widget;
 
