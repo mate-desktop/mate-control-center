@@ -526,6 +526,14 @@ emit_viewport_changed (FooScrollArea *scroll_area,
 		       GdkRectangle  *new_viewport,
 		       GdkRectangle  *old_viewport)
 {
+#if GTK_CHECK_VERSION (3, 20, 0)
+    GdkDisplay *display;
+    GdkSeat *seat;
+#else
+    GdkDeviceManager *manager;
+#endif
+    GdkDevice *pointer;
+
     int px, py;
     g_signal_emit (scroll_area, signals[VIEWPORT_CHANGED], 0, 
 		   new_viewport, old_viewport);
@@ -533,7 +541,19 @@ emit_viewport_changed (FooScrollArea *scroll_area,
     if (scroll_area->priv->input_window == NULL)
 	return;
 
-    gdk_window_get_pointer (scroll_area->priv->input_window, &px, &py, NULL);
+#if GTK_CHECK_VERSION (3, 20, 0)
+    display = gdk_window_get_display (scroll_area->priv->input_window);
+    seat = gdk_display_get_default_seat (display);
+    pointer = gdk_seat_get_pointer (seat);
+#else
+    manager = gdk_display_get_device_manager (gdk_window_get_display (scroll_area->priv->input_window));
+    pointer = gdk_device_manager_get_client_pointer (manager);
+#endif
+    gdk_window_get_device_position (scroll_area->priv->input_window,
+                                    pointer,
+                                    &px,
+                                    &py,
+                                    NULL);
     
     process_event (scroll_area, FOO_MOTION, px, py);
 }
