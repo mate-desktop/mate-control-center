@@ -495,6 +495,7 @@ foo_scroll_area_draw (GtkWidget *widget,
     scroll_area->priv->current_input = NULL;
 
     /* Finally draw the backing pixmap */
+    gtk_widget_get_allocation (widget, &widget_allocation);
     cairo_set_source_surface (widget_cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
     cairo_paint (widget_cr);
 
