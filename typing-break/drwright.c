@@ -769,18 +769,14 @@ create_secondary_break_windows (void)
 	GdkDisplay *display;
 	GdkScreen  *screen;
 	GtkWidget  *window;
-	gint        i;
 	GList      *windows = NULL;
 
 	display = gdk_display_get_default ();
 
-	for (i = 0; i < gdk_display_get_n_screens (display); i++) {
-		screen = gdk_display_get_screen (display, i);
+	screen = gdk_display_get_default_screen (display);
 
-		if (screen == gdk_screen_get_default ()) {
-			/* Handled by DrwBreakWindow. */
-			continue;
-		}
+	if (screen != gdk_screen_get_default ()) {
+		/* Handled by DrwBreakWindow. */
 
 		window = gtk_window_new (GTK_WINDOW_POPUP);
 
