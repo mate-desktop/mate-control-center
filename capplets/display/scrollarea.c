@@ -568,8 +568,10 @@ clamp_adjustment (GtkAdjustment *adj)
 					       - gtk_adjustment_get_page_size (adj)));
     else
 	gtk_adjustment_set_value (adj, 0.0);
-    
+
+#if !GTK_CHECK_VERSION (3,18,0)
     gtk_adjustment_changed (adj);
+#endif
 }
 
 static gboolean
