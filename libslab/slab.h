@@ -26,8 +26,6 @@
 #include "app-shell.h"
 #include "application-tile.h"
 #include "bookmark-agent.h"
-#include "directory-tile.h"
-#include "document-tile.h"
 #include "double-click-detector.h"
 #include "mate-utils.h"
 #include "libslab-utils.h"
@@ -38,7 +36,6 @@
 #include "shell-window.h"
 #include "slab-mate-util.h"
 #include "slab-section.h"
-#include "system-tile.h"
 #include "tile.h"
 
 #endif /* __SLAB_H__ */

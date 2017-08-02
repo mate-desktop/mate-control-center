@@ -12,8 +12,6 @@ HEADER_FILES=					\
 	app-shell.h				\
 	application-tile.h			\
 	bookmark-agent.h			\
-	directory-tile.h			\
-	document-tile.h				\
 	double-click-detector.h			\
 	mate-utils.h				\
 	libslab-utils.h				\
@@ -25,7 +23,6 @@ HEADER_FILES=					\
 	slab-mate-util.h			\
 	slab-section.h				\
 	slab.h					\
-	system-tile.h				\
 	tile.h
 
 lib_LTLIBRARIES = libmate-slab.la
@@ -36,8 +33,6 @@ libmate_slab_la_SOURCES =			\
 	app-shell.c				\
 	application-tile.c			\
 	bookmark-agent.c			\
-	directory-tile.c			\
-	document-tile.c				\
 	double-click-detector.c			\
 	mate-utils.c				\
 	libslab-utils.c				\
@@ -49,7 +44,6 @@ libmate_slab_la_SOURCES =			\
 	shell-window.c				\
 	slab-mate-util.c			\
 	slab-section.c				\
-	system-tile.c				\
 	themed-icon.c				\
 	themed-icon.h				\
 	tile-action.c				\
