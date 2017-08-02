@@ -428,21 +428,57 @@ static gboolean
 grab_on_window (GdkWindow *window,
 		guint32    activate_time)
 {
-	if ((gdk_pointer_grab (window, TRUE,
-			       GDK_BUTTON_PRESS_MASK |
-			       GDK_BUTTON_RELEASE_MASK |
-			       GDK_POINTER_MOTION_MASK,
-			       NULL, NULL, activate_time) == 0)) {
-		if (gdk_keyboard_grab (window, TRUE,
-			       activate_time) == 0)
+	GdkDisplay *display;
+#if GTK_CHECK_VERSION (3, 20, 0)
+	GdkSeat *seat;
+#else
+	GdkDeviceManager *device_manager;
+	GdkDevice *pointer;
+	GdkDevice *keyboard;
+#endif
+
+	display = gdk_window_get_display (window);
+#if GTK_CHECK_VERSION (3, 20, 0)
+	seat = gdk_display_get_default_seat (display);
+
+	return (gdk_seat_grab (seat,
+	                       window,
+	                       GDK_SEAT_CAPABILITY_ALL,
+	                       TRUE,
+	                       NULL,
+	                       NULL,
+	                       NULL,
+	                       NULL) == GDK_GRAB_SUCCESS);
+#else
+	device_manager = gdk_display_get_device_manager (display);
+	pointer = gdk_device_manager_get_client_pointer (device_manager);
+	keyboard = gdk_device_get_associated_device (pointer);
+
+	if ((gdk_device_grab (pointer,
+	                      window,
+	                      GDK_OWNERSHIP_NONE,
+	                      TRUE,
+	                      GDK_BUTTON_PRESS_MASK |
+	                      GDK_BUTTON_RELEASE_MASK |
+	                      GDK_POINTER_MOTION_MASK,
+	                      NULL,
+	                      activate_time) == 0)) {
+		if (gdk_device_grab (keyboard,
+		                     window,
+		                     GDK_OWNERSHIP_NONE,
+		                     TRUE,
+		                     GDK_KEY_PRESS_MASK,
+		                     NULL,
+		                     activate_time) == 0)
 			return TRUE;
 		else {
-			gdk_pointer_ungrab (activate_time);
+			gdk_device_ungrab (pointer, activate_time);
 			return FALSE;
 		}
 	}
 
 	return FALSE;
+#endif
 }
 
 static gboolean
