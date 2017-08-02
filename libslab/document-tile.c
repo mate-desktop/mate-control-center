@@ -1130,12 +1130,15 @@ send_to_trigger (Tile *tile, TileEvent *event, TileAction *action)
 		}
 	}
 
-	char       *display;
-	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (tile)));
+	GdkDisplay *display;
+	char       *display_name;
+
+	display = gdk_screen_get_display (gtk_widget_get_screen (GTK_WIDGET (tile)));
+	display_name = g_strdup (gdk_display_get_name (display));
 
 	g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, set_environment,
-		&display, NULL, &error);
-	g_free (display);
+		&display_name, NULL, &error);
+	g_free (display_name);
 
 	if (error)
 		handle_g_error (&error, "error in %s", G_STRFUNC);
