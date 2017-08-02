@@ -118,7 +118,11 @@ open_desktop_item_help (MateDesktopItem * desktop_item)
 		help_uri = g_strdup_printf ("help:%s", doc_path);
 
 		error = NULL;
+#if GTK_CHECK_VERSION (3, 22, 0)
+		if (!gtk_show_uri_on_window (NULL, help_uri, gtk_get_current_event_time (), &error))
+#else
 		if (!gtk_show_uri (libslab_get_current_screen (), help_uri, gtk_get_current_event_time (), &error))
+#endif
 		{
 			g_warning ("error opening %s [%s]\n", help_uri, error->message);
 
