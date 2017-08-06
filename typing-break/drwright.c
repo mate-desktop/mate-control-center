@@ -778,15 +778,18 @@ create_secondary_break_windows (void)
 	if (screen != gdk_screen_get_default ()) {
 		/* Handled by DrwBreakWindow. */
 
+		gint sc_width, sc_height;
+
 		window = gtk_window_new (GTK_WINDOW_POPUP);
 
 		windows = g_list_prepend (windows, window);
 
 		gtk_window_set_screen (GTK_WINDOW (window), screen);
 
-		gtk_window_set_default_size (GTK_WINDOW (window),
-					     gdk_screen_get_width (screen),
-					     gdk_screen_get_height (screen));
+		gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
+					 &sc_width, &sc_height);
+
+		gtk_window_set_default_size (GTK_WINDOW (window), sc_width, sc_height);
 
 		gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 		drw_setup_background (GTK_WIDGET (window));
