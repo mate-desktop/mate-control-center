@@ -425,11 +425,13 @@ get_dpi_from_x_server (void)
   screen = gdk_screen_get_default ();
   if (screen) {
     double width_dpi, height_dpi;
+    gint sc_width, sc_height;
 
-    width_dpi = dpi_from_pixels_and_mm (gdk_screen_get_width (screen),
-					gdk_screen_get_width_mm (screen));
-    height_dpi = dpi_from_pixels_and_mm (gdk_screen_get_height (screen),
-					 gdk_screen_get_height_mm (screen));
+    gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
+			     &sc_width, &sc_height);
+
+    width_dpi = dpi_from_pixels_and_mm (sc_width, gdk_screen_get_width_mm (screen));
+    height_dpi = dpi_from_pixels_and_mm (sc_height, gdk_screen_get_height_mm (screen));
 
     if (width_dpi < DPI_LOW_REASONABLE_VALUE || width_dpi > DPI_HIGH_REASONABLE_VALUE ||
         height_dpi < DPI_LOW_REASONABLE_VALUE || height_dpi > DPI_HIGH_REASONABLE_VALUE)

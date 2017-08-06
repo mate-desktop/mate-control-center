@@ -124,8 +124,9 @@ set_pixmap_background (GtkWidget *window)
 	gtk_widget_realize (window);
 
 	screen = gtk_widget_get_screen (window);
-	width = gdk_screen_get_width (screen);
-	height = gdk_screen_get_height (screen);
+
+	gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
+				 &width, &height);
 
 	tmp_pixbuf = gdk_pixbuf_get_from_window (gdk_screen_get_root_window (screen),
 						 0,
