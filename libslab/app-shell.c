@@ -256,6 +256,7 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 	GtkWidget *left_vbox;
 	GtkWidget *right_vbox;
 	gint num_cols;
+	gint sc_width;
 
 	GtkWidget *sw;
 	GtkAdjustment *adjustment;
@@ -265,10 +266,13 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 
 	right_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
+	gdk_window_get_geometry (gdk_screen_get_root_window (gdk_screen_get_default()),
+				 NULL, NULL, &sc_width, NULL);
+
 	num_cols = SIZING_SCREEN_WIDTH_LARGE_NUMCOLS;
-	if (gdk_screen_width () <= SIZING_SCREEN_WIDTH_LARGE)
+	if (sc_width <= SIZING_SCREEN_WIDTH_LARGE)
 	{
-		if (gdk_screen_width () <= SIZING_SCREEN_WIDTH_MEDIUM)
+		if (sc_width <= SIZING_SCREEN_WIDTH_MEDIUM)
 			num_cols = SIZING_SCREEN_WIDTH_SMALL_NUMCOLS;
 		else
 			num_cols = SIZING_SCREEN_WIDTH_MEDIUM_NUMCOLS;
