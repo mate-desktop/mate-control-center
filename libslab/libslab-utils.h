@@ -15,7 +15,6 @@ gboolean          libslab_gtk_image_set_by_id (GtkImage *image, const gchar *id)
 MateDesktopItem *libslab_mate_desktop_item_new_from_unknown_id (const gchar *id);
 gboolean          libslab_mate_desktop_item_launch_default (MateDesktopItem *item);
 gchar            *libslab_mate_desktop_item_get_docpath (MateDesktopItem *item);
-gboolean          libslab_mate_desktop_item_open_help (MateDesktopItem *item);
 guint32           libslab_get_current_time_millis (void);
 gint              libslab_strcmp (const gchar *a, const gchar *b);
 gint              libslab_strlen (const gchar *a);

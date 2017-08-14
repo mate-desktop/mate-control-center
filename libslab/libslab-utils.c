@@ -202,42 +202,6 @@ libslab_get_current_screen (void)
 	return screen;
 }
 
-gboolean
-libslab_mate_desktop_item_open_help (MateDesktopItem *item)
-{
-	gchar *doc_path;
-	gchar *help_uri;
-
-	GError *error = NULL;
-
-	gboolean retval = FALSE;
-
-
-	if (! item)
-		return retval;
-
-	doc_path = libslab_mate_desktop_item_get_docpath (item);
-
-	if (doc_path) {
-		help_uri = g_strdup_printf ("help:%s", doc_path);
-
-		if (!gtk_show_uri (libslab_get_current_screen (), help_uri, gtk_get_current_event_time (), &error)) {
-			g_warning ("error opening %s [%s]\n", help_uri, error->message);
-
-			g_error_free (error);
-
-			retval = FALSE;
-		}
-		else
-			retval = TRUE;
-
-		g_free (help_uri);
-		g_free (doc_path);
-	}
-
-	return retval;
-}
-
 guint32
 libslab_get_current_time_millis ()
 {
