@@ -126,6 +126,9 @@ drw_break_window_init (DrwBreakWindow *window)
 
 	gint                   root_monitor = 0;
 	GdkScreen             *screen = NULL;
+#if GTK_CHECK_VERSION (3, 22, 0)
+	GdkDisplay            *display;
+#endif
 	GdkRectangle           monitor;
 	gint                   sc_width;
 	gint                   sc_height;
@@ -149,7 +152,12 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_window_set_modal (GTK_WINDOW (window), TRUE);
 
 	screen = gdk_screen_get_default ();
+#if GTK_CHECK_VERSION (3, 22, 0)
+	display = gdk_screen_get_display (screen);
+	gdk_monitor_get_geometry (gdk_display_get_monitor (display, root_monitor), &monitor);
+#else
 	gdk_screen_get_monitor_geometry (screen, root_monitor, &monitor);
+#endif
 
 	gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
 				 &sc_width, &sc_height);

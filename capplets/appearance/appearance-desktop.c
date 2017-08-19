@@ -883,11 +883,20 @@ static gdouble
 get_monitor_aspect_ratio_for_widget (GtkWidget *widget)
 {
   gdouble aspect;
+#if GTK_CHECK_VERSION (3, 22, 0)
+  GdkMonitor *monitor;
+#else
   gint monitor;
+#endif
   GdkRectangle rect;
 
+#if GTK_CHECK_VERSION (3, 22, 0)
+  monitor = gdk_display_get_monitor_at_window (gtk_widget_get_display (widget), gtk_widget_get_window (widget));
+  gdk_monitor_get_geometry (monitor, &rect);
+#else
   monitor = gdk_screen_get_monitor_at_window (gtk_widget_get_screen (widget), gtk_widget_get_window (widget));
   gdk_screen_get_monitor_geometry (gtk_widget_get_screen (widget), monitor, &rect);
+#endif
   aspect = rect.height / (gdouble)rect.width;
 
   return aspect;
