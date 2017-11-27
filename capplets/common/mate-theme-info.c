@@ -541,7 +541,7 @@ read_cursor_theme (GFile *cursor_theme_uri)
   MateThemeCursorInfo *cursor_theme_info = NULL;
   GFile *parent_uri, *cursors_uri;
 
-  const gint filter_sizes[] = { 12, 16, 24, 32, 36, 40, 48, 64 };
+  const gint filter_sizes[] = { 12, 16, 24, 32, 36, 40, 48, 64, 96, 128 };
   const gint num_sizes = G_N_ELEMENTS (filter_sizes);
 
   parent_uri = g_file_get_parent (cursor_theme_uri);
