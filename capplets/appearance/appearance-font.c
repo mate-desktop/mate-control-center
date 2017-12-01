@@ -27,6 +27,7 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <gdk/gdkx.h>
 
 #include "capplet-util.h"
 
@@ -433,14 +434,35 @@ get_dpi_from_x_server (void)
 #endif
   if (screen) {
     double width_dpi, height_dpi;
-    gint sc_width, sc_height;
+    gint sc_width = 0;
+    gint sc_height = 0;
+#if GTK_CHECK_VERSION (3, 22, 0)
+    gint n =0;
+    gint i = 0;
+    GdkRectangle geometry;
 
+    n = gdk_display_get_n_monitors (display);
+
+    for (i = 0; i < n; ++i)
+    {
+      monitor = gdk_display_get_monitor (display, i);
+
+      gdk_monitor_get_geometry (monitor, &geometry);
+      sc_width = sc_width + geometry.width;
+
+      if (geometry.height > sc_height)
+        sc_height = sc_height + geometry.height;
+    }
+#else
     gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
 			     &sc_width, &sc_height);
+#endif
 
 #if GTK_CHECK_VERSION (3, 22, 0)
-    width_dpi = dpi_from_pixels_and_mm (sc_width, gdk_monitor_get_width_mm (monitor));
-    height_dpi = dpi_from_pixels_and_mm (sc_height, gdk_monitor_get_height_mm (monitor));
+    Screen *xscreen = gdk_x11_screen_get_xscreen (screen);
+
+    width_dpi = dpi_from_pixels_and_mm (sc_width, WidthMMOfScreen (xscreen));
+    height_dpi = dpi_from_pixels_and_mm (sc_height, HeightMMOfScreen (xscreen));
 #else
     width_dpi = dpi_from_pixels_and_mm (sc_width, gdk_screen_get_width_mm (screen));
     height_dpi = dpi_from_pixels_and_mm (sc_height, gdk_screen_get_height_mm (screen));
