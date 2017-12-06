@@ -25,6 +25,7 @@
 #include <math.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gio/gio.h>
 
@@ -130,8 +131,6 @@ drw_break_window_init (DrwBreakWindow *window)
 	GdkDisplay            *display;
 #endif
 	GdkRectangle           monitor;
-	gint                   sc_width;
-	gint                   sc_height;
 	gint                   right_padding;
 	gint                   bottom_padding;
 	GSettings             *settings;
@@ -159,17 +158,16 @@ drw_break_window_init (DrwBreakWindow *window)
 	gdk_screen_get_monitor_geometry (screen, root_monitor, &monitor);
 #endif
 
-	gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
-				 &sc_width, &sc_height);
-
-	gtk_window_set_default_size (GTK_WINDOW (window), sc_width, sc_height);
+	gtk_window_set_default_size (GTK_WINDOW (window),
+				     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)),
+				     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)));
 
 	gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
 	gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 	drw_setup_background (GTK_WIDGET (window));
 
-	right_padding = sc_width - monitor.width - monitor.x;
-	bottom_padding = sc_height - monitor.height - monitor.y;
+	right_padding = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) - monitor.width - monitor.x;
+	bottom_padding = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) - monitor.height - monitor.y;
 
 	outer_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_set_hexpand (outer_vbox, TRUE);

@@ -20,6 +20,7 @@
 
 #include <config.h>
 #include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include "drw-utils.h"
 
@@ -124,9 +125,8 @@ set_pixmap_background (GtkWidget *window)
 	gtk_widget_realize (window);
 
 	screen = gtk_widget_get_screen (window);
-
-	gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
-				 &width, &height);
+	width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen));
+	height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen));
 
 	tmp_pixbuf = gdk_pixbuf_get_from_window (gdk_screen_get_root_window (screen),
 						 0,

@@ -21,6 +21,7 @@
 #include "shell-window.h"
 
 #include <gtk/gtk.h>
+#include <gdk/gdkx.h>
 
 #include "app-resizer.h"
 
@@ -113,13 +114,8 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	height = child_requisiton.height + 10;
 	if (height > requisition->height)
 	{
-		gint sc_height;
-
-		gdk_window_get_geometry (gdk_screen_get_root_window (gdk_screen_get_default()),
-					 NULL, NULL, NULL, &sc_height);
-
 		requisition->height =
-			MIN (((gfloat) sc_height * SIZING_HEIGHT_PERCENT), height);
+			MIN (((gfloat) HeightOfScreen (gdk_x11_screen_get_xscreen (gdk_screen_get_default ())) * SIZING_HEIGHT_PERCENT), height);
 	}
 }
 
