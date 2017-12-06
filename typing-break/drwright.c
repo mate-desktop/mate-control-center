@@ -25,6 +25,7 @@
 #include <math.h>
 #include <glib/gi18n.h>
 #include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
@@ -811,18 +812,15 @@ create_secondary_break_windows (void)
 	if (screen != gdk_screen_get_default ()) {
 		/* Handled by DrwBreakWindow. */
 
-		gint sc_width, sc_height;
-
 		window = gtk_window_new (GTK_WINDOW_POPUP);
 
 		windows = g_list_prepend (windows, window);
 
 		gtk_window_set_screen (GTK_WINDOW (window), screen);
 
-		gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
-					 &sc_width, &sc_height);
-
-		gtk_window_set_default_size (GTK_WINDOW (window), sc_width, sc_height);
+		gtk_window_set_default_size (GTK_WINDOW (window),
+					     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)),
+					     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)));
 
 		gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 		drw_setup_background (GTK_WIDGET (window));
