@@ -269,10 +269,10 @@ application_tile_setup (ApplicationTile *this)
 	GtkWidget    *menu_item;
 	GtkContainer *menu_ctnr;
 
-	const gchar *name;
-	const gchar *desc;
+	gchar *name;
+	gchar *desc;
 
-	const gchar *comment;
+	gchar *comment;
 
 	gchar *markup;
 	gchar *str;
@@ -287,9 +287,13 @@ application_tile_setup (ApplicationTile *this)
 	priv->image_id = g_strdup (mate_desktop_item_get_localestring (priv->desktop_item, "Icon"));
 	image = themed_icon_new (priv->image_id, priv->image_size);
 
-	name = mate_desktop_item_get_localestring (priv->desktop_item, "Name");
-	desc = mate_desktop_item_get_localestring (priv->desktop_item, "GenericName");
-	comment = mate_desktop_item_get_localestring (priv->desktop_item, "Comment");	
+	gchar *filename = g_filename_from_uri (mate_desktop_item_get_location (priv->desktop_item), NULL, NULL);
+	GKeyFile *keyfile = g_key_file_new ();
+	g_key_file_load_from_file (keyfile, filename, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+	name = g_key_file_get_locale_string (keyfile, G_KEY_FILE_DESKTOP_GROUP, "Name", NULL, NULL);
+	desc = g_key_file_get_locale_string (keyfile, G_KEY_FILE_DESKTOP_GROUP, "GenericName", NULL, NULL);
+	comment = g_key_file_get_locale_string (keyfile, G_KEY_FILE_DESKTOP_GROUP, "Comment", NULL, NULL);
 
 	accessible = gtk_widget_get_accessible (GTK_WIDGET (this));
 	if (name)
@@ -392,6 +396,12 @@ application_tile_setup (ApplicationTile *this)
 	}
 
 	gtk_widget_show_all (GTK_WIDGET (TILE (this)->context_menu));
+
+	g_free (name);
+	g_free (desc);
+	g_free (comment);
+	g_free (filename);
+	g_key_file_unref (keyfile);
 }
 
 static GtkWidget *
