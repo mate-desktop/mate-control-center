@@ -18,75 +18,6 @@
 
 static FILE *checkpoint_file;
 
-gboolean
-libslab_gtk_image_set_by_id (GtkImage *image, const gchar *id)
-{
-	GdkPixbuf *pixbuf;
-
-	gint size;
-	gint width;
-	gint height;
-
-	GtkIconTheme *icon_theme;
-
-	gboolean found;
-
-	gchar *tmp;
-
-
-	if (! id)
-		return FALSE;
-
-	g_object_get (G_OBJECT (image), "icon-size", & size, NULL);
-
-	if (size == GTK_ICON_SIZE_INVALID)
-		size = GTK_ICON_SIZE_DND;
-
-	gtk_icon_size_lookup (size, & width, & height);
-
-	if (g_path_is_absolute (id)) {
-		pixbuf = gdk_pixbuf_new_from_file_at_size (id, width, height, NULL);
-
-		found = (pixbuf != NULL);
-
-		if (found) {
-			gtk_image_set_from_pixbuf (image, pixbuf);
-
-			g_object_unref (pixbuf);
-		}
-		else
-			gtk_image_set_from_icon_name (image, "image-missing", size);
-	}
-	else {
-		tmp = g_strdup (id);
-
-		if ( /* file extensions are not copesetic with loading by "name" */
-			g_str_has_suffix (tmp, ".png") ||
-			g_str_has_suffix (tmp, ".svg") ||
-			g_str_has_suffix (tmp, ".xpm")
-		)
-
-			tmp [strlen (tmp) - 4] = '\0';
-
-		if (gtk_widget_has_screen (GTK_WIDGET (image)))
-			icon_theme = gtk_icon_theme_get_for_screen (
-				gtk_widget_get_screen (GTK_WIDGET (image)));
-		else
-			icon_theme = gtk_icon_theme_get_default ();
-
-		found = gtk_icon_theme_has_icon (icon_theme, tmp);
-
-		if (found)
-			gtk_image_set_from_icon_name (image, tmp, size);
-		else
-			gtk_image_set_from_icon_name (image, "image-missing", size);
-
-		g_free (tmp);
-	}
-
-	return found;
-}
-
 MateDesktopItem *
 libslab_mate_desktop_item_new_from_unknown_id (const gchar *id)
 {
@@ -144,41 +75,6 @@ libslab_mate_desktop_item_new_from_unknown_id (const gchar *id)
 	return NULL;
 }
 
-gboolean
-libslab_mate_desktop_item_launch_default (MateDesktopItem *item)
-{
-	GError *error = NULL;
-
-	if (! item)
-		return FALSE;
-
-	mate_desktop_item_launch (item, NULL, MATE_DESKTOP_ITEM_LAUNCH_ONLY_ONE, & error);
-
-	if (error) {
-		g_warning ("error launching %s [%s]\n",
-			mate_desktop_item_get_location (item), error->message);
-
-		g_error_free (error);
-
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
-gchar *
-libslab_mate_desktop_item_get_docpath (MateDesktopItem *item)
-{
-	gchar *path;
-
-	path = g_strdup (mate_desktop_item_get_localestring (item, MATE_DESKTOP_ITEM_DOC_PATH));
-
-	if (! path)
-		path = g_strdup (mate_desktop_item_get_localestring (item, ALTERNATE_DOCPATH_KEY));
-
-	return path;
-}
-
 /* Ugh, here we don't have knowledge of the screen that is being used.  So, do
  * what we can to find it.
  */
@@ -227,15 +123,6 @@ libslab_strcmp (const gchar *a, const gchar *b)
 	return strcmp (a, b);
 }
 
-gint
-libslab_strlen (const gchar *a)
-{
-	if (! a)
-		return 0;
-
-	return strlen (a);
-}
-
 void
 libslab_handle_g_error (GError **error, const gchar *msg_format, ...)
 {
@@ -260,104 +147,6 @@ libslab_handle_g_error (GError **error, const gchar *msg_format, ...)
 		g_log (G_LOG_DOMAIN, G_LOG_LEVEL_WARNING, "\nerror raised: [%s]\n", msg);
 
 	g_free (msg);
-}
-
-gboolean
-libslab_desktop_item_is_a_terminal (const gchar *uri)
-{
-	MateDesktopItem *d_item;
-	const gchar      *categories;
-
-	gboolean is_terminal = FALSE;
-
-
-	d_item = libslab_mate_desktop_item_new_from_unknown_id (uri);
-
-	if (! d_item)
-		return FALSE;
-
-	categories = mate_desktop_item_get_string (d_item, MATE_DESKTOP_ITEM_CATEGORIES);
-
-	is_terminal = (categories && strstr (categories, DESKTOP_ITEM_TERMINAL_EMULATOR_FLAG));
-
-	mate_desktop_item_unref (d_item);
-
-	return is_terminal;
-}
-
-gboolean
-libslab_desktop_item_is_logout (const gchar *uri)
-{
-	MateDesktopItem *d_item;
-	gboolean is_logout = FALSE;
-
-
-	d_item = libslab_mate_desktop_item_new_from_unknown_id (uri);
-
-	if (! d_item)
-		return FALSE;
-
-	is_logout = strstr ("Logout", mate_desktop_item_get_string (d_item, MATE_DESKTOP_ITEM_NAME)) != NULL;
-
-	mate_desktop_item_unref (d_item);
-
-	return is_logout;
-}
-
-gboolean
-libslab_desktop_item_is_lockscreen (const gchar *uri)
-{
-	MateDesktopItem *d_item;
-	gboolean is_logout = FALSE;
-
-
-	d_item = libslab_mate_desktop_item_new_from_unknown_id (uri);
-
-	if (! d_item)
-		return FALSE;
-
-	is_logout = strstr ("Lock Screen", mate_desktop_item_get_string (d_item, MATE_DESKTOP_ITEM_NAME)) != NULL;
-
-	mate_desktop_item_unref (d_item);
-
-	return is_logout;
-}
-
-gchar *
-libslab_string_replace_once (const gchar *string, const gchar *key, const gchar *value)
-{
-	GString *str_built;
-	gint pivot;
-
-
-	pivot = strstr (string, key) - string;
-
-	str_built = g_string_new_len (string, pivot);
-	g_string_append (str_built, value);
-	g_string_append (str_built, & string [pivot + strlen (key)]);
-
-	return g_string_free (str_built, FALSE);
-}
-
-void
-libslab_spawn_command (const gchar *cmd)
-{
-	gchar **argv;
-
-	GError *error = NULL;
-
-
-	if (! cmd || strlen (cmd) < 1)
-		return;
-
-	argv = g_strsplit (cmd, " ", -1);
-
-	g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, & error);
-
-	if (error)
-		libslab_handle_g_error (& error, "%s: error spawning [%s]", G_STRFUNC, cmd);
-
-	g_strfreev (argv);
 }
 
 static guint thumbnail_factory_idle_id;
@@ -385,67 +174,6 @@ init_thumbnail_factory_idle_cb (gpointer data)
 	create_thumbnail_factory ();
 	thumbnail_factory_idle_id = 0;
 	return FALSE;
-}
-
-void
-libslab_thumbnail_factory_preinit (void)
-{
-	thumbnail_factory_idle_id = g_idle_add (init_thumbnail_factory_idle_cb, NULL);
-}
-
-MateDesktopThumbnailFactory *
-libslab_thumbnail_factory_get (void)
-{
-	if (thumbnail_factory_idle_id != 0) {
-		g_source_remove (thumbnail_factory_idle_id);
-		thumbnail_factory_idle_id = 0;
-
-		create_thumbnail_factory ();
-	}
-
-	g_assert (thumbnail_factory != NULL);
-	return thumbnail_factory;
-}
-
-void
-libslab_checkpoint_init (const char *checkpoint_config_file_basename,
-			 const char *checkpoint_file_basename)
-{
-	char *filename;
-	struct stat st;
-	int result;
-	time_t t;
-	struct tm tm;
-	char *checkpoint_full_basename;
-
-	g_return_if_fail (checkpoint_config_file_basename != NULL);
-	g_return_if_fail (checkpoint_file_basename != NULL);
-
-	filename = g_build_filename (g_get_home_dir (), checkpoint_config_file_basename, NULL);
-
-	result = stat (filename, &st);
-	g_free (filename);
-
-	if (result != 0)
-		return;
-
-	t = time (NULL);
-	tm = *localtime (&t);
-
-	checkpoint_full_basename = g_strdup_printf ("%s-%04d-%02d-%02d-%02d-%02d-%02d.checkpoint",
-						    checkpoint_file_basename,
-						    tm.tm_year + 1900,
-						    tm.tm_mon + 1,
-						    tm.tm_mday,
-						    tm.tm_hour,
-						    tm.tm_min,
-						    tm.tm_sec);
-
-	filename = g_build_filename (g_get_home_dir (), checkpoint_full_basename, NULL);
-	g_free (checkpoint_full_basename);
-
-	checkpoint_file = fopen (filename, "w");
-	g_free (filename);
 }
 
 void

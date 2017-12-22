@@ -52,11 +52,6 @@ MateDesktopItem *load_desktop_item_from_unknown (const gchar * id);
 gboolean open_desktop_item_exec (MateDesktopItem * desktop_item);
 gboolean open_desktop_item_help (MateDesktopItem * desktop_item);
 
-gboolean slab_load_image (GtkImage * image, GtkIconSize size, const gchar * image_id);
-
-gchar *string_replace_once (const gchar * str_template, const gchar * key, const gchar * value);
-
-void spawn_process (const gchar * command);
 void copy_file (const gchar * src_uri, const gchar * dst_uri);
 
 #ifdef __cplusplus

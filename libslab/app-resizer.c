@@ -177,12 +177,6 @@ app_resizer_set_table_cache (AppResizer * widget, GList * cache_list)
 	widget->cached_tables_list = cache_list;
 }
 
-void
-app_resizer_set_homogeneous (AppResizer * widget, gboolean homogeneous)
-{
-	widget->table_elements_homogeneous = homogeneous;
-}
-
 static void
 app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 {
