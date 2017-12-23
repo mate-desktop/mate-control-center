@@ -4,8 +4,6 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <libmate-desktop/mate-desktop-item.h>
-#define MATE_DESKTOP_USE_UNSTABLE_API 1
-#include <libmate-desktop/mate-desktop-thumbnail.h>
 
 #ifdef __cplusplus
 extern "C" {

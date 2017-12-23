@@ -13,9 +13,6 @@
 #include <sys/time.h>
 #include <gtk/gtk.h>
 
-#define DESKTOP_ITEM_TERMINAL_EMULATOR_FLAG "TerminalEmulator"
-#define ALTERNATE_DOCPATH_KEY               "DocPath"
-
 static FILE *checkpoint_file;
 
 MateDesktopItem *
@@ -147,33 +144,6 @@ libslab_handle_g_error (GError **error, const gchar *msg_format, ...)
 		g_log (G_LOG_DOMAIN, G_LOG_LEVEL_WARNING, "\nerror raised: [%s]\n", msg);
 
 	g_free (msg);
-}
-
-static guint thumbnail_factory_idle_id;
-static MateDesktopThumbnailFactory *thumbnail_factory;
-
-static void
-create_thumbnail_factory (void)
-{
-	/* The thumbnail_factory may already have been created by an applet
-	 * instance that was launched before the current one.
-	 */
-	if (thumbnail_factory != NULL)
-		return;
-
-	libslab_checkpoint ("create_thumbnail_factory(): start");
-
-	thumbnail_factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
-
-	libslab_checkpoint ("create_thumbnail_factory(): end");
-}
-
-static gboolean
-init_thumbnail_factory_idle_cb (gpointer data)
-{
-	create_thumbnail_factory ();
-	thumbnail_factory_idle_id = 0;
-	return FALSE;
 }
 
 void

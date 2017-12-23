@@ -58,8 +58,6 @@ static void tile_drag_begin (GtkWidget *, GdkDragContext *);
 static void tile_drag_data_get (GtkWidget *, GdkDragContext *, GtkSelectionData *, guint,
 guint);
 
-static void tile_emit_resource_event (Tile *, TileEventType, guint32);
-
 static void tile_tile_action_triggered (Tile *, TileEvent *, TileAction *);
 static void tile_action_triggered_event_marshal (GClosure *, GValue *, guint, const GValue *,
 gpointer, gpointer);
@@ -71,8 +69,6 @@ typedef void (*marshal_func_VOID__POINTER_POINTER) (gpointer, gpointer, gpointer
 enum
 {
 	TILE_ACTIVATED_SIGNAL,
-	TILE_IMPLICIT_ENABLE_SIGNAL,
-	TILE_IMPLICIT_DISABLE_SIGNAL,
 	TILE_ACTION_TRIGGERED_SIGNAL,
 	LAST_SIGNAL
 };
@@ -112,11 +108,7 @@ tile_class_init (TileClass * this_class)
 	button_class->leave = tile_leave;
 	button_class->clicked = tile_clicked;
 
-	this_class->tile_explicit_enable = NULL;
-	this_class->tile_explicit_disable = NULL;
 	this_class->tile_activated = NULL;
-	this_class->tile_implicit_enable = NULL;
-	this_class->tile_implicit_disable = NULL;
 	this_class->tile_action_triggered = tile_tile_action_triggered;
 
 	g_type_class_add_private (this_class, sizeof (TilePrivate));
@@ -133,18 +125,6 @@ tile_class_init (TileClass * this_class)
 		G_TYPE_FROM_CLASS (this_class),
 		G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
 		G_STRUCT_OFFSET (TileClass, tile_activated),
-		NULL, NULL, g_cclosure_marshal_VOID__POINTER, G_TYPE_NONE, 1, G_TYPE_POINTER);
-
-	tile_signals[TILE_IMPLICIT_ENABLE_SIGNAL] = g_signal_new ("tile-implicit-enable",
-		G_TYPE_FROM_CLASS (this_class),
-		G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		G_STRUCT_OFFSET (TileClass, tile_implicit_enable),
-		NULL, NULL, g_cclosure_marshal_VOID__POINTER, G_TYPE_NONE, 1, G_TYPE_POINTER);
-
-	tile_signals[TILE_IMPLICIT_DISABLE_SIGNAL] = g_signal_new ("tile-implicit-disable",
-		G_TYPE_FROM_CLASS (this_class),
-		G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		G_STRUCT_OFFSET (TileClass, tile_implicit_disable),
 		NULL, NULL, g_cclosure_marshal_VOID__POINTER, G_TYPE_NONE, 1, G_TYPE_POINTER);
 
 	tile_signals[TILE_ACTION_TRIGGERED_SIGNAL] = g_signal_new ("tile-action-triggered",
@@ -496,82 +476,6 @@ tile_tile_action_triggered (Tile * tile, TileEvent * event, TileAction * action)
 {
 	if (action && action->func)
 		(*action->func) (tile, event, action);
-}
-
-gint
-tile_compare (gconstpointer a, gconstpointer b)
-{
-	if (IS_TILE (a) && IS_TILE (b))
-		return strcmp (TILE (a)->uri, TILE (b)->uri);
-
-	return a - b;
-}
-
-void
-tile_explicit_enable (Tile * this)
-{
-	TileClass *this_class = TILE_GET_CLASS (this);
-
-	if (this_class->tile_explicit_enable)
-		(*this_class->tile_explicit_enable) (this);
-}
-
-void
-tile_explicit_disable (Tile * this)
-{
-	TileClass *this_class = TILE_GET_CLASS (this);
-
-	if (this_class->tile_explicit_disable)
-		(*this_class->tile_explicit_disable) (this);
-}
-
-void
-tile_implicit_enable (Tile * tile)
-{
-	tile_implicit_enable_with_time (tile, GDK_CURRENT_TIME);
-}
-
-void
-tile_implicit_disable (Tile * tile)
-{
-	tile_implicit_disable_with_time (tile, GDK_CURRENT_TIME);
-}
-
-void
-tile_implicit_enable_with_time (Tile * tile, guint32 time)
-{
-	tile_emit_resource_event (tile, TILE_EVENT_IMPLICIT_ENABLE, time);
-}
-
-void
-tile_implicit_disable_with_time (Tile * tile, guint32 time)
-{
-	tile_emit_resource_event (tile, TILE_EVENT_IMPLICIT_DISABLE, time);
-}
-
-static void
-tile_emit_resource_event (Tile * tile, TileEventType type, guint32 time)
-{
-	TileEvent *event;
-	guint signal_id;
-
-	event = g_new0 (TileEvent, 1);
-	event->type = type;
-	event->time = time;
-
-	if (type == TILE_EVENT_IMPLICIT_ENABLE)
-	{
-		signal_id = tile_signals[TILE_IMPLICIT_ENABLE_SIGNAL];
-		tile->enabled = TRUE;
-	}
-	else
-	{
-		signal_id = tile_signals[TILE_IMPLICIT_DISABLE_SIGNAL];
-		tile->enabled = FALSE;
-	}
-
-	g_signal_emit (tile, signal_id, 0, event);
-	g_free (event);
 }
 
 void

@@ -98,7 +98,6 @@ hide_shell (AppShellData * app_data)
 {
 	gtk_window_get_position (GTK_WINDOW (app_data->main_app),
 		&app_data->main_app_window_x, &app_data->main_app_window_y);
-	/* printf("x:%d, y:%d\n", app_data->main_app_window_x, app_data->main_app_window_y); */
 	/* clear the search bar now so reshowing is fast and flicker free - BNC#283186 */
 	application_launcher_clear_search_bar (app_data);
 	gtk_widget_hide (app_data->main_app);
@@ -1019,7 +1018,6 @@ check_specific_apps_hack (MateDesktopItem * item)
 			mate_desktop_item_get_string (item, MATE_DESKTOP_ITEM_CATEGORIES);
 		if (g_strrstr (categories, COMMAND_LINE_LOCKDOWN_DESKTOP_CATEGORY))
 		{
-			/* printf ("eliminating %s\n", mate_desktop_item_get_location (item)); */
 			return TRUE;
 		}
 	}
@@ -1164,7 +1162,6 @@ generate_new_apps (AppShellData * app_data)
 				if (g_hash_table_lookup (new_apps_dups, uri))
 				{
 					/* if a desktop file is in 2 or more top level categories, only show it once */
-					/* printf("Discarding Newapp duplicate:%s\n", uri); */
 					break;
 				}
 				g_hash_table_insert (new_apps_dups, (gpointer) uri, (gpointer) uri);

@@ -57,8 +57,6 @@ typedef enum
 	TILE_EVENT_ACTIVATED_SINGLE_CLICK,
 	TILE_EVENT_ACTIVATED_DOUBLE_CLICK,
 	TILE_EVENT_ACTIVATED_KEYBOARD,
-	TILE_EVENT_IMPLICIT_DISABLE,
-	TILE_EVENT_IMPLICIT_ENABLE,
 	TILE_EVENT_ACTION_TRIGGERED
 } TileEventType;
 
@@ -87,12 +85,7 @@ struct _TileClass
 {
 	GtkButtonClass gtk_button_class;
 
-	void (*tile_explicit_enable) (Tile *);
-	void (*tile_explicit_disable) (Tile *);
-
 	void (*tile_activated) (Tile *, TileEvent *);
-	void (*tile_implicit_enable) (Tile *, TileEvent *);
-	void (*tile_implicit_disable) (Tile *, TileEvent *);
 	void (*tile_action_triggered) (Tile *, TileEvent *, TileAction *);
 };
 
@@ -121,16 +114,6 @@ struct _TileEvent
 
 GType tile_get_type (void);
 GType tile_action_get_type (void);
-
-gint tile_compare (gconstpointer a, gconstpointer b);
-
-void tile_explicit_enable (Tile * tile);
-void tile_explicit_disable (Tile * tile);
-
-void tile_implicit_enable (Tile * tile);
-void tile_implicit_disable (Tile * tile);
-void tile_implicit_enable_with_time (Tile * tile, guint32 time);
-void tile_implicit_disable_with_time (Tile * tile, guint32 time);
 
 void tile_trigger_action (Tile * tile, TileAction * action);
 void tile_trigger_action_with_time (Tile * tile, TileAction * action, guint32 time);
