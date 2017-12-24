@@ -56,7 +56,8 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 			icon_theme = gtk_icon_theme_get_default ();
 
 		pixbuf = gtk_icon_theme_load_icon (icon_theme, id, width, 0, NULL);
-		if (pixbuf != NULL) {
+		icon_exists = (pixbuf != NULL);
+		if (icon_exists) {
 			gtk_image_set_from_pixbuf (image, pixbuf);
 			g_object_unref (pixbuf);
 		}
