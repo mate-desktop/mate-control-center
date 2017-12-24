@@ -361,8 +361,6 @@ bookmark_agent_update_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *st
 
 	priv = PRIVATE (this);
 
-	libslab_checkpoint ("bookmark_agent_update_from_bookmark_file(): start updating");
-
 	items_ordered = make_items_from_bookmark_file (this, store);
 
 	g_bookmark_file_free (priv->store);
@@ -381,10 +379,7 @@ bookmark_agent_update_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *st
 
 	g_list_free (items_ordered);
 
-	libslab_checkpoint ("bookmark_agent_update_from_bookmark_file(): updating internal items");
 	update_items (this);
-
-	libslab_checkpoint ("bookmark_agent_update_from_bookmark_file(): end updating");
 }
 
 void
@@ -840,9 +835,7 @@ load_xbel_store (BookmarkAgent *this)
 	if (!priv->store_path)
 		success = FALSE;
 	else {
-		libslab_checkpoint ("load_xbel_store(): start loading %s", priv->store_path);
 		success = g_bookmark_file_load_from_file (priv->store, priv->store_path, & error);
-		libslab_checkpoint ("load_xbel_store(): end loading %s", priv->store_path);
 	}
 
 	if (!success) {
@@ -856,16 +849,12 @@ load_xbel_store (BookmarkAgent *this)
 		return;
 	}
 
-	libslab_checkpoint ("load_xbel_store(): start creating items from %s", priv->store_path);
-
 	uris = g_bookmark_file_get_uris (priv->store, NULL);
 
 	for (i = 0; uris && uris [i]; ++i)
 		priv->create_item (this, uris [i]);
 
 	g_strfreev (uris);
-
-	libslab_checkpoint ("load_xbel_store(): end creating items from %s", priv->store_path);
 }
 
 static void

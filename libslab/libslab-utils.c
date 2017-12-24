@@ -13,8 +13,6 @@
 #include <sys/time.h>
 #include <gtk/gtk.h>
 
-static FILE *checkpoint_file;
-
 MateDesktopItem *
 libslab_mate_desktop_item_new_from_unknown_id (const gchar *id)
 {
@@ -144,39 +142,4 @@ libslab_handle_g_error (GError **error, const gchar *msg_format, ...)
 		g_log (G_LOG_DOMAIN, G_LOG_LEVEL_WARNING, "\nerror raised: [%s]\n", msg);
 
 	g_free (msg);
-}
-
-void
-libslab_checkpoint (const char *format, ...)
-{
-	va_list args;
-	struct timeval tv;
-	struct tm tm;
-	struct rusage rusage;
-
-	if (!checkpoint_file)
-		return;
-
-	gettimeofday (&tv, NULL);
-	tm = *localtime (&tv.tv_sec);
-
-	getrusage (RUSAGE_SELF, &rusage);
-
-	fprintf (checkpoint_file,
-		 "%02d:%02d:%02d.%04d (user:%d.%04d, sys:%d.%04d) - ",
-		 (int) tm.tm_hour,
-		 (int) tm.tm_min,
-		 (int) tm.tm_sec,
-		 (int) (tv.tv_usec / 100),
-		 (int) rusage.ru_utime.tv_sec,
-		 (int) (rusage.ru_utime.tv_usec / 100),
-		 (int) rusage.ru_stime.tv_sec,
-		 (int) (rusage.ru_stime.tv_usec / 100));
-
-	va_start (args, format);
-	vfprintf (checkpoint_file, format, args);
-	va_end (args);
-
-	fputs ("\n", checkpoint_file);
-	fflush (checkpoint_file);
 }

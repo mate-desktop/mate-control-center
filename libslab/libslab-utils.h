@@ -16,8 +16,6 @@ void              libslab_handle_g_error (GError **error, const gchar *msg_forma
 
 GdkScreen *libslab_get_current_screen (void);
 
-void libslab_checkpoint (const char *format, ...);
-
 #ifdef __cplusplus
 }
 #endif
