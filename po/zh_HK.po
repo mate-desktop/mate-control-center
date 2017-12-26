@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-11-28 09:19+0000\n"
 "Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/mate/MATE/language/zh_HK/)\n"
 "MIME-Version: 1.0\n"
@@ -150,7 +150,7 @@ msgstr "警告按鈕"
 msgid "The buttons shown in the alert dialog"
 msgstr "在警告對話方塊中顯示的按鈕"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "顯示更多訊息(_D)"
 
@@ -578,7 +578,7 @@ msgstr "指定要顯示的頁面名稱 (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "頁面"
 
@@ -1193,7 +1193,7 @@ msgstr "無法啟動設定管理程式「mate-settings-daemon」。\n如果 MATE
 msgid "Unable to load stock icon '%s'\n"
 msgstr "無法載入圖示‘%s’\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "顯示說明文件時發生錯誤：%s"
@@ -1698,8 +1698,8 @@ msgstr "捷徑鍵的類型。"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "已停用"
 
@@ -1743,11 +1743,11 @@ msgstr "重新指派(_R)"
 msgid "Too many custom shortcuts"
 msgstr "太多自選捷徑鍵"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "動作"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "捷徑鍵"
 
@@ -1761,11 +1761,15 @@ msgid "C_ommand:"
 msgstr "指令(_O):"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "鍵盤捷徑鍵"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2155,24 +2159,24 @@ msgstr "鍵盤"
 msgid "Set your keyboard preferences"
 msgstr "修改鍵盤偏好設定"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr ""
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE 滑鼠偏好設定"
 
@@ -2265,30 +2269,34 @@ msgid "Three-finger click emulation:"
 msgstr ""
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "捲動方式"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "觸控板"
 
@@ -2571,11 +2579,11 @@ msgstr "啟動時隱藏 (要預先載入 shell 時很有用)"
 msgid "The MATE configuration tool"
 msgstr "MATE 設定工具"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "停止休息(_P)"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "請休息一下！"
 
@@ -2583,47 +2591,47 @@ msgstr "請休息一下！"
 msgid "_Take a Break"
 msgstr "休息一下(_T)"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "現在休息一下（剩下 %d分）"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "距離休息時間還有 %d 分鐘"
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "現在休息一下（剩下不到一分鐘）"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "距離休息時間少於 1 分鐘"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "無法顯示「休息提示」偏好設定對話方塊，因為出現以下的錯誤：%s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "由 Richard Hult <richard@imendio.com> 編寫"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "由 Anders Carlsson 加入視覺效果"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "在使用電腦時發出休息提示的小工具。"
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "如對翻譯有任何意見，請送一封電子郵件給\n以下地址，MATE 翻譯隊伍會盡快回覆你：\nzh-l10n@lists.linux.org.tw\n\nWoodman Tuen <wmtuen@gmail.com>, 2004-07"
 
@@ -2724,20 +2732,20 @@ msgstr "大小"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "字型檔 輸出檔"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "你的過濾條件「%s」沒有任合項目符合。"
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "找不到符合項。"
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr ""
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "其它"
 
@@ -2751,11 +2759,11 @@ msgstr "啟動 %s"
 msgid "Help"
 msgstr "求助"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "自最愛中移除"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "加入最愛"
 
@@ -2767,135 +2775,39 @@ msgstr "從「初始啟動程式」中移除"
 msgid "Add to Startup Programs"
 msgstr "加入「初始啟動程式」"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "新試算表"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "新文件"
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "家目錄"
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "文件"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "桌面"
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "檔案系統"
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "網絡伺服器"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "搜尋"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr ""
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr ""
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr ""
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr ""
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr ""
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr ""
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr ""
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr ""
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr ""
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr ""
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr ""
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr ""
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr ""
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr ""
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr ""
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr ""
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr ""
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr ""
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr ""
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "現在尋找"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>以“%s”開啟</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "自系統項目中移除"

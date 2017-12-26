@@ -14,7 +14,7 @@
 # Lucas Lommer <drom@kdyne.net>, 2015
 # Lukáš Kvídera <lukas.kvidera@seznam.cz>, 2013
 # Lukas Novotny <lukasnov@cvs.gnome.org>, 2006
-# Martin Kříž <liberte.czech@gmail.com>, 2016
+# LiberteCzech <liberte.czech@gmail.com>, 2016-2017
 # Michal Bukovjan <bukm@centrum.cz>, 2002-2003
 # Michal Procházka <mich.procha@seznam.cz>, 2012
 # Michal Procházka <mich.procha@seznam.cz>, 2012
@@ -30,8 +30,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-11-29 16:40+0000\n"
 "Last-Translator: ToMáš Marný\n"
 "Language-Team: Czech (http://www.transifex.com/mate/MATE/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -171,7 +171,7 @@ msgstr "Tlačítka upozornění"
 msgid "The buttons shown in the alert dialog"
 msgstr "Tlačítka zobrazovaná v dialogu upozornění"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "Zobrazit více _podrobností"
 
@@ -599,7 +599,7 @@ msgstr "Určit název stránky, která má být zobrazena (theme|background|font
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "stránka"
 
@@ -1216,7 +1216,7 @@ msgstr "Nelze spustit správce nastavení \"mate-settings-daemon\".\nBez spušt�
 msgid "Unable to load stock icon '%s'\n"
 msgstr "Nelze načíst standardní ikonu \"%s\"\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -1721,8 +1721,8 @@ msgstr "Typ klávesové zkratky."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "Vypnuto"
 
@@ -1766,11 +1766,11 @@ msgstr "Z_měnit přiřazení"
 msgid "Too many custom shortcuts"
 msgstr "Příliš mnoho vlastních zkratek"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "Akce"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "Zkratka"
 
@@ -1784,11 +1784,15 @@ msgid "C_ommand:"
 msgstr "_Příkaz:"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr "_Procházet aplikace..."
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2178,24 +2182,24 @@ msgstr "Klávesnice"
 msgid "Set your keyboard preferences"
 msgstr "Nastaví předvolby klávesnice"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr "Levé tlačítko"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr "Prostřední tlačítko"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr "Pravé tlačítko"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr "Určit název stránky, která má být zobrazena (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- předvolby myši MATE"
 
@@ -2288,30 +2292,34 @@ msgid "Three-finger click emulation:"
 msgstr "Při klepnutí třemi prsty:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr "Upozornění: Emulace více prstů může zakázat softwarová tlačítka"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "Posunování"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr "S_vislé posunování při okraji"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr "V_odorovné posunování při okraji"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr "Sv_islé posunování dvěma prsty"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Vo_dorovné posunování dvěma prsty"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr "Povolit _přirozené posouvání - setrvačnost"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "Touchpad"
 
@@ -2594,11 +2602,11 @@ msgstr "Skrýt při spouštění (užitečné, pokud se předem nahrává shell)
 msgid "The MATE configuration tool"
 msgstr "Nástroj na nastavení prostředí MATE"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "_Odložit přestávku"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "Udělejte si přestávku!"
 
@@ -2606,12 +2614,12 @@ msgstr "Udělejte si přestávku!"
 msgid "_Take a Break"
 msgstr "_Udělat si přestávku"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Udělat si právě teď přestávku (další za %dm)"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
@@ -2619,36 +2627,36 @@ msgstr[0] "%d minuta do další přestávky"
 msgstr[1] "%d minuty do další přestávky"
 msgstr[2] "%d minut do další přestávky"
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Udělat si právě teď přestávku (další za méně než minutu)"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Méně než jedna minuta do další přestávky"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "Nelze zobrazit dialog vlastností přestávky ve psaní kvůli následující chybě: %s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Napsal Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Pastvu pro oči přidal Anders Carlsson"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "Upomínka na počítačové přestávky."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "David Šauer <davids@penguin.cz>\nJiří Lebl <jirka@5z.cz>\nMichal Bukovjan <bukm@centrum.cz>\nMiloslav Trmač <mitr@volny.cz>\nJakub Friedl <jfriedl@suse.cz>\nPetr Tomeš <ptomes@gmail.com>\nLukáš Novotný <lukasnov@cvs.gnome.org>\nPetr Kovář <pknbe@volny.cz>"
 
@@ -2749,20 +2757,20 @@ msgstr "VELIKOST"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "SOUBOR-PÍSMA VÝSTUPNÍ-SOUBOR"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filtr \"%s\" se neshoduje s žádnými položkami."
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "Nenalezena žádná shoda."
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr "Nové aplikace"
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "Ostatní"
 
@@ -2776,11 +2784,11 @@ msgstr "Spustit %s"
 msgid "Help"
 msgstr "Nápověda"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "Odstranit z oblíbených"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "Přidat mezi oblíbené"
 
@@ -2792,135 +2800,39 @@ msgstr "Odstranit z Programů po spuštění"
 msgid "Add to Startup Programs"
 msgstr "Přidat do Programů po spuštění"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "Nový sešit"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "Nový dokument"
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Domov"
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "Plocha"
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "Systém souborů"
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "Síťové servery"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "Hledat"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>Otevřít</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr "Přejmenovat..."
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr "Odeslat do..."
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr "Přesunout do koše"
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr "Odstranit"
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Jste si jisti, že chcete trvale smazat \"%s\"?"
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr "Smažete-li položku, bude navždy ztracena."
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr "Otevřít s „%s“."
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr "Otevřít ve výchozí aplikaci"
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr "Otevřít ve správci souborů"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr "Odstranit z nabídky nedávných položek"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr "Vyprázdnit všechny nedávné položky"
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr "?"
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr "%H:%M"
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr "Dnes v %H:%M"
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr "Včera v %H:%M"
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr "%a %l:%M %p"
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr "%b %d %l:%M %p"
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr "%b %d %Y"
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "Najít nyní"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>Otevřít %s</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "Odstranit ze systémových položek"

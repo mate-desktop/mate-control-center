@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-11-28 12:29+0000\n"
 "Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/mate/MATE/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -155,7 +155,7 @@ msgstr "경고 단추"
 msgid "The buttons shown in the alert dialog"
 msgstr "경고 대화상자에 단추 보이기"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "더 자세히 표시(_D)"
 
@@ -583,7 +583,7 @@ msgstr "보여줄 페이지 이름을 지정합니다(theme|background|fonts|int
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "페이지"
 
@@ -1198,7 +1198,7 @@ msgstr "설정 관리자 'mate-settings-daemon'을 실행할 수 없습니다.\n
 msgid "Unable to load stock icon '%s'\n"
 msgstr "스톡 아이콘 '%s'(을)를 읽을 수 없습니다\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "도움말을 보여주는데 오류가 발생했습니다: %s"
@@ -1703,8 +1703,8 @@ msgstr "바로 가기 키의 형식."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "사용 않음"
 
@@ -1748,11 +1748,11 @@ msgstr "다시 설정(_R)"
 msgid "Too many custom shortcuts"
 msgstr "사용자 설정 바로 가기 키가 너무 많습니다"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "동작"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "바로 가기"
 
@@ -1766,11 +1766,15 @@ msgid "C_ommand:"
 msgstr "명령(_O):"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr "애플리케이션 찾아보기(_B)..."
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "키보드 바로 가기"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2160,24 +2164,24 @@ msgstr "키보드"
 msgid "Set your keyboard preferences"
 msgstr "키보드를 설정합니다"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr "왼쪽 버튼"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr "가운데 버튼"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr "오른쪽 버튼"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr "보여줄 페이지 이름을 지정하십시오(일반)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- 마테 마우스 설정"
 
@@ -2270,30 +2274,34 @@ msgid "Three-finger click emulation:"
 msgstr "세 손가락 클릭 에뮬레이션:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr "알림: 멀티 핑거 에뮬레이션이 소프트웨어 버튼을 비활성화시킬 수 있습니다"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "스크롤"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr "세로 가장자리 스크롤(_V)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr "가로 가장자리 스크롤(_O)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr "세로 두 손가락 스크롤(_E)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr "가로 두 손가락 스크롤(_E)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr "자연스러운 스크롤 사용(_N)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "터치패드"
 
@@ -2576,11 +2584,11 @@ msgstr "시작할 때 감추기(셸을 미리 읽어들이는데 유용함)"
 msgid "The MATE configuration tool"
 msgstr "마테 설정 도구"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "휴식 시간 미루기(_P)"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "휴식 시간!"
 
@@ -2588,47 +2596,47 @@ msgstr "휴식 시간!"
 msgid "_Take a Break"
 msgstr "휴식하기(_T)"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "지금 휴식합니다(다음 %d분 동안)"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "다음 휴식 시간까지 %d분"
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "지금 휴식합니다(다음 1분 미만)"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "다음 휴식 시간까지 1분도 안 남음"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "다음 오류 때문에 입력 휴식 속성 대화 상자를 실행할 수 없습니다: %s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Richard Hult <richard@imendio.com> 만듬"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Anders Carlsson이 눈요기 거리 추가"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "컴퓨터 휴식 시간 알려주기 프로그램입니다."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "차영호 <ganadist@gmail.com>\n류창우 <cwryu@debian.org>\n이진규 <jincreator@jincreator.net>\n조성호 <darkcircle.0426@gmail.com>\nMATE Desktop Environment Team <https://www.transifex.com/mate/teams/13566/ko/>"
 
@@ -2729,20 +2737,20 @@ msgstr "<크기>"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "<글꼴파일> <출력파일>"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "\"%s\" 필터에 맞는 항목이 없습니다."
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "맞는 항목이 없습니다."
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr "새 프로그램"
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "기타"
 
@@ -2756,11 +2764,11 @@ msgstr "%s 시작"
 msgid "Help"
 msgstr "도움말"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "즐겨찾기에서 제거"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "즐겨찾기에 추가"
 
@@ -2772,135 +2780,39 @@ msgstr "시작 프로그램에서 제거"
 msgid "Add to Startup Programs"
 msgstr "시작 프로그램에 추가"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "새 스프레드시트"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "새 문서"
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "홈"
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "문서"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "바탕 화면"
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "파일 시스템"
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "네트워크 서버"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "검색"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>열기</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr "이름 바꾸기..."
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr "보내기..."
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr "휴지통으로 이동"
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr "삭제"
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "\"%s\"을(를) 완전히 삭제하시겠습니까?"
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr "항목을 삭제하면 완전히 사라집니다."
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr "\"%s\"(으)로 열기"
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr "기본 프로그램으로 열기"
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr "파일 관리자로 열기"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr "최근 메뉴에서 제거"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr "최근 메뉴에서 없앱니다"
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr "?"
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr "%p %l:%M"
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr "오늘 %p %l:%M"
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr "어제 %p %l:%M"
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr "(%a) %p %l:%M"
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr "%b %d일 %p %l:%M "
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr "%Y년 %b %d일"
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "지금 찾기"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>%s(으)로 열기</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "시스템 항목에서 제거"

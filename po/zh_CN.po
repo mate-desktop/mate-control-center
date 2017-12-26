@@ -12,6 +12,7 @@
 # nyanyh <rebuilty@gmail.com>, 2013
 # He Qiangqiang <carton@linux.net.cn>, 2002
 # liushuyu011 <liushuyu011@gmail.com>, 2016-2017
+# Mingcong Bai <jeffbai@aosc.xyz>, 2017
 # Mingye Wang <arthur200126@gmail.com>, 2016
 # nyanyh <rebuilty@gmail.com>, 2013
 # Sun G11n <mate_int_l10n@ireland.sun.com>, 2002
@@ -28,9 +29,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
-"Last-Translator: liushuyu011 <liushuyu011@gmail.com>\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-12-01 16:37+0000\n"
+"Last-Translator: Mingcong Bai <jeffbai@aosc.xyz>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/mate/MATE/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -169,7 +170,7 @@ msgstr "提醒按钮"
 msgid "The buttons shown in the alert dialog"
 msgstr "提醒对话框中显示的按钮"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "显示更多细节(_D)"
 
@@ -597,7 +598,7 @@ msgstr "指定要显示的页面名称 (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "page"
 
@@ -1212,7 +1213,7 @@ msgstr "无法启动设置管理器“mate-settings-daemon”。\n如果不运�
 msgid "Unable to load stock icon '%s'\n"
 msgstr "无法装入图标“%s”\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "显示帮助时出错：%s"
@@ -1717,8 +1718,8 @@ msgstr "加速键类型。"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "禁用"
 
@@ -1762,11 +1763,11 @@ msgstr "重新指派(_R)"
 msgid "Too many custom shortcuts"
 msgstr "太多的自定义快捷键"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "动作"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "快捷键"
 
@@ -1780,11 +1781,15 @@ msgid "C_ommand:"
 msgstr "命令(_O)："
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr "浏览应用程序… (_B)"
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2174,24 +2179,24 @@ msgstr "键盘"
 msgid "Set your keyboard preferences"
 msgstr "设置键盘首选项"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr "左键"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr "中键"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr "右键"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr "指定要显示的页面名称 (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE 鼠标首选项"
 
@@ -2284,30 +2289,34 @@ msgid "Three-finger click emulation:"
 msgstr "三指单击模拟："
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr "警告：多点手势模拟可能会禁用软件按钮"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "滚动"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr "垂直边界滚动(_V)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr "水平边界滚动(_O)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr "垂直双指滚动(_E)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr "水平双指滚动(_I)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr "启用自然滚动 (_N)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "触摸板"
 
@@ -2590,11 +2599,11 @@ msgstr "启动时隐藏 (对于预先启动 shell 非常有用)"
 msgid "The MATE configuration tool"
 msgstr "MATE 配置工具"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "推迟间隔(_P)"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "歇一会儿！"
 
@@ -2602,47 +2611,47 @@ msgstr "歇一会儿！"
 msgid "_Take a Break"
 msgstr "休息一下(_T)"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "休息一下 (距下次 %dm)"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "距下次间隔还有 %d 分钟"
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "休息一下 (下次在一分钟以内)"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "距下次间隔还有不到一分钟。"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "无法启动打字间隔属性对话框，错误如下：%s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "由 Richard Hult <richard@imendio.com> 编写"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "炫彩视觉效果由 Anders Carlsson 带来"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "计算机间隔提醒程序。"
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "开源国际化之 MATE 简体中文组\nYang Zhang <zyangmath@gmail.com> (2007)\n甘露(Gan Lu) <rhythm.gan@gmail.com> (2009)\nXhacler Liu <liu.dongyuan@gmail.com> (2010)"
 
@@ -2743,20 +2752,20 @@ msgstr "大小"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "字体-文件输出-文件"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "您的过滤器“%s”不符合任何项。"
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "没有找到符合的。"
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr "新建应用程序"
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "其他"
 
@@ -2770,11 +2779,11 @@ msgstr "启动 %s"
 msgid "Help"
 msgstr "帮助"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "从收藏夹中移除"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "添加到收藏夹"
 
@@ -2786,135 +2795,39 @@ msgstr "从启动程序中删除"
 msgid "Add to Startup Programs"
 msgstr "添加到启动程序"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "新建电子表格"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "新建文档"
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "主页"
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "文档"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "桌面"
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "文件系统"
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "网络服务器"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "搜索"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>打开</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr "重命名..."
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr "发送到..."
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr "移至回收站"
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr "删除"
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "您确定要永久删除“%s”吗？"
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr "如果您删除一项，它将永久丢失。"
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr "用“%s”打开"
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr "用默认应用程序打开"
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr "在文件管理器中打开"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr "从最近菜单中移除"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr "清除所有最近项目"
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr "？"
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr "%p %l:%M"
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr "今天%p %l:%M"
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr "昨天%p %l:%M"
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr "%a%p %l:%M"
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr "%b月%d日%p %l:%M"
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr "%Y年%b月%d日"
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "立即查找"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>打开 %s</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "从系统项目中删除"

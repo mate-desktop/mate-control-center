@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-11-28 10:38+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/mate/MATE/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,7 @@ msgstr "Botons d'alerta"
 msgid "The buttons shown in the alert dialog"
 msgstr "Els botons que es mostren en el diàleg d'alerta"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "Mostra més _detalls"
 
@@ -585,7 +585,7 @@ msgstr "Especifiqueu el nom de la pàgina a mostrar (theme|background|fonts|inte
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "pàgina"
 
@@ -1201,7 +1201,7 @@ msgstr "No s'ha pogut executar el gestor d'ajusts «mate-settings-daemon».\nSen
 msgid "Unable to load stock icon '%s'\n"
 msgstr "No s'ha pogut carregar la icona integrada «%s»\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "S'ha produït un error en mostrar l'ajuda: %s"
@@ -1706,8 +1706,8 @@ msgstr "El tipus de l'accelerador."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "Inhabilitat"
 
@@ -1751,11 +1751,11 @@ msgstr "_Torna a assignar"
 msgid "Too many custom shortcuts"
 msgstr "Hi ha massa dreceres personalitzades"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "Acció"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "Drecera"
 
@@ -1769,11 +1769,15 @@ msgid "C_ommand:"
 msgstr "_Ordre:"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr "_Navega per les aplicacions..."
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Dreceres de teclat"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2163,24 +2167,24 @@ msgstr "Teclat"
 msgid "Set your keyboard preferences"
 msgstr "Establiu les preferències del vostre teclat"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr "Botó esquerre"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr "Botó mig"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr "Botó dret"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr "Especifiqueu el nom de la pàgina a mostrar (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferències del ratolí de MATE"
 
@@ -2273,30 +2277,34 @@ msgid "Three-finger click emulation:"
 msgstr "Emulació de clic amb tres dits:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr "Avís: l'emulació de diversos dits pot inhabilitar els botons de programari"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "Desplaçament"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr "Desplaçament vertical amb la _vora"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr "Desplaçament h_orizontal amb la vora"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr "Desplaçament v_ertical amb dos dits"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Desplaçament hor_itzontal amb dos dits"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr "Habilita el desplaçament _natural"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "Ratolí tàctil"
 
@@ -2579,11 +2587,11 @@ msgstr "Oculta amb l'inici (útil per precarregar el shell)"
 msgid "The MATE configuration tool"
 msgstr "L'eina de configuració de MATE"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "A_jorna el descans"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "Descanseu!"
 
@@ -2591,48 +2599,48 @@ msgstr "Descanseu!"
 msgid "_Take a Break"
 msgstr "_Inicia un descans"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Fes un descans ara mateix (es farà el següent en %dm)"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minut fins al següent descans"
 msgstr[1] "%d minuts fins al següent descans"
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Fes un descans ara mateix (es farà el següent en menys d'un minut)"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Menys d'un minut fins al següent descans"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "No s'ha pogut mostrar el diàleg de les propietats del descans de tecleig amb el següent error: %s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Escrit per Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Detalls artístics per Anders Carlsson"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "Un recordatori de descans d'ordinador."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Joan Duran <jodufi@gmail.com>\nJordi Mallach <jordi@sindominio.net>\nXavier Conde Rueda <xavi.conde@gmail.com>\nJosep Puigdemont i Casamajó <josep.puigdemont@gmail.com>\nRobert Antoni Buj Gelonch <rbuj@fedoraproject.org>"
 
@@ -2733,20 +2741,20 @@ msgstr "MIDA"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FITXER-DE-LA-LLETRA FITXER-DE-SORTIDA"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "El filtre «%s» no coincideix amb cap element."
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "No s'han trobat coincidències."
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr "Aplicacions noves"
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "Altres"
 
@@ -2760,11 +2768,11 @@ msgstr "Inicia %s"
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "Suprimeix dels preferits"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "Afegeix als preferits"
 
@@ -2776,135 +2784,39 @@ msgstr "Suprimeix dels programes d'inici"
 msgid "Add to Startup Programs"
 msgstr "Afegeix als programes d'inici"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "Full de càlcul nou"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "Document nou"
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Inici"
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "Documents"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "Escriptori"
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "Sistema de fitxers"
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "Servidors de xarxa"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "Cerca"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>Obre</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr "Reanomena..."
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr "Envia a..."
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr "Mou a la paperera"
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr "Suprimeix"
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Esteu segur que voleu suprimir per sempre «%s»?"
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr "Si suprimiu un element, es perdrà per sempre."
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr "Obre amb «%s»"
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr "Obre amb l'aplicació predeterminada"
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr "Obre al gestor de fitxers"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr "Suprimeix del menú dels recents"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr "Neteja tots els elements recents"
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr "?"
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr "%l:%M %p"
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr "Avui a les %k:%M"
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr "Ahir a les %k:%M"
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr "%a a les %k:%M"
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr "el %d de %b a les %k:%M"
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr "%d %b %Y"
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "Troba ara"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>Obre %s</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "Suprimeix dels elements del sistema"
