@@ -7,9 +7,6 @@ ui_files = mate-about-me-dialog.ui mate-about-me-password.ui mate-about-me-finge
 Desktop_in_files = mate-about-me.desktop.in
 
 mate_about_me_SOURCES =	 	\
-	eel-alert-dialog.c		\
-	eel-alert-dialog.h		\
-	eel-gtk-macros.h		\
 	mate-about-me-password.c	\
 	mate-about-me-password.h	\
 	e-image-chooser.c		\
