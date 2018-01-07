@@ -99,8 +99,9 @@ gboolean theme_delete (const gchar *name, ThemeType type)
       break;
 
     case THEME_TYPE_META:
-      theme = (MateThemeCommonInfo *) mate_theme_meta_info_find (name);
+      theme = (MateThemeCommonInfo *) mate_theme_info_find (name);
       theme_dir = g_strdup (theme->path);
+      del_empty_parent = FALSE;
       break;
 
     case THEME_TYPE_CURSOR:
