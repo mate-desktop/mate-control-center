@@ -21,7 +21,6 @@
 #include "search-bar.h"
 #include "config.h"
 
-#include "search-entry.h"
 #include "search-context-picker.h"
 #include "nld-marshal.h"
 
@@ -96,7 +95,7 @@ nld_search_bar_init (NldSearchBar * search_bar)
 	alignment = gtk_alignment_new (0.0, 0.5, 1.0, 0.0);
 	gtk_box_pack_start (GTK_BOX (priv->hbox), alignment, TRUE, TRUE, 0);
 
-	entry = nld_search_entry_new ();
+	entry = gtk_search_entry_new ();
 	priv->entry = GTK_ENTRY (entry);
 	gtk_widget_show (entry);
 	gtk_container_add (GTK_CONTAINER (alignment), entry);

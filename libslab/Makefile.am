@@ -20,7 +20,6 @@ HEADER_FILES=					\
 	nameplate-tile.h			\
 	search-bar.h				\
 	search-context-picker.h			\
-	search-entry.h				\
 	shell-window.h				\
 	slab-mate-util.h			\
 	slab-section.h				\
@@ -44,8 +43,6 @@ libmate_slab_la_SOURCES =			\
 	nameplate-tile.c			\
 	search-bar.c				\
 	search-context-picker.c			\
-	search-entry-watermark.h		\
-	search-entry.c				\
 	shell-window.c				\
 	slab-mate-util.c			\
 	slab-section.c				\
@@ -58,12 +55,6 @@ libmate_slab_la_SOURCES =			\
 libmate_slab_includedir = $(includedir)/libmate-slab
 libmate_slab_include_HEADERS = $(HEADER_FILES)
 libmate_slab_la_LIBADD = $(LIBSLAB_LIBS)
-
-search-entry-watermark.h: search-entry-watermark.svg
-	echo '#define SEARCH_ENTRY_WATERMARK_SVG "\' > $@; \
-	sed -e 's/"/\\"/g' -e 's/$$/\\/' -e 's/#000000/#%s/g' $< >> $@; \
-	echo '"' >> $@
-
 
 MARSHAL_GENERATED = nld-marshal.c nld-marshal.h
 
@@ -78,16 +69,10 @@ nld-marshal.c: nld-marshal.h
 	|| ( rm -f nld-marshal.tmp && exit 1 )
 
 
-BUILT_SOURCES =				\
-	search-entry-watermark.h	\
-	$(MARSHAL_GENERATED)
+BUILT_SOURCES = $(MARSHAL_GENERATED)
 
-CLEANFILES =				\
-	search-entry-watermark.h	\
-	$(MARSHAL_GENERATED)
+CLEANFILES = $(MARSHAL_GENERATED)
 
-EXTRA_DIST=				\
-	search-entry-watermark.svg	\
-	nld-marshal.list
+EXTRA_DIST = nld-marshal.list
 
 -include $(top_srcdir)/git.mk
