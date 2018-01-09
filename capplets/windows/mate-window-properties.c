@@ -50,7 +50,7 @@
 #define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
-#define MARCO_SIDE_BY_SIDE_TILING_KEY "allow-tiling"
+#define MARCO_ALLOW_TILING_KEY "allow-tiling"
 #define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
 #define MARCO_BUTTON_LAYOUT_KEY "button-layout"
 
@@ -87,7 +87,7 @@ typedef struct
 static GtkWidget *dialog_win;
 static GtkWidget *compositing_checkbutton;
 static GtkWidget *compositing_fast_alt_tab_checkbutton;
-static GtkWidget *side_by_side_tiling_checkbutton;
+static GtkWidget *allow_tiling_checkbutton;
 static GtkWidget *center_new_windows_checkbutton;
 static GtkWidget *focus_mode_checkbutton;
 static GtkWidget *focus_mode_mouse_checkbutton;
@@ -429,8 +429,8 @@ main (int argc, char **argv)
     gtk_box_pack_start (GTK_BOX (placement_vbox), widget, FALSE, FALSE, 6);
 
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    side_by_side_tiling_checkbutton = gtk_check_button_new_with_mnemonic (_("Enable side by side _tiling"));
-    gtk_box_pack_start (GTK_BOX (hbox), side_by_side_tiling_checkbutton, FALSE, FALSE, 6);
+    allow_tiling_checkbutton = gtk_check_button_new_with_mnemonic (_("Enable window _tiling"));
+    gtk_box_pack_start (GTK_BOX (hbox), allow_tiling_checkbutton, FALSE, FALSE, 6);
     gtk_box_pack_start (GTK_BOX (placement_vbox), hbox, FALSE, FALSE, 6);
 
     /* Window Selection */
@@ -552,8 +552,8 @@ main (int argc, char **argv)
                      G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind (marco_settings,
-                     MARCO_SIDE_BY_SIDE_TILING_KEY,
-                     side_by_side_tiling_checkbutton,
+                     MARCO_ALLOW_TILING_KEY,
+                     allow_tiling_checkbutton,
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
