@@ -50,7 +50,7 @@
 #define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
-#define MARCO_SIDE_BY_SIDE_TILING_KEY "side-by-side-tiling"
+#define MARCO_SIDE_BY_SIDE_TILING_KEY "allow-tiling"
 #define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
 #define MARCO_BUTTON_LAYOUT_KEY "button-layout"
 
