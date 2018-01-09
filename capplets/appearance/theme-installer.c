@@ -310,10 +310,6 @@ mate_theme_install_real (GtkWindow *parent,
 					   theme_name, NULL);
 		break;
 	case THEME_MATE:
-		target_dir = g_build_path (G_DIR_SEPARATOR_S,
-					   g_get_home_dir (), ".themes",
-			 		   theme_name, NULL);
-		break;
 	case THEME_MARCO:
 	case THEME_GTK:
 		target_dir = g_build_path (G_DIR_SEPARATOR_S,
