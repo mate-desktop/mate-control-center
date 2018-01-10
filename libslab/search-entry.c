@@ -99,7 +99,7 @@ nld_search_entry_realize (GtkWidget * widget)
 	priv->height = height - 2;
 
 	gdkcolor = &gtk_widget_get_style (widget)->fg[gtk_widget_get_state (widget)];
-	snprintf (color, 6, "%02x%02x%02x", gdkcolor->red >> 8, gdkcolor->green >> 8,
+	snprintf (color, 7, "%02x%02x%02x", gdkcolor->red >> 8, gdkcolor->green >> 8,
 		gdkcolor->blue >> 8);
 	svg = g_strdup_printf (SEARCH_ENTRY_WATERMARK_SVG, color, color);
 
