@@ -30,7 +30,7 @@ typedef struct
 {
 	GtkWidget *hbox;
 	NldSearchContextPicker *context_picker;
-	GtkSearchEntry *entry;
+	GtkEntry *entry;
 	GtkWidget *button;
 
 	int search_timeout;
@@ -94,7 +94,7 @@ nld_search_bar_init (NldSearchBar * search_bar)
 	entry = gtk_search_entry_new ();
 	gtk_widget_set_halign (entry, GTK_ALIGN_START);
 	gtk_widget_set_valign (entry, GTK_ALIGN_CENTER);
-	priv->entry = GTK_SEARCH_ENTRY (entry);
+	priv->entry = GTK_ENTRY (entry);
 	gtk_widget_show (entry);
 	gtk_box_pack_start (GTK_BOX (priv->hbox), entry, TRUE, TRUE, 0);
 
@@ -150,7 +150,7 @@ nld_search_bar_clear (NldSearchBar * search_bar)
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
 
 	priv->block_signal = TRUE;
-	gtk_entry_set_text (GTK_ENTRY (priv->entry), "");
+	gtk_entry_set_text (priv->entry, "");
 	if (priv->context_picker)
 		nld_search_context_picker_set_context (priv->context_picker, 0);
 	priv->block_signal = FALSE;
@@ -324,7 +324,7 @@ nld_search_bar_get_text (NldSearchBar * search_bar)
 {
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
 
-	return gtk_entry_get_text (GTK_ENTRY (priv->entry));
+	return gtk_entry_get_text (priv->entry);
 }
 
 void
@@ -332,7 +332,7 @@ nld_search_bar_set_text (NldSearchBar * search_bar, const char *text, gboolean a
 {
 	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
 
-	gtk_entry_set_text (GTK_ENTRY (priv->entry), text);
+	gtk_entry_set_text (priv->entry, text);
 	if (activate)
 		emit_search (search_bar);
 }
