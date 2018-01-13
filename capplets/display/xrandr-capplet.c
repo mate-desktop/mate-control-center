@@ -1820,7 +1820,6 @@ on_area_paint (FooScrollArea *area,
 	       gpointer	      data)
 {
     App *app = data;
-    double scale;
     GList *connected_outputs = NULL;
     GList *list;
 
@@ -1829,10 +1828,11 @@ on_area_paint (FooScrollArea *area,
     if (!app->current_configuration)
 	return;
 
-    scale = compute_scale (app);
     connected_outputs = list_connected_outputs (app, NULL, NULL);
 
 #if 0
+    double scale;
+    scale = compute_scale (app);
     g_debug ("scale: %f", scale);
 #endif
 

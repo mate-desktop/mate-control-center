@@ -55,7 +55,6 @@ have_tray (void)
 int
 main (int argc, char *argv[])
 {
-	DrWright     *drwright;
 	DrwSelection *selection;
 	gboolean      no_check = FALSE;
         const GOptionEntry options[] = {
@@ -115,7 +114,7 @@ main (int argc, char *argv[])
 	}
 #endif /* HAVE_APP_INDICATOR */
 	
-	drwright = drwright_new ();
+	drwright_new ();
 
 	gtk_main ();
 
