@@ -48,6 +48,7 @@ enum {
 enum {
 	TARGZ,
 	TARBZ,
+	TARXZ,
 	DIRECTORY
 };
 
@@ -258,6 +259,8 @@ process_local_theme_archive (GtkWindow *parent,
 		return process_local_theme_tgz_tbz (parent, "gzip", tmp_dir, archive);
 	else if (filetype == TARBZ)
 		return process_local_theme_tgz_tbz (parent, "bzip2", tmp_dir, archive);
+	else if (filetype == TARXZ)
+		return process_local_theme_tgz_tbz (parent, "xz", tmp_dir, archive);
 	else
 		return FALSE;
 }
@@ -505,6 +508,8 @@ process_local_theme (GtkWindow  *parent,
 		filetype = TARGZ;
 	} else if (g_str_has_suffix (path, ".tar.bz2")) {
 		filetype = TARBZ;
+	} else if (g_str_has_suffix (path, ".tar.xz")) {
+		filetype = TARXZ;
 	} else if (g_file_test (path, G_FILE_TEST_IS_DIR)) {
 		filetype = DIRECTORY;
 	} else {
@@ -692,6 +697,8 @@ mate_theme_install (GFile *file,
 		template = "mate-theme-%d.gtp";
 	else if (g_str_has_suffix (base, ".tar.bz2"))
 		template = "mate-theme-%d.tar.bz2";
+	else if (g_str_has_suffix (base, ".tar.xz"))
+		template = "mate-theme-%d.tar.xz";
 	else {
 		invalid_theme_dialog (parent, base, FALSE);
 		g_free (base);
@@ -768,6 +775,7 @@ mate_theme_installer_run (GtkWindow *parent,
 	filter = gtk_file_filter_new ();
 	gtk_file_filter_set_name (filter, _("Theme Packages"));
 	gtk_file_filter_add_mime_type (filter, "application/x-bzip-compressed-tar");
+	gtk_file_filter_add_mime_type (filter, "application/x-xz-compressed-tar");
 	gtk_file_filter_add_mime_type (filter, "application/x-compressed-tar");
 	gtk_file_filter_add_mime_type (filter, "application/x-mate-theme-package");
 	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
