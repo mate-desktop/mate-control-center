@@ -491,6 +491,8 @@ mate_theme_install_real (GtkWindow *parent,
 	}
 
 	g_free (target_dir);
+	g_object_unref (theme_source_dir);
+	g_object_unref (theme_dest_dir);
 
 	return success;
 }
