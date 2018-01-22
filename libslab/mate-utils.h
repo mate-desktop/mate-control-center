@@ -29,7 +29,6 @@ extern "C" {
 
 gboolean load_image_by_id (GtkImage * image, GtkIconSize size,
 	const gchar * image_id);
-void handle_g_error (GError ** error, const gchar * user_format, ...);
 
 #ifdef __cplusplus
 }

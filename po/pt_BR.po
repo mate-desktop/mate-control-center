@@ -21,7 +21,7 @@
 # Krix Apolinário <krixapolinario@gmail.com>, 2009
 # leonardof <leonardof@gnome.org>, 2006, 2008
 # leonardof <leonardof@gnome.org>, 2006,2008
-# Marcelo Ghelman <marcelo.ghelman@gmail.com>, 2014,2016
+# Marcelo Ghelman <marcelo.ghelman@gmail.com>, 2014,2016-2017
 # Marcus Vinícius Marques, 2014
 # Matheus Macabu <mkbu95@gmail.com>, 2013,2016
 # Matheus Macabu <mkbu95@gmail.com>, 2013
@@ -35,9 +35,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
-"Last-Translator: Halan Bacca <halangermano@hotmail.com.br>\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-11-28 18:05+0000\n"
+"Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/mate/MATE/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,7 +176,7 @@ msgstr "Botões de Alerta"
 msgid "The buttons shown in the alert dialog"
 msgstr "Os botões exibidos na caixa de diálogo de alerta"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "Mostrar mais _detalhes"
 
@@ -604,7 +604,7 @@ msgstr "Informe o nome da página a exibir (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "página"
 
@@ -1220,7 +1220,7 @@ msgstr "Não foi possível iniciar o gerenciador de configurações 'mate-settin
 msgid "Unable to load stock icon '%s'\n"
 msgstr "Não foi possível carregar o ícone padrão '%s'\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Houve um erro ao exibir a ajuda: %s"
@@ -1725,8 +1725,8 @@ msgstr "O tipo de atalho."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "Desabilitado"
 
@@ -1770,11 +1770,11 @@ msgstr "_Reatribuir"
 msgid "Too many custom shortcuts"
 msgstr "Número excessivo de atalhos personalizados"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "Ação"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "Atalho"
 
@@ -1788,11 +1788,15 @@ msgid "C_ommand:"
 msgstr "C_omando:"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr "_Navegar em aplicações..."
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2182,24 +2186,24 @@ msgstr "Teclado"
 msgid "Set your keyboard preferences"
 msgstr "Definir suas preferências de teclado"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr "Botão esquerdo"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr "Botão do meio"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr "Botão direito"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr "Informe o nome da página a exibir (geral)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferências de Mouse do MATE"
 
@@ -2292,30 +2296,34 @@ msgid "Three-finger click emulation:"
 msgstr "Emulação de clique com três dedos"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr "Aviso: emulação de multitoque pode inibir botões de software"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "Rolagem"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr "Rolagem _vertical na borda"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr "Rolagem h_orizontal na borda"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr "Rolagem v_ertical com dois dedos"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Rolagem hor_izontal com dois dedos"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr "Ativar _rolagem natural"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "Touchpad"
 
@@ -2598,11 +2606,11 @@ msgstr "Ocultar ao iniciar (útil para precarregar o shell)"
 msgid "The MATE configuration tool"
 msgstr "Ferramenta de Configuração do MATE"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "_Adiar descanso"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "Faça um intervalo de descanso!"
 
@@ -2610,48 +2618,48 @@ msgstr "Faça um intervalo de descanso!"
 msgid "_Take a Break"
 msgstr "_Fazer um intervalo"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Faça um intervalo agora (próximo em %dm)"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minuto até o próximo intervalo"
 msgstr[1] "%d minutos até o próximo intervalo"
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Faça um intervalo agora (próximo em menos de um minuto)"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Menos de um minuto até o próximo intervalo"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "Erro ao abrir a caixa de diálogo de propriedades do intervalo de descanso: %s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Escrito por Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Efeitos visuais adicionados por Anders Carlsson"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "Um lembrete para intervalos de descanso."
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "Ivan Passos <ivan@cyclades.com>\nAldo Oliveira <america103@gmail.com>\nSandro Nunes Henrique <sandro@conectiva.com.br>\nGustavo Maciel Dias Vieira <gustavo@sagui.org>\nTiago Cardoso Menezes <zion@via-rs.net>\nEvandro Fernandes Giovanini <evandrofg@ig.com.br>\nAlex Camacho Castilho <matebr@uol.com.br>\nGuilherme de S. Pastore <gpastore@colband.com.br>\nLeonardo Ferreira Fontenelle <leonardof@gnome.org>\nLuiz Armesto <luiz.armesto@gmail.com>\nOg Maciel <ogmaciel@ubuntu.com>\nWashington Lins <washington-lins@uol.com.br>\nRaul Pereira <contato@raulpereira.com>\nJonh Wendell <wendell@bani.com.br>\nHenrique P Machado <zehrique@gmail.com>\nDjavan Fagundes <dnoway@gmail.com>\nAndré Gondim <andregondim@ubuntu.com>\nAntonio Fernandes C. Neto <fernandes@pelivre.org>"
 
@@ -2752,20 +2760,20 @@ msgstr "TAMANHO"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ARQUIVO-FONTE ARQUIVO-SAIDA"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "O seu filtro \"%s\" não corresponde a nenhum item."
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "Nenhum resultado encontrado."
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr "Novos Aplicativos"
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "Outros"
 
@@ -2779,11 +2787,11 @@ msgstr "Iniciar %s"
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "Remover dos favoritos"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "Adicionar aos favoritos"
 
@@ -2795,135 +2803,39 @@ msgstr "Remover dos programas iniciais"
 msgid "Add to Startup Programs"
 msgstr "Adicionar aos programas iniciais"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "Nova planilha"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "Novo documento"
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Pasta pessoal"
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "Documentos"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "Área de trabalho"
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "Sistema de arquivos"
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "Servidores de rede"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "Buscar"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>Abrir</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr "Renomear..."
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr "Enviar para..."
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr "Mover para a lixeira"
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr "Excluir"
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Você tem certeza de que deseja excluir \"%s\" permanentemente?"
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr "Se você excluir um item, ele será perdido permanentemente."
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr "Abrir com \"%s\""
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr "Abrir com o aplicativo padrão"
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr "Abrir no gerenciador de arquivos"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr "Remover do menu de itens recentes"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr "Limpar o menu de itens recentes"
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr "?"
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr "%l:%M %p"
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr "Hoje %H:%M"
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr "Ontem %H:%M"
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr "%a %l:%M %p"
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr "%b %d %l:%M %p"
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr "%b %d %Y"
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "Localizar agora"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>Abrir %s</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "Remover dos itens do sistema"

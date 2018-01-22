@@ -56,7 +56,8 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 			icon_theme = gtk_icon_theme_get_default ();
 
 		pixbuf = gtk_icon_theme_load_icon (icon_theme, id, width, 0, NULL);
-		if (pixbuf != NULL) {
+		icon_exists = (pixbuf != NULL);
+		if (icon_exists) {
 			gtk_image_set_from_pixbuf (image, pixbuf);
 			g_object_unref (pixbuf);
 		}
@@ -69,29 +70,3 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 
 	return icon_exists;
 }
-
-void
-handle_g_error (GError ** error, const gchar * msg_format, ...)
-{
-	gchar *msg;
-	va_list args;
-
-	va_start (args, msg_format);
-	msg = g_strdup_vprintf (msg_format, args);
-	va_end (args);
-
-	if (*error)
-	{
-		g_log (G_LOG_DOMAIN, G_LOG_LEVEL_WARNING,
-			"\nGError raised: [%s]\nuser_message: [%s]\n", (*error)->message, msg);
-
-		g_error_free (*error);
-
-		*error = NULL;
-	}
-	else
-		g_log (G_LOG_DOMAIN, G_LOG_LEVEL_WARNING, "\nerror raised: [%s]\n", msg);
-
-	g_free (msg);
-}
-

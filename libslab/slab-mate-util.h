@@ -29,34 +29,11 @@
 extern "C" {
 #endif
 
-#define SLAB_APPLICATION_BROWSER_KEY    "/desktop/mate/applications/main-menu/application_browser"
-#define SLAB_SYSTEM_LIST_KEY            "/desktop/mate/applications/main-menu/system_list"
-#define SLAB_FILE_BROWSER_KEY           "/desktop/mate/applications/main-menu/file_browser"
-#define SLAB_SYSTEM_MONITOR_KEY         "/desktop/mate/applications/main-menu/system_monitor"
-#define SLAB_NETWORK_CONFIG_TOOL_KEY    "/desktop/mate/applications/main-menu/network_config_tool"
-#define SLAB_NETWORK_CONFIG_TOOL_NM_KEY "/desktop/mate/applications/main-menu/network_config_tool_nm"
-#define SLAB_URGENT_CLOSE_KEY           "/desktop/mate/applications/main-menu/urgent_close"
-#define SLAB_LOCK_SCREEN_PRIORITY_KEY   "/desktop/mate/applications/main-menu/lock_screen_priority"
-#define SLAB_MAIN_MENU_REORDERING_KEY   "/desktop/mate/applications/main-menu/main_menu_reordering"
-#define SLAB_UPGRADE_PACKAGE_KEY        "/desktop/mate/applications/main-menu/upgrade_package_command"
-#define SLAB_UNINSTALL_PACKAGE_KEY      "/desktop/mate/applications/main-menu/uninstall_package_command"
-#define SLAB_USER_SPECIFIED_APPS_KEY    "/desktop/mate/applications/main-menu/file-area/user_specified_apps"
-#define SLAB_APPLICATION_USE_DB_KEY     "/desktop/mate/applications/main-menu/file-area/app_use_db"
-#define SLAB_FILE_ITEM_LIMIT            "/desktop/mate/applications/main-menu/file-area/item_limit"
-#define SLAB_FILE_BLACKLIST             "/desktop/mate/applications/main-menu/file-area/file_blacklist"
-#define SLAB_FILE_MANAGER_OPEN_CMD      "/desktop/mate/applications/main-menu/file-area/file_mgr_open_cmd"
-#define SLAB_FILE_SEND_TO_CMD           "/desktop/mate/applications/main-menu/file-area/file_send_to_cmd"
-
 MateDesktopItem *load_desktop_item_from_unknown (const gchar * id);
 
 gboolean open_desktop_item_exec (MateDesktopItem * desktop_item);
 gboolean open_desktop_item_help (MateDesktopItem * desktop_item);
 
-gboolean slab_load_image (GtkImage * image, GtkIconSize size, const gchar * image_id);
-
-gchar *string_replace_once (const gchar * str_template, const gchar * key, const gchar * value);
-
-void spawn_process (const gchar * command);
 void copy_file (const gchar * src_uri, const gchar * dst_uri);
 
 #ifdef __cplusplus

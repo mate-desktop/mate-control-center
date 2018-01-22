@@ -60,7 +60,6 @@ struct _AppResizerClass
 	GtkLayoutClass parent_class;
 };
 
-void app_resizer_set_homogeneous (AppResizer * widget, gboolean value);
 void remove_container_entries (GtkContainer * widget);
 
 GType app_resizer_get_type (void);

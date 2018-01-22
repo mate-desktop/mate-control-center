@@ -593,12 +593,17 @@ message_from_capplet (GIOChannel   *source,
         }
 
         /* Write the pixbuf's size */
-        write (pipe_from_factory_fd[1], &width, sizeof (width));
-        write (pipe_from_factory_fd[1], &height, sizeof (height));
+
+        if (write (pipe_from_factory_fd[1], &width, sizeof (width)) == -1)
+          perror ("write error");
+
+        if (write (pipe_from_factory_fd[1], &height, sizeof (height)) == -1)
+          perror ("write error");
 
         for (i = 0; i < height; i++)
         {
-          write (pipe_from_factory_fd[1], pixels + rowstride * i, width * gdk_pixbuf_get_n_channels (pixbuf));
+          if (write (pipe_from_factory_fd[1], pixels + rowstride * i, width * gdk_pixbuf_get_n_channels (pixbuf)) == -1)
+            perror ("write error");
         }
 
         if (pixbuf)
@@ -761,33 +766,63 @@ send_thumbnail_request (gchar *thumbnail_type,
                         gchar *icon_theme_name,
                         gchar *application_font)
 {
-  write (pipe_to_factory_fd[1], thumbnail_type, strlen (thumbnail_type) + 1);
+  if (write (pipe_to_factory_fd[1], thumbnail_type, strlen (thumbnail_type) + 1) == -1)
+    perror ("write error");
 
   if (gtk_theme_name)
-    write (pipe_to_factory_fd[1], gtk_theme_name, strlen (gtk_theme_name) + 1);
+  {
+    if (write (pipe_to_factory_fd[1], gtk_theme_name, strlen (gtk_theme_name) + 1) == -1)
+      perror ("write error");
+  }
   else
-    write (pipe_to_factory_fd[1], "", 1);
+  {
+    if (write (pipe_to_factory_fd[1], "", 1) == -1)
+      perror ("write error");
+  }
 
   if (gtk_color_scheme)
-    write (pipe_to_factory_fd[1], gtk_color_scheme, strlen (gtk_color_scheme) + 1);
+  {
+    if (write (pipe_to_factory_fd[1], gtk_color_scheme, strlen (gtk_color_scheme) + 1) == -1)
+      perror ("write error");
+  }
   else
-    write (pipe_to_factory_fd[1], "", 1);
+  {
+    if (write (pipe_to_factory_fd[1], "", 1) == -1)
+      perror ("write error");
+  }
 
   if (marco_theme_name)
-    write (pipe_to_factory_fd[1], marco_theme_name, strlen (marco_theme_name) + 1);
+  {
+    if (write (pipe_to_factory_fd[1], marco_theme_name, strlen (marco_theme_name) + 1) == -1)
+      perror ("write error");
+  }
   else
-    write (pipe_to_factory_fd[1], "", 1);
+  {
+    if (write (pipe_to_factory_fd[1], "", 1) == -1)
+      perror ("write error");
+  }
 
   if (icon_theme_name)
-    write (pipe_to_factory_fd[1], icon_theme_name, strlen (icon_theme_name) + 1);
+  {
+    if (write (pipe_to_factory_fd[1], icon_theme_name, strlen (icon_theme_name) + 1) == -1)
+      perror ("write error");
+  }
   else
-    write (pipe_to_factory_fd[1], "", 1);
+  {
+    if (write (pipe_to_factory_fd[1], "", 1) == -1)
+      perror ("write error");
+  }
 
   if (application_font)
-    write (pipe_to_factory_fd[1], application_font, strlen (application_font) + 1);
+  {
+    if (write (pipe_to_factory_fd[1], application_font, strlen (application_font) + 1) == -1)
+      perror ("write error");
+  }
   else
-     write (pipe_to_factory_fd[1], "Sans 10", strlen ("Sans 10") + 1);
-
+  {
+    if (write (pipe_to_factory_fd[1], "Sans 10", strlen ("Sans 10") + 1) == -1)
+      perror ("write error");
+  }
 }
 
 static GdkPixbuf *
@@ -1028,19 +1063,14 @@ generate_icon_theme_thumbnail_async (MateThemeIconInfo *theme_info,
 void
 theme_thumbnail_factory_init (int argc, char *argv[])
 {
-#ifndef __APPLE__
   gint child_pid;
-#endif
 
-  pipe (pipe_to_factory_fd);
-  pipe (pipe_from_factory_fd);
+  if (pipe (pipe_to_factory_fd) == -1)
+    perror ("pipe error");
 
-/* Apple's CoreFoundation classes must not be used from forked
- * processes. Since freetype (and thus GTK) uses them, we simply
- * disable the thumbnailer on MacOS for now. That means no thumbs
- * until the thumbnailing process is rewritten, but at least we won't
- * make apps crash. */
-#ifndef __APPLE__
+  if (pipe (pipe_from_factory_fd) == -1)
+    perror ("pipe error");
+
   child_pid = fork ();
   if (child_pid == 0)
   {
@@ -1079,7 +1109,6 @@ theme_thumbnail_factory_init (int argc, char *argv[])
   /* Parent */
   close (pipe_to_factory_fd[0]);
   close (pipe_from_factory_fd[1]);
-#endif /* __APPLE__ */
 
   async_data.set = FALSE;
   async_data.theme_name = NULL;

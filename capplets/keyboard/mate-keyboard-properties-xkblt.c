@@ -357,7 +357,7 @@ show_selected_layout (GtkWidget * button, GtkBuilder * dialog)
 		GSList *layouts_list = xkb_layouts_get_selected_list ();
 		const gchar *id = g_slist_nth_data (layouts_list, idx);
 		char *descr = xkb_layout_description_utf8 (id);
-		GtkWidget *popup = matekbd_keyboard_drawing_new_dialog (idx, descr);
+		matekbd_keyboard_drawing_new_dialog (idx, descr);
 		clear_xkb_elements_list (layouts_list);
 		g_free (descr);
 	}

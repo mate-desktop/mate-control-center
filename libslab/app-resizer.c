@@ -177,16 +177,9 @@ app_resizer_set_table_cache (AppResizer * widget, GList * cache_list)
 	widget->cached_tables_list = cache_list;
 }
 
-void
-app_resizer_set_homogeneous (AppResizer * widget, gboolean homogeneous)
-{
-	widget->table_elements_homogeneous = homogeneous;
-}
-
 static void
 app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 {
-	/* printf("ENTER - app_resizer_size_allocate\n"); */
 	AppResizer *resizer = APP_RESIZER (widget);
 	GtkWidget *child = GTK_WIDGET (APP_RESIZER (resizer)->child);
 	GtkAllocation widget_allocation;
@@ -297,12 +290,6 @@ app_resizer_set_vadjustment_value (GtkWidget * widget, gdouble value)
 static gboolean
 app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppShellData * app_data)
 {
-	/*
-	printf("ENTER - app_resizer_paint_window\n");
-	printf("Area:      %d, %d, %d, %d\n", event->area.x, event->area.y, event->area.width, event->area.height);
-	printf("Allocation:%d, %d, %d, %d\n\n", widget->allocation.x, widget->allocation.y, widget->allocation.width, widget->allocation.height);
-	*/
-
 	cairo_save(cr);
 
 	GtkAllocation widget_allocation;

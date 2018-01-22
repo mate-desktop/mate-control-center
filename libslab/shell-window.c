@@ -21,6 +21,7 @@
 #include "shell-window.h"
 
 #include <gtk/gtk.h>
+#include <gdk/gdkx.h>
 
 #include "app-resizer.h"
 
@@ -96,15 +97,6 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 
 	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), &child_requisiton, NULL);
 
-	/*
-	Fixme - counting on this being called after the real size request is done.
-	seems to be that way but I don't know why. I would think I would need to explictly call it here first
-	printf("Enter - shell_window_handle_size_request\n");
-	printf("passed in width:%d, height:%d\n", requisition->width, requisition->height);
-	printf("left side width:%d\n", SHELL_WINDOW(widget)->_left_pane->requisition.width);
-	printf("right side width:%d\n", GTK_WIDGET(APP_RESIZER(app_data->category_layout)->child)->requisition.width);
-	*/
-
 	requisition->width += child_requisiton.width;
 
 	/* use the left side as a minimum height, if the right side is taller,
@@ -113,13 +105,8 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	height = child_requisiton.height + 10;
 	if (height > requisition->height)
 	{
-		gint sc_height;
-
-		gdk_window_get_geometry (gdk_screen_get_root_window (gdk_screen_get_default()),
-					 NULL, NULL, NULL, &sc_height);
-
 		requisition->height =
-			MIN (((gfloat) sc_height * SIZING_HEIGHT_PERCENT), height);
+			MIN (((gfloat) HeightOfScreen (gdk_x11_screen_get_xscreen (gdk_screen_get_default ())) * SIZING_HEIGHT_PERCENT), height);
 	}
 }
 

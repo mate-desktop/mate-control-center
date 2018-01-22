@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 18:43+0300\n"
-"PO-Revision-Date: 2017-09-19 11:42+0000\n"
-"Last-Translator: samson <sambelet@yahoo.com>\n"
+"POT-Creation-Date: 2017-11-28 10:18+0100\n"
+"PO-Revision-Date: 2017-11-28 09:19+0000\n"
+"Last-Translator: Wolfgang Ulbrich <mate@raveit.de>\n"
 "Language-Team: Amharic (http://www.transifex.com/mate/MATE/language/am/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -150,7 +150,7 @@ msgstr "የማስጠንቀቂያ ቁልፎች"
 msgid "The buttons shown in the alert dialog"
 msgstr "በማስጠንቀቂያ ንግግር ውስጥ የሚታዩት ቁልፎች"
 
-#: ../capplets/about-me/eel-alert-dialog.c:207
+#: ../capplets/about-me/eel-alert-dialog.c:208
 msgid "Show more _details"
 msgstr "ተጨማሪ _ዝርዝሮች ማሳያ "
 
@@ -578,7 +578,7 @@ msgstr "የሚታየውን ገጽ ስም ይወስኑ:\n(ገጽታ: መደብ: �
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:693
-#: ../capplets/mouse/mate-mouse-properties.c:397
+#: ../capplets/mouse/mate-mouse-properties.c:416
 msgid "page"
 msgstr "ገጽ"
 
@@ -1194,7 +1194,7 @@ msgstr "የ ሜት ማሰናጃ አስተዳዳሪ ማስጀመር አልተቻ�
 msgid "Unable to load stock icon '%s'\n"
 msgstr "ምልክት መከመሪያ መጫን አልተቻለም '%s'\n"
 
-#: ../capplets/common/capplet-util.c:88
+#: ../capplets/common/capplet-util.c:96
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ስህተት ተፈጥሯል እርዳታን በማሳየት ላይ: %s"
@@ -1699,8 +1699,8 @@ msgstr "የአፍጣኙ አይነት"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:302
-#: ../typing-break/drwright.c:501
+#: ../capplets/mouse/mate-mouse-properties.c:321
+#: ../typing-break/drwright.c:534
 msgid "Disabled"
 msgstr "የተሰናከለ "
 
@@ -1744,11 +1744,11 @@ msgstr "_እንደገና መመደቢያ"
 msgid "Too many custom shortcuts"
 msgstr "በርካታ አቋራጭ ማስተካከያ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1853
+#: ../capplets/keybindings/mate-keybinding-properties.c:1878
 msgid "Action"
 msgstr "ተግባር"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1875
+#: ../capplets/keybindings/mate-keybinding-properties.c:1900
 msgid "Shortcut"
 msgstr "አቋራጭ"
 
@@ -1762,11 +1762,15 @@ msgid "C_ommand:"
 msgstr "ት_እዛዝ:"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+msgid "_Browse applications..."
+msgstr ""
+
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "የፊደል ገበታ አቋራጭ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
+#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
 "To edit a shortcut key, click on the corresponding row and type a new key "
 "combination, or press backspace to clear."
@@ -2156,24 +2160,24 @@ msgstr "የፊደል ገበታ"
 msgid "Set your keyboard preferences"
 msgstr "የፊደል ገበታ ምርጫ ማሰናጃ "
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Left button"
 msgstr "የ ግራ ቁልፍ"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Middle button"
 msgstr "የ መሀል ቁልፍ"
 
-#: ../capplets/mouse/mate-mouse-properties.c:302
+#: ../capplets/mouse/mate-mouse-properties.c:321
 msgid "Right button"
 msgstr "የ ቀኝ ቁልፍ"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:396
+#: ../capplets/mouse/mate-mouse-properties.c:415
 msgid "Specify the name of the page to show (general)"
 msgstr "የሚታየውን የ ገጽ ስም ማሰናጃ (ባጠቃላይ)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:401
+#: ../capplets/mouse/mate-mouse-properties.c:420
 msgid "- MATE Mouse Preferences"
 msgstr "- የ ሜት የ አይጥ ቁልፍ ምርጫ"
 
@@ -2266,30 +2270,34 @@ msgid "Three-finger click emulation:"
 msgstr "በ ሶስት-ጣት ሲጫኑ ማሳያ"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
+msgid "Warning: multi-finger emulation may disable software buttons"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
 msgstr "መሸብለያ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "_Vertical edge scrolling"
 msgstr "በ _ቁመት ጠርዝ መሸብለያ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "H_orizontal edge scrolling"
 msgstr "በ _አግድም ጠርዝ መሸብለያ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "V_ertical two-finger scrolling"
 msgstr "በ _ቁመት ሁለት-ጣት መሸብለያ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Hor_izontal two-finger scrolling"
 msgstr "በ አግ_ድም ሁለት-ጣት መሸብለያ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Enable _natural scrolling"
 msgstr "የ _ተፈጥሮ መሸብለያ ማስቻያ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Touchpad"
 msgstr "ተችፓድ"
 
@@ -2572,11 +2580,11 @@ msgstr "መደበቂያ በሚጀምር ጊዜ (ጠቃሚ shell እንደገና 
 msgid "The MATE configuration tool"
 msgstr "የ ሜት ማሰናጃ መሳሪያ"
 
-#: ../typing-break/drw-break-window.c:190
+#: ../typing-break/drw-break-window.c:191
 msgid "_Postpone Break"
 msgstr "እረፍት _ማስተላለፊያ"
 
-#: ../typing-break/drw-break-window.c:247
+#: ../typing-break/drw-break-window.c:250
 msgid "Take a break!"
 msgstr "እረፍት ይውሰዱ!"
 
@@ -2584,48 +2592,48 @@ msgstr "እረፍት ይውሰዱ!"
 msgid "_Take a Break"
 msgstr "_እረፍት ይውሰዱ!"
 
-#: ../typing-break/drwright.c:510
+#: ../typing-break/drwright.c:543
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "እርፍት ይውሰዱ አሁን (በሚቀጥለው በ %dm)"
 
-#: ../typing-break/drwright.c:512
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d ደቂቃዎች እስከሚቀጥለው እርፍት "
 msgstr[1] "%d ደቂቃዎች እስከሚቀጥለው እርፍት "
 
-#: ../typing-break/drwright.c:518
+#: ../typing-break/drwright.c:551
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "እረፍት አሁን ይውሰዱ (በሚቀጥለው አንድ ደቂቃ ውስጥ)"
 
-#: ../typing-break/drwright.c:520
+#: ../typing-break/drwright.c:553
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "ከ አንድ ደቂቃ ያነሰ እስከሚቀጥለው እረፍት ድረስ"
 
-#: ../typing-break/drwright.c:610
+#: ../typing-break/drwright.c:643
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "የ መጻፊያ እረፍት ባህሪ ንግግር ማምጣት አልተቻለም በሚቀጥለው ስህተት: %s"
 
-#: ../typing-break/drwright.c:627
+#: ../typing-break/drwright.c:660
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "የ ተጻፈው Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:628
+#: ../typing-break/drwright.c:661
 msgid "Eye candy added by Anders Carlsson"
 msgstr "የ አይን ከረሜላ የ ተጨመረው በ Anders Carlsson"
 
-#: ../typing-break/drwright.c:637
+#: ../typing-break/drwright.c:670
 msgid "A computer break reminder."
 msgstr "የ ኮምፒዩተር እረፍት አስታዋሽ"
 
-#: ../typing-break/drwright.c:639 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:672 ../font-viewer/font-view.c:749
 msgid "translator-credits"
 msgstr "ምስጋና-ለተርጓሚዎች "
 
@@ -2726,20 +2734,20 @@ msgstr "መጠን "
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "የ ፊደል-ፋይል ውጤት-ፋይል"
 
-#: ../libslab/app-shell.c:772
+#: ../libslab/app-shell.c:775
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "የ እርስዎ ማጣሪያ \"%s\" ከ ምንም እቃ ጋር አይመሳሰልም"
 
-#: ../libslab/app-shell.c:774
+#: ../libslab/app-shell.c:777
 msgid "No matches found."
 msgstr "ተመሳሳይ አልተገኘም "
 
-#: ../libslab/app-shell.c:874
+#: ../libslab/app-shell.c:877
 msgid "New Applications"
 msgstr "አዲስ መተገበሪያ "
 
-#: ../libslab/app-shell.c:929
+#: ../libslab/app-shell.c:932
 msgid "Other"
 msgstr "ሌላ"
 
@@ -2753,11 +2761,11 @@ msgstr "ማስጀመሪያ %s"
 msgid "Help"
 msgstr "እርዳታ"
 
-#: ../libslab/application-tile.c:636 ../libslab/document-tile.c:743
+#: ../libslab/application-tile.c:636
 msgid "Remove from Favorites"
 msgstr "ከ ምወዳቸው ማስወገጃ"
 
-#: ../libslab/application-tile.c:638 ../libslab/document-tile.c:745
+#: ../libslab/application-tile.c:638
 msgid "Add to Favorites"
 msgstr "ወደ ምወዳቸው መጨመሪያ"
 
@@ -2769,135 +2777,39 @@ msgstr "ከ ፕሮግራም ማስጀመሪያ ውስጥ ማስወገጃ"
 msgid "Add to Startup Programs"
 msgstr "ወደ ፕሮግራም ማስጀመሪያ ውስጥ መጨመሪያ"
 
-#: ../libslab/bookmark-agent.c:1087
+#: ../libslab/bookmark-agent.c:1088
 msgid "New Spreadsheet"
 msgstr "አዲስ ሰንጠረዥ"
 
-#: ../libslab/bookmark-agent.c:1091
+#: ../libslab/bookmark-agent.c:1092
 msgid "New Document"
 msgstr "አዲስ ሰነድ "
 
-#: ../libslab/bookmark-agent.c:1145
+#: ../libslab/bookmark-agent.c:1146
 msgctxt "Home folder"
 msgid "Home"
 msgstr "ቤት "
 
-#: ../libslab/bookmark-agent.c:1152
+#: ../libslab/bookmark-agent.c:1153
 msgid "Documents"
 msgstr "ሰነዶች"
 
-#: ../libslab/bookmark-agent.c:1158
+#: ../libslab/bookmark-agent.c:1159
 msgid "Desktop"
 msgstr "ዴስክቶፕ "
 
-#: ../libslab/bookmark-agent.c:1163
+#: ../libslab/bookmark-agent.c:1164
 msgid "File System"
 msgstr "የፋይል ስርአት "
 
-#: ../libslab/bookmark-agent.c:1166
+#: ../libslab/bookmark-agent.c:1167
 msgid "Network Servers"
 msgstr "የኔትዎርክ ሰርቨሮች "
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1198
 msgid "Search"
 msgstr "መፈለጊያ"
 
-#. make open with default action
-#: ../libslab/directory-tile.c:176
-#, c-format
-msgid "<b>Open</b>"
-msgstr "<b>መክፈቻ</b>"
-
-#. make rename action
-#: ../libslab/directory-tile.c:195 ../libslab/document-tile.c:241
-msgid "Rename..."
-msgstr "እንደገና መሰየሚያ..."
-
-#: ../libslab/directory-tile.c:209 ../libslab/directory-tile.c:218
-#: ../libslab/document-tile.c:255 ../libslab/document-tile.c:264
-msgid "Send To..."
-msgstr "መላኪያ_ወደ... "
-
-#. make move to trash action
-#: ../libslab/directory-tile.c:233 ../libslab/document-tile.c:290
-msgid "Move to Trash"
-msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ"
-
-#: ../libslab/directory-tile.c:243 ../libslab/directory-tile.c:461
-#: ../libslab/document-tile.c:300 ../libslab/document-tile.c:863
-msgid "Delete"
-msgstr "ማጥፊያ "
-
-#: ../libslab/directory-tile.c:538 ../libslab/document-tile.c:1026
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "በ እርግጥ በቋሚነት ማጥፋት ይፈልጋሉ \"%s\"?"
-
-#: ../libslab/directory-tile.c:539 ../libslab/document-tile.c:1027
-msgid "If you delete an item, it is permanently lost."
-msgstr "እቃውን ካጠፉት በቋሚነት ይጠፋል"
-
-#: ../libslab/document-tile.c:200
-#, c-format
-msgid "Open with \"%s\""
-msgstr "መክፈቻ በ \"%s\""
-
-#: ../libslab/document-tile.c:214
-msgid "Open with Default Application"
-msgstr "በ ነባር መተገበሪያ መክፈቻ"
-
-#: ../libslab/document-tile.c:225
-msgid "Open in File Manager"
-msgstr "በ ፋይል አስተዳዳሪ መክፈቻ"
-
-#. clean item from menu
-#: ../libslab/document-tile.c:309
-msgid "Remove from recent menu"
-msgstr "ከ አሁኑ ዝርዝር ውስጥ ማስወገጃ"
-
-#. clean all the items from menu
-#: ../libslab/document-tile.c:317
-msgid "Purge all the recent items"
-msgstr "የ ቅርብ ጊዜ እቃዎችን ማጽጃ"
-
-#: ../libslab/document-tile.c:631
-msgid "?"
-msgstr "?"
-
-#: ../libslab/document-tile.c:638
-msgid "%l:%M %p"
-msgstr "%l:%M %p"
-
-#: ../libslab/document-tile.c:646
-msgid "Today %l:%M %p"
-msgstr "ዛሬ %l:%M %p"
-
-#: ../libslab/document-tile.c:656
-msgid "Yesterday %l:%M %p"
-msgstr "ትናንትና %l:%M %p"
-
-#: ../libslab/document-tile.c:668
-msgid "%a %l:%M %p"
-msgstr "%a %l:%M %p"
-
-#: ../libslab/document-tile.c:676
-msgid "%b %d %l:%M %p"
-msgstr "%b %d %l:%M %p"
-
-#: ../libslab/document-tile.c:678
-msgid "%b %d %Y"
-msgstr "%b %d %Y"
-
-#: ../libslab/search-bar.c:256
+#: ../libslab/search-bar.c:254
 msgid "Find Now"
 msgstr "አሁን መፈለጊያ"
-
-#: ../libslab/system-tile.c:132
-#, c-format
-msgid "<b>Open %s</b>"
-msgstr "<b>መክፈቻ %s</b>"
-
-#: ../libslab/system-tile.c:145
-#, c-format
-msgid "Remove from System Items"
-msgstr "ከስርአቱ እቃዎች ውስጥ ማስወገጃ "

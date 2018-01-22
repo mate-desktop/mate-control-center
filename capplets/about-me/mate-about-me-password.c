@@ -42,7 +42,6 @@
 #endif
 
 #include "capplet-util.h"
-#include "eel-alert-dialog.h"
 
 /* Passwd states */
 typedef enum {
