@@ -370,6 +370,56 @@ mate_theme_install_real (GtkWindow *parent,
 	theme_source_dir = g_file_new_for_path (tmp_dir);
 	theme_dest_dir = g_file_new_for_path (target_dir);
 
+	if (g_file_test (target_dir, G_FILE_TEST_EXISTS)) {
+		gchar *str;
+
+		str = g_strdup_printf (_("The theme \"%s\" is already existed."), theme_name);
+		dialog = gtk_message_dialog_new (parent,
+						 GTK_DIALOG_MODAL,
+						 GTK_MESSAGE_INFO,
+						 GTK_BUTTONS_NONE,
+						 "%s",
+						 str);
+		g_free (str);
+
+		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+							  _("Do you want to install it again?"));
+
+		gtk_dialog_add_button (GTK_DIALOG (dialog),
+					   _("Cancel"),
+					   GTK_RESPONSE_CLOSE);
+
+		apply_button = gtk_button_new_with_label (_("Install"));
+		gtk_button_set_image (GTK_BUTTON (apply_button),
+					  gtk_image_new_from_icon_name ("gtk-apply",
+								GTK_ICON_SIZE_BUTTON));
+		gtk_dialog_add_action_widget (GTK_DIALOG (dialog), apply_button, GTK_RESPONSE_APPLY);
+		gtk_widget_set_can_default (apply_button, TRUE);
+		gtk_widget_show (apply_button);
+
+		gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_APPLY);
+
+		if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_APPLY) {
+			gtk_widget_destroy (dialog);
+
+			if (!capplet_file_delete_recursive (theme_dest_dir, NULL)) {
+				GtkWidget *info_dialog = gtk_message_dialog_new (NULL,
+									   GTK_DIALOG_MODAL,
+									   GTK_MESSAGE_ERROR,
+									   GTK_BUTTONS_OK,
+									   _("Theme cannot be deleted"));
+				gtk_dialog_run (GTK_DIALOG (info_dialog));
+				gtk_widget_destroy (info_dialog);
+				success = FALSE;
+				goto end;
+			}
+		}else{
+			gtk_widget_destroy (dialog);
+			success = FALSE;
+			goto end;
+		}
+	}
+
 	if (!g_file_move (theme_source_dir, theme_dest_dir,
 			  G_FILE_COPY_OVERWRITE, NULL, NULL,
 			  NULL, &error)) {
@@ -490,6 +540,7 @@ mate_theme_install_real (GtkWindow *parent,
 		}
 	}
 
+end:
 	g_free (target_dir);
 	g_object_unref (theme_source_dir);
 	g_object_unref (theme_dest_dir);
