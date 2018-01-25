@@ -444,9 +444,9 @@ get_dpi_from_x_server (void)
     dpi = DPI_FALLBACK;
   }
 
-  scale = gdk_window_get_scale_factor(gdk_screen_get_root_window (screen));
+  scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
   if (scale)
-    dpi = ceil(dpi * scale);
+    dpi = dpi * scale;
 
   return dpi;
 }
