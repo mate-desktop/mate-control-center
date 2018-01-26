@@ -135,8 +135,8 @@ static void     init_tray_icon                 (DrWright       *dr);
 static GList *  create_secondary_break_windows (void);
 
 static const GtkActionEntry actions[] = {
-  {"Preferences", GTK_STOCK_PREFERENCES, NULL, NULL, NULL, G_CALLBACK (popup_preferences_cb)},
-  {"About", GTK_STOCK_ABOUT, NULL, NULL, NULL, G_CALLBACK (popup_about_cb)},
+  {"Preferences", "preferences-desktop", N_("_Preferences"), NULL, NULL, G_CALLBACK (popup_preferences_cb)},
+  {"About", "help-about", N_("_About"), NULL, NULL, G_CALLBACK (popup_about_cb)},
   {"TakeABreak", NULL, N_("_Take a Break"), NULL, NULL, G_CALLBACK (popup_break_cb)}
 };
 

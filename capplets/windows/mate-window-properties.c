@@ -358,9 +358,9 @@ main (int argc, char **argv)
     dialog_win = gtk_dialog_new_with_buttons (_("Window Preferences"),
                                               NULL,
                                               GTK_DIALOG_MODAL,
-                                              GTK_STOCK_HELP,
+                                              "gtk-help",
                                               GTK_RESPONSE_HELP,
-                                              GTK_STOCK_CLOSE,
+                                              "gtk-close",
                                               GTK_RESPONSE_CLOSE,
                                               NULL);
     //gtk_window_set_resizable (GTK_WINDOW (dialog_win), FALSE);

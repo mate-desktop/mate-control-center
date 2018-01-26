@@ -172,7 +172,7 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   GtkWidget *preview;
   GtkWidget *vbox;
   GtkWidget *box;
-  GtkWidget *stock_button;
+  GtkWidget *image_button;
   GtkWidget *checkbox;
   GtkWidget *radio;
 
@@ -220,11 +220,17 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_container_add (GTK_CONTAINER (preview), vbox);
-  stock_button = gtk_button_new_from_stock (GTK_STOCK_OPEN);
-  gtk_widget_set_halign (stock_button, GTK_ALIGN_START);
-  gtk_widget_set_valign (stock_button, GTK_ALIGN_START);
-  gtk_widget_show (stock_button);
-  gtk_box_pack_start (GTK_BOX (vbox), stock_button, FALSE, FALSE, 0);
+
+  image_button = GTK_WIDGET (g_object_new (GTK_TYPE_BUTTON,
+					   "label", "gtk-open",
+					   "use-stock", TRUE,
+					   "use-underline", TRUE,
+					   NULL));
+
+  gtk_widget_set_halign (image_button, GTK_ALIGN_START);
+  gtk_widget_set_valign (image_button, GTK_ALIGN_START);
+  gtk_widget_show (image_button);
+  gtk_box_pack_start (GTK_BOX (vbox), image_button, FALSE, FALSE, 0);
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_box_pack_start (GTK_BOX (vbox), box, FALSE, FALSE, 0);
   checkbox = gtk_check_button_new ();
@@ -281,7 +287,7 @@ static GdkPixbuf *
 create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 {
   GtkSettings *settings;
-  GtkWidget *window, *vbox, *box, *stock_button, *checkbox, *radio;
+  GtkWidget *window, *vbox, *box, *image_button, *checkbox, *radio;
   GtkRequisition requisition;
   GtkAllocation allocation;
   GdkPixbuf *pixbuf, *retval;
@@ -299,8 +305,14 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (box), 6);
   gtk_box_pack_start (GTK_BOX (vbox), box, FALSE, FALSE, 0);
-  stock_button = gtk_button_new_from_stock (GTK_STOCK_OPEN);
-  gtk_box_pack_start (GTK_BOX (box), stock_button, FALSE, FALSE, 0);
+
+  image_button = GTK_WIDGET (g_object_new (GTK_TYPE_BUTTON,
+					   "label", "gtk-open",
+					   "use-stock", TRUE,
+					   "use-underline", TRUE,
+					   NULL));
+
+  gtk_box_pack_start (GTK_BOX (box), image_button, FALSE, FALSE, 0);
   checkbox = gtk_check_button_new ();
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), TRUE);
   gtk_box_pack_start (GTK_BOX (box), checkbox, FALSE, FALSE, 0);
@@ -309,12 +321,12 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   gtk_widget_show_all (window);
   gtk_widget_show_all (vbox);
-  gtk_widget_realize (stock_button);
-  gtk_widget_realize (gtk_bin_get_child (GTK_BIN (stock_button)));
+  gtk_widget_realize (image_button);
+  gtk_widget_realize (gtk_bin_get_child (GTK_BIN (image_button)));
   gtk_widget_realize (checkbox);
   gtk_widget_realize (radio);
-  gtk_widget_map (stock_button);
-  gtk_widget_map (gtk_bin_get_child (GTK_BIN (stock_button)));
+  gtk_widget_map (image_button);
+  gtk_widget_map (gtk_bin_get_child (GTK_BIN (image_button)));
   gtk_widget_map (checkbox);
   gtk_widget_map (radio);
 

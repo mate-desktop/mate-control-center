@@ -268,8 +268,8 @@ about_me_image_clicked_cb (GtkWidget *button, MateAboutMe *me)
 			 gtk_file_chooser_dialog_new (_("Select Image"), GTK_WINDOW (WID ("about-me-dialog")),
 							GTK_FILE_CHOOSER_ACTION_OPEN,
 							_("No Image"), GTK_RESPONSE_NO,
-							GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-							GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+							"gtk-cancel", GTK_RESPONSE_CANCEL,
+							"gtk-open", GTK_RESPONSE_ACCEPT,
 							NULL));
 	gtk_window_set_modal (GTK_WINDOW (chooser_dialog), TRUE);
 	gtk_dialog_set_default_response (GTK_DIALOG (chooser_dialog), GTK_RESPONSE_ACCEPT);
