@@ -422,6 +422,7 @@ get_dpi_from_x_server (void)
 {
   GdkScreen  *screen;
   double dpi;
+  gint scale;
 
   screen = gdk_screen_get_default ();
 
@@ -442,6 +443,10 @@ get_dpi_from_x_server (void)
     /* Huh!?  No screen? */
     dpi = DPI_FALLBACK;
   }
+
+  scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
+  if (scale)
+    dpi = dpi * scale;
 
   return dpi;
 }
