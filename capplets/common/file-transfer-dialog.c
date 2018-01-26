@@ -329,7 +329,7 @@ file_transfer_dialog_init (FileTransferDialog *dlg)
 			    dlg->priv->progress, FALSE, FALSE, 0);
 
 	gtk_dialog_add_button (GTK_DIALOG (dlg),
-			       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+			       "gtk-cancel", GTK_RESPONSE_CANCEL);
 
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 6);
 
@@ -441,8 +441,8 @@ file_transfer_dialog_overwrite (gpointer user_data)
 
 		button = gtk_button_new_with_label (_("_Overwrite"));
 		gtk_button_set_image (GTK_BUTTON (button),
-				      gtk_image_new_from_stock (GTK_STOCK_APPLY,
-								GTK_ICON_SIZE_BUTTON));
+				      gtk_image_new_from_icon_name ("gtk-apply",
+								    GTK_ICON_SIZE_BUTTON));
 		gtk_dialog_add_action_widget (dialog, button, GTK_RESPONSE_YES);
 		gtk_widget_show (button);
 

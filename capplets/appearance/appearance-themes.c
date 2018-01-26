@@ -1085,7 +1085,7 @@ void themes_init(AppearanceData* data)
 
   w = appearance_capplet_get_widget (data, "theme_custom");
   gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_stock (GTK_STOCK_EDIT, GTK_ICON_SIZE_BUTTON));
+                        gtk_image_new_from_icon_name ("gtk-edit", GTK_ICON_SIZE_BUTTON));
   g_signal_connect (w, "clicked", (GCallback) theme_custom_cb, data);
 
   del_button = appearance_capplet_get_widget (data, "theme_delete");

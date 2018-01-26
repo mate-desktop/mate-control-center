@@ -481,8 +481,8 @@ mate_theme_install_real (GtkWindow *parent,
 
 				apply_button = gtk_button_new_with_label (_("Apply New Theme"));
 				gtk_button_set_image (GTK_BUTTON (apply_button),
-						      gtk_image_new_from_stock (GTK_STOCK_APPLY,
-										GTK_ICON_SIZE_BUTTON));
+						      gtk_image_new_from_icon_name ("gtk-apply",
+										    GTK_ICON_SIZE_BUTTON));
 				gtk_dialog_add_action_widget (GTK_DIALOG (dialog), apply_button, GTK_RESPONSE_APPLY);
 				gtk_widget_set_can_default (apply_button, TRUE);
 				gtk_widget_show (apply_button);
@@ -815,9 +815,9 @@ mate_theme_installer_run (GtkWindow *parent,
 	dialog = gtk_file_chooser_dialog_new (_("Select Theme"),
 					      parent,
 					      GTK_FILE_CHOOSER_ACTION_OPEN,
-					      GTK_STOCK_CANCEL,
+					      "gtk-cancel",
 					      GTK_RESPONSE_REJECT,
-					      GTK_STOCK_OPEN,
+					      "gtk-open",
 					      GTK_RESPONSE_ACCEPT,
 					      NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);

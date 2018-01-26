@@ -64,7 +64,7 @@ capplet_register_stock_icons (GtkIconFactory *factory)
 
 		if (!filename) {
 		        g_warning (_("Unable to load stock icon '%s'\n"), items[i].name);
-			icon_set = gtk_icon_factory_lookup_default (GTK_STOCK_MISSING_IMAGE);
+			icon_set = gtk_icon_factory_lookup_default ("gtk-missing-image");
 			gtk_icon_factory_add (factory, items[i].stock_id, icon_set);
 			continue;
 		}

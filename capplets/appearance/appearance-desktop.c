@@ -615,9 +615,9 @@ wp_create_filechooser (AppearanceData *data)
                      gtk_file_chooser_dialog_new (_("Add Wallpaper"),
                      GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")),
                      GTK_FILE_CHOOSER_ACTION_OPEN,
-                     GTK_STOCK_CANCEL,
+                     "gtk-cancel",
                      GTK_RESPONSE_CANCEL,
-                     GTK_STOCK_OPEN,
+                     "gtk-open",
                      GTK_RESPONSE_OK,
                      NULL));
 

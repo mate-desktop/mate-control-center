@@ -219,7 +219,7 @@ delete_fingerprints_question (GtkBuilder *dialog, GtkWidget *enable, GtkWidget *
 					   GTK_MESSAGE_QUESTION,
 					   GTK_BUTTONS_NONE,
 					   _("Delete registered fingerprints?"));
-	gtk_dialog_add_button (GTK_DIALOG (question), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+	gtk_dialog_add_button (GTK_DIALOG (question), "gtk-cancel", GTK_RESPONSE_CANCEL);
 
 	button = gtk_button_new_with_mnemonic (_("_Delete Fingerprints"));
 	gtk_button_set_image (GTK_BUTTON (button), gtk_image_new_from_icon_name ("edit-delete", GTK_ICON_SIZE_BUTTON));

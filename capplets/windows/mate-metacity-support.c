@@ -40,7 +40,7 @@ mate_metacity_config_tool ()
     dialog = GTK_DIALOG (gtk_dialog_new_with_buttons(_("Metacity Preferences"),
                                                      NULL,
                                                      GTK_DIALOG_MODAL,
-                                                     GTK_STOCK_CLOSE,
+                                                     "gtk-close",
                                                      GTK_RESPONSE_CLOSE,
                                                      NULL));
     gtk_window_set_icon_name (GTK_WINDOW (dialog), "preferences-system-windows");
