@@ -324,17 +324,10 @@ grab_keyboard_on_window (GdkWindow *window,
 			 guint32    activate_time)
 {
 	GdkDisplay *display;
-#if GTK_CHECK_VERSION (3, 20, 0)
 	GdkSeat *seat;
-#else
-	GdkDeviceManager *device_manager;
-	GdkDevice *pointer;
-	GdkDevice *keyboard;
-#endif
 	GdkGrabStatus status;
 
 	display = gdk_window_get_display (window);
-#if GTK_CHECK_VERSION (3, 20, 0)
 	seat = gdk_display_get_default_seat (display);
 
 	status = gdk_seat_grab (seat,
@@ -345,19 +338,6 @@ grab_keyboard_on_window (GdkWindow *window,
 	                        NULL,
 	                        NULL,
 	                        NULL);
-#else
-	device_manager = gdk_display_get_device_manager (display);
-	pointer = gdk_device_manager_get_client_pointer (device_manager);
-	keyboard = gdk_device_get_associated_device (pointer);
-
-	status = gdk_device_grab (keyboard,
-	                          window,
-	                          GDK_OWNERSHIP_NONE,
-	                          TRUE,
-	                          GDK_KEY_PRESS_MASK,
-	                          NULL,
-	                          activate_time);
-#endif
 
 	if (status == GDK_GRAB_SUCCESS) {
 		return TRUE;

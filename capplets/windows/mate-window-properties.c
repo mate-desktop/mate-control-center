@@ -303,12 +303,8 @@ title_label_new (const char* title)
     g_free (str);
 
     gtk_label_set_use_markup (GTK_LABEL (widget), TRUE);
-#if GTK_CHECK_VERSION (3, 16, 0)
     gtk_label_set_xalign (GTK_LABEL (widget), 0.0);
     gtk_label_set_yalign (GTK_LABEL (widget), 0.0);
-#else
-    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.0);
-#endif
 
     return widget;
 }
@@ -492,12 +488,8 @@ main (int argc, char **argv)
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
     widget = gtk_label_new_with_mnemonic (_("To move a window, press-and-hold this key then grab the window:"));
-#if GTK_CHECK_VERSION (3, 16, 0)
     gtk_label_set_xalign (GTK_LABEL (widget), 0.0);
     gtk_label_set_yalign (GTK_LABEL (widget), 0.0);
-#else
-    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.0);
-#endif
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 6);
 
     alt_click_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);

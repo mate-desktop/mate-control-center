@@ -378,13 +378,7 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 	guint upper;
 	GdkModifierType ignored_modifiers;
 	GdkDisplay *display;
-#if GTK_CHECK_VERSION (3, 20, 0)
 	GdkSeat *seat;
-#else
-	GdkDevice *pointer;
-	GdkDevice *keyboard;
-	GdkDeviceManager *device_manager;
-#endif
 
 	keys = EGG_CELL_RENDERER_KEYS(data);
 
@@ -471,18 +465,9 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 	out:
 
 	display = gtk_widget_get_display (widget);
-#if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat (display);
 
 	gdk_seat_ungrab (seat);
-#else
-	device_manager = gdk_display_get_device_manager (display);
-	keyboard = gdk_device_get_associated_device (pointer);
-	pointer = gdk_device_manager_get_client_pointer (device_manager);
-
-	gdk_device_ungrab (keyboard, event->time);
-	gdk_device_ungrab (pointer, event->time);
-#endif
 
 	path = g_strdup(g_object_get_data(G_OBJECT(keys->edit_widget), EGG_CELL_RENDERER_TEXT_PATH));
 
@@ -508,27 +493,12 @@ static void ungrab_stuff(GtkWidget* widget, gpointer data)
 {
 	EggCellRendererKeys* keys = EGG_CELL_RENDERER_KEYS(data);
 	GdkDisplay *display;
-#if GTK_CHECK_VERSION (3, 20, 0)
 	GdkSeat *seat;
-#else
-	GdkDevice *keyboard;
-	GdkDevice *pointer;
-	GdkDeviceManager *device_manager;
-#endif
 
 	display = gtk_widget_get_display (widget);
-#if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat (display);
 
 	gdk_seat_ungrab (seat);
-#else
-	device_manager = gdk_display_get_device_manager (display);
-	keyboard = gdk_device_get_associated_device (pointer);
-	pointer = gdk_device_manager_get_client_pointer (device_manager);
-
-	gdk_device_ungrab (keyboard, GDK_CURRENT_TIME);
-	gdk_device_ungrab (pointer, GDK_CURRENT_TIME);
-#endif
 
 	g_signal_handlers_disconnect_by_func(G_OBJECT(keys->grab_widget), G_CALLBACK(grab_key_callback), data);
 }
@@ -589,13 +559,7 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
   GtkCellRendererText *celltext;
   EggCellRendererKeys *keys;
   GdkDisplay *display;
-#if GTK_CHECK_VERSION (3, 20, 0)
   GdkSeat *seat;
-#else
-  GdkDeviceManager *device_manager;
-  GdkDevice *keyboard;
-  GdkDevice *pointer;
-#endif
   GtkWidget *label;
   GtkWidget *eventbox;
   GValue celltext_editable = {0};
@@ -611,7 +575,6 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
   g_return_val_if_fail (gtk_widget_get_window (widget) != NULL, NULL);
 
   display = gtk_widget_get_display (widget);
-#if GTK_CHECK_VERSION (3, 20, 0)
   seat = gdk_display_get_default_seat (display);
 
   if (gdk_seat_grab (seat,
@@ -623,32 +586,6 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
                      NULL,
                      NULL) != GDK_GRAB_SUCCESS)
     return NULL;
-#else
-  device_manager = gdk_display_get_device_manager (display);
-  pointer = gdk_device_manager_get_client_pointer (device_manager);
-  keyboard = gdk_device_get_associated_device (pointer);
-
-  if (gdk_device_grab (keyboard,
-                       gtk_widget_get_window (widget),
-                       GDK_OWNERSHIP_NONE,
-                       FALSE,
-                       GDK_KEY_PRESS_MASK,
-                       NULL,
-                       gdk_event_get_time (event)) != GDK_GRAB_SUCCESS)
-    return NULL;
-
-  if (gdk_device_grab (pointer,
-                       gtk_widget_get_window (widget),
-                       GDK_OWNERSHIP_NONE,
-                       FALSE,
-                       GDK_BUTTON_PRESS_MASK,
-                       NULL,
-                       gdk_event_get_time (event)) != GDK_GRAB_SUCCESS)
-    {
-      gdk_device_ungrab (keyboard, gdk_event_get_time (event));
-      return NULL;
-    }
-#endif
 
   keys->grab_widget = widget;
 
@@ -663,11 +600,7 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
                              (void**) &keys->edit_widget);
 
   label = gtk_label_new (NULL);
-#if GTK_CHECK_VERSION (3, 16, 0)
   gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-#else
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-#endif
 
   gtk_widget_modify_bg (eventbox, GTK_STATE_NORMAL,
                         &gtk_widget_get_style (widget)->bg[GTK_STATE_SELECTED]);

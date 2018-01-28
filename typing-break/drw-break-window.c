@@ -127,9 +127,7 @@ drw_break_window_init (DrwBreakWindow *window)
 
 	gint                   root_monitor = 0;
 	GdkScreen             *screen = NULL;
-#if GTK_CHECK_VERSION (3, 22, 0)
 	GdkDisplay            *display;
-#endif
 	GdkRectangle           monitor;
 	gint                   right_padding;
 	gint                   bottom_padding;
@@ -151,12 +149,8 @@ drw_break_window_init (DrwBreakWindow *window)
 	gtk_window_set_modal (GTK_WINDOW (window), TRUE);
 
 	screen = gdk_screen_get_default ();
-#if GTK_CHECK_VERSION (3, 22, 0)
 	display = gdk_screen_get_display (screen);
 	gdk_monitor_get_geometry (gdk_display_get_monitor (display, root_monitor), &monitor);
-#else
-	gdk_screen_get_monitor_geometry (screen, root_monitor, &monitor);
-#endif
 
 	gtk_window_set_default_size (GTK_WINDOW (window),
 				     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)),
@@ -438,16 +432,9 @@ grab_on_window (GdkWindow *window,
 		guint32    activate_time)
 {
 	GdkDisplay *display;
-#if GTK_CHECK_VERSION (3, 20, 0)
 	GdkSeat *seat;
-#else
-	GdkDeviceManager *device_manager;
-	GdkDevice *pointer;
-	GdkDevice *keyboard;
-#endif
 
 	display = gdk_window_get_display (window);
-#if GTK_CHECK_VERSION (3, 20, 0)
 	seat = gdk_display_get_default_seat (display);
 
 	return (gdk_seat_grab (seat,
@@ -458,36 +445,6 @@ grab_on_window (GdkWindow *window,
 	                       NULL,
 	                       NULL,
 	                       NULL) == GDK_GRAB_SUCCESS);
-#else
-	device_manager = gdk_display_get_device_manager (display);
-	pointer = gdk_device_manager_get_client_pointer (device_manager);
-	keyboard = gdk_device_get_associated_device (pointer);
-
-	if ((gdk_device_grab (pointer,
-	                      window,
-	                      GDK_OWNERSHIP_NONE,
-	                      TRUE,
-	                      GDK_BUTTON_PRESS_MASK |
-	                      GDK_BUTTON_RELEASE_MASK |
-	                      GDK_POINTER_MOTION_MASK,
-	                      NULL,
-	                      activate_time) == 0)) {
-		if (gdk_device_grab (keyboard,
-		                     window,
-		                     GDK_OWNERSHIP_NONE,
-		                     TRUE,
-		                     GDK_KEY_PRESS_MASK,
-		                     NULL,
-		                     activate_time) == 0)
-			return TRUE;
-		else {
-			gdk_device_ungrab (pointer, activate_time);
-			return FALSE;
-		}
-	}
-
-	return FALSE;
-#endif
 }
 
 static gboolean
@@ -576,16 +533,12 @@ get_layout_location (GtkLabel *label,
                      gint     *xp,
                      gint     *yp)
 {
-#if !GTK_CHECK_VERSION (3, 16, 0)
-	GtkMisc        *misc;
-#endif
 	GtkWidget      *widget;
 	GtkAllocation  widget_allocation;
 	GtkRequisition widget_requisition;
 	gfloat         xalign, yalign;
 	gint           x, y;
 	gint           xpad, ypad;
-#if GTK_CHECK_VERSION (3, 16, 0)
 	gint           margin_start, margin_end, margin_top, margin_bottom;
 
 	widget = GTK_WIDGET (label);
@@ -599,13 +552,7 @@ get_layout_location (GtkLabel *label,
 
 	xpad = margin_start + margin_end;
 	ypad = margin_top + margin_bottom;
-#else
-	misc = GTK_MISC (label);
-	widget = GTK_WIDGET (label);
 
-	gtk_misc_get_alignment (misc, &xalign, &yalign);
-	gtk_misc_get_padding (misc, &xpad, &ypad);
-#endif
 	gtk_widget_get_allocation (widget, &widget_allocation);
 	gtk_widget_get_requisition (widget, &widget_requisition);
 
