@@ -527,12 +527,8 @@ emit_viewport_changed (FooScrollArea *scroll_area,
 		       GdkRectangle  *new_viewport,
 		       GdkRectangle  *old_viewport)
 {
-#if GTK_CHECK_VERSION (3, 20, 0)
     GdkDisplay *display;
     GdkSeat *seat;
-#else
-    GdkDeviceManager *manager;
-#endif
     GdkDevice *pointer;
 
     int px, py;
@@ -542,14 +538,9 @@ emit_viewport_changed (FooScrollArea *scroll_area,
     if (scroll_area->priv->input_window == NULL)
 	return;
 
-#if GTK_CHECK_VERSION (3, 20, 0)
     display = gdk_window_get_display (scroll_area->priv->input_window);
     seat = gdk_display_get_default_seat (display);
     pointer = gdk_seat_get_pointer (seat);
-#else
-    manager = gdk_display_get_device_manager (gdk_window_get_display (scroll_area->priv->input_window));
-    pointer = gdk_device_manager_get_client_pointer (manager);
-#endif
     gdk_window_get_device_position (scroll_area->priv->input_window,
                                     pointer,
                                     &px,
@@ -568,10 +559,6 @@ clamp_adjustment (GtkAdjustment *adj)
 					       - gtk_adjustment_get_page_size (adj)));
     else
 	gtk_adjustment_set_value (adj, 0.0);
-
-#if !GTK_CHECK_VERSION (3,18,0)
-    gtk_adjustment_changed (adj);
-#endif
 }
 
 static gboolean

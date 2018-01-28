@@ -242,11 +242,7 @@ nameplate_tile_setup (NameplateTile *this)
 	if (GTK_IS_WIDGET (this->subheader))
 		gtk_container_add (priv->subheader_ctnr, this->subheader);
 
-#if GTK_CHECK_VERSION(3,20,0)
 	gtk_widget_set_focus_on_click (GTK_WIDGET (this), FALSE);
-#else
-	gtk_button_set_focus_on_click (GTK_BUTTON (this), FALSE);
-#endif
 }
 
 static void

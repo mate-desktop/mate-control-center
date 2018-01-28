@@ -234,11 +234,7 @@ static void update_message_area(AppearanceData* data)
 
 		data->style_message_label = gtk_label_new (NULL);
 		gtk_label_set_line_wrap (GTK_LABEL (data->style_message_label), TRUE);
-#if GTK_CHECK_VERSION (3, 16, 0)
 		gtk_label_set_xalign (GTK_LABEL (data->style_message_label), 0.0);
-#else
-		gtk_misc_set_alignment (GTK_MISC (data->style_message_label), 0.0, 0.5);
-#endif
 
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 9);
 		icon = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);

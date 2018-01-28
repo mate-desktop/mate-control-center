@@ -313,12 +313,8 @@ file_transfer_dialog_init (FileTransferDialog *dlg)
 	gtk_label_set_markup (GTK_LABEL (dlg->priv->status), markup);
 	g_free (markup);
 
-#if GTK_CHECK_VERSION (3, 16, 0)
 	gtk_label_set_xalign (GTK_LABEL (dlg->priv->status), 0.0);
 	gtk_label_set_yalign (GTK_LABEL (dlg->priv->status), 0.0);
-#else
-	gtk_misc_set_alignment (GTK_MISC (dlg->priv->status), 0.0, 0.0);
-#endif
 
 	gtk_box_pack_start (GTK_BOX (vbox), dlg->priv->status, FALSE, FALSE, 0);
 

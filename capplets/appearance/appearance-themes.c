@@ -661,11 +661,7 @@ theme_message_area_update (AppearanceData *data)
     data->theme_message_label = gtk_label_new (NULL);
     gtk_widget_show (data->theme_message_label);
     gtk_label_set_line_wrap (GTK_LABEL (data->theme_message_label), TRUE);
-#if GTK_CHECK_VERSION (3, 16, 0)
     gtk_label_set_xalign (GTK_LABEL (data->theme_message_label), 0.0);
-#else
-    gtk_misc_set_alignment (GTK_MISC (data->theme_message_label), 0.0, 0.5);
-#endif
 
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 9);
     gtk_widget_show (hbox);
