@@ -422,7 +422,6 @@ get_dpi_from_x_server (void)
 {
   GdkScreen  *screen;
   double dpi;
-  gint scale;
 
   screen = gdk_screen_get_default ();
 
@@ -444,10 +443,6 @@ get_dpi_from_x_server (void)
     dpi = DPI_FALLBACK;
   }
 
-  scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
-  if (scale)
-    dpi = dpi * scale;
-
   return dpi;
 }
 
@@ -458,16 +453,19 @@ static void
 dpi_load (GSettings     *settings,
 	  GtkSpinButton *spinner)
 {
-  gdouble value = g_settings_get_double (settings, FONT_DPI_KEY);
+  GdkScreen *screen;
+  gint scale;
   gdouble dpi;
 
-  if (value != 0)
-    dpi = value;
-  else
+  screen = gdk_screen_get_default ();
+  scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
+  dpi = g_settings_get_double (settings, FONT_DPI_KEY);
+
+  if (dpi == 0)
     dpi = get_dpi_from_x_server ();
 
-  if (dpi < DPI_LOW_REASONABLE_VALUE)
-    dpi = DPI_LOW_REASONABLE_VALUE;
+  dpi *= (double)scale;
+  dpi = CLAMP(dpi, DPI_LOW_REASONABLE_VALUE, DPI_HIGH_REASONABLE_VALUE);
 
   in_change = TRUE;
   gtk_spin_button_set_value (spinner, dpi);
@@ -483,6 +481,15 @@ dpi_changed (GSettings *settings,
 }
 
 static void
+monitors_changed (GdkScreen      *screen,
+		  AppearanceData *data)
+{
+  GtkWidget *widget;
+  widget = appearance_capplet_get_widget (data, "dpi_spinner");
+  dpi_load (data->font_settings, GTK_SPIN_BUTTON (widget));
+}
+
+static void
 dpi_value_changed (GtkSpinButton *spinner,
 		   GSettings     *settings)
 {
@@ -495,7 +502,13 @@ dpi_value_changed (GtkSpinButton *spinner,
    * received from GSettings, this may cause mildly strange effects.
    */
   if (!in_change) {
-    gdouble new_dpi = gtk_spin_button_get_value (spinner);
+    GdkScreen *screen;
+    gint scale;
+    gdouble new_dpi;
+
+    screen = gdk_screen_get_default ();
+    scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
+    new_dpi = gtk_spin_button_get_value (spinner) / (double)scale;
 
     g_settings_set_double (settings, FONT_DPI_KEY, new_dpi);
 
@@ -540,6 +553,9 @@ cb_show_details (GtkWidget *button,
 		      G_CALLBACK (dpi_value_changed), data->font_settings);
 
     g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), widget);
+
+    /* Update font DPI when window scaling factor is changed */
+    g_signal_connect (gdk_screen_get_default (), "monitors-changed", G_CALLBACK (monitors_changed), data);
 
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_none_sample"),      ANTIALIAS_NONE,      HINT_SLIGHT);
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_grayscale_sample"), ANTIALIAS_GRAYSCALE, HINT_SLIGHT);
