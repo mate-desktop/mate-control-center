@@ -74,7 +74,6 @@
 #define FONT_HINTING_KEY             "hinting"
 #define FONT_RGBA_ORDER_KEY          "rgba-order"
 #define FONT_DPI_KEY                 "dpi"
-#define SCALING_FACTOR_KEY           "window-scaling-factor"
 
 typedef struct {
 	GSettings* settings;
