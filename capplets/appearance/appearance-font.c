@@ -473,20 +473,20 @@ dpi_load (GSettings     *settings,
 }
 
 static void
-dpi_changed_cb (AppearanceData *data)
+dpi_changed (GSettings *settings,
+	     gchar     *key,
+	     gpointer   user_data)
+{
+  dpi_load (settings, user_data);
+}
+
+static void
+monitors_changed (GdkScreen      *screen,
+		  AppearanceData *data)
 {
   GtkWidget *widget;
   widget = appearance_capplet_get_widget (data, "dpi_spinner");
   dpi_load (data->font_settings, GTK_SPIN_BUTTON (widget));
-}
-
-static void
-dpi_changed (GSettings *settings,
-	     gchar     *key,
-	     gpointer   data)
-{
-  /* Let gsettings catch up to Xft/DPI */
-  g_timeout_add_seconds (1, (GSourceFunc)dpi_changed_cb, data);
 }
 
 static void
@@ -552,9 +552,10 @@ cb_show_details (GtkWidget *button,
     g_signal_connect (widget, "value_changed",
 		      G_CALLBACK (dpi_value_changed), data->font_settings);
 
-    g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), data);
+    g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), widget);
+
     /* Update font DPI when window scaling factor is changed */
-    g_signal_connect (data->interface_settings, "changed::" SCALING_FACTOR_KEY, G_CALLBACK (dpi_changed), data);
+    g_signal_connect (gdk_screen_get_default (), "monitors-changed", G_CALLBACK (monitors_changed), data);
 
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_none_sample"),      ANTIALIAS_NONE,      HINT_SLIGHT);
     setup_font_sample (appearance_capplet_get_widget (data, "antialias_grayscale_sample"), ANTIALIAS_GRAYSCALE, HINT_SLIGHT);
