@@ -290,7 +290,6 @@ invalid_theme_dialog (GtkWindow *parent,
 
 static gboolean
 mate_theme_install_real (GtkWindow *parent,
-			  gint filetype,
 			  const gchar *tmp_dir,
 			  const gchar *theme_name,
 			  gboolean ask_user)
@@ -576,7 +575,6 @@ process_local_theme (GtkWindow  *parent,
 	if (filetype == DIRECTORY) {
 		gchar *name = g_path_get_basename (path);
 		mate_theme_install_real (parent,
-					  filetype,
 					  path,
 					  name,
 					  TRUE);
@@ -648,7 +646,6 @@ process_local_theme (GtkWindow  *parent,
 
 			if (g_file_test (theme_dir, G_FILE_TEST_IS_DIR))
 				ok = mate_theme_install_real (parent,
-							       filetype,
 							       theme_dir,
 							       name,
 							       n_themes == 1);
