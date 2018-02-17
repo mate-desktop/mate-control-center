@@ -221,11 +221,8 @@ create_meta_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_container_add (GTK_CONTAINER (preview), vbox);
 
-  image_button = GTK_WIDGET (g_object_new (GTK_TYPE_BUTTON,
-					   "label", "gtk-open",
-					   "use-stock", TRUE,
-					   "use-underline", TRUE,
-					   NULL));
+  image_button = gtk_button_new_with_mnemonic (_("_Open"));
+  gtk_button_set_image (GTK_BUTTON (image_button), gtk_image_new_from_icon_name ("document-open", GTK_ICON_SIZE_BUTTON));
 
   gtk_widget_set_halign (image_button, GTK_ALIGN_START);
   gtk_widget_set_valign (image_button, GTK_ALIGN_START);
@@ -306,11 +303,8 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_container_set_border_width (GTK_CONTAINER (box), 6);
   gtk_box_pack_start (GTK_BOX (vbox), box, FALSE, FALSE, 0);
 
-  image_button = GTK_WIDGET (g_object_new (GTK_TYPE_BUTTON,
-					   "label", "gtk-open",
-					   "use-stock", TRUE,
-					   "use-underline", TRUE,
-					   NULL));
+  image_button = gtk_button_new_with_mnemonic (_("_Open"));
+  gtk_button_set_image (GTK_BUTTON (image_button), gtk_image_new_from_icon_name ("document-open", GTK_ICON_SIZE_BUTTON));
 
   gtk_box_pack_start (GTK_BOX (box), image_button, FALSE, FALSE, 0);
   checkbox = gtk_check_button_new ();
