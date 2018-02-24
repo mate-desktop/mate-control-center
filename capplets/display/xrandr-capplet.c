@@ -1153,6 +1153,7 @@ list_edges_for_output (MateRROutputInfo *output, GArray *edges)
     int x, y, w, h;
 
     mate_rr_output_info_get_geometry (output, &x, &y, &w, &h);
+    get_geometry(output, &w, &h); // accounts for rotation
 
     /* Top, Bottom, Left, Right */
     add_edge (output, x, y, x + w, y, edges);
@@ -1351,6 +1352,7 @@ static void
 get_output_rect (MateRROutputInfo *output, GdkRectangle *rect)
 {
     mate_rr_output_info_get_geometry (output, &rect->x, &rect->y, &rect->width, &rect->height);
+    get_geometry (output, &rect->width, &rect->height); // accounts for rotation
 }
 
 static gboolean
