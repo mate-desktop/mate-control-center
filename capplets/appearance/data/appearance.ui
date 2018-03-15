@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.0 
+
+mate-appearance-properties - appearance properties dialog window
+Copyright (C) MATE Developers
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Author: Wolfgang Ulbrich
+
+-->
 <interface>
   <requires lib="gtk+" version="3.14"/>
   <!-- interface-license-type gplv2 -->
@@ -56,23 +77,40 @@
             <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkAlignment" id="alignment5">
+              <object class="GtkBox" id="vbox_resolution">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="xscale">0</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">8</property>
                 <child>
-                  <object class="GtkBox" id="hbox_resolution">
+                  <object class="GtkLabel" id="label11">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">12</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">R_esolution</property>
+                    <property name="use_underline">True</property>
+                    <property name="mnemonic_widget">dpi_spinner</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="hbox20">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="valign">center</property>
+                    <property name="spacing">8</property>
                     <child>
-                      <object class="GtkLabel" id="label11">
+                      <object class="GtkLabel" id="label16">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">R_esolution:</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">dpi_spinner</property>
+                        <property name="label" translatable="yes">Dots per inch (DPI):</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -81,34 +119,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="hbox20">
+                      <object class="GtkSpinButton" id="dpi_spinner">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="spacing">6</property>
-                        <child>
-                          <object class="GtkSpinButton" id="dpi_spinner">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="climb_rate">1</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label16">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">dots per inch</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
+                        <property name="can_focus">True</property>
+                        <property name="climb_rate">1</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -117,11 +131,53 @@
                       </packing>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="hbox21">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">8</property>
+                    <child>
+                      <object class="GtkLabel" id="label51">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">This resets the font DPI to the auto-detected value from Xserver.</property>
+                        <property name="label" translatable="yes">Automatic detection:</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="dpi_reset_switch">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="active">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">False</property>
-                <property name="fill">False</property>
+                <property name="fill">True</property>
                 <property name="position">0</property>
               </packing>
             </child>
@@ -757,6 +813,9 @@
                 <property name="position">3</property>
               </packing>
             </child>
+            <child>
+              <placeholder/>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -769,6 +828,9 @@
     <action-widgets>
       <action-widget response="-7">button3</action-widget>
     </action-widgets>
+    <child>
+      <placeholder/>
+    </child>
   </object>
   <object class="GtkDialog" id="theme_details">
     <property name="can_focus">False</property>
@@ -1553,6 +1615,9 @@
       <action-widget response="-11">theme_help_button</action-widget>
       <action-widget response="-7">theme_close_button</action-widget>
     </action-widgets>
+    <child>
+      <placeholder/>
+    </child>
   </object>
   <object class="GtkDialog" id="theme_save_dialog">
     <property name="can_focus">False</property>
@@ -1724,6 +1789,9 @@
       <action-widget response="-6">save_dialog_cancel_button</action-widget>
       <action-widget response="-5">save_dialog_save_button</action-widget>
     </action-widgets>
+    <child>
+      <placeholder/>
+    </child>
   </object>
   <object class="GtkListStore" id="toolbar_style_liststore">
     <columns>
@@ -3085,53 +3153,47 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkHandleBox" id="toolbar_handlebox">
+                                  <object class="GtkToolbar" id="toolbar_toolbar">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="toolbar_style">both-horiz</property>
                                     <child>
-                                      <object class="GtkToolbar" id="toolbar_toolbar">
+                                      <object class="GtkToolButton" id="button2">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="toolbar_style">both-horiz</property>
-                                        <child>
-                                          <object class="GtkToolButton" id="button2">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="is_important">True</property>
-                                            <property name="stock_id">gtk-new</property>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="homogeneous">True</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkToolButton" id="button4">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="stock_id">gtk-open</property>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="homogeneous">True</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkToolButton" id="save_button">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="stock_id">gtk-save</property>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="homogeneous">True</property>
-                                          </packing>
-                                        </child>
-                                        <style>
-                                          <class name="primary-toolbar"/>
-                                        </style>
+                                        <property name="is_important">True</property>
+                                        <property name="stock_id">gtk-new</property>
                                       </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="homogeneous">True</property>
+                                      </packing>
                                     </child>
+                                    <child>
+                                      <object class="GtkToolButton" id="button4">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="stock_id">gtk-open</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="homogeneous">True</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkToolButton" id="save_button">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="stock_id">gtk-save</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="homogeneous">True</property>
+                                      </packing>
+                                    </child>
+                                    <style>
+                                      <class name="primary-toolbar"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
@@ -3192,5 +3254,8 @@
       <action-widget response="-11">help_button</action-widget>
       <action-widget response="-7">close_button</action-widget>
     </action-widgets>
+    <child>
+      <placeholder/>
+    </child>
   </object>
 </interface>
