@@ -22,34 +22,6 @@
 #include "appearance.h"
 #include "stdio.h"
 
-
-static void
-show_handlebar (AppearanceData *data, gboolean show)
-{
-  GtkWidget *handlebox = appearance_capplet_get_widget (data, "toolbar_handlebox");
-  GtkWidget *toolbar = appearance_capplet_get_widget (data, "toolbar_toolbar");
-  GtkWidget *align = appearance_capplet_get_widget (data, "toolbar_align");
-
-  g_object_ref (handlebox);
-  g_object_ref (toolbar);
-
-  if (gtk_bin_get_child (GTK_BIN (align)))
-    gtk_container_remove (GTK_CONTAINER (align), gtk_bin_get_child (GTK_BIN (align)));
-
-  if (gtk_bin_get_child (GTK_BIN (handlebox)))
-    gtk_container_remove (GTK_CONTAINER (handlebox), gtk_bin_get_child (GTK_BIN (handlebox)));
-
-  if (show) {
-    gtk_container_add (GTK_CONTAINER (align), handlebox);
-    gtk_container_add (GTK_CONTAINER (handlebox), toolbar);
-    g_object_unref (handlebox);
-  } else {
-    gtk_container_add (GTK_CONTAINER (align), toolbar);
-  }
-
-  g_object_unref (toolbar);
-}
-
 static void
 set_have_icons (AppearanceData *data, gboolean value)
 {
@@ -94,14 +66,6 @@ menus_have_icons_cb (GSettings *settings,
   set_have_icons (data, g_settings_get_boolean (settings, key));
 }
 
-static void
-toolbar_detachable_cb (GSettings *settings,
-		     gchar *key,
-		     AppearanceData *data)
-{
-  show_handlebar (data, g_settings_get_boolean (settings, key));
-}
-
 /** GUI Callbacks **/
 
 static gint
@@ -140,16 +104,4 @@ ui_init (AppearanceData *data)
   set_have_icons (data,
     g_settings_get_boolean (data->interface_settings,
 			   MENU_ICONS_KEY));
-
-  g_signal_connect (appearance_capplet_get_widget (data, "toolbar_handlebox"),
-		    "button_press_event",
-		    (GCallback) button_press_block_cb, NULL);
-
-  show_handlebar (data,
-    g_settings_get_boolean (data->interface_settings,
-			   TOOLBAR_DETACHABLE_KEY));
-
-  /* no ui for detachable toolbars */
-  g_signal_connect (data->interface_settings,
-			   "changed::" TOOLBAR_DETACHABLE_KEY, (GCallback) toolbar_detachable_cb, data);
 }

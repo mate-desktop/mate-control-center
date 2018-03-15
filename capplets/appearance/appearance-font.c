@@ -473,11 +473,22 @@ dpi_load (GSettings     *settings,
 }
 
 static void
-dpi_changed (GSettings *settings,
-	     gchar     *key,
-	     gpointer   user_data)
+dpi_changed (GSettings      *settings,
+	     gchar          *key,
+	     AppearanceData *data)
 {
-  dpi_load (settings, user_data);
+  GtkWidget *spinner;
+  GtkWidget *toggle;
+  gdouble dpi;
+
+  dpi = g_settings_get_double (data->font_settings, FONT_DPI_KEY);
+  spinner = appearance_capplet_get_widget (data, "dpi_spinner");
+  toggle = appearance_capplet_get_widget (data, "dpi_reset_switch");
+
+  dpi_load (settings, GTK_SPIN_BUTTON (spinner));
+
+  gtk_switch_set_state (GTK_SWITCH (toggle), dpi == 0);
+  gtk_widget_set_sensitive (spinner, dpi != 0);
 }
 
 static void
@@ -490,8 +501,8 @@ monitors_changed (GdkScreen      *screen,
 }
 
 static void
-dpi_value_changed (GtkSpinButton *spinner,
-		   GSettings     *settings)
+dpi_value_changed (GtkSpinButton  *spinner,
+		   AppearanceData *data)
 {
   /* Like any time when using a spin button with GSettings, there is
    * a race condition here. When we change, we send the new
@@ -503,6 +514,7 @@ dpi_value_changed (GtkSpinButton *spinner,
    */
   if (!in_change) {
     GdkScreen *screen;
+    GtkWidget *toggle;
     gint scale;
     gdouble new_dpi;
 
@@ -510,10 +522,32 @@ dpi_value_changed (GtkSpinButton *spinner,
     scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
     new_dpi = gtk_spin_button_get_value (spinner) / (double)scale;
 
-    g_settings_set_double (settings, FONT_DPI_KEY, new_dpi);
+    g_settings_set_double (data->font_settings, FONT_DPI_KEY, new_dpi);
 
-    dpi_load (settings, spinner);
+    dpi_load (data->font_settings, spinner);
+
+    toggle = appearance_capplet_get_widget (data, "dpi_reset_switch");
+    gtk_switch_set_active (GTK_SWITCH (toggle), FALSE);
   }
+}
+
+static gboolean
+dpi_value_reset (GtkSwitch      *toggle,
+		 gboolean        state,
+		 AppearanceData *data)
+{
+  GtkWidget *spinner;
+  spinner = appearance_capplet_get_widget (data, "dpi_spinner");
+
+  if (state)
+    g_settings_set_double (data->font_settings, FONT_DPI_KEY, 0);
+  else
+    dpi_value_changed (GTK_SPIN_BUTTON (spinner), data);
+
+  gtk_switch_set_state(toggle, state);
+  gtk_widget_set_sensitive (spinner, !state);
+
+  return TRUE;
 }
 
 static void
@@ -532,27 +566,37 @@ cb_show_details (GtkWidget *button,
 {
   if (!data->font_details) {
     GtkAdjustment *adjustment;
-    GtkWidget *widget;
+    GtkWidget *spinner;
+    GtkWidget *toggle;
     EnumGroup *group;
+    gdouble dpi;
 
     data->font_details = appearance_capplet_get_widget (data, "render_details");
 
     gtk_window_set_transient_for (GTK_WINDOW (data->font_details),
                                   GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")));
 
-    widget = appearance_capplet_get_widget (data, "dpi_spinner");
+    spinner = appearance_capplet_get_widget (data, "dpi_spinner");
+    toggle = appearance_capplet_get_widget (data, "dpi_reset_switch");
+
+    /* Set initial state for widgets */
+    dpi = g_settings_get_double (data->font_settings, FONT_DPI_KEY);
+    gtk_switch_set_active (GTK_SWITCH (toggle), dpi == 0);
+    gtk_widget_set_sensitive (GTK_WIDGET (spinner), dpi != 0);
 
     /* pick a sensible maximum dpi */
-    adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget));
+    adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (spinner));
     gtk_adjustment_set_lower (adjustment, DPI_LOW_REASONABLE_VALUE);
     gtk_adjustment_set_upper (adjustment, DPI_HIGH_REASONABLE_VALUE);
     gtk_adjustment_set_step_increment (adjustment, 1);
 
-    dpi_load (data->font_settings, GTK_SPIN_BUTTON (widget));
-    g_signal_connect (widget, "value_changed",
-		      G_CALLBACK (dpi_value_changed), data->font_settings);
+    dpi_load (data->font_settings, GTK_SPIN_BUTTON (spinner));
+    g_signal_connect (spinner, "value-changed",
+		      G_CALLBACK (dpi_value_changed), data);
+    g_signal_connect (toggle, "state-set",
+		      G_CALLBACK (dpi_value_reset), data);
 
-    g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), widget);
+    g_signal_connect (data->font_settings, "changed::" FONT_DPI_KEY, G_CALLBACK (dpi_changed), data);
 
     /* Update font DPI when window scaling factor is changed */
     g_signal_connect (gdk_screen_get_default (), "monitors-changed", G_CALLBACK (monitors_changed), data);
