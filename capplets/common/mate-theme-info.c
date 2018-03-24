@@ -32,6 +32,7 @@
 #include <glib/gi18n.h>
 #include <gmodule.h>
 #include <gtk/gtk.h>
+#include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gio/gio.h>
 #include <string.h>
@@ -383,6 +384,8 @@ MateThemeMetaInfo* mate_theme_read_meta_theme(GFile* meta_theme_uri)
 
 	str = mate_desktop_item_get_string(meta_theme_ditem, CURSOR_THEME_KEY);
 
+	GdkWindow *window = gdk_get_default_root_window ();
+	gint scale = gdk_window_get_scale_factor (window);
 	if (str != NULL)
 	{
 		meta_theme_info->cursor_theme_name = g_strdup(str);
@@ -399,6 +402,7 @@ MateThemeMetaInfo* mate_theme_read_meta_theme(GFile* meta_theme_uri)
 		meta_theme_info->cursor_theme_name = g_strdup("default");
 		meta_theme_info->cursor_size = 18;
 	}
+	meta_theme_info->cursor_size *= scale;
 
 	str = mate_desktop_item_get_string(meta_theme_ditem, APPLICATION_FONT_KEY);
 
