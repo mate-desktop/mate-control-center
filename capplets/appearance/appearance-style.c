@@ -544,7 +544,7 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
     if (theme && theme->sizes->len > 0)
       size = g_array_index (theme->sizes, gint, 0);
     else
-      size = 18;
+      size = 24;
   }
 
   if (size != gsettings_size)
