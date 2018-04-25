@@ -32,7 +32,6 @@
 #include <glib/gi18n.h>
 #include <gmodule.h>
 #include <gtk/gtk.h>
-#include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gio/gio.h>
 #include <string.h>
@@ -384,8 +383,6 @@ MateThemeMetaInfo* mate_theme_read_meta_theme(GFile* meta_theme_uri)
 
 	str = mate_desktop_item_get_string(meta_theme_ditem, CURSOR_THEME_KEY);
 
-	GdkWindow *window = gdk_get_default_root_window ();
-	gint scale = gdk_window_get_scale_factor (window);
 	if (str != NULL)
 	{
 		meta_theme_info->cursor_theme_name = g_strdup(str);
@@ -395,14 +392,13 @@ MateThemeMetaInfo* mate_theme_read_meta_theme(GFile* meta_theme_uri)
 		if (str)
 			meta_theme_info->cursor_size = (int) g_ascii_strtoll(str, NULL, 10);
 		else
-			meta_theme_info->cursor_size = 18;
+			meta_theme_info->cursor_size = 24;
 	}
 	else
 	{
 		meta_theme_info->cursor_theme_name = g_strdup("default");
-		meta_theme_info->cursor_size = 18;
+		meta_theme_info->cursor_size = 24;
 	}
-	meta_theme_info->cursor_size *= scale;
 
 	str = mate_desktop_item_get_string(meta_theme_ditem, APPLICATION_FONT_KEY);
 
@@ -545,7 +541,7 @@ read_cursor_theme (GFile *cursor_theme_uri)
   MateThemeCursorInfo *cursor_theme_info = NULL;
   GFile *parent_uri, *cursors_uri;
 
-  const gint filter_sizes[] = { 12, 16, 24, 32, 36, 40, 48, 64, 96, 128 };
+  const gint filter_sizes[] = { 12, 16, 18, 24, 32, 36, 40, 48, 64, 96, 128 };
   const gint num_sizes = G_N_ELEMENTS (filter_sizes);
 
   parent_uri = g_file_get_parent (cursor_theme_uri);
