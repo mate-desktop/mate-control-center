@@ -1031,52 +1031,54 @@ generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data, C
 {
 	MateDesktopItem *desktop_item;
 	const gchar *desktop_file;
-	GSList *contents, *l;
+	MateMenuTreeIter *iter;
+	MateMenuTreeItemType type;
 
-	contents = matemenu_tree_directory_get_contents (root_dir);
-	for (l = contents; l; l = l->next)
-	{
-		switch (matemenu_tree_item_get_type (l->data))
-		{
-		case MATEMENU_TREE_ITEM_DIRECTORY:
-			/* g_message ("Found sub-category %s", matemenu_tree_directory_get_name (l->data)); */
-			if (recursive)
-				generate_launchers (l->data, app_data, cat_data, TRUE);
-			break;
-		case MATEMENU_TREE_ITEM_ENTRY:
-			/* g_message ("Found item name is:%s", matemenu_tree_entry_get_name (l->data)); */
-			desktop_file = matemenu_tree_entry_get_desktop_file_path (l->data);
-			if (desktop_file)
-			{
-				if (g_hash_table_lookup (app_data->hash, desktop_file))
-				{
-					break;	/* duplicate */
-				}
-				/* Fixme - make sure it's safe to store this without duping it. As far as I can tell it is
-				   safe as long as I don't hang on to this anylonger than I hang on to the MateMenuTreeEntry*
-				   which brings up another point - am I supposed to free these or does freeing the top level recurse
-				*/
-				g_hash_table_insert (app_data->hash, (gpointer) desktop_file,
-					(gpointer) desktop_file);
-			}
-			desktop_item = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
-			if (!desktop_item)
-			{
-				g_critical ("Failure - mate_desktop_item_new_from_file(%s)",
-					    desktop_file);
+	iter = matemenu_tree_directory_iter (directory);
+	while ((type = matemenu_tree_iter_next (iter)) != MATEMENU_TREE_ITEM_INVALID) {
+		gpointer item;
+		switch (type) {
+			case MATEMENU_TREE_ITEM_DIRECTORY:
+				item = matemenu_tree_iter_get_directory(iter);
+				/* g_message ("Found sub-category %s", matemenu_tree_directory_get_name (item)); */
+				if (recursive)
+					generate_launchers (item, app_data, cat_data, TRUE);
+				matemenu_tree_item_unref (item);
 				break;
-			}
-			if (!check_specific_apps_hack (desktop_item))
-				insert_launcher_into_category (cat_data, desktop_item, app_data);
-			mate_desktop_item_unref (desktop_item);
-			break;
-		default:
-			break;
+			case MATEMENU_TREE_ITEM_ENTRY:
+				item = matemenu_tree_iter_get_entry(iter);
+				/* g_message ("Found item name is:%s", matemenu_tree_entry_get_desktop_file_id(item)); */
+				desktop_file = matemenu_tree_entry_get_desktop_file_path (item);
+				if (desktop_file)
+				{
+					if (g_hash_table_lookup (app_data->hash, desktop_file))
+					{
+						break;	/* duplicate */
+					}
+					/* Fixme - make sure it's safe to store this without duping it. As far as I can tell it is
+					   safe as long as I don't hang on to this anylonger than I hang on to the MateMenuTreeEntry*
+					   which brings up another point - am I supposed to free these or does freeing the top level recurse
+					   */
+					g_hash_table_insert (app_data->hash, (gpointer) desktop_file,
+							(gpointer) desktop_file);
+				}
+				desktop_item = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
+				if (!desktop_item)
+				{
+					g_critical ("Failure - mate_desktop_item_new_from_file(%s)",
+							desktop_file);
+					break;
+				}
+				if (!check_specific_apps_hack (desktop_item))
+					insert_launcher_into_category (cat_data, desktop_item, app_data);
+				mate_desktop_item_unref (desktop_item);
+				matemenu_tree_item_unref (item);
+				break;
+			default:
+				g_assert_not_reached ();
+				break;
 		}
-
-		matemenu_tree_item_unref (l->data);
 	}
-	g_slist_free (contents);
 }
 
 static void
