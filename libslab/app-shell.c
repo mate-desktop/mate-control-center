@@ -876,8 +876,17 @@ generate_categories (AppShellData * app_data)
 
 	if (!app_data->tree)
 	{
-		app_data->tree = matemenu_tree_lookup (app_data->menu_name, MATEMENU_TREE_FLAGS_NONE);
-		matemenu_tree_add_monitor (app_data->tree, matemenu_tree_changed_callback, app_data);
+		GError *error = NULL;
+
+		app_data->tree = matemenu_tree_new (app_data->menu_name, MATEMENU_TREE_FLAGS_NONE);
+		g_signal_connect (app_data->tree, "changed", G_CALLBACK (matemenu_tree_changed_callback), app_data);
+		if (! matemenu_tree_load_sync (app_data->tree, &error)) {
+			g_warning("Menu tree loading got error:%s\n", error->message);
+			g_error_free(error);
+			g_object_unref(app_data->tree);
+			app_data->tree = NULL;
+		}
+
 	}
 	root_dir = matemenu_tree_get_root_directory (app_data->tree);
 	if (root_dir)
