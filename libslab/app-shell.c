@@ -871,8 +871,9 @@ void
 generate_categories (AppShellData * app_data)
 {
 	MateMenuTreeDirectory *root_dir;
-	GSList *contents, *l;
 	gboolean need_misc = FALSE;
+	MateMenuTreeIter *iter;
+	MateMenuTreeItemType type;
 
 	if (!app_data->tree)
 	{
@@ -888,42 +889,35 @@ generate_categories (AppShellData * app_data)
 		}
 
 	}
-	root_dir = matemenu_tree_get_root_directory (app_data->tree);
-	if (root_dir)
-		contents = matemenu_tree_directory_get_contents (root_dir);
-	else
-		contents = NULL;
-	if (!root_dir || !contents)
-	{
+
+	if ((root_dir = matemenu_tree_get_root_directory (app_data->tree)) == NULL ) {
 		GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
-			GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "Failure loading - %s",
-			app_data->menu_name);
+				GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "Failure loading - %s",
+				app_data->menu_name);
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		exit (1);	/* Fixme - is there a MATE/GTK way to do this. */
 	}
 
-	for (l = contents; l; l = l->next)
-	{
+	iter = matemenu_tree_directory_iter (root_dir);
+	while ((type = matemenu_tree_iter_next (iter)) != MATEMENU_TREE_ITEM_INVALID) {
+		gpointer item;
 		const char *category;
-		MateMenuTreeItem *item = l->data;
-
-		switch (matemenu_tree_item_get_type (item))
-		{
-		case MATEMENU_TREE_ITEM_DIRECTORY:
-			category = matemenu_tree_directory_get_name ((MateMenuTreeDirectory*)item);
-			generate_category(category, (MateMenuTreeDirectory*)item, app_data, TRUE);
-			break;
-		case MATEMENU_TREE_ITEM_ENTRY:
-			need_misc = TRUE;
-			break;
-		default:
-			break;
+		switch (type) {
+			case MATEMENU_TREE_ITEM_DIRECTORY:
+				item = matemenu_tree_iter_get_directory (iter);
+				category = matemenu_tree_directory_get_name (item);
+				generate_category(category, item, app_data, TRUE);
+				matemenu_tree_item_unref (item);
+				break;
+			case MATEMENU_TREE_ITEM_ENTRY:
+				need_misc = TRUE;
+				break;
+			default:
+				g_assert_not_reached ();
+				break;
 		}
-
-		matemenu_tree_item_unref (item);
 	}
-	g_slist_free (contents);
 
 	if (need_misc)
 		generate_category (_("Other"), root_dir, app_data, FALSE);
@@ -1034,7 +1028,7 @@ generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data, C
 	MateMenuTreeIter *iter;
 	MateMenuTreeItemType type;
 
-	iter = matemenu_tree_directory_iter (directory);
+	iter = matemenu_tree_directory_iter (root_dir);
 	while ((type = matemenu_tree_iter_next (iter)) != MATEMENU_TREE_ITEM_INVALID) {
 		gpointer item;
 		switch (type) {
