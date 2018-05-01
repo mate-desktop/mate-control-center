@@ -267,6 +267,10 @@ setup_dialog (GtkBuilder *dialog)
 	g_settings_bind (mouse_settings, "locate-pointer", WID ("locate_pointer_toggle"),
 		"active", G_SETTINGS_BIND_DEFAULT);
 
+	/* Middle Button Emulation */
+	g_settings_bind (mouse_settings, "middle-button-enabled", WID ("middle_button_emulation_toggle"),
+		"active", G_SETTINGS_BIND_DEFAULT);
+
 	/* Double-click time */
 	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
 		gtk_range_get_adjustment (GTK_RANGE (WID ("delay_scale"))), "value",
