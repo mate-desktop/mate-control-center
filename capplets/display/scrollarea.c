@@ -250,6 +250,8 @@ foo_scroll_area_class_init (FooScrollAreaClass *class)
     widget_class->map = foo_scroll_area_map;
     widget_class->unmap = foo_scroll_area_unmap;
 
+    gtk_widget_class_set_css_name (widget_class, "foo-scroll-area");
+
     parent_class = g_type_class_peek_parent (class);
 
     /* Scrollable interface properties */
