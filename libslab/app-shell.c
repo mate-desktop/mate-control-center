@@ -914,10 +914,10 @@ generate_categories (AppShellData * app_data)
 				need_misc = TRUE;
 				break;
 			default:
-				g_assert_not_reached ();
 				break;
 		}
 	}
+	matemenu_tree_iter_unref(iter);
 
 	if (need_misc)
 		generate_category (_("Other"), root_dir, app_data, FALSE);
@@ -1069,10 +1069,10 @@ generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data, C
 				matemenu_tree_item_unref (item);
 				break;
 			default:
-				g_assert_not_reached ();
 				break;
 		}
 	}
+	matemenu_tree_iter_unref(iter);
 }
 
 static void
