@@ -47,6 +47,7 @@
 #define COLOR_SCHEME_KEY             "gtk-color-scheme"
 #define ACCEL_CHANGE_KEY             "can-change-accels"
 #define MENU_ICONS_KEY               "menus-have-icons"
+#define BUTTON_ICONS_KEY             "buttons-have-icons"
 #define TOOLBAR_STYLE_KEY            "toolbar-style"
 #define GTK_FONT_DEFAULT_VALUE       "Sans 10"
 

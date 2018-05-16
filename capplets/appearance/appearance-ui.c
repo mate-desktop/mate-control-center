@@ -104,4 +104,11 @@ ui_init (AppearanceData *data)
   set_have_icons (data,
     g_settings_get_boolean (data->interface_settings,
 			   MENU_ICONS_KEY));
+
+  widget = appearance_capplet_get_widget(data, "button_icons_toggle");
+  g_settings_bind (data->interface_settings,
+     BUTTON_ICONS_KEY,
+     G_OBJECT (widget),
+     "active",
+     G_SETTINGS_BIND_DEFAULT);
 }
