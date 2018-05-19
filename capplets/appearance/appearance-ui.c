@@ -90,9 +90,9 @@ ui_init (AppearanceData *data)
 
     // Remove menu accels and toolbar style toggles for new GTK versions
     gtk_container_remove((GtkContainer *) container,
-    appearance_capplet_get_widget(data, "menu_accel_toggle"));
+                         appearance_capplet_get_widget(data, "menu_accel_toggle"));
     gtk_container_remove((GtkContainer *) container,
-    appearance_capplet_get_widget(data, "hbox11"));
+                         appearance_capplet_get_widget(data, "hbox11"));
 
     widget = appearance_capplet_get_widget(data, "menu_icons_toggle");
     g_settings_bind (data->interface_settings,
@@ -101,7 +101,7 @@ ui_init (AppearanceData *data)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
     g_signal_connect (data->interface_settings, "changed::" MENU_ICONS_KEY,
-    G_CALLBACK (menus_have_icons_cb), data);
+                      G_CALLBACK (menus_have_icons_cb), data);
 
     set_have_icons (data,
                     g_settings_get_boolean (data->interface_settings,
