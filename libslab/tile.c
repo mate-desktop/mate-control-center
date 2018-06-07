@@ -52,8 +52,6 @@ static gboolean tile_button_release (GtkWidget *, GdkEventButton *);
 static gboolean tile_key_release (GtkWidget *, GdkEventKey *);
 static gboolean tile_popup_menu (GtkWidget *);
 
-static void tile_popup_menu_position (GtkMenu *, gint *, gint *, gboolean *, gpointer);
-
 static void tile_drag_begin (GtkWidget *, GdkDragContext *);
 static void tile_drag_data_get (GtkWidget *, GdkDragContext *, GtkSelectionData *, guint,
 guint);
@@ -377,8 +375,11 @@ tile_button_release (GtkWidget * widget, GdkEventButton * event)
 
 	case 3:
 		if (GTK_IS_MENU (tile->context_menu))
-			gtk_menu_popup (tile->context_menu, NULL, NULL, NULL, NULL, event->button,
-				event->time);
+		    gtk_menu_popup_at_widget (GTK_MENU (tile->context_menu),
+		                              widget,
+		                              GDK_GRAVITY_SOUTH_WEST,
+		                              GDK_GRAVITY_NORTH_WEST,
+		                              (const GdkEvent*) event);
 
 		break;
 
@@ -408,31 +409,6 @@ tile_key_release (GtkWidget * widget, GdkEventKey * event)
 	return FALSE;
 }
 
-static void
-tile_popup_menu_position (GtkMenu * menu, gint * x, gint * y, gboolean * push_in, gpointer data)
-{
-	Tile *tile = TILE (data);
-
-	GtkAllocation all;
-	GtkRequisition req;
-	GtkWidget *top;
-
-	if (!gtk_widget_get_realized (GTK_WIDGET (tile)))
-		return;
-
-	gtk_widget_get_preferred_size (GTK_WIDGET (menu), &req, NULL);
-	gtk_widget_get_allocation (GTK_WIDGET (menu), &all);
-
-	top = gtk_widget_get_toplevel (GTK_WIDGET (tile));
-
-	gdk_window_get_origin (gtk_widget_get_window (top), x, y);
-
-	*x += (all.width / 2) - (req.width / 2);
-	*y += (all.height / 2) - (req.height / 2);
-
-	*push_in = FALSE;
-}
-
 static gboolean
 tile_popup_menu (GtkWidget * widget)
 {
@@ -440,8 +416,11 @@ tile_popup_menu (GtkWidget * widget)
 
 	if (GTK_IS_MENU (tile->context_menu))
 	{
-		gtk_menu_popup (tile->context_menu, NULL, NULL, tile_popup_menu_position, tile, 0,
-			gtk_get_current_event_time ());
+		gtk_menu_popup_at_widget (GTK_MENU (tile->context_menu),
+		                          widget,
+		                          GDK_GRAVITY_SOUTH_WEST,
+		                          GDK_GRAVITY_NORTH_WEST,
+		                          NULL);
 
 		return TRUE;
 	}
