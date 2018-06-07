@@ -175,6 +175,7 @@ orientation_radio_button_toggled (GtkToggleButton *togglebutton,
 static void
 synaptics_check_capabilities (GtkBuilder *dialog)
 {
+	GdkDisplay *display;
 	int numdevices, i;
 	XDeviceInfo *devicelist;
 	Atom realtype, prop;
@@ -182,23 +183,24 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 	unsigned long nitems, bytes_after;
 	unsigned char *data;
 
-	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "Synaptics Capabilities", True);
+	display = gdk_display_get_default ();
+	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(display), "Synaptics Capabilities", True);
 	if (!prop)
 		return;
 
-	devicelist = XListInputDevices (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &numdevices);
+	devicelist = XListInputDevices (GDK_DISPLAY_XDISPLAY(display), &numdevices);
 	for (i = 0; i < numdevices; i++) {
 		if (devicelist[i].use != IsXExtensionPointer)
 			continue;
 
-		gdk_error_trap_push ();
-		XDevice *device = XOpenDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+		gdk_x11_display_error_trap_push (display);
+		XDevice *device = XOpenDevice (GDK_DISPLAY_XDISPLAY(display),
 					       devicelist[i].id);
-		if (gdk_error_trap_pop ())
+		if (gdk_x11_display_error_trap_pop (display))
 			continue;
 
-		gdk_error_trap_push ();
-		if ((XGetDeviceProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device, prop, 0, 2, False,
+		gdk_x11_display_error_trap_push (display);
+		if ((XGetDeviceProperty (GDK_DISPLAY_XDISPLAY(display), device, prop, 0, 2, False,
 					 XA_INTEGER, &realtype, &realformat, &nitems,
 					 &bytes_after, &data) == Success) && (realtype != None)) {
 			/* Property data is booleans for has_left, has_middle,
@@ -211,9 +213,9 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 			XFree (data);
 		}
 
-		gdk_error_trap_pop_ignored ();
+		gdk_x11_display_error_trap_pop_ignored (display);
 
-		XCloseDevice (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), device);
+		XCloseDevice (GDK_DISPLAY_XDISPLAY(display), device);
 	}
 	XFreeDeviceList (devicelist);
 }
