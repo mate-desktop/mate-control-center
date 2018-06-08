@@ -43,7 +43,7 @@ typedef struct
 {
 	GtkBoxClass parent_class;
 
-	void (*search) (NldSearchBar *, int context_id, const char *text);
+	void (*search) (NldSearchBar *, const char *text);
 } NldSearchBarClass;
 
 GType nld_search_bar_get_type (void);
@@ -53,11 +53,6 @@ GtkWidget *nld_search_bar_new (void);
 void nld_search_bar_clear (NldSearchBar * search_bar);
 gboolean nld_search_bar_has_focus (NldSearchBar * search_bar);
 
-gboolean nld_search_bar_get_show_contexts (NldSearchBar * search_bar);
-void nld_search_bar_set_show_contexts (NldSearchBar * search_bar, gboolean show_contexts);
-void nld_search_bar_add_context (NldSearchBar * search_bar, const char *label,
-	const char *icon_name, int context_id);
-
 gboolean nld_search_bar_get_show_button (NldSearchBar * search_bar);
 void nld_search_bar_set_show_button (NldSearchBar * search_bar, gboolean show_button);
 
@@ -66,9 +61,6 @@ void nld_search_bar_set_search_timeout (NldSearchBar * search_bar, int search_ti
 
 const char *nld_search_bar_get_text (NldSearchBar * search_bar);
 void nld_search_bar_set_text (NldSearchBar * search_bar, const char *text, gboolean activate);
-
-int nld_search_bar_get_context_id (NldSearchBar * search_bar);
-void nld_search_bar_set_context_id (NldSearchBar * search_bar, int context_id);
 
 #ifdef __cplusplus
 }

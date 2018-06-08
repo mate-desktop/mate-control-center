@@ -31,7 +31,6 @@
 #include "libslab-utils.h"
 #include "nameplate-tile.h"
 #include "search-bar.h"
-#include "search-context-picker.h"
 #include "shell-window.h"
 #include "slab-mate-util.h"
 #include "slab-section.h"
