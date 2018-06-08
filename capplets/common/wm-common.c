@@ -19,6 +19,7 @@ static char *
 wm_common_get_window_manager_property (Atom atom)
 {
   Atom utf8_string, type;
+  GdkDisplay *display;
   int result;
   char *retval;
   int format;
@@ -31,10 +32,11 @@ wm_common_get_window_manager_property (Atom atom)
 
   utf8_string = gdk_x11_get_xatom_by_name ("UTF8_STRING");
 
-  gdk_error_trap_push ();
+  display = gdk_display_get_default ();
+  gdk_x11_display_error_trap_push (display);
 
   val = NULL;
-  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY(display),
 		  	       wm_window,
 			       atom,
 			       0, G_MAXLONG,
@@ -42,7 +44,7 @@ wm_common_get_window_manager_property (Atom atom)
 			       &type, &format, &nitems,
 			       &bytes_after, (guchar **) &val);
 
-  if (gdk_error_trap_pop () || result != Success ||
+  if (gdk_x11_display_error_trap_pop (display) || result != Success ||
       type != utf8_string || format != 8 || nitems == 0 ||
       !g_utf8_validate (val, nitems, NULL))
     {
@@ -105,13 +107,15 @@ wm_common_get_current_keybindings (void)
 static void
 update_wm_window (void)
 {
+  GdkDisplay *display;
   Window *xwindow;
   Atom type;
   gint format;
   gulong nitems;
   gulong bytes_after;
 
-  XGetWindowProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), GDK_ROOT_WINDOW (),
+  display = gdk_display_get_default ();
+  XGetWindowProperty (GDK_DISPLAY_XDISPLAY(display), GDK_ROOT_WINDOW (),
 		      gdk_x11_get_xatom_by_name ("_NET_SUPPORTING_WM_CHECK"),
 		      0, G_MAXLONG, False, XA_WINDOW, &type, &format,
 		      &nitems, &bytes_after, (guchar **) &xwindow);
@@ -122,11 +126,11 @@ update_wm_window (void)
      return;
     }
 
-  gdk_error_trap_push ();
-  XSelectInput (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), *xwindow, StructureNotifyMask | PropertyChangeMask);
-  XSync (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), False);
+  gdk_x11_display_error_trap_push (display);
+  XSelectInput (GDK_DISPLAY_XDISPLAY(display), *xwindow, StructureNotifyMask | PropertyChangeMask);
+  XSync (GDK_DISPLAY_XDISPLAY(display), False);
 
-  if (gdk_error_trap_pop ())
+  if (gdk_x11_display_error_trap_pop (display))
     {
        XFree (xwindow);
        wm_window = None;
