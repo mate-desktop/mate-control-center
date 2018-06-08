@@ -21,7 +21,6 @@
 #include "search-bar.h"
 #include "config.h"
 
-#include "search-context-picker.h"
 #include "nld-marshal.h"
 
 #include <glib/gi18n-lib.h>
@@ -29,7 +28,6 @@
 typedef struct
 {
 	GtkWidget *hbox;
-	NldSearchContextPicker *context_picker;
 	GtkEntry *entry;
 	GtkWidget *button;
 
@@ -75,8 +73,7 @@ static void nld_search_bar_class_init (NldSearchBarClass * nld_search_bar_class)
 	signals[SEARCH] =
 		g_signal_new ("search", G_TYPE_FROM_CLASS (nld_search_bar_class),
 		G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION, G_STRUCT_OFFSET (NldSearchBarClass, search),
-		NULL, NULL, nld_marshal_VOID__INT_STRING, G_TYPE_NONE, 2, G_TYPE_INT,
-		G_TYPE_STRING);
+		NULL, NULL, nld_marshal_VOID__STRING, G_TYPE_NONE, 1, G_TYPE_STRING);
 }
 
 static void
@@ -151,8 +148,6 @@ nld_search_bar_clear (NldSearchBar * search_bar)
 
 	priv->block_signal = TRUE;
 	gtk_entry_set_text (priv->entry, "");
-	if (priv->context_picker)
-		nld_search_context_picker_set_context (priv->context_picker, 0);
 	priv->block_signal = FALSE;
 }
 
@@ -170,7 +165,7 @@ emit_search (NldSearchBar * search_bar)
 		priv->timeout_id = 0;
 	}
 
-	g_signal_emit (search_bar, signals[SEARCH], 0, nld_search_bar_get_context_id (search_bar),
+	g_signal_emit (search_bar, signals[SEARCH], 0,
 		nld_search_bar_get_text (search_bar));
 }
 
@@ -178,96 +173,6 @@ static void
 emit_search_callback (GtkWidget * widget, gpointer search_bar)
 {
 	emit_search (search_bar);
-}
-
-gboolean
-nld_search_bar_get_show_contexts (NldSearchBar * search_bar)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	return priv->context_picker && gtk_widget_get_visible (GTK_WIDGET (priv->context_picker));
-}
-
-static NldSearchContextPicker *
-build_context_picker (NldSearchBar * search_bar)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-	GtkWidget *picker;
-
-	picker = nld_search_context_picker_new ();
-	g_signal_connect (picker, "context_changed", G_CALLBACK (emit_search_callback), search_bar);
-
-	gtk_box_pack_start (GTK_BOX (priv->hbox), picker, 0, 0, FALSE);
-	gtk_box_reorder_child (GTK_BOX (priv->hbox), picker, 0);
-
-	return NLD_SEARCH_CONTEXT_PICKER (picker);
-}
-
-void
-nld_search_bar_set_show_contexts (NldSearchBar * search_bar, gboolean show_contexts)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	if (show_contexts)
-	{
-		if (!priv->context_picker)
-			priv->context_picker = build_context_picker (search_bar);
-		gtk_widget_show (GTK_WIDGET (priv->context_picker));
-	}
-	else if (priv->context_picker)
-		gtk_widget_hide (GTK_WIDGET (priv->context_picker));
-}
-
-void
-nld_search_bar_add_context (NldSearchBar * search_bar, const char *label, const char *icon_name,
-	int context_id)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	if (!priv->context_picker)
-		priv->context_picker = build_context_picker (search_bar);
-
-	nld_search_context_picker_add_context (priv->context_picker, label, icon_name, context_id);
-}
-
-gboolean
-nld_search_bar_get_show_button (NldSearchBar * search_bar)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	return priv->button != NULL;
-}
-
-void
-nld_search_bar_set_show_button (NldSearchBar * search_bar, gboolean show_button)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	if (show_button)
-	{
-		GtkWidget *image;
-
-		if (priv->button)
-			return;
-
-		priv->button = gtk_button_new_with_label (_("Find Now"));
-		image = gtk_image_new_from_icon_name ("system-search", GTK_ICON_SIZE_MENU);
-		gtk_button_set_image (GTK_BUTTON (priv->button), image);
-		gtk_widget_show (priv->button);
-
-		g_signal_connect (priv->button, "clicked", G_CALLBACK (emit_search_callback),
-			search_bar);
-
-		gtk_box_pack_end (GTK_BOX (priv->hbox), priv->button, FALSE, FALSE, 0);
-	}
-	else
-	{
-		if (!priv->button)
-			return;
-
-		gtk_widget_destroy (priv->button);
-		priv->button = NULL;
-	}
 }
 
 static gboolean
@@ -337,23 +242,3 @@ nld_search_bar_set_text (NldSearchBar * search_bar, const char *text, gboolean a
 		emit_search (search_bar);
 }
 
-int
-nld_search_bar_get_context_id (NldSearchBar * search_bar)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	if (priv->context_picker && gtk_widget_get_visible (GTK_WIDGET (priv->context_picker)))
-		return nld_search_context_picker_get_context (priv->context_picker);
-	else
-		return -1;
-}
-
-void
-nld_search_bar_set_context_id (NldSearchBar * search_bar, int context_id)
-{
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
-
-	g_return_if_fail (priv->context_picker != NULL);
-
-	nld_search_context_picker_set_context (priv->context_picker, context_id);
-}

@@ -17,7 +17,6 @@ HEADER_FILES=					\
 	libslab-utils.h				\
 	nameplate-tile.h			\
 	search-bar.h				\
-	search-context-picker.h			\
 	shell-window.h				\
 	slab-mate-util.h			\
 	slab-section.h				\
@@ -37,7 +36,6 @@ libmate_slab_la_SOURCES =			\
 	libslab-utils.c				\
 	nameplate-tile.c			\
 	search-bar.c				\
-	search-context-picker.c			\
 	shell-window.c				\
 	slab-mate-util.c			\
 	slab-section.c				\

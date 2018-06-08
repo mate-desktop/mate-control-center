@@ -74,7 +74,7 @@ static void launch_selected_app (AppShellData * app_data);
 static void generate_potential_apps (gpointer catdata, gpointer user_data);
 
 static void relayout_shell (AppShellData * app_data);
-static gboolean handle_filter_changed (NldSearchBar * search_bar, int context, const char *text,
+static gboolean handle_filter_changed (NldSearchBar * search_bar, const char *text,
 	gpointer user_data);
 static void handle_group_clicked (Tile * tile, TileEvent * event, gpointer user_data);
 static void set_state (AppShellData * app_data, GtkWidget * widget);
@@ -581,7 +581,7 @@ handle_filter_changed_delayed (gpointer user_data)
 }
 
 static gboolean
-handle_filter_changed (NldSearchBar * search_bar, int context, const char *text, gpointer data)
+handle_filter_changed (NldSearchBar * search_bar, const char *text, gpointer data)
 {
 	AppShellData *app_data;
 
