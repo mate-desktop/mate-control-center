@@ -1,21 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Abel Cheung <abel@oaka.org>, 2001-2003, 2005
-# Jeff Huang <s8321414@gmail.com>, 2015-2018
-# S.J. Luo <crystal@mickey.ee.nctu.edu.tw>, 1999
-# 趙惟倫 <bluebat@member.fsf.org>, 2012-2013
-# Jeff Huang <s8321414@gmail.com>, 2014
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-09 17:36+0100\n"
-"PO-Revision-Date: 2018-01-10 00:21+0000\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/mate/MATE/language/zh_TW/)\n"
+"POT-Creation-Date: 2018-03-23 18:21+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Martin Wimpress <code@flexion.org>, 2018\n"
+"Language-Team: Chinese (Taiwan) (https://www.transifex.com/mate/teams/13566/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +22,9 @@ msgstr ""
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
-msgstr "[ '變更佈景主題;mate-appearance-properties.desktop', '設定首選的應用程式;mate-default-applications-properties.desktop' ]"
+msgstr ""
+"[ '變更佈景主題;mate-appearance-properties.desktop', '設定首選的應用程式;mate-default-"
+"applications-properties.desktop' ]"
 
 #: ../org.mate.control-center.gschema.xml.in.h:2
 msgid "Task names and associated .desktop files"
@@ -114,14 +112,14 @@ msgstr "自訂快捷鍵所關聯按鍵繫結。"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:3
 msgid "Command"
-msgstr "命令"
+msgstr "指令"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:4
 msgid "Command associated with a custom keybinding."
 msgstr "自訂按鍵繫結所關聯的命令。"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:205
+#: ../font-viewer/font-view.c:197
 msgid "Name"
 msgstr "名稱"
 
@@ -143,9 +141,9 @@ msgid "Images"
 msgstr "圖片"
 
 #: ../capplets/about-me/mate-about-me.c:302
-#: ../capplets/appearance/theme-installer.c:780
+#: ../capplets/appearance/theme-installer.c:834
 msgid "All Files"
-msgstr "全部檔案"
+msgstr "所有檔案"
 
 #: ../capplets/about-me/mate-about-me.c:446
 #, c-format
@@ -443,7 +441,9 @@ msgstr "改變您的密碼"
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
-msgstr "要變更目前的密碼，先在以下的欄位輸入目前的密碼，並按下<b>認證</b>。\n通過認證後，可以輸入新的密碼；輸入後再輸入一次作為檢查，接著按<b>變更密碼</b>。"
+msgstr ""
+"要變更目前的密碼，先在以下的欄位輸入目前的密碼，並按下<b>認證</b>。\n"
+"通過認證後，可以輸入新的密碼；輸入後再輸入一次作為檢查，接著按<b>變更密碼</b>。"
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:6
 msgid "Current _password:"
@@ -459,7 +459,7 @@ msgstr "再輸入新的密碼(_R):"
 
 #: ../capplets/about-me/mate-about-me-password.ui.h:9
 msgid "_Authenticate"
-msgstr "認證(_A)"
+msgstr "驗證(_A)"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
 msgid "Assistive Technologies Preferences"
@@ -568,7 +568,8 @@ msgstr "預設鼠標"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../font-viewer/font-view.c:301 ../font-viewer/font-view.c:536
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:293
+#: ../font-viewer/font-view.c:528
 msgid "Install"
 msgstr "安裝"
 
@@ -584,41 +585,41 @@ msgstr "套用字型"
 msgid "Revert Font"
 msgstr "還原字型"
 
-#: ../capplets/appearance/appearance-themes.c:691
+#: ../capplets/appearance/appearance-themes.c:687
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "目前的布景主題建議使用指定的背景與字型。同時，上次套用的建議字型會被還原。"
 
-#: ../capplets/appearance/appearance-themes.c:693
+#: ../capplets/appearance/appearance-themes.c:689
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "目前的布景主題建議使用指定的背景。同時，上次套用的建議字型會被還原。"
 
-#: ../capplets/appearance/appearance-themes.c:695
+#: ../capplets/appearance/appearance-themes.c:691
 msgid "The current theme suggests a background and a font."
 msgstr "本布景主題建議使用指定的背景與字型。"
 
-#: ../capplets/appearance/appearance-themes.c:697
+#: ../capplets/appearance/appearance-themes.c:693
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "目前的布景主題有建議搭配的字型。同時，上次套用的建議字型會被還原。"
 
-#: ../capplets/appearance/appearance-themes.c:699
+#: ../capplets/appearance/appearance-themes.c:695
 msgid "The current theme suggests a background."
 msgstr "本布景主題建議使用指定的背景。"
 
-#: ../capplets/appearance/appearance-themes.c:701
+#: ../capplets/appearance/appearance-themes.c:697
 msgid "The last applied font suggestion can be reverted."
 msgstr "上次套用的建議字型會被還原。"
 
-#: ../capplets/appearance/appearance-themes.c:703
+#: ../capplets/appearance/appearance-themes.c:699
 msgid "The current theme suggests a font."
 msgstr "本布景主題建議使用指定的字型。"
 
-#: ../capplets/appearance/appearance-themes.c:1019
+#: ../capplets/appearance/appearance-themes.c:1015
 msgid "Custom"
 msgstr "自訂"
 
@@ -627,341 +628,349 @@ msgid "Font Rendering Details"
 msgstr "描繪字型的設定細節"
 
 #: ../capplets/appearance/data/appearance.ui.h:2
-msgid "R_esolution:"
-msgstr "解析度(_E):"
+msgid "R_esolution"
+msgstr "解析度(_E)"
 
 #: ../capplets/appearance/data/appearance.ui.h:3
-msgid "dots per inch"
-msgstr "解析度(dpi)"
+msgid "Dots per inch (DPI):"
+msgstr "每英寸點數 (DPI)："
 
 #: ../capplets/appearance/data/appearance.ui.h:4
+msgid "This resets the font DPI to the auto-detected value from Xserver."
+msgstr "這會重設字型 DPI 為從 Xserver 而來的自動偵測值。"
+
+#: ../capplets/appearance/data/appearance.ui.h:5
+msgid "Automatic detection:"
+msgstr "自動偵測："
+
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Smoothing"
 msgstr "平滑化"
 
-#: ../capplets/appearance/data/appearance.ui.h:5
+#: ../capplets/appearance/data/appearance.ui.h:7
 msgid "Gra_yscale"
 msgstr "灰階(_Y)"
 
-#: ../capplets/appearance/data/appearance.ui.h:6
+#: ../capplets/appearance/data/appearance.ui.h:8
 msgid "Sub_pixel (LCDs)"
 msgstr "次像素(sub_pixel) [LCD]"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:9
 msgid "_None"
 msgstr "沒有(_N)"
 
 #. font hinting
-#: ../capplets/appearance/data/appearance.ui.h:9
+#: ../capplets/appearance/data/appearance.ui.h:11
 msgid "Hinting"
 msgstr "字型提示"
 
-#: ../capplets/appearance/data/appearance.ui.h:10
+#: ../capplets/appearance/data/appearance.ui.h:12
 msgid "N_one"
 msgstr "無(_O)"
 
-#: ../capplets/appearance/data/appearance.ui.h:11
+#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "_Slight"
 msgstr "輕微(_S)"
 
-#: ../capplets/appearance/data/appearance.ui.h:12
+#: ../capplets/appearance/data/appearance.ui.h:14
 msgid "_Full"
 msgstr "完整(_F)"
 
-#: ../capplets/appearance/data/appearance.ui.h:13
+#: ../capplets/appearance/data/appearance.ui.h:15
 msgid "_Medium"
 msgstr "中(_M)"
 
-#: ../capplets/appearance/data/appearance.ui.h:14
+#: ../capplets/appearance/data/appearance.ui.h:16
 msgid "Subpixel Order"
 msgstr "次像素排列次序"
 
 #. pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:16
+#: ../capplets/appearance/data/appearance.ui.h:18
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:18
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:20
+#: ../capplets/appearance/data/appearance.ui.h:22
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: ../capplets/appearance/data/appearance.ui.h:24
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: ../capplets/appearance/data/appearance.ui.h:23
+#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "Customize Theme"
 msgstr "自訂布景主題"
 
-#: ../capplets/appearance/data/appearance.ui.h:24
+#: ../capplets/appearance/data/appearance.ui.h:26
 msgid "Controls"
 msgstr "介面控制"
 
-#: ../capplets/appearance/data/appearance.ui.h:25
+#: ../capplets/appearance/data/appearance.ui.h:27
 msgid "The current controls theme does not support color schemes."
 msgstr "本控制布景不支援色彩配置。"
 
-#: ../capplets/appearance/data/appearance.ui.h:26
+#: ../capplets/appearance/data/appearance.ui.h:28
 msgid "_Tooltips:"
 msgstr "工具提示(_T):"
 
-#: ../capplets/appearance/data/appearance.ui.h:27
+#: ../capplets/appearance/data/appearance.ui.h:29
 msgid "Text"
 msgstr "文字"
 
-#: ../capplets/appearance/data/appearance.ui.h:28
+#: ../capplets/appearance/data/appearance.ui.h:30
 msgid "Background"
 msgstr "背景"
 
-#: ../capplets/appearance/data/appearance.ui.h:29
+#: ../capplets/appearance/data/appearance.ui.h:31
 msgid "_Selected items:"
 msgstr "已選項目(_S):"
 
-#: ../capplets/appearance/data/appearance.ui.h:30
+#: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Input boxes:"
 msgstr "輸入視窗(_I):"
 
-#: ../capplets/appearance/data/appearance.ui.h:31
+#: ../capplets/appearance/data/appearance.ui.h:33
 msgid "_Windows:"
 msgstr "視窗(_W):"
 
-#: ../capplets/appearance/data/appearance.ui.h:32
+#: ../capplets/appearance/data/appearance.ui.h:34
 msgid "_Reset to Defaults"
 msgstr "重置為預設值(_R)"
 
-#: ../capplets/appearance/data/appearance.ui.h:33
+#: ../capplets/appearance/data/appearance.ui.h:35
 msgid "Colors"
 msgstr "顏色"
 
-#: ../capplets/appearance/data/appearance.ui.h:34
+#: ../capplets/appearance/data/appearance.ui.h:36
 msgid "Window Border"
 msgstr "視窗邊框"
 
-#: ../capplets/appearance/data/appearance.ui.h:35
+#: ../capplets/appearance/data/appearance.ui.h:37
 msgid "Icons"
 msgstr "圖示"
 
-#: ../capplets/appearance/data/appearance.ui.h:36
+#: ../capplets/appearance/data/appearance.ui.h:38
 msgid "_Size:"
 msgstr "大小(_S):"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:37
+#: ../capplets/appearance/data/appearance.ui.h:39
 #: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Small"
 msgstr "小"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:38
+#: ../capplets/appearance/data/appearance.ui.h:40
 #: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Large"
 msgstr "大"
 
-#: ../capplets/appearance/data/appearance.ui.h:39
+#: ../capplets/appearance/data/appearance.ui.h:41
 msgid "Pointer"
 msgstr "指標"
 
-#: ../capplets/appearance/data/appearance.ui.h:40
+#: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save Theme As..."
 msgstr "另存布景主題…"
 
-#: ../capplets/appearance/data/appearance.ui.h:41
+#: ../capplets/appearance/data/appearance.ui.h:43
 msgid "Save _background image"
 msgstr "儲存背景圖片(_B)"
 
-#: ../capplets/appearance/data/appearance.ui.h:42
+#: ../capplets/appearance/data/appearance.ui.h:44
 msgid "Save _notification theme"
 msgstr "儲存通知主題(_N)"
 
-#: ../capplets/appearance/data/appearance.ui.h:43
+#: ../capplets/appearance/data/appearance.ui.h:45
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
 msgid "_Name:"
-msgstr "名稱(_N):"
+msgstr "名稱(_N)："
 
-#: ../capplets/appearance/data/appearance.ui.h:44
+#: ../capplets/appearance/data/appearance.ui.h:46
 msgid "_Description:"
 msgstr "描述(_D):"
 
-#: ../capplets/appearance/data/appearance.ui.h:45
+#: ../capplets/appearance/data/appearance.ui.h:47
 msgid "Text below items"
 msgstr "文字在項目下"
 
-#: ../capplets/appearance/data/appearance.ui.h:46
+#: ../capplets/appearance/data/appearance.ui.h:48
 msgid "Text beside items"
 msgstr "文字在項目旁"
 
-#: ../capplets/appearance/data/appearance.ui.h:47
-msgid "Icons only"
-msgstr "只有圖示"
-
-#: ../capplets/appearance/data/appearance.ui.h:48
-msgid "Text only"
-msgstr "只有文字"
-
 #: ../capplets/appearance/data/appearance.ui.h:49
+msgid "Icons only"
+msgstr "僅圖示"
+
+#: ../capplets/appearance/data/appearance.ui.h:50
+msgid "Text only"
+msgstr "僅文字"
+
+#: ../capplets/appearance/data/appearance.ui.h:51
 msgid "Solid color"
 msgstr "單一色彩"
 
-#: ../capplets/appearance/data/appearance.ui.h:50
+#: ../capplets/appearance/data/appearance.ui.h:52
 msgid "Horizontal gradient"
 msgstr "水平漸層"
 
-#: ../capplets/appearance/data/appearance.ui.h:51
+#: ../capplets/appearance/data/appearance.ui.h:53
 msgid "Vertical gradient"
 msgstr "垂直漸層"
 
-#: ../capplets/appearance/data/appearance.ui.h:52
+#: ../capplets/appearance/data/appearance.ui.h:54
 msgid "Tile"
 msgstr "鋪排"
 
-#: ../capplets/appearance/data/appearance.ui.h:53
+#: ../capplets/appearance/data/appearance.ui.h:55
 msgid "Zoom"
 msgstr "縮放"
 
-#: ../capplets/appearance/data/appearance.ui.h:54
+#: ../capplets/appearance/data/appearance.ui.h:56
 msgid "Center"
 msgstr "置中"
 
-#: ../capplets/appearance/data/appearance.ui.h:55
+#: ../capplets/appearance/data/appearance.ui.h:57
 msgid "Scale"
 msgstr "縮放"
 
-#: ../capplets/appearance/data/appearance.ui.h:56
+#: ../capplets/appearance/data/appearance.ui.h:58
 msgid "Stretch"
 msgstr "延伸"
 
-#: ../capplets/appearance/data/appearance.ui.h:57
+#: ../capplets/appearance/data/appearance.ui.h:59
 msgid "Span"
 msgstr "跨越"
 
-#: ../capplets/appearance/data/appearance.ui.h:58
+#: ../capplets/appearance/data/appearance.ui.h:60
 msgid "Appearance Preferences"
 msgstr "外觀偏好設定"
 
-#: ../capplets/appearance/data/appearance.ui.h:59
+#: ../capplets/appearance/data/appearance.ui.h:61
 msgid "Save _As..."
 msgstr "另存新檔(_A)…"
 
-#: ../capplets/appearance/data/appearance.ui.h:60
+#: ../capplets/appearance/data/appearance.ui.h:62
 msgid "C_ustomize..."
 msgstr "自訂(_U)…"
 
-#: ../capplets/appearance/data/appearance.ui.h:61
+#: ../capplets/appearance/data/appearance.ui.h:63
 msgid "_Install..."
 msgstr "安裝(_I)…"
 
-#: ../capplets/appearance/data/appearance.ui.h:62
+#: ../capplets/appearance/data/appearance.ui.h:64
 msgid "Get more themes online"
 msgstr "線上取得更多布景主題"
 
-#: ../capplets/appearance/data/appearance.ui.h:63
+#: ../capplets/appearance/data/appearance.ui.h:65
 msgid "Theme"
-msgstr "布景主題"
+msgstr "佈景主題"
 
-#: ../capplets/appearance/data/appearance.ui.h:64
+#: ../capplets/appearance/data/appearance.ui.h:66
 msgid "_Style:"
 msgstr "風格(_S):"
 
-#: ../capplets/appearance/data/appearance.ui.h:65
+#: ../capplets/appearance/data/appearance.ui.h:67
 msgid "C_olors:"
 msgstr "顏色(_O):"
 
-#: ../capplets/appearance/data/appearance.ui.h:66
+#: ../capplets/appearance/data/appearance.ui.h:68
 msgid "Open a dialog to specify the color"
 msgstr "開啟對話方塊來指定顏色"
 
-#: ../capplets/appearance/data/appearance.ui.h:67
+#: ../capplets/appearance/data/appearance.ui.h:69
 msgid "Get more backgrounds online"
 msgstr "線上取得更多背景"
 
-#: ../capplets/appearance/data/appearance.ui.h:68
+#: ../capplets/appearance/data/appearance.ui.h:70
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
 msgid "_Add..."
 msgstr "加入(_A)…"
 
-#: ../capplets/appearance/data/appearance.ui.h:69
+#: ../capplets/appearance/data/appearance.ui.h:71
 msgid "_Application font:"
 msgstr "應用程式字型(_A):"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
+#: ../capplets/appearance/data/appearance.ui.h:72
 msgid "_Document font:"
 msgstr "文件字型(_D):"
 
-#: ../capplets/appearance/data/appearance.ui.h:71
+#: ../capplets/appearance/data/appearance.ui.h:73
 msgid "Des_ktop font:"
 msgstr "桌面字型(_K):"
 
-#: ../capplets/appearance/data/appearance.ui.h:72
+#: ../capplets/appearance/data/appearance.ui.h:74
 msgid "_Window title font:"
 msgstr "視窗標題字型(_W):"
 
-#: ../capplets/appearance/data/appearance.ui.h:73
+#: ../capplets/appearance/data/appearance.ui.h:75
 msgid "_Fixed width font:"
 msgstr "固定寬度字型(_F):"
 
-#: ../capplets/appearance/data/appearance.ui.h:74
+#: ../capplets/appearance/data/appearance.ui.h:76
 msgid "Rendering"
 msgstr "描繪字型"
 
-#: ../capplets/appearance/data/appearance.ui.h:75
+#: ../capplets/appearance/data/appearance.ui.h:77
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "次像素(sub_pixel)平滑方式 [LCD]"
 
-#: ../capplets/appearance/data/appearance.ui.h:76
+#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "Best _shapes"
 msgstr "最佳形狀(_S)"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:79
 msgid "_Monochrome"
 msgstr "不平滑化(_M)"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:80
 msgid "Best co_ntrast"
 msgstr "最佳對比(_N)"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:81
 msgid "D_etails..."
 msgstr "詳細設定(_E)…"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:82
 msgid "Fonts"
 msgstr "字型"
 
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:83
 msgid "Menus and Toolbars"
 msgstr "選單與工具列"
 
-#: ../capplets/appearance/data/appearance.ui.h:82
+#: ../capplets/appearance/data/appearance.ui.h:84
 msgid "Show _icons in menus"
 msgstr "在選單中顯示圖示(_I)"
 
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:85
 msgid "_Editable menu shortcut keys"
 msgstr "可編輯的選單快捷鍵(_E)"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:86
 msgid "Toolbar _button labels:"
 msgstr "工具列按鈕標籤(_B)："
 
-#: ../capplets/appearance/data/appearance.ui.h:85
+#: ../capplets/appearance/data/appearance.ui.h:87
 msgid "Preview"
 msgstr "預覽"
 
-#: ../capplets/appearance/data/appearance.ui.h:86
+#: ../capplets/appearance/data/appearance.ui.h:88
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:89
 msgid "Edit"
 msgstr "編輯"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:90
 msgid "Interface"
 msgstr "介面"
 
@@ -979,15 +988,15 @@ msgstr "布景主題安裝程式"
 
 #: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
 msgid "Installs themes packages for various parts of the desktop"
-msgstr "安裝布景主題套件供桌面不同的部分使用"
+msgstr "安裝布景主題包供桌面不同的部分使用"
 
 #: ../capplets/appearance/data/mate-theme-package.xml.in.h:1
 msgid "Mate Theme Package"
-msgstr "Mate 布景主題套件"
+msgstr "Mate 布景主題包"
 
 #: ../capplets/appearance/mate-wp-info.c:51
 msgid "No Desktop Background"
-msgstr "無桌面背景"
+msgstr "沒有桌面背景"
 
 #: ../capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
@@ -1028,7 +1037,11 @@ msgid ""
 "%s, %s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr "<b>%s</b>\n%s, %s\n資料夾： %s\n作者： %s"
+msgstr ""
+"<b>%s</b>\n"
+"%s, %s\n"
+"資料夾： %s\n"
+"作者： %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1041,95 +1054,119 @@ msgid ""
 "%s\n"
 "Folder: %s\n"
 "Artist: %s"
-msgstr "<b>%s</b>\n%s\n資料夾： %s\n作者： %s"
+msgstr ""
+"<b>%s</b>\n"
+"%s\n"
+"資料夾： %s\n"
+"作者： %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "遺失圖片"
 
-#: ../capplets/appearance/theme-installer.c:185
-#: ../capplets/appearance/theme-installer.c:241
+#: ../capplets/appearance/theme-installer.c:186
+#: ../capplets/appearance/theme-installer.c:242
 msgid "Cannot install theme"
 msgstr "不能安裝主題"
 
-#: ../capplets/appearance/theme-installer.c:187
+#: ../capplets/appearance/theme-installer.c:188
 #, c-format
 msgid "The %s utility is not installed."
 msgstr "%s 程式並沒有安裝在系統上。"
 
-#: ../capplets/appearance/theme-installer.c:243
+#: ../capplets/appearance/theme-installer.c:244
 msgid "There was a problem while extracting the theme."
 msgstr "解壓縮布景主題時發生錯誤。"
 
-#: ../capplets/appearance/theme-installer.c:271
+#: ../capplets/appearance/theme-installer.c:274
 msgid "There was an error installing the selected file"
 msgstr "安裝選定的檔案時發生錯誤"
 
-#: ../capplets/appearance/theme-installer.c:272
+#: ../capplets/appearance/theme-installer.c:275
 #, c-format
 msgid "\"%s\" does not appear to be a valid theme."
 msgstr "「%s」似乎不是有效的主題。"
 
-#: ../capplets/appearance/theme-installer.c:273
+#: ../capplets/appearance/theme-installer.c:276
 #, c-format
 msgid ""
 "\"%s\" does not appear to be a valid theme. It may be a theme engine which "
 "you need to compile."
 msgstr "「%s」似乎不是有效的主題。它可能是需要您自己編譯的主題引擎。"
 
-#: ../capplets/appearance/theme-installer.c:379
+#: ../capplets/appearance/theme-installer.c:375
+#, c-format
+msgid "The theme \"%s\" is already existed."
+msgstr "主題「%s」已經存在。"
+
+#: ../capplets/appearance/theme-installer.c:385
+msgid "Do you want to install it again?"
+msgstr "您想要再次安裝嗎？"
+
+#: ../capplets/appearance/theme-installer.c:388
+msgid "Cancel"
+msgstr "取消"
+
+#: ../capplets/appearance/theme-installer.c:409
+#: ../capplets/appearance/theme-util.c:124
+msgid "Theme cannot be deleted"
+msgstr "布景主題無法刪除"
+
+#: ../capplets/appearance/theme-installer.c:427
 #, c-format
 msgid "Installation for theme \"%s\" failed."
 msgstr "安裝布景主題「%s」失敗。"
 
-#: ../capplets/appearance/theme-installer.c:418
+#: ../capplets/appearance/theme-installer.c:466
 #, c-format
 msgid "The theme \"%s\" has been installed."
 msgstr "布景主題“%s”已經安裝。"
 
-#: ../capplets/appearance/theme-installer.c:428
+#: ../capplets/appearance/theme-installer.c:476
 msgid "Would you like to apply it now, or keep your current theme?"
 msgstr "想現在就立即套用，還是保留現有的布景主題？"
 
-#: ../capplets/appearance/theme-installer.c:431
+#: ../capplets/appearance/theme-installer.c:479
 msgid "Keep Current Theme"
 msgstr "保留目前的布景主題"
 
-#: ../capplets/appearance/theme-installer.c:434
+#: ../capplets/appearance/theme-installer.c:482
 msgid "Apply New Theme"
 msgstr "套用新的布景主題"
 
-#: ../capplets/appearance/theme-installer.c:486
+#: ../capplets/appearance/theme-installer.c:534
 #, c-format
 msgid "MATE Theme %s correctly installed"
 msgstr "MATE 布景主題 %s 已正確地安裝"
 
-#: ../capplets/appearance/theme-installer.c:548
+#: ../capplets/appearance/theme-installer.c:600
 msgid "Failed to create temporary directory"
 msgstr "建構暫存目錄失敗"
 
-#: ../capplets/appearance/theme-installer.c:611
+#: ../capplets/appearance/theme-installer.c:662
 msgid "New themes have been successfully installed."
 msgstr "新的布景主題已經安裝完成。"
 
-#: ../capplets/appearance/theme-installer.c:658
+#: ../capplets/appearance/theme-installer.c:709
 msgid "No theme file location specified to install"
 msgstr "沒有指定安裝布景主題檔案的位置"
 
-#: ../capplets/appearance/theme-installer.c:682
+#: ../capplets/appearance/theme-installer.c:733
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
 "%s"
-msgstr "沒有足夠的權安裝布景主題至：\n%s"
+msgstr ""
+"沒有足夠的權安裝布景主題至：\n"
+"%s"
 
-#: ../capplets/appearance/theme-installer.c:762
+#: ../capplets/appearance/theme-installer.c:815
 msgid "Select Theme"
 msgstr "選擇布景主題"
 
-#: ../capplets/appearance/theme-installer.c:773
+#: ../capplets/appearance/theme-installer.c:826
 msgid "Theme Packages"
-msgstr "布景主題套件"
+msgstr "布景主題包"
 
 #: ../capplets/appearance/theme-save.c:94
 #, c-format
@@ -1141,7 +1178,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "布景主題已經存在。要取代它嗎？"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:446
+#: ../capplets/common/file-transfer-dialog.c:442
 msgid "_Overwrite"
 msgstr "覆寫(_O)"
 
@@ -1149,11 +1186,7 @@ msgstr "覆寫(_O)"
 msgid "Would you like to delete this theme?"
 msgstr "是否刪除此布景主題？"
 
-#: ../capplets/appearance/theme-util.c:123
-msgid "Theme cannot be deleted"
-msgstr "布景主題無法刪除"
-
-#: ../capplets/appearance/theme-util.c:249
+#: ../capplets/appearance/theme-util.c:250
 msgid "Could not install theme engine"
 msgstr "無法安裝主題引擎"
 
@@ -1161,22 +1194,24 @@ msgstr "無法安裝主題引擎"
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
-msgstr "無法啟動設定管理程式「mate-settings-daemon」。\n如果 MATE 設定管理程式沒有執行，某部分偏好設定可能不會生效。這可能表示 Dbus 出了問題；或是另一個 MATE 以外（例如 KDE）的設定管理程式正在執行，和 MATE 設定管理程式出現衝突。"
+msgstr ""
+"無法啟動設定管理程式「mate-settings-daemon」。\n"
+"如果 MATE 設定管理程式沒有執行，某部分偏好設定可能不會生效。這可能表示 Dbus 出了問題；或是另一個 MATE 以外（例如 KDE）的設定管理程式正在執行，和 MATE 設定管理程式出現衝突。"
 
 #: ../capplets/common/capplet-stock-icons.c:66
 #, c-format
 msgid "Unable to load stock icon '%s'\n"
 msgstr "無法載入圖示‘%s’\n"
 
-#: ../capplets/common/capplet-util.c:96
+#: ../capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
-msgstr "顯示說明文件時發生錯誤：%s"
+msgstr "顯示說明文件時出現錯誤：%s"
 
 #: ../capplets/common/file-transfer-dialog.c:98
 #, c-format
 msgid "Copying file: %u of %u"
-msgstr "複製檔案：%u 之 %u"
+msgstr "複製檔案：%2$u 之 %1$u"
 
 #: ../capplets/common/file-transfer-dialog.c:145
 #, c-format
@@ -1186,7 +1221,7 @@ msgstr "正在複製‘%s’"
 #: ../capplets/common/file-transfer-dialog.c:185
 #: ../capplets/common/file-transfer-dialog.c:312
 msgid "Copying files"
-msgstr "正在複製檔案"
+msgstr "複製檔案"
 
 #: ../capplets/common/file-transfer-dialog.c:224
 msgid "Parent Window"
@@ -1236,16 +1271,16 @@ msgstr "URI 總數"
 msgid "Total number of URIs"
 msgstr "URI 的總數"
 
-#: ../capplets/common/file-transfer-dialog.c:440
+#: ../capplets/common/file-transfer-dialog.c:436
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "檔案「%s」已經存在。是否要覆蓋它？"
 
-#: ../capplets/common/file-transfer-dialog.c:443
+#: ../capplets/common/file-transfer-dialog.c:439
 msgid "_Skip"
-msgstr "略過(_S)"
+msgstr "跳過(_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:444
+#: ../capplets/common/file-transfer-dialog.c:440
 msgid "Overwrite _All"
 msgstr "覆蓋全部(_A)"
 
@@ -1281,7 +1316,7 @@ msgstr "選取預設使用的應用程式"
 
 #: ../capplets/default-applications/mate-da-capplet.c:543
 msgid "Could not load the main interface"
-msgstr "無法載入主介面"
+msgstr "無法載入主視窗介面"
 
 #: ../capplets/default-applications/mate-da-capplet.c:544
 msgid "Please make sure that the applet is properly installed"
@@ -1434,7 +1469,7 @@ msgstr "更新頻率(_F):"
 
 #: ../capplets/display/display-capplet.ui.h:10
 msgid "On"
-msgstr "開"
+msgstr "開啟"
 
 #: ../capplets/display/display-capplet.ui.h:11
 msgid "Off"
@@ -1443,7 +1478,7 @@ msgstr "關閉"
 #: ../capplets/display/display-capplet.ui.h:12
 #: ../capplets/display/xrandr-capplet.c:496
 msgid "Monitor"
-msgstr "顯示器"
+msgstr "監視器"
 
 #: ../capplets/display/display-capplet.ui.h:13
 msgid "R_otation:"
@@ -1465,19 +1500,19 @@ msgstr "設定選定的顯示器為主要的。"
 #: ../capplets/display/xrandr-capplet.c:307
 #: ../capplets/display/xrandr-capplet.c:346
 msgid "Normal"
-msgstr "正常"
+msgstr "一般"
 
 #: ../capplets/display/display-capplet.ui.h:18
 #: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:504
 msgid "Left"
-msgstr "左"
+msgstr "左邊"
 
 #: ../capplets/display/display-capplet.ui.h:19
 #: ../capplets/display/xrandr-capplet.c:309
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:503
 msgid "Right"
-msgstr "右"
+msgstr "右邊"
 
 #: ../capplets/display/display-capplet.ui.h:20
 msgid "Upside-down"
@@ -1505,7 +1540,18 @@ msgid ""
 "DEST_NAME - relative name for the installed file.  This will get put in\n"
 "            the systemwide directory for RANDR configurations,\n"
 "            so the result will typically be %s/DEST_NAME\n"
-msgstr "用法：%s SOURCE_FILE DEST_NAME\n\n這個程式會安裝 RANDR 設定檔把多螢幕設定至\n系統層的位置。產生的設定檔會在 RANDR 外掛程式\n在 mate-settings-daemon 中執行時使用。\n\nSOURCE_FILE - 完整路徑名稱，通常是 /home/username/.config/monitors.xml\n\nDEST_NAME - 已安裝檔案的相對名稱。這會放置在\n            RANDR 組態的系統層級目錄中，因此結果\n            通常會是 %s/DEST_NAME\n"
+msgstr ""
+"用法：%s SOURCE_FILE DEST_NAME\n"
+"\n"
+"這個程式會安裝 RANDR 設定檔把多螢幕設定至\n"
+"系統層的位置。產生的設定檔會在 RANDR 外掛程式\n"
+"在 mate-settings-daemon 中執行時使用。\n"
+"\n"
+"SOURCE_FILE - 完整路徑名稱，通常是 /home/username/.config/monitors.xml\n"
+"\n"
+"DEST_NAME - 已安裝檔案的相對名稱。這會放置在\n"
+"            RANDR 組態的系統層級目錄中，因此結果\n"
+"            通常會是 %s/DEST_NAME\n"
 
 #. Translators: only able to install RANDR profiles as root
 #: ../capplets/display/mate-display-properties-install-systemwide.c:151
@@ -1595,7 +1641,7 @@ msgstr "%d Hz"
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../capplets/display/xrandr-capplet.c:485
-#: ../capplets/display/xrandr-capplet.c:1631
+#: ../capplets/display/xrandr-capplet.c:1633
 #, c-format
 msgid "Mirror Screens"
 msgstr "鏡射螢幕"
@@ -1610,37 +1656,37 @@ msgstr "顯示器：%s"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1487
+#: ../capplets/display/xrandr-capplet.c:1489
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "選擇一個螢幕以改變它的屬性；拖曳它則能重新排列它的位置。"
 
-#: ../capplets/display/xrandr-capplet.c:2067
+#: ../capplets/display/xrandr-capplet.c:2069
 msgid "Could not save the monitor configuration"
 msgstr "無法儲存顯示器組態"
 
-#: ../capplets/display/xrandr-capplet.c:2089
+#: ../capplets/display/xrandr-capplet.c:2091
 msgid "Could not get session bus while applying display configuration"
 msgstr "在套用顯示組態時無法取得作業階段匯流排"
 
-#: ../capplets/display/xrandr-capplet.c:2108
+#: ../capplets/display/xrandr-capplet.c:2110
 msgid "Could not detect displays"
 msgstr "無法偵測顯示器"
 
-#: ../capplets/display/xrandr-capplet.c:2316
+#: ../capplets/display/xrandr-capplet.c:2318
 msgid "The monitor configuration has been saved"
 msgstr "顯示器組態已儲存"
 
-#: ../capplets/display/xrandr-capplet.c:2318
+#: ../capplets/display/xrandr-capplet.c:2320
 msgid "This configuration will be used the next time someone logs in."
 msgstr "這個組態會在下次有使用者登入後使用。"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "Could not set the default configuration for monitors"
 msgstr "無法設定預設的顯示器組態"
 
-#: ../capplets/display/xrandr-capplet.c:2411
+#: ../capplets/display/xrandr-capplet.c:2413
 msgid "Could not get screen information"
 msgstr "無法取得螢幕資訊"
 
@@ -1674,7 +1720,7 @@ msgstr "捷徑鍵的類型。"
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
 #: ../capplets/mouse/mate-mouse-properties.c:321
-#: ../typing-break/drwright.c:535
+#: ../typing-break/drwright.c:515
 msgid "Disabled"
 msgstr "已停用"
 
@@ -1696,14 +1742,18 @@ msgstr "儲存新的捷徑鍵時發生錯誤"
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
-msgstr "捷徑“%s”無法使用，原因是會無法按下此按鍵。\n請試用其它的按鍵：如同時使用 Control，Alt  或 Shift。"
+msgstr ""
+"捷徑“%s”無法使用，原因是會無法按下此按鍵。\n"
+"請試用其它的按鍵：如同時使用 Control，Alt  或 Shift。"
 
 #: ../capplets/keybindings/mate-keybinding-properties.c:1298
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
-msgstr "捷徑鍵“%s”己經使用於：\n“%s”"
+msgstr ""
+"捷徑鍵“%s”己經使用於：\n"
+"“%s”"
 
 #: ../capplets/keybindings/mate-keybinding-properties.c:1305
 #, c-format
@@ -1779,7 +1829,7 @@ msgstr "鍵盤無障礙功能音效回饋"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:32
-#: ../capplets/windows/mate-window-properties.c:376
+#: ../capplets/windows/mate-window-properties.c:372
 msgid "General"
 msgstr "一般"
 
@@ -1969,7 +2019,9 @@ msgstr "重置為預設值(_F)"
 msgid ""
 "Replace the current keyboard layout settings with the\n"
 "default settings"
-msgstr "以預設值替換目前的鍵盤配置\n設定值"
+msgstr ""
+"以預設值替換目前的鍵盤配置\n"
+"設定值"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:34
 msgid "Layouts"
@@ -2044,7 +2096,7 @@ msgstr "指定休息時間長度，這段期間內不允許使用鍵盤"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "minutes"
-msgstr "分鐘"
+msgstr "分"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
 msgid "All_ow postponing of breaks"
@@ -2108,7 +2160,7 @@ msgstr "鍵盤配置選項"
 
 #: ../capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
-msgstr "不明"
+msgstr "未知的"
 
 #: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:240
 msgid "Layout"
@@ -2173,7 +2225,7 @@ msgstr "慣用左手(_L)"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
 msgid "Locate Pointer"
-msgstr "標示鼠標位置"
+msgstr "標示滑鼠游標位置"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:6
 msgid "Sh_ow position of pointer when the Control key is pressed"
@@ -2365,12 +2417,12 @@ msgstr "Metacity 偏好設定"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:392
+#: ../capplets/windows/mate-window-properties.c:388
 msgid "Compositing Manager"
-msgstr "複合管理器"
+msgstr "合成管理員"
 
-#: ../capplets/windows/mate-metacity-support.c:62
-#: ../capplets/windows/mate-window-properties.c:399
+#: ../capplets/windows/mate-metacity-support.c:58
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Enable software _compositing window manager"
 msgstr "啟用軟體複合視窗管理器(_C)"
 
@@ -2379,135 +2431,135 @@ msgid "The current window manager is unsupported"
 msgstr "不支援目前使用的視窗管理員"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:358
+#: ../capplets/windows/mate-window-properties.c:354
 msgid "Window Preferences"
 msgstr "視窗偏好設定"
 
-#: ../capplets/windows/mate-window-properties.c:381
+#: ../capplets/windows/mate-window-properties.c:377
 msgid "Behaviour"
 msgstr "行為"
 
-#: ../capplets/windows/mate-window-properties.c:386
+#: ../capplets/windows/mate-window-properties.c:382
 msgid "Placement"
 msgstr "佈局"
 
-#: ../capplets/windows/mate-window-properties.c:400
+#: ../capplets/windows/mate-window-properties.c:396
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "停用縮圖在中 Alt-Tab(_T)"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:404
 msgid "Titlebar Buttons"
 msgstr "標題列按鈕"
 
-#: ../capplets/windows/mate-window-properties.c:412
+#: ../capplets/windows/mate-window-properties.c:408
 msgid "Position:"
 msgstr "位置："
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "New Windows"
 msgstr "新增視窗"
 
-#: ../capplets/windows/mate-window-properties.c:423
+#: ../capplets/windows/mate-window-properties.c:419
 msgid "Center _new windows"
 msgstr "在中間新增視窗(_N)"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:424
 msgid "Window Snapping"
 msgstr "視窗捕捉"
 
-#: ../capplets/windows/mate-window-properties.c:432
+#: ../capplets/windows/mate-window-properties.c:428
 msgid "Enable window _tiling"
 msgstr "啟用視窗平鋪(_T)"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:437
+#: ../capplets/windows/mate-window-properties.c:433
 msgid "Window Selection"
 msgstr "視窗選取"
 
-#: ../capplets/windows/mate-window-properties.c:447
+#: ../capplets/windows/mate-window-properties.c:443
 msgid "_Select windows when the mouse moves over them"
 msgstr "當滑鼠移動至視窗時選取該視窗(_S)"
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:446
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "當滑鼠離開它們時取消選取視窗(_N)"
 
-#: ../capplets/windows/mate-window-properties.c:454
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Raise selected windows after an interval"
 msgstr "相隔某段時間後將已選取的視窗提升至最表面來顯示(_R)"
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Interval before raising:"
 msgstr "這個時間後提升視窗(_I):"
 
-#: ../capplets/windows/mate-window-properties.c:465
+#: ../capplets/windows/mate-window-properties.c:461
 msgid "seconds"
-msgstr "秒"
+msgstr "秒後拍下螢幕截圖"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:472
 msgid "Titlebar Action"
 msgstr "標題列動作"
 
-#: ../capplets/windows/mate-window-properties.c:480
+#: ../capplets/windows/mate-window-properties.c:476
 msgid "_Double-click titlebar to perform this action:"
 msgstr "在視窗標題中連按兩下滑鼠按鈕後會進行指定的動作(_D):"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:488
+#: ../capplets/windows/mate-window-properties.c:484
 msgid "Movement Key"
 msgstr "移動鍵"
 
-#: ../capplets/windows/mate-window-properties.c:494
+#: ../capplets/windows/mate-window-properties.c:490
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "如果想移動視窗，按住此按鍵來抓取視窗："
 
-#: ../capplets/windows/mate-window-properties.c:518
+#: ../capplets/windows/mate-window-properties.c:510
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "捲起"
 
-#: ../capplets/windows/mate-window-properties.c:519
+#: ../capplets/windows/mate-window-properties.c:511
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../capplets/windows/mate-window-properties.c:520
+#: ../capplets/windows/mate-window-properties.c:512
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "水平最大化"
 
-#: ../capplets/windows/mate-window-properties.c:521
+#: ../capplets/windows/mate-window-properties.c:513
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "垂直最大化"
 
-#: ../capplets/windows/mate-window-properties.c:522
+#: ../capplets/windows/mate-window-properties.c:514
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "最小化"
 
-#: ../capplets/windows/mate-window-properties.c:523
+#: ../capplets/windows/mate-window-properties.c:515
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "沒有"
 
-#: ../capplets/windows/mate-window-properties.c:724
+#: ../capplets/windows/mate-window-properties.c:716
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:730
+#: ../capplets/windows/mate-window-properties.c:722
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:737
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (或者「視窗標誌」)"
 
-#: ../capplets/windows/mate-window-properties.c:744
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2558,11 +2610,11 @@ msgstr "MATE 設定工具"
 msgid "Configure MATE settings"
 msgstr "設定 MATE"
 
-#: ../typing-break/drw-break-window.c:189
+#: ../typing-break/drw-break-window.c:183
 msgid "_Postpone Break"
 msgstr "停止休息(_P)"
 
-#: ../typing-break/drw-break-window.c:248
+#: ../typing-break/drw-break-window.c:242
 msgid "Take a break!"
 msgstr "請休息一下！"
 
@@ -2570,119 +2622,126 @@ msgstr "請休息一下！"
 msgid "_Take a Break"
 msgstr "休息一下(_T)"
 
-#: ../typing-break/drwright.c:544
+#: ../typing-break/drwright.c:524
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "現在休息一下（剩下 %d分）"
 
-#: ../typing-break/drwright.c:546
+#: ../typing-break/drwright.c:526
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "距離休息時間還有 %d 分鐘"
 
-#: ../typing-break/drwright.c:552
+#: ../typing-break/drwright.c:532
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "現在休息一下（剩下不到一分鐘）"
 
-#: ../typing-break/drwright.c:554
+#: ../typing-break/drwright.c:534
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "距離休息時間少於 1 分鐘"
 
-#: ../typing-break/drwright.c:644
+#: ../typing-break/drwright.c:624
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "無法顯示「休息提示」偏好設定對話方塊，因為出現以下的錯誤：%s"
 
-#: ../typing-break/drwright.c:661
+#: ../typing-break/drwright.c:641
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "由 Richard Hult <richard@imendio.com> 編寫"
 
-#: ../typing-break/drwright.c:662
+#: ../typing-break/drwright.c:642
 msgid "Eye candy added by Anders Carlsson"
 msgstr "由 Anders Carlsson 加入視覺效果"
 
-#: ../typing-break/drwright.c:671
+#: ../typing-break/drwright.c:651
 msgid "A computer break reminder."
 msgstr "在使用電腦時發出休息提示的小工具。"
 
-#: ../typing-break/drwright.c:673 ../font-viewer/font-view.c:749
+#: ../typing-break/drwright.c:653 ../font-viewer/font-view.c:741
 msgid "translator-credits"
-msgstr "黃柏諺 <s8321414@yahoo.com.tw>,2013-14\n趙惟倫 <bluebat@member.fsf.org>, 2012\nWoodman Tuen <wmtuen@gmail.com>, 2004-07"
+msgstr ""
+"黃柏諺 <s8321414@yahoo.com.tw>,2013-14\n"
+"Launchpad 貢獻者：\n"
+"  Jose Sun https://launchpad.net/~josesun\n"
+"  Toomore https://launchpad.net/~toomore\n"
+"  fetag https://launchpad.net/~coolfire\n"
+"Walter Cheuk <wwycheuk@gmail.com>, 2016."
 
-#: ../typing-break/main.c:63
+#: ../typing-break/main.c:62
 msgid "Enable debugging code"
 msgstr "啟用除錯碼"
 
-#: ../typing-break/main.c:65
+#: ../typing-break/main.c:64
 msgid "Don't check whether the notification area exists"
 msgstr "不要檢查通知區是否存在"
 
-#: ../typing-break/main.c:89
+#: ../typing-break/main.c:88
 msgid "Typing Monitor"
 msgstr "休息提示小程式"
 
-#: ../typing-break/main.c:106
+#: ../typing-break/main.c:105
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
-msgstr "休息提示小程式需要透過程式狀態通知區來顯示資訊，可是面板中並沒有該區域。您可以在面板上按滑鼠右邊按鈕，選取「加入至面板」及其中的「程式狀態通知區」後，再按「新增」。"
+msgstr ""
+"休息提示小程式需要透過程式狀態通知區來顯示資訊，可是面板中並沒有該區域。您可以在面板上按滑鼠右邊按鈕，選取「加入至面板」及其中的「程式狀態通知區」後，再按「新增」。"
 
-#: ../font-viewer/font-view.c:208
+#: ../font-viewer/font-view.c:200
 msgid "Style"
 msgstr "風格"
 
-#: ../font-viewer/font-view.c:218
+#: ../font-viewer/font-view.c:210
 msgid "Type"
 msgstr "類型"
 
-#: ../font-viewer/font-view.c:264 ../font-viewer/font-view.c:279
+#: ../font-viewer/font-view.c:256 ../font-viewer/font-view.c:271
 msgid "Version"
 msgstr "版本"
 
-#: ../font-viewer/font-view.c:269 ../font-viewer/font-view.c:281
+#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:273
 msgid "Copyright"
 msgstr "版權所有"
 
-#: ../font-viewer/font-view.c:274
+#: ../font-viewer/font-view.c:266
 msgid "Description"
 msgstr "描述"
 
-#: ../font-viewer/font-view.c:292
+#: ../font-viewer/font-view.c:284
 msgid "Install Failed"
 msgstr "安裝失敗"
 
-#: ../font-viewer/font-view.c:298
+#: ../font-viewer/font-view.c:290
 msgid "Installed"
 msgstr "已安裝"
 
-#: ../font-viewer/font-view.c:435
+#: ../font-viewer/font-view.c:427
 msgid "This font could not be displayed."
 msgstr "本字型無法顯示。"
 
-#: ../font-viewer/font-view.c:498 ../font-viewer/font-view.c:529
+#: ../font-viewer/font-view.c:490 ../font-viewer/font-view.c:521
 msgid "Info"
 msgstr "資訊"
 
-#: ../font-viewer/font-view.c:542
+#: ../font-viewer/font-view.c:534
 msgid "Back"
 msgstr "後退"
 
-#: ../font-viewer/font-view.c:642
+#: ../font-viewer/font-view.c:634
 msgid "All Fonts"
 msgstr "所有字型"
 
-#: ../font-viewer/font-view.c:746 ../font-viewer/font-view.c:790
+#: ../font-viewer/font-view.c:738 ../font-viewer/font-view.c:782
 msgid "Font Viewer"
 msgstr "字型檢視程式"
 
-#: ../font-viewer/font-view.c:747
+#: ../font-viewer/font-view.c:739
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "在您的系統上檢視字型"
@@ -2711,22 +2770,22 @@ msgstr "大小"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "字型檔 輸出檔"
 
-#: ../libslab/app-shell.c:771
+#: ../libslab/app-shell.c:763
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "您的過濾條件「%s」沒有任合項目符合。"
 
-#: ../libslab/app-shell.c:773
+#: ../libslab/app-shell.c:765
 msgid "No matches found."
 msgstr "找不到符合項。"
 
-#: ../libslab/app-shell.c:873
+#: ../libslab/app-shell.c:865
 msgid "New Applications"
 msgstr "新應用程式"
 
-#: ../libslab/app-shell.c:928
+#: ../libslab/app-shell.c:920
 msgid "Other"
-msgstr "其它"
+msgstr "其他"
 
 #. make start action
 #: ../libslab/application-tile.c:343
@@ -2736,21 +2795,21 @@ msgstr "啟動 %s"
 
 #: ../libslab/application-tile.c:364
 msgid "Help"
-msgstr "求助"
+msgstr "說明"
 
-#: ../libslab/application-tile.c:646
+#: ../libslab/application-tile.c:639
 msgid "Remove from Favorites"
 msgstr "自最愛中移除"
 
-#: ../libslab/application-tile.c:648
+#: ../libslab/application-tile.c:641
 msgid "Add to Favorites"
 msgstr "加入最愛"
 
-#: ../libslab/application-tile.c:733
+#: ../libslab/application-tile.c:726
 msgid "Remove from Startup Programs"
 msgstr "從「初始啟動程式」中移除"
 
-#: ../libslab/application-tile.c:735
+#: ../libslab/application-tile.c:728
 msgid "Add to Startup Programs"
 msgstr "加入「初始啟動程式」"
 
@@ -2765,7 +2824,7 @@ msgstr "新文件"
 #: ../libslab/bookmark-agent.c:1135
 msgctxt "Home folder"
 msgid "Home"
-msgstr "家目錄"
+msgstr "家"
 
 #: ../libslab/bookmark-agent.c:1142
 msgid "Documents"
@@ -2787,6 +2846,6 @@ msgstr "網路伺服器"
 msgid "Search"
 msgstr "搜尋"
 
-#: ../libslab/search-bar.c:254
+#: ../libslab/search-bar.c:253
 msgid "Find Now"
 msgstr "現在尋找"
