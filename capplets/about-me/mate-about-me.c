@@ -28,6 +28,10 @@
 #include <unistd.h>
 #include <dbus/dbus-glib-bindings.h>
 
+#if HAVE_ACCOUNTSSERVICE
+#include <act/act.h>
+#endif
+
 #define MATE_DESKTOP_USE_UNSTABLE_API
 #include <libmate-desktop/mate-desktop-thumbnail.h>
 
@@ -48,6 +52,9 @@ typedef struct {
 	GtkWidget	*disable_fingerprint_button;
 	GtkWidget   	*image_chooser;
 	GdkPixbuf       *image;
+#if HAVE_ACCOUNTSSERVICE
+	ActUser         *user;
+#endif
 
 	GdkScreen    	*screen;
 	GtkIconTheme 	*theme;
@@ -84,10 +91,20 @@ about_me_destroy (void)
 static void
 about_me_load_photo (MateAboutMe *me)
 {
-	gchar         *file;
+	gchar         *file = NULL;
 	GError        *error = NULL;
+#if HAVE_ACCOUNTSSERVICE
+	const gchar   *act_file;
 
-	file = g_build_filename (g_get_home_dir (), ".face", NULL);
+	act_file = act_user_get_icon_file (me->user);
+	if ( act_file != NULL && strlen (act_file) > 1) {
+		file = g_strdup (act_file);
+	}
+#endif
+	if (file == NULL) {
+		file = g_build_filename (g_get_home_dir (), ".face", NULL);
+	}
+
 	me->image = gdk_pixbuf_new_from_file(file, &error);
 
 	if (me->image != NULL) {
@@ -96,9 +113,9 @@ about_me_load_photo (MateAboutMe *me)
 	} else {
 		me->have_image = FALSE;
 		g_warning ("Could not load %s: %s", file, error->message);
+		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
 		g_error_free (error);
 	}
-
 	g_free (file);
 }
 
@@ -172,6 +189,9 @@ about_me_update_photo (MateAboutMe *me)
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
 		if (g_file_set_contents (file, (gchar *)data, length, &error) == TRUE) {
 			g_chmod (file, 0644);
+#if HAVE_ACCOUNTSSERVICE
+			act_user_set_icon_file (me->user, file);
+#endif
 		} else {
 			g_warning ("Could not create %s: %s", file, error->message);
 			g_error_free (error);
@@ -186,6 +206,9 @@ about_me_update_photo (MateAboutMe *me)
 		g_unlink (file);
 
 		g_free (file);
+#if HAVE_ACCOUNTSSERVICE
+		act_user_set_icon_file (me->user, "");
+#endif
 	}
 }
 
@@ -341,15 +364,19 @@ about_me_icon_theme_changed (GtkWindow    *window,
 {
 	GtkIconInfo *icon;
 
-	icon = gtk_icon_theme_lookup_icon (me->theme, "stock_person", 80, 0);
+	icon = gtk_icon_theme_lookup_icon (me->theme, "avatar-default", 80, 0);
 	if (icon != NULL) {
 		g_free (me->person);
 		me->person = g_strdup (gtk_icon_info_get_filename (icon));
 		g_object_unref (icon);
 	}
 
-	if (me->have_image)
+	if (me->have_image) {
+#if HAVE_ACCOUNTSSERVICE
+		act_user_set_icon_file (me->user, me->person);
+#endif
 		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
+	}
 }
 
 static void
@@ -380,6 +407,18 @@ about_me_fingerprint_button_clicked_cb (GtkWidget *button, MateAboutMe *me)
 				    me->disable_fingerprint_button);
 }
 
+#if HAVE_ACCOUNTSSERVICE
+static void on_user_is_loaded_changed (ActUser *user, GParamSpec *pspec, MateAboutMe* me)
+{
+        if (act_user_is_loaded (user)) {
+		about_me_load_photo (me);
+		g_signal_handlers_disconnect_by_func (G_OBJECT (user),
+				G_CALLBACK (on_user_is_loaded_changed),
+				me);
+	}
+}
+#endif
+
 static gint
 about_me_setup_dialog (void)
 {
@@ -388,6 +427,10 @@ about_me_setup_dialog (void)
 	GtkIconInfo  *icon;
 	GtkBuilder   *dialog;
 	gchar        *str;
+#if HAVE_ACCOUNTSSERVICE
+	ActUserManager* manager;
+	gboolean loaded;
+#endif
 
 	me = g_new0 (MateAboutMe, 1);
 	me->image = NULL;
@@ -417,7 +460,7 @@ about_me_setup_dialog (void)
 	me->screen = gtk_window_get_screen (GTK_WINDOW (main_dialog));
 	me->theme = gtk_icon_theme_get_for_screen (me->screen);
 
-	icon = gtk_icon_theme_lookup_icon (me->theme, "stock_person", 80, 0);
+	icon = gtk_icon_theme_lookup_icon (me->theme, "avatar-default", 80, 0);
 	if (icon != NULL) {
 		me->person = g_strdup (gtk_icon_info_get_filename (icon));
 		g_object_unref (icon);
@@ -430,6 +473,15 @@ about_me_setup_dialog (void)
 
 	me->login = g_strdup (g_get_user_name ());
 	me->username = g_strdup (g_get_real_name ());
+
+#if HAVE_ACCOUNTSSERVICE
+	manager = act_user_manager_get_default ();
+	me->user = act_user_manager_get_user (manager, me->login);
+	g_object_get (manager, "is-loaded", &loaded, NULL);
+	if (!loaded) {
+		g_signal_connect (me->user, "notify::is-loaded", G_CALLBACK (on_user_is_loaded_changed), me);
+	}
+#endif
 
 	/* Contact Tab */
 	about_me_load_photo (me);
