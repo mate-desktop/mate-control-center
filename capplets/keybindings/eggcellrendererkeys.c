@@ -391,7 +391,7 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 	cleared = FALSE;
 
 	consumed_modifiers = 0;
-	gdk_keymap_translate_keyboard_state(gdk_keymap_get_default(),
+	gdk_keymap_translate_keyboard_state (gdk_keymap_get_for_display (gdk_display_get_default ()),
 		event->hardware_keycode,
 		event->state,
 		event->group,
@@ -411,7 +411,7 @@ static gboolean grab_key_callback(GtkWidget* widget, GdkEventKey* event, void* d
 		consumed_modifiers &= ~(GDK_SHIFT_MASK);
 	}
 
-	egg_keymap_resolve_virtual_modifiers(gdk_keymap_get_default(),
+	egg_keymap_resolve_virtual_modifiers (gdk_keymap_get_for_display (gdk_display_get_default ()),
 		EGG_VIRTUAL_NUM_LOCK_MASK |
 		EGG_VIRTUAL_SCROLL_LOCK_MASK |
 		EGG_VIRTUAL_LOCK_MASK,

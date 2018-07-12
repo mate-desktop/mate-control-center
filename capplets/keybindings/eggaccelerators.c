@@ -607,7 +607,7 @@ egg_keymap_get_modmap (GdkKeymap *keymap)
   EggModmap *modmap;
 
   if (keymap == NULL)
-    keymap = gdk_keymap_get_default ();
+    keymap = gdk_keymap_get_for_display (gdk_display_get_default ());
 
   /* This is all a hack, much simpler when we can just
    * modify GDK directly.
