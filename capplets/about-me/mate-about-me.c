@@ -198,6 +198,7 @@ about_me_update_photo (MateAboutMe *me)
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
 		if (g_file_set_contents (file, (gchar *)data, length, &error) == TRUE) {
 			g_chmod (file, 0644);
+			act_user_set_icon_file (me->user, file);
 		} else {
 			g_warning ("Could not create %s: %s", file, error->message);
 			g_error_free (error);
@@ -212,6 +213,7 @@ about_me_update_photo (MateAboutMe *me)
 		g_unlink (file);
 
 		g_free (file);
+		act_user_set_icon_file (me->user, "");
 	}
 }
 
@@ -338,15 +340,12 @@ about_me_image_clicked_cb (GtkWidget *button, MateAboutMe *me)
 		me->have_image = TRUE;
 		me->image_changed = TRUE;
 
-		act_user_set_icon_file (me->user, filename);
-
 		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), filename);
 		g_free (filename);
 		about_me_update_photo (me);
 	} else if (response == GTK_RESPONSE_NO) {
 		me->have_image = FALSE;
 		me->image_changed = TRUE;
-		act_user_set_icon_file (me->user, me->person);
 		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
 		about_me_update_photo (me);
 	}
