@@ -27,7 +27,10 @@
 #include <gio/gio.h>
 #include <unistd.h>
 #include <dbus/dbus-glib-bindings.h>
+
+#if HAVE_ACCOUNTSSERVICE
 #include <act/act.h>
+#endif
 
 #define MATE_DESKTOP_USE_UNSTABLE_API
 #include <libmate-desktop/mate-desktop-thumbnail.h>
@@ -49,7 +52,9 @@ typedef struct {
 	GtkWidget	*disable_fingerprint_button;
 	GtkWidget   	*image_chooser;
 	GdkPixbuf       *image;
+#if HAVE_ACCOUNTSSERVICE
 	ActUser         *user;
+#endif
 
 	GdkScreen    	*screen;
 	GtkIconTheme 	*theme;
@@ -79,11 +84,14 @@ about_me_destroy (void)
 	g_free (me->person);
 	g_free (me->login);
 	g_free (me->username);
+#if HAVE_ACCOUNTSSERVICE
 	g_object_unref (me->user);
+#endif
 	g_free (me);
 	me = NULL;
 }
 
+#if HAVE_ACCOUNTSSERVICE
 /*
  * act_user_manager_get_user() not works well for me.
  * so, write manager_get_user() do the same thing.
@@ -106,14 +114,22 @@ static ActUser* manager_get_user(ActUserManager *manager, const gchar *username)
 	g_slist_free_full (lst, g_object_unref);
 	return user;
 }
+#endif
 
 static void
 about_me_load_photo (MateAboutMe *me)
 {
+#if HAVE_ACCOUNTSSERVICE
 	const gchar   *file;
 	GError        *error = NULL;
 
 	file = act_user_get_icon_file (me->user);
+#else
+	gchar   *file;
+	GError        *error = NULL;
+
+	file = g_build_filename (g_get_home_dir (), ".face", NULL);
+#endif
 
 	me->image = gdk_pixbuf_new_from_file(file, &error);
 
@@ -125,7 +141,9 @@ about_me_load_photo (MateAboutMe *me)
 		g_warning ("Could not load %s: %s", file, error->message);
 		g_error_free (error);
 	}
-
+#if !HAVE_ACCOUNTSSERVICE
+	g_free (file);
+#endif
 }
 
 static void
@@ -198,7 +216,9 @@ about_me_update_photo (MateAboutMe *me)
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
 		if (g_file_set_contents (file, (gchar *)data, length, &error) == TRUE) {
 			g_chmod (file, 0644);
+#if HAVE_ACCOUNTSSERVICE
 			act_user_set_icon_file (me->user, file);
+#endif
 		} else {
 			g_warning ("Could not create %s: %s", file, error->message);
 			g_error_free (error);
@@ -213,7 +233,9 @@ about_me_update_photo (MateAboutMe *me)
 		g_unlink (file);
 
 		g_free (file);
+#if HAVE_ACCOUNTSSERVICE
 		act_user_set_icon_file (me->user, "");
+#endif
 	}
 }
 
@@ -376,10 +398,15 @@ about_me_icon_theme_changed (GtkWindow    *window,
 		g_object_unref (icon);
 	}
 
+#if HAVE_ACCOUNTSSERVICE
 	if (me->have_image) {
 		act_user_set_icon_file (me->user, me->person);
 		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
 	}
+#else
+	if (me->have_image)
+		e_image_chooser_set_from_file (E_IMAGE_CHOOSER (me->image_chooser), me->person);
+#endif
 }
 
 static void
@@ -418,7 +445,9 @@ about_me_setup_dialog (void)
 	GtkIconInfo  *icon;
 	GtkBuilder   *dialog;
 	gchar        *str;
+#if HAVE_ACCOUNTSSERVICE
 	ActUserManager* manager;
+#endif
 
 	me = g_new0 (MateAboutMe, 1);
 	me->image = NULL;
@@ -462,9 +491,11 @@ about_me_setup_dialog (void)
 	me->login = g_strdup (g_get_user_name ());
 	me->username = g_strdup (g_get_real_name ());
 
+#if HAVE_ACCOUNTSSERVICE
 	manager = act_user_manager_get_default ();
 	me->user = manager_get_user (manager, me->login);
 	g_object_unref(manager);
+#endif
 
 	/* Contact Tab */
 	about_me_load_photo (me);

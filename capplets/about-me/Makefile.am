@@ -27,7 +27,10 @@ marshal.c: fprintd-marshal.list
 
 bin_PROGRAMS = mate-about-me
 
-mate_about_me_LDADD = $(MATECC_CAPPLETS_LIBS) $(ACCOUNTS_SERVICE_LIBS)
+mate_about_me_LDADD = $(MATECC_CAPPLETS_LIBS)
+if HAVE_ACCOUNTSSERVICE
+mate_about_me_LDADD += $(ACCOUNTSSERVICE_LIBS)
+endif
 mate_about_me_LDFLAGS = -export-dynamic
 
 @INTLTOOL_DESKTOP_RULE@
@@ -41,12 +44,16 @@ ui_DATA = $(ui_files)
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBEBOOK_CFLAGS) \
-	$(ACCOUNTS_SERVICE_CFLAGS) \
 	-DDATADIR="\"$(datadir)\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	-DMATECC_UI_DIR="\"$(uidir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pkgdatadir)/pixmaps\"" \
 	-DMATELOCALEDIR="\"$(datadir)/locale\""
+
+if HAVE_ACCOUNTSSERVICE
+AM_CPPFLAGS += \
+	$(ACCOUNTSSERVICE_CFLAGS)
+endif
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(MARSHALFILES)
 EXTRA_DIST = $(ui_files) fprintd-marshal.list

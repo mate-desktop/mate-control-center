@@ -143,7 +143,6 @@ PKG_CHECK_MODULES(MARCO, libmarco-private >= $MARCO_REQUIRED)
 PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 >= $GLIB_REQUIRED gio-2.0 gtk+-3.0 >= $GTK_REQUIRED)
 PKG_CHECK_MODULES(GSD_DBUS, mate-settings-daemon >= $MSD_REQUIRED)
 PKG_CHECK_MODULES(GIO, gio-2.0)
-PKG_CHECK_MODULES(ACCOUNTS_SERVICE, accountsservice)
 
 PKG_CHECK_MODULES([DCONF], [dconf >= 0.13.4])
 AC_SUBST(DCONF_CFLAGS)
@@ -171,6 +170,24 @@ AC_SUBST(LIBMATESLAB_LIBS)
 AC_SUBST(WARN_CFLAGS)
 
 AM_CONDITIONAL(HAVE_LIBMATESLAB, [test $have_libmateslab = yes])
+
+dnl
+dnl Check dependencies of accountsservice
+dnl
+
+ACCOUNTSSERVICE_REQUIRED=0.6.21
+
+AC_ARG_WITH([accountsservice], AC_HELP_STRING([--without-accountsservice], [disable accountsservice support]))
+have_accountsservice=no
+if test x$with_accountsservice != xno; then
+    PKG_CHECK_MODULES(ACCOUNTSSERVICE, accountsservice >= $ACCOUNTSSERVICE_REQUIRED, have_accountsservice=yes, have_accountsservice=no)
+fi
+if test "x$have_accountsservice" = "xyes"; then
+  AC_DEFINE(HAVE_ACCOUNTSSERVICE, 1, [ACCOUNTSSERVICE Support.])
+fi
+
+AM_CONDITIONAL([HAVE_ACCOUNTSSERVICE], [test "x$have_accountsservice" = xyes])
+
 
 PKG_CHECK_MODULES(FONT_CAPPLET, $COMMON_MODULES pango)
 PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES fontconfig freetype2 mate-desktop-2.0)
@@ -312,4 +329,5 @@ echo "
 
         Appindicator:          ${enable_appindicator}
         Libmate-slab:          ${have_libmateslab}
+        Accountsservice:       ${have_accountsservice}
 "
