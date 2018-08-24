@@ -51,6 +51,7 @@ enum
 };
 
 #define MOUSE_SCHEMA "org.mate.peripherals-mouse"
+#define INTERFACE_SCHEMA "org.mate.interface"
 #define DOUBLE_CLICK_KEY "double-click"
 
 #define TOUCHPAD_SCHEMA "org.mate.peripherals-touchpad"
@@ -61,6 +62,7 @@ enum
 static gint double_click_state = DOUBLE_CLICK_TEST_OFF;
 
 static GSettings *mouse_settings = NULL;
+static GSettings *interface_settings = NULL;
 static GSettings *touchpad_settings = NULL;
 
 /* Double Click handling */
@@ -273,6 +275,11 @@ setup_dialog (GtkBuilder *dialog)
 	g_settings_bind (mouse_settings, "middle-button-enabled", WID ("middle_button_emulation_toggle"),
 		"active", G_SETTINGS_BIND_DEFAULT);
 
+	/* Middle Button Paste */
+	g_settings_bind (interface_settings, "gtk-enable-primary-paste", WID ("middle_button_paste_toggle"),
+		"active", G_SETTINGS_BIND_DEFAULT);
+
+
 	/* Double-click time */
 	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
 		gtk_range_get_adjustment (GTK_RANGE (WID ("delay_scale"))), "value",
@@ -432,6 +439,7 @@ main (int argc, char **argv)
 	activate_settings_daemon ();
 
 	mouse_settings = g_settings_new (MOUSE_SCHEMA);
+	interface_settings = g_settings_new (INTERFACE_SCHEMA);
 	touchpad_settings = g_settings_new (TOUCHPAD_SCHEMA);
 
 	dialog = create_dialog ();
@@ -471,6 +479,7 @@ main (int argc, char **argv)
 	}
 
 	g_object_unref (mouse_settings);
+	g_object_unref (interface_settings);
 	g_object_unref (touchpad_settings);
 
 	return 0;
