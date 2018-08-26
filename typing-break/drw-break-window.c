@@ -77,8 +77,8 @@ static void         postpone_clicked_cb            (GtkWidget           *button,
 static gboolean     label_draw_event_cb            (GtkLabel            *label,
 						    cairo_t             *cr,
 						    gpointer             user_data);
-static void         label_size_request_cb          (GtkLabel            *label,
-						    GtkRequisition      *requisition,
+static void         label_size_allocate_cb         (GtkLabel            *label,
+						    GdkRectangle        *allocation,
 						    gpointer             user_data);
 
 G_DEFINE_TYPE (DrwBreakWindow, drw_break_window, GTK_TYPE_WINDOW)
@@ -131,6 +131,7 @@ drw_break_window_init (DrwBreakWindow *window)
 	GdkRectangle           monitor;
 	gint                   right_padding;
 	gint                   bottom_padding;
+	gint                   scale;
 	GSettings             *settings;
 
 	priv = DRW_BREAK_WINDOW_GET_PRIVATE (window);
@@ -143,25 +144,26 @@ drw_break_window_init (DrwBreakWindow *window)
 	allow_postpone = g_settings_get_boolean (settings, "allow-postpone");
 	g_object_unref (settings);
 
-	g_object_set (window, "type", GTK_WINDOW_POPUP, NULL);
 	gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
 	gtk_window_fullscreen (GTK_WINDOW (window));
 	gtk_window_set_modal (GTK_WINDOW (window), TRUE);
 
 	screen = gdk_screen_get_default ();
 	display = gdk_screen_get_display (screen);
+	scale = gtk_widget_get_scale_factor (GTK_WIDGET (window));
+
 	gdk_monitor_get_geometry (gdk_display_get_monitor (display, root_monitor), &monitor);
 
 	gtk_window_set_default_size (GTK_WINDOW (window),
-				     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)),
-				     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)));
+				     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale,
+				     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale);
 
 	gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
 	gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 	drw_setup_background (GTK_WIDGET (window));
 
-	right_padding = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) - monitor.width - monitor.x;
-	bottom_padding = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) - monitor.height - monitor.y;
+	right_padding = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale - monitor.width - monitor.x;
+	bottom_padding = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale - monitor.height - monitor.y;
 
 	outer_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_set_hexpand (outer_vbox, TRUE);
@@ -234,8 +236,8 @@ drw_break_window_init (DrwBreakWindow *window)
 			  NULL);
 
 	g_signal_connect_after (priv->break_label,
-				"size_request",
-				G_CALLBACK (label_size_request_cb),
+				"size-allocate",
+				G_CALLBACK (label_size_allocate_cb),
 				NULL);
 
 	str = g_strdup_printf ("<span size=\"xx-large\" foreground=\"white\"><b>%s</b></span>",
@@ -256,8 +258,8 @@ drw_break_window_init (DrwBreakWindow *window)
 			  NULL);
 
 	g_signal_connect_after (priv->clock_label,
-				"size_request",
-				G_CALLBACK (label_size_request_cb),
+				"size-allocate",
+				G_CALLBACK (label_size_allocate_cb),
 				NULL);
 
 	gtk_window_stick (GTK_WINDOW (window));
@@ -540,9 +542,11 @@ get_layout_location (GtkLabel *label,
 	gint           x, y;
 	gint           xpad, ypad;
 	gint           margin_start, margin_end, margin_top, margin_bottom;
+	gint           scale;
 
 	widget = GTK_WIDGET (label);
 
+	scale = gtk_widget_get_scale_factor (widget);
 	xalign = gtk_label_get_xalign (GTK_LABEL (label));
 	yalign = gtk_label_get_yalign (GTK_LABEL (label));
 	margin_start = gtk_widget_get_margin_start (widget);
@@ -555,6 +559,10 @@ get_layout_location (GtkLabel *label,
 
 	gtk_widget_get_allocation (widget, &widget_allocation);
 	gtk_widget_get_requisition (widget, &widget_requisition);
+	widget_allocation.x /= scale;
+	widget_allocation.y /= scale;
+	widget_requisition.width /= scale;
+	widget_requisition.height /= scale;
 
 	if (gtk_widget_get_direction (widget) != GTK_TEXT_DIR_LTR)
 		xalign = 1.0 - xalign;
@@ -603,10 +611,10 @@ label_draw_event_cb (GtkLabel *label,
 }
 
 static void
-label_size_request_cb (GtkLabel       *label,
-		       GtkRequisition *requisition,
-		       gpointer        user_data)
+label_size_allocate_cb (GtkLabel     *label,
+			GdkRectangle *allocation,
+			gpointer      user_data)
 {
-	requisition->width += 1;
-	requisition->height += 1;
+	allocation->width += 1;
+	allocation->height += 1;
 }

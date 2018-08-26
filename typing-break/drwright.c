@@ -69,42 +69,42 @@ typedef enum {
 
 struct _DrWright {
 	/* Widgets. */
-	GtkWidget      *break_window;
-	GList          *secondary_break_windows;
+	GtkWidget       *break_window;
+	GList           *secondary_break_windows;
 
-	DrwMonitor     *monitor;
+	DrwMonitor      *monitor;
 
-	GtkUIManager *ui_manager;
+	GtkUIManager    *ui_manager;
 
-	DrwState        state;
-	DrwTimer       *timer;
-	DrwTimer       *idle_timer;
+	DrwState         state;
+	DrwTimer        *timer;
+	DrwTimer        *idle_timer;
 
-	gint            last_elapsed_time;
-	gint            save_last_time;
+	gint             last_elapsed_time;
+	gint             save_last_time;
 
 	/* Time settings. */
-	gint            type_time;
-	gint            break_time;
-	gint            warn_time;
+	gint             type_time;
+	gint             break_time;
+	gint             warn_time;
 
-	gboolean        enabled;
+	gboolean         enabled;
 
-	guint           clock_timeout_id;
+	guint            clock_timeout_id;
 #ifdef HAVE_APP_INDICATOR
-	AppIndicator   *indicator;
+	AppIndicator    *indicator;
 #else
-	guint           blink_timeout_id;
+	guint            blink_timeout_id;
 
-	gboolean        blink_on;
+	gboolean         blink_on;
 
-	GtkStatusIcon  *icon;
+	GtkStatusIcon   *icon;
 
-	GdkPixbuf      *neutral_bar;
-	GdkPixbuf      *red_bar;
-	GdkPixbuf      *green_bar;
-	GdkPixbuf      *disabled_bar;
-	GdkPixbuf      *composite_bar;
+	cairo_surface_t *neutral_bar;
+	cairo_surface_t *red_bar;
+	cairo_surface_t *green_bar;
+	cairo_surface_t *disabled_bar;
+	GdkPixbuf       *composite_bar;
 #endif /* HAVE_APP_INDICATOR */
 
 	GtkWidget      *warn_dialog;
@@ -175,6 +175,21 @@ update_app_indicator (DrWright *dr)
 	app_indicator_set_status (dr->indicator, new_status);
 }
 #else
+
+static void
+set_status_icon (GtkStatusIcon *icon, cairo_surface_t *surface)
+{
+	GdkPixbuf *pixbuf;
+
+	pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
+					      cairo_image_surface_get_width (surface),
+					      cairo_image_surface_get_height (surface));
+
+	gtk_status_icon_set_from_pixbuf (icon, pixbuf);
+
+	g_object_unref (pixbuf);
+}
+
 static void
 update_icon (DrWright *dr)
 {
@@ -186,15 +201,16 @@ update_icon (DrWright *dr)
 	gboolean   set_pixbuf;
 
 	if (!dr->enabled) {
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 dr->disabled_bar);
+		set_status_icon (dr->icon, dr->disabled_bar);
 		return;
 	}
 
-	tmp_pixbuf = gdk_pixbuf_copy (dr->neutral_bar);
+	width = cairo_image_surface_get_width (dr->neutral_bar);
+	height = cairo_image_surface_get_height (dr->neutral_bar);
 
-	width = gdk_pixbuf_get_width (tmp_pixbuf);
-	height = gdk_pixbuf_get_height (tmp_pixbuf);
+	tmp_pixbuf = gdk_pixbuf_get_from_surface (dr->neutral_bar,
+						  0, 0,
+						  width, height);
 
 	set_pixbuf = TRUE;
 
@@ -220,17 +236,17 @@ update_icon (DrWright *dr)
 
 	switch (dr->state) {
 	case STATE_WARN:
-		pixbuf = dr->red_bar;
+		pixbuf = gdk_pixbuf_get_from_surface (dr->red_bar, 0, 0, width, height);
 		set_pixbuf = FALSE;
 		break;
 
 	case STATE_BREAK_SETUP:
 	case STATE_BREAK:
-		pixbuf = dr->red_bar;
+		pixbuf = gdk_pixbuf_get_from_surface (dr->red_bar, 0, 0, width, height);
 		break;
 
 	default:
-		pixbuf = dr->green_bar;
+		pixbuf = gdk_pixbuf_get_from_surface (dr->green_bar, 0, 0, width, height);
 	}
 
 	gdk_pixbuf_composite (pixbuf,
@@ -256,6 +272,8 @@ update_icon (DrWright *dr)
 	}
 
 	dr->composite_bar = tmp_pixbuf;
+
+	g_object_unref (pixbuf);
 }
 
 static gboolean
@@ -272,11 +290,9 @@ blink_timeout_cb (DrWright *dr)
 	}
 
 	if (dr->blink_on || timeout == 0) {
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 dr->composite_bar);
+		gtk_status_icon_set_from_pixbuf (dr->icon, dr->composite_bar);
 	} else {
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 dr->neutral_bar);
+		set_status_icon (dr->icon, dr->neutral_bar);
 	}
 
 	dr->blink_on = !dr->blink_on;
@@ -385,8 +401,7 @@ maybe_change_state (DrWright *dr)
 		}
 
 #ifndef HAVE_APP_INDICATOR
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 dr->neutral_bar);
+		set_status_icon (dr->icon, dr->neutral_bar);
 #endif /* HAVE_APP_INDICATOR */
 
 		dr->save_last_time = 0;
@@ -426,8 +441,7 @@ maybe_change_state (DrWright *dr)
 
 		stop_blinking (dr);
 #ifndef HAVE_APP_INDICATOR
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 dr->red_bar);
+		set_status_icon (dr->icon, dr->red_bar);
 #endif /* HAVE_APP_INDICATOR */
 
 		drw_timer_start (dr->timer);
@@ -470,8 +484,7 @@ maybe_change_state (DrWright *dr)
 	case STATE_BREAK_DONE_SETUP:
 		stop_blinking (dr);
 #ifndef HAVE_APP_INDICATOR
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 dr->green_bar);
+		set_status_icon (dr->icon, dr->green_bar);
 #endif /* HAVE_APP_INDICATOR */
 
 		dr->state = STATE_BREAK_DONE;
@@ -765,7 +778,14 @@ init_app_indicator (DrWright *dr)
 static void
 init_tray_icon (DrWright *dr)
 {
-	dr->icon = gtk_status_icon_new_from_pixbuf (dr->neutral_bar);
+	GdkPixbuf *pixbuf;
+
+	pixbuf = gdk_pixbuf_get_from_surface (dr->neutral_bar, 0, 0,
+					      cairo_image_surface_get_width (dr->neutral_bar),
+					      cairo_image_surface_get_height (dr->neutral_bar));
+
+	dr->icon = gtk_status_icon_new_from_pixbuf (pixbuf);
+	g_object_unref (pixbuf);
 
 	update_status (dr);
 	update_icon (dr);
@@ -784,6 +804,7 @@ create_secondary_break_windows (void)
 	GdkScreen  *screen;
 	GtkWidget  *window;
 	GList      *windows = NULL;
+	gint        scale;
 
 	display = gdk_display_get_default ();
 
@@ -795,12 +816,13 @@ create_secondary_break_windows (void)
 		window = gtk_window_new (GTK_WINDOW_POPUP);
 
 		windows = g_list_prepend (windows, window);
+		scale = gtk_widget_get_scale_factor (GTK_WIDGET (window));
 
 		gtk_window_set_screen (GTK_WINDOW (window), screen);
 
 		gtk_window_set_default_size (GTK_WINDOW (window),
-					     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)),
-					     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)));
+					     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale,
+					     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale);
 
 		gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 		drw_setup_background (GTK_WIDGET (window));
@@ -873,10 +895,10 @@ drwright_new (void)
 #ifdef HAVE_APP_INDICATOR
 	init_app_indicator (dr);
 #else
-	dr->neutral_bar = gdk_pixbuf_new_from_file (IMAGEDIR "/bar.png", NULL);
-	dr->red_bar = gdk_pixbuf_new_from_file (IMAGEDIR "/bar-red.png", NULL);
-	dr->green_bar = gdk_pixbuf_new_from_file (IMAGEDIR "/bar-green.png", NULL);
-	dr->disabled_bar = gdk_pixbuf_new_from_file (IMAGEDIR "/bar-disabled.png", NULL);
+	dr->neutral_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar.png");
+	dr->red_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar-red.png");
+	dr->green_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar-green.png");
+	dr->disabled_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar-disabled.png");
 
 	init_tray_icon (dr);
 #endif /* HAVE_APP_INDICATOR */
