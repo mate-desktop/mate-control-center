@@ -119,14 +119,15 @@ set_pixmap_background (GtkWidget *window)
 	GdkPixbuf    *tmp_pixbuf, *pixbuf, *tile_pixbuf;
 	GdkRectangle  rect;
 	GdkColor      color;
-	gint          width, height;
+	gint          width, height, scale;
 	cairo_t      *cr;
 
 	gtk_widget_realize (window);
 
 	screen = gtk_widget_get_screen (window);
-	width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen));
-	height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen));
+	scale = gtk_widget_get_scale_factor (window);
+	width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale;
+	height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale;
 
 	tmp_pixbuf = gdk_pixbuf_get_from_window (gdk_screen_get_root_window (screen),
 						 0,
@@ -160,8 +161,8 @@ set_pixmap_background (GtkWidget *window)
 			      height,
 			      0,
 			      0,
-			      1,
-			      1,
+			      scale,
+			      scale,
 			      GDK_INTERP_NEAREST,
 			      225);
 
