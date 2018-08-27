@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:55+0300\n"
+"POT-Creation-Date: 2018-05-27 18:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Oldboy Boyold <boyoldboyold@gmail.com>, 2018\n"
+"Last-Translator: Alexey Puts, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/mate/teams/13566/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -660,19 +660,20 @@ msgstr "Подробности отрисовки шрифтов"
 
 #: ../capplets/appearance/data/appearance.ui.h:2
 msgid "R_esolution"
-msgstr ""
+msgstr "_Разрешение:"
 
 #: ../capplets/appearance/data/appearance.ui.h:3
 msgid "Dots per inch (DPI):"
-msgstr ""
+msgstr "Точек на дюйм (DPI):"
 
 #: ../capplets/appearance/data/appearance.ui.h:4
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr ""
+"Сбрасывает DPI шрифта до значения автоматически-определенного Xserver."
 
 #: ../capplets/appearance/data/appearance.ui.h:5
 msgid "Automatic detection:"
-msgstr ""
+msgstr "Автоматическое определение:"
 
 #: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Smoothing"
@@ -990,18 +991,30 @@ msgid "Toolbar _button labels:"
 msgstr "Подписи _кнопок панели:"
 
 #: ../capplets/appearance/data/appearance.ui.h:87
+msgid "Buttons"
+msgstr "Кнопки"
+
+#: ../capplets/appearance/data/appearance.ui.h:88
+msgid "Show icons on buttons"
+msgstr "Показывать значки на кнопках"
+
+#: ../capplets/appearance/data/appearance.ui.h:89
+msgid "Whether buttons may display an icon in addition to the button text"
+msgstr "Отображать ли иконки рядом с текстом кнопки"
+
+#: ../capplets/appearance/data/appearance.ui.h:90
 msgid "Preview"
 msgstr "Предварительный просмотр"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:91
 msgid "_File"
 msgstr "_Файл"
 
-#: ../capplets/appearance/data/appearance.ui.h:89
+#: ../capplets/appearance/data/appearance.ui.h:92
 msgid "Edit"
 msgstr "Правка"
 
-#: ../capplets/appearance/data/appearance.ui.h:90
+#: ../capplets/appearance/data/appearance.ui.h:93
 msgid "Interface"
 msgstr "Интерфейс"
 
@@ -1055,10 +1068,10 @@ msgstr "%d %s на %d %s"
 #: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "пиксель"
+msgstr[1] "пикселей"
+msgstr[2] "пикселей"
+msgstr[3] "пикселей"
 
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
@@ -1137,7 +1150,7 @@ msgstr "Тема %s существует."
 
 #: ../capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
-msgstr ""
+msgstr "Вы хотите установить его снова?"
 
 #: ../capplets/appearance/theme-installer.c:388
 msgid "Cancel"
@@ -1844,7 +1857,7 @@ msgstr "Коман_да:"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
 msgid "_Browse applications..."
-msgstr ""
+msgstr "_Просмотреть приложения..."
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
@@ -2296,6 +2309,8 @@ msgstr "Показывать поз_ицию указателя при нажа�
 #: ../capplets/mouse/mate-mouse-properties.ui.h:7
 msgid "Emulate middle button through simultaneous left and right click"
 msgstr ""
+"Эмулирует нажатие средней клавиши через одновременное нажатие на левую и "
+"правую клавиши"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:8
 msgid "Pointer Speed"
@@ -2365,6 +2380,7 @@ msgstr "Эмуляция щелчка тремя пальцами:"
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
+"Предупреждение: эмуляция мульти-тач может отключить программные кнопки"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Scrolling"
@@ -2539,7 +2555,7 @@ msgstr "Привязка окон"
 
 #: ../capplets/windows/mate-window-properties.c:428
 msgid "Enable window _tiling"
-msgstr ""
+msgstr "Включить оконный _тайлинг"
 
 #. Window Selection
 #: ../capplets/windows/mate-window-properties.c:433
@@ -2676,7 +2692,7 @@ msgstr "Утилита настройки среды MATE"
 
 #: ../shell/matecc.desktop.in.in.h:3
 msgid "Configure MATE settings"
-msgstr ""
+msgstr "Настройка параметров MATE"
 
 #: ../typing-break/drw-break-window.c:183
 msgid "_Postpone Break"
@@ -2707,10 +2723,10 @@ msgstr "Сделать перерыв (следующий в %dm)"
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%d минута до следующего перерыва"
+msgstr[1] "%d минут до следующего перерыва"
+msgstr[2] "%d минут до следующего перерыва"
+msgstr[3] "%d минут до следующего перерыва"
 
 #: ../typing-break/drwright.c:532
 #, c-format
@@ -2890,7 +2906,7 @@ msgstr "Совпадений не найдено."
 msgid "New Applications"
 msgstr "Новые приложения"
 
-#: ../libslab/app-shell.c:920
+#: ../libslab/app-shell.c:923
 msgid "Other"
 msgstr "Прочие"
 
