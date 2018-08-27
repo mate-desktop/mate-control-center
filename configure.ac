@@ -171,6 +171,24 @@ AC_SUBST(WARN_CFLAGS)
 
 AM_CONDITIONAL(HAVE_LIBMATESLAB, [test $have_libmateslab = yes])
 
+dnl
+dnl Check dependencies of accountsservice
+dnl
+
+ACCOUNTSSERVICE_REQUIRED=0.6.21
+
+AC_ARG_WITH([accountsservice], AC_HELP_STRING([--without-accountsservice], [disable accountsservice support]))
+have_accountsservice=no
+if test x$with_accountsservice != xno; then
+    PKG_CHECK_MODULES(ACCOUNTSSERVICE, accountsservice >= $ACCOUNTSSERVICE_REQUIRED, have_accountsservice=yes, have_accountsservice=no)
+fi
+if test "x$have_accountsservice" = "xyes"; then
+  AC_DEFINE(HAVE_ACCOUNTSSERVICE, 1, [ACCOUNTSSERVICE Support.])
+fi
+
+AM_CONDITIONAL([HAVE_ACCOUNTSSERVICE], [test "x$have_accountsservice" = xyes])
+
+
 PKG_CHECK_MODULES(FONT_CAPPLET, $COMMON_MODULES pango)
 PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES fontconfig freetype2 mate-desktop-2.0)
 
@@ -311,4 +329,5 @@ echo "
 
         Appindicator:          ${enable_appindicator}
         Libmate-slab:          ${have_libmateslab}
+        Accountsservice:       ${have_accountsservice}
 "
