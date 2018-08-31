@@ -23,9 +23,7 @@
 
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define E_TYPE_IMAGE_CHOOSER	        (e_image_chooser_get_type ())
 #define E_IMAGE_CHOOSER(obj)	        (G_TYPE_CHECK_INSTANCE_CAST ((obj), E_TYPE_IMAGE_CHOOSER, EImageChooser))
@@ -35,13 +33,10 @@ extern "C" {
 
 typedef struct _EImageChooser        EImageChooser;
 typedef struct _EImageChooserClass   EImageChooserClass;
-typedef struct _EImageChooserPrivate EImageChooserPrivate;
 
 struct _EImageChooser
 {
 	GtkBox parent;
-
-	EImageChooserPrivate *priv;
 };
 
 struct _EImageChooserClass
@@ -54,17 +49,17 @@ struct _EImageChooserClass
 
 };
 
-GtkWidget *e_image_chooser_new      (void);
-GType      e_image_chooser_get_type (void);
+GtkWidget *e_image_chooser_new            (void);
+GtkWidget *e_image_chooser_new_with_size  (int width, int height);
+GType      e_image_chooser_get_type       (void);
 
 gboolean   e_image_chooser_set_from_file  (EImageChooser *chooser, const char *filename);
 gboolean   e_image_chooser_set_image_data (EImageChooser *chooser, char *data, gsize data_length);
 void       e_image_chooser_set_editable   (EImageChooser *chooser, gboolean editable);
+void       e_image_chooser_set_scaleable  (EImageChooser *chooser, gboolean scaleable);
 
 gboolean   e_image_chooser_get_image_data (EImageChooser *chooser, char **data, gsize *data_length);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
 #endif /* _E_IMAGE_CHOOSER_H_ */
