@@ -438,7 +438,7 @@ about_me_setup_dialog (void)
 	dialog = gtk_builder_new ();
 	gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-about-me-dialog.ui", NULL);
 
-	me->image_chooser = e_image_chooser_new ();
+	me->image_chooser = e_image_chooser_new_with_size (MAX_WIDTH, MAX_HEIGHT);
 	gtk_container_add (GTK_CONTAINER (WID ("button-image")), me->image_chooser);
 
 	if (dialog == NULL) {
