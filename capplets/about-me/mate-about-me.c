@@ -410,12 +410,10 @@ about_me_fingerprint_button_clicked_cb (GtkWidget *button, MateAboutMe *me)
 #if HAVE_ACCOUNTSSERVICE
 static void on_user_is_loaded_changed (ActUser *user, GParamSpec *pspec, MateAboutMe* me)
 {
-        if (act_user_is_loaded (user)) {
-		about_me_load_photo (me);
-		g_signal_handlers_disconnect_by_func (G_OBJECT (user),
-				G_CALLBACK (on_user_is_loaded_changed),
-				me);
+	if (!act_user_is_loaded (user)) {
+		return;
 	}
+	about_me_load_photo (me);
 }
 #endif
 
@@ -480,11 +478,14 @@ about_me_setup_dialog (void)
 	g_object_get (manager, "is-loaded", &loaded, NULL);
 	if (!loaded) {
 		g_signal_connect (me->user, "notify::is-loaded", G_CALLBACK (on_user_is_loaded_changed), me);
+	} else {
+		/* Contact Tab */
+		about_me_load_photo (me);
 	}
-#endif
-
+#else
 	/* Contact Tab */
 	about_me_load_photo (me);
+#endif
 
 	widget = WID ("fullname");
 	str = g_strdup_printf ("<b><span size=\"xx-large\">%s</span></b>", me->username);
