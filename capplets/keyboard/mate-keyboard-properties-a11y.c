@@ -48,6 +48,7 @@ stickykeys_enable_toggled_cb (GtkWidget *w, GtkBuilder *dialog)
 {
 	gboolean active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (w));
 
+	gtk_widget_set_sensitive (WID ("stickykeys_latch_to_lock"), active);
 	gtk_widget_set_sensitive (WID ("stickykeys_two_key_off"), active);
 	if (notifications_dialog)
 		gtk_widget_set_sensitive (NWID ("stickykeys_notifications_box"), active);
@@ -230,6 +231,12 @@ setup_a11y_tabs (GtkBuilder *dialog)
 	g_signal_connect (w, "toggled",
 			  G_CALLBACK (stickykeys_enable_toggled_cb), dialog);
 	stickykeys_enable_toggled_cb (w, dialog);
+
+	g_settings_bind (a11y_settings,
+					 "stickykeys-latch-to-lock",
+					 WID ("stickykeys_latch_to_lock"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
 
 	g_settings_bind (a11y_settings,
 					 "stickykeys-two-key-off",
