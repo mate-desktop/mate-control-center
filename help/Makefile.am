@@ -15,7 +15,8 @@ HELP_FILES = \
 	config-keybindings.xml \
 	config-mouse.xml \
 	config-screensaver.xml \
-	config-themes.xml
+	config-themes.xml \
+	legal.xml
 
 # Add linguas to be ignored, e.g. IGNORE_HELP_LINGUAS = ca de es fr
 IGNORE_HELP_LINGUAS =
