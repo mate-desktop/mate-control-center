@@ -2,7 +2,14 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 
 <!ENTITY VERSION "1.10.1">
-<!ENTITY app "<application>MATE Control Center</application>">
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY app "<application>MATE Control Center</application>">
+  <!-- Information about the entities
+       The legal.xml file contains legal information, there is no need to edit the file.
+       Use the appversion entity to specify the version of the application.
+       Use the manrevision entity to specify the revision number of this manual.
+       Use the date entity to specify the release date of this manual.
+       Use the app entity to specify the name of the application. -->
 ]>
 
 <article id="index" lang="en">
@@ -55,34 +62,21 @@
       </revision> 
     </revhistory>
 
-    <legalnotice id="legalnotice">
-      <para>
-	Permission is granted to copy, distribute and/or modify this document
-        under the terms of the
-        <ulink type="help" url="help:fdl">
-          <citetitle>
-            GNU Free Documentation License
-          </citetitle>
-        </ulink>, Version 1.1 or any later version
-        published by the Free Software Foundation with no Invariant Sections,
-        no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
-        can be found <ulink type="help" url="help:fdl">here</ulink>.
-      </para>
-      <para>
-        Many of the names used by companies to distinguish their products and
-        services are claimed as trademarks. Where those names appear in any
-        MATE documentation, and those trademarks are made aware to the members
-        of the MATE Documentation Project, the names have been printed in caps
-        or initial caps.
-      </para>
-      <para>
-        To report a bug or make a suggestion regarding the &app; application or this manual, follow the directions in the <ulink url="help:mate-user-guide/feedback" type="help">MATE Feedback Page</ulink>.
-      </para>
-    </legalnotice>
+   &legal; <!-- This file contains link to license for the
+   documentation (GNU FDL), and other legal stuff such as "NO
+   WARRANTY" statement. Please do not change any of this. -->
 
     <releaseinfo>
       This manual describes version &VERSION; of the MATE Control Center.
     </releaseinfo>
+
+    <legalnotice>
+        <title>Feedback</title>
+        <para>To report a bug or make a suggestion regarding the &app; application or this manual, follow the directions in the
+        <ulink url="help:mate-user-guide/feedback" type="help">MATE Feedback Page</ulink>.
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
   </articleinfo>
   
   <sect1 id="intro">
