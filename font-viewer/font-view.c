@@ -806,7 +806,6 @@ font_view_application_startup (GApplication *application)
 {
     FontViewApplication *self = FONT_VIEW_APPLICATION (application);
     GtkWidget *window, *swin;
-    GtkWidget *image;
     GtkBuilder *builder;
     GMenuModel *menu;
 
