@@ -60,8 +60,12 @@ typedef struct {
     GtkWidget *swin_view;
     GtkWidget *swin_preview;
     GtkWidget *icon_view;
+    GtkWidget *search_bar;
+    GtkWidget *entry;
+    GtkWidget *search_button;
 
     GtkTreeModel *model;
+    GtkTreeModel *filter_model;
 
     GFile *font_file;
 } FontViewApplication;
@@ -497,6 +501,39 @@ info_button_clicked_cb (GtkButton *button,
     gtk_widget_show_all (dialog);
 }
 
+static gboolean
+font_visible_func (GtkTreeModel *model,
+                   GtkTreeIter  *iter,
+                   gpointer      data)
+{
+  FontViewApplication *self = data;
+  gboolean ret;
+  const char *search;
+  char *name;
+  char *cf_name;
+  char *cf_search;
+
+  if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->search_button)))
+    return TRUE;
+
+  search = gtk_entry_get_text (GTK_ENTRY (self->entry));
+
+  gtk_tree_model_get (model, iter,
+                      COLUMN_NAME, &name,
+                      -1);
+
+  cf_name = g_utf8_casefold (name, -1);
+  cf_search = g_utf8_casefold (search, -1);
+
+  ret = strstr (cf_name, cf_search) != NULL;
+
+  g_free (name);
+  g_free (cf_name);
+  g_free (cf_search);
+
+  return ret;
+}
+
 static void
 font_view_ensure_model (FontViewApplication *self)
 {
@@ -506,6 +543,9 @@ font_view_ensure_model (FontViewApplication *self)
     self->model = font_view_model_new ();
     g_signal_connect (self->model, "config-changed",
                       G_CALLBACK (font_model_config_changed_cb), self);
+    self->filter_model = gtk_tree_model_filter_new (self->model, NULL);
+    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (self->filter_model),
+                                            font_visible_func, self, NULL);
 }
 
 static void
@@ -579,6 +619,7 @@ icon_view_release_cb (GtkWidget *widget,
     FontViewApplication *self = user_data;
     GtkTreePath *path;
     GtkTreeIter iter;
+    GtkTreeIter *filter_iter;
     gchar *font_path;
     gint face_index;
     GFile *file;
@@ -591,7 +632,10 @@ icon_view_release_cb (GtkWidget *widget,
                                           event->x, event->y);
 
     if (path != NULL &&
-        gtk_tree_model_get_iter (self->model, &iter, path)) {
+        gtk_tree_model_get_iter (self->filter_model, &filter_iter, path)) {
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (self->filter_model),
+                                                          &iter,
+                                                          &filter_iter);
         gtk_tree_model_get (self->model, &iter,
                             COLUMN_PATH, &font_path,
                             COLUMN_FACE_INDEX, &face_index,
@@ -637,7 +681,7 @@ font_view_application_do_overview (FontViewApplication *self)
         GtkWidget *icon_view;
         GtkCellRenderer *cell;
 
-        self->icon_view = icon_view = gtk_icon_view_new_with_model (self->model);
+        self->icon_view = icon_view = gtk_icon_view_new_with_model (self->filter_model);
         g_object_set (icon_view,
                       "column-spacing", VIEW_COLUMN_SPACING,
                       "margin", VIEW_MARGIN,
@@ -751,10 +795,18 @@ static GActionEntry action_entries[] = {
 };
 
 static void
+search_text_changed (GtkEntry *entry,
+                     FontViewApplication *self)
+{
+  gtk_tree_model_filter_refilter (GTK_TREE_MODEL_FILTER (self->filter_model));
+}
+
+static void
 font_view_application_startup (GApplication *application)
 {
     FontViewApplication *self = FONT_VIEW_APPLICATION (application);
     GtkWidget *window, *swin;
+    GtkWidget *image;
     GtkBuilder *builder;
     GMenuModel *menu;
 
@@ -786,6 +838,9 @@ font_view_application_startup (GApplication *application)
 
     self->toolbar = gd_main_toolbar_new ();
     gtk_style_context_add_class (gtk_widget_get_style_context (self->toolbar), "menubar");
+    self->search_button = gd_main_toolbar_add_toggle (GD_MAIN_TOOLBAR (self->toolbar),
+                                                        NULL, _("Search"), 
+                                                        FALSE);
     gtk_container_add (GTK_CONTAINER (self->main_grid), self->toolbar);
 
     self->notebook = gtk_notebook_new ();
@@ -805,6 +860,19 @@ font_view_application_startup (GApplication *application)
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
          			    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
     gtk_container_add (GTK_CONTAINER (self->notebook), swin);
+
+    self->search_bar = gtk_search_bar_new();
+    gtk_container_add (GTK_CONTAINER (self->main_grid), self->search_bar);
+    
+    self->entry = gtk_search_entry_new();
+    gtk_entry_set_width_chars (GTK_ENTRY (self->entry), 40);
+    gtk_container_add (GTK_CONTAINER (self->search_bar), self->entry);
+    
+    g_object_bind_property (self->search_bar, "search-mode-enabled",
+                            self->search_button, "active",
+                            G_BINDING_BIDIRECTIONAL);
+
+    g_signal_connect (self->entry, "search-changed", G_CALLBACK (search_text_changed), self);
 
     gtk_widget_show_all (window);
 }
@@ -832,6 +900,7 @@ font_view_application_dispose (GObject *obj)
     FontViewApplication *self = FONT_VIEW_APPLICATION (obj);
 
     g_clear_object (&self->model);
+    g_clear_object (&self->filter_model);
 
     G_OBJECT_CLASS (font_view_application_parent_class)->dispose (obj);
 }
