@@ -619,7 +619,7 @@ icon_view_release_cb (GtkWidget *widget,
     FontViewApplication *self = user_data;
     GtkTreePath *path;
     GtkTreeIter iter;
-    GtkTreeIter *filter_iter;
+    GtkTreeIter filter_iter;
     gchar *font_path;
     gint face_index;
     GFile *file;
