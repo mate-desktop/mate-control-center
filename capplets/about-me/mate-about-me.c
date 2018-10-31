@@ -96,9 +96,11 @@ about_me_load_photo (MateAboutMe *me)
 #if HAVE_ACCOUNTSSERVICE
 	const gchar   *act_file;
 
-	act_file = act_user_get_icon_file (me->user);
-	if ( act_file != NULL && strlen (act_file) > 1) {
-		file = g_strdup (act_file);
+	if (act_user_is_loaded (me->user)) {
+		act_file = act_user_get_icon_file (me->user);
+		if ( act_file != NULL && strlen (act_file) > 1) {
+			file = g_strdup (act_file);
+		}
 	}
 #endif
 	if (file == NULL) {
@@ -410,10 +412,12 @@ about_me_fingerprint_button_clicked_cb (GtkWidget *button, MateAboutMe *me)
 #if HAVE_ACCOUNTSSERVICE
 static void on_user_is_loaded_changed (ActUser *user, GParamSpec *pspec, MateAboutMe* me)
 {
-	if (!act_user_is_loaded (user)) {
-		return;
+	if (act_user_is_loaded (user)) {
+		about_me_load_photo (me);
+		g_signal_handlers_disconnect_by_func (G_OBJECT (user),
+				G_CALLBACK (on_user_is_loaded_changed),
+				me);
 	}
-	about_me_load_photo (me);
 }
 #endif
 
@@ -427,7 +431,6 @@ about_me_setup_dialog (void)
 	gchar        *str;
 #if HAVE_ACCOUNTSSERVICE
 	ActUserManager* manager;
-	gboolean loaded;
 #endif
 
 	me = g_new0 (MateAboutMe, 1);
@@ -475,17 +478,10 @@ about_me_setup_dialog (void)
 #if HAVE_ACCOUNTSSERVICE
 	manager = act_user_manager_get_default ();
 	me->user = act_user_manager_get_user (manager, me->login);
-	g_object_get (manager, "is-loaded", &loaded, NULL);
-	if (!loaded) {
-		g_signal_connect (me->user, "notify::is-loaded", G_CALLBACK (on_user_is_loaded_changed), me);
-	} else {
-		/* Contact Tab */
-		about_me_load_photo (me);
-	}
-#else
+	g_signal_connect (me->user, "notify::is-loaded", G_CALLBACK (on_user_is_loaded_changed), me);
+#endif
 	/* Contact Tab */
 	about_me_load_photo (me);
-#endif
 
 	widget = WID ("fullname");
 	str = g_strdup_printf ("<b><span size=\"xx-large\">%s</span></b>", me->username);
