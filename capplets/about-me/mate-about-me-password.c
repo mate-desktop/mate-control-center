@@ -39,9 +39,17 @@
 #ifdef __sun
 #include <sys/types.h>
 #include <signal.h>
+#include <fcntl.h>
 #endif
 
 #include "capplet-util.h"
+
+#define PASSWD "/usr/bin/passwd"
+
+#ifdef __sun
+/* /dev/pts/N */
+#define PTY_MAX_NAME 20
+#endif
 #include "mate-about-me-password.h"
 
 /* Passwd states */
@@ -157,6 +165,28 @@ passdlg_refresh_password_state (PasswordDialog *pdialog);
  * Spawning and closing of backend {{
  */
 
+#ifdef __sun
+/* Child setup callback for PTY-based passwd interaction on illumos.
+ * Runs in the child process after fork(), before exec().
+ * Only async-signal-safe functions may be called here. */
+static void
+child_setup_pty (gpointer user_data)
+{
+	const char *slave_name = (const char *) user_data;
+	int pty_s;
+
+	setsid ();
+	pty_s = open (slave_name, O_RDWR);
+	if (pty_s < 0)
+		_exit (1);
+	dup2 (pty_s, 0);
+	dup2 (pty_s, 1);
+	dup2 (pty_s, 2);
+	if (pty_s > 2)
+		close (pty_s);
+}
+#endif
+
 /* Child watcher */
 static void
 child_watch_cb (GPid pid, gint status, PasswordDialog *pdialog)
@@ -177,9 +207,8 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 {
 	gchar	*argv[2];
 	gchar	*envp[1];
-	gint	my_stdin, my_stdout, my_stderr;
 
-	argv[0] = "/usr/bin/passwd";	/* Is it safe to rely on a hard-coded path? */
+	argv[0] = PASSWD;	/* Is it safe to rely on a hard-coded path? */
 	argv[1] = NULL;
 
 	envp[0] = NULL;		/* If we pass an empty array as the environment,
@@ -191,58 +220,146 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 				 * the locales here.
 				 */
 
-	if (!g_spawn_async_with_pipes (NULL,				/* Working directory */
-				       argv,				/* Argument vector */
-				       envp,				/* Environment */
-				       G_SPAWN_DO_NOT_REAP_CHILD,	/* Flags */
-				       NULL,				/* Child setup */
-				       NULL,				/* Data to child setup */
-				       &pdialog->backend_pid,		/* PID */
-				       &my_stdin,			/* Stdin */
-				       &my_stdout,			/* Stdout */
-				       &my_stderr,			/* Stderr */
-				       error)) {			/* GError */
+#ifdef __sun
+	/* On illumos/Solaris, passwd requires a real terminal (PTY) for
+	 * interactive password input. Use g_spawn_async with a child_setup
+	 * callback that attaches the child to a pseudo-terminal. */
+	{
+		int	pty_m;
+		char	slave_name[PTY_MAX_NAME];
+		char	*name;
 
-		/* An error occurred */
-		free_passwd_resources (pdialog);
+		pty_m = posix_openpt (O_RDWR | O_NOCTTY);
+		if (pty_m < 0) {
+			g_set_error (error, PASSDLG_ERROR, PASSDLG_ERROR_BACKEND,
+				     "%s", strerror (errno));
+			return FALSE;
+		}
 
-		return FALSE;
+		if (grantpt (pty_m) < 0) {
+			g_set_error (error, PASSDLG_ERROR, PASSDLG_ERROR_BACKEND,
+				     "%s", strerror (errno));
+			close (pty_m);
+			return FALSE;
+		}
+
+		if (unlockpt (pty_m) < 0) {
+			g_set_error (error, PASSDLG_ERROR, PASSDLG_ERROR_BACKEND,
+				     "%s", strerror (errno));
+			close (pty_m);
+			return FALSE;
+		}
+
+		name = ptsname (pty_m);
+		if (name == NULL || strlen (name) >= PTY_MAX_NAME) {
+			g_set_error (error, PASSDLG_ERROR, PASSDLG_ERROR_BACKEND,
+				     "%s", _("Failed to get pseudo-terminal slave name"));
+			close (pty_m);
+			return FALSE;
+		}
+		strncpy (slave_name, name, PTY_MAX_NAME - 1);
+		slave_name[PTY_MAX_NAME - 1] = '\0';
+
+		if (!g_spawn_async (NULL,
+				    argv,
+				    envp,
+				    G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_CHILD_INHERITS_STDIN,
+				    child_setup_pty,
+				    slave_name,
+				    &pdialog->backend_pid,
+				    error)) {
+			close (pty_m);
+			return FALSE;
+		}
+
+		/* Initialize ext_msg with NULL */
+		pdialog->ext_msg = NULL;
+
+		/* PTY master serves as both stdin and stdout.
+		 * Use dup() for stdout so that g_io_channel_shutdown on one
+		 * channel does not invalidate the other's file descriptor. */
+		pdialog->backend_stdin = g_io_channel_unix_new (pty_m);
+		pdialog->backend_stdout = g_io_channel_unix_new (dup (pty_m));
+
+		/* Set raw encoding */
+		/* Set nonblocking mode */
+		if (g_io_channel_set_encoding (pdialog->backend_stdin, NULL, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_encoding (pdialog->backend_stdout, NULL, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_flags (pdialog->backend_stdin, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_flags (pdialog->backend_stdout, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL) {
+
+			/* Clean up */
+			stop_passwd (pdialog);
+			return FALSE;
+		}
+
+		/* Turn off buffering */
+		g_io_channel_set_buffered (pdialog->backend_stdin, FALSE);
+		g_io_channel_set_buffered (pdialog->backend_stdout, FALSE);
+
+		/* Add IO Channel watcher */
+		pdialog->backend_stdout_watch_id = g_io_add_watch (pdialog->backend_stdout,
+								   G_IO_IN | G_IO_PRI,
+								   (GIOFunc) io_watch_stdout, pdialog);
 	}
+#else
+	{
+		gint	my_stdin, my_stdout, my_stderr;
 
-	/* Initialize ext_msg with NULL */
-	pdialog->ext_msg = NULL;
+		if (!g_spawn_async_with_pipes (NULL,				/* Working directory */
+					       argv,				/* Argument vector */
+					       envp,				/* Environment */
+					       G_SPAWN_DO_NOT_REAP_CHILD,	/* Flags */
+					       NULL,				/* Child setup */
+					       NULL,				/* Data to child setup */
+					       &pdialog->backend_pid,		/* PID */
+					       &my_stdin,			/* Stdin */
+					       &my_stdout,			/* Stdout */
+					       &my_stderr,			/* Stderr */
+					       error)) {			/* GError */
 
-	/* Open IO Channels */
-	pdialog->backend_stdin = g_io_channel_unix_new (my_stdin);
-	pdialog->backend_stdout = g_io_channel_unix_new (my_stdout);
-	pdialog->backend_stderr = g_io_channel_unix_new (my_stderr);
-	
-	/* Set raw encoding */
-	/* Set nonblocking mode */
-	if (g_io_channel_set_encoding (pdialog->backend_stdin, NULL, error) != G_IO_STATUS_NORMAL ||
-		g_io_channel_set_encoding (pdialog->backend_stdout, NULL, error) != G_IO_STATUS_NORMAL ||
-		g_io_channel_set_encoding (pdialog->backend_stderr, NULL, error) != G_IO_STATUS_NORMAL ||
-		g_io_channel_set_flags (pdialog->backend_stdin, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
-		g_io_channel_set_flags (pdialog->backend_stdout, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
-		g_io_channel_set_flags (pdialog->backend_stderr, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL) {
+			/* An error occurred */
+			free_passwd_resources (pdialog);
 
-		/* Clean up */
-		stop_passwd (pdialog);
-		return FALSE;
+			return FALSE;
+		}
+
+		/* Initialize ext_msg with NULL */
+		pdialog->ext_msg = NULL;
+
+		/* Open IO Channels */
+		pdialog->backend_stdin = g_io_channel_unix_new (my_stdin);
+		pdialog->backend_stdout = g_io_channel_unix_new (my_stdout);
+		pdialog->backend_stderr = g_io_channel_unix_new (my_stderr);
+
+		/* Set raw encoding */
+		/* Set nonblocking mode */
+		if (g_io_channel_set_encoding (pdialog->backend_stdin, NULL, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_encoding (pdialog->backend_stdout, NULL, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_encoding (pdialog->backend_stderr, NULL, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_flags (pdialog->backend_stdin, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_flags (pdialog->backend_stdout, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
+			g_io_channel_set_flags (pdialog->backend_stderr, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL) {
+
+			/* Clean up */
+			stop_passwd (pdialog);
+			return FALSE;
+		}
+
+		/* Turn off buffering */
+		g_io_channel_set_buffered (pdialog->backend_stdin, FALSE);
+		g_io_channel_set_buffered (pdialog->backend_stdout, FALSE);
+		g_io_channel_set_buffered (pdialog->backend_stderr, FALSE);
+
+		/* Add IO Channel watcher */
+		pdialog->backend_stdout_watch_id = g_io_add_watch (pdialog->backend_stdout,
+								   G_IO_IN | G_IO_PRI,
+								   (GIOFunc) io_watch_stdout, pdialog);
+		pdialog->backend_stderr_watch_id = g_io_add_watch (pdialog->backend_stderr,
+								   G_IO_IN | G_IO_PRI,
+								   (GIOFunc) io_watch_stdout, pdialog);
 	}
-
-	/* Turn off buffering */
-	g_io_channel_set_buffered (pdialog->backend_stdin, FALSE);
-	g_io_channel_set_buffered (pdialog->backend_stdout, FALSE);
-	g_io_channel_set_buffered (pdialog->backend_stderr, FALSE);
-
-	/* Add IO Channel watcher */
-	pdialog->backend_stdout_watch_id = g_io_add_watch (pdialog->backend_stdout,
-							   G_IO_IN | G_IO_PRI,
-							   (GIOFunc) io_watch_stdout, pdialog);
-	pdialog->backend_stderr_watch_id = g_io_add_watch (pdialog->backend_stderr,
-							   G_IO_IN | G_IO_PRI,
-							   (GIOFunc) io_watch_stdout, pdialog);
+#endif
 
 	/* Add child watcher */
 	pdialog->backend_child_watch_id = g_child_watch_add (pdialog->backend_pid, (GChildWatchFunc) child_watch_cb, pdialog);
@@ -864,7 +981,7 @@ passdlg_spawn_passwd (PasswordDialog *pdialog)
 
 		/* translators: Unable to launch <program>: <error message> */
 		details = g_strdup_printf (_("Unable to launch %s: %s"),
-					   "/usr/bin/passwd", error->message);
+					   PASSWD, error->message);
 
 		passdlg_error_dialog (GTK_WINDOW (parent),
 				      _("Unable to launch backend"),
