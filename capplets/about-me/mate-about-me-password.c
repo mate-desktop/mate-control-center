@@ -510,6 +510,9 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 							  "recent",
 							  "unchanged",
 							  "match",
+							  "must differ",
+							  "must contain",
+							  "character",
 							  "1 numeric or special",
 							  "failure",
 							  NULL)) {
@@ -535,15 +538,18 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					} else if (g_strrstr (str->str, "short") != NULL ||
 						   g_strrstr (str->str, "longer") != NULL) {
 						msg = g_strdup (_("The password is too short."));
-					} else if (g_strrstr (str->str, "palindrome") != NULL ||
-						   g_strrstr (str->str, "simpl") != NULL ||
-						   g_strrstr (str->str, "dictionary") != NULL) {
-						msg = g_strdup (_("The password is too simple."));
 					} else if (g_strrstr (str->str, "similar") != NULL ||
 					           g_strrstr (str->str, "different") != NULL ||
+					           g_strrstr (str->str, "must differ") != NULL ||
 					           g_strrstr (str->str, "case") != NULL ||
 						   g_strrstr (str->str, "wrapped") != NULL) {
 						msg = g_strdup (_("The old and new passwords are too similar."));
+					} else if (g_strrstr (str->str, "palindrome") != NULL ||
+						   g_strrstr (str->str, "simpl") != NULL ||
+						   g_strrstr (str->str, "must contain") != NULL ||
+						   g_strrstr (str->str, "character") != NULL ||
+						   g_strrstr (str->str, "dictionary") != NULL) {
+						msg = g_strdup (_("The password is too simple."));
 					} else if (g_strrstr (str->str, "1 numeric or special") != NULL) {
 						msg = g_strdup (_("The new password must contain numeric or special character(s)."));
 					} else if (g_strrstr (str->str, "unchanged") != NULL ||
