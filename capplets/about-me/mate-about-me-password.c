@@ -27,6 +27,13 @@
 #  include <config.h>
 #endif
 
+/* This is needed to get ptmx-related functions in GLIBC */
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+/* If _XOPEN_SOURCE is defined, this is needed to get TIOCSCTTY on illumos */
+#define __EXTENSIONS__
+
 /* Are all of these needed? */
 #include <gdk/gdkkeysyms.h>
 #include <pwd.h>
@@ -37,6 +44,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stropts.h>
 #include <termios.h>
 
 #define PASSWD "/usr/bin/passwd"
@@ -192,7 +200,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 	if (pdialog->pty_m > 0) {
 		name = ptsname(pdialog->pty_m);
 		if (name && (strlen(name) < PTY_MAX_NAME)) {
-			strlcpy(slave_name, name, PTY_MAX_NAME);
+			strncpy(slave_name, name, PTY_MAX_NAME);
 		} else {
 			fprintf(stderr, "Couldn't get slave_name of pty\n");
 			return FALSE;
