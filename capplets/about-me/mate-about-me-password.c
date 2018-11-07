@@ -42,7 +42,7 @@
 #define PASSWD "/usr/bin/passwd"
 #define PTMX "/dev/ptmx"
 
-/* /dev/pty/pty* */
+/* /dev/pts/N */
 #define PTY_MAX_NAME 20
 
 #if __sun
