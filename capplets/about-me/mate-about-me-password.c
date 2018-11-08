@@ -649,6 +649,11 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 							  "match",
 							  "1 numeric or special",
 							  "failure",
+							  "must contain",
+							  "must differ",
+							  "are not allowed",
+							  "repeating characters",
+							  "history",
 							  "rotated",
 							  "error",
 							  "BAD PASSWORD",
@@ -676,12 +681,16 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 						   g_strrstr (str->str, "longer") != NULL) {
 						msg = g_strdup (_("The password is too short."));
 					} else if (g_strrstr (str->str, "palindrome") != NULL ||
+						   g_strrstr (str->str, "must contain") != NULL ||
+						   g_strrstr (str->str, "are not allowed") != NULL ||
+						   g_strrstr (str->str, "repeating characters") != NULL ||
 						   g_strrstr (str->str, "simpl") != NULL ||
 						   g_strrstr (str->str, "dictionary") != NULL) {
 						msg = g_strdup (_("The password is too simple."));
 					} else if (g_strrstr (str->str, "similar") != NULL ||
 					           g_strrstr (str->str, "different") != NULL ||
 					           g_strrstr (str->str, "case") != NULL ||
+					           g_strrstr (str->str, "must differ") != NULL ||
 						   g_strrstr (str->str, "wrapped") != NULL) {
 						msg = g_strdup (_("The old and new passwords are too similar."));
 					} else if (g_strrstr (str->str, "1 numeric or special") != NULL) {
@@ -689,7 +698,8 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					} else if (g_strrstr (str->str, "unchanged") != NULL ||
 						   g_strrstr (str->str, "match") != NULL) {
 						msg = g_strdup (_("The old and new passwords are the same."));
-					} else if (g_strrstr (str->str, "recent") != NULL) {
+					} else if (g_strrstr (str->str, "recent") != NULL ||
+						   g_strrstr (str->str, "history") != NULL) {
 						msg = g_strdup (_("The new password has already been used recently."));
 					} else if (g_strrstr (str->str, "failure") != NULL) {
 						/* Authentication failure */
