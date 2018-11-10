@@ -31,8 +31,6 @@
 #ifndef _XOPEN_SOURCE
 #define _XOPEN_SOURCE 600
 #endif
-/* If _XOPEN_SOURCE is defined, this is needed to get TIOCSCTTY on illumos */
-#define __EXTENSIONS__
 
 /* Are all of these needed? */
 #include <gdk/gdkkeysyms.h>
@@ -85,7 +83,6 @@ typedef struct {
 	/* Communication with the passwd program */
 	GPid backend_pid;
 	int pty_m;
-	int pty_s;
 
 	GIOChannel *backend_stdin;
 	GIOChannel *backend_stdout;
@@ -196,7 +193,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 	argv[0] = PASSWD;	/* Is it safe to rely on a hard-coded path? */
 	argv[1] = NULL;
 
-	pdialog->pty_m = open(PTMX, O_RDWR);
+	pdialog->pty_m = open(PTMX, O_RDWR|O_NOCTTY);
 	if (pdialog->pty_m > 0) {
 		name = ptsname(pdialog->pty_m);
 		if (name && (strlen(name) < PTY_MAX_NAME)) {
@@ -220,37 +217,44 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		return FALSE;
 	}
 
-	pdialog->pty_s = open(slave_name, O_RDWR);
-
-	if (pdialog->pty_s < 0) {
-		fprintf(stderr, "Couldn't open slave terminal device: %s\n", strerror(errno));
-		return FALSE;
-	}
-
 	pid = fork();
 	if (pid == 0) {
 		/* Child */
-
+		int pty_s;
+		
 		if (setsid() < 0) {
 			fprintf(stderr, "Couldn't create new process group: %s\n", strerror(errno));
 			return FALSE;
 		}
 
-		/* Set controlling terminal to our tty */
-		if (ioctl(pdialog->pty_s,TIOCSCTTY, NULL) < 0) {
-			fprintf(stderr, "Couldn't establish controlling terminal: %s\n", strerror(errno));
+		/* Now we are a session leader, on System V first open tty will become controlling tty */
+		pty_s = open(slave_name, O_RDWR);
+
+		if (pty_s < 0) {
+			fprintf(stderr, "Couldn't open slave terminal device: %s\n", strerror(errno));
 			return FALSE;
 		}
-
+		
+#if defined(TIOCSCTTY) && !defined(__sun)
+		/* BSD systems need to set controlling tty explicitly. Solaris/illumos can export
+		   TIOCSCTTY when __EXTENSIONS__ are defined, but doesn't need this. */
+		if (ioctl(pty_s,TIOCSCTTY, NULL) < 0) {
+			fprintf(stderr, "Couldn't establish controlling terminal: %s\n", strerror(errno));
+			close(pty_s);
+			return FALSE;
+		}
+#endif
+		
 		/* Set stdin, stdout, stderr to our tty */
-		dup2(pdialog->pty_s, 0);
-		dup2(pdialog->pty_s, 1);
-		dup2(pdialog->pty_s, 2);
-
+		dup2(pty_s, 0);
+		dup2(pty_s, 1);
+		dup2(pty_s, 2);
+		
 		execvp(argv[0], argv);
 
 		/* Error */
 		fprintf(stderr, "Couldn't exec passwd: %s\n", strerror(errno));
+		close(pty_s);
 		return FALSE;
 	} else if (pid > 0) {
 
@@ -360,10 +364,6 @@ free_passwd_resources (PasswordDialog *pdialog)
 
 	if (pdialog->pty_m != -1) {
 		close(pdialog->pty_m);
-	}
-
-	if (pdialog->pty_s != -1) {
-		close(pdialog->pty_s);
 	}
 
 	/* Remove IO watcher */
@@ -1080,9 +1080,8 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 	/* Initialize backend_pid. -1 means the backend is not running */
 	pdialog->backend_pid = -1;
 
-	/* Initialize pty slave and master fds */
+	/* Initialize pty master fd */
 	pdialog->pty_m = -1;
-	pdialog->pty_s = -1;
 
 	/* Initialize IO Channels */
 	pdialog->backend_stdin = NULL;
