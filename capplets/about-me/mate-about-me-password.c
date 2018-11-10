@@ -201,29 +201,47 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		if (name && (strlen(name) < PTY_MAX_NAME)) {
 			strncpy(slave_name, name, PTY_MAX_NAME);
 		} else {
-			fprintf(stderr, "Couldn't get slave_name of pty\n");
+			g_set_error(error,
+                		PASSDLG_ERROR,
+				PASSDLG_ERROR_BACKEND,
+				_("Couldn't get slave_name of pty"));
 			close(pty_m);
 			return FALSE;
 		}
 	} else {
-		fprintf(stderr, "Couldn't open pseudo-tty\n");
+		g_set_error (error,
+                	PASSDLG_ERROR,
+			PASSDLG_ERROR_BACKEND,
+			_("Couldn't open pseudo-tty"));
 		return FALSE;
 	}
 
 	if (grantpt(pty_m) < 0) {
-		fprintf(stderr, "Couldn't set permission on slave device: %s\n", strerror(errno));
+		g_set_error (error,
+                	PASSDLG_ERROR,
+			PASSDLG_ERROR_BACKEND,
+			_("Couldn't set permission on slave device: %s"),
+			strerror(errno));
 		close(pty_m);
 		return FALSE;
 	}
 
 	if (unlockpt(pty_m) < 0) {
-		fprintf(stderr, "Couldn't unlock slave device: %s\n", strerror(errno));
+		g_set_error (error,
+                	PASSDLG_ERROR,
+			PASSDLG_ERROR_BACKEND,
+			_("Couldn't unlock slave device: %s"),
+			strerror(errno));
 		close(pty_m);
 		return FALSE;
 	}
 
 	if (pipe2(err_pipe, O_CLOEXEC) < 0) {
-		fprintf(stderr, "Couldn't create error reporting pipe: %s\n", strerror(errno));
+		g_set_error (error,
+                	PASSDLG_ERROR,
+			PASSDLG_ERROR_BACKEND,
+			_("Couldn't create error reporting pipe: %s"),
+			strerror(errno));
 		close(pty_m);
 		return FALSE;
 	}
@@ -237,7 +255,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 
 		close(pty_m);
 		if (setsid() < 0) {
-			len = snprintf(buf, ERRBUFSIZE, "Couldn't create new process group: %s\n", strerror(errno));
+			len = snprintf(buf, ERRBUFSIZE, _("Couldn't create new process group: %s"), strerror(errno));
 			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 			return FALSE;
 		}
@@ -246,7 +264,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		pty_s = open(slave_name, O_RDWR);
 
 		if (pty_s < 0) {
-			len = snprintf(buf, ERRBUFSIZE, "Couldn't open slave terminal device: %s\n", strerror(errno));
+			len = snprintf(buf, ERRBUFSIZE, _("Couldn't open slave terminal device: %s"), strerror(errno));
 			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 			return FALSE;
 		}
@@ -256,7 +274,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		   TIOCSCTTY when __EXTENSIONS__ are defined, but doesn't need this. */
 		if (ioctl(pty_s,TIOCSCTTY, NULL) < 0) {
 			close(pty_s);
-			len=snprintf(buf, ERRBUFSIZE, "Couldn't establish controlling terminal: %s\n", strerror(errno));
+			len=snprintf(buf, ERRBUFSIZE, _("Couldn't establish controlling terminal: %s"), strerror(errno));
 			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 			return FALSE;
 		}
@@ -271,7 +289,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 
 		/* Error */
 		close(pty_s);
-		len=snprintf(buf, ERRBUFSIZE, "Couldn't exec passwd: %s\n", strerror(errno));
+		len=snprintf(buf, ERRBUFSIZE, _("Couldn't exec passwd: %s"), strerror(errno));
 		write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 		return FALSE;
 	} else if (pid > 0) {
@@ -334,7 +352,11 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		return TRUE;
 	} else {
 		/* Error */
-		fprintf(stderr, "Couldn't fork: %s\n", strerror(errno));
+		g_set_error(error,
+                	PASSDLG_ERROR,
+			PASSDLG_ERROR_BACKEND,
+			_("Couldn't fork: %s"),
+			strerror(errno));
 		close(pty_m);
 		return FALSE;
 	}
