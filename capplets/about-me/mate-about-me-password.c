@@ -100,6 +100,9 @@ typedef struct {
 /* Buffer size for backend output */
 #define BUFSIZE 64
 
+/* Bufffer size for backend error messages */
+#define ERRBUFSIZE 1024
+
 /*
  * Error handling {{
  */
@@ -185,7 +188,7 @@ static gboolean
 spawn_passwd (PasswordDialog *pdialog, GError **error)
 {
 	gchar	*argv[2];
-	int	pid, pty_m;
+	int	pid, pty_m, err_pipe[2];
 	char	slave_name[PTY_MAX_NAME];
 	char	*name;
 
@@ -219,14 +222,23 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		return FALSE;
 	}
 
+	if (pipe2(err_pipe, O_CLOEXEC) < 0) {
+		fprintf(stderr, "Couldn't create error reporting pipe: %s\n", strerror(errno));
+		close(pty_m);
+		return FALSE;
+	}
+		
 	pid = fork();
 	if (pid == 0) {
 		/* Child */
-		int pty_s;
-		
+		int pty_s, len;
+		char buf[ERRBUFSIZE];
+		close(err_pipe[0]);
+
 		close(pty_m);
 		if (setsid() < 0) {
-			fprintf(stderr, "Couldn't create new process group: %s\n", strerror(errno));
+			len = snprintf(buf, ERRBUFSIZE, "Couldn't create new process group: %s\n", strerror(errno));
+			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 			return FALSE;
 		}
 
@@ -234,7 +246,8 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		pty_s = open(slave_name, O_RDWR);
 
 		if (pty_s < 0) {
-			fprintf(stderr, "Couldn't open slave terminal device: %s\n", strerror(errno));
+			len = snprintf(buf, ERRBUFSIZE, "Couldn't open slave terminal device: %s\n", strerror(errno));
+			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 			return FALSE;
 		}
 		
@@ -242,8 +255,9 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		/* BSD systems need to set controlling tty explicitly. Solaris/illumos can export
 		   TIOCSCTTY when __EXTENSIONS__ are defined, but doesn't need this. */
 		if (ioctl(pty_s,TIOCSCTTY, NULL) < 0) {
-			fprintf(stderr, "Couldn't establish controlling terminal: %s\n", strerror(errno));
 			close(pty_s);
+			len=snprintf(buf, ERRBUFSIZE, "Couldn't establish controlling terminal: %s\n", strerror(errno));
+			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 			return FALSE;
 		}
 #endif
@@ -256,16 +270,38 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		execvp(argv[0], argv);
 
 		/* Error */
-		fprintf(stderr, "Couldn't exec passwd: %s\n", strerror(errno));
 		close(pty_s);
+		len=snprintf(buf, ERRBUFSIZE, "Couldn't exec passwd: %s\n", strerror(errno));
+		write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
 		return FALSE;
 	} else if (pid > 0) {
+		int rb, pos = 0;
+		char buf[ERRBUFSIZE];
+		
+
+		close(err_pipe[1]);
+		/* Wait for child to run exec() and read possible error message */
+		while (pos < ERRBUFSIZE - 1 && ((rb=read(err_pipe[0], &buf[pos], ERRBUFSIZE-1-pos)) > 0)) {
+			pos += rb;
+		}
+		close(err_pipe[0]);
+		if (pos > 0) {
+			/* There were messages in err_pipe */
+			buf[pos+1] = '\0';
+			g_set_error (error,
+                       		PASSDLG_ERROR,
+				PASSDLG_ERROR_BACKEND,
+				buf);
+
+			stop_passwd(pdialog);
+			return FALSE;
+		}	
 
 		/* Open IO Channels */
 		pdialog->backend_stdin = g_io_channel_unix_new (pty_m);
 		/* g_io_channel_shutdown(pdialog->backend_stdin) will close associated file descriptor (pty_m),
 		   but this will generate warning on g_io_channel_shutdown(pdialog->backend_stdout).
-		   To avoid it dup() file descriptor */
+		   To avoid it, dup() file descriptor */
 		pdialog->backend_stdout = g_io_channel_unix_new (dup(pty_m));
 		pdialog->backend_pid = pid;
 
