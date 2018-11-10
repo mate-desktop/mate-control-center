@@ -82,7 +82,6 @@ typedef struct {
 
 	/* Communication with the passwd program */
 	GPid backend_pid;
-	int pty_m;
 
 	GIOChannel *backend_stdin;
 	GIOChannel *backend_stdout;
@@ -186,20 +185,21 @@ static gboolean
 spawn_passwd (PasswordDialog *pdialog, GError **error)
 {
 	gchar	*argv[2];
-	int	pid;
+	int	pid, pty_m;
 	char	slave_name[PTY_MAX_NAME];
 	char	*name;
 
 	argv[0] = PASSWD;	/* Is it safe to rely on a hard-coded path? */
 	argv[1] = NULL;
 
-	pdialog->pty_m = open(PTMX, O_RDWR|O_NOCTTY);
-	if (pdialog->pty_m > 0) {
-		name = ptsname(pdialog->pty_m);
+	pty_m = open(PTMX, O_RDWR|O_NOCTTY);
+	if (pty_m > 0) {
+		name = ptsname(pty_m);
 		if (name && (strlen(name) < PTY_MAX_NAME)) {
 			strncpy(slave_name, name, PTY_MAX_NAME);
 		} else {
 			fprintf(stderr, "Couldn't get slave_name of pty\n");
+			close(pty_m);
 			return FALSE;
 		}
 	} else {
@@ -207,13 +207,15 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		return FALSE;
 	}
 
-	if (grantpt(pdialog->pty_m) < 0) {
+	if (grantpt(pty_m) < 0) {
 		fprintf(stderr, "Couldn't set permission on slave device: %s\n", strerror(errno));
+		close(pty_m);
 		return FALSE;
 	}
 
-	if (unlockpt(pdialog->pty_m) < 0) {
+	if (unlockpt(pty_m) < 0) {
 		fprintf(stderr, "Couldn't unlock slave device: %s\n", strerror(errno));
+		close(pty_m);
 		return FALSE;
 	}
 
@@ -222,6 +224,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		/* Child */
 		int pty_s;
 		
+		close(pty_m);
 		if (setsid() < 0) {
 			fprintf(stderr, "Couldn't create new process group: %s\n", strerror(errno));
 			return FALSE;
@@ -259,8 +262,11 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 	} else if (pid > 0) {
 
 		/* Open IO Channels */
-		pdialog->backend_stdin = g_io_channel_unix_new (pdialog->pty_m);
-		pdialog->backend_stdout = g_io_channel_unix_new (pdialog->pty_m);
+		pdialog->backend_stdin = g_io_channel_unix_new (pty_m);
+		/* g_io_channel_shutdown(pdialog->backend_stdin) will close associated file descriptor (pty_m),
+		   but this will generate warning on g_io_channel_shutdown(pdialog->backend_stdout).
+		   To avoid it dup() file descriptor */
+		pdialog->backend_stdout = g_io_channel_unix_new (dup(pty_m));
 		pdialog->backend_pid = pid;
 
 		/* Set raw encoding */
@@ -283,7 +289,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		pdialog->backend_stdout_watch_id = g_io_add_watch (pdialog->backend_stdout,
 														   G_IO_IN | G_IO_PRI,
 														   (GIOFunc) io_watch_stdout, pdialog);
-
+		
 		/* Add child watcher */
 		pdialog->backend_child_watch_id = g_child_watch_add (pdialog->backend_pid, (GChildWatchFunc) child_watch_cb, pdialog);
 
@@ -293,6 +299,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 	} else {
 		/* Error */
 		fprintf(stderr, "Couldn't fork: %s\n", strerror(errno));
+		close(pty_m);
 		return FALSE;
 	}
 }
@@ -360,10 +367,6 @@ free_passwd_resources (PasswordDialog *pdialog)
 		g_io_channel_unref (pdialog->backend_stdout);
 
 		pdialog->backend_stdout = NULL;
-	}
-
-	if (pdialog->pty_m != -1) {
-		close(pdialog->pty_m);
 	}
 
 	/* Remove IO watcher */
@@ -1079,9 +1082,6 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 
 	/* Initialize backend_pid. -1 means the backend is not running */
 	pdialog->backend_pid = -1;
-
-	/* Initialize pty master fd */
-	pdialog->pty_m = -1;
 
 	/* Initialize IO Channels */
 	pdialog->backend_stdin = NULL;
