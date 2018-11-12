@@ -32,6 +32,9 @@
 #define _XOPEN_SOURCE 600
 #endif
 
+/* This is needed to get pipe2() in GLIBC */
+#define _GNU_SOURCE
+
 /* Are all of these needed? */
 #include <gdk/gdkkeysyms.h>
 #include <pwd.h>
