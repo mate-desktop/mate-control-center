@@ -436,8 +436,10 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 	}
 
 	if (g_io_channel_read_chars (source, buf, BUFSIZE, &bytes_read, &error) != G_IO_STATUS_NORMAL) {
-		g_warning ("IO Channel read error: %s", error->message);
-		g_error_free (error);
+		if (error) {
+			g_warning ("IO Channel read error: %s", error->message);
+			g_error_free (error);
+		}
 
 		return TRUE;
 	}
