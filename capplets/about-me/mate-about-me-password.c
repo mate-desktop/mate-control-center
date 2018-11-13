@@ -260,7 +260,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		if (setsid() < 0) {
 			len = snprintf(buf, ERRBUFSIZE, _("Couldn't create new process group: %s"), strerror(errno));
 			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
-			return FALSE;
+			exit(1);
 		}
 
 		/* Now we are a session leader, on System V first open tty will become controlling tty */
@@ -269,7 +269,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		if (pty_s < 0) {
 			len = snprintf(buf, ERRBUFSIZE, _("Couldn't open slave terminal device: %s"), strerror(errno));
 			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
-			return FALSE;
+			exit(1);
 		}
 		
 #if defined(TIOCSCTTY) && !defined(__sun)
@@ -279,7 +279,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 			close(pty_s);
 			len=snprintf(buf, ERRBUFSIZE, _("Couldn't establish controlling terminal: %s"), strerror(errno));
 			write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
-			return FALSE;
+			exit(1);
 		}
 #endif
 		
@@ -294,7 +294,7 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		close(pty_s);
 		len=snprintf(buf, ERRBUFSIZE, _("Couldn't exec passwd: %s"), strerror(errno));
 		write(err_pipe[1], buf, (len>ERRBUFSIZE) ? ERRBUFSIZE : len );
-		return FALSE;
+		exit(1);
 	} else if (pid > 0) {
 		int rb, pos = 0;
 		char buf[ERRBUFSIZE];
