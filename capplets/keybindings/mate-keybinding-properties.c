@@ -1704,7 +1704,8 @@ start_editing_cb (GtkTreeView    *tree_view,
   GtkTreePath *path;
   GtkTreeViewColumn *column;
 
-  if (event->window != gtk_tree_view_get_bin_window (tree_view))
+  if ((event->window != gtk_tree_view_get_bin_window (tree_view)) ||
+      (event->type != GDK_2BUTTON_PRESS))
     return FALSE;
 
   if (gtk_tree_view_get_path_at_pos (tree_view,
