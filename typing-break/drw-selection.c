@@ -70,10 +70,14 @@ drw_selection_clear (GtkWidget         *widget,
 static gboolean
 drw_selection_find_existing (DrwSelection *drw_selection)
 {
-	Display *xdisplay = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
+	GdkDisplay *display;
 	Window old;
+	Display *xdisplay;
 
-	gdk_error_trap_push ();
+	display = gdk_display_get_default ();
+	xdisplay = GDK_DISPLAY_XDISPLAY(display);
+
+	gdk_x11_display_error_trap_push (display);
 	old = XGetSelectionOwner (xdisplay,
 				  gdk_x11_get_xatom_by_name (SELECTION_NAME));
 	if (old) {
@@ -82,7 +86,7 @@ drw_selection_find_existing (DrwSelection *drw_selection)
 	}
 	XSync (xdisplay, False);
 
-	if (gdk_error_trap_pop () == 0 && drw_selection->owner_window) {
+	if (gdk_x11_display_error_trap_pop (display) == 0 && drw_selection->owner_window) {
 		gdk_window_add_filter (drw_selection->owner_window,
 				       drw_selection_filter, drw_selection);
 
