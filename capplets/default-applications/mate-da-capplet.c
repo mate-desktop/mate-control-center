@@ -132,6 +132,7 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 
 			case DA_TYPE_WORD:
 				g_app_info_set_as_default_for_type(item, "application/vnd.oasis.opendocument.text", NULL);
+				g_app_info_set_as_default_for_type(item, "application/rtf", NULL);
 				g_app_info_set_as_default_for_type(item, "application/msword", NULL);
 				g_app_info_set_as_default_for_type(item, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", NULL);
 				break;
