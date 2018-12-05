@@ -3,14 +3,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2018
+# Ole Holm Frandsen <froksen@gmail.com>, 2018
+# Allan Nordhøy <epost@anotheragency.no>, 2018
+# Louis Tim Larsen <louis@louis.dk>, 2018
+# Stefano Karapetsas <stefano@karapetsas.com>, 2018
+# Martin Wimpress <code@flexion.org>, 2018
+# Joe Hansen <joedalton2@yahoo.dk>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 18:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Louis Tim Larsen <louis@louis.dk>, 2018\n"
+"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"PO-Revision-Date: 2018-03-11 10:35+0000\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>, 2018\n"
 "Language-Team: Danish (https://www.transifex.com/mate/teams/13566/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +142,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Kommando forbundet med en tilpasset tastegenvej."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:197
+#: ../font-viewer/font-view.c:201
 msgid "Name"
 msgstr "Navn"
 
@@ -141,25 +150,25 @@ msgstr "Navn"
 msgid "Description associated with a custom keybinding."
 msgstr "Beskrivelse forbundet med en tilpasset tastegenvej."
 
-#: ../capplets/about-me/mate-about-me.c:268
+#: ../capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Vælg billede"
 
-#: ../capplets/about-me/mate-about-me.c:270
+#: ../capplets/about-me/mate-about-me.c:295
 msgid "No Image"
 msgstr "Intet billede"
 
-#: ../capplets/about-me/mate-about-me.c:298
+#: ../capplets/about-me/mate-about-me.c:323
 #: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Billeder"
 
-#: ../capplets/about-me/mate-about-me.c:302
+#: ../capplets/about-me/mate-about-me.c:327
 #: ../capplets/appearance/theme-installer.c:834
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../capplets/about-me/mate-about-me.c:446
+#: ../capplets/about-me/mate-about-me.c:495
 #, c-format
 msgid "About %s"
 msgstr "Om %s"
@@ -583,7 +592,7 @@ msgstr ""
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:420
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "side"
 
@@ -598,8 +607,8 @@ msgstr "Standardmarkør"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:293
-#: ../font-viewer/font-view.c:528
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
+#: ../font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Installer"
 
@@ -800,13 +809,13 @@ msgstr "_Størrelse:"
 
 #. small threshold
 #: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
 msgid "Small"
 msgstr "Lille"
 
 #. large threshold
 #: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
 msgid "Large"
 msgstr "Stor"
 
@@ -1398,7 +1407,7 @@ msgstr "- Standardprogrammer for MATE"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:2
 msgid "Web Browser"
-msgstr "Webbrowser"
+msgstr "Internetbrowser"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:3
 msgid "Mail Reader"
@@ -1490,19 +1499,41 @@ msgid "Run at st_art"
 msgstr "Kør ved _start"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "Tilgængelighed"
 
 #: ../capplets/display/display-capplet.ui.h:1
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
+msgid "Normal"
+msgstr "Normal"
+
+#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:504
+msgid "Left"
+msgstr "Venstre"
+
+#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:503
+msgid "Right"
+msgstr "Højre"
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Upside-down"
+msgstr "På hovedet"
+
+#: ../capplets/display/display-capplet.ui.h:5
 msgid "Monitor Preferences"
 msgstr "Skærmindstillinger"
 
-#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/display-capplet.ui.h:6
 msgid "Apply system-wide"
 msgstr "Anvend i hele systemet"
 
-#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/display-capplet.ui.h:7
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
@@ -1510,80 +1541,58 @@ msgstr ""
 "Anvender den nuværende konfiguration for andre MATE-brugere på computeren. "
 "Bemærk at dette ikke påvirker logindskærme eller andre skrivebordsmiljøer."
 
-#: ../capplets/display/display-capplet.ui.h:4
+#: ../capplets/display/display-capplet.ui.h:8
 msgid "Sa_me image in all monitors"
 msgstr "Sa_mme billede på alle skærme"
 
-#: ../capplets/display/display-capplet.ui.h:5
+#: ../capplets/display/display-capplet.ui.h:9
 msgid "_Detect monitors"
 msgstr "_Find skærme"
 
-#: ../capplets/display/display-capplet.ui.h:6
+#: ../capplets/display/display-capplet.ui.h:10
 msgid "Panel icon"
 msgstr "Panelikon"
 
-#: ../capplets/display/display-capplet.ui.h:7
+#: ../capplets/display/display-capplet.ui.h:11
 msgid "_Show monitors in panel"
 msgstr "_Vis skærme i panel"
 
-#: ../capplets/display/display-capplet.ui.h:8
+#: ../capplets/display/display-capplet.ui.h:12
 msgid "_Resolution:"
 msgstr "_Opløsning:"
 
-#: ../capplets/display/display-capplet.ui.h:9
+#: ../capplets/display/display-capplet.ui.h:13
 msgid "Re_fresh rate:"
 msgstr "Optegnings_frekvens:"
 
-#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/display-capplet.ui.h:14
 msgid "On"
 msgstr "Tændt"
 
-#: ../capplets/display/display-capplet.ui.h:11
+#: ../capplets/display/display-capplet.ui.h:15
 msgid "Off"
 msgstr "Slukket"
 
-#: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:496
-msgid "Monitor"
-msgstr "Skærm"
-
-#: ../capplets/display/display-capplet.ui.h:13
-msgid "R_otation:"
-msgstr "R_otation:"
-
-#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/display-capplet.ui.h:16
 msgid "Include _panel"
 msgstr "Inkluder _panel"
 
-#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/display-capplet.ui.h:17
 msgid "Set as primary"
 msgstr "Angiv som primær"
 
-#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/display-capplet.ui.h:18
 msgid "Sets the selected monitor as primary."
 msgstr "Angiver den valgte skærm som primær skærm."
 
-#: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
-msgid "Normal"
-msgstr "Normal"
-
-#: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:504
-msgid "Left"
-msgstr "Venstre"
-
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:309
-#: ../capplets/windows/mate-window-properties.c:503
-msgid "Right"
-msgstr "Højre"
+msgid "R_otation:"
+msgstr "R_otation:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-msgid "Upside-down"
-msgstr "På hovedet"
+#: ../capplets/display/xrandr-capplet.c:496
+msgid "Monitor"
+msgstr "Skærm"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Displays"
@@ -1790,8 +1799,8 @@ msgstr "Genvejstypen."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:325
-#: ../typing-break/drwright.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Deaktiveret"
 
@@ -1799,16 +1808,16 @@ msgstr "Deaktiveret"
 msgid "<Unknown Action>"
 msgstr "<ukendt handling>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1020
-#: ../capplets/keybindings/mate-keybinding-properties.c:1610
+#: ../capplets/keybindings/mate-keybinding-properties.c:1019
+#: ../capplets/keybindings/mate-keybinding-properties.c:1609
 msgid "Custom Shortcuts"
 msgstr "Brugertilpassede genvej"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1190
+#: ../capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Fejl ved gemning af den nye genvej"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1266
+#: ../capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1817,7 +1826,7 @@ msgstr ""
 "Genvejen »%s« kan ikke bruges da det derved vil være umuligt at skrive med denne tast.\n"
 "Prøv venligst med f.eks. Ctrl-, Alt- eller Skift-tasten på samme tid."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1298
+#: ../capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1826,17 +1835,17 @@ msgstr ""
 "Genvejen »%s« bliver allerede benyttet til\n"
 "»%s«"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1305
+#: ../capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Hvis du laver genvejen til »%s« om, vil »%s«-genvejen blive deaktiveret."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1310
+#: ../capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Omtildel"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1565
+#: ../capplets/keybindings/mate-keybinding-properties.c:1564
 msgid "Too many custom shortcuts"
 msgstr "For mange brugertilpassede genveje"
 
@@ -1868,11 +1877,11 @@ msgstr "Tastaturgenveje"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new key "
-"combination, or press backspace to clear."
+"To edit a shortcut key, double-click on the corresponding row and type a new"
+" key combination, or press backspace to clear."
 msgstr ""
-"En genvejstast ændres ved at klikke på den tilsvarende række og indtaste en "
-"ny tastekombination, eller frigøres ved at trykke på tilbagetasten."
+"For at redigere en genvejstast , dobbeltklik på den tilsvarende række og "
+"indtast en ny tastekombination, eller tryk Slet tilbage for at rydde."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
@@ -1943,7 +1952,7 @@ msgid "Flash entire _screen"
 msgstr "Blink med hele _skærmen"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
 msgid "Slow Keys"
 msgstr "Langsomme taster"
 
@@ -1960,7 +1969,7 @@ msgid "Beep when key is _rejected"
 msgstr "Bip når tast af_vises"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
 msgid "Bounce Keys"
 msgstr "Afvis gentagelse-taster"
 
@@ -1989,13 +1998,13 @@ msgid "_Speed:"
 msgstr "_Fart:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid "Short"
 msgstr "Kort"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Slow"
 msgstr "Langsom"
 
@@ -2004,13 +2013,13 @@ msgid "Repeat keys speed"
 msgstr "Taste-gentagelseshastighed"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
 msgid "Long"
 msgstr "Lang"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Fast"
 msgstr "Hurtig"
 
@@ -2027,7 +2036,7 @@ msgid "S_peed:"
 msgstr "_Fart:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Cursor blinks speed"
 msgstr "Markør blinke-hastighed"
 
@@ -2116,40 +2125,44 @@ msgstr "_Simuler samtidige tastetryk"
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "_Deaktiver blivende taster hvis to taster holdes nede samtidig"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "_Latch modifiers when pressed twice"
+msgstr "_Låste modifikationer når trykket to gange"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
 msgid "_Only accept long keypresses"
 msgstr "_Accepter kun langvarige tastetryk"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
 msgid "_Ignore fast duplicate keypresses"
 msgstr "_Ignorer hurtige dobbelte tastetryk"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
 msgid "D_elay:"
 msgstr "V_entetid:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
 msgid "Audio _Feedback..."
 msgstr "Lyd_tilbagemelding …"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
 msgid "_Pointer can be controlled using the keypad"
 msgstr "_Markøren kan styres med numerisk tastatur"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "_Acceleration:"
 msgstr "_Acceleration:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
 msgid "Mouse Keys"
 msgstr "Musetaster"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
 msgid "_Lock screen to enforce typing break"
 msgstr "_Lås skærm for at gennemtvinge tastepauser"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
@@ -2157,39 +2170,39 @@ msgstr ""
 "Lås skærm efter et bestemt tidsrum for at hjælpe med at forebygge skader fra"
 " gentaget tastaturarbejde"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
 msgid "_Work interval lasts:"
 msgstr "_Arbejdsinterval tager:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
 msgid "_Break interval lasts:"
 msgstr "_Pauseinterval tager:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
 msgid "Duration of work before forcing a break"
 msgstr "Varighed af arbejdstiden før en pause gennemtvinges"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "Duration of the break when typing is disallowed"
 msgstr "Varighed af pausen når tastetryk ikke er tilladt"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
 msgid "minutes"
 msgstr "minutter"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
 msgid "All_ow postponing of breaks"
 msgstr "Tillad _udsættelse af pauser"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
 msgid "Check if breaks are allowed to be postponed"
 msgstr "Om pauser må udskydes"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
 msgid "Typing Break"
 msgstr "Tastepause"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:60
 msgid "_Type to test settings:"
 msgstr "_Tast for at teste indstillinger:"
 
@@ -2265,24 +2278,24 @@ msgstr "Tastatur"
 msgid "Set your keyboard preferences"
 msgstr "Vælg indstillinger for tastaturet"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Left button"
 msgstr "Venstre knap"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Middle button"
 msgstr "Midterste knap"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Right button"
 msgstr "Højre Knap"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:419
+#: ../capplets/mouse/mate-mouse-properties.c:428
 msgid "Specify the name of the page to show (general)"
 msgstr "Angiv navnet for siden der skal vises (generelt)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:424
+#: ../capplets/mouse/mate-mouse-properties.c:433
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE-museindstillinger"
 
@@ -2311,98 +2324,102 @@ msgid "Emulate middle button through simultaneous left and right click"
 msgstr "Emuler midterste knap via samtidig venstre og højre museklik."
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "Enable middlemouse paste"
+msgstr "Aktiver indsæt med midterste mus"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "Pointer Speed"
 msgstr "Markørfart"
 
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "Low"
 msgstr "Lav"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "High"
 msgstr "Høj"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
 msgid "_Sensitivity:"
 msgstr "_Følsomhed:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "Drag and Drop"
 msgstr "Træk og slip"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Thr_eshold:"
 msgstr "_Tærskel:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
 msgid "Double-Click Timeout"
 msgstr "Dobbeltklik-tid"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "_Timeout:"
 msgstr "_Tid:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "Dobbeltklik på glødepæren for at afprøve dobbeltklik-indstillingerne."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
 msgstr "Mus"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Enable _touchpad"
 msgstr "Aktiver _pegeplade"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Disable touchpad _while typing"
 msgstr "Deaktiver pegeplade _når der skrives"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Aktiver _museklik med pegeplade"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Two-finger click emulation:"
 msgstr "Emulering af klik for to fingre:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Three-finger click emulation:"
 msgstr "Emulering af klik for tre fingre:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr "Advarsel: emulering med flere fingre kan deaktivere programknapper"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Scrolling"
 msgstr "Rulning"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "_Vertical edge scrolling"
 msgstr "_Lodret kantrulning"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "H_orizontal edge scrolling"
 msgstr "_Vandret kantrulning"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "V_ertical two-finger scrolling"
 msgstr "L_odret tofingerrulning"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Hor_izontal two-finger scrolling"
 msgstr "V_andret tofingerrulning"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Enable _natural scrolling"
 msgstr "Aktiver _naturlig rulning"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "Touchpad"
 msgstr "Pegeplade"
 
@@ -2690,11 +2707,11 @@ msgstr "Et centralt opsætningsværktøj til Mate"
 msgid "Configure MATE settings"
 msgstr "Konfigurer MATE-indstillinger"
 
-#: ../typing-break/drw-break-window.c:183
+#: ../typing-break/drw-break-window.c:185
 msgid "_Postpone Break"
 msgstr "_Udsæt pause"
 
-#: ../typing-break/drw-break-window.c:242
+#: ../typing-break/drw-break-window.c:244
 msgid "Take a break!"
 msgstr "Tag en pause!"
 
@@ -2710,29 +2727,29 @@ msgstr "_Om"
 msgid "_Take a Break"
 msgstr "_Hold en pause"
 
-#: ../typing-break/drwright.c:524
+#: ../typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Hold pause nu (næste gang om %dm)"
 
-#: ../typing-break/drwright.c:526
+#: ../typing-break/drwright.c:539
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minut til næste pause"
 msgstr[1] "%d minutter til næste pause"
 
-#: ../typing-break/drwright.c:532
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Hold pause nu (næste gang om mindre end et minut)"
 
-#: ../typing-break/drwright.c:534
+#: ../typing-break/drwright.c:547
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Mindre end et minut til næste pause"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:637
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
@@ -2741,19 +2758,19 @@ msgstr ""
 "Kunne ikke vise vinduet for tastepauseindstillinger med den følgende fejl: "
 "%s"
 
-#: ../typing-break/drwright.c:641
+#: ../typing-break/drwright.c:654
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Skrevet af Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:642
+#: ../typing-break/drwright.c:655
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Guf for øjnene tilføjet af Anders Carlsson"
 
-#: ../typing-break/drwright.c:651
+#: ../typing-break/drwright.c:664
 msgid "A computer break reminder."
 msgstr "Et program til at påminde om tastepauser."
 
-#: ../typing-break/drwright.c:653 ../font-viewer/font-view.c:741
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr ""
 "\"Joe Hansen, 2012, 2013, 2014, 2015, 2016, 2017, 2018.\\n\"\n"
@@ -2785,58 +2802,62 @@ msgstr ""
 "ved at højreklikke på panelet og vælge »Tilføj til panel«, markere "
 "»Statusområde« og klikke »tilføj«."
 
-#: ../font-viewer/font-view.c:200
+#: ../font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Stil"
 
-#: ../font-viewer/font-view.c:210
+#: ../font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Type"
 
-#: ../font-viewer/font-view.c:256 ../font-viewer/font-view.c:271
+#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Version"
 
-#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:273
+#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Ophavsret"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: ../font-viewer/font-view.c:284
+#: ../font-viewer/font-view.c:288
 msgid "Install Failed"
 msgstr "Installation slog fejl"
 
-#: ../font-viewer/font-view.c:290
+#: ../font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Installeret"
 
-#: ../font-viewer/font-view.c:427
+#: ../font-viewer/font-view.c:431
 msgid "This font could not be displayed."
 msgstr "Denne skrifttype kunne ikke vises."
 
-#: ../font-viewer/font-view.c:490 ../font-viewer/font-view.c:521
+#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Information"
 
-#: ../font-viewer/font-view.c:534
+#: ../font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Tilbage"
 
-#: ../font-viewer/font-view.c:634
+#: ../font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "Alle skrifttyper"
 
-#: ../font-viewer/font-view.c:738 ../font-viewer/font-view.c:782
+#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
 msgid "Font Viewer"
 msgstr "Skrifttypeviser"
 
-#: ../font-viewer/font-view.c:739
+#: ../font-viewer/font-view.c:783
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "Vis skrifttyper på dit system"
+
+#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+msgid "Search"
+msgstr "Søg"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
@@ -2933,11 +2954,3 @@ msgstr "Filsystem"
 #: ../libslab/bookmark-agent.c:1156
 msgid "Network Servers"
 msgstr "Netværksservere"
-
-#: ../libslab/bookmark-agent.c:1187
-msgid "Search"
-msgstr "Søg"
-
-#: ../libslab/search-bar.c:253
-msgid "Find Now"
-msgstr "Find nu"

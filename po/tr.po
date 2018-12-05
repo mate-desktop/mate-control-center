@@ -3,14 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Umut Barış GÖKMEN <umtbrsgkmn@gmail.com>, 2018
+# Emre FIRAT <emrefirat93@gmail.com>, 2018
+# Butterfly <gokhanlnx@gmail.com>, 2018
+# tarakbumba <tarakbumba@gmail.com>, 2018
+# Mehmet, 2018
+# Stefano Karapetsas <stefano@karapetsas.com>, 2018
+# Martin Wimpress <code@flexion.org>, 2018
+# yaşar çiv <yasarciv67@gmail.com>, 2018
+# mauron, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 18:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: yaşar çiv <yasarciv67@gmail.com>, 2018\n"
+"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"PO-Revision-Date: 2018-03-11 10:35+0000\n"
+"Last-Translator: mauron, 2018\n"
 "Language-Team: Turkish (https://www.transifex.com/mate/teams/13566/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,7 +142,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Özel tuş ataması ile ilişkili komut."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:197
+#: ../font-viewer/font-view.c:201
 msgid "Name"
 msgstr "İsim"
 
@@ -139,25 +150,25 @@ msgstr "İsim"
 msgid "Description associated with a custom keybinding."
 msgstr "Özel tuş ataması ile ilişkili açıklama."
 
-#: ../capplets/about-me/mate-about-me.c:268
+#: ../capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Resim Seç"
 
-#: ../capplets/about-me/mate-about-me.c:270
+#: ../capplets/about-me/mate-about-me.c:295
 msgid "No Image"
 msgstr "Resim Yok"
 
-#: ../capplets/about-me/mate-about-me.c:298
+#: ../capplets/about-me/mate-about-me.c:323
 #: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Resimler"
 
-#: ../capplets/about-me/mate-about-me.c:302
+#: ../capplets/about-me/mate-about-me.c:327
 #: ../capplets/appearance/theme-installer.c:834
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: ../capplets/about-me/mate-about-me.c:446
+#: ../capplets/about-me/mate-about-me.c:495
 #, c-format
 msgid "About %s"
 msgstr "%s Hakkında"
@@ -579,7 +590,7 @@ msgstr ""
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:420
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "sayfa"
 
@@ -594,8 +605,8 @@ msgstr "Öntanımlı Belirteç"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:293
-#: ../font-viewer/font-view.c:528
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
+#: ../font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Kur"
 
@@ -796,13 +807,13 @@ msgstr "_Boyut:"
 
 #. small threshold
 #: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
 msgid "Small"
 msgstr "Küçük"
 
 #. large threshold
 #: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
 msgid "Large"
 msgstr "Büyük"
 
@@ -1488,19 +1499,41 @@ msgid "Run at st_art"
 msgstr "_Başlangıçta çalıştır"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "Erişilebilirlik"
 
 #: ../capplets/display/display-capplet.ui.h:1
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
+msgid "Normal"
+msgstr "Normal"
+
+#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:504
+msgid "Left"
+msgstr "Sol"
+
+#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:503
+msgid "Right"
+msgstr "Sağ"
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Upside-down"
+msgstr "Baş Aşağı"
+
+#: ../capplets/display/display-capplet.ui.h:5
 msgid "Monitor Preferences"
 msgstr "Ekran Tercihleri"
 
-#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/display-capplet.ui.h:6
 msgid "Apply system-wide"
 msgstr "Sistem genelinde uygula"
 
-#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/display-capplet.ui.h:7
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
@@ -1508,80 +1541,58 @@ msgstr ""
 "Bilgisayardaki diğer MATE kullanıcıları için geçerli yapılandırmayı uygular."
 " Bu, giriş ekranını veya diğer masaüstü ortamlarını etkilemez."
 
-#: ../capplets/display/display-capplet.ui.h:4
+#: ../capplets/display/display-capplet.ui.h:8
 msgid "Sa_me image in all monitors"
 msgstr "Tüm ekranlarda ay_nı görüntü"
 
-#: ../capplets/display/display-capplet.ui.h:5
+#: ../capplets/display/display-capplet.ui.h:9
 msgid "_Detect monitors"
 msgstr "Ekranları _tespit et"
 
-#: ../capplets/display/display-capplet.ui.h:6
+#: ../capplets/display/display-capplet.ui.h:10
 msgid "Panel icon"
 msgstr "Panel simgesi"
 
-#: ../capplets/display/display-capplet.ui.h:7
+#: ../capplets/display/display-capplet.ui.h:11
 msgid "_Show monitors in panel"
 msgstr "Ekranları _panelde göster"
 
-#: ../capplets/display/display-capplet.ui.h:8
+#: ../capplets/display/display-capplet.ui.h:12
 msgid "_Resolution:"
 msgstr "Çö_zünürlük:"
 
-#: ../capplets/display/display-capplet.ui.h:9
+#: ../capplets/display/display-capplet.ui.h:13
 msgid "Re_fresh rate:"
 msgstr "_Tazeleme hızı:"
 
-#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/display-capplet.ui.h:14
 msgid "On"
 msgstr "Açık"
 
-#: ../capplets/display/display-capplet.ui.h:11
+#: ../capplets/display/display-capplet.ui.h:15
 msgid "Off"
 msgstr "Kapalı"
 
-#: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:496
-msgid "Monitor"
-msgstr "Ekran"
-
-#: ../capplets/display/display-capplet.ui.h:13
-msgid "R_otation:"
-msgstr "Ç_evirme:"
-
-#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/display-capplet.ui.h:16
 msgid "Include _panel"
 msgstr "_Paneli dahil et"
 
-#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/display-capplet.ui.h:17
 msgid "Set as primary"
 msgstr "Birincil olarak ayarla"
 
-#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/display-capplet.ui.h:18
 msgid "Sets the selected monitor as primary."
 msgstr "Seçili ekranı birincil olarak ayarla."
 
-#: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
-msgid "Normal"
-msgstr "Normal"
-
-#: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:504
-msgid "Left"
-msgstr "Sol"
-
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:309
-#: ../capplets/windows/mate-window-properties.c:503
-msgid "Right"
-msgstr "Sağ"
+msgid "R_otation:"
+msgstr "Ç_evirme:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-msgid "Upside-down"
-msgstr "Baş Aşağı"
+#: ../capplets/display/xrandr-capplet.c:496
+msgid "Monitor"
+msgstr "Ekran"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Displays"
@@ -1788,8 +1799,8 @@ msgstr "Hızlandırıcı türü."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:325
-#: ../typing-break/drwright.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Devre dışı"
 
@@ -1797,16 +1808,16 @@ msgstr "Devre dışı"
 msgid "<Unknown Action>"
 msgstr "<Bilinmeyen Eylem>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1020
-#: ../capplets/keybindings/mate-keybinding-properties.c:1610
+#: ../capplets/keybindings/mate-keybinding-properties.c:1019
+#: ../capplets/keybindings/mate-keybinding-properties.c:1609
 msgid "Custom Shortcuts"
 msgstr "Özel Kısayollar"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1190
+#: ../capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Yeni kısa yol kaydedilirken hata"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1266
+#: ../capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1815,7 +1826,7 @@ msgstr ""
 "Kısayol tuşu \"%s\" kullanılamıyor çünkü kullanımı halinde bu tuş kullanılarak yazmak mümkün olmayacak.\n"
 "Lütfen Control, Alt ya da Shift gibi tuşlar ile aynı anda deneyin."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1298
+#: ../capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1824,18 +1835,18 @@ msgstr ""
 "\"%s\" kısayolu bu işlem için kullanılıyor:\n"
 "\"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1305
+#: ../capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Eğer kısayolu \"%s\" olarak tekrar atarsanız, \"%s\" kısayolu "
 "etkinsizleştirilecek."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1310
+#: ../capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Tekrar ata"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1565
+#: ../capplets/keybindings/mate-keybinding-properties.c:1564
 msgid "Too many custom shortcuts"
 msgstr "Çok fazla özel kısayol"
 
@@ -1867,11 +1878,9 @@ msgstr "Klavye Kısayolları"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new key "
-"combination, or press backspace to clear."
+"To edit a shortcut key, double-click on the corresponding row and type a new"
+" key combination, or press backspace to clear."
 msgstr ""
-"Bir kısayol tuşunu düzenlemek için, ilgili satıra tıklayın ve yeni bir tuş "
-"kombinasyonu tuşlayın, ya da temizlemek için Backspace tuşuna basın."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
@@ -1942,7 +1951,7 @@ msgid "Flash entire _screen"
 msgstr "Tüm _ekranı flaşla"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
 msgid "Slow Keys"
 msgstr "Yavaş Tuşlar"
 
@@ -1959,7 +1968,7 @@ msgid "Beep when key is _rejected"
 msgstr "Tuş _kabul edilmediğinde biple"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
 msgid "Bounce Keys"
 msgstr "Sıçrama Tuşları"
 
@@ -1988,13 +1997,13 @@ msgid "_Speed:"
 msgstr "_Hız:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid "Short"
 msgstr "Kısa"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Slow"
 msgstr "Yavaş"
 
@@ -2003,13 +2012,13 @@ msgid "Repeat keys speed"
 msgstr "Tuş tekrar hızı"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
 msgid "Long"
 msgstr "Uzun"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Fast"
 msgstr "Hızlı"
 
@@ -2026,7 +2035,7 @@ msgid "S_peed:"
 msgstr "_Hız:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Cursor blinks speed"
 msgstr "İmleç yanıp sönme hızı"
 
@@ -2116,40 +2125,44 @@ msgstr "_Eşzamanlı tuş basımlarını taklit et"
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "Eğer iki tuşa _birlikte basılırsa yapışkan tuşları etkisizleştir"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "_Latch modifiers when pressed twice"
+msgstr "İki kez basıldığında değiştiricileri _tuttur"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
 msgid "_Only accept long keypresses"
 msgstr "_Sadece uzun tuş basımlarını kabul et"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
 msgid "_Ignore fast duplicate keypresses"
 msgstr "_Hızlı çoklu tuş basmalarını yoksay"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
 msgid "D_elay:"
 msgstr "_Gecikme:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
 msgid "Audio _Feedback..."
 msgstr "Ses _Geri Beslemesi..."
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
 msgid "_Pointer can be controlled using the keypad"
 msgstr "_Belirteç klavye ile kontrol edilebilir"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "_Acceleration:"
 msgstr "_Hızlanma:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
 msgid "Mouse Keys"
 msgstr "Fare Tuşları"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
 msgid "_Lock screen to enforce typing break"
 msgstr "_Yazım molasını mecburi kılmak için ekranı kilitle"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
@@ -2157,39 +2170,39 @@ msgstr ""
 "Sürekli klavye kullanmaktan doğan rahatsızlıkları engellemek için ekranı "
 "belirli bir süre kilitle"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
 msgid "_Work interval lasts:"
 msgstr "_Çalışma aralıkları süresi:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
 msgid "_Break interval lasts:"
 msgstr "_Mola aralıkları süresi:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
 msgid "Duration of work before forcing a break"
 msgstr "Molaya zorlanmadan önceki süre"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "Duration of the break when typing is disallowed"
 msgstr "Yazmaya izin verilmediğinde molanın süresi"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
 msgid "minutes"
 msgstr "dakika"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
 msgid "All_ow postponing of breaks"
 msgstr "_Molaların ertelenmesine izin ver"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
 msgid "Check if breaks are allowed to be postponed"
 msgstr "Molaların ertelenmesine izin verilip verilmediğini kontrol eder"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
 msgid "Typing Break"
 msgstr "Yazım Molası"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:60
 msgid "_Type to test settings:"
 msgstr "_Ayarları kontrol etmek için deneyin:"
 
@@ -2265,24 +2278,24 @@ msgstr "Klavye"
 msgid "Set your keyboard preferences"
 msgstr "Klavye tercihlerini yapın"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Left button"
 msgstr "Sol düğme"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Middle button"
 msgstr "Orta düğme"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Right button"
 msgstr "Sağ düğme"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:419
+#: ../capplets/mouse/mate-mouse-properties.c:428
 msgid "Specify the name of the page to show (general)"
 msgstr "Görüntülenecek sayfanın ismini belirtin (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:424
+#: ../capplets/mouse/mate-mouse-properties.c:433
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE Fare Tercihleri"
 
@@ -2311,101 +2324,105 @@ msgid "Emulate middle button through simultaneous left and right click"
 msgstr "Eşzamanlı sol ve sağ tıklamada orta düğme gibi davran"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "Enable middlemouse paste"
+msgstr "Farenin orta düğmesi ile yapıştırmayı etkinleştir"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "Pointer Speed"
 msgstr "Belirteç Hızı"
 
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "Low"
 msgstr "Düşük"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "High"
 msgstr "Yüksek"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
 msgid "_Sensitivity:"
 msgstr "_Duyarlılık:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "Drag and Drop"
 msgstr "Sürükle Bırak"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Thr_eshold:"
 msgstr "_Eşik:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
 msgid "Double-Click Timeout"
 msgstr "Çift Tıklama Zaman Aşımı"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "_Timeout:"
 msgstr "_Zaman aşımı:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr ""
 "Çift tıklama ayarlarınızı sınamak için, ampulün üzerine çift tıklamayı "
 "deneyin."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
 msgstr "Fare"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Enable _touchpad"
 msgstr "_Dokunmatik panel etkin"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Disable touchpad _while typing"
 msgstr "_Yazarken dokunmatik paneli pasifleştir"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Dokunmatik panelde _fare tıklamalarını etkinleştir"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Two-finger click emulation:"
 msgstr "İki parmak tıklama öykünümü:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Three-finger click emulation:"
 msgstr "Üç parmak tıklama öykünümü:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
 "İkaz: çoklu parmak öykünümü yazılım düğmelerini devre dışı bırakabilir"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Scrolling"
 msgstr "Kaydırma"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "_Vertical edge scrolling"
 msgstr "_Dikey kenar kaydırma"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "H_orizontal edge scrolling"
 msgstr "_Yatay kenar kaydırma"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "V_ertical two-finger scrolling"
 msgstr "İki parmakla d_ikey kaydırma"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Hor_izontal two-finger scrolling"
 msgstr "İki parmakla y_atay kaydırma"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Enable _natural scrolling"
 msgstr "D_oğal kaydırmayı etkinleştir"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "Touchpad"
 msgstr "Dokunmatik panel"
 
@@ -2693,11 +2710,11 @@ msgstr "MATE yapılandırma aracı"
 msgid "Configure MATE settings"
 msgstr "MATE ayarlarını yapılandır"
 
-#: ../typing-break/drw-break-window.c:183
+#: ../typing-break/drw-break-window.c:185
 msgid "_Postpone Break"
 msgstr "_Molayı Ertele"
 
-#: ../typing-break/drw-break-window.c:242
+#: ../typing-break/drw-break-window.c:244
 msgid "Take a break!"
 msgstr "Mola verin!"
 
@@ -2713,29 +2730,29 @@ msgstr "_Hakkında"
 msgid "_Take a Break"
 msgstr "_Mola ver"
 
-#: ../typing-break/drwright.c:524
+#: ../typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Şimdi mola ver (gelecek %dd sonra)"
 
-#: ../typing-break/drwright.c:526
+#: ../typing-break/drwright.c:539
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "Sonraki molaya kadar %d dakika kaldı"
 msgstr[1] "Sonraki molaya kadar %d dakika kaldı"
 
-#: ../typing-break/drwright.c:532
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Şimdi mola ver (gelecek bir dakikadan az bir süre sonra)"
 
-#: ../typing-break/drwright.c:534
+#: ../typing-break/drwright.c:547
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Sonraki molaya bir dakikadan az bir zaman kaldı"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:637
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
@@ -2743,19 +2760,19 @@ msgid ""
 msgstr ""
 "Bu hata yüzünde yazım molası özellikleri penceresi yukarı getirilemiyor: %s"
 
-#: ../typing-break/drwright.c:641
+#: ../typing-break/drwright.c:654
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Richard Hult <richard@imendio.com> tarafından yazıldı"
 
-#: ../typing-break/drwright.c:642
+#: ../typing-break/drwright.c:655
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Görsel güzellikler, Anders Carlsson tarafından eklendi"
 
-#: ../typing-break/drwright.c:651
+#: ../typing-break/drwright.c:664
 msgid "A computer break reminder."
 msgstr "Bilgisayar molası hatırlatıcısı."
 
-#: ../typing-break/drwright.c:653 ../font-viewer/font-view.c:741
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr ""
 "GNOME projesine katkıda bulunanlar:\n"
@@ -2792,58 +2809,62 @@ msgstr ""
 "Panelinizde uyarı alanı yok gibi görülüyor. Panele sağ tıklayıp 'Panele "
 "ekle', 'Uyarı alanı' ve 'Ekle'yi tıklayarak alanı ekleyebilirsiniz."
 
-#: ../font-viewer/font-view.c:200
+#: ../font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Tarz"
 
-#: ../font-viewer/font-view.c:210
+#: ../font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Tür"
 
-#: ../font-viewer/font-view.c:256 ../font-viewer/font-view.c:271
+#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Sürüm"
 
-#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:273
+#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Telif hakkı"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Tanımlama"
 
-#: ../font-viewer/font-view.c:284
+#: ../font-viewer/font-view.c:288
 msgid "Install Failed"
 msgstr "Kurulum Başarısız"
 
-#: ../font-viewer/font-view.c:290
+#: ../font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Kurulu"
 
-#: ../font-viewer/font-view.c:427
+#: ../font-viewer/font-view.c:431
 msgid "This font could not be displayed."
 msgstr "Bu yazıtipi görüntülenemedi."
 
-#: ../font-viewer/font-view.c:490 ../font-viewer/font-view.c:521
+#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Bilgi"
 
-#: ../font-viewer/font-view.c:534
+#: ../font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Geri"
 
-#: ../font-viewer/font-view.c:634
+#: ../font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "Tüm yazıtipleri"
 
-#: ../font-viewer/font-view.c:738 ../font-viewer/font-view.c:782
+#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
 msgid "Font Viewer"
 msgstr "Yazıtipi Görüntüleyici"
 
-#: ../font-viewer/font-view.c:739
+#: ../font-viewer/font-view.c:783
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "Sisteminizdeki yazıtiplerini görüntüleyin"
+
+#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+msgid "Search"
+msgstr "Ara"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
@@ -2940,11 +2961,3 @@ msgstr "Dosya Sistemi"
 #: ../libslab/bookmark-agent.c:1156
 msgid "Network Servers"
 msgstr "Ağ Sunucuları"
-
-#: ../libslab/bookmark-agent.c:1187
-msgid "Search"
-msgstr "Ara"
-
-#: ../libslab/search-bar.c:253
-msgid "Find Now"
-msgstr "Şimdi Bul"

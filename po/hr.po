@@ -3,14 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Ivan Branimir Škorić <ivanskrc123@gmail.com>, 2018
+# Stefano Karapetsas <stefano@karapetsas.com>, 2018
+# Martin Wimpress <code@flexion.org>, 2018
+# Ivica  Kolić <ikoli@yahoo.com>, 2018
+# Elvis M. Lukšić <meluksic@yahoo.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 18:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Ivan Branimir Škorić <ivanskrc123@gmail.com>, 2018\n"
+"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"PO-Revision-Date: 2018-03-11 10:35+0000\n"
+"Last-Translator: Elvis M. Lukšić <meluksic@yahoo.com>, 2018\n"
 "Language-Team: Croatian (https://www.transifex.com/mate/teams/13566/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +140,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Naredba pridružena prilagođenoj vezi tipaka."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:197
+#: ../font-viewer/font-view.c:201
 msgid "Name"
 msgstr "Ime"
 
@@ -141,25 +148,25 @@ msgstr "Ime"
 msgid "Description associated with a custom keybinding."
 msgstr "Opis pridružen prilagođenoj vezi tipaka."
 
-#: ../capplets/about-me/mate-about-me.c:268
+#: ../capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Odaberi sliku"
 
-#: ../capplets/about-me/mate-about-me.c:270
+#: ../capplets/about-me/mate-about-me.c:295
 msgid "No Image"
 msgstr "Bez slike"
 
-#: ../capplets/about-me/mate-about-me.c:298
+#: ../capplets/about-me/mate-about-me.c:323
 #: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Slike"
 
-#: ../capplets/about-me/mate-about-me.c:302
+#: ../capplets/about-me/mate-about-me.c:327
 #: ../capplets/appearance/theme-installer.c:834
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: ../capplets/about-me/mate-about-me.c:446
+#: ../capplets/about-me/mate-about-me.c:495
 #, c-format
 msgid "About %s"
 msgstr "O %s"
@@ -579,7 +586,7 @@ msgstr "Navedi ime stranice za prikaz (tema|pozadina|pisma|sučelje)"
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:420
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "stranica"
 
@@ -594,8 +601,8 @@ msgstr "Zadani pokazivač"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:293
-#: ../font-viewer/font-view.c:528
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
+#: ../font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Ugradi"
 
@@ -794,13 +801,13 @@ msgstr "_Veličina:"
 
 #. small threshold
 #: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
 msgid "Small"
 msgstr "Mala"
 
 #. large threshold
 #: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
 msgid "Large"
 msgstr "Velika"
 
@@ -1483,19 +1490,41 @@ msgid "Run at st_art"
 msgstr "Pokreni na po_četku"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "Pristupačnost"
 
 #: ../capplets/display/display-capplet.ui.h:1
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
+msgid "Normal"
+msgstr "Normalno"
+
+#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:504
+msgid "Left"
+msgstr "Lijevo"
+
+#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:503
+msgid "Right"
+msgstr "Desno"
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Upside-down"
+msgstr "Obrnuto"
+
+#: ../capplets/display/display-capplet.ui.h:5
 msgid "Monitor Preferences"
 msgstr "Monitorske prilagodbe"
 
-#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/display-capplet.ui.h:6
 msgid "Apply system-wide"
 msgstr "Primijeni širom sustava"
 
-#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/display-capplet.ui.h:7
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
@@ -1504,80 +1533,58 @@ msgstr ""
 " računa da to ne utječe na prijavne zaslone niti na ostala okružja radne "
 "površine."
 
-#: ../capplets/display/display-capplet.ui.h:4
+#: ../capplets/display/display-capplet.ui.h:8
 msgid "Sa_me image in all monitors"
 msgstr "Ista slika na svim monitorima"
 
-#: ../capplets/display/display-capplet.ui.h:5
+#: ../capplets/display/display-capplet.ui.h:9
 msgid "_Detect monitors"
 msgstr "_Prepoznaj monitore"
 
-#: ../capplets/display/display-capplet.ui.h:6
+#: ../capplets/display/display-capplet.ui.h:10
 msgid "Panel icon"
 msgstr "Sličica ploče"
 
-#: ../capplets/display/display-capplet.ui.h:7
+#: ../capplets/display/display-capplet.ui.h:11
 msgid "_Show monitors in panel"
 msgstr "_Pokaži monitore pločno"
 
-#: ../capplets/display/display-capplet.ui.h:8
+#: ../capplets/display/display-capplet.ui.h:12
 msgid "_Resolution:"
 msgstr "_Razlučivost:"
 
-#: ../capplets/display/display-capplet.ui.h:9
+#: ../capplets/display/display-capplet.ui.h:13
 msgid "Re_fresh rate:"
 msgstr "Uč_estalost osvježavanja:"
 
-#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/display-capplet.ui.h:14
 msgid "On"
 msgstr "Uključeno"
 
-#: ../capplets/display/display-capplet.ui.h:11
+#: ../capplets/display/display-capplet.ui.h:15
 msgid "Off"
 msgstr "Isključeno"
 
-#: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:496
-msgid "Monitor"
-msgstr "Monitor"
-
-#: ../capplets/display/display-capplet.ui.h:13
-msgid "R_otation:"
-msgstr "O_kretanje:"
-
-#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/display-capplet.ui.h:16
 msgid "Include _panel"
 msgstr "Uključi _ploču"
 
-#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/display-capplet.ui.h:17
 msgid "Set as primary"
 msgstr "Postavi kao glavni"
 
-#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/display-capplet.ui.h:18
 msgid "Sets the selected monitor as primary."
 msgstr "Postavlja odabrani monitor kao glavni."
 
-#: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
-msgid "Normal"
-msgstr "Normalno"
-
-#: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:504
-msgid "Left"
-msgstr "Lijevo"
-
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:309
-#: ../capplets/windows/mate-window-properties.c:503
-msgid "Right"
-msgstr "Desno"
+msgid "R_otation:"
+msgstr "O_kretanje:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-msgid "Upside-down"
-msgstr "Obrnuto"
+#: ../capplets/display/xrandr-capplet.c:496
+msgid "Monitor"
+msgstr "Monitor"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Displays"
@@ -1786,8 +1793,8 @@ msgstr "Vrsta tipkovničkog prečaca."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:325
-#: ../typing-break/drwright.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Onemogućeno"
 
@@ -1795,16 +1802,16 @@ msgstr "Onemogućeno"
 msgid "<Unknown Action>"
 msgstr "<Nepoznata radnja>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1020
-#: ../capplets/keybindings/mate-keybinding-properties.c:1610
+#: ../capplets/keybindings/mate-keybinding-properties.c:1019
+#: ../capplets/keybindings/mate-keybinding-properties.c:1609
 msgid "Custom Shortcuts"
 msgstr "Prilagođeni prečaci"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1190
+#: ../capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Pogreška u pohrani novoga prečaca"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1266
+#: ../capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1813,7 +1820,7 @@ msgstr ""
 "Prečac \"%s\" se ne može upotrijebiti jer će postati nemoguće pisati koristeći ovu tipku.\n"
 "Molimo pokušaj s tipkom poput Ctrl, Alt ili Shift istovremeno."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1298
+#: ../capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1822,16 +1829,16 @@ msgstr ""
 "Prečac \"%s\" se već koristi za\n"
 "\"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1305
+#: ../capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Ako iznova pridružiš prečac na \"%s\", prečac \"%s\" će biti onemogućen."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1310
+#: ../capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Iznova priduži"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1565
+#: ../capplets/keybindings/mate-keybinding-properties.c:1564
 msgid "Too many custom shortcuts"
 msgstr "Previše prilagođenih prečaca"
 
@@ -1863,11 +1870,9 @@ msgstr "Tipkovnički prečaci"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new key "
-"combination, or press backspace to clear."
+"To edit a shortcut key, double-click on the corresponding row and type a new"
+" key combination, or press backspace to clear."
 msgstr ""
-"Za postavljanje tipke prečaca, klikni na odgovarajući red i unesi novu vezu "
-"tipaka, ili pritisni 'backspace' za brisanje."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
@@ -1938,7 +1943,7 @@ msgid "Flash entire _screen"
 msgstr "Obasjaj cijeli _zaslon"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
 msgid "Slow Keys"
 msgstr "Spore tipke"
 
@@ -1955,7 +1960,7 @@ msgid "Beep when key is _rejected"
 msgstr "Oglasi zvukom kada je tipka _odbijena"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
 msgid "Bounce Keys"
 msgstr "Odskočne tipke"
 
@@ -1984,13 +1989,13 @@ msgid "_Speed:"
 msgstr "_Brzina:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid "Short"
 msgstr "Kratko"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Slow"
 msgstr "Sporo"
 
@@ -1999,13 +2004,13 @@ msgid "Repeat keys speed"
 msgstr "Brzina ponavljajućih tipki"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
 msgid "Long"
 msgstr "Dugo"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Fast"
 msgstr "Brzo"
 
@@ -2022,7 +2027,7 @@ msgid "S_peed:"
 msgstr "B_rzina:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Cursor blinks speed"
 msgstr "Brzina treptaja pokazivača"
 
@@ -2110,40 +2115,44 @@ msgstr "_Hini istodobne pritiske tipaka"
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "Onem_ogući ljepljive tipke ako su dvije tipke pritisnute zajedno"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "_Latch modifiers when pressed twice"
+msgstr ""
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
 msgid "_Only accept long keypresses"
 msgstr "_Prihvati jedino duge pritiske tipke"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
 msgid "_Ignore fast duplicate keypresses"
 msgstr "_Zanemari brze dvostruke pritiske tipke"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
 msgid "D_elay:"
 msgstr "O_dgoda:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
 msgid "Audio _Feedback..."
 msgstr "Zvukovna _potvrda..."
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
 msgid "_Pointer can be controlled using the keypad"
 msgstr "_Pokazivač može biti nadziran korištenjem brojčanih tipki"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "_Acceleration:"
 msgstr "_Ubrzanje:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
 msgid "Mouse Keys"
 msgstr "Tipke miša"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
 msgid "_Lock screen to enforce typing break"
 msgstr "_Zaključaj zaslon za nametanje stanke u tipkanju"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
@@ -2151,39 +2160,39 @@ msgstr ""
 "Zaključaj zaslon nakon određenog vremena kako bi se spriječila oštećenja "
 "prouzročena ponavljajućim korištenjem tipkovnice"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
 msgid "_Work interval lasts:"
 msgstr "_Radno međuvrijeme traje:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
 msgid "_Break interval lasts:"
 msgstr "Međuvrijeme stanke traje:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
 msgid "Duration of work before forcing a break"
 msgstr "Trajanje rada prije nametanja stanke"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "Duration of the break when typing is disallowed"
 msgstr "Trajanje stanke kada tipkanje nije dopušteno"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
 msgid "minutes"
 msgstr "minuta"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
 msgid "All_ow postponing of breaks"
 msgstr "Do_pusti odgodu stanki"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
 msgid "Check if breaks are allowed to be postponed"
 msgstr "Provjeri je li dozvoljena odgoda stanki"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
 msgid "Typing Break"
 msgstr "Stanka u tipkanju"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:60
 msgid "_Type to test settings:"
 msgstr "_Tipkaj za provjeru postavki:"
 
@@ -2259,24 +2268,24 @@ msgstr "Tipkovnica"
 msgid "Set your keyboard preferences"
 msgstr "Postavi vlastite prilagodbe tipkovnice"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Left button"
 msgstr "Lijevi gumb"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Middle button"
 msgstr "Srednji gumb"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Right button"
 msgstr "Desni gumb"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:419
+#: ../capplets/mouse/mate-mouse-properties.c:428
 msgid "Specify the name of the page to show (general)"
 msgstr "Odredi ime stranice za prikaz (opće)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:424
+#: ../capplets/mouse/mate-mouse-properties.c:433
 msgid "- MATE Mouse Preferences"
 msgstr "- Prilagodbe miša u MATE-u"
 
@@ -2305,98 +2314,102 @@ msgid "Emulate middle button through simultaneous left and right click"
 msgstr ""
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "Enable middlemouse paste"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "Pointer Speed"
 msgstr "Brzina pokazivača"
 
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "Low"
 msgstr "NIsko"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "High"
 msgstr "Visoko"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
 msgid "_Sensitivity:"
 msgstr "_Osjetljivost:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "Drag and Drop"
 msgstr "Povuci i ispusti"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Thr_eshold:"
 msgstr "Raz_ina praga:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
 msgid "Double-Click Timeout"
 msgstr "Istek vremena za dvoklik"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "_Timeout:"
 msgstr "_Istek vremena:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr "Za probu vlastitih postavki dvoklika, isprobaj dvoklik na žaruljici."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
 msgstr "Miš"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Enable _touchpad"
 msgstr "Omogući _dodirnik"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Disable touchpad _while typing"
 msgstr "Onemogući dodirnik _dok tipkaš "
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Omogući _klikove miša dodirnikom"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Two-finger click emulation:"
 msgstr "Oponašanje klikanja s dva prsta:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Three-finger click emulation:"
 msgstr "Oponašanje klikanja s tri prsta:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Scrolling"
 msgstr "Pomicanje"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "_Vertical edge scrolling"
 msgstr "_Okomito rubno pomicanje"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "H_orizontal edge scrolling"
 msgstr "_Vodoravno rubno pomicanje"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "V_ertical two-finger scrolling"
 msgstr "O_komito pomicanje s dva prsta"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Vo_doravno pomicanje s dva prsta"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Enable _natural scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "Touchpad"
 msgstr "Dodirnik"
 
@@ -2684,11 +2697,11 @@ msgstr "Pomagalo za raspoređivanje MATE-a"
 msgid "Configure MATE settings"
 msgstr "Podesite MATE postavke"
 
-#: ../typing-break/drw-break-window.c:183
+#: ../typing-break/drw-break-window.c:185
 msgid "_Postpone Break"
 msgstr "_Odgodi stanku"
 
-#: ../typing-break/drw-break-window.c:242
+#: ../typing-break/drw-break-window.c:244
 msgid "Take a break!"
 msgstr "Napravi stanku!"
 
@@ -2704,12 +2717,12 @@ msgstr "_O programu"
 msgid "_Take a Break"
 msgstr "_Napravi stanku"
 
-#: ../typing-break/drwright.c:524
+#: ../typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Napravi stanku sada (sljedeća za %dm)"
 
-#: ../typing-break/drwright.c:526
+#: ../typing-break/drwright.c:539
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
@@ -2717,17 +2730,17 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: ../typing-break/drwright.c:532
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Napravi stanku sada (sljedeća za manje od jedne minute)"
 
-#: ../typing-break/drwright.c:534
+#: ../typing-break/drwright.c:547
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Manje od minute do sljedeće stanke"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:637
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
@@ -2736,19 +2749,19 @@ msgstr ""
 "Nije moguće pokazati dijaloški okvir sa svojstvima stanke u tipkanju uz "
 "sljedeću pogrešku: %s"
 
-#: ../typing-break/drwright.c:641
+#: ../typing-break/drwright.c:654
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Napisao Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:642
+#: ../typing-break/drwright.c:655
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Ukras dodao Anders Carlsson"
 
-#: ../typing-break/drwright.c:651
+#: ../typing-break/drwright.c:664
 msgid "A computer break reminder."
 msgstr "Podsjetnik na stanku računala."
 
-#: ../typing-break/drwright.c:653 ../font-viewer/font-view.c:741
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr ""
 "Prijevod na Transifexu:\n"
@@ -2799,58 +2812,62 @@ msgstr ""
 " vlastitu ploču i odabirom 'Dodaj na ploču', odabirući 'Dojavno područje' uz"
 " klik 'Dodaj'."
 
-#: ../font-viewer/font-view.c:200
+#: ../font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Stil"
 
-#: ../font-viewer/font-view.c:210
+#: ../font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Vrsta"
 
-#: ../font-viewer/font-view.c:256 ../font-viewer/font-view.c:271
+#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Inačica"
 
-#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:273
+#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Autorsko pravo"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Opis"
 
-#: ../font-viewer/font-view.c:284
+#: ../font-viewer/font-view.c:288
 msgid "Install Failed"
 msgstr "Ugradnja neuspjela"
 
-#: ../font-viewer/font-view.c:290
+#: ../font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Ugrađeno"
 
-#: ../font-viewer/font-view.c:427
+#: ../font-viewer/font-view.c:431
 msgid "This font could not be displayed."
 msgstr "Nije moguće prikazati font."
 
-#: ../font-viewer/font-view.c:490 ../font-viewer/font-view.c:521
+#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Informacije"
 
-#: ../font-viewer/font-view.c:534
+#: ../font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Natrag"
 
-#: ../font-viewer/font-view.c:634
+#: ../font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "Svi fontovi"
 
-#: ../font-viewer/font-view.c:738 ../font-viewer/font-view.c:782
+#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
 msgid "Font Viewer"
 msgstr "Prikaznik pisma"
 
-#: ../font-viewer/font-view.c:739
+#: ../font-viewer/font-view.c:783
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "Pogledajte fontove u svom sustavu"
+
+#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+msgid "Search"
+msgstr "Traži"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
@@ -2947,11 +2964,3 @@ msgstr "Datotečni sustav"
 #: ../libslab/bookmark-agent.c:1156
 msgid "Network Servers"
 msgstr "Mrežni poslužitelji"
-
-#: ../libslab/bookmark-agent.c:1187
-msgid "Search"
-msgstr "Traži"
-
-#: ../libslab/search-bar.c:253
-msgid "Find Now"
-msgstr "Pronađi sada"

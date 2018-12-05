@@ -3,14 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Stefano Karapetsas <stefano@karapetsas.com>, 2018
+# Martin Wimpress <code@flexion.org>, 2018
+# Andi Chandler <andi@gowling.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 18:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Martin Wimpress <code@flexion.org>, 2018\n"
+"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"PO-Revision-Date: 2018-03-11 10:35+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>, 2018\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/mate/teams/13566/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -132,7 +137,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Command associated with a custom keybinding."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:197
+#: ../font-viewer/font-view.c:201
 msgid "Name"
 msgstr "Name"
 
@@ -140,25 +145,25 @@ msgstr "Name"
 msgid "Description associated with a custom keybinding."
 msgstr "Description associated with a custom keybinding."
 
-#: ../capplets/about-me/mate-about-me.c:268
+#: ../capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Select Image"
 
-#: ../capplets/about-me/mate-about-me.c:270
+#: ../capplets/about-me/mate-about-me.c:295
 msgid "No Image"
 msgstr "No Image"
 
-#: ../capplets/about-me/mate-about-me.c:298
+#: ../capplets/about-me/mate-about-me.c:323
 #: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Images"
 
-#: ../capplets/about-me/mate-about-me.c:302
+#: ../capplets/about-me/mate-about-me.c:327
 #: ../capplets/appearance/theme-installer.c:834
 msgid "All Files"
 msgstr "All Files"
 
-#: ../capplets/about-me/mate-about-me.c:446
+#: ../capplets/about-me/mate-about-me.c:495
 #, c-format
 msgid "About %s"
 msgstr "About %s"
@@ -579,7 +584,7 @@ msgstr ""
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:420
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "page"
 
@@ -594,8 +599,8 @@ msgstr "Default Pointer"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:293
-#: ../font-viewer/font-view.c:528
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
+#: ../font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Install"
 
@@ -794,13 +799,13 @@ msgstr "_Size:"
 
 #. small threshold
 #: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
 msgid "Small"
 msgstr "Small"
 
 #. large threshold
 #: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
 msgid "Large"
 msgstr "Large"
 
@@ -1484,19 +1489,41 @@ msgid "Run at st_art"
 msgstr "Run at st_art"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "Accessibility"
 
 #: ../capplets/display/display-capplet.ui.h:1
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
+msgid "Normal"
+msgstr "Normal"
+
+#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:504
+msgid "Left"
+msgstr "Left"
+
+#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:503
+msgid "Right"
+msgstr "Right"
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Upside-down"
+msgstr "Upside-down"
+
+#: ../capplets/display/display-capplet.ui.h:5
 msgid "Monitor Preferences"
 msgstr "Monitor Preferences"
 
-#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/display-capplet.ui.h:6
 msgid "Apply system-wide"
 msgstr "Apply system-wide"
 
-#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/display-capplet.ui.h:7
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
@@ -1504,80 +1531,58 @@ msgstr ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
 
-#: ../capplets/display/display-capplet.ui.h:4
+#: ../capplets/display/display-capplet.ui.h:8
 msgid "Sa_me image in all monitors"
 msgstr "Sa_me image in all monitors"
 
-#: ../capplets/display/display-capplet.ui.h:5
+#: ../capplets/display/display-capplet.ui.h:9
 msgid "_Detect monitors"
 msgstr "_Detect monitors"
 
-#: ../capplets/display/display-capplet.ui.h:6
+#: ../capplets/display/display-capplet.ui.h:10
 msgid "Panel icon"
 msgstr "Panel icon"
 
-#: ../capplets/display/display-capplet.ui.h:7
+#: ../capplets/display/display-capplet.ui.h:11
 msgid "_Show monitors in panel"
 msgstr "_Show monitors in panel"
 
-#: ../capplets/display/display-capplet.ui.h:8
+#: ../capplets/display/display-capplet.ui.h:12
 msgid "_Resolution:"
 msgstr "_Resolution:"
 
-#: ../capplets/display/display-capplet.ui.h:9
+#: ../capplets/display/display-capplet.ui.h:13
 msgid "Re_fresh rate:"
 msgstr "Re_fresh rate:"
 
-#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/display-capplet.ui.h:14
 msgid "On"
 msgstr "On"
 
-#: ../capplets/display/display-capplet.ui.h:11
+#: ../capplets/display/display-capplet.ui.h:15
 msgid "Off"
 msgstr "Off"
 
-#: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:496
-msgid "Monitor"
-msgstr "Monitor"
-
-#: ../capplets/display/display-capplet.ui.h:13
-msgid "R_otation:"
-msgstr "R_otation:"
-
-#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/display-capplet.ui.h:16
 msgid "Include _panel"
 msgstr "Include _panel"
 
-#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/display-capplet.ui.h:17
 msgid "Set as primary"
 msgstr "Set as primary"
 
-#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/display-capplet.ui.h:18
 msgid "Sets the selected monitor as primary."
 msgstr "Sets the selected monitor as primary."
 
-#: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
-msgid "Normal"
-msgstr "Normal"
-
-#: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:504
-msgid "Left"
-msgstr "Left"
-
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:309
-#: ../capplets/windows/mate-window-properties.c:503
-msgid "Right"
-msgstr "Right"
+msgid "R_otation:"
+msgstr "R_otation:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-msgid "Upside-down"
-msgstr "Upside-down"
+#: ../capplets/display/xrandr-capplet.c:496
+msgid "Monitor"
+msgstr "Monitor"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Displays"
@@ -1783,8 +1788,8 @@ msgstr "The type of accelerator."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:325
-#: ../typing-break/drwright.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Disabled"
 
@@ -1792,16 +1797,16 @@ msgstr "Disabled"
 msgid "<Unknown Action>"
 msgstr "<Unknown Action>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1020
-#: ../capplets/keybindings/mate-keybinding-properties.c:1610
+#: ../capplets/keybindings/mate-keybinding-properties.c:1019
+#: ../capplets/keybindings/mate-keybinding-properties.c:1609
 msgid "Custom Shortcuts"
 msgstr "Custom Shortcuts"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1190
+#: ../capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Error saving the new shortcut"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1266
+#: ../capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1810,7 +1815,7 @@ msgstr ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
 "Please try with a key such as Control, Alt or Shift at the same time."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1298
+#: ../capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1819,16 +1824,16 @@ msgstr ""
 "The shortcut \"%s\" is already used for\n"
 "\"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1305
+#: ../capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1310
+#: ../capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Reassign"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1565
+#: ../capplets/keybindings/mate-keybinding-properties.c:1564
 msgid "Too many custom shortcuts"
 msgstr "Too many custom shortcuts"
 
@@ -1860,11 +1865,9 @@ msgstr "Keyboard Shortcuts"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new key "
-"combination, or press backspace to clear."
+"To edit a shortcut key, double-click on the corresponding row and type a new"
+" key combination, or press backspace to clear."
 msgstr ""
-"To edit a shortcut key, click on the corresponding row and type a new key "
-"combination, or press backspace to clear."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
@@ -1934,7 +1937,7 @@ msgid "Flash entire _screen"
 msgstr "Flash entire _screen"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
 msgid "Slow Keys"
 msgstr "Slow Keys"
 
@@ -1951,7 +1954,7 @@ msgid "Beep when key is _rejected"
 msgstr "Beep when key is _rejected"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
 msgid "Bounce Keys"
 msgstr "Bounce Keys"
 
@@ -1980,13 +1983,13 @@ msgid "_Speed:"
 msgstr "_Speed:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid "Short"
 msgstr "Short"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Slow"
 msgstr "Slow"
 
@@ -1995,13 +1998,13 @@ msgid "Repeat keys speed"
 msgstr "Repeat keys speed"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
 msgid "Long"
 msgstr "Long"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Fast"
 msgstr "Fast"
 
@@ -2018,7 +2021,7 @@ msgid "S_peed:"
 msgstr "S_peed:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Cursor blinks speed"
 msgstr "Cursor blinks speed"
 
@@ -2106,40 +2109,44 @@ msgstr "_Simulate simultaneous keypresses"
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "Disa_ble sticky keys if two keys are pressed together"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "_Latch modifiers when pressed twice"
+msgstr "_Latch modifiers when pressed twice"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
 msgid "_Only accept long keypresses"
 msgstr "_Only accept long keypresses"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
 msgid "_Ignore fast duplicate keypresses"
 msgstr "_Ignore fast duplicate keypresses"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
 msgid "D_elay:"
 msgstr "D_elay:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
 msgid "Audio _Feedback..."
 msgstr "Audio _Feedback…"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
 msgid "_Pointer can be controlled using the keypad"
 msgstr "_Pointer can be controlled using the keypad"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "_Acceleration:"
 msgstr "_Acceleration:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
 msgid "Mouse Keys"
 msgstr "Mouse Keys"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
 msgid "_Lock screen to enforce typing break"
 msgstr "_Lock screen to enforce typing break"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
@@ -2147,39 +2154,39 @@ msgstr ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
 msgid "_Work interval lasts:"
 msgstr "_Work interval lasts:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
 msgid "_Break interval lasts:"
 msgstr "_Break interval lasts:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
 msgid "Duration of work before forcing a break"
 msgstr "Duration of work before forcing a break"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "Duration of the break when typing is disallowed"
 msgstr "Duration of the break when typing is disallowed"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
 msgid "minutes"
 msgstr "minutes"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
 msgid "All_ow postponing of breaks"
 msgstr "All_ow postponing of breaks"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
 msgid "Check if breaks are allowed to be postponed"
 msgstr "Check if breaks are allowed to be postponed"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
 msgid "Typing Break"
 msgstr "Typing Break"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:60
 msgid "_Type to test settings:"
 msgstr "_Type to test settings:"
 
@@ -2255,24 +2262,24 @@ msgstr "Keyboard"
 msgid "Set your keyboard preferences"
 msgstr "Set your keyboard preferences"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Left button"
 msgstr "Left button"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Middle button"
 msgstr "Middle button"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Right button"
 msgstr "Right button"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:419
+#: ../capplets/mouse/mate-mouse-properties.c:428
 msgid "Specify the name of the page to show (general)"
 msgstr "Specify the name of the page to show (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:424
+#: ../capplets/mouse/mate-mouse-properties.c:433
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE Mouse Preferences"
 
@@ -2301,99 +2308,103 @@ msgid "Emulate middle button through simultaneous left and right click"
 msgstr "Emulate middle button through simultaneous left and right click"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "Enable middlemouse paste"
+msgstr "Enable middlemouse paste"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "Pointer Speed"
 msgstr "Pointer Speed"
 
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "Low"
 msgstr "Low"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "High"
 msgstr "High"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
 msgid "_Sensitivity:"
 msgstr "_Sensitivity:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "Drag and Drop"
 msgstr "Drag and Drop"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Thr_eshold:"
 msgstr "Thr_eshold:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
 msgid "Double-Click Timeout"
 msgstr "Double-Click Timeout"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "_Timeout:"
 msgstr "_Timeout:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr ""
 "To test your double-click settings, try to double-click on the light bulb."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
 msgstr "Mouse"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Enable _touchpad"
 msgstr "Enable _touchpad"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Disable touchpad _while typing"
 msgstr "Disable touchpad _while typing"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Enable _mouse clicks with touchpad"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Two-finger click emulation:"
 msgstr "Two-finger click emulation:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Three-finger click emulation:"
 msgstr "Three-finger click emulation:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr "Warning: multi-finger emulation may disable software buttons"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Scrolling"
 msgstr "Scrolling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "_Vertical edge scrolling"
 msgstr "_Vertical edge scrolling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "H_orizontal edge scrolling"
 msgstr "H_orizontal edge scrolling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "V_ertical two-finger scrolling"
 msgstr "V_ertical two-finger scrolling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Hor_izontal two-finger scrolling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Enable _natural scrolling"
 msgstr "Enable _natural scrolling"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "Touchpad"
 msgstr "Touchpad"
 
@@ -2680,11 +2691,11 @@ msgstr "The MATE configuration tool"
 msgid "Configure MATE settings"
 msgstr "Configure MATE settings"
 
-#: ../typing-break/drw-break-window.c:183
+#: ../typing-break/drw-break-window.c:185
 msgid "_Postpone Break"
 msgstr "_Postpone Break"
 
-#: ../typing-break/drw-break-window.c:242
+#: ../typing-break/drw-break-window.c:244
 msgid "Take a break!"
 msgstr "Take a break!"
 
@@ -2700,29 +2711,29 @@ msgstr "_About"
 msgid "_Take a Break"
 msgstr "_Take a Break"
 
-#: ../typing-break/drwright.c:524
+#: ../typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Take a break now (next in %dm)"
 
-#: ../typing-break/drwright.c:526
+#: ../typing-break/drwright.c:539
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minute until the next break"
 msgstr[1] "%d minutes until the next break"
 
-#: ../typing-break/drwright.c:532
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Take a break now (next in less than one minute)"
 
-#: ../typing-break/drwright.c:534
+#: ../typing-break/drwright.c:547
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Less than one minute until the next break"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:637
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
@@ -2731,19 +2742,19 @@ msgstr ""
 "Unable to bring up the typing break properties dialogue with the following "
 "error: %s"
 
-#: ../typing-break/drwright.c:641
+#: ../typing-break/drwright.c:654
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Written by Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:642
+#: ../typing-break/drwright.c:655
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Eye candy added by Anders Carlsson"
 
-#: ../typing-break/drwright.c:651
+#: ../typing-break/drwright.c:664
 msgid "A computer break reminder."
 msgstr "A computer break reminder."
 
-#: ../typing-break/drwright.c:653 ../font-viewer/font-view.c:741
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr "Martin Wimpress"
 
@@ -2771,58 +2782,62 @@ msgstr ""
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
 
-#: ../font-viewer/font-view.c:200
+#: ../font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Style"
 
-#: ../font-viewer/font-view.c:210
+#: ../font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Type"
 
-#: ../font-viewer/font-view.c:256 ../font-viewer/font-view.c:271
+#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Version"
 
-#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:273
+#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Description"
 
-#: ../font-viewer/font-view.c:284
+#: ../font-viewer/font-view.c:288
 msgid "Install Failed"
 msgstr "Install Failed"
 
-#: ../font-viewer/font-view.c:290
+#: ../font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Installed"
 
-#: ../font-viewer/font-view.c:427
+#: ../font-viewer/font-view.c:431
 msgid "This font could not be displayed."
 msgstr "This font could not be displayed."
 
-#: ../font-viewer/font-view.c:490 ../font-viewer/font-view.c:521
+#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Info"
 
-#: ../font-viewer/font-view.c:534
+#: ../font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Back"
 
-#: ../font-viewer/font-view.c:634
+#: ../font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "All Fonts"
 
-#: ../font-viewer/font-view.c:738 ../font-viewer/font-view.c:782
+#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
 msgid "Font Viewer"
 msgstr "Font Viewer"
 
-#: ../font-viewer/font-view.c:739
+#: ../font-viewer/font-view.c:783
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "View fonts on your system"
+
+#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+msgid "Search"
+msgstr "Search"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
@@ -2919,11 +2934,3 @@ msgstr "File System"
 #: ../libslab/bookmark-agent.c:1156
 msgid "Network Servers"
 msgstr "Network Servers"
-
-#: ../libslab/bookmark-agent.c:1187
-msgid "Search"
-msgstr "Search"
-
-#: ../libslab/search-bar.c:253
-msgid "Find Now"
-msgstr "Find Now"

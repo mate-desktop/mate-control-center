@@ -3,14 +3,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Francesc Famadas <kiski97@gmail.com>, 2018
+# Daniel <danicases@gmail.com>, 2018
+# Stefano Karapetsas <stefano@karapetsas.com>, 2018
+# Pere O. <gotrunks@gmail.com>, 2018
+# Martin Wimpress <code@flexion.org>, 2018
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 18:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Daniel <danicases@gmail.com>, 2018\n"
+"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"PO-Revision-Date: 2018-03-11 10:35+0000\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2018\n"
 "Language-Team: Catalan (https://www.transifex.com/mate/teams/13566/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -135,7 +143,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Ordre associada amb una vinculació de tecles personalitzada."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:197
+#: ../font-viewer/font-view.c:201
 msgid "Name"
 msgstr "Nom"
 
@@ -143,25 +151,25 @@ msgstr "Nom"
 msgid "Description associated with a custom keybinding."
 msgstr "Descripció associada a una vinculació de tecles personalitzada."
 
-#: ../capplets/about-me/mate-about-me.c:268
+#: ../capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Seleccioneu una imatge"
 
-#: ../capplets/about-me/mate-about-me.c:270
+#: ../capplets/about-me/mate-about-me.c:295
 msgid "No Image"
 msgstr "Cap imatge"
 
-#: ../capplets/about-me/mate-about-me.c:298
+#: ../capplets/about-me/mate-about-me.c:323
 #: ../capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Imatges"
 
-#: ../capplets/about-me/mate-about-me.c:302
+#: ../capplets/about-me/mate-about-me.c:327
 #: ../capplets/appearance/theme-installer.c:834
 msgid "All Files"
 msgstr "Tots els fitxers"
 
-#: ../capplets/about-me/mate-about-me.c:446
+#: ../capplets/about-me/mate-about-me.c:495
 #, c-format
 msgid "About %s"
 msgstr "Quant a %s"
@@ -588,7 +596,7 @@ msgstr ""
 
 #: ../capplets/appearance/appearance-main.c:166
 #: ../capplets/default-applications/mate-da-capplet.c:694
-#: ../capplets/mouse/mate-mouse-properties.c:420
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "pàgina"
 
@@ -603,8 +611,8 @@ msgstr "Punter predeterminat"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:293
-#: ../font-viewer/font-view.c:528
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
+#: ../font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Instal·la"
 
@@ -805,13 +813,13 @@ msgstr "_Mida:"
 
 #. small threshold
 #: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
 msgid "Small"
 msgstr "Petita"
 
 #. large threshold
 #: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:25
+#: ../capplets/mouse/mate-mouse-properties.ui.h:26
 msgid "Large"
 msgstr "Gran"
 
@@ -1015,7 +1023,7 @@ msgstr "Si els botons han de mostrar una icona a més del text del botó"
 
 #: ../capplets/appearance/data/appearance.ui.h:90
 msgid "Preview"
-msgstr "Presentació preliminar"
+msgstr "Vista prèvia"
 
 #: ../capplets/appearance/data/appearance.ui.h:91
 msgid "_File"
@@ -1408,7 +1416,7 @@ msgstr "Navegador web"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:3
 msgid "Mail Reader"
-msgstr "Lector de correu"
+msgstr "Client de correu electrònic"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
 msgid "Instant Messenger"
@@ -1496,19 +1504,41 @@ msgid "Run at st_art"
 msgstr "Executa a l'_inici"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "Accessibilitat"
 
 #: ../capplets/display/display-capplet.ui.h:1
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:346
+msgid "Normal"
+msgstr "Normal"
+
+#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:504
+msgid "Left"
+msgstr "Esquerre"
+
+#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/windows/mate-window-properties.c:503
+msgid "Right"
+msgstr "Dret"
+
+#: ../capplets/display/display-capplet.ui.h:4
+msgid "Upside-down"
+msgstr "De cap per avall"
+
+#: ../capplets/display/display-capplet.ui.h:5
 msgid "Monitor Preferences"
 msgstr "Preferències del monitor"
 
-#: ../capplets/display/display-capplet.ui.h:2
+#: ../capplets/display/display-capplet.ui.h:6
 msgid "Apply system-wide"
 msgstr "Aplica-ho a tot el sistema"
 
-#: ../capplets/display/display-capplet.ui.h:3
+#: ../capplets/display/display-capplet.ui.h:7
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
@@ -1517,80 +1547,58 @@ msgstr ""
 "Tingueu en compte que això no afecta les pantalles d'inici de sessió ni "
 "tampoc als altres entorns d'escriptori."
 
-#: ../capplets/display/display-capplet.ui.h:4
+#: ../capplets/display/display-capplet.ui.h:8
 msgid "Sa_me image in all monitors"
 msgstr "La _mateixa imatge en tots els monitors"
 
-#: ../capplets/display/display-capplet.ui.h:5
+#: ../capplets/display/display-capplet.ui.h:9
 msgid "_Detect monitors"
 msgstr "_Detecta els monitors"
 
-#: ../capplets/display/display-capplet.ui.h:6
+#: ../capplets/display/display-capplet.ui.h:10
 msgid "Panel icon"
 msgstr "Icona de tauler"
 
-#: ../capplets/display/display-capplet.ui.h:7
+#: ../capplets/display/display-capplet.ui.h:11
 msgid "_Show monitors in panel"
 msgstr "_Mostra els monitors al tauler"
 
-#: ../capplets/display/display-capplet.ui.h:8
+#: ../capplets/display/display-capplet.ui.h:12
 msgid "_Resolution:"
 msgstr "_Resolució:"
 
-#: ../capplets/display/display-capplet.ui.h:9
+#: ../capplets/display/display-capplet.ui.h:13
 msgid "Re_fresh rate:"
 msgstr "Velocitat de re_fresc:"
 
-#: ../capplets/display/display-capplet.ui.h:10
+#: ../capplets/display/display-capplet.ui.h:14
 msgid "On"
 msgstr "Encès"
 
-#: ../capplets/display/display-capplet.ui.h:11
+#: ../capplets/display/display-capplet.ui.h:15
 msgid "Off"
 msgstr "Apagat"
 
-#: ../capplets/display/display-capplet.ui.h:12
-#: ../capplets/display/xrandr-capplet.c:496
-msgid "Monitor"
-msgstr "Monitor"
-
-#: ../capplets/display/display-capplet.ui.h:13
-msgid "R_otation:"
-msgstr "R_otació:"
-
-#: ../capplets/display/display-capplet.ui.h:14
+#: ../capplets/display/display-capplet.ui.h:16
 msgid "Include _panel"
 msgstr "Inclou el _ tauler"
 
-#: ../capplets/display/display-capplet.ui.h:15
+#: ../capplets/display/display-capplet.ui.h:17
 msgid "Set as primary"
 msgstr "Estableix-ho com al principal"
 
-#: ../capplets/display/display-capplet.ui.h:16
+#: ../capplets/display/display-capplet.ui.h:18
 msgid "Sets the selected monitor as primary."
 msgstr "Establiu el monitor seleccionat com al principal."
 
-#: ../capplets/display/display-capplet.ui.h:17
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
-msgid "Normal"
-msgstr "Normal"
-
-#: ../capplets/display/display-capplet.ui.h:18
-#: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:504
-msgid "Left"
-msgstr "Esquerre"
-
 #: ../capplets/display/display-capplet.ui.h:19
-#: ../capplets/display/xrandr-capplet.c:309
-#: ../capplets/windows/mate-window-properties.c:503
-msgid "Right"
-msgstr "Dret"
+msgid "R_otation:"
+msgstr "R_otació:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-msgid "Upside-down"
-msgstr "De cap per avall"
+#: ../capplets/display/xrandr-capplet.c:496
+msgid "Monitor"
+msgstr "Monitor"
 
 #: ../capplets/display/mate-display-properties.desktop.in.in.h:1
 msgid "Displays"
@@ -1800,8 +1808,8 @@ msgstr "El tipus de l'accelerador."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:325
-#: ../typing-break/drwright.c:515
+#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Inhabilitat"
 
@@ -1809,16 +1817,16 @@ msgstr "Inhabilitat"
 msgid "<Unknown Action>"
 msgstr "<Acció Desconeguda>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1020
-#: ../capplets/keybindings/mate-keybinding-properties.c:1610
+#: ../capplets/keybindings/mate-keybinding-properties.c:1019
+#: ../capplets/keybindings/mate-keybinding-properties.c:1609
 msgid "Custom Shortcuts"
 msgstr "Dreceres personalitzades"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1190
+#: ../capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "S'ha produït un error en desar la drecera nova"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1266
+#: ../capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1827,7 +1835,7 @@ msgstr ""
 "No es pot utilitzar la drecera «%s» perquè no seria possible teclejar-la amb aquesta tecla.\n"
 "Proveu amb una altra tecla com ara Control, Alt o Majúscules a la vegada."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1298
+#: ../capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1836,17 +1844,17 @@ msgstr ""
 "Ja s'utilitza la drecera «%s» per a:\n"
 " «%s»"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1305
+#: ../capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Si torneu a assignar la drecera a «%s», s'inhabilitarà la drecera «%s»."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1310
+#: ../capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Torna a assignar"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1565
+#: ../capplets/keybindings/mate-keybinding-properties.c:1564
 msgid "Too many custom shortcuts"
 msgstr "Hi ha massa dreceres personalitzades"
 
@@ -1878,11 +1886,11 @@ msgstr "Dreceres de teclat"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
 msgid ""
-"To edit a shortcut key, click on the corresponding row and type a new key "
-"combination, or press backspace to clear."
+"To edit a shortcut key, double-click on the corresponding row and type a new"
+" key combination, or press backspace to clear."
 msgstr ""
-"Per editar una drecera, feu clic en la fila corresponent i premeu una nova "
-"combinació de tecles, o premeu la tecla de retrocés per netejar-la."
+"Per editar una drecera, feu doble clic a la fila corresponent i premeu una "
+"nova combinació de tecles, o premeu la tecla de retrocés per netejar-la."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
 msgid "Assign shortcut keys to commands"
@@ -1955,7 +1963,7 @@ msgid "Flash entire _screen"
 msgstr "Pampallugueja la pantalla _sencera"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
 msgid "Slow Keys"
 msgstr "Tecles lentes"
 
@@ -1972,7 +1980,7 @@ msgid "Beep when key is _rejected"
 msgstr "Emet l'avís sonor quan es dene_gui la tecla"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
 msgid "Bounce Keys"
 msgstr "Tecles de rebot"
 
@@ -2001,13 +2009,13 @@ msgid "_Speed:"
 msgstr "_Velocitat:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:29
 msgid "Short"
 msgstr "Curt"
 
 #. slow acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:11
+#: ../capplets/mouse/mate-mouse-properties.ui.h:12
 msgid "Slow"
 msgstr "Lent"
 
@@ -2016,13 +2024,13 @@ msgid "Repeat keys speed"
 msgstr "Velocitat de la repetició de tecles"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
 msgid "Long"
 msgstr "Llarg"
 
 #. fast acceleration
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:13
+#: ../capplets/mouse/mate-mouse-properties.ui.h:14
 msgid "Fast"
 msgstr "Ràpid"
 
@@ -2039,7 +2047,7 @@ msgid "S_peed:"
 msgstr "Ve_locitat:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Cursor blinks speed"
 msgstr "Velocitat del parpelleig del cursor"
 
@@ -2122,46 +2130,50 @@ msgstr ""
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:37
 msgid "_Simulate simultaneous keypresses"
-msgstr "_Simula les pressions simultànies de les tecles"
+msgstr "_Simula les pressions de tecles simultànies"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:38
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "Inha_bilita les tecles enganxoses si es premen dues tecles alhora"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
-msgid "_Only accept long keypresses"
-msgstr "Accepta n_omés les pressions perllongades de les tecles"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+msgid "_Latch modifiers when pressed twice"
+msgstr "Modificadors de peste_lls quan es premen dues vegades"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
-msgid "_Ignore fast duplicate keypresses"
-msgstr "I_gnora les pressions ràpides de les tecles duplicades"
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+msgid "_Only accept long keypresses"
+msgstr "Accepta n_omés les pressions de tecles perllongades"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+msgid "_Ignore fast duplicate keypresses"
+msgstr "I_gnora les pressions de tecles ràpides duplicades"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
 msgid "D_elay:"
 msgstr "R_etard:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
 msgid "Audio _Feedback..."
 msgstr "Resposta d'à_udio..."
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
-msgid "_Pointer can be controlled using the keypad"
-msgstr "El _punter es pot controlar amb el teclat"
-
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+msgid "_Pointer can be controlled using the keypad"
+msgstr "El _punter es pot controlar amb el teclat numèric"
+
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/mouse/mate-mouse-properties.ui.h:10
 msgid "_Acceleration:"
 msgstr "_Acceleració:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
 msgid "Mouse Keys"
 msgstr "Tecles de ratolí"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
 msgid "_Lock screen to enforce typing break"
 msgstr "B_loqueja la pantalla per forçar un descans de tecleig"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
@@ -2169,39 +2181,39 @@ msgstr ""
 "Bloqueja la pantalla després d'un cert temps, per ajudar en la prevenció de "
 "lesions causades per l'ús repetitiu del teclat"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
 msgid "_Work interval lasts:"
 msgstr "L'interval de tre_ball dura:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
 msgid "_Break interval lasts:"
 msgstr "L'interval de _descans dura:"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
 msgid "Duration of work before forcing a break"
 msgstr "Duració del temps de treball abans de forçar un descans"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
 msgid "Duration of the break when typing is disallowed"
 msgstr "Duració del descans durant el qual no es pot teclejar"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
 msgid "minutes"
 msgstr "minuts"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
 msgid "All_ow postponing of breaks"
 msgstr "Permet l'aj_ornament dels descansos"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
 msgid "Check if breaks are allowed to be postponed"
 msgstr "Comprova si es poden ajornar els descansos"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
 msgid "Typing Break"
 msgstr "Descans de tecleig"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:60
 msgid "_Type to test settings:"
 msgstr "Tecle_geu per provar els ajusts:"
 
@@ -2277,24 +2289,24 @@ msgstr "Teclat"
 msgid "Set your keyboard preferences"
 msgstr "Establiu les preferències del vostre teclat"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Left button"
 msgstr "Botó esquerre"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Middle button"
 msgstr "Botó mig"
 
-#: ../capplets/mouse/mate-mouse-properties.c:325
+#: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Right button"
 msgstr "Botó dret"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:419
+#: ../capplets/mouse/mate-mouse-properties.c:428
 msgid "Specify the name of the page to show (general)"
 msgstr "Especifiqueu el nom de la pàgina a mostrar (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:424
+#: ../capplets/mouse/mate-mouse-properties.c:433
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferències del ratolí de MATE"
 
@@ -2316,108 +2328,112 @@ msgstr "_Esquerrà"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:6
 msgid "Sh_ow position of pointer when the Control key is pressed"
-msgstr "M_ostra la posició del punter quan es premi la tecla de control"
+msgstr "M_ostra la posició del punter quan es premi la tecla Control"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:7
 msgid "Emulate middle button through simultaneous left and right click"
 msgstr "Emula el botó del mig a través del clic simultani esquerre i dret"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:8
+msgid "Enable middlemouse paste"
+msgstr "Habilita la selecció del botó central del ratolí"
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:9
 msgid "Pointer Speed"
 msgstr "Velocitat del punter"
 
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:16
 msgid "Low"
 msgstr "Baixa"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:17
+#: ../capplets/mouse/mate-mouse-properties.ui.h:18
 msgid "High"
 msgstr "Alta"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+#: ../capplets/mouse/mate-mouse-properties.ui.h:19
 msgid "_Sensitivity:"
 msgstr "_Sensibilitat:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: ../capplets/mouse/mate-mouse-properties.ui.h:20
 msgid "Drag and Drop"
 msgstr "Arrossega i deixa anar"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Thr_eshold:"
 msgstr "_Llindar:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
 msgid "Double-Click Timeout"
 msgstr "Temps d'espera del doble clic"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "_Timeout:"
 msgstr "_Temps d'espera:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
 "To test your double-click settings, try to double-click on the light bulb."
 msgstr ""
 "Per comprovar els ajusts del doble clic, intenteu fer un doble clic a la "
 "bombeta."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
 msgid "Mouse"
 msgstr "Ratolí"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Enable _touchpad"
 msgstr "Habilita el ratolí _tàctil"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Disable touchpad _while typing"
 msgstr "_Inhabilita el ratolí tàctil mentre s'escriu"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Habilita els clics a_mb el ratolí tàctil"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Two-finger click emulation:"
 msgstr "Emulació de clic amb dos dits:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Three-finger click emulation:"
 msgstr "Emulació de clic amb tres dits:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
 "Avís: l'emulació de diversos dits pot inhabilitar els botons de programari"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Scrolling"
 msgstr "Desplaçament"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "_Vertical edge scrolling"
 msgstr "Desplaçament vertical amb la _vora"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "H_orizontal edge scrolling"
 msgstr "Desplaçament h_orizontal amb la vora"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "V_ertical two-finger scrolling"
 msgstr "Desplaçament v_ertical amb dos dits"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Desplaçament hor_itzontal amb dos dits"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Enable _natural scrolling"
 msgstr "Habilita el desplaçament _natural"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "Touchpad"
 msgstr "Ratolí tàctil"
 
@@ -2431,7 +2447,7 @@ msgstr "Servidor intermediari de xarxa"
 
 #: ../capplets/network/mate-network-properties.desktop.in.in.h:2
 msgid "Set your network proxy preferences"
-msgstr "Establiu les preferències del vostre servidor intermediari de xarxa"
+msgstr "Establiu les preferències del servidor intermediari de xarxa"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
 msgid "Network Proxy Preferences"
@@ -2610,8 +2626,8 @@ msgstr "Tecles de moviment"
 #: ../capplets/windows/mate-window-properties.c:490
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
-"Per moure una finestra, mantingueu premuda aquesta tecla i després feu clic "
-"a la finestra:"
+"Per moure una finestra, mantingueu premuda aquesta tecla i després agafeu a "
+"la finestra:"
 
 #: ../capplets/windows/mate-window-properties.c:510
 #: ../libwindow-settings/marco-window-manager.c:394
@@ -2706,11 +2722,11 @@ msgstr "L'eina de configuració de MATE"
 msgid "Configure MATE settings"
 msgstr "Configureu els ajusts de MATE"
 
-#: ../typing-break/drw-break-window.c:183
+#: ../typing-break/drw-break-window.c:185
 msgid "_Postpone Break"
 msgstr "A_jorna el descans"
 
-#: ../typing-break/drw-break-window.c:242
+#: ../typing-break/drw-break-window.c:244
 msgid "Take a break!"
 msgstr "Descanseu!"
 
@@ -2726,29 +2742,29 @@ msgstr "_Quant a"
 msgid "_Take a Break"
 msgstr "_Inicia un descans"
 
-#: ../typing-break/drwright.c:524
+#: ../typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Fes un descans ara mateix (es farà el següent en %dm)"
 
-#: ../typing-break/drwright.c:526
+#: ../typing-break/drwright.c:539
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minut fins al següent descans"
 msgstr[1] "%d minuts fins al següent descans"
 
-#: ../typing-break/drwright.c:532
+#: ../typing-break/drwright.c:545
 #, c-format
 msgid "Take a break now (next in less than one minute)"
 msgstr "Fes un descans ara mateix (es farà el següent en menys d'un minut)"
 
-#: ../typing-break/drwright.c:534
+#: ../typing-break/drwright.c:547
 #, c-format
 msgid "Less than one minute until the next break"
 msgstr "Menys d'un minut fins al següent descans"
 
-#: ../typing-break/drwright.c:624
+#: ../typing-break/drwright.c:637
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
@@ -2757,19 +2773,19 @@ msgstr ""
 "No es pot mostrar el diàleg de les propietats del descans de tecleig amb el "
 "següent error: %s"
 
-#: ../typing-break/drwright.c:641
+#: ../typing-break/drwright.c:654
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Escrit per Richard Hult <richard@imendio.com>"
 
-#: ../typing-break/drwright.c:642
+#: ../typing-break/drwright.c:655
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Detalls artístics per Anders Carlsson"
 
-#: ../typing-break/drwright.c:651
+#: ../typing-break/drwright.c:664
 msgid "A computer break reminder."
 msgstr "Un recordatori de descans d'ordinador."
 
-#: ../typing-break/drwright.c:653 ../font-viewer/font-view.c:741
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr ""
 "Daniel <danicases@gmail.com>\n"
@@ -2786,7 +2802,7 @@ msgstr "Habilita el codi de depuració"
 
 #: ../typing-break/main.c:64
 msgid "Don't check whether the notification area exists"
-msgstr "No comprovis si existeix l'àrea de notificació"
+msgstr "No comprovis si existeix l'àrea de notificacions"
 
 #: ../typing-break/main.c:88
 msgid "Typing Monitor"
@@ -2799,64 +2815,68 @@ msgid ""
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
 msgstr ""
-"El monitor de tecleig utilitza l'àrea de notificació per mostrar informació."
-" Sembla que no teniu una àrea de notificació al vostre tauler. Podeu afegir-"
-"ho en fer clic amb el botó dret sobre el tauler i amb la selecció «Afegeix "
-"al tauler», després seleccioneu «Àrea de notificació» i feu clic a "
-"«Afegeix»."
+"El monitor de tecleig utilitza l'àrea de notificacions per mostrar "
+"informació. Sembla que no teniu una àrea de notificacions al vostre tauler. "
+"Podeu afegir-ho en fer clic amb el botó dret sobre el tauler i amb la "
+"selecció «Afegeix al tauler», després seleccioneu «Àrea de notificacions» i "
+"feu clic a «Afegeix»."
 
-#: ../font-viewer/font-view.c:200
+#: ../font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Estil"
 
-#: ../font-viewer/font-view.c:210
+#: ../font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Tipus"
 
-#: ../font-viewer/font-view.c:256 ../font-viewer/font-view.c:271
+#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Versió"
 
-#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:273
+#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Drets d'autor"
 
-#: ../font-viewer/font-view.c:266
+#: ../font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Descripció"
 
-#: ../font-viewer/font-view.c:284
+#: ../font-viewer/font-view.c:288
 msgid "Install Failed"
 msgstr "Ha fallat la instal·lació"
 
-#: ../font-viewer/font-view.c:290
+#: ../font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Instal·lat"
 
-#: ../font-viewer/font-view.c:427
+#: ../font-viewer/font-view.c:431
 msgid "This font could not be displayed."
 msgstr "No es pot mostrar aquesta lletra."
 
-#: ../font-viewer/font-view.c:490 ../font-viewer/font-view.c:521
+#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Informació"
 
-#: ../font-viewer/font-view.c:534
+#: ../font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Enrere"
 
-#: ../font-viewer/font-view.c:634
+#: ../font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "Totes les lletres"
 
-#: ../font-viewer/font-view.c:738 ../font-viewer/font-view.c:782
+#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
 msgid "Font Viewer"
 msgstr "Visualitzador de lletres"
 
-#: ../font-viewer/font-view.c:739
+#: ../font-viewer/font-view.c:783
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
 msgid "View fonts on your system"
 msgstr "Visualitzeu les lletres del vostre sistema"
+
+#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+msgid "Search"
+msgstr "Cerca"
 
 #: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
 msgid "MATE Font Viewer"
@@ -2864,7 +2884,7 @@ msgstr "Visualitzador de lletres de MATE"
 
 #: ../font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
-msgstr "Text a per a crear miniatures (predeterminat: Aa)"
+msgstr "Text per crear la miniatura (predeterminat: Aa)"
 
 #: ../font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
@@ -2953,11 +2973,3 @@ msgstr "Sistema de fitxers"
 #: ../libslab/bookmark-agent.c:1156
 msgid "Network Servers"
 msgstr "Servidors de xarxa"
-
-#: ../libslab/bookmark-agent.c:1187
-msgid "Search"
-msgstr "Cerca"
-
-#: ../libslab/search-bar.c:253
-msgid "Find Now"
-msgstr "Troba ara"
