@@ -35,6 +35,9 @@
 #define MOBILITY_KEY          "exec"
 #define MOBILITY_STARTUP_KEY  "startup"
 
+#define CALCULATOR_SCHEMA     "org.mate.applications-calculator"
+#define CALCULATOR_KEY        "exec"
+
 typedef struct _MateDACapplet {
 	GtkBuilder* builder;
 
@@ -55,6 +58,7 @@ typedef struct _MateDACapplet {
 	GtkWidget* document_combo_box;
 	GtkWidget* word_combo_box;
 	GtkWidget* spreadsheet_combo_box;
+	GtkWidget* calculator_combo_box;
 
 	/* Visual Accessibility */
 	GtkWidget* visual_startup_checkbutton;
@@ -76,11 +80,13 @@ typedef struct _MateDACapplet {
 	GList* document_viewers;
 	GList* word_editors;
 	GList* spreadsheet_editors;
+	GList* calculators;
 
 	/* Settings objects */
 	GSettings* terminal_settings;
 	GSettings* visual_settings;
 	GSettings* mobility_settings;
+	GSettings* calculator_settings;
 } MateDACapplet;
 
 #endif
