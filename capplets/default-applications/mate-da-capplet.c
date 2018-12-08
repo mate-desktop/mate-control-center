@@ -472,12 +472,16 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		
 		/* Icon */
 		GIcon* icon = g_app_info_get_icon(item);
-		gchar* icon_name = g_icon_to_string(icon);
-		
-		if (icon_name == NULL)
-		{
-			/* Default icon */
-			icon_name = g_strdup("binary");
+		gchar* icon_name;
+
+		if (icon != NULL) {
+			icon_name = g_icon_to_string (icon);
+			if (icon_name == NULL) {
+				/* Default icon */
+				icon_name = g_strdup ("binary");
+			}
+		} else {
+			icon_name = g_strdup ("binary");
 		}
 		
 		pixbuf = gtk_icon_theme_load_icon(theme, icon_name, 22, 0, NULL);
