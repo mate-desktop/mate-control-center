@@ -51,7 +51,8 @@ EXTRA_DIST = \
 	$(gsettingsschema_in_files)
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--disable-update-mimedb
+	--disable-update-mimedb \
+	CFLAGS='-Wno-deprecated-declarations'
 
 GITIGNOREFILES=m4
 
