@@ -35,8 +35,6 @@
 #include <X11/Xlib.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-bindings.h>
 
 typedef struct App App;
 typedef struct GrabInfo GrabInfo;
@@ -71,9 +69,8 @@ struct App
     GSettings	   *settings;
 
     /* These are used while we are waiting for the ApplyConfiguration method to be executed over D-bus */
-    DBusGConnection *connection;
-    DBusGProxy *proxy;
-    DBusGProxyCall *proxy_call;
+    GDBusConnection *connection;
+    GDBusProxy *proxy;
 
     enum {
 	APPLYING_VERSION_1,
@@ -93,7 +90,7 @@ static gboolean output_overlaps (MateRROutputInfo *output, MateRRConfig *config)
 static void select_current_output_from_dialog_position (App *app);
 static void monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data);
 static void get_geometry (MateRROutputInfo *output, int *w, int *h);
-static void apply_configuration_returned_cb (DBusGProxy *proxy, DBusGProxyCall *call_id, void *data);
+static void apply_configuration_returned_cb (GObject *source_object, GAsyncResult *res, gpointer data);
 static gboolean get_clone_size (MateRRScreen *screen, int *width, int *height);
 static gboolean output_info_supports_mode (App *app, MateRROutputInfo *info, int width, int height);
 
@@ -1938,48 +1935,61 @@ static void
 begin_version2_apply_configuration (App *app, GdkWindow *parent_window, guint32 timestamp)
 {
     XID parent_window_xid;
+    GError *error = NULL;
 
     parent_window_xid = GDK_WINDOW_XID (parent_window);
 
-    app->proxy = dbus_g_proxy_new_for_name (app->connection,
-					    "org.mate.SettingsDaemon",
-					    "/org/mate/SettingsDaemon/XRANDR",
-					    "org.mate.SettingsDaemon.XRANDR_2");
-    g_assert (app->proxy != NULL); /* that call does not fail unless we pass bogus names */
-
-    app->apply_configuration_state = APPLYING_VERSION_2;
-    app->proxy_call = dbus_g_proxy_begin_call (app->proxy, "ApplyConfiguration",
-					       apply_configuration_returned_cb, app,
-					       NULL,
-					       G_TYPE_INT64, (gint64) parent_window_xid,
-					       G_TYPE_INT64, (gint64) timestamp,
-					       G_TYPE_INVALID,
-					       G_TYPE_INVALID);
-    /* FIXME: we don't check for app->proxy_call == NULL, which could happen if
-     * the connection was disconnected.  This is left as an exercise for the
-     * reader.
-     */
+    app->proxy = g_dbus_proxy_new_sync (app->connection,
+                                        G_DBUS_PROXY_FLAGS_NONE,
+                                        NULL,
+                                        "org.mate.SettingsDaemon",
+                                        "/org/mate/SettingsDaemon/XRANDR",
+                                        "org.mate.SettingsDaemon.XRANDR_2",
+                                        NULL,
+                                        &error);
+    if (app->proxy == NULL) {
+        g_warning ("Failed to get dbus connection: %s", error->message);
+        g_error_free (error);
+    } else {
+        app->apply_configuration_state = APPLYING_VERSION_2;
+        g_dbus_proxy_call (app->proxy,
+                           "ApplyConfiguration",
+                           g_variant_new ("(xx)", parent_window_xid, timestamp),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           (GAsyncReadyCallback) apply_configuration_returned_cb,
+                           app);
+    }
 }
 
 static void
 begin_version1_apply_configuration (App *app)
 {
-    app->proxy = dbus_g_proxy_new_for_name (app->connection,
-					    "org.mate.SettingsDaemon",
-					    "/org/mate/SettingsDaemon/XRANDR",
-					    "org.mate.SettingsDaemon.XRANDR");
-    g_assert (app->proxy != NULL); /* that call does not fail unless we pass bogus names */
+    GError *error = NULL;
 
-    app->apply_configuration_state = APPLYING_VERSION_1;
-    app->proxy_call = dbus_g_proxy_begin_call (app->proxy, "ApplyConfiguration",
-					       apply_configuration_returned_cb, app,
-					       NULL,
-					       G_TYPE_INVALID,
-					       G_TYPE_INVALID);
-    /* FIXME: we don't check for app->proxy_call == NULL, which could happen if
-     * the connection was disconnected.  This is left as an exercise for the
-     * reader.
-     */
+    app->proxy = g_dbus_proxy_new_sync (app->connection,
+                                        G_DBUS_PROXY_FLAGS_NONE,
+                                        NULL,
+                                        "org.mate.SettingsDaemon",
+                                        "/org/mate/SettingsDaemon/XRANDR",
+                                        "org.mate.SettingsDaemon.XRANDR",
+                                        NULL,
+                                        &error);
+    if (app->proxy == NULL) {
+        g_warning ("Failed to get dbus connection: %s", error->message);
+        g_error_free (error);
+    } else {
+        app->apply_configuration_state = APPLYING_VERSION_1;
+        g_dbus_proxy_call (app->proxy,
+                           "ApplyConfiguration",
+                           g_variant_new ("()"),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           (GAsyncReadyCallback) apply_configuration_returned_cb,
+                           app);
+    }
 }
 
 static void
@@ -2007,45 +2017,45 @@ ensure_current_configuration_is_saved (void)
         g_object_unref (rr_screen);
 }
 
-/* Callback for dbus_g_proxy_begin_call() */
+/* Callback for g_dbus_proxy_call() */
 static void
-apply_configuration_returned_cb (DBusGProxy       *proxy,
-				 DBusGProxyCall   *call_id,
-				 void             *data)
+apply_configuration_returned_cb (GObject *source_object,
+                                 GAsyncResult *res,
+                                 gpointer data)
 {
-    App *app = data;
-    gboolean success;
+    GVariant *variant;
     GError *error;
-
-    g_assert (call_id == app->proxy_call);
+    App *app = data;
 
     error = NULL;
-    success = dbus_g_proxy_end_call (proxy, call_id, &error, G_TYPE_INVALID);
 
-    if (!success) {
-	if (app->apply_configuration_state == APPLYING_VERSION_2
-	    && g_error_matches (error, DBUS_GERROR, DBUS_GERROR_UNKNOWN_METHOD)) {
-	    g_error_free (error);
+    if (app->proxy == NULL)
+        return;
 
-	    g_object_unref (app->proxy);
-	    app->proxy = NULL;
+    variant = g_dbus_proxy_call_finish (app->proxy, res, &error);
+    if (variant == NULL) {
+        if (app->apply_configuration_state == APPLYING_VERSION_2
+                && g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD)) {
+            g_error_free (error);
 
-	    begin_version1_apply_configuration (app);
-	    return;
-	} else {
-	    /* We don't pop up an error message; mate-settings-daemon already does that
-	     * in case the selected RANDR configuration could not be applied.
-	     */
-	    g_error_free (error);
-	}
+            g_object_unref (app->proxy);
+            app->proxy = NULL;
+
+            begin_version1_apply_configuration (app);
+            return;
+        } else {
+            /* We don't pop up an error message; mate-settings-daemon already does that
+             * in case the selected RANDR configuration could not be applied.
+             */
+            g_error_free (error);
+        }
     }
 
     g_object_unref (app->proxy);
     app->proxy = NULL;
 
-    dbus_g_connection_unref (app->connection);
+    g_object_unref (app->connection);
     app->connection = NULL;
-    app->proxy_call = NULL;
 
     gtk_widget_set_sensitive (app->dialog, TRUE);
 }
@@ -2084,13 +2094,12 @@ apply (App *app)
 
     g_assert (app->connection == NULL);
     g_assert (app->proxy == NULL);
-    g_assert (app->proxy_call == NULL);
 
-    app->connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+    app->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
     if (app->connection == NULL) {
-	error_message (app, _("Could not get session bus while applying display configuration"), error->message);
-	g_error_free (error);
-	return;
+        error_message (app, _("Could not get session bus while applying display configuration"), error->message);
+        g_error_free (error);
+        return;
     }
 
     gtk_widget_set_sensitive (app->dialog, FALSE);
