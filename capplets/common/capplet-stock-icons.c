@@ -44,9 +44,9 @@ typedef struct
 
 
 static CappletStockIcon items [] = {
-	{ MOUSE_DBLCLCK_MAYBE, "double-click-maybe.png"},
-	{ MOUSE_DBLCLCK_ON, "double-click-on.png"},
-	{ MOUSE_DBLCLCK_OFF, "double-click-off.png"}
+	{ MOUSE_DBLCLCK_MAYBE, "double-click-maybe.svg"},
+	{ MOUSE_DBLCLCK_ON, "double-click-on.svg"},
+	{ MOUSE_DBLCLCK_OFF, "double-click-off.svg"}
 };
 
 static void

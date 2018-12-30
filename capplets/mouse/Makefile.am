@@ -13,9 +13,9 @@ mate_mouse_properties_SOURCES =	\
 
 pixmapdir  = $(pkgdatadir)/pixmaps
 pixmap_DATA = \
-	double-click-on.png		\
-	double-click-off.png		\
-	double-click-maybe.png
+	double-click-on.svg		\
+	double-click-off.svg		\
+	double-click-maybe.svg
 
 uidir   = $(pkgdatadir)/ui
 ui_DATA = mate-mouse-properties.ui
