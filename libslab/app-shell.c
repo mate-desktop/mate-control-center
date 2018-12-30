@@ -845,8 +845,17 @@ matemenu_tree_changed_callback (MateMenuTree * old_tree, gpointer user_data)
 	it's probably a good idea to wait a couple seconds to regenerate the categories in case there
 	are multiple quick changes being made, no sense regenerating multiple times.
 	*/
-	g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, 3000, (GSourceFunc) regenerate_categories,
-		user_data, NULL);
+	GError *error = NULL;
+	AppShellData * app_data = user_data;
+	if (!matemenu_tree_load_sync (app_data->tree, &error)) {
+		g_warning ("Menu tree loading got error:%s\n", error->message);
+		g_object_unref (app_data->tree);
+		app_data->tree = NULL;
+		g_error_free (error);
+	} else {
+		g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, 3000, (GSourceFunc) regenerate_categories,
+		                    user_data, NULL);
+	}
 }
 
 AppShellData *
@@ -887,10 +896,14 @@ generate_categories (AppShellData * app_data)
 			g_object_unref(app_data->tree);
 			app_data->tree = NULL;
 		}
-
 	}
 
-	if ((root_dir = matemenu_tree_get_root_directory (app_data->tree)) == NULL ) {
+	if (app_data->tree != NULL)
+		root_dir = matemenu_tree_get_root_directory (app_data->tree);
+	else
+		root_dir = NULL;
+
+	if ( app_data->tree == NULL || root_dir == NULL) {
 		GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
 				GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "Failure loading - %s",
 				app_data->menu_name);
