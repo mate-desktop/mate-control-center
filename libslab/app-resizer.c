@@ -136,11 +136,11 @@ calculate_num_cols (AppResizer * resizer, gint avail_width)
 			GtkTable *table = GTK_TABLE (resizer->cached_tables_list->data);
 			GList *children = gtk_container_get_children (GTK_CONTAINER (table));
 			GtkWidget *table_element = GTK_WIDGET (children->data);
-			GtkAllocation allocation;
+			gint natural_width;
 			g_list_free (children);
 
-			gtk_widget_get_allocation (table_element, &allocation);
-			resizer->cached_element_width = allocation.width;
+			gtk_widget_get_preferred_width (table_element, NULL, &natural_width);
+			resizer->cached_element_width = natural_width;
 			resizer->cached_table_spacing = gtk_table_get_default_col_spacing (table);
 		}
 
