@@ -35,6 +35,7 @@ typedef struct
 } TilePrivate;
 
 static void tile_finalize (GObject *);
+static void tile_dispose (GObject *);
 static void tile_get_property (GObject *, guint, GValue *, GParamSpec *);
 static void tile_set_property (GObject *, guint, const GValue *, GParamSpec *);
 static GObject *tile_constructor (GType, guint, GObjectConstructParam *);
@@ -94,6 +95,7 @@ tile_class_init (TileClass * this_class)
 	g_obj_class->get_property = tile_get_property;
 	g_obj_class->set_property = tile_set_property;
 	g_obj_class->finalize = tile_finalize;
+	g_obj_class->dispose = tile_dispose;
 
 	widget_class->focus_in_event = tile_focus_in;
 	widget_class->focus_out_event = tile_focus_out;
@@ -177,23 +179,42 @@ tile_finalize (GObject * g_object)
 
 	if (tile->n_actions)	/* this will also free "default_action" entry */
 	{
-		gint x;
-		for (x = 0; x < tile->n_actions; x++)
-		{
-			if (tile->actions[x])
-				g_object_unref (tile->actions[x]);
-		}
 		g_free (tile->actions);
 	}
 
 	if (tile->uri)
 		g_free (tile->uri);
-	if (tile->context_menu)
-		gtk_widget_destroy (GTK_WIDGET (tile->context_menu));
 
 	g_object_unref (priv->double_click_detector);
 
 	(*G_OBJECT_CLASS (tile_parent_class)->finalize) (g_object);
+}
+
+static void
+tile_dispose (GObject * g_object)
+{
+	Tile *tile = TILE (g_object);
+
+	/* free the TileAction object */
+	if (tile->n_actions)
+	{
+		gint x;
+		for (x = 0; x < tile->n_actions; x++)
+		{
+			if (tile->actions[x] != NULL) {
+				g_object_unref (tile->actions[x]);
+				tile->actions[x] = NULL;
+			}
+		}
+	}
+
+	/* free the GtkMenu object */
+	if (tile->context_menu != NULL) {
+		gtk_widget_destroy (GTK_WIDGET (tile->context_menu));
+		tile->context_menu = NULL;
+	}
+
+	(*G_OBJECT_CLASS (tile_parent_class)->dispose) (g_object);
 }
 
 static void
