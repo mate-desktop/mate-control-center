@@ -547,6 +547,46 @@ pointless_eventbox_subclass_get_type (void)
   return eventbox_type;
 }
 
+static void
+override_background_color (GtkWidget *widget,
+                           GdkRGBA   *rgba)
+{
+  gchar          *css;
+  GtkCssProvider *provider;
+
+  provider = gtk_css_provider_new ();
+
+  css = g_strdup_printf ("* { background-color: %s;}",
+                         gdk_rgba_to_string (rgba));
+  gtk_css_provider_load_from_data (provider, css, -1, NULL);
+  g_free (css);
+
+  gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
+                                  GTK_STYLE_PROVIDER (provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (provider);
+}
+
+static void
+override_color (GtkWidget *widget,
+                GdkRGBA   *rgba)
+{
+  gchar          *css;
+  GtkCssProvider *provider;
+
+  provider = gtk_css_provider_new ();
+
+  css = g_strdup_printf ("* { color: %s;}",
+                         gdk_rgba_to_string (rgba));
+  gtk_css_provider_load_from_data (provider, css, -1, NULL);
+  g_free (css);
+
+  gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
+                                  GTK_STYLE_PROVIDER (provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (provider);
+}
+
 static GtkCellEditable *
 egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
 				      GdkEvent             *event,
@@ -563,6 +603,9 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
   GtkWidget *label;
   GtkWidget *eventbox;
   GValue celltext_editable = {0};
+  GdkRGBA box_color;
+  GdkRGBA label_color;
+  GdkRGBA *c;
 
   celltext = GTK_CELL_RENDERER_TEXT (cell);
   keys = EGG_CELL_RENDERER_KEYS (cell);
@@ -602,11 +645,19 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
   label = gtk_label_new (NULL);
   gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 
-  gtk_widget_modify_bg (eventbox, GTK_STATE_NORMAL,
-                        &gtk_widget_get_style (widget)->bg[GTK_STATE_SELECTED]);
+  gtk_style_context_get (gtk_widget_get_style_context (widget), GTK_STATE_INSENSITIVE,
+                         GTK_STYLE_PROPERTY_BACKGROUND_COLOR,
+                         &c, NULL);
+  box_color = *c;
+  gdk_rgba_free (c);
 
-  gtk_widget_modify_fg (label, GTK_STATE_NORMAL,
-                        &gtk_widget_get_style (widget)->fg[GTK_STATE_SELECTED]);
+  override_background_color (eventbox, &box_color);
+
+  gtk_style_context_get_color (gtk_widget_get_style_context (widget),
+                               GTK_STATE_INSENSITIVE,
+                               &label_color);
+
+  override_color (label, &label_color);
 
   gtk_label_set_text (GTK_LABEL (label),
 		  TOOLTIP_TEXT);
