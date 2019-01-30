@@ -323,8 +323,8 @@ static struct {
 	{"text_image",         "text-editor"},
 	{"terminal_image",     "terminal"},
 	{"document_image",     "application-pdf"},
-	{"word_image",         "office-document"},
-	{"spreadsheet_image",  "office-spreadsheet"},
+	{"word_image",         "x-office-document"},
+	{"spreadsheet_image",  "x-office-spreadsheet"},
 };
 
 /* Callback for icon theme change */
