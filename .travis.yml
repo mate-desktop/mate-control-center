@@ -1,0 +1,159 @@
+# vim: set ts=2 sts=2 sw=2 expandtab :
+dist: xenial
+sudo: required
+language: bash
+services:
+  - docker
+
+# Use travis branch for test.
+branches:
+  only:
+  - travis
+
+before_install:
+  - curl -L -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/travis/travis/docker-build
+  - chmod +x docker-build
+ 
+install:
+  - ./docker-build --name ${DISTRO} --config .travis.yml --install
+
+script:
+  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build autotools
+
+env:
+  - DISTRO="debian:sid"
+  - DISTRO="fedora:29"
+  - DISTRO="ubuntu:18.10"
+
+##########################################################
+# THE FOLLOWING LINES IS USED BY docker-build
+##########################################################
+requires:
+  debian:
+    # Useful URL: https://github.com/mate-desktop/debian-packages
+    # Useful URL: https://salsa.debian.org/debian-mate-team/mate-control-center
+    - curl
+    - desktop-file-utils
+    - dpkg-dev
+    - git
+    - intltool
+    - libcanberra-gtk3-dev
+    - libdbus-1-dev
+    - libdbus-glib-1-dev
+    - libdconf-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libgtop2-dev
+    - libmarco-dev
+    - libmate-desktop-dev
+    - libmate-menu-dev
+    - libmatekbd-dev
+    - libpango1.0-dev
+    - librsvg2-dev
+    - libstartup-notification0-dev
+    - libx11-dev
+    - libxcursor-dev
+    - libxi-dev
+    - libxklavier-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - libxss-dev
+    - libxt-dev
+    - mate-common
+    - mate-settings-daemon-dev
+    - shared-mime-info
+    - xsltproc
+    - yelp-tools
+
+  fedora:
+    # Useful URL: https://src.fedoraproject.org/cgit/rpms/mate-control-center.git
+    - cairo-gobject-devel
+    - dconf-devel
+    - desktop-file-utils
+    - gcc
+    - git
+    - gobject-introspection-devel
+    - gobject-introspection-devel
+    - gtk3-devel
+    - iso-codes-devel
+    - itstool
+    - libSM-devel
+    - libXScrnSaver-devel
+    - libXxf86misc-devel
+    - libcanberra-devel
+    - libmatekbd-devel
+    - librsvg2-devel
+    - make
+    - marco-devel
+    - mate-common
+    - mate-settings-daemon-devel
+    - redhat-rpm-config
+    - startup-notification-devel
+    - which
+
+  ubuntu:
+    # Same as debian
+    - curl
+    - desktop-file-utils
+    - dpkg-dev
+    - git
+    - intltool
+    - libcanberra-gtk3-dev
+    - libdbus-1-dev
+    - libdbus-glib-1-dev
+    - libdconf-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libgtop2-dev
+    - libmarco-dev
+    - libmate-desktop-dev
+    - libmate-menu-dev
+    - libmatekbd-dev
+    - libpango1.0-dev
+    - librsvg2-dev
+    - libstartup-notification0-dev
+    - libx11-dev
+    - libxcursor-dev
+    - libxi-dev
+    - libxklavier-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - libxss-dev
+    - libxt-dev
+    - mate-common
+    - mate-settings-daemon-dev
+    - shared-mime-info
+    - xsltproc
+    - yelp-tools
+
+variables:
+  - CFLAGS="-Wall"
+
+before_scripts:
+  - cd ${START_DIR}
+  - "[ -f mate-desktop-1.21.2.tar.xz ] || curl -o mate-desktop-1.21.2.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-desktop-1.21.2.tar.xz"
+  - tar xf mate-desktop-1.21.2.tar.xz
+  - cd mate-desktop-1.21.2
+  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu  >/dev/null; else ./configure --prefix=/usr  >/dev/null; fi
+  - make > /dev/null
+  - make install >/dev/null
+  - popd
+
+  - cd ${START_DIR}
+  - "[ -f mate-menus-1.21.0.tar.xz ] || curl -o mate-menus-1.21.0.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-menus-1.21.0.tar.xz"
+  - tar xf mate-menus-1.21.0.tar.xz
+  - cd mate-menus-1.21.0
+  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu  >/dev/null; else ./configure --prefix=/usr  >/dev/null; fi
+  - make > /dev/null
+  - make install > /dev/null
+
+  - cd ${START_DIR}
+  - "[ -f mate-settings-daemon-1.21.2.tar.xz ] || curl -o mate-settings-daemon-1.21.2.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-settings-daemon-1.21.2.tar.xz"
+  - tar xf mate-settings-daemon-1.21.2.tar.xz
+  - cd mate-settings-daemon-1.21.2
+  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu  >/dev/null; else ./configure --prefix=/usr  >/dev/null; fi
+  - make > /dev/null
+  - make install > /dev/null
+
+after_scripts:
+  - make distcheck
