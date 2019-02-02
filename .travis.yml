@@ -137,12 +137,14 @@ before_scripts:
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu  >/dev/null; else ./configure --prefix=/usr  >/dev/null; fi
   - make > /dev/null
   - make install >/dev/null
-  - popd
 
   - cd ${START_DIR}
-  - "[ -f mate-menus-1.21.0.tar.xz ] || curl -o mate-menus-1.21.0.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-menus-1.21.0.tar.xz"
-  - tar xf mate-menus-1.21.0.tar.xz
-  - cd mate-menus-1.21.0
+    #- "[ -f mate-menus-1.21.0.tar.xz ] || curl -o mate-menus-1.21.0.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-menus-1.21.0.tar.xz"
+    #- tar xf mate-menus-1.21.0.tar.xz
+    #- cd mate-menus-1.21.0
+  - git clone --depth 1  https://github.com/mate-desktop/mate-menus.git
+  - cd mate-menus
+  - ./autogen.sh >/dev/null
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu  >/dev/null; else ./configure --prefix=/usr  >/dev/null; fi
   - make > /dev/null
   - make install > /dev/null
