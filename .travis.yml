@@ -36,6 +36,7 @@ requires:
     - desktop-file-utils
     - dpkg-dev
     - git
+    - gobject-introspection
     - intltool
     - libcanberra-gtk3-dev
     - libdbus-1-dev
@@ -97,6 +98,7 @@ requires:
     - desktop-file-utils
     - dpkg-dev
     - git
+    - gobject-introspection
     - intltool
     - libcanberra-gtk3-dev
     - libdbus-1-dev
@@ -158,4 +160,4 @@ before_scripts:
   - make install > /dev/null
 
 after_scripts:
-  - make distcheck
+  - make distcheck > /dev/null
