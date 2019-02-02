@@ -4,6 +4,7 @@
 <!ENTITY VERSION "1.10.1">
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY app "<application>MATE Control Center</application>">
+  <!ENTITY appname "MATE Control Center">
   <!-- Information about the entities
        The legal.xml file contains legal information, there is no need to edit the file.
        Use the appversion entity to specify the version of the application.
@@ -17,10 +18,10 @@
   <articleinfo>
     <abstract role="description">
       <para>
-        The MATE Control Center provides a central place for the user to setup their MATE experience. It can let you configure anything from the behavior of your window borders to the default font type.
+        The &appname; provides a central place for the user to setup their MATE experience. It can let you configure anything from the behavior of your window borders to the default font type.
       </para>
     </abstract>
-    <title>Control Center</title>
+    <title>&appname; Manual</title>
     <authorgroup>
       <author>
 	  <firstname>MATE Documentation Project</firstname>
@@ -58,7 +59,7 @@
       </revision>
       <revision>
         <revnumber>2.14</revnumber> 
-        <date>2006-03</date> 
+        <date>March 2006</date>
       </revision> 
     </revhistory>
 
@@ -67,7 +68,7 @@
    WARRANTY" statement. Please do not change any of this. -->
 
     <releaseinfo>
-      This manual describes version &VERSION; of the MATE Control Center.
+      This manual describes version &VERSION; of the &appname;.
     </releaseinfo>
 
     <legalnotice>
@@ -82,21 +83,48 @@
   <sect1 id="intro">
     <title>Introduction</title>
     <para>
-      The <application>MATE Control Center</application> provides a single window from which to launch all preference tools. 
+      The &app; provides a single window from which to launch all preference tools.
     </para>
-    <para>
-      To launch the <application>MATE Control Center</application>,
-      type <command>mate-control-center</command> in a terminal window. 
-    </para>
-    <para>For help on using preference tools, see the <ulink type="help" url="help:mate-user-guide/prefs">User Guide</ulink>.</para>
+    <note><para>
+      For help on using preference tools, see the <ulink type="help" url="help:mate-user-guide/prefs">User Guide</ulink>.
+    </para></note>
+
+<!-- ============= To Start Control Center  ============================ -->
+    <sect2 id="mate-control-center-to-start">
+      <title>To Start &appname;</title>
+      <para>You can start &app; in the following ways:</para>
+      <variablelist>
+        <varlistentry>
+          <term><guimenu>System</guimenu> menu</term>
+          <listitem>
+            <para>
+              Choose <menuchoice><guimenu>Control Center</guimenu></menuchoice> menu item.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Command line</term>
+          <listitem>
+            <para>
+              Execute the following command: <command>mate-control-center</command></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
   </sect1>
   
   <sect1 id="matecc-interface">
     <title>Usage</title>
     <para>
-      The <application>MATE Control Center</application> shows icons for all preference tools installed on your system in a window. Select a preference tool to see its description in the status bar.</para>
-    <para>
-      To open a preference tool, double-click on its icon.
+      The &app; window lists all preference tools installed on your system in groups.
     </para>
+    <tip><para>
+      From the left pane, you can quickly access to a preference tool by selecting its group first, or type any keyword in the filter box. You can also access to common tasks, such as <guilabel>Change Theme</guilabel>, and <guilabel>Set Preferred Applications</guilabel>.
+    </para></tip>
+    <para>
+      To open a preference tool, just click on it.
+    </para>
+    <tip><para>The preference tool description is shown on mouse hover.</para></tip>
   </sect1>
 </article>
