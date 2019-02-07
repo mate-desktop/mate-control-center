@@ -26,7 +26,7 @@ AM_CPPFLAGS = \
 	-DMATELOCALEDIR=\""$(datadir)/locale"\"\
 	-DMATECC_UI_DIR=\""$(uidir)"\"
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA) $(autostart_DATA)
-EXTRA_DIST = mate-default-applications.pc.in mate-default-applications-properties.desktop.in.in
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(autostart_DATA)
+EXTRA_DIST = mate-default-applications.pc.in $(Desktop_in_files)
 
 -include $(top_srcdir)/git.mk

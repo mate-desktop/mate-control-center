@@ -58,7 +58,7 @@ AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
 	     -DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 install-data-hook: update-icon-cache
@@ -72,7 +72,7 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
 
-EXTRA_DIST = org.mate.randr.policy.in
+EXTRA_DIST = org.mate.randr.policy.in $(Desktop_in_files)
 DISTCLEANFILES = org.mate.randr.policy
 
 -include $(top_srcdir)/git.mk

@@ -45,6 +45,7 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_in_files) $(desktop_DATA)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
+EXTRA_DIST = $(desktop_in_files)
 
 -include $(top_srcdir)/git.mk

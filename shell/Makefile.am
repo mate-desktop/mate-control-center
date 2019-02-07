@@ -29,8 +29,8 @@ directory_DATA = $(directory_in_files:.directory.in=.directory)
 menudir = $(sysconfdir)/xdg/menus
 menu_DATA = matecc.menu
 
-EXTRA_DIST = matecc.desktop.in.in matecc.directory.in matecc.menu
+EXTRA_DIST = $(sys_in_files) matecc.directory.in matecc.menu
 
-DISTCLEANFILES = matecc.desktop matecc.desktop.in matecc.directory
+DISTCLEANFILES = $(sys_DATA) matecc.directory
 
 -include $(top_srcdir)/git.mk
