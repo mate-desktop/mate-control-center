@@ -47,9 +47,8 @@ if ENABLE_UPDATE_MIMEDB
 	$(UPDATE_MIME_DATABASE) "$(DESTDIR)$(datadir)/mime"
 endif
 
-EXTRA_DIST = $(xml_in_files)
+EXTRA_DIST = $(xml_in_files) $(desktop_in_files)
 
-
-CLEANFILES = $(desktop_in_files) $(desktop_DATA) $(mime_DATA)
+CLEANFILES = $(desktop_DATA) $(mime_DATA)
 
 -include $(top_srcdir)/git.mk

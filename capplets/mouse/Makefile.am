@@ -29,7 +29,7 @@ AM_CPPFLAGS = \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	-DMATECC_UI_DIR="\"$(uidir)\""
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA)
-EXTRA_DIST = $(ui_DATA) $(pixmap_DATA)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
+EXTRA_DIST = $(ui_DATA) $(pixmap_DATA) $(Desktop_in_files)
 
 -include $(top_srcdir)/git.mk

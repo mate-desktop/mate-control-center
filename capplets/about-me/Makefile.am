@@ -56,6 +56,6 @@ AM_CPPFLAGS += \
 endif
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(MARSHALFILES)
-EXTRA_DIST = $(ui_files) fprintd-marshal.list
+EXTRA_DIST = $(ui_files) fprintd-marshal.list $(Desktop_in_files)
 
 -include $(top_srcdir)/git.mk

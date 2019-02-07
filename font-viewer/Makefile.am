@@ -47,11 +47,11 @@ uninstall-local:
 @INTLTOOL_DIRECTORY_RULE@
 @INTLTOOL_SCHEMAS_RULE@
 
-CLEANFILES = $(desktop_in_files) $(desktop_DATA) \
+CLEANFILES = $(desktop_DATA) \
   $(schemas_DATA) $(directory_DATA)
 
 EXTRA_DIST = \
   $(thumbnailer_DATA) \
-  mate-font-viewer.desktop.in.in
+  $(desktop_in_files)
 
 -include $(top_srcdir)/git.mk

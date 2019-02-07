@@ -37,10 +37,9 @@ AM_CPPFLAGS = \
 	-DMATECC_KEYBINDINGS_DIR="\"$(pkgdatadir)/keybindings\""
 CLEANFILES = \
 	$(MATECC_CAPPLETS_CLEANFILES) \
-	$(Desktop_in_files) \
 	$(desktop_DATA) \
 	$(xml_DATA)
-EXTRA_DIST = $(ui_DATA) $(xml_in_files) mate-keybindings.pc.in
+EXTRA_DIST = $(ui_DATA) $(xml_in_files) mate-keybindings.pc.in $(Desktop_in_files)
 
 
 -include $(top_srcdir)/git.mk
