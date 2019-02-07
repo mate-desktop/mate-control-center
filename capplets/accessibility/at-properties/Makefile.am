@@ -25,7 +25,7 @@ AM_CPPFLAGS   = $(AT_CAPPLET_CFLAGS)     \
 	     -DPIXMAPDIR=\""$(pixmapdir)"\" \
 	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	     -DMATELOCALEDIR="\"$(datadir)/locale\""
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(Desktop_in_files) $(desktop_DATA)
-EXTRA_DIST = $(ui_DATA) $(pixmap_DATA)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
+EXTRA_DIST = $(ui_DATA) $(pixmap_DATA) $(Desktop_in_files)
 
 -include $(top_srcdir)/git.mk
