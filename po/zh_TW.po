@@ -7,19 +7,19 @@
 # Walter Cheuk <wwycheuk@gmail.com>, 2018
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2018
 # 趙惟倫 <bluebat@member.fsf.org>, 2018
-# Stefano Karapetsas <stefano@karapetsas.com>, 2018
 # Martin Wimpress <code@flexion.org>, 2018
 # byStarTW (pan93412) <pan93412@gmail.com>, 2018
 # Jeff Huang <s8321414@gmail.com>, 2018
+# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"POT-Creation-Date: 2019-02-08 16:14+0100\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>, 2018\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2019\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/mate/teams/13566/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,7 +160,7 @@ msgid "About %s"
 msgstr "關於 %s"
 
 #: ../capplets/about-me/mate-about-me-dialog.ui.h:1
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
+#: ../capplets/about-me/mate-about-me.desktop.in.h:1
 msgid "About Me"
 msgstr "關於自己"
 
@@ -188,7 +188,7 @@ msgstr "啟用指紋登入(_F)…"
 msgid "Disable _Fingerprint Login..."
 msgstr "停用指紋登入(_F)…"
 
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
+#: ../capplets/about-me/mate-about-me.desktop.in.h:2
 msgid "Set your personal information"
 msgstr "設定您的個人資訊"
 
@@ -351,86 +351,86 @@ msgstr "通過認證！"
 #. * Ask the user to re-authenticate
 #. Update status message and auth state
 #. Authentication failure
-#: ../capplets/about-me/mate-about-me-password.c:471
-#: ../capplets/about-me/mate-about-me-password.c:556
+#: ../capplets/about-me/mate-about-me-password.c:473
+#: ../capplets/about-me/mate-about-me-password.c:558
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
 msgstr "在通過認證後您的密碼已被變更！請重新認證。"
 
-#: ../capplets/about-me/mate-about-me-password.c:473
+#: ../capplets/about-me/mate-about-me-password.c:475
 msgid "That password was incorrect."
 msgstr "密碼錯誤。"
 
-#: ../capplets/about-me/mate-about-me-password.c:524
+#: ../capplets/about-me/mate-about-me-password.c:526
 msgid "Your password has been changed."
 msgstr "您的密碼已經變更。"
 
 #. What does this indicate?
 #. * "Authentication information cannot be recovered?" from libpam?
-#: ../capplets/about-me/mate-about-me-password.c:534
+#: ../capplets/about-me/mate-about-me-password.c:536
 #, c-format
 msgid "System error: %s."
 msgstr "系統錯誤：%s。"
 
-#: ../capplets/about-me/mate-about-me-password.c:537
+#: ../capplets/about-me/mate-about-me-password.c:539
 msgid "The password is too short."
 msgstr "密碼過短。"
 
-#: ../capplets/about-me/mate-about-me-password.c:541
+#: ../capplets/about-me/mate-about-me-password.c:543
 msgid "The password is too simple."
 msgstr "密碼過分簡單。"
 
-#: ../capplets/about-me/mate-about-me-password.c:546
+#: ../capplets/about-me/mate-about-me-password.c:548
 msgid "The old and new passwords are too similar."
 msgstr "舊密碼與新密碼太相似了。"
 
-#: ../capplets/about-me/mate-about-me-password.c:548
+#: ../capplets/about-me/mate-about-me-password.c:550
 msgid "The new password must contain numeric or special character(s)."
 msgstr "新的密碼必須包含數字或特殊字元。"
 
-#: ../capplets/about-me/mate-about-me-password.c:551
+#: ../capplets/about-me/mate-about-me-password.c:553
 msgid "The old and new passwords are the same."
 msgstr "舊密碼與新密碼是相同的。"
 
-#: ../capplets/about-me/mate-about-me-password.c:553
+#: ../capplets/about-me/mate-about-me-password.c:555
 msgid "The new password has already been used recently."
 msgstr "新的密碼已經在最近使用過了。"
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:824
+#: ../capplets/about-me/mate-about-me-password.c:826
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "無法執行 %s：%s"
 
-#: ../capplets/about-me/mate-about-me-password.c:828
+#: ../capplets/about-me/mate-about-me-password.c:830
 msgid "Unable to launch backend"
 msgstr "無法執行後端程式"
 
-#: ../capplets/about-me/mate-about-me-password.c:829
+#: ../capplets/about-me/mate-about-me-password.c:831
 msgid "A system error has occurred"
 msgstr "發生了系統錯誤"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:849
+#: ../capplets/about-me/mate-about-me-password.c:851
 msgid "Checking password..."
 msgstr "檢查密碼…"
 
-#: ../capplets/about-me/mate-about-me-password.c:933
+#: ../capplets/about-me/mate-about-me-password.c:935
 msgid "Click <b>Change password</b> to change your password."
 msgstr "按下<b>變更密碼</b>來變更您的密碼。"
 
-#: ../capplets/about-me/mate-about-me-password.c:936
+#: ../capplets/about-me/mate-about-me-password.c:938
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "請在<b>新密碼</b>中輸新的密碼。"
 
-#: ../capplets/about-me/mate-about-me-password.c:939
+#: ../capplets/about-me/mate-about-me-password.c:941
 #: ../capplets/about-me/mate-about-me-password.ui.h:10
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "請在<b>再輸入新的密碼</b>中，再次輸入您的密碼。"
 
-#: ../capplets/about-me/mate-about-me-password.c:942
+#: ../capplets/about-me/mate-about-me-password.c:944
 msgid "The two passwords are not equal."
 msgstr "兩個密碼不是相同。"
 
@@ -479,7 +479,7 @@ msgid "Close and _Log Out"
 msgstr "關閉及登出(_L)"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
-#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.h:1
 msgid "Assistive Technologies"
 msgstr "輔助科技"
 
@@ -529,7 +529,7 @@ msgstr "無障礙登入(_G)"
 msgid "Jump to the Accessible Login dialog"
 msgstr "移至無障礙登入對話盒"
 
-#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "選擇當您登入時要啟用哪個無障礙功能"
 
@@ -561,7 +561,7 @@ msgid ""
 msgstr "指定要顯示的頁面名稱 (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:166
-#: ../capplets/default-applications/mate-da-capplet.c:694
+#: ../capplets/default-applications/mate-da-capplet.c:746
 #: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "頁面"
@@ -995,19 +995,19 @@ msgstr "編輯"
 msgid "Interface"
 msgstr "介面"
 
-#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.h:1
 msgid "Appearance"
 msgstr "外觀"
 
-#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:2
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.h:2
 msgid "Customize the look of the desktop"
 msgstr "自訂桌面的外觀"
 
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:1
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.h:1
 msgid "Theme Installer"
 msgstr "布景主題安裝程式"
 
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.h:2
 msgid "Installs themes packages for various parts of the desktop"
 msgstr "安裝布景主題包供桌面不同的部分使用"
 
@@ -1331,29 +1331,29 @@ msgstr "這個布景主題無法正確顯示，因為要求的圖示主題「%s�
 msgid "_Open"
 msgstr "開啟(_O)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "首選應用程式"
 
-#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:2
 msgid "Select your default applications"
 msgstr "選取預設使用的應用程式"
 
-#: ../capplets/default-applications/mate-da-capplet.c:543
+#: ../capplets/default-applications/mate-da-capplet.c:577
 msgid "Could not load the main interface"
 msgstr "無法載入主視窗介面"
 
-#: ../capplets/default-applications/mate-da-capplet.c:544
+#: ../capplets/default-applications/mate-da-capplet.c:578
 msgid "Please make sure that the applet is properly installed"
 msgstr "請確定該面板程式已經安裝妥當。"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:693
+#: ../capplets/default-applications/mate-da-capplet.c:745
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "指定要顯示的頁面名稱 (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:699
+#: ../capplets/default-applications/mate-da-capplet.c:751
 msgid "- MATE Default Applications"
 msgstr "- MATE 預設應用程式"
 
@@ -1415,60 +1415,64 @@ msgid "File Manager"
 msgstr "檔案管理器"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+msgid "Calculator"
+msgstr "計算機"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
 msgid "System"
 msgstr "系統"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
 msgid "Document Viewer"
 msgstr "文件檢視器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
 msgid "Word Processor"
 msgstr "文書處理器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
 msgid "Spreadsheet Editor"
 msgstr "試算表編輯器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
 msgid "Office"
 msgstr "辦公"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
 msgid "Visual"
 msgstr "視覺"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
 msgid "_Run at start"
 msgstr "啟動時執行(_R)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
 msgid "Mobility"
 msgstr "移動性"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
 msgid "Run at st_art"
 msgstr "啟動時執行(_A)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "無障礙環境"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
+#: ../capplets/display/xrandr-capplet.c:304
+#: ../capplets/display/xrandr-capplet.c:343
 msgid "Normal"
 msgstr "一般"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/display/xrandr-capplet.c:305
 #: ../capplets/windows/mate-window-properties.c:504
 msgid "Left"
 msgstr "左邊"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:306
 #: ../capplets/windows/mate-window-properties.c:503
 msgid "Right"
 msgstr "右邊"
@@ -1540,15 +1544,15 @@ msgid "R_otation:"
 msgstr "旋轉(_O):"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:496
+#: ../capplets/display/xrandr-capplet.c:493
 msgid "Monitor"
 msgstr "監視器"
 
-#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.h:1
 msgid "Displays"
 msgstr "顯示"
 
-#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.h:2
 msgid "Change resolution and position of monitors and projectors"
 msgstr "改變螢幕及投影機的解析度和位置"
 
@@ -1653,11 +1657,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "安裝多螢幕設定值給所有使用者需要驗證"
 
-#: ../capplets/display/xrandr-capplet.c:310
+#: ../capplets/display/xrandr-capplet.c:307
 msgid "Upside Down"
 msgstr "由上而下"
 
-#: ../capplets/display/xrandr-capplet.c:352
+#: ../capplets/display/xrandr-capplet.c:349
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1666,53 +1670,53 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:485
-#: ../capplets/display/xrandr-capplet.c:1633
+#: ../capplets/display/xrandr-capplet.c:482
+#: ../capplets/display/xrandr-capplet.c:1630
 #, c-format
 msgid "Mirror Screens"
 msgstr "鏡射螢幕"
 
-#: ../capplets/display/xrandr-capplet.c:487
+#: ../capplets/display/xrandr-capplet.c:484
 #, c-format
 msgid "Monitor: %s"
 msgstr "顯示器：%s"
 
-#: ../capplets/display/xrandr-capplet.c:557
+#: ../capplets/display/xrandr-capplet.c:554
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1489
+#: ../capplets/display/xrandr-capplet.c:1486
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "選擇一個螢幕以改變它的屬性；拖曳它則能重新排列它的位置。"
 
-#: ../capplets/display/xrandr-capplet.c:2069
+#: ../capplets/display/xrandr-capplet.c:2079
 msgid "Could not save the monitor configuration"
 msgstr "無法儲存顯示器組態"
 
-#: ../capplets/display/xrandr-capplet.c:2091
+#: ../capplets/display/xrandr-capplet.c:2100
 msgid "Could not get session bus while applying display configuration"
 msgstr "在套用顯示組態時無法取得作業階段匯流排"
 
-#: ../capplets/display/xrandr-capplet.c:2110
+#: ../capplets/display/xrandr-capplet.c:2119
 msgid "Could not detect displays"
 msgstr "無法偵測顯示器"
 
-#: ../capplets/display/xrandr-capplet.c:2318
+#: ../capplets/display/xrandr-capplet.c:2327
 msgid "The monitor configuration has been saved"
 msgstr "顯示器組態已儲存"
 
-#: ../capplets/display/xrandr-capplet.c:2320
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "This configuration will be used the next time someone logs in."
 msgstr "這個組態會在下次有使用者登入後使用。"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2338
 msgid "Could not set the default configuration for monitors"
 msgstr "無法設定預設的顯示器組態"
 
-#: ../capplets/display/xrandr-capplet.c:2413
+#: ../capplets/display/xrandr-capplet.c:2422
 msgid "Could not get screen information"
 msgstr "無法取得螢幕資訊"
 
@@ -1816,7 +1820,7 @@ msgid "_Browse applications..."
 msgstr "瀏覽應用程式……(_B)"
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
+#: ../capplets/keybindings/mate-keybinding.desktop.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "鍵盤捷徑鍵"
 
@@ -1826,7 +1830,7 @@ msgid ""
 " key combination, or press backspace to clear."
 msgstr "要編輯快捷鍵，在對應的欄位上點選並輸入新的按鍵組合，或是按下 Backspace 鍵以清除。"
 
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
+#: ../capplets/keybindings/mate-keybinding.desktop.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "為不同的指令分配捷徑鍵"
 
@@ -2208,11 +2212,11 @@ msgstr "型號"
 msgid "Default"
 msgstr "預設值"
 
-#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.h:1
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "修改鍵盤偏好設定"
 
@@ -2301,11 +2305,12 @@ msgstr "時限(_T):"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
-"To test your double-click settings, try to double-click on the light bulb."
-msgstr "要測試您的雙擊設定值，請試著在此電燈泡上雙擊。"
+"To test your double-click settings, try to double-click on the triangle and "
+"you must to see the mate desktop logo with both rings showing."
+msgstr ""
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:32
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.h:1
 msgid "Mouse"
 msgstr "滑鼠"
 
@@ -2361,15 +2366,15 @@ msgstr "啟用自然捲動 (_N)"
 msgid "Touchpad"
 msgstr "觸控板"
 
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.h:2
 msgid "Set your mouse preferences"
 msgstr "修改滑鼠偏好設定"
 
-#: ../capplets/network/mate-network-properties.desktop.in.in.h:1
+#: ../capplets/network/mate-network-properties.desktop.in.h:1
 msgid "Network Proxy"
 msgstr "代理伺服器"
 
-#: ../capplets/network/mate-network-properties.desktop.in.in.h:2
+#: ../capplets/network/mate-network-properties.desktop.in.h:2
 msgid "Set your network proxy preferences"
 msgstr "設定代理伺服器"
 
@@ -2597,11 +2602,11 @@ msgstr "S_uper (或者「視窗標誌」)"
 msgid "_Meta"
 msgstr "_Meta"
 
-#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.h:1
 msgid "Windows"
 msgstr "視窗"
 
-#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.h:2
 msgid "Set your window properties"
 msgstr "設定視窗屬性"
 
@@ -2627,7 +2632,7 @@ msgstr "類別"
 msgid "Common Tasks"
 msgstr "一般設定"
 
-#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.h:1
 #: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "控制中心"
@@ -2636,11 +2641,11 @@ msgstr "控制中心"
 msgid "Hide on start (useful to preload the shell)"
 msgstr "啟動時隱藏 (要預先載入 shell 時很有用)"
 
-#: ../shell/matecc.desktop.in.in.h:2
+#: ../shell/matecc.desktop.in.h:2
 msgid "The MATE configuration tool"
 msgstr "MATE 設定工具"
 
-#: ../shell/matecc.desktop.in.in.h:3
+#: ../shell/matecc.desktop.in.h:3
 msgid "Configure MATE settings"
 msgstr "設定 MATE"
 
@@ -2784,7 +2789,7 @@ msgid "Font Viewer"
 msgstr "字型檢視程式"
 
 #: ../font-viewer/font-view.c:783
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
+#: ../font-viewer/mate-font-viewer.desktop.in.h:2
 msgid "View fonts on your system"
 msgstr "在您的系統上檢視字型"
 
@@ -2792,7 +2797,7 @@ msgstr "在您的系統上檢視字型"
 msgid "Search"
 msgstr "搜尋"
 
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+#: ../font-viewer/mate-font-viewer.desktop.in.h:1
 msgid "MATE Font Viewer"
 msgstr "MATE 字型檢視器"
 
@@ -2825,11 +2830,11 @@ msgstr "您的過濾條件「%s」沒有任合項目符合。"
 msgid "No matches found."
 msgstr "找不到符合項。"
 
-#: ../libslab/app-shell.c:865
+#: ../libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "新應用程式"
 
-#: ../libslab/app-shell.c:923
+#: ../libslab/app-shell.c:936
 msgid "Other"
 msgstr "其他"
 

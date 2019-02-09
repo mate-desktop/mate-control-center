@@ -10,7 +10,6 @@
 # Lucas Lommer <drom@kdyne.net>, 2018
 # LiberteCzech <liberte.czech@gmail.com>, 2018
 # phebix <dev@phebix.cz>, 2018
-# Stefano Karapetsas <stefano@karapetsas.com>, 2018
 # Lukáš Kvídera <lukas.kvidera@seznam.cz>, 2018
 # huskyviking <husky.viking@seznam.cz>, 2018
 # jakubtalich, 2018
@@ -18,16 +17,17 @@
 # Roman Horník <roman.hornik@debian-linux.cz>, 2018
 # Michal <sinope@seznam.cz>, 2018
 # Martin Wimpress <code@flexion.org>, 2018
-# ToMáš Marný, 2018
+# ToMáš Marný, 2019
+# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-18 21:39+0100\n"
+"POT-Creation-Date: 2019-02-08 16:14+0100\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: ToMáš Marný, 2018\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/mate/teams/13566/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,7 +179,7 @@ msgid "About %s"
 msgstr "O %s"
 
 #: ../capplets/about-me/mate-about-me-dialog.ui.h:1
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:1
+#: ../capplets/about-me/mate-about-me.desktop.in.h:1
 msgid "About Me"
 msgstr "O mně"
 
@@ -207,7 +207,7 @@ msgstr "P_ovolit přihlášení otiskem prstů..."
 msgid "Disable _Fingerprint Login..."
 msgstr "Zakázat přihlášení _otiskem prstů..."
 
-#: ../capplets/about-me/mate-about-me.desktop.in.in.h:2
+#: ../capplets/about-me/mate-about-me.desktop.in.h:2
 msgid "Set your personal information"
 msgstr "Nastavte své osobní informace"
 
@@ -376,87 +376,87 @@ msgstr "Ověřeno!"
 #. * Ask the user to re-authenticate
 #. Update status message and auth state
 #. Authentication failure
-#: ../capplets/about-me/mate-about-me-password.c:471
-#: ../capplets/about-me/mate-about-me-password.c:556
+#: ../capplets/about-me/mate-about-me-password.c:473
+#: ../capplets/about-me/mate-about-me-password.c:558
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
 msgstr "Vaše heslo se od ověření změnilo! Proveďte prosím ověření znovu."
 
-#: ../capplets/about-me/mate-about-me-password.c:473
+#: ../capplets/about-me/mate-about-me-password.c:475
 msgid "That password was incorrect."
 msgstr "Dané heslo bylo nesprávné."
 
-#: ../capplets/about-me/mate-about-me-password.c:524
+#: ../capplets/about-me/mate-about-me-password.c:526
 msgid "Your password has been changed."
 msgstr "Vaše heslo bylo změněno."
 
 #. What does this indicate?
 #. * "Authentication information cannot be recovered?" from libpam?
-#: ../capplets/about-me/mate-about-me-password.c:534
+#: ../capplets/about-me/mate-about-me-password.c:536
 #, c-format
 msgid "System error: %s."
 msgstr "Systémová chyba: %s."
 
-#: ../capplets/about-me/mate-about-me-password.c:537
+#: ../capplets/about-me/mate-about-me-password.c:539
 msgid "The password is too short."
 msgstr "Heslo je příliš krátké."
 
-#: ../capplets/about-me/mate-about-me-password.c:541
+#: ../capplets/about-me/mate-about-me-password.c:543
 msgid "The password is too simple."
 msgstr "Heslo je příliš jednoduché."
 
-#: ../capplets/about-me/mate-about-me-password.c:546
+#: ../capplets/about-me/mate-about-me-password.c:548
 msgid "The old and new passwords are too similar."
 msgstr "Nové heslo je příliš podobné starému."
 
-#: ../capplets/about-me/mate-about-me-password.c:548
+#: ../capplets/about-me/mate-about-me-password.c:550
 msgid "The new password must contain numeric or special character(s)."
 msgstr "Nové heslo musí obsahovat číslice nebo speciální znak(y)."
 
-#: ../capplets/about-me/mate-about-me-password.c:551
+#: ../capplets/about-me/mate-about-me-password.c:553
 msgid "The old and new passwords are the same."
 msgstr "Staré a nové heslo je stejné."
 
-#: ../capplets/about-me/mate-about-me-password.c:553
+#: ../capplets/about-me/mate-about-me-password.c:555
 msgid "The new password has already been used recently."
 msgstr "Stejné heslo, jako nové, bylo použito nedávno."
 
 #. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:824
+#: ../capplets/about-me/mate-about-me-password.c:826
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Nelze spustit %s: %s"
 
-#: ../capplets/about-me/mate-about-me-password.c:828
+#: ../capplets/about-me/mate-about-me-password.c:830
 msgid "Unable to launch backend"
 msgstr "Nelze spustit podpůrnou vrstvu"
 
-#: ../capplets/about-me/mate-about-me-password.c:829
+#: ../capplets/about-me/mate-about-me-password.c:831
 msgid "A system error has occurred"
 msgstr "Došlo k systémové chybě"
 
 #. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:849
+#: ../capplets/about-me/mate-about-me-password.c:851
 msgid "Checking password..."
 msgstr "Kontroluje se heslo..."
 
-#: ../capplets/about-me/mate-about-me-password.c:933
+#: ../capplets/about-me/mate-about-me-password.c:935
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Chcete-li změnit heslo, klikněte na <b>Změnit heslo</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:936
+#: ../capplets/about-me/mate-about-me-password.c:938
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Zadejte prosím heslo do pole <b>Nové heslo</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:939
+#: ../capplets/about-me/mate-about-me-password.c:941
 #: ../capplets/about-me/mate-about-me-password.ui.h:10
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr ""
 "Prosím, napište své heslo znovu do pole <b>Napište nové heslo znovu</b>."
 
-#: ../capplets/about-me/mate-about-me-password.c:942
+#: ../capplets/about-me/mate-about-me-password.c:944
 msgid "The two passwords are not equal."
 msgstr "Hesla nejsou shodná."
 
@@ -505,7 +505,7 @@ msgid "Close and _Log Out"
 msgstr "Zavřít a _odhlásit se"
 
 #: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
-#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:1
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.h:1
 msgid "Assistive Technologies"
 msgstr "Technologie usnadnění"
 
@@ -557,7 +557,7 @@ msgstr "Příst_upné přihlášení"
 msgid "Jump to the Accessible Login dialog"
 msgstr "Přeskočit na dialog přístupného přihlášení"
 
-#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.in.h:2
+#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.h:2
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Vyberte vlastnosti zpřístupnění, které mají být zapnuty po přihlášení"
 
@@ -591,7 +591,7 @@ msgstr ""
 "(theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:166
-#: ../capplets/default-applications/mate-da-capplet.c:694
+#: ../capplets/default-applications/mate-da-capplet.c:746
 #: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "page"
 msgstr "stránka"
@@ -1032,19 +1032,19 @@ msgstr "Úpravy"
 msgid "Interface"
 msgstr "Rozhraní"
 
-#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:1
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.h:1
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.in.h:2
+#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.h:2
 msgid "Customize the look of the desktop"
 msgstr "Upravit vzhled pracovního prostředí"
 
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:1
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.h:1
 msgid "Theme Installer"
 msgstr "Instalační program motivů"
 
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.in.h:2
+#: ../capplets/appearance/data/mate-theme-installer.desktop.in.h:2
 msgid "Installs themes packages for various parts of the desktop"
 msgstr "Instaluje balíčky motivů k různým částem pracovního prostředí"
 
@@ -1379,31 +1379,31 @@ msgstr ""
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:1
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
 msgstr "Preferované aplikace"
 
-#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.in.h:2
+#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:2
 msgid "Select your default applications"
 msgstr "Umožní si vybrat výchozí aplikace"
 
-#: ../capplets/default-applications/mate-da-capplet.c:543
+#: ../capplets/default-applications/mate-da-capplet.c:577
 msgid "Could not load the main interface"
 msgstr "Nelze načíst hlavní rozhraní"
 
-#: ../capplets/default-applications/mate-da-capplet.c:544
+#: ../capplets/default-applications/mate-da-capplet.c:578
 msgid "Please make sure that the applet is properly installed"
 msgstr "Zkontrolujte prosím, že je applet správně nainstalován"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:693
+#: ../capplets/default-applications/mate-da-capplet.c:745
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Určete název stránky, která má být zobrazena "
 "(internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:699
+#: ../capplets/default-applications/mate-da-capplet.c:751
 msgid "- MATE Default Applications"
 msgstr "- výchozí aplikace MATE"
 
@@ -1465,60 +1465,64 @@ msgid "File Manager"
 msgstr "Správce souborů"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+msgid "Calculator"
+msgstr "Kalkulačka"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
 msgid "System"
 msgstr "Systém"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
 msgid "Document Viewer"
 msgstr "Prohlížeč dokumentů"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
 msgid "Word Processor"
 msgstr "Textový procesor"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
 msgid "Spreadsheet Editor"
 msgstr "Editor pro zpracování tabulek"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
 msgid "Office"
 msgstr "Kancelář"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
 msgid "Visual"
 msgstr "Vizuální"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
 msgid "_Run at start"
 msgstr "Spust_it při startu"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
 msgid "Mobility"
 msgstr "Pohyblivost"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
 msgid "Run at st_art"
 msgstr "Spouštět při st_artu"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
 msgid "Accessibility"
 msgstr "Zpřístupnění"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/display/xrandr-capplet.c:346
+#: ../capplets/display/xrandr-capplet.c:304
+#: ../capplets/display/xrandr-capplet.c:343
 msgid "Normal"
 msgstr "Normální"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/display/xrandr-capplet.c:305
 #: ../capplets/windows/mate-window-properties.c:504
 msgid "Left"
 msgstr "Vlevo"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:309
+#: ../capplets/display/xrandr-capplet.c:306
 #: ../capplets/windows/mate-window-properties.c:503
 msgid "Right"
 msgstr "Vpravo"
@@ -1593,15 +1597,15 @@ msgid "R_otation:"
 msgstr "_Otočení:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:496
+#: ../capplets/display/xrandr-capplet.c:493
 msgid "Monitor"
 msgstr "Monitor"
 
-#: ../capplets/display/mate-display-properties.desktop.in.in.h:1
+#: ../capplets/display/mate-display-properties.desktop.in.h:1
 msgid "Displays"
 msgstr "Zobrazení"
 
-#: ../capplets/display/mate-display-properties.desktop.in.in.h:2
+#: ../capplets/display/mate-display-properties.desktop.in.h:2
 msgid "Change resolution and position of monitors and projectors"
 msgstr "Změnit rozlišení a polohu monitorů a projektorů"
 
@@ -1706,11 +1710,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "K instalaci nastavení s více monitory je vyžadováno oprávnění"
 
-#: ../capplets/display/xrandr-capplet.c:310
+#: ../capplets/display/xrandr-capplet.c:307
 msgid "Upside Down"
 msgstr "Převrátit"
 
-#: ../capplets/display/xrandr-capplet.c:352
+#: ../capplets/display/xrandr-capplet.c:349
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1719,56 +1723,56 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:485
-#: ../capplets/display/xrandr-capplet.c:1633
+#: ../capplets/display/xrandr-capplet.c:482
+#: ../capplets/display/xrandr-capplet.c:1630
 #, c-format
 msgid "Mirror Screens"
 msgstr "Zrcadlící obrazovky"
 
-#: ../capplets/display/xrandr-capplet.c:487
+#: ../capplets/display/xrandr-capplet.c:484
 #, c-format
 msgid "Monitor: %s"
 msgstr "Monitor: %s"
 
-#: ../capplets/display/xrandr-capplet.c:557
+#: ../capplets/display/xrandr-capplet.c:554
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1489
+#: ../capplets/display/xrandr-capplet.c:1486
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr ""
 "Výběrem monitoru změníte jeho vlastnosti; umístění upravíte jeho přetažením."
 
-#: ../capplets/display/xrandr-capplet.c:2069
+#: ../capplets/display/xrandr-capplet.c:2079
 msgid "Could not save the monitor configuration"
 msgstr "Nelze uložit nastavení monitoru"
 
-#: ../capplets/display/xrandr-capplet.c:2091
+#: ../capplets/display/xrandr-capplet.c:2100
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
 "Při aplikování nastavení displeje se nezdařilo získání sběrnice sezení"
 
-#: ../capplets/display/xrandr-capplet.c:2110
+#: ../capplets/display/xrandr-capplet.c:2119
 msgid "Could not detect displays"
 msgstr "Displeje nelze rozpoznat"
 
-#: ../capplets/display/xrandr-capplet.c:2318
+#: ../capplets/display/xrandr-capplet.c:2327
 msgid "The monitor configuration has been saved"
 msgstr "Nastavení monitoru bylo uloženo"
 
-#: ../capplets/display/xrandr-capplet.c:2320
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 "Toto nastavení bude použito při dalším přihlášení některého z uživatelů."
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2338
 msgid "Could not set the default configuration for monitors"
 msgstr "Nelze nastavit výchozí nastavení monitorů"
 
-#: ../capplets/display/xrandr-capplet.c:2413
+#: ../capplets/display/xrandr-capplet.c:2422
 msgid "Could not get screen information"
 msgstr "Nelze získat informace o obrazovce"
 
@@ -1872,7 +1876,7 @@ msgid "_Browse applications..."
 msgstr "_Procházet aplikace..."
 
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:1
+#: ../capplets/keybindings/mate-keybinding.desktop.in.h:1
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
@@ -1881,8 +1885,11 @@ msgid ""
 "To edit a shortcut key, double-click on the corresponding row and type a new"
 " key combination, or press backspace to clear."
 msgstr ""
+"Chcete-li upravit klávesovou zkratku, poklepejte na příslušný řádek a "
+"zadejte novou kombinaci kláves nebo stiskněte klávesu backspace pro "
+"vymazání."
 
-#: ../capplets/keybindings/mate-keybinding.desktop.in.in.h:2
+#: ../capplets/keybindings/mate-keybinding.desktop.in.h:2
 msgid "Assign shortcut keys to commands"
 msgstr "Přiřadí klávesové zkratky k příkazům"
 
@@ -2271,11 +2278,11 @@ msgstr "Modely"
 msgid "Default"
 msgstr "Výchozí"
 
-#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:1
+#: ../capplets/keyboard/mate-keyboard.desktop.in.h:1
 msgid "Keyboard"
 msgstr "Klávesnice"
 
-#: ../capplets/keyboard/mate-keyboard.desktop.in.in.h:2
+#: ../capplets/keyboard/mate-keyboard.desktop.in.h:2
 msgid "Set your keyboard preferences"
 msgstr "Nastaví předvolby klávesnice"
 
@@ -2366,13 +2373,12 @@ msgstr "_Interval:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid ""
-"To test your double-click settings, try to double-click on the light bulb."
+"To test your double-click settings, try to double-click on the triangle and "
+"you must to see the mate desktop logo with both rings showing."
 msgstr ""
-"Chcete-li otestovat nastavení dvojitého kliknutí, zkuste dvakrát kliknout na"
-" žárovku."
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:32
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:1
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.h:1
 msgid "Mouse"
 msgstr "Myš"
 
@@ -2428,15 +2434,15 @@ msgstr "Povolit _přirozené posouvání - setrvačnost"
 msgid "Touchpad"
 msgstr "Touchpad"
 
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.in.h:2
+#: ../capplets/mouse/mate-settings-mouse.desktop.in.h:2
 msgid "Set your mouse preferences"
 msgstr "Nastaví předvolby myši"
 
-#: ../capplets/network/mate-network-properties.desktop.in.in.h:1
+#: ../capplets/network/mate-network-properties.desktop.in.h:1
 msgid "Network Proxy"
 msgstr "Proxy sítě"
 
-#: ../capplets/network/mate-network-properties.desktop.in.in.h:2
+#: ../capplets/network/mate-network-properties.desktop.in.h:2
 msgid "Set your network proxy preferences"
 msgstr "Nastaví proxy sítě"
 
@@ -2666,11 +2672,11 @@ msgstr "_Super (nebo \"logo Windows\")"
 msgid "_Meta"
 msgstr "_Meta"
 
-#: ../capplets/windows/mate-window-properties.desktop.in.in.h:1
+#: ../capplets/windows/mate-window-properties.desktop.in.h:1
 msgid "Windows"
 msgstr "Okna"
 
-#: ../capplets/windows/mate-window-properties.desktop.in.in.h:2
+#: ../capplets/windows/mate-window-properties.desktop.in.h:2
 msgid "Set your window properties"
 msgstr "Nastaví vlastnosti oken"
 
@@ -2696,7 +2702,7 @@ msgstr "Skupiny"
 msgid "Common Tasks"
 msgstr "Běžné úlohy"
 
-#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.in.h:1
+#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.h:1
 #: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "Ovládací centrum"
@@ -2705,11 +2711,11 @@ msgstr "Ovládací centrum"
 msgid "Hide on start (useful to preload the shell)"
 msgstr "Skrýt při spouštění (užitečné, pokud se předem nahrává shell)"
 
-#: ../shell/matecc.desktop.in.in.h:2
+#: ../shell/matecc.desktop.in.h:2
 msgid "The MATE configuration tool"
 msgstr "Nástroj na nastavení prostředí MATE"
 
-#: ../shell/matecc.desktop.in.in.h:3
+#: ../shell/matecc.desktop.in.h:3
 msgid "Configure MATE settings"
 msgstr "Konfigurace nastavení MATE"
 
@@ -2863,7 +2869,7 @@ msgid "Font Viewer"
 msgstr "Prohlížeč písem"
 
 #: ../font-viewer/font-view.c:783
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:2
+#: ../font-viewer/mate-font-viewer.desktop.in.h:2
 msgid "View fonts on your system"
 msgstr "Zobrazte si písma ve svém systému"
 
@@ -2871,7 +2877,7 @@ msgstr "Zobrazte si písma ve svém systému"
 msgid "Search"
 msgstr "Hledat"
 
-#: ../font-viewer/mate-font-viewer.desktop.in.in.h:1
+#: ../font-viewer/mate-font-viewer.desktop.in.h:1
 msgid "MATE Font Viewer"
 msgstr "Prohlížeč písem MATE"
 
@@ -2904,11 +2910,11 @@ msgstr "Filtr \"%s\" se neshoduje s žádnými položkami."
 msgid "No matches found."
 msgstr "Nenalezena žádná shoda."
 
-#: ../libslab/app-shell.c:865
+#: ../libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Nové aplikace"
 
-#: ../libslab/app-shell.c:923
+#: ../libslab/app-shell.c:936
 msgid "Other"
 msgstr "Ostatní"
 
