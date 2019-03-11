@@ -112,7 +112,7 @@ typedef struct
 
 typedef struct
 {
-	const gchar *name;
+	gchar *name;
 	MateDesktopItem *item;
 } AppAction;
 
