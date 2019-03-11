@@ -70,6 +70,8 @@ static GSList* get_actions_list(void)
 
 		if ((action->item = load_desktop_item_from_unknown(temp[1])) == NULL)
 		{
+			g_free (action->name);
+			g_free (action);
 			g_warning("get_actions_list() - PROBLEM - Can't load %s\n", temp[1]);
 		}
 		else
