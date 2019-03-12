@@ -796,8 +796,7 @@ mate_theme_install (GFile *file,
 }
 
 void
-mate_theme_installer_run (GtkWindow *parent,
-			   const gchar *filename)
+mate_theme_installer_run (GtkWindow *parent)
 {
 	static gboolean running_theme_install = FALSE;
 	static gchar old_folder[512] = "";
@@ -808,9 +807,6 @@ mate_theme_installer_run (GtkWindow *parent,
 		return;
 
 	running_theme_install = TRUE;
-
-	if (filename == NULL)
-		filename = old_folder;
 
 	dialog = gtk_file_chooser_dialog_new (_("Select Theme"),
 					      parent,
