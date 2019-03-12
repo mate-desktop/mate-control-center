@@ -405,7 +405,6 @@ marco_get_double_click_actions (MateWindowManager              *wm,
                 int i;
                 
                 initialized = TRUE;
-                i = 0;
                 for (i = 0; i < G_N_ELEMENTS (actions); i++) {
                         actions[i].human_readable_name = _(actions[i].human_readable_name);
                 }
