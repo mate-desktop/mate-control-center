@@ -5,9 +5,14 @@ language: bash
 services:
   - docker
 
+branches:
+  except:
+  - gh-pages
+
 before_install:
   - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
-  - chmod +x docker-build
+  - curl -Ls -o gen-index https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/gen-index.sh
+  - chmod +x docker-build gen-index
  
 install:
   - sudo apt-get install -y python3-pip python3-setuptools
@@ -16,7 +21,30 @@ install:
   - ./docker-build --name ${DISTRO} --config .travis.yml --install
 
 script:
-  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build autotools
+  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build scripts
+
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  #keep-history: true
+  skip_cleanup: true
+  committer-from-gh: true
+  target-branch: gh-pages
+  local-dir: html-report
+  on:
+    all_branches: true
+    condition: ${DISTRO} =~ ^fedora.*$
+
+after_success:
+  - 'if [[ "$TRAVIS_SECURE_ENV_VARS" == "true" && "$TRAVIS_PULL_REQUEST" != "false" && ${DISTRO} =~ ^fedora.*$ ]]; then
+        REPO_SLUG_ARRAY=(${TRAVIS_REPO_SLUG//\// });
+        REPO_NAME=${REPO_SLUG_ARRAY[1]};
+        URL="https://${REPO_NAME}.mate-desktop.dev";
+        COMMENT="Code analysis completed";
+        curl -H "Authorization: token $GITHUB_TOKEN" -X POST
+           -d "{\"state\": \"success\", \"description\": \"$COMMENT\", \"context\":\"scan-build\", \"target_url\": \"$URL\"}"
+           https://api.github.com/repos/${TRAVIS_REPO_SLUG}/statuses/${TRAVIS_PULL_REQUEST_SHA};
+     fi'
 
 env:
   - DISTRO="archlinux/base"
@@ -30,6 +58,7 @@ env:
 requires:
   archlinux:
     # Useful URL: https://git.archlinux.org/svntogit/community.git/tree/mate-control-center
+    - clang
     - gcc
     - git
     - gobject-introspection
@@ -47,6 +76,8 @@ requires:
   debian:
     # Useful URL: https://github.com/mate-desktop/debian-packages
     # Useful URL: https://salsa.debian.org/debian-mate-team/mate-control-center
+    - clang
+    - clang-tools
     - curl
     - desktop-file-utils
     - git
@@ -84,6 +115,8 @@ requires:
   fedora:
     # Useful URL: https://src.fedoraproject.org/cgit/rpms/mate-control-center.git
     - cairo-gobject-devel
+    - clang
+    - clang-analyzer
     - dconf-devel
     - desktop-file-utils
     - gcc
@@ -108,6 +141,8 @@ requires:
 
   ubuntu:
     - curl
+    - clang
+    - clang-tools
     - desktop-file-utils
     - git
     - gobject-introspection
@@ -143,14 +178,29 @@ requires:
 
 variables:
   - CFLAGS="-Wall -Werror=format-security"
+  - 'CHECKERS="
+    -enable-checker deadcode.DeadStores
+    -enable-checker alpha.core.CastSize
+    -enable-checker alpha.core.CastToStruct
+    -enable-checker alpha.core.IdenticalExpr
+    -enable-checker alpha.core.SizeofPtr
+    -enable-checker alpha.security.ArrayBoundV2
+    -enable-checker alpha.security.MallocOverflow
+    -enable-checker alpha.security.ReturnPtrRange
+    -enable-checker alpha.unix.SimpleStream
+    -enable-checker alpha.unix.cstring.BufferOverlap
+    -enable-checker alpha.unix.cstring.NotNullTerminated
+    -enable-checker alpha.unix.cstring.OutOfBounds
+    -enable-checker alpha.core.FixedAddr
+    -enable-checker security.insecureAPI.strcpy"'
 
 before_scripts:
   - cd ${START_DIR}
-  - if [ ! -f mate-desktop-1.21.2.tar.xz ];then
-  -     curl -Ls -o mate-desktop-1.21.2.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-desktop-1.21.2.tar.xz
+  - if [ ! -f mate-desktop-1.22.0.tar.xz ];then
+  -     curl -Ls -o mate-desktop-1.22.0.tar.xz http://pub.mate-desktop.org/releases/1.22/mate-desktop-1.22.0.tar.xz
   - fi
-  - tar xf mate-desktop-1.21.2.tar.xz
-  - cd mate-desktop-1.21.2
+  - tar xf mate-desktop-1.22.0.tar.xz
+  - cd mate-desktop-1.22.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
@@ -163,10 +213,11 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -d mate-menus-build ]; then
-  -     git clone --depth 1  https://github.com/mate-desktop/mate-menus.git mate-menus-build
+  - if [ ! -f mate-menus-1.22.0.tar.xz ];then
+  -     curl -Ls -o mate-menus-1.22.0.tar.xz http://pub.mate-desktop.org/releases/1.22/mate-menus-1.22.0.tar.xz
   - fi
-  - cd mate-menus-build
+  - tar xf mate-menus-1.22.0.tar.xz
+  - cd mate-menus-1.22.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
@@ -179,11 +230,11 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -f mate-settings-daemon-1.21.2.tar.xz ]; then
-  -     curl -Ls -o mate-settings-daemon-1.21.2.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-settings-daemon-1.21.2.tar.xz
+  - if [ ! -f mate-settings-daemon-1.22.0.tar.xz ]; then
+  -     curl -Ls -o mate-settings-daemon-1.22.0.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-settings-daemon-1.22.0.tar.xz
   - fi
-  - tar xf mate-settings-daemon-1.21.2.tar.xz
-  - cd mate-settings-daemon-1.21.2
+  - tar xf mate-settings-daemon-1.22.0.tar.xz
+  - cd mate-settings-daemon-1.22.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
@@ -195,5 +246,13 @@ before_scripts:
   - make
   - make install
 
+build_scripts:
+  - ./autogen.sh
+  - scan-build $CHECKERS ./configure
+  - scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
+
 after_scripts:
+  - if [ ${DISTRO_NAME} == "fedora" ];then
+  -   ./gen-index -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/categories/preferences-desktop.png
+  - fi
   - make distcheck
