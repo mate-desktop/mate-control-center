@@ -802,7 +802,7 @@ static void
 theme_install_cb (GtkWidget *button, AppearanceData *data)
 {
   mate_theme_installer_run (
-      GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")), NULL);
+      GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")));
 }
 
 static void
