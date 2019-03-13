@@ -146,11 +146,11 @@ variables:
 
 before_scripts:
   - cd ${START_DIR}
-  - if [ ! -f mate-desktop-1.21.2.tar.xz ];then
-  -     curl -Ls -o mate-desktop-1.21.2.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-desktop-1.21.2.tar.xz
+  - if [ ! -f mate-desktop-1.22.0.tar.xz ];then
+  -     curl -Ls -o mate-desktop-1.22.0.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.22.0/mate-desktop-1.22.0.tar.xz
   - fi
-  - tar xf mate-desktop-1.21.2.tar.xz
-  - cd mate-desktop-1.21.2
+  - tar xf mate-desktop-1.22.0.tar.xz
+  - cd mate-desktop-1.22.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
@@ -163,10 +163,11 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -d mate-menus-build ]; then
-  -     git clone --depth 1  https://github.com/mate-desktop/mate-menus.git mate-menus-build
+  - if [ ! -f mate-menus-1.22.0.tar.xz ];then
+  -     curl -Ls -o mate-menus-1.22.0.tar.xz https://github.com/mate-desktop/mate-menus/releases/download/v1.22.0/mate-menus-1.22.0.tar.xz
   - fi
-  - cd mate-menus-build
+  - tar xf mate-menus-1.22.0.tar.xz
+  - cd mate-menus-1.22.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
@@ -179,11 +180,11 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -f mate-settings-daemon-1.21.2.tar.xz ]; then
-  -     curl -Ls -o mate-settings-daemon-1.21.2.tar.xz http://pub.mate-desktop.org/releases/1.21/mate-settings-daemon-1.21.2.tar.xz
+  - if [ ! -f mate-settings-daemon-1.22.0.tar.xz ]; then
+  -     curl -Ls -o mate-settings-daemon-1.22.0.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.22.0/mate-settings-daemon-1.22.0.tar.xz
   - fi
-  - tar xf mate-settings-daemon-1.21.2.tar.xz
-  - cd mate-settings-daemon-1.21.2
+  - tar xf mate-settings-daemon-1.22.0.tar.xz
+  - cd mate-settings-daemon-1.22.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
