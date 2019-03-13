@@ -197,7 +197,7 @@ variables:
 before_scripts:
   - cd ${START_DIR}
   - if [ ! -f mate-desktop-1.22.0.tar.xz ];then
-  -     curl -Ls -o mate-desktop-1.22.0.tar.xz http://pub.mate-desktop.org/releases/1.22/mate-desktop-1.22.0.tar.xz
+  -     curl -Ls -o mate-desktop-1.22.0.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.22.0/mate-desktop-1.22.0.tar.xz
   - fi
   - tar xf mate-desktop-1.22.0.tar.xz
   - cd mate-desktop-1.22.0
@@ -214,7 +214,7 @@ before_scripts:
 
   - cd ${START_DIR}
   - if [ ! -f mate-menus-1.22.0.tar.xz ];then
-  -     curl -Ls -o mate-menus-1.22.0.tar.xz http://pub.mate-desktop.org/releases/1.22/mate-menus-1.22.0.tar.xz
+  -     curl -Ls -o mate-menus-1.22.0.tar.xz https://github.com/mate-desktop/mate-menus/releases/download/v1.22.0/mate-menus-1.22.0.tar.xz
   - fi
   - tar xf mate-menus-1.22.0.tar.xz
   - cd mate-menus-1.22.0
@@ -231,7 +231,7 @@ before_scripts:
 
   - cd ${START_DIR}
   - if [ ! -f mate-settings-daemon-1.22.0.tar.xz ]; then
-  -     curl -Ls -o mate-settings-daemon-1.22.0.tar.xz http://pub.mate-desktop.org/releases/1.22/mate-settings-daemon-1.22.0.tar.xz
+  -     curl -Ls -o mate-settings-daemon-1.22.0.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.22.0/mate-settings-daemon-1.22.0.tar.xz
   - fi
   - tar xf mate-settings-daemon-1.22.0.tar.xz
   - cd mate-settings-daemon-1.22.0
