@@ -277,7 +277,6 @@ org.mate.control-center.gschema.xml
 org.mate.control-center.keybinding.gschema.xml
 capplets/Makefile
 capplets/about-me/Makefile
-capplets/about-me/icons/Makefile
 capplets/accessibility/Makefile
 capplets/accessibility/at-properties/Makefile
 capplets/appearance/Makefile

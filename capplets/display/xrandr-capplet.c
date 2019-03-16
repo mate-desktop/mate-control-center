@@ -2431,9 +2431,9 @@ run_application (App *app)
     g_signal_connect_after (app->dialog, "map-event",
 			    G_CALLBACK (dialog_map_event_cb), app);
 
-    gtk_window_set_default_icon_name ("mate-preferences-desktop-display");
+    gtk_window_set_default_icon_name ("preferences-desktop-display");
     gtk_window_set_icon_name (GTK_WINDOW (app->dialog),
-			      "mate-preferences-desktop-display");
+			      "preferences-desktop-display");
 
     app->current_monitor_event_box = _gtk_builder_get_widget (builder,
     						   "current_monitor_event_box");
