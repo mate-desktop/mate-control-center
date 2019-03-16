@@ -1,5 +1,3 @@
-SUBDIRS = icons
-
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = about-me
 

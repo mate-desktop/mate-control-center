@@ -36,17 +36,6 @@ dist_polkit_policy_DATA =					\
 
 @INTLTOOL_DESKTOP_RULE@
 
-icons16dir = $(datadir)/icons/hicolor/16x16/apps
-dist_icons16_DATA = icons/16x16/mate-preferences-desktop-display.png
-icons22dir = $(datadir)/icons/hicolor/22x22/apps
-dist_icons22_DATA = icons/22x22/mate-preferences-desktop-display.png
-icons24dir = $(datadir)/icons/hicolor/24x24/apps
-dist_icons24_DATA = icons/24x24/mate-preferences-desktop-display.png
-icons32dir = $(datadir)/icons/hicolor/32x32/apps
-dist_icons32_DATA = icons/32x32/mate-preferences-desktop-display.png
-iconssvgdir = $(datadir)/icons/hicolor/scalable/apps
-dist_iconssvg_DATA = icons/scalable/mate-preferences-desktop-display.svg
-
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-display-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
@@ -59,18 +48,6 @@ AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
 	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
-
-gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
-install-data-hook: update-icon-cache
-uninstall-hook: update-icon-cache
-update-icon-cache:
-	@-if test -z "$(DESTDIR)"; then \
-		echo "Updating Gtk icon cache."; \
-		$(gtk_update_icon_cache); \
-	else \
-		echo "*** Icon cache not updated.  After (un)install, run this:"; \
-		echo "***   $(gtk_update_icon_cache)"; \
-	fi
 
 EXTRA_DIST = org.mate.randr.policy.in $(Desktop_in_files)
 DISTCLEANFILES = org.mate.randr.policy

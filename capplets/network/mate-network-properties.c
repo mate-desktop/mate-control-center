@@ -307,7 +307,7 @@ cb_http_details_button_clicked (GtkWidget *button,
 	g_signal_connect (widget, "response",
 			  G_CALLBACK (cb_details_dialog_response), NULL);
 
-	capplet_set_icon (widget, "mate-network-properties");
+	capplet_set_icon (widget, "network-server");
 
 	gtk_widget_show_all (widget);
 }
@@ -485,7 +485,7 @@ main (int argc, char **argv)
 
 	setup_dialog (builder);
 	widget = _gtk_builder_get_widget (builder, "network_dialog");
-	capplet_set_icon (widget, "mate-network-properties");
+	capplet_set_icon (widget, "network-server");
 	gtk_widget_show_all (widget);
 	gtk_main ();
 
