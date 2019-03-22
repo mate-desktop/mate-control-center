@@ -259,7 +259,7 @@ main (int argc, char **argv)
 	}
 
 	capplet_set_icon (WID ("keyboard_dialog"),
-			  "preferences-desktop-keyboard");
+			  "input-keyboard");
 	gtk_widget_show (WID ("keyboard_dialog"));
 	gtk_main ();
 
