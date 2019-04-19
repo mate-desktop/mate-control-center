@@ -84,6 +84,7 @@ requires:
     # Useful URL: https://salsa.debian.org/debian-mate-team/mate-control-center
     - clang
     - clang-tools
+    - cppcheck
     - curl
     - desktop-file-utils
     - git
@@ -256,6 +257,9 @@ build_scripts:
   - ./autogen.sh
   - scan-build $CHECKERS ./configure
   - scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
+  - if [ ${DISTRO_NAME} == "debian" ];then
+  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.22.0' -i'mate-menus-1.22.0' -i'mate-settings-daemon-1.22.0' .
+  - fi
 
 after_scripts:
   - if [ ${DISTRO_NAME} == "fedora" ];then
