@@ -4,15 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Riku Viitanen <riisseli4@gmail.com>, 2018
-# Eslam Ali <talvikahvi@gmail.com>, 2018
-# Lasse Liehu <larso@gmx.com>, 2018
-# Mikko Harhanen <gitti@mikkoharhanen.fi>, 2018
-# Ammuu5, 2018
-# nomen omen, 2018
-# Martin Wimpress <code@flexion.org>, 2018
-# Wolfgang Ulbrich <mate@raveit.de>, 2018
+# Lasse Liehu <larso@gmx.com>, 2019
+# Mikko Harhanen <gitti@mikkoharhanen.fi>, 2019
+# Martin Wimpress <code@flexion.org>, 2019
+# Riku Viitanen <riisseli4@gmail.com>, 2019
+# nomen omen, 2019
 # Stefano Karapetsas <stefano@karapetsas.com>, 2019
+# Wolfgang Ulbrich <mate@raveit.de>, 2019
+# Eslam Ali <talvikahvi@gmail.com>, 2019
+# Ammuu5, 2019
+# Kimmo Kujansuu <mrkujansuu@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -20,8 +21,8 @@ msgstr ""
 "Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-08 16:14+0100\n"
-"PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2019\n"
+"PO-Revision-Date: 2019-03-13 12:48+0000\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>, 2019\n"
 "Language-Team: Finnish (https://www.transifex.com/mate/teams/13566/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -129,7 +130,7 @@ msgstr "Näppäinsidos"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:2
 msgid "Keybinding associated with a custom shortcut."
-msgstr ""
+msgstr "Näppäimistön luominen, joka liittyy mukautettuun pikakuvakkeeseen."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:3
 msgid "Command"
@@ -137,7 +138,7 @@ msgstr "Komento"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:4
 msgid "Command associated with a custom keybinding."
-msgstr ""
+msgstr "Käsky, joka liittyy mukautettuun pikanäppäimeen."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
 #: ../font-viewer/font-view.c:201
@@ -146,7 +147,7 @@ msgstr "Nimi"
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:6
 msgid "Description associated with a custom keybinding."
-msgstr ""
+msgstr "Kuvaus, joka liittyy mukautettuun pikanäppäimeen."
 
 #: ../capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
@@ -667,19 +668,20 @@ msgstr "Fonttien piirtymisasetukset"
 
 #: ../capplets/appearance/data/appearance.ui.h:2
 msgid "R_esolution"
-msgstr ""
+msgstr "_Tarkkuus"
 
 #: ../capplets/appearance/data/appearance.ui.h:3
 msgid "Dots per inch (DPI):"
-msgstr ""
+msgstr "Pisteitä tuumalla (DPI):"
 
 #: ../capplets/appearance/data/appearance.ui.h:4
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr ""
+"Tämä palauttaa fontin DPI:n Xserverin automaattisen tunnistaman arvon."
 
 #: ../capplets/appearance/data/appearance.ui.h:5
 msgid "Automatic detection:"
-msgstr ""
+msgstr "Automaattinen tunnistus:"
 
 #: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Smoothing"
@@ -986,15 +988,15 @@ msgstr "Valikot ja työkalupalkit"
 
 #: ../capplets/appearance/data/appearance.ui.h:84
 msgid "Show _icons in menus"
-msgstr ""
+msgstr "Näytä kuvakkeet valikoissa"
 
 #: ../capplets/appearance/data/appearance.ui.h:85
 msgid "_Editable menu shortcut keys"
-msgstr ""
+msgstr "_Muokattavat valikon pikanäppäimet"
 
 #: ../capplets/appearance/data/appearance.ui.h:86
 msgid "Toolbar _button labels:"
-msgstr ""
+msgstr "Työkalupalkin _painikkeiden merkinnät:"
 
 #: ../capplets/appearance/data/appearance.ui.h:87
 msgid "Buttons"
@@ -1006,7 +1008,7 @@ msgstr "Näytä kuvakkeet painikkeissa"
 
 #: ../capplets/appearance/data/appearance.ui.h:89
 msgid "Whether buttons may display an icon in addition to the button text"
-msgstr ""
+msgstr "Painikkeet voivat näyttää painikkeen tekstin lisäksi kuvakkeen"
 
 #: ../capplets/appearance/data/appearance.ui.h:90
 msgid "Preview"
@@ -1074,8 +1076,8 @@ msgstr "%d %s × %d %s"
 #: ../capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
-msgstr[0] "pikseli"
-msgstr[1] "pikseliä"
+msgstr[0] ""
+msgstr[1] ""
 
 #. translators: <b>wallpaper name</b>
 #. * mime type, size
@@ -1089,6 +1091,10 @@ msgid ""
 "Folder: %s\n"
 "Artist: %s"
 msgstr ""
+"<b>%s</b>\n"
+"%s, %s\n"
+"Kansio: %s\n"
+"Artisti: %s"
 
 #. translators: <b>wallpaper name</b>
 #. * Image missing
@@ -1102,6 +1108,10 @@ msgid ""
 "Folder: %s\n"
 "Artist: %s"
 msgstr ""
+"<b>%s</b>\n"
+"%s\n"
+"Folder: %s\n"
+"Artist: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1142,7 +1152,7 @@ msgstr ""
 #: ../capplets/appearance/theme-installer.c:375
 #, c-format
 msgid "The theme \"%s\" is already existed."
-msgstr ""
+msgstr "Teema \"%s\" on jo olemassa"
 
 #: ../capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
@@ -1458,11 +1468,11 @@ msgstr "Asiakirjakatselin"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
 msgid "Word Processor"
-msgstr ""
+msgstr "Tekstinkäsittelyohjelma"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
 msgid "Spreadsheet Editor"
-msgstr ""
+msgstr "Taulukot-editori"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
 msgid "Office"
@@ -1517,13 +1527,15 @@ msgstr "Näyttöasetukset"
 
 #: ../capplets/display/display-capplet.ui.h:6
 msgid "Apply system-wide"
-msgstr ""
+msgstr "Käytä koko järjestelmässä"
 
 #: ../capplets/display/display-capplet.ui.h:7
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
 msgstr ""
+"Soveltuu tietokoneen muiden MATE-käyttäjien nykyiseen kokoonpanoon. Huomaa, "
+"että tämä ei vaikuta kirjautumisnäyttöihin tai muihin työpöytäympäristöihin."
 
 #: ../capplets/display/display-capplet.ui.h:8
 msgid "Sa_me image in all monitors"
@@ -1563,11 +1575,11 @@ msgstr "Sisällytä _paneeli"
 
 #: ../capplets/display/display-capplet.ui.h:17
 msgid "Set as primary"
-msgstr ""
+msgstr "Merkitse ensisijaiseksi"
 
 #: ../capplets/display/display-capplet.ui.h:18
 msgid "Sets the selected monitor as primary."
-msgstr ""
+msgstr "Asettaa valitun näytön ensisijaiseksi."
 
 #: ../capplets/display/display-capplet.ui.h:19
 msgid "R_otation:"
@@ -1584,7 +1596,7 @@ msgstr "Näytöt"
 
 #: ../capplets/display/mate-display-properties.desktop.in.h:2
 msgid "Change resolution and position of monitors and projectors"
-msgstr ""
+msgstr "Muuta näytön ja projektorin tarkkuutta ja sijaintia"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:44
 #, c-format
@@ -1601,6 +1613,15 @@ msgid ""
 "            the systemwide directory for RANDR configurations,\n"
 "            so the result will typically be %s/DEST_NAME\n"
 msgstr ""
+"Käyttö: %sSOURCE_FILE DEST_NAME tämä ohjelma asentaa RANDR\n"
+"profiilin usean näytön asetelmia järjestelmänlaajuisesti. Profiilia käytetään,\n"
+"kun RANDR plug-in saa ajaa Mate-asetuksia taustaprosessina. \n"
+"\n"
+"Lähde-tiedoston koko polun nimi, yleensä /Home/username/.config/monitors.xml\n"
+"\n"
+" DEST_NAME on asennetun tiedoston suhteellinen nimi. Tämän saa laittaa\n"
+"järjestelmänlaajuiseen hakemistoon RANDR kokoonpanoissa,\n"
+"joka on tyypillisesti %s/DEST_NAME\n"
 
 #. Translators: only able to install RANDR profiles as root
 #: ../capplets/display/mate-display-properties-install-systemwide.c:151
@@ -1609,72 +1630,73 @@ msgstr "Tätä ohjelmaa voi käyttää vain pääkäyttäjä (root)"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:168
 msgid "The source filename must be absolute"
-msgstr ""
+msgstr "Lähteen tiedostonimen on oltava absoluuttinen"
 
 #. Translators: first %s is a filename; second %s is an error message
 #: ../capplets/display/mate-display-properties-install-systemwide.c:179
 #, c-format
 msgid "Could not open %s: %s\n"
-msgstr ""
+msgstr "Ei voinut avata %s:%s\n"
 
 #. Translators: first %s is a filename; second %s is an error message
 #: ../capplets/display/mate-display-properties-install-systemwide.c:188
 #, c-format
 msgid "Could not get information for %s: %s\n"
-msgstr ""
+msgstr "Tietoja ei voitu saada %s:%s\n"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:195
 #, c-format
 msgid "%s must be a regular file\n"
-msgstr ""
+msgstr "%son oltava tavallinen tiedosto\n"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:204
 msgid "This program must only be run through pkexec(1)"
-msgstr ""
+msgstr "Tätä ohjelmaa saa ajaa vain pkexecin(1) kautta"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:209
 msgid "PKEXEC_UID must be set to an integer value"
-msgstr ""
+msgstr "PKEXEC_UID on asetettava kokonaislukuarvoksi"
 
 #. Translators: we are complaining that a file must be really owned by the
 #. user who called this program
 #: ../capplets/display/mate-display-properties-install-systemwide.c:215
 #, c-format
 msgid "%s must be owned by you\n"
-msgstr ""
+msgstr "%stäytyy olla sinun omistuksessa\n"
 
 #. Translators: here we are saying that a plain filename must look like
 #. "filename", not like "some_dir/filename"
 #: ../capplets/display/mate-display-properties-install-systemwide.c:223
 #, c-format
 msgid "%s must not have any directory components\n"
-msgstr ""
+msgstr "%sei saa olla mitään hakemistokomponentteja\n"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:231
 #, c-format
 msgid "%s must be a directory\n"
-msgstr ""
+msgstr "%son oltava hakemisto\n"
 
 #. Translators: the first %s/%s is a directory/filename; the last %s is an
 #. error message
 #: ../capplets/display/mate-display-properties-install-systemwide.c:242
 #, c-format
 msgid "Could not open %s/%s: %s\n"
-msgstr ""
+msgstr "Ei voinut avata %s/%s:%s\n"
 
 #: ../capplets/display/mate-display-properties-install-systemwide.c:262
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
-msgstr ""
+msgstr "Ei voitu nimetä %snimelle %s:%s\n"
 
 #: ../capplets/display/org.mate.randr.policy.in.h:1
 msgid "Install multi-monitor settings for the whole system"
-msgstr ""
+msgstr "Asenna asetukset useampi-näyttö koko järjestelmään"
 
 #: ../capplets/display/org.mate.randr.policy.in.h:2
 msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
+"Todennus on tarpeen useamman näytön asentamiseksi kaikille käyttäjille"
 
 #: ../capplets/display/xrandr-capplet.c:307
 msgid "Upside Down"
@@ -1727,15 +1749,15 @@ msgstr "Näyttöjä ei havaittu"
 
 #: ../capplets/display/xrandr-capplet.c:2327
 msgid "The monitor configuration has been saved"
-msgstr ""
+msgstr "Näytön kokoonpano on tallennettu"
 
 #: ../capplets/display/xrandr-capplet.c:2329
 msgid "This configuration will be used the next time someone logs in."
-msgstr ""
+msgstr "Tätä asetusta käytetään seuraavan kerran, kun joku kirjautuu sisään."
 
 #: ../capplets/display/xrandr-capplet.c:2338
 msgid "Could not set the default configuration for monitors"
-msgstr ""
+msgstr "Näyttöjen oletusasetuksia ei voitu asettaa"
 
 #: ../capplets/display/xrandr-capplet.c:2422
 msgid "Could not get screen information"
@@ -1852,6 +1874,8 @@ msgid ""
 "To edit a shortcut key, double-click on the corresponding row and type a new"
 " key combination, or press backspace to clear."
 msgstr ""
+"Jos haluat muokata pikanäppäintä, kaksoisnapsauta vastaavaa riviä ja "
+"kirjoita uusi näppäinyhdistelmä tai poista tyhjennä painikeella."
 
 #: ../capplets/keybindings/mate-keybinding.desktop.in.h:2
 msgid "Assign shortcut keys to commands"
@@ -1879,7 +1903,7 @@ msgstr "- MATEn näppäimistöasetukset"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:1
 msgid "Keyboard Accessibility Audio Feedback"
-msgstr "Näppäimistön _esteettömyyden palauteäänet"
+msgstr "Näppäimistön esteettömyyden äänipalaute"
 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
@@ -1949,7 +1973,7 @@ msgstr "Piippaa kun näppäin hy_lättiin"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
 msgid "Keyboard Preferences"
-msgstr "Näppäimistöasetukset"
+msgstr "Näppäimistön asetukset"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:2
 msgid "Repeat Keys"
@@ -2012,15 +2036,15 @@ msgstr "Kohdistimen vilkkumisnopeus"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:16
 msgid "List of keyboard layouts selected for usage"
-msgstr ""
+msgstr "Luettelo näppäimistöasetteluista, jotka ovat valittavissa käyttöön"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:18
 msgid "Select a keyboard layout to be added to the list"
-msgstr ""
+msgstr "Valitse luetteloon lisättävä näppäimistöasetus"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:19
 msgid "Remove the selected keyboard layout from the list"
-msgstr ""
+msgstr "Poista valittu näppäimistöasetus luettelosta"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:20
 msgid "Move _Up"
@@ -2028,7 +2052,7 @@ msgstr "Siirrä _ylös"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:21
 msgid "Move the selected keyboard layout up in the list"
-msgstr ""
+msgstr "Siirrä valittu näppäimistöasetus luetteloon"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:22
 msgid "Move _Down"
@@ -2036,7 +2060,7 @@ msgstr "Siirrä _alas"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:23
 msgid "Move the selected keyboard layout down in the list"
-msgstr ""
+msgstr "Siirrä valittu näppäimistöasetus alemmaksi luetteloon"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:24
 msgid "_Show..."
@@ -2044,7 +2068,7 @@ msgstr "_Näytä..."
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:25
 msgid "Print a diagram of the selected keyboard layout"
-msgstr ""
+msgstr "Tulosta valittu näppäimistöasettelu"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:26
 msgid "_Separate layout for each window"
@@ -2064,7 +2088,7 @@ msgstr "_Valitsimet…"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:30
 msgid "View and edit keyboard layout options"
-msgstr ""
+msgstr "Tarkastele ja muokkaa näppäimistön asetuksia"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
 msgid "Reset to De_faults"
@@ -2075,6 +2099,8 @@ msgid ""
 "Replace the current keyboard layout settings with the\n"
 "default settings"
 msgstr ""
+"Vaihda nykyiset näppäimistöasetukset\n"
+"oletusasetuksilla"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:34
 msgid "Layouts"
@@ -2248,20 +2274,20 @@ msgstr "Muuta näppäimistöasetuksia"
 
 #: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Left button"
-msgstr ""
+msgstr "Vasen painike"
 
 #: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Middle button"
-msgstr ""
+msgstr "Keskipainike"
 
 #: ../capplets/mouse/mate-mouse-properties.c:334
 msgid "Right button"
-msgstr ""
+msgstr "Oikea painike"
 
 #. TRANSLATORS: don't translate the terms in brackets
 #: ../capplets/mouse/mate-mouse-properties.c:428
 msgid "Specify the name of the page to show (general)"
-msgstr ""
+msgstr "Määritä näytettävän sivun nimi (yleinen)"
 
 #: ../capplets/mouse/mate-mouse-properties.c:433
 msgid "- MATE Mouse Preferences"
@@ -2269,7 +2295,7 @@ msgstr "- MATEn hiiriasetukset"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:1
 msgid "Mouse Preferences"
-msgstr "Hiiriasetukset"
+msgstr "Hiiren asetukset"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:2
 msgid "Mouse Orientation"
@@ -2346,7 +2372,7 @@ msgstr "Käytä koske_tuslevyä"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Disable touchpad _while typing"
-msgstr ""
+msgstr "Poista kosketuslevy, _kun kirjoitat"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid "Enable _mouse clicks with touchpad"
@@ -2354,15 +2380,15 @@ msgstr "Käytä ohjaintason _hiirinapsautuksia"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:36
 msgid "Two-finger click emulation:"
-msgstr ""
+msgstr "Kahden-sormen napsautuksen emulointi:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Three-finger click emulation:"
-msgstr ""
+msgstr "Kolmen-sormen napsautuksen emulointi:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Warning: multi-finger emulation may disable software buttons"
-msgstr ""
+msgstr "Varoitus: usean sormen emulointi voi poistaa ohjelmistopainikkeet"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Scrolling"
@@ -2370,23 +2396,23 @@ msgstr "Vieritys"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "_Vertical edge scrolling"
-msgstr ""
+msgstr "_Pystyreunan vieritys"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "H_orizontal edge scrolling"
-msgstr ""
+msgstr "V_aakasuuntainen reunan vieritys"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "V_ertical two-finger scrolling"
-msgstr ""
+msgstr "P_ystysuuntainen kahden-sormen vieritys"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Hor_izontal two-finger scrolling"
-msgstr ""
+msgstr "Vaa_kasuuntainen kahden-sormen vieritys"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "Enable _natural scrolling"
-msgstr ""
+msgstr "Ota käyttöön _normaali vieritys"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "Touchpad"
@@ -2406,7 +2432,7 @@ msgstr "Muuta välipalvelinasetuksia"
 
 #: ../capplets/network/mate-network-properties.ui.h:1
 msgid "Network Proxy Preferences"
-msgstr "Välipalvelinasetukset"
+msgstr "Verkon välipalvelinten asetukset"
 
 #: ../capplets/network/mate-network-properties.ui.h:2
 msgid "<b>Di_rect internet connection</b>"
@@ -2478,7 +2504,7 @@ msgstr "_Salasana:"
 
 #: ../capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
-msgstr ""
+msgstr "Metacity-asetukset"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
@@ -2489,11 +2515,11 @@ msgstr "Kerrostuksen hallintaohjelma"
 #: ../capplets/windows/mate-metacity-support.c:58
 #: ../capplets/windows/mate-window-properties.c:395
 msgid "Enable software _compositing window manager"
-msgstr ""
+msgstr "Ota käyttöön _ohjelmistojen yhdistävä ikkunanhallinta"
 
 #: ../capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
-msgstr ""
+msgstr "Nykyinen ikkunanhallinta ei ole tuettu"
 
 #. Window
 #: ../capplets/windows/mate-window-properties.c:354
@@ -2502,42 +2528,42 @@ msgstr "Ikkuna-asetukset"
 
 #: ../capplets/windows/mate-window-properties.c:377
 msgid "Behaviour"
-msgstr ""
+msgstr "Käyttäytyminen"
 
 #: ../capplets/windows/mate-window-properties.c:382
 msgid "Placement"
-msgstr ""
+msgstr "Sijoitus"
 
 #: ../capplets/windows/mate-window-properties.c:396
 msgid "Disable _thumbnails in Alt-Tab"
-msgstr ""
+msgstr "Poista käytöstä _pikkukuvat Alt-Tab"
 
 #. Titlebar buttons
 #: ../capplets/windows/mate-window-properties.c:404
 msgid "Titlebar Buttons"
-msgstr ""
+msgstr "Otsikkorivin painikkeet"
 
 #: ../capplets/windows/mate-window-properties.c:408
 msgid "Position:"
-msgstr ""
+msgstr "Sijainti:"
 
 #. New Windows
 #: ../capplets/windows/mate-window-properties.c:415
 msgid "New Windows"
-msgstr ""
+msgstr "Uusi ikkuna:"
 
 #: ../capplets/windows/mate-window-properties.c:419
 msgid "Center _new windows"
-msgstr ""
+msgstr "Keskitä _uudet ikkunat"
 
 #. Window Snapping
 #: ../capplets/windows/mate-window-properties.c:424
 msgid "Window Snapping"
-msgstr ""
+msgstr "Ikkunan katkaisu:"
 
 #: ../capplets/windows/mate-window-properties.c:428
 msgid "Enable window _tiling"
-msgstr ""
+msgstr "Ikkunoiden _asettelu käyttöön"
 
 #. Window Selection
 #: ../capplets/windows/mate-window-properties.c:433
@@ -2550,7 +2576,7 @@ msgstr "V_alitse ikkunat, kun hiiri liikkuu niiden päälle"
 
 #: ../capplets/windows/mate-window-properties.c:446
 msgid "U_nselect windows when the mouse leaves them"
-msgstr ""
+msgstr "P_oista ikkunat, kun hiiri jättää ne"
 
 #: ../capplets/windows/mate-window-properties.c:450
 msgid "_Raise selected windows after an interval"
@@ -2644,7 +2670,7 @@ msgstr "Ikkunointiohjelma ”%s” ei ole ilmoittanut hallintatyökalua\n"
 #: ../shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
-msgstr ""
+msgstr "%s-näppäin on tyhjä\n"
 
 #: ../shell/control-center.c:135
 msgid "Filter"
@@ -2661,7 +2687,7 @@ msgstr "Yleiset tehtävät"
 #: ../shell/control-center.c:143 ../shell/matecc.desktop.in.h:1
 #: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
-msgstr "Hallintakeskus"
+msgstr "Ohjauskeskus"
 
 #: ../shell/control-center.c:162
 msgid "Hide on start (useful to preload the shell)"
@@ -2673,7 +2699,7 @@ msgstr "Maten hallintatyökalu"
 
 #: ../shell/matecc.desktop.in.h:3
 msgid "Configure MATE settings"
-msgstr ""
+msgstr "Määritä MATE-asetukset"
 
 #: ../typing-break/drw-break-window.c:185
 msgid "_Postpone Break"
@@ -2698,7 +2724,7 @@ msgstr "_Pidä tauko"
 #: ../typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
-msgstr ""
+msgstr "Ota nyt tauko (seuraavat %dm)"
 
 #: ../typing-break/drwright.c:539
 #, c-format
@@ -2710,7 +2736,7 @@ msgstr[1] ""
 #: ../typing-break/drwright.c:545
 #, c-format
 msgid "Take a break now (next in less than one minute)"
-msgstr ""
+msgstr "Pidä hetki taukoa (alle yksi minuuttia jäljellä)"
 
 #: ../typing-break/drwright.c:547
 #, c-format
@@ -2842,7 +2868,7 @@ msgstr "TEKSTI"
 
 #: ../font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
-msgstr ""
+msgstr "Pienoiskuvan koko (oletus: 128)"
 
 #: ../font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
