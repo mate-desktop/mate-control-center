@@ -33,8 +33,7 @@ AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
-	-DMATECC_UI_DIR="\"$(uidir)\"" \
-	-DMATECC_KEYBINDINGS_DIR="\"$(pkgdatadir)/keybindings\""
+	-DMATECC_UI_DIR="\"$(uidir)\""
 CLEANFILES = \
 	$(MATECC_CAPPLETS_CLEANFILES) \
 	$(desktop_DATA) \
