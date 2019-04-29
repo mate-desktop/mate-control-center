@@ -1033,39 +1033,57 @@ static void
 reload_key_entries (GtkBuilder *builder)
 {
   gchar **wm_keybindings;
-  GDir *dir;
-  const char *name;
   GList *list, *l;
+  const gchar * const * data_dirs;
+  GHashTable *loaded_files;
+  guint i;
 
   wm_keybindings = wm_common_get_current_keybindings();
 
   clear_old_model (builder);
 
-  dir = g_dir_open (MATECC_KEYBINDINGS_DIR, 0, NULL);
-  if (!dir)
-      return;
-
-  list = NULL;
-  for (name = g_dir_read_name (dir) ; name ; name = g_dir_read_name (dir))
+  loaded_files = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
+  data_dirs = g_get_system_data_dirs ();
+  for (i = 0; data_dirs[i] != NULL; i++)
     {
-      if (g_str_has_suffix (name, ".xml"))
-        {
-      list = g_list_insert_sorted (list, g_strdup (name),
-                       (GCompareFunc) g_ascii_strcasecmp);
-    }
-    }
-  g_dir_close (dir);
+      g_autofree gchar *dir_path = NULL;
+      GDir *dir;
+      const gchar *name;
 
+      dir_path = g_build_filename (data_dirs[i], "mate-control-center", "keybindings", NULL);
+      g_debug ("Keybinding dir: %s", dir_path);
+
+      dir = g_dir_open (dir_path, 0, NULL);
+      if (!dir)
+        continue;
+
+      for (name = g_dir_read_name (dir) ; name ; name = g_dir_read_name (dir))
+        {
+          if (g_str_has_suffix (name, ".xml") == FALSE)
+            continue;
+
+          if (g_hash_table_lookup (loaded_files, name) != NULL)
+            {
+              g_debug ("Not loading %s, it was already loaded from another directory", name);
+              continue;
+            }
+
+          g_hash_table_insert (loaded_files, g_strdup (name), g_strdup (dir_path));
+        }
+
+      g_dir_close (dir);
+    }
+  list = g_hash_table_get_keys (loaded_files);
+  list = g_list_sort(list, (GCompareFunc) g_str_equal);
   for (l = list; l != NULL; l = l->next)
     {
-        gchar *path;
-
-    path = g_build_filename (MATECC_KEYBINDINGS_DIR, l->data, NULL);
-        append_keys_to_tree_from_file (builder, path, wm_keybindings);
-    g_free (l->data);
-    g_free (path);
+      g_autofree gchar *path = NULL;
+      path = g_build_filename (g_hash_table_lookup (loaded_files, l->data), l->data, NULL);
+      g_debug ("Keybinding file: %s", path);
+      append_keys_to_tree_from_file (builder, path, wm_keybindings);
     }
   g_list_free (list);
+  g_hash_table_destroy (loaded_files);
 
   /* Load custom shortcuts _after_ system-provided ones,
    * since some of the custom shortcuts may also be listed
