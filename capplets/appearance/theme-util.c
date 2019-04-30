@@ -23,8 +23,6 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-bindings.h>
 
 #include "capplet-util.h"
 #include "theme-util.h"
@@ -189,71 +187,108 @@ gboolean theme_find_in_model (GtkTreeModel *model, const gchar *name, GtkTreeIte
 
 gboolean packagekit_available (void)
 {
-  DBusGConnection *connection;
-  DBusGProxy *proxy;
+  GDBusConnection *connection;
+  GDBusProxy *proxy;
   gboolean available = FALSE;
+  GError   *error = NULL;
+  GVariant *variant;
 
-  connection = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
+  connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
   if (connection == NULL) {
     return FALSE;
   }
 
-  proxy = dbus_g_proxy_new_for_name (connection,
-                                     DBUS_SERVICE_DBUS,
-                                     DBUS_PATH_DBUS,
-                                     DBUS_INTERFACE_DBUS);
+  proxy = g_dbus_proxy_new_sync (connection,
+                                 G_DBUS_PROXY_FLAGS_NONE,
+                                 NULL,
+                                 "org.freedesktop.DBus",
+                                 "/org/freedesktop/DBus",
+                                 "org.freedesktop.DBus",
+                                 NULL,
+                                 NULL);
+  if (proxy == NULL) {
+    g_object_unref (connection);
+    return FALSE;
+  }
 
-  org_freedesktop_DBus_name_has_owner (proxy,
-                                       "org.freedesktop.PackageKit",
-                                       &available,
-                                       NULL);
+  variant = g_dbus_proxy_call_sync (proxy, "NameHasOwner",
+                                    g_variant_new ("(s)", "org.freedesktop.PackageKit"),
+                                    G_DBUS_CALL_FLAGS_NONE,
+                                    -1,
+                                    NULL,
+                                    &error);
+  if (variant == NULL) {
+    g_warning ("Could not ask org.freedesktop.DBus if PackageKit is available: %s",
+               error->message);
+    g_error_free (error);
+    g_object_unref (proxy);
+    g_object_unref (connection);
+
+    return FALSE;
+  } else {
+    g_variant_get (variant, "(b)", &available);
+    g_variant_unref (variant);
+  }
 
   g_object_unref (proxy);
-  dbus_g_connection_unref (connection);
+  g_object_unref (connection);
 
   return available;
 }
 
 void theme_install_file(GtkWindow* parent, const gchar* path)
 {
-	DBusGConnection* connection;
-	DBusGProxy* proxy;
-	GError* error = NULL;
-	gboolean ret;
+  GDBusConnection *connection;
+  GDBusProxy *proxy;
+  GError* error = NULL;
+  GVariant *variant;
 
-	connection = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+  connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
 
-	if (connection == NULL)
-	{
-		g_warning("Could not get session bus");
-		return;
-	}
+  if (connection == NULL)
+  {
+    g_warning("Could not get session bus: %s", error->message);
+    g_error_free (error);
+    return;
+  }
 
-	proxy = dbus_g_proxy_new_for_name(connection,
-		"org.freedesktop.PackageKit",
-		"/org/freedesktop/PackageKit",
-		"org.freedesktop.PackageKit");
+  proxy = g_dbus_proxy_new_sync (connection,
+                                 G_DBUS_PROXY_FLAGS_NONE,
+                                 NULL,
+                                 "org.freedesktop.PackageKit",
+                                 "/org/freedesktop/PackageKit",
+                                 "org.freedesktop.PackageKit",
+                                 NULL,
+                                 &error);
+  if (proxy == NULL) {
+    g_warning ("Failed to connect to PackageKit: %s\n", error->message);
+    g_error_free (error);
+    g_object_unref (connection);
+    return;
+  }
 
+  variant = g_dbus_proxy_call_sync (proxy, "InstallProvideFile",
+                                    g_variant_new ("(s)", path),
+                                    G_DBUS_CALL_FLAGS_NONE,
+                                    -1,
+                                    NULL,
+                                    &error);
 
-	ret = dbus_g_proxy_call(proxy, "InstallProvideFile", &error,
-		G_TYPE_STRING, path,
-		G_TYPE_INVALID, G_TYPE_INVALID);
+  if (variant == NULL) {
+    GtkWidget* dialog = gtk_message_dialog_new(NULL,
+                                               GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                               GTK_MESSAGE_ERROR,
+                                               GTK_BUTTONS_OK,
+                                               _("Could not install theme engine"));
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (dialog), "%s", error->message);
 
-	g_object_unref(proxy);
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    gtk_widget_destroy(dialog);
+    g_error_free(error);
+  } else {
+    g_variant_unref (variant);
+  }
 
-	if (!ret)
-	{
-		GtkWidget* dialog = gtk_message_dialog_new(NULL,
-			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-			GTK_MESSAGE_ERROR,
-			GTK_BUTTONS_OK,
-			_("Could not install theme engine"));
-		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (dialog), "%s", error->message);
-
-		gtk_dialog_run(GTK_DIALOG(dialog));
-		gtk_widget_destroy(dialog);
-		g_error_free(error);
-	}
-
-	dbus_g_connection_unref(connection);
+  g_object_unref(proxy);
+  g_object_unref (connection);
 }
