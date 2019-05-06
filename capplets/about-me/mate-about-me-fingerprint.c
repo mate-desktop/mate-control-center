@@ -506,6 +506,7 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 	EnrollData *data;
 	GtkWidget *ass;
 	char *msg;
+	GError *error = NULL;
 
 	device = NULL;
 
@@ -547,7 +548,11 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 	g_object_unref (p);
 
 	dialog = gtk_builder_new ();
-	gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-about-me-fingerprint.ui", NULL);
+	if (gtk_builder_add_from_resource (dialog, "/org/mate/mcc/am/mate-about-me-fingerprint.ui", &error) == 0)
+	{
+		g_warning ("Could not parse UI definition: %s", error->message);
+		g_error_free (error);
+	}
 	data->dialog = dialog;
 
 	ass = WID ("assistant");

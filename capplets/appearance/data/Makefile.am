@@ -1,7 +1,4 @@
 
-gtkbuilderdir = $(pkgdatadir)/ui
-dist_gtkbuilder_DATA = appearance.ui
-
 pixmapdir = $(pkgdatadir)/pixmaps
 dist_pixmap_DATA = \
         subpixel-bgr.png \
@@ -25,9 +22,6 @@ desktop_in_files = \
 	mate-theme-installer.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
-
-
-
 @INTLTOOL_XML_RULE@
 
 xml_in_files = \
@@ -35,7 +29,6 @@ xml_in_files = \
 
 mimedir = $(datadir)/mime/packages
 mime_DATA = $(xml_in_files:.xml.in=.xml)
-
 
 install-data-hook:
 if ENABLE_UPDATE_MIMEDB
@@ -47,7 +40,10 @@ if ENABLE_UPDATE_MIMEDB
 	$(UPDATE_MIME_DATABASE) "$(DESTDIR)$(datadir)/mime"
 endif
 
-EXTRA_DIST = $(xml_in_files) $(desktop_in_files)
+EXTRA_DIST = \
+	appearance.ui \
+	$(xml_in_files) \
+	$(desktop_in_files)
 
 CLEANFILES = $(desktop_DATA) $(mime_DATA)
 

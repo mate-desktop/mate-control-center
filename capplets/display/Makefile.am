@@ -1,19 +1,22 @@
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = display
 
-uidir = $(pkgdatadir)/ui
-dist_ui_DATA = display-capplet.ui
+BUILT_SOURCES = \
+	foo-marshal.h \
+	foo-marshal.c \
+	mate-display-properties-resources.h \
+	mate-display-properties-resources.c
 
 bin_PROGRAMS = mate-display-properties
 
 sbin_PROGRAMS = mate-display-properties-install-systemwide
 
+nodist_mate_display_properties_SOURCES = \
+	$(BUILT_SOURCES)
 mate_display_properties_SOURCES =	\
 	xrandr-capplet.c		\
 	scrollarea.c			\
-	foo-marshal.c			\
-	scrollarea.h			\
-	foo-marshal.h
+	scrollarea.h
 
 mate_display_properties_LDFLAGS = -export-dynamic
 mate_display_properties_LDADD = \
@@ -43,13 +46,19 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
              $(MATECC_CAPPLETS_CFLAGS) \
 	     -DSBINDIR="\"$(sbindir)\"" \
-	     -DUIDIR="\"$(uidir)\"" \
 	     -DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
+foo-marshal.c: foo-marshal.list
+	@GLIB_GENMARSHAL@ --prefix=foo_marshal $< --header > $@
+foo-marshal.h: foo-marshal.list
+	@GLIB_GENMARSHAL@ --prefix=foo_marshal $< --body --header > $@
+mate-display-properties-resources.h mate-display-properties-resources.c: org.mate.mcc.display.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.display.gresource.xml)
+	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name display $<
 
-EXTRA_DIST = org.mate.randr.policy.in $(Desktop_in_files)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
+
+EXTRA_DIST = display-capplet.ui foo-marshal.list $(Desktop_in_files) org.mate.mcc.display.gresource.xml org.mate.randr.policy.in
 DISTCLEANFILES = org.mate.randr.policy
 
 -include $(top_srcdir)/git.mk

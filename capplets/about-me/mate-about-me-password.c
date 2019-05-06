@@ -1011,13 +1011,18 @@ passdlg_activate (GtkEntry *entry, GtkWidget *w)
 static void
 passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 {
-	GtkBuilder		*dialog;
-	GtkWidget		*wpassdlg;
+	GtkBuilder	*dialog;
+	GtkWidget	*wpassdlg;
 	GtkAccelGroup	*group;
+	GError 		*error = NULL;
 
 	/* Initialize dialog */
 	dialog = gtk_builder_new ();
-    gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-about-me-password.ui", NULL);
+	if (gtk_builder_add_from_resource (dialog, "/org/mate/mcc/am/mate-about-me-password.ui", &error) == 0)
+	{
+		g_warning ("Could not parse UI definition: %s", error->message);
+		g_error_free (error);
+	}
 	pdialog->ui = dialog;
 
 	wpassdlg = WID ("change-password");
