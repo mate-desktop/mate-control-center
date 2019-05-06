@@ -2396,18 +2396,13 @@ _gtk_builder_get_widget (GtkBuilder *builder, const gchar *name)
 static void
 run_application (App *app)
 {
-#ifndef UIDIR
-#define UIDIR "."
-#endif
-#define UI_FILE UIDIR "/display-capplet.ui"
     GtkBuilder *builder;
     GtkWidget *align;
-    GError *error;
+    GError *error = NULL;
 
-    error = NULL;
     builder = gtk_builder_new ();
 
-    if (gtk_builder_add_from_file (builder, UI_FILE, &error) == 0)
+    if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/display/display-capplet.ui", &error) == 0)
     {
 	g_warning ("Could not parse UI definition: %s", error->message);
 	g_error_free (error);

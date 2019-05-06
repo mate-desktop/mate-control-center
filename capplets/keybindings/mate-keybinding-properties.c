@@ -104,9 +104,8 @@ create_builder (void)
 {
   GtkBuilder *builder = gtk_builder_new();
   GError *error = NULL;
-  static const gchar *uifile = MATECC_UI_DIR "/mate-keybinding-properties.ui";
 
-  if (gtk_builder_add_from_file (builder, uifile, &error) == 0) {
+  if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/keybindings/mate-keybinding-properties.ui", &error) == 0) {
     g_warning ("Could not load UI: %s", error->message);
     g_error_free (error);
     g_object_unref (builder);

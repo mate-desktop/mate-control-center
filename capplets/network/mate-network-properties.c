@@ -80,8 +80,6 @@ enum {
 #define SOCKS_PROXY_HOST_KEY      "host"
 #define SOCKS_PROXY_PORT_KEY      "port"
 
-#define MATECC_GNP_UI_FILE (MATECC_UI_DIR "/mate-network-properties.ui")
-
 static GtkWidget *details_dialog = NULL;
 static GSList *ignore_hosts = NULL;
 static GtkTreeModel *model = NULL;
@@ -276,8 +274,8 @@ cb_http_details_button_clicked (GtkWidget *button,
 	}
 
 	builder = gtk_builder_new ();
-	if (gtk_builder_add_objects_from_file (builder, MATECC_GNP_UI_FILE,
-					       builder_widgets, &error) == 0) {
+	if (gtk_builder_add_objects_from_resource (builder, "/org/mate/mcc/network/mate-network-properties.ui",
+					           builder_widgets, &error) == 0) {
 		g_warning ("Could not load details dialog: %s", error->message);
 		g_error_free (error);
 		g_object_unref (builder);
@@ -468,8 +466,8 @@ main (int argc, char **argv)
 	gtk_init (&argc, &argv);
 
 	builder = gtk_builder_new ();
-	if (gtk_builder_add_objects_from_file (builder, MATECC_GNP_UI_FILE,
-					       builder_widgets, &error) == 0) {
+	if (gtk_builder_add_objects_from_resource (builder, "/org/mate/mcc/network/mate-network-properties.ui",
+					           builder_widgets, &error) == 0) {
 		g_warning ("Could not load main dialog: %s",
 			   error->message);
 		g_error_free (error);

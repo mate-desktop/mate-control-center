@@ -373,9 +373,10 @@ create_dialog (void)
 	GError       *error = NULL;
 
 	dialog = gtk_builder_new ();
-	gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-mouse-properties.ui", &error);
-	if (error != NULL) {
+	if (gtk_builder_add_from_resource (dialog, "/org/mate/mcc/mouse/mate-mouse-properties.ui", &error) == 0) {
 		g_warning ("Error loading UI file: %s", error->message);
+		g_error_free (error);
+		g_object_unref (dialog);
 		return NULL;
 	}
 

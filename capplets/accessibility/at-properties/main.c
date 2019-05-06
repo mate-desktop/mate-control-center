@@ -28,11 +28,10 @@ create_builder (void)
 {
 	GtkBuilder *builder;
 	GError *error = NULL;
-	static const gchar *uifile = UIDIR "/at-enable-dialog.ui";
 
 	builder = gtk_builder_new ();
 
-	if (gtk_builder_add_from_file (builder, uifile, &error)) {
+	if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/accessibility/at/at-enable-dialog.ui", &error)) {
 		GObject *object;
 		gchar *prog;
 

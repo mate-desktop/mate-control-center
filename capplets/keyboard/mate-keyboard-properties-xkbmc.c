@@ -312,12 +312,12 @@ void
 choose_model (GtkBuilder * dialog)
 {
 	GtkBuilder *chooser_dialog;
-    GtkWidget *chooser;
+	GtkWidget *chooser;
 
-    chooser_dialog = gtk_builder_new ();
-    gtk_builder_add_from_file (chooser_dialog, MATECC_UI_DIR
-                               "/mate-keyboard-properties-model-chooser.ui",
-                               NULL);
+	chooser_dialog = gtk_builder_new ();
+	gtk_builder_add_from_resource (chooser_dialog,
+	                               "/org/mate/mcc/keyboard/mate-keyboard-properties-model-chooser.ui",
+	                               NULL);
 	chooser = CWID ("xkb_model_chooser");
 	gtk_window_set_transient_for (GTK_WINDOW (chooser),
 				      GTK_WINDOW (WID

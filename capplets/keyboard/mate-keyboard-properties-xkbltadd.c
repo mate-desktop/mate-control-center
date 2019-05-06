@@ -474,9 +474,9 @@ xkb_layout_choose (GtkBuilder * dialog)
 	GtkBuilder *chooser_dialog;
 
 	chooser_dialog = gtk_builder_new ();
-	gtk_builder_add_from_file (chooser_dialog, MATECC_UI_DIR
-				   "/mate-keyboard-properties-layout-chooser.ui",
-				   NULL);
+	gtk_builder_add_from_resource (chooser_dialog,
+				       "/org/mate/mcc/keyboard/mate-keyboard-properties-layout-chooser.ui",
+				       NULL);
 	GtkWidget *chooser = CWID ("xkb_layout_chooser");
 	GtkWidget *lang_chooser = CWID ("xkb_languages_available");
 	GtkWidget *notebook = CWID ("choosers_nb");

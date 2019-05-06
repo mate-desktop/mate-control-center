@@ -1,5 +1,11 @@
 bin_PROGRAMS = mate-at-properties
 
+ui_files = at-enable-dialog.ui
+
+BUILT_SOURCES = \
+	mate-at-properties-resources.c \
+	mate-at-properties-resources.h
+nodist_mate_at_properties_SOURCES= $(BUILT_SOURCES)
 mate_at_properties_LDADD = $(AT_CAPPLET_LIBS) $(MATECC_CAPPLETS_LIBS) $(top_builddir)/capplets/common/libcommon.la
 mate_at_properties_SOURCES = \
 	main.c
@@ -16,16 +22,20 @@ pixmap_DATA =					\
 	at-startup.png				\
 	at-support.png
 
-uidir = $(pkgdatadir)/ui
-ui_DATA = at-enable-dialog.ui
-
 AM_CPPFLAGS   = $(AT_CAPPLET_CFLAGS)     \
              $(MATECC_CAPPLETS_CFLAGS) \
-	     -DUIDIR=\""$(uidir)"\" \
 	     -DPIXMAPDIR=\""$(pixmapdir)"\" \
 	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	     -DMATELOCALEDIR="\"$(datadir)/locale\""
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
-EXTRA_DIST = $(ui_DATA) $(pixmap_DATA) $(Desktop_in_files)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
+EXTRA_DIST = \
+	$(ui_files) \
+	$(pixmap_DATA) \
+	$(Desktop_in_files) \
+	org.mate.mcc.accessibility.at.gresource.xml
+
+# Generate resources
+mate-at-properties-resources.h mate-at-properties-resources.c: org.mate.mcc.accessibility.at.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.accessibility.at.gresource.xml)
+	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name accessibility $<
 
 -include $(top_srcdir)/git.mk

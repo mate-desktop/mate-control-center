@@ -1,10 +1,14 @@
 SUBDIRS = data
 
+BUILT_SOURCES = mate-appearance-properties-resources.h mate-appearance-properties-resources.c
+
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = appearance
 
 bin_PROGRAMS = mate-appearance-properties
 
+nodist_mate_appearance_properties_SOURCES = \
+	$(BUILT_SOURCES)
 mate_appearance_properties_SOURCES = \
 	appearance.h \
 	appearance-desktop.c \
@@ -43,7 +47,6 @@ mate_appearance_properties_LDADD = \
 	$(MARCO_LIBS)
 mate_appearance_properties_LDFLAGS = -export-dynamic
 
-gtkbuilderdir = $(pkgdatadir)/ui
 pixmapdir = $(pkgdatadir)/pixmaps
 wallpaperdir = $(datadir)/mate-background-properties
 
@@ -53,10 +56,13 @@ AM_CPPFLAGS = \
 	$(FONT_CAPPLET_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
-	-DMATECC_GTKBUILDER_DIR="\"$(gtkbuilderdir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pixmapdir)\"" \
 	-DWALLPAPER_DATADIR="\"$(wallpaperdir)\""
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES)
+mate-appearance-properties-resources.h mate-appearance-properties-resources.c: org.mate.mcc.appearance.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.appearance.gresource.xml)
+	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name appearance $<
+
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(BUILT_SOURCES)
+EXTRA_DIST = org.mate.mcc.appearance.gresource.xml
 
 -include $(top_srcdir)/git.mk

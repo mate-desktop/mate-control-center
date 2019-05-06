@@ -36,7 +36,6 @@ static AppearanceData *
 init_appearance_data (int *argc, char ***argv, GOptionContext *context)
 {
   AppearanceData *data = NULL;
-  gchar *uifile;
   GtkBuilder *ui;
   GError *err = NULL;
 
@@ -45,11 +44,8 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   activate_settings_daemon ();
 
   /* set up the data */
-  uifile = g_build_filename (MATECC_GTKBUILDER_DIR, "appearance.ui",
-                             NULL);
   ui = gtk_builder_new ();
-  gtk_builder_add_from_file (ui, uifile, &err);
-  g_free (uifile);
+  gtk_builder_add_from_resource (ui, "/org/mate/mcc/appearance/data/appearance.ui", &err);
 
   if (err)
     {

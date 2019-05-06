@@ -448,9 +448,9 @@ xkb_options_popup_dialog (GtkBuilder * dialog)
 	GtkWidget *chooser;
 
 	chooser_dialog = gtk_builder_new ();
-    gtk_builder_add_from_file (chooser_dialog, MATECC_UI_DIR
-                               "/mate-keyboard-properties-options-dialog.ui",
-                               NULL);
+	gtk_builder_add_from_resource (chooser_dialog,
+	                               "/org/mate/mcc/keyboard/mate-keyboard-properties-options-dialog.ui",
+	                               NULL);
 
 	chooser = CWID ("xkb_options_dialog");
 	gtk_window_set_transient_for (GTK_WINDOW (chooser),

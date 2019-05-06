@@ -3,24 +3,26 @@ cappletname = network
 
 bin_PROGRAMS = mate-network-properties
 
+BUILT_SOURCES = mate-network-properties-resources.h mate-network-properties-resources.c
+nodist_mate_network_properties_SOURCES = \
+	$(BUILT_SOURCES)
 mate_network_properties_SOURCES = mate-network-properties.c
 mate_network_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 
 @INTLTOOL_DESKTOP_RULE@
 
-uidir = $(pkgdatadir)/ui
-dist_ui_DATA = mate-network-properties.ui
-
 desktopdir = $(datadir)/applications
 desktop_in_files = mate-network-properties.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
+mate-network-properties-resources.h mate-network-properties-resources.c: org.mate.mcc.network.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.network.gresource.xml)
+	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name network $<
+
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
-	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
-	-DMATECC_UI_DIR="\"$(uidir)\""
+	-DMATELOCALEDIR="\"$(datadir)/locale\""
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
-EXTRA_DIST = $(desktop_in_files)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
+EXTRA_DIST = mate-network-properties.ui $(desktop_in_files) org.mate.mcc.network.gresource.xml
 
 -include $(top_srcdir)/git.mk

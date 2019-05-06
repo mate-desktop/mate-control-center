@@ -125,7 +125,7 @@ static void
 about_me_update_photo (MateAboutMe *me)
 {
 	gchar         *file;
-	GError        *error;
+	GError        *error = NULL;
 
 	guchar 	      *data;
 	gsize 	       length;
@@ -428,6 +428,7 @@ about_me_setup_dialog (void)
 	GtkWidget    *main_dialog;
 	GtkIconInfo  *icon;
 	GtkBuilder   *dialog;
+	GError       *error = NULL;
 	gchar        *str;
 #if HAVE_ACCOUNTSSERVICE
 	ActUserManager* manager;
@@ -437,7 +438,11 @@ about_me_setup_dialog (void)
 	me->image = NULL;
 
 	dialog = gtk_builder_new ();
-	gtk_builder_add_from_file (dialog, MATECC_UI_DIR "/mate-about-me-dialog.ui", NULL);
+	if (gtk_builder_add_from_resource (dialog, "/org/mate/mcc/am/mate-about-me-dialog.ui", &error) == 0)
+        {
+                g_warning ("Could not parse UI definition: %s", error->message);
+                g_error_free (error);
+        }
 
 	me->image_chooser = e_image_chooser_new_with_size (MAX_WIDTH, MAX_HEIGHT);
 	gtk_container_add (GTK_CONTAINER (WID ("button-image")), me->image_chooser);

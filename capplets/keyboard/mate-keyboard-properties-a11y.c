@@ -134,10 +134,10 @@ notifications_button_clicked_cb (GtkWidget *button, GtkBuilder *dialog)
 {
 	GtkWidget *w;
 
-    notifications_dialog = gtk_builder_new ();
-    gtk_builder_add_from_file (notifications_dialog, MATECC_UI_DIR
-                               "/mate-keyboard-properties-a11y-notifications.ui",
-                               NULL);
+	notifications_dialog = gtk_builder_new ();
+	gtk_builder_add_from_resource (notifications_dialog,
+	                               "/org/mate/mcc/keyboard/mate-keyboard-properties-a11y-notifications.ui",
+	                               NULL);
 
 	stickykeys_enable_toggled_cb (WID ("stickykeys_enable"), dialog);
 	slowkeys_enable_toggled_cb (WID ("slowkeys_enable"), dialog);
