@@ -372,7 +372,7 @@ mate_theme_install_real (GtkWindow *parent,
 	if (g_file_test (target_dir, G_FILE_TEST_EXISTS)) {
 		gchar *str;
 
-		str = g_strdup_printf (_("The theme \"%s\" is already existed."), theme_name);
+		str = g_strdup_printf (_("The theme \"%s\" already exists."), theme_name);
 		dialog = gtk_message_dialog_new (parent,
 						 GTK_DIALOG_MODAL,
 						 GTK_MESSAGE_INFO,
