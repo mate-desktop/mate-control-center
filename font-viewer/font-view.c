@@ -41,6 +41,7 @@
 #include "sushi-font-widget.h"
 
 #define FONT_VIEW_TYPE_APPLICATION font_view_application_get_type()
+#define FONT_VIEW_ICON_NAME "preferences-desktop-font"
 #define FONT_VIEW_APPLICATION(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST ((obj), FONT_VIEW_TYPE_APPLICATION, FontViewApplication))
 
@@ -737,7 +738,7 @@ action_about (GSimpleAction *action,
                            "authors", authors,
                            "program-name", _("Font Viewer"),
                            "comments", _("View fonts on your system"),
-                           "logo-icon-name", "preferences-desktop-font",
+                           "logo-icon-name", FONT_VIEW_ICON_NAME,
                            "translator-credits", _("translator-credits"),
                            "license-type", GTK_LICENSE_GPL_2_0,
                            "wrap-license", TRUE,
@@ -778,6 +779,7 @@ font_view_application_startup (GApplication *application)
 
     gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
     gtk_window_set_default_size (GTK_WINDOW (window), 800, 600);
+    gtk_window_set_icon_name (GTK_WINDOW (window), FONT_VIEW_ICON_NAME);
     gtk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
     gtk_window_set_title (GTK_WINDOW (window), _("Font Viewer"));
 
