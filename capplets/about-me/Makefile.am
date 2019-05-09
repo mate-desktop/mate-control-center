@@ -37,6 +37,8 @@ mate_about_me_LDFLAGS = -export-dynamic
 desktopdir = $(datadir)/applications
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
+include $(top_srcdir)/gla11y.mk
+
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBEBOOK_CFLAGS) \
@@ -50,11 +52,12 @@ AM_CPPFLAGS += \
 	$(ACCOUNTSSERVICE_CFLAGS)
 endif
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 EXTRA_DIST = \
 	$(ui_files) \
 	fprintd-marshal.list \
 	$(Desktop_in_files) \
-	org.mate.mcc.am.gresource.xml
+	org.mate.mcc.am.gresource.xml \
+	ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk

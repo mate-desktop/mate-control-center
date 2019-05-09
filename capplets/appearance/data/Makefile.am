@@ -1,3 +1,6 @@
+ui_files = appearance.ui
+
+include $(top_srcdir)/gla11y.mk
 
 pixmapdir = $(pkgdatadir)/pixmaps
 dist_pixmap_DATA = \
@@ -41,10 +44,11 @@ if ENABLE_UPDATE_MIMEDB
 endif
 
 EXTRA_DIST = \
-	appearance.ui \
+	$(ui_files) \
 	$(xml_in_files) \
-	$(desktop_in_files)
+	$(desktop_in_files) \
+	ui-a11y.suppr
 
-CLEANFILES = $(desktop_DATA) $(mime_DATA)
+CLEANFILES = $(desktop_DATA) $(mime_DATA) $(GLA11Y_OUTPUT)
 
 -include $(top_srcdir)/git.mk

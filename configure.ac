@@ -12,6 +12,7 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 AC_STDC_HEADERS
 AM_PROG_LIBTOOL
+AC_PATH_PROG([GLA11Y], [gla11y], [true])
 
 # Use the Yelp documentation framework
 YELP_HELP_INIT

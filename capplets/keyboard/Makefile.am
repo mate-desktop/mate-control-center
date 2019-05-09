@@ -1,6 +1,13 @@
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = keyboard
 
+ui_files = mate-keyboard-properties-a11y-notifications.ui \
+           mate-keyboard-properties-dialog.ui \
+           mate-keyboard-properties-layout-chooser.ui \
+           mate-keyboard-properties-model-chooser.ui \
+           mate-keyboard-properties-options-dialog.ui
+
+
 bin_PROGRAMS = mate-keyboard-properties
 
 BUILT_SOURCES = mate-keyboard-properties-resources.h mate-keyboard-properties-resources.c
@@ -22,6 +29,8 @@ mate_keyboard_properties_LDADD = $(MATECC_CAPPLETS_LIBS) $(LIBMATEKBDUI_LIBS)
 
 @INTLTOOL_DESKTOP_RULE@
 
+include $(top_srcdir)/gla11y.mk
+
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-keyboard.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
@@ -36,12 +45,9 @@ AM_CPPFLAGS = \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 EXTRA_DIST = \
-	mate-keyboard-properties-a11y-notifications.ui \
-	mate-keyboard-properties-dialog.ui \
-	mate-keyboard-properties-layout-chooser.ui \
-	mate-keyboard-properties-model-chooser.ui \
-	mate-keyboard-properties-options-dialog.ui \
+	$(ui_files) \
 	$(Desktop_in_files) \
-	org.mate.mcc.keyboard.gresource.xml
+	org.mate.mcc.keyboard.gresource.xml \
+	ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk

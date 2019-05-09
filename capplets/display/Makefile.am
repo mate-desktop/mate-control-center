@@ -7,6 +7,10 @@ BUILT_SOURCES = \
 	mate-display-properties-resources.h \
 	mate-display-properties-resources.c
 
+ui_files = display-capplet.ui
+
+include $(top_srcdir)/gla11y.mk
+
 bin_PROGRAMS = mate-display-properties
 
 sbin_PROGRAMS = mate-display-properties-install-systemwide
@@ -56,9 +60,9 @@ foo-marshal.h: foo-marshal.list
 mate-display-properties-resources.h mate-display-properties-resources.c: org.mate.mcc.display.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.display.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name display $<
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 
-EXTRA_DIST = display-capplet.ui foo-marshal.list $(Desktop_in_files) org.mate.mcc.display.gresource.xml org.mate.randr.policy.in
+EXTRA_DIST = $(ui_files) foo-marshal.list $(Desktop_in_files) org.mate.mcc.display.gresource.xml org.mate.randr.policy.in ui-a11y.suppr
 DISTCLEANFILES = org.mate.randr.policy
 
 -include $(top_srcdir)/git.mk

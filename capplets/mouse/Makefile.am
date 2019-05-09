@@ -1,6 +1,8 @@
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = mouse
 
+ui_files = mate-mouse-properties.ui
+
 bin_PROGRAMS = mate-mouse-properties
 
 mate_mouse_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
@@ -20,6 +22,8 @@ pixmap_DATA = \
 	double-click-off.svg		\
 	double-click-maybe.svg
 
+include $(top_srcdir)/gla11y.mk
+
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-settings-mouse.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
@@ -31,7 +35,7 @@ AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
-EXTRA_DIST = mate-mouse-properties.ui $(pixmap_DATA) $(Desktop_in_files) org.mate.mcc.mouse.gresource.xml
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
+EXTRA_DIST = $(ui_files) $(pixmap_DATA) $(Desktop_in_files) org.mate.mcc.mouse.gresource.xml ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk

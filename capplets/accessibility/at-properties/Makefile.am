@@ -22,17 +22,20 @@ pixmap_DATA =					\
 	at-startup.png				\
 	at-support.png
 
+include $(top_srcdir)/gla11y.mk
+
 AM_CPPFLAGS   = $(AT_CAPPLET_CFLAGS)     \
              $(MATECC_CAPPLETS_CFLAGS) \
 	     -DPIXMAPDIR=\""$(pixmapdir)"\" \
 	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	     -DMATELOCALEDIR="\"$(datadir)/locale\""
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 EXTRA_DIST = \
 	$(ui_files) \
 	$(pixmap_DATA) \
 	$(Desktop_in_files) \
-	org.mate.mcc.accessibility.at.gresource.xml
+	org.mate.mcc.accessibility.at.gresource.xml \
+	ui-a11y.suppr
 
 # Generate resources
 mate-at-properties-resources.h mate-at-properties-resources.c: org.mate.mcc.accessibility.at.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.accessibility.at.gresource.xml)
