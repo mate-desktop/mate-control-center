@@ -1,6 +1,8 @@
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = keybinding
 
+ui_files = mate-keybinding-properties.ui
+
 bin_PROGRAMS = mate-keybinding-properties
 
 mate_keybinding_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
@@ -15,6 +17,8 @@ mate_keybinding_properties_SOURCES = \
 	eggaccelerators.h
 
 @INTLTOOL_DESKTOP_RULE@
+
+include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-keybinding.desktop.in
@@ -40,11 +44,13 @@ CLEANFILES = \
 	$(BUILT_SOURCES) \
 	$(MATECC_CAPPLETS_CLEANFILES) \
 	$(desktop_DATA) \
-	$(xml_DATA)
+	$(xml_DATA) \
+	$(GLA11Y_OUTPUT)
 EXTRA_DIST = $(xml_in_files) \
 	mate-keybindings.pc.in \
-	mate-keybinding-properties.ui \
+	$(ui_files) \
 	$(Desktop_in_files) \
-	org.mate.mcc.keybindings.gresource.xml
+	org.mate.mcc.keybindings.gresource.xml \
+	ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk

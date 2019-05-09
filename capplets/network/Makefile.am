@@ -1,6 +1,8 @@
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = network
 
+ui_files = mate-network-properties.ui
+
 bin_PROGRAMS = mate-network-properties
 
 BUILT_SOURCES = mate-network-properties-resources.h mate-network-properties-resources.c
@@ -10,6 +12,8 @@ mate_network_properties_SOURCES = mate-network-properties.c
 mate_network_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 
 @INTLTOOL_DESKTOP_RULE@
+
+include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
 desktop_in_files = mate-network-properties.desktop.in
@@ -22,7 +26,7 @@ AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATELOCALEDIR="\"$(datadir)/locale\""
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
-EXTRA_DIST = mate-network-properties.ui $(desktop_in_files) org.mate.mcc.network.gresource.xml
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
+EXTRA_DIST = $(ui_files) $(desktop_in_files) org.mate.mcc.network.gresource.xml ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk
