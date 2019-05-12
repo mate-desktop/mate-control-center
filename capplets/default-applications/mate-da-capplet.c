@@ -302,7 +302,8 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 				          ICONAME_COL, &icon_name,
 				          -1);
 
-		pixbuf = gtk_icon_theme_load_icon(theme, icon_name, 22, 0, NULL);
+		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icon_name, 22, GTK_ICON_LOOKUP_FORCE_SIZE);
+		pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
 
 		gtk_list_store_set(GTK_LIST_STORE(model), &iter,
 				PIXBUF_COL, pixbuf,
@@ -351,7 +352,8 @@ theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 	{
 		icon = gtk_builder_get_object(capplet->builder, icons[i].name);
 
-		GdkPixbuf* pixbuf = gtk_icon_theme_load_icon(theme, icons[i].icon, 32, 0, NULL);
+		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icons[i].icon, 32, GTK_ICON_LOOKUP_FORCE_SIZE);
+		GdkPixbuf* pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
 
 		gtk_image_set_from_pixbuf(GTK_IMAGE(icon), pixbuf);
 		
@@ -482,7 +484,7 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	renderer = gtk_cell_renderer_pixbuf_new();
 
 	/* Not all cells have a pixbuf, this prevents the combo box to shrink */
-	gtk_cell_renderer_set_fixed_size(renderer, -1, 22);
+	gtk_cell_renderer_set_fixed_size(renderer, 22, 22);
 	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo_box), renderer, FALSE);
 	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(combo_box), renderer,
 		"pixbuf", PIXBUF_COL,
@@ -513,7 +515,8 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 			icon_name = g_strdup ("binary");
 		}
 		
-		pixbuf = gtk_icon_theme_load_icon(theme, icon_name, 22, 0, NULL);
+		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icon_name, 22, GTK_ICON_LOOKUP_FORCE_SIZE);
+		pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
 
 		gtk_list_store_append(GTK_LIST_STORE(model), &iter);
 		gtk_list_store_set(GTK_LIST_STORE(model), &iter,
