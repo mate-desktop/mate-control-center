@@ -61,8 +61,6 @@ struct _FileTransferDialogPrivate
 	GCancellable *cancellable;
 };
 
-#define FILE_TRANSFER_DIALOG_GET_PRIVATE(object) (G_TYPE_INSTANCE_GET_PRIVATE ((object), file_transfer_dialog_get_type (), FileTransferDialogPrivate))
-
 typedef struct _FileTransferJob
 {
 	FileTransferDialog *dialog;
@@ -85,7 +83,7 @@ typedef struct {
 	GtkDialog *overwrite_dialog;
 } FileTransferData;
 
-G_DEFINE_TYPE (FileTransferDialog, file_transfer_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (FileTransferDialog, file_transfer_dialog, GTK_TYPE_DIALOG)
 
 static void
 file_transfer_dialog_update_num_files (FileTransferDialog *dlg)
@@ -282,8 +280,6 @@ file_transfer_dialog_class_init (FileTransferDialogClass *klass)
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE, 0);
-
-        g_type_class_add_private (klass, sizeof (FileTransferDialogPrivate));
 }
 
 static void
@@ -296,7 +292,7 @@ file_transfer_dialog_init (FileTransferDialog *dlg)
 	GtkWidget *content_area;
 
 	content_area = gtk_dialog_get_content_area (GTK_DIALOG (dlg));
-	dlg->priv = FILE_TRANSFER_DIALOG_GET_PRIVATE (dlg);
+	dlg->priv = file_transfer_dialog_get_instance_private (dlg);
 	dlg->priv->cancellable = g_cancellable_new ();
 
 	gtk_container_set_border_width (GTK_CONTAINER (content_area), 4);
