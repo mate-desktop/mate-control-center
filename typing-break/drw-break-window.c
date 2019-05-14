@@ -55,8 +55,6 @@ struct _DrwBreakWindowPrivate {
 	guint      postpone_sensitize_id;
 };
 
-#define DRW_BREAK_WINDOW_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), DRW_TYPE_BREAK_WINDOW, DrwBreakWindowPrivate))
-
 #define POSTPONE_CANCEL 30
 
 /* Signals */
@@ -81,7 +79,7 @@ static void         label_size_allocate_cb         (GtkLabel            *label,
 						    GdkRectangle        *allocation,
 						    gpointer             user_data);
 
-G_DEFINE_TYPE (DrwBreakWindow, drw_break_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (DrwBreakWindow, drw_break_window, GTK_TYPE_WINDOW)
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
@@ -110,8 +108,6 @@ drw_break_window_class_init (DrwBreakWindowClass *klass)
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE, 0);
-
-	g_type_class_add_private (klass, sizeof (DrwBreakWindowPrivate));
 }
 
 static void
@@ -134,7 +130,7 @@ drw_break_window_init (DrwBreakWindow *window)
 	gint                   scale;
 	GSettings             *settings;
 
-	priv = DRW_BREAK_WINDOW_GET_PRIVATE (window);
+	priv = drw_break_window_get_instance_private (window);
 	window->priv = priv;
 
 	settings = g_settings_new (TYPING_BREAK_SCHEMA);
