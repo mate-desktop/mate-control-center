@@ -32,8 +32,6 @@
 #include "bookmark-agent.h"
 #include "themed-icon.h"
 
-G_DEFINE_TYPE (ApplicationTile, application_tile, NAMEPLATE_TILE_TYPE)
-
 typedef enum {
 	APP_IN_USER_STARTUP_DIR,
 	APP_NOT_IN_STARTUP_DIR,
@@ -83,13 +81,13 @@ typedef struct {
 	gulong               notify_signal_id;
 } ApplicationTilePrivate;
 
-#define APPLICATION_TILE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), APPLICATION_TILE_TYPE, ApplicationTilePrivate))
-
 enum {
 	PROP_0,
 	PROP_APPLICATION_NAME,
 	PROP_APPLICATION_DESCRIPTION
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (ApplicationTile, application_tile, NAMEPLATE_TILE_TYPE)
 
 static void
 application_tile_class_init (ApplicationTileClass *app_tile_class)
@@ -99,8 +97,6 @@ application_tile_class_init (ApplicationTileClass *app_tile_class)
 	g_obj_class->get_property = application_tile_get_property;
 	g_obj_class->set_property = application_tile_set_property;
 	g_obj_class->finalize     = application_tile_finalize;
-
-	g_type_class_add_private (app_tile_class, sizeof (ApplicationTilePrivate));
 
 	g_object_class_install_property (
 		g_obj_class, PROP_APPLICATION_NAME,
@@ -151,7 +147,7 @@ application_tile_new_full (const gchar *desktop_item_id,
 	}
 
 	this = g_object_new (APPLICATION_TILE_TYPE, "tile-uri", uri, NULL);
-	priv = APPLICATION_TILE_GET_PRIVATE (this);
+	priv = application_tile_get_instance_private (this);
 
 	priv->image_size   = image_size;
 	priv->desktop_item = desktop_item;
@@ -165,7 +161,7 @@ application_tile_new_full (const gchar *desktop_item_id,
 static void
 application_tile_init (ApplicationTile *tile)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (tile);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (tile);
 
 	priv->desktop_item    = NULL;
 	priv->image_id        = NULL;
@@ -183,7 +179,7 @@ static void
 application_tile_finalize (GObject *g_object)
 {
 	ApplicationTile *tile = APPLICATION_TILE (g_object);
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (g_object);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (tile);
 
 	if (tile->name) {
 		g_free (tile->name);
@@ -256,7 +252,7 @@ application_tile_set_property (GObject *g_obj, guint prop_id, const GValue *valu
 static void
 application_tile_setup (ApplicationTile *this)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	GtkWidget *image;
 	GtkWidget *header;
@@ -444,20 +440,24 @@ create_subheader (const gchar *desc)
 static void
 start_trigger (Tile *tile, TileEvent *event, TileAction *action)
 {
-	open_desktop_item_exec (APPLICATION_TILE_GET_PRIVATE (tile)->desktop_item);
+	ApplicationTile *this = APPLICATION_TILE (tile);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
+	open_desktop_item_exec (priv->desktop_item);
 }
 
 static void
 help_trigger (Tile *tile, TileEvent *event, TileAction *action)
 {
-	open_desktop_item_help (APPLICATION_TILE_GET_PRIVATE (tile)->desktop_item);
+	ApplicationTile *this = APPLICATION_TILE (tile);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
+	open_desktop_item_help (priv->desktop_item);
 }
 
 static void
 user_apps_trigger (Tile *tile, TileEvent *event, TileAction *action)
 {
 	ApplicationTile *this = APPLICATION_TILE (tile);
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	if (priv->is_bookmarked)
 		remove_from_user_list (this);
@@ -470,7 +470,7 @@ user_apps_trigger (Tile *tile, TileEvent *event, TileAction *action)
 static void
 add_to_user_list (ApplicationTile *this)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	BookmarkItem *item;
 
@@ -488,7 +488,7 @@ add_to_user_list (ApplicationTile *this)
 static void
 remove_from_user_list (ApplicationTile *this)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	bookmark_agent_remove_item (priv->agent, TILE (this)->uri);
 
@@ -499,7 +499,7 @@ static void
 startup_trigger (Tile *tile, TileEvent *event, TileAction *action)
 {
 	ApplicationTile *this = APPLICATION_TILE (tile);
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	switch (priv->startup_status) {
 		case APP_IN_USER_STARTUP_DIR:
@@ -520,7 +520,7 @@ startup_trigger (Tile *tile, TileEvent *event, TileAction *action)
 static void
 add_to_startup_list (ApplicationTile *this)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	gchar *desktop_item_filename;
 	gchar *desktop_item_basename;
@@ -562,7 +562,7 @@ add_to_startup_list (ApplicationTile *this)
 static void
 remove_from_startup_list (ApplicationTile *this)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	gchar *ditem_filename;
 	gchar *ditem_basename;
@@ -594,13 +594,16 @@ remove_from_startup_list (ApplicationTile *this)
 MateDesktopItem *
 application_tile_get_desktop_item (ApplicationTile *tile)
 {
-	return APPLICATION_TILE_GET_PRIVATE (tile)->desktop_item;
+        ApplicationTilePrivate *priv;
+
+        priv = application_tile_get_instance_private (tile);
+	return priv->desktop_item;
 }
 
 static void
 update_user_list_menu_item (ApplicationTile *this)
 {
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	TileAction *action;
 	GtkWidget  *item;
@@ -717,7 +720,7 @@ static void
 update_startup_menu_item (ApplicationTile *this)
 {
 	TileAction *action = TILE (this)->actions [APPLICATION_TILE_ACTION_UPDATE_STARTUP];
-	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
+	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	if (!action)
 		return;
