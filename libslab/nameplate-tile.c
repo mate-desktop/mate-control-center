@@ -37,8 +37,6 @@ typedef struct
 	GtkContainer *subheader_ctnr;
 } NameplateTilePrivate;
 
-#define NAMEPLATE_TILE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NAMEPLATE_TILE_TYPE, NameplateTilePrivate))
-
 enum
 {
 	PROP_0,
@@ -47,7 +45,7 @@ enum
 	PROP_NAMEPLATE_SUBHEADER,
 };
 
-G_DEFINE_TYPE (NameplateTile, nameplate_tile, TILE_TYPE)
+G_DEFINE_TYPE_WITH_PRIVATE (NameplateTile, nameplate_tile, TILE_TYPE)
 
 GtkWidget *nameplate_tile_new (const gchar * uri, GtkWidget * image, GtkWidget * header,
 	GtkWidget * subheader)
@@ -72,8 +70,6 @@ nameplate_tile_class_init (NameplateTileClass * this_class)
 	g_obj_class->set_property = nameplate_tile_set_property;
 
 	widget_class->drag_begin = nameplate_tile_drag_begin;
-
-	g_type_class_add_private (this_class, sizeof (NameplateTilePrivate));
 
 	g_object_class_install_property (g_obj_class, PROP_NAMEPLATE_IMAGE,
 		g_param_spec_object ("nameplate-image", "nameplate-image", "nameplate image",
@@ -133,7 +129,7 @@ nameplate_tile_set_property (GObject * g_object, guint prop_id, const GValue * v
 	GParamSpec * param_spec)
 {
 	NameplateTile *this = NAMEPLATE_TILE (g_object);
-	NameplateTilePrivate *priv = NAMEPLATE_TILE_GET_PRIVATE (this);
+	NameplateTilePrivate *priv = nameplate_tile_get_instance_private (this);
 
 	GObject *widget_obj = NULL;
 
@@ -208,7 +204,7 @@ nameplate_tile_set_property (GObject * g_object, guint prop_id, const GValue * v
 static void
 nameplate_tile_setup (NameplateTile *this)
 {
-	NameplateTilePrivate *priv = NAMEPLATE_TILE_GET_PRIVATE (this);
+	NameplateTilePrivate *priv = nameplate_tile_get_instance_private (this);
 
 	GtkWidget *hbox;
 	GtkWidget *vbox;

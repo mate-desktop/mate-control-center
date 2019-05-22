@@ -25,14 +25,14 @@
 
 #include "double-click-detector.h"
 
-G_DEFINE_TYPE (Tile, tile, GTK_TYPE_BUTTON)
-
 typedef struct
 {
 	DoubleClickDetector *double_click_detector;
-	
+
 	gboolean is_dragging;
 } TilePrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (Tile, tile, GTK_TYPE_BUTTON)
 
 static void tile_finalize (GObject *);
 static void tile_dispose (GObject *);
@@ -62,8 +62,6 @@ static void tile_action_triggered_event_marshal (GClosure *, GValue *, guint, co
 gpointer, gpointer);
 
 typedef void (*marshal_func_VOID__POINTER_POINTER) (gpointer, gpointer, gpointer, gpointer);
-
-#define TILE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), TILE_TYPE, TilePrivate))
 
 enum
 {
@@ -111,8 +109,6 @@ tile_class_init (TileClass * this_class)
 	this_class->tile_activated = NULL;
 	this_class->tile_action_triggered = tile_tile_action_triggered;
 
-	g_type_class_add_private (this_class, sizeof (TilePrivate));
-
 	g_object_class_install_property (g_obj_class, PROP_TILE_URI,
 		g_param_spec_string ("tile-uri", "tile-uri", "the uri of the tile", NULL,
 			G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
@@ -142,7 +138,7 @@ tile_constructor (GType type, guint n_param, GObjectConstructParam * param)
 
 	g_obj = (*G_OBJECT_CLASS (tile_parent_class)->constructor) (type, n_param, param);
 
-	priv = TILE_GET_PRIVATE (g_obj);
+	priv = tile_get_instance_private (TILE(g_obj));
 	priv->double_click_detector = double_click_detector_new ();
 
 	tile_setup (TILE (g_obj));
@@ -153,7 +149,7 @@ tile_constructor (GType type, guint n_param, GObjectConstructParam * param)
 static void
 tile_init (Tile * tile)
 {
-	TilePrivate *priv = TILE_GET_PRIVATE (tile);
+	TilePrivate *priv = tile_get_instance_private (tile);
 
 	tile->uri = NULL;
 	tile->context_menu = NULL;
@@ -173,7 +169,7 @@ static void
 tile_finalize (GObject * g_object)
 {
 	Tile *tile = TILE (g_object);
-	TilePrivate *priv = TILE_GET_PRIVATE (g_object);
+	TilePrivate *priv = tile_get_instance_private (TILE(tile));
 
 	if (tile->n_actions)	/* this will also free "default_action" entry */
 	{
@@ -364,7 +360,7 @@ static gboolean
 tile_button_release (GtkWidget * widget, GdkEventButton * event)
 {
 	Tile *tile = TILE (widget);
-	TilePrivate *priv = TILE_GET_PRIVATE (tile);
+	TilePrivate *priv = tile_get_instance_private (tile);
 
 	TileEvent *tile_event;
 
@@ -453,7 +449,10 @@ tile_popup_menu (GtkWidget * widget)
 static void
 tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 {
-	TILE_GET_PRIVATE (widget)->is_dragging = TRUE;
+	TilePrivate *priv;
+
+	priv = tile_get_instance_private (TILE(widget));
+        priv->is_dragging = TRUE;
 }
 
 static void

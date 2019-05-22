@@ -37,8 +37,6 @@ typedef struct
 	gboolean block_signal;
 } NldSearchBarPrivate;
 
-#define NLD_SEARCH_BAR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NLD_TYPE_SEARCH_BAR, NldSearchBarPrivate))
-
 static void nld_search_bar_class_init (NldSearchBarClass *);
 static void nld_search_bar_init (NldSearchBar *);
 static void nld_search_bar_finalize (GObject *);
@@ -54,7 +52,7 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (NldSearchBar, nld_search_bar, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (NldSearchBar, nld_search_bar, GTK_TYPE_BOX)
 
 static void emit_search (NldSearchBar * search_bar);
 static void emit_search_callback (GtkWidget * widget, gpointer search_bar);
@@ -68,8 +66,6 @@ static void nld_search_bar_class_init (NldSearchBarClass * nld_search_bar_class)
 	widget_class->focus = nld_search_bar_focus;
 	widget_class->grab_focus = nld_search_bar_grab_focus;
 
-	g_type_class_add_private (nld_search_bar_class, sizeof (NldSearchBarPrivate));
-
 	signals[SEARCH] =
 		g_signal_new ("search", G_TYPE_FROM_CLASS (nld_search_bar_class),
 		G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION, G_STRUCT_OFFSET (NldSearchBarClass, search),
@@ -79,7 +75,7 @@ static void nld_search_bar_class_init (NldSearchBarClass * nld_search_bar_class)
 static void
 nld_search_bar_init (NldSearchBar * search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 	GtkWidget *entry;
 
 	gtk_widget_set_can_focus (GTK_WIDGET (search_bar), TRUE);
@@ -103,7 +99,7 @@ nld_search_bar_init (NldSearchBar * search_bar)
 static void
 nld_search_bar_finalize (GObject * object)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (object);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (NLD_SEARCH_BAR(object));
 
 	if (priv->timeout_id)
 		g_source_remove (priv->timeout_id);
@@ -114,7 +110,7 @@ nld_search_bar_finalize (GObject * object)
 static gboolean
 nld_search_bar_focus (GtkWidget * widget, GtkDirectionType dir)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (widget);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (NLD_SEARCH_BAR(widget));
 
 	return gtk_widget_child_focus (priv->hbox, dir);
 }
@@ -122,7 +118,7 @@ nld_search_bar_focus (GtkWidget * widget, GtkDirectionType dir)
 gboolean
 nld_search_bar_has_focus (NldSearchBar * search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	return gtk_widget_has_focus (GTK_WIDGET (priv->entry));
 }
@@ -130,7 +126,7 @@ nld_search_bar_has_focus (NldSearchBar * search_bar)
 static void
 nld_search_bar_grab_focus (GtkWidget * widget)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (widget);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (NLD_SEARCH_BAR(widget));
 
 	gtk_widget_grab_focus (GTK_WIDGET (priv->entry));
 }
@@ -144,7 +140,7 @@ nld_search_bar_new (void)
 void
 nld_search_bar_clear (NldSearchBar * search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	priv->block_signal = TRUE;
 	gtk_entry_set_text (priv->entry, "");
@@ -154,7 +150,7 @@ nld_search_bar_clear (NldSearchBar * search_bar)
 static void
 emit_search (NldSearchBar * search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	if (priv->block_signal)
 		return;
@@ -178,7 +174,7 @@ emit_search_callback (GtkWidget * widget, gpointer search_bar)
 static gboolean
 search_timeout (gpointer search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	priv->timeout_id = 0;
 	emit_search (search_bar);
@@ -188,7 +184,7 @@ search_timeout (gpointer search_bar)
 static void
 entry_changed (GtkWidget * entry, gpointer search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	if (priv->search_timeout == 0)
 		emit_search (search_bar);
@@ -204,7 +200,7 @@ entry_changed (GtkWidget * entry, gpointer search_bar)
 int
 nld_search_bar_get_search_timeout (NldSearchBar * search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	return priv->search_timeout;
 }
@@ -212,7 +208,7 @@ nld_search_bar_get_search_timeout (NldSearchBar * search_bar)
 void
 nld_search_bar_set_search_timeout (NldSearchBar * search_bar, int search_timeout)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	if (priv->search_timeout != -1 && search_timeout == -1)
 		g_signal_handlers_disconnect_by_func (priv->entry, entry_changed, search_bar);
@@ -227,7 +223,7 @@ nld_search_bar_set_search_timeout (NldSearchBar * search_bar, int search_timeout
 const char *
 nld_search_bar_get_text (NldSearchBar * search_bar)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	return gtk_entry_get_text (priv->entry);
 }
@@ -235,7 +231,7 @@ nld_search_bar_get_text (NldSearchBar * search_bar)
 void
 nld_search_bar_set_text (NldSearchBar * search_bar, const char *text, gboolean activate)
 {
-	NldSearchBarPrivate *priv = NLD_SEARCH_BAR_GET_PRIVATE (search_bar);
+	NldSearchBarPrivate *priv = nld_search_bar_get_instance_private (search_bar);
 
 	gtk_entry_set_text (priv->entry, text);
 	if (activate)

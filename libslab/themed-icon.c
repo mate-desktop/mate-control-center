@@ -43,9 +43,7 @@ typedef struct
 	gboolean icon_loaded;
 } ThemedIconPrivate;
 
-#define THEMED_ICON_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), THEMED_ICON_TYPE, ThemedIconPrivate))
-
-G_DEFINE_TYPE (ThemedIcon, themed_icon, GTK_TYPE_IMAGE)
+G_DEFINE_TYPE_WITH_PRIVATE (ThemedIcon, themed_icon, GTK_TYPE_IMAGE)
 
 static void themed_icon_class_init (ThemedIconClass * themed_icon_class)
 {
@@ -58,8 +56,6 @@ static void themed_icon_class_init (ThemedIconClass * themed_icon_class)
 
 	widget_class->show = themed_icon_show;
 	widget_class->style_updated = themed_icon_style_updated;
-
-	g_type_class_add_private (themed_icon_class, sizeof (ThemedIconPrivate));
 
 	g_object_class_install_property (g_obj_class, PROP_ICON_ID, g_param_spec_string ("icon-id",
 			"icon-id", "the identifier of the icon", NULL,
@@ -74,7 +70,7 @@ static void themed_icon_class_init (ThemedIconClass * themed_icon_class)
 static void
 themed_icon_init (ThemedIcon * icon)
 {
-	ThemedIconPrivate *priv = THEMED_ICON_GET_PRIVATE (icon);
+	ThemedIconPrivate *priv = themed_icon_get_instance_private (icon);
 
 	priv->icon_loaded = FALSE;
 }
@@ -148,7 +144,7 @@ static void
 themed_icon_show (GtkWidget * widget)
 {
 	ThemedIcon *icon = THEMED_ICON (widget);
-	ThemedIconPrivate *priv = THEMED_ICON_GET_PRIVATE (icon);
+	ThemedIconPrivate *priv = themed_icon_get_instance_private (icon);
 
 	if (!priv->icon_loaded)
 		priv->icon_loaded = load_image_by_id (GTK_IMAGE (icon), icon->size, icon->id);
