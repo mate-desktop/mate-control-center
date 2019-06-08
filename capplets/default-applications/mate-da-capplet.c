@@ -331,7 +331,7 @@ static struct {
 	{"mobility_image",     "preferences-desktop-accessibility"},
 	{"messenger_image",    "user-idle"},
 	{"filemanager_image",  "file-manager"},
-	{"imageviewer_image",  "eom"},
+	{"imageviewer_image",  "image-x-generic"},
 	{"video_image",        "video-x-generic"},
 	{"text_image",         "text-editor"},
 	{"terminal_image",     "terminal"},
