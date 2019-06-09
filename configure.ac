@@ -305,6 +305,8 @@ capplets/keybindings/Makefile
 capplets/keybindings/mate-keybindings.pc
 capplets/keyboard/Makefile
 capplets/mouse/Makefile
+capplets/desktop-icons/Makefile
+capplets/desktop-icons/mate-desktop-icons.pc
 capplets/network/Makefile
 capplets/windows/Makefile
 font-viewer/Makefile
