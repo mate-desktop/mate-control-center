@@ -185,12 +185,6 @@ void SetTimeZone(GDBusProxy *proxy,const char *zone)
     {
         MessageReport(_("Set time zone"),error->message,ERROR);
     }    
-    else
-    {
-        
-    }
-
-
 }    
 static void ChangeSpinBttonState(TimeAdmin *ta,gboolean State)
 {
@@ -230,6 +224,7 @@ void ReloadNtp(GDBusProxy *proxy,gboolean state)
     if(ret1 == NULL || ret2 == NULL)
     {
         MessageReport(_("Reload Ntp sync"),error->message,ERROR);
+        g_error_free(error);
     }    
 
 }    
@@ -250,6 +245,7 @@ gboolean ChangeNtpSync(GtkSwitch *widget,gboolean state,gpointer data)
     if(ret == NULL)
     {
         MessageReport(_("Set Ntp sync"),error->message,ERROR);
+        g_error_free(error);
         return TRUE;
     }    
     else
@@ -293,12 +289,8 @@ static void SetTime(GDBusProxy *proxy,gint64 TimeSec)
     if(ret == NULL)
     {
         MessageReport(_("Set Ntp sync"),error->message,ERROR);
+        g_error_free(error);
     }    
-    else
-    {
-        
-    }
-
 }    
 void SaveModifyTime (GtkButton *button,gpointer data)
 {

@@ -381,7 +381,7 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
     if(ta->Connection == NULL)
     {
         MessageReport(_("g_bus_get_sync"),error->message,ERROR);
-        return FALSE;
+        goto EXIT;
     } 
     ta->proxy = g_dbus_proxy_new_sync (ta->Connection,
                                        G_DBUS_PROXY_FLAGS_NONE,
@@ -394,16 +394,19 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
     if(ta->proxy == NULL)
     {
         MessageReport(_("g_bus_proxy_new"),error->message,ERROR);
-        return FALSE;
+        goto EXIT;
     }    
 
     return TRUE;
+EXIT:
+    g_error_free(error);
+    return FALSE;
 }    
 int main(int argc, char **argv)
 {
     TimeAdmin ta;
 
-    bindtextdomain (PACKAGE, LOCALEDIR);   
+    bindtextdomain (PACKAGE,MATELOCALEDIR);   
     textdomain (PACKAGE); 
     bind_textdomain_codeset (GETTEXT_PACKAGE_TIMEZONES, "UTF-8"); 
     
