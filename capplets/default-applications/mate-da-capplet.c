@@ -49,6 +49,7 @@ enum {
 	DA_TYPE_WORD,
 	DA_TYPE_SPREADSHEET,
 	DA_TYPE_CALCULATOR,
+	DA_TYPE_MESSENGER,
 	DA_N_COLUMNS
 };
 
@@ -160,6 +161,9 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				g_settings_set_string (capplet->calculator_settings, CALCULATOR_KEY, g_app_info_get_executable (item));
 				break;
 
+			case DA_TYPE_MESSENGER:
+				g_settings_set_string (capplet->messenger_settings, MESSENGER_KEY, g_app_info_get_executable (item));
+
 			default:
 				break;
 		}
@@ -189,6 +193,7 @@ close_cb(GtkWidget* window, gint response, MateDACapplet* capplet)
 		set_changed(GTK_COMBO_BOX(capplet->word_combo_box), capplet, capplet->word_editors, DA_TYPE_WORD);
 		set_changed(GTK_COMBO_BOX(capplet->spreadsheet_combo_box), capplet, capplet->spreadsheet_editors, DA_TYPE_SPREADSHEET);
 		set_changed(GTK_COMBO_BOX(capplet->calculator_combo_box), capplet, capplet->calculators, DA_TYPE_CALCULATOR);
+		set_changed(GTK_COMBO_BOX(capplet->messenger_combo_box), capplet, capplet->messengers, DA_TYPE_MESSENGER);
 
 		gtk_widget_destroy(window);
 		gtk_main_quit();
@@ -278,6 +283,12 @@ static void
 calculator_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
 {
 	set_changed(combo, capplet, capplet->calculators, DA_TYPE_CALCULATOR);
+}
+
+static void
+messenger_combo_changed_cb(GtkComboBox* combo, MateDACapplet* capplet)
+{
+        set_changed(combo, capplet, capplet->messengers, DA_TYPE_MESSENGER);
 }
 
 static void
@@ -376,6 +387,7 @@ theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->word_combo_box), capplet->word_editors);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->spreadsheet_combo_box), capplet->spreadsheet_editors);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->calculator_combo_box), capplet->calculators);
+        refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->messenger_combo_box), capplet->messengers);
 }
 
 static void
@@ -467,6 +479,21 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		}
 		g_free (default_calculator);
 		g_object_unref (calculator_settings);
+	}
+	else if (g_strcmp0(mime, "messenger") == 0)
+	{
+		GSettings *messenger_settings = g_settings_new (MESSENGER_SCHEMA);
+		gchar *default_messenger = g_settings_get_string (messenger_settings, MESSENGER_KEY);
+		for (entry = app_list; entry != NULL; entry = g_list_next(entry))
+		{
+			GAppInfo* item = (GAppInfo*) entry->data;
+			if (g_strcmp0 (g_app_info_get_executable (item), default_messenger) == 0)
+			{
+				default_app = item;
+			}
+		}
+		g_free (default_messenger);
+		g_object_unref (messenger_settings);
 	}
 	else
 	{
@@ -598,6 +625,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->word_combo_box = get_widget("word_combobox");
 	capplet->spreadsheet_combo_box = get_widget("spreadsheet_combobox");
 	capplet->calculator_combo_box = get_widget("calculator_combobox");
+        capplet->messenger_combo_box = get_widget("messenger_combobox");
 
 	capplet->visual_startup_checkbutton = get_widget("visual_start_checkbutton");
 	capplet->mobility_startup_checkbutton = get_widget("mobility_start_checkbutton");
@@ -659,6 +687,21 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	}
 	capplet->calculators = g_list_reverse (capplet->calculators);
 
+	/* Messenger havent mime types, so check in .desktop files for
+	   Categories=InstantMessaging */
+	capplet->messengers = NULL;
+	all_apps = g_app_info_get_all();
+	for (entry = all_apps; entry != NULL; entry = g_list_next(entry))
+	{
+		GDesktopAppInfo* item = (GDesktopAppInfo*) entry->data;
+		if (g_desktop_app_info_get_categories (item) != NULL &&
+			g_strrstr (g_desktop_app_info_get_categories (item), "InstantMessaging"))
+		{
+			capplet->messengers = g_list_prepend (capplet->messengers, item);
+		}
+	}
+	capplet->messengers = g_list_reverse (capplet->messengers);
+
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers, "x-scheme-handler/http");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers, "x-scheme-handler/mailto");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->term_combo_box), capplet->terminals, "terminal");
@@ -673,6 +716,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->word_combo_box), capplet->word_editors, "application/vnd.oasis.opendocument.text");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->spreadsheet_combo_box), capplet->spreadsheet_editors, "application/vnd.oasis.opendocument.spreadsheet");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->calculator_combo_box), capplet->calculators, "calculator");
+        fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->messenger_combo_box), capplet->messengers, "messenger");
 
 	g_signal_connect(capplet->web_combo_box, "changed", G_CALLBACK(web_combo_changed_cb), capplet);
 	g_signal_connect(capplet->mail_combo_box, "changed", G_CALLBACK(mail_combo_changed_cb), capplet);
@@ -688,6 +732,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	g_signal_connect(capplet->word_combo_box, "changed", G_CALLBACK(word_combo_changed_cb), capplet);
 	g_signal_connect(capplet->spreadsheet_combo_box, "changed", G_CALLBACK(spreadsheet_combo_changed_cb), capplet);
 	g_signal_connect(capplet->calculator_combo_box, "changed", G_CALLBACK(calculator_combo_changed_cb), capplet);
+        g_signal_connect(capplet->messenger_combo_box, "changed", G_CALLBACK(messenger_combo_changed_cb), capplet);
 
 	g_settings_bind (capplet->mobility_settings, MOBILITY_STARTUP_KEY, capplet->mobility_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
 	g_settings_bind (capplet->visual_settings, VISUAL_STARTUP_KEY, capplet->visual_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
@@ -755,6 +800,7 @@ main(int argc, char** argv)
 	capplet->mobility_settings = g_settings_new (MOBILITY_SCHEMA);
 	capplet->visual_settings = g_settings_new (VISUAL_SCHEMA);
 	capplet->calculator_settings = g_settings_new (CALCULATOR_SCHEMA);
+	capplet->messenger_settings = g_settings_new (MESSENGER_SCHEMA);
 
 	show_dialog(capplet, start_page);
 	g_free(start_page);
@@ -765,6 +811,7 @@ main(int argc, char** argv)
 	g_object_unref (capplet->mobility_settings);
 	g_object_unref (capplet->visual_settings);
 	g_object_unref (capplet->calculator_settings);
+	g_object_unref (capplet->messenger_settings);
 
 	return 0;
 }

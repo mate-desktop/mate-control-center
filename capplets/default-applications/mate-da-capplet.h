@@ -38,6 +38,9 @@
 #define CALCULATOR_SCHEMA     "org.mate.applications-calculator"
 #define CALCULATOR_KEY        "exec"
 
+#define MESSENGER_SCHEMA     "org.mate.applications-messenger"
+#define MESSENGER_KEY        "exec"
+
 typedef struct _MateDACapplet {
 	GtkBuilder* builder;
 
@@ -59,6 +62,7 @@ typedef struct _MateDACapplet {
 	GtkWidget* word_combo_box;
 	GtkWidget* spreadsheet_combo_box;
 	GtkWidget* calculator_combo_box;
+        GtkWidget* messenger_combo_box;
 
 	/* Visual Accessibility */
 	GtkWidget* visual_startup_checkbutton;
@@ -81,12 +85,14 @@ typedef struct _MateDACapplet {
 	GList* word_editors;
 	GList* spreadsheet_editors;
 	GList* calculators;
+        GList* messengers;
 
 	/* Settings objects */
 	GSettings* terminal_settings;
 	GSettings* visual_settings;
 	GSettings* mobility_settings;
 	GSettings* calculator_settings;
+	GSettings* messenger_settings;
 } MateDACapplet;
 
 #endif
