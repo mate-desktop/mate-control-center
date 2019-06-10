@@ -8,8 +8,9 @@ SUBDIRS = \
 	keybindings \
 	mouse \
 	network \
+	time-admin \
 	windows \
-        about-me
+	about-me
 
 DIST_SUBDIRS = \
 	common \
@@ -20,6 +21,7 @@ DIST_SUBDIRS = \
 	keyboard \
 	mouse \
 	network \
+	time-admin \
 	windows \
 	display \
 	about-me
