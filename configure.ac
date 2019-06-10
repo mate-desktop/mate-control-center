@@ -306,6 +306,10 @@ capplets/keybindings/mate-keybindings.pc
 capplets/keyboard/Makefile
 capplets/mouse/Makefile
 capplets/network/Makefile
+capplets/time-admin/Makefile
+capplets/time-admin/src/Makefile
+capplets/time-admin/data/Makefile
+capplets/time-admin/po-timezones/Makefile
 capplets/windows/Makefile
 font-viewer/Makefile
 help/Makefile
