@@ -33,7 +33,6 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-#define LOCALEDIR  "/usr/share/locale/" 
 #define _(STRING)  gettext(STRING)
 #define C_(a,b)  gettext(b)
 #define TYPEMSG    "<span foreground='red'font_desc='13'>%s </span>"
