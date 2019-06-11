@@ -21,7 +21,8 @@
 
 #define  LOCKFILE               "/tmp/time-admin.pid"
 #define  TIME_ADMIN_PERMISSION  "org.mate.user.admin.administration"
-#define  ICONFILE               "/usr/share/mate-time-admin/icon/mate-times-admin.png"
+#define  APPICON                 "mate-times-admin.png"
+#define  ICONFILE               DATADIR APPICON
 
 static gboolean CheckClockHealth(gpointer data)
 {
