@@ -292,6 +292,7 @@ update_timezone (TimezoneMap *map)
                                  city_country,
                                  time_label);
     timezone_map_set_bubble_text (TIMEZONEMAP (map), bubble_text);
+    g_date_time_unref(date);
 }
 
 static void LocationChanged(TimezoneMap  *map,
