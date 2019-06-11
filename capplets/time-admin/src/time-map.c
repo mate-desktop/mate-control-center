@@ -535,15 +535,6 @@ timezone_map_class_init (TimezoneMapClass *klass)
                                                g_cclosure_marshal_VOID__POINTER,
                                                G_TYPE_NONE, 1,
                                                G_TYPE_POINTER);
-/*
-    signals[LOCATION_CHANGED] = g_signal_new ("location-changed",
-                                               G_TYPE_FROM_CLASS (klass),
-                                               G_SIGNAL_RUN_LAST,
-                                               0,
-                                               NULL,NULL,
-                                               g_cclosure_marshal_VOID__VOID,
-                                               G_TYPE_NONE, 0);
-*/
 }
 
 static void
