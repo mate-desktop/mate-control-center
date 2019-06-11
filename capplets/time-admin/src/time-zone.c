@@ -220,13 +220,6 @@ static GtkWidget *GetTimeZoneMap(TimeAdmin *ta)
     g_autoptr(GtkEntryCompletion) completion = NULL;
 
     map = (GtkWidget *) timezone_map_new ();
-    /*
-    g_signal_connect_object (map,
-                            "location-changed",
-                             G_CALLBACK (LocationChanged),
-                             map, 
-                             G_CONNECT_SWAPPED);
-    */
     g_signal_connect (map,
                      "location-changed",
                       G_CALLBACK (LocationChanged),
@@ -269,6 +262,8 @@ static void
 update_timezone (TimezoneMap *map)
 {
     g_autofree gchar *bubble_text = NULL;
+    g_autoptr(GDateTime) current_date = NULL;
+    g_autoptr(GTimeZone) timezone = NULL;
     g_autofree gchar *city_country = NULL;
     g_autofree gchar *utc_label = NULL;
     g_autofree gchar *time_label = NULL;
@@ -276,10 +271,13 @@ update_timezone (TimezoneMap *map)
     TzLocation       *current_location;
     GDateTime        *date;
 
-    date = g_date_time_new_now_local ();
     current_location = timezone_map_get_location (TIMEZONEMAP (map));
     city_country = translated_city_name (current_location);
     
+    timezone = g_time_zone_new (current_location->zone);
+    current_date = g_date_time_new_now_local ();
+    date = g_date_time_to_timezone (current_date, timezone);
+
     utc_label = g_date_time_format (date, _("UTC%:::z"));
 
     tz_desc = g_strdup_printf ( "%s (%s)",

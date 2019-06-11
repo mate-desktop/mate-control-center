@@ -156,7 +156,7 @@ static int RecordPid(void)
 ******************************************************************************/
 static gboolean ProcessRuning(void)
 {
-    int fd = 0;
+    int fd;
     int pid = 0;
     gboolean Run = FALSE;
     char ReadBuf[30] = { 0 };

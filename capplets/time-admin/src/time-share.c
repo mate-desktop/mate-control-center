@@ -145,7 +145,7 @@ void SetTooltip(GtkWidget*box,gboolean mode)
     if(!mode)
     {
         gtk_widget_set_tooltip_markup(box,
-                                     _("Network time synchronization has been set up.prohibit Modification Time"));
+                                     _("Network time synchronization has been set up. Manual time/date setting is disabled."));
     }
     else
     {
