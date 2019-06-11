@@ -333,13 +333,13 @@ cc_timezone_map_draw (GtkWidget *widget,
     /* paint hilight */
     if (gtk_widget_is_sensitive (widget))
     {
-        file = g_strdup_printf ("/usr/share/mate-time-admin/map/timezone_%s.png",
+        file = g_strdup_printf (TIMPZONEDIR"timezone_%s.png",
                                 g_ascii_formatd (buf, sizeof (buf),
                                "%g", map->selected_offset));
     }
     else
     {
-        file = g_strdup_printf ("/usr/share/mate-time-admin/map/timezone_%s_dim.png",
+        file = g_strdup_printf (TIMPZONEDIR"timezone_%s_dim.png",
                                 g_ascii_formatd (buf, sizeof (buf),
                                "%g", map->selected_offset));
     }
@@ -542,14 +542,14 @@ timezone_map_init (TimezoneMap *map)
 {
     GError *err = NULL;
     
-    map->orig_background = gdk_pixbuf_new_from_file ("/usr/share/mate-time-admin/map/bg.png",&err);
+    map->orig_background = gdk_pixbuf_new_from_file (TIMPZONEDIR"bg.png",&err);
     if (!map->orig_background)
     {   
         g_warning ("Could not load background image: %s",
                    (err) ? err->message : "Unknown error");
         g_clear_error (&err);
     }
-    map->orig_background_dim = gdk_pixbuf_new_from_file("/usr/share/mate-time-admin/map/bg_dim.png",&err);
+    map->orig_background_dim = gdk_pixbuf_new_from_file(TIMPZONEDIR"bg_dim.png",&err);
     if (!map->orig_background_dim)
     {
         g_warning ("Could not load background image: %s",
@@ -557,7 +557,7 @@ timezone_map_init (TimezoneMap *map)
         g_clear_error (&err);
     }
 
-    map->orig_color_map = gdk_pixbuf_new_from_file ("/usr/share/mate-time-admin/map/cc.png",&err);
+    map->orig_color_map = gdk_pixbuf_new_from_file (TIMPZONEDIR"cc.png",&err);
     if (!map->orig_color_map)
     {
         g_warning ("Could not load background image: %s",
@@ -565,7 +565,7 @@ timezone_map_init (TimezoneMap *map)
         g_clear_error (&err);
     }
 
-    map->pin = gdk_pixbuf_new_from_file ("/usr/share/mate-time-admin/map/pin.png",&err);
+    map->pin = gdk_pixbuf_new_from_file (TIMPZONEDIR"pin.png",&err);
     if (!map->pin)
     {
         g_warning ("Could not load pin icon: %s",
