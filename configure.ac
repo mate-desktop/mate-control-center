@@ -1,4 +1,4 @@
-AC_INIT([mate-control-center], [1.23.0], [http://www.mate-desktop.org/])
+AC_INIT([mate-control-center], [1.23.0], [https://mate-desktop.org/])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
@@ -305,6 +305,8 @@ capplets/keybindings/Makefile
 capplets/keybindings/mate-keybindings.pc
 capplets/keyboard/Makefile
 capplets/mouse/Makefile
+capplets/desktop-icons/Makefile
+capplets/desktop-icons/mate-desktop-icons.pc
 capplets/network/Makefile
 capplets/windows/Makefile
 font-viewer/Makefile
