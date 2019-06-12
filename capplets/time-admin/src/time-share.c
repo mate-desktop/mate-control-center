@@ -99,13 +99,13 @@ int MessageReport(const char *Title,const char *Msg,int nType)
 
     return nRet;
 }
-void SetLableFontType(GtkWidget *Lable ,const char *Color,int FontSzie,const char *Word)
+void SetLableFontType(GtkWidget *Lable,int FontSzie,const char *Word)
 {
     char LableTypeBuf[200] = { 0 };
 
     sprintf(LableTypeBuf,
-           "<span foreground=\'%s\'weight=\'light\'font_desc=\'%d\'>%s</span>",
-            Color,FontSzie,Word);
+           "<span font_desc=\'%d\'>%s</span>",
+            FontSzie,Word);
     gtk_label_set_markup(GTK_LABEL(Lable),LableTypeBuf);
 
 }
