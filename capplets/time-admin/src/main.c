@@ -89,6 +89,7 @@ static void InitMainWindow(TimeAdmin *ta)
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     ta->MainWindow = WindowLogin = Window;
     gtk_window_set_deletable(GTK_WINDOW(Window),FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(Window),FALSE);
     gtk_window_set_hide_titlebar_when_maximized(GTK_WINDOW(Window),TRUE);
     gtk_window_set_position(GTK_WINDOW(Window), GTK_WIN_POS_CENTER);
     gtk_window_set_title(GTK_WINDOW(Window),_("Time and Date Manager")); 
@@ -216,7 +217,7 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
 
     TimeZoneLabel = gtk_label_new(NULL);
     gtk_widget_set_halign(TimeZoneLabel,GTK_ALIGN_START);
-    SetLableFontType(TimeZoneLabel,"gray",11,_("Time Zone:"));
+    SetLableFontType(TimeZoneLabel,11,_("Time Zone:"));
     gtk_grid_attach(GTK_GRID(table) ,TimeZoneLabel, 0 , 0 , 1 , 1);
     
     SetupTimezoneDialog(ta); 
@@ -232,7 +233,7 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
     
     NtpSyncLabel = gtk_label_new(NULL);
     gtk_widget_set_halign(NtpSyncLabel,GTK_ALIGN_START);
-    SetLableFontType(NtpSyncLabel,"gray",11,_("Ntp Sync:"));
+    SetLableFontType(NtpSyncLabel,11,_("Ntp Sync:"));
     gtk_grid_attach(GTK_GRID(table) ,NtpSyncLabel,  0 , 1 , 1 , 1);
     
     NtpSyncSwitch = gtk_switch_new();
@@ -287,7 +288,7 @@ static GtkWidget *SetClock(TimeAdmin *ta)
     gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
     
     TimeLabel = gtk_label_new(NULL);
-    SetLableFontType(TimeLabel,"green",13,_("Set Time"));
+    SetLableFontType(TimeLabel,13,_("Set Time"));
     gtk_widget_set_halign(TimeLabel,GTK_ALIGN_CENTER);
     gtk_widget_set_valign(TimeLabel,GTK_ALIGN_START);
     gtk_widget_set_hexpand(TimeLabel,FALSE);
@@ -324,7 +325,7 @@ static GtkWidget *SetDate(TimeAdmin *ta)
     gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
     
     DateLabel = gtk_label_new(NULL);
-    SetLableFontType(DateLabel,"green",12,_("Set Date"));
+    SetLableFontType(DateLabel,12,_("Set Date"));
     gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 1 , 1);
     
     LocalTime = GetCurrentTime();

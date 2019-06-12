@@ -78,7 +78,6 @@ int          MessageReport               (const char  *Title,
                                           int          nType);
 
 void         SetLableFontType            (GtkWidget   *Lable,
-                                          const char  *Color,
                                           int          FontSzie,
                                           const char  *Word);
 
