@@ -8,6 +8,7 @@ SUBDIRS = \
 	keybindings \
 	mouse \
 	network \
+	desktop-icons \
 	windows \
         about-me
 
@@ -20,6 +21,7 @@ DIST_SUBDIRS = \
 	keyboard \
 	mouse \
 	network \
+	desktop-icons \
 	windows \
 	display \
 	about-me
