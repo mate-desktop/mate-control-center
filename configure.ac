@@ -300,6 +300,7 @@ capplets/appearance/data/Makefile
 capplets/common/Makefile
 capplets/default-applications/Makefile
 capplets/default-applications/mate-default-applications.pc
+capplets/default-applications/icons/Makefile
 capplets/display/Makefile
 capplets/keybindings/Makefile
 capplets/keybindings/mate-keybindings.pc
