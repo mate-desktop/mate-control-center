@@ -302,7 +302,12 @@ capplets/appearance/data/Makefile
 capplets/common/Makefile
 capplets/default-applications/Makefile
 capplets/default-applications/mate-default-applications.pc
+<<<<<<< HEAD
 capplets/default-applications/icons/Makefile
+=======
+capplets/desktop-icons/Makefile
+capplets/desktop-icons/mate-desktop-icons.pc
+>>>>>>> Initial commit
 capplets/display/Makefile
 capplets/keybindings/Makefile
 capplets/keybindings/mate-keybindings.pc

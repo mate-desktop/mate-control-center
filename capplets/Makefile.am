@@ -8,9 +8,15 @@ SUBDIRS = \
 	keybindings \
 	mouse \
 	network \
+<<<<<<< HEAD
 	time-admin \
 	windows \
 	about-me
+=======
+	desktop-icons \
+	windows \
+    about-me
+>>>>>>> Initial commit
 
 DIST_SUBDIRS = \
 	common \
@@ -21,7 +27,11 @@ DIST_SUBDIRS = \
 	keyboard \
 	mouse \
 	network \
+<<<<<<< HEAD
 	time-admin \
+=======
+	desktop-icons \
+>>>>>>> Initial commit
 	windows \
 	display \
 	about-me
