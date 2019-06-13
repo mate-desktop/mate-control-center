@@ -668,7 +668,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->spreadsheet_editors = g_app_info_get_all_for_type("application/vnd.ms-excel");
 
 	capplet->visual_ats = NULL;
-	capplet->visual_ats = fill_list_from_desktop_file (capplet->visual_ats, APPLICATIONSDIR "/orca.desktop");
+	capplet->visual_ats = g_list_prepend (capplet->visual_ats, g_app_info_create_from_commandline("orca",NULL,G_APP_INFO_CREATE_NONE,NULL));
 	capplet->visual_ats = g_list_reverse (capplet->visual_ats);
 
 	capplet->mobility_ats = NULL;
