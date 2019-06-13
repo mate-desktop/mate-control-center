@@ -588,6 +588,23 @@ fill_list_from_desktop_file (GList* app_list, const gchar *desktop_id)
 	return list;
 }
 
+static gint
+compare_apps (gconstpointer a, gconstpointer b)
+{
+	GAppInfo *app_info_1, *app_info_2;
+	gchar *app_dpy_name_1, *app_dpy_name_2;
+	gint ret;
+
+	app_info_1 = G_APP_INFO (a);
+	app_info_2 = G_APP_INFO (b);
+	app_dpy_name_1 = g_utf8_casefold (g_app_info_get_display_name (app_info_1), -1);
+	app_dpy_name_2 = g_utf8_casefold (g_app_info_get_display_name (app_info_2), -1);
+	ret = g_strcmp0 (app_dpy_name_1, app_dpy_name_2);
+	g_free (app_dpy_name_1);
+	g_free (app_dpy_name_2);
+	return ret;
+}
+
 static void
 show_dialog(MateDACapplet* capplet, const gchar* start_page)
 {
@@ -694,10 +711,13 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 	/* Messenger havent mime types, so check in .desktop files for
 	   Categories=InstantMessaging */
-	capplet->messengers = NULL;
+	capplet->messengers = g_app_info_get_all_for_type ("x-scheme-handler/irc");
 	all_apps = g_app_info_get_all();
 	for (entry = all_apps; entry != NULL; entry = g_list_next(entry))
 	{
+		if (capplet->messengers && g_list_index (capplet->messengers, entry) != -1)
+			continue;
+
 		GDesktopAppInfo* item = (GDesktopAppInfo*) entry->data;
 		if (g_desktop_app_info_get_categories (item) != NULL &&
 			g_strrstr (g_desktop_app_info_get_categories (item), "InstantMessaging"))
@@ -705,7 +725,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 			capplet->messengers = g_list_prepend (capplet->messengers, item);
 		}
 	}
-	capplet->messengers = g_list_reverse (capplet->messengers);
+	capplet->messengers = g_list_sort (capplet->messengers, compare_apps);
 
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers, "x-scheme-handler/http");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers, "x-scheme-handler/mailto");
