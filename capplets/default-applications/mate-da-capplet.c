@@ -162,6 +162,11 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				break;
 
 			case DA_TYPE_MESSENGER:
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/icq", NULL);
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/irc", NULL);
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/ircs", NULL);
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/sip", NULL);
+				g_app_info_set_as_default_for_type(item, "x-scheme-handler/xmpp", NULL);
 				g_settings_set_string (capplet->messenger_settings, MESSENGER_KEY, g_app_info_get_executable (item));
 
 			default:
