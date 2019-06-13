@@ -668,7 +668,13 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	capplet->spreadsheet_editors = g_app_info_get_all_for_type("application/vnd.ms-excel");
 
 	capplet->visual_ats = NULL;
-	capplet->visual_ats = fill_list_from_desktop_file (capplet->visual_ats, APPLICATIONSDIR "/orca.desktop");
+        const gchar *const *sys_config_dirs = g_get_system_config_dirs();
+	for (const gchar* c = *sys_config_dirs; c; c=*++sys_config_dirs)
+        {
+		gchar* path = g_strconcat (c, "/autostart/orca-autostart.desktop", NULL);
+		capplet->visual_ats = fill_list_from_desktop_file (capplet->visual_ats, path);
+		g_free (path);
+	}
 	capplet->visual_ats = g_list_reverse (capplet->visual_ats);
 
 	capplet->mobility_ats = NULL;
@@ -760,7 +766,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
         g_signal_connect(capplet->messenger_combo_box, "changed", G_CALLBACK(messenger_combo_changed_cb), capplet);
 
 	g_settings_bind (capplet->mobility_settings, MOBILITY_STARTUP_KEY, capplet->mobility_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (capplet->visual_settings, VISUAL_STARTUP_KEY, capplet->visual_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (capplet->visual_startup_settings, VISUAL_STARTUP_KEY, capplet->visual_startup_checkbutton, "active", G_SETTINGS_BIND_DEFAULT);
 
 	gtk_window_set_icon_name(GTK_WINDOW (capplet->window), "preferences-desktop-default-applications");
 
@@ -824,6 +830,7 @@ main(int argc, char** argv)
 	capplet->terminal_settings = g_settings_new (TERMINAL_SCHEMA);
 	capplet->mobility_settings = g_settings_new (MOBILITY_SCHEMA);
 	capplet->visual_settings = g_settings_new (VISUAL_SCHEMA);
+	capplet->visual_startup_settings = g_settings_new (VISUAL_STARTUP_SCHEMA);
 	capplet->calculator_settings = g_settings_new (CALCULATOR_SCHEMA);
 	capplet->messenger_settings = g_settings_new (MESSENGER_SCHEMA);
 
@@ -835,6 +842,7 @@ main(int argc, char** argv)
 	g_object_unref (capplet->terminal_settings);
 	g_object_unref (capplet->mobility_settings);
 	g_object_unref (capplet->visual_settings);
+	g_object_unref (capplet->visual_startup_settings);
 	g_object_unref (capplet->calculator_settings);
 	g_object_unref (capplet->messenger_settings);
 

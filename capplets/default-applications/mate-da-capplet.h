@@ -29,7 +29,8 @@
 
 #define VISUAL_SCHEMA         "org.mate.applications-at-visual"
 #define VISUAL_KEY            "exec"
-#define VISUAL_STARTUP_KEY    "startup"
+#define VISUAL_STARTUP_SCHEMA "org.gnome.desktop.a11y.applications"
+#define VISUAL_STARTUP_KEY    "screen-reader-enabled"
 
 #define MOBILITY_SCHEMA       "org.mate.applications-at-mobility"
 #define MOBILITY_KEY          "exec"
@@ -90,6 +91,7 @@ typedef struct _MateDACapplet {
 	/* Settings objects */
 	GSettings* terminal_settings;
 	GSettings* visual_settings;
+	GSettings* visual_startup_settings;
 	GSettings* mobility_settings;
 	GSettings* calculator_settings;
 	GSettings* messenger_settings;
