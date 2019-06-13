@@ -53,6 +53,7 @@ typedef struct
     GtkWidget        *MinuteSpin;
     GtkWidget        *SecondSpin;
     GtkWidget        *TimeZoneButton;
+    GtkWidget        *NtpSyncSwitch;
     GtkWidget        *Calendar;
     GtkWidget        *CloseButton;
     GtkWidget        *SaveButton;
@@ -70,6 +71,8 @@ typedef struct
     GtkWidget        *map;
     GtkListStore     *CityListStore;
     GtkTreeModelSort *CityModelSort;
+	GtkWidget        *ButtonLock;
+    GPermission      *Permission;
 
 }TimeAdmin;
 

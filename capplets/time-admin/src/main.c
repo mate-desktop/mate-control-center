@@ -14,13 +14,14 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+#include <polkit/polkit.h>
 
 #include "time-tool.h"
 #include "time-zone.h"
 #include "time-map.h"
 
 #define  LOCKFILE               "/tmp/time-admin.pid"
-#define  TIME_ADMIN_PERMISSION  "org.mate.user.admin.administration"
+#define  TIME_ADMIN_PERMISSION  "org.freedesktop.timedate1.set-time"
 #define  APPICON                 "mate-times-admin.png"
 #define  ICONFILE               DATADIR APPICON
 
@@ -79,12 +80,36 @@ static void CloseWindow (GtkButton *button,gpointer data)
     TimeAdmin *ta = (TimeAdmin *)data;
 
     QuitApp(ta);
-}    
+}   
+static void UpdatePermission(TimeAdmin *ta)
+{
+    gboolean is_authorized;
+
+    is_authorized = g_permission_get_allowed (G_PERMISSION (ta->Permission));
+
+    gtk_widget_set_sensitive(ta->HourSpin,       is_authorized);
+    gtk_widget_set_sensitive(ta->MinuteSpin,     is_authorized);
+    gtk_widget_set_sensitive(ta->SecondSpin,     is_authorized);
+    gtk_widget_set_sensitive(ta->TimeZoneButton, is_authorized);
+    gtk_widget_set_sensitive(ta->Calendar,       is_authorized);
+    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized);
+    gtk_widget_set_sensitive(ta->NtpSyncSwitch,  is_authorized);
+}
+
+
+static void on_permission_changed (GPermission *permission,
+                                   GParamSpec  *pspec,
+                                   gpointer     data)
+{
+    TimeAdmin *ua = (TimeAdmin *)data;
+    UpdatePermission(ua);
+}
+
 static void InitMainWindow(TimeAdmin *ta)
 {
     GtkWidget *Window;
     GdkPixbuf *AppIcon;
-    //GError    *error = NULL;
+    GError    *error = NULL;
 
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     ta->MainWindow = WindowLogin = Window;
@@ -100,21 +125,28 @@ static void InitMainWindow(TimeAdmin *ta)
                      G_CALLBACK(on_window_quit),
                      ta);
 
-   /* 
-    ua->Permission = polkit_permission_new_sync (USER_ADMIN_PERMISSION, NULL, NULL, &error);
-    ua->ButtonLock = gtk_lock_button_new(ua->Permission);
-    gtk_lock_button_set_permission(GTK_LOCK_BUTTON (ua->ButtonLock),ua->Permission);
-    g_signal_connect(ua->Permission, 
-                    "notify",
-                     G_CALLBACK (on_permission_changed), 
-                     ua);
-  */  
     AppIcon = GetAppIcon();
     if(AppIcon)
     {
         gtk_window_set_icon(GTK_WINDOW(Window),AppIcon);
         g_object_unref(AppIcon);
-    }   
+    }
+	ta->Permission = polkit_permission_new_sync (TIME_ADMIN_PERMISSION,
+                                                 NULL,
+                                                 NULL,
+                                                 &error);
+    if (ta->Permission == NULL)
+    {
+        g_error_free (error);
+        return;
+    }
+    ta->ButtonLock = gtk_lock_button_new(ta->Permission);
+    gtk_lock_button_set_permission(GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
+    gtk_widget_grab_focus(ta->ButtonLock);
+    g_signal_connect(ta->Permission,
+                    "notify",
+                     G_CALLBACK (on_permission_changed),
+                     ta);
 }
 
 static int RecordPid(void)
@@ -207,7 +239,6 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
     GtkWidget  *table;
     GtkWidget  *TimeZoneLabel;
     GtkWidget  *NtpSyncLabel;
-    GtkWidget  *NtpSyncSwitch;
     const char *TimeZone;
     gboolean    NtpState;
     char       *ZoneName;
@@ -236,17 +267,17 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
     SetLableFontType(NtpSyncLabel,11,_("Ntp Sync:"));
     gtk_grid_attach(GTK_GRID(table) ,NtpSyncLabel,  0 , 1 , 1 , 1);
     
-    NtpSyncSwitch = gtk_switch_new();
+    ta->NtpSyncSwitch = gtk_switch_new();
     NtpState = GetNtpState(ta);
     if(NtpState)
     {
         ReloadNtp(ta->proxy,NtpState);
     }    
     ta->NtpState = NtpState;
-    gtk_switch_set_state (GTK_SWITCH(NtpSyncSwitch),
+    gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch),
                           NtpState);
-    gtk_grid_attach(GTK_GRID(table) ,NtpSyncSwitch, 1 , 1 , 1 , 1);
-    g_signal_connect (G_OBJECT(NtpSyncSwitch),
+    gtk_grid_attach(GTK_GRID(table) ,ta->NtpSyncSwitch, 1 , 1 , 1 , 1);
+    g_signal_connect (G_OBJECT(ta->NtpSyncSwitch),
                      "state-set",
                       G_CALLBACK (ChangeNtpSync),
                       ta);
@@ -343,7 +374,9 @@ static GtkWidget *SetDate(TimeAdmin *ta)
                       G_CALLBACK (CloseWindow),
                       ta);
     
-    ta->SaveButton  = gtk_button_new_with_label (_("Save"));
+	gtk_grid_attach(GTK_GRID(table) ,ta->ButtonLock, 1 , 5 , 1 , 1);
+    
+	ta->SaveButton  = gtk_button_new_with_label (_("Save"));
     gtk_widget_set_sensitive(ta->SaveButton,!ta->NtpState);
     gtk_grid_attach(GTK_GRID(table) ,ta->SaveButton, 2 , 5 , 1 , 1);
     g_signal_connect (ta->SaveButton,
@@ -425,6 +458,7 @@ int main(int argc, char **argv)
         exit(0);
     }
     CreateClockInterface(&ta);
+	UpdatePermission(&ta);
     gtk_widget_show_all(ta.MainWindow);
     gtk_main();
     
