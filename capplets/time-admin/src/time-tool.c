@@ -200,34 +200,6 @@ static void ChangeSpinBttonState(TimeAdmin *ta,gboolean State)
     SetTooltip(ta->Calendar,!ta->NtpState); 
 }
 
-void ReloadNtp(GDBusProxy *proxy,gboolean state)
-{
-    GError *error = NULL;
-    GVariant *ret1,*ret2;
-   
-    ret1 = g_dbus_proxy_call_sync (proxy,
-                                 "SetNTP",
-                                  g_variant_new ("(bb)",!state,!state),
-                                  G_DBUS_CALL_FLAGS_NONE,
-                                  -1,
-                                  NULL,
-                                  &error);
-
-    ret2 = g_dbus_proxy_call_sync (proxy,
-                                 "SetNTP",
-                                  g_variant_new ("(bb)",state,state),
-                                  G_DBUS_CALL_FLAGS_NONE,
-                                  -1,
-                                  NULL,
-                                  &error);
-
-    if(ret1 == NULL || ret2 == NULL)
-    {
-        MessageReport(_("Reload Ntp sync"),error->message,ERROR);
-        g_error_free(error);
-    }    
-
-}    
 gboolean ChangeNtpSync(GtkSwitch *widget,gboolean state,gpointer data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;

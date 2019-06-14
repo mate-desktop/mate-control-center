@@ -96,7 +96,6 @@ static void UpdatePermission(TimeAdmin *ta)
     gtk_widget_set_sensitive(ta->NtpSyncSwitch,  is_authorized);
 }
 
-
 static void on_permission_changed (GPermission *permission,
                                    GParamSpec  *pspec,
                                    gpointer     data)
@@ -269,10 +268,6 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
     
     ta->NtpSyncSwitch = gtk_switch_new();
     NtpState = GetNtpState(ta);
-    if(NtpState)
-    {
-        ReloadNtp(ta->proxy,NtpState);
-    }    
     ta->NtpState = NtpState;
     gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch),
                           NtpState);
@@ -356,8 +351,8 @@ static GtkWidget *SetDate(TimeAdmin *ta)
     gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
     
     DateLabel = gtk_label_new(NULL);
-    SetLableFontType(DateLabel,12,_("Set Date"));
-    gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 1 , 1);
+    SetLableFontType(DateLabel,13,_("Set Date"));
+    gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 2 , 2);
     
     LocalTime = GetCurrentTime();
     ta->Calendar = gtk_calendar_new ();
@@ -365,16 +360,16 @@ static GtkWidget *SetDate(TimeAdmin *ta)
     SetTooltip(ta->Calendar,!ta->NtpState); 
     gtk_calendar_mark_day(GTK_CALENDAR(ta->Calendar),LocalTime->tm_mday);
     ta->OldDay = LocalTime->tm_mday;
-    gtk_grid_attach(GTK_GRID(table) ,ta->Calendar, 0 , 1 , 3 , 3);
+    gtk_grid_attach(GTK_GRID(table) ,ta->Calendar, 0 , 2 , 4 , 3);
 
     ta->CloseButton = gtk_button_new_with_label (_("Close"));
-    gtk_grid_attach(GTK_GRID(table) ,ta->CloseButton, 0 , 5 , 1 , 1);
+    gtk_grid_attach(GTK_GRID(table) ,ta->CloseButton, 3 , 5 , 1 , 1);
     g_signal_connect (ta->CloseButton,
                      "clicked",
                       G_CALLBACK (CloseWindow),
                       ta);
     
-	gtk_grid_attach(GTK_GRID(table) ,ta->ButtonLock, 1 , 5 , 1 , 1);
+	gtk_grid_attach(GTK_GRID(table) ,ta->ButtonLock, 0 , 5 , 1 , 1);
     
 	ta->SaveButton  = gtk_button_new_with_label (_("Save"));
     gtk_widget_set_sensitive(ta->SaveButton,!ta->NtpState);
