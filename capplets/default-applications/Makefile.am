@@ -1,5 +1,9 @@
+SUBDIRS = icons
+
 # This is used in MATECC_CAPPLETS_CFLAGS
 cappletname = mate-default-applications-properties
+
+ui_files = mate-default-applications-properties.ui
 
 bin_PROGRAMS = mate-default-applications-properties
 
@@ -14,6 +18,8 @@ mate_default_applications_properties_SOURCES = \
 	mate-da-capplet.c mate-da-capplet.h
 
 @INTLTOOL_DESKTOP_RULE@
+
+include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-default-applications-properties.desktop.in
@@ -31,7 +37,7 @@ AM_CPPFLAGS = \
 mate-default-applications-properties-resources.h mate-default-applications-properties-resources.c: org.mate.mcc.da.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.da.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name default_applications $<
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(autostart_DATA) $(BUILT_SOURCES)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(autostart_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 EXTRA_DIST = \
 	mate-default-applications.pc.in \
 	mate-default-applications-properties.ui \

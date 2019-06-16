@@ -12,6 +12,7 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 AC_STDC_HEADERS
 AM_PROG_LIBTOOL
+AC_PATH_PROG([GLA11Y], [gla11y], [true])
 
 # Use the Yelp documentation framework
 YELP_HELP_INIT
@@ -78,9 +79,9 @@ AC_SUBST(SCREENSAVER_LIBS)
 GLIB_REQUIRED=2.50.0
 GTK_REQUIRED=3.22.0
 MARCO_REQUIRED=1.17.0
-MSD_REQUIRED=1.21.2
+MSD_REQUIRED=1.23.0
 MATEKBD_REQUIRED=1.17.0
-MATE_DESKTOP_REQUIRED=1.21.2
+MATE_DESKTOP_REQUIRED=1.23.1
 APPINDICATOR_REQUIRED=0.0.13
 
 ENGINES_FOLDER="theming-engines"
@@ -153,6 +154,7 @@ PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.21.0)
 PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu)
 
 PKG_CHECK_MODULES(DBUS, dbus-1 dbus-glib-1)
+PKG_CHECK_MODULES(POLKIT, polkit-gobject-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED)
 PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
 PKG_CHECK_MODULES(MARCO, libmarco-private >= $MARCO_REQUIRED)
@@ -264,8 +266,8 @@ COMMON_LIBS="\$(top_builddir)/capplets/common/libcommon.la"
 
 EXTRA_CFLAGS="-I\$(top_srcdir)/ -DG_LOG_DOMAIN=\"\\\"\$(cappletname)-properties\\\"\""
 
-MATECC_CAPPLETS_CFLAGS="${COMMON_CFLAGS} ${CAPPLET_CFLAGS} ${EXTRA_CFLAGS} ${DBUS_CFLAGS}"
-MATECC_CAPPLETS_LIBS="${COMMON_LIBS} ${CAPPLET_LIBS} ${DBUS_LIBS}"
+MATECC_CAPPLETS_CFLAGS="${COMMON_CFLAGS} ${CAPPLET_CFLAGS} ${EXTRA_CFLAGS} ${DBUS_CFLAGS} ${POLKIT_CFLAGS}"
+MATECC_CAPPLETS_LIBS="${COMMON_LIBS} ${CAPPLET_LIBS} ${DBUS_LIBS} ${POLKIT_LIBS}"
 
 MATECC_CAPPLETS_CLEANFILES="\$(desktop) \$(desktop).in"
 MATECC_CAPPLETS_EXTRA_DIST="ChangeLog \$(desktop).in.in \$(cappletname)-capplet.png \$(pixmaps_DATA)"
@@ -300,12 +302,17 @@ capplets/appearance/data/Makefile
 capplets/common/Makefile
 capplets/default-applications/Makefile
 capplets/default-applications/mate-default-applications.pc
+capplets/default-applications/icons/Makefile
 capplets/display/Makefile
 capplets/keybindings/Makefile
 capplets/keybindings/mate-keybindings.pc
 capplets/keyboard/Makefile
 capplets/mouse/Makefile
 capplets/network/Makefile
+capplets/time-admin/Makefile
+capplets/time-admin/src/Makefile
+capplets/time-admin/data/Makefile
+capplets/time-admin/po-timezones/Makefile
 capplets/windows/Makefile
 font-viewer/Makefile
 help/Makefile
