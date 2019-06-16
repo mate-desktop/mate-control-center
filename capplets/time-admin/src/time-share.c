@@ -1,4 +1,4 @@
-/*  time-admin 
+/*  time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -22,14 +22,14 @@
 
 /******************************************************************************
 * Function:            MessageReport
-*        
+*
 * Explain: Prompt information dialog
-*          
+*
 * Input:  @Title           Message title
-*         @Msg             Message content           
+*         @Msg             Message content
 *         @nType           Message type
-* Output: 
-*        
+* Output:
+*
 * Author:  zhuyaliang  25/05/2018
 ******************************************************************************/
 int MessageReport(const char *Title,const char *Msg,int nType)
@@ -85,7 +85,7 @@ int MessageReport(const char *Title,const char *Msg,int nType)
                                             GTK_BUTTONS_YES_NO,
                                             "%s",Title);
             break;
-        }    
+        }
         default :
             break;
 
@@ -114,12 +114,12 @@ void QuitApp(TimeAdmin *ta)
     if(ta->UpdateTimeId > 0)
     {
         g_source_remove (ta->UpdateTimeId);
-    }    
+    }
     if(ta->ApplyId > 0)
     {
         g_source_remove(ta->ApplyId);
-    }    
-    
+    }
+
     gtk_main_quit();
 }
 GtkWidget* DialogAddButtonWithIconName (GtkDialog   *dialog,

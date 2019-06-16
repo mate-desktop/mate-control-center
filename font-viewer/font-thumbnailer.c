@@ -289,7 +289,7 @@ main (int argc,
 
     scale = MIN (scale_x, scale_y);
     cairo_scale (cr, scale, scale);
-    cairo_translate (cr, 
+    cairo_translate (cr,
                      PADDING_HORIZONTAL - text_extents.x_bearing + (thumb_size - scale * text_extents.width) / 2.0,
                      PADDING_VERTICAL - text_extents.y_bearing + (thumb_size - scale * text_extents.height) / 2.0);
 

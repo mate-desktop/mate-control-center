@@ -38,12 +38,12 @@ have_tray (void)
 	Screen *xscreen = DefaultScreenOfDisplay (gdk_x11_display_get_xdisplay(gdk_display_get_default()));
 	Atom    selection_atom;
 	char   *selection_atom_name;
-	
+
 	selection_atom_name = g_strdup_printf ("_NET_SYSTEM_TRAY_S%d",
 					       XScreenNumberOfScreen (xscreen));
 	selection_atom = gdk_x11_get_xatom_by_name (selection_atom_name);
 	g_free (selection_atom_name);
-	
+
 	if (XGetSelectionOwner (DisplayOfScreen (xscreen), selection_atom)) {
 		return TRUE;
 	} else {
@@ -68,7 +68,7 @@ main (int argc, char *argv[])
         GError *error = NULL;
         gboolean retval;
 
-	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);  
+	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
@@ -76,7 +76,7 @@ main (int argc, char *argv[])
         g_option_context_set_translation_domain (option_context, GETTEXT_PACKAGE);
         g_option_context_add_main_entries (option_context, options, GETTEXT_PACKAGE);
         g_option_context_add_group (option_context, gtk_get_option_group (TRUE));
- 
+
         retval = g_option_context_parse (option_context, &argc, &argv, &error);
         g_option_context_free (option_context);
         if (!retval) {
@@ -107,13 +107,13 @@ main (int argc, char *argv[])
 			  "on your panel. You can add it by right-clicking on your "
 			  "panel and choosing 'Add to panel', selecting 'Notification "
 			  "area' and clicking 'Add'."));
-		
+
 		gtk_dialog_run (GTK_DIALOG (dialog));
 
 		gtk_widget_destroy (dialog);
 	}
 #endif /* HAVE_APP_INDICATOR */
-	
+
 	drwright_new ();
 
 	gtk_main ();

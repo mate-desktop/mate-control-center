@@ -222,7 +222,7 @@ bookmark_agent_purge_items (BookmarkAgent *this)
 	gsize   uris_len;
 	gint    i;
 	g_return_if_fail (priv->user_modifiable);
-		
+
 	uris = g_bookmark_file_get_uris (priv->store, &uris_len);
 	if (TYPE_IS_RECENT (priv->type)) {
 		for (i = 0; i < uris_len; i++) {
@@ -277,7 +277,7 @@ bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
 
 		if (rank >= 0) {
 			uris = g_bookmark_file_get_uris (priv->store, NULL);
-				 
+
 			for (i =  0; uris && uris [i]; ++i) {
 				rank_i = get_rank (this, uris [i]);
 
@@ -865,7 +865,7 @@ load_places_store (BookmarkAgent *this)
 	gchar **uris;
 	gchar **groups;
 	gchar **bookmarks = NULL;
-	
+
 	gchar  *buf, *label, *uri;
 
 	gint i, j, bookmark_len;
@@ -928,10 +928,10 @@ find_package_data_file (const gchar *filename)
 
 
 	dirs = g_get_system_data_dirs ();
-	
+
 	for (i = 0; ! path && dirs && dirs [i]; ++i) {
 		path = g_build_filename (dirs [i], PACKAGE, filename, NULL);
-		
+
 		if (! g_file_test (path, G_FILE_TEST_EXISTS)) {
 			g_free (path);
 			path = NULL;
@@ -967,7 +967,7 @@ update_user_spec_path (BookmarkAgent *this)
 		status = BOOKMARK_STORE_DEFAULT_ONLY;
 	else
 		status = BOOKMARK_STORE_ABSENT;
-	
+
 	if (priv->status != status) {
 		priv->status = status;
 		g_object_notify (G_OBJECT (this), BOOKMARK_AGENT_STORE_STATUS_PROP);
@@ -1193,7 +1193,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 
 	if (name)
 		g_bookmark_file_set_title (priv->store, uri, name);
-	
+
 	if (uri_new && libslab_strcmp (uri, uri_new))
 		g_bookmark_file_move_item (priv->store, uri, uri_new, NULL);
 

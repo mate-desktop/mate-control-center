@@ -1,4 +1,4 @@
-/*  time-admin 
+/*  time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -94,8 +94,8 @@ static void load_backward_tz (TzDB *tz_db)
     {
         g_error("%s does not exist\r\n",BACKFILE);
 
-    }    
-    while(fgets(buf,128,fp)) 
+    }
+    while(fgets(buf,128,fp))
     {
         g_auto(GStrv) items = NULL;
         guint j;
@@ -128,26 +128,26 @@ static void load_backward_tz (TzDB *tz_db)
             real = "Etc/GMT";
 
         g_hash_table_insert (tz_db->backward, g_strdup (alias), g_strdup (real));
-        
-    }    
+
+    }
     fclose(fp);
 }
 
 TzDB *tz_load_db (void)
-{  
+{
     g_autofree gchar *tz_data_file = NULL;
     TzDB *tz_db;
     FILE *tzfile;
     char buf[4096];
 
     tz_data_file = tz_data_file_get ();
-    if (!tz_data_file) 
+    if (!tz_data_file)
     {
         g_warning ("Could not get the TimeZone data file name");
         return NULL;
     }
     tzfile = fopen (tz_data_file, "r");
-    if (!tzfile) 
+    if (!tzfile)
     {
         g_warning ("Could not open *%s*\n", tz_data_file);
         return NULL;
@@ -224,15 +224,15 @@ static GtkWidget *GetTimeZoneMap(TimeAdmin *ta)
                      "location-changed",
                       G_CALLBACK (LocationChanged),
                       ta);
-   
+
     completion = gtk_entry_completion_new ();
     gtk_entry_set_completion (GTK_ENTRY (ta->TimezoneEntry), completion);
     gtk_entry_completion_set_model (completion, GTK_TREE_MODEL (ta->CityListStore));
     gtk_entry_completion_set_text_column (completion, CITY_COL_CITY_HUMAN_READABLE);
-    
+
 
     return map;
-}  
+}
 static char *
 translated_city_name (TzLocation *loc)
 {
@@ -273,7 +273,7 @@ update_timezone (TimezoneMap *map)
 
     current_location = timezone_map_get_location (TIMEZONEMAP (map));
     city_country = translated_city_name (current_location);
-    
+
     timezone = g_time_zone_new (current_location->zone);
     current_date = g_date_time_new_now_local ();
     date = g_date_time_to_timezone (current_date, timezone);
@@ -323,12 +323,12 @@ static void LoadCities (TzLocation   *loc,
     g_autofree gchar *human_readable = NULL;
 
     human_readable = translated_city_name (loc);
-    gtk_list_store_insert_with_values (CityStore, 
-                                       NULL, 
+    gtk_list_store_insert_with_values (CityStore,
+                                       NULL,
                                        0,
-                                       CITY_COL_CITY_HUMAN_READABLE, 
+                                       CITY_COL_CITY_HUMAN_READABLE,
                                        human_readable,
-                                       CITY_COL_ZONE, 
+                                       CITY_COL_ZONE,
                                        loc->zone,
                                      -1);
 }
@@ -336,13 +336,13 @@ static void LoadCities (TzLocation   *loc,
 static void CreateCityList(TimeAdmin *ta)
 {
     g_autoptr(TzDB) db = NULL;
-    
+
     ta->CityListStore = gtk_list_store_new (CITY_NUM_COLS,G_TYPE_STRING,G_TYPE_STRING);
- 
+
     db = tz_load_db ();
     g_ptr_array_foreach (db->locations, (GFunc) LoadCities, ta->CityListStore);
 
-}    
+}
 static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
 {
     GtkWidget *TimeZoneFrame;
@@ -350,9 +350,9 @@ static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
     TimeZoneFrame = gtk_frame_new (_("Time Zone"));
     gtk_widget_set_size_request(TimeZoneFrame,300,200);
     gtk_frame_set_shadow_type(GTK_FRAME(TimeZoneFrame),GTK_SHADOW_NONE);
-   
+
     return TimeZoneFrame;
-}    
+}
 static GtkWidget *CreateZoneScrolled(TimeAdmin *ta)
 {
     GtkWidget *Scrolled;
@@ -364,11 +364,11 @@ static GtkWidget *CreateZoneScrolled(TimeAdmin *ta)
                                          GTK_SHADOW_IN);
 
     return Scrolled;
-}    
+}
 static void CreateZoneEntry(TimeAdmin *ta)
 {
     GtkWidget *hbox;
-    
+
     ta->TimezoneEntry = gtk_search_entry_new ();
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
     gtk_widget_set_halign (hbox, GTK_ALIGN_CENTER);
@@ -381,7 +381,7 @@ static void CreateZoneEntry(TimeAdmin *ta)
     gtk_container_add (GTK_CONTAINER (ta->SearchBar), hbox);
     gtk_search_bar_set_search_mode(GTK_SEARCH_BAR(ta->SearchBar),TRUE);
 
-}  
+}
 
 static gboolean CityChanged(GtkEntryCompletion *completion,
                             GtkTreeModel       *model,
@@ -391,9 +391,9 @@ static gboolean CityChanged(GtkEntryCompletion *completion,
     GtkWidget *entry;
     g_autofree gchar *zone = NULL;
 
-    gtk_tree_model_get (model, 
+    gtk_tree_model_get (model,
                         iter,
-                        CITY_COL_ZONE, 
+                        CITY_COL_ZONE,
                         &zone,
                         -1);
     timezone_map_set_timezone (TIMEZONEMAP (self->map), zone);
@@ -408,12 +408,12 @@ static void ChoooseTimezoneDone (GtkWidget *widget,
 {
     TimezoneMap *map;
     g_autofree gchar *ZoneCity = NULL;
-    
-    map = TIMEZONEMAP(ta->map); 
+
+    map = TIMEZONEMAP(ta->map);
     SetTimeZone(ta->proxy,map->location->zone);
-    
+
     ZoneCity = translated_city_name(map->location);
-    gtk_button_set_label((GTK_BUTTON(ta->TimeZoneButton)),ZoneCity); 
+    gtk_button_set_label((GTK_BUTTON(ta->TimeZoneButton)),ZoneCity);
     gtk_widget_hide_on_delete(GTK_WIDGET(ta->dialog));
 }
 
@@ -439,12 +439,12 @@ void SetupTimezoneDialog(TimeAdmin *ta)
     ta->TZclose =   DialogAddButtonWithIconName(GTK_DIALOG(ta->dialog),
                                               _("Close"),
                                               "window-close",
-                                               GTK_RESPONSE_CANCEL); 
-    
+                                               GTK_RESPONSE_CANCEL);
+
     ta->TZconfire = DialogAddButtonWithIconName(GTK_DIALOG(ta->dialog),
                                               _("Confirm"),
                                               "emblem-default",
-                                               GTK_RESPONSE_OK); 
+                                               GTK_RESPONSE_OK);
     g_signal_connect (ta->TZconfire,
                      "clicked",
                       G_CALLBACK (ChoooseTimezoneDone),
@@ -455,9 +455,9 @@ void SetupTimezoneDialog(TimeAdmin *ta)
                       G_CALLBACK (ChoooseTimezoneClose),
                       ta);
 
-    Vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0); 
+    Vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_style_context_add_class (gtk_widget_get_style_context (Vbox), "linked");
-    
+
 
     TimeZoneFrame = CreateZoneFrame(ta);
     Scrolled = CreateZoneScrolled(ta);
@@ -470,11 +470,11 @@ void SetupTimezoneDialog(TimeAdmin *ta)
     gtk_container_add (GTK_CONTAINER (Scrolled),ta->map);
     gtk_box_pack_start(GTK_BOX(Vbox),TimeZoneFrame,TRUE,TRUE,10);
     get_initial_timezone(ta);
-    
+
     g_signal_connect(gtk_entry_get_completion (GTK_ENTRY (ta->TimezoneEntry)),
-                    "match-selected", 
-                     G_CALLBACK (CityChanged), 
-                     ta);                        
+                    "match-selected",
+                     G_CALLBACK (CityChanged),
+                     ta);
 
     gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (ta->dialog))),
                         Vbox,
@@ -484,7 +484,7 @@ void SetupTimezoneDialog(TimeAdmin *ta)
 void tz_info_free (TzInfo *tzinfo)
 {
     g_return_if_fail (tzinfo != NULL);
-          
+
     if (tzinfo->tzname_normal) g_free (tzinfo->tzname_normal);
     if (tzinfo->tzname_daylight) g_free (tzinfo->tzname_daylight);
     g_free (tzinfo);
@@ -535,18 +535,18 @@ compare_timezones (const char *a,
 
 char *tz_info_get_clean_name (TzDB       *tz_db,
                               const char *tz)
-{   
+{
     char *ret;
     const char *timezone;
     guint i;
     gboolean replaced;
-      
+
     /* Remove useless prefixes */
     if (g_str_has_prefix (tz, "right/"))
         tz = tz + strlen ("right/");
     else if (g_str_has_prefix (tz, "posix/"))
         tz = tz + strlen ("posix/");
-    
+
     /* Here start the crazies */
     replaced = FALSE;
 
@@ -625,7 +625,7 @@ TzInfo *tz_info_from_location (TzLocation *loc)
 glong tz_location_get_utc_offset (TzLocation *loc)
 {
     g_autoptr(TzInfo) tz_info = NULL;
-    glong offset; 
+    glong offset;
 
     tz_info = tz_info_from_location (loc);
     offset = tz_info->utc_offset;

@@ -23,7 +23,7 @@ static void popup_error_message (void)
 }
 
 /* Returns FALSE if activation failed, else TRUE */
-gboolean 
+gboolean
 activate_settings_daemon (void)
 {
   DBusGConnection *connection = NULL;
@@ -37,7 +37,7 @@ activate_settings_daemon (void)
       g_error_free (error);
       return FALSE;
     }
-    
+
   proxy = dbus_g_proxy_new_for_name (connection,
                                      "org.mate.SettingsDaemon",
                                      "/org/mate/SettingsDaemon",

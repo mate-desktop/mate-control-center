@@ -78,7 +78,7 @@ drw_monitor_get_type (void)
 		};
 
 		object_type = g_type_register_static (G_TYPE_OBJECT,
-                                                      "DrwMonitor", 
+                                                      "DrwMonitor",
                                                       &object_info, 0);
 	}
 
@@ -89,12 +89,12 @@ static void
 drw_monitor_class_init (DrwMonitorClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	
+
         parent_class = G_OBJECT_CLASS (g_type_class_peek_parent (klass));
-        
+
         object_class->finalize = drw_monitor_finalize;
 
-	signals[ACTIVITY] = 
+	signals[ACTIVITY] =
 		g_signal_new ("activity",
 			      G_TYPE_FROM_CLASS (klass),
 			      G_SIGNAL_RUN_LAST,
@@ -108,7 +108,7 @@ static void
 drw_monitor_init (DrwMonitor *monitor)
 {
         DrwMonitorPriv *priv;
-        
+
         priv = g_new0 (DrwMonitorPriv, 1);
         monitor->priv = priv;
 
@@ -120,7 +120,7 @@ drw_monitor_finalize (GObject *object)
 {
         DrwMonitor     *monitor = DRW_MONITOR (object);
         DrwMonitorPriv *priv;
-        
+
         priv = monitor->priv;
 
 	g_source_remove (priv->timeout_id);
@@ -129,7 +129,7 @@ drw_monitor_finalize (GObject *object)
 	if (priv->ss_info) {
 		XFree (priv->ss_info);
 	}
-	
+
 	g_free (priv);
 	monitor->priv = NULL;
 
@@ -145,15 +145,15 @@ drw_monitor_timeout (DrwMonitor *monitor)
  	time_t          now;
 
 	priv = monitor->priv;
-	
+
 	if (XScreenSaverQueryInfo (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), DefaultRootWindow (GDK_DISPLAY_XDISPLAY(gdk_display_get_default())), priv->ss_info) != 0) {
 		if (priv->ss_info->idle < priv->last_idle) {
  			now = time (NULL);
- 
+
  			if (now - priv->last_activity < 25) {
  				g_signal_emit (monitor, signals[ACTIVITY], 0, NULL);
  			}
- 			
+
  			priv->last_activity = now;
 		}
 
@@ -179,9 +179,9 @@ drw_monitor_setup (DrwMonitor *monitor)
 	priv->ss_info = XScreenSaverAllocInfo ();
 
 	priv->last_activity = time (NULL);
-	
+
 	priv->timeout_id = g_timeout_add_seconds (3, (GSourceFunc) drw_monitor_timeout, monitor);
-	
+
 	return TRUE;
 }
 

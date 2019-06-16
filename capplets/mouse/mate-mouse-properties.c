@@ -284,7 +284,7 @@ setup_dialog (GtkBuilder *dialog)
 	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
 		gtk_range_get_adjustment (GTK_RANGE (WID ("delay_scale"))), "value",
 		G_SETTINGS_BIND_DEFAULT);
-	
+
 	gtk_image_set_from_stock (GTK_IMAGE (WID ("double_click_image")), MOUSE_DBLCLCK_OFF, mouse_capplet_dblclck_icon_get_size ());
 	g_object_set_data (G_OBJECT (WID ("double_click_eventbox")), "image", WID ("double_click_image"));
 	g_signal_connect (WID ("double_click_eventbox"), "button_press_event",
@@ -339,10 +339,10 @@ setup_dialog (GtkBuilder *dialog)
 		gtk_box_pack_start (GTK_BOX (WID ("hbox_three_finger_click")), three_click_comboxbox, FALSE, FALSE, 6);
 		int i;
 		for (i=0; i<4; i++) {
-			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (two_click_comboxbox), emulation_values[i]);	
-			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (three_click_comboxbox), emulation_values[i]);	
+			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (two_click_comboxbox), emulation_values[i]);
+			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (three_click_comboxbox), emulation_values[i]);
 		}
-		
+
 		g_signal_connect (two_click_comboxbox, "changed", G_CALLBACK (comboxbox_two_finger_changed_callback), dialog);
 		g_signal_connect (three_click_comboxbox, "changed", G_CALLBACK (comboxbox_three_finger_changed_callback), dialog);
 		gtk_combo_box_set_active (GTK_COMBO_BOX (two_click_comboxbox), g_settings_get_int (touchpad_settings, "two-finger-click"));

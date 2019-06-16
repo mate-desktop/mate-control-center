@@ -665,7 +665,7 @@ get_desktop_item_startup_status (MateDesktopItem *desktop_item)
 
 	StartupStatus retval;
 	gint x;
-	
+
 	filename = g_filename_from_uri (mate_desktop_item_get_location (desktop_item), NULL, NULL);
 	if (!filename)
 		return APP_NOT_ELIGIBLE;

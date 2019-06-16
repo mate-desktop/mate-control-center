@@ -1,4 +1,4 @@
-/*  time-admin 
+/*  time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -31,13 +31,13 @@ typedef struct
     guchar green;
     guchar blue;
     guchar alpha;
-}TimezoneMapOffset; 
+}TimezoneMapOffset;
 enum
 {
     LOCATION_CHANGED,
     LAST_SIGNAL
 };
- 
+
 G_DEFINE_TYPE (TimezoneMap, timezone_map, GTK_TYPE_WIDGET)
 static guint signals[LAST_SIGNAL];
 static TimezoneMapOffset color_codes[] =
@@ -428,13 +428,13 @@ set_location (TimezoneMap   *map,
               TzLocation    *location)
 {
     g_autoptr(TzInfo) info = NULL;
-    
+
     map->location = location;
     info = tz_info_from_location (map->location);
     map->selected_offset = tz_location_get_utc_offset (map->location)
-                                                      / (60.0*60.0) + 
+                                                      / (60.0*60.0) +
                                                       ((info->daylight) ? -1.0 : 0.0);
-    
+
     g_signal_emit (map, signals[LOCATION_CHANGED], 0, map->location,NULL);
 }
 
@@ -524,8 +524,8 @@ timezone_map_class_init (TimezoneMapClass *klass)
     widget_class->realize = cc_timezone_map_realize;
     widget_class->draw = cc_timezone_map_draw;
     widget_class->state_flags_changed = cc_timezone_map_state_flags_changed;
-    
-    
+
+
     signals[LOCATION_CHANGED] = g_signal_new ("location-changed",
                                                TYPE_TIMEZONE_MAP,
                                                G_SIGNAL_RUN_FIRST,
@@ -541,10 +541,10 @@ static void
 timezone_map_init (TimezoneMap *map)
 {
     GError *err = NULL;
-    
+
     map->orig_background = gdk_pixbuf_new_from_file (TIMPZONEDIR"bg.png",&err);
     if (!map->orig_background)
-    {   
+    {
         g_warning ("Could not load background image: %s",
                    (err) ? err->message : "Unknown error");
         g_clear_error (&err);
@@ -575,10 +575,10 @@ timezone_map_init (TimezoneMap *map)
 
     map->tzdb = tz_load_db ();
 
-    g_signal_connect_object (map, 
-                            "button-press-event", 
-                             G_CALLBACK (button_press_event), 
-                             map, 
+    g_signal_connect_object (map,
+                            "button-press-event",
+                             G_CALLBACK (button_press_event),
+                             map,
                              G_CONNECT_SWAPPED);
 }
 gboolean timezone_map_set_timezone (TimezoneMap *map,
@@ -588,7 +588,7 @@ gboolean timezone_map_set_timezone (TimezoneMap *map,
     guint i;
     g_autofree gchar *real_tz = NULL;
     gboolean ret;
-    
+
     real_tz = tz_info_get_clean_name (map->tzdb, timezone);
 
     locations = tz_get_locations (map->tzdb);
@@ -612,7 +612,7 @@ gboolean timezone_map_set_timezone (TimezoneMap *map,
     return ret;
 }
 TzLocation *timezone_map_get_location (TimezoneMap *map)
-{  
+{
     return map->location;
 }
 void timezone_map_set_bubble_text (TimezoneMap *map,
@@ -624,6 +624,6 @@ void timezone_map_set_bubble_text (TimezoneMap *map,
 }
 
 TimezoneMap * timezone_map_new (void)
-{  
+{
     return g_object_new (TYPE_TIMEZONE_MAP, NULL);
-} 
+}
