@@ -28,6 +28,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <libintl.h>
+#include <glib/gi18n.h>
 
 #include <libmate-desktop/mate-languages.h>
 
@@ -242,7 +243,7 @@ translated_city_name (TzLocation *loc)
     gchar *name;
     gint length;
 
-    zone_translated = g_strdup (dgettext (GETTEXT_PACKAGE_TIMEZONES, loc->zone));
+    zone_translated = g_strdup (_(loc->zone));
     g_strdelimit (zone_translated, "_", ' ');
     split_translated = g_regex_split_simple ("[\\x{2044}\\x{2215}\\x{29f8}\\x{ff0f}/]",
                                               zone_translated,

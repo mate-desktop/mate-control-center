@@ -1,3 +1,3 @@
-SUBDIRS = data src po-timezones
+SUBDIRS = data src
 
 -include $(top_srcdir)/git.mk

@@ -14,6 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+#include <glib/gi18n.h>
 #include <polkit/polkit.h>
 
 #include "time-tool.h"
@@ -228,7 +229,7 @@ static char *translate(const char *value)
     g_autofree gchar *zone_translated = NULL;
     char *name;
 
-    zone_translated = g_strdup (dgettext (GETTEXT_PACKAGE_TIMEZONES,value));
+    zone_translated = g_strdup (_(value));
     name = g_strdup_printf (C_("timezone loc", "%s"),zone_translated);
 
     return name;
@@ -436,9 +437,10 @@ int main(int argc, char **argv)
 {
     TimeAdmin ta;
 
-    bindtextdomain (PACKAGE,MATELOCALEDIR);
-    textdomain (PACKAGE);
-    bind_textdomain_codeset (GETTEXT_PACKAGE_TIMEZONES, "UTF-8");
+    setlocale (LC_ALL, "");
+    bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
 
     gtk_init(&argc, &argv);
 

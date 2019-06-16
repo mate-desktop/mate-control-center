@@ -33,15 +33,12 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-#define _(STRING)  gettext(STRING)
-#define C_(a,b)  gettext(b)
 #define TYPEMSG    "<span foreground='red'font_desc='13'>%s </span>"
 #define ERROR      1
 #define WARING     2
 #define INFOR      3
 #define QUESTION   4
 #define QUESTIONNORMAL   5
-#define GETTEXT_PACKAGE_TIMEZONES GETTEXT_PACKAGE "-timezones"
 
 
 GtkWidget *WindowLogin;

@@ -19,6 +19,7 @@
 #include "config.h"
 #endif
 #include "time-share.h"
+#include <glib/gi18n.h>
 
 /******************************************************************************
 * Function:            MessageReport
