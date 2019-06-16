@@ -46,11 +46,11 @@ gchar* gtkrc_find_named(const gchar* name)
 	/* First look in the users home directory
 	*/
 	home_dir = g_get_home_dir();
-	
+
 	if (home_dir)
 	{
 		path = g_build_filename(home_dir, ".themes", name, subpath, NULL);
-		
+
 		if (!g_file_test (path, G_FILE_TEST_EXISTS))
 		{
 			g_free (path);
@@ -91,7 +91,7 @@ void gtkrc_get_details(gchar* filename, GSList** engines, GSList** symbolic_colo
 	}
 
 	files = g_slist_prepend (files, g_strdup (filename));
-	
+
 	while (files != NULL)
 	{
 		filename = files->data;

@@ -154,7 +154,7 @@ build_charlist_for_face (FT_Face face,
   GString *string;
   gulong c;
   guint glyph;
-  gint total_chars = 0; 
+  gint total_chars = 0;
 
   string = g_string_new (NULL);
 
@@ -254,7 +254,7 @@ build_strings_for_face (SushiFontWidget *self)
   self->priv->font_name = NULL;
 
   if (self->priv->face->family_name != NULL) {
-    gchar *font_name = 
+    gchar *font_name =
       g_strconcat (self->priv->face->family_name, " ",
                    self->priv->face->style_name, NULL);
 
@@ -387,7 +387,7 @@ sushi_font_widget_size_request (GtkWidget *drawing_area,
 
   if (self->priv->lowercase_text != NULL) {
     cairo_text_extents (cr, self->priv->lowercase_text, &extents);
-    pixmap_height += font_extents.ascent + font_extents.descent + 
+    pixmap_height += font_extents.ascent + font_extents.descent +
       extents.y_advance + LINE_SPACING;
     pixmap_width = MAX (pixmap_width, extents.width + padding.left + padding.right);
   }

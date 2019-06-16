@@ -73,7 +73,7 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 	if (index < g_list_length(list))
 	{
 		item = (GAppInfo*) g_list_nth_data(list, index);
-	
+
 		switch (type)
 		{
 			case DA_TYPE_WEB_BROWSER:
@@ -89,11 +89,11 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				g_app_info_set_as_default_for_type(item, "application/x-extension-eml", NULL);
 				g_app_info_set_as_default_for_type(item, "message/rfc822", NULL);
 				break;
-			
+
 			case DA_TYPE_FILE:
 				g_app_info_set_as_default_for_type(item, "inode/directory", NULL);
 				break;
-			
+
 			case DA_TYPE_TEXT:
 				g_app_info_set_as_default_for_type(item, "text/plain", NULL);
 				break;
@@ -105,7 +105,7 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				g_app_info_set_as_default_for_type(item, "audio/x-vorbis+ogg", NULL);
 				g_app_info_set_as_default_for_type(item, "audio/x-wav", NULL);
 				break;
-				
+
 			case DA_TYPE_VIDEO:
 				g_app_info_set_as_default_for_type(item, "video/mp4", NULL);
 				g_app_info_set_as_default_for_type(item, "video/mpeg", NULL);
@@ -311,7 +311,7 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 		return;
 
 	valid = gtk_tree_model_get_iter_first(model, &iter);
-	
+
 	while (valid)
     {
 		gtk_tree_model_get(model, &iter,
@@ -329,7 +329,7 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 		{
 			g_object_unref(pixbuf);
 		}
-		
+
 		g_free(icon_name);
 
 		valid = gtk_tree_model_iter_next(model, &iter);
@@ -372,7 +372,7 @@ theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 		GdkPixbuf* pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
 
 		gtk_image_set_from_pixbuf(GTK_IMAGE(icon), pixbuf);
-		
+
 		if (pixbuf)
 		{
 			g_object_unref(pixbuf);
@@ -532,7 +532,7 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	for (entry = app_list; entry != NULL; entry = g_list_next(entry))
 	{
 		GAppInfo* item = (GAppInfo*) entry->data;
-		
+
 		/* Icon */
 		GIcon* icon = g_app_info_get_icon(item);
 		gchar* icon_name;
@@ -546,7 +546,7 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		} else {
 			icon_name = g_strdup ("binary");
 		}
-		
+
 		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icon_name, 22, GTK_ICON_LOOKUP_FORCE_SIZE);
 		pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
 
@@ -562,15 +562,15 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		{
 			g_object_unref(pixbuf);
 		}
-		
+
 		/* Set the index for the default app */
 		if (default_app != NULL && g_app_info_equal(item, default_app))
 		{
 			gtk_combo_box_set_active(combo_box, index);
 		}
-		
+
 		g_free(icon_name);
-		
+
 		index++;
 	}
 }
@@ -786,7 +786,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 			nb = GTK_NOTEBOOK(get_widget("preferred_apps_notebook"));
 			pindex = gtk_notebook_page_num(nb, w);
-			
+
 			if (pindex != -1)
 			{
 				gtk_notebook_set_current_page(nb, pindex);

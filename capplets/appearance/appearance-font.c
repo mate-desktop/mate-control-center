@@ -98,7 +98,7 @@ static void set_fontoptions(PangoContext *context, Antialiasing antialiasing, Hi
 	cairo_font_options_t *opt;
 	cairo_antialias_t aa;
 	cairo_hint_style_t hs;
-	
+
 	switch (antialiasing) {
 	case ANTIALIAS_NONE:
 		aa = CAIRO_ANTIALIAS_NONE;

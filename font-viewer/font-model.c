@@ -1,5 +1,5 @@
 /* -*- mode: C; c-basic-offset: 4 -*-
- * mate-font-view: 
+ * mate-font-view:
  *
  * Copyright (C) 2012 Cosimo Cecchi <cosimoc@gnome.org>
  *
@@ -7,7 +7,7 @@
  *
  * fontilus - a collection of font utilities for MATE
  * Copyright (C) 2002-2003  James Henstridge <james@daa.com.au>
- * 
+ *
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -627,7 +627,7 @@ font_view_model_class_init (FontViewModelClass *klass)
     GObjectClass *oclass = G_OBJECT_CLASS (klass);
     oclass->finalize = font_view_model_finalize;
 
-    signals[CONFIG_CHANGED] = 
+    signals[CONFIG_CHANGED] =
         g_signal_new ("config-changed",
                       FONT_VIEW_TYPE_MODEL,
                       G_SIGNAL_RUN_FIRST,

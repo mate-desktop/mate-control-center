@@ -55,7 +55,7 @@ GtkWidget *nameplate_tile_new (const gchar * uri, GtkWidget * image, GtkWidget *
 		"tile-uri",            uri,
 		"nameplate-image",     image,
 		"nameplate-header",    header,
-		"nameplate-subheader", subheader, 
+		"nameplate-subheader", subheader,
 		NULL));
 }
 

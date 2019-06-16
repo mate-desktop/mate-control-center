@@ -185,7 +185,7 @@ add_row (GtkWidget *grid,
     }
     gtk_label_set_max_width_chars (GTK_LABEL (label), 64);
 
-    gtk_grid_attach_next_to (GTK_GRID (grid), label, 
+    gtk_grid_attach_next_to (GTK_GRID (grid), label,
                              name_w, GTK_POS_RIGHT,
                              1, 1);
 }
@@ -559,14 +559,14 @@ font_view_application_do_open (FontViewApplication *self,
     font_view_ensure_model (self);
 
     self->info_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                                    NULL, _("Info"), 
+                                                    NULL, _("Info"),
                                                     FALSE);
     g_signal_connect (self->info_button, "clicked",
                       G_CALLBACK (info_button_clicked_cb), self);
 
     /* add install button */
     self->install_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                                       NULL, _("Install"), 
+                                                       NULL, _("Install"),
                                                        FALSE);
     g_signal_connect (self->install_button, "clicked",
                       G_CALLBACK (install_button_clicked_cb), self);
@@ -701,7 +701,7 @@ font_view_application_do_overview (FontViewApplication *self)
         gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (icon_view), cell, FALSE);
         gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (icon_view), cell,
                                        "pixbuf", COLUMN_ICON);
-        
+
         cell = gtk_cell_renderer_text_new ();
         g_object_set (cell,
                       "alignment", PANGO_ALIGN_CENTER,
@@ -787,7 +787,7 @@ action_about (GSimpleAction *action,
                            "license-type", GTK_LICENSE_GPL_2_0,
                            "wrap-license", TRUE,
                            NULL);
-                           
+
 }
 
 static GActionEntry action_entries[] = {
@@ -812,7 +812,7 @@ font_view_application_startup (GApplication *application)
 
     G_APPLICATION_CLASS (font_view_application_parent_class)->startup (application);
 
-    g_action_map_add_action_entries (G_ACTION_MAP (self), action_entries, 
+    g_action_map_add_action_entries (G_ACTION_MAP (self), action_entries,
                                      G_N_ELEMENTS (action_entries), self);
     builder = gtk_builder_new ();
     gtk_builder_add_from_string (builder, app_menu, -1, NULL);
@@ -840,7 +840,7 @@ font_view_application_startup (GApplication *application)
     self->toolbar = gd_main_toolbar_new ();
     gtk_style_context_add_class (gtk_widget_get_style_context (self->toolbar), "menubar");
     self->search_button = gd_main_toolbar_add_toggle (GD_MAIN_TOOLBAR (self->toolbar),
-                                                        NULL, _("Search"), 
+                                                        NULL, _("Search"),
                                                         FALSE);
     gtk_container_add (GTK_CONTAINER (self->main_grid), self->toolbar);
 
@@ -864,11 +864,11 @@ font_view_application_startup (GApplication *application)
 
     self->search_bar = gtk_search_bar_new();
     gtk_container_add (GTK_CONTAINER (self->main_grid), self->search_bar);
-    
+
     self->entry = gtk_search_entry_new();
     gtk_entry_set_width_chars (GTK_ENTRY (self->entry), 40);
     gtk_container_add (GTK_CONTAINER (self->search_bar), self->entry);
-    
+
     g_object_bind_property (self->search_bar, "search-mode-enabled",
                             self->search_button, "active",
                             G_BINDING_BIDIRECTIONAL);

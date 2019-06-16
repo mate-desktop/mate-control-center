@@ -58,7 +58,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   interface_settings = g_settings_new (INTERFACE_SCHEMA);
   marco_settings = g_settings_new (MARCO_SCHEMA);
   mouse_settings = g_settings_new (MOUSE_SCHEMA);
-  
+
   if (mate_gsettings_schema_exists (NOTIFICATION_SCHEMA))
     {
       notification_settings = g_settings_new (NOTIFICATION_SCHEMA);

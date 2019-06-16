@@ -1,4 +1,4 @@
-/*  time-admin 
+/*  time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -27,13 +27,13 @@
 #endif
 
 typedef struct TzDB
-{   
+{
     GPtrArray  *locations;
     GHashTable *backward;
 }TzDB;
-    
+
 typedef struct TzLocation
-{   
+{
     gchar *country;
     gdouble latitude;
     gdouble longitude;

@@ -1,4 +1,4 @@
-/*  time-admin 
+/*  time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -25,20 +25,20 @@ struct tm *GetCurrentTime(void)
 	time_t tt;
 	tzset();
 	tt=time(NULL);
-	
+
     return localtime(&tt);
 }
 static void UpdateDate(TimeAdmin *ta,gboolean state)
 {
     struct tm *LocalTime;
-    
+
     if(state == TRUE)
-    {    
+    {
         LocalTime = GetCurrentTime();
-        gtk_calendar_select_month (GTK_CALENDAR (ta->Calendar), 
+        gtk_calendar_select_month (GTK_CALENDAR (ta->Calendar),
                                    LocalTime->tm_mon,
                                    LocalTime->tm_year+1900);
-        gtk_calendar_select_day   (GTK_CALENDAR (ta->Calendar), 
+        gtk_calendar_select_day   (GTK_CALENDAR (ta->Calendar),
                                    LocalTime->tm_mday);
     }
 }
@@ -47,18 +47,18 @@ static gboolean UpdateClock(gpointer data)
     TimeAdmin *ta = (TimeAdmin *)data;
     struct tm *LocalTime;
     gchar     *str;
-    
+
     LocalTime = GetCurrentTime();
     TimeoutFlag = 1;
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(ta->HourSpin),LocalTime->tm_hour);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(ta->MinuteSpin),LocalTime->tm_min);
     str = g_strdup_printf ("%02d", LocalTime->tm_sec);
     gtk_entry_set_text(GTK_ENTRY(ta->SecondSpin),str);
-    
-    UpdateDate(ta,ta->NtpState); 
+
+    UpdateDate(ta,ta->NtpState);
     gtk_calendar_mark_day(GTK_CALENDAR(ta->Calendar),LocalTime->tm_mday);
     if(LocalTime->tm_mday != ta->OldDay)
-    {   
+    {
         gtk_calendar_unmark_day(GTK_CALENDAR(ta->Calendar),ta->OldDay);
         ta->OldDay = LocalTime->tm_mday;
     }
@@ -72,16 +72,16 @@ void Update_Clock_Start(TimeAdmin *ta)
     if(ta->UpdateTimeId <= 0)
     {
         ta->UpdateTimeId = g_timeout_add(1000,(GSourceFunc)UpdateClock,ta);
-    }    
+    }
 
-}    
+}
 void Update_Clock_Stop(TimeAdmin *ta)
 {
     if(ta->UpdateTimeId > 0)
     {
         g_source_remove(ta->UpdateTimeId);
         ta->UpdateTimeId = 0;
-    }    
+    }
 }
 gboolean GetNtpState(TimeAdmin *ta)
 {
@@ -102,7 +102,7 @@ gboolean GetNtpState(TimeAdmin *ta)
     {
         goto EXIT;
     }
- 
+
     ret = g_dbus_proxy_call_sync (proxy,
                                  "Get",
                                   g_variant_new ("(ss)",
@@ -124,7 +124,7 @@ EXIT:
     g_error_free(error);
     return FALSE;
 
-}   
+}
 
 const gchar *GetTimeZone(TimeAdmin *ta)
 {
@@ -145,7 +145,7 @@ const gchar *GetTimeZone(TimeAdmin *ta)
     {
         goto EXIT;
     }
- 
+
     ret = g_dbus_proxy_call_sync (proxy,
                                  "Get",
                                   g_variant_new ("(ss)",
@@ -172,7 +172,7 @@ void SetTimeZone(GDBusProxy *proxy,const char *zone)
 {
     GError *error = NULL;
     GVariant *ret;
-    
+
     ret = g_dbus_proxy_call_sync (proxy,
                                  "SetTimezone",
                                   g_variant_new ("(sb)",zone,1),
@@ -184,20 +184,20 @@ void SetTimeZone(GDBusProxy *proxy,const char *zone)
     if(ret == NULL)
     {
         MessageReport(_("Set time zone"),error->message,ERROR);
-    }    
-}    
+    }
+}
 static void ChangeSpinBttonState(TimeAdmin *ta,gboolean State)
 {
     gtk_widget_set_sensitive(ta->SaveButton,!State);
-    SetTooltip(ta->SaveButton,!ta->NtpState); 
+    SetTooltip(ta->SaveButton,!ta->NtpState);
     gtk_widget_set_sensitive(ta->HourSpin,  !State);
-    SetTooltip(ta->HourSpin,!ta->NtpState); 
+    SetTooltip(ta->HourSpin,!ta->NtpState);
     gtk_widget_set_sensitive(ta->MinuteSpin,!State);
-    SetTooltip(ta->MinuteSpin,!ta->NtpState); 
+    SetTooltip(ta->MinuteSpin,!ta->NtpState);
     gtk_widget_set_sensitive(ta->SecondSpin,!State);
-    SetTooltip(ta->SecondSpin,!ta->NtpState); 
+    SetTooltip(ta->SecondSpin,!ta->NtpState);
     gtk_widget_set_sensitive(ta->Calendar,  !State);
-    SetTooltip(ta->Calendar,!ta->NtpState); 
+    SetTooltip(ta->Calendar,!ta->NtpState);
 }
 
 gboolean ChangeNtpSync(GtkSwitch *widget,gboolean state,gpointer data)
@@ -205,7 +205,7 @@ gboolean ChangeNtpSync(GtkSwitch *widget,gboolean state,gpointer data)
     TimeAdmin *ta = (TimeAdmin *)data;
     GError *error = NULL;
     GVariant *ret;
-   
+
     ret = g_dbus_proxy_call_sync (ta->proxy,
                                  "SetNTP",
                                   g_variant_new ("(bb)",state,state),
@@ -219,22 +219,22 @@ gboolean ChangeNtpSync(GtkSwitch *widget,gboolean state,gpointer data)
         MessageReport(_("Set Ntp sync"),error->message,ERROR);
         g_error_free(error);
         return TRUE;
-    }    
+    }
     else
     {
         ta->NtpState = state;
         ChangeSpinBttonState(ta,state);
         Update_Clock_Start(ta);
         UpdateDate(ta,state);
-    }    
+    }
     return FALSE;
-}   
+}
 static guint GetTimeStamp(TimeAdmin *ta)
 {
     guint year,month,day,hour,min,sec;
     GDateTime *dt;
     char      *st;
-    
+
     gtk_calendar_get_date(GTK_CALENDAR(ta->Calendar),&year,&month,&day);
     hour = gtk_spin_button_get_value(GTK_SPIN_BUTTON(ta->HourSpin));
     min  = gtk_spin_button_get_value(GTK_SPIN_BUTTON(ta->MinuteSpin));
@@ -249,7 +249,7 @@ static void SetTime(GDBusProxy *proxy,gint64 TimeSec)
 {
     GError *error = NULL;
     GVariant *ret;
-    
+
     ret = g_dbus_proxy_call_sync (proxy,
                                  "SetTime",
                                   g_variant_new ("(xbb)",TimeSec * 1000 * 1000,0,0),
@@ -262,8 +262,8 @@ static void SetTime(GDBusProxy *proxy,gint64 TimeSec)
     {
         MessageReport(_("Set Ntp sync"),error->message,ERROR);
         g_error_free(error);
-    }    
-}    
+    }
+}
 void SaveModifyTime (GtkButton *button,gpointer data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
@@ -277,5 +277,5 @@ void SaveModifyTime (GtkButton *button,gpointer data)
     else
     {
         MessageReport(_("Set Time"),_("NTP synchronization has been started, the modification is invalid"),INFOR);
-    }    
-}    
+    }
+}

@@ -57,8 +57,8 @@ mate_window_manager_new (MateDesktopItem *it)
         }
 
         success = g_module_symbol (module, "window_manager_new",
-                                   (gpointer *) &wm_new_func);  
-  
+                                   (gpointer *) &wm_new_func);
+
         if ((!success) || wm_new_func == NULL) {
                 g_warning ("Couldn't load window manager settings module `%s`, couldn't find symbol \'window_manager_new\'", module_name);
 		g_free (module_name);
@@ -71,14 +71,14 @@ mate_window_manager_new (MateDesktopItem *it)
 
         if (wm == NULL)
                 return NULL;
-        
+
         (MATE_WINDOW_MANAGER (wm))->p->window_manager_name = g_strdup (mate_desktop_item_get_string (it, MATE_DESKTOP_ITEM_NAME));
         (MATE_WINDOW_MANAGER (wm))->p->ditem = mate_desktop_item_ref (it);
-  
+
         return wm;
 }
 
-const char * 
+const char *
 mate_window_manager_get_name (MateWindowManager *wm)
 {
         return wm->p->window_manager_name;
@@ -119,7 +119,7 @@ mate_window_manager_get_double_click_actions (MateWindowManager              *wm
 
         *actions = NULL;
         *n_actions = 0;
-        
+
         if (klass->get_double_click_actions)
                 klass->get_double_click_actions (wm, actions, n_actions);
 }
@@ -129,7 +129,7 @@ mate_window_manager_change_settings  (MateWindowManager    *wm,
                                        const MateWMSettings *settings)
 {
         MateWindowManagerClass *klass = MATE_WINDOW_MANAGER_GET_CLASS (wm);
-        
+
         (* klass->change_settings) (wm, settings);
 }
 
@@ -145,7 +145,7 @@ mate_window_manager_get_settings (MateWindowManager *wm,
                                   * fields to the caller that the WM module
                                   * doesn't know about
                                   */
-        
+
         (* klass->get_settings) (wm, settings);
 }
 
@@ -156,7 +156,7 @@ mate_window_manager_init (MateWindowManager *mate_window_manager, MateWindowMana
 }
 
 static void
-mate_window_manager_finalize (GObject *object) 
+mate_window_manager_finalize (GObject *object)
 {
 	MateWindowManager *mate_window_manager;
 
@@ -178,17 +178,17 @@ enum {
 static guint signals[LAST_SIGNAL] = { 0 };
 
 static void
-mate_window_manager_class_init (MateWindowManagerClass *class) 
+mate_window_manager_class_init (MateWindowManagerClass *class)
 {
 	GObjectClass *object_class;
 
 	object_class = G_OBJECT_CLASS (class);
 
 	object_class->finalize = mate_window_manager_finalize;
-        
+
 	parent_class = g_type_class_peek_parent (class);
 
-        
+
         signals[SETTINGS_CHANGED] =
                 g_signal_new ("settings_changed",
                               G_OBJECT_CLASS_TYPE (class),
@@ -219,10 +219,10 @@ mate_window_manager_get_type (void)
 			NULL
 		};
 
-		mate_window_manager_type = 
-			g_type_register_static (G_TYPE_OBJECT, 
+		mate_window_manager_type =
+			g_type_register_static (G_TYPE_OBJECT,
 						"MateWindowManager",
-						&mate_window_manager_info, 0);                
+						&mate_window_manager_info, 0);
 	}
 
 	return mate_window_manager_type;

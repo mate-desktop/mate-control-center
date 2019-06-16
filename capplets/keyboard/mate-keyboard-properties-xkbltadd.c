@@ -408,7 +408,7 @@ xkl_layout_chooser_add_default_switcher_if_necessary (GSList *
 		(layouts_list_strv, options_list_strv, &was_appended);
 	if (was_appended) {
 		xkb_options_set_selected_list (options_list);
-		
+
 	}
 	clear_xkb_elements_list (options_list);
 }

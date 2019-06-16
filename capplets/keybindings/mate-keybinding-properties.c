@@ -1113,7 +1113,7 @@ static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, 
     {
         return FALSE;
     }
-    
+
     gchar *new_key_schema = NULL;
     gchar *element_schema = NULL;
     gchar *new_key_path = NULL;
@@ -1124,7 +1124,7 @@ static gboolean cb_check_for_uniqueness(GtkTreeModel* model, GtkTreePath* path, 
             g_object_get (new_key->settings, "schema-id", &new_key_schema, NULL);
         g_object_get (new_key->settings, "path", &new_key_path, NULL);
     }
-    
+
     if (element->settings)
     {
             g_object_get (element->settings, "schema-id", &element_schema, NULL);
@@ -1656,7 +1656,7 @@ add_custom_shortcut (GtkTreeView  *tree_view,
     }
   else
     {
-      g_free (key_entry->gsettings_path); 
+      g_free (key_entry->gsettings_path);
       g_free (key_entry->gsettings_key);
       g_free (key_entry->description);
       g_free (key_entry->desc_gsettings_key);

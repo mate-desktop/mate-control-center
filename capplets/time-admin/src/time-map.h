@@ -1,4 +1,4 @@
-/*  time-admin 
+/*  time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ typedef struct TimezoneMap
 typedef struct TimezoneMapClass
 {
     GtkWidgetClass parent_class;
- 
+
 } TimezoneMapClass;
 
 GType         timezone_map_get_type        (void) G_GNUC_CONST;
@@ -62,7 +62,7 @@ gboolean      timezone_map_set_timezone    (TimezoneMap *map,
 
 TzLocation   *timezone_map_get_location    (TimezoneMap *map);
 
-TimezoneMap * timezone_map_new             (void); 
+TimezoneMap * timezone_map_new             (void);
 
 G_END_DECLS
 #endif

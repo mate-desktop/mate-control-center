@@ -95,7 +95,7 @@ window_manager_new (int expected_interface_version)
                 g_warning ("Marco window manager module wasn't compiled with the current version of mate-control-center");
                 return NULL;
         }
-  
+
         wm = g_object_new (marco_window_manager_get_type (), NULL);
 
         return wm;
@@ -119,7 +119,7 @@ add_themes_from_dir (GList *current_list, const char *path)
          * only checks existence, not wether we can really read it.*/
         if (theme_dir == NULL)
                 return current_list;
-        
+
         for (entry = readdir (theme_dir); entry != NULL; entry = readdir (theme_dir)) {
                 theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-2.xml", NULL);
 
@@ -153,13 +153,13 @@ add_themes_from_dir (GList *current_list, const char *path)
                 /*g_free (entry);*/
                 g_free (theme_file_path);
         }
-   
+
         closedir (theme_dir);
 
         return current_list;
 }
 
-static GList *  
+static GList *
 marco_get_theme_list (MateWindowManager *wm)
 {
         GList *themes = NULL;
@@ -210,7 +210,7 @@ marco_change_settings (MateWindowManager    *wm,
                 g_settings_set_boolean (meta_wm->p->settings,
                                         MARCO_AUTORAISE_KEY,
                                         settings->autoraise);
-        
+
         if (settings->flags & MATE_WM_SETTING_AUTORAISE_DELAY)
                 g_settings_set_int (meta_wm->p->settings,
                                     MARCO_AUTORAISE_DELAY_KEY,
@@ -221,7 +221,7 @@ marco_change_settings (MateWindowManager    *wm,
                                        MARCO_FONT_KEY,
                                        settings->font);
         }
-        
+
         if (settings->flags & MATE_WM_SETTING_MOUSE_MOVE_MODIFIER) {
                 char *value;
 
@@ -253,22 +253,22 @@ marco_get_settings (MateWindowManager *wm,
         MarcoWindowManager *meta_wm;
 
         meta_wm = MARCO_WINDOW_MANAGER (wm);
-        
+
         to_get = settings->flags;
         settings->flags = 0;
-        
+
         if (to_get & MATE_WM_SETTING_COMPOSITING_MANAGER) {
                 settings->compositing_manager = g_settings_get_boolean (meta_wm->p->settings,
                                                                         MARCO_COMPOSITING_MANAGER_KEY);
                 settings->flags |= MATE_WM_SETTING_COMPOSITING_MANAGER;
         }
-        
+
         if (to_get & MATE_WM_SETTING_COMPOSITING_ALTTAB) {
                 settings->compositing_fast_alt_tab = g_settings_get_boolean (meta_wm->p->settings,
                                                                              MARCO_COMPOSITING_FAST_ALT_TAB_KEY);
                 settings->flags |= MATE_WM_SETTING_COMPOSITING_ALTTAB;
         }
-        
+
         if (to_get & MATE_WM_SETTING_MOUSE_FOCUS) {
                 gint marco_focus_value;
 
@@ -280,13 +280,13 @@ marco_get_settings (MateWindowManager *wm,
 
                 settings->flags |= MATE_WM_SETTING_MOUSE_FOCUS;
         }
-        
+
         if (to_get & MATE_WM_SETTING_AUTORAISE) {
                 settings->autoraise = g_settings_get_boolean (meta_wm->p->settings,
                                                               MARCO_AUTORAISE_KEY);
                 settings->flags |= MATE_WM_SETTING_AUTORAISE;
         }
-        
+
         if (to_get & MATE_WM_SETTING_AUTORAISE_DELAY) {
                 settings->autoraise_delay =
                         g_settings_get_int (meta_wm->p->settings,
@@ -310,12 +310,12 @@ marco_get_settings (MateWindowManager *wm,
                         g_free (meta_wm->p->font);
                         meta_wm->p->font = str;
                 }
-                
+
                 settings->font = meta_wm->p->font;
 
                 settings->flags |= MATE_WM_SETTING_FONT;
         }
-        
+
         if (to_get & MATE_WM_SETTING_MOUSE_MOVE_MODIFIER) {
                 char *str;
                 const char *new;
@@ -350,7 +350,7 @@ marco_get_settings (MateWindowManager *wm,
                 g_free (str);
 
                 settings->mouse_move_modifier = meta_wm->p->mouse_modifier;
-                
+
                 settings->flags |= MATE_WM_SETTING_MOUSE_MOVE_MODIFIER;
         }
 
@@ -374,7 +374,7 @@ marco_get_settings (MateWindowManager *wm,
                 settings->double_click_action =
                         g_settings_get_enum (meta_wm->p->settings,
                                              MARCO_DOUBLE_CLICK_TITLEBAR_KEY);
-                
+
                 settings->flags |= MATE_WM_SETTING_DOUBLE_CLICK_ACTION;
         }
 }
@@ -398,12 +398,12 @@ marco_get_double_click_actions (MateWindowManager              *wm,
                 { ACTION_TITLEBAR_MINIMIZE, N_("Minimize") },
                 { ACTION_TITLEBAR_NONE, N_("None") }
         };
-        
+
         static gboolean initialized = FALSE;
 
         if (!initialized) {
                 int i;
-                
+
                 initialized = TRUE;
                 for (i = 0; i < G_N_ELEMENTS (actions); i++) {
                         actions[i].human_readable_name = _(actions[i].human_readable_name);
@@ -411,7 +411,7 @@ marco_get_double_click_actions (MateWindowManager              *wm,
         }
 
         *actions_p = actions;
-        *n_actions_p = (int) G_N_ELEMENTS (actions);        
+        *n_actions_p = (int) G_N_ELEMENTS (actions);
 }
 
 static void
@@ -430,7 +430,7 @@ marco_window_manager_init (MarcoWindowManager *marco_window_manager,
 }
 
 static void
-marco_window_manager_finalize (GObject *object) 
+marco_window_manager_finalize (GObject *object)
 {
         MarcoWindowManager *marco_window_manager;
 
@@ -447,7 +447,7 @@ marco_window_manager_finalize (GObject *object)
 
 
 static void
-marco_window_manager_class_init (MarcoWindowManagerClass *class) 
+marco_window_manager_class_init (MarcoWindowManagerClass *class)
 {
         GObjectClass *object_class;
         MateWindowManagerClass *wm_class;
@@ -463,7 +463,7 @@ marco_window_manager_class_init (MarcoWindowManagerClass *class)
         wm_class->get_user_theme_folder    = marco_get_user_theme_folder;
         wm_class->get_theme_list           = marco_get_theme_list;
         wm_class->get_double_click_actions = marco_get_double_click_actions;
-        
+
         parent_class = g_type_class_peek_parent (class);
 }
 
@@ -486,8 +486,8 @@ marco_window_manager_get_type (void)
                         NULL
                 };
 
-                marco_window_manager_type = 
-                        g_type_register_static (mate_window_manager_get_type (), 
+                marco_window_manager_type =
+                        g_type_register_static (mate_window_manager_get_type (),
                                                 "MarcoWindowManager",
                                                 &marco_window_manager_info, 0);
         }

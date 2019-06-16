@@ -1,4 +1,4 @@
-/*   time-admin 
+/*   time-admin
 *   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
 *
 *   This program is free software: you can redistribute it and/or modify
@@ -46,7 +46,7 @@
 
 GtkWidget *WindowLogin;
 int        TimeoutFlag;
-typedef struct 
+typedef struct
 {
     GtkWidget        *MainWindow;
     GtkWidget        *HourSpin;
@@ -57,7 +57,7 @@ typedef struct
     GtkWidget        *Calendar;
     GtkWidget        *CloseButton;
     GtkWidget        *SaveButton;
-    int               UpdateTimeId; 
+    int               UpdateTimeId;
     int               ApplyId;
     int               OldDay;
     gboolean          NtpState;

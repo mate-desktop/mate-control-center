@@ -102,7 +102,7 @@ xkb_layouts_get_selected_list (void)
 	if (retval == NULL) {
 		if (initial_config.layouts_variants != NULL) {
 			for (i = 0; initial_config.layouts_variants[i] != NULL; i++)
-				retval = 
+				retval =
 				    g_slist_prepend (retval, g_strdup (initial_config.layouts_variants[i]));
 		}
 		retval = g_slist_reverse (retval);

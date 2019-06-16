@@ -29,7 +29,7 @@ create_tile_pixbuf (GdkPixbuf    *dest_pixbuf,
 		    GdkPixbuf    *src_pixbuf,
 		    GdkRectangle *field_geom,
 		    guint         alpha,
-		    GdkColor     *bg_color) 
+		    GdkColor     *bg_color)
 {
 	gboolean need_composite;
 	gboolean use_simple;
@@ -60,7 +60,7 @@ create_tile_pixbuf (GdkPixbuf    *dest_pixbuf,
 			if (need_composite && !use_simple)
 				gdk_pixbuf_composite (src_pixbuf, dest_pixbuf,
 						      cx, cy,
-						      MIN (pwidth, field_geom->width - cx), 
+						      MIN (pwidth, field_geom->width - cx),
 						      MIN (pheight, field_geom->height - cy),
 						      cx, cy,
 						      1.0, 1.0,
@@ -69,7 +69,7 @@ create_tile_pixbuf (GdkPixbuf    *dest_pixbuf,
 			else if (need_composite && use_simple)
 				gdk_pixbuf_composite_color (src_pixbuf, dest_pixbuf,
 							    cx, cy,
-							    MIN (pwidth, field_geom->width - cx), 
+							    MIN (pwidth, field_geom->width - cx),
 							    MIN (pheight, field_geom->height - cy),
 							    cx, cy,
 							    1.0, 1.0,

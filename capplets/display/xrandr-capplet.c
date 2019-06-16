@@ -58,7 +58,7 @@ struct App
     GtkWidget	   *panel_checkbox;
     GtkWidget	   *clone_checkbox;
     GtkWidget	   *show_icon_checkbox;
-    GtkWidget      *primary_button;    
+    GtkWidget      *primary_button;
 
     /* We store the event timestamp when the Apply button is clicked */
     GtkWidget      *apply_button;
@@ -1628,7 +1628,7 @@ get_display_name (App *app,
      * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
      */
         text = g_strdup_printf (_("Mirror Screens"));
-    } 
+    }
     else {
         text = g_strdup_printf ("<b>%s</b>\n<small>%s</small>", mate_rr_output_info_get_display_name (output), mate_rr_output_info_get_name (output));
     }
