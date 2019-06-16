@@ -82,6 +82,7 @@ requires:
   debian:
     # Useful URL: https://github.com/mate-desktop/debian-packages
     # Useful URL: https://salsa.debian.org/debian-mate-team/mate-control-center
+    - autopoint
     - clang
     - clang-tools
     - cppcheck
@@ -102,6 +103,7 @@ requires:
     - libmate-menu-dev
     - libmatekbd-dev
     - libpango1.0-dev
+    - librsvg2-bin
     - librsvg2-dev
     - libstartup-notification0-dev
     - libx11-dev
@@ -122,6 +124,7 @@ requires:
 
   fedora:
     # Useful URL: https://src.fedoraproject.org/cgit/rpms/mate-control-center.git
+    - accountsservice-devel
     - cairo-gobject-devel
     - clang
     - clang-analyzer
@@ -140,6 +143,7 @@ requires:
     - libcanberra-devel
     - libmatekbd-devel
     - librsvg2-devel
+    - librsvg2-tools
     - make
     - marco-devel
     - polkit-devel
@@ -150,6 +154,7 @@ requires:
     - which
 
   ubuntu:
+    - autopoint
     - curl
     - clang
     - clang-tools
@@ -169,6 +174,7 @@ requires:
     - libmate-menu-dev
     - libmatekbd-dev
     - libpango1.0-dev
+    - librsvg2-bin
     - librsvg2-dev
     - libstartup-notification0-dev
     - libx11-dev
@@ -207,15 +213,15 @@ variables:
 
 before_scripts:
   - cd ${START_DIR}
-  - if [ ! -f mate-desktop-1.22.0.tar.xz ];then
-  -     curl -Ls -o mate-desktop-1.22.0.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.22.0/mate-desktop-1.22.0.tar.xz
+  - if [ ! -f mate-desktop-1.23.1.tar.xz ];then
+  -     curl -Ls -o mate-desktop-1.23.1.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.23.1/mate-desktop-1.23.1.tar.xz
   - fi
-  - tar xf mate-desktop-1.22.0.tar.xz
-  - cd mate-desktop-1.22.0
+  - tar xf mate-desktop-1.23.1.tar.xz
+  - cd mate-desktop-1.23.1
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
-  -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
+  -     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
-  -     ./configure --prefix=/usr
+  -     ./autogen.sh --prefix=/usr
   - fi
   - if [ ${TRAVIS} == "false" ]; then
   -     make clean
@@ -241,11 +247,11 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -f mate-settings-daemon-1.22.0.tar.xz ]; then
-  -     curl -Ls -o mate-settings-daemon-1.22.0.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.22.0/mate-settings-daemon-1.22.0.tar.xz
+  - if [ ! -f mate-settings-daemon-1.23.0.tar.xz ]; then
+  -     curl -Ls -o mate-settings-daemon-1.23.0.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.23.0/mate-settings-daemon-1.23.0.tar.xz
   - fi
-  - tar xf mate-settings-daemon-1.22.0.tar.xz
-  - cd mate-settings-daemon-1.22.0
+  - tar xf mate-settings-daemon-1.23.0.tar.xz
+  - cd mate-settings-daemon-1.23.0
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
@@ -262,12 +268,12 @@ build_scripts:
   - scan-build $CHECKERS ./configure
   - scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
   - if [ ${DISTRO_NAME} == "debian" ];then
-  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.22.0' -i'mate-menus-1.22.0' -i'mate-settings-daemon-1.22.0' .
+  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.1' -i'mate-menus-1.22.0' -i'mate-settings-daemon-1.23.0' .
   - fi
 
 after_scripts:
   - if [ ${DISTRO_NAME} == "fedora" ];then
-  -   cppcheck --xml --output-file=cppcheck.xml --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.22.0' -i'mate-menus-1.22.0' -i'mate-settings-daemon-1.22.0' .
+  -   cppcheck --xml --output-file=cppcheck.xml --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.1' -i'mate-menus-1.22.0' -i'mate-settings-daemon-1.23.0' .
   -   cppcheck-htmlreport --title=${REPO_NAME} --file=cppcheck.xml --report-dir=cppcheck-htmlreport
   -   ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/categories/preferences-desktop.png
   - fi
