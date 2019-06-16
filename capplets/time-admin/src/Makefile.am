@@ -18,4 +18,6 @@ AM_CPPFLAGS = \
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) 
 
+EXTRA_DIST = time-zones.h
+
 -include $(top_srcdir)/git.mk

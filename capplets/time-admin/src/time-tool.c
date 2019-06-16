@@ -19,6 +19,7 @@
 #include "config.h"
 #endif
 #include "time-tool.h"
+#include <glib/gi18n.h>
 
 struct tm *GetCurrentTime(void)
 {
