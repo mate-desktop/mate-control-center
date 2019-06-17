@@ -33,7 +33,6 @@
 
 #include "capplet-util.h"
 #include "activate-settings-daemon.h"
-#include "capplet-stock-icons.h"
 
 #include "mate-keyboard-properties-a11y.h"
 #include "mate-keyboard-properties-xkb.h"

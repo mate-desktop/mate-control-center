@@ -23,8 +23,6 @@ noinst_LTLIBRARIES = libcommon.la
 libcommon_la_SOURCES = \
 	activate-settings-daemon.c	\
 	activate-settings-daemon.h	\
-	capplet-stock-icons.c		\
-	capplet-stock-icons.h		\
 	capplet-util.c			\
 	capplet-util.h			\
 	dconf-util.c				\
