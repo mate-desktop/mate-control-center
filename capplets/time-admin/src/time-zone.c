@@ -335,13 +335,14 @@ static void LoadCities (TzLocation   *loc,
 
 static void CreateCityList(TimeAdmin *ta)
 {
-    g_autoptr(TzDB) db = NULL;
+    TzDB *db;
     
     ta->CityListStore = gtk_list_store_new (CITY_NUM_COLS,G_TYPE_STRING,G_TYPE_STRING);
  
     db = tz_load_db ();
     g_ptr_array_foreach (db->locations, (GFunc) LoadCities, ta->CityListStore);
 
+    TimeZoneDateBaseFree(db);
 }    
 static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
 {
@@ -624,11 +625,13 @@ TzInfo *tz_info_from_location (TzLocation *loc)
 }
 glong tz_location_get_utc_offset (TzLocation *loc)
 {
-    g_autoptr(TzInfo) tz_info = NULL;
+    TzInfo *tz_info;
     glong offset; 
 
     tz_info = tz_info_from_location (loc);
     offset = tz_info->utc_offset;
+
+    tz_info_free (tz_info);
     return offset;
 }
 void RunTimeZoneDialog  (GtkButton *button,

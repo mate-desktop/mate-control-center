@@ -44,7 +44,7 @@ static void update_apply_timeout(TimeAdmin *ta)
     ta->ApplyId = g_timeout_add (10000, (GSourceFunc)CheckClockHealth,ta);
 }    
 static void ChangeTimeValue(GtkSpinButton *spin_button,
-                            gpointer      *data)
+                            gpointer       data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
     if(TimeoutFlag == 0)
@@ -87,12 +87,12 @@ static void UpdatePermission(TimeAdmin *ta)
 
     is_authorized = g_permission_get_allowed (G_PERMISSION (ta->Permission));
 
-    gtk_widget_set_sensitive(ta->HourSpin,       is_authorized);
-    gtk_widget_set_sensitive(ta->MinuteSpin,     is_authorized);
-    gtk_widget_set_sensitive(ta->SecondSpin,     is_authorized);
+    gtk_widget_set_sensitive(ta->HourSpin,       is_authorized & !ta->NtpState);
+    gtk_widget_set_sensitive(ta->MinuteSpin,     is_authorized & !ta->NtpState);
+    gtk_widget_set_sensitive(ta->SecondSpin,     is_authorized & !ta->NtpState);
     gtk_widget_set_sensitive(ta->TimeZoneButton, is_authorized);
-    gtk_widget_set_sensitive(ta->Calendar,       is_authorized);
-    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized);
+    gtk_widget_set_sensitive(ta->Calendar,       is_authorized & !ta->NtpState);
+    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized & !ta->NtpState);
     gtk_widget_set_sensitive(ta->NtpSyncSwitch,  is_authorized);
 }
 

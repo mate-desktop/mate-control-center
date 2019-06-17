@@ -33,7 +33,6 @@
 
 #include "capplet-util.h"
 #include "activate-settings-daemon.h"
-#include "capplet-stock-icons.h"
 #include "msd-input-helper.h"
 
 #include <sys/types.h>
@@ -80,9 +79,8 @@ test_maybe_timeout (struct test_data_t *data)
 {
 	double_click_state = DOUBLE_CLICK_TEST_OFF;
 
-	gtk_image_set_from_stock (GTK_IMAGE (data->image),
-				  MOUSE_DBLCLCK_OFF, mouse_capplet_dblclck_icon_get_size());
-
+    gtk_image_set_from_resource (GTK_IMAGE (data->image), 
+                                "/org/mate/mcc/mouse/double-click-off.svg");
 	*data->timeout_id = 0;
 
 	return FALSE;
@@ -142,16 +140,13 @@ event_box_button_press_event (GtkWidget   *widget,
 
 	switch (double_click_state) {
 	case DOUBLE_CLICK_TEST_ON:
-		gtk_image_set_from_stock (GTK_IMAGE (image),
-					  MOUSE_DBLCLCK_ON, mouse_capplet_dblclck_icon_get_size());
+        gtk_image_set_from_resource (GTK_IMAGE (image), "/org/mate/mcc/mouse/double-click-on.svg");
 		break;
 	case DOUBLE_CLICK_TEST_MAYBE:
-		gtk_image_set_from_stock (GTK_IMAGE (image),
-					  MOUSE_DBLCLCK_MAYBE, mouse_capplet_dblclck_icon_get_size());
+        gtk_image_set_from_resource (GTK_IMAGE (image), "/org/mate/mcc/mouse/double-click-maybe.svg");
 		break;
 	case DOUBLE_CLICK_TEST_OFF:
-		gtk_image_set_from_stock (GTK_IMAGE (image),
-					  MOUSE_DBLCLCK_OFF, mouse_capplet_dblclck_icon_get_size());
+        gtk_image_set_from_resource (GTK_IMAGE (image), "/org/mate/mcc/mouse/double-click-off.svg");
 		break;
 	}
 
@@ -284,8 +279,7 @@ setup_dialog (GtkBuilder *dialog)
 	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
 		gtk_range_get_adjustment (GTK_RANGE (WID ("delay_scale"))), "value",
 		G_SETTINGS_BIND_DEFAULT);
-	
-	gtk_image_set_from_stock (GTK_IMAGE (WID ("double_click_image")), MOUSE_DBLCLCK_OFF, mouse_capplet_dblclck_icon_get_size ());
+    gtk_image_set_from_resource (GTK_IMAGE (WID ("double_click_image")),"/org/mate/mcc/mouse/double-click-off.svg");
 	g_object_set_data (G_OBJECT (WID ("double_click_eventbox")), "image", WID ("double_click_image"));
 	g_signal_connect (WID ("double_click_eventbox"), "button_press_event",
 			  G_CALLBACK (event_box_button_press_event), NULL);
@@ -434,8 +428,6 @@ main (int argc, char **argv)
 	context = g_option_context_new (_("- MATE Mouse Preferences"));
 	g_option_context_add_main_entries (context, cap_options, GETTEXT_PACKAGE);
 	capplet_init (context, &argc, &argv);
-
-	capplet_init_stock_icons ();
 
 	activate_settings_daemon ();
 
