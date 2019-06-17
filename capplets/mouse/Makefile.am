@@ -16,12 +16,6 @@ mate_mouse_properties_SOURCES =	\
 
 @INTLTOOL_DESKTOP_RULE@
 
-pixmapdir  = $(pkgdatadir)/pixmaps
-pixmap_DATA = \
-	double-click-on.svg		\
-	double-click-off.svg		\
-	double-click-maybe.svg
-
 include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
@@ -36,6 +30,13 @@ AM_CPPFLAGS = \
 	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
-EXTRA_DIST = $(ui_files) $(pixmap_DATA) $(Desktop_in_files) org.mate.mcc.mouse.gresource.xml ui-a11y.suppr
+EXTRA_DIST = \
+	$(ui_files) \
+	double-click-on.svg \
+	double-click-off.svg \
+	double-click-maybe.svg \
+	$(Desktop_in_files) \
+	org.mate.mcc.mouse.gresource.xml \
+	ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk
