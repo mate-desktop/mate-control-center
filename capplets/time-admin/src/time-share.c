@@ -123,24 +123,7 @@ void QuitApp(TimeAdmin *ta)
 
     gtk_main_quit();
 }
-GtkWidget* DialogAddButtonWithIconName (GtkDialog   *dialog,
-                                        const gchar *button_text,
-                                        const gchar *icon_name,
-                                        gint         response_id)
-{
-    GtkWidget *button;
 
-    button = gtk_button_new_with_mnemonic (button_text);
-    gtk_button_set_image (GTK_BUTTON (button), gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_BUTTON));
-
-    gtk_button_set_use_underline (GTK_BUTTON (button), TRUE);
-    gtk_style_context_add_class (gtk_widget_get_style_context (button), "text-button");
-    gtk_widget_set_can_default (button, TRUE);
-//    gtk_widget_show (button);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, response_id);
-
-    return button;
-}
 void SetTooltip(GtkWidget*box,gboolean mode)
 {
     if(!mode)
