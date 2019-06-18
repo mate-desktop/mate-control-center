@@ -11,11 +11,11 @@ mate_time_admin_LDFLAGS = -export-dynamic
 
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
-	-DDATADIR="\"$(datadir)/mate-time-admin/icon/\"" \
+	-DMATELOCALEDIR="\"$(datadir)/locale\""\
 	-DTIMPZONEDIR="\"$(datadir)/mate-time-admin/map/\""
 
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) 
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES)
 
 EXTRA_DIST = time-zones.h
 

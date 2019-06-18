@@ -24,8 +24,6 @@
 
 #define  LOCKFILE               "/tmp/time-admin.pid"
 #define  TIME_ADMIN_PERMISSION  "org.freedesktop.timedate1.set-time"
-#define  APPICON                 "mate-times-admin.png"
-#define  ICONFILE               DATADIR APPICON
 
 static gboolean CheckClockHealth(gpointer data)
 {
@@ -54,20 +52,7 @@ static void ChangeTimeValue(GtkSpinButton *spin_button,
         update_apply_timeout(ta);
     }
 }
-static GdkPixbuf * GetAppIcon(void)
-{
-    GdkPixbuf *Pixbuf;
-    GError    *Error = NULL;
 
-    Pixbuf = gdk_pixbuf_new_from_file(ICONFILE,&Error);
-    if(!Pixbuf)
-    {
-        MessageReport(("Get Icon Fail"),Error->message,ERROR);
-        g_error_free(Error);
-    }
-
-    return Pixbuf;
-}
 static gboolean on_window_quit (GtkWidget *widget,
                                 GdkEvent  *event,
                                 gpointer   user_data)
@@ -109,7 +94,6 @@ static void on_permission_changed (GPermission *permission,
 static void InitMainWindow(TimeAdmin *ta)
 {
     GtkWidget *Window;
-    GdkPixbuf *AppIcon;
     GError    *error = NULL;
 
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -125,14 +109,8 @@ static void InitMainWindow(TimeAdmin *ta)
                     "delete-event",
                      G_CALLBACK(on_window_quit),
                      ta);
-
-    AppIcon = GetAppIcon();
-    if(AppIcon)
-    {
-        gtk_window_set_icon(GTK_WINDOW(Window),AppIcon);
-        g_object_unref(AppIcon);
-    }
-	ta->Permission = polkit_permission_new_sync (TIME_ADMIN_PERMISSION,
+    gtk_window_set_icon_name (GTK_WINDOW(Window), "preferences-system-time");
+    ta->Permission = polkit_permission_new_sync (TIME_ADMIN_PERMISSION,
                                                  NULL,
                                                  NULL,
                                                  &error);
