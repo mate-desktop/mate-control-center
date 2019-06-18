@@ -23,27 +23,14 @@ map/timezone_12.75_dim.png  map/timezone_-3.png        map/timezone_-6_dim.png  
 map/timezone_12.75.png      map/timezone_3.png         map/timezone_6_dim.png     map/timezone_9.png \
 map/timezone_12_dim.png     map/timezone_-4.5_dim.png  map/timezone_-6.png
 
-icons16dir = $(datadir)/icons/hicolor/16x16/apps
-dist_icons16_DATA = hicolor/16x16/apps/mate-times-admin.png
-icons22dir = $(datadir)/icons/hicolor/22x22/apps
-dist_icons22_DATA = hicolor/22x22/apps/mate-times-admin.png
-icons24dir = $(datadir)/icons/hicolor/24x24/apps
-dist_icons24_DATA = hicolor/24x24/apps/mate-times-admin.png
-icons32dir = $(datadir)/icons/hicolor/32x32/apps
-dist_icons32_DATA = hicolor/32x32/apps/mate-times-admin.png
-icons48dir = $(datadir)/icons/hicolor/48x48/apps
-dist_icons48_DATA = hicolor/48x48/apps/mate-times-admin.png
-
-icondir = $(datadir)/mate-time-admin/icon
-dist_icon_DATA = icon/mate-times-admin.png
-
 @INTLTOOL_DESKTOP_RULE@
 
 desktopdir = $(datadir)/applications
-desktop_in_files = mate-time-admin.desktop.in 
+desktop_in_files = mate-time-admin.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 CLEANFILES = $(desktop_DATA)
 EXTRA_DIST = \
     $(desktop_in_files)
+
 -include $(top_srcdir)/git.mk

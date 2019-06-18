@@ -445,6 +445,7 @@ void SetupTimezoneDialog(TimeAdmin *ta)
                                               NULL,
                                               NULL);
     gtk_window_set_default_size (GTK_WINDOW (ta->dialog), 730, 520);
+    gtk_window_set_icon_name (GTK_WINDOW(ta->dialog), "preferences-system-time");
 
     ta->TZclose =   DialogAddButtonWithIconName(GTK_DIALOG(ta->dialog),
                                               _("Close"),
