@@ -40,8 +40,7 @@
 #define QUESTIONNORMAL   5
 
 
-GtkWidget *WindowLogin;
-int        TimeoutFlag;
+int TimeoutFlag;
 typedef struct
 {
     GtkWidget        *MainWindow;
@@ -49,9 +48,9 @@ typedef struct
     GtkWidget        *MinuteSpin;
     GtkWidget        *SecondSpin;
     GtkWidget        *TimeZoneButton;
+    GtkWidget        *TimeZoneEntry;
     GtkWidget        *NtpSyncSwitch;
     GtkWidget        *Calendar;
-    GtkWidget        *CloseButton;
     GtkWidget        *SaveButton;
     int               UpdateTimeId;
     int               ApplyId;
@@ -67,7 +66,7 @@ typedef struct
     GtkWidget        *map;
     GtkListStore     *CityListStore;
     GtkTreeModelSort *CityModelSort;
-	GtkWidget        *ButtonLock;
+    GtkWidget        *ButtonLock;
     GPermission      *Permission;
 
 }TimeAdmin;

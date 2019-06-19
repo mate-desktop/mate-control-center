@@ -22,18 +22,20 @@
 #include <glib/gi18n.h>
 
 /******************************************************************************
-* Function:            MessageReport
-*
-* Explain: Prompt information dialog
-*
-* Input:  @Title           Message title
-*         @Msg             Message content
-*         @nType           Message type
-* Output:
-*
-* Author:  zhuyaliang  25/05/2018
-******************************************************************************/
-int MessageReport(const char *Title,const char *Msg,int nType)
+ * Function:            MessageReport
+ *
+ * Explain: Prompt information dialog
+ *
+ * Input:  @Title           Message title
+ *         @Msg             Message content
+ *         @nType           Message type
+ * Output:
+ *
+ * Author:  zhuyaliang  25/05/2018
+ ******************************************************************************/
+int MessageReport(const char *Title,
+                  const char *Msg,
+                  int         nType)
 {
     GtkWidget *dialog = NULL;
     int nRet;
@@ -42,49 +44,49 @@ int MessageReport(const char *Title,const char *Msg,int nType)
     {
         case ERROR:
         {
-            dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+            dialog = gtk_message_dialog_new(NULL,
+                                            GTK_DIALOG_MODAL,
                                             GTK_MESSAGE_ERROR,
                                             GTK_BUTTONS_OK,
-                                            "%s",Title);
+                                            "%s", Title);
             break;
         }
         case WARING:
         {
-            dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+            dialog = gtk_message_dialog_new(NULL,
+                                            GTK_DIALOG_MODAL,
                                             GTK_MESSAGE_WARNING,
                                             GTK_BUTTONS_OK,
-                                            "%s",Title);
+                                            "%s", Title);
             break;
         }
         case INFOR:
         {
-            dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+            dialog = gtk_message_dialog_new(NULL,
+                                            GTK_DIALOG_MODAL,
                                             GTK_MESSAGE_INFO,
                                             GTK_BUTTONS_OK,
-                                            "%s",Title);
+                                            "%s", Title);
             break;
         }
         case QUESTION:
         {
-            dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+            dialog = gtk_message_dialog_new(NULL,
+                                            GTK_DIALOG_MODAL,
                                             GTK_MESSAGE_QUESTION,
                                             GTK_BUTTONS_YES_NO,
-                                            "%s",Title);
+                                            "%s", Title);
             gtk_dialog_add_button (GTK_DIALOG (dialog),("_Return"),
                                    GTK_RESPONSE_ACCEPT);
             break;
         }
         case QUESTIONNORMAL:
         {
-            dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+            dialog = gtk_message_dialog_new(NULL,
+                                            GTK_DIALOG_MODAL,
                                             GTK_MESSAGE_QUESTION,
                                             GTK_BUTTONS_YES_NO,
-                                            "%s",Title);
+                                            "%s", Title);
             break;
         }
         default :
@@ -102,13 +104,10 @@ int MessageReport(const char *Title,const char *Msg,int nType)
 void QuitApp(TimeAdmin *ta)
 {
     if(ta->UpdateTimeId > 0)
-    {
         g_source_remove (ta->UpdateTimeId);
-    }
+
     if(ta->ApplyId > 0)
-    {
         g_source_remove(ta->ApplyId);
-    }
 
     gtk_main_quit();
 }
