@@ -191,13 +191,9 @@ static void ChangeSpinBttonState(TimeAdmin *ta,gboolean State)
 {
     gtk_widget_set_sensitive(ta->SaveButton,!State);
     SetTooltip(ta->SaveButton,!ta->NtpState);
-    gtk_widget_set_sensitive(ta->HourSpin,  !State);
     SetTooltip(ta->HourSpin,!ta->NtpState);
-    gtk_widget_set_sensitive(ta->MinuteSpin,!State);
     SetTooltip(ta->MinuteSpin,!ta->NtpState);
-    gtk_widget_set_sensitive(ta->SecondSpin,!State);
     SetTooltip(ta->SecondSpin,!ta->NtpState);
-    gtk_widget_set_sensitive(ta->Calendar,  !State);
     SetTooltip(ta->Calendar,!ta->NtpState);
 }
 

@@ -25,6 +25,17 @@
 #define  LOCKFILE               "/tmp/time-admin.pid"
 #define  TIME_ADMIN_PERMISSION  "org.freedesktop.timedate1.set-time"
 
+static char *translate(const char *value)
+{
+    g_autofree gchar *zone_translated = NULL;
+    char *name;
+
+    zone_translated = g_strdup (_(value));
+    name = g_strdup_printf (C_("timezone loc", "%s"),zone_translated);
+
+    return name;
+}
+
 static gboolean CheckClockHealth(gpointer data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
@@ -33,6 +44,7 @@ static gboolean CheckClockHealth(gpointer data)
 
     return FALSE;
 }
+
 static void update_apply_timeout(TimeAdmin *ta)
 {
     Update_Clock_Stop(ta);
@@ -43,6 +55,7 @@ static void update_apply_timeout(TimeAdmin *ta)
     }
     ta->ApplyId = g_timeout_add (10000, (GSourceFunc)CheckClockHealth,ta);
 }
+
 static void ChangeTimeValue(GtkSpinButton *spin_button,
                             gpointer       data)
 {
@@ -62,25 +75,22 @@ static gboolean on_window_quit (GtkWidget *widget,
     QuitApp(ta);
     return TRUE;
 }
+
 static void CloseWindow (GtkButton *button,gpointer data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
 
     QuitApp(ta);
 }
+
 static void UpdatePermission(TimeAdmin *ta)
 {
     gboolean is_authorized;
 
     is_authorized = g_permission_get_allowed (G_PERMISSION (ta->Permission));
-
-    gtk_widget_set_sensitive(ta->HourSpin,       is_authorized);
-    gtk_widget_set_sensitive(ta->MinuteSpin,     is_authorized);
-    gtk_widget_set_sensitive(ta->SecondSpin,     is_authorized);
     gtk_widget_set_sensitive(ta->TimeZoneButton, is_authorized);
-    gtk_widget_set_sensitive(ta->Calendar,       is_authorized);
-    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized);
     gtk_widget_set_sensitive(ta->NtpSyncSwitch,  is_authorized);
+    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized);
 }
 
 static void on_permission_changed (GPermission *permission,
@@ -93,32 +103,58 @@ static void on_permission_changed (GPermission *permission,
 
 static void InitMainWindow(TimeAdmin *ta)
 {
-    GtkWidget *Window;
-    GError    *error = NULL;
+    GError     *error = NULL;
+    GtkBuilder *builder;
 
-    Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    ta->MainWindow = WindowLogin = Window;
-    gtk_window_set_deletable(GTK_WINDOW(Window),FALSE);
-    gtk_window_set_resizable(GTK_WINDOW(Window),FALSE);
-    gtk_window_set_hide_titlebar_when_maximized(GTK_WINDOW(Window),TRUE);
-    gtk_window_set_position(GTK_WINDOW(Window), GTK_WIN_POS_CENTER);
-    gtk_window_set_title(GTK_WINDOW(Window),_("Time and Date Manager"));
-    gtk_container_set_border_width(GTK_CONTAINER(Window),10);
-    gtk_widget_set_size_request(Window, 300, 360);
-    g_signal_connect(G_OBJECT(Window),
-                    "delete-event",
-                     G_CALLBACK(on_window_quit),
-                     ta);
-    gtk_window_set_icon_name (GTK_WINDOW(Window), "preferences-system-time");
-    ta->Permission = polkit_permission_new_sync (TIME_ADMIN_PERMISSION,
-                                                 NULL,
-                                                 NULL,
-                                                 &error);
+    builder = gtk_builder_new_from_resource ("/org/mate/mcc/ta/time-admin.ui");
+    gtk_builder_add_callback_symbols (builder,
+                                      "on_window_quit",       G_CALLBACK (on_window_quit),
+                                      "on_button1_clicked",   G_CALLBACK (RunTimeZoneDialog),
+                                      "on_button2_clicked",   G_CALLBACK (SaveModifyTime),
+                                      "on_button3_clicked",   G_CALLBACK (CloseWindow),
+                                      "on_spin1_changed",     G_CALLBACK (ChangeTimeValue),
+                                      "on_spin2_changed",     G_CALLBACK (ChangeTimeValue),
+                                      "on_spin3_changed",     G_CALLBACK (ChangeTimeValue),
+                                      "on_switch1_state_set", G_CALLBACK (ChangeNtpSync),
+                                      NULL);
+    gtk_builder_connect_signals (builder, ta);
+    ta->MainWindow = GTK_WIDGET (gtk_builder_get_object (builder, "window1"));
+    ta->HourSpin = GTK_WIDGET (gtk_builder_get_object (builder, "spin1"));
+    ta->MinuteSpin = GTK_WIDGET (gtk_builder_get_object (builder, "spin2"));
+    ta->SecondSpin = GTK_WIDGET (gtk_builder_get_object (builder, "spin3"));
+    ta->TimeZoneButton = GTK_WIDGET (gtk_builder_get_object (builder, "button1"));
+    ta->TimeZoneEntry = GTK_WIDGET (gtk_builder_get_object (builder, "entry1"));
+    ta->NtpSyncSwitch = GTK_WIDGET (gtk_builder_get_object (builder, "switch1"));
+    ta->Calendar = GTK_WIDGET (gtk_builder_get_object (builder, "calendar1"));
+    ta->SaveButton = GTK_WIDGET (gtk_builder_get_object (builder, "button2"));
+    ta->ButtonLock = GTK_WIDGET (gtk_builder_get_object (builder, "button4"));
+    g_object_unref (builder);
+
+    /* Make sure that every window gets an icon */
+    gtk_window_set_default_icon_name ("preferences-system-time");
+
+    ta->Permission = polkit_permission_new_sync (TIME_ADMIN_PERMISSION, NULL, NULL, &error);
     if (ta->Permission == NULL)
     {
         g_warning ("Failed to acquire %s: %s", TIME_ADMIN_PERMISSION, error->message);
         g_error_free (error);
     }
+    gtk_lock_button_set_permission(GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
+    g_signal_connect(ta->Permission, "notify", G_CALLBACK (on_permission_changed), ta);
+
+    struct tm *LocalTime = GetCurrentTime();
+    ta->UpdateTimeId     = 0;
+    ta->ApplyId          = 0;
+    Update_Clock_Start(ta);
+    SetupTimezoneDialog(ta);
+    const char *TimeZone = GetTimeZone(ta);
+    char       *ZoneName = translate(TimeZone);
+    gtk_entry_set_text (GTK_ENTRY (ta->TimeZoneEntry), ZoneName);
+    g_free (ZoneName);
+    ta->NtpState = GetNtpState(ta);
+    gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch), ta->NtpState);
+    gtk_calendar_mark_day (GTK_CALENDAR(ta->Calendar), LocalTime->tm_mday);
+    ta->OldDay = LocalTime->tm_mday;
 }
 
 static int RecordPid(void)
@@ -127,6 +163,7 @@ static int RecordPid(void)
     int fd;
     int Length = 0;
     char WriteBuf[30] = { 0 };
+
     fd = open(LOCKFILE,O_WRONLY|O_CREAT|O_TRUNC,0777);
     if(fd < 0)
     {
@@ -146,6 +183,7 @@ static int RecordPid(void)
 
     return 0;
 }
+
 /******************************************************************************
 * Function:              ProcessRuning
 *
@@ -194,200 +232,8 @@ static gboolean ProcessRuning(void)
 ERROREXIT:
     close(fd);
     return TRUE;
-
-}
-static char *translate(const char *value)
-{
-    g_autofree gchar *zone_translated = NULL;
-    char *name;
-
-    zone_translated = g_strdup (_(value));
-    name = g_strdup_printf (C_("timezone loc", "%s"),zone_translated);
-
-    return name;
-}
-static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
-{
-    GtkWidget  *table;
-    GtkWidget  *TimeZoneLabel;
-    GtkWidget  *NtpSyncLabel;
-    const char *TimeZone;
-    gboolean    NtpState;
-    char       *ZoneName;
-
-    table = gtk_grid_new();
-    gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
-
-    TimeZoneLabel = gtk_label_new (_("Time Zone:"));
-    gtk_widget_set_halign(TimeZoneLabel,GTK_ALIGN_START);
-    gtk_grid_attach(GTK_GRID(table) ,TimeZoneLabel, 0 , 0 , 1 , 1);
-
-    SetupTimezoneDialog(ta);
-    TimeZone = GetTimeZone(ta);
-    ZoneName = translate(TimeZone);
-    ta->TimeZoneButton = gtk_button_new_with_label(ZoneName);
-    g_signal_connect (ta->TimeZoneButton,
-                     "clicked",
-                      G_CALLBACK (RunTimeZoneDialog),
-                      ta);
-
-    gtk_grid_attach(GTK_GRID(table) ,ta->TimeZoneButton,1 , 0 , 3 , 1);
-
-    NtpSyncLabel = gtk_label_new (_("Ntp Sync:"));
-    gtk_widget_set_halign(NtpSyncLabel,GTK_ALIGN_START);
-    gtk_grid_attach(GTK_GRID(table) ,NtpSyncLabel,  0 , 1 , 1 , 1);
-
-    ta->NtpSyncSwitch = gtk_switch_new();
-    NtpState = GetNtpState(ta);
-    ta->NtpState = NtpState;
-    gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch),
-                          NtpState);
-    gtk_grid_attach(GTK_GRID(table) ,ta->NtpSyncSwitch, 1 , 1 , 1 , 1);
-    g_signal_connect (G_OBJECT(ta->NtpSyncSwitch),
-                     "state-set",
-                      G_CALLBACK (ChangeNtpSync),
-                      ta);
-
-    gtk_grid_set_row_spacing(GTK_GRID(table), 6);
-    gtk_grid_set_column_spacing(GTK_GRID(table), 12);
-
-    return table;
-
 }
 
-static GtkWidget *GetSpinButton(int Initial,int Maximum,TimeAdmin *ta)
-{
-    GtkWidget *SpinButton;
-    GtkAdjustment *Adjustment;
-
-    Adjustment = gtk_adjustment_new (Initial, 0, Maximum, 1, 0, 0);
-    SpinButton = gtk_spin_button_new (Adjustment, 1, 0);
-    gtk_widget_set_sensitive(SpinButton,!ta->NtpState);
-    gtk_widget_set_halign(SpinButton,GTK_ALIGN_START);
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON (SpinButton), TRUE);
-    gtk_spin_button_set_numeric(GTK_SPIN_BUTTON (SpinButton),TRUE);
-    gtk_widget_set_hexpand (SpinButton,TRUE);
-    g_signal_connect (SpinButton,
-                     "changed",
-                      G_CALLBACK (ChangeTimeValue),
-                      ta);
-
-    SetTooltip(SpinButton,!ta->NtpState);
-    return SpinButton;
-}
-static GtkWidget *SetClock(TimeAdmin *ta)
-{
-    GtkWidget *table;
-    GtkWidget *TimeLabel;
-    struct tm *LocalTime;
-
-    table = gtk_grid_new();
-    gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
-
-    TimeLabel = gtk_label_new (_("Set Time"));
-    gtk_widget_set_halign(TimeLabel,GTK_ALIGN_CENTER);
-    gtk_widget_set_valign(TimeLabel,GTK_ALIGN_START);
-    gtk_widget_set_hexpand(TimeLabel,FALSE);
-    gtk_grid_attach(GTK_GRID(table) ,TimeLabel, 1 , 0 , 1 , 1);
-
-    LocalTime = GetCurrentTime();
-    ta->UpdateTimeId = 0;
-    ta->ApplyId      = 0;
-
-    ta->HourSpin = GetSpinButton(LocalTime->tm_hour,23,ta);
-    gtk_grid_attach(GTK_GRID(table) ,ta->HourSpin, 0 , 1 , 1 , 1);
-
-    ta->MinuteSpin = GetSpinButton(LocalTime->tm_min,59,ta);
-    gtk_grid_attach(GTK_GRID(table) ,ta->MinuteSpin, 1 , 1 , 1 , 1);
-
-    ta->SecondSpin = GetSpinButton (LocalTime->tm_sec,59,ta);
-    gtk_grid_attach(GTK_GRID(table) ,ta->SecondSpin, 2 , 1 , 1 , 1);
-
-    Update_Clock_Start(ta);
-
-    gtk_grid_set_row_spacing(GTK_GRID(table), 6);
-    gtk_grid_set_column_spacing(GTK_GRID(table), 12);
-
-    return table;
-}
-
-static GtkWidget *SetDate(TimeAdmin *ta)
-{
-    GtkWidget *table, *image, *DateLabel;
-    struct tm *LocalTime;
-
-    table = gtk_grid_new();
-    gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
-
-    DateLabel = gtk_label_new (_("Set Date"));
-    gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 2 , 2);
-
-    LocalTime = GetCurrentTime ();
-    ta->Calendar = gtk_calendar_new ();
-    gtk_widget_set_sensitive (ta->Calendar, !ta->NtpState);
-    SetTooltip (ta->Calendar, !ta->NtpState);
-    gtk_calendar_mark_day (GTK_CALENDAR(ta->Calendar), LocalTime->tm_mday);
-    ta->OldDay = LocalTime->tm_mday;
-    gtk_grid_attach (GTK_GRID(table), ta->Calendar, 0, 2, 4, 3);
-
-    ta->CloseButton = gtk_button_new_with_label (_("_Close"));
-    image = gtk_image_new_from_icon_name ("gtk-close", GTK_ICON_SIZE_BUTTON);
-    gtk_button_set_image (GTK_BUTTON (ta->CloseButton), image);
-    gtk_button_set_use_underline (GTK_BUTTON(ta->CloseButton), TRUE);
-    gtk_style_context_add_class (gtk_widget_get_style_context (ta->CloseButton), "text-button");
-    gtk_grid_attach (GTK_GRID(table), ta->CloseButton, 3, 5, 1, 1);
-    g_signal_connect (ta->CloseButton,
-                     "clicked",
-                      G_CALLBACK (CloseWindow),
-                      ta);
-
-    if (ta->Permission)
-    {
-        ta->ButtonLock = gtk_lock_button_new (ta->Permission);
-        gtk_lock_button_set_permission (GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
-        gtk_grid_attach (GTK_GRID(table), ta->ButtonLock, 0, 5, 1, 1);
-        g_signal_connect (ta->Permission,
-                          "notify",
-                          G_CALLBACK (on_permission_changed),
-                          ta);
-    }
-
-    ta->SaveButton = gtk_button_new_with_label (_("_Save"));
-    image = gtk_image_new_from_icon_name ("gtk-save", GTK_ICON_SIZE_BUTTON);
-    gtk_button_set_image (GTK_BUTTON (ta->SaveButton), image);
-    gtk_button_set_use_underline (GTK_BUTTON(ta->SaveButton), TRUE);
-    gtk_style_context_add_class (gtk_widget_get_style_context (ta->SaveButton), "text-button");
-    gtk_widget_set_sensitive (ta->SaveButton, !ta->NtpState);
-    gtk_grid_attach (GTK_GRID(table), ta->SaveButton, 2, 5, 1, 1);
-    g_signal_connect (ta->SaveButton,
-                      "clicked",
-                      G_CALLBACK (SaveModifyTime),
-                      ta);
-
-    gtk_grid_set_row_spacing (GTK_GRID(table), 6);
-    gtk_grid_set_column_spacing (GTK_GRID(table), 12);
-
-    return table;
-}
-
-static void CreateClockInterface(TimeAdmin *ta)
-{
-    GtkWidget *Vbox;
-    GtkWidget *Vbox1;
-    GtkWidget *Vbox2;
-    GtkWidget *Vbox3;
-
-    Vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 8);
-    gtk_container_add(GTK_CONTAINER(ta->MainWindow), Vbox);
-
-    Vbox1 = TimeZoneAndNtp(ta);
-    gtk_box_pack_start(GTK_BOX(Vbox),Vbox1,TRUE,TRUE,8);
-
-    Vbox2 = SetClock(ta);
-    gtk_box_pack_start(GTK_BOX(Vbox),Vbox2,TRUE,TRUE,8);
-    Vbox3 = SetDate(ta);
-    gtk_box_pack_start(GTK_BOX(Vbox),Vbox3,TRUE,TRUE,8);
-}
 static gboolean InitDbusProxy(TimeAdmin *ta)
 {
     GError *error = NULL;
@@ -424,18 +270,16 @@ int main(int argc, char **argv)
 
     capplet_init (NULL, &argc, &argv);
 
-    /* Create the main window */
-    InitMainWindow(&ta);
-
     /* Check whether the process has been started */
     if(ProcessRuning() == TRUE)
         exit(0);
     if(InitDbusProxy(&ta) == FALSE)
-    {
         exit(0);
-    }
-    CreateClockInterface(&ta);
-	UpdatePermission(&ta);
+
+    /* Create the main window */
+    InitMainWindow(&ta);
+
+    UpdatePermission(&ta);
     gtk_widget_show_all(ta.MainWindow);
     gtk_main();
 

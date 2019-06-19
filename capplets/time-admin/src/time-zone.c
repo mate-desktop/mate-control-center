@@ -41,17 +41,21 @@
 
 #include <libmate-desktop/mate-languages.h>
 
-
 #define DEFAULT_TZ "Europe/London"
 #define BACKFILE   "/usr/share/mate-time-admin/map/backward"
+
 static void LocationChanged(TimezoneMap  *map,
-                            TzLocation   *location,TimeAdmin *ta);
+                            TzLocation   *location,
+                            TimeAdmin    *ta);
+
 enum {
   CITY_COL_CITY_HUMAN_READABLE,
   CITY_COL_ZONE,
   CITY_NUM_COLS
 };
-static gchar *tz_data_file_get (void)
+
+static gchar*
+tz_data_file_get (void)
 {
     gchar *file;
 
@@ -60,25 +64,31 @@ static gchar *tz_data_file_get (void)
     return file;
 }
 
-static float convert_pos (gchar *pos, int digits)
+static float
+convert_pos (gchar *pos, int digits)
 {
-    gchar whole[10];
-    gchar *fraction;
+    gchar whole[10], *fraction;
     gint i;
     float t1, t2;
 
-    if (!pos || strlen(pos) < 4 || digits > 9) return 0.0;
+    if (!pos || strlen(pos) < 4 || digits > 9)
+        return 0.0;
 
-    for (i = 0; i < digits + 1; i++) whole[i] = pos[i];
+    for (i = 0; i < digits + 1; i++)
+        whole[i] = pos[i];
+
     whole[i] = '\0';
     fraction = pos + digits + 1;
 
     t1 = g_strtod (whole, NULL);
     t2 = g_strtod (fraction, NULL);
 
-    if (t1 >= 0.0) return t1 + t2/pow (10.0, strlen(fraction));
-    else return t1 - t2/pow (10.0, strlen(fraction));
+    if (t1 >= 0.0)
+        return t1 + t2/pow (10.0, strlen(fraction));
+    else
+        return t1 - t2/pow (10.0, strlen(fraction));
 }
+
 static int compare_country_names (const void *a, const void *b)
 {
     const TzLocation *tza = * (TzLocation **) a;
@@ -174,14 +184,16 @@ TzDB *tz_load_db (void)
         gchar *p;
         TzLocation *loc;
 
-        if (*buf == '#') continue;
+        if (*buf == '#')
+            continue;
 
         g_strchomp(buf);
         tmpstrarr = g_strsplit(buf,"\t", 6);
 
         latstr = g_strdup (tmpstrarr[1]);
         p = latstr + 1;
-        while (*p != '-' && *p != '+') p++;
+        while (*p != '-' && *p != '+')
+            p++;
         lngstr = g_strdup (p);
         *p = '\0';
 
@@ -195,7 +207,8 @@ TzDB *tz_load_db (void)
         if (tmpstrarr[3] && *tmpstrarr[3] == '-' && tmpstrarr[4])
             loc->comment = g_strdup (tmpstrarr[4]);
 
-        if (tmpstrarr[3] && *tmpstrarr[3] != '-' && !islower(loc->zone)) {
+        if (tmpstrarr[3] && *tmpstrarr[3] != '-' && !islower(loc->zone))
+        {
             TzLocation *locgrp;
             locgrp = g_new0 (TzLocation, 1);
             locgrp->country = g_strdup (tmpstrarr[0]);
@@ -224,7 +237,8 @@ TzDB *tz_load_db (void)
     return tz_db;
 }
 
-static GtkWidget *GetTimeZoneMap(TimeAdmin *ta)
+static GtkWidget*
+GetTimeZoneMap(TimeAdmin *ta)
 {
     GtkWidget *map;
     g_autoptr(GtkEntryCompletion) completion = NULL;
@@ -239,7 +253,6 @@ static GtkWidget *GetTimeZoneMap(TimeAdmin *ta)
     gtk_entry_set_completion (GTK_ENTRY (ta->TimezoneEntry), completion);
     gtk_entry_completion_set_model (completion, GTK_TREE_MODEL (ta->CityListStore));
     gtk_entry_completion_set_text_column (completion, CITY_COL_CITY_HUMAN_READABLE);
-
 
     return map;
 }
@@ -305,13 +318,14 @@ update_timezone (TimezoneMap *map)
     g_date_time_unref(date);
 }
 
-static void LocationChanged(TimezoneMap  *map,
-                            TzLocation   *location,
-                            TimeAdmin    *ta)
+static void
+LocationChanged(TimezoneMap  *map,
+                TzLocation   *location,
+                TimeAdmin    *ta)
 {
-
     update_timezone (map);
 }
+
 static void
 get_initial_timezone (TimeAdmin *ta)
 {
@@ -327,8 +341,10 @@ get_initial_timezone (TimeAdmin *ta)
     }
     update_timezone (TIMEZONEMAP(ta->map));
 }
-static void LoadCities (TzLocation   *loc,
-                        GtkListStore *CityStore)
+
+static void
+LoadCities (TzLocation   *loc,
+            GtkListStore *CityStore)
 {
     g_autofree gchar *human_readable = NULL;
 
@@ -340,20 +356,22 @@ static void LoadCities (TzLocation   *loc,
                                        human_readable,
                                        CITY_COL_ZONE,
                                        loc->zone,
-                                     -1);
+                                       -1);
 }
 
-static void CreateCityList(TimeAdmin *ta)
+static void
+CreateCityList(TimeAdmin *ta)
 {
     TzDB *db;
     ta->CityListStore = gtk_list_store_new (CITY_NUM_COLS,G_TYPE_STRING,G_TYPE_STRING);
-
     db = tz_load_db ();
     g_ptr_array_foreach (db->locations, (GFunc) LoadCities, ta->CityListStore);
 
     TimeZoneDateBaseFree(db);
 }
-static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
+
+static GtkWidget*
+CreateZoneFrame(TimeAdmin *ta)
 {
     GtkWidget *TimeZoneFrame;
 
@@ -363,19 +381,26 @@ static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
 
     return TimeZoneFrame;
 }
-static GtkWidget *CreateZoneScrolled(TimeAdmin *ta)
+
+static GtkWidget*
+CreateZoneScrolled(TimeAdmin *ta)
 {
     GtkWidget *Scrolled;
+
     Scrolled = gtk_scrolled_window_new (NULL, NULL);
+
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (Scrolled),
                                     GTK_POLICY_AUTOMATIC,
                                     GTK_POLICY_AUTOMATIC);
+
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (Scrolled),
                                          GTK_SHADOW_IN);
 
     return Scrolled;
 }
-static void CreateZoneEntry(TimeAdmin *ta)
+
+static void
+CreateZoneEntry(TimeAdmin *ta)
 {
     GtkWidget *hbox;
 
@@ -390,13 +415,13 @@ static void CreateZoneEntry(TimeAdmin *ta)
     gtk_search_bar_set_show_close_button (GTK_SEARCH_BAR (ta->SearchBar),FALSE);
     gtk_container_add (GTK_CONTAINER (ta->SearchBar), hbox);
     gtk_search_bar_set_search_mode(GTK_SEARCH_BAR(ta->SearchBar),TRUE);
-
 }
 
-static gboolean CityChanged(GtkEntryCompletion *completion,
-                            GtkTreeModel       *model,
-                            GtkTreeIter        *iter,
-                            TimeAdmin          *self)
+static gboolean
+CityChanged(GtkEntryCompletion *completion,
+            GtkTreeModel       *model,
+            GtkTreeIter        *iter,
+            TimeAdmin          *self)
 {
     GtkWidget *entry;
     g_autofree gchar *zone = NULL;
@@ -413,22 +438,22 @@ static gboolean CityChanged(GtkEntryCompletion *completion,
 
     return TRUE;
 }
-static void ChoooseTimezoneDone (GtkWidget *widget,
-                                 TimeAdmin *ta)
+
+static void
+ChoooseTimezoneDone (GtkWidget *widget,
+                     TimeAdmin *ta)
 {
     TimezoneMap *map;
-    g_autofree gchar *ZoneCity = NULL;
 
     map = TIMEZONEMAP(ta->map);
     SetTimeZone(ta->proxy,map->location->zone);
-
-    ZoneCity = translated_city_name(map->location);
-    gtk_button_set_label((GTK_BUTTON(ta->TimeZoneButton)),ZoneCity);
+    gtk_entry_set_text (GTK_ENTRY (ta->TimeZoneEntry), _(map->location->zone));
     gtk_widget_hide_on_delete(GTK_WIDGET(ta->dialog));
 }
 
-static void ChoooseTimezoneClose(GtkWidget  *widget,
-                                 TimeAdmin  *ta)
+static void
+ChoooseTimezoneClose(GtkWidget  *widget,
+                     TimeAdmin  *ta)
 {
     gtk_widget_hide_on_delete(GTK_WIDGET(ta->dialog));
 }
@@ -443,8 +468,6 @@ void SetupTimezoneDialog(TimeAdmin *ta)
                                               NULL,
                                               NULL);
     gtk_window_set_default_size (GTK_WINDOW (ta->dialog), 730, 520);
-    gtk_window_set_icon_name (GTK_WINDOW(ta->dialog), "preferences-system-time");
-
 
     ta->TZclose = gtk_button_new_with_mnemonic (_("_Close"));
     image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_BUTTON);
@@ -498,6 +521,7 @@ void SetupTimezoneDialog(TimeAdmin *ta)
                         TRUE,
                         TRUE, 8);
 }
+
 void tz_info_free (TzInfo *tzinfo)
 {
     g_return_if_fail (tzinfo != NULL);
@@ -506,6 +530,7 @@ void tz_info_free (TzInfo *tzinfo)
     if (tzinfo->tzname_daylight) g_free (tzinfo->tzname_daylight);
     g_free (tzinfo);
 }
+
 struct {
     const char *orig;
     const char *dest;
@@ -533,9 +558,10 @@ struct {
     { "MST",            "America/Denver" },     /* Other name for the mountain tz */
     { "MST7MDT",        "America/Denver" },     /* ditto */
 };
+
 static gboolean
 compare_timezones (const char *a,
-           const char *b)
+                   const char *b)
 {
     if (g_str_equal (a, b))
         return TRUE;
@@ -639,6 +665,7 @@ TzInfo *tz_info_from_location (TzLocation *loc)
 
     return tzinfo;
 }
+
 glong tz_location_get_utc_offset (TzLocation *loc)
 {
     TzInfo *tz_info;
@@ -650,6 +677,7 @@ glong tz_location_get_utc_offset (TzLocation *loc)
 
     return offset;
 }
+
 void RunTimeZoneDialog  (GtkButton *button,
                          gpointer   data)
 {
@@ -657,15 +685,16 @@ void RunTimeZoneDialog  (GtkButton *button,
 
     gtk_widget_show_all(GTK_WIDGET(ta->dialog));
 }
+
 static void
 tz_location_free (TzLocation *loc, gpointer data)
 {
     g_free (loc->country);
     g_free (loc->zone);
     g_free (loc->comment);
-
     g_free (loc);
 }
+
 void TimeZoneDateBaseFree (TzDB *db)
 {
     g_ptr_array_foreach (db->locations, (GFunc) tz_location_free, NULL);
@@ -673,6 +702,7 @@ void TimeZoneDateBaseFree (TzDB *db)
     g_hash_table_destroy (db->backward);
     g_free (db);
 }
+
 GPtrArray *tz_get_locations (TzDB *db)
 {
     return db->locations;
