@@ -1978,13 +1978,7 @@ main (int argc, char *argv[])
   GtkBuilder *builder;
   GSettings *marco_settings;
 
-  gtk_init (&argc, &argv);
-
-  bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  textdomain (GETTEXT_PACKAGE);
-
-  gtk_init (&argc, &argv);
+  capplet_init (NULL, &argc, &argv);
 
   activate_settings_daemon ();
 

@@ -17,6 +17,7 @@
 #include <glib/gi18n.h>
 #include <polkit/polkit.h>
 
+#include "capplet-util.h"
 #include "time-tool.h"
 #include "time-zone.h"
 #include "time-map.h"
@@ -433,16 +434,12 @@ EXIT:
     g_error_free(error);
     return FALSE;
 }
+
 int main(int argc, char **argv)
 {
     TimeAdmin ta;
 
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    gtk_init(&argc, &argv);
+    capplet_init (NULL, &argc, &argv);
 
     /* Create the main window */
     InitMainWindow(&ta);

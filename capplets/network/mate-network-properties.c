@@ -459,11 +459,7 @@ main (int argc, char **argv)
 				    "delete_button_img", NULL};
 	GtkWidget   *widget;
 
-	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
-
-	gtk_init (&argc, &argv);
+	capplet_init (NULL, &argc, &argv);
 
 	builder = gtk_builder_new ();
 	if (gtk_builder_add_objects_from_resource (builder, "/org/mate/mcc/network/mate-network-properties.ui",

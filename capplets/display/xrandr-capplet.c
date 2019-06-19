@@ -36,6 +36,8 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
+#include "capplet-util.h"
+
 typedef struct App App;
 typedef struct GrabInfo GrabInfo;
 
@@ -2554,11 +2556,7 @@ main (int argc, char **argv)
 {
     App *app;
 
-    bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    gtk_init (&argc, &argv);
+    capplet_init (NULL, &argc, &argv);
 
     app = g_new0 (App, 1);
 

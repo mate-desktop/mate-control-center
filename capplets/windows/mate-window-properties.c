@@ -329,11 +329,7 @@ main (int argc, char **argv)
     const char *current_wm;
     int i;
 
-    bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    gtk_init (&argc, &argv);
+    capplet_init (NULL, &argc, &argv);
 
     screen = gdk_display_get_default_screen (gdk_display_get_default ());
     current_wm = gdk_x11_screen_get_window_manager_name (screen);
