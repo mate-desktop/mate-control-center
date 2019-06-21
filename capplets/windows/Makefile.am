@@ -18,7 +18,6 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 AM_CPPFLAGS   = $(MATECC_CAPPLETS_CFLAGS)					\
 	     -DUIDIR=\""$(uidir)"\"  	\
-	     -DMATELOCALEDIR="\"$(datadir)/locale\""			\
 	     -DPIXMAPDIR=\""$(pixmapdir)"\"
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)

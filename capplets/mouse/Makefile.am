@@ -27,7 +27,6 @@ mate-mouse-properties-resources.h mate-mouse-properties-resources.c: org.mate.mc
 
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
-	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 EXTRA_DIST = \
