@@ -23,8 +23,7 @@ mate-network-properties-resources.h mate-network-properties-resources.c: org.mat
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name network $<
 
 AM_CPPFLAGS = \
-	$(MATECC_CAPPLETS_CFLAGS) \
-	-DMATELOCALEDIR="\"$(datadir)/locale\""
+	$(MATECC_CAPPLETS_CFLAGS)
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 EXTRA_DIST = $(ui_files) $(desktop_in_files) org.mate.mcc.network.gresource.xml ui-a11y.suppr

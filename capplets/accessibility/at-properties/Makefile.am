@@ -27,8 +27,7 @@ include $(top_srcdir)/gla11y.mk
 AM_CPPFLAGS   = $(AT_CAPPLET_CFLAGS)     \
              $(MATECC_CAPPLETS_CFLAGS) \
 	     -DPIXMAPDIR=\""$(pixmapdir)"\" \
-	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
-	     -DMATELOCALEDIR="\"$(datadir)/locale\""
+	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
 EXTRA_DIST = \
 	$(ui_files) \

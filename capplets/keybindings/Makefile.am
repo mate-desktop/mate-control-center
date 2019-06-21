@@ -38,7 +38,6 @@ mate-keybinding-properties-resources.h mate-keybinding-properties-resources.c: o
 
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
-	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = \
 	$(BUILT_SOURCES) \

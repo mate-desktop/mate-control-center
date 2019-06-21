@@ -54,7 +54,6 @@ AM_CPPFLAGS = \
 	$(MARCO_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(FONT_CAPPLET_CFLAGS) \
-	-DMATELOCALEDIR="\"$(datadir)/locale\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pixmapdir)\"" \
 	-DWALLPAPER_DATADIR="\"$(wallpaperdir)\""

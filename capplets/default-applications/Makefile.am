@@ -31,8 +31,7 @@ pkgconfig_DATA = mate-default-applications.pc
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(DEFAULT_APPLICATIONS_CAPPLET_CFLAGS) \
-	-DAPPLICATIONSDIR=\""$(datadir)/applications"\"\
-	-DMATELOCALEDIR=\""$(datadir)/locale"\"
+	-DAPPLICATIONSDIR=\""$(datadir)/applications"\"
 
 mate-default-applications-properties-resources.h mate-default-applications-properties-resources.c: org.mate.mcc.da.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.da.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name default_applications $<
