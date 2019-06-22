@@ -65,6 +65,7 @@ requires:
   archlinux:
     # Useful URL: https://git.archlinux.org/svntogit/community.git/tree/mate-control-center
     - clang
+    - file
     - gcc
     - git
     - gobject-introspection
@@ -118,6 +119,7 @@ requires:
     - make
     - mate-common
     - mate-settings-daemon-dev
+    - python-lxml
     - shared-mime-info
     - xsltproc
     - yelp-tools
@@ -147,6 +149,7 @@ requires:
     - make
     - marco-devel
     - polkit-devel
+    - python-lxml
     - mate-common
     - mate-settings-daemon-devel
     - redhat-rpm-config
@@ -189,6 +192,7 @@ requires:
     - make
     - mate-common
     - mate-settings-daemon-dev
+    - python-lxml
     - shared-mime-info
     - xsltproc
     - yelp-tools
@@ -262,6 +266,8 @@ before_scripts:
   - fi
   - make
   - make install
+  - curl -Ls -o /usr/bin/gla11y https://github.com/hypra/gla11y/raw/v0.2/gla11y
+  - chmod +x /usr/bin/gla11y
 
 build_scripts:
   - ./autogen.sh
