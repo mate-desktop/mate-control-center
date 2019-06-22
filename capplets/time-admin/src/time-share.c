@@ -91,25 +91,15 @@ int MessageReport(const char *Title,const char *Msg,int nType)
             break;
 
     }
-    gtk_message_dialog_format_secondary_markup(GTK_MESSAGE_DIALOG(dialog),
-                                               TYPEMSG,
-                                               Msg);
+    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
+                                              "%s", Msg);
     gtk_window_set_title(GTK_WINDOW(dialog),("Message"));
     nRet =  gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
 
     return nRet;
 }
-void SetLableFontType(GtkWidget *Lable,int FontSzie,const char *Word)
-{
-    char LableTypeBuf[200] = { 0 };
 
-    sprintf(LableTypeBuf,
-           "<span font_desc=\'%d\'>%s</span>",
-            FontSzie,Word);
-    gtk_label_set_markup(GTK_LABEL(Lable),LableTypeBuf);
-
-}
 void QuitApp(TimeAdmin *ta)
 {
     if(ta->UpdateTimeId > 0)
@@ -124,15 +114,8 @@ void QuitApp(TimeAdmin *ta)
     gtk_main_quit();
 }
 
-void SetTooltip(GtkWidget*box,gboolean mode)
+void SetTooltip(GtkWidget *box, gboolean mode)
 {
-    if(!mode)
-    {
-        gtk_widget_set_tooltip_markup(box,
-                                     _("Network time synchronization has been set up. Manual time/date setting is disabled."));
-    }
-    else
-    {
-        gtk_widget_set_tooltip_markup(box,NULL);
-    }
+    gchar *text = mode ? NULL : _("Network time synchronization has been set up. Manual time/date setting is disabled.");
+    gtk_widget_set_tooltip_text (box, text);
 }
