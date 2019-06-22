@@ -93,7 +93,6 @@ int MessageReport(const char *Title,const char *Msg,int nType)
     }
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
                                               "%s", Msg);
-    gtk_window_set_title(GTK_WINDOW(dialog),("Message"));
     nRet =  gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
 
