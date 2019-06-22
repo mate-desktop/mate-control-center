@@ -43,8 +43,8 @@ CLEANFILES = \
 	$(BUILT_SOURCES) \
 	$(MATECC_CAPPLETS_CLEANFILES) \
 	$(desktop_DATA) \
-	$(xml_DATA) \
-	$(GLA11Y_OUTPUT)
+	$(xml_DATA)
+
 EXTRA_DIST = $(xml_in_files) \
 	mate-keybindings.pc.in \
 	$(ui_files) \

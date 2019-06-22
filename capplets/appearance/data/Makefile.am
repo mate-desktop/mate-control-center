@@ -49,6 +49,6 @@ EXTRA_DIST = \
 	$(desktop_in_files) \
 	ui-a11y.suppr
 
-CLEANFILES = $(desktop_DATA) $(mime_DATA) $(GLA11Y_OUTPUT)
+CLEANFILES = $(desktop_DATA) $(mime_DATA)
 
 -include $(top_srcdir)/git.mk

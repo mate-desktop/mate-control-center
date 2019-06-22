@@ -28,7 +28,7 @@ mate-mouse-properties-resources.h mate-mouse-properties-resources.c: org.mate.mc
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 EXTRA_DIST = \
 	$(ui_files) \
 	double-click-on.svg \

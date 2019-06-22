@@ -25,7 +25,7 @@ mate-network-properties-resources.h mate-network-properties-resources.c: org.mat
 AM_CPPFLAGS = \
 	$(MATECC_CAPPLETS_CFLAGS)
 
-CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES) $(GLA11Y_OUTPUT)
+CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 EXTRA_DIST = $(ui_files) $(desktop_in_files) org.mate.mcc.network.gresource.xml ui-a11y.suppr
 
 -include $(top_srcdir)/git.mk
