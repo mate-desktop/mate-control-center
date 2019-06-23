@@ -75,8 +75,6 @@ typedef struct {
 	GFileMonitor            *gtk_store_monitor;
 } BookmarkAgentPrivate;
 
-#define PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), BOOKMARK_AGENT_TYPE, BookmarkAgentPrivate))
-
 enum {
 	PROP_0,
 	PROP_ITEMS,
@@ -118,6 +116,12 @@ static gint recent_item_mru_comp_func (gconstpointer a, gconstpointer b);
 
 static gchar *find_package_data_file (const gchar *filename);
 
+static gint BookmarkAgent_private_offset;
+
+static inline gpointer bookmark_agent_get_instance_private (BookmarkAgent *this)
+{
+	return (G_STRUCT_MEMBER_P (this, BookmarkAgent_private_offset));
+}
 
 GType
 bookmark_agent_get_type ()
@@ -138,6 +142,7 @@ bookmark_agent_get_type ()
 
 		g_define_type_id = g_type_register_static (
 			G_TYPE_OBJECT, "BookmarkAgent", & info, 0);
+		G_ADD_PRIVATE (BookmarkAgent);
 	}
 
 	return g_define_type_id;
@@ -162,13 +167,14 @@ bookmark_agent_get_instance (BookmarkStoreType type)
 gboolean
 bookmark_agent_has_item (BookmarkAgent *this, const gchar *uri)
 {
-	return g_bookmark_file_has_item (PRIVATE (this)->store, uri);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
+	return g_bookmark_file_has_item (priv->store, uri);
 }
 
 void
 bookmark_agent_add_item (BookmarkAgent *this, const BookmarkItem *item)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	if (! item)
 		return;
@@ -195,7 +201,7 @@ bookmark_agent_add_item (BookmarkAgent *this, const BookmarkItem *item)
 void
 bookmark_agent_move_item (BookmarkAgent *this, const gchar *uri, const gchar *uri_new)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	GError *error = NULL;
 
@@ -214,7 +220,7 @@ bookmark_agent_move_item (BookmarkAgent *this, const gchar *uri, const gchar *ur
 void
 bookmark_agent_purge_items (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	GError *error = NULL;
 
@@ -245,8 +251,7 @@ bookmark_agent_purge_items (BookmarkAgent *this)
 void
 bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
 {
-        BookmarkAgentPrivate *priv = PRIVATE (this);
-
+        BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
         gint rank;
 
         GError *error = NULL;
@@ -295,7 +300,7 @@ bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
 void
 bookmark_agent_reorder_items (BookmarkAgent *this, const gchar **uris)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gint i;
 
@@ -311,7 +316,7 @@ bookmark_agent_reorder_items (BookmarkAgent *this, const gchar **uris)
 static GList *
 make_items_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *store)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 	gchar **uris;
 	gint i;
 	GList *items_ordered;
@@ -359,7 +364,7 @@ bookmark_agent_update_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *st
 
 	g_return_if_fail (IS_BOOKMARK_AGENT (this));
 
-	priv = PRIVATE (this);
+	priv = bookmark_agent_get_instance_private (this);
 
 	items_ordered = make_items_from_bookmark_file (this, store);
 
@@ -414,6 +419,8 @@ bookmark_agent_class_init (BookmarkAgentClass *this_class)
 	GParamSpec *items_pspec;
 	GParamSpec *status_pspec;
 
+	if (BookmarkAgent_private_offset != 0)
+		g_type_class_adjust_private_offset (this_class, &BookmarkAgent_private_offset);
 
 	g_obj_class->get_property = get_property;
 	g_obj_class->set_property = set_property;
@@ -432,15 +439,13 @@ bookmark_agent_class_init (BookmarkAgentClass *this_class)
 	g_object_class_install_property (g_obj_class, PROP_ITEMS,  items_pspec);
 	g_object_class_install_property (g_obj_class, PROP_STATUS, status_pspec);
 
-	g_type_class_add_private (this_class, sizeof (BookmarkAgentPrivate));
-
 	bookmark_agent_parent_class = g_type_class_peek_parent (this_class);
 }
 
 static void
 bookmark_agent_init (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	priv->type                = -1;
 
@@ -477,7 +482,7 @@ bookmark_agent_new (BookmarkStoreType type)
 	GFile *gtk_store_file;
 
 	this = g_object_new (BOOKMARK_AGENT_TYPE, NULL);
-	priv = PRIVATE (this);
+	priv = bookmark_agent_get_instance_private (this);
 
 	priv->type  = type;
 	priv->store = g_bookmark_file_new ();
@@ -564,7 +569,7 @@ static void
 get_property (GObject *g_obj, guint prop_id, GValue *value, GParamSpec *pspec)
 {
 	BookmarkAgent        *this = BOOKMARK_AGENT (g_obj);
-	BookmarkAgentPrivate *priv = PRIVATE        (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 
 	switch (prop_id) {
@@ -588,7 +593,7 @@ static void
 finalize (GObject *g_obj)
 {
 	BookmarkAgent *this = BOOKMARK_AGENT (g_obj);
-	BookmarkAgentPrivate *priv = PRIVATE (g_obj);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gint i;
 
@@ -627,7 +632,7 @@ finalize (GObject *g_obj)
 static void
 update_agent (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	if (priv->update_path)
 		priv->update_path (this);
@@ -641,7 +646,7 @@ update_agent (BookmarkAgent *this)
 static void
 update_items (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar    **uris            = NULL;
 	gchar    **uris_ordered    = NULL;
@@ -742,7 +747,7 @@ update_items (BookmarkAgent *this)
 static void
 save_store (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar *dir;
 
@@ -763,7 +768,7 @@ save_store (BookmarkAgent *this)
 static gint
 get_rank (BookmarkAgent *this, const gchar *uri)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar **groups;
 	gint    rank;
@@ -796,7 +801,7 @@ get_rank (BookmarkAgent *this, const gchar *uri)
 static void
 set_rank (BookmarkAgent *this, const gchar *uri, gint rank)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar **groups;
 	gchar  *group;
@@ -823,7 +828,7 @@ set_rank (BookmarkAgent *this, const gchar *uri, gint rank)
 static void
 load_xbel_store (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar **uris = NULL;
 
@@ -860,7 +865,7 @@ load_xbel_store (BookmarkAgent *this)
 static void
 load_places_store (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar **uris;
 	gchar **groups;
@@ -944,7 +949,7 @@ find_package_data_file (const gchar *filename)
 static void
 update_user_spec_path (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gboolean  use_user_path;
 	gchar    *path = NULL;
@@ -1023,7 +1028,7 @@ update_user_spec_path (BookmarkAgent *this)
 static void
 save_xbel_store (BookmarkAgent *this)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	GError *error = NULL;
 
@@ -1036,7 +1041,7 @@ save_xbel_store (BookmarkAgent *this)
 static void
 create_app_item (BookmarkAgent *this, const gchar *uri)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	MateDesktopItem *ditem;
 	gchar *uri_new = NULL;
@@ -1060,7 +1065,7 @@ create_app_item (BookmarkAgent *this, const gchar *uri)
 static void
 create_doc_item (BookmarkAgent *this, const gchar *uri)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar *uri_new = NULL;
 
@@ -1119,7 +1124,7 @@ create_doc_item (BookmarkAgent *this, const gchar *uri)
 static void
 create_dir_item (BookmarkAgent *this, const gchar *uri)
 {
-	BookmarkAgentPrivate *priv = PRIVATE (this);
+	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gchar *uri_new = NULL;
 	gchar *path = NULL;
