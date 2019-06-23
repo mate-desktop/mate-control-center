@@ -61,7 +61,7 @@ enum {
 
 static guint signals[NUM_SIGNALS] = { 0, };
 
-G_DEFINE_TYPE (FontViewModel, font_view_model, GTK_TYPE_LIST_STORE);
+G_DEFINE_TYPE_WITH_PRIVATE (FontViewModel, font_view_model, GTK_TYPE_LIST_STORE);
 
 #define ATTRIBUTES_FOR_CREATING_THUMBNAIL \
     G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE"," \
@@ -569,7 +569,7 @@ font_view_model_init (FontViewModel *self)
     GType types[NUM_COLUMNS] =
         { G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, GDK_TYPE_PIXBUF, G_TYPE_STRING };
 
-    self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, FONT_VIEW_TYPE_MODEL, FontViewModelPrivate);
+    self->priv = font_view_model_get_instance_private (self);
 
     if (FT_Init_FreeType (&self->priv->library) != FT_Err_Ok)
         g_critical ("Can't initialize FreeType library");
@@ -634,7 +634,6 @@ font_view_model_class_init (FontViewModelClass *klass)
                       0, NULL, NULL, NULL,
                       G_TYPE_NONE, 0);
 
-    g_type_class_add_private (klass, sizeof (FontViewModelPrivate));
 }
 
 GtkTreeModel *

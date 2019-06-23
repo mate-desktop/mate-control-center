@@ -24,8 +24,6 @@
 #include <math.h>
 #include <glib/gi18n.h>
 
-G_DEFINE_TYPE (GdMainToolbar, gd_main_toolbar, GTK_TYPE_TOOLBAR)
-
 typedef enum {
   CHILD_NORMAL = 0,
   CHILD_TOGGLE = 1,
@@ -61,6 +59,8 @@ enum {
         PROP_0,
         PROP_SHOW_MODES,
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (GdMainToolbar, gd_main_toolbar, GTK_TYPE_TOOLBAR)
 
 static void
 gd_main_toolbar_dispose (GObject *obj)
@@ -328,7 +328,7 @@ gd_main_toolbar_constructed (GObject *obj)
 static void
 gd_main_toolbar_init (GdMainToolbar *self)
 {
-  self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, GD_TYPE_MAIN_TOOLBAR, GdMainToolbarPrivate);
+  self->priv = gd_main_toolbar_get_instance_private (self);
 }
 
 static void
@@ -349,8 +349,6 @@ gd_main_toolbar_class_init (GdMainToolbarClass *klass)
                                                          "Show Modes",
                                                          FALSE,
                                                          G_PARAM_READWRITE));
-
-  g_type_class_add_private (klass, sizeof (GdMainToolbarPrivate));
 }
 
 void
