@@ -435,9 +435,7 @@ static void ChoooseTimezoneClose(GtkWidget  *widget,
 
 void SetupTimezoneDialog(TimeAdmin *ta)
 {
-    GtkWidget *Vbox;
-    GtkWidget *TimeZoneFrame;
-    GtkWidget *Scrolled;
+    GtkWidget *Vbox, *TimeZoneFrame, *Scrolled, *image;
 
     ta->dialog = gtk_dialog_new_with_buttons (_("Time Zone Selection"),
                                               NULL,
@@ -447,15 +445,23 @@ void SetupTimezoneDialog(TimeAdmin *ta)
     gtk_window_set_default_size (GTK_WINDOW (ta->dialog), 730, 520);
     gtk_window_set_icon_name (GTK_WINDOW(ta->dialog), "preferences-system-time");
 
-    ta->TZclose =   DialogAddButtonWithIconName(GTK_DIALOG(ta->dialog),
-                                              _("Close"),
-                                              "window-close",
-                                               GTK_RESPONSE_CANCEL);
 
-    ta->TZconfire = DialogAddButtonWithIconName(GTK_DIALOG(ta->dialog),
-                                              _("Confirm"),
-                                              "emblem-default",
-                                               GTK_RESPONSE_OK);
+    ta->TZclose = gtk_button_new_with_mnemonic (_("_Close"));
+    image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (ta->TZclose), image);
+    gtk_button_set_use_underline (GTK_BUTTON (ta->TZclose), TRUE);
+    gtk_style_context_add_class (gtk_widget_get_style_context (ta->TZclose), "text-button");
+    gtk_widget_set_can_default (ta->TZclose, TRUE);
+    gtk_dialog_add_action_widget (GTK_DIALOG (ta->dialog), ta->TZclose, GTK_RESPONSE_CANCEL);
+
+    ta->TZconfire = gtk_button_new_with_mnemonic (_("Con_firm"));
+    image = gtk_image_new_from_icon_name ("emblem-default", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (ta->TZconfire), image);
+    gtk_button_set_use_underline (GTK_BUTTON (ta->TZconfire), TRUE);
+    gtk_style_context_add_class (gtk_widget_get_style_context (ta->TZconfire), "text-button");
+    gtk_widget_set_can_default (ta->TZconfire, TRUE);
+    gtk_dialog_add_action_widget (GTK_DIALOG (ta->dialog), ta->TZconfire, GTK_RESPONSE_OK);
+
     g_signal_connect (ta->TZconfire,
                      "clicked",
                       G_CALLBACK (ChoooseTimezoneDone),

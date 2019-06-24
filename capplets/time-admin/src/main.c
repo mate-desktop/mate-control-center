@@ -116,16 +116,9 @@ static void InitMainWindow(TimeAdmin *ta)
                                                  &error);
     if (ta->Permission == NULL)
     {
+        g_warning ("Failed to acquire %s: %s", TIME_ADMIN_PERMISSION, error->message);
         g_error_free (error);
-        return;
     }
-    ta->ButtonLock = gtk_lock_button_new(ta->Permission);
-    gtk_lock_button_set_permission(GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
-    gtk_widget_grab_focus(ta->ButtonLock);
-    g_signal_connect(ta->Permission,
-                    "notify",
-                     G_CALLBACK (on_permission_changed),
-                     ta);
 }
 
 static int RecordPid(void)
@@ -323,48 +316,64 @@ static GtkWidget *SetClock(TimeAdmin *ta)
 
 static GtkWidget *SetDate(TimeAdmin *ta)
 {
-    GtkWidget *table;
-    GtkWidget *DateLabel;
+    GtkWidget *table, *image, *DateLabel;
     struct tm *LocalTime;
 
     table = gtk_grid_new();
-    gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
+    gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
-    DateLabel = gtk_label_new(NULL);
-    SetLableFontType(DateLabel,13,_("Set Date"));
-    gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 2 , 2);
+    DateLabel = gtk_label_new (NULL);
+    SetLableFontType (DateLabel, 13, _("Set Date"));
+    gtk_grid_attach (GTK_GRID(table), DateLabel, 1, 0, 2, 2);
 
-    LocalTime = GetCurrentTime();
+    LocalTime = GetCurrentTime ();
     ta->Calendar = gtk_calendar_new ();
-    gtk_widget_set_sensitive(ta->Calendar,!ta->NtpState);
-    SetTooltip(ta->Calendar,!ta->NtpState);
-    gtk_calendar_mark_day(GTK_CALENDAR(ta->Calendar),LocalTime->tm_mday);
+    gtk_widget_set_sensitive (ta->Calendar, !ta->NtpState);
+    SetTooltip (ta->Calendar, !ta->NtpState);
+    gtk_calendar_mark_day (GTK_CALENDAR(ta->Calendar), LocalTime->tm_mday);
     ta->OldDay = LocalTime->tm_mday;
-    gtk_grid_attach(GTK_GRID(table) ,ta->Calendar, 0 , 2 , 4 , 3);
+    gtk_grid_attach (GTK_GRID(table), ta->Calendar, 0, 2, 4, 3);
 
-    ta->CloseButton = gtk_button_new_with_label (_("Close"));
-    gtk_grid_attach(GTK_GRID(table) ,ta->CloseButton, 3 , 5 , 1 , 1);
+    ta->CloseButton = gtk_button_new_with_label (_("_Close"));
+    image = gtk_image_new_from_icon_name ("gtk-close", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (ta->CloseButton), image);
+    gtk_button_set_use_underline (GTK_BUTTON(ta->CloseButton), TRUE);
+    gtk_style_context_add_class (gtk_widget_get_style_context (ta->CloseButton), "text-button");
+    gtk_grid_attach (GTK_GRID(table), ta->CloseButton, 3, 5, 1, 1);
     g_signal_connect (ta->CloseButton,
                      "clicked",
                       G_CALLBACK (CloseWindow),
                       ta);
 
-	gtk_grid_attach(GTK_GRID(table) ,ta->ButtonLock, 0 , 5 , 1 , 1);
+    if (ta->Permission)
+    {
+        ta->ButtonLock = gtk_lock_button_new (ta->Permission);
+        gtk_lock_button_set_permission (GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
+        gtk_grid_attach (GTK_GRID(table), ta->ButtonLock, 0, 5, 1, 1);
+        g_signal_connect (ta->Permission,
+                          "notify",
+                          G_CALLBACK (on_permission_changed),
+                          ta);
+    }
 
-	ta->SaveButton  = gtk_button_new_with_label (_("Save"));
-    gtk_widget_set_sensitive(ta->SaveButton,!ta->NtpState);
-    gtk_grid_attach(GTK_GRID(table) ,ta->SaveButton, 2 , 5 , 1 , 1);
+    ta->SaveButton = gtk_button_new_with_label (_("_Save"));
+    image = gtk_image_new_from_icon_name ("gtk-save", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (ta->SaveButton), image);
+    gtk_button_set_use_underline (GTK_BUTTON(ta->SaveButton), TRUE);
+    gtk_style_context_add_class (gtk_widget_get_style_context (ta->SaveButton), "text-button");
+    gtk_widget_set_sensitive (ta->SaveButton, !ta->NtpState);
+    gtk_grid_attach (GTK_GRID(table), ta->SaveButton, 2, 5, 1, 1);
     g_signal_connect (ta->SaveButton,
-                     "clicked",
+                      "clicked",
                       G_CALLBACK (SaveModifyTime),
                       ta);
 
-    gtk_grid_set_row_spacing(GTK_GRID(table), 6);
-    gtk_grid_set_column_spacing(GTK_GRID(table), 12);
+    gtk_grid_set_row_spacing (GTK_GRID(table), 6);
+    gtk_grid_set_column_spacing (GTK_GRID(table), 12);
 
     return table;
-
 }
+
 static void CreateClockInterface(TimeAdmin *ta)
 {
     GtkWidget *Vbox;
