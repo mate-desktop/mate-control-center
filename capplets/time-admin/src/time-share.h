@@ -33,7 +33,6 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-#define TYPEMSG    "<span foreground='red'font_desc='13'>%s </span>"
 #define ERROR      1
 #define WARING     2
 #define INFOR      3
@@ -76,10 +75,6 @@ typedef struct
 int          MessageReport               (const char  *Title,
                                           const char  *Msg,
                                           int          nType);
-
-void         SetLableFontType            (GtkWidget   *Lable,
-                                          int          FontSzie,
-                                          const char  *Word);
 
 void         QuitApp                     (TimeAdmin   *ta);
 

@@ -218,9 +218,8 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
     table = gtk_grid_new();
     gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
 
-    TimeZoneLabel = gtk_label_new(NULL);
+    TimeZoneLabel = gtk_label_new (_("Time Zone:"));
     gtk_widget_set_halign(TimeZoneLabel,GTK_ALIGN_START);
-    SetLableFontType(TimeZoneLabel,11,_("Time Zone:"));
     gtk_grid_attach(GTK_GRID(table) ,TimeZoneLabel, 0 , 0 , 1 , 1);
 
     SetupTimezoneDialog(ta);
@@ -234,9 +233,8 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
 
     gtk_grid_attach(GTK_GRID(table) ,ta->TimeZoneButton,1 , 0 , 3 , 1);
 
-    NtpSyncLabel = gtk_label_new(NULL);
+    NtpSyncLabel = gtk_label_new (_("Ntp Sync:"));
     gtk_widget_set_halign(NtpSyncLabel,GTK_ALIGN_START);
-    SetLableFontType(NtpSyncLabel,11,_("Ntp Sync:"));
     gtk_grid_attach(GTK_GRID(table) ,NtpSyncLabel,  0 , 1 , 1 , 1);
 
     ta->NtpSyncSwitch = gtk_switch_new();
@@ -286,8 +284,7 @@ static GtkWidget *SetClock(TimeAdmin *ta)
     table = gtk_grid_new();
     gtk_grid_set_column_homogeneous(GTK_GRID(table),TRUE);
 
-    TimeLabel = gtk_label_new(NULL);
-    SetLableFontType(TimeLabel,13,_("Set Time"));
+    TimeLabel = gtk_label_new (_("Set Time"));
     gtk_widget_set_halign(TimeLabel,GTK_ALIGN_CENTER);
     gtk_widget_set_valign(TimeLabel,GTK_ALIGN_START);
     gtk_widget_set_hexpand(TimeLabel,FALSE);
@@ -322,9 +319,8 @@ static GtkWidget *SetDate(TimeAdmin *ta)
     table = gtk_grid_new();
     gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
-    DateLabel = gtk_label_new (NULL);
-    SetLableFontType (DateLabel, 13, _("Set Date"));
-    gtk_grid_attach (GTK_GRID(table), DateLabel, 1, 0, 2, 2);
+    DateLabel = gtk_label_new (_("Set Date"));
+    gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 2 , 2);
 
     LocalTime = GetCurrentTime ();
     ta->Calendar = gtk_calendar_new ();
