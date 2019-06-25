@@ -44,7 +44,7 @@ static void update_apply_timeout(TimeAdmin *ta)
     ta->ApplyId = g_timeout_add (10000, (GSourceFunc)CheckClockHealth,ta);
 }
 static void ChangeTimeValue(GtkSpinButton *spin_button,
-                            gpointer      *data)
+                            gpointer       data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
     if(TimeoutFlag == 0)

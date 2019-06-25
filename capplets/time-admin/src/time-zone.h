@@ -79,7 +79,6 @@ char      *tz_info_get_clean_name     (TzDB       *tz_db,
 
 void       tz_info_free               (TzInfo     *tzinfo);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (TzDB,   TimeZoneDateBaseFree)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (TzInfo, tz_info_free)
 
 #endif
