@@ -39,6 +39,7 @@
 void capplet_help (GtkWindow *parent, char const *section);
 void capplet_set_icon (GtkWidget *window, char const *icon_file_name);
 gboolean capplet_file_delete_recursive (GFile *directory, GError **error);
+gboolean capplet_dialog_page_scroll_event_cb (GtkWidget *widget, GdkEventScroll *event, GtkWindow *window);
 void capplet_init (GOptionContext *context, int *argc, char ***argv);
 
 #endif /* __CAPPLET_UTIL_H */

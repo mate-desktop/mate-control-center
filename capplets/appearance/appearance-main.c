@@ -204,6 +204,12 @@ main (int argc, char **argv)
   if (wallpaper_files && !install_filename && !start_page)
     start_page = g_strdup ("background");
 
+  GtkNotebook* nb = GTK_NOTEBOOK(appearance_capplet_get_widget (data, "main_notebook"));
+  gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+  g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                    G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                    GTK_WINDOW (w));
+
   if (start_page != NULL) {
     gchar *page_name;
 
@@ -212,10 +218,8 @@ main (int argc, char **argv)
 
     w = appearance_capplet_get_widget (data, page_name);
     if (w != NULL) {
-      GtkNotebook *nb;
       gint pindex;
 
-      nb = GTK_NOTEBOOK (appearance_capplet_get_widget (data, "main_notebook"));
       pindex = gtk_notebook_page_num (nb, w);
       if (pindex != -1)
         gtk_notebook_set_current_page (nb, pindex);

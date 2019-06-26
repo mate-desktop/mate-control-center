@@ -242,17 +242,18 @@ main (int argc, char **argv)
 		exit (EXIT_FAILURE);
 
 	setup_dialog (dialog);
+
+        GtkNotebook* nb = GTK_NOTEBOOK (WID ("keyboard_notebook"));
+        gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+        g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                          G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                          GTK_WINDOW (WID ("keyboard_dialog")));
+
 	if (switch_to_typing_break_page) {
-		gtk_notebook_set_current_page (GTK_NOTEBOOK
-					       (WID
-						("keyboard_notebook")),
-					       4);
+		gtk_notebook_set_current_page (nb, 4);
 	}
 	else if (switch_to_a11y_page) {
-		gtk_notebook_set_current_page (GTK_NOTEBOOK
-					       (WID
-						("keyboard_notebook")),
-					       2);
+		gtk_notebook_set_current_page (nb, 2);
 
 	}
 

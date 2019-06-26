@@ -359,11 +359,22 @@ main (int argc, char **argv)
                                               "gtk-close",
                                               GTK_RESPONSE_CLOSE,
                                               NULL);
+
     //gtk_window_set_resizable (GTK_WINDOW (dialog_win), FALSE);
     gtk_window_set_icon_name (GTK_WINDOW (dialog_win), "preferences-system-windows");
     gtk_container_set_border_width (GTK_CONTAINER (dialog_win), 10);
 
     nb = gtk_notebook_new ();
+
+    gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+    g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                      GTK_WINDOW (widget));
+
+    gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+    g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                      GTK_WINDOW (dialog_win));
 
     general_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     behaviour_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
