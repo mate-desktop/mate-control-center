@@ -770,6 +770,12 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 	gtk_window_set_icon_name(GTK_WINDOW (capplet->window), "preferences-desktop-default-applications");
 
+        GtkNotebook* nb = GTK_NOTEBOOK(get_widget("preferred_apps_notebook"));
+        gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+        g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                          G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                          GTK_WINDOW (capplet->window));
+
 	if (start_page != NULL)
 	{
 		gchar* page_name;
@@ -781,10 +787,8 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 		if (w != NULL)
 		{
-			GtkNotebook* nb;
 			gint pindex;
 
-			nb = GTK_NOTEBOOK(get_widget("preferred_apps_notebook"));
 			pindex = gtk_notebook_page_num(nb, w);
 
 			if (pindex != -1)

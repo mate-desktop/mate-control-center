@@ -445,6 +445,13 @@ main (int argc, char **argv)
 		g_signal_connect (dialog_win, "response",
 				  G_CALLBACK (dialog_response_cb), NULL);
 
+                GtkNotebook* nb = GTK_NOTEBOOK (WID ("prefs_widget"));
+                gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+                g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                                  G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                                  GTK_WINDOW (dialog_win));
+
+
 		if (start_page != NULL) {
 			gchar *page_name;
 
@@ -453,10 +460,8 @@ main (int argc, char **argv)
 
 			w = WID (page_name);
 			if (w != NULL) {
-				GtkNotebook *nb;
 				gint pindex;
 
-				nb = GTK_NOTEBOOK (WID ("prefs_widget"));
 				pindex = gtk_notebook_page_num (nb, w);
 				if (pindex != -1)
 					gtk_notebook_set_current_page (nb, pindex);
