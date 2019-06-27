@@ -108,64 +108,59 @@ cb_login_preferences (GtkDialog *dialog, gint response_id)
     }
 }
 
-/* get_session_bus(), get_sm_proxy(), and do_logout() are all
- * based on code from mate-session-save.c from mate-session.
- */
-static DBusGConnection *
-get_session_bus (void)
-{
-        DBusGConnection *bus;
-        GError *error = NULL;
-
-        bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-
-        if (bus == NULL) {
-                g_warning ("Couldn't connect to session bus: %s", error->message);
-                g_error_free (error);
-        }
-
-        return bus;
-}
-
-static DBusGProxy *
+static GDBusProxy *
 get_sm_proxy (void)
 {
-        DBusGConnection *connection;
-        DBusGProxy      *sm_proxy;
+    GError            *error = NULL;
+    static GDBusProxy *proxy = NULL;
 
-        if (!(connection = get_session_bus ()))
-		return NULL;
-
-        sm_proxy = dbus_g_proxy_new_for_name (connection,
-					      GSM_SERVICE_DBUS,
-					      GSM_PATH_DBUS,
-					      GSM_INTERFACE_DBUS);
-
-        return sm_proxy;
+    if (proxy == NULL) {
+        proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                               G_DBUS_PROXY_FLAGS_NONE,
+                                               NULL,
+                                               GSM_SERVICE_DBUS,
+                                               GSM_PATH_DBUS,
+                                               GSM_INTERFACE_DBUS,
+                                               NULL,
+                                               &error);
+        if (proxy == NULL) {
+            g_warning ("Couldn't connect to session bus: %s", error->message);
+            g_error_free (error);
+        }
+    }
+    return proxy;
 }
 
 static gboolean
 do_logout (GError **err)
 {
-        DBusGProxy *sm_proxy;
-        GError     *error;
-        gboolean    res;
+    GDBusProxy *sm_proxy;
+    GError *error = NULL;
+    GVariant *ret;
+    gboolean res = FALSE;
 
-        sm_proxy = get_sm_proxy ();
-        if (sm_proxy == NULL)
-		return FALSE;
+    sm_proxy = get_sm_proxy ();
+    if (sm_proxy == NULL)
+        return FALSE;
 
-        res = dbus_g_proxy_call (sm_proxy,
-                                 "Logout",
-                                 &error,
-                                 G_TYPE_UINT, 0,   /* '0' means 'log out normally' */
-                                 G_TYPE_INVALID,
-                                 G_TYPE_INVALID);
+    ret = g_dbus_proxy_call_sync (sm_proxy,
+                                  "Logout",
+                                  g_variant_new ("(u)", 0),    /* '0' means 'log out normally' */
+                                  G_DBUS_CALL_FLAGS_NONE,
+                                  -1,
+                                  NULL,
+                                  &error);
+    if (ret == NULL) {
+        g_propagate_error (err, error);
+    } else {
+        g_variant_unref (ret);
+        res = TRUE;
+    }
 
-        if (sm_proxy)
-                g_object_unref (sm_proxy);
+    if (sm_proxy)
+        g_object_unref (sm_proxy);
 
-	return res;
+    return res;
 }
 
 static void
