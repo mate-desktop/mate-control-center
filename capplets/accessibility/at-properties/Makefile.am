@@ -8,6 +8,8 @@ BUILT_SOURCES = \
 nodist_mate_at_properties_SOURCES= $(BUILT_SOURCES)
 mate_at_properties_LDADD = $(AT_CAPPLET_LIBS) $(MATECC_CAPPLETS_LIBS) $(top_builddir)/capplets/common/libcommon.la
 mate_at_properties_SOURCES = \
+	dm-util.h	\
+	dm-util.c	\
 	main.c
 mate_at_properties_LDFLAGS = -export-dynamic
 
