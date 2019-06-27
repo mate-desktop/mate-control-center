@@ -26,40 +26,40 @@ static gboolean initial_state;
 static GtkBuilder *
 create_builder (void)
 {
-	GtkBuilder *builder;
-	GError *error = NULL;
+    GtkBuilder *builder;
+    GError *error = NULL;
 
-	builder = gtk_builder_new ();
+    builder = gtk_builder_new ();
 
-	if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/accessibility/at/at-enable-dialog.ui", &error)) {
-		GObject *object;
-		gchar *prog;
+    if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/accessibility/at/at-enable-dialog.ui", &error)) {
+        GObject *object;
+        gchar *prog;
 
-		object = gtk_builder_get_object (builder, "at_enable_image");
-		gtk_image_set_from_file (GTK_IMAGE (object),
-					 PIXMAPDIR "/at-startup.png");
+        object = gtk_builder_get_object (builder, "at_enable_image");
+        gtk_image_set_from_file (GTK_IMAGE (object),
+                                 PIXMAPDIR "/at-startup.png");
 
-		object = gtk_builder_get_object (builder,
-						 "at_applications_image");
-		gtk_image_set_from_file (GTK_IMAGE (object),
-					 PIXMAPDIR "/at-support.png");
+        object = gtk_builder_get_object (builder,
+                                         "at_applications_image");
+        gtk_image_set_from_file (GTK_IMAGE (object),
+                                 PIXMAPDIR "/at-support.png");
 
-		prog = g_find_program_in_path ("mdmsetup");
-		if (prog == NULL) {
-			object = gtk_builder_get_object (builder,
-							 "login_button");
-			gtk_widget_hide (GTK_WIDGET (object));
-		}
+        prog = g_find_program_in_path ("mdmsetup");
+        if (prog == NULL) {
+            object = gtk_builder_get_object (builder,
+                             "login_button");
+            gtk_widget_hide (GTK_WIDGET (object));
+        }
 
-		g_free (prog);
-	} else {
-		g_warning ("Could not load UI: %s", error->message);
-		g_error_free (error);
-		g_object_unref (builder);
-		builder = NULL;
-	}
+        g_free (prog);
+    } else {
+        g_warning ("Could not load UI: %s", error->message);
+        g_error_free (error);
+        g_object_unref (builder);
+        builder = NULL;
+    }
 
-	return builder;
+    return builder;
 }
 
 static void
@@ -83,7 +83,7 @@ cb_mouse_preferences (GtkDialog *dialog, gint response_id)
 static void
 cb_login_preferences (GtkDialog *dialog, gint response_id)
 {
-	g_spawn_command_line_async ("mdmsetup", NULL);
+    g_spawn_command_line_async ("mdmsetup", NULL);
 }
 
 /* get_session_bus(), get_sm_proxy(), and do_logout() are all
