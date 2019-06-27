@@ -1,6 +1,7 @@
 #include <config.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
+#include "dm-util.h"
 
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
@@ -33,7 +34,8 @@ create_builder (void)
 
     if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/accessibility/at/at-enable-dialog.ui", &error)) {
         GObject *object;
-        gchar *prog;
+        gchar *prog = NULL;
+        DMType dm_type;
 
         object = gtk_builder_get_object (builder, "at_enable_image");
         gtk_image_set_from_file (GTK_IMAGE (object),
@@ -44,15 +46,18 @@ create_builder (void)
         gtk_image_set_from_file (GTK_IMAGE (object),
                                  PIXMAPDIR "/at-support.png");
 
-        prog = g_find_program_in_path ("lightdm-gtk-greeter-settings-pkexec");
-        if (prog == NULL) {
+        dm_type = dm_get_type();
+        if (dm_type == DM_TYPE_MDM) {
             prog = g_find_program_in_path ("mdmsetup");
-            if (prog == NULL) {
-                object = gtk_builder_get_object (builder, "login_button");
-                gtk_widget_hide (GTK_WIDGET (object));
-            }
+        } else if (dm_type == DM_TYPE_LIGHTDM) {
+            prog = g_find_program_in_path ("lightdm-gtk-greeter-settings-pkexec");
+        }
+        if (prog == NULL) {
+            object = gtk_builder_get_object (builder, "login_button");
+            gtk_widget_hide (GTK_WIDGET (object));
         }
         g_free (prog);
+
     } else {
         g_warning ("Could not load UI: %s", error->message);
         g_error_free (error);
@@ -84,13 +89,20 @@ cb_mouse_preferences (GtkDialog *dialog, gint response_id)
 static void
 cb_login_preferences (GtkDialog *dialog, gint response_id)
 {
-    gchar *prog;
-    prog = g_find_program_in_path ("lightdm-gtk-greeter-settings-pkexec");
-    if (prog == NULL) {
+    DMType dm_type;
+    gchar *prog = NULL;
+
+    dm_type = dm_get_type();
+    if (dm_type == DM_TYPE_MDM) {
         prog = g_find_program_in_path ("mdmsetup");
+    } else if (dm_type == DM_TYPE_LIGHTDM) {
+        prog = g_find_program_in_path ("lightdm-gtk-greeter-settings-pkexec");
     }
-    g_spawn_command_line_async (prog, NULL);
-    g_free(prog);
+
+    if (prog != NULL) {
+        g_spawn_command_line_async (prog, NULL);
+        g_free(prog);
+    }
 }
 
 /* get_session_bus(), get_sm_proxy(), and do_logout() are all
