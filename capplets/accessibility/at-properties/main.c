@@ -34,10 +34,7 @@ static GDesktopAppInfo *get_desktop_app_info_from_dm (void)
     if (dm_type == DM_TYPE_MDM) {
         app_info = g_desktop_app_info_new ("mdmsetup.desktop");
     } else if (dm_type == DM_TYPE_LIGHTDM) {
-        app_info = g_desktop_app_info_new ("lightdm-settings.desktop");
-        if (app_info == NULL) {
-            app_info = g_desktop_app_info_new ("lightdm-gtk-greeter-settings.desktop");
-        }
+        app_info = g_desktop_app_info_new ("lightdm-gtk-greeter-settings.desktop");
     }
     return app_info;
 }
