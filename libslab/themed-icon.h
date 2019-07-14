@@ -37,15 +37,15 @@ extern "C" {
 
 typedef struct
 {
-	GtkImage parent;
+    GtkImage parent;
 
-	GtkIconSize size;
-	gchar *id;
+    GtkIconSize size;
+    gchar *id;
 } ThemedIcon;
 
 typedef struct
 {
-	GtkImageClass parent_class;
+    GtkImageClass parent_class;
 } ThemedIconClass;
 
 GType themed_icon_get_type (void);

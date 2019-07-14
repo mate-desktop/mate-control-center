@@ -33,11 +33,11 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-#define ERROR      1
-#define WARING     2
-#define INFOR      3
-#define QUESTION   4
-#define QUESTIONNORMAL   5
+#define ERROR           1
+#define WARING          2
+#define INFOR           3
+#define QUESTION        4
+#define QUESTIONNORMAL  5
 
 
 GtkWidget *WindowLogin;

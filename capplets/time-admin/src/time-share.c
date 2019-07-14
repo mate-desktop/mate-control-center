@@ -41,34 +41,27 @@ int MessageReport(const char *Title,const char *Msg,int nType)
     switch(nType)
     {
         case ERROR:
-        {
             dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_MESSAGE_ERROR,
                                             GTK_BUTTONS_OK,
                                             "%s",Title);
             break;
-        }
         case WARING:
-        {
             dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_MESSAGE_WARNING,
                                             GTK_BUTTONS_OK,
                                             "%s",Title);
             break;
-        }
         case INFOR:
-        {
             dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_MESSAGE_INFO,
                                             GTK_BUTTONS_OK,
                                             "%s",Title);
             break;
-        }
         case QUESTION:
-        {
             dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_MESSAGE_QUESTION,
@@ -77,20 +70,15 @@ int MessageReport(const char *Title,const char *Msg,int nType)
             gtk_dialog_add_button (GTK_DIALOG (dialog),("_Return"),
                                    GTK_RESPONSE_ACCEPT);
             break;
-        }
         case QUESTIONNORMAL:
-        {
             dialog = gtk_message_dialog_new(GTK_WINDOW(WindowLogin),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_MESSAGE_QUESTION,
                                             GTK_BUTTONS_YES_NO,
                                             "%s",Title);
             break;
-        }
-        default :
-            break;
-
     }
+
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
                                               "%s", Msg);
     nRet =  gtk_dialog_run(GTK_DIALOG(dialog));
@@ -101,11 +89,11 @@ int MessageReport(const char *Title,const char *Msg,int nType)
 
 void QuitApp(TimeAdmin *ta)
 {
-    if(ta->UpdateTimeId > 0)
+    if (ta->UpdateTimeId > 0)
     {
         g_source_remove (ta->UpdateTimeId);
     }
-    if(ta->ApplyId > 0)
+    if (ta->ApplyId > 0)
     {
         g_source_remove(ta->ApplyId);
     }

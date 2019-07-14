@@ -51,6 +51,7 @@ enum {
   CITY_COL_ZONE,
   CITY_NUM_COLS
 };
+
 static gchar *tz_data_file_get (void)
 {
     gchar *file;
@@ -79,6 +80,7 @@ static float convert_pos (gchar *pos, int digits)
     if (t1 >= 0.0) return t1 + t2/pow (10.0, strlen(fraction));
     else return t1 - t2/pow (10.0, strlen(fraction));
 }
+
 static int compare_country_names (const void *a, const void *b)
 {
     const TzLocation *tza = * (TzLocation **) a;
@@ -92,6 +94,7 @@ static void sort_locations_by_country (GPtrArray *locations)
     qsort (locations->pdata, locations->len, sizeof (gpointer),
            compare_country_names);
 }
+
 static void load_backward_tz (TzDB *tz_db)
 {
     FILE  *fp;
@@ -100,12 +103,12 @@ static void load_backward_tz (TzDB *tz_db)
     tz_db->backward = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
 
     fp = fopen(BACKFILE,"r");
-    if(fp == NULL)
+    if (fp == NULL)
     {
         g_error("%s does not exist\r\n",BACKFILE);
 
     }
-    while(fgets(buf,128,fp))
+    while (fgets(buf,128,fp))
     {
         g_auto(GStrv) items = NULL;
         guint j;
@@ -133,8 +136,7 @@ static void load_backward_tz (TzDB *tz_db)
             g_warning ("Could not parse line: %s", buf);
 
         /* We don't need more than one name for it */
-        if (g_str_equal (real, "Etc/UTC") ||
-            g_str_equal (real, "Etc/UCT"))
+        if (g_str_equal (real, "Etc/UTC") || g_str_equal (real, "Etc/UCT"))
             real = "Etc/GMT";
 
         g_hash_table_insert (tz_db->backward, g_strdup (alias), g_strdup (real));
@@ -243,6 +245,7 @@ static GtkWidget *GetTimeZoneMap(TimeAdmin *ta)
 
     return map;
 }
+
 static char *
 translated_city_name (TzLocation *loc)
 {
@@ -312,6 +315,7 @@ static void LocationChanged(TimezoneMap  *map,
 
     update_timezone (map);
 }
+
 static void
 get_initial_timezone (TimeAdmin *ta)
 {
@@ -327,6 +331,7 @@ get_initial_timezone (TimeAdmin *ta)
     }
     update_timezone (TIMEZONEMAP(ta->map));
 }
+
 static void LoadCities (TzLocation   *loc,
                         GtkListStore *CityStore)
 {
@@ -353,6 +358,7 @@ static void CreateCityList(TimeAdmin *ta)
 
     TimeZoneDateBaseFree(db);
 }
+
 static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
 {
     GtkWidget *TimeZoneFrame;
@@ -363,6 +369,7 @@ static GtkWidget *CreateZoneFrame(TimeAdmin *ta)
 
     return TimeZoneFrame;
 }
+
 static GtkWidget *CreateZoneScrolled(TimeAdmin *ta)
 {
     GtkWidget *Scrolled;
@@ -375,6 +382,7 @@ static GtkWidget *CreateZoneScrolled(TimeAdmin *ta)
 
     return Scrolled;
 }
+
 static void CreateZoneEntry(TimeAdmin *ta)
 {
     GtkWidget *hbox;
@@ -413,6 +421,7 @@ static gboolean CityChanged(GtkEntryCompletion *completion,
 
     return TRUE;
 }
+
 static void ChoooseTimezoneDone (GtkWidget *widget,
                                  TimeAdmin *ta)
 {
@@ -498,14 +507,18 @@ void SetupTimezoneDialog(TimeAdmin *ta)
                         TRUE,
                         TRUE, 8);
 }
+
 void tz_info_free (TzInfo *tzinfo)
 {
     g_return_if_fail (tzinfo != NULL);
 
-    if (tzinfo->tzname_normal) g_free (tzinfo->tzname_normal);
-    if (tzinfo->tzname_daylight) g_free (tzinfo->tzname_daylight);
+    if (tzinfo->tzname_normal)
+        g_free (tzinfo->tzname_normal);
+    if (tzinfo->tzname_daylight)
+        g_free (tzinfo->tzname_daylight);
     g_free (tzinfo);
 }
+
 struct {
     const char *orig;
     const char *dest;
@@ -533,6 +546,7 @@ struct {
     { "MST",            "America/Denver" },     /* Other name for the mountain tz */
     { "MST7MDT",        "America/Denver" },     /* ditto */
 };
+
 static gboolean
 compare_timezones (const char *a,
            const char *b)
@@ -639,6 +653,7 @@ TzInfo *tz_info_from_location (TzLocation *loc)
 
     return tzinfo;
 }
+
 glong tz_location_get_utc_offset (TzLocation *loc)
 {
     TzInfo *tz_info;
@@ -650,6 +665,7 @@ glong tz_location_get_utc_offset (TzLocation *loc)
 
     return offset;
 }
+
 void RunTimeZoneDialog  (GtkButton *button,
                          gpointer   data)
 {
@@ -657,6 +673,7 @@ void RunTimeZoneDialog  (GtkButton *button,
 
     gtk_widget_show_all(GTK_WIDGET(ta->dialog));
 }
+
 static void
 tz_location_free (TzLocation *loc, gpointer data)
 {
@@ -666,6 +683,7 @@ tz_location_free (TzLocation *loc, gpointer data)
 
     g_free (loc);
 }
+
 void TimeZoneDateBaseFree (TzDB *db)
 {
     g_ptr_array_foreach (db->locations, (GFunc) tz_location_free, NULL);
@@ -673,6 +691,7 @@ void TimeZoneDateBaseFree (TzDB *db)
     g_hash_table_destroy (db->backward);
     g_free (db);
 }
+
 GPtrArray *tz_get_locations (TzDB *db)
 {
     return db->locations;

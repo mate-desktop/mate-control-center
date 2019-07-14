@@ -1,5 +1,3 @@
-/* -*- mode: c; style: linux -*- */
-
 /* file-transfer-dialog.h
  * Copyright (C) 2002 Ximian, Inc.
  *
@@ -39,8 +37,8 @@ typedef struct _FileTransferDialogClass FileTransferDialogClass;
 typedef struct _FileTransferDialogPrivate FileTransferDialogPrivate;
 
 typedef enum {
-	FILE_TRANSFER_DIALOG_DEFAULT = 1 << 0,
-	FILE_TRANSFER_DIALOG_OVERWRITE = 1 << 1
+    FILE_TRANSFER_DIALOG_DEFAULT = 1 << 0,
+    FILE_TRANSFER_DIALOG_OVERWRITE = 1 << 1
 } FileTransferDialogOptions;
 
 struct _FileTransferDialog

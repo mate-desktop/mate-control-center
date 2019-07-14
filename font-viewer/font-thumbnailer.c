@@ -1,4 +1,3 @@
-/* -*- mode: C; c-basic-offset: 4 -*- */
 /*
  * font-thumbnailer: a thumbnailer for font files, using FreeType
  *
@@ -50,7 +49,7 @@ get_ft_error (FT_Error error)
     switch (error) {
 #include FT_ERRORS_H
     default:
-	return "unknown";
+    return "unknown";
     }
 }
 
@@ -62,35 +61,37 @@ static gboolean
 check_font_contain_text (FT_Face face,
                          const gchar *text)
 {
-  gunichar *string;
-  glong len, idx, map;
-  FT_CharMap charmap;
-  gboolean retval;
+    gunichar *string;
+    glong len, idx, map;
+    FT_CharMap charmap;
+    gboolean retval;
 
-  string = g_utf8_to_ucs4_fast (text, -1, &len);
+    string = g_utf8_to_ucs4_fast (text, -1, &len);
 
-  for (map = 0; map < face->num_charmaps; map++) {
-    charmap = face->charmaps[map];
-    FT_Set_Charmap (face, charmap);
+    for (map = 0; map < face->num_charmaps; map++)
+    {
+        charmap = face->charmaps[map];
+        FT_Set_Charmap (face, charmap);
 
-    retval = TRUE;
+        retval = TRUE;
 
-    for (idx = 0; idx < len; idx++) {
-      gunichar c = string[idx];
+        for (idx = 0; idx < len; idx++)
+        {
+            gunichar c = string[idx];
 
-      if (!FT_Get_Char_Index (face, c)) {
-        retval = FALSE;
-        break;
-      }
+            if (!FT_Get_Char_Index (face, c)) {
+                retval = FALSE;
+                break;
+            }
+        }
+
+        if (retval)
+            break;
     }
 
-    if (retval)
-      break;
-  }
+    g_free (string);
 
-  g_free (string);
-
-  return retval;
+    return retval;
 }
 
 static gchar *
@@ -187,13 +188,13 @@ main (int argc,
     gchar *fragment;
 
     const GOptionEntry options[] = {
-	    { "text", 't', 0, G_OPTION_ARG_STRING, &thumbstr_utf8,
-	      N_("Text to thumbnail (default: Aa)"), N_("TEXT") },
-	    { "size", 's', 0, G_OPTION_ARG_INT, &thumb_size,
-	      N_("Thumbnail size (default: 128)"), N_("SIZE") },
-	    { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &arguments,
-	      NULL, N_("FONT-FILE OUTPUT-FILE") },
-	    { NULL }
+        { "text", 't', 0, G_OPTION_ARG_STRING, &thumbstr_utf8,
+          N_("Text to thumbnail (default: Aa)"), N_("TEXT") },
+        { "size", 's', 0, G_OPTION_ARG_INT, &thumb_size,
+          N_("Thumbnail size (default: 128)"), N_("SIZE") },
+        { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &arguments,
+          NULL, N_("FONT-FILE OUTPUT-FILE") },
+        { NULL }
     };
 
     bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
@@ -207,49 +208,51 @@ main (int argc,
 
     retval = g_option_context_parse (context, &argc, &argv, &gerror);
     if (!retval) {
-	g_printerr ("Error parsing arguments: %s\n", gerror->message);
+        g_printerr ("Error parsing arguments: %s\n", gerror->message);
 
-	g_option_context_free  (context);
-	g_error_free (gerror);
+        g_option_context_free  (context);
+        g_error_free (gerror);
         return 1;
     }
 
     if (!arguments || g_strv_length (arguments) != 2) {
-	help = g_option_context_get_help (context, TRUE, NULL);
-	g_printerr ("%s", help);
+        help = g_option_context_get_help (context, TRUE, NULL);
+        g_printerr ("%s", help);
 
-	g_option_context_free (context);
-	goto out;
+        g_option_context_free (context);
+        goto out;
     }
 
     g_option_context_free (context);
 
     if (thumbstr_utf8 != NULL)
-	default_thumbstr = FALSE;
+        default_thumbstr = FALSE;
 
     error = FT_Init_FreeType (&library);
     if (error) {
-	g_printerr("Could not initialise freetype: %s\n", get_ft_error (error));
-	goto out;
+        g_printerr("Could not initialise freetype: %s\n",
+                    get_ft_error (error));
+        goto out;
     }
 
     totem_resources_monitor_start (arguments[0], 30 * G_USEC_PER_SEC);
 
     fragment = strrchr (arguments[0], '#');
     if (fragment)
-	face_index = strtol (fragment + 1, NULL, 0);
+        face_index = strtol (fragment + 1, NULL, 0);
 
     file = g_file_new_for_commandline_arg (arguments[0]);
     uri = g_file_get_uri (file);
     g_object_unref (file);
 
-    face = sushi_new_ft_face_from_uri (library, uri, face_index, &contents, &gerror);
+    face = sushi_new_ft_face_from_uri (library, uri, face_index,
+                                       &contents, &gerror);
     if (gerror) {
-	g_printerr ("Could not load face '%s': %s\n", uri,
-		    gerror->message);
+        g_printerr ("Could not load face '%s': %s\n", uri,
+                    gerror->message);
         g_free (uri);
         g_error_free (gerror);
-	goto out;
+        goto out;
     }
 
     g_free (uri);
@@ -304,15 +307,15 @@ main (int argc,
 
     error = FT_Done_Face (face);
     if (error) {
-	g_printerr("Could not unload face: %s\n", get_ft_error (error));
-	goto out;
+        g_printerr("Could not unload face: %s\n", get_ft_error (error));
+        goto out;
     }
 
     error = FT_Done_FreeType (library);
     if (error) {
-	g_printerr ("Could not finalize freetype library: %s\n",
-		   get_ft_error (error));
-	goto out;
+    g_printerr ("Could not finalize freetype library: %s\n",
+           get_ft_error (error));
+    goto out;
     }
 
     rv = 0; /* success */

@@ -30,7 +30,7 @@
 extern "C" {
 #endif
 
-#define INITIAL_NUM_COLS 3
+#define INITIAL_NUM_COLS            3
 #define APP_RESIZER_TYPE            (app_resizer_get_type ())
 #define APP_RESIZER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), APP_RESIZER_TYPE, AppResizer))
 #define APP_RESIZER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), APP_RESIZER_TYPE, AppResizerClass))
@@ -43,28 +43,27 @@ typedef struct _AppResizerClass AppResizerClass;
 
 struct _AppResizer
 {
-	GtkLayout parent;
+    GtkLayout parent;
 
-	GtkBox *child;
-	GList *cached_tables_list;
-	gint cached_element_width;
-	gint cached_table_spacing;
-	gboolean table_elements_homogeneous;
-	gint cur_num_cols;
-	gboolean setting_style;
-	AppShellData *app_data;
+    GtkBox *child;
+    GList *cached_tables_list;
+    gint cached_element_width;
+    gint cached_table_spacing;
+    gboolean table_elements_homogeneous;
+    gint cur_num_cols;
+    gboolean setting_style;
+    AppShellData *app_data;
 };
 
 struct _AppResizerClass
 {
-	GtkLayoutClass parent_class;
+    GtkLayoutClass parent_class;
 };
 
 void remove_container_entries (GtkContainer * widget);
 
 GType app_resizer_get_type (void);
-GtkWidget *app_resizer_new (GtkBox * child, gint initial_num_columns, gboolean homogeneous,
-	AppShellData * app_data);
+GtkWidget *app_resizer_new (GtkBox * child, gint initial_num_columns, gboolean homogeneous, AppShellData * app_data);
 void app_resizer_set_table_cache (AppResizer * widget, GList * cache_list);
 void app_resizer_layout_table_default (AppResizer * widget, GtkTable * table, GList * element_list);
 void app_resizer_set_vadjustment_value (GtkWidget * widget, gdouble value);

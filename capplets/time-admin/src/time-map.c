@@ -40,7 +40,8 @@ typedef struct
     guchar green;
     guchar blue;
     guchar alpha;
-}TimezoneMapOffset;
+} TimezoneMapOffset;
+
 enum
 {
     LOCATION_CHANGED,
@@ -49,6 +50,7 @@ enum
 
 G_DEFINE_TYPE (TimezoneMap, timezone_map, GTK_TYPE_WIDGET)
 static guint signals[LAST_SIGNAL];
+
 static TimezoneMapOffset color_codes[] =
 {
     {-11.0, 43, 0, 0, 255 },
@@ -91,6 +93,7 @@ static TimezoneMapOffset color_codes[] =
     {13.0, 255, 85, 153, 250 },
     {-100, 0, 0, 0, 0 }
 };
+
 static void
 cc_timezone_map_dispose (GObject *object)
 {
@@ -113,6 +116,7 @@ cc_timezone_map_dispose (GObject *object)
 
     G_OBJECT_CLASS (timezone_map_parent_class)->dispose (object);
 }
+
 static void
 timezone_map_finalize (GObject *object)
 {
@@ -122,6 +126,7 @@ timezone_map_finalize (GObject *object)
 
     G_OBJECT_CLASS (timezone_map_parent_class)->finalize (object);
 }
+
 static void
 cc_timezone_map_get_preferred_width (GtkWidget *widget,
                                      gint      *minimum,
@@ -204,15 +209,18 @@ cc_timezone_map_realize (GtkWidget *widget)
     attr.height = allocation.height;
     attr.x = allocation.x;
     attr.y = allocation.y;
-    attr.event_mask = gtk_widget_get_events (widget)
-                                 | GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK;
+    attr.event_mask = gtk_widget_get_events (widget) |
+                                             GDK_EXPOSURE_MASK |
+                                             GDK_BUTTON_PRESS_MASK;
 
-    window = gdk_window_new (gtk_widget_get_parent_window (widget), &attr,
+    window = gdk_window_new (gtk_widget_get_parent_window (widget),
+                             &attr,
                              GDK_WA_X | GDK_WA_Y);
 
     gdk_window_set_user_data (window, widget);
     gtk_widget_set_window (widget, window);
 }
+
 static gdouble
 convert_longitude_to_x (gdouble longitude, gint map_width)
 {
@@ -391,6 +399,7 @@ cc_timezone_map_draw (GtkWidget *widget,
 
     return TRUE;
 }
+
 static void
 update_cursor (GtkWidget *widget)
 {
@@ -465,7 +474,6 @@ button_press_event (TimezoneMap    *map,
     x = event->x;
     y = event->y;
 
-
     rowstride = map->visible_map_rowstride;
     pixels = map->visible_map_pixels;
 
@@ -474,12 +482,12 @@ button_press_event (TimezoneMap    *map,
     b = pixels[(rowstride * y + x * 4) + 2];
     a = pixels[(rowstride * y + x * 4) + 3];
 
-
     for (i = 0; color_codes[i].offset != -100; i++)
     {
-        if (color_codes[i].red == r && color_codes[i].green == g
-           && color_codes[i].blue == b && color_codes[i].alpha == a)
-        {
+        if (color_codes[i].red == r &&
+            color_codes[i].green == g &&
+            color_codes[i].blue == b &&
+            color_codes[i].alpha == a) {
             map->selected_offset = color_codes[i].offset;
         }
     }
@@ -590,6 +598,7 @@ timezone_map_init (TimezoneMap *map)
                              map,
                              G_CONNECT_SWAPPED);
 }
+
 gboolean timezone_map_set_timezone (TimezoneMap *map,
                                     const gchar *timezone)
 {
@@ -620,10 +629,12 @@ gboolean timezone_map_set_timezone (TimezoneMap *map,
 
     return ret;
 }
+
 TzLocation *timezone_map_get_location (TimezoneMap *map)
 {
     return map->location;
 }
+
 void timezone_map_set_bubble_text (TimezoneMap *map,
                                    const gchar *text)
 {

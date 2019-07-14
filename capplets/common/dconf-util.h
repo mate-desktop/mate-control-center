@@ -31,14 +31,14 @@
 G_BEGIN_DECLS
 
 gboolean dconf_util_write_sync (const gchar  *key,
-                                 GVariant     *value,
-                                 GError      **error);
+                                GVariant     *value,
+                                GError      **error);
 
 gboolean dconf_util_recursive_reset (const gchar  *dir,
-                                      GError     **error);
+                                     GError     **error);
 
 gchar **dconf_util_list_subdirs (const gchar *dir,
-                                  gboolean     remove_trailing_slash);
+                                 gboolean     remove_trailing_slash);
 
 G_END_DECLS
 

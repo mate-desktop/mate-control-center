@@ -1,5 +1,4 @@
-/* -*- mode: C; c-basic-offset: 4 -*-
- * mate-font-viewer
+/* mate-font-viewer
  *
  * Copyright (C) 2012 Cosimo Cecchi <cosimoc@gnome.org>
  *
@@ -31,28 +30,27 @@
 G_BEGIN_DECLS
 
 typedef enum {
-  COLUMN_NAME,
-  COLUMN_PATH,
-  COLUMN_FACE_INDEX,
-  COLUMN_ICON,
-  COLUMN_COLLATION_KEY,
+    COLUMN_NAME,
+    COLUMN_PATH,
+    COLUMN_FACE_INDEX,
+    COLUMN_ICON,
+    COLUMN_COLLATION_KEY,
   NUM_COLUMNS
 } FontViewModelColumns;
 
 typedef struct _FontViewModelPrivate FontViewModelPrivate;
 
 #define FONT_VIEW_TYPE_MODEL font_view_model_get_type()
-#define FONT_VIEW_MODEL(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST ((obj), FONT_VIEW_TYPE_MODEL, FontViewModel))
+#define FONT_VIEW_MODEL(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), FONT_VIEW_TYPE_MODEL, FontViewModel))
 
 typedef struct {
-  GtkListStore parent;
+    GtkListStore parent;
 
-  FontViewModelPrivate *priv;
+    FontViewModelPrivate *priv;
 } FontViewModel;
 
 typedef struct {
-  GtkListStoreClass parent_class;
+    GtkListStoreClass parent_class;
 } FontViewModelClass;
 
 GType font_view_model_get_type (void);
@@ -65,4 +63,3 @@ gboolean font_view_model_get_iter_for_face (FontViewModel *self,
 G_END_DECLS
 
 #endif /* __FONT_VIEW_MODEL_H__ */
-

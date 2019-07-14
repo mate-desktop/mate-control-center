@@ -15,13 +15,13 @@ typedef struct _MarcoWindowManagerPrivate MarcoWindowManagerPrivate;
 
 struct _MarcoWindowManager
 {
-	MateWindowManager parent;
-	MarcoWindowManagerPrivate *p;
+    MateWindowManager parent;
+    MarcoWindowManagerPrivate *p;
 };
 
 struct _MarcoWindowManagerClass
 {
-	MateWindowManagerClass klass;
+    MateWindowManagerClass klass;
 };
 
 GType      marco_window_manager_get_type             (void);

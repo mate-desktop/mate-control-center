@@ -33,48 +33,48 @@
 typedef struct _MateWPItem MateWPItem;
 
 struct _MateWPItem {
-  MateBG *bg;
+    MateBG *bg;
 
-  gchar * name;
-  gchar * filename;
-  gchar * description;
-  MateBGPlacement options;
-  MateBGColorType shade_type;
+    gchar * name;
+    gchar * filename;
+    gchar * description;
+    MateBGPlacement options;
+    MateBGColorType shade_type;
 
-  /* Where the Item is in the List */
-  GtkTreeRowReference * rowref;
+    /* Where the Item is in the List */
+    GtkTreeRowReference * rowref;
 
-  /* Real colors */
-  GdkRGBA * pcolor;
-  GdkRGBA * scolor;
+    /* Real colors */
+    GdkRGBA * pcolor;
+    GdkRGBA * scolor;
 
-  MateWPInfo * fileinfo;
+    MateWPInfo * fileinfo;
 
-  /* Did the user remove us? */
-  gboolean deleted;
+    /* Did the user remove us? */
+    gboolean deleted;
 
-  /* Wallpaper author, if present */
-  gchar *artist;
+    /* Wallpaper author, if present */
+    gchar *artist;
 
-  /* Width and Height of the original image */
-  gint width;
-  gint height;
+    /* Width and Height of the original image */
+    gint width;
+    gint height;
 };
 
 MateWPItem * mate_wp_item_new (const gchar *filename,
-				 GHashTable *wallpapers,
-				 MateDesktopThumbnailFactory *thumbnails);
+                               GHashTable *wallpapers,
+                               MateDesktopThumbnailFactory *thumbnails);
 
 void mate_wp_item_free (MateWPItem *item);
 GdkPixbuf * mate_wp_item_get_thumbnail (MateWPItem *item,
-					 MateDesktopThumbnailFactory *thumbs,
-                                         gint width,
-                                         gint height);
+                                        MateDesktopThumbnailFactory *thumbs,
+                                        gint width,
+                                        gint height);
 GdkPixbuf * mate_wp_item_get_frame_thumbnail (MateWPItem *item,
-                                               MateDesktopThumbnailFactory *thumbs,
-                                               gint width,
-                                               gint height,
-                                               gint frame);
+                                              MateDesktopThumbnailFactory *thumbs,
+                                              gint width,
+                                              gint height,
+                                              gint frame);
 void mate_wp_item_update (MateWPItem *item);
 void mate_wp_item_update_description (MateWPItem *item);
 void mate_wp_item_ensure_mate_bg (MateWPItem *item);

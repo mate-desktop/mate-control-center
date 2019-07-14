@@ -41,25 +41,25 @@ extern "C" {
 
 typedef enum
 {
-	Style1,		/* SlabSections in left pane - no padding */
-	Style2		/* SlabSections in right pane - padding, label text changes as group is selected */
+    Style1,     /* SlabSections in left pane - no padding */
+    Style2      /* SlabSections in right pane - padding, label text changes as group is selected */
 } SlabStyle;
 
 typedef struct
 {
-	GtkBox parent_vbox;
+    GtkBox parent_vbox;
 
-	GtkWidget *title;
-	GtkWidget *contents;
-	SlabStyle style;
-	gulong expose_handler_id;
-	GtkBox *childbox;
-	gboolean selected;
+    GtkWidget *title;
+    GtkWidget *contents;
+    SlabStyle style;
+    gulong expose_handler_id;
+    GtkBox *childbox;
+    gboolean selected;
 } SlabSection;
 
 typedef struct
 {
-	GtkBoxClass parent_class;
+    GtkBoxClass parent_class;
 } SlabSectionClass;
 
 GType slab_section_get_type (void);

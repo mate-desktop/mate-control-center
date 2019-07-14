@@ -1,5 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
-
 /* mate-window-manager.h
  * Copyright (C) 2002 Seth Nickell
  * Copyright (C) 2002 Red Hat, Inc.
@@ -110,34 +108,34 @@ struct _MateWindowManager
 
 struct _MateWindowManagerClass
 {
-        GObjectClass klass;
+    GObjectClass klass;
 
-        void         (* settings_changed)       (MateWindowManager    *wm);
+    void         (* settings_changed)       (MateWindowManager    *wm);
 
-        void         (* change_settings)        (MateWindowManager    *wm,
-                                                 const MateWMSettings *settings);
-        void         (* get_settings)           (MateWindowManager    *wm,
-                                                 MateWMSettings       *settings);
+    void         (* change_settings)        (MateWindowManager    *wm,
+                                             const MateWMSettings *settings);
+    void         (* get_settings)           (MateWindowManager    *wm,
+                                             MateWMSettings       *settings);
 
-        GList *      (* get_theme_list)         (MateWindowManager *wm);
-        char *       (* get_user_theme_folder)  (MateWindowManager *wm);
+    GList *      (* get_theme_list)         (MateWindowManager *wm);
+    char *       (* get_user_theme_folder)  (MateWindowManager *wm);
 
-        int          (* get_settings_mask)      (MateWindowManager *wm);
+    int          (* get_settings_mask)      (MateWindowManager *wm);
 
-        void         (* get_double_click_actions) (MateWindowManager              *wm,
-                                                   const MateWMDoubleClickAction **actions,
-                                                   int                             *n_actions);
+    void         (* get_double_click_actions) (MateWindowManager              *wm,
+                                               const MateWMDoubleClickAction **actions,
+                                               int                             *n_actions);
 
-        void         (* padding_func_1)         (MateWindowManager *wm);
-        void         (* padding_func_2)         (MateWindowManager *wm);
-        void         (* padding_func_3)         (MateWindowManager *wm);
-        void         (* padding_func_4)         (MateWindowManager *wm);
-        void         (* padding_func_5)         (MateWindowManager *wm);
-        void         (* padding_func_6)         (MateWindowManager *wm);
-        void         (* padding_func_7)         (MateWindowManager *wm);
-        void         (* padding_func_8)         (MateWindowManager *wm);
-        void         (* padding_func_9)         (MateWindowManager *wm);
-        void         (* padding_func_10)        (MateWindowManager *wm);
+    void         (* padding_func_1)         (MateWindowManager *wm);
+    void         (* padding_func_2)         (MateWindowManager *wm);
+    void         (* padding_func_3)         (MateWindowManager *wm);
+    void         (* padding_func_4)         (MateWindowManager *wm);
+    void         (* padding_func_5)         (MateWindowManager *wm);
+    void         (* padding_func_6)         (MateWindowManager *wm);
+    void         (* padding_func_7)         (MateWindowManager *wm);
+    void         (* padding_func_8)         (MateWindowManager *wm);
+    void         (* padding_func_9)         (MateWindowManager *wm);
+    void         (* padding_func_10)        (MateWindowManager *wm);
 };
 
 GObject *         mate_window_manager_new                     (MateDesktopItem   *item);

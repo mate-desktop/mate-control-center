@@ -1,5 +1,3 @@
-/* -*- mode: C; c-basic-offset: 4 -*- */
-
 /*
  * font-view: a font viewer for MATE
  *
@@ -85,11 +83,11 @@ static const gchar *app_menu =
     "    <section>"
     "      <item>"
     "        <attribute name=\"action\">app.about</attribute>"
-    "	     <attribute name=\"label\" translatable=\"yes\">About Font Viewer</attribute>"
+    "         <attribute name=\"label\" translatable=\"yes\">About Font Viewer</attribute>"
     "      </item>"
     "      <item>"
     "       <attribute name=\"action\">app.quit</attribute>"
-    "	    <attribute name=\"label\" translatable=\"yes\">Quit</attribute>"
+    "        <attribute name=\"label\" translatable=\"yes\">Quit</attribute>"
     "      </item>"
     "    </section>"
     "  <menu>"
@@ -159,9 +157,9 @@ strip_version (gchar **original)
 
 static void
 add_row (GtkWidget *grid,
-	 const gchar *name,
-	 const gchar *value,
-	 gboolean multiline)
+     const gchar *name,
+     const gchar *value,
+     gboolean multiline)
 {
     GtkWidget *name_w, *label;
 
@@ -193,7 +191,7 @@ add_row (GtkWidget *grid,
 static void
 populate_grid (FontViewApplication *self,
                GtkWidget *grid,
-	       FT_Face face)
+           FT_Face face)
 {
     gchar *s;
     GFileInfo *info;
@@ -235,47 +233,48 @@ populate_grid (FontViewApplication *self,
                   sname.language_id == TT_MS_LANGID_ENGLISH_UNITED_STATES))
                 continue;
 
-            switch (sname.name_id) {
-            case TT_NAME_ID_COPYRIGHT:
-                g_free (copyright);
-                copyright = g_convert ((gchar *)sname.string, sname.string_len,
-                                       "UTF-8", "UTF-16BE", NULL, NULL, NULL);
-                break;
-            case TT_NAME_ID_VERSION_STRING:
-            g_free (version);
-            version = g_convert ((gchar *)sname.string, sname.string_len,
-                                 "UTF-8", "UTF-16BE", NULL, NULL, NULL);
-                break;
-            case TT_NAME_ID_DESCRIPTION:
-                g_free (description);
-                description = g_convert ((gchar *)sname.string, sname.string_len,
+            switch (sname.name_id)
+            {
+                case TT_NAME_ID_COPYRIGHT:
+                    g_free (copyright);
+                    copyright = g_convert ((gchar *)sname.string, sname.string_len,
+                                           "UTF-8", "UTF-16BE", NULL, NULL, NULL);
+                    break;
+                case TT_NAME_ID_VERSION_STRING:
+                    g_free (version);
+                    version = g_convert ((gchar *)sname.string, sname.string_len,
                                          "UTF-8", "UTF-16BE", NULL, NULL, NULL);
-                break;
-            default:
-                break;
+                    break;
+                case TT_NAME_ID_DESCRIPTION:
+                    g_free (description);
+                    description = g_convert ((gchar *)sname.string, sname.string_len,
+                                             "UTF-8", "UTF-16BE", NULL, NULL, NULL);
+                    break;
+                default:
+                    break;
             }
         }
 
-	if (version) {
+    if (version) {
             strip_version (&version);
             add_row (grid, _("Version"), version, FALSE);
-	    g_free (version);
-	}
-	if (copyright) {
-	    strip_whitespace (&copyright);
-	    add_row (grid, _("Copyright"), copyright, TRUE);
-	    g_free (copyright);
-	}
-	if (description) {
-	    strip_whitespace (&description);
-	    add_row (grid, _("Description"), description, TRUE);
-	    g_free (description);
-	}
+        g_free (version);
+    }
+    if (copyright) {
+        strip_whitespace (&copyright);
+        add_row (grid, _("Copyright"), copyright, TRUE);
+        g_free (copyright);
+    }
+    if (description) {
+        strip_whitespace (&description);
+        add_row (grid, _("Description"), description, TRUE);
+        g_free (description);
+    }
     } else if (FT_Get_PS_Font_Info (face, &ps_info) == 0) {
-	if (ps_info.version && g_utf8_validate (ps_info.version, -1, NULL))
-	    add_row (grid, _("Version"), ps_info.version, FALSE);
-	if (ps_info.notice && g_utf8_validate (ps_info.notice, -1, NULL))
-	    add_row (grid, _("Copyright"), ps_info.notice, TRUE);
+    if (ps_info.version && g_utf8_validate (ps_info.version, -1, NULL))
+        add_row (grid, _("Version"), ps_info.version, FALSE);
+    if (ps_info.notice && g_utf8_validate (ps_info.notice, -1, NULL))
+        add_row (grid, _("Copyright"), ps_info.notice, TRUE);
     }
 }
 
@@ -634,9 +633,9 @@ icon_view_release_cb (GtkWidget *widget,
 
     if (path != NULL &&
         gtk_tree_model_get_iter (self->filter_model, &filter_iter, path)) {
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (self->filter_model),
-                                                          &iter,
-                                                          &filter_iter);
+            gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (self->filter_model),
+                                                              &iter,
+                                                              &filter_iter);
         gtk_tree_model_get (self->model, &iter,
                             COLUMN_PATH, &font_path,
                             COLUMN_FACE_INDEX, &face_index,
@@ -799,7 +798,7 @@ static void
 search_text_changed (GtkEntry *entry,
                      FontViewApplication *self)
 {
-  gtk_tree_model_filter_refilter (GTK_TREE_MODEL_FILTER (self->filter_model));
+    gtk_tree_model_filter_refilter (GTK_TREE_MODEL_FILTER (self->filter_model));
 }
 
 static void
@@ -840,8 +839,8 @@ font_view_application_startup (GApplication *application)
     self->toolbar = gd_main_toolbar_new ();
     gtk_style_context_add_class (gtk_widget_get_style_context (self->toolbar), "menubar");
     self->search_button = gd_main_toolbar_add_toggle (GD_MAIN_TOOLBAR (self->toolbar),
-                                                        NULL, _("Search"),
-                                                        FALSE);
+                                                      NULL, _("Search"),
+                                                      FALSE);
     gtk_container_add (GTK_CONTAINER (self->main_grid), self->toolbar);
 
     self->notebook = gtk_notebook_new ();
@@ -853,13 +852,13 @@ font_view_application_startup (GApplication *application)
     self->swin_view = swin = gtk_scrolled_window_new (NULL, NULL);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (swin), GTK_SHADOW_IN);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
-				    GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+                                    GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
     gtk_container_add (GTK_CONTAINER (self->notebook), swin);
 
     self->swin_preview = swin = gtk_scrolled_window_new (NULL, NULL);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (swin), GTK_SHADOW_IN);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
-         			    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
+                                    GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
     gtk_container_add (GTK_CONTAINER (self->notebook), swin);
 
     self->search_bar = gtk_search_bar_new();

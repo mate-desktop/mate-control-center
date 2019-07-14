@@ -43,58 +43,58 @@
 #define MESSENGER_KEY        "exec"
 
 typedef struct _MateDACapplet {
-	GtkBuilder* builder;
+    GtkBuilder* builder;
 
-	GtkIconTheme* icon_theme;
+    GtkIconTheme* icon_theme;
 
-	GtkWidget* window;
+    GtkWidget* window;
 
-	GtkWidget* web_combo_box;
-	GtkWidget* mail_combo_box;
-	GtkWidget* term_combo_box;
-	GtkWidget* media_combo_box;
-	GtkWidget* video_combo_box;
-	GtkWidget* visual_combo_box;
-	GtkWidget* mobility_combo_box;
-	GtkWidget* file_combo_box;
-	GtkWidget* text_combo_box;
-	GtkWidget* image_combo_box;
-	GtkWidget* document_combo_box;
-	GtkWidget* word_combo_box;
-	GtkWidget* spreadsheet_combo_box;
-	GtkWidget* calculator_combo_box;
-        GtkWidget* messenger_combo_box;
+    GtkWidget* web_combo_box;
+    GtkWidget* mail_combo_box;
+    GtkWidget* term_combo_box;
+    GtkWidget* media_combo_box;
+    GtkWidget* video_combo_box;
+    GtkWidget* visual_combo_box;
+    GtkWidget* mobility_combo_box;
+    GtkWidget* file_combo_box;
+    GtkWidget* text_combo_box;
+    GtkWidget* image_combo_box;
+    GtkWidget* document_combo_box;
+    GtkWidget* word_combo_box;
+    GtkWidget* spreadsheet_combo_box;
+    GtkWidget* calculator_combo_box;
+    GtkWidget* messenger_combo_box;
 
-	/* Visual Accessibility */
-	GtkWidget* visual_startup_checkbutton;
+    /* Visual Accessibility */
+    GtkWidget* visual_startup_checkbutton;
 
-	/* Mobility Accessibility */
-	GtkWidget* mobility_startup_checkbutton;
+    /* Mobility Accessibility */
+    GtkWidget* mobility_startup_checkbutton;
 
-	/* Lists of available apps */
-	GList* web_browsers;
-	GList* mail_readers;
-	GList* terminals;
-	GList* media_players;
-	GList* video_players;
-	GList* visual_ats;
-	GList* mobility_ats;
-	GList* file_managers;
-	GList* text_editors;
-	GList* image_viewers;
-	GList* document_viewers;
-	GList* word_editors;
-	GList* spreadsheet_editors;
-	GList* calculators;
-        GList* messengers;
+    /* Lists of available apps */
+    GList* web_browsers;
+    GList* mail_readers;
+    GList* terminals;
+    GList* media_players;
+    GList* video_players;
+    GList* visual_ats;
+    GList* mobility_ats;
+    GList* file_managers;
+    GList* text_editors;
+    GList* image_viewers;
+    GList* document_viewers;
+    GList* word_editors;
+    GList* spreadsheet_editors;
+    GList* calculators;
+    GList* messengers;
 
-	/* Settings objects */
-	GSettings* terminal_settings;
-	GSettings* visual_settings;
-	GSettings* visual_startup_settings;
-	GSettings* mobility_settings;
-	GSettings* calculator_settings;
-	GSettings* messenger_settings;
+    /* Settings objects */
+    GSettings* terminal_settings;
+    GSettings* visual_settings;
+    GSettings* visual_startup_settings;
+    GSettings* mobility_settings;
+    GSettings* calculator_settings;
+    GSettings* messenger_settings;
 } MateDACapplet;
 
 #endif

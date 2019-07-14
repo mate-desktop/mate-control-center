@@ -48,18 +48,18 @@ struct App
     MateRRLabeler *labeler;
     MateRROutputInfo         *current_output;
 
-    GtkWidget	   *dialog;
+    GtkWidget       *dialog;
     GtkWidget      *current_monitor_event_box;
     GtkWidget      *current_monitor_label;
     GtkWidget      *monitor_on_radio;
     GtkWidget      *monitor_off_radio;
     GtkListStore   *resolution_store;
-    GtkWidget	   *resolution_combo;
-    GtkWidget	   *refresh_combo;
-    GtkWidget	   *rotation_combo;
-    GtkWidget	   *panel_checkbox;
-    GtkWidget	   *clone_checkbox;
-    GtkWidget	   *show_icon_checkbox;
+    GtkWidget       *resolution_combo;
+    GtkWidget       *refresh_combo;
+    GtkWidget       *rotation_combo;
+    GtkWidget       *panel_checkbox;
+    GtkWidget       *clone_checkbox;
+    GtkWidget       *show_icon_checkbox;
     GtkWidget      *primary_button;
 
     /* We store the event timestamp when the Apply button is clicked */
@@ -67,16 +67,16 @@ struct App
     guint32         apply_button_clicked_timestamp;
 
     GtkWidget      *area;
-    gboolean	    ignore_gui_changes;
-    GSettings	   *settings;
+    gboolean        ignore_gui_changes;
+    GSettings       *settings;
 
     /* These are used while we are waiting for the ApplyConfiguration method to be executed over D-bus */
     GDBusConnection *connection;
     GDBusProxy *proxy;
 
     enum {
-	APPLYING_VERSION_1,
-	APPLYING_VERSION_2
+        APPLYING_VERSION_1,
+        APPLYING_VERSION_2
     } apply_configuration_state;
 };
 
@@ -102,13 +102,13 @@ error_message (App *app, const char *primary_text, const char *secondary_text)
     GtkWidget *dialog;
 
     dialog = gtk_message_dialog_new ((app && app->dialog) ? GTK_WINDOW (app->dialog) : NULL,
-				     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				     GTK_MESSAGE_ERROR,
-				     GTK_BUTTONS_CLOSE,
-				     "%s", primary_text);
+                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                     GTK_MESSAGE_ERROR,
+                                     GTK_BUTTONS_CLOSE,
+                                     "%s", primary_text);
 
     if (secondary_text)
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s", secondary_text);
+        gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s", secondary_text);
 
     gtk_dialog_run (GTK_DIALOG (dialog));
     gtk_widget_destroy (dialog);
@@ -131,7 +131,7 @@ idle_free (gchar *s)
 
 static void
 on_screen_changed (MateRRScreen *scr,
-		   gpointer data)
+           gpointer data)
 {
     MateRRConfig *current;
     App *app = data;
@@ -139,14 +139,14 @@ on_screen_changed (MateRRScreen *scr,
     current = mate_rr_config_new_current (app->screen, NULL);
 
     if (app->current_configuration)
-	g_object_unref (app->current_configuration);
+        g_object_unref (app->current_configuration);
 
     app->current_configuration = current;
     app->current_output = NULL;
 
     if (app->labeler) {
-	mate_rr_labeler_hide (app->labeler);
-	g_object_unref (app->labeler);
+        mate_rr_labeler_hide (app->labeler);
+        g_object_unref (app->labeler);
     }
 
     app->labeler = mate_rr_labeler_new (app->current_configuration);
@@ -156,12 +156,11 @@ on_screen_changed (MateRRScreen *scr,
 
 static void
 on_viewport_changed (FooScrollArea *scroll_area,
-		     GdkRectangle  *old_viewport,
-		     GdkRectangle  *new_viewport)
+             GdkRectangle  *old_viewport,
+             GdkRectangle  *new_viewport)
 {
-    foo_scroll_area_set_size (scroll_area,
-			      new_viewport->width,
-			      new_viewport->height);
+    foo_scroll_area_set_size (scroll_area, new_viewport->width,
+                              new_viewport->height);
 
     foo_scroll_area_invalidate (scroll_area);
 }
@@ -170,13 +169,13 @@ static void
 layout_set_font (PangoLayout *layout, const char *font)
 {
     PangoFontDescription *desc =
-	pango_font_description_from_string (font);
+    pango_font_description_from_string (font);
 
     if (desc)
     {
-	pango_layout_set_font_description (layout, desc);
+        pango_layout_set_font_description (layout, desc);
 
-	pango_font_description_free (desc);
+        pango_font_description_free (desc);
     }
 }
 
@@ -199,9 +198,9 @@ typedef struct
 
 static gboolean
 foreach (GtkTreeModel *model,
-	 GtkTreePath *path,
-	 GtkTreeIter *iter,
-	 gpointer data)
+     GtkTreePath *path,
+     GtkTreeIter *iter,
+     gpointer data)
 {
     ForeachInfo *info = data;
     char *text = NULL;
@@ -212,9 +211,9 @@ foreach (GtkTreeModel *model,
 
     if (strcmp (info->text, text) == 0)
     {
-	info->found = TRUE;
-	info->iter = *iter;
-	return TRUE;
+        info->found = TRUE;
+        info->iter = *iter;
+        return TRUE;
     }
 
     return FALSE;
@@ -222,9 +221,9 @@ foreach (GtkTreeModel *model,
 
 static void
 add_key (GtkWidget *widget,
-	 const char *text,
-	 int width, int height, int rate,
-	 MateRRRotation rotation)
+     const char *text,
+     int width, int height, int rate,
+     MateRRRotation rotation)
 {
     ForeachInfo info;
     GtkComboBox *box = GTK_COMBO_BOX (widget);
@@ -238,8 +237,8 @@ add_key (GtkWidget *widget,
 
     if (!info.found)
     {
-	GtkTreeIter iter;
-	gtk_list_store_insert_with_values (store, &iter, -1,
+        GtkTreeIter iter;
+        gtk_list_store_insert_with_values (store, &iter, -1,
                                            0, text,
                                            1, width,
                                            2, height,
@@ -264,7 +263,7 @@ combo_select (GtkWidget *widget, const char *text)
     gtk_tree_model_foreach (model, foreach, &info);
 
     if (!info.found)
-	return FALSE;
+        return FALSE;
 
     gtk_combo_box_set_active_iter (box, &info.iter);
     return TRUE;
@@ -277,20 +276,20 @@ get_current_modes (App *app)
 
     if (mate_rr_config_get_clone (app->current_configuration))
     {
-	return mate_rr_screen_list_clone_modes (app->screen);
+        return mate_rr_screen_list_clone_modes (app->screen);
     }
     else
     {
-	if (!app->current_output)
-	    return NULL;
+        if (!app->current_output)
+            return NULL;
 
-	output = mate_rr_screen_get_output_by_name (app->screen,
-	    mate_rr_output_info_get_name (app->current_output));
+        output = mate_rr_screen_get_output_by_name (app->screen,
+            mate_rr_output_info_get_name (app->current_output));
 
-	if (!output)
-	    return NULL;
+        if (!output)
+            return NULL;
 
-	return mate_rr_output_list_modes (output);
+        return mate_rr_output_list_modes (output);
     }
 }
 
@@ -299,14 +298,14 @@ rebuild_rotation_combo (App *app)
 {
     typedef struct
     {
-	MateRRRotation	rotation;
-	const char *	name;
+    MateRRRotation    rotation;
+    const char *    name;
     } RotationInfo;
     static const RotationInfo rotations[] = {
-	{ MATE_RR_ROTATION_0, N_("Normal") },
-	{ MATE_RR_ROTATION_90, N_("Left") },
-	{ MATE_RR_ROTATION_270, N_("Right") },
-	{ MATE_RR_ROTATION_180, N_("Upside Down") },
+        { MATE_RR_ROTATION_0, N_("Normal") },
+        { MATE_RR_ROTATION_90, N_("Left") },
+        { MATE_RR_ROTATION_270, N_("Right") },
+        { MATE_RR_ROTATION_180, N_("Upside Down") },
     };
     const char *selection;
     MateRRRotation current;
@@ -318,31 +317,31 @@ rebuild_rotation_combo (App *app)
                               app->current_output && mate_rr_output_info_is_active (app->current_output));
 
     if (!app->current_output)
-	return;
+        return;
 
     current = mate_rr_output_info_get_rotation (app->current_output);
 
     selection = NULL;
     for (i = 0; i < G_N_ELEMENTS (rotations); ++i)
     {
-	const RotationInfo *info = &(rotations[i]);
+        const RotationInfo *info = &(rotations[i]);
 
-	mate_rr_output_info_set_rotation (app->current_output, info->rotation);
+        mate_rr_output_info_set_rotation (app->current_output, info->rotation);
 
-	/* NULL-GError --- FIXME: we should say why this rotation is not available! */
-	if (mate_rr_config_applicable (app->current_configuration, app->screen, NULL))
-	{
- 	    add_key (app->rotation_combo, _(info->name), 0, 0, 0, info->rotation);
+        /* NULL-GError --- FIXME: we should say why this rotation is not available! */
+        if (mate_rr_config_applicable (app->current_configuration, app->screen, NULL))
+        {
+             add_key (app->rotation_combo, _(info->name), 0, 0, 0, info->rotation);
 
-	    if (info->rotation == current)
-		selection = _(info->name);
-	}
+            if (info->rotation == current)
+                selection = _(info->name);
+        }
     }
 
     mate_rr_output_info_set_rotation (app->current_output, current);
 
     if (!(selection && combo_select (app->rotation_combo, selection)))
-	combo_select (app->rotation_combo, _("Normal"));
+    combo_select (app->rotation_combo, _("Normal"));
 }
 
 static char *
@@ -361,39 +360,37 @@ rebuild_rate_combo (App *app)
     clear_combo (app->refresh_combo);
 
     gtk_widget_set_sensitive (
-	app->refresh_combo, app->current_output && mate_rr_output_info_is_active (app->current_output));
+    app->refresh_combo, app->current_output && mate_rr_output_info_is_active (app->current_output));
 
-    if (!app->current_output
-        || !(modes = get_current_modes (app)))
-	return;
+    if (!app->current_output || !(modes = get_current_modes (app)))
+        return;
 
     best = -1;
     for (i = 0; modes[i] != NULL; ++i)
     {
-	MateRRMode *mode = modes[i];
-	int width, height, rate;
-	int output_width, output_height;
+        MateRRMode *mode = modes[i];
+        int width, height, rate;
+        int output_width, output_height;
 
-	mate_rr_output_info_get_geometry (app->current_output, NULL, NULL, &output_width, &output_height);
+        mate_rr_output_info_get_geometry (app->current_output, NULL, NULL, &output_width, &output_height);
 
-	width = mate_rr_mode_get_width (mode);
-	height = mate_rr_mode_get_height (mode);
-	rate = mate_rr_mode_get_freq (mode);
+        width = mate_rr_mode_get_width (mode);
+        height = mate_rr_mode_get_height (mode);
+        rate = mate_rr_mode_get_freq (mode);
 
-	if (width == output_width		&&
-	    height == output_height)
-	{
-	    add_key (app->refresh_combo,
-		     idle_free (make_rate_string (rate)),
-		     0, 0, rate, -1);
+        if (width == output_width && height == output_height)
+        {
+            add_key (app->refresh_combo,
+                     idle_free (make_rate_string (rate)),
+                     0, 0, rate, -1);
 
-	    if (rate > best)
-		best = rate;
-	}
+            if (rate > best)
+                best = rate;
+        }
     }
 
     if (!combo_select (app->refresh_combo, idle_free (make_rate_string (mate_rr_output_info_get_refresh_rate (app->current_output)))))
-	combo_select (app->refresh_combo, idle_free (make_rate_string (best)));
+    combo_select (app->refresh_combo, idle_free (make_rate_string (best)));
 }
 
 static int
@@ -404,8 +401,8 @@ count_active_outputs (App *app)
 
     for (i = 0; outputs[i] != NULL; ++i)
     {
-	if (mate_rr_output_info_is_active (outputs[i]))
-	    count++;
+        if (mate_rr_output_info_is_active (outputs[i]))
+            count++;
     }
 
     return count;
@@ -428,25 +425,26 @@ mirror_screens_is_supported (App *app)
 
     have_clone_size = get_clone_size (app->screen, &clone_width, &clone_height);
 
-    if (have_clone_size) {
-	int i;
-	int num_outputs_with_clone_size;
-	MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
+    if (have_clone_size)
+    {
+        int i;
+        int num_outputs_with_clone_size;
+        MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
 
-	num_outputs_with_clone_size = 0;
+        num_outputs_with_clone_size = 0;
 
-	for (i = 0; outputs[i] != NULL; i++)
-	{
-	    /* We count the connected outputs that support the clone size.  It
-	     * doesn't matter if those outputs aren't actually On currently; we
-	     * will turn them on in on_clone_changed().
-	     */
-	    if (mate_rr_output_info_is_connected (outputs[i]) && output_info_supports_mode (app, outputs[i], clone_width, clone_height))
-		num_outputs_with_clone_size++;
-	}
+        for (i = 0; outputs[i] != NULL; i++)
+        {
+            /* We count the connected outputs that support the clone size.  It
+             * doesn't matter if those outputs aren't actually On currently; we
+             * will turn them on in on_clone_changed().
+             */
+            if (mate_rr_output_info_is_connected (outputs[i]) && output_info_supports_mode (app, outputs[i], clone_width, clone_height))
+            num_outputs_with_clone_size++;
+        }
 
-	if (num_outputs_with_clone_size >= 2)
-	    mirror_is_supported = TRUE;
+        if (num_outputs_with_clone_size >= 2)
+            mirror_is_supported = TRUE;
     }
 
     return mirror_is_supported;
@@ -474,45 +472,45 @@ rebuild_mirror_screens (App *app)
 static void
 rebuild_current_monitor_label (App *app)
 {
-	char *str, *tmp;
-	GdkRGBA color;
-	gboolean use_color;
+    char *str, *tmp;
+    GdkRGBA color;
+    gboolean use_color;
 
-	if (app->current_output)
-	{
-	    if (mate_rr_config_get_clone (app->current_configuration))
-		tmp = g_strdup (_("Mirror Screens"));
-	    else
-		tmp = g_strdup_printf (_("Monitor: %s"), mate_rr_output_info_get_display_name (app->current_output));
+    if (app->current_output)
+    {
+        if (mate_rr_config_get_clone (app->current_configuration))
+        tmp = g_strdup (_("Mirror Screens"));
+        else
+        tmp = g_strdup_printf (_("Monitor: %s"), mate_rr_output_info_get_display_name (app->current_output));
 
-	    str = g_strdup_printf ("<b>%s</b>", tmp);
-	    mate_rr_labeler_get_rgba_for_output (app->labeler, app->current_output, &color);
-	    use_color = TRUE;
-	    g_free (tmp);
-	}
-	else
-	{
-	    str = g_strdup_printf ("<b>%s</b>", _("Monitor"));
-	    use_color = FALSE;
-	}
+        str = g_strdup_printf ("<b>%s</b>", tmp);
+        mate_rr_labeler_get_rgba_for_output (app->labeler, app->current_output, &color);
+        use_color = TRUE;
+        g_free (tmp);
+    }
+    else
+    {
+        str = g_strdup_printf ("<b>%s</b>", _("Monitor"));
+        use_color = FALSE;
+    }
 
-	gtk_label_set_markup (GTK_LABEL (app->current_monitor_label), str);
-	g_free (str);
+    gtk_label_set_markup (GTK_LABEL (app->current_monitor_label), str);
+    g_free (str);
 
-	if (use_color)
-	{
-	    GdkRGBA black = { 0, 0, 0, 1.0 };
+    if (use_color)
+    {
+        GdkRGBA black = { 0, 0, 0, 1.0 };
 
-	    gtk_widget_override_background_color (app->current_monitor_event_box, gtk_widget_get_state_flags (app->current_monitor_event_box), &color);
+        gtk_widget_override_background_color (app->current_monitor_event_box, gtk_widget_get_state_flags (app->current_monitor_event_box), &color);
 
-	    /* Make the label explicitly black.  We don't want it to follow the
-	     * theme's colors, since the label is always shown against a light
-	     * pastel background.  See bgo#556050
-	     */
-	    gtk_widget_override_color (app->current_monitor_label, gtk_widget_get_state_flags (app->current_monitor_label), &black);
-	}
+        /* Make the label explicitly black.  We don't want it to follow the
+         * theme's colors, since the label is always shown against a light
+         * pastel background.  See bgo#556050
+         */
+        gtk_widget_override_color (app->current_monitor_label, gtk_widget_get_state_flags (app->current_monitor_label), &black);
+    }
 
-	gtk_event_box_set_visible_window (GTK_EVENT_BOX (app->current_monitor_event_box), use_color);
+    gtk_event_box_set_visible_window (GTK_EVENT_BOX (app->current_monitor_event_box), use_color);
 }
 
 static void
@@ -531,13 +529,13 @@ rebuild_on_off_radios (App *app)
 
     if (!mate_rr_config_get_clone (app->current_configuration) && app->current_output)
     {
-	if (count_active_outputs (app) > 1 || !mate_rr_output_info_is_active (app->current_output))
-	    sensitive = TRUE;
-	else
-	    sensitive = FALSE;
+        if (count_active_outputs (app) > 1 || !mate_rr_output_info_is_active (app->current_output))
+            sensitive = TRUE;
+        else
+            sensitive = FALSE;
 
-	on_active = mate_rr_output_info_is_active (app->current_output);
-	off_active = !on_active;
+        on_active = mate_rr_output_info_is_active (app->current_output);
+        off_active = !on_active;
     }
 
     gtk_widget_set_sensitive (app->monitor_on_radio, sensitive);
@@ -566,16 +564,16 @@ find_best_mode (MateRRMode **modes, int *out_width, int *out_height)
 
     for (i = 0; modes[i] != NULL; i++)
     {
-	int w, h;
+        int w, h;
 
-	w = mate_rr_mode_get_width (modes[i]);
-	h = mate_rr_mode_get_height (modes[i]);
+        w = mate_rr_mode_get_width (modes[i]);
+        h = mate_rr_mode_get_height (modes[i]);
 
-	if (w * h > *out_width * *out_height)
-	{
-	    *out_width = w;
-	    *out_height = h;
-	}
+        if (w * h > *out_width * *out_height)
+        {
+            *out_width = w;
+            *out_height = h;
+        }
     }
 }
 
@@ -590,11 +588,11 @@ rebuild_resolution_combo (App *app)
     clear_combo (app->resolution_combo);
 
     if (!(modes = get_current_modes (app))
-	|| !app->current_output
-	|| !mate_rr_output_info_is_active (app->current_output))
+    || !app->current_output
+    || !mate_rr_output_info_is_active (app->current_output))
     {
-	gtk_widget_set_sensitive (app->resolution_combo, FALSE);
-	return;
+        gtk_widget_set_sensitive (app->resolution_combo, FALSE);
+        return;
     }
 
     g_assert (app->current_output != NULL);
@@ -606,24 +604,24 @@ rebuild_resolution_combo (App *app)
 
     for (i = 0; modes[i] != NULL; ++i)
     {
-	int width, height;
+        int width, height;
 
-	width = mate_rr_mode_get_width (modes[i]);
-	height = mate_rr_mode_get_height (modes[i]);
+        width = mate_rr_mode_get_width (modes[i]);
+        height = mate_rr_mode_get_height (modes[i]);
 
-	add_key (app->resolution_combo,
-		 idle_free (make_resolution_string (width, height)),
-		 width, height, 0, -1);
+        add_key (app->resolution_combo,
+                 idle_free (make_resolution_string (width, height)),
+                 width, height, 0, -1);
     }
 
     current = idle_free (make_resolution_string (output_width, output_height));
 
     if (!combo_select (app->resolution_combo, current))
     {
-	int best_w, best_h;
+        int best_w, best_h;
 
-	find_best_mode (modes, &best_w, &best_h);
-	combo_select (app->resolution_combo, idle_free (make_resolution_string (best_w, best_h)));
+        find_best_mode (modes, &best_w, &best_h);
+        combo_select (app->resolution_combo, idle_free (make_resolution_string (best_w, best_h)));
     }
 }
 
@@ -671,27 +669,27 @@ get_mode (GtkWidget *widget, int *width, int *height, int *freq, MateRRRotation 
     int dummy;
 
     if (!gtk_combo_box_get_active_iter (box, &iter))
-	return FALSE;
+        return FALSE;
 
     if (!width)
-	width = &dummy;
+        width = &dummy;
 
     if (!height)
-	height = &dummy;
+        height = &dummy;
 
     if (!freq)
-	freq = &dummy;
+        freq = &dummy;
 
     if (!rot)
-	rot = (MateRRRotation *)&dummy;
+        rot = (MateRRRotation *)&dummy;
 
     model = gtk_combo_box_get_model (box);
     gtk_tree_model_get (model, &iter,
-			1, width,
-			2, height,
-			3, freq,
-			5, rot,
-			-1);
+            1, width,
+            2, height,
+            3, freq,
+            5, rot,
+            -1);
 
     return TRUE;
 
@@ -704,10 +702,10 @@ on_rotation_changed (GtkComboBox *box, gpointer data)
     MateRRRotation rotation;
 
     if (!app->current_output)
-	return;
+        return;
 
     if (get_mode (app->rotation_combo, NULL, NULL, NULL, &rotation))
-	mate_rr_output_info_set_rotation (app->current_output, rotation);
+        mate_rr_output_info_set_rotation (app->current_output, rotation);
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
@@ -719,10 +717,10 @@ on_rate_changed (GtkComboBox *box, gpointer data)
     int rate;
 
     if (!app->current_output)
-	return;
+        return;
 
     if (get_mode (app->refresh_combo, NULL, NULL, &rate, NULL))
-	mate_rr_output_info_set_refresh_rate (app->current_output, rate);
+        mate_rr_output_info_set_refresh_rate (app->current_output, rate);
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
@@ -740,13 +738,13 @@ select_resolution_for_current_output (App *app)
 
     if (width != 0 && height != 0)
     {
-	mate_rr_output_info_set_geometry (app->current_output, x, y, width, height);
-	return;
+        mate_rr_output_info_set_geometry (app->current_output, x, y, width, height);
+        return;
     }
 
     modes = get_current_modes (app);
     if (!modes)
-	return;
+    return;
 
     find_best_mode (modes, &width, &height);
 
@@ -760,25 +758,25 @@ monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data)
     gboolean is_on;
 
     if (!app->current_output)
-	return;
+        return;
 
     if (!gtk_toggle_button_get_active (toggle))
-	return;
+        return;
 
     if (GTK_WIDGET (toggle) == app->monitor_on_radio)
-	is_on = TRUE;
+        is_on = TRUE;
     else if (GTK_WIDGET (toggle) == app->monitor_off_radio)
-	is_on = FALSE;
+        is_on = FALSE;
     else
     {
-	g_assert_not_reached ();
-	return;
+        g_assert_not_reached ();
+        return;
     }
 
     mate_rr_output_info_set_active (app->current_output, is_on);
 
     if (is_on)
-	select_resolution_for_current_output (app); /* The refresh rate will be picked in rebuild_rate_combo() */
+        select_resolution_for_current_output (app); /* The refresh rate will be picked in rebuild_rate_combo() */
 
     rebuild_gui (app);
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
@@ -803,7 +801,7 @@ realign_outputs_after_resolution_change (App *app, MateRROutputInfo *output_that
 
     mate_rr_output_info_get_geometry (output_that_changed, &x, &y, &width, &height);
     if (width == old_width && height == old_height)
-	return;
+    return;
 
     old_right_edge = x + old_width;
     old_bottom_edge = y + old_height;
@@ -814,27 +812,27 @@ realign_outputs_after_resolution_change (App *app, MateRROutputInfo *output_that
     outputs = mate_rr_config_get_outputs (app->current_configuration);
 
     for (i = 0; outputs[i] != NULL; i++)
-      {
+    {
         int output_x, output_y;
-	int output_width, output_height;
+        int output_width, output_height;
 
-	if (outputs[i] == output_that_changed || mate_rr_output_info_is_connected (outputs[i]))
-	  continue;
+        if (outputs[i] == output_that_changed || mate_rr_output_info_is_connected (outputs[i]))
+            continue;
 
-	mate_rr_output_info_get_geometry (outputs[i], &output_x, &output_y, &output_width, &output_height);
+        mate_rr_output_info_get_geometry (outputs[i], &output_x, &output_y, &output_width, &output_height);
 
-	if (output_x >= old_right_edge)
-	  output_x += dx;
-	else if (output_x + output_width == old_right_edge)
-	  output_x = x + width - output_width;
+        if (output_x >= old_right_edge)
+            output_x += dx;
+        else if (output_x + output_width == old_right_edge)
+            output_x = x + width - output_width;
 
 
-	if (output_y >= old_bottom_edge)
-	    output_y += dy;
-	else if (output_y + output_height == old_bottom_edge)
-	    output_y = y + height - output_height;
+        if (output_y >= old_bottom_edge)
+            output_y += dy;
+        else if (output_y + output_height == old_bottom_edge)
+            output_y = y + height - output_height;
 
-	mate_rr_output_info_set_geometry (outputs[i], output_x, output_y, output_width, output_height);
+        mate_rr_output_info_set_geometry (outputs[i], output_x, output_y, output_width, output_height);
     }
 }
 
@@ -848,18 +846,18 @@ on_resolution_changed (GtkComboBox *box, gpointer data)
     int height;
 
     if (!app->current_output)
-	return;
+        return;
 
     mate_rr_output_info_get_geometry (app->current_output, &x, &y, &old_width, &old_height);
 
     if (get_mode (app->resolution_combo, &width, &height, NULL, NULL))
     {
-	mate_rr_output_info_set_geometry (app->current_output, x, y, width, height);
+        mate_rr_output_info_set_geometry (app->current_output, x, y, width, height);
 
-	if (width == 0 || height == 0)
-	    mate_rr_output_info_set_active (app->current_output, FALSE);
-	else
-	    mate_rr_output_info_set_active (app->current_output, TRUE);
+        if (width == 0 || height == 0)
+            mate_rr_output_info_set_active (app->current_output, FALSE);
+        else
+            mate_rr_output_info_set_active (app->current_output, TRUE);
     }
 
     realign_outputs_after_resolution_change (app, app->current_output, old_width, old_height);
@@ -889,26 +887,26 @@ lay_out_outputs_horizontally (App *app)
 
     for (i = 0; outputs[i]; ++i)
     {
-	int width, height;
-	if (mate_rr_output_info_is_connected (outputs[i]) &&mate_rr_output_info_is_active (outputs[i]))
-	{
-	    mate_rr_output_info_get_geometry (outputs[i], NULL, NULL, &width, &height);
-	    mate_rr_output_info_set_geometry (outputs[i], x, 0, width, height);
-	    x += width;
-	}
+        int width, height;
+        if (mate_rr_output_info_is_connected (outputs[i]) &&mate_rr_output_info_is_active (outputs[i]))
+        {
+            mate_rr_output_info_get_geometry (outputs[i], NULL, NULL, &width, &height);
+            mate_rr_output_info_set_geometry (outputs[i], x, 0, width, height);
+            x += width;
+        }
     }
 
     /* Second pass, all the black screens */
 
     for (i = 0; outputs[i]; ++i)
     {
-	int width, height;
-	if (!(mate_rr_output_info_is_connected (outputs[i]) && mate_rr_output_info_is_active (outputs[i])))
-	  {
-	    mate_rr_output_info_get_geometry (outputs[i], NULL, NULL, &width, &height);
-	    mate_rr_output_info_set_geometry (outputs[i], x, 0, width, height);
-	    x += width;
-	}
+        int width, height;
+        if (!(mate_rr_output_info_is_connected (outputs[i]) && mate_rr_output_info_is_active (outputs[i])))
+        {
+            mate_rr_output_info_get_geometry (outputs[i], NULL, NULL, &width, &height);
+            mate_rr_output_info_set_geometry (outputs[i], x, 0, width, height);
+            x += width;
+        }
     }
 
 }
@@ -926,26 +924,27 @@ get_clone_size (MateRRScreen *screen, int *width, int *height)
         best_w = 0;
         best_h = 0;
 
-        for (i = 0; modes[i] != NULL; ++i) {
-                MateRRMode *mode = modes[i];
-                int w, h;
+        for (i = 0; modes[i] != NULL; ++i)
+        {
+            MateRRMode *mode = modes[i];
+            int w, h;
 
-                w = mate_rr_mode_get_width (mode);
-                h = mate_rr_mode_get_height (mode);
+            w = mate_rr_mode_get_width (mode);
+            h = mate_rr_mode_get_height (mode);
 
-                if (w * h > best_w * best_h) {
-                        best_w = w;
-                        best_h = h;
-                }
+            if (w * h > best_w * best_h) {
+                best_w = w;
+                best_h = h;
+            }
         }
 
         if (best_w > 0 && best_h > 0) {
-                if (width)
-                        *width = best_w;
-                if (height)
-                        *height = best_h;
+            if (width)
+                    *width = best_w;
+            if (height)
+                    *height = best_h;
 
-                return TRUE;
+            return TRUE;
         }
 
         return FALSE;
@@ -959,18 +958,18 @@ output_info_supports_mode (App *app, MateRROutputInfo *info, int width, int heig
     int i;
 
     if (!mate_rr_output_info_is_connected (info))
-	return FALSE;
+        return FALSE;
 
     output = mate_rr_screen_get_output_by_name (app->screen, mate_rr_output_info_get_name (info));
     if (!output)
-	return FALSE;
+        return FALSE;
 
     modes = mate_rr_output_list_modes (output);
 
     for (i = 0; modes[i]; i++) {
-	if (mate_rr_mode_get_width (modes[i]) == width
-	    && mate_rr_mode_get_height (modes[i]) == height)
-	    return TRUE;
+        if (mate_rr_mode_get_width (modes[i]) == width
+            && mate_rr_mode_get_height (modes[i]) == height)
+            return TRUE;
     }
 
     return FALSE;
@@ -985,39 +984,40 @@ on_clone_changed (GtkWidget *box, gpointer data)
 
     if (mate_rr_config_get_clone (app->current_configuration))
     {
-	int i;
-	int width, height;
-	MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
+        int i;
+        int width, height;
+        MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
 
-	for (i = 0; outputs[i]; ++i)
-	{
-	    if (mate_rr_output_info_is_connected(outputs[i]))
-	    {
-		app->current_output = outputs[i];
-		break;
-	    }
-	}
+        for (i = 0; outputs[i]; ++i)
+        {
+            if (mate_rr_output_info_is_connected(outputs[i]))
+            {
+                app->current_output = outputs[i];
+                break;
+            }
+        }
 
-	/* Turn on all the connected screens that support the best clone mode.
-	 * The user may hit "Mirror Screens", but he shouldn't have to turn on
-	 * all the required outputs as well.
-	 */
+        /* Turn on all the connected screens that support the best clone mode.
+         * The user may hit "Mirror Screens", but he shouldn't have to turn on
+         * all the required outputs as well.
+         */
 
-	get_clone_size (app->screen, &width, &height);
+        get_clone_size (app->screen, &width, &height);
 
-	for (i = 0; outputs[i]; i++) {
-	    int x, y;
-	    if (output_info_supports_mode (app, outputs[i], width, height)) {
-		mate_rr_output_info_set_active (outputs[i], TRUE);
-		mate_rr_output_info_get_geometry (outputs[i], &x, &y, NULL, NULL);
-		mate_rr_output_info_set_geometry (outputs[i], x, y, width, height);
-	    }
-	}
+        for (i = 0; outputs[i]; i++)
+        {
+            int x, y;
+            if (output_info_supports_mode (app, outputs[i], width, height)) {
+                mate_rr_output_info_set_active (outputs[i], TRUE);
+                mate_rr_output_info_get_geometry (outputs[i], &x, &y, NULL, NULL);
+                mate_rr_output_info_set_geometry (outputs[i], x, y, width, height);
+            }
+        }
     }
     else
     {
-	if (output_overlaps (app->current_output, app->current_configuration))
-	    lay_out_outputs_horizontally (app);
+        if (output_overlaps (app->current_output, app->current_configuration))
+            lay_out_outputs_horizontally (app);
     }
 
     rebuild_gui (app);
@@ -1030,12 +1030,12 @@ get_geometry (MateRROutputInfo *output, int *w, int *h)
 
     if (mate_rr_output_info_is_active (output))
     {
-	mate_rr_output_info_get_geometry (output, NULL, NULL, w, h);
+        mate_rr_output_info_get_geometry (output, NULL, NULL, w, h);
     }
     else
     {
-	*h = mate_rr_output_info_get_preferred_height (output);
-	*w = mate_rr_output_info_get_preferred_width (output);
+        *h = mate_rr_output_info_get_preferred_height (output);
+        *w = mate_rr_output_info_get_preferred_width (output);
     }
    rotation = mate_rr_output_info_get_rotation (output);
    if ((rotation & MATE_RR_ROTATION_90) || (rotation & MATE_RR_ROTATION_270))
@@ -1058,9 +1058,9 @@ list_connected_outputs (App *app, int *total_w, int *total_h)
     MateRROutputInfo **outputs;
 
     if (!total_w)
-	total_w = &dummy;
+    total_w = &dummy;
     if (!total_h)
-	total_h = &dummy;
+    total_h = &dummy;
 
     *total_w = 0;
     *total_h = 0;
@@ -1068,17 +1068,17 @@ list_connected_outputs (App *app, int *total_w, int *total_h)
     outputs = mate_rr_config_get_outputs(app->current_configuration);
     for (i = 0; outputs[i] != NULL; ++i)
     {
-	if (mate_rr_output_info_is_connected (outputs[i]))
-	{
-	    int w, h;
+        if (mate_rr_output_info_is_connected (outputs[i]))
+        {
+            int w, h;
 
-	    result = g_list_prepend (result, outputs[i]);
+            result = g_list_prepend (result, outputs[i]);
 
-	    get_geometry (outputs[i], &w, &h);
+            get_geometry (outputs[i], &w, &h);
 
-	    *total_w += w;
-	    *total_h += h;
-	}
+            *total_w += w;
+            *total_h += h;
+        }
     }
 
     return g_list_reverse (result);
@@ -1127,7 +1127,7 @@ typedef struct Edge
 
 typedef struct Snap
 {
-    Edge *snapper;		/* Edge that should be snapped */
+    Edge *snapper;        /* Edge that should be snapped */
     Edge *snappee;
     int dy, dx;
 } Snap;
@@ -1169,8 +1169,8 @@ list_edges (MateRRConfig *config, GArray *edges)
 
     for (i = 0; outputs[i]; ++i)
     {
-	if (mate_rr_output_info_is_connected (outputs[i]))
-	    list_edges_for_output (outputs[i], edges);
+    if (mate_rr_output_info_is_connected (outputs[i]))
+        list_edges_for_output (outputs[i], edges);
     }
 }
 
@@ -1184,7 +1184,7 @@ static gboolean
 horizontal_overlap (Edge *snapper, Edge *snappee)
 {
     if (snapper->y1 != snapper->y2 || snappee->y1 != snappee->y2)
-	return FALSE;
+    return FALSE;
 
     return overlap (snapper->x1, snapper->x2, snappee->x1, snappee->x2);
 }
@@ -1193,7 +1193,7 @@ static gboolean
 vertical_overlap (Edge *snapper, Edge *snappee)
 {
     if (snapper->x1 != snapper->x2 || snappee->x1 != snappee->x2)
-	return FALSE;
+    return FALSE;
 
     return overlap (snapper->y1, snapper->y2, snappee->y1, snappee->y2);
 }
@@ -1202,7 +1202,7 @@ static void
 add_snap (GArray *snaps, Snap snap)
 {
     if (ABS (snap.dx) <= 200 || ABS (snap.dy) <= 200)
-	g_array_append_val (snaps, snap);
+    g_array_append_val (snaps, snap);
 }
 
 static void
@@ -1215,17 +1215,17 @@ add_edge_snaps (Edge *snapper, Edge *snappee, GArray *snaps)
 
     if (horizontal_overlap (snapper, snappee))
     {
-	snap.dx = 0;
-	snap.dy = snappee->y1 - snapper->y1;
+    snap.dx = 0;
+    snap.dy = snappee->y1 - snapper->y1;
 
-	add_snap (snaps, snap);
+    add_snap (snaps, snap);
     }
     else if (vertical_overlap (snapper, snappee))
     {
-	snap.dy = 0;
-	snap.dx = snappee->x1 - snapper->x1;
+    snap.dy = 0;
+    snap.dx = snappee->x1 - snapper->x1;
 
-	add_snap (snaps, snap);
+    add_snap (snaps, snap);
     }
 
     /* Corner snaps */
@@ -1261,20 +1261,20 @@ list_snaps (MateRROutputInfo *output, GArray *edges, GArray *snaps)
 
     for (i = 0; i < edges->len; ++i)
     {
-	Edge *output_edge = &(g_array_index (edges, Edge, i));
+    Edge *output_edge = &(g_array_index (edges, Edge, i));
 
-	if (output_edge->output == output)
-	{
-	    int j;
+    if (output_edge->output == output)
+    {
+        int j;
 
-	    for (j = 0; j < edges->len; ++j)
-	    {
-		Edge *edge = &(g_array_index (edges, Edge, j));
+        for (j = 0; j < edges->len; ++j)
+        {
+        Edge *edge = &(g_array_index (edges, Edge, j));
 
-		if (edge->output != output)
-		    add_edge_snaps (output_edge, edge, snaps);
-	    }
-	}
+        if (edge->output != output)
+            add_edge_snaps (output_edge, edge, snaps);
+        }
+    }
     }
 }
 
@@ -1290,10 +1290,10 @@ static gboolean
 corner_on_edge (int x, int y, Edge *e)
 {
     if (x == e->x1 && x == e->x2 && y >= e->y1 && y <= e->y2)
-	return TRUE;
+    return TRUE;
 
     if (y == e->y1 && y == e->y2 && x >= e->x1 && x <= e->x2)
-	return TRUE;
+    return TRUE;
 
     return FALSE;
 }
@@ -1302,10 +1302,10 @@ static gboolean
 edges_align (Edge *e1, Edge *e2)
 {
     if (corner_on_edge (e1->x1, e1->y1, e2))
-	return TRUE;
+    return TRUE;
 
     if (corner_on_edge (e2->x1, e2->y1, e1))
-	return TRUE;
+    return TRUE;
 
     return FALSE;
 }
@@ -1318,29 +1318,29 @@ output_is_aligned (MateRROutputInfo *output, GArray *edges)
 
     for (i = 0; i < edges->len; ++i)
     {
-	Edge *output_edge = &(g_array_index (edges, Edge, i));
+    Edge *output_edge = &(g_array_index (edges, Edge, i));
 
-	if (output_edge->output == output)
-	{
-	    int j;
+    if (output_edge->output == output)
+    {
+        int j;
 
-	    for (j = 0; j < edges->len; ++j)
-	    {
-		Edge *edge = &(g_array_index (edges, Edge, j));
+        for (j = 0; j < edges->len; ++j)
+        {
+        Edge *edge = &(g_array_index (edges, Edge, j));
 
-		/* We are aligned if an output edge matches
-		 * an edge of another output
-		 */
-		if (edge->output != output_edge->output)
-		{
-		    if (edges_align (output_edge, edge))
-		    {
-			result = TRUE;
-			goto done;
-		    }
-		}
-	    }
-	}
+        /* We are aligned if an output edge matches
+         * an edge of another output
+         */
+        if (edge->output != output_edge->output)
+        {
+            if (edges_align (output_edge, edge))
+            {
+            result = TRUE;
+            goto done;
+            }
+        }
+        }
+    }
     }
 done:
 
@@ -1366,14 +1366,14 @@ output_overlaps (MateRROutputInfo *output, MateRRConfig *config)
     outputs = mate_rr_config_get_outputs (config);
     for (i = 0; outputs[i]; ++i)
     {
-	if (outputs[i] != output && mate_rr_output_info_is_connected (outputs[i]))
-	{
-	    GdkRectangle other_rect;
+    if (outputs[i] != output && mate_rr_output_info_is_connected (outputs[i]))
+    {
+        GdkRectangle other_rect;
 
-	    get_output_rect (outputs[i], &other_rect);
-	    if (gdk_rectangle_intersect (&output_rect, &other_rect, NULL))
-		return TRUE;
-	}
+        get_output_rect (outputs[i], &other_rect);
+        if (gdk_rectangle_intersect (&output_rect, &other_rect, NULL))
+        return TRUE;
+    }
     }
 
     return FALSE;
@@ -1389,14 +1389,14 @@ mate_rr_config_is_aligned (MateRRConfig *config, GArray *edges)
     outputs = mate_rr_config_get_outputs(config);
     for (i = 0; outputs[i]; ++i)
     {
-	if (mate_rr_output_info_is_connected (outputs[i]))
-	{
-	    if (!output_is_aligned (outputs[i], edges))
-		return FALSE;
+    if (mate_rr_output_info_is_connected (outputs[i]))
+    {
+        if (!output_is_aligned (outputs[i], edges))
+        return FALSE;
 
-	    if (output_overlaps (outputs[i], config))
-		return FALSE;
-	}
+        if (output_overlaps (outputs[i], config))
+        return FALSE;
+    }
     }
 
     return result;
@@ -1440,16 +1440,16 @@ compare_snaps (gconstpointer v1, gconstpointer v2)
      */
     if (d == 0)
     {
-	if (is_corner_snap (s1) && !is_corner_snap (s2))
-	    return -1;
-	else if (is_corner_snap (s2) && !is_corner_snap (s1))
-	    return 1;
-	else
-	    return 0;
+    if (is_corner_snap (s1) && !is_corner_snap (s2))
+        return -1;
+    else if (is_corner_snap (s2) && !is_corner_snap (s1))
+        return 1;
+    else
+        return 0;
     }
     else
     {
-	return d;
+    return d;
     }
 }
 
@@ -1460,21 +1460,21 @@ compare_snaps (gconstpointer v1, gconstpointer v2)
 static void
 set_cursor (GtkWidget *widget, GdkCursorType type)
 {
-	GdkCursor *cursor;
-	GdkWindow *window;
+    GdkCursor *cursor;
+    GdkWindow *window;
 
-	if (type == GDK_BLANK_CURSOR)
-	    cursor = NULL;
-	else
-	    cursor = gdk_cursor_new_for_display (gtk_widget_get_display (widget), type);
+    if (type == GDK_BLANK_CURSOR)
+        cursor = NULL;
+    else
+        cursor = gdk_cursor_new_for_display (gtk_widget_get_display (widget), type);
 
-	window = gtk_widget_get_window (widget);
+    window = gtk_widget_get_window (widget);
 
-	if (window)
-	    gdk_window_set_cursor (window, cursor);
+    if (window)
+        gdk_window_set_cursor (window, cursor);
 
-	if (cursor)
-	    g_object_unref (cursor);
+    if (cursor)
+        g_object_unref (cursor);
 }
 
 static void
@@ -1483,17 +1483,17 @@ set_monitors_tooltip (App *app, gboolean is_dragging)
     const char *text;
 
     if (is_dragging)
-	text = NULL;
+    text = NULL;
     else
-	text = _("Select a monitor to change its properties; drag it to rearrange its placement.");
+    text = _("Select a monitor to change its properties; drag it to rearrange its placement.");
 
     gtk_widget_set_tooltip_text (app->area, text);
 }
 
 static void
 on_output_event (FooScrollArea *area,
-		 FooScrollAreaEvent *event,
-		 gpointer data)
+         FooScrollAreaEvent *event,
+         gpointer data)
 {
     MateRROutputInfo *output = data;
     App *app = g_object_get_data (G_OBJECT (area), "app");
@@ -1503,111 +1503,111 @@ on_output_event (FooScrollArea *area,
      * exits the outputs' area.
      */
     if (!mate_rr_config_get_clone (app->current_configuration) && get_n_connected (app) > 1)
-	set_cursor (GTK_WIDGET (area), GDK_FLEUR);
+        set_cursor (GTK_WIDGET (area), GDK_FLEUR);
 
     if (event->type == FOO_BUTTON_PRESS)
     {
-	GrabInfo *info;
+        GrabInfo *info;
 
-	app->current_output = output;
+        app->current_output = output;
 
-	rebuild_gui (app);
-	set_monitors_tooltip (app, TRUE);
+        rebuild_gui (app);
+        set_monitors_tooltip (app, TRUE);
 
-	if (!mate_rr_config_get_clone (app->current_configuration) && get_n_connected (app) > 1)
-	{
-	    int output_x, output_y;
-	    mate_rr_output_info_get_geometry (output, &output_x, &output_y, NULL, NULL);
+        if (!mate_rr_config_get_clone (app->current_configuration) && get_n_connected (app) > 1)
+        {
+            int output_x, output_y;
+            mate_rr_output_info_get_geometry (output, &output_x, &output_y, NULL, NULL);
 
-	    foo_scroll_area_begin_grab (area, on_output_event, data);
+            foo_scroll_area_begin_grab (area, on_output_event, data);
 
-	    info = g_new0 (GrabInfo, 1);
-	    info->grab_x = event->x;
-	    info->grab_y = event->y;
-	    info->output_x = output_x;
-	    info->output_y = output_y;
+            info = g_new0 (GrabInfo, 1);
+            info->grab_x = event->x;
+            info->grab_y = event->y;
+            info->output_x = output_x;
+            info->output_y = output_y;
 
-	    g_object_set_data (G_OBJECT (output), "grab-info", info);
-	}
+            g_object_set_data (G_OBJECT (output), "grab-info", info);
+        }
 
-	foo_scroll_area_invalidate (area);
+        foo_scroll_area_invalidate (area);
     }
     else
     {
-	if (foo_scroll_area_is_grabbed (area))
-	{
-	    GrabInfo *info = g_object_get_data (G_OBJECT (output), "grab-info");
-	    double scale = compute_scale (app);
-	    int old_x, old_y;
-	    int width, height;
-	    int new_x, new_y;
-	    int i;
-	    GArray *edges, *snaps, *new_edges;
+        if (foo_scroll_area_is_grabbed (area))
+        {
+            GrabInfo *info = g_object_get_data (G_OBJECT (output), "grab-info");
+            double scale = compute_scale (app);
+            int old_x, old_y;
+            int width, height;
+            int new_x, new_y;
+            int i;
+            GArray *edges, *snaps, *new_edges;
 
-	    mate_rr_output_info_get_geometry (output, &old_x, &old_y, &width, &height);
-	    new_x = info->output_x + (event->x - info->grab_x) / scale;
-	    new_y = info->output_y + (event->y - info->grab_y) / scale;
+            mate_rr_output_info_get_geometry (output, &old_x, &old_y, &width, &height);
+            new_x = info->output_x + (event->x - info->grab_x) / scale;
+            new_y = info->output_y + (event->y - info->grab_y) / scale;
 
-	    mate_rr_output_info_set_geometry (output, new_x, new_y, width, height);
+            mate_rr_output_info_set_geometry (output, new_x, new_y, width, height);
 
-	    edges = g_array_new (TRUE, TRUE, sizeof (Edge));
-	    snaps = g_array_new (TRUE, TRUE, sizeof (Snap));
-	    new_edges = g_array_new (TRUE, TRUE, sizeof (Edge));
+            edges = g_array_new (TRUE, TRUE, sizeof (Edge));
+            snaps = g_array_new (TRUE, TRUE, sizeof (Snap));
+            new_edges = g_array_new (TRUE, TRUE, sizeof (Edge));
 
-	    list_edges (app->current_configuration, edges);
-	    list_snaps (output, edges, snaps);
+            list_edges (app->current_configuration, edges);
+            list_snaps (output, edges, snaps);
 
-	    g_array_sort (snaps, compare_snaps);
+            g_array_sort (snaps, compare_snaps);
 
-	    mate_rr_output_info_set_geometry (output, new_x, new_y, width, height);
+            mate_rr_output_info_set_geometry (output, new_x, new_y, width, height);
 
-	    for (i = 0; i < snaps->len; ++i)
-	    {
-		Snap *snap = &(g_array_index (snaps, Snap, i));
-		GArray *new_edges = g_array_new (TRUE, TRUE, sizeof (Edge));
+            for (i = 0; i < snaps->len; ++i)
+            {
+                Snap *snap = &(g_array_index (snaps, Snap, i));
+                GArray *new_edges = g_array_new (TRUE, TRUE, sizeof (Edge));
 
-		mate_rr_output_info_set_geometry (output, new_x + snap->dx, new_y + snap->dy, width, height);
+                mate_rr_output_info_set_geometry (output, new_x + snap->dx, new_y + snap->dy, width, height);
 
-		g_array_set_size (new_edges, 0);
-		list_edges (app->current_configuration, new_edges);
+                g_array_set_size (new_edges, 0);
+                list_edges (app->current_configuration, new_edges);
 
-		if (mate_rr_config_is_aligned (app->current_configuration, new_edges))
-		{
-		    g_array_free (new_edges, TRUE);
-		    break;
-		}
-		else
-		{
-		    mate_rr_output_info_set_geometry (output, info->output_x, info->output_y, width, height);
-		}
-	    }
+                if (mate_rr_config_is_aligned (app->current_configuration, new_edges))
+                {
+                    g_array_free (new_edges, TRUE);
+                    break;
+                }
+                else
+                {
+                    mate_rr_output_info_set_geometry (output, info->output_x, info->output_y, width, height);
+                }
+            }
 
-	    g_array_free (new_edges, TRUE);
-	    g_array_free (snaps, TRUE);
-	    g_array_free (edges, TRUE);
+            g_array_free (new_edges, TRUE);
+            g_array_free (snaps, TRUE);
+            g_array_free (edges, TRUE);
 
-	    if (event->type == FOO_BUTTON_RELEASE)
-	    {
-		foo_scroll_area_end_grab (area);
-		set_monitors_tooltip (app, FALSE);
+            if (event->type == FOO_BUTTON_RELEASE)
+            {
+                foo_scroll_area_end_grab (area);
+                set_monitors_tooltip (app, FALSE);
 
-		g_free (g_object_get_data (G_OBJECT (output), "grab-info"));
-		g_object_set_data (G_OBJECT (output), "grab-info", NULL);
+                g_free (g_object_get_data (G_OBJECT (output), "grab-info"));
+                g_object_set_data (G_OBJECT (output), "grab-info", NULL);
 
-#if 0
-		g_debug ("new position: %d %d %d %d", output->x, output->y, output->width, output->height);
-#endif
-	    }
+    #if 0
+                g_debug ("new position: %d %d %d %d", output->x, output->y, output->width, output->height);
+    #endif
+            }
 
-	    foo_scroll_area_invalidate (area);
-	}
+            foo_scroll_area_invalidate (area);
+        }
     }
 }
 
 static void
 on_canvas_event (FooScrollArea *area,
-		 FooScrollAreaEvent *event,
-		 gpointer data)
+         FooScrollAreaEvent *event,
+         gpointer data)
 {
     /* If the mouse exits the outputs, reset the cursor to the default.  See
      * on_output_event() for where we set the cursor to the movement cursor if
@@ -1618,17 +1618,17 @@ on_canvas_event (FooScrollArea *area,
 
 static PangoLayout *
 get_display_name (App *app,
-		  MateRROutputInfo *output)
+          MateRROutputInfo *output)
 {
     char *text;
     PangoLayout * layout;
 
     if (mate_rr_config_get_clone (app->current_configuration)) {
-    /* Translators:  this is the feature where what you see on your laptop's
-     * screen is the same as your external monitor.  Here, "Mirror" is being
-     * used as an adjective, not as a verb.  For example, the Spanish
-     * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-     */
+        /* Translators:  this is the feature where what you see on your laptop's
+         * screen is the same as your external monitor.  Here, "Mirror" is being
+         * used as an adjective, not as a verb.  For example, the Spanish
+         * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
+         */
         text = g_strdup_printf (_("Mirror Screens"));
     }
     else {
@@ -1643,7 +1643,7 @@ get_display_name (App *app,
 
 static void
 paint_background (FooScrollArea *area,
-		  cairo_t       *cr)
+          cairo_t       *cr)
 {
     GdkRectangle viewport;
     GtkWidget *widget;
@@ -1668,8 +1668,8 @@ paint_background (FooScrollArea *area,
     gdk_rgba_free (base_color);
 
     cairo_rectangle (cr,
-		     viewport.x, viewport.y,
-		     viewport.width, viewport.height);
+             viewport.x, viewport.y,
+             viewport.width, viewport.height);
 
     cairo_fill_preserve (cr);
 
@@ -1713,7 +1713,7 @@ paint_output (App *app, cairo_t *cr, int i)
 
 #if 0
     g_debug ("%s (%p) geometry %d %d %d", output->name, output,
-	     w, h, output->rate);
+         w, h, output->rate);
 #endif
 
     viewport.height -= 2 * MARGIN;
@@ -1732,21 +1732,21 @@ paint_output (App *app, cairo_t *cr, int i)
 #endif
 
     cairo_translate (cr,
-		     x + (w * scale + 0.5) / 2,
-		     y + (h * scale + 0.5) / 2);
+             x + (w * scale + 0.5) / 2,
+             y + (h * scale + 0.5) / 2);
 
     /* rotation is already applied in get_geometry */
 
     rotation = mate_rr_output_info_get_rotation (output);
     if (rotation & MATE_RR_REFLECT_X)
-	cairo_scale (cr, -1, 1);
+        cairo_scale (cr, -1, 1);
 
     if (rotation & MATE_RR_REFLECT_Y)
-	cairo_scale (cr, 1, -1);
+        cairo_scale (cr, 1, -1);
 
     cairo_translate (cr,
-		     - x - (w * scale + 0.5) / 2,
-		     - y - (h * scale + 0.5) / 2);
+             - x - (w * scale + 0.5) / 2,
+             - y - (h * scale + 0.5) / 2);
 
 
     cairo_rectangle (cr, x, y, w * scale + 0.5, h * scale + 0.5);
@@ -1759,25 +1759,25 @@ paint_output (App *app, cairo_t *cr, int i)
 
     if (!mate_rr_output_info_is_active (output))
     {
-	/* If the output is turned off, just darken the selected color */
-	r *= 0.2;
-	g *= 0.2;
-	b *= 0.2;
+        /* If the output is turned off, just darken the selected color */
+        r *= 0.2;
+        g *= 0.2;
+        b *= 0.2;
     }
 
     cairo_set_source_rgba (cr, r, g, b, 1.0);
 
     foo_scroll_area_add_input_from_fill (FOO_SCROLL_AREA (app->area),
-					 cr, on_output_event, output);
+                     cr, on_output_event, output);
     cairo_fill (cr);
 
     if (output == app->current_output)
     {
-	cairo_rectangle (cr, x + 2, y + 2, w * scale + 0.5 - 4, h * scale + 0.5 - 4);
+        cairo_rectangle (cr, x + 2, y + 2, w * scale + 0.5 - 4, h * scale + 0.5 - 4);
 
-	cairo_set_line_width (cr, 4);
-	cairo_set_source_rgba (cr, 0.33, 0.43, 0.57, 1.0);
-	cairo_stroke (cr);
+        cairo_set_line_width (cr, 4);
+        cairo_set_source_rgba (cr, 0.33, 0.43, 0.57, 1.0);
+        cairo_stroke (cr);
     }
 
     cairo_rectangle (cr, x + 0.5, y + 0.5, w * scale + 0.5 - 1, h * scale + 0.5 - 1);
@@ -1793,20 +1793,20 @@ paint_output (App *app, cairo_t *cr, int i)
 
     available_w = w * scale + 0.5 - 6; /* Same as the inner rectangle's width, minus 1 pixel of padding on each side */
     if (available_w < ink_extent.width)
-	factor = available_w / ink_extent.width;
+    factor = available_w / ink_extent.width;
     else
-	factor = 1.0;
+    factor = 1.0;
 
     cairo_move_to (cr,
-		   x + ((w * scale + 0.5) - factor * log_extent.width) / 2,
-		   y + ((h * scale + 0.5) - factor * log_extent.height) / 2);
+           x + ((w * scale + 0.5) - factor * log_extent.width) / 2,
+           y + ((h * scale + 0.5) - factor * log_extent.height) / 2);
 
     cairo_scale (cr, factor, factor);
 
     if (mate_rr_output_info_is_active (output))
-	cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
+    cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
     else
-	cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
+    cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
 
     pango_cairo_show_layout (cr, layout);
 
@@ -1817,8 +1817,8 @@ paint_output (App *app, cairo_t *cr, int i)
 
 static void
 on_area_paint (FooScrollArea *area,
-	       cairo_t	     *cr,
-	       gpointer	      data)
+           cairo_t         *cr,
+           gpointer          data)
 {
     App *app = data;
     GList *connected_outputs = NULL;
@@ -1827,7 +1827,7 @@ on_area_paint (FooScrollArea *area,
     paint_background (area, cr);
 
     if (!app->current_configuration)
-	return;
+        return;
 
     connected_outputs = list_connected_outputs (app, NULL, NULL);
 
@@ -1839,10 +1839,10 @@ on_area_paint (FooScrollArea *area,
 
     for (list = connected_outputs; list != NULL; list = list->next)
     {
-	paint_output (app, cr, g_list_position (connected_outputs, list));
+        paint_output (app, cr, g_list_position (connected_outputs, list));
 
-	if (mate_rr_config_get_clone (app->current_configuration))
-	    break;
+        if (mate_rr_config_get_clone (app->current_configuration))
+            break;
     }
 }
 
@@ -1851,13 +1851,13 @@ make_text_combo (GtkWidget *widget, int sort_column)
 {
     GtkComboBox *box = GTK_COMBO_BOX (widget);
     GtkListStore *store = gtk_list_store_new (
-	6,
-	G_TYPE_STRING,		/* Text */
-	G_TYPE_INT,		/* Width */
-	G_TYPE_INT,		/* Height */
-	G_TYPE_INT,		/* Frequency */
-	G_TYPE_INT,		/* Width * Height */
-	G_TYPE_INT);		/* Rotation */
+    6,
+    G_TYPE_STRING,        /* Text */
+    G_TYPE_INT,        /* Width */
+    G_TYPE_INT,        /* Height */
+    G_TYPE_INT,        /* Frequency */
+    G_TYPE_INT,        /* Width * Height */
+    G_TYPE_INT);        /* Rotation */
 
     GtkCellRenderer *cell;
 
@@ -1868,14 +1868,13 @@ make_text_combo (GtkWidget *widget, int sort_column)
     cell = gtk_cell_renderer_text_new ();
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (box), cell, TRUE);
     gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (box), cell,
-				    "text", 0,
-				    NULL);
+                                    "text", 0, NULL);
 
     if (sort_column != -1)
     {
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
-					      sort_column,
-					      GTK_SORT_DESCENDING);
+        gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+                                              sort_column,
+                                              GTK_SORT_DESCENDING);
     }
 }
 
@@ -1892,12 +1891,12 @@ compute_virtual_size_for_configuration (MateRRConfig *config, int *ret_width, in
     outputs = mate_rr_config_get_outputs (config);
     for (i = 0; outputs[i] != NULL; i++)
     {
-	if (mate_rr_output_info_is_active (outputs[i]))
-	{
-	    mate_rr_output_info_get_geometry (outputs[i], &output_x, &output_y, &output_width, &output_height);
-	    width = MAX (width, output_x + output_width);
-	    height = MAX (height, output_y + output_height);
-	}
+        if (mate_rr_output_info_is_active (outputs[i]))
+        {
+            mate_rr_output_info_get_geometry (outputs[i], &output_x, &output_y, &output_width, &output_height);
+            width = MAX (width, output_x + output_width);
+            height = MAX (height, output_y + output_height);
+        }
     }
 
     *ret_width = width;
@@ -1924,11 +1923,11 @@ check_required_virtual_size (App *app)
 #endif
 
     if (!(min_width <= req_width && req_width <= max_width
-	  && min_height <= req_height && req_height <= max_height))
+      && min_height <= req_height && req_height <= max_height))
     {
-	/* FIXME: present a useful dialog, maybe even before the user tries to Apply */
+    /* FIXME: present a useful dialog, maybe even before the user tries to Apply */
 #if 0
-	g_debug ("Your X server needs a larger Virtual size!");
+    g_debug ("Your X server needs a larger Virtual size!");
 #endif
     }
 }
@@ -2010,7 +2009,7 @@ ensure_current_configuration_is_saved (void)
 
         rr_screen = mate_rr_screen_new (gdk_screen_get_default (), NULL); /* NULL-GError */
         if (!rr_screen)
-                return;
+            return;
 
         rr_config = mate_rr_config_new_current (rr_screen, NULL);
         mate_rr_config_save (rr_config, NULL); /* NULL-GError */
@@ -2078,9 +2077,9 @@ sanitize_and_save_configuration (App *app)
     error = NULL;
     if (!mate_rr_config_save (app->current_configuration, &error))
     {
-	error_message (app, _("Could not save the monitor configuration"), error->message);
-	g_error_free (error);
-	return FALSE;
+        error_message (app, _("Could not save the monitor configuration"), error->message);
+        g_error_free (error);
+        return FALSE;
     }
 
     return TRUE;
@@ -2092,7 +2091,7 @@ apply (App *app)
     GError *error = NULL;
 
     if (!sanitize_and_save_configuration (app))
-	return;
+        return;
 
     g_assert (app->connection == NULL);
     g_assert (app->proxy == NULL);
@@ -2117,10 +2116,10 @@ on_detect_displays (GtkWidget *widget, gpointer data)
 
     error = NULL;
     if (!mate_rr_screen_refresh (app->screen, &error)) {
-	if (error) {
-	    error_message (app, _("Could not detect displays"), error->message);
-	    g_error_free (error);
-	}
+        if (error) {
+            error_message (app, _("Could not detect displays"), error->message);
+            g_error_free (error);
+        }
     }
 }
 
@@ -2135,7 +2134,8 @@ set_primary (GtkWidget *widget, gpointer data)
         return;
 
     outputs = mate_rr_config_get_outputs (app->current_configuration);
-    for (i=0; outputs[i]!=NULL; i++) {
+    for (i=0; outputs[i]!=NULL; i++)
+    {
         mate_rr_output_info_set_primary (outputs[i], outputs[i] == app->current_output);
     }
 
@@ -2153,7 +2153,7 @@ on_show_icon_toggled (GtkWidget *widget, gpointer data)
     App *app = data;
 
     g_settings_set_boolean (app->settings, SHOW_ICON_KEY,
-			   gtk_toggle_button_get_active (tb));
+                            gtk_toggle_button_get_active (tb));
 }
 
 static MateRROutputInfo *
@@ -2170,38 +2170,38 @@ get_nearest_output (MateRRConfig *configuration, int x, int y)
     outputs = mate_rr_config_get_outputs (configuration);
     for (i = 0; outputs[i] != NULL; i++)
     {
-	int dist_x, dist_y;
-	int output_x, output_y, output_width, output_height;
+        int dist_x, dist_y;
+        int output_x, output_y, output_width, output_height;
 
-	if (!(mate_rr_output_info_is_connected(outputs[i]) && mate_rr_output_info_is_active (outputs[i])))
-	    continue;
+        if (!(mate_rr_output_info_is_connected(outputs[i]) && mate_rr_output_info_is_active (outputs[i])))
+            continue;
 
-	mate_rr_output_info_get_geometry (outputs[i], &output_x, &output_y, &output_width, &output_height);
-	if (x < output_x)
-	    dist_x = output_x - x;
-	else if (x >= output_x + output_width)
-	    dist_x = x - (output_x + output_width) + 1;
-	else
-	    dist_x = 0;
+        mate_rr_output_info_get_geometry (outputs[i], &output_x, &output_y, &output_width, &output_height);
+        if (x < output_x)
+            dist_x = output_x - x;
+        else if (x >= output_x + output_width)
+            dist_x = x - (output_x + output_width) + 1;
+        else
+            dist_x = 0;
 
-	if (y < output_y)
-	    dist_y = output_y - y;
-	else if (y >= output_y + output_height)
-	    dist_y = y - (output_y + output_height) + 1;
-	else
-	    dist_y = 0;
+        if (y < output_y)
+            dist_y = output_y - y;
+        else if (y >= output_y + output_height)
+            dist_y = y - (output_y + output_height) + 1;
+        else
+            dist_y = 0;
 
-	if (MIN (dist_x, dist_y) < nearest_dist)
-	{
-	    nearest_dist = MIN (dist_x, dist_y);
-	    nearest_index = i;
-	}
+        if (MIN (dist_x, dist_y) < nearest_dist)
+        {
+            nearest_dist = MIN (dist_x, dist_y);
+            nearest_index = i;
+        }
     }
 
     if (nearest_index != -1)
-	return outputs[nearest_index];
+        return outputs[nearest_index];
     else
-	return NULL;
+        return NULL;
 
 }
 
@@ -2226,29 +2226,29 @@ get_output_for_window (MateRRConfig *configuration, GdkWindow *window)
     outputs = mate_rr_config_get_outputs (configuration);
     for (i = 0; outputs[i] != NULL; i++)
     {
-	GdkRectangle output_rect, intersection;
+        GdkRectangle output_rect, intersection;
 
-	mate_rr_output_info_get_geometry (outputs[i], &output_rect.x, &output_rect.y, &output_rect.width, &output_rect.height);
+        mate_rr_output_info_get_geometry (outputs[i], &output_rect.x, &output_rect.y, &output_rect.width, &output_rect.height);
 
-	if (mate_rr_output_info_is_connected (outputs[i]) && gdk_rectangle_intersect (&win_rect, &output_rect, &intersection))
-	{
-	    int area;
+        if (mate_rr_output_info_is_connected (outputs[i]) && gdk_rectangle_intersect (&win_rect, &output_rect, &intersection))
+        {
+            int area;
 
-	    area = intersection.width * intersection.height;
-	    if (area > largest_area)
-	    {
-		largest_area = area;
-		largest_index = i;
-	    }
-	}
+            area = intersection.width * intersection.height;
+            if (area > largest_area)
+            {
+            largest_area = area;
+            largest_index = i;
+            }
+        }
     }
 
     if (largest_index != -1)
-	return outputs[largest_index];
+    return outputs[largest_index];
     else
-	return get_nearest_output (configuration,
-				   win_rect.x + win_rect.width / 2,
-				   win_rect.y + win_rect.height / 2);
+    return get_nearest_output (configuration,
+                   win_rect.x + win_rect.width / 2,
+                   win_rect.y + win_rect.height / 2);
 }
 
 /* We select the current output, i.e. select the one being edited, based on
@@ -2258,9 +2258,9 @@ static void
 select_current_output_from_dialog_position (App *app)
 {
     if (gtk_widget_get_realized (app->dialog))
-	app->current_output = get_output_for_window (app->current_configuration, gtk_widget_get_window (app->dialog));
+        app->current_output = get_output_for_window (app->current_configuration, gtk_widget_get_window (app->dialog));
     else
-	app->current_output = NULL;
+        app->current_output = NULL;
 
     rebuild_gui (app);
 }
@@ -2290,17 +2290,17 @@ hide_help_button (App *app)
 
     for (l = children; l; l = l->next)
     {
-	GtkWidget *child;
-	int response;
+        GtkWidget *child;
+        int response;
 
-	child = GTK_WIDGET (l->data);
+        child = GTK_WIDGET (l->data);
 
-	response = gtk_dialog_get_response_for_widget (GTK_DIALOG (app->dialog), child);
-	if (response == GTK_RESPONSE_HELP)
-	{
-	    gtk_widget_hide (child);
-	    return;
-	}
+        response = gtk_dialog_get_response_for_widget (GTK_DIALOG (app->dialog), child);
+        if (response == GTK_RESPONSE_HELP)
+        {
+            gtk_widget_hide (child);
+            return;
+        }
     }
 }
 
@@ -2323,12 +2323,12 @@ success_dialog_for_make_default (App *app)
     GtkWidget *dialog;
 
     dialog = gtk_message_dialog_new (GTK_WINDOW (app->dialog),
-				     GTK_DIALOG_MODAL,
-				     GTK_MESSAGE_INFO,
-				     GTK_BUTTONS_OK,
-				     _("The monitor configuration has been saved"));
+                     GTK_DIALOG_MODAL,
+                     GTK_MESSAGE_INFO,
+                     GTK_BUTTONS_OK,
+                     _("The monitor configuration has been saved"));
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-					      _("This configuration will be used the next time someone logs in."));
+                          _("This configuration will be used the next time someone logs in."));
 
     gtk_dialog_run (GTK_DIALOG (dialog));
     gtk_widget_destroy (dialog);
@@ -2352,34 +2352,34 @@ make_default (App *app)
     GError *error;
 
     if (!sanitize_and_save_configuration (app))
-	return;
+    return;
 
     dest_filename = g_settings_get_string (app->settings, DEFAULT_CONFIGURATION_FILE_KEY);
     if (!dest_filename)
-	return; /* FIXME: present an error? */
+        return; /* FIXME: present an error? */
 
     dest_basename = g_path_get_basename (dest_filename);
 
     source_filename = mate_rr_config_get_intended_filename ();
 
     command_line = g_strdup_printf ("pkexec %s/mate-display-properties-install-systemwide %s %s",
-				    SBINDIR,
-				    source_filename,
-				    dest_basename);
+                    SBINDIR,
+                    source_filename,
+                    dest_basename);
 
     error = NULL;
     if (!g_spawn_command_line_sync (command_line, NULL, &std_error, &exit_status, &error))
     {
-	error_dialog_for_make_default (app, error->message);
-	g_error_free (error);
+        error_dialog_for_make_default (app, error->message);
+        g_error_free (error);
     }
     else if (!WIFEXITED (exit_status) || WEXITSTATUS (exit_status) != 0)
     {
-	error_dialog_for_make_default (app, std_error);
+        error_dialog_for_make_default (app, std_error);
     }
     else
     {
-	success_dialog_for_make_default (app);
+        success_dialog_for_make_default (app);
     }
 
     g_free (std_error);
@@ -2406,75 +2406,76 @@ run_application (App *app)
 
     if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/display/display-capplet.ui", &error) == 0)
     {
-	g_warning ("Could not parse UI definition: %s", error->message);
-	g_error_free (error);
-	g_object_unref (builder);
-	return;
+        g_warning ("Could not parse UI definition: %s", error->message);
+        g_error_free (error);
+        g_object_unref (builder);
+        return;
     }
 
     app->screen = mate_rr_screen_new (gdk_screen_get_default (), &error);
     g_signal_connect (app->screen, "changed", G_CALLBACK (on_screen_changed), app);
     if (!app->screen)
     {
-	error_message (NULL, _("Could not get screen information"), error->message);
-	g_error_free (error);
-	g_object_unref (builder);
-	return;
+        error_message (NULL, _("Could not get screen information"), error->message);
+        g_error_free (error);
+        g_object_unref (builder);
+        return;
     }
 
     app->settings = g_settings_new (MSD_XRANDR_SCHEMA);
 
     app->dialog = _gtk_builder_get_widget (builder, "dialog");
     g_signal_connect_after (app->dialog, "map-event",
-			    G_CALLBACK (dialog_map_event_cb), app);
+                            G_CALLBACK (dialog_map_event_cb), app);
 
     gtk_window_set_default_icon_name ("preferences-desktop-display");
     gtk_window_set_icon_name (GTK_WINDOW (app->dialog),
-			      "preferences-desktop-display");
+                              "preferences-desktop-display");
 
     app->current_monitor_event_box = _gtk_builder_get_widget (builder,
-    						   "current_monitor_event_box");
+                                     "current_monitor_event_box");
     app->current_monitor_label = _gtk_builder_get_widget (builder,
-    						       "current_monitor_label");
+                                 "current_monitor_label");
 
     app->monitor_on_radio = _gtk_builder_get_widget (builder,
-    						     "monitor_on_radio");
+                            "monitor_on_radio");
     app->monitor_off_radio = _gtk_builder_get_widget (builder,
-    						      "monitor_off_radio");
+                             "monitor_off_radio");
     g_signal_connect (app->monitor_on_radio, "toggled",
-		      G_CALLBACK (monitor_on_off_toggled_cb), app);
+                      G_CALLBACK (monitor_on_off_toggled_cb), app);
     g_signal_connect (app->monitor_off_radio, "toggled",
-		      G_CALLBACK (monitor_on_off_toggled_cb), app);
+                      G_CALLBACK (monitor_on_off_toggled_cb), app);
 
     app->resolution_combo = _gtk_builder_get_widget (builder,
-    						     "resolution_combo");
+                            "resolution_combo");
     g_signal_connect (app->resolution_combo, "changed",
-		      G_CALLBACK (on_resolution_changed), app);
+                      G_CALLBACK (on_resolution_changed), app);
 
     app->refresh_combo = _gtk_builder_get_widget (builder, "refresh_combo");
     g_signal_connect (app->refresh_combo, "changed",
-		      G_CALLBACK (on_rate_changed), app);
+                      G_CALLBACK (on_rate_changed), app);
 
     app->rotation_combo = _gtk_builder_get_widget (builder, "rotation_combo");
     g_signal_connect (app->rotation_combo, "changed",
-		      G_CALLBACK (on_rotation_changed), app);
+                      G_CALLBACK (on_rotation_changed), app);
 
     app->clone_checkbox = _gtk_builder_get_widget (builder, "clone_checkbox");
     g_signal_connect (app->clone_checkbox, "toggled",
-		      G_CALLBACK (on_clone_changed), app);
+                      G_CALLBACK (on_clone_changed), app);
 
     g_signal_connect (_gtk_builder_get_widget (builder, "detect_displays_button"),
-		      "clicked", G_CALLBACK (on_detect_displays), app);
+                      "clicked", G_CALLBACK (on_detect_displays), app);
 
     app->primary_button = _gtk_builder_get_widget (builder, "primary_button");
 
     g_signal_connect (app->primary_button, "clicked", G_CALLBACK (set_primary), app);
 
     app->show_icon_checkbox = _gtk_builder_get_widget (builder,
-						      "show_notification_icon");
+                              "show_notification_icon");
 
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (app->show_icon_checkbox),
-				  g_settings_get_boolean (app->settings, SHOW_ICON_KEY));
+                                  g_settings_get_boolean (app->settings,
+                                                          SHOW_ICON_KEY));
 
     g_signal_connect (app->show_icon_checkbox, "toggled", G_CALLBACK (on_show_icon_toggled), app);
 
@@ -2497,9 +2498,9 @@ run_application (App *app)
     foo_scroll_area_set_min_size (FOO_SCROLL_AREA (app->area), -1, 200);
     gtk_widget_show (app->area);
     g_signal_connect (app->area, "paint",
-		      G_CALLBACK (on_area_paint), app);
+                      G_CALLBACK (on_area_paint), app);
     g_signal_connect (app->area, "viewport_changed",
-		      G_CALLBACK (on_viewport_changed), app);
+                      G_CALLBACK (on_viewport_changed), app);
 
     align = _gtk_builder_get_widget (builder, "align");
 
@@ -2510,7 +2511,7 @@ run_application (App *app)
 
     app->apply_button = _gtk_builder_get_widget (builder, "apply_button");
     g_signal_connect (app->apply_button, "clicked",
-		      G_CALLBACK (apply_button_clicked_cb), app);
+                      G_CALLBACK (apply_button_clicked_cb), app);
 
     on_screen_changed (app->screen, app);
 
@@ -2519,31 +2520,31 @@ run_application (App *app)
 restart:
     switch (gtk_dialog_run (GTK_DIALOG (app->dialog)))
     {
-    default:
-	/* Fall Through */
-    case GTK_RESPONSE_DELETE_EVENT:
-    case GTK_RESPONSE_CLOSE:
+        default:
+        /* Fall Through */
+        case GTK_RESPONSE_DELETE_EVENT:
+        case GTK_RESPONSE_CLOSE:
 #if 0
-	g_debug ("Close");
+        g_debug ("Close");
 #endif
-	break;
+        break;
 
-    case GTK_RESPONSE_HELP:
+        case GTK_RESPONSE_HELP:
 #if 0
-	g_debug ("Help");
+        g_debug ("Help");
 #endif
-	goto restart;
-	break;
+        goto restart;
+        break;
 
-    case GTK_RESPONSE_APPLY:
-	apply (app);
-	goto restart;
-	break;
+        case GTK_RESPONSE_APPLY:
+        apply (app);
+        goto restart;
+        break;
 
-    case RESPONSE_MAKE_DEFAULT:
-	make_default (app);
-	goto restart;
-	break;
+        case RESPONSE_MAKE_DEFAULT:
+        make_default (app);
+        goto restart;
+        break;
     }
 
     gtk_widget_destroy (app->dialog);

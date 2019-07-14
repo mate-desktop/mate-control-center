@@ -37,21 +37,21 @@ extern "C" {
 #define NAMEPLATE_TILE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), NAMEPLATE_TILE_TYPE, NameplateTileClass))
 
 typedef struct {
-	Tile tile;
+    Tile tile;
 
-	GtkWidget *image;
-	GtkWidget *header;
-	GtkWidget *subheader;
+    GtkWidget *image;
+    GtkWidget *header;
+    GtkWidget *subheader;
 } NameplateTile;
 
 typedef struct {
-	TileClass tile_class;
+    TileClass tile_class;
 } NameplateTileClass;
 
 GType nameplate_tile_get_type (void);
 
 GtkWidget *nameplate_tile_new (const gchar * uri, GtkWidget * image, GtkWidget * header,
-	GtkWidget * subheader);
+                               GtkWidget * subheader);
 
 #ifdef __cplusplus
 }

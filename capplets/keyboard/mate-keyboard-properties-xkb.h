@@ -1,5 +1,3 @@
-/* -*- mode: c; style: linux -*- */
-
 /* mate-keyboard-properties-xkb.h
  * Copyright (C) 2003-2007 Sergey V Udaltsov
  *
@@ -76,16 +74,13 @@ extern void xkb_layouts_set_selected_list(GSList *list);
 
 extern void xkb_options_set_selected_list(GSList *list);
 
-extern GtkWidget *xkb_layout_preview_create_widget (GtkBuilder *
-						    chooser_dialog);
+extern GtkWidget *xkb_layout_preview_create_widget (GtkBuilder * chooser_dialog);
 
 extern void xkb_layout_preview_update (GtkBuilder * chooser_dialog);
 
-extern void xkb_layout_preview_set_drawing_layout (GtkWidget * kbdraw,
-						   const gchar * id);
+extern void xkb_layout_preview_set_drawing_layout (GtkWidget * kbdraw, const gchar * id);
 
-extern gchar *xkb_layout_chooser_get_selected_id (GtkBuilder *
-						  chooser_dialog);
+extern gchar *xkb_layout_chooser_get_selected_id (GtkBuilder * chooser_dialog);
 
 extern void xkb_save_default_group (gint group_no);
 

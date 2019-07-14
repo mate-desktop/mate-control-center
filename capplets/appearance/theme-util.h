@@ -19,18 +19,18 @@
  */
 
 enum {
-	COL_THUMBNAIL,
-	COL_LABEL,
-	COL_NAME,
-	NUM_COLS
+    COL_THUMBNAIL,
+    COL_LABEL,
+    COL_NAME,
+    NUM_COLS
 };
 
 typedef enum {
-	THEME_TYPE_GTK,
-	THEME_TYPE_WINDOW,
-	THEME_TYPE_ICON,
-	THEME_TYPE_META,
-	THEME_TYPE_CURSOR
+    THEME_TYPE_GTK,
+    THEME_TYPE_WINDOW,
+    THEME_TYPE_ICON,
+    THEME_TYPE_META,
+    THEME_TYPE_CURSOR
 } ThemeType;
 
 gboolean theme_is_writable(const gpointer theme);

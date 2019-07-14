@@ -14,7 +14,7 @@ gchar *wm_common_get_current_window_manager (void);
 char **wm_common_get_current_keybindings (void);
 
 void   wm_common_register_window_manager_change (GFunc    func,
-						 gpointer data);
+                                                 gpointer data);
 void   wm_common_update_window (void);
 
 #endif /* WM_COMMON_H */

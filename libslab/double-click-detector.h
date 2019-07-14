@@ -36,23 +36,22 @@ extern "C" {
 
 typedef struct
 {
-	GObject parent_placeholder;
+    GObject parent_placeholder;
 
-	guint32 double_click_time;
-	guint32 last_click_time;
+    guint32 double_click_time;
+    guint32 last_click_time;
 } DoubleClickDetector;
 
 typedef struct
 {
-	GObjectClass parent_class;
+    GObjectClass parent_class;
 } DoubleClickDetectorClass;
 
 GType double_click_detector_get_type (void);
 
 DoubleClickDetector *double_click_detector_new (void);
 
-gboolean double_click_detector_is_double_click (DoubleClickDetector * detector, guint32 event_time,
-	gboolean auto_update);
+gboolean double_click_detector_is_double_click (DoubleClickDetector * detector, guint32 event_time, gboolean auto_update);
 
 void double_click_detector_update_click_time (DoubleClickDetector * detector, guint32 event_time);
 

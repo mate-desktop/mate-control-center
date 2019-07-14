@@ -1,5 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
-
 /* mate-wm-manager.c
  * Copyright (C) 2002 Seth Nickell
  * Copyright (C) 1998, 2002 Red Hat, Inc.
@@ -38,18 +36,18 @@
 #include <string.h>
 
 typedef struct {
-        MateDesktopItem *ditem;
-        char *name; /* human readable, localized */
-        char *identify_name; /* name we expect to be set on the screen */
-        char *exec;
-        char *config_exec;
-        char *config_tryexec;
-        char *module;
-        guint session_managed : 1;
-        guint is_user : 1;
-        guint is_present : 1;
-        guint is_config_present : 1;
-        MateWindowManager *mate_wm;
+    MateDesktopItem *ditem;
+    char *name; /* human readable, localized */
+    char *identify_name; /* name we expect to be set on the screen */
+    char *exec;
+    char *config_exec;
+    char *config_tryexec;
+    char *module;
+    guint session_managed : 1;
+    guint is_user : 1;
+    guint is_present : 1;
+    guint is_config_present : 1;
+    MateWindowManager *mate_wm;
 } AvailableWindowManager;
 
 static gboolean done_scan = FALSE;
@@ -58,264 +56,264 @@ static GList *available_wms;
 static void
 wm_free (AvailableWindowManager *wm)
 {
-        g_free (wm->name);
-        g_free (wm->exec);
-        g_free (wm->config_exec);
-        g_free (wm->config_tryexec);
-        g_free (wm->module);
-        g_free (wm->identify_name);
+    g_free (wm->name);
+    g_free (wm->exec);
+    g_free (wm->config_exec);
+    g_free (wm->config_tryexec);
+    g_free (wm->module);
+    g_free (wm->identify_name);
 
-        g_free (wm);
+    g_free (wm);
 }
 
 static GList *
 list_desktop_files_in_dir (gchar *directory)
 {
-        DIR *dir;
-        struct dirent *child;
-        GList *result = NULL;
-        gchar *suffix;
+    DIR *dir;
+    struct dirent *child;
+    GList *result = NULL;
+    gchar *suffix;
 
-        dir = opendir (directory);
-        if (dir == NULL)
-                return NULL;
+    dir = opendir (directory);
+    if (dir == NULL)
+        return NULL;
 
-        while ((child = readdir (dir)) != NULL) {
-                /* Ignore files without .desktop suffix, and ignore
-                 * .desktop files with no prefix
-                 */
-                suffix = child->d_name + strlen (child->d_name) - 8;
-                /* strlen(".desktop") == 8 */
+    while ((child = readdir (dir)) != NULL)
+    {
+        /* Ignore files without .desktop suffix, and ignore
+         * .desktop files with no prefix
+         */
+        suffix = child->d_name + strlen (child->d_name) - 8;
+        /* strlen(".desktop") == 8 */
 
-                if (suffix <= child->d_name ||
-                    strcmp (suffix, ".desktop") != 0)
-                        continue;
+        if (suffix <= child->d_name || strcmp (suffix, ".desktop") != 0)
+            continue;
 
-                result = g_list_prepend (result,
-                                         g_build_filename (directory, child->d_name, NULL));
-        }
-        closedir (dir);
+        result = g_list_prepend (result,
+                                 g_build_filename (directory, child->d_name, NULL));
+    }
+    closedir (dir);
 
-        return result;
+    return result;
 }
 
 static gint
 wm_compare (gconstpointer a, gconstpointer b)
 {
-        const AvailableWindowManager *wm_a = (const AvailableWindowManager *)a;
-        const AvailableWindowManager *wm_b = (const AvailableWindowManager *)b;
+    const AvailableWindowManager *wm_a = (const AvailableWindowManager *)a;
+    const AvailableWindowManager *wm_b = (const AvailableWindowManager *)b;
 
-        /* mmm, sloooow */
+    /* mmm, sloooow */
 
-        return g_utf8_collate (mate_desktop_item_get_string (wm_a->ditem, MATE_DESKTOP_ITEM_NAME),
-                               mate_desktop_item_get_string (wm_b->ditem, MATE_DESKTOP_ITEM_NAME));
+    return g_utf8_collate (mate_desktop_item_get_string (wm_a->ditem, MATE_DESKTOP_ITEM_NAME),
+                           mate_desktop_item_get_string (wm_b->ditem, MATE_DESKTOP_ITEM_NAME));
 }
 
 static AvailableWindowManager*
 wm_load (const char *desktop_file,
          gboolean    is_user)
 {
-        gchar *path;
-        AvailableWindowManager *wm;
+    gchar *path;
+    AvailableWindowManager *wm;
 
-        wm = g_new0 (AvailableWindowManager, 1);
+    wm = g_new0 (AvailableWindowManager, 1);
 
-        wm->ditem = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
+    wm->ditem = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
 
-        if (wm->ditem == NULL) {
-                g_free (wm);
-                return NULL;
-        }
+    if (wm->ditem == NULL) {
+        g_free (wm);
+        return NULL;
+    }
 
-        mate_desktop_item_set_entry_type (wm->ditem, MATE_DESKTOP_ITEM_TYPE_APPLICATION);
+    mate_desktop_item_set_entry_type (wm->ditem, MATE_DESKTOP_ITEM_TYPE_APPLICATION);
 
-        wm->exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                            MATE_DESKTOP_ITEM_EXEC));
+    wm->exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
+                                                       MATE_DESKTOP_ITEM_EXEC));
 
-        wm->name = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                            MATE_DESKTOP_ITEM_NAME));
+    wm->name = g_strdup (mate_desktop_item_get_string (wm->ditem,
+                         MATE_DESKTOP_ITEM_NAME));
 
-        wm->config_exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                                   "ConfigExec"));
-        wm->config_tryexec = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                                      "ConfigTryExec"));
-        wm->session_managed = mate_desktop_item_get_boolean (wm->ditem,
-                                                              "SessionManaged");
+    wm->config_exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
+                                "ConfigExec"));
+    wm->config_tryexec = g_strdup (mate_desktop_item_get_string (wm->ditem,
+                                   "ConfigTryExec"));
+    wm->session_managed = mate_desktop_item_get_boolean (wm->ditem,
+                                                         "SessionManaged");
 
-        wm->module = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                              "X-MATE-WMSettingsModule"));
+    wm->module = g_strdup (mate_desktop_item_get_string (wm->ditem,
+                           "X-MATE-WMSettingsModule"));
 
-        wm->identify_name = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                                     "X-MATE-WMName"));
+    wm->identify_name = g_strdup (mate_desktop_item_get_string (wm->ditem,
+                                  "X-MATE-WMName"));
 
-        wm->is_user = is_user;
+    wm->is_user = is_user;
 
-        if (mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_EXEC)) {
-                const char *tryexec;
+    if (mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_EXEC)) {
+        const char *tryexec;
 
-                tryexec = mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_TRY_EXEC);
+        tryexec = mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_TRY_EXEC);
 
-                if (tryexec) {
-                        path = g_find_program_in_path (tryexec);
-                        wm->is_present = (path != NULL);
-                        if (path)
-                                g_free (path);
-                } else
-                        wm->is_present = TRUE;
+        if (tryexec) {
+            path = g_find_program_in_path (tryexec);
+            wm->is_present = (path != NULL);
+            if (path)
+                g_free (path);
         } else
-                wm->is_present = FALSE;
+            wm->is_present = TRUE;
+    } else
+            wm->is_present = FALSE;
 
-        if (wm->config_exec) {
-                if (wm->config_tryexec) {
-                        path = g_find_program_in_path (wm->config_tryexec);
-                        wm->is_config_present = (path != NULL);
-                        if (path)
-                                g_free (path);
-                } else {
-			path = g_find_program_in_path (wm->config_exec);
-                        wm->is_config_present = (path != NULL);
-                        if (path)
-                                g_free (path);
-		}
-        } else
-                wm->is_config_present = FALSE;
-
-        if (wm->name && wm->exec &&
-            (wm->is_user || wm->is_present))
-                return wm;
-        else {
-                wm_free (wm);
-                return NULL;
+    if (wm->config_exec) {
+        if (wm->config_tryexec) {
+            path = g_find_program_in_path (wm->config_tryexec);
+            wm->is_config_present = (path != NULL);
+            if (path)
+                g_free (path);
+        } else {
+            path = g_find_program_in_path (wm->config_exec);
+            wm->is_config_present = (path != NULL);
+            if (path)
+                g_free (path);
         }
+    } else
+        wm->is_config_present = FALSE;
+
+    if (wm->name && wm->exec && (wm->is_user || wm->is_present))
+        return wm;
+    else {
+        wm_free (wm);
+        return NULL;
+    }
 }
 
 static void
 scan_wm_directory (gchar *directory, gboolean is_user)
 {
-        GList *tmp_list;
-        GList *files;
+    GList *tmp_list;
+    GList *files;
 
-        files = list_desktop_files_in_dir (directory);
+    files = list_desktop_files_in_dir (directory);
 
-        tmp_list = files;
-        while (tmp_list) {
-                AvailableWindowManager *wm;
+    tmp_list = files;
+    while (tmp_list)
+    {
+        AvailableWindowManager *wm;
 
-                wm = wm_load (tmp_list->data, is_user);
+        wm = wm_load (tmp_list->data, is_user);
 
-                if (wm != NULL)
-                        available_wms = g_list_prepend (available_wms, wm);
+        if (wm != NULL)
+            available_wms = g_list_prepend (available_wms, wm);
 
-                tmp_list = tmp_list->next;
-        }
+        tmp_list = tmp_list->next;
+    }
 
-        g_list_foreach (files, (GFunc) g_free, NULL);
-        g_list_free (files);
+    g_list_foreach (files, (GFunc) g_free, NULL);
+    g_list_free (files);
 }
 
 void mate_wm_manager_init(void)
 {
-	char* tempdir;
+    char* tempdir;
 
-	if (done_scan)
-	{
-		return;
-	}
+    if (done_scan)
+    {
+        return;
+    }
 
-	done_scan = TRUE;
+    done_scan = TRUE;
 
-	tempdir = g_build_filename(MATE_WM_PROPERTY_PATH, NULL);
-	scan_wm_directory(tempdir, FALSE);
-	g_free(tempdir);
+    tempdir = g_build_filename(MATE_WM_PROPERTY_PATH, NULL);
+    scan_wm_directory(tempdir, FALSE);
+    g_free(tempdir);
 
-		tempdir = g_build_filename(g_get_user_config_dir(), "mate", "wm-properties", NULL);
+    tempdir = g_build_filename(g_get_user_config_dir(), "mate", "wm-properties", NULL);
 
-	scan_wm_directory(tempdir, TRUE);
-	g_free(tempdir);
+    scan_wm_directory(tempdir, TRUE);
+    g_free(tempdir);
 
-	available_wms = g_list_sort(available_wms, wm_compare);
+    available_wms = g_list_sort(available_wms, wm_compare);
 }
 
 static AvailableWindowManager*
 get_current_wm (GdkScreen *screen)
 {
-        AvailableWindowManager *current_wm;
-        const char *name;
-        GList *tmp_list;
+    AvailableWindowManager *current_wm;
+    const char *name;
+    GList *tmp_list;
 
-        g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
-        name = gdk_x11_screen_get_window_manager_name (screen);
+    name = gdk_x11_screen_get_window_manager_name (screen);
 
-        current_wm = NULL;
+    current_wm = NULL;
+
+    tmp_list = available_wms;
+    while (tmp_list != NULL)
+    {
+        AvailableWindowManager *wm = tmp_list->data;
+
+        if (wm->identify_name && strcmp (wm->identify_name, name) == 0) {
+            current_wm = wm;
+            break;
+        }
+        tmp_list = tmp_list->next;
+    }
+
+    if (current_wm == NULL) {
+        /* Try with localized name, sort of crackrock
+         * back compat hack
+         */
 
         tmp_list = available_wms;
-        while (tmp_list != NULL) {
-                AvailableWindowManager *wm = tmp_list->data;
+        while (tmp_list != NULL)
+        {
+            AvailableWindowManager *wm = tmp_list->data;
 
-                if (wm->identify_name &&
-                    strcmp (wm->identify_name, name) == 0) {
-                        current_wm = wm;
-                        break;
-                }
-                tmp_list = tmp_list->next;
+            if (strcmp (wm->name, name) == 0) {
+                current_wm = wm;
+                break;
+            }
+            tmp_list = tmp_list->next;
         }
+    }
 
-        if (current_wm == NULL) {
-                /* Try with localized name, sort of crackrock
-                 * back compat hack
-                 */
-
-                tmp_list = available_wms;
-                while (tmp_list != NULL) {
-                        AvailableWindowManager *wm = tmp_list->data;
-
-                        if (strcmp (wm->name, name) == 0) {
-                                current_wm = wm;
-                                break;
-                        }
-                        tmp_list = tmp_list->next;
-                }
-        }
-
-        return current_wm;
+    return current_wm;
 }
 
 MateWindowManager*
 mate_wm_manager_get_current (GdkScreen *screen)
 {
-        AvailableWindowManager *wm;
+    AvailableWindowManager *wm;
 
-        wm = get_current_wm (screen);
+    wm = get_current_wm (screen);
 
-        if (wm != NULL && wm->module != NULL)
-                /* may still return NULL here */
-                return (MateWindowManager*) mate_window_manager_new (wm->ditem);
-        else
-                return NULL;
+    if (wm != NULL && wm->module != NULL)
+        /* may still return NULL here */
+        return (MateWindowManager*) mate_window_manager_new (wm->ditem);
+    else
+        return NULL;
 }
 
 gboolean
 mate_wm_manager_spawn_config_tool_for_current (GdkScreen  *screen,
                                                 GError    **error)
 {
-        AvailableWindowManager *wm;
+    AvailableWindowManager *wm;
 
-        wm = get_current_wm (screen);
+    wm = get_current_wm (screen);
 
-        if (wm != NULL && wm->config_exec != NULL) {
-                return g_spawn_command_line_async (wm->config_exec,
-                                                   error);
-        } else {
-                const char *name;
+    if (wm != NULL && wm->config_exec != NULL) {
+        return g_spawn_command_line_async (wm->config_exec, error);
+    } else {
+        const char *name;
 
-                name = gdk_x11_screen_get_window_manager_name (screen);
+        name = gdk_x11_screen_get_window_manager_name (screen);
 
-                g_set_error (error,
-                             G_SPAWN_ERROR,
-                             G_SPAWN_ERROR_FAILED,
-                             _("Window manager \"%s\" has not registered a configuration tool\n"),
-                             name);
-                return FALSE;
-        }
+        g_set_error (error,
+                     G_SPAWN_ERROR,
+                     G_SPAWN_ERROR_FAILED,
+                     _("Window manager \"%s\" has not registered a configuration tool\n"),
+                     name);
+        return FALSE;
+    }
 }

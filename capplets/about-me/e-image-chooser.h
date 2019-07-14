@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /* e-image-chooser.c
  * Copyright (C) 2004  Novell, Inc.
  * Author: Chris Toshok <toshok@ximian.com>
@@ -25,8 +24,8 @@
 
 G_BEGIN_DECLS
 
-#define E_TYPE_IMAGE_CHOOSER	        (e_image_chooser_get_type ())
-#define E_IMAGE_CHOOSER(obj)	        (G_TYPE_CHECK_INSTANCE_CAST ((obj), E_TYPE_IMAGE_CHOOSER, EImageChooser))
+#define E_TYPE_IMAGE_CHOOSER            (e_image_chooser_get_type ())
+#define E_IMAGE_CHOOSER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), E_TYPE_IMAGE_CHOOSER, EImageChooser))
 #define E_IMAGE_CHOOSER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), E_TYPE_IMAGE_CHOOSER, EImageChooserClass))
 #define E_IS_IMAGE_CHOOSER(obj)	        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), E_TYPE_IMAGE_CHOOSER))
 #define E_IS_IMAGE_CHOOSER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), E_TYPE_IMAGE_CHOOSER))
@@ -36,17 +35,15 @@ typedef struct _EImageChooserClass   EImageChooserClass;
 
 struct _EImageChooser
 {
-	GtkBox parent;
+    GtkBox parent;
 };
 
 struct _EImageChooserClass
 {
-	GtkBoxClass parent_class;
+    GtkBoxClass parent_class;
 
-	/* signals */
-	void (*changed) (EImageChooser *chooser);
-
-
+    /* signals */
+    void (*changed) (EImageChooser *chooser);
 };
 
 GtkWidget *e_image_chooser_new            (void);

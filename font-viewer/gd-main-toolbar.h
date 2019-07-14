@@ -29,26 +29,11 @@
 G_BEGIN_DECLS
 
 #define GD_TYPE_MAIN_TOOLBAR gd_main_toolbar_get_type()
-
-#define GD_MAIN_TOOLBAR(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
-   GD_TYPE_MAIN_TOOLBAR, GdMainToolbar))
-
-#define GD_MAIN_TOOLBAR_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST ((klass), \
-   GD_TYPE_MAIN_TOOLBAR, GdMainToolbarClass))
-
-#define GD_IS_MAIN_TOOLBAR(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), \
-   GD_TYPE_MAIN_TOOLBAR))
-
-#define GD_IS_MAIN_TOOLBAR_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE ((klass), \
-   GD_TYPE_MAIN_TOOLBAR))
-
-#define GD_MAIN_TOOLBAR_GET_CLASS(obj) \
-  (G_TYPE_INSTANCE_GET_CLASS ((obj), \
-   GD_TYPE_MAIN_TOOLBAR, GdMainToolbarClass))
+#define GD_MAIN_TOOLBAR(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), GD_TYPE_MAIN_TOOLBAR, GdMainToolbar))
+#define GD_MAIN_TOOLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), GD_TYPE_MAIN_TOOLBAR, GdMainToolbarClass))
+#define GD_IS_MAIN_TOOLBAR(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GD_TYPE_MAIN_TOOLBAR))
+#define GD_IS_MAIN_TOOLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GD_TYPE_MAIN_TOOLBAR))
+#define GD_MAIN_TOOLBAR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GD_TYPE_MAIN_TOOLBAR, GdMainToolbarClass))
 
 typedef struct _GdMainToolbar GdMainToolbar;
 typedef struct _GdMainToolbarClass GdMainToolbarClass;
@@ -56,14 +41,14 @@ typedef struct _GdMainToolbarPrivate GdMainToolbarPrivate;
 
 struct _GdMainToolbar
 {
-  GtkToolbar parent;
+    GtkToolbar parent;
 
-  GdMainToolbarPrivate *priv;
+    GdMainToolbarPrivate *priv;
 };
 
 struct _GdMainToolbarClass
 {
-  GtkToolbarClass parent_class;
+    GtkToolbarClass parent_class;
 };
 
 GType gd_main_toolbar_get_type (void) G_GNUC_CONST;

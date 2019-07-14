@@ -11,6 +11,6 @@ void mate_wm_manager_init (void);
 MateWindowManager *mate_wm_manager_get_current (GdkScreen *screen);
 
 gboolean mate_wm_manager_spawn_config_tool_for_current (GdkScreen  *screen,
-                                                         GError    **error);
+                                                        GError    **error);
 
 #endif

@@ -33,6 +33,7 @@ static gboolean CheckClockHealth(gpointer data)
 
     return FALSE;
 }
+
 static void update_apply_timeout(TimeAdmin *ta)
 {
     Update_Clock_Stop(ta);
@@ -41,13 +42,14 @@ static void update_apply_timeout(TimeAdmin *ta)
          g_source_remove (ta->ApplyId);
          ta->ApplyId = 0;
     }
-    ta->ApplyId = g_timeout_add (10000, (GSourceFunc)CheckClockHealth,ta);
+    ta->ApplyId = g_timeout_add (10000, (GSourceFunc)CheckClockHealth, ta);
 }
+
 static void ChangeTimeValue(GtkSpinButton *spin_button,
                             gpointer       data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
-    if(TimeoutFlag == 0)
+    if (TimeoutFlag == 0)
     {
         update_apply_timeout(ta);
     }
@@ -62,12 +64,14 @@ static gboolean on_window_quit (GtkWidget *widget,
     QuitApp(ta);
     return TRUE;
 }
-static void CloseWindow (GtkButton *button,gpointer data)
+
+static void CloseWindow (GtkButton *button, gpointer data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;
 
     QuitApp(ta);
 }
+
 static void UpdatePermission(TimeAdmin *ta)
 {
     gboolean is_authorized;
@@ -128,24 +132,25 @@ static int RecordPid(void)
     int Length = 0;
     char WriteBuf[30] = { 0 };
     fd = open(LOCKFILE,O_WRONLY|O_CREAT|O_TRUNC,0777);
-    if(fd < 0)
+    if (fd < 0)
     {
-         MessageReport(_("open file"),_("Create pid file failed"),ERROR);
+         MessageReport(_("open file"),_("Create pid file failed"), ERROR);
          return -1;
     }
     chmod(LOCKFILE,0777);
     pid = getpid();
     sprintf(WriteBuf,"%d",pid);
     Length = write(fd,WriteBuf,strlen(WriteBuf));
-    if(Length <= 0 )
+    if (Length <= 0 )
     {
-        MessageReport(_("write file"),_("write pid file failed"),ERROR);
+        MessageReport(_("write file"),_("write pid file failed"), ERROR);
         return -1;
     }
     close(fd);
 
     return 0;
 }
+
 /******************************************************************************
 * Function:              ProcessRuning
 *
@@ -160,6 +165,7 @@ static int RecordPid(void)
 *
 * Author:  zhuyaliang  31/07/2018
 ******************************************************************************/
+
 static gboolean ProcessRuning(void)
 {
     int fd;
@@ -167,23 +173,23 @@ static gboolean ProcessRuning(void)
     gboolean Run = FALSE;
     char ReadBuf[30] = { 0 };
 
-    if(access(LOCKFILE,F_OK) == 0)
+    if (access(LOCKFILE,F_OK) == 0)
     {
         fd = open(LOCKFILE,O_RDONLY);
-        if(fd < 0)
+        if (fd < 0)
         {
-             MessageReport(_("open file"),_("open pid file failed"),ERROR);
+             MessageReport(_("open file"), _("open pid file failed"), ERROR);
              return TRUE;
         }
-        if(read(fd,ReadBuf,sizeof(ReadBuf)) <= 0)
+        if (read(fd,ReadBuf,sizeof(ReadBuf)) <= 0)
         {
-             MessageReport(_("read file"),_("read pid file failed"),ERROR);
-             goto ERROREXIT;
+             MessageReport(_("read file"), _("read pid file failed"), ERROR);
+             goto out;
         }
         pid = atoi(ReadBuf);
-        if(kill(pid,0) == 0)
+        if (kill(pid,0) == 0)
         {
-             goto ERROREXIT;
+             goto out;
         }
     }
 
@@ -191,21 +197,23 @@ static gboolean ProcessRuning(void)
         Run = TRUE;
 
     return Run;
-ERROREXIT:
+out:
     close(fd);
     return TRUE;
 
 }
+
 static char *translate(const char *value)
 {
     g_autofree gchar *zone_translated = NULL;
     char *name;
 
     zone_translated = g_strdup (_(value));
-    name = g_strdup_printf (C_("timezone loc", "%s"),zone_translated);
+    name = g_strdup_printf (C_("timezone loc", "%s"), zone_translated);
 
     return name;
 }
+
 static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
 {
     GtkWidget  *table;
@@ -220,18 +228,18 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
 
     TimeZoneLabel = gtk_label_new (_("Time Zone:"));
     gtk_widget_set_halign(TimeZoneLabel,GTK_ALIGN_START);
-    gtk_grid_attach(GTK_GRID(table) ,TimeZoneLabel, 0 , 0 , 1 , 1);
+    gtk_grid_attach(GTK_GRID(table), TimeZoneLabel, 0, 0, 1, 1);
 
     SetupTimezoneDialog(ta);
     TimeZone = GetTimeZone(ta);
     ZoneName = translate(TimeZone);
     ta->TimeZoneButton = gtk_button_new_with_label(ZoneName);
     g_signal_connect (ta->TimeZoneButton,
-                     "clicked",
+                      "clicked",
                       G_CALLBACK (RunTimeZoneDialog),
                       ta);
 
-    gtk_grid_attach(GTK_GRID(table) ,ta->TimeZoneButton,1 , 0 , 3 , 1);
+    gtk_grid_attach(GTK_GRID(table), ta->TimeZoneButton, 1, 0, 3, 1);
 
     NtpSyncLabel = gtk_label_new (_("Ntp Sync:"));
     gtk_widget_set_halign(NtpSyncLabel,GTK_ALIGN_START);
@@ -244,7 +252,7 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
                           NtpState);
     gtk_grid_attach(GTK_GRID(table) ,ta->NtpSyncSwitch, 1 , 1 , 1 , 1);
     g_signal_connect (G_OBJECT(ta->NtpSyncSwitch),
-                     "state-set",
+                      "state-set",
                       G_CALLBACK (ChangeNtpSync),
                       ta);
 
@@ -252,7 +260,6 @@ static GtkWidget * TimeZoneAndNtp(TimeAdmin *ta)
     gtk_grid_set_column_spacing(GTK_GRID(table), 12);
 
     return table;
-
 }
 
 static GtkWidget *GetSpinButton(int Initial,int Maximum,TimeAdmin *ta)
@@ -268,13 +275,14 @@ static GtkWidget *GetSpinButton(int Initial,int Maximum,TimeAdmin *ta)
     gtk_spin_button_set_numeric(GTK_SPIN_BUTTON (SpinButton),TRUE);
     gtk_widget_set_hexpand (SpinButton,TRUE);
     g_signal_connect (SpinButton,
-                     "changed",
+                      "changed",
                       G_CALLBACK (ChangeTimeValue),
                       ta);
 
     SetTooltip(SpinButton,!ta->NtpState);
     return SpinButton;
 }
+
 static GtkWidget *SetClock(TimeAdmin *ta)
 {
     GtkWidget *table;
@@ -288,20 +296,20 @@ static GtkWidget *SetClock(TimeAdmin *ta)
     gtk_widget_set_halign(TimeLabel,GTK_ALIGN_CENTER);
     gtk_widget_set_valign(TimeLabel,GTK_ALIGN_START);
     gtk_widget_set_hexpand(TimeLabel,FALSE);
-    gtk_grid_attach(GTK_GRID(table) ,TimeLabel, 1 , 0 , 1 , 1);
+    gtk_grid_attach(GTK_GRID(table), TimeLabel, 1, 0, 1, 1);
 
     LocalTime = GetCurrentTime();
     ta->UpdateTimeId = 0;
     ta->ApplyId      = 0;
 
-    ta->HourSpin = GetSpinButton(LocalTime->tm_hour,23,ta);
-    gtk_grid_attach(GTK_GRID(table) ,ta->HourSpin, 0 , 1 , 1 , 1);
+    ta->HourSpin = GetSpinButton(LocalTime->tm_hour, 23, ta);
+    gtk_grid_attach(GTK_GRID(table), ta->HourSpin, 0, 1, 1, 1);
 
-    ta->MinuteSpin = GetSpinButton(LocalTime->tm_min,59,ta);
-    gtk_grid_attach(GTK_GRID(table) ,ta->MinuteSpin, 1 , 1 , 1 , 1);
+    ta->MinuteSpin = GetSpinButton(LocalTime->tm_min, 59, ta);
+    gtk_grid_attach(GTK_GRID(table), ta->MinuteSpin, 1, 1, 1, 1);
 
-    ta->SecondSpin = GetSpinButton (LocalTime->tm_sec,59,ta);
-    gtk_grid_attach(GTK_GRID(table) ,ta->SecondSpin, 2 , 1 , 1 , 1);
+    ta->SecondSpin = GetSpinButton (LocalTime->tm_sec, 59, ta);
+    gtk_grid_attach(GTK_GRID(table), ta->SecondSpin, 2, 1, 1, 1);
 
     Update_Clock_Start(ta);
 
@@ -320,7 +328,7 @@ static GtkWidget *SetDate(TimeAdmin *ta)
     gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
     DateLabel = gtk_label_new (_("Set Date"));
-    gtk_grid_attach(GTK_GRID(table) ,DateLabel, 1 , 0 , 2 , 2);
+    gtk_grid_attach(GTK_GRID(table), DateLabel, 1, 0, 2, 2);
 
     LocalTime = GetCurrentTime ();
     ta->Calendar = gtk_calendar_new ();
@@ -337,7 +345,7 @@ static GtkWidget *SetDate(TimeAdmin *ta)
     gtk_style_context_add_class (gtk_widget_get_style_context (ta->CloseButton), "text-button");
     gtk_grid_attach (GTK_GRID(table), ta->CloseButton, 3, 5, 1, 1);
     g_signal_connect (ta->CloseButton,
-                     "clicked",
+                      "clicked",
                       G_CALLBACK (CloseWindow),
                       ta);
 
@@ -381,22 +389,23 @@ static void CreateClockInterface(TimeAdmin *ta)
     gtk_container_add(GTK_CONTAINER(ta->MainWindow), Vbox);
 
     Vbox1 = TimeZoneAndNtp(ta);
-    gtk_box_pack_start(GTK_BOX(Vbox),Vbox1,TRUE,TRUE,8);
+    gtk_box_pack_start(GTK_BOX(Vbox), Vbox1, TRUE, TRUE, 8);
 
     Vbox2 = SetClock(ta);
-    gtk_box_pack_start(GTK_BOX(Vbox),Vbox2,TRUE,TRUE,8);
+    gtk_box_pack_start(GTK_BOX(Vbox), Vbox2, TRUE, TRUE, 8);
     Vbox3 = SetDate(ta);
-    gtk_box_pack_start(GTK_BOX(Vbox),Vbox3,TRUE,TRUE,8);
+    gtk_box_pack_start(GTK_BOX(Vbox), Vbox3, TRUE, TRUE, 8);
 }
+
 static gboolean InitDbusProxy(TimeAdmin *ta)
 {
     GError *error = NULL;
 
     ta->Connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
-    if(ta->Connection == NULL)
+    if (ta->Connection == NULL)
     {
-        MessageReport(_("g_bus_get_sync"),error->message,ERROR);
-        goto EXIT;
+        MessageReport(_("g_bus_get_sync"), error->message, ERROR);
+        goto out;
     }
     ta->proxy = g_dbus_proxy_new_sync (ta->Connection,
                                        G_DBUS_PROXY_FLAGS_NONE,
@@ -406,14 +415,15 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
                                       "org.freedesktop.timedate1",
                                        NULL,
                                       &error);
-    if(ta->proxy == NULL)
+    if (ta->proxy == NULL)
     {
-        MessageReport(_("g_bus_proxy_new"),error->message,ERROR);
-        goto EXIT;
+        MessageReport(_("g_bus_proxy_new"), error->message,ERROR);
+        goto out;
     }
 
     return TRUE;
-EXIT:
+
+out:
     g_error_free(error);
     return FALSE;
 }
@@ -428,14 +438,14 @@ int main(int argc, char **argv)
     InitMainWindow(&ta);
 
     /* Check whether the process has been started */
-    if(ProcessRuning() == TRUE)
+    if (ProcessRuning() == TRUE)
         exit(0);
-    if(InitDbusProxy(&ta) == FALSE)
+    if (InitDbusProxy(&ta) == FALSE)
     {
         exit(0);
     }
     CreateClockInterface(&ta);
-	UpdatePermission(&ta);
+    UpdatePermission(&ta);
     gtk_widget_show_all(ta.MainWindow);
     gtk_main();
 

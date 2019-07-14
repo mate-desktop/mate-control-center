@@ -28,7 +28,7 @@ extern "C" {
 #endif
 
 gboolean load_image_by_id (GtkImage * image, GtkIconSize size,
-	const gchar * image_id);
+    const gchar * image_id);
 
 #ifdef __cplusplus
 }
