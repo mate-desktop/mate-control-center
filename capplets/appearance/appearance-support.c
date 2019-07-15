@@ -57,7 +57,8 @@ metacity_is_running()
 }
 
 static void
-metacity_theme_apply(const gchar *theme, const gchar *font)
+metacity_theme_apply (const gchar   *theme,
+                      const gchar   *font)
 {
     /* set theme, we use gconf and gsettings binaries to avoid schemas and versions issues */
     if (is_program_in_path ("gconftool-2"))
@@ -99,7 +100,9 @@ metacity_theme_apply(const gchar *theme, const gchar *font)
 }
 
 static void
-marco_theme_changed(GSettings *settings, gchar *key, AppearanceData* data)
+marco_theme_changed (GSettings          *settings,
+                     gchar              *key,
+                     AppearanceData*    data)
 {
     gchar *theme = NULL;
     gchar *font = NULL;
@@ -114,7 +117,7 @@ marco_theme_changed(GSettings *settings, gchar *key, AppearanceData* data)
 }
 
 void
-support_init(AppearanceData* data)
+support_init (AppearanceData* data)
 {
     /* needed for wm_common_get_current_window_manager() */
     wm_common_update_window ();
@@ -129,7 +132,7 @@ support_init(AppearanceData* data)
 }
 
 void
-support_shutdown(AppearanceData* data)
+support_shutdown (AppearanceData* data)
 {
     /* nothing to do */
 }
