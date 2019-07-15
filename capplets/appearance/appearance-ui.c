@@ -39,19 +39,20 @@ set_have_icons (AppearanceData *data, gboolean value)
 
     const char **name;
 
-    for (name = menu_item_names; *name != NULL; name++) {
+    for (name = menu_item_names; *name != NULL; name++)
+    {
         GtkImageMenuItem *item = GTK_IMAGE_MENU_ITEM (appearance_capplet_get_widget (data, *name));
         GtkWidget *image;
 
-        if (value) {
+        if (value)
+        {
             image = g_object_get_data (G_OBJECT (item), "image");
-            if (image) {
+            if (image)
+            {
                 gtk_image_menu_item_set_image (item, image);
                 g_object_unref (image);
             }
-        }
-        else
-        {
+        } else {
             image = gtk_image_menu_item_get_image (item);
             g_object_set_data (G_OBJECT (item), "image", image);
             g_object_ref (image);
@@ -61,9 +62,9 @@ set_have_icons (AppearanceData *data, gboolean value)
 }
 
 static void
-menus_have_icons_cb (GSettings *settings,
-                     gchar *key,
-                     AppearanceData      *data)
+menus_have_icons_cb (GSettings      *settings,
+                     gchar          *key,
+                     AppearanceData *data)
 {
     set_have_icons (data, g_settings_get_boolean (settings, key));
 }
@@ -71,9 +72,9 @@ menus_have_icons_cb (GSettings *settings,
 /** GUI Callbacks **/
 
 static gint
-button_press_block_cb (GtkWidget *toolbar,
-                       GdkEvent  *event,
-                       gpointer   data)
+button_press_block_cb (GtkWidget    *toolbar,
+                       GdkEvent     *event,
+                       gpointer     data)
 {
     return TRUE;
 }

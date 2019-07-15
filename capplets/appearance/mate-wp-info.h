@@ -25,18 +25,19 @@
 #include <libmate-desktop/mate-desktop-thumbnail.h>
 
 typedef struct _MateWPInfo {
-	char* uri;
-	char* thumburi;
-	char* name;
-	char* mime_type;
+    char* uri;
+    char* thumburi;
+    char* name;
+    char* mime_type;
 
-	goffset size;
+    goffset size;
 
-	time_t mtime;
+    time_t mtime;
 } MateWPInfo;
 
-MateWPInfo* mate_wp_info_new(const char* uri, MateDesktopThumbnailFactory* thumbs);
-void mate_wp_info_free(MateWPInfo* info);
+MateWPInfo*     mate_wp_info_new    (const char*                    uri,
+                                     MateDesktopThumbnailFactory*   thumbs);
+void            mate_wp_info_free   (MateWPInfo*                    info);
 
 #endif
 
