@@ -132,7 +132,7 @@ get_sm_proxy (void)
 }
 
 static gboolean
-do_logout (GError **err)
+do_logout (void)
 {
     GDBusProxy *sm_proxy;
     GError *error = NULL;
@@ -151,7 +151,8 @@ do_logout (GError **err)
                                   NULL,
                                   &error);
     if (ret == NULL) {
-        g_propagate_error (err, error);
+        g_warning ("Could not call Logout by dbus: %s\n", error->message);
+        g_error_free (error);
     } else {
         g_variant_unref (ret);
         res = TRUE;
@@ -174,8 +175,8 @@ cb_dialog_response (GtkDialog *dialog, gint response_id)
 	else {
 	        g_message ("CLOSE AND LOGOUT!");
 
-		if (!do_logout (NULL))
-			gtk_main_quit ();
+		if (!do_logout ())
+                       gtk_main_quit ();
 	}
 }
 
