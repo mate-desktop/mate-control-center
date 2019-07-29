@@ -28,6 +28,7 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gdk/gdkx.h>
+#include <glib/gstdio.h>
 
 #include "capplet-util.h"
 
@@ -560,6 +561,78 @@ cb_details_response (GtkDialog *dialog, gint response_id)
     gtk_widget_hide (GTK_WIDGET (dialog));
 }
 
+static void install_new_font (const gchar *filepath)
+{
+    GFile *src, *dst;
+    gchar *fontdir, *fontpath;
+    char *basename;
+    GError *error = NULL;
+
+    fontdir = g_build_filename (g_get_home_dir(), ".fonts", NULL);
+    if (!g_file_test (fontdir, G_FILE_TEST_IS_DIR))
+    {
+        if(g_mkdir (fontdir, 0755) != 0) {
+            g_free (fontdir);
+            return;
+        }
+    }
+    g_free (fontdir);
+
+    basename = g_path_get_basename (filepath);
+    fontpath = g_build_filename (g_get_home_dir(), ".fonts", basename, NULL);
+    g_free (basename);
+    src = g_file_new_for_path (filepath);
+    dst = g_file_new_for_path (fontpath);
+
+    if (!g_file_copy (src,
+                      dst,
+                      G_FILE_COPY_NONE,
+                      NULL,
+                      NULL,
+                      NULL,
+                      &error)) {
+        g_warning ("install new font failed: %s\n", error->message);
+        g_error_free (error);
+    }
+    g_object_unref (src);
+    g_object_unref (dst);
+}
+
+static void
+cb_add_new_font (GtkWidget *button,
+                 AppearanceData *data)
+{
+    GtkWidget *dialog;
+    GtkFileFilter *filter;
+    GtkFileChooser *chooser;
+    GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
+    gint res;
+
+    dialog = gtk_file_chooser_dialog_new (_("Select Font"),
+            GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")),
+            action,
+            _("_Cancel"),
+            GTK_RESPONSE_CANCEL,
+            _("_Open"),
+            GTK_RESPONSE_ACCEPT,
+            NULL);
+    chooser = GTK_FILE_CHOOSER (dialog);
+    filter = gtk_file_filter_new ();
+    gtk_file_filter_set_name (filter, _("Fonts"));
+    gtk_file_filter_add_mime_type (filter, "font/ttf");
+    gtk_file_chooser_add_filter (chooser, filter);
+
+    res = gtk_dialog_run (GTK_DIALOG (dialog));
+    if (res == GTK_RESPONSE_ACCEPT)
+    {
+        char *filename;
+        filename = gtk_file_chooser_get_filename (chooser);
+        install_new_font (filename);
+        g_free (filename);
+    }
+    gtk_widget_destroy (dialog);
+}
+
 static void
 cb_show_details (GtkWidget *button,
 		 AppearanceData *data)
@@ -704,6 +777,8 @@ void font_init(AppearanceData* data)
 			  "changed::" WINDOW_TITLE_USES_SYSTEM_KEY,
 			  G_CALLBACK (marco_changed),
 			  data);
+
+	g_signal_connect (appearance_capplet_get_widget (data, "add_new_font"), "clicked", G_CALLBACK (cb_add_new_font), data);
 
 	marco_titlebar_load_sensitivity(data);
 
