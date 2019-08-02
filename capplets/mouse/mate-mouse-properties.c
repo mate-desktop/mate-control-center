@@ -49,6 +49,12 @@ enum
 	DOUBLE_CLICK_TEST_ON
 };
 
+typedef enum {
+	ACCEL_PROFILE_DEFAULT,
+	ACCEL_PROFILE_ADAPTIVE,
+	ACCEL_PROFILE_FLAT
+} AccelProfile;
+
 #define MOUSE_SCHEMA "org.mate.peripherals-mouse"
 #define INTERFACE_SCHEMA "org.mate.interface"
 #define DOUBLE_CLICK_KEY "double-click"
@@ -218,6 +224,13 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 }
 
 static void
+accel_profile_combobox_changed_callback (GtkWidget *combobox, void *data)
+{
+	AccelProfile value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
+	g_settings_set_enum (mouse_settings, (const gchar *) "accel-profile", value);
+}
+
+static void
 comboxbox_changed (GtkWidget *combobox, GtkBuilder *dialog, const char *key)
 {
 	gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
@@ -292,6 +305,11 @@ setup_dialog (GtkBuilder *dialog)
 	g_settings_bind (mouse_settings, "motion-threshold",
 		gtk_range_get_adjustment (GTK_RANGE (WID ("sensitivity_scale"))), "value",
 		G_SETTINGS_BIND_DEFAULT);
+
+	g_signal_connect (WID ("mouse_accel_profile"), "changed",
+			  G_CALLBACK (accel_profile_combobox_changed_callback), NULL);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (WID ("mouse_accel_profile")),
+				  g_settings_get_enum (mouse_settings, "accel-profile"));
 
 	/* DnD threshold */
 	g_settings_bind (mouse_settings, "drag-threshold",
