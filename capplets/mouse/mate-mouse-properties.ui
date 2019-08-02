@@ -512,6 +512,37 @@
                                 <property name="top_attach">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <object class="GtkLabel" id="mouse_accel_profile_label">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Acceleration _Profile:</property>
+                                <property name="use_underline">True</property>
+                                <property name="justify">center</property>
+                                <property name="mnemonic_widget">mouse_accel_profile</property>
+                                <property name="xalign">0</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="mouse_accel_profile">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="halign">start</property>
+                                <items>
+                                  <item translatable="yes" id="default">Default</item>
+                                  <item translatable="yes" id="adaptive">Adaptive</item>
+                                  <item translatable="yes" id="flat">Flat</item>
+                                </items>
+                              </object>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
                           </object>
                         </child>
                       </object>
