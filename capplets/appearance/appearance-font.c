@@ -583,6 +583,7 @@ static void install_new_font (const gchar *filepath)
     g_free (basename);
     src = g_file_new_for_path (filepath);
     dst = g_file_new_for_path (fontpath);
+    g_free (fontpath);
 
     if (!g_file_copy (src,
                       dst,
