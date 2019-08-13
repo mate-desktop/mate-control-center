@@ -15,17 +15,17 @@
 # biqiu-ssw <shenshuaiwen@gmail.com>, 2018
 # zhangxianwei8 <zhang.xianwei8@zte.com.cn>, 2018
 # Mingcong Bai <jeffbai@aosc.xyz>, 2019
-# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # Wolfgang Ulbrich <mate@raveit.de>, 2019
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
+# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # 玉堂白鹤 <yjwork@qq.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 11:51+0200\n"
+"POT-Creation-Date: 2019-07-18 15:57+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/mate/teams/13566/zh_CN/)\n"
@@ -569,8 +569,8 @@ msgid ""
 msgstr "指定要显示的页面名称 (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:818
-#: ../capplets/mouse/mate-mouse-properties.c:430
+#: ../capplets/default-applications/mate-da-capplet.c:822
+#: ../capplets/mouse/mate-mouse-properties.c:425
 msgid "page"
 msgstr "page"
 
@@ -1227,11 +1227,6 @@ msgstr ""
 "无法启动设置管理器“mate-settings-daemon”。\n"
 "如果不运行 MATE 设置管理器，某些首选项不会生效。这可能表明 DBus 出现问题，或者某个非 MATE (如 KDE) 设置管理器可能已经处于活动状态，并与 MATE 设置管理器发生冲突。"
 
-#: ../capplets/common/capplet-stock-icons.c:66
-#, c-format
-msgid "Unable to load stock icon '%s'\n"
-msgstr "无法装入图标“%s”\n"
-
 #: ../capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -1357,11 +1352,11 @@ msgid "Please make sure that the applet is properly installed"
 msgstr "请确定小程序已经正确安装。"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:817
+#: ../capplets/default-applications/mate-da-capplet.c:821
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "指定要显示的页面名称 (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:823
+#: ../capplets/default-applications/mate-da-capplet.c:827
 msgid "- MATE Default Applications"
 msgstr "- MATE 默认应用程序"
 
@@ -1468,20 +1463,20 @@ msgid "Accessibility"
 msgstr "辅助"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:304
-#: ../capplets/display/xrandr-capplet.c:343
+#: ../capplets/display/xrandr-capplet.c:306
+#: ../capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "正常"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:305
-#: ../capplets/windows/mate-window-properties.c:504
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Left"
 msgstr "左"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/windows/mate-window-properties.c:503
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:510
 msgid "Right"
 msgstr "右"
 
@@ -1552,7 +1547,7 @@ msgid "R_otation:"
 msgstr "旋转(_O)："
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:493
+#: ../capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "显示器"
 
@@ -1665,11 +1660,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "为所有用户安装多显示器设置需要身份验证"
 
-#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "上下颠倒"
 
-#: ../capplets/display/xrandr-capplet.c:349
+#: ../capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1678,53 +1673,53 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:482
-#: ../capplets/display/xrandr-capplet.c:1630
+#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:1632
 #, c-format
 msgid "Mirror Screens"
 msgstr "镜像屏幕"
 
-#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "显示器：%s"
 
-#: ../capplets/display/xrandr-capplet.c:554
+#: ../capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1486
+#: ../capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "选择一个显示器来更改它的属性；拖动它来排列位置。"
 
-#: ../capplets/display/xrandr-capplet.c:2079
+#: ../capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "无法保存显示器配置"
 
-#: ../capplets/display/xrandr-capplet.c:2100
+#: ../capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr "应用显示配置时无法获得会话总线"
 
-#: ../capplets/display/xrandr-capplet.c:2119
+#: ../capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "无法探测显示器"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "The monitor configuration has been saved"
 msgstr "显示器配置已保存"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2331
 msgid "This configuration will be used the next time someone logs in."
 msgstr "这个设置将在下次登入时使用。"
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2340
 msgid "Could not set the default configuration for monitors"
 msgstr "无法为显示器设置默认配置"
 
-#: ../capplets/display/xrandr-capplet.c:2417
+#: ../capplets/display/xrandr-capplet.c:2419
 msgid "Could not get screen information"
 msgstr "无法获得屏幕信息"
 
@@ -1757,7 +1752,7 @@ msgstr "加速键类型。"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:133
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 #: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "禁用"
@@ -1842,21 +1837,21 @@ msgstr "要编辑快捷键，请双击相应的行，然后输入新按键组合
 msgid "Assign shortcut keys to commands"
 msgstr "为命令指定快捷键"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:208
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
+#: ../capplets/keyboard/mate-keyboard-properties.c:207
+#: ../capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "应用设置并退出 (仅为兼容，现在已由守护进程处理)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr "以显示的打字间隔设置启动页面"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "以显示的辅助功能设置启动页面"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:229
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- MATE 键盘首选项"
 
@@ -1867,7 +1862,7 @@ msgstr "键盘辅助功能音频反馈"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:372
+#: ../capplets/windows/mate-window-properties.c:379
 msgid "General"
 msgstr "通用选项"
 
@@ -2226,24 +2221,24 @@ msgstr "键盘"
 msgid "Set your keyboard preferences"
 msgstr "设置键盘首选项"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Left button"
 msgstr "左键"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Middle button"
 msgstr "中键"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Right button"
 msgstr "右键"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: ../capplets/mouse/mate-mouse-properties.c:424
 msgid "Specify the name of the page to show (general)"
 msgstr "指定要显示的页面名称 (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:434
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE 鼠标首选项"
 
@@ -2462,12 +2457,12 @@ msgstr "Metacity 首选项"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Compositing Manager"
 msgstr "混成管理器"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:395
+#: ../capplets/windows/mate-window-properties.c:402
 msgid "Enable software _compositing window manager"
 msgstr "启用软件混成窗口管理器"
 
@@ -2476,135 +2471,135 @@ msgid "The current window manager is unsupported"
 msgstr "不支持当前的窗口管理器"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:354
+#: ../capplets/windows/mate-window-properties.c:350
 msgid "Window Preferences"
 msgstr "窗口首选项"
 
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:384
 msgid "Behaviour"
 msgstr "行为"
 
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Placement"
 msgstr "位置"
 
-#: ../capplets/windows/mate-window-properties.c:396
+#: ../capplets/windows/mate-window-properties.c:403
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "禁止按下Alt-Tab时显示缩略图"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:404
+#: ../capplets/windows/mate-window-properties.c:411
 msgid "Titlebar Buttons"
 msgstr "标题栏按钮"
 
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "Position:"
 msgstr "位置："
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:422
 msgid "New Windows"
 msgstr "新建窗口"
 
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Center _new windows"
 msgstr "新建窗口居中:(_N)"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:431
 msgid "Window Snapping"
 msgstr "窗口吸附"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:435
 msgid "Enable window _tiling"
 msgstr "启用窗口平铺(_T)"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:433
+#: ../capplets/windows/mate-window-properties.c:440
 msgid "Window Selection"
 msgstr "窗口选择"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Select windows when the mouse moves over them"
 msgstr "鼠标移动到窗口之上时选中该窗口(_S)"
 
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "鼠标离开窗口时取消窗口选中(_N)"
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Raise selected windows after an interval"
 msgstr "一段间隔后提升选中窗口(_R)"
 
-#: ../capplets/windows/mate-window-properties.c:457
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "_Interval before raising:"
 msgstr "提升前延时(_I)："
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "seconds"
 msgstr "秒"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:479
 msgid "Titlebar Action"
 msgstr "标题栏动作"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:483
 msgid "_Double-click titlebar to perform this action:"
 msgstr "双击标题栏执行此操作(_D)："
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:484
+#: ../capplets/windows/mate-window-properties.c:491
 msgid "Movement Key"
 msgstr "移动按键"
 
-#: ../capplets/windows/mate-window-properties.c:490
+#: ../capplets/windows/mate-window-properties.c:497
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "要移动窗口，按住此键然后拖曳窗口："
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:517
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "卷起"
 
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "水平最大化"
 
-#: ../capplets/windows/mate-window-properties.c:513
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "垂直最大化"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "最小化"
 
-#: ../capplets/windows/mate-window-properties.c:515
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "无"
 
-#: ../capplets/windows/mate-window-properties.c:716
+#: ../capplets/windows/mate-window-properties.c:723
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:722
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (或“Windows 标志”)"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: ../capplets/windows/mate-window-properties.c:743
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2616,75 +2611,75 @@ msgstr "窗口"
 msgid "Set your window properties"
 msgstr "设定您的窗口属性"
 
-#: ../capplets/time-admin/src/main.c:120
+#: ../capplets/time-admin/src/main.c:105
 msgid "Time and Date Manager"
 msgstr "时间和日期管理"
 
-#: ../capplets/time-admin/src/main.c:161 ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
 msgid "open file"
 msgstr "打开文件"
 
-#: ../capplets/time-admin/src/main.c:161
+#: ../capplets/time-admin/src/main.c:133
 msgid "Create pid file failed"
 msgstr "创建pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write file"
 msgstr "写pid文件"
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write pid file failed"
 msgstr "写入pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:175
 msgid "open pid file failed"
 msgstr "打开pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read file"
 msgstr "读pid文件"
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read pid file failed"
 msgstr "读pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:233
+#: ../capplets/time-admin/src/main.c:205
 #, c-format
 msgctxt "timezone loc"
 msgid "%s"
 msgstr "%s"
 
-#: ../capplets/time-admin/src/main.c:251
+#: ../capplets/time-admin/src/main.c:221
 msgid "Time Zone:"
 msgstr "时区:"
 
-#: ../capplets/time-admin/src/main.c:267
+#: ../capplets/time-admin/src/main.c:236
 msgid "Ntp Sync:"
 msgstr "Ntp 同步:"
 
-#: ../capplets/time-admin/src/main.c:318
+#: ../capplets/time-admin/src/main.c:287
 #: ../capplets/time-admin/src/time-tool.c:280
 msgid "Set Time"
 msgstr "设置时间"
 
-#: ../capplets/time-admin/src/main.c:355
+#: ../capplets/time-admin/src/main.c:322
 msgid "Set Date"
 msgstr "设置日期"
 
-#: ../capplets/time-admin/src/main.c:366
-#: ../capplets/time-admin/src/time-zone.c:441
-msgid "Close"
-msgstr "关闭"
+#: ../capplets/time-admin/src/main.c:333
+#: ../capplets/time-admin/src/time-zone.c:449
+msgid "_Close"
+msgstr "关闭(_C)"
 
-#: ../capplets/time-admin/src/main.c:375
-msgid "Save"
-msgstr "保存"
+#: ../capplets/time-admin/src/main.c:355
+msgid "_Save"
+msgstr "保存(_S)"
 
-#: ../capplets/time-admin/src/main.c:414
+#: ../capplets/time-admin/src/main.c:398
 msgid "g_bus_get_sync"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:427
+#: ../capplets/time-admin/src/main.c:411
 msgid "g_bus_proxy_new"
 msgstr ""
 
@@ -2705,37 +2700,37 @@ msgstr "设置 Ntp 同步"
 msgid "NTP synchronization has been started, the modification is invalid"
 msgstr "NTP 同步已启动，修改无效"
 
-#: ../capplets/time-admin/src/time-share.c:149
+#: ../capplets/time-admin/src/time-share.c:118
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr "已设置网络时间同步。 已禁用手动设置时间/日期。"
 
-#: ../capplets/time-admin/src/time-zone.c:255
+#: ../capplets/time-admin/src/time-zone.c:264
 #, c-format
 msgctxt "timezone loc"
 msgid "%s, %s"
 msgstr "%s %s"
 
-#: ../capplets/time-admin/src/time-zone.c:282
+#: ../capplets/time-admin/src/time-zone.c:291
 msgid "UTC%:::z"
 msgstr "UTC%:::z"
 
-#: ../capplets/time-admin/src/time-zone.c:287
+#: ../capplets/time-admin/src/time-zone.c:296
 msgid "%R"
 msgstr "%R"
 
-#: ../capplets/time-admin/src/time-zone.c:351
+#: ../capplets/time-admin/src/time-zone.c:360
 msgid "Time Zone"
 msgstr "时区"
 
-#: ../capplets/time-admin/src/time-zone.c:433
+#: ../capplets/time-admin/src/time-zone.c:440
 msgid "Time Zone Selection"
 msgstr "时区选择"
 
-#: ../capplets/time-admin/src/time-zone.c:446
-msgid "Confirm"
-msgstr "确认"
+#: ../capplets/time-admin/src/time-zone.c:457
+msgid "Con_firm"
+msgstr ""
 
 #. * This program is free software: you can redistribute it and/or modify
 #. * it under the terms of the GNU General Public License as published by
@@ -4654,7 +4649,7 @@ msgstr "字体查看器"
 msgid "View fonts on your system"
 msgstr "在您的系统上查看字体"
 
-#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1187
+#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
 msgid "Search"
 msgstr "查找"
 
@@ -4725,31 +4720,31 @@ msgstr "从启动程序中删除"
 msgid "Add to Startup Programs"
 msgstr "添加到启动程序"
 
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "新建电子表格"
 
-#: ../libslab/bookmark-agent.c:1081
+#: ../libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "新建文档"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "主目录"
 
-#: ../libslab/bookmark-agent.c:1142
+#: ../libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "文档"
 
-#: ../libslab/bookmark-agent.c:1148
+#: ../libslab/bookmark-agent.c:1153
 msgid "Desktop"
 msgstr "桌面"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "文件系统"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "网络服务器"

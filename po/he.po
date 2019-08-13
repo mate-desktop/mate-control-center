@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# shy tzedaka <shaytzedaka123@gmail.com>, 2018
 # בר בוכובזה <bokovzabox@gmail.com>, 2018
 # Dave Save <davesave@gmail.com>, 2018
 # Edward Sawyer <saoded@gmail.com>, 2018
@@ -12,14 +11,15 @@
 # Martin Wimpress <code@flexion.org>, 2018
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
 # Stefano Karapetsas <stefano@karapetsas.com>, 2019
+# shy tzedaka <shaytzedaka123@gmail.com>, 2019
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 11:51+0200\n"
+"POT-Creation-Date: 2019-07-18 15:57+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2019\n"
 "Language-Team: Hebrew (https://www.transifex.com/mate/teams/13566/he/)\n"
@@ -583,8 +583,8 @@ msgstr ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:818
-#: ../capplets/mouse/mate-mouse-properties.c:430
+#: ../capplets/default-applications/mate-da-capplet.c:822
+#: ../capplets/mouse/mate-mouse-properties.c:425
 msgid "page"
 msgstr "page"
 
@@ -823,7 +823,7 @@ msgstr "שמירת תמונת ה_רקע"
 
 #: ../capplets/appearance/data/appearance.ui.h:44
 msgid "Save _notification theme"
-msgstr ""
+msgstr "שמירת ערכת ה_תרעות"
 
 #: ../capplets/appearance/data/appearance.ui.h:45
 #: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
@@ -1107,6 +1107,10 @@ msgid ""
 "Folder: %s\n"
 "Artist: %s"
 msgstr ""
+"<b>%s</b>\n"
+"%s\n"
+"תיקייה: %s\n"
+"אמן: %s"
 
 #: ../capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1146,7 +1150,7 @@ msgstr ""
 #: ../capplets/appearance/theme-installer.c:375
 #, c-format
 msgid "The theme \"%s\" already exists."
-msgstr ""
+msgstr "ערכת העיצוב „%s” כבר קיימת."
 
 #: ../capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
@@ -1246,11 +1250,6 @@ msgid ""
 msgstr ""
 "לא ניתן להפעיל את מנהל ההגדרות 'mate-settings-daemon'.\n"
 "בלי שמנהל ההגדרות של MATE פועל, חלק מההעדפות לא יכולות לפעול. מצב זה יכול להצביע על בעיה עם DBus או על מנהל הגדרות שאינו MATE (לדוגמה KDE) הנמצא בשימוש ועלול להתנגש עם מנהל ההגדרות של MATE."
-
-#: ../capplets/common/capplet-stock-icons.c:66
-#, c-format
-msgid "Unable to load stock icon '%s'\n"
-msgstr "לא ניתן לטעון את האיקון '%s'\n"
 
 #: ../capplets/common/capplet-util.c:82
 #, c-format
@@ -1378,12 +1377,12 @@ msgid "Please make sure that the applet is properly installed"
 msgstr "נא לוודא שהיישומון מותקן כראוי"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:817
+#: ../capplets/default-applications/mate-da-capplet.c:821
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Specify the name of the page to show (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:823
+#: ../capplets/default-applications/mate-da-capplet.c:827
 msgid "- MATE Default Applications"
 msgstr "- יישומי בררת המחדל של MATE"
 
@@ -1490,20 +1489,20 @@ msgid "Accessibility"
 msgstr "נגישות"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:304
-#: ../capplets/display/xrandr-capplet.c:343
+#: ../capplets/display/xrandr-capplet.c:306
+#: ../capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "רגיל"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:305
-#: ../capplets/windows/mate-window-properties.c:504
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Left"
 msgstr "שמאלה"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/windows/mate-window-properties.c:503
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:510
 msgid "Right"
 msgstr "ימינה"
 
@@ -1576,7 +1575,7 @@ msgid "R_otation:"
 msgstr "סי_בוב:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:493
+#: ../capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "Monitor"
 
@@ -1689,11 +1688,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "נדרש אימות כדי להתקין הגדרות ריבוי צגים לכול המשתמשים"
 
-#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "היפוך"
 
-#: ../capplets/display/xrandr-capplet.c:349
+#: ../capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d הרץ"
@@ -1702,53 +1701,53 @@ msgstr "%d הרץ"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:482
-#: ../capplets/display/xrandr-capplet.c:1630
+#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:1632
 #, c-format
 msgid "Mirror Screens"
 msgstr "תצוגת מראה בצגים"
 
-#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "צג: %s"
 
-#: ../capplets/display/xrandr-capplet.c:554
+#: ../capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1486
+#: ../capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "יש לבחור צג לשינוי מאפייניו; ניתן לגרור כדי לשנות את המיקום."
 
-#: ../capplets/display/xrandr-capplet.c:2079
+#: ../capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "לא ניתן לשמור את תצורת הצג"
 
-#: ../capplets/display/xrandr-capplet.c:2100
+#: ../capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr "לא ניתן לאחזר את אפיק ההפעלה בעת החלת תצורת התצוגה"
 
-#: ../capplets/display/xrandr-capplet.c:2119
+#: ../capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "לא ניתן לזהות את הצגים"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "The monitor configuration has been saved"
 msgstr "תצורת הצג נשמרה"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2331
 msgid "This configuration will be used the next time someone logs in."
 msgstr "תצורה זו תשמש את המשתמש הבא שיכנס למערכת."
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2340
 msgid "Could not set the default configuration for monitors"
 msgstr "לא ניתן להגדיר את תצורת בררת המחדל עבור הצגים"
 
-#: ../capplets/display/xrandr-capplet.c:2417
+#: ../capplets/display/xrandr-capplet.c:2419
 msgid "Could not get screen information"
 msgstr "לא ניתן לאחזר את נתוני הצג"
 
@@ -1781,7 +1780,7 @@ msgstr "סוג הקיצור."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:133
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 #: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "מכובה"
@@ -1868,21 +1867,21 @@ msgstr ""
 msgid "Assign shortcut keys to commands"
 msgstr "שייך מקשי קיצור לפקודות"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:208
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
+#: ../capplets/keyboard/mate-keyboard-properties.c:207
+#: ../capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "רק החל הגדרות וצא (תאימות בלבד; עכשיו מנוהל על־ידי תהליך שירות)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr "התחלת העמוד עם הצגת הגדרות הפסקת הקלדה"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "התחלת העמוד עם הצגת הגדרות נגישות"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:229
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- העדפות מקלדת של MATE"
 
@@ -1893,7 +1892,7 @@ msgstr "משוב קולי לנגישות מקלדת"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:372
+#: ../capplets/windows/mate-window-properties.c:379
 msgid "General"
 msgstr "כללי"
 
@@ -2254,24 +2253,24 @@ msgstr "מקלדת"
 msgid "Set your keyboard preferences"
 msgstr "הגדרת העדפות המקלדת שלך"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Left button"
 msgstr "כפתור שמאלי"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Middle button"
 msgstr "כפתור אמצעי"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Right button"
 msgstr "כפתור ימני"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: ../capplets/mouse/mate-mouse-properties.c:424
 msgid "Specify the name of the page to show (general)"
 msgstr "נא לציין את שם העמוד להצגה (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:434
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "- MATE Mouse Preferences"
 msgstr "- העדפות עכבר של MATE"
 
@@ -2490,12 +2489,12 @@ msgstr "העדפות Metacity"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Compositing Manager"
 msgstr "מנהל תפעול חלונות"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:395
+#: ../capplets/windows/mate-window-properties.c:402
 msgid "Enable software _compositing window manager"
 msgstr "הפעלת מנהל חלונות המתפעל _חלונות תכנתית"
 
@@ -2504,135 +2503,135 @@ msgid "The current window manager is unsupported"
 msgstr "מנהל החלונות הנוכחי אינו נתמך"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:354
+#: ../capplets/windows/mate-window-properties.c:350
 msgid "Window Preferences"
 msgstr "העדפות חלון"
 
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:384
 msgid "Behaviour"
 msgstr "התנהגות"
 
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Placement"
 msgstr "העמדה"
 
-#: ../capplets/windows/mate-window-properties.c:396
+#: ../capplets/windows/mate-window-properties.c:403
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "ביטול התמונות הממו_זערות ב־Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:404
+#: ../capplets/windows/mate-window-properties.c:411
 msgid "Titlebar Buttons"
 msgstr "כפתורי שורת כותרת"
 
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "Position:"
 msgstr "מיקום:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:422
 msgid "New Windows"
 msgstr "חלונות חדשים"
 
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Center _new windows"
 msgstr "מרכוז _חלונות חדשים"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:431
 msgid "Window Snapping"
 msgstr "הצמדת חלונות"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:435
 msgid "Enable window _tiling"
 msgstr "הפעלת _ריצוף חלונות"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:433
+#: ../capplets/windows/mate-window-properties.c:440
 msgid "Window Selection"
 msgstr "בחירת חלונות"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Select windows when the mouse moves over them"
 msgstr "_בחירת חלונות כאשר הסמן זז מעליהם"
 
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "ביטול ב_חירת חלונות בעת עזיבת סמן העכבר"
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Raise selected windows after an interval"
 msgstr "ה_עלאת חלונות נבחרים לאחר השהייה זו"
 
-#: ../capplets/windows/mate-window-properties.c:457
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "_Interval before raising:"
 msgstr "ה_שהייה לפני העלאה:"
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "seconds"
 msgstr "שניות"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:479
 msgid "Titlebar Action"
 msgstr "פעולת שורת הכותרת"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:483
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_לחיצה כפולה על הכותרת לביצוע פעולה זו:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:484
+#: ../capplets/windows/mate-window-properties.c:491
 msgid "Movement Key"
 msgstr "מקש תזוזה"
 
-#: ../capplets/windows/mate-window-properties.c:490
+#: ../capplets/windows/mate-window-properties.c:497
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "כדי להזיז חלון, יש ללחוץ ולהחזיק מקש זה ואז לגרור את החלון:"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:517
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "גלילה מעלה"
 
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "הגדלה"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "הגדלה אופקית"
 
-#: ../capplets/windows/mate-window-properties.c:513
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "הגדלה אנכית"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "מזעור"
 
-#: ../capplets/windows/mate-window-properties.c:515
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "ללא"
 
-#: ../capplets/windows/mate-window-properties.c:716
+#: ../capplets/windows/mate-window-properties.c:723
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:722
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "H_yper"
 msgstr "ה_יפר"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "S_uper (or \"Windows logo\")"
 msgstr "_סופר (או \"סמל Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: ../capplets/windows/mate-window-properties.c:743
 msgid "_Meta"
 msgstr "מ_טא"
 
@@ -2644,75 +2643,75 @@ msgstr "חלונות"
 msgid "Set your window properties"
 msgstr "הגדרת מאפייני חלונות"
 
-#: ../capplets/time-admin/src/main.c:120
+#: ../capplets/time-admin/src/main.c:105
 msgid "Time and Date Manager"
 msgstr "מנהל שעה ותאריך"
 
-#: ../capplets/time-admin/src/main.c:161 ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
 msgid "open file"
 msgstr "פתיחת קובץ"
 
-#: ../capplets/time-admin/src/main.c:161
+#: ../capplets/time-admin/src/main.c:133
 msgid "Create pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write file"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:175
 msgid "open pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read file"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:233
+#: ../capplets/time-admin/src/main.c:205
 #, c-format
 msgctxt "timezone loc"
 msgid "%s"
 msgstr "%s"
 
-#: ../capplets/time-admin/src/main.c:251
+#: ../capplets/time-admin/src/main.c:221
 msgid "Time Zone:"
-msgstr ""
+msgstr "אזור זמן:"
 
-#: ../capplets/time-admin/src/main.c:267
+#: ../capplets/time-admin/src/main.c:236
 msgid "Ntp Sync:"
 msgstr "סנכרון NTP:"
 
-#: ../capplets/time-admin/src/main.c:318
+#: ../capplets/time-admin/src/main.c:287
 #: ../capplets/time-admin/src/time-tool.c:280
 msgid "Set Time"
 msgstr "הגדרת שעה:"
 
-#: ../capplets/time-admin/src/main.c:355
+#: ../capplets/time-admin/src/main.c:322
 msgid "Set Date"
 msgstr "הגדרת תאריך"
 
-#: ../capplets/time-admin/src/main.c:366
-#: ../capplets/time-admin/src/time-zone.c:441
-msgid "Close"
-msgstr "סגירה"
+#: ../capplets/time-admin/src/main.c:333
+#: ../capplets/time-admin/src/time-zone.c:449
+msgid "_Close"
+msgstr "_סגור"
 
-#: ../capplets/time-admin/src/main.c:375
-msgid "Save"
-msgstr "שמירה"
+#: ../capplets/time-admin/src/main.c:355
+msgid "_Save"
+msgstr "_שמור"
 
-#: ../capplets/time-admin/src/main.c:414
+#: ../capplets/time-admin/src/main.c:398
 msgid "g_bus_get_sync"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:427
+#: ../capplets/time-admin/src/main.c:411
 msgid "g_bus_proxy_new"
 msgstr ""
 
@@ -2733,37 +2732,37 @@ msgstr "הגדרת סנכרון NTP"
 msgid "NTP synchronization has been started, the modification is invalid"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-share.c:149
+#: ../capplets/time-admin/src/time-share.c:118
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zone.c:255
+#: ../capplets/time-admin/src/time-zone.c:264
 #, c-format
 msgctxt "timezone loc"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../capplets/time-admin/src/time-zone.c:282
+#: ../capplets/time-admin/src/time-zone.c:291
 msgid "UTC%:::z"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zone.c:287
+#: ../capplets/time-admin/src/time-zone.c:296
 msgid "%R"
-msgstr ""
+msgstr "%R"
 
-#: ../capplets/time-admin/src/time-zone.c:351
+#: ../capplets/time-admin/src/time-zone.c:360
 msgid "Time Zone"
 msgstr "אזור זמן"
 
-#: ../capplets/time-admin/src/time-zone.c:433
+#: ../capplets/time-admin/src/time-zone.c:440
 msgid "Time Zone Selection"
 msgstr "בחירת אזור זמן"
 
-#: ../capplets/time-admin/src/time-zone.c:446
-msgid "Confirm"
-msgstr "אישור"
+#: ../capplets/time-admin/src/time-zone.c:457
+msgid "Con_firm"
+msgstr "_אישור"
 
 #. * This program is free software: you can redistribute it and/or modify
 #. * it under the terms of the GNU General Public License as published by
@@ -2889,7 +2888,7 @@ msgstr "אפריקה/יוהנסבורג"
 
 #: ../capplets/time-admin/src/time-zones.h:52
 msgid "Africa/Juba"
-msgstr ""
+msgstr "אפריקה/ג׳ובה"
 
 #: ../capplets/time-admin/src/time-zones.h:53
 msgid "Africa/Kampala"
@@ -3045,7 +3044,7 @@ msgstr "אמריקה/ארגנטינה/ריו-גייגוס"
 
 #: ../capplets/time-admin/src/time-zones.h:91
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "אמריקה/ארגנטינה/סלטה"
 
 #: ../capplets/time-admin/src/time-zones.h:92
 msgid "America/Argentina/San_Juan"
@@ -3053,7 +3052,7 @@ msgstr "אמריקה/ארגנטינה/סן-חואן"
 
 #: ../capplets/time-admin/src/time-zones.h:93
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "אמריקה/ארגנטינה/סן-לואיס"
 
 #: ../capplets/time-admin/src/time-zones.h:94
 msgid "America/Argentina/Tucuman"
@@ -3081,7 +3080,7 @@ msgstr "אמריקה/בהיה"
 
 #: ../capplets/time-admin/src/time-zones.h:100
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "אמריקה/באהיה-בנדרס"
 
 #: ../capplets/time-admin/src/time-zones.h:101
 msgid "America/Barbados"
@@ -3149,7 +3148,7 @@ msgstr "אמריקה/קוסטה-ריקה"
 
 #: ../capplets/time-admin/src/time-zones.h:117
 msgid "America/Creston"
-msgstr ""
+msgstr "אמריקה/קרסטון"
 
 #: ../capplets/time-admin/src/time-zones.h:118
 msgid "America/Cuiaba"
@@ -3201,7 +3200,7 @@ msgstr "אמריקה/פורטלסה"
 
 #: ../capplets/time-admin/src/time-zones.h:130
 msgid "America/Fort_Nelson"
-msgstr ""
+msgstr "אמריקה/פורט-נלסון"
 
 #: ../capplets/time-admin/src/time-zones.h:131
 msgid "America/Glace_Bay"
@@ -3309,7 +3308,7 @@ msgstr "אמריקה/קנטקי/מונטיסלו"
 
 #: ../capplets/time-admin/src/time-zones.h:157
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "אמריקה/קרלנדייק"
 
 #: ../capplets/time-admin/src/time-zones.h:158
 msgid "America/La_Paz"
@@ -3325,7 +3324,7 @@ msgstr "אמריקה/לוס-אנג'לס"
 
 #: ../capplets/time-admin/src/time-zones.h:161
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "America/פרינס-התחתון"
 
 #: ../capplets/time-admin/src/time-zones.h:162
 msgid "America/Maceio"
@@ -3349,7 +3348,7 @@ msgstr "אמריקה/מרטיניק"
 
 #: ../capplets/time-admin/src/time-zones.h:167
 msgid "America/Matamoros"
-msgstr ""
+msgstr "אמריקה/מטמורוס"
 
 #: ../capplets/time-admin/src/time-zones.h:168
 msgid "America/Mazatlan"
@@ -3365,7 +3364,7 @@ msgstr "אמריקה/מרידה"
 
 #: ../capplets/time-admin/src/time-zones.h:171
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "אמריקה/מטלקטלה"
 
 #: ../capplets/time-admin/src/time-zones.h:172
 msgid "America/Mexico_City"
@@ -3413,7 +3412,7 @@ msgstr "אמריקה/נורונהה"
 
 #: ../capplets/time-admin/src/time-zones.h:183
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "אמריקה/דקוטה-הצפונית/ביולה"
 
 #: ../capplets/time-admin/src/time-zones.h:184
 msgid "America/North_Dakota/Center"
@@ -3461,7 +3460,7 @@ msgstr "אמריקה/פוארטו-ריקו"
 
 #: ../capplets/time-admin/src/time-zones.h:195
 msgid "America/Punta_Arenas"
-msgstr ""
+msgstr "אמריקה/פונטה-ארנס"
 
 #: ../capplets/time-admin/src/time-zones.h:196
 msgid "America/Rainy_River"
@@ -3489,7 +3488,7 @@ msgstr "אמריקה/ריו-ברנקו"
 
 #: ../capplets/time-admin/src/time-zones.h:202
 msgid "America/Santarem"
-msgstr ""
+msgstr "אמריקה/סנטארם"
 
 #: ../capplets/time-admin/src/time-zones.h:203
 msgid "America/Santiago"
@@ -3509,7 +3508,7 @@ msgstr "אמריקה/סקורסבייסונד"
 
 #: ../capplets/time-admin/src/time-zones.h:207
 msgid "America/Sitka"
-msgstr ""
+msgstr "אמריקה/סיטקה"
 
 #: ../capplets/time-admin/src/time-zones.h:208
 msgid "America/St_Barthelemy"
@@ -3597,7 +3596,7 @@ msgstr "אנטרקטיקה/דומונטדורוויל"
 
 #: ../capplets/time-admin/src/time-zones.h:229
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "אנטארקטיקה/מקוורי"
 
 #: ../capplets/time-admin/src/time-zones.h:230
 msgid "Antarctica/Mawson"
@@ -3621,7 +3620,7 @@ msgstr "אנטרקטיקה/סיווה"
 
 #: ../capplets/time-admin/src/time-zones.h:235
 msgid "Antarctica/Troll"
-msgstr ""
+msgstr "אנטרקטיקה/טרול"
 
 #: ../capplets/time-admin/src/time-zones.h:236
 msgid "Antarctica/Vostok"
@@ -4249,7 +4248,7 @@ msgstr "אירופה/טירנה"
 
 #: ../capplets/time-admin/src/time-zones.h:392
 msgid "Europe/Ulyanovsk"
-msgstr ""
+msgstr "אירופה/אוליאנובסק"
 
 #: ../capplets/time-admin/src/time-zones.h:393
 msgid "Europe/Uzhgorod"
@@ -4345,7 +4344,7 @@ msgstr "האוקיינוס-השקט/אוקלנד"
 
 #: ../capplets/time-admin/src/time-zones.h:416
 msgid "Pacific/Bougainville"
-msgstr ""
+msgstr "האוקיינוס-השקט/בוגנוויל"
 
 #: ../capplets/time-admin/src/time-zones.h:417
 msgid "Pacific/Chatham"
@@ -4353,7 +4352,7 @@ msgstr "האוקיינוס-השקט/צ'תם"
 
 #: ../capplets/time-admin/src/time-zones.h:418
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "האוקיינוס-השקט/צ׳וק"
 
 #: ../capplets/time-admin/src/time-zones.h:419
 msgid "Pacific/Easter"
@@ -4453,7 +4452,7 @@ msgstr "האוקיינוס-השקט/פיטקרן"
 
 #: ../capplets/time-admin/src/time-zones.h:443
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "האוקיינוס-השקט/פונפיי"
 
 #: ../capplets/time-admin/src/time-zones.h:444
 msgid "Pacific/Port_Moresby"
@@ -4677,7 +4676,7 @@ msgstr "מציג גופנים"
 msgid "View fonts on your system"
 msgstr "הצגת הגופנים שבמערכת שלך"
 
-#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1187
+#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
 msgid "Search"
 msgstr "חיפוש"
 
@@ -4748,31 +4747,31 @@ msgstr "הסרה מתכניות אתחול"
 msgid "Add to Startup Programs"
 msgstr "הוספה לתכניות אתחול"
 
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "גיליון אלקטרוני חדש"
 
-#: ../libslab/bookmark-agent.c:1081
+#: ../libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "מסמך חדש"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "תיקית הבית"
 
-#: ../libslab/bookmark-agent.c:1142
+#: ../libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "מסמכים"
 
-#: ../libslab/bookmark-agent.c:1148
+#: ../libslab/bookmark-agent.c:1153
 msgid "Desktop"
 msgstr "שולחן העבודה"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "מערכת קבצים"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "שרתי רשת"

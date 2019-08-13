@@ -16,23 +16,23 @@
 # elio <micta2003@hotmail.com>, 2018
 # ebray187 <ebray187@gmail.com>, 2018
 # Benjamin Perez Carrillo <benperezc@gmail.com>, 2018
-# Emiliano Fascetti, 2018
 # Martin Wimpress <code@flexion.org>, 2018
 # David García-Abad <dgarciabad@gmail.com>, 2018
-# Joel Barrios <darkshram@gmail.com>, 2018
 # Rodrigo Lledó <rodhos92@gmail.com>, 2019
-# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
 # Toni Estévez <toni.estevez@gmail.com>, 2019
+# Stefano Karapetsas <stefano@karapetsas.com>, 2019
+# Emiliano Fascetti, 2019
+# Joel Barrios <darkshram@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 11:51+0200\n"
+"POT-Creation-Date: 2019-07-18 15:57+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2019\n"
+"Last-Translator: Joel Barrios <darkshram@gmail.com>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/mate/teams/13566/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -615,8 +615,8 @@ msgstr ""
 "(theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:818
-#: ../capplets/mouse/mate-mouse-properties.c:430
+#: ../capplets/default-applications/mate-da-capplet.c:822
+#: ../capplets/mouse/mate-mouse-properties.c:425
 msgid "page"
 msgstr "página"
 
@@ -1287,11 +1287,6 @@ msgstr ""
 "No se puede iniciar el gestor de ajustes «mate-settings-daemon».\n"
 "Si el gestor de ajustes de MATE no se está ejecutando, es posible que algunas de las preferencias no surtan efecto. Esto puede ser el síntoma de un problema con DBus o que un gestor de ajustes que no es de MATE (por ejemplo KDE) ya esté activo y en conflicto con el gestor de ajustes de MATE."
 
-#: ../capplets/common/capplet-stock-icons.c:66
-#, c-format
-msgid "Unable to load stock icon '%s'\n"
-msgstr "No se puede cargar el icono predeterminado «%s»\n"
-
 #: ../capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -1423,13 +1418,13 @@ msgid "Please make sure that the applet is properly installed"
 msgstr "Asegúrese de que la miniaplicación está instalada correctamente"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:817
+#: ../capplets/default-applications/mate-da-capplet.c:821
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Especifique el nombre de la página para mostrar "
 "(internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:823
+#: ../capplets/default-applications/mate-da-capplet.c:827
 msgid "- MATE Default Applications"
 msgstr "- Aplicaciones predeterminadas de MATE"
 
@@ -1536,20 +1531,20 @@ msgid "Accessibility"
 msgstr "Accesibilidad"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:304
-#: ../capplets/display/xrandr-capplet.c:343
+#: ../capplets/display/xrandr-capplet.c:306
+#: ../capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:305
-#: ../capplets/windows/mate-window-properties.c:504
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Left"
 msgstr "Izquierda"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/windows/mate-window-properties.c:503
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:510
 msgid "Right"
 msgstr "Derecha"
 
@@ -1623,7 +1618,7 @@ msgid "R_otation:"
 msgstr "R_otación:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:493
+#: ../capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "Monitor"
 
@@ -1738,11 +1733,11 @@ msgstr ""
 "Se requiere autenticación para instalar los ajustes multimonitor para todos "
 "los usuarios"
 
-#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "Hacia abajo"
 
-#: ../capplets/display/xrandr-capplet.c:349
+#: ../capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1751,57 +1746,57 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:482
-#: ../capplets/display/xrandr-capplet.c:1630
+#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:1632
 #, c-format
 msgid "Mirror Screens"
 msgstr "Duplicar pantallas"
 
-#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "Monitor: %s"
 
-#: ../capplets/display/xrandr-capplet.c:554
+#: ../capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d × %d"
 
-#: ../capplets/display/xrandr-capplet.c:1486
+#: ../capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr ""
 "Seleccionar un monitor para cambiar sus propiedades; arrastrarlo lo reubica."
 
-#: ../capplets/display/xrandr-capplet.c:2079
+#: ../capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "No se ha podido guardar la configuración del monitor"
 
-#: ../capplets/display/xrandr-capplet.c:2100
+#: ../capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
 "No se ha podido obtener el bus de sesión al aplicar la configuración de la "
 "pantalla"
 
-#: ../capplets/display/xrandr-capplet.c:2119
+#: ../capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "No se han podido detectar las pantallas"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "The monitor configuration has been saved"
 msgstr "Se guardó la configuración del monitor"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2331
 msgid "This configuration will be used the next time someone logs in."
 msgstr "La próxima vez que alguien inicie sesión se usará esta configuración"
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2340
 msgid "Could not set the default configuration for monitors"
 msgstr ""
 "No se ha podido establecer la configuración predeterminada de los monitores"
 
-#: ../capplets/display/xrandr-capplet.c:2417
+#: ../capplets/display/xrandr-capplet.c:2419
 msgid "Could not get screen information"
 msgstr "No se ha podido obtener la información de la pantalla"
 
@@ -1834,7 +1829,7 @@ msgstr "El tipo de acceso rápido."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:133
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 #: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Desconectado"
@@ -1922,23 +1917,23 @@ msgstr ""
 msgid "Assign shortcut keys to commands"
 msgstr "Asignar teclas de atajo a órdenes"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:208
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
+#: ../capplets/keyboard/mate-keyboard-properties.c:207
+#: ../capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Tan solo aplicar los ajustes y salir (solo por compatibilidad; gestionado "
 "ahora por un servicio)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr "Iniciar la página mostrando los ajustes de descanso de la escritura"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "Iniciar la página mostrando los ajustes de accesibilidad"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:229
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- Preferencias del teclado de MATE"
 
@@ -1949,7 +1944,7 @@ msgstr "Comentarios sobre los sonidos de accesibilidad del teclado"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:372
+#: ../capplets/windows/mate-window-properties.c:379
 msgid "General"
 msgstr "General"
 
@@ -2318,24 +2313,24 @@ msgstr "Teclado"
 msgid "Set your keyboard preferences"
 msgstr "Configure las preferencias del teclado"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Left button"
 msgstr "Botón izquierdo"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Middle button"
 msgstr "Botón central"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Right button"
 msgstr "Botón derecho"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: ../capplets/mouse/mate-mouse-properties.c:424
 msgid "Specify the name of the page to show (general)"
 msgstr "Especifique el nombre de la página para mostrar (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:434
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferencias del ratón de MATE"
 
@@ -2561,12 +2556,12 @@ msgstr "Preferencias de Metacity"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Compositing Manager"
 msgstr "Gestor de composición"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:395
+#: ../capplets/windows/mate-window-properties.c:402
 msgid "Enable software _compositing window manager"
 msgstr "Activar  gestor de ventanas de composición por software"
 
@@ -2575,139 +2570,139 @@ msgid "The current window manager is unsupported"
 msgstr "El actual gestor de ventanas no es compatible"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:354
+#: ../capplets/windows/mate-window-properties.c:350
 msgid "Window Preferences"
 msgstr "Preferencias de las ventanas"
 
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:384
 msgid "Behaviour"
 msgstr "Comportamiento"
 
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Placement"
 msgstr "Ubicación"
 
-#: ../capplets/windows/mate-window-properties.c:396
+#: ../capplets/windows/mate-window-properties.c:403
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Desactivar las minia_turas en la ventana ermergente Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:404
+#: ../capplets/windows/mate-window-properties.c:411
 msgid "Titlebar Buttons"
 msgstr "Botones de la barra de título"
 
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "Position:"
 msgstr "Posición:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:422
 msgid "New Windows"
 msgstr "Ventanas nuevas"
 
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Center _new windows"
 msgstr "Centrar _ventanas nuevas"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:431
 msgid "Window Snapping"
 msgstr "Ajuste de ventanas"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:435
 msgid "Enable window _tiling"
 msgstr "Activar posicionamien_to de ventanas lado a lado"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:433
+#: ../capplets/windows/mate-window-properties.c:440
 msgid "Window Selection"
 msgstr "Selección de ventana"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Seleccionar las ventanas cuando el ratón se mueve sobre ellas"
 
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "De_seleccionar las ventanas cuando el ratón las deja"
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Raise selected windows after an interval"
 msgstr "_Elevar las ventanas seleccionadas tras un intervalo"
 
-#: ../capplets/windows/mate-window-properties.c:457
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "_Interval before raising:"
 msgstr "_Intervalo antes de elevar:"
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "seconds"
 msgstr "segundos"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:479
 msgid "Titlebar Action"
 msgstr "Acciones de la barra de título"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:483
 msgid "_Double-click titlebar to perform this action:"
 msgstr ""
 "Haga _doble clic en la barra del título de la ventana para realizar esta "
 "acción:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:484
+#: ../capplets/windows/mate-window-properties.c:491
 msgid "Movement Key"
 msgstr "Tecla de movimiento"
 
-#: ../capplets/windows/mate-window-properties.c:490
+#: ../capplets/windows/mate-window-properties.c:497
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 "Para mover una ventana, mantenga pulsada esta tecla y luego agarre la "
 "ventana:"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:517
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Enrollar"
 
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximizar horizontalmente"
 
-#: ../capplets/windows/mate-window-properties.c:513
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximizar verticalmente"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: ../capplets/windows/mate-window-properties.c:515
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Ninguno"
 
-#: ../capplets/windows/mate-window-properties.c:716
+#: ../capplets/windows/mate-window-properties.c:723
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:722
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "H_yper"
 msgstr "_Hiper"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "S_uper (or \"Windows logo\")"
 msgstr "_Super (o «Logo de Windows»)"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: ../capplets/windows/mate-window-properties.c:743
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2719,75 +2714,75 @@ msgstr "Ventanas"
 msgid "Set your window properties"
 msgstr "Configure las propiedades de las ventanas"
 
-#: ../capplets/time-admin/src/main.c:120
+#: ../capplets/time-admin/src/main.c:105
 msgid "Time and Date Manager"
 msgstr "Gestor de la hora y la fecha"
 
-#: ../capplets/time-admin/src/main.c:161 ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
 msgid "open file"
 msgstr "abrir archivo"
 
-#: ../capplets/time-admin/src/main.c:161
+#: ../capplets/time-admin/src/main.c:133
 msgid "Create pid file failed"
 msgstr "No se ha podido crear el archivo pid"
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write file"
 msgstr "escribir el archivo"
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write pid file failed"
 msgstr "no se ha podido escribir el archivo pid"
 
-#: ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:175
 msgid "open pid file failed"
 msgstr "no se ha podido abrir el archivo pid"
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read file"
 msgstr "leer el archivo"
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read pid file failed"
 msgstr "No se ha podido leer el archivo pid"
 
-#: ../capplets/time-admin/src/main.c:233
+#: ../capplets/time-admin/src/main.c:205
 #, c-format
 msgctxt "timezone loc"
 msgid "%s"
 msgstr "%s"
 
-#: ../capplets/time-admin/src/main.c:251
+#: ../capplets/time-admin/src/main.c:221
 msgid "Time Zone:"
 msgstr "Zona horaria:"
 
-#: ../capplets/time-admin/src/main.c:267
+#: ../capplets/time-admin/src/main.c:236
 msgid "Ntp Sync:"
 msgstr "Sincronizar NTP:"
 
-#: ../capplets/time-admin/src/main.c:318
+#: ../capplets/time-admin/src/main.c:287
 #: ../capplets/time-admin/src/time-tool.c:280
 msgid "Set Time"
 msgstr "Configurar la hora"
 
-#: ../capplets/time-admin/src/main.c:355
+#: ../capplets/time-admin/src/main.c:322
 msgid "Set Date"
 msgstr "Configurar la fecha"
 
-#: ../capplets/time-admin/src/main.c:366
-#: ../capplets/time-admin/src/time-zone.c:441
-msgid "Close"
-msgstr "Cerrar"
+#: ../capplets/time-admin/src/main.c:333
+#: ../capplets/time-admin/src/time-zone.c:449
+msgid "_Close"
+msgstr "_Cerrar"
 
-#: ../capplets/time-admin/src/main.c:375
-msgid "Save"
-msgstr "Guardar"
+#: ../capplets/time-admin/src/main.c:355
+msgid "_Save"
+msgstr "_Guardar"
 
-#: ../capplets/time-admin/src/main.c:414
+#: ../capplets/time-admin/src/main.c:398
 msgid "g_bus_get_sync"
 msgstr "g_bus_get_sync"
 
-#: ../capplets/time-admin/src/main.c:427
+#: ../capplets/time-admin/src/main.c:411
 msgid "g_bus_proxy_new"
 msgstr "g_bus_proxy_new"
 
@@ -2808,7 +2803,7 @@ msgstr "Configurar la sincronización NTP"
 msgid "NTP synchronization has been started, the modification is invalid"
 msgstr "Se ha iniciado la sincronización NTP. No es válida la modificación."
 
-#: ../capplets/time-admin/src/time-share.c:149
+#: ../capplets/time-admin/src/time-share.c:118
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
@@ -2816,31 +2811,31 @@ msgstr ""
 "Se ha configurado la sincronización de la hora a través de la red. La "
 "configuración manual de la hora y la fecha está desactivada."
 
-#: ../capplets/time-admin/src/time-zone.c:255
+#: ../capplets/time-admin/src/time-zone.c:264
 #, c-format
 msgctxt "timezone loc"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../capplets/time-admin/src/time-zone.c:282
+#: ../capplets/time-admin/src/time-zone.c:291
 msgid "UTC%:::z"
 msgstr "UTC%:::z"
 
-#: ../capplets/time-admin/src/time-zone.c:287
+#: ../capplets/time-admin/src/time-zone.c:296
 msgid "%R"
 msgstr "%R"
 
-#: ../capplets/time-admin/src/time-zone.c:351
+#: ../capplets/time-admin/src/time-zone.c:360
 msgid "Time Zone"
 msgstr "Zona horaria"
 
-#: ../capplets/time-admin/src/time-zone.c:433
+#: ../capplets/time-admin/src/time-zone.c:440
 msgid "Time Zone Selection"
 msgstr "Selección de la zona horaria"
 
-#: ../capplets/time-admin/src/time-zone.c:446
-msgid "Confirm"
-msgstr "Confirmar"
+#: ../capplets/time-admin/src/time-zone.c:457
+msgid "Con_firm"
+msgstr "Con_firmar"
 
 #. * This program is free software: you can redistribute it and/or modify
 #. * it under the terms of the GNU General Public License as published by
@@ -4761,7 +4756,7 @@ msgstr "Visor de tipografías"
 msgid "View fonts on your system"
 msgstr "Ver las fuentes en su sistema"
 
-#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1187
+#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
 msgid "Search"
 msgstr "Buscar"
 
@@ -4832,31 +4827,31 @@ msgstr "Quitar de los programas al inicio"
 msgid "Add to Startup Programs"
 msgstr "Añadir a los programas al inicio"
 
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "Hoja de cálculo nueva"
 
-#: ../libslab/bookmark-agent.c:1081
+#: ../libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "Documento nuevo"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Carpeta personal"
 
-#: ../libslab/bookmark-agent.c:1142
+#: ../libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "Documentos"
 
-#: ../libslab/bookmark-agent.c:1148
+#: ../libslab/bookmark-agent.c:1153
 msgid "Desktop"
 msgstr "Escritorio"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "Sistema de archivos"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "Servidores de red"

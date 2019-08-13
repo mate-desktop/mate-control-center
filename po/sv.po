@@ -8,23 +8,23 @@
 # 8385e6e60a22e18cd347a1f6e4685fb9, 2018
 # Kristoffer Grundström <hamnisdude@gmail.com>, 2018
 # Henrik Mattsson-Mårn <h@reglage.net>, 2018
-# Gaius Anderson, 2018
+# Patrik Nilsson <asavartzeth@gmail.com>, 2018
 # Claes-Göran Nydahl <goldug@gmail.com>, 2018
 # Martin Wimpress <code@flexion.org>, 2018
 # Tobias Lekare <lekare@linux.com>, 2018
 # Philip Andersen <renegadevi@codeofmagi.net>, 2019
-# Patrik Nilsson <asavartzeth@gmail.com>, 2019
-# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
+# Stefano Karapetsas <stefano@karapetsas.com>, 2019
+# Gaius Anderson, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 11:51+0200\n"
+"POT-Creation-Date: 2019-07-18 15:57+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019\n"
+"Last-Translator: Gaius Anderson, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/mate/teams/13566/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -591,8 +591,8 @@ msgid ""
 msgstr "Ange namnet på sidan som ska visas (theme|background|fonts|interface)"
 
 #: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:818
-#: ../capplets/mouse/mate-mouse-properties.c:430
+#: ../capplets/default-applications/mate-da-capplet.c:822
+#: ../capplets/mouse/mate-mouse-properties.c:425
 msgid "page"
 msgstr "sida"
 
@@ -1260,11 +1260,6 @@ msgstr ""
 "Kan inte starta inställningshanteraren \"mate-settings-daemon\".\n"
 "Om inte MATE-inställningshanteraren körs så kan en del inställningar inte aktiveras. Detta kan tyda på ett problem med DBus eller att en inställningshanterare från något annat än MATE (t.ex. KDE) redan kör och är i konflikt med MATE-inställningshanteraren."
 
-#: ../capplets/common/capplet-stock-icons.c:66
-#, c-format
-msgid "Unable to load stock icon '%s'\n"
-msgstr "Kunde inte läsa in standardikon \"%s\"\n"
-
 #: ../capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -1396,11 +1391,11 @@ msgid "Please make sure that the applet is properly installed"
 msgstr "Se till att panelprogrammet är korrekt installerat"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:817
+#: ../capplets/default-applications/mate-da-capplet.c:821
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Ange namnet på sidan som ska visas (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:823
+#: ../capplets/default-applications/mate-da-capplet.c:827
 msgid "- MATE Default Applications"
 msgstr "- MATE-standardprogram"
 
@@ -1507,20 +1502,20 @@ msgid "Accessibility"
 msgstr "Hjälpmedel"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:304
-#: ../capplets/display/xrandr-capplet.c:343
+#: ../capplets/display/xrandr-capplet.c:306
+#: ../capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:305
-#: ../capplets/windows/mate-window-properties.c:504
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Left"
 msgstr "Vänster"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/windows/mate-window-properties.c:503
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:510
 msgid "Right"
 msgstr "Höger"
 
@@ -1594,7 +1589,7 @@ msgid "R_otation:"
 msgstr "R_otation:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:493
+#: ../capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "Monitor"
 
@@ -1709,11 +1704,11 @@ msgstr ""
 "Autentisering krävs för att installera inställningar för flera skärmar för "
 "alla användare"
 
-#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "Upp och ned"
 
-#: ../capplets/display/xrandr-capplet.c:349
+#: ../capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1722,23 +1717,23 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:482
-#: ../capplets/display/xrandr-capplet.c:1630
+#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:1632
 #, c-format
 msgid "Mirror Screens"
 msgstr "Spegla skärmar"
 
-#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "Skärm: %s"
 
-#: ../capplets/display/xrandr-capplet.c:554
+#: ../capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1486
+#: ../capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1746,33 +1741,33 @@ msgstr ""
 "Välj en skärm för att ändra dess egenskaper; dra den för att ändra dess "
 "placering."
 
-#: ../capplets/display/xrandr-capplet.c:2079
+#: ../capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "Kunde inte spara skärmkonfigurationen"
 
-#: ../capplets/display/xrandr-capplet.c:2100
+#: ../capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
 "Kunde inte få tag på sessionsbussen under verkställning av "
 "skärmkonfigurationen"
 
-#: ../capplets/display/xrandr-capplet.c:2119
+#: ../capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "Kunde inte detektera display"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "The monitor configuration has been saved"
 msgstr "Skärmkonfigurationen har sparats"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2331
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Denna konfiguration kommer att användas nästa gång någon loggar in."
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2340
 msgid "Could not set the default configuration for monitors"
 msgstr "Kunde inte ställa in standardkonfiguration för skärmar"
 
-#: ../capplets/display/xrandr-capplet.c:2417
+#: ../capplets/display/xrandr-capplet.c:2419
 msgid "Could not get screen information"
 msgstr "Kunde inte få tag på skärminformation"
 
@@ -1805,7 +1800,7 @@ msgstr "Typen av snabbtangent."
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
 #: ../capplets/keybindings/mate-keybinding-properties.c:133
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 #: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Inaktiverad"
@@ -1894,23 +1889,23 @@ msgstr ""
 msgid "Assign shortcut keys to commands"
 msgstr "Associera snabbtangenter med kommandon"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:208
-#: ../capplets/keyboard/mate-keyboard-properties.c:213
+#: ../capplets/keyboard/mate-keyboard-properties.c:207
+#: ../capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Verkställ bara ändringar och avsluta (endast för kompatibilitet; hanteras nu"
 " av demon)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:218
+#: ../capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr "Starta sidan utan att inställningarna för skrivandepaus visas"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:223
+#: ../capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "Starta sidan med visade hjälpmedelsinställningar"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:229
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- Tangentbordsinställningar för MATE"
 
@@ -1921,7 +1916,7 @@ msgstr "Ljudåterkoppling för tangentbordshjälpmedel"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:372
+#: ../capplets/windows/mate-window-properties.c:379
 msgid "General"
 msgstr "Allmänt"
 
@@ -2284,24 +2279,24 @@ msgstr "Tangentbord"
 msgid "Set your keyboard preferences"
 msgstr "Ställ in dina tangentbordsinställningar"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Left button"
 msgstr "Vänster knapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Middle button"
 msgstr "Mittenknapp"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:329
 msgid "Right button"
 msgstr "Höger knapp"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: ../capplets/mouse/mate-mouse-properties.c:424
 msgid "Specify the name of the page to show (general)"
 msgstr "Ange namnet på sidan som ska visas (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:434
+#: ../capplets/mouse/mate-mouse-properties.c:429
 msgid "- MATE Mouse Preferences"
 msgstr "- Musinställningar för MATE"
 
@@ -2522,12 +2517,12 @@ msgstr "Inställningar för Metacity "
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Compositing Manager"
 msgstr "Kompositeringshanterare"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:395
+#: ../capplets/windows/mate-window-properties.c:402
 msgid "Enable software _compositing window manager"
 msgstr "Aktivera mjukvarubaserad _kompositerande fönsterhanterare"
 
@@ -2536,137 +2531,137 @@ msgid "The current window manager is unsupported"
 msgstr "Ingen support för vald fönsterhanterare"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:354
+#: ../capplets/windows/mate-window-properties.c:350
 msgid "Window Preferences"
 msgstr "Fönsterinställningar"
 
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:384
 msgid "Behaviour"
 msgstr "Beteende"
 
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Placement"
 msgstr "Placering"
 
-#: ../capplets/windows/mate-window-properties.c:396
+#: ../capplets/windows/mate-window-properties.c:403
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Avaktivera _miniatyrer i Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:404
+#: ../capplets/windows/mate-window-properties.c:411
 msgid "Titlebar Buttons"
 msgstr "Titellistknappar"
 
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "Position:"
 msgstr "Position:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:422
 msgid "New Windows"
 msgstr "Nya fönster"
 
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Center _new windows"
 msgstr "Centrera _nya fönster"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:431
 msgid "Window Snapping"
 msgstr "Fönstersnäpp"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:435
 msgid "Enable window _tiling"
 msgstr "Aktivera fönsterkakling"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:433
+#: ../capplets/windows/mate-window-properties.c:440
 msgid "Window Selection"
 msgstr "Fönstermarkering"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Markera fönster när muspekaren rör sig över dem"
 
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "Avmarkera fönster när muspekaren lämna dem"
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Raise selected windows after an interval"
 msgstr "_Höj markerade fönster efter en fördröjning"
 
-#: ../capplets/windows/mate-window-properties.c:457
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "_Interval before raising:"
 msgstr "_Fördröjning innan upphöjning:"
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "seconds"
 msgstr "sekunder"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:479
 msgid "Titlebar Action"
 msgstr "Titelliståtgärd"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:483
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Dubbelklicka på titelraden för att utföra denna åtgärd:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:484
+#: ../capplets/windows/mate-window-properties.c:491
 msgid "Movement Key"
 msgstr "Förflyttningstangent"
 
-#: ../capplets/windows/mate-window-properties.c:490
+#: ../capplets/windows/mate-window-properties.c:497
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 "För att flytta ett fönster trycker du på och håller ned denna tangent och "
 "tar sedan tag i fönstret:"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:517
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Rulla upp"
 
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximera"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximera horisontellt"
 
-#: ../capplets/windows/mate-window-properties.c:513
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximera vertikalt"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimera"
 
-#: ../capplets/windows/mate-window-properties.c:515
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Ingen"
 
-#: ../capplets/windows/mate-window-properties.c:716
+#: ../capplets/windows/mate-window-properties.c:723
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:722
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (eller \"Windows-logotypen\")"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: ../capplets/windows/mate-window-properties.c:743
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2678,75 +2673,75 @@ msgstr "Fönster"
 msgid "Set your window properties"
 msgstr "Ställ in dina fönsteregenskaper"
 
-#: ../capplets/time-admin/src/main.c:120
+#: ../capplets/time-admin/src/main.c:105
 msgid "Time and Date Manager"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:161 ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
 msgid "open file"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:161
+#: ../capplets/time-admin/src/main.c:133
 msgid "Create pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write file"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:170
+#: ../capplets/time-admin/src/main.c:142
 msgid "write pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:203
+#: ../capplets/time-admin/src/main.c:175
 msgid "open pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read file"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:208
+#: ../capplets/time-admin/src/main.c:180
 msgid "read pid file failed"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:233
+#: ../capplets/time-admin/src/main.c:205
 #, c-format
 msgctxt "timezone loc"
 msgid "%s"
 msgstr "%s"
 
-#: ../capplets/time-admin/src/main.c:251
+#: ../capplets/time-admin/src/main.c:221
 msgid "Time Zone:"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:267
+#: ../capplets/time-admin/src/main.c:236
 msgid "Ntp Sync:"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:318
+#: ../capplets/time-admin/src/main.c:287
 #: ../capplets/time-admin/src/time-tool.c:280
 msgid "Set Time"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:355
+#: ../capplets/time-admin/src/main.c:322
 msgid "Set Date"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:366
-#: ../capplets/time-admin/src/time-zone.c:441
-msgid "Close"
-msgstr "Stäng"
+#: ../capplets/time-admin/src/main.c:333
+#: ../capplets/time-admin/src/time-zone.c:449
+msgid "_Close"
+msgstr "_Stäng"
 
-#: ../capplets/time-admin/src/main.c:375
-msgid "Save"
-msgstr "Spara"
+#: ../capplets/time-admin/src/main.c:355
+msgid "_Save"
+msgstr "_Spara"
 
-#: ../capplets/time-admin/src/main.c:414
+#: ../capplets/time-admin/src/main.c:398
 msgid "g_bus_get_sync"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:427
+#: ../capplets/time-admin/src/main.c:411
 msgid "g_bus_proxy_new"
 msgstr ""
 
@@ -2767,37 +2762,37 @@ msgstr ""
 msgid "NTP synchronization has been started, the modification is invalid"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-share.c:149
+#: ../capplets/time-admin/src/time-share.c:118
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zone.c:255
+#: ../capplets/time-admin/src/time-zone.c:264
 #, c-format
 msgctxt "timezone loc"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../capplets/time-admin/src/time-zone.c:282
+#: ../capplets/time-admin/src/time-zone.c:291
 msgid "UTC%:::z"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zone.c:287
+#: ../capplets/time-admin/src/time-zone.c:296
 msgid "%R"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zone.c:351
+#: ../capplets/time-admin/src/time-zone.c:360
 msgid "Time Zone"
 msgstr "Tidszon"
 
-#: ../capplets/time-admin/src/time-zone.c:433
+#: ../capplets/time-admin/src/time-zone.c:440
 msgid "Time Zone Selection"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zone.c:446
-msgid "Confirm"
-msgstr "Bekräfta"
+#: ../capplets/time-admin/src/time-zone.c:457
+msgid "Con_firm"
+msgstr ""
 
 #. * This program is free software: you can redistribute it and/or modify
 #. * it under the terms of the GNU General Public License as published by
@@ -4712,7 +4707,7 @@ msgstr "Typsnittsvisare"
 msgid "View fonts on your system"
 msgstr "Visa typsnitt på ditt system"
 
-#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1187
+#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
 msgid "Search"
 msgstr "Sök"
 
@@ -4783,31 +4778,31 @@ msgstr "Ta bort från uppstartsprogram"
 msgid "Add to Startup Programs"
 msgstr "Lägg till i uppstartsprogram"
 
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "Nytt kalkylblad"
 
-#: ../libslab/bookmark-agent.c:1081
+#: ../libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "Nytt dokument"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Hem"
 
-#: ../libslab/bookmark-agent.c:1142
+#: ../libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "Dokument"
 
-#: ../libslab/bookmark-agent.c:1148
+#: ../libslab/bookmark-agent.c:1153
 msgid "Desktop"
 msgstr "Skrivbord"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "Nätverksservrar"
