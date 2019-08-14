@@ -56,7 +56,7 @@
                     <property name="row_spacing">6</property>
                     <property name="column_spacing">12</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="a11y-switch-label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
@@ -69,6 +69,9 @@
                     </child>
                     <child>
                       <object class="GtkSwitch" id="switch1">
+                        <accessibility>
+                          <relation type="labelled-by" target="a11y-switch-label"/>
+                        </accessibility>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
@@ -114,6 +117,10 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="button1">
+                            <accessibility>
+                              <action action_name="click" translatable="yes">Click the button to edit time zone.</action>
+                              <relation target="entry1" type="labelled-by"/>
+                            </accessibility>
                             <property name="label">gtk-edit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -324,6 +331,9 @@
             </child>
             <child>
               <object class="GtkButton" id="button2">
+                <accessibility>
+                  <action action_name="click" translatable="yes">Click to save the specified date and time.</action>
+                </accessibility>
                 <property name="label">gtk-save</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
