@@ -142,19 +142,32 @@ static void InitMainWindow(TimeAdmin *ta)
     gtk_lock_button_set_permission(GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
     g_signal_connect(ta->Permission, "notify", G_CALLBACK (on_permission_changed), ta);
 
-    struct tm *LocalTime = GetCurrentTime();
-    ta->UpdateTimeId     = 0;
-    ta->ApplyId          = 0;
-    Update_Clock_Start(ta);
+    /* NTP sync switch */
+    ta->NtpState = GetNtpState(ta);
+    gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch), ta->NtpState);
+
+    /* Time zone */
     SetupTimezoneDialog(ta);
     const char *TimeZone = GetTimeZone(ta);
     char       *ZoneName = translate(TimeZone);
     gtk_entry_set_text (GTK_ENTRY (ta->TimeZoneEntry), ZoneName);
     g_free (ZoneName);
-    ta->NtpState = GetNtpState(ta);
-    gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch), ta->NtpState);
+
+    /* Local time & date */
+    /* time */
+    struct tm *LocalTime = GetCurrentTime();
+    ta->UpdateTimeId     = 0;
+    ta->ApplyId          = 0;
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(ta->HourSpin),LocalTime->tm_hour);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(ta->MinuteSpin),LocalTime->tm_min);
+    char *str = g_strdup_printf ("%02d", LocalTime->tm_sec);
+    gtk_entry_set_text(GTK_ENTRY(ta->SecondSpin),str);
+    g_free (str);
+    /* date */
     gtk_calendar_mark_day (GTK_CALENDAR(ta->Calendar), LocalTime->tm_mday);
     ta->OldDay = LocalTime->tm_mday;
+
+    Update_Clock_Start(ta);
 }
 
 static int RecordPid(void)
