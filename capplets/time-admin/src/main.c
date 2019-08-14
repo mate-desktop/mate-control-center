@@ -90,7 +90,7 @@ static void UpdatePermission(TimeAdmin *ta)
     is_authorized = g_permission_get_allowed (G_PERMISSION (ta->Permission));
     gtk_widget_set_sensitive(ta->TimeZoneButton, is_authorized);
     gtk_widget_set_sensitive(ta->NtpSyncSwitch,  is_authorized);
-    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized);
+    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized && !ta->NtpState);
 }
 
 static void on_permission_changed (GPermission *permission,
