@@ -158,14 +158,9 @@ static void InitMainWindow(TimeAdmin *ta)
     struct tm *LocalTime = GetCurrentTime();
     ta->UpdateTimeId     = 0;
     ta->ApplyId          = 0;
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(ta->HourSpin),LocalTime->tm_hour);
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(ta->MinuteSpin),LocalTime->tm_min);
-    char *str = g_strdup_printf ("%02d", LocalTime->tm_sec);
-    gtk_entry_set_text(GTK_ENTRY(ta->SecondSpin),str);
-    g_free (str);
+    ta_refresh_time (ta, LocalTime);
     /* date */
-    gtk_calendar_mark_day (GTK_CALENDAR(ta->Calendar), LocalTime->tm_mday);
-    ta->OldDay = LocalTime->tm_mday;
+    ta_refresh_date (ta, LocalTime);
 
     Update_Clock_Start(ta);
 }

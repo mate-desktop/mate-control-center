@@ -22,6 +22,12 @@
 struct tm    *GetCurrentTime    (void);
 void          Update_Clock_Start(TimeAdmin   *ta);
 
+void          ta_refresh_time   (TimeAdmin   *ta,
+                                 struct tm   *LocalTime);
+
+void          ta_refresh_date   (TimeAdmin   *ta,
+                                 struct tm   *LocalTime);
+
 void          Update_Clock_Stop (TimeAdmin   *ta);
 
 gboolean      ChangeNtpSync     (GtkSwitch   *widget,
