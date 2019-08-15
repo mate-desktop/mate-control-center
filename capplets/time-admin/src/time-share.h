@@ -54,7 +54,6 @@ typedef struct
     GtkWidget        *SaveButton;
     int               UpdateTimeId;
     int               ApplyId;
-    int               OldDay;
     gboolean          NtpState;
     GDBusConnection  *Connection;
     GDBusProxy       *proxy;
