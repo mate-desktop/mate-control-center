@@ -196,6 +196,7 @@ void SetTimeZone(GDBusProxy *proxy,const char *zone)
     if(ret == NULL)
     {
         ErrorMessage (_("Set time zone"), error->message);
+        g_error_free (error);
     }
 }
 
