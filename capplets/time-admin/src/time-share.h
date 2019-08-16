@@ -33,13 +33,6 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-#define ERROR      1
-#define WARING     2
-#define INFOR      3
-#define QUESTION   4
-#define QUESTIONNORMAL   5
-
-
 int TimeoutFlag;
 typedef struct
 {
@@ -70,9 +63,8 @@ typedef struct
 
 }TimeAdmin;
 
-int          MessageReport               (const char  *Title,
-                                          const char  *Msg,
-                                          int          nType);
+int          ErrorMessage                (const char  *Title,
+                                          const char  *Msg);
 
 void         QuitApp                     (TimeAdmin   *ta);
 
