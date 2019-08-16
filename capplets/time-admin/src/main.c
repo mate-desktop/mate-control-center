@@ -36,6 +36,18 @@ static char *translate(const char *value)
     return name;
 }
 
+static void
+QuitApp (TimeAdmin *ta)
+{
+    if (ta->UpdateTimeId > 0)
+        g_source_remove (ta->UpdateTimeId);
+
+    if (ta->ApplyId > 0)
+        g_source_remove (ta->ApplyId);
+
+    gtk_main_quit ();
+}
+
 static gboolean CheckClockHealth(gpointer data)
 {
     TimeAdmin *ta = (TimeAdmin *)data;

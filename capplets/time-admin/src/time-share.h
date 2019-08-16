@@ -74,8 +74,6 @@ int          MessageReport               (const char  *Title,
                                           const char  *Msg,
                                           int          nType);
 
-void         QuitApp                     (TimeAdmin   *ta);
-
 void         SetTooltip                  (GtkWidget   *box,
                                           gboolean     mode);
 #endif
