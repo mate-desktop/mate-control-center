@@ -132,7 +132,7 @@ gboolean GetNtpState(TimeAdmin *ta)
     return g_variant_get_boolean (ntp);
 
 EXIT:
-    MessageReport(_("GetNtpState"),error->message,ERROR);
+    ErrorMessage (_("GetNtpState"), error->message);
     g_error_free(error);
     return FALSE;
 
@@ -195,7 +195,7 @@ void SetTimeZone(GDBusProxy *proxy,const char *zone)
 
     if(ret == NULL)
     {
-        MessageReport(_("Set time zone"),error->message,ERROR);
+        ErrorMessage (_("Set time zone"), error->message);
     }
 }
 
@@ -226,7 +226,7 @@ gboolean ChangeNtpSync (GtkSwitch *widget, gboolean state, gpointer data)
 
     if (ret == NULL)
     {
-        MessageReport(_("Set Ntp sync"),error->message,ERROR);
+        ErrorMessage (_("Set Ntp sync"), error->message);
         g_error_free(error);
         return TRUE;
     }
@@ -273,7 +273,7 @@ SetTime (GDBusProxy *proxy, gint64 TimeSec)
 
     if(ret == NULL)
     {
-        MessageReport(_("Set Ntp sync"),error->message,ERROR);
+        ErrorMessage (_("Set Ntp sync"), error->message);
         g_error_free(error);
         return FALSE;
     }

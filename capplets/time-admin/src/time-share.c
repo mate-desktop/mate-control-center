@@ -21,82 +21,23 @@
 #include "time-share.h"
 #include <glib/gi18n.h>
 
-/******************************************************************************
- * Function:            MessageReport
- *
- * Explain: Prompt information dialog
- *
- * Input:  @Title           Message title
- *         @Msg             Message content
- *         @nType           Message type
- * Output:
- *
- * Author:  zhuyaliang  25/05/2018
- ******************************************************************************/
-int MessageReport(const char *Title,
-                  const char *Msg,
-                  int         nType)
+int ErrorMessage (const char *Title,
+                  const char *Msg)
 {
-    GtkWidget *dialog = NULL;
     int nRet;
+    GtkWidget *dialog;
 
-    switch(nType)
-    {
-        case ERROR:
-        {
-            dialog = gtk_message_dialog_new(NULL,
-                                            GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_ERROR,
-                                            GTK_BUTTONS_OK,
-                                            "%s", Title);
-            break;
-        }
-        case WARING:
-        {
-            dialog = gtk_message_dialog_new(NULL,
-                                            GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_WARNING,
-                                            GTK_BUTTONS_OK,
-                                            "%s", Title);
-            break;
-        }
-        case INFOR:
-        {
-            dialog = gtk_message_dialog_new(NULL,
-                                            GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_INFO,
-                                            GTK_BUTTONS_OK,
-                                            "%s", Title);
-            break;
-        }
-        case QUESTION:
-        {
-            dialog = gtk_message_dialog_new(NULL,
-                                            GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_QUESTION,
-                                            GTK_BUTTONS_YES_NO,
-                                            "%s", Title);
-            gtk_dialog_add_button (GTK_DIALOG (dialog),("_Return"),
-                                   GTK_RESPONSE_ACCEPT);
-            break;
-        }
-        case QUESTIONNORMAL:
-        {
-            dialog = gtk_message_dialog_new(NULL,
-                                            GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_QUESTION,
-                                            GTK_BUTTONS_YES_NO,
-                                            "%s", Title);
-            break;
-        }
-        default :
-            break;
+    dialog = gtk_message_dialog_new (NULL,
+                                     GTK_DIALOG_MODAL,
+                                     GTK_MESSAGE_ERROR,
+                                     GTK_BUTTONS_OK,
+                                     "%s", Title);
 
-    }
-    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
+    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
                                               "%s", Msg);
-    nRet =  gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
+
+    nRet =  gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
 
     return nRet;
 }

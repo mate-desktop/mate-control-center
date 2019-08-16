@@ -175,7 +175,7 @@ static int RecordPid(void)
     fd = open(LOCKFILE,O_WRONLY|O_CREAT|O_TRUNC,0777);
     if(fd < 0)
     {
-         MessageReport(_("open file"),_("Create pid file failed"),ERROR);
+         ErrorMessage (_("open file"), _("Create pid file failed"));
          return -1;
     }
     chmod(LOCKFILE,0777);
@@ -184,7 +184,7 @@ static int RecordPid(void)
     Length = write(fd,WriteBuf,strlen(WriteBuf));
     if(Length <= 0 )
     {
-        MessageReport(_("write file"),_("write pid file failed"),ERROR);
+        ErrorMessage (_("write file"), _("write pid file failed"));
         return -1;
     }
     close(fd);
@@ -218,12 +218,12 @@ static gboolean ProcessRuning(void)
         fd = open(LOCKFILE,O_RDONLY);
         if(fd < 0)
         {
-             MessageReport(_("open file"),_("open pid file failed"),ERROR);
+             ErrorMessage (_("open file"), _("open pid file failed"));
              return TRUE;
         }
         if(read(fd,ReadBuf,sizeof(ReadBuf)) <= 0)
         {
-             MessageReport(_("read file"),_("read pid file failed"),ERROR);
+             ErrorMessage (_("read file"), _("read pid file failed"));
              goto ERROREXIT;
         }
         pid = atoi(ReadBuf);
@@ -249,7 +249,7 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
     ta->Connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
     if(ta->Connection == NULL)
     {
-        MessageReport(_("g_bus_get_sync"),error->message,ERROR);
+        ErrorMessage (_("g_bus_get_sync"), error->message);
         goto EXIT;
     }
     ta->proxy = g_dbus_proxy_new_sync (ta->Connection,
@@ -262,7 +262,7 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
                                       &error);
     if(ta->proxy == NULL)
     {
-        MessageReport(_("g_bus_proxy_new"),error->message,ERROR);
+        ErrorMessage (_("g_bus_proxy_new"), error->message);
         goto EXIT;
     }
 
