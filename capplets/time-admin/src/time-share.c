@@ -42,17 +42,6 @@ int ErrorMessage (const char *Title,
     return nRet;
 }
 
-void QuitApp(TimeAdmin *ta)
-{
-    if(ta->UpdateTimeId > 0)
-        g_source_remove (ta->UpdateTimeId);
-
-    if(ta->ApplyId > 0)
-        g_source_remove(ta->ApplyId);
-
-    gtk_main_quit();
-}
-
 void SetTooltip(GtkWidget *box, gboolean mode)
 {
     gchar *text = mode ? NULL : _("Network time synchronization has been set up. Manual time/date setting is disabled.");

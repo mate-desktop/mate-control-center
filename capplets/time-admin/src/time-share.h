@@ -66,8 +66,6 @@ typedef struct
 int          ErrorMessage                (const char  *Title,
                                           const char  *Msg);
 
-void         QuitApp                     (TimeAdmin   *ta);
-
 void         SetTooltip                  (GtkWidget   *box,
                                           gboolean     mode);
 #endif
