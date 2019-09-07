@@ -36,7 +36,7 @@
 #include <string.h>
 #include <sys/wait.h>
 
-#if __sun
+#ifdef __sun
 #include <sys/types.h>
 #include <signal.h>
 #endif
