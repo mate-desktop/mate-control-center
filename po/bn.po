@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Martin Wimpress <code@flexion.org>, 2019
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
 # Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 16:14+0100\n"
+"POT-Creation-Date: 2019-08-13 13:52+0200\n"
 "PO-Revision-Date: 2019-03-13 12:48+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2019\n"
 "Language-Team: Bengali (https://www.transifex.com/mate/teams/13566/bn/)\n"
@@ -134,7 +135,7 @@ msgid "Command associated with a custom keybinding."
 msgstr ""
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:201
+#: ../font-viewer/font-view.c:202
 msgid "Name"
 msgstr "নাম"
 
@@ -156,11 +157,11 @@ msgid "Images"
 msgstr "ছবি"
 
 #: ../capplets/about-me/mate-about-me.c:327
-#: ../capplets/appearance/theme-installer.c:834
+#: ../capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "সব ফাইল"
 
-#: ../capplets/about-me/mate-about-me.c:495
+#: ../capplets/about-me/mate-about-me.c:500
 #, c-format
 msgid "About %s"
 msgstr "%s-এর পরিচিতি"
@@ -251,15 +252,15 @@ msgstr "'%s' ডিভাইস ব্যবহার করতে ব্যর�
 msgid "Could not start finger capture on '%s' device"
 msgstr "'%s' ডিভাইসের মধ্যে আঙ্গুলের ছাপ প্রাপ্ত করতে ব্যর্থ"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:523
+#: ../capplets/about-me/mate-about-me-fingerprint.c:524
 msgid "Could not access any fingerprint readers"
 msgstr "আঙ্গুলের ছাপ পাঠের কোনো ব্যবস্থা প্রয়োগ করা যায়নি"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:524
+#: ../capplets/about-me/mate-about-me-fingerprint.c:525
 msgid "Please contact your system administrator for help."
 msgstr "অনুগ্রহ করে সহায়তার জন্য আপনার সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন।"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:554
+#: ../capplets/about-me/mate-about-me-fingerprint.c:559
 #: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
 msgid "Enable Fingerprint Login"
 msgstr "আঙ্গুলের ছাপ সহযোগে লগ-ইন সক্রিয় করুন"
@@ -269,7 +270,7 @@ msgstr "আঙ্গুলের ছাপ সহযোগে লগ-ইন স�
 #. * "To enable fingerprint login, you need to save one of your fingerprints,
 #. using the
 #. * 'Digital Persona U.are.U 4000/4000B' device."
-#: ../capplets/about-me/mate-about-me-fingerprint.c:584
+#: ../capplets/about-me/mate-about-me-fingerprint.c:589
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -278,11 +279,11 @@ msgstr ""
 "আঙ্গুলের ছাপ সহযোগে লগ-ইন ব্যবস্থা সক্রিয় করার জন্য, '%s' সহযোগে অন্তত একটি "
 "আঙ্গুলের ছাপ সংরক্ষণ করা আবশ্যক।"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:593
+#: ../capplets/about-me/mate-about-me-fingerprint.c:598
 msgid "Swipe finger on reader"
 msgstr "রিডারের উপর আঙ্গুল সোয়াইপ করুন"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:595
+#: ../capplets/about-me/mate-about-me-fingerprint.c:600
 msgid "Place finger on reader"
 msgstr "রিডারের উপর আঙ্গুল রাখুন"
 
@@ -563,33 +564,52 @@ msgstr "ওয়াল-পেপার যোগ করুন"
 msgid "All files"
 msgstr "সব ফাইল"
 
-#: ../capplets/appearance/appearance-main.c:56
+#: ../capplets/appearance/appearance-font.c:612
+msgid "Select Font"
+msgstr ""
+
+#: ../capplets/appearance/appearance-font.c:615
+msgid "_Cancel"
+msgstr "বাতিল (_C)"
+
+#: ../capplets/appearance/appearance-font.c:617
+#: ../capplets/common/theme-thumbnail.c:224
+#: ../capplets/common/theme-thumbnail.c:306
+msgid "_Open"
+msgstr "খুলুন (_O)"
+
+#: ../capplets/appearance/appearance-font.c:622
+#: ../capplets/appearance/data/appearance.ui.h:83
+msgid "Fonts"
+msgstr "ফন্ট"
+
+#: ../capplets/appearance/appearance-main.c:52
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "ব্যবহারকারী ইন্টারফেস ফাইল লোড করা যায় নি: %s"
 
-#: ../capplets/appearance/appearance-main.c:157
+#: ../capplets/appearance/appearance-main.c:153
 msgid "Specify the filename of a theme to install"
 msgstr "ইনস্টল করার জন্য কোন থিম ফাইলের নাম উল্লেখ করুন"
 
-#: ../capplets/appearance/appearance-main.c:158
+#: ../capplets/appearance/appearance-main.c:154
 msgid "filename"
 msgstr "ফাইলের নাম"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:165
+#: ../capplets/appearance/appearance-main.c:161
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr ""
 "প্রদর্শনযোগ্য পৃষ্ঠার নাম চিহ্নিত করুন (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:166
-#: ../capplets/default-applications/mate-da-capplet.c:746
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: ../capplets/appearance/appearance-main.c:162
+#: ../capplets/default-applications/mate-da-capplet.c:822
+#: ../capplets/mouse/mate-mouse-properties.c:443
 msgid "page"
 msgstr "পৃষ্ঠা"
 
-#: ../capplets/appearance/appearance-main.c:173
+#: ../capplets/appearance/appearance-main.c:169
 msgid "[WALLPAPER...]"
 msgstr "[WALLPAPER...]"
 
@@ -600,8 +620,8 @@ msgstr "ডিফল্ট পয়েন্টার"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
-#: ../font-viewer/font-view.c:568
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:298
+#: ../font-viewer/font-view.c:569
 msgid "Install"
 msgstr "ইনস্টল করুন"
 
@@ -662,157 +682,157 @@ msgid "Custom"
 msgstr "স্বনির্ধারিত"
 
 #: ../capplets/appearance/data/appearance.ui.h:1
-msgid "Font Rendering Details"
-msgstr "ফন্ট আঁকার খুঁটিনাটি"
-
-#: ../capplets/appearance/data/appearance.ui.h:2
-msgid "R_esolution"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:3
-msgid "Dots per inch (DPI):"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:4
-msgid "This resets the font DPI to the auto-detected value from Xserver."
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:5
-msgid "Automatic detection:"
-msgstr ""
-
-#: ../capplets/appearance/data/appearance.ui.h:6
-msgid "Smoothing"
-msgstr "মসৃণকরণ"
-
-#: ../capplets/appearance/data/appearance.ui.h:7
-msgid "Gra_yscale"
-msgstr "গ্রে-স্কেল (_y)"
-
-#: ../capplets/appearance/data/appearance.ui.h:8
-msgid "Sub_pixel (LCDs)"
-msgstr "সাবপিক্সেল (LCD) (_p)"
-
-#: ../capplets/appearance/data/appearance.ui.h:9
-msgid "_None"
-msgstr "শূণ্য (_N)"
-
-#. font hinting
-#: ../capplets/appearance/data/appearance.ui.h:11
-msgid "Hinting"
-msgstr "ইঙ্গিতপূর্ণ"
-
-#: ../capplets/appearance/data/appearance.ui.h:12
-msgid "N_one"
-msgstr "শূণ্য (_o)"
-
-#: ../capplets/appearance/data/appearance.ui.h:13
-msgid "_Slight"
-msgstr "স্বল্প (_S)"
-
-#: ../capplets/appearance/data/appearance.ui.h:14
-msgid "_Full"
-msgstr "সম্পূর্ণ (_F)"
-
-#: ../capplets/appearance/data/appearance.ui.h:15
-msgid "_Medium"
-msgstr "মাঝারি (_M)"
-
-#: ../capplets/appearance/data/appearance.ui.h:16
-msgid "Subpixel Order"
-msgstr "সাবপিক্সেলের ধারা "
-
-#. pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:18
-msgid "_RGB"
-msgstr "_RGB"
-
-#. pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:20
-msgid "_BGR"
-msgstr "_BGR"
-
-#. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:22
-msgid "VB_GR"
-msgstr "VB_GR"
-
-#. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:24
-msgid "_VRGB"
-msgstr "_VRGB"
-
-#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "Customize Theme"
 msgstr "স্বনির্ধারিত থিম"
 
-#: ../capplets/appearance/data/appearance.ui.h:26
+#: ../capplets/appearance/data/appearance.ui.h:2
 msgid "Controls"
 msgstr "নিয়ন্ত্রণ"
 
-#: ../capplets/appearance/data/appearance.ui.h:27
+#: ../capplets/appearance/data/appearance.ui.h:3
 msgid "The current controls theme does not support color schemes."
 msgstr "বর্তমান নিয়ন্ত্রণের থিমগুলো দ্বারা রং এর সংকলন সমর্থিত হয় না।"
 
-#: ../capplets/appearance/data/appearance.ui.h:28
+#: ../capplets/appearance/data/appearance.ui.h:4
 msgid "_Tooltips:"
 msgstr "টুল-টিপ (_T):"
 
-#: ../capplets/appearance/data/appearance.ui.h:29
+#: ../capplets/appearance/data/appearance.ui.h:5
 msgid "Text"
 msgstr "লেখা"
 
-#: ../capplets/appearance/data/appearance.ui.h:30
+#: ../capplets/appearance/data/appearance.ui.h:6
 msgid "Background"
 msgstr "পটভূমি"
 
-#: ../capplets/appearance/data/appearance.ui.h:31
+#: ../capplets/appearance/data/appearance.ui.h:7
 msgid "_Selected items:"
 msgstr "নির্বাচিত আইটেম (_S):"
 
-#: ../capplets/appearance/data/appearance.ui.h:32
+#: ../capplets/appearance/data/appearance.ui.h:8
 msgid "_Input boxes:"
 msgstr "ইনপুট বাক্স: (_I)"
 
-#: ../capplets/appearance/data/appearance.ui.h:33
+#: ../capplets/appearance/data/appearance.ui.h:9
 msgid "_Windows:"
 msgstr "উইন্ডোজ (_W):"
 
-#: ../capplets/appearance/data/appearance.ui.h:34
+#: ../capplets/appearance/data/appearance.ui.h:10
 msgid "_Reset to Defaults"
 msgstr "ডিফল্ট মান পুনরায় স্থাপন (_R)"
 
-#: ../capplets/appearance/data/appearance.ui.h:35
+#: ../capplets/appearance/data/appearance.ui.h:11
 msgid "Colors"
 msgstr "রং"
 
-#: ../capplets/appearance/data/appearance.ui.h:36
+#: ../capplets/appearance/data/appearance.ui.h:12
 msgid "Window Border"
 msgstr "উইন্ডোর সীমানা"
 
-#: ../capplets/appearance/data/appearance.ui.h:37
+#: ../capplets/appearance/data/appearance.ui.h:13
 msgid "Icons"
 msgstr "আইকনসমূহ"
 
-#: ../capplets/appearance/data/appearance.ui.h:38
+#: ../capplets/appearance/data/appearance.ui.h:14
 msgid "_Size:"
 msgstr "আকার (_S):"
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: ../capplets/appearance/data/appearance.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
 msgid "Small"
 msgstr "ছোট"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: ../capplets/appearance/data/appearance.ui.h:16
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
 msgid "Large"
 msgstr "বড়"
 
-#: ../capplets/appearance/data/appearance.ui.h:41
+#: ../capplets/appearance/data/appearance.ui.h:17
 msgid "Pointer"
 msgstr "পয়েন্টার"
+
+#: ../capplets/appearance/data/appearance.ui.h:18
+msgid "Font Rendering Details"
+msgstr "ফন্ট আঁকার খুঁটিনাটি"
+
+#: ../capplets/appearance/data/appearance.ui.h:19
+msgid "R_esolution"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:20
+msgid "Dots per inch (DPI):"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:21
+msgid "This resets the font DPI to the auto-detected value from Xserver."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:22
+msgid "Automatic detection:"
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:23
+msgid "Smoothing"
+msgstr "মসৃণকরণ"
+
+#: ../capplets/appearance/data/appearance.ui.h:24
+msgid "Gra_yscale"
+msgstr "গ্রে-স্কেল (_y)"
+
+#: ../capplets/appearance/data/appearance.ui.h:25
+msgid "Sub_pixel (LCDs)"
+msgstr "সাবপিক্সেল (LCD) (_p)"
+
+#: ../capplets/appearance/data/appearance.ui.h:26
+msgid "_None"
+msgstr "শূণ্য (_N)"
+
+#. font hinting
+#: ../capplets/appearance/data/appearance.ui.h:28
+msgid "Hinting"
+msgstr "ইঙ্গিতপূর্ণ"
+
+#: ../capplets/appearance/data/appearance.ui.h:29
+msgid "N_one"
+msgstr "শূণ্য (_o)"
+
+#: ../capplets/appearance/data/appearance.ui.h:30
+msgid "_Slight"
+msgstr "স্বল্প (_S)"
+
+#: ../capplets/appearance/data/appearance.ui.h:31
+msgid "_Full"
+msgstr "সম্পূর্ণ (_F)"
+
+#: ../capplets/appearance/data/appearance.ui.h:32
+msgid "_Medium"
+msgstr "মাঝারি (_M)"
+
+#: ../capplets/appearance/data/appearance.ui.h:33
+msgid "Subpixel Order"
+msgstr "সাবপিক্সেলের ধারা "
+
+#. pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:35
+msgid "_RGB"
+msgstr "_RGB"
+
+#. pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:37
+msgid "_BGR"
+msgstr "_BGR"
+
+#. vertical hinting, pixel order blue, green, red
+#: ../capplets/appearance/data/appearance.ui.h:39
+msgid "VB_GR"
+msgstr "VB_GR"
+
+#. vertical hinting, pixel order red, green, blue
+#: ../capplets/appearance/data/appearance.ui.h:41
+msgid "_VRGB"
+msgstr "_VRGB"
 
 #: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save Theme As..."
@@ -953,74 +973,74 @@ msgid "_Fixed width font:"
 msgstr "নির্দিষ্ট প্রস্থবিশিষ্ট ফন্ট (_F):"
 
 #: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Add new f_ont..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:77
 msgid "Rendering"
 msgstr "রেন্ডারিং  "
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "সাবপিক্সেল মসৃণকরণ (LCD) (_p)"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:79
 msgid "Best _shapes"
 msgstr "সর্বোত্তম আকার (_s)"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:80
 msgid "_Monochrome"
 msgstr "সাদা-কালো (_M)"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:81
 msgid "Best co_ntrast"
 msgstr "সর্বোত্তম তারতম্য (_n)"
 
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:82
 msgid "D_etails..."
 msgstr "বিবরণ...(_e)"
 
-#: ../capplets/appearance/data/appearance.ui.h:82
-msgid "Fonts"
-msgstr "ফন্ট"
-
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:84
 msgid "Menus and Toolbars"
 msgstr ""
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:85
 msgid "Show _icons in menus"
 msgstr ""
 
-#: ../capplets/appearance/data/appearance.ui.h:85
+#: ../capplets/appearance/data/appearance.ui.h:86
 msgid "_Editable menu shortcut keys"
 msgstr ""
 
-#: ../capplets/appearance/data/appearance.ui.h:86
+#: ../capplets/appearance/data/appearance.ui.h:87
 msgid "Toolbar _button labels:"
 msgstr ""
 
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:88
 msgid "Buttons"
 msgstr ""
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:89
 msgid "Show icons on buttons"
 msgstr "বাটনগুলোতে আইকনসমূহ প্রদর্শন"
 
-#: ../capplets/appearance/data/appearance.ui.h:89
+#: ../capplets/appearance/data/appearance.ui.h:90
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr ""
 
-#: ../capplets/appearance/data/appearance.ui.h:90
+#: ../capplets/appearance/data/appearance.ui.h:91
 msgid "Preview"
 msgstr "প্রাকদর্শন"
 
-#: ../capplets/appearance/data/appearance.ui.h:91
+#: ../capplets/appearance/data/appearance.ui.h:92
 msgid "_File"
 msgstr "ফাইল (_F)"
 
-#: ../capplets/appearance/data/appearance.ui.h:92
+#: ../capplets/appearance/data/appearance.ui.h:93
 msgid "Edit"
 msgstr "সম্পাদনা"
 
-#: ../capplets/appearance/data/appearance.ui.h:93
+#: ../capplets/appearance/data/appearance.ui.h:94
 msgid "Interface"
 msgstr "ইন্টারফেস"
 
@@ -1140,7 +1160,7 @@ msgstr ""
 
 #: ../capplets/appearance/theme-installer.c:375
 #, c-format
-msgid "The theme \"%s\" is already existed."
+msgid "The theme \"%s\" already exists."
 msgstr ""
 
 #: ../capplets/appearance/theme-installer.c:385
@@ -1152,7 +1172,7 @@ msgid "Cancel"
 msgstr "বাতিল"
 
 #: ../capplets/appearance/theme-installer.c:409
-#: ../capplets/appearance/theme-util.c:124
+#: ../capplets/appearance/theme-util.c:122
 msgid "Theme cannot be deleted"
 msgstr "থিম মুছে ফেলা যাবে না"
 
@@ -1204,11 +1224,11 @@ msgstr ""
 "থিমটি এখানে ইনস্টল করার জন্য প্রয়োজনীয় অনুমতি নেই:\n"
 "%s"
 
-#: ../capplets/appearance/theme-installer.c:815
+#: ../capplets/appearance/theme-installer.c:811
 msgid "Select Theme"
 msgstr "থিম বেছে নিন"
 
-#: ../capplets/appearance/theme-installer.c:826
+#: ../capplets/appearance/theme-installer.c:822
 msgid "Theme Packages"
 msgstr "থিম প্যাকেজ"
 
@@ -1222,15 +1242,15 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "থিমটি ইতিমধ্যেই বিদ্যমান।  আপনি কি এটিকে প্রতিস্থাপন করতে চান?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:442
+#: ../capplets/common/file-transfer-dialog.c:438
 msgid "_Overwrite"
 msgstr "পুর্নলিখিত করা হবে (_O)"
 
-#: ../capplets/appearance/theme-util.c:73
+#: ../capplets/appearance/theme-util.c:71
 msgid "Would you like to delete this theme?"
 msgstr "আপনি কি এই থিমটি মুছে ফেলতে ইচ্ছুক?"
 
-#: ../capplets/appearance/theme-util.c:250
+#: ../capplets/appearance/theme-util.c:282
 msgid "Could not install theme engine"
 msgstr "থিম ইঞ্জিন ইনস্টল করা যায়নি"
 
@@ -1242,90 +1262,85 @@ msgstr ""
 "'জিনোম-সেটিংস-ডেমো' নামক বৈশিষ্ট্য নির্ধারণী ব্যবস্থাপকটিকে চালু করা যাচ্ছে না।\n"
 "জিনোম বৈশিষ্ট্য নির্ধারণী ব্যবস্থাপকটিকে না চালানো গেলে, কিছু বৈশিষ্ট্য কার্যকর হবে না। এটি হয়ত ডিবাস এর সাথে কোন সমস্যার কারণে হতে পারে অথবা জিনোমের অংশ নয় (উদাহরণস্বরূপ কেডিই) এরকম কোন বৈশিষ্ট্য নির্ধারণী ব্যবস্থাপক হয়ত ইতিমধ্যেই সক্রিয় আছে এবং জিনোম বৈশিষ্ট্য নির্ধারণী ব্যবস্থাপকের সাথে বিরোধ দেখাচ্ছে।"
 
-#: ../capplets/common/capplet-stock-icons.c:66
-#, c-format
-msgid "Unable to load stock icon '%s'\n"
-msgstr "স্টক আইকন '%s' লোড করা যায় নি\n"
-
 #: ../capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "সহায়িকা প্রদর্শনের সময় একটি সমস্যা হয়েছে: %s"
 
-#: ../capplets/common/file-transfer-dialog.c:98
+#: ../capplets/common/file-transfer-dialog.c:96
 #, c-format
 msgid "Copying file: %u of %u"
 msgstr "ফাইল কপি করা হচ্ছে: %2$u এর %1$u"
 
-#: ../capplets/common/file-transfer-dialog.c:145
+#: ../capplets/common/file-transfer-dialog.c:143
 #, c-format
 msgid "Copying '%s'"
 msgstr " '%s'-কে অনুলিপি করা হচ্ছে"
 
-#: ../capplets/common/file-transfer-dialog.c:185
-#: ../capplets/common/file-transfer-dialog.c:312
+#: ../capplets/common/file-transfer-dialog.c:183
+#: ../capplets/common/file-transfer-dialog.c:308
 msgid "Copying files"
 msgstr "ফাইলের অনুলিপি করা হচ্ছে"
 
-#: ../capplets/common/file-transfer-dialog.c:224
+#: ../capplets/common/file-transfer-dialog.c:222
 msgid "Parent Window"
 msgstr "প্যারেন্ট উইন্ডো"
 
-#: ../capplets/common/file-transfer-dialog.c:225
+#: ../capplets/common/file-transfer-dialog.c:223
 msgid "Parent window of the dialog"
 msgstr "বর্তমান ডায়লগের প্যারেন্ট উইন্ডো"
 
-#: ../capplets/common/file-transfer-dialog.c:231
+#: ../capplets/common/file-transfer-dialog.c:229
 msgid "From URI"
 msgstr "URI থেকে"
 
-#: ../capplets/common/file-transfer-dialog.c:232
+#: ../capplets/common/file-transfer-dialog.c:230
 msgid "URI currently transferring from"
 msgstr "URI থেকে বর্তমানে স্থানান্তরিত হচ্ছে"
 
-#: ../capplets/common/file-transfer-dialog.c:239
+#: ../capplets/common/file-transfer-dialog.c:237
 msgid "To URI"
 msgstr "URI এর উদ্দেশ্যে"
 
-#: ../capplets/common/file-transfer-dialog.c:240
+#: ../capplets/common/file-transfer-dialog.c:238
 msgid "URI currently transferring to"
 msgstr "URI-এ বর্তমানে স্থানান্তরিত হচ্ছে"
 
-#: ../capplets/common/file-transfer-dialog.c:247
+#: ../capplets/common/file-transfer-dialog.c:245
 msgid "Fraction completed"
 msgstr "আংশিক সম্পন্ন"
 
-#: ../capplets/common/file-transfer-dialog.c:248
+#: ../capplets/common/file-transfer-dialog.c:246
 msgid "Fraction of transfer currently completed"
 msgstr "এ পর্যন্ত স্থানান্তরিত তথ্যের পরিমাণ (ভগ্নাংশ হিসেবে)"
 
-#: ../capplets/common/file-transfer-dialog.c:255
+#: ../capplets/common/file-transfer-dialog.c:253
 msgid "Current URI index"
 msgstr "বর্তমান URI সূচি"
 
-#: ../capplets/common/file-transfer-dialog.c:256
+#: ../capplets/common/file-transfer-dialog.c:254
 msgid "Current URI index - starts from 1"
 msgstr "বর্তমান URI সূচি - আরম্ভ হয়েছে ১ থেকে"
 
-#: ../capplets/common/file-transfer-dialog.c:263
+#: ../capplets/common/file-transfer-dialog.c:261
 msgid "Total URIs"
 msgstr "সর্বমোট URI"
 
-#: ../capplets/common/file-transfer-dialog.c:264
+#: ../capplets/common/file-transfer-dialog.c:262
 msgid "Total number of URIs"
 msgstr "সর্বমোট URI সংখ্যা"
 
-#: ../capplets/common/file-transfer-dialog.c:436
+#: ../capplets/common/file-transfer-dialog.c:432
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr ""
 "'%s' ফাইলটি বর্তমানে উপস্থিত রয়েছে।  আপনি কি এটিকে প্রতিস্থাপন করতে চান?"
 
-#: ../capplets/common/file-transfer-dialog.c:439
+#: ../capplets/common/file-transfer-dialog.c:435
 msgid "_Skip"
 msgstr "উপেক্ষা করুন (_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:440
+#: ../capplets/common/file-transfer-dialog.c:436
 msgid "Overwrite _All"
 msgstr "সমস্ত নতুন করে লেখা হবে (_A)"
 
@@ -1356,11 +1371,6 @@ msgstr ""
 "আবশ্যক আইকন থিম '%s' ইনস্টল না থাকার ফলে চিহ্নিত থিমটি সঠিকরূপে প্রদর্শিত "
 "হবে না।"
 
-#: ../capplets/common/theme-thumbnail.c:224
-#: ../capplets/common/theme-thumbnail.c:306
-msgid "_Open"
-msgstr "খুলুন (_O)"
-
 #: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
@@ -1370,21 +1380,21 @@ msgstr "পছন্দের অ্যাপলিকেশন"
 msgid "Select your default applications"
 msgstr "যে অ্যাপলিকেশনটি ডিফল্ট হিসেবে ব্যবহার করতে চান তা বেছে নিন"
 
-#: ../capplets/default-applications/mate-da-capplet.c:577
+#: ../capplets/default-applications/mate-da-capplet.c:622
 msgid "Could not load the main interface"
 msgstr "প্রধান ইন্টারফেস লোড করা যায়নি"
 
-#: ../capplets/default-applications/mate-da-capplet.c:578
+#: ../capplets/default-applications/mate-da-capplet.c:623
 msgid "Please make sure that the applet is properly installed"
 msgstr "অনুগ্রহপূর্বক নিশ্চিত হোন যে অ্যাপলেটটি সঠিকভাবে ইনস্টল করা আছে কি না"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:745
+#: ../capplets/default-applications/mate-da-capplet.c:821
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "প্রদর্শনযোগ্য পৃষ্ঠার নাম উল্লেখ করুন (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:751
+#: ../capplets/default-applications/mate-da-capplet.c:827
 msgid "- MATE Default Applications"
 msgstr "- MATE-র ডিফল্ট অ্যাপ্লিকেশন"
 
@@ -1397,21 +1407,21 @@ msgid "Mail Reader"
 msgstr "মেইল পাঠক"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
-msgid "Instant Messenger"
-msgstr "তাৎ‍ক্ষণিক বার্তাবাহক "
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
 msgid "Co_mmand:"
 msgstr "কমান্ড: (_m)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
 #, no-c-format
 msgid "All %s occurrences will be replaced with actual link"
 msgstr "%s-টির সবগুলোকেই প্রকৃত লিঙ্ক দ্বারা প্রতিস্থাপিত করা হবে"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
 msgid "Run in t_erminal"
 msgstr "টার্মিনালে সঞ্চালন (_e)"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+msgid "Instant Messenger"
+msgstr "তাৎ‍ক্ষণিক বার্তাবাহক "
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
 msgid "Internet"
@@ -1470,20 +1480,20 @@ msgid "Office"
 msgstr "অফিস"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
-msgid "Visual"
-msgstr "দৃষ্টি নির্ভর"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
 msgid "_Run at start"
 msgstr "প্রারম্ভে সঞ্চালিত হবে (_R)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
-msgid "Mobility"
-msgstr "গতিময়তা"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+msgid "Visual"
+msgstr "দৃষ্টি নির্ভর"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
 msgid "Run at st_art"
 msgstr "প্রারম্ভে সঞ্চালিত হবে (_a)"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+msgid "Mobility"
+msgstr "গতিময়তা"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
@@ -1491,20 +1501,20 @@ msgid "Accessibility"
 msgstr "সহায়ক প্রযুক্তি"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:304
-#: ../capplets/display/xrandr-capplet.c:343
+#: ../capplets/display/xrandr-capplet.c:306
+#: ../capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "স্বাভাবিক"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:305
-#: ../capplets/windows/mate-window-properties.c:504
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Left"
 msgstr "বামদিকে"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/windows/mate-window-properties.c:503
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:510
 msgid "Right"
 msgstr "ডানদিকে"
 
@@ -1575,7 +1585,7 @@ msgid "R_otation:"
 msgstr "আবর্তন: (_o)"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:493
+#: ../capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "মনিটর "
 
@@ -1677,11 +1687,11 @@ msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "উল্টো"
 
-#: ../capplets/display/xrandr-capplet.c:349
+#: ../capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d হার্জ"
@@ -1690,23 +1700,23 @@ msgstr "%d হার্জ"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:482
-#: ../capplets/display/xrandr-capplet.c:1630
+#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:1632
 #, c-format
 msgid "Mirror Screens"
 msgstr "প্রতিফলিত পর্দা"
 
-#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "মনিটর: %s "
 
-#: ../capplets/display/xrandr-capplet.c:554
+#: ../capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1486
+#: ../capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1714,31 +1724,31 @@ msgstr ""
 "মনিটরের বৈশিষ্ট্য পরিবর্তন করতে নির্বাচন করুন; এর অবস্থান পুনরায় নির্ধারণ "
 "করতে টেনে আনুন।"
 
-#: ../capplets/display/xrandr-capplet.c:2079
+#: ../capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "মনিটর সংক্রান্ত কনফিগারেশন সংরক্ষণ করতে ব্যর্থ"
 
-#: ../capplets/display/xrandr-capplet.c:2100
+#: ../capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr "ডিসপ্লে কনফিগারেশন প্রয়োগ করার সময় সেশন বাস পাওয়া যায়নি"
 
-#: ../capplets/display/xrandr-capplet.c:2119
+#: ../capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "ডিসপ্লে সনাক্ত করতে ব্যর্থ"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "The monitor configuration has been saved"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2331
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2340
 msgid "Could not set the default configuration for monitors"
 msgstr ""
 
-#: ../capplets/display/xrandr-capplet.c:2422
+#: ../capplets/display/xrandr-capplet.c:2419
 msgid "Could not get screen information"
 msgstr "পর্দা সংক্রান্ত পরিবর্তন প্রাপ্ত করতে ব্যর্থ"
 
@@ -1770,26 +1780,26 @@ msgid "The type of accelerator."
 msgstr "চটপট কী-এর ধরন।"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/keybindings/mate-keybinding-properties.c:133
+#: ../capplets/mouse/mate-mouse-properties.c:347
 #: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "নিষ্ক্রিয়"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:215
 msgid "<Unknown Action>"
 msgstr "<অজানা কাজ>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1019
-#: ../capplets/keybindings/mate-keybinding-properties.c:1609
+#: ../capplets/keybindings/mate-keybinding-properties.c:1018
+#: ../capplets/keybindings/mate-keybinding-properties.c:1626
 msgid "Custom Shortcuts"
 msgstr "স্বনির্ধারিত শর্ট-কাট"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1189
+#: ../capplets/keybindings/mate-keybinding-properties.c:1206
 msgid "Error saving the new shortcut"
 msgstr "নতুন শর্ট-কাট সংরক্ষণে সমস্যা"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1265
+#: ../capplets/keybindings/mate-keybinding-properties.c:1282
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1798,7 +1808,7 @@ msgstr ""
 "শর্টকাট-কি হিসেবে \"%s\" ব্যবহার করা যাবে না কারণ এর ফলে এই কি ব্যবহার করে কিছু টাইপ করা যাবে না।\n"
 "অনুগ্রহ করে Control, Alt বা Shift কী-এর একসাথে ব্যবহারের প্রচেষ্টা করুন।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1297
+#: ../capplets/keybindings/mate-keybinding-properties.c:1314
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1807,24 +1817,24 @@ msgstr ""
 "শর্টকাট \"%s\" বর্তমানে\n"
 " \"%s\"-র জন্য ব্যবহৃত হচ্ছে"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1304
+#: ../capplets/keybindings/mate-keybinding-properties.c:1321
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "\"%s\"-এ শর্ট-কাট স্থাপন করা হলে, \"%s\" শর্ট-কাটটি নিষ্ক্রিয় করা হবে।"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1309
+#: ../capplets/keybindings/mate-keybinding-properties.c:1326
 msgid "_Reassign"
 msgstr "পুনরায় নির্ধারণ (_R)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1564
+#: ../capplets/keybindings/mate-keybinding-properties.c:1581
 msgid "Too many custom shortcuts"
 msgstr "অত্যাধিক স্বনির্ধারিত শর্ট-কাট"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1878
+#: ../capplets/keybindings/mate-keybinding-properties.c:1895
 msgid "Action"
 msgstr "কাজ"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1900
+#: ../capplets/keybindings/mate-keybinding-properties.c:1917
 msgid "Shortcut"
 msgstr "শর্টকাট"
 
@@ -1856,23 +1866,23 @@ msgstr ""
 msgid "Assign shortcut keys to commands"
 msgstr "বিভিন্ন কমান্ডের জন্য শর্টকাট নির্ধারণ করুন"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:209
-#: ../capplets/keyboard/mate-keyboard-properties.c:214
+#: ../capplets/keyboard/mate-keyboard-properties.c:207
+#: ../capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "এই মানগুলোকে কার্যকর করুন এবং তারপর প্রোগ্রামটি বন্ধ করে দিন (শুধুমাত্র "
 "সঙ্গতির জন্য; এখন এটি ডেইমনের নিয়ন্ত্রণাধীন)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:219
+#: ../capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr "পৃষ্ঠাটির প্রদর্শন আরম্ভ করার সময় টাইপিং বিরতির বৈশিষ্ট্য দেখান"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:224
+#: ../capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "বিশেষ ব্যবহারের বৈশিষ্ট্য প্রদর্শন করে পৃষ্ঠা আরম্ভ করা হবে"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:230
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- MATE কিবোর্ড সংক্রান্ত পছন্দ"
 
@@ -1883,7 +1893,7 @@ msgstr "কীবোর্ডের বিশেষ ব্যবহারের 
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:372
+#: ../capplets/windows/mate-window-properties.c:379
 msgid "General"
 msgstr "সাধারণ"
 
@@ -1969,7 +1979,7 @@ msgid "_Speed:"
 msgstr "গতি (_S):"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Short"
 msgstr "ছোট"
 
@@ -1984,7 +1994,7 @@ msgid "Repeat keys speed"
 msgstr "কী পুনরাবৃত্তির হার"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Long"
 msgstr "দীর্ঘ"
 
@@ -2007,7 +2017,7 @@ msgid "S_peed:"
 msgstr "গতি (_p):"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "Cursor blinks speed"
 msgstr "কার্সার জ্বলানেভার হার"
 
@@ -2235,6 +2245,7 @@ msgid "Models"
 msgstr "মডেল"
 
 #: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:237
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Default"
 msgstr "ডিফল্ট"
 
@@ -2246,24 +2257,24 @@ msgstr "কীবোর্ড"
 msgid "Set your keyboard preferences"
 msgstr "কীবোর্ড সম্পর্কিত পছন্দ নির্ধারণ করুন"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:347
 msgid "Left button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:347
 msgid "Middle button"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:347
 msgid "Right button"
 msgstr ""
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:428
+#: ../capplets/mouse/mate-mouse-properties.c:442
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.c:433
+#: ../capplets/mouse/mate-mouse-properties.c:447
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE মাউস সংক্রান্ত পছন্দ"
 
@@ -2314,81 +2325,93 @@ msgid "_Sensitivity:"
 msgstr "সংবেদনশীলতা (_S):"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:20
+msgid "Acceleration _Profile:"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+msgid "Adaptive"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+msgid "Flat"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Drag and Drop"
 msgstr "টেনে এনে ছেড়ে দিন"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:21
+#: ../capplets/mouse/mate-mouse-properties.ui.h:25
 msgid "Thr_eshold:"
 msgstr "প্রান্তিক মাপ (_e):"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Double-Click Timeout"
 msgstr "ডবল ক্লিক-এর সময়উত্তীর্ণ"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 msgid "_Timeout:"
 msgstr "সময়সীমা (_T)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid ""
 "To test your double-click settings, try to double-click on the triangle and "
-"you must to see the mate desktop logo with both rings showing."
+"you must see the mate desktop logo with both rings showing."
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.h:1
 msgid "Mouse"
 msgstr "মাউস"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Enable _touchpad"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Disable touchpad _while typing"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Enable _mouse clicks with touchpad"
 msgstr "টাচপ্যাডের মাধ্যমে মাউস ক্লিক সক্রিয় করুন (_m)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "Two-finger click emulation:"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Three-finger click emulation:"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Scrolling"
 msgstr "স্ক্রল করা হচ্ছে"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "_Vertical edge scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "H_orizontal edge scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:46
 msgid "V_ertical two-finger scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:47
 msgid "Hor_izontal two-finger scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:48
 msgid "Enable _natural scrolling"
 msgstr ""
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:45
+#: ../capplets/mouse/mate-mouse-properties.ui.h:49
 msgid "Touchpad"
 msgstr "টাচপ্যাড"
 
@@ -2482,12 +2505,12 @@ msgstr ""
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Compositing Manager"
 msgstr "কম্পোসিটিং ব্যবস্থাপক"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:395
+#: ../capplets/windows/mate-window-properties.c:402
 msgid "Enable software _compositing window manager"
 msgstr ""
 
@@ -2496,136 +2519,136 @@ msgid "The current window manager is unsupported"
 msgstr ""
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:354
+#: ../capplets/windows/mate-window-properties.c:350
 msgid "Window Preferences"
 msgstr "উইন্ডো সংক্রান্ত পছন্দ"
 
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:384
 msgid "Behaviour"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Placement"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:396
+#: ../capplets/windows/mate-window-properties.c:403
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:404
+#: ../capplets/windows/mate-window-properties.c:411
 msgid "Titlebar Buttons"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "Position:"
 msgstr ""
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:422
 msgid "New Windows"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Center _new windows"
 msgstr ""
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:431
 msgid "Window Snapping"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:435
 msgid "Enable window _tiling"
 msgstr ""
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:433
+#: ../capplets/windows/mate-window-properties.c:440
 msgid "Window Selection"
 msgstr "উইন্ডো নির্বাচন"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Select windows when the mouse moves over them"
 msgstr "কোন উইন্ডোর ওপর মাউস অবস্থান করলে তা সক্রিয় হয়ে উঠবে (_S)"
 
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "U_nselect windows when the mouse leaves them"
 msgstr ""
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Raise selected windows after an interval"
 msgstr "বাছাইকৃত উইন্ডোগুলোকে একটি নির্দিষ্ট সময় পরে বড় করা হবে (_R)"
 
-#: ../capplets/windows/mate-window-properties.c:457
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "_Interval before raising:"
 msgstr "যে সময় পরে উইন্ডো বড় করা হবে (_I):"
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "seconds"
 msgstr "সেকেন্ড"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:479
 msgid "Titlebar Action"
 msgstr "টাইটেলবারের কাজ"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:483
 msgid "_Double-click titlebar to perform this action:"
 msgstr "এই কাজটি করার জন্য টাইটেলবারে ডবল ক্লিক করুন (_D):"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:484
+#: ../capplets/windows/mate-window-properties.c:491
 msgid "Movement Key"
 msgstr "বিচলন কী"
 
-#: ../capplets/windows/mate-window-properties.c:490
+#: ../capplets/windows/mate-window-properties.c:497
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 "উইন্ডো স্থানান্তর করতে হলে এই কী (key) চেপে উইন্ডোর অবস্থান পরিবর্তন করুন: "
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:517
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "গুটিয়ে ফেলা"
 
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "সর্বোচ্চ আকার প্রদান"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "অনুভূমিক দিশায় সর্বোচ্চ মাপ নির্ধারণ"
 
-#: ../capplets/windows/mate-window-properties.c:513
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "উল্লম্ব দিশায় সর্বোচ্চ মাপ নির্ধারণ"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "ছোট করুন"
 
-#: ../capplets/windows/mate-window-properties.c:515
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "একটিও নয়"
 
-#: ../capplets/windows/mate-window-properties.c:716
+#: ../capplets/windows/mate-window-properties.c:723
 msgid "_Alt"
 msgstr "Alt (_A)"
 
-#: ../capplets/windows/mate-window-properties.c:722
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "H_yper"
 msgstr "হাইপার (_y)"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "S_uper (or \"Windows logo\")"
 msgstr "সুপার (অথবা \"উইন্ডোজ লোগো\") (_u)"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: ../capplets/windows/mate-window-properties.c:743
 msgid "_Meta"
 msgstr "মেটা (_M)"
 
@@ -2637,6 +2660,1857 @@ msgstr "উইন্ডোসমূহ"
 msgid "Set your window properties"
 msgstr "উইন্ডোর বৈশিষ্ট্য নির্ধারণ করুন"
 
+#: ../capplets/time-admin/src/main.c:105
+msgid "Time and Date Manager"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
+msgid "open file"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:133
+msgid "Create pid file failed"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:142
+msgid "write file"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:142
+msgid "write pid file failed"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:175
+msgid "open pid file failed"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:180
+msgid "read file"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:180
+msgid "read pid file failed"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:205
+#, c-format
+msgctxt "timezone loc"
+msgid "%s"
+msgstr "%s"
+
+#: ../capplets/time-admin/src/main.c:221
+msgid "Time Zone:"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:236
+msgid "Ntp Sync:"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:287
+#: ../capplets/time-admin/src/time-tool.c:280
+msgid "Set Time"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:322
+msgid "Set Date"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:333
+#: ../capplets/time-admin/src/time-zone.c:449
+msgid "_Close"
+msgstr "বন্ধ করুন (_C)"
+
+#: ../capplets/time-admin/src/main.c:355
+msgid "_Save"
+msgstr "সংরক্ষণ করুন (_S)"
+
+#: ../capplets/time-admin/src/main.c:398
+msgid "g_bus_get_sync"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:411
+msgid "g_bus_proxy_new"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:124
+msgid "GetNtpState"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:187
+msgid "Set time zone"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:220
+#: ../capplets/time-admin/src/time-tool.c:264
+msgid "Set Ntp sync"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:280
+msgid "NTP synchronization has been started, the modification is invalid"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-share.c:118
+msgid ""
+"Network time synchronization has been set up. Manual time/date setting is "
+"disabled."
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:264
+#, c-format
+msgctxt "timezone loc"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../capplets/time-admin/src/time-zone.c:291
+msgid "UTC%:::z"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:296
+msgid "%R"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:360
+msgid "Time Zone"
+msgstr "সময়ের অঞ্চল"
+
+#: ../capplets/time-admin/src/time-zone.c:440
+msgid "Time Zone Selection"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:457
+msgid "Con_firm"
+msgstr ""
+
+#. * This program is free software: you can redistribute it and/or modify
+#. * it under the terms of the GNU General Public License as published by
+#. * the Free Software Foundation, either version 3 of the License, or
+#. * (at your option) any later version.
+#. *
+#. * This program is distributed in the hope that it will be useful,
+#. * but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. * GNU General Public License for more details.
+#. *
+#. * You should have received a copy of the GNU General Public License
+#. * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#. *
+#. * Copyright (C) 2019 MATE Developers
+#. *
+#. * These are the timezone names from /usr/share/zoneinfo/zone.tab.
+#. sed -e '/^#/d' /usr/share/zoneinfo/zone.tab |          awk '{ print
+#. "N_(\""$3"\");" }' | sort > time-zones.h
+#. * Further information is available on <https://www.iana.org/time-zones/>.
+#. *
+#. * We only place them here so gettext picks them up for translation.
+#. * Don't include in any C files.
+#: ../capplets/time-admin/src/time-zones.h:27
+msgid "Africa/Abidjan"
+msgstr "আফ্রিকা/অবিজান"
+
+#: ../capplets/time-admin/src/time-zones.h:28
+msgid "Africa/Accra"
+msgstr "আফ্রিকা/আক্রা"
+
+#: ../capplets/time-admin/src/time-zones.h:29
+msgid "Africa/Addis_Ababa"
+msgstr "আফ্রিকা/আডিস_আবাবা"
+
+#: ../capplets/time-admin/src/time-zones.h:30
+msgid "Africa/Algiers"
+msgstr "আফ্রিকা/এলজিয়ার্স"
+
+#: ../capplets/time-admin/src/time-zones.h:31
+msgid "Africa/Asmara"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:32
+msgid "Africa/Bamako"
+msgstr "আফ্রিকা/বামাকো"
+
+#: ../capplets/time-admin/src/time-zones.h:33
+msgid "Africa/Bangui"
+msgstr "আফ্রিকা/বাঙ্গুই"
+
+#: ../capplets/time-admin/src/time-zones.h:34
+msgid "Africa/Banjul"
+msgstr "আফ্রিকা/বানজুল"
+
+#: ../capplets/time-admin/src/time-zones.h:35
+msgid "Africa/Bissau"
+msgstr "আফ্রিকা/বিসাউ"
+
+#: ../capplets/time-admin/src/time-zones.h:36
+msgid "Africa/Blantyre"
+msgstr "আফ্রিকা/ব্ল্যানটায়ার"
+
+#: ../capplets/time-admin/src/time-zones.h:37
+msgid "Africa/Brazzaville"
+msgstr "আফ্রিকা/ব্রাজাভিল"
+
+#: ../capplets/time-admin/src/time-zones.h:38
+msgid "Africa/Bujumbura"
+msgstr "আফ্রিকা/বুজুমবুরা"
+
+#: ../capplets/time-admin/src/time-zones.h:39
+msgid "Africa/Cairo"
+msgstr "আফ্রিকা/কায়রো"
+
+#: ../capplets/time-admin/src/time-zones.h:40
+msgid "Africa/Casablanca"
+msgstr "আফ্রিকা/কাসাব্লাঙ্কা"
+
+#: ../capplets/time-admin/src/time-zones.h:41
+msgid "Africa/Ceuta"
+msgstr "আফ্রিকা/থেউটা"
+
+#: ../capplets/time-admin/src/time-zones.h:42
+msgid "Africa/Conakry"
+msgstr "আফ্রিকা/কোনাক্রি"
+
+#: ../capplets/time-admin/src/time-zones.h:43
+msgid "Africa/Dakar"
+msgstr "আফ্রিকা/ডাকার"
+
+#: ../capplets/time-admin/src/time-zones.h:44
+msgid "Africa/Dar_es_Salaam"
+msgstr "আফ্রিকা/ডার_এস_সালাম"
+
+#: ../capplets/time-admin/src/time-zones.h:45
+msgid "Africa/Djibouti"
+msgstr "আফ্রিকা/জিবুতি"
+
+#: ../capplets/time-admin/src/time-zones.h:46
+msgid "Africa/Douala"
+msgstr "আফ্রিকা/ডুয়ালা"
+
+#: ../capplets/time-admin/src/time-zones.h:47
+msgid "Africa/El_Aaiun"
+msgstr "আফ্রিকা/এল_আউইন"
+
+#: ../capplets/time-admin/src/time-zones.h:48
+msgid "Africa/Freetown"
+msgstr "আফ্রিকা/ফ্রিটাউন"
+
+#: ../capplets/time-admin/src/time-zones.h:49
+msgid "Africa/Gaborone"
+msgstr "আফ্রিকা/গ্যাবারোন"
+
+#: ../capplets/time-admin/src/time-zones.h:50
+msgid "Africa/Harare"
+msgstr "আফ্রিকা/হারারে"
+
+#: ../capplets/time-admin/src/time-zones.h:51
+msgid "Africa/Johannesburg"
+msgstr "আফ্রিকা/জোহানেসবার্গ"
+
+#: ../capplets/time-admin/src/time-zones.h:52
+msgid "Africa/Juba"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:53
+msgid "Africa/Kampala"
+msgstr "আফ্রিকা/কাম্পালা"
+
+#: ../capplets/time-admin/src/time-zones.h:54
+msgid "Africa/Khartoum"
+msgstr "আফ্রিকা/খারতৌম"
+
+#: ../capplets/time-admin/src/time-zones.h:55
+msgid "Africa/Kigali"
+msgstr "আফ্রিকা/কিগালি"
+
+#: ../capplets/time-admin/src/time-zones.h:56
+msgid "Africa/Kinshasa"
+msgstr "আফ্রিকা/কিনশাসা"
+
+#: ../capplets/time-admin/src/time-zones.h:57
+msgid "Africa/Lagos"
+msgstr "আফ্রিকা/লেগোস"
+
+#: ../capplets/time-admin/src/time-zones.h:58
+msgid "Africa/Libreville"
+msgstr "আফ্রিকা/লিবারভিল"
+
+#: ../capplets/time-admin/src/time-zones.h:59
+msgid "Africa/Lome"
+msgstr "আফ্রিকা/লোমে"
+
+#: ../capplets/time-admin/src/time-zones.h:60
+msgid "Africa/Luanda"
+msgstr "আফ্রিকা/লুয়ান্ডা"
+
+#: ../capplets/time-admin/src/time-zones.h:61
+msgid "Africa/Lubumbashi"
+msgstr "আফ্রিকা/লুবুম্বাশি"
+
+#: ../capplets/time-admin/src/time-zones.h:62
+msgid "Africa/Lusaka"
+msgstr "আফ্রিকা/লুসাকা"
+
+#: ../capplets/time-admin/src/time-zones.h:63
+msgid "Africa/Malabo"
+msgstr "আফ্রিকা/মালাবো"
+
+#: ../capplets/time-admin/src/time-zones.h:64
+msgid "Africa/Maputo"
+msgstr "আফ্রিকা/মাপুতো"
+
+#: ../capplets/time-admin/src/time-zones.h:65
+msgid "Africa/Maseru"
+msgstr "আফ্রিকা/মাসেরু"
+
+#: ../capplets/time-admin/src/time-zones.h:66
+msgid "Africa/Mbabane"
+msgstr "আফ্রিকা/আমবাবানে"
+
+#: ../capplets/time-admin/src/time-zones.h:67
+msgid "Africa/Mogadishu"
+msgstr "আফ্রিকা/মোগাডিশু"
+
+#: ../capplets/time-admin/src/time-zones.h:68
+msgid "Africa/Monrovia"
+msgstr "আফ্রিকা/মোনরোভিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:69
+msgid "Africa/Nairobi"
+msgstr "আফ্রিকা/নায়রোবি"
+
+#: ../capplets/time-admin/src/time-zones.h:70
+msgid "Africa/Ndjamena"
+msgstr "আফ্রিকা/আনজামেনা"
+
+#: ../capplets/time-admin/src/time-zones.h:71
+msgid "Africa/Niamey"
+msgstr "আফ্রিকা/নিয়ামে"
+
+#: ../capplets/time-admin/src/time-zones.h:72
+msgid "Africa/Nouakchott"
+msgstr "আফ্রিকা/নোয়াকশোট"
+
+#: ../capplets/time-admin/src/time-zones.h:73
+msgid "Africa/Ouagadougou"
+msgstr "আফ্রিকা/ওয়াগাডুগু"
+
+#: ../capplets/time-admin/src/time-zones.h:74
+msgid "Africa/Porto-Novo"
+msgstr "আফ্রিকা/পোর্টো-নোভো"
+
+#: ../capplets/time-admin/src/time-zones.h:75
+msgid "Africa/Sao_Tome"
+msgstr "আফ্রিকা/সাও_টোমে"
+
+#: ../capplets/time-admin/src/time-zones.h:76
+msgid "Africa/Tripoli"
+msgstr "আফ্রিকা/ট্রিপোলি"
+
+#: ../capplets/time-admin/src/time-zones.h:77
+msgid "Africa/Tunis"
+msgstr "আফ্রিকা/টিউনিস"
+
+#: ../capplets/time-admin/src/time-zones.h:78
+msgid "Africa/Windhoek"
+msgstr "আফ্রিকা/ভিন্টহুক"
+
+#: ../capplets/time-admin/src/time-zones.h:79
+msgid "America/Adak"
+msgstr "আমেরিকা/আদাক"
+
+#: ../capplets/time-admin/src/time-zones.h:80
+msgid "America/Anchorage"
+msgstr "আমেরিকা/অ্যাঙ্কোরেজ"
+
+#: ../capplets/time-admin/src/time-zones.h:81
+msgid "America/Anguilla"
+msgstr "আমেরিকা/অ্যাঙ্গিলা"
+
+#: ../capplets/time-admin/src/time-zones.h:82
+msgid "America/Antigua"
+msgstr "আমেরিকা/অ্যান্টিগা"
+
+#: ../capplets/time-admin/src/time-zones.h:83
+msgid "America/Araguaina"
+msgstr "আমেরিকা/আরাগুয়েনা"
+
+#: ../capplets/time-admin/src/time-zones.h:84
+msgid "America/Argentina/Buenos_Aires"
+msgstr "আমেরিকা/আর্জেনটিনা/বুয়েনোস_আয়ারস"
+
+#: ../capplets/time-admin/src/time-zones.h:85
+msgid "America/Argentina/Catamarca"
+msgstr "আমেরিকা/আর্জেনটিনা/কেটামার্কা"
+
+#: ../capplets/time-admin/src/time-zones.h:86
+msgid "America/Argentina/Cordoba"
+msgstr "আমেরিকা/আর্জেনটিনা/কোর্ডোবা"
+
+#: ../capplets/time-admin/src/time-zones.h:87
+msgid "America/Argentina/Jujuy"
+msgstr "আমেরিকা/আর্জেনটিনা/জুজুই"
+
+#: ../capplets/time-admin/src/time-zones.h:88
+msgid "America/Argentina/La_Rioja"
+msgstr "আমেরিকা/আর্জেনটিনা/লা_রিওজা"
+
+#: ../capplets/time-admin/src/time-zones.h:89
+msgid "America/Argentina/Mendoza"
+msgstr "আমেরিকা/আর্জেনটিনা/মেন্ডোজা"
+
+#: ../capplets/time-admin/src/time-zones.h:90
+msgid "America/Argentina/Rio_Gallegos"
+msgstr "আমেরিকা/আর্জেনটিনা/রিও_গেলিগোস"
+
+#: ../capplets/time-admin/src/time-zones.h:91
+msgid "America/Argentina/Salta"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:92
+msgid "America/Argentina/San_Juan"
+msgstr "আমেরিকা/আর্জেনটিনা/সান_হুয়ান"
+
+#: ../capplets/time-admin/src/time-zones.h:93
+msgid "America/Argentina/San_Luis"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:94
+msgid "America/Argentina/Tucuman"
+msgstr "আমেরিকা/আর্জেনটিনা/টুকুমান"
+
+#: ../capplets/time-admin/src/time-zones.h:95
+msgid "America/Argentina/Ushuaia"
+msgstr "আমেরিকা/আর্জেনটিনা/উশুয়াইয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:96
+msgid "America/Aruba"
+msgstr "আমেরিকা/আরুবা"
+
+#: ../capplets/time-admin/src/time-zones.h:97
+msgid "America/Asuncion"
+msgstr "আমেরিকা/অ্যাসানশিয়ান"
+
+#: ../capplets/time-admin/src/time-zones.h:98
+msgid "America/Atikokan"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:99
+msgid "America/Bahia"
+msgstr "আমেরিকা/বাহিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:100
+msgid "America/Bahia_Banderas"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:101
+msgid "America/Barbados"
+msgstr "আমেরিকা/বারবাডোস"
+
+#: ../capplets/time-admin/src/time-zones.h:102
+msgid "America/Belem"
+msgstr "আমেরিকা/বেলেম"
+
+#: ../capplets/time-admin/src/time-zones.h:103
+msgid "America/Belize"
+msgstr "আমেরিকা/বেলিজে"
+
+#: ../capplets/time-admin/src/time-zones.h:104
+msgid "America/Blanc-Sablon"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:105
+msgid "America/Boa_Vista"
+msgstr "আমেরিকা/বোয়া_ভিস্টা"
+
+#: ../capplets/time-admin/src/time-zones.h:106
+msgid "America/Bogota"
+msgstr "আমেরিকা/বোগোটা"
+
+#: ../capplets/time-admin/src/time-zones.h:107
+msgid "America/Boise"
+msgstr "আমেরিকা/বোয়স"
+
+#: ../capplets/time-admin/src/time-zones.h:108
+msgid "America/Cambridge_Bay"
+msgstr "আমেরিকা/কেমব্রিজ_বে"
+
+#: ../capplets/time-admin/src/time-zones.h:109
+msgid "America/Campo_Grande"
+msgstr "আমেরিকা/কাম্পো_গ্রান্ডে"
+
+#: ../capplets/time-admin/src/time-zones.h:110
+msgid "America/Cancun"
+msgstr "আমেরিকা/কেনকুন"
+
+#: ../capplets/time-admin/src/time-zones.h:111
+msgid "America/Caracas"
+msgstr "আমেরিকা/কেরাকাস"
+
+#: ../capplets/time-admin/src/time-zones.h:112
+msgid "America/Cayenne"
+msgstr "আমেরিকা/সায়েন"
+
+#: ../capplets/time-admin/src/time-zones.h:113
+msgid "America/Cayman"
+msgstr "আমেরিকা/কেমেন"
+
+#: ../capplets/time-admin/src/time-zones.h:114
+msgid "America/Chicago"
+msgstr "আমেরিকা/শিকাগো"
+
+#: ../capplets/time-admin/src/time-zones.h:115
+msgid "America/Chihuahua"
+msgstr "আমেরিকা/চিহুয়াহুয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:116
+msgid "America/Costa_Rica"
+msgstr "আমেরিকা/কোস্টা_রিকা"
+
+#: ../capplets/time-admin/src/time-zones.h:117
+msgid "America/Creston"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:118
+msgid "America/Cuiaba"
+msgstr "আমেরিকা/কুইয়াবা"
+
+#: ../capplets/time-admin/src/time-zones.h:119
+msgid "America/Curacao"
+msgstr "আমেরিকা/কুরাকাও"
+
+#: ../capplets/time-admin/src/time-zones.h:120
+msgid "America/Danmarkshavn"
+msgstr "আমেরিকা/ডানমার্কশওয়ান"
+
+#: ../capplets/time-admin/src/time-zones.h:121
+msgid "America/Dawson"
+msgstr "আমেরিকা/ডসন"
+
+#: ../capplets/time-admin/src/time-zones.h:122
+msgid "America/Dawson_Creek"
+msgstr "আমেরিকা/ডসন_ক্রিক"
+
+#: ../capplets/time-admin/src/time-zones.h:123
+msgid "America/Denver"
+msgstr "আমেরিকা/ডেনভার"
+
+#: ../capplets/time-admin/src/time-zones.h:124
+msgid "America/Detroit"
+msgstr "আমেরিকা/ডেট্রোয়েট"
+
+#: ../capplets/time-admin/src/time-zones.h:125
+msgid "America/Dominica"
+msgstr "আমেরিকা/ডোমিনিকা"
+
+#: ../capplets/time-admin/src/time-zones.h:126
+msgid "America/Edmonton"
+msgstr "আমেরিকা/এডমনটন"
+
+#: ../capplets/time-admin/src/time-zones.h:127
+msgid "America/Eirunepe"
+msgstr "আমেরিকা/ইরুনেপে"
+
+#: ../capplets/time-admin/src/time-zones.h:128
+msgid "America/El_Salvador"
+msgstr "আমেরিকা/এল_সালভাডোর"
+
+#: ../capplets/time-admin/src/time-zones.h:129
+msgid "America/Fortaleza"
+msgstr "আমেরিকা/ফোর্টালেজা"
+
+#: ../capplets/time-admin/src/time-zones.h:130
+msgid "America/Fort_Nelson"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:131
+msgid "America/Glace_Bay"
+msgstr "আমেরিকা/গ্লেস_বে"
+
+#: ../capplets/time-admin/src/time-zones.h:132
+msgid "America/Godthab"
+msgstr "আমেরিকা/গডথাব"
+
+#: ../capplets/time-admin/src/time-zones.h:133
+msgid "America/Goose_Bay"
+msgstr "আমেরিকা/গূজ_বে"
+
+#: ../capplets/time-admin/src/time-zones.h:134
+msgid "America/Grand_Turk"
+msgstr "আমেরিকা/গ্র্যান্ড_টার্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:135
+msgid "America/Grenada"
+msgstr "আমেরিকা/গ্রেনাডা"
+
+#: ../capplets/time-admin/src/time-zones.h:136
+msgid "America/Guadeloupe"
+msgstr "আমেরিকা/গুয়াডেলুপ"
+
+#: ../capplets/time-admin/src/time-zones.h:137
+msgid "America/Guatemala"
+msgstr "আমেরিকা/গুয়াটেমালা"
+
+#: ../capplets/time-admin/src/time-zones.h:138
+msgid "America/Guayaquil"
+msgstr "আমেরিকা/গায়াকুইল"
+
+#: ../capplets/time-admin/src/time-zones.h:139
+msgid "America/Guyana"
+msgstr "আমেরিকা/গায়ানা"
+
+#: ../capplets/time-admin/src/time-zones.h:140
+msgid "America/Halifax"
+msgstr "আমেরিকা/হ্যালিফ্যাক্স"
+
+#: ../capplets/time-admin/src/time-zones.h:141
+msgid "America/Havana"
+msgstr "আমেরিকা/হাভানা"
+
+#: ../capplets/time-admin/src/time-zones.h:142
+msgid "America/Hermosillo"
+msgstr "আমেরিকা/হার্মোসিলো"
+
+#: ../capplets/time-admin/src/time-zones.h:143
+msgid "America/Indiana/Indianapolis"
+msgstr "আমেরিকা/ইন্ডিয়ানা/ইন্ডিয়ানাপোলিস"
+
+#: ../capplets/time-admin/src/time-zones.h:144
+msgid "America/Indiana/Knox"
+msgstr "আমেরিকা/ইন্ডিয়ানা/নোক্স"
+
+#: ../capplets/time-admin/src/time-zones.h:145
+msgid "America/Indiana/Marengo"
+msgstr "আমেরিকা/ইন্ডিয়ানা/মারেঙ্গো"
+
+#: ../capplets/time-admin/src/time-zones.h:146
+msgid "America/Indiana/Petersburg"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:147
+msgid "America/Indiana/Tell_City"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:148
+msgid "America/Indiana/Vevay"
+msgstr "আমেরিকা/ইন্ডিয়ানা/ভিভে"
+
+#: ../capplets/time-admin/src/time-zones.h:149
+msgid "America/Indiana/Vincennes"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:150
+msgid "America/Indiana/Winamac"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:151
+msgid "America/Inuvik"
+msgstr "আমেরিকা/ইনুভিক"
+
+#: ../capplets/time-admin/src/time-zones.h:152
+msgid "America/Iqaluit"
+msgstr "আমেরিকা/ইকালুইট"
+
+#: ../capplets/time-admin/src/time-zones.h:153
+msgid "America/Jamaica"
+msgstr "আমেরিকা/জামাইকা"
+
+#: ../capplets/time-admin/src/time-zones.h:154
+msgid "America/Juneau"
+msgstr "আমেরিকা/জুনিউ"
+
+#: ../capplets/time-admin/src/time-zones.h:155
+msgid "America/Kentucky/Louisville"
+msgstr "আমেরিকা/কেন্টাকি/লুইভিল"
+
+#: ../capplets/time-admin/src/time-zones.h:156
+msgid "America/Kentucky/Monticello"
+msgstr "আমেরিকা/কেন্টাকি/মোন্টিচেলো"
+
+#: ../capplets/time-admin/src/time-zones.h:157
+msgid "America/Kralendijk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:158
+msgid "America/La_Paz"
+msgstr "আমেরিকা/লা_পাজ"
+
+#: ../capplets/time-admin/src/time-zones.h:159
+msgid "America/Lima"
+msgstr "আমেরিকা/লিমা"
+
+#: ../capplets/time-admin/src/time-zones.h:160
+msgid "America/Los_Angeles"
+msgstr "আমেরিকা/লস_অ্যাঞ্জেলস"
+
+#: ../capplets/time-admin/src/time-zones.h:161
+msgid "America/Lower_Princes"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:162
+msgid "America/Maceio"
+msgstr "আমেরিকা/মাসিও"
+
+#: ../capplets/time-admin/src/time-zones.h:163
+msgid "America/Managua"
+msgstr "আমেরিকা/মানাগুয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:164
+msgid "America/Manaus"
+msgstr "আমেরিকা/মানাউস"
+
+#: ../capplets/time-admin/src/time-zones.h:165
+msgid "America/Marigot"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:166
+msgid "America/Martinique"
+msgstr "আমেরিকা/মার্টিনিক"
+
+#: ../capplets/time-admin/src/time-zones.h:167
+msgid "America/Matamoros"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:168
+msgid "America/Mazatlan"
+msgstr "আমেরিকা/মাজাতলান"
+
+#: ../capplets/time-admin/src/time-zones.h:169
+msgid "America/Menominee"
+msgstr "আমেরিকা/মেনোমিনি"
+
+#: ../capplets/time-admin/src/time-zones.h:170
+msgid "America/Merida"
+msgstr "আমেরিকা/মেরিডা"
+
+#: ../capplets/time-admin/src/time-zones.h:171
+msgid "America/Metlakatla"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:172
+msgid "America/Mexico_City"
+msgstr "আমেরিকা/মেক্সিকো_সিটি"
+
+#: ../capplets/time-admin/src/time-zones.h:173
+msgid "America/Miquelon"
+msgstr "আমেরিকা/মিকেলন"
+
+#: ../capplets/time-admin/src/time-zones.h:174
+msgid "America/Moncton"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:175
+msgid "America/Monterrey"
+msgstr "আমেরিকা/মন্টেরি"
+
+#: ../capplets/time-admin/src/time-zones.h:176
+msgid "America/Montevideo"
+msgstr "আমেরিকা/মন্টেভিডিও"
+
+#: ../capplets/time-admin/src/time-zones.h:177
+msgid "America/Montserrat"
+msgstr "আমেরিকা/মন্টসেরাত"
+
+#: ../capplets/time-admin/src/time-zones.h:178
+msgid "America/Nassau"
+msgstr "আমেরিকা/নাসাউ"
+
+#: ../capplets/time-admin/src/time-zones.h:179
+msgid "America/New_York"
+msgstr "আমেরিকা/নিউ_ইয়োর্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:180
+msgid "America/Nipigon"
+msgstr "আমেরিকা/নিপিগন"
+
+#: ../capplets/time-admin/src/time-zones.h:181
+msgid "America/Nome"
+msgstr "আমেরিকা/নোম"
+
+#: ../capplets/time-admin/src/time-zones.h:182
+msgid "America/Noronha"
+msgstr "আমেরিকা/নোরোনহা"
+
+#: ../capplets/time-admin/src/time-zones.h:183
+msgid "America/North_Dakota/Beulah"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:184
+msgid "America/North_Dakota/Center"
+msgstr "আমেরিকা/নর্থ_ডাকোটা/সেন্টার"
+
+#: ../capplets/time-admin/src/time-zones.h:185
+msgid "America/North_Dakota/New_Salem"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:186
+msgid "America/Ojinaga"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:187
+msgid "America/Panama"
+msgstr "আমেরিকা/পানামা"
+
+#: ../capplets/time-admin/src/time-zones.h:188
+msgid "America/Pangnirtung"
+msgstr "আমেরিকা/পাংনিরতুং"
+
+#: ../capplets/time-admin/src/time-zones.h:189
+msgid "America/Paramaribo"
+msgstr "আমেরিকা/পারামারিবো"
+
+#: ../capplets/time-admin/src/time-zones.h:190
+msgid "America/Phoenix"
+msgstr "আমেরিকা/ফিনিক্স"
+
+#: ../capplets/time-admin/src/time-zones.h:191
+msgid "America/Port-au-Prince"
+msgstr "আমেরিকা/পোর্ট_ও_প্রিন্স"
+
+#: ../capplets/time-admin/src/time-zones.h:192
+msgid "America/Port_of_Spain"
+msgstr "আমেরিকা/পোর্ট_অফ_স্পেন"
+
+#: ../capplets/time-admin/src/time-zones.h:193
+msgid "America/Porto_Velho"
+msgstr "আমেরিকা/পোর্তো_ভেলহো"
+
+#: ../capplets/time-admin/src/time-zones.h:194
+msgid "America/Puerto_Rico"
+msgstr "আমেরিকা/পুয়ের্তো_রিকো"
+
+#: ../capplets/time-admin/src/time-zones.h:195
+msgid "America/Punta_Arenas"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:196
+msgid "America/Rainy_River"
+msgstr "আমেরিকা/রেইনি_রিভার"
+
+#: ../capplets/time-admin/src/time-zones.h:197
+msgid "America/Rankin_Inlet"
+msgstr "আমেরিকা/রেঙ্কিন_ইনলেট"
+
+#: ../capplets/time-admin/src/time-zones.h:198
+msgid "America/Recife"
+msgstr "আমেরিকা/রিসাইফে"
+
+#: ../capplets/time-admin/src/time-zones.h:199
+msgid "America/Regina"
+msgstr "আমেরিকা/রেজিনা"
+
+#: ../capplets/time-admin/src/time-zones.h:200
+msgid "America/Resolute"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:201
+msgid "America/Rio_Branco"
+msgstr "আমেরিকা/রিও_ব্রাঙ্কো"
+
+#: ../capplets/time-admin/src/time-zones.h:202
+msgid "America/Santarem"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:203
+msgid "America/Santiago"
+msgstr "আমেরিকা/সান্টিয়াগো"
+
+#: ../capplets/time-admin/src/time-zones.h:204
+msgid "America/Santo_Domingo"
+msgstr "আমেরিকা/সান্টো_ডোমিঙ্গো"
+
+#: ../capplets/time-admin/src/time-zones.h:205
+msgid "America/Sao_Paulo"
+msgstr "আমেরিকা/সাও_পাওলো"
+
+#: ../capplets/time-admin/src/time-zones.h:206
+msgid "America/Scoresbysund"
+msgstr "আমেরিকা/স্কোর্সবিসান্ড"
+
+#: ../capplets/time-admin/src/time-zones.h:207
+msgid "America/Sitka"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:208
+msgid "America/St_Barthelemy"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:209
+msgid "America/St_Johns"
+msgstr "আমেরিকা/সেন্ট_জনস"
+
+#: ../capplets/time-admin/src/time-zones.h:210
+msgid "America/St_Kitts"
+msgstr "আমেরিকা/সেন্ট_কিটস"
+
+#: ../capplets/time-admin/src/time-zones.h:211
+msgid "America/St_Lucia"
+msgstr "আমেরিকা/সেন্ট_লুসিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:212
+msgid "America/St_Thomas"
+msgstr "আমেরিকা/সেন্ট_থোমাস"
+
+#: ../capplets/time-admin/src/time-zones.h:213
+msgid "America/St_Vincent"
+msgstr "আমেরিকা/সেন্ট_ভিনসেন্ট"
+
+#: ../capplets/time-admin/src/time-zones.h:214
+msgid "America/Swift_Current"
+msgstr "আমেরিকা/সুইফট_কারেন্ট"
+
+#: ../capplets/time-admin/src/time-zones.h:215
+msgid "America/Tegucigalpa"
+msgstr "আমেরিকা/তেগুসিগালপা"
+
+#: ../capplets/time-admin/src/time-zones.h:216
+msgid "America/Thule"
+msgstr "আমেরিকা/থুল"
+
+#: ../capplets/time-admin/src/time-zones.h:217
+msgid "America/Thunder_Bay"
+msgstr "আমেরিকা/থান্ডার_বে"
+
+#: ../capplets/time-admin/src/time-zones.h:218
+msgid "America/Tijuana"
+msgstr "আমেরিকা/থেওয়ানা"
+
+#: ../capplets/time-admin/src/time-zones.h:219
+msgid "America/Toronto"
+msgstr "আমেরিকা/টরোন্টো"
+
+#: ../capplets/time-admin/src/time-zones.h:220
+msgid "America/Tortola"
+msgstr "আমেরিকা/টরটলা"
+
+#: ../capplets/time-admin/src/time-zones.h:221
+msgid "America/Vancouver"
+msgstr "আমেরিকা/ভ্যাংকুভার"
+
+#: ../capplets/time-admin/src/time-zones.h:222
+msgid "America/Whitehorse"
+msgstr "আমেরিকা/ওয়াইটহর্স"
+
+#: ../capplets/time-admin/src/time-zones.h:223
+msgid "America/Winnipeg"
+msgstr "আমেরিকা/উইনিপেগ"
+
+#: ../capplets/time-admin/src/time-zones.h:224
+msgid "America/Yakutat"
+msgstr "আমেরিকা/ইয়াকুতাত"
+
+#: ../capplets/time-admin/src/time-zones.h:225
+msgid "America/Yellowknife"
+msgstr "আমেরিকা/ইয়েলোনাইফ"
+
+#: ../capplets/time-admin/src/time-zones.h:226
+msgid "Antarctica/Casey"
+msgstr "অ্যান্টার্কটিকা/ক্যাসি"
+
+#: ../capplets/time-admin/src/time-zones.h:227
+msgid "Antarctica/Davis"
+msgstr "অ্যান্টার্কটিকা/ড্যাভিস"
+
+#: ../capplets/time-admin/src/time-zones.h:228
+msgid "Antarctica/DumontDUrville"
+msgstr "অ্যান্টার্কটিকা/দুমোন্ত দ্য উরভিল"
+
+#: ../capplets/time-admin/src/time-zones.h:229
+msgid "Antarctica/Macquarie"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:230
+msgid "Antarctica/Mawson"
+msgstr "অ্যান্টার্কটিকা/মসন"
+
+#: ../capplets/time-admin/src/time-zones.h:231
+msgid "Antarctica/McMurdo"
+msgstr "অ্যান্টার্কটিকা/ম্যাকমার্ডো"
+
+#: ../capplets/time-admin/src/time-zones.h:232
+msgid "Antarctica/Palmer"
+msgstr "অ্যান্টার্কটিকা/পাল্মার"
+
+#: ../capplets/time-admin/src/time-zones.h:233
+msgid "Antarctica/Rothera"
+msgstr "অ্যান্টার্কটিকা/রোথেরা"
+
+#: ../capplets/time-admin/src/time-zones.h:234
+msgid "Antarctica/Syowa"
+msgstr "অ্যান্টার্কটিকা/সিওয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:235
+msgid "Antarctica/Troll"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:236
+msgid "Antarctica/Vostok"
+msgstr "অ্যান্টার্কটিকা/ভোস্টক"
+
+#: ../capplets/time-admin/src/time-zones.h:237
+msgid "Arctic/Longyearbyen"
+msgstr "আর্কটিক/লংইয়ারবেন"
+
+#: ../capplets/time-admin/src/time-zones.h:238
+msgid "Asia/Aden"
+msgstr "এশিয়া/এডেন"
+
+#: ../capplets/time-admin/src/time-zones.h:239
+msgid "Asia/Almaty"
+msgstr "এশিয়া/আলমাটি"
+
+#: ../capplets/time-admin/src/time-zones.h:240
+msgid "Asia/Amman"
+msgstr "এশিয়া/আম্মান"
+
+#: ../capplets/time-admin/src/time-zones.h:241
+msgid "Asia/Anadyr"
+msgstr "এশিয়া/আনাদির"
+
+#: ../capplets/time-admin/src/time-zones.h:242
+msgid "Asia/Aqtau"
+msgstr "এশিয়া/আকতু"
+
+#: ../capplets/time-admin/src/time-zones.h:243
+msgid "Asia/Aqtobe"
+msgstr "এশিয়া/আকতোবে"
+
+#: ../capplets/time-admin/src/time-zones.h:244
+msgid "Asia/Ashgabat"
+msgstr "এশিয়া/আশ‌গাবাত"
+
+#: ../capplets/time-admin/src/time-zones.h:245
+msgid "Asia/Atyrau"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:246
+msgid "Asia/Baghdad"
+msgstr "এশিয়া/বাগদাদ"
+
+#: ../capplets/time-admin/src/time-zones.h:247
+msgid "Asia/Bahrain"
+msgstr "এশিয়া/বাহরেন"
+
+#: ../capplets/time-admin/src/time-zones.h:248
+msgid "Asia/Baku"
+msgstr "এশিয়া/বাকু"
+
+#: ../capplets/time-admin/src/time-zones.h:249
+msgid "Asia/Bangkok"
+msgstr "এশিয়া/ব্যাঙ্কক"
+
+#: ../capplets/time-admin/src/time-zones.h:250
+msgid "Asia/Barnaul"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:251
+msgid "Asia/Beirut"
+msgstr "এশিয়া/বেইরুট"
+
+#: ../capplets/time-admin/src/time-zones.h:252
+msgid "Asia/Bishkek"
+msgstr "এশিয়া/বিশকেক"
+
+#: ../capplets/time-admin/src/time-zones.h:253
+msgid "Asia/Brunei"
+msgstr "এশিয়া/ব্রুনেই"
+
+#: ../capplets/time-admin/src/time-zones.h:254
+msgid "Asia/Chita"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:255
+msgid "Asia/Choibalsan"
+msgstr "এশিয়া/চৈবালছান"
+
+#: ../capplets/time-admin/src/time-zones.h:256
+msgid "Asia/Colombo"
+msgstr "এশিয়া/কোলোম্বো"
+
+#: ../capplets/time-admin/src/time-zones.h:257
+msgid "Asia/Damascus"
+msgstr "এশিয়া/ডামাসকাস"
+
+#: ../capplets/time-admin/src/time-zones.h:258
+msgid "Asia/Dhaka"
+msgstr "এশিয়া/ঢাকা"
+
+#: ../capplets/time-admin/src/time-zones.h:259
+msgid "Asia/Dili"
+msgstr "এশিয়া/ডিলি"
+
+#: ../capplets/time-admin/src/time-zones.h:260
+msgid "Asia/Dubai"
+msgstr "এশিয়া/দুবাই"
+
+#: ../capplets/time-admin/src/time-zones.h:261
+msgid "Asia/Dushanbe"
+msgstr "এশিয়া/দুশানবে"
+
+#: ../capplets/time-admin/src/time-zones.h:262
+msgid "Asia/Famagusta"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:263
+msgid "Asia/Gaza"
+msgstr "এশিয়া/গাজা"
+
+#: ../capplets/time-admin/src/time-zones.h:264
+msgid "Asia/Hebron"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:265
+msgid "Asia/Ho_Chi_Minh"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:266
+msgid "Asia/Hong_Kong"
+msgstr "এশিয়া/হং _কং"
+
+#: ../capplets/time-admin/src/time-zones.h:267
+msgid "Asia/Hovd"
+msgstr "এশিয়া/হোভড"
+
+#: ../capplets/time-admin/src/time-zones.h:268
+msgid "Asia/Irkutsk"
+msgstr "এশিয়া/ইরকুটস"
+
+#: ../capplets/time-admin/src/time-zones.h:269
+msgid "Asia/Jakarta"
+msgstr "এশিয়া/জাকার্তা"
+
+#: ../capplets/time-admin/src/time-zones.h:270
+msgid "Asia/Jayapura"
+msgstr "এশিয়া/জায়াপুরা"
+
+#: ../capplets/time-admin/src/time-zones.h:271
+msgid "Asia/Jerusalem"
+msgstr "এশিয়া/জেরুসেলাম"
+
+#: ../capplets/time-admin/src/time-zones.h:272
+msgid "Asia/Kabul"
+msgstr "এশিয়া/কাবুল"
+
+#: ../capplets/time-admin/src/time-zones.h:273
+msgid "Asia/Kamchatka"
+msgstr "এশিয়া/কামচাটকা"
+
+#: ../capplets/time-admin/src/time-zones.h:274
+msgid "Asia/Karachi"
+msgstr "এশিয়া/করাচী"
+
+#: ../capplets/time-admin/src/time-zones.h:275
+msgid "Asia/Kathmandu"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:276
+msgid "Asia/Khandyga"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:277
+msgid "Asia/Kolkata"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:278
+msgid "Asia/Krasnoyarsk"
+msgstr "এশিয়া/ক্রাসনোয়ার্স্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:279
+msgid "Asia/Kuala_Lumpur"
+msgstr "এশিয়া/কুয়ালা_লাম্পুর"
+
+#: ../capplets/time-admin/src/time-zones.h:280
+msgid "Asia/Kuching"
+msgstr "এশিয়া/কুচিং"
+
+#: ../capplets/time-admin/src/time-zones.h:281
+msgid "Asia/Kuwait"
+msgstr "এশিয়া/কুয়েত"
+
+#: ../capplets/time-admin/src/time-zones.h:282
+msgid "Asia/Macau"
+msgstr "এশিয়া/মাকাও"
+
+#: ../capplets/time-admin/src/time-zones.h:283
+msgid "Asia/Magadan"
+msgstr "এশিয়া/মাগাদান"
+
+#: ../capplets/time-admin/src/time-zones.h:284
+msgid "Asia/Makassar"
+msgstr "এশিয়া/মাকাসসার"
+
+#: ../capplets/time-admin/src/time-zones.h:285
+msgid "Asia/Manila"
+msgstr "এশিয়া/ম্যানিলা"
+
+#: ../capplets/time-admin/src/time-zones.h:286
+msgid "Asia/Muscat"
+msgstr "এশিয়া/মাসকাট"
+
+#: ../capplets/time-admin/src/time-zones.h:287
+msgid "Asia/Nicosia"
+msgstr "এশিয়া/নিকোসিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:288
+msgid "Asia/Novokuznetsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:289
+msgid "Asia/Novosibirsk"
+msgstr "এশিয়া/নোভোসিবার্স্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:290
+msgid "Asia/Omsk"
+msgstr "এশিয়া/ওমস্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:291
+msgid "Asia/Oral"
+msgstr "এশিয়া/ওরাল"
+
+#: ../capplets/time-admin/src/time-zones.h:292
+msgid "Asia/Phnom_Penh"
+msgstr "এশিয়া/নোম_ফেন"
+
+#: ../capplets/time-admin/src/time-zones.h:293
+msgid "Asia/Pontianak"
+msgstr "এশিয়া/পন্টিয়ানাক"
+
+#: ../capplets/time-admin/src/time-zones.h:294
+msgid "Asia/Pyongyang"
+msgstr "এশিয়া/পিয়োংইয়াং"
+
+#: ../capplets/time-admin/src/time-zones.h:295
+msgid "Asia/Qatar"
+msgstr "এশিয়া/কাতার"
+
+#: ../capplets/time-admin/src/time-zones.h:296
+msgid "Asia/Qostanay"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:297
+msgid "Asia/Qyzylorda"
+msgstr "এশিয়া/কিজিলোর্দা"
+
+#: ../capplets/time-admin/src/time-zones.h:298
+msgid "Asia/Riyadh"
+msgstr "এশিয়া/রিয়াদ"
+
+#: ../capplets/time-admin/src/time-zones.h:299
+msgid "Asia/Sakhalin"
+msgstr "এশিয়া/শাকালিন"
+
+#: ../capplets/time-admin/src/time-zones.h:300
+msgid "Asia/Samarkand"
+msgstr "এশিয়া/সামারখান্দ"
+
+#: ../capplets/time-admin/src/time-zones.h:301
+msgid "Asia/Seoul"
+msgstr "এশিয়া/সিওল"
+
+#: ../capplets/time-admin/src/time-zones.h:302
+msgid "Asia/Shanghai"
+msgstr "এশিয়া/সাংঘাই"
+
+#: ../capplets/time-admin/src/time-zones.h:303
+msgid "Asia/Singapore"
+msgstr "এশিয়া/সিঙ্গাপুর"
+
+#: ../capplets/time-admin/src/time-zones.h:304
+msgid "Asia/Srednekolymsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:305
+msgid "Asia/Taipei"
+msgstr "এশিয়া/তাইপে"
+
+#: ../capplets/time-admin/src/time-zones.h:306
+msgid "Asia/Tashkent"
+msgstr "এশিয়া/তাসকেন্ত"
+
+#: ../capplets/time-admin/src/time-zones.h:307
+msgid "Asia/Tbilisi"
+msgstr "এশিয়া/তবিলিশি"
+
+#: ../capplets/time-admin/src/time-zones.h:308
+msgid "Asia/Tehran"
+msgstr "এশিয়া/তেহেরান"
+
+#: ../capplets/time-admin/src/time-zones.h:309
+msgid "Asia/Thimphu"
+msgstr "এশিয়া/থিম্পু"
+
+#: ../capplets/time-admin/src/time-zones.h:310
+msgid "Asia/Tokyo"
+msgstr "এশিয়া/টোকিও"
+
+#: ../capplets/time-admin/src/time-zones.h:311
+msgid "Asia/Tomsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:312
+msgid "Asia/Ulaanbaatar"
+msgstr "এশিয়া/উলানবাতোর"
+
+#: ../capplets/time-admin/src/time-zones.h:313
+msgid "Asia/Urumqi"
+msgstr "এশিয়া/উরুমকি"
+
+#: ../capplets/time-admin/src/time-zones.h:314
+msgid "Asia/Ust-Nera"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:315
+msgid "Asia/Vientiane"
+msgstr "এশিয়া/ভিয়েনতিয়েন"
+
+#: ../capplets/time-admin/src/time-zones.h:316
+msgid "Asia/Vladivostok"
+msgstr "এশিয়া/ভ্লাডিভোস্টক"
+
+#: ../capplets/time-admin/src/time-zones.h:317
+msgid "Asia/Yakutsk"
+msgstr "এশিয়া/ইয়াকুটস"
+
+#: ../capplets/time-admin/src/time-zones.h:318
+msgid "Asia/Yangon"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:319
+msgid "Asia/Yekaterinburg"
+msgstr "এশিয়া/ইয়াকাতারিনবুর্গ"
+
+#: ../capplets/time-admin/src/time-zones.h:320
+msgid "Asia/Yerevan"
+msgstr "এশিয়া/ইয়ারভান"
+
+#: ../capplets/time-admin/src/time-zones.h:321
+msgid "Atlantic/Azores"
+msgstr "অ্যাটলান্টিক/এজোরে"
+
+#: ../capplets/time-admin/src/time-zones.h:322
+msgid "Atlantic/Bermuda"
+msgstr "অ্যাটলান্টিক/বারমুডা"
+
+#: ../capplets/time-admin/src/time-zones.h:323
+msgid "Atlantic/Canary"
+msgstr "অ্যাটলান্টিক/ক্যানারি"
+
+#: ../capplets/time-admin/src/time-zones.h:324
+msgid "Atlantic/Cape_Verde"
+msgstr "অ্যাটলান্টিক/কেপ_ভার্ডি"
+
+#: ../capplets/time-admin/src/time-zones.h:325
+msgid "Atlantic/Faroe"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:326
+msgid "Atlantic/Madeira"
+msgstr "অ্যাটলান্টিক/মাদিইরা"
+
+#: ../capplets/time-admin/src/time-zones.h:327
+msgid "Atlantic/Reykjavik"
+msgstr "অ্যাটলান্টিক/রিকয়াভিক"
+
+#: ../capplets/time-admin/src/time-zones.h:328
+msgid "Atlantic/South_Georgia"
+msgstr "অ্যাটলান্টিক/সাউথ_জর্জিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:329
+msgid "Atlantic/Stanley"
+msgstr "অ্যাটলান্টিক/স্টেনলি"
+
+#: ../capplets/time-admin/src/time-zones.h:330
+msgid "Atlantic/St_Helena"
+msgstr "অ্যাটলান্টিক/সেন্ট_হেলেনা"
+
+#: ../capplets/time-admin/src/time-zones.h:331
+msgid "Australia/Adelaide"
+msgstr "অস্ট্রেলিয়া/অ্যাডিলেড"
+
+#: ../capplets/time-admin/src/time-zones.h:332
+msgid "Australia/Brisbane"
+msgstr "অস্ট্রেলিয়া/ব্রিসবেন"
+
+#: ../capplets/time-admin/src/time-zones.h:333
+msgid "Australia/Broken_Hill"
+msgstr "অস্ট্রেলিয়া/ব্রোকেন_হিল"
+
+#: ../capplets/time-admin/src/time-zones.h:334
+msgid "Australia/Currie"
+msgstr "অস্ট্রেলিয়া/কারি"
+
+#: ../capplets/time-admin/src/time-zones.h:335
+msgid "Australia/Darwin"
+msgstr "অস্ট্রেলিয়া/ডারউইন"
+
+#: ../capplets/time-admin/src/time-zones.h:336
+msgid "Australia/Eucla"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:337
+msgid "Australia/Hobart"
+msgstr "অস্ট্রেলিয়া/হোবার্ট"
+
+#: ../capplets/time-admin/src/time-zones.h:338
+msgid "Australia/Lindeman"
+msgstr "অস্ট্রেলিয়া/লিন্ডাম্যান"
+
+#: ../capplets/time-admin/src/time-zones.h:339
+msgid "Australia/Lord_Howe"
+msgstr "অস্ট্রেলিয়া/লর্ড_হাউই"
+
+#: ../capplets/time-admin/src/time-zones.h:340
+msgid "Australia/Melbourne"
+msgstr "অস্ট্রেলিয়া/মেলবোর্ন"
+
+#: ../capplets/time-admin/src/time-zones.h:341
+msgid "Australia/Perth"
+msgstr "অস্ট্রেলিয়া/পার্থ"
+
+#: ../capplets/time-admin/src/time-zones.h:342
+msgid "Australia/Sydney"
+msgstr "অস্ট্রেলিয়া/সিডনি"
+
+#: ../capplets/time-admin/src/time-zones.h:343
+msgid "Europe/Amsterdam"
+msgstr "ইউরোপ/আমস্টারডাম"
+
+#: ../capplets/time-admin/src/time-zones.h:344
+msgid "Europe/Andorra"
+msgstr "ইউরোপ/এন্ডোরা"
+
+#: ../capplets/time-admin/src/time-zones.h:345
+msgid "Europe/Astrakhan"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:346
+msgid "Europe/Athens"
+msgstr "ইউরোপ/এথেন্স"
+
+#: ../capplets/time-admin/src/time-zones.h:347
+msgid "Europe/Belgrade"
+msgstr "ইউরোপ/বেলগ্রেড"
+
+#: ../capplets/time-admin/src/time-zones.h:348
+msgid "Europe/Berlin"
+msgstr "ইউরোপ/বার্লিন"
+
+#: ../capplets/time-admin/src/time-zones.h:349
+msgid "Europe/Bratislava"
+msgstr "ইউরোপ/ব্রাতিসলাভা"
+
+#: ../capplets/time-admin/src/time-zones.h:350
+msgid "Europe/Brussels"
+msgstr "ইউরোপ/ব্রাসেলস"
+
+#: ../capplets/time-admin/src/time-zones.h:351
+msgid "Europe/Bucharest"
+msgstr "ইউরোপ/বুখারেস্ট"
+
+#: ../capplets/time-admin/src/time-zones.h:352
+msgid "Europe/Budapest"
+msgstr "ইউরোপ/বুডাপেস্ট"
+
+#: ../capplets/time-admin/src/time-zones.h:353
+msgid "Europe/Busingen"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:354
+msgid "Europe/Chisinau"
+msgstr "ইউরোপ/চিশিনাউ"
+
+#: ../capplets/time-admin/src/time-zones.h:355
+msgid "Europe/Copenhagen"
+msgstr "ইউরোপ/কোপেনহেগেন"
+
+#: ../capplets/time-admin/src/time-zones.h:356
+msgid "Europe/Dublin"
+msgstr "ইউরোপ/ডাবলিন"
+
+#: ../capplets/time-admin/src/time-zones.h:357
+msgid "Europe/Gibraltar"
+msgstr "ইউরোপ/জিব্রালটার"
+
+#: ../capplets/time-admin/src/time-zones.h:358
+msgid "Europe/Guernsey"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:359
+msgid "Europe/Helsinki"
+msgstr "ইউরোপ/হেলসিঙ্কি"
+
+#: ../capplets/time-admin/src/time-zones.h:360
+msgid "Europe/Isle_of_Man"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:361
+msgid "Europe/Istanbul"
+msgstr "ইউরোপ/ইস্তানবুল"
+
+#: ../capplets/time-admin/src/time-zones.h:362
+msgid "Europe/Jersey"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:363
+msgid "Europe/Kaliningrad"
+msgstr "ইউরোপ/কালিনিনগ্রাড"
+
+#: ../capplets/time-admin/src/time-zones.h:364
+msgid "Europe/Kiev"
+msgstr "ইউরোপ/কিভ"
+
+#: ../capplets/time-admin/src/time-zones.h:365
+msgid "Europe/Kirov"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:366
+msgid "Europe/Lisbon"
+msgstr "ইউরোপ/লিসবন"
+
+#: ../capplets/time-admin/src/time-zones.h:367
+msgid "Europe/Ljubljana"
+msgstr "ইউরোপ/লুবলইয়ানা"
+
+#: ../capplets/time-admin/src/time-zones.h:368
+msgid "Europe/London"
+msgstr "ইউরোপ/লন্ডন"
+
+#: ../capplets/time-admin/src/time-zones.h:369
+msgid "Europe/Luxembourg"
+msgstr "ইউরোপ/লুক্সেমবুর্গ"
+
+#: ../capplets/time-admin/src/time-zones.h:370
+msgid "Europe/Madrid"
+msgstr "ইউরোপ/মাড্রিড"
+
+#: ../capplets/time-admin/src/time-zones.h:371
+msgid "Europe/Malta"
+msgstr "ইউরোপ/মল্টা"
+
+#: ../capplets/time-admin/src/time-zones.h:372
+msgid "Europe/Mariehamn"
+msgstr "ইউরোপ/মারিহাম"
+
+#: ../capplets/time-admin/src/time-zones.h:373
+msgid "Europe/Minsk"
+msgstr "ইউরোপ/মিনস্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:374
+msgid "Europe/Monaco"
+msgstr "ইউরোপ/মোনেকো"
+
+#: ../capplets/time-admin/src/time-zones.h:375
+msgid "Europe/Moscow"
+msgstr "ইউরোপ/মস্কো"
+
+#: ../capplets/time-admin/src/time-zones.h:376
+msgid "Europe/Oslo"
+msgstr "ইউরোপ/ওসলো"
+
+#: ../capplets/time-admin/src/time-zones.h:377
+msgid "Europe/Paris"
+msgstr "ইউরোপ/প্যারিস"
+
+#: ../capplets/time-admin/src/time-zones.h:378
+msgid "Europe/Podgorica"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:379
+msgid "Europe/Prague"
+msgstr "ইউরোপ/প্রাগ"
+
+#: ../capplets/time-admin/src/time-zones.h:380
+msgid "Europe/Riga"
+msgstr "ইউরোপ/রিগা"
+
+#: ../capplets/time-admin/src/time-zones.h:381
+msgid "Europe/Rome"
+msgstr "ইউরোপ/রোম"
+
+#: ../capplets/time-admin/src/time-zones.h:382
+msgid "Europe/Samara"
+msgstr "ইউরোপ/সামারা"
+
+#: ../capplets/time-admin/src/time-zones.h:383
+msgid "Europe/San_Marino"
+msgstr "ইউরোপ/সান_মারিনো"
+
+#: ../capplets/time-admin/src/time-zones.h:384
+msgid "Europe/Sarajevo"
+msgstr "ইউরোপ/সারায়েভো"
+
+#: ../capplets/time-admin/src/time-zones.h:385
+msgid "Europe/Saratov"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:386
+msgid "Europe/Simferopol"
+msgstr "ইউরোপ/সিম্ফিরোপেল"
+
+#: ../capplets/time-admin/src/time-zones.h:387
+msgid "Europe/Skopje"
+msgstr "ইউরোপ/স্কপয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:388
+msgid "Europe/Sofia"
+msgstr "ইউরোপ/সোফিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:389
+msgid "Europe/Stockholm"
+msgstr "ইউরোপ/স্টকহোম"
+
+#: ../capplets/time-admin/src/time-zones.h:390
+msgid "Europe/Tallinn"
+msgstr "ইউরোপ/ট্যালিন"
+
+#: ../capplets/time-admin/src/time-zones.h:391
+msgid "Europe/Tirane"
+msgstr "ইউরোপ/তিরানা"
+
+#: ../capplets/time-admin/src/time-zones.h:392
+msgid "Europe/Ulyanovsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:393
+msgid "Europe/Uzhgorod"
+msgstr "ইউরোপ/উজগোরোদ"
+
+#: ../capplets/time-admin/src/time-zones.h:394
+msgid "Europe/Vaduz"
+msgstr "ইউরোপ/ভাদুজ"
+
+#: ../capplets/time-admin/src/time-zones.h:395
+msgid "Europe/Vatican"
+msgstr "ইউরোপ/ভ্যাটিকেন"
+
+#: ../capplets/time-admin/src/time-zones.h:396
+msgid "Europe/Vienna"
+msgstr "ইউরোপ/ভিয়েনা"
+
+#: ../capplets/time-admin/src/time-zones.h:397
+msgid "Europe/Vilnius"
+msgstr "ইউরোপ/ভিলনিয়াস"
+
+#: ../capplets/time-admin/src/time-zones.h:398
+msgid "Europe/Volgograd"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:399
+msgid "Europe/Warsaw"
+msgstr "ইউরোপ/ওয়ারস"
+
+#: ../capplets/time-admin/src/time-zones.h:400
+msgid "Europe/Zagreb"
+msgstr "ইউরোপ/জাগ্রেব"
+
+#: ../capplets/time-admin/src/time-zones.h:401
+msgid "Europe/Zaporozhye"
+msgstr "ইউরোপ/জাপোরোযেই"
+
+#: ../capplets/time-admin/src/time-zones.h:402
+msgid "Europe/Zurich"
+msgstr "ইউরোপ/জুরিখ"
+
+#: ../capplets/time-admin/src/time-zones.h:403
+msgid "Indian/Antananarivo"
+msgstr "ভারত মহাসাগর/আন্তানানারিভো"
+
+#: ../capplets/time-admin/src/time-zones.h:404
+msgid "Indian/Chagos"
+msgstr "ভারত মহাসাগর/চাগোস"
+
+#: ../capplets/time-admin/src/time-zones.h:405
+msgid "Indian/Christmas"
+msgstr "ভারত মহাসাগর/ক্রিস্টমাস"
+
+#: ../capplets/time-admin/src/time-zones.h:406
+msgid "Indian/Cocos"
+msgstr "ভারত মহাসাগর/কোকোস"
+
+#: ../capplets/time-admin/src/time-zones.h:407
+msgid "Indian/Comoro"
+msgstr "ভারত মহাসাগর/কোমোরো"
+
+#: ../capplets/time-admin/src/time-zones.h:408
+msgid "Indian/Kerguelen"
+msgstr "ভারত মহাসাগর/কারগুয়েলেন"
+
+#: ../capplets/time-admin/src/time-zones.h:409
+msgid "Indian/Mahe"
+msgstr "ভারত মহাসাগর/মাহে"
+
+#: ../capplets/time-admin/src/time-zones.h:410
+msgid "Indian/Maldives"
+msgstr "ভারত মহাসাগর/মালদিভ"
+
+#: ../capplets/time-admin/src/time-zones.h:411
+msgid "Indian/Mauritius"
+msgstr "ভারত মহাসাগর/মরিশাস"
+
+#: ../capplets/time-admin/src/time-zones.h:412
+msgid "Indian/Mayotte"
+msgstr "ভারত মহাসাগর/মেয়োতে"
+
+#: ../capplets/time-admin/src/time-zones.h:413
+msgid "Indian/Reunion"
+msgstr "ভারত মহাসাগর/রিউনিয়ন"
+
+#: ../capplets/time-admin/src/time-zones.h:414
+msgid "Pacific/Apia"
+msgstr "প্রশান্ত মহাসাগর/এপিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:415
+msgid "Pacific/Auckland"
+msgstr "প্রশান্ত মহাসাগর/অকল্যান্ড"
+
+#: ../capplets/time-admin/src/time-zones.h:416
+msgid "Pacific/Bougainville"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:417
+msgid "Pacific/Chatham"
+msgstr "প্রশান্ত মহাসাগর/চ্যাটহাম"
+
+#: ../capplets/time-admin/src/time-zones.h:418
+msgid "Pacific/Chuuk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:419
+msgid "Pacific/Easter"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:420
+msgid "Pacific/Efate"
+msgstr "প্রশান্ত মহাসাগর/এফাতে"
+
+#: ../capplets/time-admin/src/time-zones.h:421
+msgid "Pacific/Enderbury"
+msgstr "প্রশান্ত মহাসাগর/এন্ডারবুরি"
+
+#: ../capplets/time-admin/src/time-zones.h:422
+msgid "Pacific/Fakaofo"
+msgstr "প্রশান্ত মহাসাগর/ফাকাওফো"
+
+#: ../capplets/time-admin/src/time-zones.h:423
+msgid "Pacific/Fiji"
+msgstr "প্রশান্ত মহাসাগর/ফিজি"
+
+#: ../capplets/time-admin/src/time-zones.h:424
+msgid "Pacific/Funafuti"
+msgstr "প্রশান্ত মহাসাগর/ফুনাফুতি"
+
+#: ../capplets/time-admin/src/time-zones.h:425
+msgid "Pacific/Galapagos"
+msgstr "প্রশান্ত মহাসাগর/গালাপাগোস"
+
+#: ../capplets/time-admin/src/time-zones.h:426
+msgid "Pacific/Gambier"
+msgstr "প্রশান্ত মহাসাগর/গ্যামবিয়ার"
+
+#: ../capplets/time-admin/src/time-zones.h:427
+msgid "Pacific/Guadalcanal"
+msgstr "প্রশান্ত মহাসাগর/গুয়াডালকানাল"
+
+#: ../capplets/time-admin/src/time-zones.h:428
+msgid "Pacific/Guam"
+msgstr "প্রশান্ত মহাসাগর/গুয়াম"
+
+#: ../capplets/time-admin/src/time-zones.h:429
+msgid "Pacific/Honolulu"
+msgstr "প্রশান্ত মহাসাগর/হনোলুলু"
+
+#: ../capplets/time-admin/src/time-zones.h:430
+msgid "Pacific/Kiritimati"
+msgstr "প্রশান্ত মহাসাগর/কিরিবাস"
+
+#: ../capplets/time-admin/src/time-zones.h:431
+msgid "Pacific/Kosrae"
+msgstr "প্রশান্ত মহাসাগর/কোসরে"
+
+#: ../capplets/time-admin/src/time-zones.h:432
+msgid "Pacific/Kwajalein"
+msgstr "প্রশান্ত মহাসাগর/কয়াজালিইন"
+
+#: ../capplets/time-admin/src/time-zones.h:433
+msgid "Pacific/Majuro"
+msgstr "প্রশান্ত মহাসাগর/মাজুরো"
+
+#: ../capplets/time-admin/src/time-zones.h:434
+msgid "Pacific/Marquesas"
+msgstr "প্রশান্ত মহাসাগর/মারকিসাস"
+
+#: ../capplets/time-admin/src/time-zones.h:435
+msgid "Pacific/Midway"
+msgstr "প্রশান্ত মহাসাগর/মিডওয়ে"
+
+#: ../capplets/time-admin/src/time-zones.h:436
+msgid "Pacific/Nauru"
+msgstr "প্রশান্ত মহাসাগর/নাউরু"
+
+#: ../capplets/time-admin/src/time-zones.h:437
+msgid "Pacific/Niue"
+msgstr "প্রশান্ত মহাসাগর/নিউ"
+
+#: ../capplets/time-admin/src/time-zones.h:438
+msgid "Pacific/Norfolk"
+msgstr "প্রশান্ত মহাসাগর/নোরফোল্ক"
+
+#: ../capplets/time-admin/src/time-zones.h:439
+msgid "Pacific/Noumea"
+msgstr "প্রশান্ত মহাসাগর/নুমিয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:440
+msgid "Pacific/Pago_Pago"
+msgstr "প্রশান্ত মহাসাগর/পাগো_পাগো"
+
+#: ../capplets/time-admin/src/time-zones.h:441
+msgid "Pacific/Palau"
+msgstr "প্রশান্ত মহাসাগর/পালাউ"
+
+#: ../capplets/time-admin/src/time-zones.h:442
+msgid "Pacific/Pitcairn"
+msgstr "প্রশান্ত মহাসাগর/পিটকেয়ার্ন"
+
+#: ../capplets/time-admin/src/time-zones.h:443
+msgid "Pacific/Pohnpei"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:444
+msgid "Pacific/Port_Moresby"
+msgstr "প্রশান্ত মহাসাগর/পোর্ট-মোর্সবি"
+
+#: ../capplets/time-admin/src/time-zones.h:445
+msgid "Pacific/Rarotonga"
+msgstr "প্রশান্ত মহাসাগর/রারোটোঙ্গা"
+
+#: ../capplets/time-admin/src/time-zones.h:446
+msgid "Pacific/Saipan"
+msgstr "প্রশান্ত মহাসাগর/সাইপান"
+
+#: ../capplets/time-admin/src/time-zones.h:447
+msgid "Pacific/Tahiti"
+msgstr "প্রশান্ত মহাসাগর/তাহিতি"
+
+#: ../capplets/time-admin/src/time-zones.h:448
+msgid "Pacific/Tarawa"
+msgstr "প্রশান্ত মহাসাগর/তারাওয়া"
+
+#: ../capplets/time-admin/src/time-zones.h:449
+msgid "Pacific/Tongatapu"
+msgstr "প্রশান্ত মহাসাগর/টোঙ্গাটাপু"
+
+#: ../capplets/time-admin/src/time-zones.h:450
+msgid "Pacific/Wake"
+msgstr "প্রশান্ত মহাসাগর/ওয়েক"
+
+#: ../capplets/time-admin/src/time-zones.h:451
+msgid "Pacific/Wallis"
+msgstr "প্রশান্ত মহাসাগর/ওয়ালিস"
+
+#: ../capplets/time-admin/data/mate-time-admin.desktop.in.h:1
+msgid "Time And Date Manager"
+msgstr ""
+
+#: ../capplets/time-admin/data/mate-time-admin.desktop.in.h:2
+msgid "Setting the time and date of the local system"
+msgstr ""
+
 #: ../libwindow-settings/mate-wm-manager.c:317
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
@@ -2647,24 +4521,24 @@ msgstr "উইন্ডো ব্যবস্থাপক \"%s\" কোন ক�
 msgid "%s key is empty\n"
 msgstr ""
 
-#: ../shell/control-center.c:135
+#: ../shell/control-center.c:137
 msgid "Filter"
 msgstr "পরিশোধক"
 
-#: ../shell/control-center.c:135
+#: ../shell/control-center.c:137
 msgid "Groups"
 msgstr "দল"
 
-#: ../shell/control-center.c:135
+#: ../shell/control-center.c:137
 msgid "Common Tasks"
 msgstr "সাধারণ কাজ"
 
-#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.h:1
+#: ../shell/control-center.c:145 ../shell/matecc.desktop.in.h:1
 #: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "নিয়ন্ত্রণ কেন্দ্র"
 
-#: ../shell/control-center.c:162
+#: ../shell/control-center.c:164
 msgid "Hide on start (useful to preload the shell)"
 msgstr "শুরু করার সময় লুকিয়ে রাখা হবে (শেলটি প্রিলোড করতে প্রয়োজন)"
 
@@ -2676,11 +4550,11 @@ msgstr "MATE কনফিগারেশন প্রক্রিয়া"
 msgid "Configure MATE settings"
 msgstr ""
 
-#: ../typing-break/drw-break-window.c:185
+#: ../typing-break/drw-break-window.c:181
 msgid "_Postpone Break"
 msgstr "বিরাম স্থগিত করা হবে (_P)"
 
-#: ../typing-break/drw-break-window.c:244
+#: ../typing-break/drw-break-window.c:240
 msgid "Take a break!"
 msgstr "কিছুটা সময় বিরতি নিন!"
 
@@ -2739,7 +4613,7 @@ msgstr "আই ক্যান্ডি যোগ করেছেন এন্�
 msgid "A computer break reminder."
 msgstr "বিরতি মনে করিয়ে দেওয়ার একটি কম্পিউটার প্রোগ্রাম।"
 
-#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:786
 msgid "translator-credits"
 msgstr ""
 "অঙ্কুর প্রকল্পের পক্ষে, সায়মিন্দু দাশগুপ্ত <unmadindu@bengalinux.org>\n"
@@ -2772,60 +4646,60 @@ msgstr ""
 " ডান বোতাম ক্লিক করে 'প্যানেলে যোগ করুন' বেছে নিয়ে 'বিজ্ঞপ্তিস্থল' নির্বাচন "
 "করুন ও এরপর 'যোগ করুন' শীর্ষক বোতামে ক্লিক করুন।"
 
-#: ../font-viewer/font-view.c:204
+#: ../font-viewer/font-view.c:205
 msgid "Style"
 msgstr ""
 
-#: ../font-viewer/font-view.c:214
+#: ../font-viewer/font-view.c:215
 msgid "Type"
 msgstr "ধরণ"
 
-#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
+#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:276
 msgid "Version"
 msgstr "সংস্করণ"
 
-#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
+#: ../font-viewer/font-view.c:266 ../font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "স্বত্বাধিকার"
 
-#: ../font-viewer/font-view.c:270
+#: ../font-viewer/font-view.c:271
 msgid "Description"
 msgstr "বিবরণ"
 
-#: ../font-viewer/font-view.c:288
+#: ../font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "ইনস্টল ব্যর্থ হয়েছে"
 
-#: ../font-viewer/font-view.c:294
+#: ../font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "ইনস্টল করা হয়েছে"
 
-#: ../font-viewer/font-view.c:431
+#: ../font-viewer/font-view.c:432
 msgid "This font could not be displayed."
 msgstr ""
 
-#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
+#: ../font-viewer/font-view.c:495 ../font-viewer/font-view.c:562
 msgid "Info"
 msgstr ""
 
-#: ../font-viewer/font-view.c:574
+#: ../font-viewer/font-view.c:575
 msgid "Back"
 msgstr "পিছনে"
 
-#: ../font-viewer/font-view.c:678
+#: ../font-viewer/font-view.c:679
 msgid "All Fonts"
 msgstr ""
 
-#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
+#: ../font-viewer/font-view.c:783 ../font-viewer/font-view.c:835
 msgid "Font Viewer"
 msgstr "ফন্ট প্রদর্শন ব্যবস্থা"
 
-#: ../font-viewer/font-view.c:783
+#: ../font-viewer/font-view.c:784
 #: ../font-viewer/mate-font-viewer.desktop.in.h:2
 msgid "View fonts on your system"
 msgstr ""
 
-#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
 msgid "Search"
 msgstr "সন্ধান"
 
@@ -2871,56 +4745,56 @@ msgid "Other"
 msgstr "অন্যান্য"
 
 #. make start action
-#: ../libslab/application-tile.c:343
+#: ../libslab/application-tile.c:339
 #, c-format
 msgid "Start %s"
 msgstr "%s শুরু করা হবে"
 
-#: ../libslab/application-tile.c:364
+#: ../libslab/application-tile.c:360
 msgid "Help"
 msgstr "সহায়তা"
 
-#: ../libslab/application-tile.c:639
+#: ../libslab/application-tile.c:642
 msgid "Remove from Favorites"
 msgstr "পছন্দনীয় থেকে মুছে ফেলুন"
 
-#: ../libslab/application-tile.c:641
+#: ../libslab/application-tile.c:644
 msgid "Add to Favorites"
 msgstr "পছন্দনীয় তে যোগ করুন"
 
-#: ../libslab/application-tile.c:726
+#: ../libslab/application-tile.c:729
 msgid "Remove from Startup Programs"
 msgstr "প্রারম্ভ প্রোগ্রাম থেকে মুছে ফেলুন"
 
-#: ../libslab/application-tile.c:728
+#: ../libslab/application-tile.c:731
 msgid "Add to Startup Programs"
 msgstr "প্রারম্ভ প্রোগ্রামে যোগ করুন"
 
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "নতুন স্প্রেডশীট"
 
-#: ../libslab/bookmark-agent.c:1081
+#: ../libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "নতুন নথি"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "হোম"
 
-#: ../libslab/bookmark-agent.c:1142
+#: ../libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "নথি"
 
-#: ../libslab/bookmark-agent.c:1148
+#: ../libslab/bookmark-agent.c:1153
 msgid "Desktop"
 msgstr "ডেস্কটপ"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "ফাইল-সিস্টেম"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "নেটওয়ার্ক সার্ভার"

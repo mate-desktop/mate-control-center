@@ -4,27 +4,28 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # Martin Wimpress <code@flexion.org>, 2019
 # ogalho Carlos Dias Martins <ogalho@gmail.com>, 2019
 # Diogo Oliveira <diogodesigns@gmail.com>, 2019
 # Luis Filipe Teixeira <lufilte@gmail.com>, 2019
-# MS <manuelarodsilva@gmail.com>, 2019
-# José Vieira <jvieira33@sapo.pt>, 2019
-# Sérgio Marques <smarquespt@gmail.com>, 2019
-# Carlos Moreira, 2019
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2019
 # Wolfgang Ulbrich <mate@raveit.de>, 2019
 # Rui <xymarior@yandex.com>, 2019
+# Sérgio Marques <smarquespt@gmail.com>, 2019
+# Stefano Karapetsas <stefano@karapetsas.com>, 2019
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
+# Manuela Silva <manuelarodsilva@gmail.com>, 2019
+# Carlos Moreira, 2019
+# José Vieira <jvieira33@sapo.pt>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 16:14+0100\n"
+"POT-Creation-Date: 2019-08-13 13:52+0200\n"
 "PO-Revision-Date: 2019-03-13 12:48+0000\n"
-"Last-Translator: Rui <xymarior@yandex.com>, 2019\n"
+"Last-Translator: José Vieira <jvieira33@sapo.pt>, 2019\n"
 "Language-Team: Portuguese (https://www.transifex.com/mate/teams/13566/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -148,7 +149,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Comando associado a um atalho de teclado personalizado."
 
 #: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:201
+#: ../font-viewer/font-view.c:202
 msgid "Name"
 msgstr "Nome"
 
@@ -170,11 +171,11 @@ msgid "Images"
 msgstr "Imagens"
 
 #: ../capplets/about-me/mate-about-me.c:327
-#: ../capplets/appearance/theme-installer.c:834
+#: ../capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Todos os Ficheiros"
 
-#: ../capplets/about-me/mate-about-me.c:495
+#: ../capplets/about-me/mate-about-me.c:500
 #, c-format
 msgid "About %s"
 msgstr "Sobre %s"
@@ -265,15 +266,15 @@ msgstr "Não conseguiu aceder ao dispositivo '%s'"
 msgid "Could not start finger capture on '%s' device"
 msgstr "Não pode iniciar a captura do dedo no dispositivo '%s'"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:523
+#: ../capplets/about-me/mate-about-me-fingerprint.c:524
 msgid "Could not access any fingerprint readers"
 msgstr "Não pôde aceder a quaisquer leitores de impressão digital"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:524
+#: ../capplets/about-me/mate-about-me-fingerprint.c:525
 msgid "Please contact your system administrator for help."
 msgstr "Por favor contacte o seu administrador do sistema para ajuda."
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:554
+#: ../capplets/about-me/mate-about-me-fingerprint.c:559
 #: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
 msgid "Enable Fingerprint Login"
 msgstr "Ativar Início de Sessão com Impressão Digital"
@@ -283,7 +284,7 @@ msgstr "Ativar Início de Sessão com Impressão Digital"
 #. * "To enable fingerprint login, you need to save one of your fingerprints,
 #. using the
 #. * 'Digital Persona U.are.U 4000/4000B' device."
-#: ../capplets/about-me/mate-about-me-fingerprint.c:584
+#: ../capplets/about-me/mate-about-me-fingerprint.c:589
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -292,11 +293,11 @@ msgstr ""
 "Para ativar o início de sessão com impressão digital, precisa de gravar uma "
 "das suas impressões digitais, usando o dispositivo '%s'."
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:593
+#: ../capplets/about-me/mate-about-me-fingerprint.c:598
 msgid "Swipe finger on reader"
 msgstr "Passar dedo no leitor"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:595
+#: ../capplets/about-me/mate-about-me-fingerprint.c:600
 msgid "Place finger on reader"
 msgstr "Colocar dedo no leitor"
 
@@ -575,33 +576,52 @@ msgstr "Adicionar Papel de Parede"
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: ../capplets/appearance/appearance-main.c:56
+#: ../capplets/appearance/appearance-font.c:612
+msgid "Select Font"
+msgstr ""
+
+#: ../capplets/appearance/appearance-font.c:615
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: ../capplets/appearance/appearance-font.c:617
+#: ../capplets/common/theme-thumbnail.c:224
+#: ../capplets/common/theme-thumbnail.c:306
+msgid "_Open"
+msgstr "_Abrir"
+
+#: ../capplets/appearance/appearance-font.c:622
+#: ../capplets/appearance/data/appearance.ui.h:83
+msgid "Fonts"
+msgstr "Tipos de letra"
+
+#: ../capplets/appearance/appearance-main.c:52
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "Não foi possível carregar o ficheiro da interface de utilizador: %s"
 
-#: ../capplets/appearance/appearance-main.c:157
+#: ../capplets/appearance/appearance-main.c:153
 msgid "Specify the filename of a theme to install"
 msgstr "Especifique o nome do ficheiro de um tema a instalar"
 
-#: ../capplets/appearance/appearance-main.c:158
+#: ../capplets/appearance/appearance-main.c:154
 msgid "filename"
 msgstr "nome do ficheiro"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:165
+#: ../capplets/appearance/appearance-main.c:161
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr ""
 "Especifique o nome da página a mostrar (tema|fundo|tipos de letra|interface)"
 
-#: ../capplets/appearance/appearance-main.c:166
-#: ../capplets/default-applications/mate-da-capplet.c:746
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: ../capplets/appearance/appearance-main.c:162
+#: ../capplets/default-applications/mate-da-capplet.c:822
+#: ../capplets/mouse/mate-mouse-properties.c:443
 msgid "page"
 msgstr "página"
 
-#: ../capplets/appearance/appearance-main.c:173
+#: ../capplets/appearance/appearance-main.c:169
 msgid "[WALLPAPER...]"
 msgstr "[WALLPAPER...]"
 
@@ -612,8 +632,8 @@ msgstr "Ponteiro Padrão"
 
 #: ../capplets/appearance/appearance-style.c:233
 #: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:297
-#: ../font-viewer/font-view.c:568
+#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:298
+#: ../font-viewer/font-view.c:569
 msgid "Install"
 msgstr "Instalar"
 
@@ -674,159 +694,159 @@ msgid "Custom"
 msgstr "Personalizado"
 
 #: ../capplets/appearance/data/appearance.ui.h:1
+msgid "Customize Theme"
+msgstr "Personalizar Tema"
+
+#: ../capplets/appearance/data/appearance.ui.h:2
+msgid "Controls"
+msgstr "Controlos"
+
+#: ../capplets/appearance/data/appearance.ui.h:3
+msgid "The current controls theme does not support color schemes."
+msgstr "O tema de controlos atual não suporta esquemas de cor."
+
+#: ../capplets/appearance/data/appearance.ui.h:4
+msgid "_Tooltips:"
+msgstr "_Dicas de contexto:"
+
+#: ../capplets/appearance/data/appearance.ui.h:5
+msgid "Text"
+msgstr "Texto"
+
+#: ../capplets/appearance/data/appearance.ui.h:6
+msgid "Background"
+msgstr "Fundo"
+
+#: ../capplets/appearance/data/appearance.ui.h:7
+msgid "_Selected items:"
+msgstr "Itens _selecionados:"
+
+#: ../capplets/appearance/data/appearance.ui.h:8
+msgid "_Input boxes:"
+msgstr "_Caixas de entrada:"
+
+#: ../capplets/appearance/data/appearance.ui.h:9
+msgid "_Windows:"
+msgstr "_Janelas:"
+
+#: ../capplets/appearance/data/appearance.ui.h:10
+msgid "_Reset to Defaults"
+msgstr "_Repor Valores Padrão"
+
+#: ../capplets/appearance/data/appearance.ui.h:11
+msgid "Colors"
+msgstr "Cores"
+
+#: ../capplets/appearance/data/appearance.ui.h:12
+msgid "Window Border"
+msgstr "Contorno da Janela"
+
+#: ../capplets/appearance/data/appearance.ui.h:13
+msgid "Icons"
+msgstr "Ícones"
+
+#: ../capplets/appearance/data/appearance.ui.h:14
+msgid "_Size:"
+msgstr "_Tamanho:"
+
+#. small threshold
+#: ../capplets/appearance/data/appearance.ui.h:15
+#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+msgid "Small"
+msgstr "Pequeno"
+
+#. large threshold
+#: ../capplets/appearance/data/appearance.ui.h:16
+#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+msgid "Large"
+msgstr "Grande"
+
+#: ../capplets/appearance/data/appearance.ui.h:17
+msgid "Pointer"
+msgstr "Ponteiro"
+
+#: ../capplets/appearance/data/appearance.ui.h:18
 msgid "Font Rendering Details"
 msgstr "Detalhes "
 
-#: ../capplets/appearance/data/appearance.ui.h:2
+#: ../capplets/appearance/data/appearance.ui.h:19
 msgid "R_esolution"
 msgstr "R_esolução"
 
-#: ../capplets/appearance/data/appearance.ui.h:3
+#: ../capplets/appearance/data/appearance.ui.h:20
 msgid "Dots per inch (DPI):"
 msgstr "Pontos por Polegada (DPI):"
 
-#: ../capplets/appearance/data/appearance.ui.h:4
+#: ../capplets/appearance/data/appearance.ui.h:21
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr ""
 "Restabelece a densidade (DPI) da fonte tipográfica para o valor auto-"
 "detetado do servidor X (Xserver)"
 
-#: ../capplets/appearance/data/appearance.ui.h:5
+#: ../capplets/appearance/data/appearance.ui.h:22
 msgid "Automatic detection:"
 msgstr "Deteção automática:"
 
-#: ../capplets/appearance/data/appearance.ui.h:6
+#: ../capplets/appearance/data/appearance.ui.h:23
 msgid "Smoothing"
 msgstr "Suavização"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: ../capplets/appearance/data/appearance.ui.h:24
 msgid "Gra_yscale"
 msgstr "Escala de cinzentos"
 
-#: ../capplets/appearance/data/appearance.ui.h:8
+#: ../capplets/appearance/data/appearance.ui.h:25
 msgid "Sub_pixel (LCDs)"
 msgstr "Sub_pixel (LCDs)"
 
-#: ../capplets/appearance/data/appearance.ui.h:9
+#: ../capplets/appearance/data/appearance.ui.h:26
 msgid "_None"
 msgstr "_Nenhum"
 
 #. font hinting
-#: ../capplets/appearance/data/appearance.ui.h:11
+#: ../capplets/appearance/data/appearance.ui.h:28
 msgid "Hinting"
 msgstr "Sugestões"
 
-#: ../capplets/appearance/data/appearance.ui.h:12
+#: ../capplets/appearance/data/appearance.ui.h:29
 msgid "N_one"
 msgstr "Nenhum"
 
-#: ../capplets/appearance/data/appearance.ui.h:13
+#: ../capplets/appearance/data/appearance.ui.h:30
 msgid "_Slight"
 msgstr "_Ligeiro"
 
-#: ../capplets/appearance/data/appearance.ui.h:14
+#: ../capplets/appearance/data/appearance.ui.h:31
 msgid "_Full"
 msgstr "_Total"
 
-#: ../capplets/appearance/data/appearance.ui.h:15
+#: ../capplets/appearance/data/appearance.ui.h:32
 msgid "_Medium"
 msgstr "_Médio"
 
-#: ../capplets/appearance/data/appearance.ui.h:16
+#: ../capplets/appearance/data/appearance.ui.h:33
 msgid "Subpixel Order"
 msgstr "Ordem de subpixel"
 
 #. pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:18
+#: ../capplets/appearance/data/appearance.ui.h:35
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:20
+#: ../capplets/appearance/data/appearance.ui.h:37
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: ../capplets/appearance/data/appearance.ui.h:39
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:24
+#: ../capplets/appearance/data/appearance.ui.h:41
 msgid "_VRGB"
 msgstr "_VRGB"
-
-#: ../capplets/appearance/data/appearance.ui.h:25
-msgid "Customize Theme"
-msgstr "Personalizar Tema"
-
-#: ../capplets/appearance/data/appearance.ui.h:26
-msgid "Controls"
-msgstr "Controlos"
-
-#: ../capplets/appearance/data/appearance.ui.h:27
-msgid "The current controls theme does not support color schemes."
-msgstr "O tema de controlos atual não suporta esquemas de cor."
-
-#: ../capplets/appearance/data/appearance.ui.h:28
-msgid "_Tooltips:"
-msgstr "_Dicas de contexto:"
-
-#: ../capplets/appearance/data/appearance.ui.h:29
-msgid "Text"
-msgstr "Texto"
-
-#: ../capplets/appearance/data/appearance.ui.h:30
-msgid "Background"
-msgstr "Fundo"
-
-#: ../capplets/appearance/data/appearance.ui.h:31
-msgid "_Selected items:"
-msgstr "Itens _selecionados:"
-
-#: ../capplets/appearance/data/appearance.ui.h:32
-msgid "_Input boxes:"
-msgstr "_Caixas de entrada:"
-
-#: ../capplets/appearance/data/appearance.ui.h:33
-msgid "_Windows:"
-msgstr "_Janelas:"
-
-#: ../capplets/appearance/data/appearance.ui.h:34
-msgid "_Reset to Defaults"
-msgstr "_Repor Valores Padrão"
-
-#: ../capplets/appearance/data/appearance.ui.h:35
-msgid "Colors"
-msgstr "Cores"
-
-#: ../capplets/appearance/data/appearance.ui.h:36
-msgid "Window Border"
-msgstr "Contorno da Janela"
-
-#: ../capplets/appearance/data/appearance.ui.h:37
-msgid "Icons"
-msgstr "Ícones"
-
-#: ../capplets/appearance/data/appearance.ui.h:38
-msgid "_Size:"
-msgstr "_Tamanho:"
-
-#. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:39
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
-msgid "Small"
-msgstr "Pequeno"
-
-#. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:40
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
-msgid "Large"
-msgstr "Grande"
-
-#: ../capplets/appearance/data/appearance.ui.h:41
-msgid "Pointer"
-msgstr "Ponteiro"
 
 #: ../capplets/appearance/data/appearance.ui.h:42
 msgid "Save Theme As..."
@@ -967,75 +987,75 @@ msgid "_Fixed width font:"
 msgstr "Tipo de letra de largura _fixa:"
 
 #: ../capplets/appearance/data/appearance.ui.h:76
+msgid "Add new f_ont..."
+msgstr ""
+
+#: ../capplets/appearance/data/appearance.ui.h:77
 msgid "Rendering"
 msgstr "Processamento"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: ../capplets/appearance/data/appearance.ui.h:78
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "Suavização de sub_pixel (LCDs)"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: ../capplets/appearance/data/appearance.ui.h:79
 msgid "Best _shapes"
 msgstr "Melhores forma_s"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: ../capplets/appearance/data/appearance.ui.h:80
 msgid "_Monochrome"
 msgstr "_Monocromático"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: ../capplets/appearance/data/appearance.ui.h:81
 msgid "Best co_ntrast"
 msgstr "Melhor co_ntraste"
 
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: ../capplets/appearance/data/appearance.ui.h:82
 msgid "D_etails..."
 msgstr "D_etalhes..."
 
-#: ../capplets/appearance/data/appearance.ui.h:82
-msgid "Fonts"
-msgstr "Tipos de letra"
-
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: ../capplets/appearance/data/appearance.ui.h:84
 msgid "Menus and Toolbars"
 msgstr "Menus e Barras de ferramentas"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: ../capplets/appearance/data/appearance.ui.h:85
 msgid "Show _icons in menus"
 msgstr "Mostrar _icones nos menus"
 
-#: ../capplets/appearance/data/appearance.ui.h:85
+#: ../capplets/appearance/data/appearance.ui.h:86
 msgid "_Editable menu shortcut keys"
 msgstr "_Teclas de atalho do menu editável"
 
-#: ../capplets/appearance/data/appearance.ui.h:86
+#: ../capplets/appearance/data/appearance.ui.h:87
 msgid "Toolbar _button labels:"
 msgstr "Estilo dos botões da _Barra de Ferramentas"
 
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: ../capplets/appearance/data/appearance.ui.h:88
 msgid "Buttons"
 msgstr "Botões"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: ../capplets/appearance/data/appearance.ui.h:89
 msgid "Show icons on buttons"
 msgstr "Mostrar ícones nos botões"
 
-#: ../capplets/appearance/data/appearance.ui.h:89
+#: ../capplets/appearance/data/appearance.ui.h:90
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr ""
 "Se os botões devem ou não exibir um ícone juntamente com o texto do botão"
 
-#: ../capplets/appearance/data/appearance.ui.h:90
+#: ../capplets/appearance/data/appearance.ui.h:91
 msgid "Preview"
 msgstr "Antevisão"
 
-#: ../capplets/appearance/data/appearance.ui.h:91
+#: ../capplets/appearance/data/appearance.ui.h:92
 msgid "_File"
 msgstr "_Ficheiro"
 
-#: ../capplets/appearance/data/appearance.ui.h:92
+#: ../capplets/appearance/data/appearance.ui.h:93
 msgid "Edit"
 msgstr "Editar"
 
-#: ../capplets/appearance/data/appearance.ui.h:93
+#: ../capplets/appearance/data/appearance.ui.h:94
 msgid "Interface"
 msgstr "Interface"
 
@@ -1164,8 +1184,8 @@ msgstr ""
 
 #: ../capplets/appearance/theme-installer.c:375
 #, c-format
-msgid "The theme \"%s\" is already existed."
-msgstr "O teme \"%s\" já existe."
+msgid "The theme \"%s\" already exists."
+msgstr ""
 
 #: ../capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
@@ -1176,7 +1196,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../capplets/appearance/theme-installer.c:409
-#: ../capplets/appearance/theme-util.c:124
+#: ../capplets/appearance/theme-util.c:122
 msgid "Theme cannot be deleted"
 msgstr "Tema não pode ser apagado"
 
@@ -1228,11 +1248,11 @@ msgstr ""
 "Permissões insuficientes para instalar o tema em:\n"
 "%s"
 
-#: ../capplets/appearance/theme-installer.c:815
+#: ../capplets/appearance/theme-installer.c:811
 msgid "Select Theme"
 msgstr "Selecionar Tema"
 
-#: ../capplets/appearance/theme-installer.c:826
+#: ../capplets/appearance/theme-installer.c:822
 msgid "Theme Packages"
 msgstr "Pacotes de Temas"
 
@@ -1246,15 +1266,15 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "O tema já existe. Quer substituí-lo?"
 
 #: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:442
+#: ../capplets/common/file-transfer-dialog.c:438
 msgid "_Overwrite"
 msgstr "_Substituir"
 
-#: ../capplets/appearance/theme-util.c:73
+#: ../capplets/appearance/theme-util.c:71
 msgid "Would you like to delete this theme?"
 msgstr "Deseja apagar este tema?"
 
-#: ../capplets/appearance/theme-util.c:250
+#: ../capplets/appearance/theme-util.c:282
 msgid "Could not install theme engine"
 msgstr "Não conseguiu instalar o motor de temas"
 
@@ -1266,89 +1286,84 @@ msgstr ""
 "Incapaz de iniciar o gestor de definições 'mate-settings-daemon'.\n"
 "Sem o gestor de definições MATE a correr, algumas preferências poderão não ter efeito. Isto pode indicar um problema com DBus, ou um gestor de definições que não seja o MATE (por ex.: KDE) poderá estar já ativo e em conflito com o gestor de definições MATE."
 
-#: ../capplets/common/capplet-stock-icons.c:66
-#, c-format
-msgid "Unable to load stock icon '%s'\n"
-msgstr "Incapaz de carregar ícone base '%s'\n"
-
 #: ../capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ocorreu um erro ao mostrar a ajuda: %s"
 
-#: ../capplets/common/file-transfer-dialog.c:98
+#: ../capplets/common/file-transfer-dialog.c:96
 #, c-format
 msgid "Copying file: %u of %u"
 msgstr "A copiar o ficheiro: %u de %u"
 
-#: ../capplets/common/file-transfer-dialog.c:145
+#: ../capplets/common/file-transfer-dialog.c:143
 #, c-format
 msgid "Copying '%s'"
 msgstr "A copiar '%s'"
 
-#: ../capplets/common/file-transfer-dialog.c:185
-#: ../capplets/common/file-transfer-dialog.c:312
+#: ../capplets/common/file-transfer-dialog.c:183
+#: ../capplets/common/file-transfer-dialog.c:308
 msgid "Copying files"
 msgstr "A copiar ficheiros"
 
-#: ../capplets/common/file-transfer-dialog.c:224
+#: ../capplets/common/file-transfer-dialog.c:222
 msgid "Parent Window"
 msgstr "Janela Mãe"
 
-#: ../capplets/common/file-transfer-dialog.c:225
+#: ../capplets/common/file-transfer-dialog.c:223
 msgid "Parent window of the dialog"
 msgstr "Janela mãe do diálogo"
 
-#: ../capplets/common/file-transfer-dialog.c:231
+#: ../capplets/common/file-transfer-dialog.c:229
 msgid "From URI"
 msgstr "A partir do URI"
 
-#: ../capplets/common/file-transfer-dialog.c:232
+#: ../capplets/common/file-transfer-dialog.c:230
 msgid "URI currently transferring from"
 msgstr "URI a ser transferido atualmente de"
 
-#: ../capplets/common/file-transfer-dialog.c:239
+#: ../capplets/common/file-transfer-dialog.c:237
 msgid "To URI"
 msgstr "Para o URI"
 
-#: ../capplets/common/file-transfer-dialog.c:240
+#: ../capplets/common/file-transfer-dialog.c:238
 msgid "URI currently transferring to"
 msgstr "URI a ser transferido atualmente para"
 
-#: ../capplets/common/file-transfer-dialog.c:247
+#: ../capplets/common/file-transfer-dialog.c:245
 msgid "Fraction completed"
 msgstr "Fração completada"
 
-#: ../capplets/common/file-transfer-dialog.c:248
+#: ../capplets/common/file-transfer-dialog.c:246
 msgid "Fraction of transfer currently completed"
 msgstr "Fração da transferência já cumprida"
 
-#: ../capplets/common/file-transfer-dialog.c:255
+#: ../capplets/common/file-transfer-dialog.c:253
 msgid "Current URI index"
 msgstr "Índice URI atual"
 
-#: ../capplets/common/file-transfer-dialog.c:256
+#: ../capplets/common/file-transfer-dialog.c:254
 msgid "Current URI index - starts from 1"
 msgstr "Índice URI atual - começa a partir de 1"
 
-#: ../capplets/common/file-transfer-dialog.c:263
+#: ../capplets/common/file-transfer-dialog.c:261
 msgid "Total URIs"
 msgstr "Total de URIs"
 
-#: ../capplets/common/file-transfer-dialog.c:264
+#: ../capplets/common/file-transfer-dialog.c:262
 msgid "Total number of URIs"
 msgstr "Número total de URIs"
 
-#: ../capplets/common/file-transfer-dialog.c:436
+#: ../capplets/common/file-transfer-dialog.c:432
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "O ficheiro '%s' já existe. Pretende substituí-lo?"
 
-#: ../capplets/common/file-transfer-dialog.c:439
+#: ../capplets/common/file-transfer-dialog.c:435
 msgid "_Skip"
 msgstr "_Ignorar"
 
-#: ../capplets/common/file-transfer-dialog.c:440
+#: ../capplets/common/file-transfer-dialog.c:436
 msgid "Overwrite _All"
 msgstr "Sobrepor _Tudo"
 
@@ -1379,11 +1394,6 @@ msgstr ""
 "Este tema não terá o aspeto desejado porque o tema de ícones necessário '%s'"
 " não está instalado."
 
-#: ../capplets/common/theme-thumbnail.c:224
-#: ../capplets/common/theme-thumbnail.c:306
-msgid "_Open"
-msgstr "_Abrir"
-
 #: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:1
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
 msgid "Preferred Applications"
@@ -1393,21 +1403,21 @@ msgstr "Aplicações Preferidas"
 msgid "Select your default applications"
 msgstr "Selecione as suas aplicações predefinidas"
 
-#: ../capplets/default-applications/mate-da-capplet.c:577
+#: ../capplets/default-applications/mate-da-capplet.c:622
 msgid "Could not load the main interface"
 msgstr "Incapaz de ler a interface principal"
 
-#: ../capplets/default-applications/mate-da-capplet.c:578
+#: ../capplets/default-applications/mate-da-capplet.c:623
 msgid "Please make sure that the applet is properly installed"
 msgstr "Por favor assegure-se que o applet está devidamente instalado"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:745
+#: ../capplets/default-applications/mate-da-capplet.c:821
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Especificar o nome da página a mostrar (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:751
+#: ../capplets/default-applications/mate-da-capplet.c:827
 msgid "- MATE Default Applications"
 msgstr "- Aplicações Predefinidas do MATE"
 
@@ -1420,21 +1430,21 @@ msgid "Mail Reader"
 msgstr "Leitor de Correio"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
-msgid "Instant Messenger"
-msgstr "Mensageiro Instantâneo"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:5
 msgid "Co_mmand:"
 msgstr "Co_mando:"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
 #, no-c-format
 msgid "All %s occurrences will be replaced with actual link"
 msgstr "Todas as ocorrências de %s serão substituídas pela ligação atual"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
 msgid "Run in t_erminal"
 msgstr "Executar na _consola"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+msgid "Instant Messenger"
+msgstr "Mensageiro Instantâneo"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
 msgid "Internet"
@@ -1493,20 +1503,20 @@ msgid "Office"
 msgstr "Produtividade"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
-msgid "Visual"
-msgstr "Visual"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
 msgid "_Run at start"
 msgstr "_Executar no início"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
-msgid "Mobility"
-msgstr "Mobilidade"
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+msgid "Visual"
+msgstr "Visual"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
 msgid "Run at st_art"
 msgstr "Executar no _início"
+
+#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+msgid "Mobility"
+msgstr "Mobilidade"
 
 #: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
@@ -1514,20 +1524,20 @@ msgid "Accessibility"
 msgstr "Acessibilidade"
 
 #: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:304
-#: ../capplets/display/xrandr-capplet.c:343
+#: ../capplets/display/xrandr-capplet.c:306
+#: ../capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "Normal"
 
 #: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:305
-#: ../capplets/windows/mate-window-properties.c:504
+#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/windows/mate-window-properties.c:511
 msgid "Left"
 msgstr "Esquerda"
 
 #: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/windows/mate-window-properties.c:503
+#: ../capplets/display/xrandr-capplet.c:308
+#: ../capplets/windows/mate-window-properties.c:510
 msgid "Right"
 msgstr "Direita"
 
@@ -1601,7 +1611,7 @@ msgid "R_otation:"
 msgstr "R_otação:"
 
 #: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:493
+#: ../capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "Monitor"
 
@@ -1719,11 +1729,11 @@ msgstr ""
 "Autenticação requerida para instalar definições multimonitor para todos os "
 "utilizadores"
 
-#: ../capplets/display/xrandr-capplet.c:307
+#: ../capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "Virado ao Contrário"
 
-#: ../capplets/display/xrandr-capplet.c:349
+#: ../capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1732,23 +1742,23 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:482
-#: ../capplets/display/xrandr-capplet.c:1630
+#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:1632
 #, c-format
 msgid "Mirror Screens"
 msgstr "Espelhar Ecrãs"
 
-#: ../capplets/display/xrandr-capplet.c:484
+#: ../capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "Monitor: %s"
 
-#: ../capplets/display/xrandr-capplet.c:554
+#: ../capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1486
+#: ../capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1756,32 +1766,32 @@ msgstr ""
 "Selecione um monitor para mudar as suas propriedades; arraste-o para "
 "reordenar a sua disposição."
 
-#: ../capplets/display/xrandr-capplet.c:2079
+#: ../capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "Incapaz de gravar a configuração do monitor"
 
-#: ../capplets/display/xrandr-capplet.c:2100
+#: ../capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr "Incapaz de obter o bus de sessão ao aplicar a configuração de ecrã"
 
-#: ../capplets/display/xrandr-capplet.c:2119
+#: ../capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "Incapaz de detetar os ecrãs"
 
-#: ../capplets/display/xrandr-capplet.c:2327
+#: ../capplets/display/xrandr-capplet.c:2329
 msgid "The monitor configuration has been saved"
 msgstr "A configuração do monitor foi gravada"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: ../capplets/display/xrandr-capplet.c:2331
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 "Esta configuração será usada da próxima vez que alguém iniciar sessão."
 
-#: ../capplets/display/xrandr-capplet.c:2338
+#: ../capplets/display/xrandr-capplet.c:2340
 msgid "Could not set the default configuration for monitors"
 msgstr "Não se conseguiu estabelecer a configuração predefinida dos monitores"
 
-#: ../capplets/display/xrandr-capplet.c:2422
+#: ../capplets/display/xrandr-capplet.c:2419
 msgid "Could not get screen information"
 msgstr "Não se conseguiu obter a informação do ecrã"
 
@@ -1813,26 +1823,26 @@ msgid "The type of accelerator."
 msgstr "O tipo de acelerador"
 
 #: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:134
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/keybindings/mate-keybinding-properties.c:133
+#: ../capplets/mouse/mate-mouse-properties.c:347
 #: ../typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "Inativo"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:216
+#: ../capplets/keybindings/mate-keybinding-properties.c:215
 msgid "<Unknown Action>"
 msgstr "<Ação desconhecida>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1019
-#: ../capplets/keybindings/mate-keybinding-properties.c:1609
+#: ../capplets/keybindings/mate-keybinding-properties.c:1018
+#: ../capplets/keybindings/mate-keybinding-properties.c:1626
 msgid "Custom Shortcuts"
 msgstr "Atalhos personalizados"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1189
+#: ../capplets/keybindings/mate-keybinding-properties.c:1206
 msgid "Error saving the new shortcut"
 msgstr "Erro ao gravar o novo atalho"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1265
+#: ../capplets/keybindings/mate-keybinding-properties.c:1282
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1841,7 +1851,7 @@ msgstr ""
 "O atalho \"%s\" não pode ser usado porque será impossível digitar usando esta tecla.\n"
 "Por favor experimente com outra tecla, tal como Control, Alt ou Shift ao mesmo tempo."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1297
+#: ../capplets/keybindings/mate-keybinding-properties.c:1314
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1850,24 +1860,24 @@ msgstr ""
 "O atalho \"%s\" já está a ser usado para \n"
 "\"%s\""
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1304
+#: ../capplets/keybindings/mate-keybinding-properties.c:1321
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Se reatribuir o atalho a \"%s\", o atalho \"%s\" será desativado."
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1309
+#: ../capplets/keybindings/mate-keybinding-properties.c:1326
 msgid "_Reassign"
 msgstr "_Reatribuir"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1564
+#: ../capplets/keybindings/mate-keybinding-properties.c:1581
 msgid "Too many custom shortcuts"
 msgstr "Demasiados atalhos personalizados"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1878
+#: ../capplets/keybindings/mate-keybinding-properties.c:1895
 msgid "Action"
 msgstr "Ação"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1900
+#: ../capplets/keybindings/mate-keybinding-properties.c:1917
 msgid "Shortcut"
 msgstr "Atalho"
 
@@ -1902,24 +1912,24 @@ msgstr ""
 msgid "Assign shortcut keys to commands"
 msgstr "Atribuir teclas de atalho a comandos"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:209
-#: ../capplets/keyboard/mate-keyboard-properties.c:214
+#: ../capplets/keyboard/mate-keyboard-properties.c:207
+#: ../capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Basta aplicar as definições e sair (apenas compatibilidade; agora lidado "
 "pelo servidor)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:219
+#: ../capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr ""
 "Iniciar a página apresentando as definições de intervalos de utilização"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:224
+#: ../capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "Iniciar a página apresentando as definições de acessibilidade"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:230
+#: ../capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- Preferências de Teclado MATE"
 
@@ -1930,7 +1940,7 @@ msgstr "Resposta Áudio da Acessibilidade de Teclado"
 #: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
 #: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:372
+#: ../capplets/windows/mate-window-properties.c:379
 msgid "General"
 msgstr "Geral"
 
@@ -2016,7 +2026,7 @@ msgid "_Speed:"
 msgstr "_Velocidade:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: ../capplets/mouse/mate-mouse-properties.ui.h:33
 msgid "Short"
 msgstr "Curto"
 
@@ -2031,7 +2041,7 @@ msgid "Repeat keys speed"
 msgstr "Velocidade de repetição das teclas"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: ../capplets/mouse/mate-mouse-properties.ui.h:34
 msgid "Long"
 msgstr "Longo"
 
@@ -2054,7 +2064,7 @@ msgid "S_peed:"
 msgstr "Velocidade:"
 
 #: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: ../capplets/mouse/mate-mouse-properties.ui.h:28
 msgid "Cursor blinks speed"
 msgstr "Velocidade de piscar do cursor"
 
@@ -2286,6 +2296,7 @@ msgid "Models"
 msgstr "Modelos"
 
 #: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:237
+#: ../capplets/mouse/mate-mouse-properties.ui.h:21
 msgid "Default"
 msgstr "Predefinição"
 
@@ -2297,24 +2308,24 @@ msgstr "Teclado"
 msgid "Set your keyboard preferences"
 msgstr "Defina as preferências do teclado"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:347
 msgid "Left button"
 msgstr "Botão esquerdo"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:347
 msgid "Middle button"
 msgstr "Botão do meio"
 
-#: ../capplets/mouse/mate-mouse-properties.c:334
+#: ../capplets/mouse/mate-mouse-properties.c:347
 msgid "Right button"
 msgstr "Botão direito"
 
 #. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:428
+#: ../capplets/mouse/mate-mouse-properties.c:442
 msgid "Specify the name of the page to show (general)"
 msgstr "Especifique o nome da página a mostrar (geral)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:433
+#: ../capplets/mouse/mate-mouse-properties.c:447
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferências do rato MATE"
 
@@ -2367,83 +2378,93 @@ msgid "_Sensitivity:"
 msgstr "_Sensibilidade:"
 
 #: ../capplets/mouse/mate-mouse-properties.ui.h:20
+msgid "Acceleration _Profile:"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:22
+msgid "Adaptive"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+msgid "Flat"
+msgstr ""
+
+#: ../capplets/mouse/mate-mouse-properties.ui.h:24
 msgid "Drag and Drop"
 msgstr "Arrastar e Largar"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:21
+#: ../capplets/mouse/mate-mouse-properties.ui.h:25
 msgid "Thr_eshold:"
 msgstr "Li_miar:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: ../capplets/mouse/mate-mouse-properties.ui.h:31
 msgid "Double-Click Timeout"
 msgstr "Expiração do Clique Duplo"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: ../capplets/mouse/mate-mouse-properties.ui.h:32
 msgid "_Timeout:"
 msgstr "_Tempo-limite:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: ../capplets/mouse/mate-mouse-properties.ui.h:35
 msgid ""
 "To test your double-click settings, try to double-click on the triangle and "
-"you must to see the mate desktop logo with both rings showing."
+"you must see the mate desktop logo with both rings showing."
 msgstr ""
-"Para testar as suas definições de clique duplo, tente clicar duas vezes no "
-"triângulo e então deve ver o logotipo do mate desktop."
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
+#: ../capplets/mouse/mate-mouse-properties.ui.h:36
 #: ../capplets/mouse/mate-settings-mouse.desktop.in.h:1
 msgid "Mouse"
 msgstr "Rato"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: ../capplets/mouse/mate-mouse-properties.ui.h:37
 msgid "Enable _touchpad"
 msgstr "Ativar _touchpad"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: ../capplets/mouse/mate-mouse-properties.ui.h:38
 msgid "Disable touchpad _while typing"
 msgstr "Desativar o tapete tátil _enquanto utiliza o teclado"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: ../capplets/mouse/mate-mouse-properties.ui.h:39
 msgid "Enable _mouse clicks with touchpad"
 msgstr "Ativar cliques do _rato no tapete táctil"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: ../capplets/mouse/mate-mouse-properties.ui.h:40
 msgid "Two-finger click emulation:"
 msgstr "Simulação de clique com dois dedos:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: ../capplets/mouse/mate-mouse-properties.ui.h:41
 msgid "Three-finger click emulation:"
 msgstr "Simulação de clique com três dedos:"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: ../capplets/mouse/mate-mouse-properties.ui.h:42
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr "Aviso: a emulação multi-dedos pode desativar os botões do software"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: ../capplets/mouse/mate-mouse-properties.ui.h:43
 msgid "Scrolling"
 msgstr "Rolamento"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: ../capplets/mouse/mate-mouse-properties.ui.h:44
 msgid "_Vertical edge scrolling"
 msgstr "Deslocamento _vertical na margem"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: ../capplets/mouse/mate-mouse-properties.ui.h:45
 msgid "H_orizontal edge scrolling"
 msgstr "Deslocamento h_orizontal na margem"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: ../capplets/mouse/mate-mouse-properties.ui.h:46
 msgid "V_ertical two-finger scrolling"
 msgstr "Deslocamento v_ertical com dois dedos"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: ../capplets/mouse/mate-mouse-properties.ui.h:47
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Deslocamento hor_izontal com dois dedos"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: ../capplets/mouse/mate-mouse-properties.ui.h:48
 msgid "Enable _natural scrolling"
 msgstr "Ativar deslocamento _natural"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:45
+#: ../capplets/mouse/mate-mouse-properties.ui.h:49
 msgid "Touchpad"
 msgstr "Sensor Táctil"
 
@@ -2537,12 +2558,12 @@ msgstr "Preferências de Metacity"
 
 #. Compositing manager
 #: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:388
+#: ../capplets/windows/mate-window-properties.c:395
 msgid "Compositing Manager"
 msgstr "Gestor de Composições"
 
 #: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:395
+#: ../capplets/windows/mate-window-properties.c:402
 msgid "Enable software _compositing window manager"
 msgstr "Ativar gestor de janelas na _composição de software"
 
@@ -2551,137 +2572,137 @@ msgid "The current window manager is unsupported"
 msgstr "O gestor de janelas atual não é suportado"
 
 #. Window
-#: ../capplets/windows/mate-window-properties.c:354
+#: ../capplets/windows/mate-window-properties.c:350
 msgid "Window Preferences"
 msgstr "Preferências de Janela"
 
-#: ../capplets/windows/mate-window-properties.c:377
+#: ../capplets/windows/mate-window-properties.c:384
 msgid "Behaviour"
 msgstr "Comportamento"
 
-#: ../capplets/windows/mate-window-properties.c:382
+#: ../capplets/windows/mate-window-properties.c:389
 msgid "Placement"
 msgstr "Colocação"
 
-#: ../capplets/windows/mate-window-properties.c:396
+#: ../capplets/windows/mate-window-properties.c:403
 msgid "Disable _thumbnails in Alt-Tab"
 msgstr "Desativar _miniaturas em Alt-Tab"
 
 #. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:404
+#: ../capplets/windows/mate-window-properties.c:411
 msgid "Titlebar Buttons"
 msgstr "Botões da Barra de Título"
 
-#: ../capplets/windows/mate-window-properties.c:408
+#: ../capplets/windows/mate-window-properties.c:415
 msgid "Position:"
 msgstr "Posição:"
 
 #. New Windows
-#: ../capplets/windows/mate-window-properties.c:415
+#: ../capplets/windows/mate-window-properties.c:422
 msgid "New Windows"
 msgstr "Novas Janelas"
 
-#: ../capplets/windows/mate-window-properties.c:419
+#: ../capplets/windows/mate-window-properties.c:426
 msgid "Center _new windows"
 msgstr "Centrar _novas janelas"
 
 #. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:424
+#: ../capplets/windows/mate-window-properties.c:431
 msgid "Window Snapping"
 msgstr "Alinhamento de Janelas"
 
-#: ../capplets/windows/mate-window-properties.c:428
+#: ../capplets/windows/mate-window-properties.c:435
 msgid "Enable window _tiling"
 msgstr "Ativar posicionamento _lado a lado"
 
 #. Window Selection
-#: ../capplets/windows/mate-window-properties.c:433
+#: ../capplets/windows/mate-window-properties.c:440
 msgid "Window Selection"
 msgstr "Seleção de Janela"
 
-#: ../capplets/windows/mate-window-properties.c:443
+#: ../capplets/windows/mate-window-properties.c:450
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Selecionar janelas quando o rato se move em cima delas"
 
-#: ../capplets/windows/mate-window-properties.c:446
+#: ../capplets/windows/mate-window-properties.c:453
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "Desfazer a _seleção das janelas quando o rato sair das mesmas"
 
-#: ../capplets/windows/mate-window-properties.c:450
+#: ../capplets/windows/mate-window-properties.c:457
 msgid "_Raise selected windows after an interval"
 msgstr "_Levantar janelas escolhidas após um intervalo"
 
-#: ../capplets/windows/mate-window-properties.c:457
+#: ../capplets/windows/mate-window-properties.c:464
 msgid "_Interval before raising:"
 msgstr "_Intervalo antes de levantar:"
 
-#: ../capplets/windows/mate-window-properties.c:461
+#: ../capplets/windows/mate-window-properties.c:468
 msgid "seconds"
 msgstr "segundos"
 
 #. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:472
+#: ../capplets/windows/mate-window-properties.c:479
 msgid "Titlebar Action"
 msgstr "Ação da Barra de Título"
 
-#: ../capplets/windows/mate-window-properties.c:476
+#: ../capplets/windows/mate-window-properties.c:483
 msgid "_Double-click titlebar to perform this action:"
 msgstr "_Clicar duas vezes na barra de título para fazer esta ação:"
 
 #. Movement Key
-#: ../capplets/windows/mate-window-properties.c:484
+#: ../capplets/windows/mate-window-properties.c:491
 msgid "Movement Key"
 msgstr "Tecla de Movimento"
 
-#: ../capplets/windows/mate-window-properties.c:490
+#: ../capplets/windows/mate-window-properties.c:497
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 "Para mover uma janela, pressione e mantenha premida esta tecla, e então "
 "agarre a janela:"
 
-#: ../capplets/windows/mate-window-properties.c:510
+#: ../capplets/windows/mate-window-properties.c:517
 #: ../libwindow-settings/marco-window-manager.c:394
 msgid "Roll up"
 msgstr "Enrolar para cima"
 
-#: ../capplets/windows/mate-window-properties.c:511
+#: ../capplets/windows/mate-window-properties.c:518
 #: ../libwindow-settings/marco-window-manager.c:395
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../capplets/windows/mate-window-properties.c:512
+#: ../capplets/windows/mate-window-properties.c:519
 #: ../libwindow-settings/marco-window-manager.c:396
 msgid "Maximize Horizontally"
 msgstr "Maximizar horizontalmente"
 
-#: ../capplets/windows/mate-window-properties.c:513
+#: ../capplets/windows/mate-window-properties.c:520
 #: ../libwindow-settings/marco-window-manager.c:397
 msgid "Maximize Vertically"
 msgstr "Maximizar verticalmente"
 
-#: ../capplets/windows/mate-window-properties.c:514
+#: ../capplets/windows/mate-window-properties.c:521
 #: ../libwindow-settings/marco-window-manager.c:398
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: ../capplets/windows/mate-window-properties.c:515
+#: ../capplets/windows/mate-window-properties.c:522
 #: ../libwindow-settings/marco-window-manager.c:399
 msgid "None"
 msgstr "Nenhum"
 
-#: ../capplets/windows/mate-window-properties.c:716
+#: ../capplets/windows/mate-window-properties.c:723
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:722
+#: ../capplets/windows/mate-window-properties.c:729
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: ../capplets/windows/mate-window-properties.c:736
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (tecla \"Windows\")"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: ../capplets/windows/mate-window-properties.c:743
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2693,6 +2714,1857 @@ msgstr "Janelas"
 msgid "Set your window properties"
 msgstr "Defina as propriedades da janela"
 
+#: ../capplets/time-admin/src/main.c:105
+msgid "Time and Date Manager"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
+msgid "open file"
+msgstr "abrir ficheiro"
+
+#: ../capplets/time-admin/src/main.c:133
+msgid "Create pid file failed"
+msgstr "A criação do ficheiro pid falhou"
+
+#: ../capplets/time-admin/src/main.c:142
+msgid "write file"
+msgstr "gravar ficheiro"
+
+#: ../capplets/time-admin/src/main.c:142
+msgid "write pid file failed"
+msgstr "a gravação do ficheiro pid falhou"
+
+#: ../capplets/time-admin/src/main.c:175
+msgid "open pid file failed"
+msgstr "a abertura do ficheiro pid falhou"
+
+#: ../capplets/time-admin/src/main.c:180
+msgid "read file"
+msgstr "ler ficheiro"
+
+#: ../capplets/time-admin/src/main.c:180
+msgid "read pid file failed"
+msgstr "a leitura do ficheiro pid falhou"
+
+#: ../capplets/time-admin/src/main.c:205
+#, c-format
+msgctxt "timezone loc"
+msgid "%s"
+msgstr "%s"
+
+#: ../capplets/time-admin/src/main.c:221
+msgid "Time Zone:"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:236
+msgid "Ntp Sync:"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:287
+#: ../capplets/time-admin/src/time-tool.c:280
+msgid "Set Time"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:322
+msgid "Set Date"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:333
+#: ../capplets/time-admin/src/time-zone.c:449
+msgid "_Close"
+msgstr "Fe_char"
+
+#: ../capplets/time-admin/src/main.c:355
+msgid "_Save"
+msgstr "_Guardar"
+
+#: ../capplets/time-admin/src/main.c:398
+msgid "g_bus_get_sync"
+msgstr ""
+
+#: ../capplets/time-admin/src/main.c:411
+msgid "g_bus_proxy_new"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:124
+msgid "GetNtpState"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:187
+msgid "Set time zone"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:220
+#: ../capplets/time-admin/src/time-tool.c:264
+msgid "Set Ntp sync"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-tool.c:280
+msgid "NTP synchronization has been started, the modification is invalid"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-share.c:118
+msgid ""
+"Network time synchronization has been set up. Manual time/date setting is "
+"disabled."
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:264
+#, c-format
+msgctxt "timezone loc"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../capplets/time-admin/src/time-zone.c:291
+msgid "UTC%:::z"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:296
+msgid "%R"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:360
+msgid "Time Zone"
+msgstr "Fuso horário"
+
+#: ../capplets/time-admin/src/time-zone.c:440
+msgid "Time Zone Selection"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zone.c:457
+msgid "Con_firm"
+msgstr ""
+
+#. * This program is free software: you can redistribute it and/or modify
+#. * it under the terms of the GNU General Public License as published by
+#. * the Free Software Foundation, either version 3 of the License, or
+#. * (at your option) any later version.
+#. *
+#. * This program is distributed in the hope that it will be useful,
+#. * but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. * GNU General Public License for more details.
+#. *
+#. * You should have received a copy of the GNU General Public License
+#. * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#. *
+#. * Copyright (C) 2019 MATE Developers
+#. *
+#. * These are the timezone names from /usr/share/zoneinfo/zone.tab.
+#. sed -e '/^#/d' /usr/share/zoneinfo/zone.tab |          awk '{ print
+#. "N_(\""$3"\");" }' | sort > time-zones.h
+#. * Further information is available on <https://www.iana.org/time-zones/>.
+#. *
+#. * We only place them here so gettext picks them up for translation.
+#. * Don't include in any C files.
+#: ../capplets/time-admin/src/time-zones.h:27
+msgid "Africa/Abidjan"
+msgstr "África/Abidjan"
+
+#: ../capplets/time-admin/src/time-zones.h:28
+msgid "Africa/Accra"
+msgstr "África/Accra"
+
+#: ../capplets/time-admin/src/time-zones.h:29
+msgid "Africa/Addis_Ababa"
+msgstr "África/Addis_Ababa"
+
+#: ../capplets/time-admin/src/time-zones.h:30
+msgid "Africa/Algiers"
+msgstr "África/Algiers"
+
+#: ../capplets/time-admin/src/time-zones.h:31
+msgid "Africa/Asmara"
+msgstr "África/Asmara"
+
+#: ../capplets/time-admin/src/time-zones.h:32
+msgid "Africa/Bamako"
+msgstr "África/Bamako"
+
+#: ../capplets/time-admin/src/time-zones.h:33
+msgid "Africa/Bangui"
+msgstr "África/Bangui"
+
+#: ../capplets/time-admin/src/time-zones.h:34
+msgid "Africa/Banjul"
+msgstr "África/Banjul"
+
+#: ../capplets/time-admin/src/time-zones.h:35
+msgid "Africa/Bissau"
+msgstr "África/Bissau"
+
+#: ../capplets/time-admin/src/time-zones.h:36
+msgid "Africa/Blantyre"
+msgstr "África/Blantyre"
+
+#: ../capplets/time-admin/src/time-zones.h:37
+msgid "Africa/Brazzaville"
+msgstr "África/Brazzaville"
+
+#: ../capplets/time-admin/src/time-zones.h:38
+msgid "Africa/Bujumbura"
+msgstr "África/Bujumbura"
+
+#: ../capplets/time-admin/src/time-zones.h:39
+msgid "Africa/Cairo"
+msgstr "África/Cairo"
+
+#: ../capplets/time-admin/src/time-zones.h:40
+msgid "Africa/Casablanca"
+msgstr "África/Casablanca"
+
+#: ../capplets/time-admin/src/time-zones.h:41
+msgid "Africa/Ceuta"
+msgstr "África/Ceuta"
+
+#: ../capplets/time-admin/src/time-zones.h:42
+msgid "Africa/Conakry"
+msgstr "África/Conakry"
+
+#: ../capplets/time-admin/src/time-zones.h:43
+msgid "Africa/Dakar"
+msgstr "África/Dakar"
+
+#: ../capplets/time-admin/src/time-zones.h:44
+msgid "Africa/Dar_es_Salaam"
+msgstr "África/Dar_es_Salaam"
+
+#: ../capplets/time-admin/src/time-zones.h:45
+msgid "Africa/Djibouti"
+msgstr "África/Djibouti"
+
+#: ../capplets/time-admin/src/time-zones.h:46
+msgid "Africa/Douala"
+msgstr "África/Douala"
+
+#: ../capplets/time-admin/src/time-zones.h:47
+msgid "Africa/El_Aaiun"
+msgstr "África/El_Aaiun"
+
+#: ../capplets/time-admin/src/time-zones.h:48
+msgid "Africa/Freetown"
+msgstr "África/Freetown"
+
+#: ../capplets/time-admin/src/time-zones.h:49
+msgid "Africa/Gaborone"
+msgstr "África/Gaborone"
+
+#: ../capplets/time-admin/src/time-zones.h:50
+msgid "Africa/Harare"
+msgstr "África/Harare"
+
+#: ../capplets/time-admin/src/time-zones.h:51
+msgid "Africa/Johannesburg"
+msgstr "África/Johannesburg"
+
+#: ../capplets/time-admin/src/time-zones.h:52
+msgid "Africa/Juba"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:53
+msgid "Africa/Kampala"
+msgstr "África/Kampala"
+
+#: ../capplets/time-admin/src/time-zones.h:54
+msgid "Africa/Khartoum"
+msgstr "África/Khartoum"
+
+#: ../capplets/time-admin/src/time-zones.h:55
+msgid "Africa/Kigali"
+msgstr "África/Kigali"
+
+#: ../capplets/time-admin/src/time-zones.h:56
+msgid "Africa/Kinshasa"
+msgstr "África/Kinshasa"
+
+#: ../capplets/time-admin/src/time-zones.h:57
+msgid "Africa/Lagos"
+msgstr "África/Lagos"
+
+#: ../capplets/time-admin/src/time-zones.h:58
+msgid "Africa/Libreville"
+msgstr "África/Libreville"
+
+#: ../capplets/time-admin/src/time-zones.h:59
+msgid "Africa/Lome"
+msgstr "África/Lome"
+
+#: ../capplets/time-admin/src/time-zones.h:60
+msgid "Africa/Luanda"
+msgstr "África/Luanda"
+
+#: ../capplets/time-admin/src/time-zones.h:61
+msgid "Africa/Lubumbashi"
+msgstr "África/Lubumbashi"
+
+#: ../capplets/time-admin/src/time-zones.h:62
+msgid "Africa/Lusaka"
+msgstr "África/Lusaka"
+
+#: ../capplets/time-admin/src/time-zones.h:63
+msgid "Africa/Malabo"
+msgstr "África/Malabo"
+
+#: ../capplets/time-admin/src/time-zones.h:64
+msgid "Africa/Maputo"
+msgstr "África/Maputo"
+
+#: ../capplets/time-admin/src/time-zones.h:65
+msgid "Africa/Maseru"
+msgstr "África/Maseru"
+
+#: ../capplets/time-admin/src/time-zones.h:66
+msgid "Africa/Mbabane"
+msgstr "África/Mbabane"
+
+#: ../capplets/time-admin/src/time-zones.h:67
+msgid "Africa/Mogadishu"
+msgstr "África/Mogadishu"
+
+#: ../capplets/time-admin/src/time-zones.h:68
+msgid "Africa/Monrovia"
+msgstr "África/Monrovia"
+
+#: ../capplets/time-admin/src/time-zones.h:69
+msgid "Africa/Nairobi"
+msgstr "África/Nairobi"
+
+#: ../capplets/time-admin/src/time-zones.h:70
+msgid "Africa/Ndjamena"
+msgstr "África/Ndjamena"
+
+#: ../capplets/time-admin/src/time-zones.h:71
+msgid "Africa/Niamey"
+msgstr "África/Niamey"
+
+#: ../capplets/time-admin/src/time-zones.h:72
+msgid "Africa/Nouakchott"
+msgstr "África/Nouakchott"
+
+#: ../capplets/time-admin/src/time-zones.h:73
+msgid "Africa/Ouagadougou"
+msgstr "África/Ouagadougou"
+
+#: ../capplets/time-admin/src/time-zones.h:74
+msgid "Africa/Porto-Novo"
+msgstr "África/Porto-Novo"
+
+#: ../capplets/time-admin/src/time-zones.h:75
+msgid "Africa/Sao_Tome"
+msgstr "África/Sao_Tome"
+
+#: ../capplets/time-admin/src/time-zones.h:76
+msgid "Africa/Tripoli"
+msgstr "África/Tripoli"
+
+#: ../capplets/time-admin/src/time-zones.h:77
+msgid "Africa/Tunis"
+msgstr "África/Tunis"
+
+#: ../capplets/time-admin/src/time-zones.h:78
+msgid "Africa/Windhoek"
+msgstr "África/Windhoek"
+
+#: ../capplets/time-admin/src/time-zones.h:79
+msgid "America/Adak"
+msgstr "América/Adak"
+
+#: ../capplets/time-admin/src/time-zones.h:80
+msgid "America/Anchorage"
+msgstr "América/Anchorage"
+
+#: ../capplets/time-admin/src/time-zones.h:81
+msgid "America/Anguilla"
+msgstr "América/Anguilla"
+
+#: ../capplets/time-admin/src/time-zones.h:82
+msgid "America/Antigua"
+msgstr "América/Antigua"
+
+#: ../capplets/time-admin/src/time-zones.h:83
+msgid "America/Araguaina"
+msgstr "América/Araguaina"
+
+#: ../capplets/time-admin/src/time-zones.h:84
+msgid "America/Argentina/Buenos_Aires"
+msgstr "América/Argentina/Buenos_Aires"
+
+#: ../capplets/time-admin/src/time-zones.h:85
+msgid "America/Argentina/Catamarca"
+msgstr "América/Argentina/Catamarca"
+
+#: ../capplets/time-admin/src/time-zones.h:86
+msgid "America/Argentina/Cordoba"
+msgstr "América/Argentina/Córdova"
+
+#: ../capplets/time-admin/src/time-zones.h:87
+msgid "America/Argentina/Jujuy"
+msgstr "América/Argentina/Jujuy"
+
+#: ../capplets/time-admin/src/time-zones.h:88
+msgid "America/Argentina/La_Rioja"
+msgstr "América/Argentina/La_Rioja"
+
+#: ../capplets/time-admin/src/time-zones.h:89
+msgid "America/Argentina/Mendoza"
+msgstr "América/Argentina/Mendoza"
+
+#: ../capplets/time-admin/src/time-zones.h:90
+msgid "America/Argentina/Rio_Gallegos"
+msgstr "América/Argentina/Rio_Gallegos"
+
+#: ../capplets/time-admin/src/time-zones.h:91
+msgid "America/Argentina/Salta"
+msgstr "América/Argentina/Salta"
+
+#: ../capplets/time-admin/src/time-zones.h:92
+msgid "America/Argentina/San_Juan"
+msgstr "América/Argentina/San_Juan"
+
+#: ../capplets/time-admin/src/time-zones.h:93
+msgid "America/Argentina/San_Luis"
+msgstr "América/Argentina/San_Luis"
+
+#: ../capplets/time-admin/src/time-zones.h:94
+msgid "America/Argentina/Tucuman"
+msgstr "América/Argentina/Tucuman"
+
+#: ../capplets/time-admin/src/time-zones.h:95
+msgid "America/Argentina/Ushuaia"
+msgstr "América/Argentina/Ushuaia"
+
+#: ../capplets/time-admin/src/time-zones.h:96
+msgid "America/Aruba"
+msgstr "América/Aruba"
+
+#: ../capplets/time-admin/src/time-zones.h:97
+msgid "America/Asuncion"
+msgstr "América/Asuncion"
+
+#: ../capplets/time-admin/src/time-zones.h:98
+msgid "America/Atikokan"
+msgstr "América/Atikokan"
+
+#: ../capplets/time-admin/src/time-zones.h:99
+msgid "America/Bahia"
+msgstr "América/Bahia"
+
+#: ../capplets/time-admin/src/time-zones.h:100
+msgid "America/Bahia_Banderas"
+msgstr "América/Bahia_Banderas"
+
+#: ../capplets/time-admin/src/time-zones.h:101
+msgid "America/Barbados"
+msgstr "América/Barbados"
+
+#: ../capplets/time-admin/src/time-zones.h:102
+msgid "America/Belem"
+msgstr "América/Belém"
+
+#: ../capplets/time-admin/src/time-zones.h:103
+msgid "America/Belize"
+msgstr "América/Belize"
+
+#: ../capplets/time-admin/src/time-zones.h:104
+msgid "America/Blanc-Sablon"
+msgstr "América/Blanc-Sablon"
+
+#: ../capplets/time-admin/src/time-zones.h:105
+msgid "America/Boa_Vista"
+msgstr "América/Boa_Vista"
+
+#: ../capplets/time-admin/src/time-zones.h:106
+msgid "America/Bogota"
+msgstr "América/Bogota"
+
+#: ../capplets/time-admin/src/time-zones.h:107
+msgid "America/Boise"
+msgstr "América/Boise"
+
+#: ../capplets/time-admin/src/time-zones.h:108
+msgid "America/Cambridge_Bay"
+msgstr "América/Cambridge_Bay"
+
+#: ../capplets/time-admin/src/time-zones.h:109
+msgid "America/Campo_Grande"
+msgstr "América/Campo_Grande"
+
+#: ../capplets/time-admin/src/time-zones.h:110
+msgid "America/Cancun"
+msgstr "América/Cancun"
+
+#: ../capplets/time-admin/src/time-zones.h:111
+msgid "America/Caracas"
+msgstr "América/Caracas"
+
+#: ../capplets/time-admin/src/time-zones.h:112
+msgid "America/Cayenne"
+msgstr "América/Cayenne"
+
+#: ../capplets/time-admin/src/time-zones.h:113
+msgid "America/Cayman"
+msgstr "América/Cayman"
+
+#: ../capplets/time-admin/src/time-zones.h:114
+msgid "America/Chicago"
+msgstr "América/Chicago"
+
+#: ../capplets/time-admin/src/time-zones.h:115
+msgid "America/Chihuahua"
+msgstr "América/Chihuahua"
+
+#: ../capplets/time-admin/src/time-zones.h:116
+msgid "America/Costa_Rica"
+msgstr "América/Costa_Rica"
+
+#: ../capplets/time-admin/src/time-zones.h:117
+msgid "America/Creston"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:118
+msgid "America/Cuiaba"
+msgstr "América/Cuiaba"
+
+#: ../capplets/time-admin/src/time-zones.h:119
+msgid "America/Curacao"
+msgstr "América/Curacao"
+
+#: ../capplets/time-admin/src/time-zones.h:120
+msgid "America/Danmarkshavn"
+msgstr "América/Danmarkshavn"
+
+#: ../capplets/time-admin/src/time-zones.h:121
+msgid "America/Dawson"
+msgstr "América/Dawson"
+
+#: ../capplets/time-admin/src/time-zones.h:122
+msgid "America/Dawson_Creek"
+msgstr "América/Dawson_Creek"
+
+#: ../capplets/time-admin/src/time-zones.h:123
+msgid "America/Denver"
+msgstr "América/Denver"
+
+#: ../capplets/time-admin/src/time-zones.h:124
+msgid "America/Detroit"
+msgstr "América/Detroit"
+
+#: ../capplets/time-admin/src/time-zones.h:125
+msgid "America/Dominica"
+msgstr "América/Dominica"
+
+#: ../capplets/time-admin/src/time-zones.h:126
+msgid "America/Edmonton"
+msgstr "América/Edmonton"
+
+#: ../capplets/time-admin/src/time-zones.h:127
+msgid "America/Eirunepe"
+msgstr "América/Eirunepe"
+
+#: ../capplets/time-admin/src/time-zones.h:128
+msgid "America/El_Salvador"
+msgstr "América/El_Salvador"
+
+#: ../capplets/time-admin/src/time-zones.h:129
+msgid "America/Fortaleza"
+msgstr "América/Fortaleza"
+
+#: ../capplets/time-admin/src/time-zones.h:130
+msgid "America/Fort_Nelson"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:131
+msgid "America/Glace_Bay"
+msgstr "América/Glace_Bay"
+
+#: ../capplets/time-admin/src/time-zones.h:132
+msgid "America/Godthab"
+msgstr "América/Godthab"
+
+#: ../capplets/time-admin/src/time-zones.h:133
+msgid "America/Goose_Bay"
+msgstr "América/Goose_Bay"
+
+#: ../capplets/time-admin/src/time-zones.h:134
+msgid "America/Grand_Turk"
+msgstr "América/Grand_Turk"
+
+#: ../capplets/time-admin/src/time-zones.h:135
+msgid "America/Grenada"
+msgstr "América/Grenada"
+
+#: ../capplets/time-admin/src/time-zones.h:136
+msgid "America/Guadeloupe"
+msgstr "América/Guadeloupe"
+
+#: ../capplets/time-admin/src/time-zones.h:137
+msgid "America/Guatemala"
+msgstr "América/Guatemala"
+
+#: ../capplets/time-admin/src/time-zones.h:138
+msgid "America/Guayaquil"
+msgstr "América/Guayaquil"
+
+#: ../capplets/time-admin/src/time-zones.h:139
+msgid "America/Guyana"
+msgstr "América/Guyana"
+
+#: ../capplets/time-admin/src/time-zones.h:140
+msgid "America/Halifax"
+msgstr "América/Halifax"
+
+#: ../capplets/time-admin/src/time-zones.h:141
+msgid "America/Havana"
+msgstr "América/Havana"
+
+#: ../capplets/time-admin/src/time-zones.h:142
+msgid "America/Hermosillo"
+msgstr "América/Hermosillo"
+
+#: ../capplets/time-admin/src/time-zones.h:143
+msgid "America/Indiana/Indianapolis"
+msgstr "América/Indiana/Indianapolis"
+
+#: ../capplets/time-admin/src/time-zones.h:144
+msgid "America/Indiana/Knox"
+msgstr "América/Indiana/Knox"
+
+#: ../capplets/time-admin/src/time-zones.h:145
+msgid "America/Indiana/Marengo"
+msgstr "América/Indiana/Marengo"
+
+#: ../capplets/time-admin/src/time-zones.h:146
+msgid "America/Indiana/Petersburg"
+msgstr "América/Indiana/Petersburg"
+
+#: ../capplets/time-admin/src/time-zones.h:147
+msgid "America/Indiana/Tell_City"
+msgstr "América/Indiana/Tell_City"
+
+#: ../capplets/time-admin/src/time-zones.h:148
+msgid "America/Indiana/Vevay"
+msgstr "América/Indiana/Vevay"
+
+#: ../capplets/time-admin/src/time-zones.h:149
+msgid "America/Indiana/Vincennes"
+msgstr "América/Indiana/Vincennes"
+
+#: ../capplets/time-admin/src/time-zones.h:150
+msgid "America/Indiana/Winamac"
+msgstr "América/Indiana/Winamac"
+
+#: ../capplets/time-admin/src/time-zones.h:151
+msgid "America/Inuvik"
+msgstr "América/Inuvik"
+
+#: ../capplets/time-admin/src/time-zones.h:152
+msgid "America/Iqaluit"
+msgstr "América/Iqaluit"
+
+#: ../capplets/time-admin/src/time-zones.h:153
+msgid "America/Jamaica"
+msgstr "América/Jamaica"
+
+#: ../capplets/time-admin/src/time-zones.h:154
+msgid "America/Juneau"
+msgstr "América/Juneau"
+
+#: ../capplets/time-admin/src/time-zones.h:155
+msgid "America/Kentucky/Louisville"
+msgstr "América/Kentucky/Louisville"
+
+#: ../capplets/time-admin/src/time-zones.h:156
+msgid "America/Kentucky/Monticello"
+msgstr "América/Kentucky/Monticello"
+
+#: ../capplets/time-admin/src/time-zones.h:157
+msgid "America/Kralendijk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:158
+msgid "America/La_Paz"
+msgstr "América/La_Paz"
+
+#: ../capplets/time-admin/src/time-zones.h:159
+msgid "America/Lima"
+msgstr "América/Lima"
+
+#: ../capplets/time-admin/src/time-zones.h:160
+msgid "America/Los_Angeles"
+msgstr "América/Los_Angeles"
+
+#: ../capplets/time-admin/src/time-zones.h:161
+msgid "America/Lower_Princes"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:162
+msgid "America/Maceio"
+msgstr "América/Maceio"
+
+#: ../capplets/time-admin/src/time-zones.h:163
+msgid "America/Managua"
+msgstr "América/Managua"
+
+#: ../capplets/time-admin/src/time-zones.h:164
+msgid "America/Manaus"
+msgstr "América/Manaus"
+
+#: ../capplets/time-admin/src/time-zones.h:165
+msgid "America/Marigot"
+msgstr "América/Marigot"
+
+#: ../capplets/time-admin/src/time-zones.h:166
+msgid "America/Martinique"
+msgstr "América/Martinique"
+
+#: ../capplets/time-admin/src/time-zones.h:167
+msgid "America/Matamoros"
+msgstr "América/Matamoros"
+
+#: ../capplets/time-admin/src/time-zones.h:168
+msgid "America/Mazatlan"
+msgstr "América/Mazatlan"
+
+#: ../capplets/time-admin/src/time-zones.h:169
+msgid "America/Menominee"
+msgstr "América/Menominee"
+
+#: ../capplets/time-admin/src/time-zones.h:170
+msgid "America/Merida"
+msgstr "América/Merida"
+
+#: ../capplets/time-admin/src/time-zones.h:171
+msgid "America/Metlakatla"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:172
+msgid "America/Mexico_City"
+msgstr "América/Mexico_City"
+
+#: ../capplets/time-admin/src/time-zones.h:173
+msgid "America/Miquelon"
+msgstr "América/Miquelon"
+
+#: ../capplets/time-admin/src/time-zones.h:174
+msgid "America/Moncton"
+msgstr "América/Moncton"
+
+#: ../capplets/time-admin/src/time-zones.h:175
+msgid "America/Monterrey"
+msgstr "América/Monterrey"
+
+#: ../capplets/time-admin/src/time-zones.h:176
+msgid "America/Montevideo"
+msgstr "América/Montevideo"
+
+#: ../capplets/time-admin/src/time-zones.h:177
+msgid "America/Montserrat"
+msgstr "América/Montserrat"
+
+#: ../capplets/time-admin/src/time-zones.h:178
+msgid "America/Nassau"
+msgstr "América/Nassau"
+
+#: ../capplets/time-admin/src/time-zones.h:179
+msgid "America/New_York"
+msgstr "América/New_York"
+
+#: ../capplets/time-admin/src/time-zones.h:180
+msgid "America/Nipigon"
+msgstr "América/Nipigon"
+
+#: ../capplets/time-admin/src/time-zones.h:181
+msgid "America/Nome"
+msgstr "América/Nome"
+
+#: ../capplets/time-admin/src/time-zones.h:182
+msgid "America/Noronha"
+msgstr "América/Noronha"
+
+#: ../capplets/time-admin/src/time-zones.h:183
+msgid "America/North_Dakota/Beulah"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:184
+msgid "America/North_Dakota/Center"
+msgstr "América/Dakota do Norte/Centro"
+
+#: ../capplets/time-admin/src/time-zones.h:185
+msgid "America/North_Dakota/New_Salem"
+msgstr "América/Dakota_do_Norte/New_Salem"
+
+#: ../capplets/time-admin/src/time-zones.h:186
+msgid "America/Ojinaga"
+msgstr "América/Ojinaga"
+
+#: ../capplets/time-admin/src/time-zones.h:187
+msgid "America/Panama"
+msgstr "América/Panama"
+
+#: ../capplets/time-admin/src/time-zones.h:188
+msgid "America/Pangnirtung"
+msgstr "América/Pangnirtung"
+
+#: ../capplets/time-admin/src/time-zones.h:189
+msgid "America/Paramaribo"
+msgstr "América/Paramaribo"
+
+#: ../capplets/time-admin/src/time-zones.h:190
+msgid "America/Phoenix"
+msgstr "América/Phoenix"
+
+#: ../capplets/time-admin/src/time-zones.h:191
+msgid "America/Port-au-Prince"
+msgstr "América/Port-au-Prince"
+
+#: ../capplets/time-admin/src/time-zones.h:192
+msgid "America/Port_of_Spain"
+msgstr "América/Port_of_Spain"
+
+#: ../capplets/time-admin/src/time-zones.h:193
+msgid "America/Porto_Velho"
+msgstr "América/Porto_Velho"
+
+#: ../capplets/time-admin/src/time-zones.h:194
+msgid "America/Puerto_Rico"
+msgstr "América/Puerto_Rico"
+
+#: ../capplets/time-admin/src/time-zones.h:195
+msgid "America/Punta_Arenas"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:196
+msgid "America/Rainy_River"
+msgstr "América/Rainy_River"
+
+#: ../capplets/time-admin/src/time-zones.h:197
+msgid "America/Rankin_Inlet"
+msgstr "América/Rankin_Inlet"
+
+#: ../capplets/time-admin/src/time-zones.h:198
+msgid "America/Recife"
+msgstr "América/Recife"
+
+#: ../capplets/time-admin/src/time-zones.h:199
+msgid "America/Regina"
+msgstr "América/Regina"
+
+#: ../capplets/time-admin/src/time-zones.h:200
+msgid "America/Resolute"
+msgstr "América/Resolute"
+
+#: ../capplets/time-admin/src/time-zones.h:201
+msgid "America/Rio_Branco"
+msgstr "América/Rio_Branco"
+
+#: ../capplets/time-admin/src/time-zones.h:202
+msgid "America/Santarem"
+msgstr "América/Santarém"
+
+#: ../capplets/time-admin/src/time-zones.h:203
+msgid "America/Santiago"
+msgstr "América/Santiago"
+
+#: ../capplets/time-admin/src/time-zones.h:204
+msgid "America/Santo_Domingo"
+msgstr "América/Santo_Domingo"
+
+#: ../capplets/time-admin/src/time-zones.h:205
+msgid "America/Sao_Paulo"
+msgstr "América/São_Paulo"
+
+#: ../capplets/time-admin/src/time-zones.h:206
+msgid "America/Scoresbysund"
+msgstr "América/Scoresbysund"
+
+#: ../capplets/time-admin/src/time-zones.h:207
+msgid "America/Sitka"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:208
+msgid "America/St_Barthelemy"
+msgstr "América/St_Barthelemy"
+
+#: ../capplets/time-admin/src/time-zones.h:209
+msgid "America/St_Johns"
+msgstr "América/St_Johns"
+
+#: ../capplets/time-admin/src/time-zones.h:210
+msgid "America/St_Kitts"
+msgstr "América/St_Kitts"
+
+#: ../capplets/time-admin/src/time-zones.h:211
+msgid "America/St_Lucia"
+msgstr "América/St_Lucia"
+
+#: ../capplets/time-admin/src/time-zones.h:212
+msgid "America/St_Thomas"
+msgstr "América/St_Thomas"
+
+#: ../capplets/time-admin/src/time-zones.h:213
+msgid "America/St_Vincent"
+msgstr "América/St_Vincent"
+
+#: ../capplets/time-admin/src/time-zones.h:214
+msgid "America/Swift_Current"
+msgstr "América/Swift_Current"
+
+#: ../capplets/time-admin/src/time-zones.h:215
+msgid "America/Tegucigalpa"
+msgstr "América/Tegucigalpa"
+
+#: ../capplets/time-admin/src/time-zones.h:216
+msgid "America/Thule"
+msgstr "América/Thule"
+
+#: ../capplets/time-admin/src/time-zones.h:217
+msgid "America/Thunder_Bay"
+msgstr "América/Thunder_Bay"
+
+#: ../capplets/time-admin/src/time-zones.h:218
+msgid "America/Tijuana"
+msgstr "América/Tijuana"
+
+#: ../capplets/time-admin/src/time-zones.h:219
+msgid "America/Toronto"
+msgstr "América/Toronto"
+
+#: ../capplets/time-admin/src/time-zones.h:220
+msgid "America/Tortola"
+msgstr "América/Tortola"
+
+#: ../capplets/time-admin/src/time-zones.h:221
+msgid "America/Vancouver"
+msgstr "América/Vancouver"
+
+#: ../capplets/time-admin/src/time-zones.h:222
+msgid "America/Whitehorse"
+msgstr "América/Whitehorse"
+
+#: ../capplets/time-admin/src/time-zones.h:223
+msgid "America/Winnipeg"
+msgstr "América/Winnipeg"
+
+#: ../capplets/time-admin/src/time-zones.h:224
+msgid "America/Yakutat"
+msgstr "América/Yakutat"
+
+#: ../capplets/time-admin/src/time-zones.h:225
+msgid "America/Yellowknife"
+msgstr "América/Yellowknife"
+
+#: ../capplets/time-admin/src/time-zones.h:226
+msgid "Antarctica/Casey"
+msgstr "Antárctica/Casey"
+
+#: ../capplets/time-admin/src/time-zones.h:227
+msgid "Antarctica/Davis"
+msgstr "Antárctica/Davis"
+
+#: ../capplets/time-admin/src/time-zones.h:228
+msgid "Antarctica/DumontDUrville"
+msgstr "Antárctica/DumontDUrville"
+
+#: ../capplets/time-admin/src/time-zones.h:229
+msgid "Antarctica/Macquarie"
+msgstr "Antárctica/Macquarie"
+
+#: ../capplets/time-admin/src/time-zones.h:230
+msgid "Antarctica/Mawson"
+msgstr "Antárctica/Mawson"
+
+#: ../capplets/time-admin/src/time-zones.h:231
+msgid "Antarctica/McMurdo"
+msgstr "Antárctica/McMurdo"
+
+#: ../capplets/time-admin/src/time-zones.h:232
+msgid "Antarctica/Palmer"
+msgstr "Antárctica/Palmer"
+
+#: ../capplets/time-admin/src/time-zones.h:233
+msgid "Antarctica/Rothera"
+msgstr "Antárctica/Rothera"
+
+#: ../capplets/time-admin/src/time-zones.h:234
+msgid "Antarctica/Syowa"
+msgstr "Antárctica/Syowa"
+
+#: ../capplets/time-admin/src/time-zones.h:235
+msgid "Antarctica/Troll"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:236
+msgid "Antarctica/Vostok"
+msgstr "Antárctica/Vostok"
+
+#: ../capplets/time-admin/src/time-zones.h:237
+msgid "Arctic/Longyearbyen"
+msgstr "Árctico/Longyearbyen"
+
+#: ../capplets/time-admin/src/time-zones.h:238
+msgid "Asia/Aden"
+msgstr "Ásia/Aden"
+
+#: ../capplets/time-admin/src/time-zones.h:239
+msgid "Asia/Almaty"
+msgstr "Ásia/Almaty"
+
+#: ../capplets/time-admin/src/time-zones.h:240
+msgid "Asia/Amman"
+msgstr "Ásia/Amman"
+
+#: ../capplets/time-admin/src/time-zones.h:241
+msgid "Asia/Anadyr"
+msgstr "Ásia/Anadyr"
+
+#: ../capplets/time-admin/src/time-zones.h:242
+msgid "Asia/Aqtau"
+msgstr "Ásia/Aqtau"
+
+#: ../capplets/time-admin/src/time-zones.h:243
+msgid "Asia/Aqtobe"
+msgstr "Ásia/Aqtobe"
+
+#: ../capplets/time-admin/src/time-zones.h:244
+msgid "Asia/Ashgabat"
+msgstr "Ásia/Ashgabat"
+
+#: ../capplets/time-admin/src/time-zones.h:245
+msgid "Asia/Atyrau"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:246
+msgid "Asia/Baghdad"
+msgstr "Ásia/Baghdad"
+
+#: ../capplets/time-admin/src/time-zones.h:247
+msgid "Asia/Bahrain"
+msgstr "Ásia/Bahrain"
+
+#: ../capplets/time-admin/src/time-zones.h:248
+msgid "Asia/Baku"
+msgstr "Ásia/Baku"
+
+#: ../capplets/time-admin/src/time-zones.h:249
+msgid "Asia/Bangkok"
+msgstr "Ásia/Bangkok"
+
+#: ../capplets/time-admin/src/time-zones.h:250
+msgid "Asia/Barnaul"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:251
+msgid "Asia/Beirut"
+msgstr "Ásia/Beirut"
+
+#: ../capplets/time-admin/src/time-zones.h:252
+msgid "Asia/Bishkek"
+msgstr "Ásia/Bishkek"
+
+#: ../capplets/time-admin/src/time-zones.h:253
+msgid "Asia/Brunei"
+msgstr "Ásia/Brunei"
+
+#: ../capplets/time-admin/src/time-zones.h:254
+msgid "Asia/Chita"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:255
+msgid "Asia/Choibalsan"
+msgstr "Ásia/Choibalsan"
+
+#: ../capplets/time-admin/src/time-zones.h:256
+msgid "Asia/Colombo"
+msgstr "Ásia/Colombo"
+
+#: ../capplets/time-admin/src/time-zones.h:257
+msgid "Asia/Damascus"
+msgstr "Ásia/Damascus"
+
+#: ../capplets/time-admin/src/time-zones.h:258
+msgid "Asia/Dhaka"
+msgstr "Ásia/Dhaka"
+
+#: ../capplets/time-admin/src/time-zones.h:259
+msgid "Asia/Dili"
+msgstr "Ásia/Dili"
+
+#: ../capplets/time-admin/src/time-zones.h:260
+msgid "Asia/Dubai"
+msgstr "Ásia/Dubai"
+
+#: ../capplets/time-admin/src/time-zones.h:261
+msgid "Asia/Dushanbe"
+msgstr "Ásia/Dushanbe"
+
+#: ../capplets/time-admin/src/time-zones.h:262
+msgid "Asia/Famagusta"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:263
+msgid "Asia/Gaza"
+msgstr "Ásia/Gaza"
+
+#: ../capplets/time-admin/src/time-zones.h:264
+msgid "Asia/Hebron"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:265
+msgid "Asia/Ho_Chi_Minh"
+msgstr "Ásia/Ho_Chi_Minh"
+
+#: ../capplets/time-admin/src/time-zones.h:266
+msgid "Asia/Hong_Kong"
+msgstr "Ásia/Hong_Kong"
+
+#: ../capplets/time-admin/src/time-zones.h:267
+msgid "Asia/Hovd"
+msgstr "Ásia/Hovd"
+
+#: ../capplets/time-admin/src/time-zones.h:268
+msgid "Asia/Irkutsk"
+msgstr "Ásia/Irkutsk"
+
+#: ../capplets/time-admin/src/time-zones.h:269
+msgid "Asia/Jakarta"
+msgstr "Ásia/Jakarta"
+
+#: ../capplets/time-admin/src/time-zones.h:270
+msgid "Asia/Jayapura"
+msgstr "Ásia/Jayapura"
+
+#: ../capplets/time-admin/src/time-zones.h:271
+msgid "Asia/Jerusalem"
+msgstr "Ásia/Jerusalem"
+
+#: ../capplets/time-admin/src/time-zones.h:272
+msgid "Asia/Kabul"
+msgstr "Ásia/Kabul"
+
+#: ../capplets/time-admin/src/time-zones.h:273
+msgid "Asia/Kamchatka"
+msgstr "Ásia/Kamchatka"
+
+#: ../capplets/time-admin/src/time-zones.h:274
+msgid "Asia/Karachi"
+msgstr "Ásia/Karachi"
+
+#: ../capplets/time-admin/src/time-zones.h:275
+msgid "Asia/Kathmandu"
+msgstr "Ásia/Áden"
+
+#: ../capplets/time-admin/src/time-zones.h:276
+msgid "Asia/Khandyga"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:277
+msgid "Asia/Kolkata"
+msgstr "Ásia/Kolkata"
+
+#: ../capplets/time-admin/src/time-zones.h:278
+msgid "Asia/Krasnoyarsk"
+msgstr "Ásia/Krasnoyarsk"
+
+#: ../capplets/time-admin/src/time-zones.h:279
+msgid "Asia/Kuala_Lumpur"
+msgstr "Ásia/Kuala_Lumpur"
+
+#: ../capplets/time-admin/src/time-zones.h:280
+msgid "Asia/Kuching"
+msgstr "Ásia/Kuching"
+
+#: ../capplets/time-admin/src/time-zones.h:281
+msgid "Asia/Kuwait"
+msgstr "Ásia/Kuwait"
+
+#: ../capplets/time-admin/src/time-zones.h:282
+msgid "Asia/Macau"
+msgstr "Ásia/Macau"
+
+#: ../capplets/time-admin/src/time-zones.h:283
+msgid "Asia/Magadan"
+msgstr "Ásia/Magadan"
+
+#: ../capplets/time-admin/src/time-zones.h:284
+msgid "Asia/Makassar"
+msgstr "Ásia/Makassar"
+
+#: ../capplets/time-admin/src/time-zones.h:285
+msgid "Asia/Manila"
+msgstr "Ásia/Manila"
+
+#: ../capplets/time-admin/src/time-zones.h:286
+msgid "Asia/Muscat"
+msgstr "Ásia/Muscat"
+
+#: ../capplets/time-admin/src/time-zones.h:287
+msgid "Asia/Nicosia"
+msgstr "Ásia/Nicosia"
+
+#: ../capplets/time-admin/src/time-zones.h:288
+msgid "Asia/Novokuznetsk"
+msgstr "Ásia/Novokuznetsk"
+
+#: ../capplets/time-admin/src/time-zones.h:289
+msgid "Asia/Novosibirsk"
+msgstr "Ásia/Novosibirsk"
+
+#: ../capplets/time-admin/src/time-zones.h:290
+msgid "Asia/Omsk"
+msgstr "Ásia/Omsk"
+
+#: ../capplets/time-admin/src/time-zones.h:291
+msgid "Asia/Oral"
+msgstr "Ásia/Oral"
+
+#: ../capplets/time-admin/src/time-zones.h:292
+msgid "Asia/Phnom_Penh"
+msgstr "Ásia/Phnom_Penh"
+
+#: ../capplets/time-admin/src/time-zones.h:293
+msgid "Asia/Pontianak"
+msgstr "Ásia/Pontianak"
+
+#: ../capplets/time-admin/src/time-zones.h:294
+msgid "Asia/Pyongyang"
+msgstr "Ásia/Pyongyang"
+
+#: ../capplets/time-admin/src/time-zones.h:295
+msgid "Asia/Qatar"
+msgstr "Ásia/Qatar"
+
+#: ../capplets/time-admin/src/time-zones.h:296
+msgid "Asia/Qostanay"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:297
+msgid "Asia/Qyzylorda"
+msgstr "Ásia/Qyzylorda"
+
+#: ../capplets/time-admin/src/time-zones.h:298
+msgid "Asia/Riyadh"
+msgstr "Ásia/Riyadh"
+
+#: ../capplets/time-admin/src/time-zones.h:299
+msgid "Asia/Sakhalin"
+msgstr "Ásia/Sakhalin"
+
+#: ../capplets/time-admin/src/time-zones.h:300
+msgid "Asia/Samarkand"
+msgstr "Ásia/Samarkand"
+
+#: ../capplets/time-admin/src/time-zones.h:301
+msgid "Asia/Seoul"
+msgstr "Ásia/Seoul"
+
+#: ../capplets/time-admin/src/time-zones.h:302
+msgid "Asia/Shanghai"
+msgstr "Ásia/Shanghai"
+
+#: ../capplets/time-admin/src/time-zones.h:303
+msgid "Asia/Singapore"
+msgstr "Ásia/Singapore"
+
+#: ../capplets/time-admin/src/time-zones.h:304
+msgid "Asia/Srednekolymsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:305
+msgid "Asia/Taipei"
+msgstr "Ásia/Taipei"
+
+#: ../capplets/time-admin/src/time-zones.h:306
+msgid "Asia/Tashkent"
+msgstr "Ásia/Tashkent"
+
+#: ../capplets/time-admin/src/time-zones.h:307
+msgid "Asia/Tbilisi"
+msgstr "Ásia/Tbilisi"
+
+#: ../capplets/time-admin/src/time-zones.h:308
+msgid "Asia/Tehran"
+msgstr "Ásia/Tehran"
+
+#: ../capplets/time-admin/src/time-zones.h:309
+msgid "Asia/Thimphu"
+msgstr "Ásia/Thimphu"
+
+#: ../capplets/time-admin/src/time-zones.h:310
+msgid "Asia/Tokyo"
+msgstr "Ásia/Tokyo"
+
+#: ../capplets/time-admin/src/time-zones.h:311
+msgid "Asia/Tomsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:312
+msgid "Asia/Ulaanbaatar"
+msgstr "Ásia/Ulaanbaatar"
+
+#: ../capplets/time-admin/src/time-zones.h:313
+msgid "Asia/Urumqi"
+msgstr "Ásia/Urumqi"
+
+#: ../capplets/time-admin/src/time-zones.h:314
+msgid "Asia/Ust-Nera"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:315
+msgid "Asia/Vientiane"
+msgstr "Ásia/Vientiane"
+
+#: ../capplets/time-admin/src/time-zones.h:316
+msgid "Asia/Vladivostok"
+msgstr "Ásia/Vladivostok"
+
+#: ../capplets/time-admin/src/time-zones.h:317
+msgid "Asia/Yakutsk"
+msgstr "Ásia/Yakutsk"
+
+#: ../capplets/time-admin/src/time-zones.h:318
+msgid "Asia/Yangon"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:319
+msgid "Asia/Yekaterinburg"
+msgstr "Ásia/Yekaterinburg"
+
+#: ../capplets/time-admin/src/time-zones.h:320
+msgid "Asia/Yerevan"
+msgstr "Ásia/Yerevan"
+
+#: ../capplets/time-admin/src/time-zones.h:321
+msgid "Atlantic/Azores"
+msgstr "Atlântico/Açores"
+
+#: ../capplets/time-admin/src/time-zones.h:322
+msgid "Atlantic/Bermuda"
+msgstr "Atlântico/Bermuda"
+
+#: ../capplets/time-admin/src/time-zones.h:323
+msgid "Atlantic/Canary"
+msgstr "Atlântico/Canárias"
+
+#: ../capplets/time-admin/src/time-zones.h:324
+msgid "Atlantic/Cape_Verde"
+msgstr "Atlântico/Cabo_Verde"
+
+#: ../capplets/time-admin/src/time-zones.h:325
+msgid "Atlantic/Faroe"
+msgstr "Atlântico/Faroe"
+
+#: ../capplets/time-admin/src/time-zones.h:326
+msgid "Atlantic/Madeira"
+msgstr "Atlântico/Madeira"
+
+#: ../capplets/time-admin/src/time-zones.h:327
+msgid "Atlantic/Reykjavik"
+msgstr "Atlântico/Reykjavik"
+
+#: ../capplets/time-admin/src/time-zones.h:328
+msgid "Atlantic/South_Georgia"
+msgstr "Atlântico/South_Georgia"
+
+#: ../capplets/time-admin/src/time-zones.h:329
+msgid "Atlantic/Stanley"
+msgstr "Atlântico/Stanley"
+
+#: ../capplets/time-admin/src/time-zones.h:330
+msgid "Atlantic/St_Helena"
+msgstr "Atlântico/St_Helena"
+
+#: ../capplets/time-admin/src/time-zones.h:331
+msgid "Australia/Adelaide"
+msgstr "Austrália/Adelaide"
+
+#: ../capplets/time-admin/src/time-zones.h:332
+msgid "Australia/Brisbane"
+msgstr "Austrália/Brisbane"
+
+#: ../capplets/time-admin/src/time-zones.h:333
+msgid "Australia/Broken_Hill"
+msgstr "Austrália/Broken_Hill"
+
+#: ../capplets/time-admin/src/time-zones.h:334
+msgid "Australia/Currie"
+msgstr "Austrália/Currie"
+
+#: ../capplets/time-admin/src/time-zones.h:335
+msgid "Australia/Darwin"
+msgstr "Austrália/Darwin"
+
+#: ../capplets/time-admin/src/time-zones.h:336
+msgid "Australia/Eucla"
+msgstr "Austrália/Eucla"
+
+#: ../capplets/time-admin/src/time-zones.h:337
+msgid "Australia/Hobart"
+msgstr "Austrália/Hobart"
+
+#: ../capplets/time-admin/src/time-zones.h:338
+msgid "Australia/Lindeman"
+msgstr "Austrália/Lindeman"
+
+#: ../capplets/time-admin/src/time-zones.h:339
+msgid "Australia/Lord_Howe"
+msgstr "Austrália/Lord_Howe"
+
+#: ../capplets/time-admin/src/time-zones.h:340
+msgid "Australia/Melbourne"
+msgstr "Austrália/Melbourne"
+
+#: ../capplets/time-admin/src/time-zones.h:341
+msgid "Australia/Perth"
+msgstr "Austrália/Perth"
+
+#: ../capplets/time-admin/src/time-zones.h:342
+msgid "Australia/Sydney"
+msgstr "Austrália/Sydney"
+
+#: ../capplets/time-admin/src/time-zones.h:343
+msgid "Europe/Amsterdam"
+msgstr "Europa/Amsterdão"
+
+#: ../capplets/time-admin/src/time-zones.h:344
+msgid "Europe/Andorra"
+msgstr "Europa/Andorra"
+
+#: ../capplets/time-admin/src/time-zones.h:345
+msgid "Europe/Astrakhan"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:346
+msgid "Europe/Athens"
+msgstr "Europa/Atenas"
+
+#: ../capplets/time-admin/src/time-zones.h:347
+msgid "Europe/Belgrade"
+msgstr "Europa/Belgrado"
+
+#: ../capplets/time-admin/src/time-zones.h:348
+msgid "Europe/Berlin"
+msgstr "Europa/Berlim"
+
+#: ../capplets/time-admin/src/time-zones.h:349
+msgid "Europe/Bratislava"
+msgstr "Europa/Bratislava"
+
+#: ../capplets/time-admin/src/time-zones.h:350
+msgid "Europe/Brussels"
+msgstr "Europa/Bruxelas"
+
+#: ../capplets/time-admin/src/time-zones.h:351
+msgid "Europe/Bucharest"
+msgstr "Europa/Bucareste"
+
+#: ../capplets/time-admin/src/time-zones.h:352
+msgid "Europe/Budapest"
+msgstr "Europa/Budapeste"
+
+#: ../capplets/time-admin/src/time-zones.h:353
+msgid "Europe/Busingen"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:354
+msgid "Europe/Chisinau"
+msgstr "Europa/Chisinau"
+
+#: ../capplets/time-admin/src/time-zones.h:355
+msgid "Europe/Copenhagen"
+msgstr "Europa/Copenhaga"
+
+#: ../capplets/time-admin/src/time-zones.h:356
+msgid "Europe/Dublin"
+msgstr "Europa/Dublin"
+
+#: ../capplets/time-admin/src/time-zones.h:357
+msgid "Europe/Gibraltar"
+msgstr "Europa/Gibraltar"
+
+#: ../capplets/time-admin/src/time-zones.h:358
+msgid "Europe/Guernsey"
+msgstr "Europa/Guernsey"
+
+#: ../capplets/time-admin/src/time-zones.h:359
+msgid "Europe/Helsinki"
+msgstr "Europa/Helsinquia"
+
+#: ../capplets/time-admin/src/time-zones.h:360
+msgid "Europe/Isle_of_Man"
+msgstr "Europa/Isle_of_Man"
+
+#: ../capplets/time-admin/src/time-zones.h:361
+msgid "Europe/Istanbul"
+msgstr "Europa/Istanbul"
+
+#: ../capplets/time-admin/src/time-zones.h:362
+msgid "Europe/Jersey"
+msgstr "Europa/Jersey"
+
+#: ../capplets/time-admin/src/time-zones.h:363
+msgid "Europe/Kaliningrad"
+msgstr "Europa/Kaliningrad"
+
+#: ../capplets/time-admin/src/time-zones.h:364
+msgid "Europe/Kiev"
+msgstr "Europa/Kiev"
+
+#: ../capplets/time-admin/src/time-zones.h:365
+msgid "Europe/Kirov"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:366
+msgid "Europe/Lisbon"
+msgstr "Europa/Lisboa"
+
+#: ../capplets/time-admin/src/time-zones.h:367
+msgid "Europe/Ljubljana"
+msgstr "Europa/Ljubljana"
+
+#: ../capplets/time-admin/src/time-zones.h:368
+msgid "Europe/London"
+msgstr "Europa/Londres"
+
+#: ../capplets/time-admin/src/time-zones.h:369
+msgid "Europe/Luxembourg"
+msgstr "Europa/Luxemburgo"
+
+#: ../capplets/time-admin/src/time-zones.h:370
+msgid "Europe/Madrid"
+msgstr "Europa/Madrid"
+
+#: ../capplets/time-admin/src/time-zones.h:371
+msgid "Europe/Malta"
+msgstr "Europa/Malta"
+
+#: ../capplets/time-admin/src/time-zones.h:372
+msgid "Europe/Mariehamn"
+msgstr "Europa/Mariehamn"
+
+#: ../capplets/time-admin/src/time-zones.h:373
+msgid "Europe/Minsk"
+msgstr "Europa/Minsk"
+
+#: ../capplets/time-admin/src/time-zones.h:374
+msgid "Europe/Monaco"
+msgstr "Europa/Mónaco"
+
+#: ../capplets/time-admin/src/time-zones.h:375
+msgid "Europe/Moscow"
+msgstr "Europa/Moscovo"
+
+#: ../capplets/time-admin/src/time-zones.h:376
+msgid "Europe/Oslo"
+msgstr "Europa/Oslo"
+
+#: ../capplets/time-admin/src/time-zones.h:377
+msgid "Europe/Paris"
+msgstr "Europa/Paris"
+
+#: ../capplets/time-admin/src/time-zones.h:378
+msgid "Europe/Podgorica"
+msgstr "Europa/Podgorica"
+
+#: ../capplets/time-admin/src/time-zones.h:379
+msgid "Europe/Prague"
+msgstr "Europa/Praga"
+
+#: ../capplets/time-admin/src/time-zones.h:380
+msgid "Europe/Riga"
+msgstr "Europa/Riga"
+
+#: ../capplets/time-admin/src/time-zones.h:381
+msgid "Europe/Rome"
+msgstr "Europa/Roma"
+
+#: ../capplets/time-admin/src/time-zones.h:382
+msgid "Europe/Samara"
+msgstr "Europa/Samara"
+
+#: ../capplets/time-admin/src/time-zones.h:383
+msgid "Europe/San_Marino"
+msgstr "Europa/San_Marino"
+
+#: ../capplets/time-admin/src/time-zones.h:384
+msgid "Europe/Sarajevo"
+msgstr "Europa/Sarajevo"
+
+#: ../capplets/time-admin/src/time-zones.h:385
+msgid "Europe/Saratov"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:386
+msgid "Europe/Simferopol"
+msgstr "Europa/Simferopol"
+
+#: ../capplets/time-admin/src/time-zones.h:387
+msgid "Europe/Skopje"
+msgstr "Europa/Skopje"
+
+#: ../capplets/time-admin/src/time-zones.h:388
+msgid "Europe/Sofia"
+msgstr "Europa/Sofia"
+
+#: ../capplets/time-admin/src/time-zones.h:389
+msgid "Europe/Stockholm"
+msgstr "Europa/Estocolmo"
+
+#: ../capplets/time-admin/src/time-zones.h:390
+msgid "Europe/Tallinn"
+msgstr "Europa/Tallinn"
+
+#: ../capplets/time-admin/src/time-zones.h:391
+msgid "Europe/Tirane"
+msgstr "Europa/Tirane"
+
+#: ../capplets/time-admin/src/time-zones.h:392
+msgid "Europe/Ulyanovsk"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:393
+msgid "Europe/Uzhgorod"
+msgstr "Europa/Uzhgorod"
+
+#: ../capplets/time-admin/src/time-zones.h:394
+msgid "Europe/Vaduz"
+msgstr "Europa/Vaduz"
+
+#: ../capplets/time-admin/src/time-zones.h:395
+msgid "Europe/Vatican"
+msgstr "Europa/Vaticano"
+
+#: ../capplets/time-admin/src/time-zones.h:396
+msgid "Europe/Vienna"
+msgstr "Europa/Viena"
+
+#: ../capplets/time-admin/src/time-zones.h:397
+msgid "Europe/Vilnius"
+msgstr "Europa/Vilnius"
+
+#: ../capplets/time-admin/src/time-zones.h:398
+msgid "Europe/Volgograd"
+msgstr "Europa/Volgograd"
+
+#: ../capplets/time-admin/src/time-zones.h:399
+msgid "Europe/Warsaw"
+msgstr "Europa/Varsóvia"
+
+#: ../capplets/time-admin/src/time-zones.h:400
+msgid "Europe/Zagreb"
+msgstr "Europa/Zagreb"
+
+#: ../capplets/time-admin/src/time-zones.h:401
+msgid "Europe/Zaporozhye"
+msgstr "Europa/Zaporozhye"
+
+#: ../capplets/time-admin/src/time-zones.h:402
+msgid "Europe/Zurich"
+msgstr "Europa/Zurich"
+
+#: ../capplets/time-admin/src/time-zones.h:403
+msgid "Indian/Antananarivo"
+msgstr "Índia/Antananarivo"
+
+#: ../capplets/time-admin/src/time-zones.h:404
+msgid "Indian/Chagos"
+msgstr "Índia/Chagos"
+
+#: ../capplets/time-admin/src/time-zones.h:405
+msgid "Indian/Christmas"
+msgstr "Índia/Christmas"
+
+#: ../capplets/time-admin/src/time-zones.h:406
+msgid "Indian/Cocos"
+msgstr "Índia/Cocos"
+
+#: ../capplets/time-admin/src/time-zones.h:407
+msgid "Indian/Comoro"
+msgstr "Índia/Comoro"
+
+#: ../capplets/time-admin/src/time-zones.h:408
+msgid "Indian/Kerguelen"
+msgstr "Índia/Kerguelen"
+
+#: ../capplets/time-admin/src/time-zones.h:409
+msgid "Indian/Mahe"
+msgstr "Índia/Mahe"
+
+#: ../capplets/time-admin/src/time-zones.h:410
+msgid "Indian/Maldives"
+msgstr "Índia/Maldives"
+
+#: ../capplets/time-admin/src/time-zones.h:411
+msgid "Indian/Mauritius"
+msgstr "Índia/Mauritius"
+
+#: ../capplets/time-admin/src/time-zones.h:412
+msgid "Indian/Mayotte"
+msgstr "Índia/Mayotte"
+
+#: ../capplets/time-admin/src/time-zones.h:413
+msgid "Indian/Reunion"
+msgstr "Índia/Reunion"
+
+#: ../capplets/time-admin/src/time-zones.h:414
+msgid "Pacific/Apia"
+msgstr "Pacífico/Apia"
+
+#: ../capplets/time-admin/src/time-zones.h:415
+msgid "Pacific/Auckland"
+msgstr "Pacífico/Auckland"
+
+#: ../capplets/time-admin/src/time-zones.h:416
+msgid "Pacific/Bougainville"
+msgstr ""
+
+#: ../capplets/time-admin/src/time-zones.h:417
+msgid "Pacific/Chatham"
+msgstr "Pacífico/Chatham"
+
+#: ../capplets/time-admin/src/time-zones.h:418
+msgid "Pacific/Chuuk"
+msgstr "Pacífico/Chuuk"
+
+#: ../capplets/time-admin/src/time-zones.h:419
+msgid "Pacific/Easter"
+msgstr "Pacífico/Páscoa"
+
+#: ../capplets/time-admin/src/time-zones.h:420
+msgid "Pacific/Efate"
+msgstr "Pacífico/Efate"
+
+#: ../capplets/time-admin/src/time-zones.h:421
+msgid "Pacific/Enderbury"
+msgstr "Pacífico/Enderbury"
+
+#: ../capplets/time-admin/src/time-zones.h:422
+msgid "Pacific/Fakaofo"
+msgstr "Pacífico/Fakaofo"
+
+#: ../capplets/time-admin/src/time-zones.h:423
+msgid "Pacific/Fiji"
+msgstr "Pacífico/Fiji"
+
+#: ../capplets/time-admin/src/time-zones.h:424
+msgid "Pacific/Funafuti"
+msgstr "Pacífico/Funafuti"
+
+#: ../capplets/time-admin/src/time-zones.h:425
+msgid "Pacific/Galapagos"
+msgstr "Pacífico/Galapagos"
+
+#: ../capplets/time-admin/src/time-zones.h:426
+msgid "Pacific/Gambier"
+msgstr "Pacífico/Gambier"
+
+#: ../capplets/time-admin/src/time-zones.h:427
+msgid "Pacific/Guadalcanal"
+msgstr "Pacífico/Guadalcanal"
+
+#: ../capplets/time-admin/src/time-zones.h:428
+msgid "Pacific/Guam"
+msgstr "Pacífico/Guam"
+
+#: ../capplets/time-admin/src/time-zones.h:429
+msgid "Pacific/Honolulu"
+msgstr "Pacífico/Honolulu"
+
+#: ../capplets/time-admin/src/time-zones.h:430
+msgid "Pacific/Kiritimati"
+msgstr "Pacífico/Kiritimati"
+
+#: ../capplets/time-admin/src/time-zones.h:431
+msgid "Pacific/Kosrae"
+msgstr "Pacífico/Kosrae"
+
+#: ../capplets/time-admin/src/time-zones.h:432
+msgid "Pacific/Kwajalein"
+msgstr "Pacífico/Kwajalein"
+
+#: ../capplets/time-admin/src/time-zones.h:433
+msgid "Pacific/Majuro"
+msgstr "Pacífico/Majuro"
+
+#: ../capplets/time-admin/src/time-zones.h:434
+msgid "Pacific/Marquesas"
+msgstr "Pacífico/Marquesas"
+
+#: ../capplets/time-admin/src/time-zones.h:435
+msgid "Pacific/Midway"
+msgstr "Pacífico/Midway"
+
+#: ../capplets/time-admin/src/time-zones.h:436
+msgid "Pacific/Nauru"
+msgstr "Pacífico/Nauru"
+
+#: ../capplets/time-admin/src/time-zones.h:437
+msgid "Pacific/Niue"
+msgstr "Pacífico/Niue"
+
+#: ../capplets/time-admin/src/time-zones.h:438
+msgid "Pacific/Norfolk"
+msgstr "Pacífico/Norfolk"
+
+#: ../capplets/time-admin/src/time-zones.h:439
+msgid "Pacific/Noumea"
+msgstr "Pacífico/Noumea"
+
+#: ../capplets/time-admin/src/time-zones.h:440
+msgid "Pacific/Pago_Pago"
+msgstr "Pacífico/Pago_Pago"
+
+#: ../capplets/time-admin/src/time-zones.h:441
+msgid "Pacific/Palau"
+msgstr "Pacífico/Palau"
+
+#: ../capplets/time-admin/src/time-zones.h:442
+msgid "Pacific/Pitcairn"
+msgstr "Pacífico/Pitcairn"
+
+#: ../capplets/time-admin/src/time-zones.h:443
+msgid "Pacific/Pohnpei"
+msgstr "Pacífico/Pohnpei"
+
+#: ../capplets/time-admin/src/time-zones.h:444
+msgid "Pacific/Port_Moresby"
+msgstr "Pacífico/Port_Moresby"
+
+#: ../capplets/time-admin/src/time-zones.h:445
+msgid "Pacific/Rarotonga"
+msgstr "Pacífico/Rarotonga"
+
+#: ../capplets/time-admin/src/time-zones.h:446
+msgid "Pacific/Saipan"
+msgstr "Pacífico/Saipan"
+
+#: ../capplets/time-admin/src/time-zones.h:447
+msgid "Pacific/Tahiti"
+msgstr "Pacífico/Tahiti"
+
+#: ../capplets/time-admin/src/time-zones.h:448
+msgid "Pacific/Tarawa"
+msgstr "Pacífico/Tarawa"
+
+#: ../capplets/time-admin/src/time-zones.h:449
+msgid "Pacific/Tongatapu"
+msgstr "Pacífico/Tongatapu"
+
+#: ../capplets/time-admin/src/time-zones.h:450
+msgid "Pacific/Wake"
+msgstr "Pacífico/Wake"
+
+#: ../capplets/time-admin/src/time-zones.h:451
+msgid "Pacific/Wallis"
+msgstr "Pacífico/Wallis"
+
+#: ../capplets/time-admin/data/mate-time-admin.desktop.in.h:1
+msgid "Time And Date Manager"
+msgstr ""
+
+#: ../capplets/time-admin/data/mate-time-admin.desktop.in.h:2
+msgid "Setting the time and date of the local system"
+msgstr ""
+
 #: ../libwindow-settings/mate-wm-manager.c:317
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
@@ -2703,24 +4575,24 @@ msgstr "O gestor de janelas %s não tem um ferramenta de configuração\n"
 msgid "%s key is empty\n"
 msgstr "Chave %s está vazia\n"
 
-#: ../shell/control-center.c:135
+#: ../shell/control-center.c:137
 msgid "Filter"
 msgstr "Filtro"
 
-#: ../shell/control-center.c:135
+#: ../shell/control-center.c:137
 msgid "Groups"
 msgstr "Grupos"
 
-#: ../shell/control-center.c:135
+#: ../shell/control-center.c:137
 msgid "Common Tasks"
 msgstr "Tarefas Comuns"
 
-#: ../shell/control-center.c:143 ../shell/matecc.desktop.in.h:1
+#: ../shell/control-center.c:145 ../shell/matecc.desktop.in.h:1
 #: ../shell/matecc.directory.in.h:1
 msgid "Control Center"
 msgstr "Centro de Controlo"
 
-#: ../shell/control-center.c:162
+#: ../shell/control-center.c:164
 msgid "Hide on start (useful to preload the shell)"
 msgstr "Ocultar ao carregar (útil para pré-carregar a consola)"
 
@@ -2732,11 +4604,11 @@ msgstr "A ferramenta de configuração MATE"
 msgid "Configure MATE settings"
 msgstr "Configurar definições do MATE"
 
-#: ../typing-break/drw-break-window.c:185
+#: ../typing-break/drw-break-window.c:181
 msgid "_Postpone Break"
 msgstr "_Adiar Intervalo"
 
-#: ../typing-break/drw-break-window.c:244
+#: ../typing-break/drw-break-window.c:240
 msgid "Take a break!"
 msgstr "Faça um intervalo!"
 
@@ -2795,7 +4667,7 @@ msgstr "Arte visual criada por Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Um lembrete para intervalos no computador."
 
-#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:785
+#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:786
 msgid "translator-credits"
 msgstr ""
 "José Vieira, https://www.transifex.com/user/profile/zeh/ , 2018\n"
@@ -2829,60 +4701,60 @@ msgstr ""
 "adicioná-la clicando com botão direito do rato no painel e escolher "
 "'Adicionar ao painel', selecione 'Área de notificação' e clicar 'Adicionar'."
 
-#: ../font-viewer/font-view.c:204
+#: ../font-viewer/font-view.c:205
 msgid "Style"
 msgstr "Estilo"
 
-#: ../font-viewer/font-view.c:214
+#: ../font-viewer/font-view.c:215
 msgid "Type"
 msgstr "Tipo"
 
-#: ../font-viewer/font-view.c:260 ../font-viewer/font-view.c:275
+#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:276
 msgid "Version"
 msgstr "Versão"
 
-#: ../font-viewer/font-view.c:265 ../font-viewer/font-view.c:277
+#: ../font-viewer/font-view.c:266 ../font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../font-viewer/font-view.c:270
+#: ../font-viewer/font-view.c:271
 msgid "Description"
 msgstr "Descrição"
 
-#: ../font-viewer/font-view.c:288
+#: ../font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "Falha ao instalar"
 
-#: ../font-viewer/font-view.c:294
+#: ../font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "Instalada"
 
-#: ../font-viewer/font-view.c:431
+#: ../font-viewer/font-view.c:432
 msgid "This font could not be displayed."
 msgstr "Esta fonte não pode ser apresentada."
 
-#: ../font-viewer/font-view.c:494 ../font-viewer/font-view.c:561
+#: ../font-viewer/font-view.c:495 ../font-viewer/font-view.c:562
 msgid "Info"
 msgstr "Info"
 
-#: ../font-viewer/font-view.c:574
+#: ../font-viewer/font-view.c:575
 msgid "Back"
 msgstr "Voltar"
 
-#: ../font-viewer/font-view.c:678
+#: ../font-viewer/font-view.c:679
 msgid "All Fonts"
 msgstr "Todas as Fontes"
 
-#: ../font-viewer/font-view.c:782 ../font-viewer/font-view.c:833
+#: ../font-viewer/font-view.c:783 ../font-viewer/font-view.c:835
 msgid "Font Viewer"
 msgstr "Visualizador de tipo de letra"
 
-#: ../font-viewer/font-view.c:783
+#: ../font-viewer/font-view.c:784
 #: ../font-viewer/mate-font-viewer.desktop.in.h:2
 msgid "View fonts on your system"
 msgstr "Ver tipos de letra no seu sistema"
 
-#: ../font-viewer/font-view.c:841 ../libslab/bookmark-agent.c:1187
+#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -2928,56 +4800,56 @@ msgid "Other"
 msgstr "Outros"
 
 #. make start action
-#: ../libslab/application-tile.c:343
+#: ../libslab/application-tile.c:339
 #, c-format
 msgid "Start %s"
 msgstr "Iniciar %s"
 
-#: ../libslab/application-tile.c:364
+#: ../libslab/application-tile.c:360
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../libslab/application-tile.c:639
+#: ../libslab/application-tile.c:642
 msgid "Remove from Favorites"
 msgstr "Remover dos Favoritos"
 
-#: ../libslab/application-tile.c:641
+#: ../libslab/application-tile.c:644
 msgid "Add to Favorites"
 msgstr "Adicionar aos Favoritos"
 
-#: ../libslab/application-tile.c:726
+#: ../libslab/application-tile.c:729
 msgid "Remove from Startup Programs"
 msgstr "Remover dos Programas de Início"
 
-#: ../libslab/application-tile.c:728
+#: ../libslab/application-tile.c:731
 msgid "Add to Startup Programs"
 msgstr "Adicionar aos Programas de Início"
 
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "Nova Folha"
 
-#: ../libslab/bookmark-agent.c:1081
+#: ../libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "Novo Documento"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Pasta pessoal"
 
-#: ../libslab/bookmark-agent.c:1142
+#: ../libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "Documentos"
 
-#: ../libslab/bookmark-agent.c:1148
+#: ../libslab/bookmark-agent.c:1153
 msgid "Desktop"
 msgstr "Área de Trabalho"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "Sistema de Ficheiros"
 
-#: ../libslab/bookmark-agent.c:1156
+#: ../libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "Servidores de Rede"
