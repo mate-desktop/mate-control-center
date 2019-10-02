@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <gio/gio.h>
 #include <gio/gdesktopappinfo.h>
+#include <cairo-gobject.h>
 
 #include "mate-da-capplet.h"
 #include "capplet-util.h"
@@ -54,7 +55,7 @@ enum {
 
 /* For combo box */
 enum {
-	PIXBUF_COL,
+	SURFACE_COL,
 	TEXT_COL,
 	ID_COL,
 	ICONAME_COL,
@@ -286,8 +287,9 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 	GtkTreeIter iter;
 	GtkTreeModel* model;
 	gboolean valid;
-	GdkPixbuf* pixbuf;
+	cairo_surface_t *surface;
 	gchar* icon_name;
+	gint scale_factor;
 
 	model = gtk_combo_box_get_model(combo_box);
 
@@ -295,29 +297,31 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 		return;
 
 	valid = gtk_tree_model_get_iter_first(model, &iter);
-	
+	scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (combo_box));
+
 	while (valid)
-    {
-		gtk_tree_model_get(model, &iter,
-				          ICONAME_COL, &icon_name,
-				          -1);
+	{
+		gtk_tree_model_get (model, &iter,
+		                    ICONAME_COL, &icon_name,
+		                    -1);
 
-		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icon_name, 22, GTK_ICON_LOOKUP_FORCE_SIZE);
-		pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
+		surface = gtk_icon_theme_load_surface (theme, icon_name,
+		                                       22, scale_factor,
+		                                       NULL,
+		                                       GTK_ICON_LOOKUP_FORCE_SIZE,
+		                                       NULL);
 
-		gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-				PIXBUF_COL, pixbuf,
-				-1);
+		gtk_list_store_set (GTK_LIST_STORE(model), &iter,
+		                    SURFACE_COL, surface,
+		                    -1);
 
-		if (pixbuf)
-		{
-			g_object_unref(pixbuf);
-		}
-		
-		g_free(icon_name);
+		if (surface)
+			cairo_surface_destroy (surface);
+
+		g_free (icon_name);
 
 		valid = gtk_tree_model_iter_next(model, &iter);
-    }
+	}
 }
 
 static struct {
@@ -347,20 +351,25 @@ theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 {
 	GObject* icon;
 	gint i;
+	gint scale_factor;
+	cairo_surface_t *surface;
+
+	scale_factor = gtk_widget_get_scale_factor (capplet->window);
 
 	for (i = 0; i < G_N_ELEMENTS(icons); i++)
 	{
 		icon = gtk_builder_get_object(capplet->builder, icons[i].name);
 
-		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icons[i].icon, 32, GTK_ICON_LOOKUP_FORCE_SIZE);
-		GdkPixbuf* pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
+		surface = gtk_icon_theme_load_surface (theme, icons[i].icon,
+		                                       32, scale_factor,
+		                                       NULL,
+		                                       GTK_ICON_LOOKUP_FORCE_SIZE,
+		                                       NULL);
 
-		gtk_image_set_from_pixbuf(GTK_IMAGE(icon), pixbuf);
-		
-		if (pixbuf)
-		{
-			g_object_unref(pixbuf);
-		}
+		gtk_image_set_from_surface (GTK_IMAGE(icon), surface);
+
+		if (surface)
+			cairo_surface_destroy (surface);
 	}
 
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers);
@@ -404,8 +413,9 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	GtkTreeModel* model;
 	GtkCellRenderer* renderer;
 	GtkTreeIter iter;
-	GdkPixbuf* pixbuf;
+	cairo_surface_t *surface;
 	GAppInfo* default_app;
+	gint scale_factor;
 
 	default_app = NULL;
 	if (g_strcmp0(mime, "terminal") == 0)
@@ -478,17 +488,21 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		theme = gtk_icon_theme_get_default();
 	}
 
-	model = GTK_TREE_MODEL(gtk_list_store_new(4, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+	model = GTK_TREE_MODEL (gtk_list_store_new (4,
+	                                            CAIRO_GOBJECT_TYPE_SURFACE,
+	                                            G_TYPE_STRING,
+	                                            G_TYPE_STRING,
+	                                            G_TYPE_STRING));
 	gtk_combo_box_set_model(combo_box, model);
 
 	renderer = gtk_cell_renderer_pixbuf_new();
 
-	/* Not all cells have a pixbuf, this prevents the combo box to shrink */
+	/* Not all cells have an icon, this prevents the combo box to shrink */
 	gtk_cell_renderer_set_fixed_size(renderer, 22, 22);
 	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo_box), renderer, FALSE);
-	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(combo_box), renderer,
-		"pixbuf", PIXBUF_COL,
-		NULL);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo_box), renderer,
+	                                "surface", SURFACE_COL,
+	                                NULL);
 
 	renderer = gtk_cell_renderer_text_new();
 
@@ -496,6 +510,8 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(combo_box), renderer,
 		"text", TEXT_COL,
 		NULL);
+
+	scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (combo_box));
 
 	for (entry = app_list; entry != NULL; entry = g_list_next(entry))
 	{
@@ -514,23 +530,24 @@ fill_combo_box(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_list, gch
 		} else {
 			icon_name = g_strdup ("binary");
 		}
-		
-		GtkIconInfo* icon_info = gtk_icon_theme_lookup_icon (theme, icon_name, 22, GTK_ICON_LOOKUP_FORCE_SIZE);
-		pixbuf = gtk_icon_info_load_icon(icon_info, NULL);
+
+		surface = gtk_icon_theme_load_surface (theme, icon_name,
+		                                       22, scale_factor,
+		                                       NULL,
+		                                       GTK_ICON_LOOKUP_FORCE_SIZE,
+		                                       NULL);
 
 		gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-		gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-			PIXBUF_COL, pixbuf,
-			TEXT_COL, g_app_info_get_display_name(item),
-			ID_COL, g_app_info_get_id(item),
-			ICONAME_COL, icon_name,
-			-1);
+		gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+		                    SURFACE_COL, surface,
+		                    TEXT_COL, g_app_info_get_display_name(item),
+		                    ID_COL, g_app_info_get_id(item),
+		                    ICONAME_COL, icon_name,
+		                    -1);
 
-		if (pixbuf)
-		{
-			g_object_unref(pixbuf);
-		}
-		
+		if (surface)
+			cairo_surface_destroy (surface);
+
 		/* Set the index for the default app */
 		if (default_app != NULL && g_app_info_equal(item, default_app))
 		{
