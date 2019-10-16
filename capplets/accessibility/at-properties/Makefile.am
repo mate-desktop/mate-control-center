@@ -13,11 +13,12 @@ mate_at_properties_SOURCES = \
 	main.c
 mate_at_properties_LDFLAGS = -export-dynamic
 
-@INTLTOOL_DESKTOP_RULE@
-
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-at-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
+
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 pixmapdir  = $(pkgdatadir)/pixmaps
 pixmap_DATA =					\

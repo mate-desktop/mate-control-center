@@ -19,17 +19,19 @@ mate_control_center_LDADD =						\
 sysdir = $(datadir)/applications
 sys_in_files = matecc.desktop.in
 sys_DATA = $(sys_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+$(sys_DATA): $(sys_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 directorydir = $(datadir)/desktop-directories
-directory_in_files = matecc.directory.in
-directory_DATA = $(directory_in_files:.directory.in=.directory)
-@INTLTOOL_DIRECTORY_RULE@
+directory_in_files = matecc.directory.desktop.in
+directory_DATA = $(directory_in_files:.directory.desktop.in=.directory)
+$(directory_DATA): $(directory_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 menudir = $(sysconfdir)/xdg/menus
 menu_DATA = matecc.menu
 
-EXTRA_DIST = $(sys_in_files) matecc.directory.in matecc.menu
+EXTRA_DIST = $(sys_in_files) matecc.directory.desktop.in matecc.menu
 
 DISTCLEANFILES = $(sys_DATA) matecc.directory
 

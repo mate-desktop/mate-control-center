@@ -37,15 +37,15 @@ polkit_policydir = $(datadir)/polkit-1/actions
 dist_polkit_policy_DATA =					\
 	org.mate.randr.policy
 
-# You will need a recent intltool or the patch from this bug
-# http://bugzilla.gnome.org/show_bug.cgi?id=462312
-@INTLTOOL_POLICY_RULE@
-
-@INTLTOOL_DESKTOP_RULE@
+%.policy: %.policy.in
+	$(AM_V_GEN) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-display-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
+
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
              $(MATECC_CAPPLETS_CFLAGS) \

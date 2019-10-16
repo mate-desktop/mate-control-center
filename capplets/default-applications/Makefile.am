@@ -17,13 +17,13 @@ nodist_mate_default_applications_properties_SOURCES = \
 mate_default_applications_properties_SOURCES = \
 	mate-da-capplet.c mate-da-capplet.h
 
-@INTLTOOL_DESKTOP_RULE@
-
 include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-default-applications-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-default-applications.pc

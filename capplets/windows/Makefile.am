@@ -10,11 +10,12 @@ mate_window_properties_SOURCES = \
 	mate-metacity-support.c \
 	mate-window-properties.c
 
-@INTLTOOL_DESKTOP_RULE@
-
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-window-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
+
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 AM_CPPFLAGS   = $(MATECC_CAPPLETS_CFLAGS)					\
 	     -DUIDIR=\""$(uidir)"\"  	\

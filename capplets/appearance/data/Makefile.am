@@ -17,21 +17,22 @@ dist_pixmap_DATA = \
         mouse-cursor-white.png \
         mouse-cursor-white-large.png
 
-@INTLTOOL_DESKTOP_RULE@
-
 desktopdir = $(datadir)/applications
 desktop_in_files = \
 	mate-appearance-properties.desktop.in \
 	mate-theme-installer.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-
-@INTLTOOL_XML_RULE@
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 xml_in_files = \
 	mate-theme-package.xml.in
 
 mimedir = $(datadir)/mime/packages
 mime_DATA = $(xml_in_files:.xml.in=.xml)
+
+$(mime_DATA): $(xml_in_files)
+	$(AM_V_GEN) GETTEXTDATADIR=$(top_srcdir) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 install-data-hook:
 if ENABLE_UPDATE_MIMEDB

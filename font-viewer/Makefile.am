@@ -34,6 +34,8 @@ thumbnailer_DATA = mate-font-viewer.thumbnailer
 desktopdir = $(datadir)/applications
 desktop_in_files = mate-font-viewer.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 install-data-local: install-desktop-database
 
@@ -42,10 +44,6 @@ install-desktop-database: install-desktopDATA
 
 uninstall-local:
 	rm -f $(DESTDIR)$(desktopdir)/mimeinfo.cache
-
-@INTLTOOL_DESKTOP_RULE@
-@INTLTOOL_DIRECTORY_RULE@
-@INTLTOOL_SCHEMAS_RULE@
 
 CLEANFILES = $(desktop_DATA) \
   $(schemas_DATA) $(directory_DATA)
