@@ -16,20 +16,21 @@ mate_keybinding_properties_SOURCES = \
 	eggaccelerators.c \
 	eggaccelerators.h
 
-@INTLTOOL_DESKTOP_RULE@
-
 include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-keybinding.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
-@INTLTOOL_XML_NOMERGE_RULE@
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 xmldir = $(pkgdatadir)/keybindings
 xml_in_files = 00-multimedia-key.xml.in 01-desktop-key.xml.in
 xml_DATA = $(xml_in_files:.xml.in=.xml)
 
+$(xml_DATA): $(xml_in_files)
+	$(AM_V_GEN) GETTEXTDATADIR=$(top_srcdir) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-keybindings.pc
 

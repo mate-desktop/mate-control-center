@@ -27,14 +27,12 @@ fi
 changequote([,])dnl
 
 # Internationalization support
-
-IT_PROG_INTLTOOL([0.50.1])
+AM_GNU_GETTEXT_VERSION([0.19.8])
+AM_GNU_GETTEXT([external])
 
 GETTEXT_PACKAGE=mate-control-center
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package])
-
-AM_GLIB_GNU_GETTEXT
 
 # GLIB_COMPILE_RESOURCES
 

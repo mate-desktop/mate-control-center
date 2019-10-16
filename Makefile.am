@@ -13,7 +13,6 @@ if HAVE_TYPING_BREAK
 SUBDIRS += typing-break
 endif
 
-@INTLTOOL_XML_NOMERGE_RULE@
 gsettingsschema_in_files = \
 	org.mate.control-center.gschema.xml.in \
 	org.mate.control-center.keybinding.gschema.xml.in
@@ -48,6 +47,7 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	autogen.sh \
+	its	\
 	$(gsettingsschema_in_files)
 
 DISTCHECK_CONFIGURE_FLAGS = \

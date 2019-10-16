@@ -27,13 +27,14 @@ mate_keyboard_properties_SOURCES = \
 
 mate_keyboard_properties_LDADD = $(MATECC_CAPPLETS_LIBS) $(LIBMATEKBDUI_LIBS)
 
-@INTLTOOL_DESKTOP_RULE@
-
 include $(top_srcdir)/gla11y.mk
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-keyboard.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
+
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 mate-keyboard-properties-resources.h mate-keyboard-properties-resources.c: org.mate.mcc.keyboard.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.keyboard.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name keyboard $<

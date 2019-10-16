@@ -23,11 +23,12 @@ map/timezone_12.75_dim.png  map/timezone_-3.png        map/timezone_-6_dim.png  
 map/timezone_12.75.png      map/timezone_3.png         map/timezone_6_dim.png     map/timezone_9.png \
 map/timezone_12_dim.png     map/timezone_-4.5_dim.png  map/timezone_-6.png
 
-@INTLTOOL_DESKTOP_RULE@
-
 desktopdir = $(datadir)/applications
 desktop_in_files = mate-time-admin.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 CLEANFILES = $(desktop_DATA)
 EXTRA_DIST = \

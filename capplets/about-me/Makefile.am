@@ -32,10 +32,10 @@ mate_about_me_LDADD += $(ACCOUNTSSERVICE_LIBS)
 endif
 mate_about_me_LDFLAGS = -export-dynamic
 
-@INTLTOOL_DESKTOP_RULE@
-
 desktopdir = $(datadir)/applications
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
+$(desktop_DATA): $(Desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 include $(top_srcdir)/gla11y.mk
 
