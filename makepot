@@ -4,6 +4,8 @@ PACKAGE=mate-control-center;
 
 # normal translations
 make -C po $PACKAGE.pot && mv po/$PACKAGE.pot .
+sed -i "/#, fuzzy/d" $PACKAGE.pot
+sed -i 's/charset=CHARSET/charset=UTF-8/g' $PACKAGE.pot
 
 # translations for user-quide
 rm -f help/$PACKAGE.pot &&
