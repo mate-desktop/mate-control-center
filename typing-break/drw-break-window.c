@@ -64,8 +64,6 @@ enum {
 	LAST_SIGNAL
 };
 
-static void         drw_break_window_class_init    (DrwBreakWindowClass *klass);
-static void         drw_break_window_init          (DrwBreakWindow      *window);
 static void         drw_break_window_finalize      (GObject             *object);
 static void         drw_break_window_dispose       (GObject             *object);
 static gboolean     postpone_sensitize_cb          (DrwBreakWindow      *window);

@@ -37,8 +37,6 @@ typedef struct
 	gboolean block_signal;
 } NldSearchBarPrivate;
 
-static void nld_search_bar_class_init (NldSearchBarClass *);
-static void nld_search_bar_init (NldSearchBar *);
 static void nld_search_bar_finalize (GObject *);
 
 static gboolean nld_search_bar_focus (GtkWidget *, GtkDirectionType);

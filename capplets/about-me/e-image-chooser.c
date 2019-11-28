@@ -57,8 +57,7 @@ enum {
 
 static GParamSpec *properties[NUM_PROPERTIES] = { NULL, };
 static guint image_chooser_signals [LAST_SIGNAL] = { 0 };
-static void e_image_chooser_init	 (EImageChooser		 *chooser);
-static void e_image_chooser_class_init	 (EImageChooserClass	 *klass);
+
 static void e_image_chooser_dispose      (GObject *object);
 
 static gboolean image_drag_motion_cb (GtkWidget *widget,

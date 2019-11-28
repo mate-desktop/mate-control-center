@@ -23,8 +23,6 @@
 #include "app-shell.h"
 #include "app-resizer.h"
 
-static void app_resizer_class_init (AppResizerClass *);
-static void app_resizer_init (AppResizer *);
 static void app_resizer_size_allocate (GtkWidget * resizer, GtkAllocation * allocation);
 static gboolean app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppShellData * app_data);
 
