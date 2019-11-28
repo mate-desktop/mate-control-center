@@ -25,8 +25,6 @@
 
 #include "app-resizer.h"
 
-static void shell_window_class_init (ShellWindowClass *);
-static void shell_window_init (ShellWindow *);
 static void shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
 	AppShellData * data);
 

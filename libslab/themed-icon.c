@@ -22,8 +22,6 @@
 
 #include "mate-utils.h"
 
-static void themed_icon_class_init (ThemedIconClass *);
-static void themed_icon_init (ThemedIcon *);
 static void themed_icon_finalize (GObject *);
 static void themed_icon_get_property (GObject *, guint, GValue *, GParamSpec *);
 static void themed_icon_set_property (GObject *, guint, const GValue *, GParamSpec *);
