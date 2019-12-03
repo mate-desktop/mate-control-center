@@ -22,7 +22,7 @@ desktop_in_files = \
 	mate-appearance-properties.desktop.in \
 	mate-theme-installer.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-$(desktop_DATA): $(desktop_in_files)
+%.desktop: %.desktop.in
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 xml_in_files = \
