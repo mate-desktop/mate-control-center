@@ -29,7 +29,7 @@ xmldir = $(pkgdatadir)/keybindings
 xml_in_files = 00-multimedia-key.xml.in 01-desktop-key.xml.in
 xml_DATA = $(xml_in_files:.xml.in=.xml)
 
-$(xml_DATA): $(xml_in_files)
+%.xml: %.xml.in
 	$(AM_V_GEN) GETTEXTDATADIR=$(top_srcdir) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-keybindings.pc
