@@ -312,20 +312,10 @@ title_label_new (const char* title)
 int
 main (int argc, char **argv)
 {
-    GdkScreen *screen;
-    GtkWidget *nb;
-    GtkWidget *general_vbox;
-    GtkWidget *behaviour_vbox;
-    GtkWidget *placement_vbox;
-    GtkWidget *widget;
-    GtkWidget *vbox;
-    GtkWidget *vbox1;
-    GtkWidget *hbox;
-    GtkWidget *hbox1;
-    GtkWidget *hbox2;
-    GtkWidget *hbox3;
-    GtkWidget *content_area;
-    gchar *str;
+    GError     *error = NULL;
+    GtkBuilder *builder;
+    GdkScreen  *screen;
+    gchar      *str;
     const char *current_wm;
     int i;
 
@@ -346,180 +336,66 @@ main (int argc, char **argv)
 
     marco_settings = g_settings_new (MARCO_SCHEMA);
 
+    builder = gtk_builder_new ();
+    if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/windows/window-properties.ui", &error) == 0) {
+        g_warning ("Could not load UI: %s", error->message);
+        g_error_free (error);
+        g_object_unref (marco_settings);
+        g_object_unref (builder);
+        return -1;
+    }
+
+    gtk_builder_add_callback_symbols (builder,
+                                      "on_dialog_win_response",                        G_CALLBACK (response_cb),
+                                      "on_autoraise_delay_slider_value_changed",       G_CALLBACK (autoraise_delay_value_changed_callback),
+                                      "on_double_click_titlebar_optionmenu_changed",   G_CALLBACK (double_click_titlebar_changed_callback),
+                                      "on_titlebar_layout_optionmenu_changed",         G_CALLBACK (titlebar_layout_changed_callback),
+                                      "on_focus_mode_checkbutton_toggled",             G_CALLBACK (mouse_focus_toggled_callback),
+                                      "on_focus_mode_mouse_checkbutton_toggled",       G_CALLBACK (mouse_focus_toggled_callback),
+                                      NULL);
+
+    gtk_builder_connect_signals (builder, NULL);
+
     /* Window */
-    dialog_win = gtk_dialog_new_with_buttons (_("Window Preferences"),
-                                              NULL,
-                                              GTK_DIALOG_MODAL,
-                                              "gtk-help",
-                                              GTK_RESPONSE_HELP,
-                                              "gtk-close",
-                                              GTK_RESPONSE_CLOSE,
-                                              NULL);
-
-    //gtk_window_set_resizable (GTK_WINDOW (dialog_win), FALSE);
-    gtk_window_set_icon_name (GTK_WINDOW (dialog_win), "preferences-system-windows");
-    gtk_container_set_border_width (GTK_CONTAINER (dialog_win), 10);
-
-    nb = gtk_notebook_new ();
-
-    gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-    g_signal_connect (GTK_WIDGET (nb), "scroll-event",
-                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                      GTK_WINDOW (widget));
-
-    gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-    g_signal_connect (GTK_WIDGET (nb), "scroll-event",
-                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                      GTK_WINDOW (dialog_win));
-
-    general_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    behaviour_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    placement_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-
-    widget = gtk_label_new (_("General"));
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_box_pack_start (GTK_BOX (hbox), general_vbox, FALSE, FALSE, 6);
-    gtk_notebook_append_page (GTK_NOTEBOOK (nb), hbox, widget);
-
-    widget = gtk_label_new (_("Behaviour"));
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_box_pack_start (GTK_BOX (hbox), behaviour_vbox, FALSE, FALSE, 6);
-    gtk_notebook_append_page (GTK_NOTEBOOK (nb), hbox, widget);
-
-    widget = gtk_label_new (_("Placement"));
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_box_pack_start (GTK_BOX (hbox), placement_vbox, FALSE, FALSE, 6);
-    gtk_notebook_append_page (GTK_NOTEBOOK (nb), hbox, widget);
+    dialog_win = GTK_WIDGET (gtk_builder_get_object (builder, "dialog_win"));
 
     /* Compositing manager */
-    widget = title_label_new (N_("Compositing Manager"));
-    gtk_box_pack_start (GTK_BOX (general_vbox), widget, FALSE, FALSE, 6);
-
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    hbox1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-
-    compositing_checkbutton = gtk_check_button_new_with_mnemonic (_("Enable software _compositing window manager"));
-    compositing_fast_alt_tab_checkbutton = gtk_check_button_new_with_mnemonic (_("Disable _thumbnails in Alt-Tab"));
-    gtk_box_pack_start (GTK_BOX (vbox), compositing_checkbutton, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (hbox1), compositing_fast_alt_tab_checkbutton, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox), hbox1, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (general_vbox), hbox, FALSE, FALSE, 6);
+    compositing_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_checkbutton"));
+    compositing_fast_alt_tab_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_fast_alt_tab_checkbutton"));
 
     /* Titlebar buttons */
-    widget = title_label_new (N_("Titlebar Buttons"));
-    gtk_box_pack_start (GTK_BOX (general_vbox), widget, FALSE, FALSE, 6);
-
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    widget = gtk_label_new (_("Position:"));
-    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 6);
-    titlebar_layout_optionmenu = gtk_combo_box_text_new ();
-    gtk_box_pack_start (GTK_BOX (hbox), titlebar_layout_optionmenu, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (general_vbox), hbox, FALSE, FALSE, 6);
+    titlebar_layout_optionmenu = GTK_WIDGET (gtk_builder_get_object (builder, "titlebar_layout_optionmenu"));
 
     /* New Windows */
-    widget = title_label_new (N_("New Windows"));
-    gtk_box_pack_start (GTK_BOX (placement_vbox), widget, FALSE, FALSE, 6);
-
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    center_new_windows_checkbutton = gtk_check_button_new_with_mnemonic (_("Center _new windows"));
-    gtk_box_pack_start (GTK_BOX (hbox), center_new_windows_checkbutton, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (placement_vbox), hbox, FALSE, FALSE, 6);
+    center_new_windows_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "center_new_windows_checkbutton"));
 
     /* Window Snapping */
-    widget = title_label_new (N_("Window Snapping"));
-    gtk_box_pack_start (GTK_BOX (placement_vbox), widget, FALSE, FALSE, 6);
-
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    allow_tiling_checkbutton = gtk_check_button_new_with_mnemonic (_("Enable window _tiling"));
-    gtk_box_pack_start (GTK_BOX (hbox), allow_tiling_checkbutton, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (placement_vbox), hbox, FALSE, FALSE, 6);
+    allow_tiling_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "allow_tiling_checkbutton"));
 
     /* Window Selection */
-    widget = title_label_new (N_("Window Selection"));
-    gtk_box_pack_start (GTK_BOX (behaviour_vbox), widget, FALSE, FALSE, 6);
-
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    vbox1 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    hbox1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    hbox2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    hbox3 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-
-    focus_mode_checkbutton = gtk_check_button_new_with_mnemonic (_("_Select windows when the mouse moves over them"));
-    gtk_box_pack_start (GTK_BOX (vbox), focus_mode_checkbutton, FALSE, FALSE, 6);
-
-    focus_mode_mouse_checkbutton = gtk_check_button_new_with_mnemonic (_("U_nselect windows when the mouse leaves them"));
-    gtk_box_pack_start (GTK_BOX (hbox1), focus_mode_mouse_checkbutton, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 6);
-
-    autoraise_checkbutton = gtk_check_button_new_with_mnemonic (_("_Raise selected windows after an interval"));
-    gtk_box_pack_start (GTK_BOX (hbox2), autoraise_checkbutton, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox1), hbox2, FALSE, FALSE, 6);
-
-    autoraise_delay_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    autoraise_delay_slider = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 10, 0.2);
-
-    widget = gtk_label_new_with_mnemonic (_("_Interval before raising:"));
-    gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), widget, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), autoraise_delay_slider, TRUE, TRUE, 6);
-    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), autoraise_delay_slider);
-    widget = gtk_label_new (_("seconds"));
-    gtk_range_set_increments (GTK_RANGE (autoraise_delay_slider), 0.2, 1.0);
-    gtk_box_pack_start (GTK_BOX (autoraise_delay_hbox), widget, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox1), autoraise_delay_hbox, FALSE, FALSE, 6);
-
-    gtk_box_pack_start (GTK_BOX (hbox3), vbox1, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox), hbox3, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
+    focus_mode_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "focus_mode_checkbutton"));
+    focus_mode_mouse_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "focus_mode_mouse_checkbutton"));
+    autoraise_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise_checkbutton"));
+    autoraise_delay_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise_delay_hbox"));
+    autoraise_delay_slider = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise_delay_slider"));
 
     /* Titlebar Action */
-    widget = title_label_new (N_("Titlebar Action"));
-    gtk_box_pack_start (GTK_BOX (behaviour_vbox), widget, FALSE, FALSE, 6);
-
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    widget = gtk_label_new_with_mnemonic (_("_Double-click titlebar to perform this action:"));
-    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 6);
-    double_click_titlebar_optionmenu = gtk_combo_box_text_new ();
-    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), double_click_titlebar_optionmenu);
-    gtk_box_pack_start (GTK_BOX (hbox), double_click_titlebar_optionmenu, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
+    double_click_titlebar_optionmenu = GTK_WIDGET (gtk_builder_get_object (builder, "double_click_titlebar_optionmenu"));
 
     /* Movement Key */
-    widget = title_label_new (N_("Movement Key"));
-    gtk_box_pack_start (GTK_BOX (behaviour_vbox), widget, FALSE, FALSE, 6);
+    alt_click_vbox = GTK_WIDGET (gtk_builder_get_object (builder, "alt_click_vbox"));
 
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
-    widget = gtk_label_new_with_mnemonic (_("To move a window, press-and-hold this key then grab the window:"));
-    gtk_label_set_xalign (GTK_LABEL (widget), 0.0);
-    gtk_label_set_yalign (GTK_LABEL (widget), 0.0);
-    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 6);
+    g_object_unref (builder);
 
-    alt_click_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-    gtk_label_set_mnemonic_widget (GTK_LABEL (widget), alt_click_vbox);
-    gtk_box_pack_start (GTK_BOX (vbox), alt_click_vbox, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (behaviour_vbox), hbox, FALSE, FALSE, 6);
 
     reload_mouse_modifiers ();
 
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (titlebar_layout_optionmenu), _("Right"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (titlebar_layout_optionmenu), _("Left"));
     str = g_settings_get_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY);
     gtk_combo_box_set_active (GTK_COMBO_BOX (titlebar_layout_optionmenu),
                               g_strcmp0 (str, MARCO_BUTTON_LAYOUT_RIGHT) == 0 ? 0 : 1);
     g_free (str);
 
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Roll up"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Maximize"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Maximize Horizontally"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Maximize Vertically"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("Minimize"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (double_click_titlebar_optionmenu), _("None"));
     gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
                               g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
 
@@ -528,15 +404,6 @@ main (int argc, char **argv)
                          g_settings_get_int (marco_settings, MARCO_AUTORAISE_DELAY_KEY) / 1000.0);
     gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
                               g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
-
-    g_signal_connect (G_OBJECT (dialog_win), "response",
-                      G_CALLBACK (response_cb), NULL);
-
-    g_signal_connect (G_OBJECT (dialog_win), "destroy",
-                      G_CALLBACK (gtk_main_quit), NULL);
-
-    g_signal_connect (marco_settings, "changed",
-                      G_CALLBACK (marco_settings_changed_callback), NULL);
 
     g_settings_bind (marco_settings,
                      MARCO_COMPOSITING_MANAGER_KEY,
@@ -562,15 +429,8 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
-                      G_CALLBACK (mouse_focus_changed_callback), NULL);
     /* Initialize the checkbox state appropriately */
     mouse_focus_changed_callback(marco_settings, MARCO_FOCUS_KEY, NULL);
-
-    g_signal_connect (focus_mode_checkbutton, "toggled",
-                      G_CALLBACK (mouse_focus_toggled_callback), NULL);
-    g_signal_connect (focus_mode_mouse_checkbutton, "toggled",
-                      G_CALLBACK (mouse_focus_toggled_callback), NULL);
 
     g_settings_bind (marco_settings,
                      MARCO_AUTORAISE_KEY,
@@ -578,14 +438,15 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    g_signal_connect (autoraise_delay_slider, "value_changed",
-                      G_CALLBACK (autoraise_delay_value_changed_callback), NULL);
 
-    g_signal_connect (double_click_titlebar_optionmenu, "changed",
-                      G_CALLBACK (double_click_titlebar_changed_callback), NULL);
+    g_signal_connect (G_OBJECT (dialog_win), "destroy",
+                      G_CALLBACK (gtk_main_quit), NULL);
 
-    g_signal_connect (titlebar_layout_optionmenu, "changed",
-                      G_CALLBACK (titlebar_layout_changed_callback), NULL);
+    g_signal_connect (marco_settings, "changed",
+                      G_CALLBACK (marco_settings_changed_callback), NULL);
+
+    g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
+                      G_CALLBACK (mouse_focus_changed_callback), NULL);
 
     g_signal_connect (G_OBJECT (screen), "window_manager_changed",
                       G_CALLBACK (wm_changed_callback), NULL);
@@ -601,9 +462,6 @@ main (int argc, char **argv)
     /* update sensitivity */
     update_sensitivity ();
 
-    capplet_set_icon (dialog_win, "preferences-system-windows");
-    content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog_win));
-    gtk_box_pack_start (GTK_BOX (content_area), nb, TRUE, TRUE, 0);
     gtk_widget_show_all (dialog_win);
 
     gtk_main ();
