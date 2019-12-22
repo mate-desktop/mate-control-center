@@ -1,36 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.0 
+
+at-enable-dialog - enable at dialog window
+Copyright (C) MATE Developers
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Author: Wolfgang Ulbrich
+
+-->
 <interface>
-  <requires lib="gtk+" version="3.14"/>
+  <requires lib="gtk+" version="3.22"/>
   <!-- interface-license-type gplv2 -->
   <!-- interface-name at-enable-dialog -->
   <!-- interface-description enable at dialog window -->
-  <!-- interface-copyright MATE Developer -->
+  <!-- interface-copyright MATE Developers -->
   <!-- interface-authors Wolfgang Ulbrich -->
   <object class="GtkImage" id="close_logout_button_img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-quit</property>
+    <property name="icon_name">application-exit</property>
+  </object>
+  <object class="GtkImage" id="help_button_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">help-browser</property>
   </object>
   <object class="GtkImage" id="keyboard_button_img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
+    <property name="icon_name">go-jump</property>
   </object>
   <object class="GtkImage" id="login_button_img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
+    <property name="icon_name">go-jump</property>
   </object>
   <object class="GtkImage" id="mouse_button_img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
+    <property name="icon_name">go-jump</property>
   </object>
   <object class="GtkImage" id="pref_button_img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
+    <property name="icon_name">go-jump</property>
+  </object>
+  <object class="GtkImage" id="window_close_button_img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">window-close</property>
   </object>
   <object class="GtkDialog" id="at_properties_dialog">
     <property name="name">at-properties-dialog</property>
@@ -52,12 +83,13 @@
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="at_help_button">
-                <property name="label">gtk-help</property>
+                <property name="label" translatable="yes">_Help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="image">help_button_image</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -84,13 +116,14 @@
             </child>
             <child>
               <object class="GtkButton" id="at_close_button">
-                <property name="label">gtk-close</property>
+                <property name="label" translatable="yes">_Close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="image">window_close_button_img</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -399,5 +432,8 @@
       <action-widget response="0">at_close_logout_button</action-widget>
       <action-widget response="-7">at_close_button</action-widget>
     </action-widgets>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
   </object>
 </interface>
