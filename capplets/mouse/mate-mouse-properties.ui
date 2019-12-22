@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.22.0 
+
+mate-mouse-properties - mouse properties dialog window
+Copyright (C) MATE Developers
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Author: Wolfgang Ulbrich
+
+-->
 <interface>
-  <requires lib="gtk+" version="3.14"/>
+  <requires lib="gtk+" version="3.22"/>
   <!-- interface-license-type gplv2 -->
   <!-- interface-name mate-mouse-properties -->
   <!-- interface-description mouse properties dialog window -->
@@ -49,6 +70,36 @@
     <property name="step_increment">100</property>
     <property name="page_increment">100</property>
   </object>
+  <object class="GtkAdjustment" id="adjustment5">
+    <property name="lower">0.5</property>
+    <property name="upper">3</property>
+    <property name="value">1.2</property>
+    <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment6">
+    <property name="lower">0.20000000000000001</property>
+    <property name="upper">3</property>
+    <property name="value">1.2</property>
+    <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment7">
+    <property name="upper">30</property>
+    <property name="value">15</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="help_button_img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">help-browser</property>
+  </object>
+  <object class="GtkImage" id="window_close_button_img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">window-close</property>
+  </object>
   <object class="GtkDialog" id="mouse_properties_dialog">
     <property name="name">mouse-properties</property>
     <property name="can_focus">False</property>
@@ -57,9 +108,6 @@
     <property name="default_width">500</property>
     <property name="default_height">550</property>
     <property name="type_hint">dialog</property>
-    <child>
-      <placeholder/>
-    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -73,12 +121,13 @@
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="helpbutton1">
-                <property name="label">gtk-help</property>
+                <property name="label" translatable="yes">_Help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="image">help_button_img</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -88,12 +137,13 @@
             </child>
             <child>
               <object class="GtkButton" id="closebutton1">
-                <property name="label">gtk-close</property>
+                <property name="label" translatable="yes">_Close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="image">window_close_button_img</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -533,9 +583,9 @@
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
                                 <items>
-                                  <item translatable="yes" id="default">Default</item>
-                                  <item translatable="yes" id="adaptive">Adaptive</item>
-                                  <item translatable="yes" id="flat">Flat</item>
+                                  <item id="default" translatable="yes">Default</item>
+                                  <item id="adaptive" translatable="yes">Adaptive</item>
+                                  <item id="flat" translatable="yes">Flat</item>
                                 </items>
                               </object>
                               <packing>
@@ -871,7 +921,7 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                        <property name="stock">gtk-missing-image</property>
+                                        <property name="icon_name">image-missing</property>
                                       </object>
                                     </child>
                                   </object>
@@ -1099,7 +1149,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="margin_left">12</property>
+                        <property name="margin_start">12</property>
                         <property name="margin_top">5</property>
                         <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Warning: multi-finger emulation may disable software buttons</property>
@@ -1519,25 +1569,8 @@
       <action-widget response="-11">helpbutton1</action-widget>
       <action-widget response="2">closebutton1</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkAdjustment" id="adjustment5">
-    <property name="lower">0.5</property>
-    <property name="upper">3</property>
-    <property name="value">1.2</property>
-    <property name="step_increment">0.10000000000000001</property>
-    <property name="page_increment">0.10000000000000001</property>
-  </object>
-  <object class="GtkAdjustment" id="adjustment6">
-    <property name="lower">0.20000000000000001</property>
-    <property name="upper">3</property>
-    <property name="value">1.2</property>
-    <property name="step_increment">0.10000000000000001</property>
-    <property name="page_increment">0.10000000000000001</property>
-  </object>
-  <object class="GtkAdjustment" id="adjustment7">
-    <property name="upper">30</property>
-    <property name="value">15</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
   </object>
 </interface>
