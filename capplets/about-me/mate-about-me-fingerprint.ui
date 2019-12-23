@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.0
+
+mate-about-me-fingerprint - about me fingerprint dialog window
+Copyright (C) MATE Developers
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Author: Wolfgang Ulbrich
+
+-->
 <interface>
-  <requires lib="gtk+" version="3.14"/>
+  <requires lib="gtk+" version="3.22"/>
   <!-- interface-license-type gplv2 -->
   <!-- interface-name mate-about-me-fingerprint -->
   <!-- interface-description about me fingerprint dialog window -->
-  <!-- interface-copyright MATE Developer -->
+  <!-- interface-copyright MATE Developers -->
   <!-- interface-authors Wolfgang Ulbrich -->
   <object class="GtkListStore" id="model1">
     <columns>
@@ -43,6 +64,9 @@
     <property name="can_focus">False</property>
     <property name="border_width">12</property>
     <property name="title" translatable="yes">Enable Fingerprint Login</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
     <child>
       <placeholder/>
     </child>
@@ -62,7 +86,7 @@
               <object class="GtkImage" id="image">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-dialog-info</property>
+                <property name="icon_name">dialog-information</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -220,7 +244,7 @@
               <object class="GtkImage" id="image1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-no</property>
+                <property name="icon_name">gtk-no</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -233,7 +257,7 @@
               <object class="GtkImage" id="image2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-no</property>
+                <property name="icon_name">gtk-no</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -246,7 +270,7 @@
               <object class="GtkImage" id="image3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-no</property>
+                <property name="icon_name">gtk-no</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -259,7 +283,7 @@
               <object class="GtkImage" id="image4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-no</property>
+                <property name="icon_name">gtk-no</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -272,7 +296,7 @@
               <object class="GtkImage" id="image5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-no</property>
+                <property name="icon_name">gtk-no</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -320,6 +344,9 @@
         <property name="title" translatable="yes">Done!</property>
         <property name="has_padding">False</property>
       </packing>
+    </child>
+    <child type="titlebar">
+      <placeholder/>
     </child>
     <child internal-child="action_area">
       <object class="GtkBox">
