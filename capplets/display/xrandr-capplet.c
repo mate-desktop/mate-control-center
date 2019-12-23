@@ -2277,32 +2277,6 @@ dialog_map_event_cb (GtkWidget *widget, GdkEventAny *event, gpointer data)
 }
 
 static void
-hide_help_button (App *app)
-{
-    GtkWidget *action_area;
-    GList *children;
-    GList *l;
-
-    action_area = gtk_dialog_get_action_area (GTK_DIALOG (app->dialog));
-    children = gtk_container_get_children (GTK_CONTAINER (action_area));
-
-    for (l = children; l; l = l->next)
-    {
-	GtkWidget *child;
-	int response;
-
-	child = GTK_WIDGET (l->data);
-
-	response = gtk_dialog_get_response_for_widget (GTK_DIALOG (app->dialog), child);
-	if (response == GTK_RESPONSE_HELP)
-	{
-	    gtk_widget_hide (child);
-	    return;
-	}
-    }
-}
-
-static void
 apply_button_clicked_cb (GtkButton *button, gpointer data)
 {
     App *app = data;
@@ -2508,9 +2482,6 @@ run_application (App *app)
 
     gtk_container_add (GTK_CONTAINER (align), app->area);
 
-    /* Until we have help to show, we'll just hide the Help button */
-    hide_help_button (app);
-
     app->apply_button = _gtk_builder_get_widget (builder, "apply_button");
     g_signal_connect (app->apply_button, "clicked",
 		      G_CALLBACK (apply_button_clicked_cb), app);
@@ -2532,9 +2503,15 @@ restart:
 	break;
 
     case GTK_RESPONSE_HELP:
-#if 0
-	g_debug ("Help");
-#endif
+        gtk_show_uri_on_window (GTK_DIALOG (app->dialog),
+                                "help:mate-user-guide/goscustdesk-70",
+                                gtk_get_current_event_time (),
+                                &error);
+        if (error)
+        {
+            error_message (app, _("Could not open help content"), error->message);
+            g_error_free (error);
+        }
 	goto restart;
 	break;
 
