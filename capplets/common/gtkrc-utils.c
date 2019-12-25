@@ -60,15 +60,19 @@ gchar* gtkrc_find_named(const gchar* name)
 
 	if (!path)
 	{
-		gchar* theme_dir = gtk_rc_get_theme_dir();
-		path = g_build_filename(theme_dir, name, subpath, NULL);
-		g_free(theme_dir);
+		const gchar * const * dirs = g_get_system_data_dirs();
 
-		if (!g_file_test(path, G_FILE_TEST_EXISTS))
-		{
-			g_free (path);
-			path = NULL;
-		}
+		if (dirs != NULL)
+			for (; !path && *dirs != NULL; ++dirs)
+			{
+				path = g_build_filename(*dirs, "themes", name, subpath, NULL);
+
+				if (!g_file_test(path, G_FILE_TEST_EXISTS))
+				{
+					g_free (path);
+					path = NULL;
+				}
+			}
 	}
 
 	return path;
