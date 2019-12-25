@@ -1763,6 +1763,7 @@ mate_theme_color_scheme_equal (const gchar *s1, const gchar *s2)
 void
 mate_theme_init ()
 {
+  const gchar * const * dirs;
   GFile *top_theme_dir;
   gchar *top_theme_dir_string;
   static gboolean initted = FALSE;
@@ -1783,13 +1784,16 @@ mate_theme_init ()
   theme_hash_by_uri = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
   theme_hash_by_name = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
-  /* Add all the toplevel theme dirs. */
-  /* $datadir/themes */
-  top_theme_dir_string = gtk_rc_get_theme_dir ();
-  top_theme_dir = g_file_new_for_path (top_theme_dir_string);
-  g_free (top_theme_dir_string);
-  add_top_theme_dir_monitor (top_theme_dir, 1, NULL);
-  g_object_unref (top_theme_dir);
+  /* Add all the toplevel theme dirs following the XDG Base Directory Specification */
+  dirs = g_get_system_data_dirs ();
+  if (dirs != NULL)
+    for (; *dirs != NULL; ++dirs) {
+      top_theme_dir_string = g_build_filename (*dirs, "themes", NULL);
+      top_theme_dir = g_file_new_for_path (top_theme_dir_string);
+      g_free (top_theme_dir_string);
+      add_top_theme_dir_monitor (top_theme_dir, 1, NULL);
+      g_object_unref (top_theme_dir);
+    }
 
   /* ~/.themes */
   top_theme_dir_string  = g_build_filename (g_get_home_dir (), ".themes", NULL);
