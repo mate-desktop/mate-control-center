@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mate-control-center 1.23.2\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2019-11-07 13:23+0100\n"
+"POT-Creation-Date: 2020-01-12 12:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1451,88 +1451,103 @@ msgstr ""
 msgid "Accessibility"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:12 capplets/display/xrandr-capplet.c:306
+#: capplets/display/display-capplet.ui:22 capplets/display/xrandr-capplet.c:306
 #: capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:15 capplets/display/xrandr-capplet.c:307
-#: capplets/windows/mate-window-properties.c:511
+#: capplets/display/display-capplet.ui:25 capplets/display/xrandr-capplet.c:307
+#: capplets/windows/window-properties.ui:222
 msgid "Left"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:18 capplets/display/xrandr-capplet.c:308
-#: capplets/windows/mate-window-properties.c:510
+#: capplets/display/display-capplet.ui:28 capplets/display/xrandr-capplet.c:308
+#: capplets/windows/window-properties.ui:221
 msgid "Right"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:21
+#: capplets/display/display-capplet.ui:31
 msgid "Upside-down"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:28
+#: capplets/display/display-capplet.ui:43
 msgid "Monitor Preferences"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:62
+#: capplets/display/display-capplet.ui:58
+#: capplets/windows/window-properties.ui:68
+msgid "_Help"
+msgstr ""
+
+#: capplets/display/display-capplet.ui:75
 msgid "Apply system-wide"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:66
+#: capplets/display/display-capplet.ui:79
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note "
 "that this doesn't affect login screens or other desktop environments."
 msgstr ""
 
-#: capplets/display/display-capplet.ui:146
-msgid "Sa_me image in all monitors"
+#: capplets/display/display-capplet.ui:90
+msgid "_Apply"
+msgstr ""
+
+#: capplets/display/display-capplet.ui:106
+#: capplets/windows/window-properties.ui:84
+#: capplets/time-admin/src/time-zone.c:472
+msgid "_Close"
 msgstr ""
 
 #: capplets/display/display-capplet.ui:161
+msgid "Sa_me image in all monitors"
+msgstr ""
+
+#: capplets/display/display-capplet.ui:176
 msgid "_Detect monitors"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:196
+#: capplets/display/display-capplet.ui:211
 msgid "Panel icon"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:215
+#: capplets/display/display-capplet.ui:230
 msgid "_Show monitors in panel"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:253
+#: capplets/display/display-capplet.ui:268
 msgid "_Resolution:"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:267
+#: capplets/display/display-capplet.ui:282
 msgid "Re_fresh rate:"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:304
+#: capplets/display/display-capplet.ui:319
 msgid "On"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:320
+#: capplets/display/display-capplet.ui:335
 msgid "Off"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:359
+#: capplets/display/display-capplet.ui:374
 msgid "Include _panel"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:385
+#: capplets/display/display-capplet.ui:400
 msgid "Set as primary"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:390
+#: capplets/display/display-capplet.ui:405
 msgid "Sets the selected monitor as primary."
 msgstr ""
 
-#: capplets/display/display-capplet.ui:402
+#: capplets/display/display-capplet.ui:417
 msgid "R_otation:"
 msgstr ""
 
-#: capplets/display/display-capplet.ui:421
+#: capplets/display/display-capplet.ui:436
 #: capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr ""
@@ -1690,20 +1705,24 @@ msgstr ""
 msgid "Could not detect displays"
 msgstr ""
 
-#: capplets/display/xrandr-capplet.c:2329
+#: capplets/display/xrandr-capplet.c:2303
 msgid "The monitor configuration has been saved"
 msgstr ""
 
-#: capplets/display/xrandr-capplet.c:2331
+#: capplets/display/xrandr-capplet.c:2305
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 
-#: capplets/display/xrandr-capplet.c:2340
+#: capplets/display/xrandr-capplet.c:2314
 msgid "Could not set the default configuration for monitors"
 msgstr ""
 
-#: capplets/display/xrandr-capplet.c:2419
+#: capplets/display/xrandr-capplet.c:2393
 msgid "Could not get screen information"
+msgstr ""
+
+#: capplets/display/xrandr-capplet.c:2509
+msgid "Could not open help content"
 msgstr ""
 
 #: capplets/keybindings/00-multimedia-key.xml.in:2
@@ -1961,7 +1980,7 @@ msgstr ""
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:616
 #: capplets/mouse/mate-mouse-properties.ui:227
 #: capplets/mouse/mate-mouse-properties.ui:958
-#: capplets/windows/mate-window-properties.c:379
+#: capplets/windows/window-properties.ui:260
 msgid "General"
 msgstr ""
 
@@ -2627,12 +2646,12 @@ msgid "Metacity Preferences"
 msgstr ""
 
 #: capplets/windows/mate-metacity-support.c:51
-#: capplets/windows/mate-window-properties.c:395
+#: capplets/windows/window-properties.ui:175
 msgid "Compositing Manager"
 msgstr ""
 
 #: capplets/windows/mate-metacity-support.c:58
-#: capplets/windows/mate-window-properties.c:402
+#: capplets/windows/window-properties.ui:138
 msgid "Enable software _compositing window manager"
 msgstr ""
 
@@ -2640,129 +2659,19 @@ msgstr ""
 msgid "The current window manager is unsupported"
 msgstr ""
 
-#: capplets/windows/mate-window-properties.c:350
-msgid "Window Preferences"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:384
-msgid "Behaviour"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:389
-msgid "Placement"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:403
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:411
-msgid "Titlebar Buttons"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:415
-msgid "Position:"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:422
-msgid "New Windows"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:426
-msgid "Center _new windows"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:431
-msgid "Window Snapping"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:435
-msgid "Enable window _tiling"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:440
-msgid "Window Selection"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:450
-msgid "_Select windows when the mouse moves over them"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:453
-msgid "U_nselect windows when the mouse leaves them"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:457
-msgid "_Raise selected windows after an interval"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:464
-msgid "_Interval before raising:"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:468
-msgid "seconds"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:479
-msgid "Titlebar Action"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:483
-msgid "_Double-click titlebar to perform this action:"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:491
-msgid "Movement Key"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:497
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:517
-#: libwindow-settings/marco-window-manager.c:394
-msgid "Roll up"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:518
-#: libwindow-settings/marco-window-manager.c:395
-msgid "Maximize"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:519
-#: libwindow-settings/marco-window-manager.c:396
-msgid "Maximize Horizontally"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:520
-#: libwindow-settings/marco-window-manager.c:397
-msgid "Maximize Vertically"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:521
-#: libwindow-settings/marco-window-manager.c:398
-msgid "Minimize"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:522
-#: libwindow-settings/marco-window-manager.c:399
-msgid "None"
-msgstr ""
-
-#: capplets/windows/mate-window-properties.c:723
+#: capplets/windows/mate-window-properties.c:581
 msgid "_Alt"
 msgstr ""
 
-#: capplets/windows/mate-window-properties.c:729
+#: capplets/windows/mate-window-properties.c:587
 msgid "H_yper"
 msgstr ""
 
-#: capplets/windows/mate-window-properties.c:736
+#: capplets/windows/mate-window-properties.c:594
 msgid "S_uper (or \"Windows logo\")"
 msgstr ""
 
-#: capplets/windows/mate-window-properties.c:743
+#: capplets/windows/mate-window-properties.c:601
 msgid "_Meta"
 msgstr ""
 
@@ -2782,6 +2691,116 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/windows/mate-window-properties.desktop.in:13
 msgid "mate-control-center;MATE;window;manager;properties;marco;preferences;"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:47
+msgid "Window Preferences"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:153
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:208
+msgid "Position:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:241
+msgid "Titlebar Buttons"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:294
+msgid "_Select windows when the mouse moves over them"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:319
+msgid "U_nselect windows when the mouse leaves them"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:340
+msgid "_Raise selected windows after an interval"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:365
+msgid "_Interval before raising:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:392
+msgid "seconds"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:430
+msgid "Window Selection"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:463
+msgid "_Double-click titlebar to perform this action:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:477
+#: libwindow-settings/marco-window-manager.c:394
+msgid "Roll up"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:478
+#: libwindow-settings/marco-window-manager.c:395
+msgid "Maximize"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:479
+#: libwindow-settings/marco-window-manager.c:396
+msgid "Maximize Horizontally"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:480
+#: libwindow-settings/marco-window-manager.c:397
+msgid "Maximize Vertically"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:481
+#: libwindow-settings/marco-window-manager.c:398
+msgid "Minimize"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:482
+#: libwindow-settings/marco-window-manager.c:399
+msgid "None"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:501
+msgid "Titlebar Action"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:535
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:568
+msgid "Movement Key"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:590
+msgid "Behaviour"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:620
+msgid "Center _new windows"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:635
+msgid "New Windows"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:661
+msgid "Enable window _tiling"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:676
+msgid "Window Snapping"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:698
+msgid "Placement"
 msgstr ""
 
 #: capplets/time-admin/src/main.c:34
@@ -2893,10 +2912,6 @@ msgstr ""
 
 #: capplets/time-admin/src/time-zone.c:465
 msgid "Time Zone Selection"
-msgstr ""
-
-#: capplets/time-admin/src/time-zone.c:472
-msgid "_Close"
 msgstr ""
 
 #: capplets/time-admin/src/time-zone.c:480
@@ -4667,7 +4682,7 @@ msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: shell/matecc.desktop.in:14
-msgid "MATE;control;center;configuration;tool;destop;preferences;"
+msgid "MATE;control;center;configuration;tool;desktop;preferences;"
 msgstr ""
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
@@ -4675,11 +4690,11 @@ msgstr ""
 msgid "mate-settings"
 msgstr ""
 
-#: typing-break/drw-break-window.c:181
+#: typing-break/drw-break-window.c:179
 msgid "_Postpone Break"
 msgstr ""
 
-#: typing-break/drw-break-window.c:240
+#: typing-break/drw-break-window.c:238
 msgid "Take a break!"
 msgstr ""
 
