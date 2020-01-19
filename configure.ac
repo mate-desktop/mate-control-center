@@ -1,4 +1,4 @@
-AC_INIT([mate-control-center], [1.23.2], [http://www.mate-desktop.org/])
+AC_INIT([mate-control-center], [1.23.3], [http://www.mate-desktop.org/])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
