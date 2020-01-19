@@ -1,33 +1,36 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR MATE Desktop Environment team
+# This file is distributed under the same license as the mate-control-center package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Mingye Wang <arthur200126@gmail.com>, 2018
-# Christopher Meng <i@cicku.me>, 2018
+# Christopher M <i@cicku.me>, 2018
 # 775405984, 2018
 # Dianjin Wang <1132321739qq@gmail.com>, 2018
-# nyanyh <rebuilty@gmail.com>, 2018
+# gtrslower, 2018
 # Wylmer Wang, 2018
-# liushuyu011 <liushuyu011@gmail.com>, 2018
 # Martin Wimpress <code@flexion.org>, 2018
 # biqiu-ssw <shenshuaiwen@gmail.com>, 2018
-# zhangxianwei8 <zhang.xianwei8@zte.com.cn>, 2018
 # Mingcong Bai <jeffbai@aosc.xyz>, 2019
-# Wolfgang Ulbrich <mate@raveit.de>, 2019
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
-# Stefano Karapetsas <stefano@karapetsas.com>, 2019
 # 玉堂白鹤 <yjwork@qq.com>, 2019
+# clefebvre <clement.lefebvre@linuxmint.com>, 2019
+# liulitchi <xingzuo88@qq.com>, 2019
+# liushuyu011 <liushuyu011@gmail.com>, 2019
+# Wolfgang Ulbrich <mate@raveit.de>, 2019
+# zhangxianwei8 <zhang.xianwei8@zte.com.cn>, 2019
+# zhineng404 <zhinengge@gmail.com>, 2019
+# Stefano Karapetsas <stefano@karapetsas.com>, 2020
+# Mingtian Yang <i@skylee.xyz>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 15:57+0200\n"
+"Project-Id-Version: mate-control-center 1.23.2\n"
+"Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
+"POT-Creation-Date: 2020-01-12 13:03+0100\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2019\n"
+"Last-Translator: Mingtian Yang <i@skylee.xyz>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/mate/teams/13566/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +38,7 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../org.mate.control-center.gschema.xml.in.h:1
+#: org.mate.control-center.gschema.xml.in:5
 msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
@@ -43,418 +46,421 @@ msgstr ""
 "[ '更改主题;mate-appearance-properties.desktop', '设置首选应用程序;mate-default-"
 "applications-properties.desktop' ]"
 
-#: ../org.mate.control-center.gschema.xml.in.h:2
+#: org.mate.control-center.gschema.xml.in:6
 msgid "Task names and associated .desktop files"
 msgstr "任务名及相关的 .desktop 文件"
 
-#: ../org.mate.control-center.gschema.xml.in.h:3
+#: org.mate.control-center.gschema.xml.in:7
 msgid ""
 "The task name to be displayed in the control-center followed by a \";\" "
 "separator then the filename of an associated .desktop file to launch for "
 "that task."
 msgstr "在控制中心中显示的任务名称，紧跟着是一个“;”分隔符，然后是该任务启动的相应的 .desktop 文件的文件名。"
 
-#: ../org.mate.control-center.gschema.xml.in.h:4
+#: org.mate.control-center.gschema.xml.in:11
 msgid "Close the control-center when a task is activated"
 msgstr "当任务激活时关闭控制中心"
 
-#: ../org.mate.control-center.gschema.xml.in.h:5
+#: org.mate.control-center.gschema.xml.in:12
 msgid ""
 "if true, the control-center will close when a \"Common Task\" is activated."
 msgstr "如果为 true，在一个“常见任务”激活时，控制中心将关闭。"
 
-#: ../org.mate.control-center.gschema.xml.in.h:6
+#: org.mate.control-center.gschema.xml.in:16
 msgid "Exit shell on start action performed"
 msgstr "执行启动操作时退出外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:7
+#: org.mate.control-center.gschema.xml.in:17
 msgid "Indicates whether to close the shell when a start action is performed."
 msgstr "指示在执行启动操作时是否关闭外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:8
+#: org.mate.control-center.gschema.xml.in:21
 msgid "Exit shell on help action performed"
 msgstr "执行帮助操作时退出外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:9
+#: org.mate.control-center.gschema.xml.in:22
 msgid "Indicates whether to close the shell when a help action is performed."
 msgstr "指示在执行帮助操作时是否关闭外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:10
+#: org.mate.control-center.gschema.xml.in:26
 msgid "Exit shell on add or remove action performed"
 msgstr "执行添加或移除操作时退出外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:11
+#: org.mate.control-center.gschema.xml.in:27
 msgid ""
 "Indicates whether to close the shell when an add or remove action is "
 "performed."
 msgstr "指示在执行添加或移除操作时是否关闭外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:12
+#: org.mate.control-center.gschema.xml.in:31
 msgid "Exit shell on upgrade or uninstall action performed"
 msgstr "执行升级或卸载操作时退出外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:13
+#: org.mate.control-center.gschema.xml.in:32
 msgid ""
 "Indicates whether to close the shell when an upgrade or uninstall action is "
 "performed."
 msgstr "指示在执行升级或卸载操作时是否关闭外壳"
 
-#: ../org.mate.control-center.gschema.xml.in.h:14
+#: org.mate.control-center.gschema.xml.in:38
 msgid "More backgrounds URL"
 msgstr "更多的背景网址"
 
-#: ../org.mate.control-center.gschema.xml.in.h:15
+#: org.mate.control-center.gschema.xml.in:39
 msgid ""
 "URL for where to get more desktop backgrounds. If set to an empty string the"
 " link will not appear."
 msgstr "获得更多桌面背景的网址。如果设定为空字符串，那么链接将不会出现。"
 
-#: ../org.mate.control-center.gschema.xml.in.h:16
+#: org.mate.control-center.gschema.xml.in:43
 msgid "More themes URL"
 msgstr "更多的主题网址"
 
-#: ../org.mate.control-center.gschema.xml.in.h:17
+#: org.mate.control-center.gschema.xml.in:44
 msgid ""
 "URL for where to get more desktop themes. If set to an empty string the link"
 " will not appear."
 msgstr "获得更多桌面主题的网址。如果设定为空字符串，那么链接将不会出现。"
 
-#: ../org.mate.control-center.keybinding.gschema.xml.in.h:1
+#: org.mate.control-center.keybinding.gschema.xml.in:5
 msgid "Keybinding"
 msgstr "键绑定"
 
-#: ../org.mate.control-center.keybinding.gschema.xml.in.h:2
+#: org.mate.control-center.keybinding.gschema.xml.in:6
 msgid "Keybinding associated with a custom shortcut."
 msgstr "自定义快捷键的键绑定。"
 
-#: ../org.mate.control-center.keybinding.gschema.xml.in.h:3
+#: org.mate.control-center.keybinding.gschema.xml.in:10
 msgid "Command"
 msgstr "命令"
 
-#: ../org.mate.control-center.keybinding.gschema.xml.in.h:4
+#: org.mate.control-center.keybinding.gschema.xml.in:11
 msgid "Command associated with a custom keybinding."
 msgstr "自定义键绑定的命令。"
 
-#: ../org.mate.control-center.keybinding.gschema.xml.in.h:5
-#: ../font-viewer/font-view.c:202
+#: org.mate.control-center.keybinding.gschema.xml.in:15
+#: font-viewer/font-view.c:202
 msgid "Name"
 msgstr "名称"
 
-#: ../org.mate.control-center.keybinding.gschema.xml.in.h:6
+#: org.mate.control-center.keybinding.gschema.xml.in:16
 msgid "Description associated with a custom keybinding."
 msgstr "关于自定义键绑定的描述。"
 
-#: ../capplets/about-me/mate-about-me.c:293
+#: capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "选择图像"
 
-#: ../capplets/about-me/mate-about-me.c:295
+#: capplets/about-me/mate-about-me.c:295
 msgid "No Image"
 msgstr "无图像"
 
-#: ../capplets/about-me/mate-about-me.c:323
-#: ../capplets/appearance/appearance-desktop.c:646
+#: capplets/about-me/mate-about-me.c:323
+#: capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "图像"
 
-#: ../capplets/about-me/mate-about-me.c:327
-#: ../capplets/appearance/theme-installer.c:830
+#: capplets/about-me/mate-about-me.c:327
+#: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "全部文件"
 
-#: ../capplets/about-me/mate-about-me.c:500
+#: capplets/about-me/mate-about-me.c:500
 #, c-format
 msgid "About %s"
 msgstr "关于 %s"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:1
-#: ../capplets/about-me/mate-about-me.desktop.in.h:1
+#: capplets/about-me/mate-about-me-dialog.ui:39
+#: capplets/about-me/mate-about-me.desktop.in:3
 msgid "About Me"
 msgstr "关于我"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:2
+#: capplets/about-me/mate-about-me-dialog.ui:54
+#: capplets/about-me/mate-about-me-password.ui:54
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:119
+#: capplets/display/display-capplet.ui:106
+#: capplets/mouse/mate-mouse-properties.ui:140
+#: capplets/windows/window-properties.ui:84
+#: capplets/time-admin/src/time-admin.ui:386
+#: capplets/time-admin/src/time-zone.c:472
+msgid "_Close"
+msgstr "关闭(_C)"
+
+#: capplets/about-me/mate-about-me-dialog.ui:100
 msgid "Select your photo"
 msgstr "选择您的照片"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:3
+#: capplets/about-me/mate-about-me-dialog.ui:116
 msgid "Full Name"
 msgstr "全名"
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:4
+#: capplets/about-me/mate-about-me-dialog.ui:147
 msgid "User name:"
 msgstr "用户名："
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:5
+#: capplets/about-me/mate-about-me-dialog.ui:176
 msgid "Change Passwo_rd..."
 msgstr "更改密码(_R)..."
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:6
+#: capplets/about-me/mate-about-me-dialog.ui:190
 msgid "Enable _Fingerprint Login..."
 msgstr "启用指纹登录(_F)..."
 
-#: ../capplets/about-me/mate-about-me-dialog.ui.h:7
+#: capplets/about-me/mate-about-me-dialog.ui:203
 msgid "Disable _Fingerprint Login..."
 msgstr "禁用指纹登录(_F)..."
 
-#: ../capplets/about-me/mate-about-me.desktop.in.h:2
+#: capplets/about-me/mate-about-me.desktop.in:4
 msgid "Set your personal information"
 msgstr "设置您的个人信息"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:100
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/about-me/mate-about-me.desktop.in:7
+msgid "user-info"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/about-me/mate-about-me.desktop.in:13
+msgid "mate-control-center;MATE;personal;information;"
+msgstr ""
+
+#: capplets/about-me/mate-about-me-fingerprint.c:100
 msgid ""
 "You are not allowed to access the device. Contact your system administrator."
 msgstr "您未被允许访问该设备。请联系您的系统管理员。"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:102
+#: capplets/about-me/mate-about-me-fingerprint.c:102
 msgid "The device is already in use."
 msgstr "设备使用中。"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:104
+#: capplets/about-me/mate-about-me-fingerprint.c:104
 msgid "An internal error occurred"
 msgstr "发生了一个内部错误"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:221
+#: capplets/about-me/mate-about-me-fingerprint.c:221
 msgid "Delete registered fingerprints?"
 msgstr "要删除已录入的指纹吗？"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:224
+#: capplets/about-me/mate-about-me-fingerprint.c:224
 msgid "_Delete Fingerprints"
 msgstr "删除指纹(_D)"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:231
+#: capplets/about-me/mate-about-me-fingerprint.c:231
 msgid ""
 "Do you want to delete your registered fingerprints so fingerprint login is "
 "disabled?"
 msgstr "你想删除已录入的指纹吗？这样做将禁用指纹登录。"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:359
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:15
+#: capplets/about-me/mate-about-me-fingerprint.c:359
+#: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "搞定！"
 
-#. translators:
-#. * The variable is the name of the device, for example:
-#. * "Could you not access "Digital Persona U.are.U 4000/4000B" device
-#: ../capplets/about-me/mate-about-me-fingerprint.c:405
-#: ../capplets/about-me/mate-about-me-fingerprint.c:427
+#: capplets/about-me/mate-about-me-fingerprint.c:405
+#: capplets/about-me/mate-about-me-fingerprint.c:427
 #, c-format
 msgid "Could not access '%s' device"
 msgstr "无法访问“%s”设备"
 
-#. translators:
-#. * The variable is the name of the device, for example:
-#. * "Could you not access "Digital Persona U.are.U 4000/4000B" device
-#: ../capplets/about-me/mate-about-me-fingerprint.c:476
+#: capplets/about-me/mate-about-me-fingerprint.c:476
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr "无法在“%s”设备上启动手指捕捉"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:524
+#: capplets/about-me/mate-about-me-fingerprint.c:524
 msgid "Could not access any fingerprint readers"
 msgstr "无法访问指纹读取器"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:525
+#: capplets/about-me/mate-about-me-fingerprint.c:525
 msgid "Please contact your system administrator for help."
 msgstr "请联系系统管理员以寻求帮助。"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:559
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:9
+#: capplets/about-me/mate-about-me-fingerprint.c:559
+#: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "启用指纹登录"
 
-#. translators:
-#. * The variable is the name of the device, for example:
-#. * "To enable fingerprint login, you need to save one of your fingerprints,
-#. using the
-#. * 'Digital Persona U.are.U 4000/4000B' device."
-#: ../capplets/about-me/mate-about-me-fingerprint.c:589
+#: capplets/about-me/mate-about-me-fingerprint.c:589
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
 "using the '%s' device."
 msgstr "要启用指纹登录，你需要使用“%s”设备来保存您的一个指纹。"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:598
+#: capplets/about-me/mate-about-me-fingerprint.c:598
 msgid "Swipe finger on reader"
 msgstr "在读取器上刷一下手指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.c:600
+#: capplets/about-me/mate-about-me-fingerprint.c:600
 msgid "Place finger on reader"
 msgstr "将手指放在读取器上"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:1
+#: capplets/about-me/mate-about-me-fingerprint.ui:38
 msgid "Left thumb"
 msgstr "左手拇指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:2
+#: capplets/about-me/mate-about-me-fingerprint.ui:41
 msgid "Left middle finger"
 msgstr "左手中指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:3
+#: capplets/about-me/mate-about-me-fingerprint.ui:44
 msgid "Left ring finger"
 msgstr "左手无名指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:4
+#: capplets/about-me/mate-about-me-fingerprint.ui:47
 msgid "Left little finger"
 msgstr "左手小指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:5
+#: capplets/about-me/mate-about-me-fingerprint.ui:50
 msgid "Right thumb"
 msgstr "右手拇指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:6
+#: capplets/about-me/mate-about-me-fingerprint.ui:53
 msgid "Right middle finger"
 msgstr "右手中指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:7
+#: capplets/about-me/mate-about-me-fingerprint.ui:56
 msgid "Right ring finger"
 msgstr "右手无名指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:8
+#: capplets/about-me/mate-about-me-fingerprint.ui:59
 msgid "Right little finger"
 msgstr "右手小指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:10
+#: capplets/about-me/mate-about-me-fingerprint.ui:125
 msgid "Right index finger"
 msgstr "右手食指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:11
+#: capplets/about-me/mate-about-me-fingerprint.ui:142
 msgid "Left index finger"
 msgstr "左手食指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:12
+#: capplets/about-me/mate-about-me-fingerprint.ui:163
 msgid "Other finger: "
 msgstr "其他手指："
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:13
+#: capplets/about-me/mate-about-me-fingerprint.ui:214
 msgid "Select finger"
 msgstr "选择手指"
 
-#: ../capplets/about-me/mate-about-me-fingerprint.ui.h:14
+#: capplets/about-me/mate-about-me-fingerprint.ui:339
 msgid ""
 "Your fingerprint was successfully saved. You should now be able to log in "
 "using your fingerprint reader."
 msgstr "您的指纹已成功保存。您现在应该可以使用指纹读取器登录了。"
 
-#: ../capplets/about-me/mate-about-me-password.c:160
+#: capplets/about-me/mate-about-me-password.c:160
 msgid "Child exited unexpectedly"
 msgstr "子进程意外退出"
 
-#: ../capplets/about-me/mate-about-me-password.c:296
+#: capplets/about-me/mate-about-me-password.c:296
 #, c-format
 msgid "Could not shutdown backend_stdin IO channel: %s"
 msgstr "无法关闭后端标准输入通道：%s"
 
-#: ../capplets/about-me/mate-about-me-password.c:309
+#: capplets/about-me/mate-about-me-password.c:309
 #, c-format
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "无法关闭后端标准输出通道：%s"
 
-#: ../capplets/about-me/mate-about-me-password.c:408
+#: capplets/about-me/mate-about-me-password.c:408
 msgid "Authenticated!"
 msgstr "已通过身份验证！"
 
-#. This is a re-auth, and it failed.
-#. * The password must have been changed in the meantime!
-#. * Ask the user to re-authenticate
-#. Update status message and auth state
-#. Authentication failure
-#: ../capplets/about-me/mate-about-me-password.c:473
-#: ../capplets/about-me/mate-about-me-password.c:558
+#: capplets/about-me/mate-about-me-password.c:473
+#: capplets/about-me/mate-about-me-password.c:558
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
 msgstr "您的密码在您首次登录后已经更改。请重新进行身份验证。"
 
-#: ../capplets/about-me/mate-about-me-password.c:475
+#: capplets/about-me/mate-about-me-password.c:475
 msgid "That password was incorrect."
 msgstr "密码错误。"
 
-#: ../capplets/about-me/mate-about-me-password.c:526
+#: capplets/about-me/mate-about-me-password.c:526
 msgid "Your password has been changed."
 msgstr "您的密码已更改。"
 
-#. What does this indicate?
-#. * "Authentication information cannot be recovered?" from libpam?
-#: ../capplets/about-me/mate-about-me-password.c:536
+#: capplets/about-me/mate-about-me-password.c:536
 #, c-format
 msgid "System error: %s."
 msgstr "系统错误：%s。"
 
-#: ../capplets/about-me/mate-about-me-password.c:539
+#: capplets/about-me/mate-about-me-password.c:539
 msgid "The password is too short."
 msgstr "密码太短。"
 
-#: ../capplets/about-me/mate-about-me-password.c:543
+#: capplets/about-me/mate-about-me-password.c:543
 msgid "The password is too simple."
 msgstr "密码太简单。"
 
-#: ../capplets/about-me/mate-about-me-password.c:548
+#: capplets/about-me/mate-about-me-password.c:548
 msgid "The old and new passwords are too similar."
 msgstr "旧密码和新密码太相似。"
 
-#: ../capplets/about-me/mate-about-me-password.c:550
+#: capplets/about-me/mate-about-me-password.c:550
 msgid "The new password must contain numeric or special character(s)."
 msgstr "必须包含数字或特殊字符。"
 
-#: ../capplets/about-me/mate-about-me-password.c:553
+#: capplets/about-me/mate-about-me-password.c:553
 msgid "The old and new passwords are the same."
 msgstr "旧密码和新密码相同。"
 
-#: ../capplets/about-me/mate-about-me-password.c:555
+#: capplets/about-me/mate-about-me-password.c:555
 msgid "The new password has already been used recently."
 msgstr "新密码最近已经使用过了。"
 
-#. translators: Unable to launch <program>: <error message>
-#: ../capplets/about-me/mate-about-me-password.c:826
+#: capplets/about-me/mate-about-me-password.c:826
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "无法启动 %s：%s"
 
-#: ../capplets/about-me/mate-about-me-password.c:830
+#: capplets/about-me/mate-about-me-password.c:830
 msgid "Unable to launch backend"
 msgstr "无法调用后端"
 
-#: ../capplets/about-me/mate-about-me-password.c:831
+#: capplets/about-me/mate-about-me-password.c:831
 msgid "A system error has occurred"
 msgstr "发生了系统错误"
 
-#. Update status message
-#: ../capplets/about-me/mate-about-me-password.c:851
+#: capplets/about-me/mate-about-me-password.c:851
 msgid "Checking password..."
 msgstr "正在检查密码..."
 
-#: ../capplets/about-me/mate-about-me-password.c:935
+#: capplets/about-me/mate-about-me-password.c:935
 msgid "Click <b>Change password</b> to change your password."
 msgstr "单击<b>更改密码</b>可更改密码。"
 
-#: ../capplets/about-me/mate-about-me-password.c:938
+#: capplets/about-me/mate-about-me-password.c:938
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "请在<b>新密码</b>框中输入您的新密码。"
 
-#: ../capplets/about-me/mate-about-me-password.c:941
-#: ../capplets/about-me/mate-about-me-password.ui.h:10
+#: capplets/about-me/mate-about-me-password.c:941
+#: capplets/about-me/mate-about-me-password.ui:348
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "请在<b>重新输入新密码</b>框中再输入一次密码。"
 
-#: ../capplets/about-me/mate-about-me-password.c:944
+#: capplets/about-me/mate-about-me-password.c:944
 msgid "The two passwords are not equal."
 msgstr "输入的两个密码不同。"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:1
+#: capplets/about-me/mate-about-me-password.ui:38
 msgid "Change password"
 msgstr "更改密码"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:2
+#: capplets/about-me/mate-about-me-password.ui:70
 msgid "Change pa_ssword"
 msgstr "更改密码(_S)"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:3
+#: capplets/about-me/mate-about-me-password.ui:124
 msgid "Change your password"
 msgstr "更改您的密码"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:4
+#: capplets/about-me/mate-about-me-password.ui:142
 msgid ""
 "To change your password, enter your current password in the field below and click <b>Authenticate</b>.\n"
 "After you have authenticated, enter your new password, retype it for verification and click <b>Change password</b>."
@@ -462,604 +468,659 @@ msgstr ""
 "要更改您的密码，请在下面的框中输入您目前的密码，然后单击<b>身份验证</b>。\n"
 "在您通过身份验证之后，输入您的新密码，重新输入一次以便进行校验，然后单击<b>更改密码</b>。"
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:6
+#: capplets/about-me/mate-about-me-password.ui:171
 msgid "Current _password:"
 msgstr "当前密码(_P)："
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:7
+#: capplets/about-me/mate-about-me-password.ui:187
 msgid "_New password:"
 msgstr "新密码(_N)："
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:8
+#: capplets/about-me/mate-about-me-password.ui:203
 msgid "_Retype new password:"
 msgstr "重新输入新密码(_R)："
 
-#: ../capplets/about-me/mate-about-me-password.ui.h:9
+#: capplets/about-me/mate-about-me-password.ui:276
 msgid "_Authenticate"
 msgstr "授权(_A)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:1
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:70
 msgid "Assistive Technologies Preferences"
 msgstr "辅助技术首选项"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:2
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:86
+#: capplets/display/display-capplet.ui:58
+#: capplets/mouse/mate-mouse-properties.ui:124
+#: capplets/windows/window-properties.ui:68
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:102
 msgid "Close and _Log Out"
 msgstr "关闭并注销(_L)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:3
-#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.h:1
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:165
+#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:3
 msgid "Assistive Technologies"
 msgstr "辅助技术"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:4
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:202
 msgid "_Preferred Applications"
 msgstr "首选应用程序(_P)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:5
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:210
 msgid "Jump to Preferred Applications dialog"
 msgstr "跳转到首选应用程序对话框"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:6
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:222
 msgid "_Enable assistive technologies"
 msgstr "启用辅助技术(_E)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:7
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:230
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
 msgstr "对启用辅助技术的更改直到下次登录后才会生效。"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:8
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:284
+#: capplets/time-admin/src/time-admin.ui:185
 msgid "Preferences"
 msgstr "首选项"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:9
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:325
 msgid "_Keyboard Accessibility"
 msgstr "键盘辅助功能(_K)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:10
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:333
 msgid "Jump to the Keyboard Accessibility dialog"
 msgstr "跳转到键盘辅助功能对话框"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:11
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:346
 msgid "_Mouse Accessibility"
 msgstr "鼠标辅助功能(_M)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:12
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:354
 msgid "Jump to the Mouse Accessibility dialog"
 msgstr "跳转到鼠标辅助功能对话框"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:13
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:367
 msgid "Accessible Lo_gin"
 msgstr "带辅助功能的登录(_G)"
 
-#: ../capplets/accessibility/at-properties/at-enable-dialog.ui.h:14
+#: capplets/accessibility/at-properties/at-enable-dialog.ui:375
 msgid "Jump to the Accessible Login dialog"
 msgstr "跳转到辅助登录对话框"
 
-#: ../capplets/accessibility/at-properties/mate-at-properties.desktop.in.h:2
+#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:4
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "选择您登录时想要启用的辅助特性"
 
-#: ../capplets/appearance/appearance-desktop.c:615
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:7
+msgid "preferences-desktop-accessibility"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
+msgid "mate-control-center;MATE;accessibility;features;"
+msgstr ""
+
+#: capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
 msgstr "添加壁纸"
 
-#: ../capplets/appearance/appearance-desktop.c:650
+#: capplets/appearance/appearance-desktop.c:650
 msgid "All files"
 msgstr "全部文件"
 
-#: ../capplets/appearance/appearance-main.c:52
+#: capplets/appearance/appearance-font.c:612
+msgid "Select Font"
+msgstr "选择字体"
+
+#: capplets/appearance/appearance-font.c:615
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: capplets/appearance/appearance-font.c:617
+#: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
+msgid "_Open"
+msgstr "打开(_O)"
+
+#: capplets/appearance/appearance-font.c:622
+#: capplets/appearance/data/appearance.ui:2867
+msgid "Fonts"
+msgstr "字体"
+
+#: capplets/appearance/appearance-main.c:52
 #, c-format
 msgid "Could not load user interface file: %s"
 msgstr "无法加载用户界面文件：%s"
 
-#: ../capplets/appearance/appearance-main.c:153
+#: capplets/appearance/appearance-main.c:153
 msgid "Specify the filename of a theme to install"
 msgstr "指定要安装的主题文件名"
 
-#: ../capplets/appearance/appearance-main.c:154
+#: capplets/appearance/appearance-main.c:154
 msgid "filename"
 msgstr "文件名"
 
-#. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/appearance/appearance-main.c:161
+#: capplets/appearance/appearance-main.c:161
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr "指定要显示的页面名称 (theme|background|fonts|interface)"
 
-#: ../capplets/appearance/appearance-main.c:162
-#: ../capplets/default-applications/mate-da-capplet.c:822
-#: ../capplets/mouse/mate-mouse-properties.c:425
+#: capplets/appearance/appearance-main.c:162
+#: capplets/default-applications/mate-da-capplet.c:839
+#: capplets/mouse/mate-mouse-properties.c:443
 msgid "page"
 msgstr "page"
 
-#: ../capplets/appearance/appearance-main.c:169
+#: capplets/appearance/appearance-main.c:169
 msgid "[WALLPAPER...]"
 msgstr "[壁纸...]"
 
-#: ../capplets/appearance/appearance-style.c:171
-#: ../capplets/common/mate-theme-info.c:494
+#: capplets/appearance/appearance-style.c:171
+#: capplets/common/mate-theme-info.c:494
 msgid "Default Pointer"
 msgstr "默认指针"
 
-#: ../capplets/appearance/appearance-style.c:233
-#: ../capplets/appearance/appearance-themes.c:658
-#: ../capplets/appearance/theme-installer.c:391 ../font-viewer/font-view.c:298
-#: ../font-viewer/font-view.c:569
+#: capplets/appearance/appearance-style.c:233
+#: capplets/appearance/appearance-themes.c:658
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
+#: font-viewer/font-view.c:569
 msgid "Install"
 msgstr "安装"
 
-#: ../capplets/appearance/appearance-themes.c:646
+#: capplets/appearance/appearance-themes.c:646
 msgid "Apply Background"
 msgstr "应用背景"
 
-#: ../capplets/appearance/appearance-themes.c:650
+#: capplets/appearance/appearance-themes.c:650
 msgid "Apply Font"
 msgstr "应用字体"
 
-#: ../capplets/appearance/appearance-themes.c:654
+#: capplets/appearance/appearance-themes.c:654
 msgid "Revert Font"
 msgstr "恢复字体"
 
-#: ../capplets/appearance/appearance-themes.c:687
+#: capplets/appearance/appearance-themes.c:687
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
 msgstr "当前主题推荐了一个背景和一种字体。同时，上次应用的推荐字体可被恢复。"
 
-#: ../capplets/appearance/appearance-themes.c:689
+#: capplets/appearance/appearance-themes.c:689
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
 msgstr "当前主题推荐了一个背景。同时，上次应用的推荐字体可被恢复。"
 
-#: ../capplets/appearance/appearance-themes.c:691
+#: capplets/appearance/appearance-themes.c:691
 msgid "The current theme suggests a background and a font."
 msgstr "当前主题推荐了一个背景和一种字体。"
 
-#: ../capplets/appearance/appearance-themes.c:693
+#: capplets/appearance/appearance-themes.c:693
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
 msgstr "当前主题推荐了一种字体。同时，上次应用的推荐字体可被恢复。"
 
-#: ../capplets/appearance/appearance-themes.c:695
+#: capplets/appearance/appearance-themes.c:695
 msgid "The current theme suggests a background."
 msgstr "当前主题推荐了一个背景。"
 
-#: ../capplets/appearance/appearance-themes.c:697
+#: capplets/appearance/appearance-themes.c:697
 msgid "The last applied font suggestion can be reverted."
 msgstr "上次应用的推荐字体可被恢复。"
 
-#: ../capplets/appearance/appearance-themes.c:699
+#: capplets/appearance/appearance-themes.c:699
 msgid "The current theme suggests a font."
 msgstr "当前主题推荐了一种字体。"
 
-#: ../capplets/appearance/appearance-themes.c:1015
+#: capplets/appearance/appearance-themes.c:1015
 msgid "Custom"
 msgstr "自定义"
 
-#: ../capplets/appearance/data/appearance.ui.h:1
+#: capplets/appearance/data/appearance.ui:40
 msgid "Customize Theme"
 msgstr "自定义主题"
 
-#: ../capplets/appearance/data/appearance.ui.h:2
+#: capplets/appearance/data/appearance.ui:189
 msgid "Controls"
 msgstr "控件"
 
-#: ../capplets/appearance/data/appearance.ui.h:3
+#: capplets/appearance/data/appearance.ui:226
 msgid "The current controls theme does not support color schemes."
 msgstr "当前控件主题不支持配色方案。"
 
-#: ../capplets/appearance/data/appearance.ui.h:4
+#: capplets/appearance/data/appearance.ui:281
 msgid "_Tooltips:"
 msgstr "工具提示(_T)："
 
-#: ../capplets/appearance/data/appearance.ui.h:5
+#: capplets/appearance/data/appearance.ui:367
 msgid "Text"
 msgstr "文本"
 
-#: ../capplets/appearance/data/appearance.ui.h:6
+#: capplets/appearance/data/appearance.ui:379
+#: capplets/appearance/data/appearance.ui:2397
 msgid "Background"
 msgstr "背景"
 
-#: ../capplets/appearance/data/appearance.ui.h:7
+#: capplets/appearance/data/appearance.ui:391
 msgid "_Selected items:"
 msgstr "选中项目(_S)："
 
-#: ../capplets/appearance/data/appearance.ui.h:8
+#: capplets/appearance/data/appearance.ui:405
 msgid "_Input boxes:"
 msgstr "输入框(_I)："
 
-#: ../capplets/appearance/data/appearance.ui.h:9
+#: capplets/appearance/data/appearance.ui:419
 msgid "_Windows:"
 msgstr "窗口(_W)："
 
-#: ../capplets/appearance/data/appearance.ui.h:10
+#: capplets/appearance/data/appearance.ui:446
 msgid "_Reset to Defaults"
 msgstr "重置为默认值(_R)"
 
-#: ../capplets/appearance/data/appearance.ui.h:11
+#: capplets/appearance/data/appearance.ui:476
 msgid "Colors"
 msgstr "颜色"
 
-#: ../capplets/appearance/data/appearance.ui.h:12
+#: capplets/appearance/data/appearance.ui:557
 msgid "Window Border"
 msgstr "窗口边框"
 
-#: ../capplets/appearance/data/appearance.ui.h:13
+#: capplets/appearance/data/appearance.ui:638
 msgid "Icons"
 msgstr "图标"
 
-#: ../capplets/appearance/data/appearance.ui.h:14
+#: capplets/appearance/data/appearance.ui:688
 msgid "_Size:"
 msgstr "大小(_S)："
 
 #. small threshold
-#: ../capplets/appearance/data/appearance.ui.h:15
-#: ../capplets/mouse/mate-mouse-properties.ui.h:23
+#: capplets/appearance/data/appearance.ui:709
+#: capplets/mouse/mate-mouse-properties.ui:679
 msgid "Small"
 msgstr "小"
 
 #. large threshold
-#: ../capplets/appearance/data/appearance.ui.h:16
-#: ../capplets/mouse/mate-mouse-properties.ui.h:26
+#: capplets/appearance/data/appearance.ui:739
+#: capplets/mouse/mate-mouse-properties.ui:716
 msgid "Large"
 msgstr "大"
 
-#: ../capplets/appearance/data/appearance.ui.h:17
+#: capplets/appearance/data/appearance.ui:803
 msgid "Pointer"
 msgstr "指针"
 
-#: ../capplets/appearance/data/appearance.ui.h:18
+#: capplets/appearance/data/appearance.ui:828
 msgid "Font Rendering Details"
 msgstr "字体渲染细节"
 
-#: ../capplets/appearance/data/appearance.ui.h:19
+#: capplets/appearance/data/appearance.ui:886
 msgid "R_esolution"
 msgstr "分辨率："
 
-#: ../capplets/appearance/data/appearance.ui.h:20
+#: capplets/appearance/data/appearance.ui:909
 msgid "Dots per inch (DPI):"
 msgstr "每英寸像素数（DPI）："
 
-#: ../capplets/appearance/data/appearance.ui.h:21
+#: capplets/appearance/data/appearance.ui:945
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr "这将将会重置字体 DPI 为 Xserver 中的自动检测值。"
 
-#: ../capplets/appearance/data/appearance.ui.h:22
+#: capplets/appearance/data/appearance.ui:946
 msgid "Automatic detection:"
 msgstr "自动检测"
 
-#: ../capplets/appearance/data/appearance.ui.h:23
+#: capplets/appearance/data/appearance.ui:990
 msgid "Smoothing"
 msgstr "平滑"
 
-#: ../capplets/appearance/data/appearance.ui.h:24
+#: capplets/appearance/data/appearance.ui:1023
 msgid "Gra_yscale"
 msgstr "灰度(_Y)"
 
-#: ../capplets/appearance/data/appearance.ui.h:25
+#: capplets/appearance/data/appearance.ui:1069
 msgid "Sub_pixel (LCDs)"
 msgstr "次像素(_P) (LCD)"
 
-#: ../capplets/appearance/data/appearance.ui.h:26
+#: capplets/appearance/data/appearance.ui:1115
 msgid "_None"
 msgstr "无(_N)"
 
 #. font hinting
-#: ../capplets/appearance/data/appearance.ui.h:28
+#: capplets/appearance/data/appearance.ui:1180
 msgid "Hinting"
 msgstr "微调"
 
-#: ../capplets/appearance/data/appearance.ui.h:29
+#: capplets/appearance/data/appearance.ui:1212
 msgid "N_one"
 msgstr "无(_O)"
 
-#: ../capplets/appearance/data/appearance.ui.h:30
+#: capplets/appearance/data/appearance.ui:1257
 msgid "_Slight"
 msgstr "轻微(_S)"
 
-#: ../capplets/appearance/data/appearance.ui.h:31
+#: capplets/appearance/data/appearance.ui:1303
 msgid "_Full"
 msgstr "完全(_F)"
 
-#: ../capplets/appearance/data/appearance.ui.h:32
+#: capplets/appearance/data/appearance.ui:1349
 msgid "_Medium"
 msgstr "中等(_M)"
 
-#: ../capplets/appearance/data/appearance.ui.h:33
+#: capplets/appearance/data/appearance.ui:1413
 msgid "Subpixel Order"
 msgstr "次像素顺序"
 
 #. pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:35
+#: capplets/appearance/data/appearance.ui:1443
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:37
+#: capplets/appearance/data/appearance.ui:1482
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: ../capplets/appearance/data/appearance.ui.h:39
+#: capplets/appearance/data/appearance.ui:1522
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: ../capplets/appearance/data/appearance.ui.h:41
+#: capplets/appearance/data/appearance.ui:1562
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: ../capplets/appearance/data/appearance.ui.h:42
+#: capplets/appearance/data/appearance.ui:1631
 msgid "Save Theme As..."
 msgstr "主题另存为..."
 
-#: ../capplets/appearance/data/appearance.ui.h:43
+#: capplets/appearance/data/appearance.ui:1727
 msgid "Save _background image"
 msgstr "保存背景图像(_B)"
 
-#: ../capplets/appearance/data/appearance.ui.h:44
+#: capplets/appearance/data/appearance.ui:1741
 msgid "Save _notification theme"
 msgstr "保存通知主题 (_N)"
 
-#: ../capplets/appearance/data/appearance.ui.h:45
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:2
+#: capplets/appearance/data/appearance.ui:1758
+#: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "名称(_N)："
 
-#: ../capplets/appearance/data/appearance.ui.h:46
+#: capplets/appearance/data/appearance.ui:1773
 msgid "_Description:"
 msgstr "描述(_D)："
 
-#: ../capplets/appearance/data/appearance.ui.h:47
+#: capplets/appearance/data/appearance.ui:1809
 msgid "Text below items"
 msgstr "文本在下面"
 
-#: ../capplets/appearance/data/appearance.ui.h:48
+#: capplets/appearance/data/appearance.ui:1812
 msgid "Text beside items"
 msgstr "文本在旁边"
 
-#: ../capplets/appearance/data/appearance.ui.h:49
+#: capplets/appearance/data/appearance.ui:1815
 msgid "Icons only"
 msgstr "仅图标"
 
-#: ../capplets/appearance/data/appearance.ui.h:50
+#: capplets/appearance/data/appearance.ui:1818
 msgid "Text only"
 msgstr "仅文本"
 
-#: ../capplets/appearance/data/appearance.ui.h:51
+#: capplets/appearance/data/appearance.ui:1829
 msgid "Solid color"
 msgstr "纯色"
 
-#: ../capplets/appearance/data/appearance.ui.h:52
+#: capplets/appearance/data/appearance.ui:1832
 msgid "Horizontal gradient"
 msgstr "水平梯度"
 
-#: ../capplets/appearance/data/appearance.ui.h:53
+#: capplets/appearance/data/appearance.ui:1835
 msgid "Vertical gradient"
 msgstr "垂直梯度"
 
-#: ../capplets/appearance/data/appearance.ui.h:54
+#: capplets/appearance/data/appearance.ui:1846
 msgid "Tile"
 msgstr "平铺"
 
-#: ../capplets/appearance/data/appearance.ui.h:55
+#: capplets/appearance/data/appearance.ui:1849
 msgid "Zoom"
 msgstr "缩放"
 
-#: ../capplets/appearance/data/appearance.ui.h:56
+#: capplets/appearance/data/appearance.ui:1852
 msgid "Center"
 msgstr "居中"
 
-#: ../capplets/appearance/data/appearance.ui.h:57
+#: capplets/appearance/data/appearance.ui:1855
 msgid "Scale"
 msgstr "比例放大"
 
-#: ../capplets/appearance/data/appearance.ui.h:58
+#: capplets/appearance/data/appearance.ui:1858
 msgid "Stretch"
 msgstr "伸展"
 
-#: ../capplets/appearance/data/appearance.ui.h:59
+#: capplets/appearance/data/appearance.ui:1861
 msgid "Span"
 msgstr "适合宽度"
 
-#: ../capplets/appearance/data/appearance.ui.h:60
+#: capplets/appearance/data/appearance.ui:1869
 msgid "Appearance Preferences"
 msgstr "外观首选项"
 
-#: ../capplets/appearance/data/appearance.ui.h:61
+#: capplets/appearance/data/appearance.ui:2009
 msgid "Save _As..."
 msgstr "另存为(_A)..."
 
-#: ../capplets/appearance/data/appearance.ui.h:62
+#: capplets/appearance/data/appearance.ui:2025
 msgid "C_ustomize..."
 msgstr "自定义(_U)..."
 
-#: ../capplets/appearance/data/appearance.ui.h:63
+#: capplets/appearance/data/appearance.ui:2040
 msgid "_Install..."
 msgstr "安装(_I)..."
 
-#: ../capplets/appearance/data/appearance.ui.h:64
+#: capplets/appearance/data/appearance.ui:2066
 msgid "Get more themes online"
 msgstr "在线获取更多主题"
 
-#: ../capplets/appearance/data/appearance.ui.h:65
+#: capplets/appearance/data/appearance.ui:2096
 msgid "Theme"
 msgstr "主题"
 
-#: ../capplets/appearance/data/appearance.ui.h:66
+#: capplets/appearance/data/appearance.ui:2166
 msgid "_Style:"
 msgstr "样式(_S)："
 
-#: ../capplets/appearance/data/appearance.ui.h:67
+#: capplets/appearance/data/appearance.ui:2210
 msgid "C_olors:"
 msgstr "颜色(_O)"
 
-#: ../capplets/appearance/data/appearance.ui.h:68
+#: capplets/appearance/data/appearance.ui:2250
+#: capplets/appearance/data/appearance.ui:2266
 msgid "Open a dialog to specify the color"
 msgstr "打开指定颜色的对话框"
 
-#: ../capplets/appearance/data/appearance.ui.h:69
+#: capplets/appearance/data/appearance.ui:2321
 msgid "Get more backgrounds online"
 msgstr "在线获取更多背景"
 
-#: ../capplets/appearance/data/appearance.ui.h:70
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:17
+#: capplets/appearance/data/appearance.ui:2359
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
 msgid "_Add..."
 msgstr "添加(_A)..."
 
-#: ../capplets/appearance/data/appearance.ui.h:71
+#: capplets/appearance/data/appearance.ui:2492
 msgid "_Application font:"
 msgstr "应用程序字体(_A)："
 
-#: ../capplets/appearance/data/appearance.ui.h:72
+#: capplets/appearance/data/appearance.ui:2507
 msgid "_Document font:"
 msgstr "文档字体(_D)："
 
-#: ../capplets/appearance/data/appearance.ui.h:73
+#: capplets/appearance/data/appearance.ui:2521
 msgid "Des_ktop font:"
 msgstr "桌面字体(_K)："
 
-#: ../capplets/appearance/data/appearance.ui.h:74
+#: capplets/appearance/data/appearance.ui:2536
 msgid "_Window title font:"
 msgstr "窗口标题字体(_W)："
 
-#: ../capplets/appearance/data/appearance.ui.h:75
+#: capplets/appearance/data/appearance.ui:2551
 msgid "_Fixed width font:"
 msgstr "等宽字体(_F)："
 
-#: ../capplets/appearance/data/appearance.ui.h:76
+#: capplets/appearance/data/appearance.ui:2576
+msgid "Add new f_ont..."
+msgstr "增加新字体"
+
+#: capplets/appearance/data/appearance.ui:2607
 msgid "Rendering"
 msgstr "渲染"
 
-#: ../capplets/appearance/data/appearance.ui.h:77
+#: capplets/appearance/data/appearance.ui:2638
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "次像素平滑(_P) (LCD)"
 
-#: ../capplets/appearance/data/appearance.ui.h:78
+#: capplets/appearance/data/appearance.ui:2684
 msgid "Best _shapes"
 msgstr "最佳形状(_S)"
 
-#: ../capplets/appearance/data/appearance.ui.h:79
+#: capplets/appearance/data/appearance.ui:2730
 msgid "_Monochrome"
 msgstr "单色(_M)"
 
-#: ../capplets/appearance/data/appearance.ui.h:80
+#: capplets/appearance/data/appearance.ui:2775
 msgid "Best co_ntrast"
 msgstr "最佳对比(_N)"
 
-#: ../capplets/appearance/data/appearance.ui.h:81
+#: capplets/appearance/data/appearance.ui:2837
 msgid "D_etails..."
 msgstr "细节(_E)..."
 
-#: ../capplets/appearance/data/appearance.ui.h:82
-msgid "Fonts"
-msgstr "字体"
-
-#: ../capplets/appearance/data/appearance.ui.h:83
+#: capplets/appearance/data/appearance.ui:2892
 msgid "Menus and Toolbars"
 msgstr "菜单和工具栏"
 
-#: ../capplets/appearance/data/appearance.ui.h:84
+#: capplets/appearance/data/appearance.ui:2927
 msgid "Show _icons in menus"
 msgstr "在菜单中显示图标 (_I)"
 
-#: ../capplets/appearance/data/appearance.ui.h:85
+#: capplets/appearance/data/appearance.ui:2944
 msgid "_Editable menu shortcut keys"
 msgstr "可编辑的菜单快捷键 (_E)"
 
-#: ../capplets/appearance/data/appearance.ui.h:86
+#: capplets/appearance/data/appearance.ui:2967
 msgid "Toolbar _button labels:"
 msgstr "工具栏按钮文字 (_B)："
 
-#: ../capplets/appearance/data/appearance.ui.h:87
+#: capplets/appearance/data/appearance.ui:3035
 msgid "Buttons"
 msgstr "按钮"
 
-#: ../capplets/appearance/data/appearance.ui.h:88
+#: capplets/appearance/data/appearance.ui:3064
 msgid "Show icons on buttons"
 msgstr "在按钮中显示图标"
 
-#: ../capplets/appearance/data/appearance.ui.h:89
+#: capplets/appearance/data/appearance.ui:3068
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr "是否在按钮文本旁边显示图标"
 
-#: ../capplets/appearance/data/appearance.ui.h:90
+#: capplets/appearance/data/appearance.ui:3105
 msgid "Preview"
 msgstr "预览"
 
-#: ../capplets/appearance/data/appearance.ui.h:91
+#: capplets/appearance/data/appearance.ui:3145
 msgid "_File"
 msgstr "文件 (_F)"
 
-#: ../capplets/appearance/data/appearance.ui.h:92
+#: capplets/appearance/data/appearance.ui:3215
 msgid "Edit"
 msgstr "编辑"
 
-#: ../capplets/appearance/data/appearance.ui.h:93
+#: capplets/appearance/data/appearance.ui:3344
 msgid "Interface"
 msgstr "界面"
 
-#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.h:1
+#: capplets/appearance/data/mate-appearance-properties.desktop.in:3
 msgid "Appearance"
 msgstr "外观"
 
-#: ../capplets/appearance/data/mate-appearance-properties.desktop.in.h:2
+#: capplets/appearance/data/mate-appearance-properties.desktop.in:4
 msgid "Customize the look of the desktop"
 msgstr "自定义桌面外观"
 
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.h:1
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/appearance/data/mate-appearance-properties.desktop.in:7
+#: capplets/appearance/data/mate-theme-installer.desktop.in:7
+msgid "preferences-desktop-theme"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/appearance/data/mate-appearance-properties.desktop.in:13
+msgid "mate-control-center;MATE;appearance;properties;desktop;customize;look;"
+msgstr ""
+
+#: capplets/appearance/data/mate-theme-installer.desktop.in:3
 msgid "Theme Installer"
 msgstr "主题安装程序"
 
-#: ../capplets/appearance/data/mate-theme-installer.desktop.in.h:2
+#: capplets/appearance/data/mate-theme-installer.desktop.in:4
 msgid "Installs themes packages for various parts of the desktop"
 msgstr "为桌面的各部分安装主题包"
 
-#: ../capplets/appearance/data/mate-theme-package.xml.in.h:1
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/appearance/data/mate-theme-installer.desktop.in:14
+msgid "mate-control-center;MATE;install;desktop;themes;"
+msgstr ""
+
+#: capplets/appearance/data/mate-theme-package.xml.in:5
 msgid "Mate Theme Package"
 msgstr "Mate 主题包"
 
-#: ../capplets/appearance/mate-wp-info.c:51
+#: capplets/appearance/mate-wp-info.c:51
 msgid "No Desktop Background"
 msgstr "无桌面背景"
 
-#: ../capplets/appearance/mate-wp-item.c:288
+#: capplets/appearance/mate-wp-item.c:288
 msgid "unknown"
 msgstr "未知"
 
-#: ../capplets/appearance/mate-wp-item.c:295
+#: capplets/appearance/mate-wp-item.c:295
 msgid "Slide Show"
 msgstr "幻灯片演示"
 
-#: ../capplets/appearance/mate-wp-item.c:297
+#: capplets/appearance/mate-wp-item.c:297
 msgid "Image"
 msgstr "图像"
 
-#: ../capplets/appearance/mate-wp-item.c:303
+#: capplets/appearance/mate-wp-item.c:303
 msgid "multiple sizes"
 msgstr "多重尺寸"
 
-#. translators: x pixel(s) by y pixel(s)
-#: ../capplets/appearance/mate-wp-item.c:306
+#: capplets/appearance/mate-wp-item.c:306
 #, c-format
 msgid "%d %s by %d %s"
 msgstr "%d %s * %d %s"
 
-#: ../capplets/appearance/mate-wp-item.c:308
-#: ../capplets/appearance/mate-wp-item.c:310
+#: capplets/appearance/mate-wp-item.c:308
+#: capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "像素"
 
-#. translators: <b>wallpaper name</b>
-#. * mime type, size
-#. * Folder: /path/to/file
-#. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:319
+#: capplets/appearance/mate-wp-item.c:319
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1072,11 +1133,7 @@ msgstr ""
 "文件夹：%s\n"
 "作者：%s"
 
-#. translators: <b>wallpaper name</b>
-#. * Image missing
-#. * Folder: /path/to/file
-#. * Artist: wallpaper author
-#: ../capplets/appearance/mate-wp-item.c:334
+#: capplets/appearance/mate-wp-item.c:334
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -1089,98 +1146,98 @@ msgstr ""
 "文件夹：%s\n"
 "作者：%s"
 
-#: ../capplets/appearance/mate-wp-item.c:339
+#: capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
 msgstr "图像丢失"
 
-#: ../capplets/appearance/theme-installer.c:186
-#: ../capplets/appearance/theme-installer.c:242
+#: capplets/appearance/theme-installer.c:186
+#: capplets/appearance/theme-installer.c:242
 msgid "Cannot install theme"
 msgstr "无法安装主题"
 
-#: ../capplets/appearance/theme-installer.c:188
+#: capplets/appearance/theme-installer.c:188
 #, c-format
 msgid "The %s utility is not installed."
 msgstr "%s 工具未安装。"
 
-#: ../capplets/appearance/theme-installer.c:244
+#: capplets/appearance/theme-installer.c:244
 msgid "There was a problem while extracting the theme."
 msgstr "提取主题时发生了错误。"
 
-#: ../capplets/appearance/theme-installer.c:274
+#: capplets/appearance/theme-installer.c:274
 msgid "There was an error installing the selected file"
 msgstr "安装选中文件时出错"
 
-#: ../capplets/appearance/theme-installer.c:275
+#: capplets/appearance/theme-installer.c:275
 #, c-format
 msgid "\"%s\" does not appear to be a valid theme."
 msgstr "“%s”似乎不是有效的主题。"
 
-#: ../capplets/appearance/theme-installer.c:276
+#: capplets/appearance/theme-installer.c:276
 #, c-format
 msgid ""
 "\"%s\" does not appear to be a valid theme. It may be a theme engine which "
 "you need to compile."
 msgstr "“%s”似乎不是有效的主题。它可能是需要编译才能使用的主题引擎。"
 
-#: ../capplets/appearance/theme-installer.c:375
+#: capplets/appearance/theme-installer.c:375
 #, c-format
 msgid "The theme \"%s\" already exists."
 msgstr "主题 \"%s\" 已经存在。"
 
-#: ../capplets/appearance/theme-installer.c:385
+#: capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
 msgstr "您想重新安装吗？"
 
-#: ../capplets/appearance/theme-installer.c:388
+#: capplets/appearance/theme-installer.c:388
 msgid "Cancel"
 msgstr "取消"
 
-#: ../capplets/appearance/theme-installer.c:409
-#: ../capplets/appearance/theme-util.c:122
+#: capplets/appearance/theme-installer.c:409
+#: capplets/appearance/theme-util.c:122
 msgid "Theme cannot be deleted"
 msgstr "主题无法删除"
 
-#: ../capplets/appearance/theme-installer.c:427
+#: capplets/appearance/theme-installer.c:427
 #, c-format
 msgid "Installation for theme \"%s\" failed."
 msgstr "主题“%s”安装失败。"
 
-#: ../capplets/appearance/theme-installer.c:466
+#: capplets/appearance/theme-installer.c:466
 #, c-format
 msgid "The theme \"%s\" has been installed."
 msgstr "主题“%s”已安装。"
 
-#: ../capplets/appearance/theme-installer.c:476
+#: capplets/appearance/theme-installer.c:476
 msgid "Would you like to apply it now, or keep your current theme?"
 msgstr "您是想要现在就应用，还是保持当前的主题？"
 
-#: ../capplets/appearance/theme-installer.c:479
+#: capplets/appearance/theme-installer.c:479
 msgid "Keep Current Theme"
 msgstr "保持当前主题"
 
-#: ../capplets/appearance/theme-installer.c:482
+#: capplets/appearance/theme-installer.c:482
 msgid "Apply New Theme"
 msgstr "应用新主题"
 
-#: ../capplets/appearance/theme-installer.c:534
+#: capplets/appearance/theme-installer.c:534
 #, c-format
 msgid "MATE Theme %s correctly installed"
 msgstr "MATE 主题 %s 已正确安装"
 
-#: ../capplets/appearance/theme-installer.c:600
+#: capplets/appearance/theme-installer.c:600
 msgid "Failed to create temporary directory"
 msgstr "创建临时目录失败"
 
-#: ../capplets/appearance/theme-installer.c:662
+#: capplets/appearance/theme-installer.c:662
 msgid "New themes have been successfully installed."
 msgstr "新主题已成功安装。"
 
-#: ../capplets/appearance/theme-installer.c:709
+#: capplets/appearance/theme-installer.c:709
 msgid "No theme file location specified to install"
 msgstr "未指定要安装得主题文件位置"
 
-#: ../capplets/appearance/theme-installer.c:733
+#: capplets/appearance/theme-installer.c:733
 #, c-format
 msgid ""
 "Insufficient permissions to install the theme in:\n"
@@ -1189,37 +1246,36 @@ msgstr ""
 "没有足够的权限将主题安装在：\n"
 "%s"
 
-#: ../capplets/appearance/theme-installer.c:811
+#: capplets/appearance/theme-installer.c:811
 msgid "Select Theme"
 msgstr "选择主题"
 
-#: ../capplets/appearance/theme-installer.c:822
+#: capplets/appearance/theme-installer.c:822
 msgid "Theme Packages"
 msgstr "主题包"
 
-#: ../capplets/appearance/theme-save.c:94
-#, c-format
+#: capplets/appearance/theme-save.c:94
 msgid "Theme name must be present"
 msgstr "主题必须有名称"
 
-#: ../capplets/appearance/theme-save.c:157
+#: capplets/appearance/theme-save.c:157
 msgid "The theme already exists. Would you like to replace it?"
 msgstr "主题已经存在。您是否想要替换？"
 
-#: ../capplets/appearance/theme-save.c:158
-#: ../capplets/common/file-transfer-dialog.c:438
+#: capplets/appearance/theme-save.c:158
+#: capplets/common/file-transfer-dialog.c:438
 msgid "_Overwrite"
 msgstr "覆盖(_O)"
 
-#: ../capplets/appearance/theme-util.c:71
+#: capplets/appearance/theme-util.c:71
 msgid "Would you like to delete this theme?"
 msgstr "您是否想要删除此主题？"
 
-#: ../capplets/appearance/theme-util.c:282
+#: capplets/appearance/theme-util.c:282
 msgid "Could not install theme engine"
 msgstr "无法安装主题引擎"
 
-#: ../capplets/common/activate-settings-daemon.c:16
+#: capplets/common/activate-settings-daemon.c:16
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
@@ -1227,339 +1283,348 @@ msgstr ""
 "无法启动设置管理器“mate-settings-daemon”。\n"
 "如果不运行 MATE 设置管理器，某些首选项不会生效。这可能表明 DBus 出现问题，或者某个非 MATE (如 KDE) 设置管理器可能已经处于活动状态，并与 MATE 设置管理器发生冲突。"
 
-#: ../capplets/common/capplet-util.c:82
+#: capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "显示帮助时出错：%s"
 
-#: ../capplets/common/file-transfer-dialog.c:96
+#: capplets/common/file-transfer-dialog.c:96
 #, c-format
 msgid "Copying file: %u of %u"
 msgstr "正复制文件：第%u个，共%u个"
 
-#: ../capplets/common/file-transfer-dialog.c:143
+#: capplets/common/file-transfer-dialog.c:143
 #, c-format
 msgid "Copying '%s'"
 msgstr "正在复制“%s”"
 
-#: ../capplets/common/file-transfer-dialog.c:183
-#: ../capplets/common/file-transfer-dialog.c:308
+#: capplets/common/file-transfer-dialog.c:183
+#: capplets/common/file-transfer-dialog.c:308
 msgid "Copying files"
 msgstr "正在复制文件"
 
-#: ../capplets/common/file-transfer-dialog.c:222
+#: capplets/common/file-transfer-dialog.c:222
 msgid "Parent Window"
 msgstr "父窗口"
 
-#: ../capplets/common/file-transfer-dialog.c:223
+#: capplets/common/file-transfer-dialog.c:223
 msgid "Parent window of the dialog"
 msgstr "对话框的父窗口"
 
-#: ../capplets/common/file-transfer-dialog.c:229
+#: capplets/common/file-transfer-dialog.c:229
 msgid "From URI"
 msgstr "从 URI"
 
-#: ../capplets/common/file-transfer-dialog.c:230
+#: capplets/common/file-transfer-dialog.c:230
 msgid "URI currently transferring from"
 msgstr "当前传输的来源 URI"
 
-#: ../capplets/common/file-transfer-dialog.c:237
+#: capplets/common/file-transfer-dialog.c:237
 msgid "To URI"
 msgstr "到 URI"
 
-#: ../capplets/common/file-transfer-dialog.c:238
+#: capplets/common/file-transfer-dialog.c:238
 msgid "URI currently transferring to"
 msgstr "当前传输的目的 URI"
 
-#: ../capplets/common/file-transfer-dialog.c:245
+#: capplets/common/file-transfer-dialog.c:245
 msgid "Fraction completed"
 msgstr "完成的比例"
 
-#: ../capplets/common/file-transfer-dialog.c:246
+#: capplets/common/file-transfer-dialog.c:246
 msgid "Fraction of transfer currently completed"
 msgstr "目前完成的传输比例"
 
-#: ../capplets/common/file-transfer-dialog.c:253
+#: capplets/common/file-transfer-dialog.c:253
 msgid "Current URI index"
 msgstr "当前 URI 序号"
 
-#: ../capplets/common/file-transfer-dialog.c:254
+#: capplets/common/file-transfer-dialog.c:254
 msgid "Current URI index - starts from 1"
 msgstr "当前 URI 序号 - 从1开始"
 
-#: ../capplets/common/file-transfer-dialog.c:261
+#: capplets/common/file-transfer-dialog.c:261
 msgid "Total URIs"
 msgstr "URI 总数"
 
-#: ../capplets/common/file-transfer-dialog.c:262
+#: capplets/common/file-transfer-dialog.c:262
 msgid "Total number of URIs"
 msgstr "URI 的总数"
 
-#: ../capplets/common/file-transfer-dialog.c:432
+#: capplets/common/file-transfer-dialog.c:432
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "文件“%s”已经存在。您是否想要覆盖？"
 
-#: ../capplets/common/file-transfer-dialog.c:435
+#: capplets/common/file-transfer-dialog.c:435
 msgid "_Skip"
 msgstr "跳过 (_S)"
 
-#: ../capplets/common/file-transfer-dialog.c:436
+#: capplets/common/file-transfer-dialog.c:436
 msgid "Overwrite _All"
 msgstr "全部覆盖(_A)"
 
-#: ../capplets/common/mate-theme-info.c:1578
+#: capplets/common/mate-theme-info.c:1578
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
 " not installed."
 msgstr "此主题的外观将与设计时不同，因为所需的 GTK+ 主题“%s”未安装。"
 
-#: ../capplets/common/mate-theme-info.c:1588
+#: capplets/common/mate-theme-info.c:1588
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
 "theme '%s' is not installed."
 msgstr "此主题的外观将与设计时不同，因为所需的窗口管理器主题“%s”未安装。"
 
-#: ../capplets/common/mate-theme-info.c:1596
+#: capplets/common/mate-theme-info.c:1596
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
 " not installed."
 msgstr "此主题的外观将与设计时不同，因为所需的图标主题“%s”未安装。"
 
-#: ../capplets/common/theme-thumbnail.c:224
-#: ../capplets/common/theme-thumbnail.c:306
-msgid "_Open"
-msgstr "打开(_O)"
-
-#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:1
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:1
+#: capplets/default-applications/mate-default-applications-properties.desktop.in:3
+#: capplets/default-applications/mate-default-applications-properties.ui:13
 msgid "Preferred Applications"
 msgstr "默认应用程序"
 
-#: ../capplets/default-applications/mate-default-applications-properties.desktop.in.h:2
+#: capplets/default-applications/mate-default-applications-properties.desktop.in:4
 msgid "Select your default applications"
 msgstr "选择默认的应用程序"
 
-#: ../capplets/default-applications/mate-da-capplet.c:622
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/default-applications/mate-default-applications-properties.desktop.in:7
+msgid "preferences-desktop-default-applications"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/default-applications/mate-default-applications-properties.desktop.in:13
+msgid "mate-control-center;MATE;default;preferred;applications;"
+msgstr ""
+
+#: capplets/default-applications/mate-da-capplet.c:639
 msgid "Could not load the main interface"
 msgstr "无法装入主界面"
 
-#: ../capplets/default-applications/mate-da-capplet.c:623
+#: capplets/default-applications/mate-da-capplet.c:640
 msgid "Please make sure that the applet is properly installed"
 msgstr "请确定小程序已经正确安装。"
 
-#. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/default-applications/mate-da-capplet.c:821
+#: capplets/default-applications/mate-da-capplet.c:838
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "指定要显示的页面名称 (internet|multimedia|system|a11y)"
 
-#: ../capplets/default-applications/mate-da-capplet.c:827
+#: capplets/default-applications/mate-da-capplet.c:844
 msgid "- MATE Default Applications"
 msgstr "- MATE 默认应用程序"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:2
+#: capplets/default-applications/mate-default-applications-properties.ui:134
 msgid "Web Browser"
 msgstr "网络浏览器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:3
+#: capplets/default-applications/mate-default-applications-properties.ui:202
 msgid "Mail Reader"
 msgstr "邮件阅读器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:4
-msgid "Co_mmand:"
-msgstr "命令(_M)："
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:6
-#, no-c-format
-msgid "All %s occurrences will be replaced with actual link"
-msgstr "出现的全部 %s 都将被替换为实际链接"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:7
-msgid "Run in t_erminal"
-msgstr "在终端中运行(_E)"
-
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:8
+#: capplets/default-applications/mate-default-applications-properties.ui:270
 msgid "Instant Messenger"
 msgstr "即时通讯工具"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:9
+#: capplets/default-applications/mate-default-applications-properties.ui:289
 msgid "Internet"
 msgstr "互联网"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:10
+#: capplets/default-applications/mate-default-applications-properties.ui:357
 msgid "Image Viewer"
 msgstr "图像查看器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:11
+#: capplets/default-applications/mate-default-applications-properties.ui:425
 msgid "Multimedia Player"
 msgstr "多媒体播放器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:12
+#: capplets/default-applications/mate-default-applications-properties.ui:493
 msgid "Video Player"
 msgstr "视频播放器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:13
+#: capplets/default-applications/mate-default-applications-properties.ui:515
 msgid "Multimedia"
 msgstr "多媒体"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:14
+#: capplets/default-applications/mate-default-applications-properties.ui:584
 msgid "Text Editor"
 msgstr "文本编辑器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:15
+#: capplets/default-applications/mate-default-applications-properties.ui:652
 msgid "Terminal Emulator"
 msgstr "终端模拟器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:16
+#: capplets/default-applications/mate-default-applications-properties.ui:720
 msgid "File Manager"
 msgstr "文件管理器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:17
+#: capplets/default-applications/mate-default-applications-properties.ui:788
 msgid "Calculator"
 msgstr "计算器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:18
+#: capplets/default-applications/mate-default-applications-properties.ui:810
 msgid "System"
 msgstr "系统"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:19
+#: capplets/default-applications/mate-default-applications-properties.ui:879
 msgid "Document Viewer"
 msgstr "文档查看器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:20
+#: capplets/default-applications/mate-default-applications-properties.ui:947
 msgid "Word Processor"
 msgstr "文字处理器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:21
+#: capplets/default-applications/mate-default-applications-properties.ui:1015
 msgid "Spreadsheet Editor"
 msgstr "电子表格编辑器"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:22
+#: capplets/default-applications/mate-default-applications-properties.ui:1037
 msgid "Office"
 msgstr "办公"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:23
+#: capplets/default-applications/mate-default-applications-properties.ui:1094
 msgid "_Run at start"
 msgstr "启动时运行(_R)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:24
+#: capplets/default-applications/mate-default-applications-properties.ui:1122
 msgid "Visual"
 msgstr "视觉效果"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:25
+#: capplets/default-applications/mate-default-applications-properties.ui:1178
 msgid "Run at st_art"
 msgstr "启动时运行(_A)"
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:26
+#: capplets/default-applications/mate-default-applications-properties.ui:1206
 msgid "Mobility"
 msgstr "移动性 "
 
-#: ../capplets/default-applications/mate-default-applications-properties.ui.h:27
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:46
+#: capplets/default-applications/mate-default-applications-properties.ui:1228
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1527
 msgid "Accessibility"
 msgstr "辅助"
 
-#: ../capplets/display/display-capplet.ui.h:1
-#: ../capplets/display/xrandr-capplet.c:306
-#: ../capplets/display/xrandr-capplet.c:345
+#: capplets/display/display-capplet.ui:22
+#: capplets/display/xrandr-capplet.c:306 capplets/display/xrandr-capplet.c:345
 msgid "Normal"
 msgstr "正常"
 
-#: ../capplets/display/display-capplet.ui.h:2
-#: ../capplets/display/xrandr-capplet.c:307
-#: ../capplets/windows/mate-window-properties.c:511
+#: capplets/display/display-capplet.ui:25
+#: capplets/display/xrandr-capplet.c:307
+#: capplets/windows/window-properties.ui:222
 msgid "Left"
 msgstr "左"
 
-#: ../capplets/display/display-capplet.ui.h:3
-#: ../capplets/display/xrandr-capplet.c:308
-#: ../capplets/windows/mate-window-properties.c:510
+#: capplets/display/display-capplet.ui:28
+#: capplets/display/xrandr-capplet.c:308
+#: capplets/windows/window-properties.ui:221
 msgid "Right"
 msgstr "右"
 
-#: ../capplets/display/display-capplet.ui.h:4
+#: capplets/display/display-capplet.ui:31
 msgid "Upside-down"
 msgstr "上下颠倒"
 
-#: ../capplets/display/display-capplet.ui.h:5
+#: capplets/display/display-capplet.ui:43
 msgid "Monitor Preferences"
 msgstr "显示器首选项"
 
-#: ../capplets/display/display-capplet.ui.h:6
+#: capplets/display/display-capplet.ui:75
 msgid "Apply system-wide"
 msgstr "系统全局应用"
 
-#: ../capplets/display/display-capplet.ui.h:7
+#: capplets/display/display-capplet.ui:79
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
 msgstr "将当前配置应用于该计算机上的其他 MATE 用户。需注意该配置不影响登录界面或其他桌面环境。"
 
-#: ../capplets/display/display-capplet.ui.h:8
+#: capplets/display/display-capplet.ui:90
+msgid "_Apply"
+msgstr ""
+
+#: capplets/display/display-capplet.ui:161
 msgid "Sa_me image in all monitors"
 msgstr "在所有显示器显示同样的图像"
 
-#: ../capplets/display/display-capplet.ui.h:9
+#: capplets/display/display-capplet.ui:176
 msgid "_Detect monitors"
 msgstr "探测显示器"
 
-#: ../capplets/display/display-capplet.ui.h:10
+#: capplets/display/display-capplet.ui:211
 msgid "Panel icon"
 msgstr "面板图标"
 
-#: ../capplets/display/display-capplet.ui.h:11
+#: capplets/display/display-capplet.ui:230
 msgid "_Show monitors in panel"
 msgstr "在面板上显示显示器(_S)"
 
-#: ../capplets/display/display-capplet.ui.h:12
+#: capplets/display/display-capplet.ui:268
 msgid "_Resolution:"
 msgstr "分辨率(_R)："
 
-#: ../capplets/display/display-capplet.ui.h:13
+#: capplets/display/display-capplet.ui:282
 msgid "Re_fresh rate:"
 msgstr "刷新率(_F)："
 
-#: ../capplets/display/display-capplet.ui.h:14
+#: capplets/display/display-capplet.ui:319
 msgid "On"
 msgstr "开"
 
-#: ../capplets/display/display-capplet.ui.h:15
+#: capplets/display/display-capplet.ui:335
 msgid "Off"
 msgstr "关"
 
-#: ../capplets/display/display-capplet.ui.h:16
+#: capplets/display/display-capplet.ui:374
 msgid "Include _panel"
 msgstr "包含面板(_P)"
 
-#: ../capplets/display/display-capplet.ui.h:17
+#: capplets/display/display-capplet.ui:400
 msgid "Set as primary"
 msgstr "设为主要屏幕"
 
-#: ../capplets/display/display-capplet.ui.h:18
+#: capplets/display/display-capplet.ui:405
 msgid "Sets the selected monitor as primary."
 msgstr "将当前显示器设为主显示器。"
 
-#: ../capplets/display/display-capplet.ui.h:19
+#: capplets/display/display-capplet.ui:417
 msgid "R_otation:"
 msgstr "旋转(_O)："
 
-#: ../capplets/display/display-capplet.ui.h:20
-#: ../capplets/display/xrandr-capplet.c:495
+#: capplets/display/display-capplet.ui:436
+#: capplets/display/xrandr-capplet.c:495
 msgid "Monitor"
 msgstr "显示器"
 
-#: ../capplets/display/mate-display-properties.desktop.in.h:1
+#: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
 msgstr "显示器"
 
-#: ../capplets/display/mate-display-properties.desktop.in.h:2
+#: capplets/display/mate-display-properties.desktop.in:4
 msgid "Change resolution and position of monitors and projectors"
 msgstr "更改显示器和投影仪的分辨率和位置"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:44
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/display/mate-display-properties.desktop.in:7
+msgid "preferences-desktop-display"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/display/mate-display-properties.desktop.in:13
+msgid ""
+"mate-control-center;MATE;resolution;position;monitors;display;properties;"
+msgstr ""
+
+#: capplets/display/mate-display-properties-install-systemwide.c:44
 #, c-format
 msgid ""
 "Usage: %s SOURCE_FILE DEST_NAME\n"
@@ -1587,84 +1652,84 @@ msgstr ""
 "            所以生成文件通常为 %s/DEST_NAME\n"
 
 #. Translators: only able to install RANDR profiles as root
-#: ../capplets/display/mate-display-properties-install-systemwide.c:151
+#: capplets/display/mate-display-properties-install-systemwide.c:151
 msgid "This program can only be used by the root user"
 msgstr "此程序只能由 root 用户使用"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:168
+#: capplets/display/mate-display-properties-install-systemwide.c:168
 msgid "The source filename must be absolute"
 msgstr "源文件名必须为绝对路径"
 
 #. Translators: first %s is a filename; second %s is an error message
-#: ../capplets/display/mate-display-properties-install-systemwide.c:179
+#: capplets/display/mate-display-properties-install-systemwide.c:179
 #, c-format
 msgid "Could not open %s: %s\n"
 msgstr "无法打开 %s: %s\n"
 
 #. Translators: first %s is a filename; second %s is an error message
-#: ../capplets/display/mate-display-properties-install-systemwide.c:188
+#: capplets/display/mate-display-properties-install-systemwide.c:188
 #, c-format
 msgid "Could not get information for %s: %s\n"
 msgstr "无法获取 %s 的信息: %s\n"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:195
+#: capplets/display/mate-display-properties-install-systemwide.c:195
 #, c-format
 msgid "%s must be a regular file\n"
 msgstr "%s 必须为常规文件\n"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:204
+#: capplets/display/mate-display-properties-install-systemwide.c:204
 msgid "This program must only be run through pkexec(1)"
 msgstr "此程序仅能通过 pkexec(1) 运行"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:209
+#: capplets/display/mate-display-properties-install-systemwide.c:209
 msgid "PKEXEC_UID must be set to an integer value"
 msgstr "PKEXEC_UID 必须设为整数值"
 
 #. Translators: we are complaining that a file must be really owned by the
 #. user who called this program
-#: ../capplets/display/mate-display-properties-install-systemwide.c:215
+#: capplets/display/mate-display-properties-install-systemwide.c:215
 #, c-format
 msgid "%s must be owned by you\n"
 msgstr "%s 必须归您所有\n"
 
 #. Translators: here we are saying that a plain filename must look like
 #. "filename", not like "some_dir/filename"
-#: ../capplets/display/mate-display-properties-install-systemwide.c:223
+#: capplets/display/mate-display-properties-install-systemwide.c:223
 #, c-format
 msgid "%s must not have any directory components\n"
 msgstr "%s 不应有任何目录部分\n"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:231
+#: capplets/display/mate-display-properties-install-systemwide.c:231
 #, c-format
 msgid "%s must be a directory\n"
 msgstr "%s 必须为目录\n"
 
 #. Translators: the first %s/%s is a directory/filename; the last %s is an
 #. error message
-#: ../capplets/display/mate-display-properties-install-systemwide.c:242
+#: capplets/display/mate-display-properties-install-systemwide.c:242
 #, c-format
 msgid "Could not open %s/%s: %s\n"
 msgstr "无法打开 %s/%s: %s\n"
 
-#: ../capplets/display/mate-display-properties-install-systemwide.c:262
+#: capplets/display/mate-display-properties-install-systemwide.c:262
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "无法将 %s 重命名为 %s: %s\n"
 
-#: ../capplets/display/org.mate.randr.policy.in.h:1
+#: capplets/display/org.mate.randr.policy.in:17
 msgid "Install multi-monitor settings for the whole system"
 msgstr "为整个系统安装多显示器设置"
 
-#: ../capplets/display/org.mate.randr.policy.in.h:2
+#: capplets/display/org.mate.randr.policy.in:18
 msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr "为所有用户安装多显示器设置需要身份验证"
 
-#: ../capplets/display/xrandr-capplet.c:309
+#: capplets/display/xrandr-capplet.c:309
 msgid "Upside Down"
 msgstr "上下颠倒"
 
-#: ../capplets/display/xrandr-capplet.c:351
+#: capplets/display/xrandr-capplet.c:351
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
@@ -1673,104 +1738,215 @@ msgstr "%d Hz"
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: ../capplets/display/xrandr-capplet.c:484
-#: ../capplets/display/xrandr-capplet.c:1632
-#, c-format
+#: capplets/display/xrandr-capplet.c:484
+#: capplets/display/xrandr-capplet.c:1632
 msgid "Mirror Screens"
 msgstr "镜像屏幕"
 
-#: ../capplets/display/xrandr-capplet.c:486
+#: capplets/display/xrandr-capplet.c:486
 #, c-format
 msgid "Monitor: %s"
 msgstr "显示器：%s"
 
-#: ../capplets/display/xrandr-capplet.c:556
+#: capplets/display/xrandr-capplet.c:556
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../capplets/display/xrandr-capplet.c:1488
+#: capplets/display/xrandr-capplet.c:1488
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr "选择一个显示器来更改它的属性；拖动它来排列位置。"
 
-#: ../capplets/display/xrandr-capplet.c:2081
+#: capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
 msgstr "无法保存显示器配置"
 
-#: ../capplets/display/xrandr-capplet.c:2102
+#: capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr "应用显示配置时无法获得会话总线"
 
-#: ../capplets/display/xrandr-capplet.c:2121
+#: capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
 msgstr "无法探测显示器"
 
-#: ../capplets/display/xrandr-capplet.c:2329
+#: capplets/display/xrandr-capplet.c:2303
 msgid "The monitor configuration has been saved"
 msgstr "显示器配置已保存"
 
-#: ../capplets/display/xrandr-capplet.c:2331
+#: capplets/display/xrandr-capplet.c:2305
 msgid "This configuration will be used the next time someone logs in."
 msgstr "这个设置将在下次登入时使用。"
 
-#: ../capplets/display/xrandr-capplet.c:2340
+#: capplets/display/xrandr-capplet.c:2314
 msgid "Could not set the default configuration for monitors"
 msgstr "无法为显示器设置默认配置"
 
-#: ../capplets/display/xrandr-capplet.c:2419
+#: capplets/display/xrandr-capplet.c:2393
 msgid "Could not get screen information"
 msgstr "无法获得屏幕信息"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:21
+#: capplets/display/xrandr-capplet.c:2509
+msgid "Could not open help content"
+msgstr ""
+
+#: capplets/keybindings/00-multimedia-key.xml.in:2
+msgid "Sound"
+msgstr "音效"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:4
+msgid "Volume mute"
+msgstr "静音"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:6
+msgid "Volume down"
+msgstr "音量降低"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:8
+msgid "Volume up"
+msgstr "音量升高"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:10
+msgid "Volume mute quietly"
+msgstr ""
+
+#: capplets/keybindings/00-multimedia-key.xml.in:12
+msgid "Volume down quietly"
+msgstr ""
+
+#: capplets/keybindings/00-multimedia-key.xml.in:14
+msgid "Volume up quietly"
+msgstr ""
+
+#: capplets/keybindings/00-multimedia-key.xml.in:16
+msgid "Microphone mute"
+msgstr ""
+
+#: capplets/keybindings/00-multimedia-key.xml.in:18
+msgid "Launch media player"
+msgstr "启动媒体播放机"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:20
+msgid "Play (or play/pause)"
+msgstr "播放(或播放/暂停)"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:22
+msgid "Pause playback"
+msgstr "暂停回放"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:24
+msgid "Stop playback"
+msgstr "停止回放"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:26
+msgid "Previous track"
+msgstr "上一音轨"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:28
+msgid "Next track"
+msgstr "下一音轨"
+
+#: capplets/keybindings/00-multimedia-key.xml.in:30
+msgid "Eject"
+msgstr "弹出"
+
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1153
+msgid "Desktop"
+msgstr "桌面"
+
+#: capplets/keybindings/01-desktop-key.xml.in:4
+msgid "Launch help browser"
+msgstr "启动帮助浏览器"
+
+#: capplets/keybindings/01-desktop-key.xml.in:6
+msgid "Launch calculator"
+msgstr "启动计算器"
+
+#: capplets/keybindings/01-desktop-key.xml.in:8
+msgid "Launch email client"
+msgstr "启动电子邮件客户端"
+
+#: capplets/keybindings/01-desktop-key.xml.in:10
+msgid "Launch instant messenger"
+msgstr "启动即时通讯工具"
+
+#: capplets/keybindings/01-desktop-key.xml.in:12
+msgid "Launch web browser"
+msgstr "启动网际浏览器"
+
+#: capplets/keybindings/01-desktop-key.xml.in:14
+msgid "Log out"
+msgstr "注销"
+
+#: capplets/keybindings/01-desktop-key.xml.in:16
+msgid "Shut down"
+msgstr "关机"
+
+#: capplets/keybindings/01-desktop-key.xml.in:18
+msgid "Lock screen"
+msgstr "锁住屏幕"
+
+#: capplets/keybindings/01-desktop-key.xml.in:20
+msgid "Home folder"
+msgstr "主文件夹"
+
+#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:843
+#: libslab/bookmark-agent.c:1192
+msgid "Search"
+msgstr "查找"
+
+#: capplets/keybindings/01-desktop-key.xml.in:24
+msgid "Launch settings"
+msgstr "启动设置"
+
+#: capplets/keybindings/eggcellrendererkeys.c:21
 msgid "New shortcut..."
 msgstr "新建快捷键..."
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:157
-#: ../capplets/keybindings/eggcellrendererkeys.c:158
+#: capplets/keybindings/eggcellrendererkeys.c:157
+#: capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator key"
 msgstr "加速键"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:167
-#: ../capplets/keybindings/eggcellrendererkeys.c:168
+#: capplets/keybindings/eggcellrendererkeys.c:167
+#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator modifiers"
 msgstr "加速键修饰键"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:176
-#: ../capplets/keybindings/eggcellrendererkeys.c:177
+#: capplets/keybindings/eggcellrendererkeys.c:176
+#: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accelerator keycode"
 msgstr "加速键键码"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:187
+#: capplets/keybindings/eggcellrendererkeys.c:187
 msgid "Accel Mode"
 msgstr "加速模式"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:188
+#: capplets/keybindings/eggcellrendererkeys.c:188
 msgid "The type of accelerator."
 msgstr "加速键类型。"
 
-#: ../capplets/keybindings/eggcellrendererkeys.c:231
-#: ../capplets/keybindings/mate-keybinding-properties.c:133
-#: ../capplets/mouse/mate-mouse-properties.c:329
-#: ../typing-break/drwright.c:528
+#: capplets/keybindings/eggcellrendererkeys.c:231
+#: capplets/keybindings/mate-keybinding-properties.c:133
+#: capplets/mouse/mate-mouse-properties.c:347 typing-break/drwright.c:528
 msgid "Disabled"
 msgstr "禁用"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:215
+#: capplets/keybindings/mate-keybinding-properties.c:215
 msgid "<Unknown Action>"
 msgstr "<未知操作>"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1018
-#: ../capplets/keybindings/mate-keybinding-properties.c:1626
+#: capplets/keybindings/mate-keybinding-properties.c:1018
+#: capplets/keybindings/mate-keybinding-properties.c:1626
 msgid "Custom Shortcuts"
 msgstr "自定义快捷键"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1206
+#: capplets/keybindings/mate-keybinding-properties.c:1206
 msgid "Error saving the new shortcut"
 msgstr "保存新快捷键出错"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1282
+#: capplets/keybindings/mate-keybinding-properties.c:1282
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1779,7 +1955,7 @@ msgstr ""
 "无法使用快捷键“%s”，因为使用此键将无法输入。\n"
 "请同时使用 Ctrl、Alt 或 Shift 再试一次。"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1314
+#: capplets/keybindings/mate-keybinding-properties.c:1314
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1788,2780 +1964,2878 @@ msgstr ""
 "快捷键“%s”已经用于\n"
 "“%s”"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1321
+#: capplets/keybindings/mate-keybinding-properties.c:1321
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "如果您将快捷键重新指派给“%s”，“%s”的快捷键将被禁用。"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1326
+#: capplets/keybindings/mate-keybinding-properties.c:1326
 msgid "_Reassign"
 msgstr "重新指派(_R)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1581
+#: capplets/keybindings/mate-keybinding-properties.c:1581
 msgid "Too many custom shortcuts"
 msgstr "太多的自定义快捷键"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1895
+#: capplets/keybindings/mate-keybinding-properties.c:1895
 msgid "Action"
 msgstr "动作"
 
-#: ../capplets/keybindings/mate-keybinding-properties.c:1917
+#: capplets/keybindings/mate-keybinding-properties.c:1917
 msgid "Shortcut"
 msgstr "快捷键"
 
-#. * vim: sw=2 ts=8 cindent noai bs=2
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:1
+#: capplets/keybindings/mate-keybinding-properties.ui:13
 msgid "Custom Shortcut"
 msgstr "自定义快捷键"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:3
+#: capplets/keybindings/mate-keybinding-properties.ui:108
 msgid "C_ommand:"
 msgstr "命令(_O)："
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:4
+#: capplets/keybindings/mate-keybinding-properties.ui:132
 msgid "_Browse applications..."
 msgstr "浏览应用程序… (_B)"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:5
-#: ../capplets/keybindings/mate-keybinding.desktop.in.h:1
+#: capplets/keybindings/mate-keybinding-properties.ui:194
+#: capplets/keybindings/mate-keybinding.desktop.in:3
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: ../capplets/keybindings/mate-keybinding-properties.ui.h:6
+#: capplets/keybindings/mate-keybinding-properties.ui:339
 msgid ""
 "To edit a shortcut key, double-click on the corresponding row and type a new"
 " key combination, or press backspace to clear."
 msgstr "要编辑快捷键，请双击相应的行，然后输入新按键组合，或按退格键清除。"
 
-#: ../capplets/keybindings/mate-keybinding.desktop.in.h:2
+#: capplets/keybindings/mate-keybinding.desktop.in:4
 msgid "Assign shortcut keys to commands"
 msgstr "为命令指定快捷键"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:207
-#: ../capplets/keyboard/mate-keyboard-properties.c:212
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/keybindings/mate-keybinding.desktop.in:7
+msgid "preferences-desktop-keyboard-shortcuts"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/keybindings/mate-keybinding.desktop.in:13
+msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
+msgstr ""
+
+#: capplets/keyboard/mate-keyboard-properties.c:207
+#: capplets/keyboard/mate-keyboard-properties.c:212
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "应用设置并退出 (仅为兼容，现在已由守护进程处理)"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:217
+#: capplets/keyboard/mate-keyboard-properties.c:217
 msgid "Start the page with the typing break settings showing"
 msgstr "以显示的打字间隔设置启动页面"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:222
+#: capplets/keyboard/mate-keyboard-properties.c:222
 msgid "Start the page with the accessibility settings showing"
 msgstr "以显示的辅助功能设置启动页面"
 
-#: ../capplets/keyboard/mate-keyboard-properties.c:228
+#: capplets/keyboard/mate-keyboard-properties.c:228
 msgid "- MATE Keyboard Preferences"
 msgstr "- MATE 键盘首选项"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:1
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:15
 msgid "Keyboard Accessibility Audio Feedback"
 msgstr "键盘辅助功能音频反馈"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:2
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:15
-#: ../capplets/mouse/mate-mouse-properties.ui.h:5
-#: ../capplets/windows/mate-window-properties.c:379
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:90
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:616
+#: capplets/mouse/mate-mouse-properties.ui:277
+#: capplets/mouse/mate-mouse-properties.ui:1008
+#: capplets/windows/window-properties.ui:260
 msgid "General"
 msgstr "通用选项"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:3
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:128
 msgid "Beep when _accessibility features are turned on or off"
 msgstr "辅助功能打开或关闭时鸣笛(_A)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:4
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:145
 msgid "Beep when a _toggle key is pressed"
 msgstr "按下切换键时鸣笛(_T)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:5
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:36
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:194
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1019
 msgid "Sticky Keys"
 msgstr "粘滞键"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:6
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:232
 msgid "Beep when a _modifier key is pressed"
 msgstr "按下修饰键时鸣笛(_M)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:7
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:279
 msgid "Visual cues for sounds"
 msgstr "声音反馈"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:8
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:314
 msgid "Show _visual feedback for the alert sound"
 msgstr "为警告声音显示视觉反馈(_V)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:9
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:352
 msgid "Flash _window titlebar"
 msgstr "闪烁窗口标题栏(_W)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:10
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:369
 msgid "Flash entire _screen"
 msgstr "闪烁整个屏幕(_S)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:11
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:40
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:433
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1140
 msgid "Slow Keys"
 msgstr "慢速键"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:12
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:471
 msgid "Beep when a key is pr_essed"
 msgstr "按下键时鸣笛(_E)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:13
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:488
 msgid "Beep when key is _accepted"
 msgstr "接受键鸣笛(_A)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:14
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:505
 msgid "Beep when key is _rejected"
 msgstr "拒绝键时鸣笛(_R)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:15
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:42
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:554
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1321
 msgid "Bounce Keys"
 msgstr "回弹键"
 
-#: ../capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui.h:16
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:592
 msgid "Beep when a key is reje_cted"
 msgstr "拒绝键时鸣笛(_C)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:1
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:81
 msgid "Keyboard Preferences"
 msgstr "键盘首选项"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:2
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:166
 msgid "Repeat Keys"
 msgstr "重复键"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:3
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:201
 msgid "Key presses _repeat when key is held down"
 msgstr "按住某一键时重复该键(_R)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:4
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:231
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1203
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1775
 msgid "_Delay:"
 msgstr "延时(_D)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:5
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:247
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1760
 msgid "_Speed:"
 msgstr "速度(_S)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:6
-#: ../capplets/mouse/mate-mouse-properties.ui.h:29
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:278
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1226
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1407
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1697
+#: capplets/mouse/mate-mouse-properties.ui:826
 msgid "Short"
 msgstr "短"
 
 #. slow acceleration
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:7
-#: ../capplets/mouse/mate-mouse-properties.ui.h:12
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:297
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:563
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1601
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1680
+#: capplets/mouse/mate-mouse-properties.ui:435
+#: capplets/mouse/mate-mouse-properties.ui:1396
 msgid "Slow"
 msgstr "慢"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:8
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:343
 msgid "Repeat keys speed"
 msgstr "重复键速度"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:9
-#: ../capplets/mouse/mate-mouse-properties.ui.h:30
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:371
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1261
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1442
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1728
+#: capplets/mouse/mate-mouse-properties.ui:861
 msgid "Long"
 msgstr "长"
 
 #. fast acceleration
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:10
-#: ../capplets/mouse/mate-mouse-properties.ui.h:14
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:388
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:528
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1618
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1663
+#: capplets/mouse/mate-mouse-properties.ui:467
+#: capplets/mouse/mate-mouse-properties.ui:1428
 msgid "Fast"
 msgstr "快"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:11
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:446
 msgid "Cursor Blinking"
 msgstr "光标闪烁"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:12
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:481
 msgid "Cursor _blinks in text fields"
 msgstr "文本域中的光标会闪烁(_B)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:13
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:505
 msgid "S_peed:"
 msgstr "速度(_P)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:14
-#: ../capplets/mouse/mate-mouse-properties.ui.h:24
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:548
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1246
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1427
+#: capplets/mouse/mate-mouse-properties.ui:702
+#: capplets/mouse/mate-mouse-properties.ui:847
 msgid "Cursor blinks speed"
 msgstr "光标闪烁速度"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:16
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:645
 msgid "List of keyboard layouts selected for usage"
 msgstr "选用的键盘布局列表"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:18
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:678
 msgid "Select a keyboard layout to be added to the list"
 msgstr "选择要加入列表的键盘布局"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:19
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:693
 msgid "Remove the selected keyboard layout from the list"
 msgstr "从列表中移除所选键盘布局"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:20
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:718
 msgid "Move _Up"
 msgstr "向上移动(_U)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:21
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:722
 msgid "Move the selected keyboard layout up in the list"
 msgstr "将列表中所选键盘布局上移"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:22
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:733
 msgid "Move _Down"
 msgstr "向下移动(_D)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:23
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:737
 msgid "Move the selected keyboard layout down in the list"
 msgstr "将列表中所选键盘布局下移"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:24
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:762
 msgid "_Show..."
 msgstr "显示(_S)..."
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:25
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:766
 msgid "Print a diagram of the selected keyboard layout"
 msgstr "显示所选键盘布局的简图"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:26
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:802
 msgid "_Separate layout for each window"
 msgstr "每个窗口独立布局(_S)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:27
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:818
 msgid "New windows u_se active window's layout"
 msgstr "新窗口使用活动窗口的布局(_S)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:28
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:849
 msgid "Keyboard _model:"
 msgstr "键盘型号(_M)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:29
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:887
 msgid "_Options..."
 msgstr "选项(_O)..."
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:30
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:892
 msgid "View and edit keyboard layout options"
 msgstr "查看并编辑键盘布局选项"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:31
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:903
 msgid "Reset to De_faults"
 msgstr "重置为默认值(_F)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:32
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:907
 msgid ""
 "Replace the current keyboard layout settings with the\n"
 "default settings"
 msgstr "使用默认设置替代当前的键盘布局设置"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:34
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:934
 msgid "Layouts"
 msgstr "布局"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:35
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:970
 msgid "_Accessibility features can be toggled with keyboard shortcuts"
 msgstr "允许通过快捷键打开或关闭辅助特性(_A)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:37
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1057
 msgid "_Simulate simultaneous keypresses"
 msgstr "模拟同时按键(_S)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:38
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1074
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "若同时按两个键则禁用(_B)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:39
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1091
 msgid "_Latch modifiers when pressed twice"
 msgstr "连续两次按下修饰键时锁定该键(_L)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:41
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1178
 msgid "_Only accept long keypresses"
 msgstr "仅接受长按键(_O)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:43
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1359
 msgid "_Ignore fast duplicate keypresses"
 msgstr "忽略快速重复按键(_I)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:44
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1384
 msgid "D_elay:"
 msgstr "延时(_E)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:45
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1497
 msgid "Audio _Feedback..."
 msgstr "听觉反馈(_F)..."
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:47
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1550
 msgid "_Pointer can be controlled using the keypad"
 msgstr "允许使用键盘控制指针(_P)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:48
-#: ../capplets/mouse/mate-mouse-properties.ui.h:10
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1745
+#: capplets/mouse/mate-mouse-properties.ui:413
+#: capplets/mouse/mate-mouse-properties.ui:1374
 msgid "_Acceleration:"
 msgstr "加速(_A)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:49
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1823
 msgid "Mouse Keys"
 msgstr "鼠标键"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:50
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1851
 msgid "_Lock screen to enforce typing break"
 msgstr "锁定屏幕来强制打字间断(_L)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:51
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1855
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
 msgstr "每隔一段时间锁定屏幕，以便重复性的键盘工作使手臂过度劳累"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:52
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1904
 msgid "_Work interval lasts:"
 msgstr "工作间隔持续(_W)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:53
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1919
 msgid "_Break interval lasts:"
 msgstr "间断间隔持续(_B)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:54
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1951
 msgid "Duration of work before forcing a break"
 msgstr "强制间断前的工作持续时间"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:55
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1965
 msgid "Duration of the break when typing is disallowed"
 msgstr "不允许打字时间断持续时间"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:56
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1993
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2006
 msgid "minutes"
 msgstr "分钟"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:57
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2037
 msgid "All_ow postponing of breaks"
 msgstr "允许推迟间断(_O)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:58
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2041
 msgid "Check if breaks are allowed to be postponed"
 msgstr "检查是否允许推迟间断"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:59
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2089
 msgid "Typing Break"
 msgstr "打字间断"
 
-#: ../capplets/keyboard/mate-keyboard-properties-dialog.ui.h:60
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2112
 msgid "_Type to test settings:"
 msgstr "输入字符来测试设置(_T)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:1
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:15
 msgid "Choose a Layout"
 msgstr "选择布局"
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:2
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:134
 msgid "_Country:"
 msgstr "国家/地区(_C)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:3
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:148
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:225
 msgid "_Variants:"
 msgstr "变体(_V)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:4
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:165
 msgid "By _country"
 msgstr "按国家/地区(_C)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:5
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:211
 msgid "_Language:"
 msgstr "语言(_L)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:6
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:245
 msgid "By _language"
 msgstr "按语言(_L)"
 
-#: ../capplets/keyboard/mate-keyboard-properties-layout-chooser.ui.h:7
+#: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:278
 msgid "Preview:"
 msgstr "预览："
 
-#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:1
+#: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:15
 msgid "Choose a Keyboard Model"
 msgstr "选择键盘型号"
 
-#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:2
+#: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:81
 msgid "_Vendors:"
 msgstr "制造商(_V)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-model-chooser.ui.h:3
+#: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:118
 msgid "_Models:"
 msgstr "型号(_M)："
 
-#: ../capplets/keyboard/mate-keyboard-properties-options-dialog.ui.h:1
+#: capplets/keyboard/mate-keyboard-properties-options-dialog.ui:14
 msgid "Keyboard Layout Options"
 msgstr "键盘布局选项"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkb.c:83
+#: capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
 msgstr "未知"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+#: capplets/keyboard/mate-keyboard-properties-xkblt.c:240
 msgid "Layout"
 msgstr "布局"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
 msgid "Vendors"
 msgstr "制造商"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
 msgid "Models"
 msgstr "型号"
 
-#: ../capplets/keyboard/mate-keyboard-properties-xkbot.c:237
+#: capplets/keyboard/mate-keyboard-properties-xkbot.c:237
+#: capplets/mouse/mate-mouse-properties.ui:586
 msgid "Default"
 msgstr "默认"
 
-#: ../capplets/keyboard/mate-keyboard.desktop.in.h:1
+#: capplets/keyboard/mate-keyboard.desktop.in:3
 msgid "Keyboard"
 msgstr "键盘"
 
-#: ../capplets/keyboard/mate-keyboard.desktop.in.h:2
+#: capplets/keyboard/mate-keyboard.desktop.in:4
 msgid "Set your keyboard preferences"
 msgstr "设置键盘首选项"
 
-#: ../capplets/mouse/mate-mouse-properties.c:329
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/keyboard/mate-keyboard.desktop.in:7
+msgid "input-keyboard"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/keyboard/mate-keyboard.desktop.in:13
+msgid "mate-control-center;MATE;keyboard;preferences;"
+msgstr ""
+
+#: capplets/mouse/mate-mouse-properties.c:347
 msgid "Left button"
 msgstr "左键"
 
-#: ../capplets/mouse/mate-mouse-properties.c:329
+#: capplets/mouse/mate-mouse-properties.c:347
 msgid "Middle button"
 msgstr "中键"
 
-#: ../capplets/mouse/mate-mouse-properties.c:329
+#: capplets/mouse/mate-mouse-properties.c:347
 msgid "Right button"
 msgstr "右键"
 
-#. TRANSLATORS: don't translate the terms in brackets
-#: ../capplets/mouse/mate-mouse-properties.c:424
+#: capplets/mouse/mate-mouse-properties.c:442
 msgid "Specify the name of the page to show (general)"
 msgstr "指定要显示的页面名称 (general)"
 
-#: ../capplets/mouse/mate-mouse-properties.c:429
+#: capplets/mouse/mate-mouse-properties.c:447
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE 鼠标首选项"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:1
+#: capplets/mouse/mate-mouse-properties.ui:107
 msgid "Mouse Preferences"
 msgstr "鼠标首选项"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:2
+#: capplets/mouse/mate-mouse-properties.ui:187
 msgid "Mouse Orientation"
 msgstr "鼠标方向"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:3
+#: capplets/mouse/mate-mouse-properties.ui:214
 msgid "_Right-handed"
 msgstr "惯用右手(_R)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:4
+#: capplets/mouse/mate-mouse-properties.ui:232
 msgid "_Left-handed"
 msgstr "惯用左手(_L)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:6
+#: capplets/mouse/mate-mouse-properties.ui:297
 msgid "Sh_ow position of pointer when the Control key is pressed"
 msgstr "按住 Ctrl 键时显示指针位置(_O)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:7
+#: capplets/mouse/mate-mouse-properties.ui:322
 msgid "Emulate middle button through simultaneous left and right click"
 msgstr "同时按下左右键模拟中键"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:8
+#: capplets/mouse/mate-mouse-properties.ui:348
 msgid "Enable middlemouse paste"
 msgstr "启用鼠标中键粘贴"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:9
+#: capplets/mouse/mate-mouse-properties.ui:385
+#: capplets/mouse/mate-mouse-properties.ui:1346
 msgid "Pointer Speed"
 msgstr "指针速度"
 
 #. low sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:16
+#: capplets/mouse/mate-mouse-properties.ui:498
+#: capplets/mouse/mate-mouse-properties.ui:1459
 msgid "Low"
 msgstr "低"
 
 #. high sensitivity
-#: ../capplets/mouse/mate-mouse-properties.ui.h:18
+#: capplets/mouse/mate-mouse-properties.ui:530
+#: capplets/mouse/mate-mouse-properties.ui:1491
 msgid "High"
 msgstr "高"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:19
+#: capplets/mouse/mate-mouse-properties.ui:554
+#: capplets/mouse/mate-mouse-properties.ui:1515
 msgid "_Sensitivity:"
 msgstr "灵敏度(_S)："
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:20
+#: capplets/mouse/mate-mouse-properties.ui:569
+msgid "Acceleration _Profile:"
+msgstr ""
+
+#: capplets/mouse/mate-mouse-properties.ui:587
+msgid "Adaptive"
+msgstr ""
+
+#: capplets/mouse/mate-mouse-properties.ui:588
+msgid "Flat"
+msgstr ""
+
+#: capplets/mouse/mate-mouse-properties.ui:624
 msgid "Drag and Drop"
 msgstr "拖放"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:21
+#: capplets/mouse/mate-mouse-properties.ui:658
 msgid "Thr_eshold:"
 msgstr "阈值(_E)："
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:27
+#: capplets/mouse/mate-mouse-properties.ui:771
 msgid "Double-Click Timeout"
 msgstr "双击超时"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:28
+#: capplets/mouse/mate-mouse-properties.ui:805
 msgid "_Timeout:"
 msgstr "超时(_T)："
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:31
+#: capplets/mouse/mate-mouse-properties.ui:901
 msgid ""
 "To test your double-click settings, try to double-click on the triangle and "
 "you must see the mate desktop logo with both rings showing."
 msgstr "要测试您的双击设置，请尝试双击三角形图像，您应该会看见带有两个圆环的 MATE 徽标。"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:32
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.h:1
+#: capplets/mouse/mate-mouse-properties.ui:963
+#: capplets/mouse/mate-settings-mouse.desktop.in:3
 msgid "Mouse"
 msgstr "鼠标"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:33
+#: capplets/mouse/mate-mouse-properties.ui:980
 msgid "Enable _touchpad"
 msgstr "启用触摸板(_T)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:34
+#: capplets/mouse/mate-mouse-properties.ui:1028
 msgid "Disable touchpad _while typing"
 msgstr "在输入时禁用触摸板(_W)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:35
+#: capplets/mouse/mate-mouse-properties.ui:1055
 msgid "Enable _mouse clicks with touchpad"
 msgstr "启用触摸板的鼠标点击(_M)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:36
+#: capplets/mouse/mate-mouse-properties.ui:1091
 msgid "Two-finger click emulation:"
 msgstr "双指单击模拟："
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:37
+#: capplets/mouse/mate-mouse-properties.ui:1131
 msgid "Three-finger click emulation:"
 msgstr "三指单击模拟："
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:38
+#: capplets/mouse/mate-mouse-properties.ui:1155
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr "警告：多点手势模拟可能会禁用软件按钮"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:39
+#: capplets/mouse/mate-mouse-properties.ui:1186
 msgid "Scrolling"
 msgstr "滚动"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:40
+#: capplets/mouse/mate-mouse-properties.ui:1206
 msgid "_Vertical edge scrolling"
 msgstr "垂直边界滚动(_V)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:41
+#: capplets/mouse/mate-mouse-properties.ui:1232
 msgid "H_orizontal edge scrolling"
 msgstr "水平边界滚动(_O)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:42
+#: capplets/mouse/mate-mouse-properties.ui:1258
 msgid "V_ertical two-finger scrolling"
 msgstr "垂直双指滚动(_E)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:43
+#: capplets/mouse/mate-mouse-properties.ui:1284
 msgid "Hor_izontal two-finger scrolling"
 msgstr "水平双指滚动(_I)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:44
+#: capplets/mouse/mate-mouse-properties.ui:1310
 msgid "Enable _natural scrolling"
 msgstr "启用自然滚动 (_N)"
 
-#: ../capplets/mouse/mate-mouse-properties.ui.h:45
+#: capplets/mouse/mate-mouse-properties.ui:1551
 msgid "Touchpad"
 msgstr "触摸板"
 
-#: ../capplets/mouse/mate-settings-mouse.desktop.in.h:2
+#: capplets/mouse/mate-settings-mouse.desktop.in:4
 msgid "Set your mouse preferences"
 msgstr "设置鼠标首选项"
 
-#: ../capplets/network/mate-network-properties.desktop.in.h:1
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/mouse/mate-settings-mouse.desktop.in:7
+msgid "input-mouse"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/mouse/mate-settings-mouse.desktop.in:13
+msgid "mate-control-center;MATE;mouse;preferences;"
+msgstr ""
+
+#: capplets/network/mate-network-properties.desktop.in:3
 msgid "Network Proxy"
 msgstr "网络代理"
 
-#: ../capplets/network/mate-network-properties.desktop.in.h:2
+#: capplets/network/mate-network-properties.desktop.in:4
 msgid "Set your network proxy preferences"
 msgstr "设置您的网络代理首选项"
 
-#: ../capplets/network/mate-network-properties.ui.h:1
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/network/mate-network-properties.desktop.in:7
+msgid "network-server"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/network/mate-network-properties.desktop.in:13
+msgid "mate-control-center;MATE;network;http;socks;proxy;"
+msgstr ""
+
+#: capplets/network/mate-network-properties.ui:34
 msgid "Network Proxy Preferences"
 msgstr "网络代理首选项"
 
-#: ../capplets/network/mate-network-properties.ui.h:2
+#: capplets/network/mate-network-properties.ui:113
 msgid "<b>Di_rect internet connection</b>"
 msgstr "<b>直接连接到互联网(_R)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:3
+#: capplets/network/mate-network-properties.ui:150
 msgid "<b>_Manual proxy configuration</b>"
 msgstr "<b>手动配置代理(_M)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:4
+#: capplets/network/mate-network-properties.ui:238
+#: capplets/network/mate-network-properties.ui:253
+#: capplets/network/mate-network-properties.ui:268
+#: capplets/network/mate-network-properties.ui:283
 msgid "Port:"
 msgstr "端口："
 
-#: ../capplets/network/mate-network-properties.ui.h:5
+#: capplets/network/mate-network-properties.ui:363
 msgid "_Details"
 msgstr "细节(_D)"
 
-#: ../capplets/network/mate-network-properties.ui.h:6
+#: capplets/network/mate-network-properties.ui:379
 msgid "H_TTP proxy:"
 msgstr "H_TTP 代理："
 
-#: ../capplets/network/mate-network-properties.ui.h:7
+#: capplets/network/mate-network-properties.ui:393
 msgid "_Secure HTTP proxy:"
 msgstr "安全 HTTP 代理(_S)："
 
-#: ../capplets/network/mate-network-properties.ui.h:8
+#: capplets/network/mate-network-properties.ui:407
 msgid "_FTP proxy:"
 msgstr "_FTP 代理："
 
-#: ../capplets/network/mate-network-properties.ui.h:9
+#: capplets/network/mate-network-properties.ui:421
 msgid "S_ocks host:"
 msgstr "S_OCKS 主机："
 
-#: ../capplets/network/mate-network-properties.ui.h:10
+#: capplets/network/mate-network-properties.ui:479
 msgid "<b>_Automatic proxy configuration</b>"
 msgstr "<b>自动配置代理(_A)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:11
+#: capplets/network/mate-network-properties.ui:517
 msgid "Autoconfiguration _URL:"
 msgstr "自动配置 URL(_U)："
 
-#: ../capplets/network/mate-network-properties.ui.h:12
+#: capplets/network/mate-network-properties.ui:574
 msgid "Proxy Configuration"
 msgstr "代理服务器配置"
 
-#: ../capplets/network/mate-network-properties.ui.h:13
+#: capplets/network/mate-network-properties.ui:592
 msgid "Ignore Host List"
 msgstr "忽略主机列表"
 
-#: ../capplets/network/mate-network-properties.ui.h:14
+#: capplets/network/mate-network-properties.ui:730
 msgid "Ignored Hosts"
 msgstr "忽略的主机"
 
-#: ../capplets/network/mate-network-properties.ui.h:15
+#: capplets/network/mate-network-properties.ui:758
 msgid "HTTP Proxy Details"
 msgstr "HTTP 代理细节"
 
-#: ../capplets/network/mate-network-properties.ui.h:16
+#: capplets/network/mate-network-properties.ui:829
 msgid "<b>_Use authentication</b>"
 msgstr "<b>需要身份验证(_U)</b>"
 
-#: ../capplets/network/mate-network-properties.ui.h:17
+#: capplets/network/mate-network-properties.ui:869
 msgid "U_sername:"
 msgstr "用户名(_S)："
 
-#: ../capplets/network/mate-network-properties.ui.h:18
+#: capplets/network/mate-network-properties.ui:908
 msgid "_Password:"
 msgstr "密码(_P)："
 
-#: ../capplets/windows/mate-metacity-support.c:40
+#: capplets/windows/mate-metacity-support.c:40
 msgid "Metacity Preferences"
 msgstr "Metacity 首选项"
 
-#. Compositing manager
-#: ../capplets/windows/mate-metacity-support.c:51
-#: ../capplets/windows/mate-window-properties.c:395
+#: capplets/windows/mate-metacity-support.c:51
+#: capplets/windows/window-properties.ui:175
 msgid "Compositing Manager"
 msgstr "混成管理器"
 
-#: ../capplets/windows/mate-metacity-support.c:58
-#: ../capplets/windows/mate-window-properties.c:402
+#: capplets/windows/mate-metacity-support.c:58
+#: capplets/windows/window-properties.ui:138
 msgid "Enable software _compositing window manager"
 msgstr "启用软件混成窗口管理器"
 
-#: ../capplets/windows/mate-window-properties.c:264
+#: capplets/windows/mate-window-properties.c:264
 msgid "The current window manager is unsupported"
 msgstr "不支持当前的窗口管理器"
 
-#. Window
-#: ../capplets/windows/mate-window-properties.c:350
-msgid "Window Preferences"
-msgstr "窗口首选项"
-
-#: ../capplets/windows/mate-window-properties.c:384
-msgid "Behaviour"
-msgstr "行为"
-
-#: ../capplets/windows/mate-window-properties.c:389
-msgid "Placement"
-msgstr "位置"
-
-#: ../capplets/windows/mate-window-properties.c:403
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "禁止按下Alt-Tab时显示缩略图"
-
-#. Titlebar buttons
-#: ../capplets/windows/mate-window-properties.c:411
-msgid "Titlebar Buttons"
-msgstr "标题栏按钮"
-
-#: ../capplets/windows/mate-window-properties.c:415
-msgid "Position:"
-msgstr "位置："
-
-#. New Windows
-#: ../capplets/windows/mate-window-properties.c:422
-msgid "New Windows"
-msgstr "新建窗口"
-
-#: ../capplets/windows/mate-window-properties.c:426
-msgid "Center _new windows"
-msgstr "新建窗口居中:(_N)"
-
-#. Window Snapping
-#: ../capplets/windows/mate-window-properties.c:431
-msgid "Window Snapping"
-msgstr "窗口吸附"
-
-#: ../capplets/windows/mate-window-properties.c:435
-msgid "Enable window _tiling"
-msgstr "启用窗口平铺(_T)"
-
-#. Window Selection
-#: ../capplets/windows/mate-window-properties.c:440
-msgid "Window Selection"
-msgstr "窗口选择"
-
-#: ../capplets/windows/mate-window-properties.c:450
-msgid "_Select windows when the mouse moves over them"
-msgstr "鼠标移动到窗口之上时选中该窗口(_S)"
-
-#: ../capplets/windows/mate-window-properties.c:453
-msgid "U_nselect windows when the mouse leaves them"
-msgstr "鼠标离开窗口时取消窗口选中(_N)"
-
-#: ../capplets/windows/mate-window-properties.c:457
-msgid "_Raise selected windows after an interval"
-msgstr "一段间隔后提升选中窗口(_R)"
-
-#: ../capplets/windows/mate-window-properties.c:464
-msgid "_Interval before raising:"
-msgstr "提升前延时(_I)："
-
-#: ../capplets/windows/mate-window-properties.c:468
-msgid "seconds"
-msgstr "秒"
-
-#. Titlebar Action
-#: ../capplets/windows/mate-window-properties.c:479
-msgid "Titlebar Action"
-msgstr "标题栏动作"
-
-#: ../capplets/windows/mate-window-properties.c:483
-msgid "_Double-click titlebar to perform this action:"
-msgstr "双击标题栏执行此操作(_D)："
-
-#. Movement Key
-#: ../capplets/windows/mate-window-properties.c:491
-msgid "Movement Key"
-msgstr "移动按键"
-
-#: ../capplets/windows/mate-window-properties.c:497
-msgid "To move a window, press-and-hold this key then grab the window:"
-msgstr "要移动窗口，按住此键然后拖曳窗口："
-
-#: ../capplets/windows/mate-window-properties.c:517
-#: ../libwindow-settings/marco-window-manager.c:394
-msgid "Roll up"
-msgstr "卷起"
-
-#: ../capplets/windows/mate-window-properties.c:518
-#: ../libwindow-settings/marco-window-manager.c:395
-msgid "Maximize"
-msgstr "最大化"
-
-#: ../capplets/windows/mate-window-properties.c:519
-#: ../libwindow-settings/marco-window-manager.c:396
-msgid "Maximize Horizontally"
-msgstr "水平最大化"
-
-#: ../capplets/windows/mate-window-properties.c:520
-#: ../libwindow-settings/marco-window-manager.c:397
-msgid "Maximize Vertically"
-msgstr "垂直最大化"
-
-#: ../capplets/windows/mate-window-properties.c:521
-#: ../libwindow-settings/marco-window-manager.c:398
-msgid "Minimize"
-msgstr "最小化"
-
-#: ../capplets/windows/mate-window-properties.c:522
-#: ../libwindow-settings/marco-window-manager.c:399
-msgid "None"
-msgstr "无"
-
-#: ../capplets/windows/mate-window-properties.c:723
+#: capplets/windows/mate-window-properties.c:581
 msgid "_Alt"
 msgstr "_Alt"
 
-#: ../capplets/windows/mate-window-properties.c:729
+#: capplets/windows/mate-window-properties.c:587
 msgid "H_yper"
 msgstr "H_yper"
 
-#: ../capplets/windows/mate-window-properties.c:736
+#: capplets/windows/mate-window-properties.c:594
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (或“Windows 标志”)"
 
-#: ../capplets/windows/mate-window-properties.c:743
+#: capplets/windows/mate-window-properties.c:601
 msgid "_Meta"
 msgstr "_Meta"
 
-#: ../capplets/windows/mate-window-properties.desktop.in.h:1
+#: capplets/windows/mate-window-properties.desktop.in:3
 msgid "Windows"
 msgstr "窗口"
 
-#: ../capplets/windows/mate-window-properties.desktop.in.h:2
+#: capplets/windows/mate-window-properties.desktop.in:4
 msgid "Set your window properties"
 msgstr "设定您的窗口属性"
 
-#: ../capplets/time-admin/src/main.c:105
-msgid "Time and Date Manager"
-msgstr "时间和日期管理"
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/windows/mate-window-properties.desktop.in:7
+msgid "preferences-system-windows"
+msgstr ""
 
-#: ../capplets/time-admin/src/main.c:133 ../capplets/time-admin/src/main.c:175
-msgid "open file"
-msgstr "打开文件"
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/windows/mate-window-properties.desktop.in:13
+msgid "mate-control-center;MATE;window;manager;properties;marco;preferences;"
+msgstr ""
 
-#: ../capplets/time-admin/src/main.c:133
-msgid "Create pid file failed"
-msgstr "创建pid文件失败"
+#: capplets/windows/window-properties.ui:47
+msgid "Window Preferences"
+msgstr "窗口首选项"
 
-#: ../capplets/time-admin/src/main.c:142
-msgid "write file"
-msgstr "写pid文件"
+#: capplets/windows/window-properties.ui:153
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "禁止按下Alt-Tab时显示缩略图"
 
-#: ../capplets/time-admin/src/main.c:142
-msgid "write pid file failed"
-msgstr "写入pid文件失败"
+#: capplets/windows/window-properties.ui:208
+msgid "Position:"
+msgstr "位置："
 
-#: ../capplets/time-admin/src/main.c:175
-msgid "open pid file failed"
-msgstr "打开pid文件失败"
+#: capplets/windows/window-properties.ui:241
+msgid "Titlebar Buttons"
+msgstr "标题栏按钮"
 
-#: ../capplets/time-admin/src/main.c:180
-msgid "read file"
-msgstr "读pid文件"
+#: capplets/windows/window-properties.ui:294
+msgid "_Select windows when the mouse moves over them"
+msgstr "鼠标移动到窗口之上时选中该窗口(_S)"
 
-#: ../capplets/time-admin/src/main.c:180
-msgid "read pid file failed"
-msgstr "读pid文件失败"
+#: capplets/windows/window-properties.ui:319
+msgid "U_nselect windows when the mouse leaves them"
+msgstr "鼠标离开窗口时取消窗口选中(_N)"
 
-#: ../capplets/time-admin/src/main.c:205
+#: capplets/windows/window-properties.ui:340
+msgid "_Raise selected windows after an interval"
+msgstr "一段间隔后提升选中窗口(_R)"
+
+#: capplets/windows/window-properties.ui:365
+msgid "_Interval before raising:"
+msgstr "提升前延时(_I)："
+
+#: capplets/windows/window-properties.ui:392
+msgid "seconds"
+msgstr "秒"
+
+#: capplets/windows/window-properties.ui:430
+msgid "Window Selection"
+msgstr "窗口选择"
+
+#: capplets/windows/window-properties.ui:463
+msgid "_Double-click titlebar to perform this action:"
+msgstr "双击标题栏执行此操作(_D)："
+
+#: capplets/windows/window-properties.ui:477
+#: libwindow-settings/marco-window-manager.c:394
+msgid "Roll up"
+msgstr "卷起"
+
+#: capplets/windows/window-properties.ui:478
+#: libwindow-settings/marco-window-manager.c:395
+msgid "Maximize"
+msgstr "最大化"
+
+#: capplets/windows/window-properties.ui:479
+#: libwindow-settings/marco-window-manager.c:396
+msgid "Maximize Horizontally"
+msgstr "水平最大化"
+
+#: capplets/windows/window-properties.ui:480
+#: libwindow-settings/marco-window-manager.c:397
+msgid "Maximize Vertically"
+msgstr "垂直最大化"
+
+#: capplets/windows/window-properties.ui:481
+#: libwindow-settings/marco-window-manager.c:398
+msgid "Minimize"
+msgstr "最小化"
+
+#: capplets/windows/window-properties.ui:482
+#: libwindow-settings/marco-window-manager.c:399
+msgid "None"
+msgstr "无"
+
+#: capplets/windows/window-properties.ui:501
+msgid "Titlebar Action"
+msgstr "标题栏动作"
+
+#: capplets/windows/window-properties.ui:535
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr "要移动窗口，按住此键然后拖曳窗口："
+
+#: capplets/windows/window-properties.ui:568
+msgid "Movement Key"
+msgstr "移动按键"
+
+#: capplets/windows/window-properties.ui:590
+msgid "Behaviour"
+msgstr "行为"
+
+#: capplets/windows/window-properties.ui:620
+msgid "Center _new windows"
+msgstr "新建窗口居中:(_N)"
+
+#: capplets/windows/window-properties.ui:635
+msgid "New Windows"
+msgstr "新建窗口"
+
+#: capplets/windows/window-properties.ui:661
+msgid "Enable window _tiling"
+msgstr "启用窗口平铺(_T)"
+
+#: capplets/windows/window-properties.ui:676
+msgid "Window Snapping"
+msgstr "窗口吸附"
+
+#: capplets/windows/window-properties.ui:698
+msgid "Placement"
+msgstr "位置"
+
+#: capplets/time-admin/src/main.c:34
 #, c-format
 msgctxt "timezone loc"
 msgid "%s"
 msgstr "%s"
 
-#: ../capplets/time-admin/src/main.c:221
-msgid "Time Zone:"
-msgstr "时区:"
+#: capplets/time-admin/src/main.c:190 capplets/time-admin/src/main.c:233
+msgid "open file"
+msgstr "打开文件"
 
-#: ../capplets/time-admin/src/main.c:236
-msgid "Ntp Sync:"
-msgstr "Ntp 同步:"
+#: capplets/time-admin/src/main.c:190
+msgid "Create pid file failed"
+msgstr "创建pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:287
-#: ../capplets/time-admin/src/time-tool.c:280
-msgid "Set Time"
-msgstr "设置时间"
+#: capplets/time-admin/src/main.c:199
+msgid "write file"
+msgstr "写pid文件"
 
-#: ../capplets/time-admin/src/main.c:322
-msgid "Set Date"
-msgstr "设置日期"
+#: capplets/time-admin/src/main.c:199
+msgid "write pid file failed"
+msgstr "写入pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:333
-#: ../capplets/time-admin/src/time-zone.c:449
-msgid "_Close"
-msgstr "关闭(_C)"
+#: capplets/time-admin/src/main.c:233
+msgid "open pid file failed"
+msgstr "打开pid文件失败"
 
-#: ../capplets/time-admin/src/main.c:355
-msgid "_Save"
-msgstr "保存(_S)"
+#: capplets/time-admin/src/main.c:238
+msgid "read file"
+msgstr "读pid文件"
 
-#: ../capplets/time-admin/src/main.c:398
+#: capplets/time-admin/src/main.c:238
+msgid "read pid file failed"
+msgstr "读pid文件失败"
+
+#: capplets/time-admin/src/main.c:264
 msgid "g_bus_get_sync"
 msgstr ""
 
-#: ../capplets/time-admin/src/main.c:411
+#: capplets/time-admin/src/main.c:277
 msgid "g_bus_proxy_new"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-tool.c:124
+#: capplets/time-admin/src/time-admin.ui:58
+msgid "Time and Date Manager"
+msgstr "时间和日期管理"
+
+#: capplets/time-admin/src/time-admin.ui:96
+msgid "NTP sync"
+msgstr ""
+
+#: capplets/time-admin/src/time-admin.ui:123
+msgid "Time zone"
+msgstr "时区"
+
+#: capplets/time-admin/src/time-admin.ui:161
+msgid "Click the button to edit time zone."
+msgstr ""
+
+#: capplets/time-admin/src/time-admin.ui:283
+msgid "Time"
+msgstr "时间"
+
+#: capplets/time-admin/src/time-admin.ui:329
+msgid "Date"
+msgstr "日期"
+
+#: capplets/time-admin/src/time-admin.ui:368
+msgid "Click to save the specified date and time."
+msgstr ""
+
+#: capplets/time-admin/src/time-admin.ui:370
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: capplets/time-admin/src/time-tool.c:135
 msgid "GetNtpState"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-tool.c:187
+#: capplets/time-admin/src/time-tool.c:198
 msgid "Set time zone"
 msgstr "设置时区"
 
-#: ../capplets/time-admin/src/time-tool.c:220
-#: ../capplets/time-admin/src/time-tool.c:264
+#: capplets/time-admin/src/time-tool.c:230
+#: capplets/time-admin/src/time-tool.c:277
 msgid "Set Ntp sync"
 msgstr "设置 Ntp 同步"
 
-#: ../capplets/time-admin/src/time-tool.c:280
-msgid "NTP synchronization has been started, the modification is invalid"
-msgstr "NTP 同步已启动，修改无效"
-
-#: ../capplets/time-admin/src/time-share.c:118
+#: capplets/time-admin/src/time-share.c:47
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr "已设置网络时间同步。 已禁用手动设置时间/日期。"
 
-#: ../capplets/time-admin/src/time-zone.c:264
+#: capplets/time-admin/src/time-zone.c:277
 #, c-format
 msgctxt "timezone loc"
 msgid "%s, %s"
 msgstr "%s %s"
 
-#: ../capplets/time-admin/src/time-zone.c:291
+#: capplets/time-admin/src/time-zone.c:304
 msgid "UTC%:::z"
 msgstr "UTC%:::z"
 
-#: ../capplets/time-admin/src/time-zone.c:296
+#: capplets/time-admin/src/time-zone.c:309
 msgid "%R"
 msgstr "%R"
 
-#: ../capplets/time-admin/src/time-zone.c:360
+#: capplets/time-admin/src/time-zone.c:378
 msgid "Time Zone"
 msgstr "时区"
 
-#: ../capplets/time-admin/src/time-zone.c:440
+#: capplets/time-admin/src/time-zone.c:465
 msgid "Time Zone Selection"
 msgstr "时区选择"
 
-#: ../capplets/time-admin/src/time-zone.c:457
+#: capplets/time-admin/src/time-zone.c:480
 msgid "Con_firm"
-msgstr ""
+msgstr "确认"
 
-#. * This program is free software: you can redistribute it and/or modify
-#. * it under the terms of the GNU General Public License as published by
-#. * the Free Software Foundation, either version 3 of the License, or
-#. * (at your option) any later version.
-#. *
-#. * This program is distributed in the hope that it will be useful,
-#. * but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. * GNU General Public License for more details.
-#. *
-#. * You should have received a copy of the GNU General Public License
-#. * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#. *
-#. * Copyright (C) 2019 MATE Developers
-#. *
-#. * These are the timezone names from /usr/share/zoneinfo/zone.tab.
-#. sed -e '/^#/d' /usr/share/zoneinfo/zone.tab |          awk '{ print
-#. "N_(\""$3"\");" }' | sort > time-zones.h
-#. * Further information is available on <https://www.iana.org/time-zones/>.
-#. *
-#. * We only place them here so gettext picks them up for translation.
-#. * Don't include in any C files.
-#: ../capplets/time-admin/src/time-zones.h:27
+#: capplets/time-admin/src/time-zones.h:27
 msgid "Africa/Abidjan"
 msgstr "非洲/阿比让"
 
-#: ../capplets/time-admin/src/time-zones.h:28
+#: capplets/time-admin/src/time-zones.h:28
 msgid "Africa/Accra"
 msgstr "非洲/阿克拉"
 
-#: ../capplets/time-admin/src/time-zones.h:29
+#: capplets/time-admin/src/time-zones.h:29
 msgid "Africa/Addis_Ababa"
 msgstr "非洲/亚的斯亚贝巴"
 
-#: ../capplets/time-admin/src/time-zones.h:30
+#: capplets/time-admin/src/time-zones.h:30
 msgid "Africa/Algiers"
 msgstr "非洲/阿尔及尔"
 
-#: ../capplets/time-admin/src/time-zones.h:31
+#: capplets/time-admin/src/time-zones.h:31
 msgid "Africa/Asmara"
 msgstr "非洲/阿斯马拉"
 
-#: ../capplets/time-admin/src/time-zones.h:32
+#: capplets/time-admin/src/time-zones.h:32
 msgid "Africa/Bamako"
 msgstr "非洲/巴马科"
 
-#: ../capplets/time-admin/src/time-zones.h:33
+#: capplets/time-admin/src/time-zones.h:33
 msgid "Africa/Bangui"
 msgstr "非洲/班吉"
 
-#: ../capplets/time-admin/src/time-zones.h:34
+#: capplets/time-admin/src/time-zones.h:34
 msgid "Africa/Banjul"
 msgstr "非洲/班珠"
 
-#: ../capplets/time-admin/src/time-zones.h:35
+#: capplets/time-admin/src/time-zones.h:35
 msgid "Africa/Bissau"
 msgstr "非洲/比绍"
 
-#: ../capplets/time-admin/src/time-zones.h:36
+#: capplets/time-admin/src/time-zones.h:36
 msgid "Africa/Blantyre"
 msgstr "非洲/布兰太尔"
 
-#: ../capplets/time-admin/src/time-zones.h:37
+#: capplets/time-admin/src/time-zones.h:37
 msgid "Africa/Brazzaville"
 msgstr "非洲/布拉扎维"
 
-#: ../capplets/time-admin/src/time-zones.h:38
+#: capplets/time-admin/src/time-zones.h:38
 msgid "Africa/Bujumbura"
 msgstr "非洲/布琼布拉"
 
-#: ../capplets/time-admin/src/time-zones.h:39
+#: capplets/time-admin/src/time-zones.h:39
 msgid "Africa/Cairo"
 msgstr "非洲/开罗"
 
-#: ../capplets/time-admin/src/time-zones.h:40
+#: capplets/time-admin/src/time-zones.h:40
 msgid "Africa/Casablanca"
 msgstr "非洲/卡萨布兰卡"
 
-#: ../capplets/time-admin/src/time-zones.h:41
+#: capplets/time-admin/src/time-zones.h:41
 msgid "Africa/Ceuta"
 msgstr "非洲/休达"
 
-#: ../capplets/time-admin/src/time-zones.h:42
+#: capplets/time-admin/src/time-zones.h:42
 msgid "Africa/Conakry"
 msgstr "非洲/科纳克里"
 
-#: ../capplets/time-admin/src/time-zones.h:43
+#: capplets/time-admin/src/time-zones.h:43
 msgid "Africa/Dakar"
 msgstr "非洲/达喀尔"
 
-#: ../capplets/time-admin/src/time-zones.h:44
+#: capplets/time-admin/src/time-zones.h:44
 msgid "Africa/Dar_es_Salaam"
 msgstr "非洲/达累斯萨拉姆"
 
-#: ../capplets/time-admin/src/time-zones.h:45
+#: capplets/time-admin/src/time-zones.h:45
 msgid "Africa/Djibouti"
 msgstr "非洲/吉布提"
 
-#: ../capplets/time-admin/src/time-zones.h:46
+#: capplets/time-admin/src/time-zones.h:46
 msgid "Africa/Douala"
 msgstr "非洲/杜阿拉"
 
-#: ../capplets/time-admin/src/time-zones.h:47
+#: capplets/time-admin/src/time-zones.h:47
 msgid "Africa/El_Aaiun"
 msgstr "非洲/阿尤恩"
 
-#: ../capplets/time-admin/src/time-zones.h:48
+#: capplets/time-admin/src/time-zones.h:48
 msgid "Africa/Freetown"
 msgstr "非洲/弗里敦"
 
-#: ../capplets/time-admin/src/time-zones.h:49
+#: capplets/time-admin/src/time-zones.h:49
 msgid "Africa/Gaborone"
 msgstr "非洲/哈博罗内"
 
-#: ../capplets/time-admin/src/time-zones.h:50
+#: capplets/time-admin/src/time-zones.h:50
 msgid "Africa/Harare"
 msgstr "非洲/哈拉雷"
 
-#: ../capplets/time-admin/src/time-zones.h:51
+#: capplets/time-admin/src/time-zones.h:51
 msgid "Africa/Johannesburg"
 msgstr "非洲/约翰内斯堡"
 
-#: ../capplets/time-admin/src/time-zones.h:52
+#: capplets/time-admin/src/time-zones.h:52
 msgid "Africa/Juba"
 msgstr "非洲/朱巴"
 
-#: ../capplets/time-admin/src/time-zones.h:53
+#: capplets/time-admin/src/time-zones.h:53
 msgid "Africa/Kampala"
 msgstr "非洲/坎帕拉"
 
-#: ../capplets/time-admin/src/time-zones.h:54
+#: capplets/time-admin/src/time-zones.h:54
 msgid "Africa/Khartoum"
 msgstr "非洲/喀土穆"
 
-#: ../capplets/time-admin/src/time-zones.h:55
+#: capplets/time-admin/src/time-zones.h:55
 msgid "Africa/Kigali"
 msgstr "非洲/基加利"
 
-#: ../capplets/time-admin/src/time-zones.h:56
+#: capplets/time-admin/src/time-zones.h:56
 msgid "Africa/Kinshasa"
 msgstr "非洲/金沙萨"
 
-#: ../capplets/time-admin/src/time-zones.h:57
+#: capplets/time-admin/src/time-zones.h:57
 msgid "Africa/Lagos"
 msgstr "非洲/拉各斯"
 
-#: ../capplets/time-admin/src/time-zones.h:58
+#: capplets/time-admin/src/time-zones.h:58
 msgid "Africa/Libreville"
 msgstr "非洲/利伯维尔"
 
-#: ../capplets/time-admin/src/time-zones.h:59
+#: capplets/time-admin/src/time-zones.h:59
 msgid "Africa/Lome"
 msgstr "非洲/洛美"
 
-#: ../capplets/time-admin/src/time-zones.h:60
+#: capplets/time-admin/src/time-zones.h:60
 msgid "Africa/Luanda"
 msgstr "非洲/罗安达"
 
-#: ../capplets/time-admin/src/time-zones.h:61
+#: capplets/time-admin/src/time-zones.h:61
 msgid "Africa/Lubumbashi"
 msgstr "非洲/卢本巴希"
 
-#: ../capplets/time-admin/src/time-zones.h:62
+#: capplets/time-admin/src/time-zones.h:62
 msgid "Africa/Lusaka"
 msgstr "非洲/卢萨卡"
 
-#: ../capplets/time-admin/src/time-zones.h:63
+#: capplets/time-admin/src/time-zones.h:63
 msgid "Africa/Malabo"
 msgstr "非洲/马拉博"
 
-#: ../capplets/time-admin/src/time-zones.h:64
+#: capplets/time-admin/src/time-zones.h:64
 msgid "Africa/Maputo"
 msgstr "非洲/马普托"
 
-#: ../capplets/time-admin/src/time-zones.h:65
+#: capplets/time-admin/src/time-zones.h:65
 msgid "Africa/Maseru"
 msgstr "非洲/马塞卢"
 
-#: ../capplets/time-admin/src/time-zones.h:66
+#: capplets/time-admin/src/time-zones.h:66
 msgid "Africa/Mbabane"
 msgstr "非洲/姆巴巴内"
 
-#: ../capplets/time-admin/src/time-zones.h:67
+#: capplets/time-admin/src/time-zones.h:67
 msgid "Africa/Mogadishu"
 msgstr "非洲/摩加迪沙"
 
-#: ../capplets/time-admin/src/time-zones.h:68
+#: capplets/time-admin/src/time-zones.h:68
 msgid "Africa/Monrovia"
 msgstr "非洲/蒙罗维亚"
 
-#: ../capplets/time-admin/src/time-zones.h:69
+#: capplets/time-admin/src/time-zones.h:69
 msgid "Africa/Nairobi"
 msgstr "非洲/内罗比"
 
-#: ../capplets/time-admin/src/time-zones.h:70
+#: capplets/time-admin/src/time-zones.h:70
 msgid "Africa/Ndjamena"
 msgstr "非洲/恩贾梅纳"
 
-#: ../capplets/time-admin/src/time-zones.h:71
+#: capplets/time-admin/src/time-zones.h:71
 msgid "Africa/Niamey"
 msgstr "非洲/尼亚美"
 
-#: ../capplets/time-admin/src/time-zones.h:72
+#: capplets/time-admin/src/time-zones.h:72
 msgid "Africa/Nouakchott"
 msgstr "非洲/努瓦克肖特"
 
-#: ../capplets/time-admin/src/time-zones.h:73
+#: capplets/time-admin/src/time-zones.h:73
 msgid "Africa/Ouagadougou"
 msgstr "非洲/瓦加杜古"
 
-#: ../capplets/time-admin/src/time-zones.h:74
+#: capplets/time-admin/src/time-zones.h:74
 msgid "Africa/Porto-Novo"
 msgstr "非洲/波多诺伏"
 
-#: ../capplets/time-admin/src/time-zones.h:75
+#: capplets/time-admin/src/time-zones.h:75
 msgid "Africa/Sao_Tome"
 msgstr "非洲/圣多美"
 
-#: ../capplets/time-admin/src/time-zones.h:76
+#: capplets/time-admin/src/time-zones.h:76
 msgid "Africa/Tripoli"
 msgstr "非洲/的黎波里"
 
-#: ../capplets/time-admin/src/time-zones.h:77
+#: capplets/time-admin/src/time-zones.h:77
 msgid "Africa/Tunis"
 msgstr "非洲/突尼斯"
 
-#: ../capplets/time-admin/src/time-zones.h:78
+#: capplets/time-admin/src/time-zones.h:78
 msgid "Africa/Windhoek"
 msgstr "非洲/温得和克"
 
-#: ../capplets/time-admin/src/time-zones.h:79
+#: capplets/time-admin/src/time-zones.h:79
 msgid "America/Adak"
 msgstr "美洲/阿达克"
 
-#: ../capplets/time-admin/src/time-zones.h:80
+#: capplets/time-admin/src/time-zones.h:80
 msgid "America/Anchorage"
 msgstr "美洲/安克雷奇"
 
-#: ../capplets/time-admin/src/time-zones.h:81
+#: capplets/time-admin/src/time-zones.h:81
 msgid "America/Anguilla"
 msgstr "美洲/安圭拉"
 
-#: ../capplets/time-admin/src/time-zones.h:82
+#: capplets/time-admin/src/time-zones.h:82
 msgid "America/Antigua"
 msgstr "美洲/安提瓜"
 
-#: ../capplets/time-admin/src/time-zones.h:83
+#: capplets/time-admin/src/time-zones.h:83
 msgid "America/Araguaina"
 msgstr "美洲/阿拉瓜伊那"
 
-#: ../capplets/time-admin/src/time-zones.h:84
+#: capplets/time-admin/src/time-zones.h:84
 msgid "America/Argentina/Buenos_Aires"
 msgstr "美洲/阿根廷/布宜诺斯艾利斯"
 
-#: ../capplets/time-admin/src/time-zones.h:85
+#: capplets/time-admin/src/time-zones.h:85
 msgid "America/Argentina/Catamarca"
 msgstr "美洲/阿根廷/卡塔马卡"
 
-#: ../capplets/time-admin/src/time-zones.h:86
+#: capplets/time-admin/src/time-zones.h:86
 msgid "America/Argentina/Cordoba"
 msgstr "美洲/阿根廷/科尔多瓦"
 
-#: ../capplets/time-admin/src/time-zones.h:87
+#: capplets/time-admin/src/time-zones.h:87
 msgid "America/Argentina/Jujuy"
 msgstr "美洲/阿根廷/胡惠"
 
-#: ../capplets/time-admin/src/time-zones.h:88
+#: capplets/time-admin/src/time-zones.h:88
 msgid "America/Argentina/La_Rioja"
 msgstr "美洲/阿根廷/拉里奥哈"
 
-#: ../capplets/time-admin/src/time-zones.h:89
+#: capplets/time-admin/src/time-zones.h:89
 msgid "America/Argentina/Mendoza"
 msgstr "美洲/阿根廷/门多萨"
 
-#: ../capplets/time-admin/src/time-zones.h:90
+#: capplets/time-admin/src/time-zones.h:90
 msgid "America/Argentina/Rio_Gallegos"
 msgstr "美洲∕阿根廷∕里奥加耶戈斯"
 
-#: ../capplets/time-admin/src/time-zones.h:91
+#: capplets/time-admin/src/time-zones.h:91
 msgid "America/Argentina/Salta"
 msgstr "美洲/阿根廷/萨尔塔"
 
-#: ../capplets/time-admin/src/time-zones.h:92
+#: capplets/time-admin/src/time-zones.h:92
 msgid "America/Argentina/San_Juan"
 msgstr "美洲/阿根廷/圣胡安"
 
-#: ../capplets/time-admin/src/time-zones.h:93
+#: capplets/time-admin/src/time-zones.h:93
 msgid "America/Argentina/San_Luis"
 msgstr "美洲/阿根廷/圣路易斯"
 
-#: ../capplets/time-admin/src/time-zones.h:94
+#: capplets/time-admin/src/time-zones.h:94
 msgid "America/Argentina/Tucuman"
 msgstr "美洲/阿根廷/图库曼"
 
-#: ../capplets/time-admin/src/time-zones.h:95
+#: capplets/time-admin/src/time-zones.h:95
 msgid "America/Argentina/Ushuaia"
 msgstr "美洲/阿根廷/乌斯怀亚"
 
-#: ../capplets/time-admin/src/time-zones.h:96
+#: capplets/time-admin/src/time-zones.h:96
 msgid "America/Aruba"
 msgstr "美洲/阿鲁巴"
 
-#: ../capplets/time-admin/src/time-zones.h:97
+#: capplets/time-admin/src/time-zones.h:97
 msgid "America/Asuncion"
 msgstr "美洲/阿孙西翁"
 
-#: ../capplets/time-admin/src/time-zones.h:98
+#: capplets/time-admin/src/time-zones.h:98
 msgid "America/Atikokan"
 msgstr "美洲∕阿蒂科肯"
 
-#: ../capplets/time-admin/src/time-zones.h:99
+#: capplets/time-admin/src/time-zones.h:99
 msgid "America/Bahia"
 msgstr "美洲/巴伊亚"
 
-#: ../capplets/time-admin/src/time-zones.h:100
+#: capplets/time-admin/src/time-zones.h:100
 msgid "America/Bahia_Banderas"
 msgstr "美洲/巴伊亚_班德拉斯"
 
-#: ../capplets/time-admin/src/time-zones.h:101
+#: capplets/time-admin/src/time-zones.h:101
 msgid "America/Barbados"
 msgstr "美洲/巴巴多斯"
 
-#: ../capplets/time-admin/src/time-zones.h:102
+#: capplets/time-admin/src/time-zones.h:102
 msgid "America/Belem"
 msgstr "美洲/贝伦"
 
-#: ../capplets/time-admin/src/time-zones.h:103
+#: capplets/time-admin/src/time-zones.h:103
 msgid "America/Belize"
 msgstr "美洲/伯利茲"
 
-#: ../capplets/time-admin/src/time-zones.h:104
+#: capplets/time-admin/src/time-zones.h:104
 msgid "America/Blanc-Sablon"
 msgstr "美洲∕布朗萨布隆"
 
-#: ../capplets/time-admin/src/time-zones.h:105
+#: capplets/time-admin/src/time-zones.h:105
 msgid "America/Boa_Vista"
 msgstr "美洲/博阿维斯塔"
 
-#: ../capplets/time-admin/src/time-zones.h:106
+#: capplets/time-admin/src/time-zones.h:106
 msgid "America/Bogota"
 msgstr "美洲/波哥大"
 
-#: ../capplets/time-admin/src/time-zones.h:107
+#: capplets/time-admin/src/time-zones.h:107
 msgid "America/Boise"
 msgstr "美洲/博伊西"
 
-#: ../capplets/time-admin/src/time-zones.h:108
+#: capplets/time-admin/src/time-zones.h:108
 msgid "America/Cambridge_Bay"
 msgstr "美洲/剑桥湾"
 
-#: ../capplets/time-admin/src/time-zones.h:109
+#: capplets/time-admin/src/time-zones.h:109
 msgid "America/Campo_Grande"
 msgstr "美洲/大坎普"
 
-#: ../capplets/time-admin/src/time-zones.h:110
+#: capplets/time-admin/src/time-zones.h:110
 msgid "America/Cancun"
 msgstr "美洲/坎昆"
 
-#: ../capplets/time-admin/src/time-zones.h:111
+#: capplets/time-admin/src/time-zones.h:111
 msgid "America/Caracas"
 msgstr "美洲/加拉加斯"
 
-#: ../capplets/time-admin/src/time-zones.h:112
+#: capplets/time-admin/src/time-zones.h:112
 msgid "America/Cayenne"
 msgstr "美洲/卡宴"
 
-#: ../capplets/time-admin/src/time-zones.h:113
+#: capplets/time-admin/src/time-zones.h:113
 msgid "America/Cayman"
 msgstr "美洲/开曼"
 
-#: ../capplets/time-admin/src/time-zones.h:114
+#: capplets/time-admin/src/time-zones.h:114
 msgid "America/Chicago"
 msgstr "美洲/芝加哥"
 
-#: ../capplets/time-admin/src/time-zones.h:115
+#: capplets/time-admin/src/time-zones.h:115
 msgid "America/Chihuahua"
 msgstr "美洲/奇瓦瓦"
 
-#: ../capplets/time-admin/src/time-zones.h:116
+#: capplets/time-admin/src/time-zones.h:116
 msgid "America/Costa_Rica"
 msgstr "美洲/哥斯达黎加"
 
-#: ../capplets/time-admin/src/time-zones.h:117
+#: capplets/time-admin/src/time-zones.h:117
 msgid "America/Creston"
 msgstr "美洲/克雷斯顿"
 
-#: ../capplets/time-admin/src/time-zones.h:118
+#: capplets/time-admin/src/time-zones.h:118
 msgid "America/Cuiaba"
 msgstr "美洲/库亚巴"
 
-#: ../capplets/time-admin/src/time-zones.h:119
+#: capplets/time-admin/src/time-zones.h:119
 msgid "America/Curacao"
 msgstr "美洲/库拉索岛"
 
-#: ../capplets/time-admin/src/time-zones.h:120
+#: capplets/time-admin/src/time-zones.h:120
 msgid "America/Danmarkshavn"
 msgstr "美洲/丹麦沙文"
 
-#: ../capplets/time-admin/src/time-zones.h:121
+#: capplets/time-admin/src/time-zones.h:121
 msgid "America/Dawson"
 msgstr "美洲/道森"
 
-#: ../capplets/time-admin/src/time-zones.h:122
+#: capplets/time-admin/src/time-zones.h:122
 msgid "America/Dawson_Creek"
 msgstr "美洲/道森克里克"
 
-#: ../capplets/time-admin/src/time-zones.h:123
+#: capplets/time-admin/src/time-zones.h:123
 msgid "America/Denver"
 msgstr "美洲/丹佛"
 
-#: ../capplets/time-admin/src/time-zones.h:124
+#: capplets/time-admin/src/time-zones.h:124
 msgid "America/Detroit"
 msgstr "美洲/底特律"
 
-#: ../capplets/time-admin/src/time-zones.h:125
+#: capplets/time-admin/src/time-zones.h:125
 msgid "America/Dominica"
 msgstr "美洲/多米尼加"
 
-#: ../capplets/time-admin/src/time-zones.h:126
+#: capplets/time-admin/src/time-zones.h:126
 msgid "America/Edmonton"
 msgstr "美洲/埃德蒙顿"
 
-#: ../capplets/time-admin/src/time-zones.h:127
+#: capplets/time-admin/src/time-zones.h:127
 msgid "America/Eirunepe"
 msgstr "美洲/埃鲁内佩"
 
-#: ../capplets/time-admin/src/time-zones.h:128
+#: capplets/time-admin/src/time-zones.h:128
 msgid "America/El_Salvador"
 msgstr "美洲/萨尔瓦多"
 
-#: ../capplets/time-admin/src/time-zones.h:129
+#: capplets/time-admin/src/time-zones.h:129
 msgid "America/Fortaleza"
 msgstr "美洲/福塔莱萨"
 
-#: ../capplets/time-admin/src/time-zones.h:130
+#: capplets/time-admin/src/time-zones.h:130
 msgid "America/Fort_Nelson"
 msgstr "美洲/纳尔逊堡"
 
-#: ../capplets/time-admin/src/time-zones.h:131
+#: capplets/time-admin/src/time-zones.h:131
 msgid "America/Glace_Bay"
 msgstr "美洲/格莱斯湾"
 
-#: ../capplets/time-admin/src/time-zones.h:132
+#: capplets/time-admin/src/time-zones.h:132
 msgid "America/Godthab"
 msgstr "美洲/高特哈"
 
-#: ../capplets/time-admin/src/time-zones.h:133
+#: capplets/time-admin/src/time-zones.h:133
 msgid "America/Goose_Bay"
 msgstr "美洲/古斯湾"
 
-#: ../capplets/time-admin/src/time-zones.h:134
+#: capplets/time-admin/src/time-zones.h:134
 msgid "America/Grand_Turk"
 msgstr "美洲/大特克"
 
-#: ../capplets/time-admin/src/time-zones.h:135
+#: capplets/time-admin/src/time-zones.h:135
 msgid "America/Grenada"
 msgstr "美洲/格林纳达"
 
-#: ../capplets/time-admin/src/time-zones.h:136
+#: capplets/time-admin/src/time-zones.h:136
 msgid "America/Guadeloupe"
 msgstr "美洲/瓜德卢普"
 
-#: ../capplets/time-admin/src/time-zones.h:137
+#: capplets/time-admin/src/time-zones.h:137
 msgid "America/Guatemala"
 msgstr "美洲/危地马拉"
 
-#: ../capplets/time-admin/src/time-zones.h:138
+#: capplets/time-admin/src/time-zones.h:138
 msgid "America/Guayaquil"
 msgstr "美洲/瓜亚基尔"
 
-#: ../capplets/time-admin/src/time-zones.h:139
+#: capplets/time-admin/src/time-zones.h:139
 msgid "America/Guyana"
 msgstr "美洲/圭亚那"
 
-#: ../capplets/time-admin/src/time-zones.h:140
+#: capplets/time-admin/src/time-zones.h:140
 msgid "America/Halifax"
 msgstr "美洲/哈利法克斯"
 
-#: ../capplets/time-admin/src/time-zones.h:141
+#: capplets/time-admin/src/time-zones.h:141
 msgid "America/Havana"
 msgstr "美洲/哈瓦那"
 
-#: ../capplets/time-admin/src/time-zones.h:142
+#: capplets/time-admin/src/time-zones.h:142
 msgid "America/Hermosillo"
 msgstr "美洲/哈模斯罗"
 
-#: ../capplets/time-admin/src/time-zones.h:143
+#: capplets/time-admin/src/time-zones.h:143
 msgid "America/Indiana/Indianapolis"
 msgstr "美洲/印第安纳/印第安纳波利斯"
 
-#: ../capplets/time-admin/src/time-zones.h:144
+#: capplets/time-admin/src/time-zones.h:144
 msgid "America/Indiana/Knox"
 msgstr "美洲/印第安纳/诺克斯"
 
-#: ../capplets/time-admin/src/time-zones.h:145
+#: capplets/time-admin/src/time-zones.h:145
 msgid "America/Indiana/Marengo"
 msgstr "美洲/印第安纳/马伦戈"
 
-#: ../capplets/time-admin/src/time-zones.h:146
+#: capplets/time-admin/src/time-zones.h:146
 msgid "America/Indiana/Petersburg"
 msgstr "美洲∕印第安那∕彼得斯堡"
 
-#: ../capplets/time-admin/src/time-zones.h:147
+#: capplets/time-admin/src/time-zones.h:147
 msgid "America/Indiana/Tell_City"
 msgstr "美洲∕印第安纳∕特尔城"
 
-#: ../capplets/time-admin/src/time-zones.h:148
+#: capplets/time-admin/src/time-zones.h:148
 msgid "America/Indiana/Vevay"
 msgstr "美洲/印第安那/韦韦"
 
-#: ../capplets/time-admin/src/time-zones.h:149
+#: capplets/time-admin/src/time-zones.h:149
 msgid "America/Indiana/Vincennes"
 msgstr "美洲∕印第安纳∕温森斯"
 
-#: ../capplets/time-admin/src/time-zones.h:150
+#: capplets/time-admin/src/time-zones.h:150
 msgid "America/Indiana/Winamac"
 msgstr "美洲∕印第安纳∕威纳马克"
 
-#: ../capplets/time-admin/src/time-zones.h:151
+#: capplets/time-admin/src/time-zones.h:151
 msgid "America/Inuvik"
 msgstr "美洲/伊努维克"
 
-#: ../capplets/time-admin/src/time-zones.h:152
+#: capplets/time-admin/src/time-zones.h:152
 msgid "America/Iqaluit"
 msgstr "美洲/伊卡卢伊特"
 
-#: ../capplets/time-admin/src/time-zones.h:153
+#: capplets/time-admin/src/time-zones.h:153
 msgid "America/Jamaica"
 msgstr "美洲/牙买加"
 
-#: ../capplets/time-admin/src/time-zones.h:154
+#: capplets/time-admin/src/time-zones.h:154
 msgid "America/Juneau"
 msgstr "美洲/朱诺"
 
-#: ../capplets/time-admin/src/time-zones.h:155
+#: capplets/time-admin/src/time-zones.h:155
 msgid "America/Kentucky/Louisville"
 msgstr "美洲/肯塔基/路易斯维尔"
 
-#: ../capplets/time-admin/src/time-zones.h:156
+#: capplets/time-admin/src/time-zones.h:156
 msgid "America/Kentucky/Monticello"
 msgstr "美洲/肯塔基/蒙蒂塞洛"
 
-#: ../capplets/time-admin/src/time-zones.h:157
+#: capplets/time-admin/src/time-zones.h:157
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "美洲/博内尔"
 
-#: ../capplets/time-admin/src/time-zones.h:158
+#: capplets/time-admin/src/time-zones.h:158
 msgid "America/La_Paz"
 msgstr "美洲/拉巴斯"
 
-#: ../capplets/time-admin/src/time-zones.h:159
+#: capplets/time-admin/src/time-zones.h:159
 msgid "America/Lima"
 msgstr "美洲/利马"
 
-#: ../capplets/time-admin/src/time-zones.h:160
+#: capplets/time-admin/src/time-zones.h:160
 msgid "America/Los_Angeles"
 msgstr "美洲/洛杉矶"
 
-#: ../capplets/time-admin/src/time-zones.h:161
+#: capplets/time-admin/src/time-zones.h:161
 msgid "America/Lower_Princes"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zones.h:162
+#: capplets/time-admin/src/time-zones.h:162
 msgid "America/Maceio"
 msgstr "美洲/马塞约"
 
-#: ../capplets/time-admin/src/time-zones.h:163
+#: capplets/time-admin/src/time-zones.h:163
 msgid "America/Managua"
 msgstr "美洲/马那瓜"
 
-#: ../capplets/time-admin/src/time-zones.h:164
+#: capplets/time-admin/src/time-zones.h:164
 msgid "America/Manaus"
 msgstr "美洲/马瑙斯"
 
-#: ../capplets/time-admin/src/time-zones.h:165
+#: capplets/time-admin/src/time-zones.h:165
 msgid "America/Marigot"
 msgstr "美洲∕马里戈特"
 
-#: ../capplets/time-admin/src/time-zones.h:166
+#: capplets/time-admin/src/time-zones.h:166
 msgid "America/Martinique"
 msgstr "美洲/马蒂尼克"
 
-#: ../capplets/time-admin/src/time-zones.h:167
+#: capplets/time-admin/src/time-zones.h:167
 msgid "America/Matamoros"
 msgstr "美洲/马塔莫罗斯"
 
-#: ../capplets/time-admin/src/time-zones.h:168
+#: capplets/time-admin/src/time-zones.h:168
 msgid "America/Mazatlan"
 msgstr "美洲/马萨特兰"
 
-#: ../capplets/time-admin/src/time-zones.h:169
+#: capplets/time-admin/src/time-zones.h:169
 msgid "America/Menominee"
 msgstr "美洲/梅诺米尼"
 
-#: ../capplets/time-admin/src/time-zones.h:170
+#: capplets/time-admin/src/time-zones.h:170
 msgid "America/Merida"
 msgstr "美洲/梅里达"
 
-#: ../capplets/time-admin/src/time-zones.h:171
+#: capplets/time-admin/src/time-zones.h:171
 msgid "America/Metlakatla"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zones.h:172
+#: capplets/time-admin/src/time-zones.h:172
 msgid "America/Mexico_City"
 msgstr "美洲/墨西哥城"
 
-#: ../capplets/time-admin/src/time-zones.h:173
+#: capplets/time-admin/src/time-zones.h:173
 msgid "America/Miquelon"
 msgstr "美洲/密克隆"
 
-#: ../capplets/time-admin/src/time-zones.h:174
+#: capplets/time-admin/src/time-zones.h:174
 msgid "America/Moncton"
 msgstr "美洲∕蒙克顿"
 
-#: ../capplets/time-admin/src/time-zones.h:175
+#: capplets/time-admin/src/time-zones.h:175
 msgid "America/Monterrey"
 msgstr "美洲/蒙特雷"
 
-#: ../capplets/time-admin/src/time-zones.h:176
+#: capplets/time-admin/src/time-zones.h:176
 msgid "America/Montevideo"
 msgstr "美洲/蒙特维的亚"
 
-#: ../capplets/time-admin/src/time-zones.h:177
+#: capplets/time-admin/src/time-zones.h:177
 msgid "America/Montserrat"
 msgstr "美洲/蒙塞拉特"
 
-#: ../capplets/time-admin/src/time-zones.h:178
+#: capplets/time-admin/src/time-zones.h:178
 msgid "America/Nassau"
 msgstr "美洲/拿骚"
 
-#: ../capplets/time-admin/src/time-zones.h:179
+#: capplets/time-admin/src/time-zones.h:179
 msgid "America/New_York"
 msgstr "美洲/纽约"
 
-#: ../capplets/time-admin/src/time-zones.h:180
+#: capplets/time-admin/src/time-zones.h:180
 msgid "America/Nipigon"
 msgstr "美洲/尼皮贡"
 
-#: ../capplets/time-admin/src/time-zones.h:181
+#: capplets/time-admin/src/time-zones.h:181
 msgid "America/Nome"
 msgstr "美洲/诺姆"
 
-#: ../capplets/time-admin/src/time-zones.h:182
+#: capplets/time-admin/src/time-zones.h:182
 msgid "America/Noronha"
 msgstr "美洲/诺罗尼亚"
 
-#: ../capplets/time-admin/src/time-zones.h:183
+#: capplets/time-admin/src/time-zones.h:183
 msgid "America/North_Dakota/Beulah"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zones.h:184
+#: capplets/time-admin/src/time-zones.h:184
 msgid "America/North_Dakota/Center"
 msgstr "美洲∕北达科他∕中部"
 
-#: ../capplets/time-admin/src/time-zones.h:185
+#: capplets/time-admin/src/time-zones.h:185
 msgid "America/North_Dakota/New_Salem"
 msgstr "美洲∕北达科他∕纽沙伦"
 
-#: ../capplets/time-admin/src/time-zones.h:186
+#: capplets/time-admin/src/time-zones.h:186
 msgid "America/Ojinaga"
 msgstr "美洲/奥希纳加"
 
-#: ../capplets/time-admin/src/time-zones.h:187
+#: capplets/time-admin/src/time-zones.h:187
 msgid "America/Panama"
 msgstr "美洲/巴拿马"
 
-#: ../capplets/time-admin/src/time-zones.h:188
+#: capplets/time-admin/src/time-zones.h:188
 msgid "America/Pangnirtung"
 msgstr "美洲/庞纳唐"
 
-#: ../capplets/time-admin/src/time-zones.h:189
+#: capplets/time-admin/src/time-zones.h:189
 msgid "America/Paramaribo"
 msgstr "美洲/帕拉马里博"
 
-#: ../capplets/time-admin/src/time-zones.h:190
+#: capplets/time-admin/src/time-zones.h:190
 msgid "America/Phoenix"
 msgstr "美洲/凤凰城"
 
-#: ../capplets/time-admin/src/time-zones.h:191
+#: capplets/time-admin/src/time-zones.h:191
 msgid "America/Port-au-Prince"
 msgstr "美洲/太子港"
 
-#: ../capplets/time-admin/src/time-zones.h:192
+#: capplets/time-admin/src/time-zones.h:192
 msgid "America/Port_of_Spain"
 msgstr "美洲/西班牙港"
 
-#: ../capplets/time-admin/src/time-zones.h:193
+#: capplets/time-admin/src/time-zones.h:193
 msgid "America/Porto_Velho"
 msgstr "美洲/韦柳港"
 
-#: ../capplets/time-admin/src/time-zones.h:194
+#: capplets/time-admin/src/time-zones.h:194
 msgid "America/Puerto_Rico"
 msgstr "美洲/波多黎各"
 
-#: ../capplets/time-admin/src/time-zones.h:195
+#: capplets/time-admin/src/time-zones.h:195
 msgid "America/Punta_Arenas"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zones.h:196
+#: capplets/time-admin/src/time-zones.h:196
 msgid "America/Rainy_River"
 msgstr "美洲/雷尼里弗"
 
-#: ../capplets/time-admin/src/time-zones.h:197
+#: capplets/time-admin/src/time-zones.h:197
 msgid "America/Rankin_Inlet"
 msgstr "美洲/兰金因莱特"
 
-#: ../capplets/time-admin/src/time-zones.h:198
+#: capplets/time-admin/src/time-zones.h:198
 msgid "America/Recife"
 msgstr "美洲/雷西腓"
 
-#: ../capplets/time-admin/src/time-zones.h:199
+#: capplets/time-admin/src/time-zones.h:199
 msgid "America/Regina"
 msgstr "美洲/里贾那"
 
-#: ../capplets/time-admin/src/time-zones.h:200
+#: capplets/time-admin/src/time-zones.h:200
 msgid "America/Resolute"
 msgstr "美洲∕雷索卢特"
 
-#: ../capplets/time-admin/src/time-zones.h:201
+#: capplets/time-admin/src/time-zones.h:201
 msgid "America/Rio_Branco"
 msgstr "美洲/里奥布朗库"
 
-#: ../capplets/time-admin/src/time-zones.h:202
+#: capplets/time-admin/src/time-zones.h:202
 msgid "America/Santarem"
 msgstr "美国/圣塔伦"
 
-#: ../capplets/time-admin/src/time-zones.h:203
+#: capplets/time-admin/src/time-zones.h:203
 msgid "America/Santiago"
 msgstr "美洲/圣地亚哥"
 
-#: ../capplets/time-admin/src/time-zones.h:204
+#: capplets/time-admin/src/time-zones.h:204
 msgid "America/Santo_Domingo"
 msgstr "美洲/圣多明戈"
 
-#: ../capplets/time-admin/src/time-zones.h:205
+#: capplets/time-admin/src/time-zones.h:205
 msgid "America/Sao_Paulo"
 msgstr "美洲/圣保罗"
 
-#: ../capplets/time-admin/src/time-zones.h:206
+#: capplets/time-admin/src/time-zones.h:206
 msgid "America/Scoresbysund"
 msgstr "美洲/斯科斯比松"
 
-#: ../capplets/time-admin/src/time-zones.h:207
+#: capplets/time-admin/src/time-zones.h:207
 msgid "America/Sitka"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zones.h:208
+#: capplets/time-admin/src/time-zones.h:208
 msgid "America/St_Barthelemy"
 msgstr "美洲∕圣巴泰勒米"
 
-#: ../capplets/time-admin/src/time-zones.h:209
+#: capplets/time-admin/src/time-zones.h:209
 msgid "America/St_Johns"
 msgstr "美洲/圣约翰斯"
 
-#: ../capplets/time-admin/src/time-zones.h:210
+#: capplets/time-admin/src/time-zones.h:210
 msgid "America/St_Kitts"
 msgstr "美洲/圣基茨"
 
-#: ../capplets/time-admin/src/time-zones.h:211
+#: capplets/time-admin/src/time-zones.h:211
 msgid "America/St_Lucia"
 msgstr "美洲/圣卢西亚"
 
-#: ../capplets/time-admin/src/time-zones.h:212
+#: capplets/time-admin/src/time-zones.h:212
 msgid "America/St_Thomas"
 msgstr "美洲/圣托马斯"
 
-#: ../capplets/time-admin/src/time-zones.h:213
+#: capplets/time-admin/src/time-zones.h:213
 msgid "America/St_Vincent"
 msgstr "美洲/圣文森特"
 
-#: ../capplets/time-admin/src/time-zones.h:214
+#: capplets/time-admin/src/time-zones.h:214
 msgid "America/Swift_Current"
 msgstr "美洲/斯威夫特卡伦特"
 
-#: ../capplets/time-admin/src/time-zones.h:215
+#: capplets/time-admin/src/time-zones.h:215
 msgid "America/Tegucigalpa"
 msgstr "美洲/特古西加尔巴"
 
-#: ../capplets/time-admin/src/time-zones.h:216
+#: capplets/time-admin/src/time-zones.h:216
 msgid "America/Thule"
 msgstr "美洲/图勒"
 
-#: ../capplets/time-admin/src/time-zones.h:217
+#: capplets/time-admin/src/time-zones.h:217
 msgid "America/Thunder_Bay"
 msgstr "美洲/桑德湾"
 
-#: ../capplets/time-admin/src/time-zones.h:218
+#: capplets/time-admin/src/time-zones.h:218
 msgid "America/Tijuana"
 msgstr "美洲/提华纳"
 
-#: ../capplets/time-admin/src/time-zones.h:219
+#: capplets/time-admin/src/time-zones.h:219
 msgid "America/Toronto"
 msgstr "美洲/多伦多"
 
-#: ../capplets/time-admin/src/time-zones.h:220
+#: capplets/time-admin/src/time-zones.h:220
 msgid "America/Tortola"
 msgstr "美洲/托尔托拉"
 
-#: ../capplets/time-admin/src/time-zones.h:221
+#: capplets/time-admin/src/time-zones.h:221
 msgid "America/Vancouver"
 msgstr "美洲/温哥华"
 
-#: ../capplets/time-admin/src/time-zones.h:222
+#: capplets/time-admin/src/time-zones.h:222
 msgid "America/Whitehorse"
 msgstr "美洲/怀特霍斯"
 
-#: ../capplets/time-admin/src/time-zones.h:223
+#: capplets/time-admin/src/time-zones.h:223
 msgid "America/Winnipeg"
 msgstr "美洲/温尼伯"
 
-#: ../capplets/time-admin/src/time-zones.h:224
+#: capplets/time-admin/src/time-zones.h:224
 msgid "America/Yakutat"
 msgstr "美洲/亚库塔特"
 
-#: ../capplets/time-admin/src/time-zones.h:225
+#: capplets/time-admin/src/time-zones.h:225
 msgid "America/Yellowknife"
 msgstr "美洲/耶洛奈夫"
 
-#: ../capplets/time-admin/src/time-zones.h:226
+#: capplets/time-admin/src/time-zones.h:226
 msgid "Antarctica/Casey"
 msgstr "南极洲/凯西"
 
-#: ../capplets/time-admin/src/time-zones.h:227
+#: capplets/time-admin/src/time-zones.h:227
 msgid "Antarctica/Davis"
 msgstr "南极洲/戴维斯"
 
-#: ../capplets/time-admin/src/time-zones.h:228
+#: capplets/time-admin/src/time-zones.h:228
 msgid "Antarctica/DumontDUrville"
 msgstr "南极洲/杜蒙特迪维尔"
 
-#: ../capplets/time-admin/src/time-zones.h:229
+#: capplets/time-admin/src/time-zones.h:229
 msgid "Antarctica/Macquarie"
 msgstr "南极洲/麦夸里"
 
-#: ../capplets/time-admin/src/time-zones.h:230
+#: capplets/time-admin/src/time-zones.h:230
 msgid "Antarctica/Mawson"
 msgstr "南极洲/莫森"
 
-#: ../capplets/time-admin/src/time-zones.h:231
+#: capplets/time-admin/src/time-zones.h:231
 msgid "Antarctica/McMurdo"
 msgstr "南极洲/麦克默多"
 
-#: ../capplets/time-admin/src/time-zones.h:232
+#: capplets/time-admin/src/time-zones.h:232
 msgid "Antarctica/Palmer"
 msgstr "南极洲/帕默"
 
-#: ../capplets/time-admin/src/time-zones.h:233
+#: capplets/time-admin/src/time-zones.h:233
 msgid "Antarctica/Rothera"
 msgstr "南极洲∕罗瑟拉"
 
-#: ../capplets/time-admin/src/time-zones.h:234
+#: capplets/time-admin/src/time-zones.h:234
 msgid "Antarctica/Syowa"
 msgstr "南极洲/昭和"
 
-#: ../capplets/time-admin/src/time-zones.h:235
+#: capplets/time-admin/src/time-zones.h:235
 msgid "Antarctica/Troll"
 msgstr ""
 
-#: ../capplets/time-admin/src/time-zones.h:236
+#: capplets/time-admin/src/time-zones.h:236
 msgid "Antarctica/Vostok"
 msgstr "南极洲/东方"
 
-#: ../capplets/time-admin/src/time-zones.h:237
+#: capplets/time-admin/src/time-zones.h:237
 msgid "Arctic/Longyearbyen"
 msgstr "北极/朗伊尔城"
 
-#: ../capplets/time-admin/src/time-zones.h:238
+#: capplets/time-admin/src/time-zones.h:238
 msgid "Asia/Aden"
 msgstr "亚洲/亚丁"
 
-#: ../capplets/time-admin/src/time-zones.h:239
+#: capplets/time-admin/src/time-zones.h:239
 msgid "Asia/Almaty"
 msgstr "亚洲/阿拉木图"
 
-#: ../capplets/time-admin/src/time-zones.h:240
+#: capplets/time-admin/src/time-zones.h:240
 msgid "Asia/Amman"
 msgstr "亚洲/安曼"
 
-#: ../capplets/time-admin/src/time-zones.h:241
+#: capplets/time-admin/src/time-zones.h:241
 msgid "Asia/Anadyr"
 msgstr "亚洲/阿纳德尔"
 
-#: ../capplets/time-admin/src/time-zones.h:242
+#: capplets/time-admin/src/time-zones.h:242
 msgid "Asia/Aqtau"
 msgstr "亚洲/阿克套"
 
-#: ../capplets/time-admin/src/time-zones.h:243
+#: capplets/time-admin/src/time-zones.h:243
 msgid "Asia/Aqtobe"
 msgstr "亚洲/阿克托比"
 
-#: ../capplets/time-admin/src/time-zones.h:244
+#: capplets/time-admin/src/time-zones.h:244
 msgid "Asia/Ashgabat"
 msgstr "亚洲/阿什哈巴德"
 
-#: ../capplets/time-admin/src/time-zones.h:245
+#: capplets/time-admin/src/time-zones.h:245
 msgid "Asia/Atyrau"
-msgstr ""
+msgstr "亚洲/阿特劳"
 
-#: ../capplets/time-admin/src/time-zones.h:246
+#: capplets/time-admin/src/time-zones.h:246
 msgid "Asia/Baghdad"
 msgstr "亚洲/巴格达"
 
-#: ../capplets/time-admin/src/time-zones.h:247
+#: capplets/time-admin/src/time-zones.h:247
 msgid "Asia/Bahrain"
 msgstr "亚洲/巴林"
 
-#: ../capplets/time-admin/src/time-zones.h:248
+#: capplets/time-admin/src/time-zones.h:248
 msgid "Asia/Baku"
 msgstr "亚洲/巴库"
 
-#: ../capplets/time-admin/src/time-zones.h:249
+#: capplets/time-admin/src/time-zones.h:249
 msgid "Asia/Bangkok"
 msgstr "亚洲/曼谷"
 
-#: ../capplets/time-admin/src/time-zones.h:250
+#: capplets/time-admin/src/time-zones.h:250
 msgid "Asia/Barnaul"
-msgstr ""
+msgstr "亚洲/巴尔瑙尔"
 
-#: ../capplets/time-admin/src/time-zones.h:251
+#: capplets/time-admin/src/time-zones.h:251
 msgid "Asia/Beirut"
 msgstr "亚洲/贝鲁特"
 
-#: ../capplets/time-admin/src/time-zones.h:252
+#: capplets/time-admin/src/time-zones.h:252
 msgid "Asia/Bishkek"
 msgstr "亚洲/比什凯克"
 
-#: ../capplets/time-admin/src/time-zones.h:253
+#: capplets/time-admin/src/time-zones.h:253
 msgid "Asia/Brunei"
 msgstr "亚洲/文莱"
 
-#: ../capplets/time-admin/src/time-zones.h:254
+#: capplets/time-admin/src/time-zones.h:254
 msgid "Asia/Chita"
-msgstr ""
+msgstr "亚洲/赤塔"
 
-#: ../capplets/time-admin/src/time-zones.h:255
+#: capplets/time-admin/src/time-zones.h:255
 msgid "Asia/Choibalsan"
 msgstr "亚洲∕乔巴山"
 
-#: ../capplets/time-admin/src/time-zones.h:256
+#: capplets/time-admin/src/time-zones.h:256
 msgid "Asia/Colombo"
 msgstr "亚洲/科伦坡"
 
-#: ../capplets/time-admin/src/time-zones.h:257
+#: capplets/time-admin/src/time-zones.h:257
 msgid "Asia/Damascus"
 msgstr "亚洲/大马士革"
 
-#: ../capplets/time-admin/src/time-zones.h:258
+#: capplets/time-admin/src/time-zones.h:258
 msgid "Asia/Dhaka"
 msgstr "亚洲/达卡"
 
-#: ../capplets/time-admin/src/time-zones.h:259
+#: capplets/time-admin/src/time-zones.h:259
 msgid "Asia/Dili"
 msgstr "亚洲/帝力"
 
-#: ../capplets/time-admin/src/time-zones.h:260
+#: capplets/time-admin/src/time-zones.h:260
 msgid "Asia/Dubai"
 msgstr "亚洲/迪拜"
 
-#: ../capplets/time-admin/src/time-zones.h:261
+#: capplets/time-admin/src/time-zones.h:261
 msgid "Asia/Dushanbe"
 msgstr "亚洲/杜尚別"
 
-#: ../capplets/time-admin/src/time-zones.h:262
+#: capplets/time-admin/src/time-zones.h:262
 msgid "Asia/Famagusta"
-msgstr ""
+msgstr "亚洲/法马古斯塔"
 
-#: ../capplets/time-admin/src/time-zones.h:263
+#: capplets/time-admin/src/time-zones.h:263
 msgid "Asia/Gaza"
 msgstr "亚洲/加沙"
 
-#: ../capplets/time-admin/src/time-zones.h:264
+#: capplets/time-admin/src/time-zones.h:264
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "亚洲/巴勒斯坦的希伯伦"
 
-#: ../capplets/time-admin/src/time-zones.h:265
+#: capplets/time-admin/src/time-zones.h:265
 msgid "Asia/Ho_Chi_Minh"
 msgstr "亚洲∕胡志明"
 
-#: ../capplets/time-admin/src/time-zones.h:266
+#: capplets/time-admin/src/time-zones.h:266
 msgid "Asia/Hong_Kong"
 msgstr "亚洲/香港"
 
-#: ../capplets/time-admin/src/time-zones.h:267
+#: capplets/time-admin/src/time-zones.h:267
 msgid "Asia/Hovd"
 msgstr "亚洲/科布多"
 
-#: ../capplets/time-admin/src/time-zones.h:268
+#: capplets/time-admin/src/time-zones.h:268
 msgid "Asia/Irkutsk"
 msgstr "亚洲/伊尔库次克"
 
-#: ../capplets/time-admin/src/time-zones.h:269
+#: capplets/time-admin/src/time-zones.h:269
 msgid "Asia/Jakarta"
 msgstr "亚洲/雅加达"
 
-#: ../capplets/time-admin/src/time-zones.h:270
+#: capplets/time-admin/src/time-zones.h:270
 msgid "Asia/Jayapura"
 msgstr "亚洲/查亚普拉"
 
-#: ../capplets/time-admin/src/time-zones.h:271
+#: capplets/time-admin/src/time-zones.h:271
 msgid "Asia/Jerusalem"
 msgstr "亚洲/耶路撒冷"
 
-#: ../capplets/time-admin/src/time-zones.h:272
+#: capplets/time-admin/src/time-zones.h:272
 msgid "Asia/Kabul"
 msgstr "亚洲/喀布尔"
 
-#: ../capplets/time-admin/src/time-zones.h:273
+#: capplets/time-admin/src/time-zones.h:273
 msgid "Asia/Kamchatka"
 msgstr "亚洲/堪察加"
 
-#: ../capplets/time-admin/src/time-zones.h:274
+#: capplets/time-admin/src/time-zones.h:274
 msgid "Asia/Karachi"
 msgstr "亚洲/卡拉奇"
 
-#: ../capplets/time-admin/src/time-zones.h:275
+#: capplets/time-admin/src/time-zones.h:275
 msgid "Asia/Kathmandu"
 msgstr "亚洲/加德满都"
 
-#: ../capplets/time-admin/src/time-zones.h:276
+#: capplets/time-admin/src/time-zones.h:276
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "亚洲/上扬斯克"
 
-#: ../capplets/time-admin/src/time-zones.h:277
+#: capplets/time-admin/src/time-zones.h:277
 msgid "Asia/Kolkata"
 msgstr "亚洲/加尔各答"
 
-#: ../capplets/time-admin/src/time-zones.h:278
+#: capplets/time-admin/src/time-zones.h:278
 msgid "Asia/Krasnoyarsk"
 msgstr "亚洲/克拉斯诺亚尔斯克"
 
-#: ../capplets/time-admin/src/time-zones.h:279
+#: capplets/time-admin/src/time-zones.h:279
 msgid "Asia/Kuala_Lumpur"
 msgstr "亚洲/吉隆坡"
 
-#: ../capplets/time-admin/src/time-zones.h:280
+#: capplets/time-admin/src/time-zones.h:280
 msgid "Asia/Kuching"
 msgstr "亚洲/古晋"
 
-#: ../capplets/time-admin/src/time-zones.h:281
+#: capplets/time-admin/src/time-zones.h:281
 msgid "Asia/Kuwait"
 msgstr "亚洲/科威特"
 
-#: ../capplets/time-admin/src/time-zones.h:282
+#: capplets/time-admin/src/time-zones.h:282
 msgid "Asia/Macau"
 msgstr "亚洲/澳门"
 
-#: ../capplets/time-admin/src/time-zones.h:283
+#: capplets/time-admin/src/time-zones.h:283
 msgid "Asia/Magadan"
 msgstr "亚洲/马加丹"
 
-#: ../capplets/time-admin/src/time-zones.h:284
+#: capplets/time-admin/src/time-zones.h:284
 msgid "Asia/Makassar"
 msgstr "亚洲∕望加锡"
 
-#: ../capplets/time-admin/src/time-zones.h:285
+#: capplets/time-admin/src/time-zones.h:285
 msgid "Asia/Manila"
 msgstr "亚洲/马尼拉"
 
-#: ../capplets/time-admin/src/time-zones.h:286
+#: capplets/time-admin/src/time-zones.h:286
 msgid "Asia/Muscat"
 msgstr "亚洲/马斯喀特"
 
-#: ../capplets/time-admin/src/time-zones.h:287
+#: capplets/time-admin/src/time-zones.h:287
 msgid "Asia/Nicosia"
 msgstr "亚洲/尼科西亚"
 
-#: ../capplets/time-admin/src/time-zones.h:288
+#: capplets/time-admin/src/time-zones.h:288
 msgid "Asia/Novokuznetsk"
 msgstr "亚洲/新库兹涅茨克"
 
-#: ../capplets/time-admin/src/time-zones.h:289
+#: capplets/time-admin/src/time-zones.h:289
 msgid "Asia/Novosibirsk"
 msgstr "亚洲/新西伯利亚"
 
-#: ../capplets/time-admin/src/time-zones.h:290
+#: capplets/time-admin/src/time-zones.h:290
 msgid "Asia/Omsk"
 msgstr "亚洲/鄂木斯克"
 
-#: ../capplets/time-admin/src/time-zones.h:291
+#: capplets/time-admin/src/time-zones.h:291
 msgid "Asia/Oral"
 msgstr "亚洲∕奥勒尔"
 
-#: ../capplets/time-admin/src/time-zones.h:292
+#: capplets/time-admin/src/time-zones.h:292
 msgid "Asia/Phnom_Penh"
 msgstr "亚洲/金边"
 
-#: ../capplets/time-admin/src/time-zones.h:293
+#: capplets/time-admin/src/time-zones.h:293
 msgid "Asia/Pontianak"
 msgstr "亚洲/坤甸"
 
-#: ../capplets/time-admin/src/time-zones.h:294
+#: capplets/time-admin/src/time-zones.h:294
 msgid "Asia/Pyongyang"
 msgstr "亚洲/平壤"
 
-#: ../capplets/time-admin/src/time-zones.h:295
+#: capplets/time-admin/src/time-zones.h:295
 msgid "Asia/Qatar"
 msgstr "亚洲/卡塔尔"
 
-#: ../capplets/time-admin/src/time-zones.h:296
+#: capplets/time-admin/src/time-zones.h:296
 msgid "Asia/Qostanay"
-msgstr ""
+msgstr "亚洲/科斯塔奈"
 
-#: ../capplets/time-admin/src/time-zones.h:297
+#: capplets/time-admin/src/time-zones.h:297
 msgid "Asia/Qyzylorda"
 msgstr "亚洲∕克孜勒奥尔达"
 
-#: ../capplets/time-admin/src/time-zones.h:298
+#: capplets/time-admin/src/time-zones.h:298
 msgid "Asia/Riyadh"
 msgstr "亚洲/利雅得"
 
-#: ../capplets/time-admin/src/time-zones.h:299
+#: capplets/time-admin/src/time-zones.h:299
 msgid "Asia/Sakhalin"
 msgstr "亚洲∕萨哈林"
 
-#: ../capplets/time-admin/src/time-zones.h:300
+#: capplets/time-admin/src/time-zones.h:300
 msgid "Asia/Samarkand"
 msgstr "亚洲/撒马尔罕"
 
-#: ../capplets/time-admin/src/time-zones.h:301
+#: capplets/time-admin/src/time-zones.h:301
 msgid "Asia/Seoul"
 msgstr "亚洲/首尔"
 
-#: ../capplets/time-admin/src/time-zones.h:302
+#: capplets/time-admin/src/time-zones.h:302
 msgid "Asia/Shanghai"
 msgstr "亚洲/上海"
 
-#: ../capplets/time-admin/src/time-zones.h:303
+#: capplets/time-admin/src/time-zones.h:303
 msgid "Asia/Singapore"
 msgstr "亚洲/新加坡"
 
-#: ../capplets/time-admin/src/time-zones.h:304
+#: capplets/time-admin/src/time-zones.h:304
 msgid "Asia/Srednekolymsk"
-msgstr ""
+msgstr "亚洲/中科雷姆斯克"
 
-#: ../capplets/time-admin/src/time-zones.h:305
+#: capplets/time-admin/src/time-zones.h:305
 msgid "Asia/Taipei"
 msgstr "亚洲/台北"
 
-#: ../capplets/time-admin/src/time-zones.h:306
+#: capplets/time-admin/src/time-zones.h:306
 msgid "Asia/Tashkent"
 msgstr "亚洲/塔什干"
 
-#: ../capplets/time-admin/src/time-zones.h:307
+#: capplets/time-admin/src/time-zones.h:307
 msgid "Asia/Tbilisi"
 msgstr "亚洲/第比利斯"
 
-#: ../capplets/time-admin/src/time-zones.h:308
+#: capplets/time-admin/src/time-zones.h:308
 msgid "Asia/Tehran"
 msgstr "亚洲/德黑兰"
 
-#: ../capplets/time-admin/src/time-zones.h:309
+#: capplets/time-admin/src/time-zones.h:309
 msgid "Asia/Thimphu"
 msgstr "亚洲/廷布"
 
-#: ../capplets/time-admin/src/time-zones.h:310
+#: capplets/time-admin/src/time-zones.h:310
 msgid "Asia/Tokyo"
 msgstr "亚洲/东京"
 
-#: ../capplets/time-admin/src/time-zones.h:311
+#: capplets/time-admin/src/time-zones.h:311
 msgid "Asia/Tomsk"
-msgstr ""
+msgstr "亚洲/托木斯克"
 
-#: ../capplets/time-admin/src/time-zones.h:312
+#: capplets/time-admin/src/time-zones.h:312
 msgid "Asia/Ulaanbaatar"
 msgstr "亚洲/乌兰巴托"
 
-#: ../capplets/time-admin/src/time-zones.h:313
+#: capplets/time-admin/src/time-zones.h:313
 msgid "Asia/Urumqi"
 msgstr "亚洲/乌鲁木齐"
 
-#: ../capplets/time-admin/src/time-zones.h:314
+#: capplets/time-admin/src/time-zones.h:314
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "亚洲/乌斯季挪拉"
 
-#: ../capplets/time-admin/src/time-zones.h:315
+#: capplets/time-admin/src/time-zones.h:315
 msgid "Asia/Vientiane"
 msgstr "亚洲/万象"
 
-#: ../capplets/time-admin/src/time-zones.h:316
+#: capplets/time-admin/src/time-zones.h:316
 msgid "Asia/Vladivostok"
 msgstr "亚洲/海参崴"
 
-#: ../capplets/time-admin/src/time-zones.h:317
+#: capplets/time-admin/src/time-zones.h:317
 msgid "Asia/Yakutsk"
 msgstr "亚洲/雅库茨克"
 
-#: ../capplets/time-admin/src/time-zones.h:318
+#: capplets/time-admin/src/time-zones.h:318
 msgid "Asia/Yangon"
-msgstr ""
+msgstr "亚洲/仰光"
 
-#: ../capplets/time-admin/src/time-zones.h:319
+#: capplets/time-admin/src/time-zones.h:319
 msgid "Asia/Yekaterinburg"
 msgstr "亚洲/叶卡杰琳堡"
 
-#: ../capplets/time-admin/src/time-zones.h:320
+#: capplets/time-admin/src/time-zones.h:320
 msgid "Asia/Yerevan"
 msgstr "亚洲/埃里温"
 
-#: ../capplets/time-admin/src/time-zones.h:321
+#: capplets/time-admin/src/time-zones.h:321
 msgid "Atlantic/Azores"
 msgstr "大西洋/阿索雷斯"
 
-#: ../capplets/time-admin/src/time-zones.h:322
+#: capplets/time-admin/src/time-zones.h:322
 msgid "Atlantic/Bermuda"
 msgstr "大西洋/百慕达"
 
-#: ../capplets/time-admin/src/time-zones.h:323
+#: capplets/time-admin/src/time-zones.h:323
 msgid "Atlantic/Canary"
 msgstr "大西洋/加那利"
 
-#: ../capplets/time-admin/src/time-zones.h:324
+#: capplets/time-admin/src/time-zones.h:324
 msgid "Atlantic/Cape_Verde"
 msgstr "大西洋/佛得角"
 
-#: ../capplets/time-admin/src/time-zones.h:325
+#: capplets/time-admin/src/time-zones.h:325
 msgid "Atlantic/Faroe"
 msgstr "大西洋/法罗"
 
-#: ../capplets/time-admin/src/time-zones.h:326
+#: capplets/time-admin/src/time-zones.h:326
 msgid "Atlantic/Madeira"
 msgstr "大西洋/马德拉"
 
-#: ../capplets/time-admin/src/time-zones.h:327
+#: capplets/time-admin/src/time-zones.h:327
 msgid "Atlantic/Reykjavik"
 msgstr "大西洋/雷克雅未克"
 
-#: ../capplets/time-admin/src/time-zones.h:328
+#: capplets/time-admin/src/time-zones.h:328
 msgid "Atlantic/South_Georgia"
 msgstr "大西洋/南乔治亚"
 
-#: ../capplets/time-admin/src/time-zones.h:329
+#: capplets/time-admin/src/time-zones.h:329
 msgid "Atlantic/Stanley"
 msgstr "大西洋/斯坦利"
 
-#: ../capplets/time-admin/src/time-zones.h:330
+#: capplets/time-admin/src/time-zones.h:330
 msgid "Atlantic/St_Helena"
 msgstr "大西洋/圣海伦纳"
 
-#: ../capplets/time-admin/src/time-zones.h:331
+#: capplets/time-admin/src/time-zones.h:331
 msgid "Australia/Adelaide"
 msgstr "澳洲∕阿德莱德"
 
-#: ../capplets/time-admin/src/time-zones.h:332
+#: capplets/time-admin/src/time-zones.h:332
 msgid "Australia/Brisbane"
 msgstr "澳洲/布里斯班"
 
-#: ../capplets/time-admin/src/time-zones.h:333
+#: capplets/time-admin/src/time-zones.h:333
 msgid "Australia/Broken_Hill"
 msgstr "澳洲∕布罗肯希尔"
 
-#: ../capplets/time-admin/src/time-zones.h:334
+#: capplets/time-admin/src/time-zones.h:334
 msgid "Australia/Currie"
 msgstr "澳洲∕柯里"
 
-#: ../capplets/time-admin/src/time-zones.h:335
+#: capplets/time-admin/src/time-zones.h:335
 msgid "Australia/Darwin"
 msgstr "澳洲/达尔文"
 
-#: ../capplets/time-admin/src/time-zones.h:336
+#: capplets/time-admin/src/time-zones.h:336
 msgid "Australia/Eucla"
 msgstr "澳洲/尤克拉"
 
-#: ../capplets/time-admin/src/time-zones.h:337
+#: capplets/time-admin/src/time-zones.h:337
 msgid "Australia/Hobart"
 msgstr "澳洲/霍巴特"
 
-#: ../capplets/time-admin/src/time-zones.h:338
+#: capplets/time-admin/src/time-zones.h:338
 msgid "Australia/Lindeman"
 msgstr "澳洲/林德曼"
 
-#: ../capplets/time-admin/src/time-zones.h:339
+#: capplets/time-admin/src/time-zones.h:339
 msgid "Australia/Lord_Howe"
 msgstr "澳洲/豪勋爵"
 
-#: ../capplets/time-admin/src/time-zones.h:340
+#: capplets/time-admin/src/time-zones.h:340
 msgid "Australia/Melbourne"
 msgstr "澳洲/墨尔本"
 
-#: ../capplets/time-admin/src/time-zones.h:341
+#: capplets/time-admin/src/time-zones.h:341
 msgid "Australia/Perth"
 msgstr "澳洲/珀斯"
 
-#: ../capplets/time-admin/src/time-zones.h:342
+#: capplets/time-admin/src/time-zones.h:342
 msgid "Australia/Sydney"
 msgstr "澳洲/悉尼"
 
-#: ../capplets/time-admin/src/time-zones.h:343
+#: capplets/time-admin/src/time-zones.h:343
 msgid "Europe/Amsterdam"
 msgstr "欧洲/阿姆斯特丹"
 
-#: ../capplets/time-admin/src/time-zones.h:344
+#: capplets/time-admin/src/time-zones.h:344
 msgid "Europe/Andorra"
 msgstr "欧洲/安道尔"
 
-#: ../capplets/time-admin/src/time-zones.h:345
+#: capplets/time-admin/src/time-zones.h:345
 msgid "Europe/Astrakhan"
-msgstr ""
+msgstr "欧洲/阿斯特拉罕"
 
-#: ../capplets/time-admin/src/time-zones.h:346
+#: capplets/time-admin/src/time-zones.h:346
 msgid "Europe/Athens"
 msgstr "欧洲/雅典"
 
-#: ../capplets/time-admin/src/time-zones.h:347
+#: capplets/time-admin/src/time-zones.h:347
 msgid "Europe/Belgrade"
 msgstr "欧洲/贝尔格莱德"
 
-#: ../capplets/time-admin/src/time-zones.h:348
+#: capplets/time-admin/src/time-zones.h:348
 msgid "Europe/Berlin"
 msgstr "欧洲/柏林"
 
-#: ../capplets/time-admin/src/time-zones.h:349
+#: capplets/time-admin/src/time-zones.h:349
 msgid "Europe/Bratislava"
 msgstr "欧洲/布拉迪斯拉发"
 
-#: ../capplets/time-admin/src/time-zones.h:350
+#: capplets/time-admin/src/time-zones.h:350
 msgid "Europe/Brussels"
 msgstr "欧洲/布鲁塞尔"
 
-#: ../capplets/time-admin/src/time-zones.h:351
+#: capplets/time-admin/src/time-zones.h:351
 msgid "Europe/Bucharest"
 msgstr "欧洲/布加勒斯特"
 
-#: ../capplets/time-admin/src/time-zones.h:352
+#: capplets/time-admin/src/time-zones.h:352
 msgid "Europe/Budapest"
 msgstr "欧洲/布达佩斯"
 
-#: ../capplets/time-admin/src/time-zones.h:353
+#: capplets/time-admin/src/time-zones.h:353
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "欧洲/布辛"
 
-#: ../capplets/time-admin/src/time-zones.h:354
+#: capplets/time-admin/src/time-zones.h:354
 msgid "Europe/Chisinau"
 msgstr "欧洲/基希讷乌"
 
-#: ../capplets/time-admin/src/time-zones.h:355
+#: capplets/time-admin/src/time-zones.h:355
 msgid "Europe/Copenhagen"
 msgstr "欧洲/哥本哈根"
 
-#: ../capplets/time-admin/src/time-zones.h:356
+#: capplets/time-admin/src/time-zones.h:356
 msgid "Europe/Dublin"
 msgstr "欧洲/都柏林"
 
-#: ../capplets/time-admin/src/time-zones.h:357
+#: capplets/time-admin/src/time-zones.h:357
 msgid "Europe/Gibraltar"
 msgstr "欧洲/直布罗陀"
 
-#: ../capplets/time-admin/src/time-zones.h:358
+#: capplets/time-admin/src/time-zones.h:358
 msgid "Europe/Guernsey"
 msgstr "欧洲∕根西"
 
-#: ../capplets/time-admin/src/time-zones.h:359
+#: capplets/time-admin/src/time-zones.h:359
 msgid "Europe/Helsinki"
 msgstr "欧洲/赫尔辛基"
 
-#: ../capplets/time-admin/src/time-zones.h:360
+#: capplets/time-admin/src/time-zones.h:360
 msgid "Europe/Isle_of_Man"
 msgstr "欧洲∕马恩岛"
 
-#: ../capplets/time-admin/src/time-zones.h:361
+#: capplets/time-admin/src/time-zones.h:361
 msgid "Europe/Istanbul"
 msgstr "欧洲/伊斯坦布尔"
 
-#: ../capplets/time-admin/src/time-zones.h:362
+#: capplets/time-admin/src/time-zones.h:362
 msgid "Europe/Jersey"
 msgstr "欧洲∕耶尔赛"
 
-#: ../capplets/time-admin/src/time-zones.h:363
+#: capplets/time-admin/src/time-zones.h:363
 msgid "Europe/Kaliningrad"
 msgstr "欧洲/加里宁格勒"
 
-#: ../capplets/time-admin/src/time-zones.h:364
+#: capplets/time-admin/src/time-zones.h:364
 msgid "Europe/Kiev"
 msgstr "欧洲/基辅"
 
-#: ../capplets/time-admin/src/time-zones.h:365
+#: capplets/time-admin/src/time-zones.h:365
 msgid "Europe/Kirov"
-msgstr ""
+msgstr "欧洲/基洛夫"
 
-#: ../capplets/time-admin/src/time-zones.h:366
+#: capplets/time-admin/src/time-zones.h:366
 msgid "Europe/Lisbon"
 msgstr "欧洲/里斯本"
 
-#: ../capplets/time-admin/src/time-zones.h:367
+#: capplets/time-admin/src/time-zones.h:367
 msgid "Europe/Ljubljana"
 msgstr "欧洲/卢布尔雅那"
 
-#: ../capplets/time-admin/src/time-zones.h:368
+#: capplets/time-admin/src/time-zones.h:368
 msgid "Europe/London"
 msgstr "欧洲/伦敦"
 
-#: ../capplets/time-admin/src/time-zones.h:369
+#: capplets/time-admin/src/time-zones.h:369
 msgid "Europe/Luxembourg"
 msgstr "欧洲/卢森堡"
 
-#: ../capplets/time-admin/src/time-zones.h:370
+#: capplets/time-admin/src/time-zones.h:370
 msgid "Europe/Madrid"
 msgstr "欧洲/马德里"
 
-#: ../capplets/time-admin/src/time-zones.h:371
+#: capplets/time-admin/src/time-zones.h:371
 msgid "Europe/Malta"
 msgstr "欧洲/马尔他"
 
-#: ../capplets/time-admin/src/time-zones.h:372
+#: capplets/time-admin/src/time-zones.h:372
 msgid "Europe/Mariehamn"
 msgstr "欧洲∕玛丽港"
 
-#: ../capplets/time-admin/src/time-zones.h:373
+#: capplets/time-admin/src/time-zones.h:373
 msgid "Europe/Minsk"
 msgstr "欧洲/明思克"
 
-#: ../capplets/time-admin/src/time-zones.h:374
+#: capplets/time-admin/src/time-zones.h:374
 msgid "Europe/Monaco"
 msgstr "欧洲/摩纳哥"
 
-#: ../capplets/time-admin/src/time-zones.h:375
+#: capplets/time-admin/src/time-zones.h:375
 msgid "Europe/Moscow"
 msgstr "欧洲/莫斯科"
 
-#: ../capplets/time-admin/src/time-zones.h:376
+#: capplets/time-admin/src/time-zones.h:376
 msgid "Europe/Oslo"
 msgstr "欧洲/奥斯陆"
 
-#: ../capplets/time-admin/src/time-zones.h:377
+#: capplets/time-admin/src/time-zones.h:377
 msgid "Europe/Paris"
 msgstr "欧洲/巴黎"
 
-#: ../capplets/time-admin/src/time-zones.h:378
+#: capplets/time-admin/src/time-zones.h:378
 msgid "Europe/Podgorica"
 msgstr "欧洲/波德戈里察"
 
-#: ../capplets/time-admin/src/time-zones.h:379
+#: capplets/time-admin/src/time-zones.h:379
 msgid "Europe/Prague"
 msgstr "欧洲/布拉格"
 
-#: ../capplets/time-admin/src/time-zones.h:380
+#: capplets/time-admin/src/time-zones.h:380
 msgid "Europe/Riga"
 msgstr "欧洲/里察"
 
-#: ../capplets/time-admin/src/time-zones.h:381
+#: capplets/time-admin/src/time-zones.h:381
 msgid "Europe/Rome"
 msgstr "欧洲/罗马"
 
-#: ../capplets/time-admin/src/time-zones.h:382
+#: capplets/time-admin/src/time-zones.h:382
 msgid "Europe/Samara"
 msgstr "欧洲/萨马拉"
 
-#: ../capplets/time-admin/src/time-zones.h:383
+#: capplets/time-admin/src/time-zones.h:383
 msgid "Europe/San_Marino"
 msgstr "欧洲/圣马力诺"
 
-#: ../capplets/time-admin/src/time-zones.h:384
+#: capplets/time-admin/src/time-zones.h:384
 msgid "Europe/Sarajevo"
 msgstr "欧洲/萨拉热窝"
 
-#: ../capplets/time-admin/src/time-zones.h:385
+#: capplets/time-admin/src/time-zones.h:385
 msgid "Europe/Saratov"
-msgstr ""
+msgstr "欧洲/萨拉托夫"
 
-#: ../capplets/time-admin/src/time-zones.h:386
+#: capplets/time-admin/src/time-zones.h:386
 msgid "Europe/Simferopol"
 msgstr "欧洲/辛菲罗波尔"
 
-#: ../capplets/time-admin/src/time-zones.h:387
+#: capplets/time-admin/src/time-zones.h:387
 msgid "Europe/Skopje"
 msgstr "欧洲/斯科普里"
 
-#: ../capplets/time-admin/src/time-zones.h:388
+#: capplets/time-admin/src/time-zones.h:388
 msgid "Europe/Sofia"
 msgstr "欧洲/索非亚"
 
-#: ../capplets/time-admin/src/time-zones.h:389
+#: capplets/time-admin/src/time-zones.h:389
 msgid "Europe/Stockholm"
 msgstr "欧洲/斯德哥尔摩"
 
-#: ../capplets/time-admin/src/time-zones.h:390
+#: capplets/time-admin/src/time-zones.h:390
 msgid "Europe/Tallinn"
 msgstr "欧洲/塔林"
 
-#: ../capplets/time-admin/src/time-zones.h:391
+#: capplets/time-admin/src/time-zones.h:391
 msgid "Europe/Tirane"
 msgstr "欧洲/地拉那"
 
-#: ../capplets/time-admin/src/time-zones.h:392
+#: capplets/time-admin/src/time-zones.h:392
 msgid "Europe/Ulyanovsk"
-msgstr ""
+msgstr "欧洲/乌里扬诺夫斯克"
 
-#: ../capplets/time-admin/src/time-zones.h:393
+#: capplets/time-admin/src/time-zones.h:393
 msgid "Europe/Uzhgorod"
 msgstr "欧洲/乌日戈罗德"
 
-#: ../capplets/time-admin/src/time-zones.h:394
+#: capplets/time-admin/src/time-zones.h:394
 msgid "Europe/Vaduz"
 msgstr "欧洲/瓦杜兹"
 
-#: ../capplets/time-admin/src/time-zones.h:395
+#: capplets/time-admin/src/time-zones.h:395
 msgid "Europe/Vatican"
 msgstr "欧洲/梵蒂冈"
 
-#: ../capplets/time-admin/src/time-zones.h:396
+#: capplets/time-admin/src/time-zones.h:396
 msgid "Europe/Vienna"
 msgstr "欧洲/维也纳"
 
-#: ../capplets/time-admin/src/time-zones.h:397
+#: capplets/time-admin/src/time-zones.h:397
 msgid "Europe/Vilnius"
 msgstr "欧洲/维尔纽斯"
 
-#: ../capplets/time-admin/src/time-zones.h:398
+#: capplets/time-admin/src/time-zones.h:398
 msgid "Europe/Volgograd"
 msgstr "欧洲∕伏尔加格勒"
 
-#: ../capplets/time-admin/src/time-zones.h:399
+#: capplets/time-admin/src/time-zones.h:399
 msgid "Europe/Warsaw"
 msgstr "欧洲/华沙"
 
-#: ../capplets/time-admin/src/time-zones.h:400
+#: capplets/time-admin/src/time-zones.h:400
 msgid "Europe/Zagreb"
 msgstr "欧洲/萨格勒布"
 
-#: ../capplets/time-admin/src/time-zones.h:401
+#: capplets/time-admin/src/time-zones.h:401
 msgid "Europe/Zaporozhye"
 msgstr "欧洲/扎波罗热"
 
-#: ../capplets/time-admin/src/time-zones.h:402
+#: capplets/time-admin/src/time-zones.h:402
 msgid "Europe/Zurich"
 msgstr "欧洲/苏黎世"
 
-#: ../capplets/time-admin/src/time-zones.h:403
+#: capplets/time-admin/src/time-zones.h:403
 msgid "Indian/Antananarivo"
 msgstr "印度洋/安塔那那利佛"
 
-#: ../capplets/time-admin/src/time-zones.h:404
+#: capplets/time-admin/src/time-zones.h:404
 msgid "Indian/Chagos"
 msgstr "印度洋/查戈斯"
 
-#: ../capplets/time-admin/src/time-zones.h:405
+#: capplets/time-admin/src/time-zones.h:405
 msgid "Indian/Christmas"
 msgstr "印度洋/圣诞"
 
-#: ../capplets/time-admin/src/time-zones.h:406
+#: capplets/time-admin/src/time-zones.h:406
 msgid "Indian/Cocos"
 msgstr "印度洋/可可斯"
 
-#: ../capplets/time-admin/src/time-zones.h:407
+#: capplets/time-admin/src/time-zones.h:407
 msgid "Indian/Comoro"
 msgstr "印度洋/科摩罗"
 
-#: ../capplets/time-admin/src/time-zones.h:408
+#: capplets/time-admin/src/time-zones.h:408
 msgid "Indian/Kerguelen"
 msgstr "印度洋/凯尔格朗"
 
-#: ../capplets/time-admin/src/time-zones.h:409
+#: capplets/time-admin/src/time-zones.h:409
 msgid "Indian/Mahe"
 msgstr "印度洋/马埃"
 
-#: ../capplets/time-admin/src/time-zones.h:410
+#: capplets/time-admin/src/time-zones.h:410
 msgid "Indian/Maldives"
 msgstr "印度洋/马尔代夫"
 
-#: ../capplets/time-admin/src/time-zones.h:411
+#: capplets/time-admin/src/time-zones.h:411
 msgid "Indian/Mauritius"
 msgstr "印度洋/毛里求斯"
 
-#: ../capplets/time-admin/src/time-zones.h:412
+#: capplets/time-admin/src/time-zones.h:412
 msgid "Indian/Mayotte"
 msgstr "印度洋/马约特"
 
-#: ../capplets/time-admin/src/time-zones.h:413
+#: capplets/time-admin/src/time-zones.h:413
 msgid "Indian/Reunion"
 msgstr "印度洋/留尼旺"
 
-#: ../capplets/time-admin/src/time-zones.h:414
+#: capplets/time-admin/src/time-zones.h:414
 msgid "Pacific/Apia"
 msgstr "太平洋/阿皮亚"
 
-#: ../capplets/time-admin/src/time-zones.h:415
+#: capplets/time-admin/src/time-zones.h:415
 msgid "Pacific/Auckland"
 msgstr "太平洋/奥克兰"
 
-#: ../capplets/time-admin/src/time-zones.h:416
+#: capplets/time-admin/src/time-zones.h:416
 msgid "Pacific/Bougainville"
-msgstr ""
+msgstr "太平洋地区/布干维尔"
 
-#: ../capplets/time-admin/src/time-zones.h:417
+#: capplets/time-admin/src/time-zones.h:417
 msgid "Pacific/Chatham"
 msgstr "太平洋/查塔姆"
 
-#: ../capplets/time-admin/src/time-zones.h:418
+#: capplets/time-admin/src/time-zones.h:418
 msgid "Pacific/Chuuk"
 msgstr "太平洋/楚克"
 
-#: ../capplets/time-admin/src/time-zones.h:419
+#: capplets/time-admin/src/time-zones.h:419
 msgid "Pacific/Easter"
 msgstr "太平洋/复活节"
 
-#: ../capplets/time-admin/src/time-zones.h:420
+#: capplets/time-admin/src/time-zones.h:420
 msgid "Pacific/Efate"
 msgstr "太平洋/埃法特"
 
-#: ../capplets/time-admin/src/time-zones.h:421
+#: capplets/time-admin/src/time-zones.h:421
 msgid "Pacific/Enderbury"
 msgstr "太平洋/恩德伯里"
 
-#: ../capplets/time-admin/src/time-zones.h:422
+#: capplets/time-admin/src/time-zones.h:422
 msgid "Pacific/Fakaofo"
 msgstr "太平洋/法考福"
 
-#: ../capplets/time-admin/src/time-zones.h:423
+#: capplets/time-admin/src/time-zones.h:423
 msgid "Pacific/Fiji"
 msgstr "太平洋/斐济"
 
-#: ../capplets/time-admin/src/time-zones.h:424
+#: capplets/time-admin/src/time-zones.h:424
 msgid "Pacific/Funafuti"
 msgstr "太平洋/富那富提"
 
-#: ../capplets/time-admin/src/time-zones.h:425
+#: capplets/time-admin/src/time-zones.h:425
 msgid "Pacific/Galapagos"
 msgstr "太平洋/加拉帕戈斯"
 
-#: ../capplets/time-admin/src/time-zones.h:426
+#: capplets/time-admin/src/time-zones.h:426
 msgid "Pacific/Gambier"
 msgstr "太平洋/甘比尔"
 
-#: ../capplets/time-admin/src/time-zones.h:427
+#: capplets/time-admin/src/time-zones.h:427
 msgid "Pacific/Guadalcanal"
 msgstr "太平洋/瓜达尔卡纳尔"
 
-#: ../capplets/time-admin/src/time-zones.h:428
+#: capplets/time-admin/src/time-zones.h:428
 msgid "Pacific/Guam"
 msgstr "太平洋/关岛"
 
-#: ../capplets/time-admin/src/time-zones.h:429
+#: capplets/time-admin/src/time-zones.h:429
 msgid "Pacific/Honolulu"
 msgstr "太平洋/火奴鲁鲁（檀香山）"
 
-#: ../capplets/time-admin/src/time-zones.h:430
+#: capplets/time-admin/src/time-zones.h:430
 msgid "Pacific/Kiritimati"
 msgstr "太平洋/基里马斯岛"
 
-#: ../capplets/time-admin/src/time-zones.h:431
+#: capplets/time-admin/src/time-zones.h:431
 msgid "Pacific/Kosrae"
 msgstr "太平洋/科斯雷"
 
-#: ../capplets/time-admin/src/time-zones.h:432
+#: capplets/time-admin/src/time-zones.h:432
 msgid "Pacific/Kwajalein"
 msgstr "太平洋/夸贾莱因"
 
-#: ../capplets/time-admin/src/time-zones.h:433
+#: capplets/time-admin/src/time-zones.h:433
 msgid "Pacific/Majuro"
 msgstr "太平洋/马朱罗岛"
 
-#: ../capplets/time-admin/src/time-zones.h:434
+#: capplets/time-admin/src/time-zones.h:434
 msgid "Pacific/Marquesas"
 msgstr "太平洋/马克萨斯"
 
-#: ../capplets/time-admin/src/time-zones.h:435
+#: capplets/time-admin/src/time-zones.h:435
 msgid "Pacific/Midway"
 msgstr "太平洋/中途"
 
-#: ../capplets/time-admin/src/time-zones.h:436
+#: capplets/time-admin/src/time-zones.h:436
 msgid "Pacific/Nauru"
 msgstr "太平洋/瑙鲁"
 
-#: ../capplets/time-admin/src/time-zones.h:437
+#: capplets/time-admin/src/time-zones.h:437
 msgid "Pacific/Niue"
 msgstr "太平洋/纽埃"
 
-#: ../capplets/time-admin/src/time-zones.h:438
+#: capplets/time-admin/src/time-zones.h:438
 msgid "Pacific/Norfolk"
 msgstr "太平洋/诺福克岛"
 
-#: ../capplets/time-admin/src/time-zones.h:439
+#: capplets/time-admin/src/time-zones.h:439
 msgid "Pacific/Noumea"
 msgstr "太平洋/努美阿"
 
-#: ../capplets/time-admin/src/time-zones.h:440
+#: capplets/time-admin/src/time-zones.h:440
 msgid "Pacific/Pago_Pago"
 msgstr "太平洋/帕果帕果"
 
-#: ../capplets/time-admin/src/time-zones.h:441
+#: capplets/time-admin/src/time-zones.h:441
 msgid "Pacific/Palau"
 msgstr "太平洋/帕劳"
 
-#: ../capplets/time-admin/src/time-zones.h:442
+#: capplets/time-admin/src/time-zones.h:442
 msgid "Pacific/Pitcairn"
 msgstr "太平洋/皮特凯恩"
 
-#: ../capplets/time-admin/src/time-zones.h:443
+#: capplets/time-admin/src/time-zones.h:443
 msgid "Pacific/Pohnpei"
 msgstr "太平洋/波纳佩"
 
-#: ../capplets/time-admin/src/time-zones.h:444
+#: capplets/time-admin/src/time-zones.h:444
 msgid "Pacific/Port_Moresby"
 msgstr "太平洋/莫尔兹比港"
 
-#: ../capplets/time-admin/src/time-zones.h:445
+#: capplets/time-admin/src/time-zones.h:445
 msgid "Pacific/Rarotonga"
 msgstr "太平洋/拉罗汤加"
 
-#: ../capplets/time-admin/src/time-zones.h:446
+#: capplets/time-admin/src/time-zones.h:446
 msgid "Pacific/Saipan"
 msgstr "太平洋/塞班"
 
-#: ../capplets/time-admin/src/time-zones.h:447
+#: capplets/time-admin/src/time-zones.h:447
 msgid "Pacific/Tahiti"
 msgstr "太平洋/塔希提岛"
 
-#: ../capplets/time-admin/src/time-zones.h:448
+#: capplets/time-admin/src/time-zones.h:448
 msgid "Pacific/Tarawa"
 msgstr "太平洋/塔拉瓦环礁"
 
-#: ../capplets/time-admin/src/time-zones.h:449
+#: capplets/time-admin/src/time-zones.h:449
 msgid "Pacific/Tongatapu"
 msgstr "太平洋/汤加塔布"
 
-#: ../capplets/time-admin/src/time-zones.h:450
+#: capplets/time-admin/src/time-zones.h:450
 msgid "Pacific/Wake"
 msgstr "太平洋/威克"
 
-#: ../capplets/time-admin/src/time-zones.h:451
+#: capplets/time-admin/src/time-zones.h:451
 msgid "Pacific/Wallis"
 msgstr "太平洋/瓦利斯"
 
-#: ../capplets/time-admin/data/mate-time-admin.desktop.in.h:1
+#: capplets/time-admin/data/mate-time-admin.desktop.in:3
 msgid "Time And Date Manager"
 msgstr "时间和日期管理"
 
-#: ../capplets/time-admin/data/mate-time-admin.desktop.in.h:2
+#: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
 msgstr "设置本地系统的时间和日期"
 
-#: ../libwindow-settings/mate-wm-manager.c:317
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: capplets/time-admin/data/mate-time-admin.desktop.in:9
+msgid "preferences-system-time"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: capplets/time-admin/data/mate-time-admin.desktop.in:13
+msgid "mate-control-center;MATE;clock;date;time;preferences;"
+msgstr ""
+
+#: libwindow-settings/mate-wm-manager.c:317
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "窗口管理器“%s”没有注册配置工具\n"
 
-#: ../shell/control-center.c:58
+#: shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
 msgstr "%s 键为空\n"
 
-#: ../shell/control-center.c:137
+#: shell/control-center.c:137
 msgid "Filter"
 msgstr "过滤器"
 
-#: ../shell/control-center.c:137
+#: shell/control-center.c:137
 msgid "Groups"
 msgstr "分组"
 
-#: ../shell/control-center.c:137
+#: shell/control-center.c:137
 msgid "Common Tasks"
 msgstr "公共任务"
 
-#: ../shell/control-center.c:145 ../shell/matecc.desktop.in.h:1
-#: ../shell/matecc.directory.in.h:1
+#: shell/control-center.c:145 shell/matecc.desktop.in:3
+#: shell/matecc.directory.desktop.in:3
 msgid "Control Center"
 msgstr "控制中心"
 
-#: ../shell/control-center.c:164
+#: shell/control-center.c:164
 msgid "Hide on start (useful to preload the shell)"
 msgstr "启动时隐藏 (对于预先启动 shell 非常有用)"
 
-#: ../shell/matecc.desktop.in.h:2
+#: shell/matecc.desktop.in:4
 msgid "The MATE configuration tool"
 msgstr "MATE 配置工具"
 
-#: ../shell/matecc.desktop.in.h:3
+#: shell/matecc.desktop.in:5
 msgid "Configure MATE settings"
 msgstr "调整 MATE 设置"
 
-#: ../typing-break/drw-break-window.c:181
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: shell/matecc.desktop.in:7
+msgid "preferences-desktop"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: shell/matecc.desktop.in:14
+msgid "MATE;control;center;configuration;tool;desktop;preferences;"
+msgstr ""
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: shell/matecc.directory.desktop.in:5
+msgid "mate-settings"
+msgstr ""
+
+#: typing-break/drw-break-window.c:179
 msgid "_Postpone Break"
 msgstr "推迟间隔(_P)"
 
-#: ../typing-break/drw-break-window.c:240
+#: typing-break/drw-break-window.c:238
 msgid "Take a break!"
 msgstr "歇一会儿！"
 
-#: ../typing-break/drwright.c:138
+#: typing-break/drwright.c:138
 msgid "_Preferences"
 msgstr "属性(_P)"
 
-#: ../typing-break/drwright.c:139
+#: typing-break/drwright.c:139
 msgid "_About"
 msgstr "关于(_A)"
 
-#: ../typing-break/drwright.c:140
+#: typing-break/drwright.c:140
 msgid "_Take a Break"
 msgstr "休息一下(_T)"
 
-#: ../typing-break/drwright.c:537
+#: typing-break/drwright.c:537
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "休息一下 (距下次 %dm)"
 
-#: ../typing-break/drwright.c:539
+#: typing-break/drwright.c:539
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "距下次间隔还有 %d 分钟"
 
-#: ../typing-break/drwright.c:545
-#, c-format
+#: typing-break/drwright.c:545
 msgid "Take a break now (next in less than one minute)"
 msgstr "休息一下 (下次在一分钟以内)"
 
-#: ../typing-break/drwright.c:547
-#, c-format
+#: typing-break/drwright.c:547
 msgid "Less than one minute until the next break"
 msgstr "距下次间隔还有不到一分钟。"
 
-#: ../typing-break/drwright.c:637
+#: typing-break/drwright.c:637
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr "无法启动打字间隔属性对话框，错误如下：%s"
 
-#: ../typing-break/drwright.c:654
+#: typing-break/drwright.c:654
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "由 Richard Hult <richard@imendio.com> 编写"
 
-#: ../typing-break/drwright.c:655
+#: typing-break/drwright.c:655
 msgid "Eye candy added by Anders Carlsson"
 msgstr "炫彩视觉效果由 Anders Carlsson 带来"
 
-#: ../typing-break/drwright.c:664
+#: typing-break/drwright.c:664
 msgid "A computer break reminder."
 msgstr "计算机间隔提醒程序。"
 
-#: ../typing-break/drwright.c:666 ../font-viewer/font-view.c:786
+#: typing-break/drwright.c:666 font-viewer/font-view.c:786
 msgid "translator-credits"
 msgstr ""
 "Christopher Meng <i@cicku.me>, 2012-2013\n"
@@ -4575,19 +4849,19 @@ msgstr ""
 "白铭骢 <jeffbai@aosc.xyz>, 2015-2016\n"
 "刘子兴 <liushuyu@aosc.xyz>, 2015-2016"
 
-#: ../typing-break/main.c:62
+#: typing-break/main.c:62
 msgid "Enable debugging code"
 msgstr "启用调试代码"
 
-#: ../typing-break/main.c:64
+#: typing-break/main.c:64
 msgid "Don't check whether the notification area exists"
 msgstr "不检查通知区域是否存在"
 
-#: ../typing-break/main.c:88
+#: typing-break/main.c:88
 msgid "Typing Monitor"
 msgstr "打字显示器"
 
-#: ../typing-break/main.c:105
+#: typing-break/main.c:105
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -4596,155 +4870,157 @@ msgid ""
 msgstr ""
 "打字显示器使用通知区域显示信息。似乎您并没有在面板上放置通知区域。要添加通知区域，只需用鼠标右键点击面板，然后选择“添加到面板 -> 通知区域”。"
 
-#: ../font-viewer/font-view.c:205
+#: font-viewer/font-view.c:205
 msgid "Style"
 msgstr "样式"
 
-#: ../font-viewer/font-view.c:215
+#: font-viewer/font-view.c:215
 msgid "Type"
 msgstr "类型"
 
-#: ../font-viewer/font-view.c:261 ../font-viewer/font-view.c:276
+#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
 msgid "Version"
 msgstr "版本"
 
-#: ../font-viewer/font-view.c:266 ../font-viewer/font-view.c:278
+#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "版权"
 
-#: ../font-viewer/font-view.c:271
+#: font-viewer/font-view.c:271
 msgid "Description"
 msgstr "描述"
 
-#: ../font-viewer/font-view.c:289
+#: font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "安装失败"
 
-#: ../font-viewer/font-view.c:295
+#: font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "已安装"
 
-#: ../font-viewer/font-view.c:432
+#: font-viewer/font-view.c:432
 msgid "This font could not be displayed."
 msgstr "无法显示此字体"
 
-#: ../font-viewer/font-view.c:495 ../font-viewer/font-view.c:562
+#: font-viewer/font-view.c:495 font-viewer/font-view.c:562
 msgid "Info"
 msgstr "信息"
 
-#: ../font-viewer/font-view.c:575
+#: font-viewer/font-view.c:575
 msgid "Back"
 msgstr "后退"
 
-#: ../font-viewer/font-view.c:679
+#: font-viewer/font-view.c:679
 msgid "All Fonts"
 msgstr "所有字体"
 
-#: ../font-viewer/font-view.c:783 ../font-viewer/font-view.c:835
+#: font-viewer/font-view.c:783 font-viewer/font-view.c:835
 msgid "Font Viewer"
 msgstr "字体查看器"
 
-#: ../font-viewer/font-view.c:784
-#: ../font-viewer/mate-font-viewer.desktop.in.h:2
+#: font-viewer/font-view.c:784 font-viewer/mate-font-viewer.desktop.in:4
 msgid "View fonts on your system"
 msgstr "在您的系统上查看字体"
 
-#: ../font-viewer/font-view.c:843 ../libslab/bookmark-agent.c:1192
-msgid "Search"
-msgstr "查找"
-
-#: ../font-viewer/mate-font-viewer.desktop.in.h:1
+#: font-viewer/mate-font-viewer.desktop.in:3
 msgid "MATE Font Viewer"
 msgstr "MATE 字体查看器"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#. Translators: Do NOT translate or transliterate this text (this is an icon
+#. file name)!
+#: font-viewer/mate-font-viewer.desktop.in:6
+msgid "preferences-desktop-font"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: font-viewer/mate-font-viewer.desktop.in:14
+msgid "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
+msgstr ""
+
+#: font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
 msgstr "缩略图使用文字 (默认：Aa)"
 
-#: ../font-viewer/font-thumbnailer.c:191
+#: font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
 msgstr "文字"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
 msgstr "缩略图大小 (默认：128)"
 
-#: ../font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
 msgstr "大小"
 
-#: ../font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "字体-文件输出-文件"
 
-#: ../libslab/app-shell.c:763
+#: libslab/app-shell.c:763
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "您的过滤器“%s”不符合任何项。"
 
-#: ../libslab/app-shell.c:765
+#: libslab/app-shell.c:765
 msgid "No matches found."
 msgstr "没有找到符合的。"
 
-#: ../libslab/app-shell.c:874
+#: libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "新建应用程序"
 
-#: ../libslab/app-shell.c:936
+#: libslab/app-shell.c:936
 msgid "Other"
 msgstr "其它"
 
-#. make start action
-#: ../libslab/application-tile.c:339
+#: libslab/application-tile.c:339
 #, c-format
 msgid "Start %s"
 msgstr "启动 %s"
 
-#: ../libslab/application-tile.c:360
+#: libslab/application-tile.c:360
 msgid "Help"
 msgstr "帮助"
 
-#: ../libslab/application-tile.c:642
+#: libslab/application-tile.c:642
 msgid "Remove from Favorites"
 msgstr "从收藏夹中移除"
 
-#: ../libslab/application-tile.c:644
+#: libslab/application-tile.c:644
 msgid "Add to Favorites"
 msgstr "添加到收藏夹"
 
-#: ../libslab/application-tile.c:729
+#: libslab/application-tile.c:729
 msgid "Remove from Startup Programs"
 msgstr "从启动程序中删除"
 
-#: ../libslab/application-tile.c:731
+#: libslab/application-tile.c:731
 msgid "Add to Startup Programs"
 msgstr "添加到启动程序"
 
-#: ../libslab/bookmark-agent.c:1082
+#: libslab/bookmark-agent.c:1082
 msgid "New Spreadsheet"
 msgstr "新建电子表格"
 
-#: ../libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1086
 msgid "New Document"
 msgstr "新建文档"
 
-#: ../libslab/bookmark-agent.c:1140
+#: libslab/bookmark-agent.c:1140
 msgctxt "Home folder"
 msgid "Home"
 msgstr "主目录"
 
-#: ../libslab/bookmark-agent.c:1147
+#: libslab/bookmark-agent.c:1147
 msgid "Documents"
 msgstr "文档"
 
-#: ../libslab/bookmark-agent.c:1153
-msgid "Desktop"
-msgstr "桌面"
-
-#: ../libslab/bookmark-agent.c:1158
+#: libslab/bookmark-agent.c:1158
 msgid "File System"
 msgstr "文件系统"
 
-#: ../libslab/bookmark-agent.c:1161
+#: libslab/bookmark-agent.c:1161
 msgid "Network Servers"
 msgstr "网络服务器"
