@@ -33,7 +33,7 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-int TimeoutFlag;
+extern int TimeoutFlag;
 typedef struct
 {
     GtkWidget        *MainWindow;

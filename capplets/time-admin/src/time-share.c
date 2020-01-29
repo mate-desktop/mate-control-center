@@ -21,6 +21,8 @@
 #include "time-share.h"
 #include <glib/gi18n.h>
 
+int TimeoutFlag;
+
 int ErrorMessage (const char *Title,
                   const char *Msg)
 {
