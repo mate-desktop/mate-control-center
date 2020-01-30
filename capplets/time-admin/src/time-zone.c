@@ -363,11 +363,12 @@ static void
 CreateCityList(TimeAdmin *ta)
 {
     TzDB *db;
-    ta->CityListStore = gtk_list_store_new (CITY_NUM_COLS,G_TYPE_STRING,G_TYPE_STRING);
-    db = tz_load_db ();
-    g_ptr_array_foreach (db->locations, (GFunc) LoadCities, ta->CityListStore);
 
-    TimeZoneDateBaseFree(db);
+    ta->CityListStore = gtk_list_store_new (CITY_NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
+    if ((db = tz_load_db ()) != NULL) {
+        g_ptr_array_foreach (db->locations, (GFunc) LoadCities, ta->CityListStore);
+        TimeZoneDateBaseFree (db);
+    }
 }
 
 static GtkWidget*
