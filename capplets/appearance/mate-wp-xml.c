@@ -23,6 +23,7 @@
 #include <gio/gio.h>
 #include <string.h>
 #include <libxml/parser.h>
+#include <errno.h>
 
 static gboolean mate_wp_xml_get_bool(const xmlNode* parent, const char* prop_name)
 {
@@ -470,13 +471,10 @@ void mate_wp_xml_save_list(AppearanceData* data)
 	xmlNode* wallpaper;
 	//xmlNode* item;
 	GSList* list = NULL;
-	char* wpfile;
 
 	g_hash_table_foreach(data->wp_hash, (GHFunc) mate_wp_list_flatten, &list);
 	g_hash_table_destroy(data->wp_hash);
 	list = g_slist_reverse(list);
-
-		wpfile = g_build_filename(g_get_user_config_dir(), "mate", "backgrounds.xml", NULL);
 
 	xmlKeepBlanksDefault(0);
 
@@ -529,12 +527,24 @@ void mate_wp_xml_save_list(AppearanceData* data)
 		mate_wp_item_free(wpitem);
 	}
 
-	/* Guardamos el archivo, solo si hay nodos en <wallpapers> */
+	/* save the xml document, only if there are nodes in <wallpapers> */
 	if (xmlChildElementCount(root) > 0)
 	{
-		xmlSaveFormatFile(wpfile, wplist, 1);
+		g_autofree gchar *wpdir = NULL;
+		g_autofree gchar *wpfile = NULL;
+
+		wpdir = g_build_filename (g_get_user_config_dir(), "mate", NULL);
+		if (g_mkdir_with_parents (wpdir, 0700) == -1)
+		{
+			int errsv = errno;
+			g_warning ("failed, g_mkdir_with_parents(%s) failed: %s", wpdir, g_strerror (errsv));
+		}
+		else
+		{
+			wpfile = g_build_filename(wpdir, "backgrounds.xml", NULL);
+			xmlSaveFormatFile(wpfile, wplist, 1);
+		}
 	}
 
 	xmlFreeDoc(wplist);
-	g_free(wpfile);
 }
