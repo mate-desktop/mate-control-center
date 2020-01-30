@@ -669,11 +669,12 @@ TzInfo *tz_info_from_location (TzLocation *loc)
 glong tz_location_get_utc_offset (TzLocation *loc)
 {
     TzInfo *tz_info;
-    glong offset;
+    glong offset = 0;
 
-    tz_info = tz_info_from_location (loc);
-    offset = tz_info->utc_offset;
-    tz_info_free (tz_info);
+    if ((tz_info = tz_info_from_location (loc)) != NULL) {
+        offset = tz_info->utc_offset;
+        tz_info_free (tz_info);
+    }
 
     return offset;
 }
