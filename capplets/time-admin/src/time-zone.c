@@ -42,7 +42,7 @@
 #include <libmate-desktop/mate-languages.h>
 
 #define DEFAULT_TZ "Europe/London"
-#define BACKFILE   "/usr/share/mate-time-admin/map/backward"
+#define BACKFILE   TIMPZONEDIR "backward"
 
 static void LocationChanged(TimezoneMap  *map,
                             TzLocation   *location,
