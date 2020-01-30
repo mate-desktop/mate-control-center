@@ -49,6 +49,7 @@ mate_appearance_properties_LDFLAGS = -export-dynamic
 
 pixmapdir = $(pkgdatadir)/pixmaps
 wallpaperdir = $(datadir)/mate-background-properties
+backgrounddir = $(datadir)/backgrounds
 
 AM_CPPFLAGS = \
 	$(MARCO_CFLAGS) \
@@ -56,7 +57,8 @@ AM_CPPFLAGS = \
 	$(FONT_CAPPLET_CFLAGS) \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pixmapdir)\"" \
-	-DWALLPAPER_DATADIR="\"$(wallpaperdir)\""
+	-DWALLPAPER_DATADIR="\"$(wallpaperdir)\"" \
+	-DBACKGROUND_DATADIR="\"$(backgrounddir)\""
 
 mate-appearance-properties-resources.h mate-appearance-properties-resources.c: org.mate.mcc.appearance.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.appearance.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name appearance $<
