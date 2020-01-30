@@ -627,10 +627,10 @@ wp_create_filechooser (AppearanceData *data)
 
   start_dir = g_get_home_dir ();
 
-  if (g_file_test ("/usr/share/backgrounds", G_FILE_TEST_IS_DIR)) {
+  if (g_file_test (BACKGROUND_DATADIR, G_FILE_TEST_IS_DIR)) {
     gtk_file_chooser_add_shortcut_folder (data->wp_filesel,
-                                          "/usr/share/backgrounds", NULL);
-    start_dir = "/usr/share/backgrounds";
+                                          BACKGROUND_DATADIR, NULL);
+    start_dir = BACKGROUND_DATADIR;
   }
 
   pictures = g_get_user_special_dir (G_USER_DIRECTORY_PICTURES);
