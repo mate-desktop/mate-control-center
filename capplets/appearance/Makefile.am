@@ -46,6 +46,7 @@ mate_appearance_properties_LDFLAGS = -export-dynamic
 gtkbuilderdir = $(pkgdatadir)/ui
 pixmapdir = $(pkgdatadir)/pixmaps
 wallpaperdir = $(datadir)/mate-background-properties
+backgrounddir = $(datadir)/backgrounds
 
 AM_CPPFLAGS = \
 	$(MARCO_CFLAGS) \
@@ -55,7 +56,8 @@ AM_CPPFLAGS = \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	-DMATECC_GTKBUILDER_DIR="\"$(gtkbuilderdir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pixmapdir)\"" \
-	-DWALLPAPER_DATADIR="\"$(wallpaperdir)\""
+	-DWALLPAPER_DATADIR="\"$(wallpaperdir)\"" \
+	-DBACKGROUND_DATADIR="\"$(backgrounddir)\""
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES)
 
