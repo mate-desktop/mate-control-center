@@ -1546,22 +1546,24 @@ MateThemeMetaInfo* mate_theme_meta_info_new(void)
 
 void mate_theme_meta_info_free(MateThemeMetaInfo* meta_theme_info)
 {
-	g_free(meta_theme_info->path);
-	g_free(meta_theme_info->readable_name);
-	g_free(meta_theme_info->name);
-	g_free(meta_theme_info->comment);
-	g_free(meta_theme_info->application_font);
-	g_free(meta_theme_info->documents_font);
-	g_free(meta_theme_info->desktop_font);
-	g_free(meta_theme_info->windowtitle_font);
-	g_free(meta_theme_info->monospace_font);
-	g_free(meta_theme_info->background_image);
-	g_free(meta_theme_info->gtk_theme_name);
-	g_free(meta_theme_info->gtk_color_scheme);
-	g_free(meta_theme_info->icon_theme_name);
-	g_free(meta_theme_info->marco_theme_name);
-	g_free(meta_theme_info->notification_theme_name);
-	g_free(meta_theme_info);
+	g_free (meta_theme_info->application_font);
+	g_free (meta_theme_info->background_image);
+	g_free (meta_theme_info->comment);
+	g_free (meta_theme_info->cursor_theme_name);
+	g_free (meta_theme_info->desktop_font);
+	g_free (meta_theme_info->documents_font);
+	g_free (meta_theme_info->gtk_color_scheme);
+	g_free (meta_theme_info->gtk_theme_name);
+	g_free (meta_theme_info->icon_file);
+	g_free (meta_theme_info->icon_theme_name);
+	g_free (meta_theme_info->marco_theme_name);
+	g_free (meta_theme_info->monospace_font);
+	g_free (meta_theme_info->name);
+	g_free (meta_theme_info->notification_theme_name);
+	g_free (meta_theme_info->path);
+	g_free (meta_theme_info->sound_theme_name);
+	g_free (meta_theme_info->windowtitle_font);
+	g_free (meta_theme_info);
 }
 
 gboolean mate_theme_meta_info_validate(const MateThemeMetaInfo* info, GError** error)
