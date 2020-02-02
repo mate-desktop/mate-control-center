@@ -94,4 +94,5 @@ void mate_wp_info_free(MateWPInfo* info)
 	g_free(info->thumburi);
 	g_free(info->name);
 	g_free(info->mime_type);
+	g_free(info);
 }
