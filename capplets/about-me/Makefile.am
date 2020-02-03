@@ -20,7 +20,7 @@ mate_about_me_SOURCES =	 	\
 marshal.h: fprintd-marshal.list
 	@GLIB_GENMARSHAL@ --prefix=fprintd_marshal $< --header > $@
 marshal.c: fprintd-marshal.list
-	@GLIB_GENMARSHAL@ --prefix=fprintd_marshal $< --body --header > $@
+	@GLIB_GENMARSHAL@ --prefix=fprintd_marshal $< --body --prototypes > $@
 mate-about-me-resources.h mate-about-me-resources.c: org.mate.mcc.am.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.am.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name about_me $<
 
