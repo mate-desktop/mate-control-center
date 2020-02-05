@@ -22,6 +22,7 @@ mate_typing_monitor_CPPFLAGS = \
 mate_typing_monitor_CFLAGS = \
 	@TYPING_CFLAGS@	\
 	@MATE_DESKTOP_CFLAGS@ \
+	$(WARN_CFLAGS) \
 	$(AM_CFLAGS)
 
 mate_typing_monitor_LDADD = @TYPING_LIBS@ @MATE_DESKTOP_LIBS@ @SCREENSAVER_LIBS@

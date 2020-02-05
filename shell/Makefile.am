@@ -3,11 +3,12 @@ REAL_LIBSLAB_LIBS = $(top_builddir)/libslab/libmate-slab.la
 
 AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\
-	$(REAL_LIBSLAB_CFLAGS)		\
-	$(MATECC_SHELL_CFLAGS)  	\
+	$(WARN_CFLAGS)				\
+	$(REAL_LIBSLAB_CFLAGS)			\
+	$(MATECC_SHELL_CFLAGS)			\
 	-DMATELOCALEDIR="\"$(datadir)/locale\""
 
-bin_PROGRAMS = mate-control-center 
+bin_PROGRAMS = mate-control-center
 
 mate_control_center_SOURCES =		\
 	control-center.c

@@ -2,19 +2,20 @@ EXTRA_DIST =
 
 AM_CPPFLAGS = \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""				\
-	-DMATELOCALEDIR="\"$(datadir)/locale\""			\
+	-DMATELOCALEDIR="\"$(datadir)/locale\""				\
 	-DGTK_ENGINE_DIR="\"$(GTK_ENGINE_DIR)\"" 			\
 	-DG_LOG_DOMAIN=\"capplet-common\"				\
 	-DINSTALL_PREFIX=\"$(prefix)\"					\
 	-I$(top_srcdir)							\
 	-I$(top_srcdir)/libwindow-settings				\
 	-DPIXMAP_DIR=\""$(datadir)/mate-control-center/pixmaps"\"	\
+	$(WARN_CFLAGS)							\
 	$(CAPPLET_CFLAGS)						\
 	$(DBUS_CFLAGS)							\
 	$(MATE_DESKTOP_CFLAGS)						\
-	$(MARCO_CFLAGS)						\
+	$(MARCO_CFLAGS)							\
 	$(GSD_DBUS_CFLAGS)						\
-	$(GIO_CFLAGS)						\
+	$(GIO_CFLAGS)							\
 	$(DCONF_CFLAGS)
 
 
@@ -25,8 +26,8 @@ libcommon_la_SOURCES = \
 	activate-settings-daemon.h	\
 	capplet-util.c			\
 	capplet-util.h			\
-	dconf-util.c				\
-	dconf-util.h				\
+	dconf-util.c			\
+	dconf-util.h			\
 	file-transfer-dialog.c		\
 	file-transfer-dialog.h		\
 	mate-theme-apply.c		\

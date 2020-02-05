@@ -4,7 +4,7 @@ bin_PROGRAMS = mate-time-admin
 
 BUILT_SOURCES = mate-time-admin-resources.h mate-time-admin-resources.c
 nodist_mate_time_admin_SOURCES = $(BUILT_SOURCES)
-mate_time_admin_SOURCES =	 	\
+mate_time_admin_SOURCES =		\
 	main.c       time-map.c  time-share.c  time-tool.c  time-zone.c \
 	time-map.h  time-share.h  time-tool.h  time-zone.h
 
@@ -14,8 +14,9 @@ mate-time-admin-resources.h mate-time-admin-resources.c: org.mate.mcc.ta.gresour
 mate_time_admin_LDADD = $(MATECC_CAPPLETS_LIBS)
 mate_time_admin_LDFLAGS = -export-dynamic
 
-AM_CPPFLAGS = \
-	$(MATECC_CAPPLETS_CFLAGS) \
+AM_CPPFLAGS =				\
+	$(WARN_CFLAGS)			\
+	$(MATECC_CAPPLETS_CFLAGS)	\
 	-DTIMPZONEDIR="\"$(datadir)/mate-time-admin/map/\""
 
 

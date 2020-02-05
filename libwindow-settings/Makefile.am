@@ -1,12 +1,13 @@
 WM_MODULE_DIR=$(libdir)/window-manager-settings
 
 AM_CPPFLAGS = 								\
-	-DMATELOCALEDIR="\"$(datadir)/locale\""			\
-	-DMATE_ICONDIR=\""$(datadir)/pixmaps"\"			\
+	-DMATELOCALEDIR="\"$(datadir)/locale\""				\
+	-DMATE_ICONDIR=\""$(datadir)/pixmaps"\"				\
 	-DG_LOG_DOMAIN=\"capplet-common\"				\
 	-DMATE_WM_PROPERTY_PATH=\"$(datadir)/mate/wm-properties\"	\
 	-DMATE_WINDOW_MANAGER_MODULE_PATH=\""$(WM_MODULE_DIR)"\"	\
 	-I$(top_srcdir)/						\
+	$(WARN_CFLAGS)							\
 	@CAPPLET_CFLAGS@						\
 	-DMARCO_THEME_DIR=\""$(datadir)/themes"\"
 

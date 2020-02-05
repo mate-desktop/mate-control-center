@@ -38,6 +38,7 @@ mate-keybinding-properties-resources.h mate-keybinding-properties-resources.c: o
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name keybindings $<
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = \
