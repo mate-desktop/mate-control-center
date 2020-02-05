@@ -22,15 +22,6 @@ AC_PATH_PROG([GLA11Y], [gla11y], [true])
 # Use the Yelp documentation framework
 YELP_HELP_INIT
 
-changequote(,)dnl
-if test "x$GCC" = "xyes"; then
-  case " $CFLAGS " in
-  *[\ \	]-Wall[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wall" ;;
-  esac
-fi
-changequote([,])dnl
-
 # Internationalization support
 AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
@@ -172,7 +163,6 @@ PKG_CHECK_MODULES(LIBSLAB, [
 			   ],
 			   have_libmateslab=yes,
 			   have_libmateslab=no)
-WARN_CFLAGS="-Wall"
 
 AC_SUBST(LIBMATESLAB_CFLAGS)
 AC_SUBST(LIBMATESLAB_LIBS)
