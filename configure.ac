@@ -316,6 +316,11 @@ dnl ---------------------------------------------------------------------------
 echo "
               mate-control-center
 
+        Compiler:              ${CC}
+        Compiler flags:        ${CFLAGS}
+        Warning flags:         ${WARN_CFLAGS}
+        Linker flags:          ${LDFLAGS}
+
         Appindicator:          ${enable_appindicator}
         Libmate-slab:          ${have_libmateslab}
         Accountsservice:       ${have_accountsservice}
