@@ -22,9 +22,11 @@ mate-window-properties-resources.h mate-window-properties-resources.c: org.mate.
 $(desktop_DATA): $(Desktop_in_files)
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
-AM_CPPFLAGS   = $(MATECC_CAPPLETS_CFLAGS)					\
-	     -DUIDIR=\""$(uidir)"\"  	\
-	     -DPIXMAPDIR=\""$(pixmapdir)"\"
+AM_CPPFLAGS =				\
+	$(WARN_CFLAGS)			\
+	$(MATECC_CAPPLETS_CFLAGS)	\
+	-DUIDIR=\""$(uidir)"\"		\
+	-DPIXMAPDIR=\""$(pixmapdir)"\"
 
 CLEANFILES = $(BUILT_SOURCES) $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
 EXTRA_DIST = $(Desktop_in_files) org.mate.mcc.windows.gresource.xml window-properties.ui

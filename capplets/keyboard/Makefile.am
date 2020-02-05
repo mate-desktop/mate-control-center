@@ -40,6 +40,7 @@ mate-keyboard-properties-resources.h mate-keyboard-properties-resources.c: org.m
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name keyboard $<
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBMATEKBDUI_CFLAGS) \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""

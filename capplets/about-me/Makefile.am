@@ -40,6 +40,7 @@ $(desktop_DATA): $(Desktop_in_files)
 include $(top_srcdir)/gla11y.mk
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBEBOOK_CFLAGS) \
 	-DDATADIR="\"$(datadir)\"" \

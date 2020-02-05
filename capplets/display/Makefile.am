@@ -47,11 +47,13 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 $(desktop_DATA): $(Desktop_in_files)
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
-AM_CPPFLAGS   = $(DISPLAY_CAPPLET_CFLAGS) \
-             $(MATECC_CAPPLETS_CFLAGS) \
-	     -DSBINDIR="\"$(sbindir)\"" \
-	     -DMATELOCALEDIR="\"$(datadir)/locale\"" \
-	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\""
+AM_CPPFLAGS =					\
+	$(WARN_CFLAGS)				\
+	$(DISPLAY_CAPPLET_CFLAGS)		\
+	$(MATECC_CAPPLETS_CFLAGS)		\
+	-DSBINDIR="\"$(sbindir)\""		\
+	-DMATELOCALEDIR="\"$(datadir)/locale\""	\
+	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 
 foo-marshal.c: foo-marshal.list
 	@GLIB_GENMARSHAL@ --prefix=foo_marshal $< --header > $@

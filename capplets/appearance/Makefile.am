@@ -52,6 +52,7 @@ wallpaperdir = $(datadir)/mate-background-properties
 backgrounddir = $(datadir)/backgrounds
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MARCO_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(FONT_CAPPLET_CFLAGS) \

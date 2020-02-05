@@ -24,6 +24,7 @@ mate-network-properties-resources.h mate-network-properties-resources.c: org.mat
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name network $<
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS)
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)

@@ -27,10 +27,12 @@ pixmap_DATA =					\
 
 include $(top_srcdir)/gla11y.mk
 
-AM_CPPFLAGS   = $(AT_CAPPLET_CFLAGS)     \
-             $(MATECC_CAPPLETS_CFLAGS) \
-	     -DPIXMAPDIR=\""$(pixmapdir)"\" \
-	     -DMATECC_DATA_DIR="\"$(pkgdatadir)\""
+AM_CPPFLAGS =					\
+	$(WARN_CFLAGS)				\
+	$(AT_CAPPLET_CFLAGS)			\
+	$(MATECC_CAPPLETS_CFLAGS)		\
+	-DPIXMAPDIR=\""$(pixmapdir)"\"		\
+	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 EXTRA_DIST = \
 	$(ui_files) \

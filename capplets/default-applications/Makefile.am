@@ -29,6 +29,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-default-applications.pc
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(DEFAULT_APPLICATIONS_CAPPLET_CFLAGS) \
 	-DAPPLICATIONSDIR=\""$(datadir)/applications"\"

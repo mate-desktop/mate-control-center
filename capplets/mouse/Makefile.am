@@ -27,6 +27,7 @@ mate-mouse-properties-resources.h mate-mouse-properties-resources.c: org.mate.mc
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name mouse $<
 
 AM_CPPFLAGS = \
+	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
