@@ -106,7 +106,7 @@ static int n_mouse_modifiers = 0;
 static void reload_mouse_modifiers (void);
 
 static void
-update_sensitivity ()
+update_sensitivity (void)
 {
     gchar *str;
 
@@ -218,7 +218,7 @@ alt_click_radio_toggled_callback (GtkWidget *radio,
 }
 
 static void
-set_alt_click_value ()
+set_alt_click_value (void)
 {
     gboolean match_found = FALSE;
     gchar *mouse_move_modifier;
@@ -249,7 +249,7 @@ set_alt_click_value ()
 }
 
 static void
-wm_unsupported ()
+wm_unsupported (void)
 {
     GtkWidget *no_tool_dialog;
 

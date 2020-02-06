@@ -26,7 +26,7 @@
 #include <libslab/slab.h>
 
 void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data);
-static GSList* get_actions_list();
+static GSList* get_actions_list(void);
 
 #define CONTROL_CENTER_SCHEMA "org.mate.control-center"
 #define CONTROL_CENTER_ACTIONS_LIST_KEY "cc-actions-list"

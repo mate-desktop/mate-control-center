@@ -26,7 +26,7 @@ struct _DrwTimer
 	GTimeVal start_time;
 };
 
-DrwTimer * drw_timer_new ()
+DrwTimer * drw_timer_new (void)
 {
 	DrwTimer * timer = g_new0 (DrwTimer, 1);
 	drw_timer_start (timer);

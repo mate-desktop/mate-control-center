@@ -187,7 +187,7 @@ static void theme_changed_on_disk_cb(MateThemeCommonInfo* theme, MateThemeChange
 }
 
 /* Find out if the lockdown key has been set. */
-static gboolean is_locked_down()
+static gboolean is_locked_down(void)
 {
   gboolean is_locked;
   GSettings *settings;

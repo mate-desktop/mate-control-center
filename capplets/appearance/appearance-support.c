@@ -40,7 +40,7 @@ is_program_in_path (const char *program)
 }
 
 static gboolean
-metacity_is_running()
+metacity_is_running(void)
 {
     gboolean is_running = FALSE;
     gchar *current_wm = NULL;
