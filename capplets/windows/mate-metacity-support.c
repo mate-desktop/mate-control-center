@@ -27,7 +27,7 @@
 #define COMPOSITING_KEY "compositing-manager"
 
 void
-mate_metacity_config_tool ()
+mate_metacity_config_tool (void)
 {
     GSettings *settings;
     GtkDialog *dialog;

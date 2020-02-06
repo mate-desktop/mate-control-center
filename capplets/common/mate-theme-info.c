@@ -484,7 +484,7 @@ read_icon_theme (GFile *icon_theme_uri)
 }
 
 static void
-add_default_cursor_theme ()
+add_default_cursor_theme (void)
 {
   MateThemeCursorInfo *theme_info;
 
