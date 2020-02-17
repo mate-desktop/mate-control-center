@@ -333,7 +333,6 @@ static struct {
 	{"media_player_image", "audio-x-generic"},
 	{"visual_image",       "zoom-best-fit"},
 	{"mobility_image",     "preferences-desktop-accessibility"},
-	{"messenger_image",    "user-idle"},
 	{"filemanager_image",  "file-manager"},
 	{"imageviewer_image",  "image-x-generic"},
 	{"video_image",        "video-x-generic"},
