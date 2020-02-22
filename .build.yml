@@ -1,0 +1,133 @@
+##########################################################
+# THE FOLLOWING LINES IS USED BY docker-build
+##########################################################
+requires:
+  archlinux:
+    # Useful URL: https://git.archlinux.org/svntogit/community.git/tree/mate-control-center
+    - gcc
+    - git
+    - intltool
+    - itstool
+    - libxss
+    - make
+    - marco
+    - mate-common
+    - mate-menus
+    - mate-settings-daemon
+    - which
+    - yelp-tools
+
+  debian:
+    # Useful URL: https://github.com/mate-desktop/debian-packages
+    # Useful URL: https://salsa.debian.org/debian-mate-team/mate-control-center
+    - curl
+    - desktop-file-utils
+    - git
+    - intltool
+    - libcanberra-gtk3-dev
+    - libdbus-1-dev
+    - libdbus-glib-1-dev
+    - libdconf-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libgtop2-dev
+    - libmarco-dev
+    - libmate-desktop-dev
+    - libmate-menu-dev
+    - libmatekbd-dev
+    - libpango1.0-dev
+    - librsvg2-dev
+    - libstartup-notification0-dev
+    - libx11-dev
+    - libxcursor-dev
+    - libxi-dev
+    - libxklavier-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - libxss-dev
+    - libxt-dev
+    - make
+    - mate-common
+    - mate-settings-daemon-dev
+    - shared-mime-info
+    - xsltproc
+    - yelp-tools
+
+  fedora:
+    # Useful URL: https://src.fedoraproject.org/cgit/rpms/mate-control-center.git
+    - cairo-gobject-devel
+    - dconf-devel
+    - desktop-file-utils
+    - gcc
+    - git
+    - gtk3-devel
+    - iso-codes-devel
+    - itstool
+    - libSM-devel
+    - libXScrnSaver-devel
+    - libcanberra-devel
+    - libmatekbd-devel
+    - librsvg2-devel
+    - make
+    - marco-devel
+    - mate-common
+    - mate-desktop-devel
+    - mate-menus-devel
+    - mate-settings-daemon-devel
+    - redhat-rpm-config
+    - startup-notification-devel
+    - which
+
+  ubuntu:
+    - curl
+    - desktop-file-utils
+    - git
+    - intltool
+    - libcanberra-gtk3-dev
+    - libdbus-1-dev
+    - libdbus-glib-1-dev
+    - libdconf-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libgtop2-dev
+    - libmarco-dev
+    - libmate-desktop-dev
+    - libmate-menu-dev
+    - libmatekbd-dev
+    - libpango1.0-dev
+    - librsvg2-dev
+    - libstartup-notification0-dev
+    - libx11-dev
+    - libxcursor-dev
+    - libxi-dev
+    - libxklavier-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - libxss-dev
+    - libxt-dev
+    - make
+    - mate-common
+    - mate-settings-daemon-dev
+    - shared-mime-info
+    - xsltproc
+    - yelp-tools
+
+variables:
+  - CFLAGS="-Wall -Werror=format-security"
+
+after_scripts:
+  - make distcheck
+
+releases:
+  draft: false
+  prerelease: false
+  checksum: true
+  file_glob: true
+  files: mate-control-center-*.tar.xz
+  github_release:
+    tags: true
+    overwrite: true
+    base_version: 1.20.0
+    notify_servers:
+      - https://release.mate-desktop.org/release
+
