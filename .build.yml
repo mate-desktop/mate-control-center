@@ -1,0 +1,224 @@
+##########################################################
+# THE FOLLOWING LINES IS USED BY docker-build
+##########################################################
+requires:
+  archlinux:
+    # Useful URL: https://git.archlinux.org/svntogit/community.git/tree/mate-control-center
+    - clang
+    - file
+    - gcc
+    - git
+    - gobject-introspection
+    - intltool
+    - itstool
+    - libxss
+    - make
+    - marco
+    - mate-common
+    - mate-menus
+    - mate-settings-daemon
+    - which
+    - yelp-tools
+
+  debian:
+    # Useful URL: https://github.com/mate-desktop/debian-packages
+    # Useful URL: https://salsa.debian.org/debian-mate-team/mate-control-center
+    - autopoint
+    - clang
+    - clang-tools
+    - cppcheck
+    - curl
+    - desktop-file-utils
+    - git
+    - gobject-introspection
+    - intltool
+    - libcanberra-gtk3-dev
+    - libdbus-1-dev
+    - libdbus-glib-1-dev
+    - libdconf-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libgtop2-dev
+    - libmarco-dev
+    - libmate-desktop-dev
+    - libmate-menu-dev
+    - libmatekbd-dev
+    - libpango1.0-dev
+    - librsvg2-bin
+    - librsvg2-dev
+    - libstartup-notification0-dev
+    - libx11-dev
+    - libxcursor-dev
+    - libxi-dev
+    - libxklavier-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - libxss-dev
+    - libxt-dev
+    - libpolkit-gobject-1-dev
+    - make
+    - mate-common
+    - mate-settings-daemon-dev
+    - python3-lxml
+    - shared-mime-info
+    - xsltproc
+    - yelp-tools
+
+  fedora:
+    # Useful URL: https://src.fedoraproject.org/cgit/rpms/mate-control-center.git
+    - accountsservice-devel
+    - cairo-gobject-devel
+    - clang
+    - clang-analyzer
+    - cppcheck-htmlreport
+    - dconf-devel
+    - desktop-file-utils
+    - gcc
+    - git
+    - gobject-introspection-devel
+    - gtk3-devel
+    - iso-codes-devel
+    - itstool
+    - libSM-devel
+    - libXScrnSaver-devel
+    - libcanberra-devel
+    - libmatekbd-devel
+    - librsvg2-devel
+    - librsvg2-tools
+    - make
+    - marco-devel
+    - mate-menus-devel
+    - polkit-devel
+    - python3-lxml
+    - mate-common
+    - mate-settings-daemon-devel
+    - redhat-rpm-config
+    - startup-notification-devel
+    - which
+
+  ubuntu:
+    - autopoint
+    - curl
+    - clang
+    - clang-tools
+    - desktop-file-utils
+    - git
+    - gobject-introspection
+    - intltool
+    - libcanberra-gtk3-dev
+    - libdbus-1-dev
+    - libdbus-glib-1-dev
+    - libdconf-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libgtop2-dev
+    - libmarco-dev
+    - libmate-desktop-dev
+    - libmate-menu-dev
+    - libmatekbd-dev
+    - libpango1.0-dev
+    - librsvg2-bin
+    - librsvg2-dev
+    - libstartup-notification0-dev
+    - libx11-dev
+    - libxcursor-dev
+    - libxi-dev
+    - libxklavier-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - libxss-dev
+    - libxt-dev
+    - libpolkit-gobject-1-dev
+    - make
+    - mate-common
+    - mate-settings-daemon-dev
+    - python3-lxml
+    - shared-mime-info
+    - xsltproc
+    - yelp-tools
+
+variables:
+  - CFLAGS="-Wall -Werror=format-security -Wredundant-decls"
+  - 'CHECKERS="
+    -enable-checker deadcode.DeadStores
+    -enable-checker alpha.deadcode.UnreachableCode
+    -enable-checker alpha.core.CastSize
+    -enable-checker alpha.core.CastToStruct
+    -enable-checker alpha.core.IdenticalExpr
+    -enable-checker alpha.core.SizeofPtr
+    -enable-checker alpha.security.ArrayBoundV2
+    -enable-checker alpha.security.MallocOverflow
+    -enable-checker alpha.security.ReturnPtrRange
+    -enable-checker alpha.unix.SimpleStream
+    -enable-checker alpha.unix.cstring.BufferOverlap
+    -enable-checker alpha.unix.cstring.NotNullTerminated
+    -enable-checker alpha.unix.cstring.OutOfBounds
+    -enable-checker alpha.core.FixedAddr
+    -enable-checker security.insecureAPI.strcpy"'
+
+before_scripts:
+  - cd ${START_DIR}
+  - if [ ! -f mate-desktop-1.23.2.tar.xz ];then
+  -     curl -Ls -o mate-desktop-1.23.2.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.23.2/mate-desktop-1.23.2.tar.xz
+  - fi
+  - tar xf mate-desktop-1.23.2.tar.xz
+  - cd mate-desktop-1.23.2
+  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
+  -     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
+  - else
+  -     ./autogen.sh --prefix=/usr
+  - fi
+  - if [ ${TRAVIS} == "false" ]; then
+  -     make clean
+  - fi
+  - make
+  - make install
+
+  - cd ${START_DIR}
+  - if [ ! -f mate-settings-daemon-1.23.1.tar.xz ]; then
+  -     curl -Ls -o mate-settings-daemon-1.23.1.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.23.1/mate-settings-daemon-1.23.1.tar.xz
+  - fi
+  - tar xf mate-settings-daemon-1.23.1.tar.xz
+  - cd mate-settings-daemon-1.23.1
+  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
+  -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
+  - else
+  -     ./configure --prefix=/usr
+  - fi
+  - if [ ${TRAVIS} == "false" ]; then
+  -     make clean
+  - fi
+  - make
+  - make install
+  - curl -Ls -o /usr/bin/gla11y https://github.com/hypra/gla11y/raw/v0.3/gla11y
+  - chmod +x /usr/bin/gla11y
+
+build_scripts:
+  - ./autogen.sh
+  - scan-build $CHECKERS ./configure
+  - scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
+  - if [ ${DISTRO_NAME} == "debian" ];then
+  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
+  - fi
+
+after_scripts:
+  - if [ ${DISTRO_NAME} == "fedora" ];then
+  -   cppcheck --xml --output-file=cppcheck.xml --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
+  -   cppcheck-htmlreport --title=${REPO_NAME} --file=cppcheck.xml --report-dir=cppcheck-htmlreport
+  -   ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/categories/preferences-desktop.png
+  - fi
+  - make distcheck
+
+releases:
+  draft: false
+  prerelease: false
+  checksum: true
+  file_glob: true
+  files: mate-control-center-*.tar.xz
+  github_release:
+    tags: true
+    overwrite: true
+    base_version: 1.20.0
+    notify_servers:
+      - https://release.mate-desktop.org/release
+
