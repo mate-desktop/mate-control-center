@@ -201,6 +201,7 @@ about_me_update_photo (MateAboutMe *me)
 
 		g_free (file);
 		g_object_unref (pixbuf);
+		g_free (data);
 	} else if (me->image_changed && !me->have_image) {
 		/* Update the image in the card */
 		file = g_build_filename (g_get_home_dir (), ".face", NULL);
