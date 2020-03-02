@@ -18,7 +18,7 @@ Desktop_in_files = mate-at-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(Desktop_in_files)
-	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
 
 pixmapdir  = $(pkgdatadir)/pixmaps
 pixmap_DATA =					\
