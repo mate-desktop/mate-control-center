@@ -21,7 +21,7 @@ sysdir = $(datadir)/applications
 sys_in_files = matecc.desktop.in
 sys_DATA = $(sys_in_files:.desktop.in=.desktop)
 $(sys_DATA): $(sys_in_files)
-	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
 
 directorydir = $(datadir)/desktop-directories
 directory_in_files = matecc.directory.desktop.in
