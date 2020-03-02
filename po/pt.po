@@ -4,26 +4,28 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# ogalho Carlos Dias Martins <ogalho@gmail.com>, 2018
-# Luis Filipe Teixeira <lufilte@gmail.com>, 2018
-# Diogo Oliveira <diogodesigns@gmail.com>, 2018
-# Martin Wimpress <code@flexion.org>, 2018
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
-# Sérgio Marques <smarquespt@gmail.com>, 2019
-# Rui <xymarior@yandex.com>, 2019
-# Manuela Silva <manuelarodsilva@gmail.com>, 2019
-# José Vieira <jvieira33@sapo.pt>, 2019
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2019
-# Carlos Moreira, 2020
+# ogalho Carlos Dias Martins <ogalho@gmail.com>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
+# Sérgio Marques <smarquespt@gmail.com>, 2020
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2020
+# Carlos Moreira, 2020
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020
+# clefebvre <clement.lefebvre@linuxmint.com>, 2020
+# Martin Wimpress <code@flexion.org>, 2020
+# Wolfgang Ulbrich <mate@raveit.de>, 2020
+# Diogo Oliveira <diogodesigns@gmail.com>, 2020
+# Rui <xymarior@yandex.com>, 2020
+# Luis Filipe Teixeira <lufilte@gmail.com>, 2020
+# Manuela Silva <manuelarodsilva@gmail.com>, 2020
+# José Vieira <jvieira33@sapo.pt>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: mate-control-center 1.23.2\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
 "POT-Creation-Date: 2020-01-12 13:03+0100\n"
-"PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
+"PO-Revision-Date: 2020-02-15 13:20+0000\n"
+"Last-Translator: José Vieira <jvieira33@sapo.pt>, 2020\n"
 "Language-Team: Portuguese (https://www.transifex.com/mate/teams/13566/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -581,7 +583,7 @@ msgstr "Escolher quais funções de acessibilidade a ativar ao iniciar sessão"
 #. file name)!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:7
 msgid "preferences-desktop-accessibility"
-msgstr "preferências-ambiente de trabalho-acessibilidade"
+msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1150,8 +1152,8 @@ msgstr "%d %s por %d %s"
 #: capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
-msgstr[0] "pixel"
-msgstr[1] "pixels"
+msgstr[0] ""
+msgstr[1] ""
 
 #: capplets/appearance/mate-wp-item.c:319
 #, c-format
@@ -1315,8 +1317,8 @@ msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
 msgstr ""
-"Incapaz de iniciar o gestor de definições 'mate-settings-daemon'.\n"
-"Sem o gestor de definições MATE a correr, algumas preferências poderão não ter efeito. Isto pode indicar um problema com DBus, ou um gestor de definições que não seja o MATE (por ex.: KDE) poderá estar já ativo e em conflito com o gestor de definições MATE."
+"Não é possível iniciar o gestor de definições 'mate-settings-daemon'.\n"
+"Sem o gestor de definições do MATE em execução, algumas preferências poderão não ter efeito. Isto poderá indicar um problema com DBus, ou um gestor de definições que não seja o MATE (por exemplo: KDE) poderá estar já ativo e em conflito com o gestor de definições do MATE."
 
 #: capplets/common/capplet-util.c:82
 #, c-format
@@ -1686,14 +1688,15 @@ msgid ""
 msgstr ""
 "Utilização: %s SOURCE_FILE DEST_NAME\n"
 "\n"
-"Este programa instala um perfil RANDR para configurações multi-monitor  num\n"
-"local para todo o sistema.  O perfil resultante será usado quando o plugin RANDR for executado em mate-settings-daemon.\n"
+"Este programa instala um perfil RANDR para configurações multimonitor  num\n"
+"local para todo o sistema.  O perfil resultante será utilizado quando o plug-in\n"
+"RANDR for executado em mate-settings-daemon.\n"
 "\n"
-"SOURCE_FILE - um nome de caminho completo, tipicamente /home/nomedeutilizador/.config/monitors.xml\n"
+"SOURCE_FILE - um nome de caminho completo, tipicamente /home/username/.config/monitors.xml\n"
 "\n"
 "DEST_NAME - nome relativo para o ficheiro instalado.  Este será colocado na\n"
-"            pasta global para configurações RANDR,\n"
-"            portanto o resultado será geralmente %s/DEST_NAME\n"
+"            diretoria global para as configurações RANDR,\n"
+"            e assim o resultado será geralmente %s/DEST_NAME\n"
 
 #. Translators: only able to install RANDR profiles as root
 #: capplets/display/mate-display-properties-install-systemwide.c:151
@@ -1766,7 +1769,7 @@ msgstr "Não se conseguiu renomear %s para %s: %s\n"
 
 #: capplets/display/org.mate.randr.policy.in:17
 msgid "Install multi-monitor settings for the whole system"
-msgstr "Instalar definições multimonitor em todo o sistema"
+msgstr "Instalar as definições de multimonitor para todo o sistema"
 
 #: capplets/display/org.mate.randr.policy.in:18
 msgid ""
@@ -1906,7 +1909,7 @@ msgstr "Ejetar"
 
 #: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1153
 msgid "Desktop"
-msgstr "Área de Trabalho"
+msgstr "Ambiente de Trabalho"
 
 #: capplets/keybindings/01-desktop-key.xml.in:4
 msgid "Launch help browser"
@@ -2176,7 +2179,7 @@ msgstr "Alerta sonoro quando uma tecla é re_jeitada"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:81
 msgid "Keyboard Preferences"
-msgstr "Preferências do Teclado"
+msgstr "Preferências de Teclado"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:166
 msgid "Repeat Keys"
@@ -2469,7 +2472,7 @@ msgstr "_Modelos:"
 
 #: capplets/keyboard/mate-keyboard-properties-options-dialog.ui:14
 msgid "Keyboard Layout Options"
-msgstr "Opções da Disposição de Teclado"
+msgstr "Opções de Disposição de Teclado"
 
 #: capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
@@ -2713,7 +2716,7 @@ msgstr ""
 
 #: capplets/network/mate-network-properties.ui:34
 msgid "Network Proxy Preferences"
-msgstr "Preferências do proxy"
+msgstr "Preferências de Proxy de Rede"
 
 #: capplets/network/mate-network-properties.ui:113
 msgid "<b>Di_rect internet connection</b>"
@@ -4834,7 +4837,7 @@ msgstr "Configurar as definições do MATE"
 #. file name)!
 #: shell/matecc.desktop.in:7
 msgid "preferences-desktop"
-msgstr "preferências-ambiente de trabalho"
+msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -4877,8 +4880,8 @@ msgstr "Fazer um intervalo agora (próximo em %dm)"
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
-msgstr[0] "%d minuto até ao próximo intervalo"
-msgstr[1] "%d minutos até ao próximo intervalo"
+msgstr[0] ""
+msgstr[1] ""
 
 #: typing-break/drwright.c:545
 msgid "Take a break now (next in less than one minute)"
@@ -4911,7 +4914,7 @@ msgstr "Um lembrete para intervalos no computador."
 
 #: typing-break/drwright.c:666 font-viewer/font-view.c:786
 msgid "translator-credits"
-msgstr "Hugo Carvalho <hugokarvalho@gmail.com>"
+msgstr "Hugo Carvalho <hugokarvalho@gmail.com>. 2018"
 
 #: typing-break/main.c:62
 msgid "Enable debugging code"
