@@ -292,23 +292,6 @@ response_cb (GtkWidget *dialog_win,
     }
 }
 
-GtkWidget*
-title_label_new (const char* title)
-{
-    GtkWidget *widget;
-    gchar *str;
-
-    str = g_strdup_printf ("<b>%s</b>", _(title));
-    widget = gtk_label_new (str);
-    g_free (str);
-
-    gtk_label_set_use_markup (GTK_LABEL (widget), TRUE);
-    gtk_label_set_xalign (GTK_LABEL (widget), 0.0);
-    gtk_label_set_yalign (GTK_LABEL (widget), 0.0);
-
-    return widget;
-}
-
 int
 main (int argc, char **argv)
 {
