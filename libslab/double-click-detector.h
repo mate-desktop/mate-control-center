@@ -38,7 +38,7 @@ typedef struct
 {
 	GObject parent_placeholder;
 
-	guint32 double_click_time;
+	gint32 double_click_time;
 	guint32 last_click_time;
 } DoubleClickDetector;
 
@@ -53,8 +53,6 @@ DoubleClickDetector *double_click_detector_new (void);
 
 gboolean double_click_detector_is_double_click (DoubleClickDetector * detector, guint32 event_time,
 	gboolean auto_update);
-
-void double_click_detector_update_click_time (DoubleClickDetector * detector, guint32 event_time);
 
 #ifdef __cplusplus
 }
