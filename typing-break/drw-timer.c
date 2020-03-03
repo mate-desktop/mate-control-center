@@ -23,7 +23,7 @@
 
 struct _DrwTimer
 {
-	GTimeVal start_time;
+	gint64 start_time;
 };
 
 DrwTimer * drw_timer_new (void)
@@ -35,14 +35,12 @@ DrwTimer * drw_timer_new (void)
 
 void drw_timer_start (DrwTimer *timer)
 {
-	g_get_current_time (&timer->start_time);
+	timer->start_time = g_get_real_time ();
 }
 
-double drw_timer_elapsed (DrwTimer *timer)
+gint drw_timer_elapsed (DrwTimer *timer)
 {
-	GTimeVal now;
-	g_get_current_time (&now);
-	return now.tv_sec - timer->start_time.tv_sec;
+	return (g_get_real_time () - timer->start_time) / G_USEC_PER_SEC;
 }
 
 void drw_timer_destroy (DrwTimer *timer)
