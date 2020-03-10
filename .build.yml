@@ -88,6 +88,7 @@ requires:
     - librsvg2-tools
     - make
     - marco-devel
+    - mate-desktop-devel
     - mate-menus-devel
     - polkit-devel
     - python3-lxml
@@ -158,39 +159,6 @@ variables:
     -enable-checker security.insecureAPI.strcpy"'
 
 before_scripts:
-  - cd ${START_DIR}
-  - if [ ! -f mate-desktop-1.23.2.tar.xz ];then
-  -     curl -Ls -o mate-desktop-1.23.2.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.23.2/mate-desktop-1.23.2.tar.xz
-  - fi
-  - tar xf mate-desktop-1.23.2.tar.xz
-  - cd mate-desktop-1.23.2
-  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
-  -     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
-  - else
-  -     ./autogen.sh --prefix=/usr
-  - fi
-  - if [ ${TRAVIS} == "false" ]; then
-  -     make clean
-  - fi
-  - make
-  - make install
-
-  - cd ${START_DIR}
-  - if [ ! -f mate-settings-daemon-1.23.1.tar.xz ]; then
-  -     curl -Ls -o mate-settings-daemon-1.23.1.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.23.1/mate-settings-daemon-1.23.1.tar.xz
-  - fi
-  - tar xf mate-settings-daemon-1.23.1.tar.xz
-  - cd mate-settings-daemon-1.23.1
-  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
-  -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
-  - else
-  -     ./configure --prefix=/usr
-  - fi
-  - if [ ${TRAVIS} == "false" ]; then
-  -     make clean
-  - fi
-  - make
-  - make install
   - curl -Ls -o /usr/bin/gla11y https://github.com/hypra/gla11y/raw/v0.3/gla11y
   - chmod +x /usr/bin/gla11y
 
