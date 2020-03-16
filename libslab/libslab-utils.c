@@ -107,29 +107,3 @@ libslab_strcmp (const gchar *a, const gchar *b)
 
 	return strcmp (a, b);
 }
-
-void
-libslab_handle_g_error (GError **error, const gchar *msg_format, ...)
-{
-	gchar   *msg;
-	va_list  args;
-
-
-	va_start (args, msg_format);
-	msg = g_strdup_vprintf (msg_format, args);
-	va_end (args);
-
-	if (*error) {
-		g_log (
-			G_LOG_DOMAIN, G_LOG_LEVEL_WARNING,
-			"\nGError raised: [%s]\nuser_message: [%s]\n", (*error)->message, msg);
-
-		g_error_free (*error);
-
-		*error = NULL;
-	}
-	else
-		g_log (G_LOG_DOMAIN, G_LOG_LEVEL_WARNING, "\nerror raised: [%s]\n", msg);
-
-	g_free (msg);
-}
