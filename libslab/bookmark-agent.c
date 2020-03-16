@@ -208,13 +208,12 @@ bookmark_agent_move_item (BookmarkAgent *this, const gchar *uri, const gchar *ur
 	if (! TYPE_IS_RECENT (priv->type))
 		return;
 
-	gtk_recent_manager_move_item (
-		gtk_recent_manager_get_default (), uri, uri_new, & error);
-
-	if (error)
-		libslab_handle_g_error (
-			& error, "%s: unable to update %s with renamed file, [%s] -> [%s].",
-			G_STRFUNC, priv->store_path, uri, uri_new);
+	gtk_recent_manager_move_item (gtk_recent_manager_get_default (), uri, uri_new, &error);
+	if (error) {
+		g_warning ("Unable to update %s with renamed file, [%s] -> [%s]: %s",
+		           priv->store_path, uri, uri_new, error->message);
+		g_error_free (error);
+	}
 }
 
 void
@@ -232,12 +231,12 @@ bookmark_agent_purge_items (BookmarkAgent *this)
 	uris = g_bookmark_file_get_uris (priv->store, &uris_len);
 	if (TYPE_IS_RECENT (priv->type)) {
 		for (i = 0; i < uris_len; i++) {
-			gtk_recent_manager_remove_item (gtk_recent_manager_get_default (), uris [i], & error);
-
-			if (error)
-				libslab_handle_g_error (
-					& error, "%s: unable to remove [%s] from %s.",
-					G_STRFUNC, priv->store_path, uris [i]);
+			gtk_recent_manager_remove_item (gtk_recent_manager_get_default (), uris [i], &error);
+			if (error) {
+				g_warning ("Unable to remove [%s] from %s: %s",
+				           priv->store_path, uris [i], error->message);
+				g_error_free (error);
+			}
 		}
 	} else {
 		for (i = 0; i < uris_len; i++) {
@@ -267,13 +266,11 @@ bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
 		return;
 
 	if (TYPE_IS_RECENT (priv->type)) {
-		gtk_recent_manager_remove_item (
-			gtk_recent_manager_get_default (), uri, & error);
-
-		if (error)
-			libslab_handle_g_error (
-				& error, "%s: unable to remove [%s] from %s.",
-				G_STRFUNC, priv->store_path, uri);
+		gtk_recent_manager_remove_item (gtk_recent_manager_get_default (), uri, &error);
+		if (error) {
+			g_warning ("Unable to remove [%s] from %s: %s", priv->store_path, uri, error->message);
+			g_error_free (error);
+		}
 	}
 	else {
 		rank = get_rank (this, uri);
@@ -847,10 +844,12 @@ load_xbel_store (BookmarkAgent *this)
 		g_bookmark_file_free (priv->store);
 		priv->store = g_bookmark_file_new ();
 
-		libslab_handle_g_error (
-			& error, "%s: couldn't load bookmark file [%s]\n",
-			G_STRFUNC, priv->store_path ? priv->store_path : "NULL");
-
+		if (error) {
+			g_debug ("Couldn't load bookmark file [%s]: %s", priv->store_path, error->message);
+			g_error_free (error);
+		} else {
+			g_debug ("Couldn't load bookmark file [NULL]");
+		}
 		return;
 	}
 
@@ -1032,10 +1031,15 @@ save_xbel_store (BookmarkAgent *this)
 
 	GError *error = NULL;
 
+	if (g_bookmark_file_to_file (priv->store, priv->store_path, &error))
+		return;
 
-	if (! g_bookmark_file_to_file (priv->store, priv->store_path, & error))
-		libslab_handle_g_error (
-			& error, "%s: couldn't save bookmark file [%s]\n", G_STRFUNC, priv->store_path);
+	if (error) {
+		g_warning ("Couldn't save bookmark file [%s]: %s", priv->store_path, error->message);
+		g_error_free (error);
+	} else {
+		g_warning ("Couldn't save bookmark file [%s]", priv->store_path);
+	}
 }
 
 static void

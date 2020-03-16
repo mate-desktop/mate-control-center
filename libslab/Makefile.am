@@ -2,6 +2,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-slab.pc
 
 AM_CPPFLAGS =					\
+	-DG_LOG_DOMAIN=\"libslab\"		\
 	-I$(top_srcdir)				\
 	$(LIBSLAB_CFLAGS)			\
 	$(WARN_CFLAGS)
