@@ -71,7 +71,6 @@ requires:
     - cairo-gobject-devel
     - clang
     - clang-analyzer
-    - cppcheck-htmlreport
     - dconf-devel
     - desktop-file-utils
     - gcc
@@ -203,11 +202,6 @@ build_scripts:
   - fi
 
 after_scripts:
-  - if [ ${DISTRO_NAME} == "fedora" ];then
-  -   cppcheck --xml --output-file=cppcheck.xml --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
-  -   cppcheck-htmlreport --title=${REPO_NAME} --file=cppcheck.xml --report-dir=cppcheck-htmlreport
-  -   ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/categories/preferences-desktop.png
-  - fi
   - make distcheck
 
 releases:
@@ -222,4 +216,3 @@ releases:
     base_version: 1.20.0
     notify_servers:
       - https://release.mate-desktop.org/release
-
