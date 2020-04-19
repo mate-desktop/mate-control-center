@@ -169,6 +169,7 @@ before_scripts:
   - fi
   - make
   - make install
+
   - cd ${START_DIR}
   - if [ ! -f mate-desktop-1.23.2.tar.xz ];then
   -     curl -Ls -o mate-desktop-1.23.2.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.23.2/mate-desktop-1.23.2.tar.xz
@@ -202,16 +203,19 @@ before_scripts:
   - fi
   - make
   - make install
+
   - curl -Ls -o /usr/bin/gla11y https://github.com/hypra/gla11y/raw/v0.3/gla11y
   - chmod +x /usr/bin/gla11y
 
 build_scripts:
+  - if [ ${DISTRO_NAME} == "debian" ];then
+  -     export CFLAGS+=" -Wsign-compare -Wunused-parameter"
+  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
+  - fi
+
   - ./autogen.sh
   - scan-build $CHECKERS ./configure --enable-compile-warnings=maximum
   - scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
-  - if [ ${DISTRO_NAME} == "debian" ];then
-  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
-  - fi
 
 after_scripts:
   - if [ ${DISTRO_NAME} == "fedora" ];then
