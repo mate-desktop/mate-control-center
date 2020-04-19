@@ -206,7 +206,7 @@ before_scripts:
   - chmod +x /usr/bin/gla11y
 
 build_scripts:
-  - ./autogen.sh
+  - NOCONFIGURE=1 ./autogen.sh
   - scan-build $CHECKERS ./configure
   - scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
   - if [ ${DISTRO_NAME} == "debian" ];then
