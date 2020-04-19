@@ -52,6 +52,7 @@ EXTRA_DIST = \
 
 DISTCHECK_CONFIGURE_FLAGS = \
 	--disable-update-mimedb \
+	--enable-compile-warnings=no \
 	CFLAGS='-Wno-deprecated-declarations'
 
 GITIGNOREFILES=m4
