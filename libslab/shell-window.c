@@ -25,9 +25,6 @@
 
 #include "app-resizer.h"
 
-static void shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
-	AppShellData * data);
-
 #define SHELL_WINDOW_BORDER_WIDTH 6
 
 G_DEFINE_TYPE (ShellWindow, shell_window, GTK_TYPE_FRAME);
@@ -56,13 +53,6 @@ shell_window_new (AppShellData * app_data)
 	window->_hbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
 	gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (window->_hbox));
 
-/* FIXME add some replacement for GTK+3, or just remove this code? */
-#if 0
-	window->resize_handler_id =
-		g_signal_connect (G_OBJECT (window), "size-request",
-		G_CALLBACK (shell_window_handle_size_request), app_data);
-#endif
-
 	return GTK_WIDGET (window);
 }
 
@@ -73,33 +63,6 @@ shell_window_clear_resize_handler (ShellWindow * win)
 	{
 		g_signal_handler_disconnect (win, win->resize_handler_id);
 		win->resize_handler_id = 0;
-	}
-}
-
-/* We want the window to come up with proper runtime calculated width ( ie taking into account font size, locale, ...) so
-   we can't hard code a size. But since ScrolledWindow returns basically zero for it's size request we need to
-   grab the "real" desired width. Once it's shown though we want to allow the user to size down if they want too, so
-   we unhook this function
-*/
-static void
-shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
-	AppShellData * app_data)
-{
-	gint height;
-	GtkRequisition child_requisiton;
-
-	gtk_widget_get_preferred_size (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child), &child_requisiton, NULL);
-
-	requisition->width += child_requisiton.width;
-
-	/* use the left side as a minimum height, if the right side is taller,
-	   use it up to SIZING_HEIGHT_PERCENT of the screen height
-	*/
-	height = child_requisiton.height + 10;
-	if (height > requisition->height)
-	{
-		requisition->height =
-			MIN (((gfloat) HeightOfScreen (gdk_x11_screen_get_xscreen (gdk_screen_get_default ())) * SIZING_HEIGHT_PERCENT), height);
 	}
 }
 
