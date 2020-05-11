@@ -131,23 +131,23 @@ shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data)
 {
 	GtkWidget *left_pane;
 	GtkAllocation allocation;
+	GtkStyleContext *context;
 
 	left_pane = SHELL_WINDOW (widget)->_left_pane;
 
 	gtk_widget_get_allocation (left_pane, &allocation);
 
 	/* draw left pane background */
-	gtk_paint_flat_box (
-		gtk_widget_get_style (widget),
-		cr,
-		gtk_widget_get_state (widget),
-		GTK_SHADOW_NONE,
-		widget,
-		"",
-		allocation.x,
-		allocation.y,
-		allocation.width,
-		allocation.height);
+	context = gtk_widget_get_style_context (widget);
+	gtk_style_context_save (context);
+	cairo_save (cr);
+	gtk_render_background (context, cr,
+	                       (gdouble) allocation.x,
+	                       (gdouble) allocation.y,
+	                       (gdouble) allocation.width,
+	                       (gdouble) allocation.height);
+	cairo_restore (cr);
+	gtk_style_context_restore (context);
 
 	return FALSE;
 }
