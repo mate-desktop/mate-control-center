@@ -28,8 +28,6 @@
 static void shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
 	AppShellData * data);
 
-gboolean shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data);
-
 #define SHELL_WINDOW_BORDER_WIDTH 6
 
 G_DEFINE_TYPE (ShellWindow, shell_window, GTK_TYPE_FRAME);
@@ -57,9 +55,6 @@ shell_window_new (AppShellData * app_data)
 
 	window->_hbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
 	gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (window->_hbox));
-
-	g_signal_connect (G_OBJECT (window), "draw", G_CALLBACK (shell_window_paint_window),
-		NULL);
 
 /* FIXME add some replacement for GTK+3, or just remove this code? */
 #if 0
@@ -124,30 +119,4 @@ shell_window_set_contents (ShellWindow * shell, GtkWidget * left_pane, GtkWidget
 
 	gtk_container_add (GTK_CONTAINER (shell->_left_pane), left_pane);
 	gtk_container_add (GTK_CONTAINER (shell->_right_pane), right_pane);
-}
-
-gboolean
-shell_window_paint_window (GtkWidget * widget, cairo_t * cr, gpointer data)
-{
-	GtkWidget *left_pane;
-	GtkAllocation allocation;
-	GtkStyleContext *context;
-
-	left_pane = SHELL_WINDOW (widget)->_left_pane;
-
-	gtk_widget_get_allocation (left_pane, &allocation);
-
-	/* draw left pane background */
-	context = gtk_widget_get_style_context (widget);
-	gtk_style_context_save (context);
-	cairo_save (cr);
-	gtk_render_background (context, cr,
-	                       (gdouble) allocation.x,
-	                       (gdouble) allocation.y,
-	                       (gdouble) allocation.width,
-	                       (gdouble) allocation.height);
-	cairo_restore (cr);
-	gtk_style_context_restore (context);
-
-	return FALSE;
 }
