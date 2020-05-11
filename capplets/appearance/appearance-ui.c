@@ -68,16 +68,6 @@ menus_have_icons_cb (GSettings *settings,
     set_have_icons (data, g_settings_get_boolean (settings, key));
 }
 
-/** GUI Callbacks **/
-
-static gint
-button_press_block_cb (GtkWidget *toolbar,
-                       GdkEvent  *event,
-                       gpointer   data)
-{
-    return TRUE;
-}
-
 /** Public Functions **/
 
 void
