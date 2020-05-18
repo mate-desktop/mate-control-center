@@ -435,6 +435,15 @@ about_me_setup_dialog (void)
 	ActUserManager* manager;
 #endif
 
+	str = g_strdup_printf (_("About %s"), g_strdup (g_get_real_name ()));
+
+	if (capplet_window_exists (str))
+	{
+		return -1;
+	}
+
+	g_free (str);
+
 	me = g_new0 (MateAboutMe, 1);
 	me->image = NULL;
 

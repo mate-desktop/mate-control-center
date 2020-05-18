@@ -26,7 +26,8 @@ mate-about-me-resources.h mate-about-me-resources.c: org.mate.mcc.am.gresource.x
 
 bin_PROGRAMS = mate-about-me
 
-mate_about_me_LDADD = $(MATECC_CAPPLETS_LIBS)
+mate_about_me_LDADD = $(MATECC_CAPPLETS_LIBS)		\
+	$(LIBWNCK_LIBS)
 if HAVE_ACCOUNTSSERVICE
 mate_about_me_LDADD += $(ACCOUNTSSERVICE_LIBS)
 endif
@@ -43,6 +44,7 @@ AM_CPPFLAGS = \
 	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
 	$(LIBEBOOK_CFLAGS) \
+	$(LIBWNCK_CFLAGS)			\
 	-DDATADIR="\"$(datadir)\"" \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\"" \
 	-DMATECC_PIXMAP_DIR="\"$(pkgdatadir)/pixmaps\"" \

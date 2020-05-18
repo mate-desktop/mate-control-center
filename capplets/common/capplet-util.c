@@ -255,3 +255,33 @@ capplet_init (GOptionContext *context,
 
 	gtk_init (argc, argv);
 }
+
+gboolean
+capplet_window_exists(const char *title)
+{
+	const char *window_title;
+	WnckScreen *screen;
+	GList *window_l;
+	gboolean window_exists;
+
+	screen = wnck_screen_get_default ();
+	wnck_screen_force_update (screen);
+
+	window_exists = FALSE;
+
+	for (window_l = wnck_screen_get_windows (screen); window_l != NULL; window_l = window_l->next)
+	{
+		WnckWindow *window = WNCK_WINDOW (window_l->data);
+		if (wnck_window_has_name (window))
+		{
+			window_title = wnck_window_get_name (window);
+			if (g_strcmp0(window_title, title) == 0)
+			{
+				window_exists = TRUE;
+				break;
+			}
+		}
+	}
+
+	return window_exists;
+}

@@ -16,6 +16,7 @@ AM_CPPFLAGS = \
 	$(MARCO_CFLAGS)							\
 	$(GSD_DBUS_CFLAGS)						\
 	$(GIO_CFLAGS)							\
+	$(LIBWNCK_CFLAGS)			\
 	$(DCONF_CFLAGS)
 
 
@@ -47,6 +48,7 @@ libcommon_la_LIBADD =							\
 	$(DBUS_LIBS)							\
 	$(MATE_DESKTOP_LIBS)						\
 	$(GIO_LIBS)									\
+	$(LIBWNCK_LIBS)				\
 	$(DCONF_LIBS)
 
 mate_theme_test_SOURCES = \

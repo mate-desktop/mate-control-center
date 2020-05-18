@@ -72,6 +72,7 @@ MSD_REQUIRED=1.23.1
 MATEKBD_REQUIRED=1.17.0
 MATE_DESKTOP_REQUIRED=1.23.2
 APPINDICATOR_REQUIRED=0.0.13
+LIBWNCK_REQUIRED=3.0.0
 
 ENGINES_FOLDER="theming-engines"
 
@@ -154,6 +155,13 @@ GTK_ENGINE_DIR="$gtk_lib_dir/gtk-3.0/$gtk_binary_version/$ENGINES_FOLDER"
 AC_SUBST(GTK_ENGINE_DIR)
 
 PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED $GMODULE_ADD)
+
+dnl -- check for libwnck (required) -------------------------------------------
+PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
+	AC_MSG_ERROR([libwnck is required to build mate-control-center.], 1))
+
+AC_SUBST(LIBWNCK_CFLAGS)
+AC_SUBST(LIBWNCK_LIBS)
 
 dnl
 dnl Check dependencies of libmate-slab
