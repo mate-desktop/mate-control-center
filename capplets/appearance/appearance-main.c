@@ -32,6 +32,8 @@
 #include "activate-settings-daemon.h"
 #include "capplet-util.h"
 
+gboolean check_background_shown ();
+
 static AppearanceData *
 init_appearance_data (int *argc, char ***argv, GOptionContext *context)
 {
@@ -133,12 +135,28 @@ main_window_response (GtkWidget *widget,
   }
 }
 
+/* Check if background is shown or not with the org.mate.background schema */
+gboolean
+check_background_shown ()
+{
+  GSettings* settings;
+  gboolean draw_background;
+
+  settings = g_settings_new (WP_SCHEMA);
+  draw_background = g_settings_get_boolean (settings, WP_BACKGROUND_KEY);
+  g_object_unref (settings);
+
+  return draw_background;
+}
+
 int
 main (int argc, char **argv)
 {
   AppearanceData *data;
   GtkWidget *w;
   GtkStyleContext *context;
+
+  gboolean draw_background;
 
   gchar *install_filename = NULL;
   gchar *start_page = NULL;
@@ -210,11 +228,24 @@ main (int argc, char **argv)
                     G_CALLBACK (capplet_dialog_page_scroll_event_cb),
                     GTK_WINDOW (w));
 
+  draw_background = check_background_shown ();
+  if (!draw_background)
+  {
+    w = appearance_capplet_get_widget (data, "background_vbox");
+    gtk_widget_hide (w);
+  }
+
   if (start_page != NULL) {
     gchar *page_name;
 
     page_name = g_strconcat (start_page, "_vbox", NULL);
     g_free (start_page);
+
+    /* Exit if background is not shown and the page background is selected */
+    if (!draw_background && (g_strcmp0 (page_name, "background_vbox") == 0))
+    {
+      return 0;
+    }
 
     w = appearance_capplet_get_widget (data, page_name);
     if (w != NULL) {

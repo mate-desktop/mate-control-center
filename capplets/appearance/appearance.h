@@ -37,6 +37,7 @@
 #define WP_SHADING_KEY               "color-shading-type"
 #define WP_PCOLOR_KEY                "primary-color"
 #define WP_SCOLOR_KEY                "secondary-color"
+#define WP_BACKGROUND_KEY            "draw-background"
 
 #define INTERFACE_SCHEMA             "org.mate.interface"
 #define GTK_FONT_KEY                 "font-name"
