@@ -342,6 +342,13 @@ main (int argc, char **argv)
     /* Window */
     dialog_win = GTK_WIDGET (gtk_builder_get_object (builder, "dialog_win"));
 
+    /* Notebook */
+    GtkNotebook* nb = GTK_NOTEBOOK (gtk_builder_get_object (builder, "nb"));
+    gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+    g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                      GTK_WINDOW (dialog_win));
+
     /* Compositing manager */
     compositing_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_checkbutton"));
     compositing_fast_alt_tab_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_fast_alt_tab_checkbutton"));
