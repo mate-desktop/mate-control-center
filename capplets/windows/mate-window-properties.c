@@ -298,6 +298,7 @@ main (int argc, char **argv)
     GError     *error = NULL;
     GtkBuilder *builder;
     GdkScreen  *screen;
+    GtkWidget  *nb;
     gchar      *str;
     const char *current_wm;
     int i;
@@ -341,6 +342,13 @@ main (int argc, char **argv)
 
     /* Window */
     dialog_win = GTK_WIDGET (gtk_builder_get_object (builder, "dialog_win"));
+
+    /* Notebook */
+    nb = GTK_WIDGET (gtk_builder_get_object (builder, "nb"));
+    gtk_widget_add_events (nb, GDK_SCROLL_MASK);
+    g_signal_connect (nb, "scroll-event",
+                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                      GTK_WINDOW (dialog_win));
 
     /* Compositing manager */
     compositing_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_checkbutton"));
