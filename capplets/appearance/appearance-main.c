@@ -210,6 +210,12 @@ main (int argc, char **argv)
                     G_CALLBACK (capplet_dialog_page_scroll_event_cb),
                     GTK_WINDOW (w));
 
+  nb = GTK_NOTEBOOK(appearance_capplet_get_widget (data, "notebook2"));
+  gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+  g_signal_connect (GTK_WIDGET (nb), "scroll-event",
+                    G_CALLBACK (capplet_dialog_page_scroll_event_cb),
+                    GTK_WINDOW (w));
+
   if (start_page != NULL) {
     gchar *page_name;
 
