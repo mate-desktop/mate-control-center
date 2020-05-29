@@ -22,6 +22,8 @@
  * 02110-1301, USA.
  */
 
+#define GET_WIDGET(x) (GTK_WIDGET (gtk_builder_get_object (builder, (x))))
+
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
@@ -132,12 +134,6 @@ config_treeview(GtkTreeView *tree, GtkTreeModel *model)
 	gtk_tree_view_set_model(GTK_TREE_VIEW(tree), model);
 
 	return GTK_WIDGET(tree);
-}
-
-static GtkWidget*
-_gtk_builder_get_widget (GtkBuilder *builder, const gchar *name)
-{
-	return GTK_WIDGET (gtk_builder_get_object (builder, name));
 }
 
 static void
@@ -282,25 +278,24 @@ cb_http_details_button_clicked (GtkWidget *button,
 		return;
 	}
 
-	details_dialog = widget = _gtk_builder_get_widget (builder,
-							   "details_dialog");
+	details_dialog = widget = GET_WIDGET ("details_dialog");
 
 	gtk_window_set_transient_for (GTK_WINDOW (widget), GTK_WINDOW (parent));
 
-	g_signal_connect (gtk_builder_get_object (builder, "use_auth_checkbutton"),
-			  "toggled",
-			  G_CALLBACK (cb_use_auth_toggled),
-			  _gtk_builder_get_widget (builder, "auth_table"));
+    g_signal_connect (gtk_builder_get_object (builder, "use_auth_checkbutton"),
+                      "toggled",
+                      G_CALLBACK (cb_use_auth_toggled),
+                      GET_WIDGET ("auth_table"));
 
-	g_settings_bind (http_proxy_settings, HTTP_USE_AUTH_KEY,
-			gtk_builder_get_object (builder, "use_auth_checkbutton"), "active",
-			G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (http_proxy_settings, HTTP_AUTH_USER_KEY,
-			gtk_builder_get_object (builder, "username_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (http_proxy_settings, HTTP_AUTH_PASSWD_KEY,
-			gtk_builder_get_object (builder, "password_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (http_proxy_settings, HTTP_USE_AUTH_KEY,
+                     gtk_builder_get_object (builder, "use_auth_checkbutton"), "active",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (http_proxy_settings, HTTP_AUTH_USER_KEY,
+                     gtk_builder_get_object (builder, "username_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (http_proxy_settings, HTTP_AUTH_PASSWD_KEY,
+                     gtk_builder_get_object (builder, "password_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
 
 	g_signal_connect (widget, "response",
 			  G_CALLBACK (cb_details_dialog_response), NULL);
@@ -323,9 +318,9 @@ proxy_mode_gsettings_changed (GSettings *settings,
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object(builder, "auto_radiobutton")), TRUE);
 	else if (mode == G_DESKTOP_PROXY_MODE_MANUAL)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object(builder, "manual_radiobutton")), TRUE);
-	gtk_widget_set_sensitive (_gtk_builder_get_widget (builder, "manual_box"),
+	gtk_widget_set_sensitive (GET_WIDGET ("manual_box"),
 				  mode == G_DESKTOP_PROXY_MODE_MANUAL);
-	gtk_widget_set_sensitive (_gtk_builder_get_widget (builder, "auto_box"),
+	gtk_widget_set_sensitive (GET_WIDGET ("auto_box"),
 				  mode == G_DESKTOP_PROXY_MODE_AUTO);
 }
 
@@ -340,8 +335,7 @@ proxy_mode_radiobutton_clicked_cb (GtkWidget *widget,
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(widget)))
 		return;
 
-	mode_group = g_slist_copy (gtk_radio_button_get_group
-		(GTK_RADIO_BUTTON (gtk_builder_get_object (builder, "none_radiobutton"))));
+    mode_group = g_slist_copy (gtk_radio_button_get_group (GTK_RADIO_BUTTON (gtk_builder_get_object (builder, "none_radiobutton"))));
 	mode_group = g_slist_reverse (mode_group);
 	mode = g_slist_index (mode_group, widget);
 	g_slist_free (mode_group);
@@ -392,61 +386,61 @@ setup_dialog (GtkBuilder *builder)
 					  G_CALLBACK (proxy_mode_gsettings_changed), builder);
 
 	/* Http */
-	g_settings_bind (http_proxy_settings, HTTP_PROXY_PORT_KEY,
-			gtk_builder_get_object (builder, "http_port_spinbutton"), "value",
-			G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (http_proxy_settings, HTTP_PROXY_HOST_KEY,
-			gtk_builder_get_object (builder, "http_host_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
-	g_signal_connect (gtk_builder_get_object (builder, "details_button"),
-			  "clicked",
-			  G_CALLBACK (cb_http_details_button_clicked),
-			  _gtk_builder_get_widget (builder, "network_dialog"));
+    g_settings_bind (http_proxy_settings, HTTP_PROXY_PORT_KEY,
+                     gtk_builder_get_object (builder, "http_port_spinbutton"), "value",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (http_proxy_settings, HTTP_PROXY_HOST_KEY,
+                     gtk_builder_get_object (builder, "http_host_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_signal_connect (gtk_builder_get_object (builder, "details_button"),
+                      "clicked",
+                      G_CALLBACK (cb_http_details_button_clicked),
+                      GET_WIDGET ("network_dialog"));
 
 	/* Secure */
-	g_settings_bind (https_proxy_settings, SECURE_PROXY_PORT_KEY,
-			gtk_builder_get_object (builder, "secure_port_spinbutton"), "value",
-			G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (https_proxy_settings, SECURE_PROXY_HOST_KEY,
-			gtk_builder_get_object (builder, "secure_host_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (https_proxy_settings, SECURE_PROXY_PORT_KEY,
+                     gtk_builder_get_object (builder, "secure_port_spinbutton"), "value",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (https_proxy_settings, SECURE_PROXY_HOST_KEY,
+                     gtk_builder_get_object (builder, "secure_host_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
 
 	/* Ftp */
-	g_settings_bind (ftp_proxy_settings, FTP_PROXY_PORT_KEY,
-			gtk_builder_get_object (builder, "ftp_port_spinbutton"), "value",
-			G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (ftp_proxy_settings, FTP_PROXY_HOST_KEY,
-			gtk_builder_get_object (builder, "ftp_host_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (ftp_proxy_settings, FTP_PROXY_PORT_KEY,
+                     gtk_builder_get_object (builder, "ftp_port_spinbutton"), "value",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (ftp_proxy_settings, FTP_PROXY_HOST_KEY,
+                     gtk_builder_get_object (builder, "ftp_host_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
 
 	/* Socks */
-	g_settings_bind (socks_proxy_settings, SOCKS_PROXY_PORT_KEY,
-			gtk_builder_get_object (builder, "socks_port_spinbutton"), "value",
-			G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (socks_proxy_settings, SOCKS_PROXY_HOST_KEY,
-			gtk_builder_get_object (builder, "socks_host_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (socks_proxy_settings, SOCKS_PROXY_PORT_KEY,
+                     gtk_builder_get_object (builder, "socks_port_spinbutton"), "value",
+                     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (socks_proxy_settings, SOCKS_PROXY_HOST_KEY,
+                     gtk_builder_get_object (builder, "socks_host_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
 
 	/* Autoconfiguration */
-	g_settings_bind (proxy_settings, PROXY_AUTOCONFIG_URL_KEY,
-			gtk_builder_get_object (builder, "autoconfig_entry"), "text",
-			G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (proxy_settings, PROXY_AUTOCONFIG_URL_KEY,
+                     gtk_builder_get_object (builder, "autoconfig_entry"), "text",
+                     G_SETTINGS_BIND_DEFAULT);
 
-	g_signal_connect (gtk_builder_get_object (builder, "network_dialog"),
-			"response", G_CALLBACK (cb_dialog_response), NULL);
+    g_signal_connect (gtk_builder_get_object (builder, "network_dialog"),
+                      "response", G_CALLBACK (cb_dialog_response), NULL);
 
 	read_ignore_hosts_from_gsettings ();
 
 	model = create_listmodel();
 	populate_listmodel(GTK_LIST_STORE(model), ignore_hosts);
-	config_treeview(GTK_TREE_VIEW(gtk_builder_get_object (builder, "treeview_ignore_host")), model);
+    config_treeview (GTK_TREE_VIEW (gtk_builder_get_object (builder, "treeview_ignore_host")), model);
 
-	g_signal_connect (gtk_builder_get_object (builder, "button_add_url"),
-			  "clicked", G_CALLBACK (cb_add_url), builder);
-	g_signal_connect (gtk_builder_get_object (builder, "entry_url"),
-			  "activate", G_CALLBACK (cb_add_url), builder);
-	g_signal_connect (gtk_builder_get_object (builder, "button_remove_url"),
-			  "clicked", G_CALLBACK (cb_remove_url), builder);
+    g_signal_connect (gtk_builder_get_object (builder, "button_add_url"),
+                      "clicked", G_CALLBACK (cb_add_url), builder);
+    g_signal_connect (gtk_builder_get_object (builder, "entry_url"),
+                      "activate", G_CALLBACK (cb_add_url), builder);
+    g_signal_connect (gtk_builder_get_object (builder, "button_remove_url"),
+                      "clicked", G_CALLBACK (cb_remove_url), builder);
 }
 
 int
@@ -478,9 +472,9 @@ main (int argc, char **argv)
 	socks_proxy_settings = g_settings_new (SOCKS_PROXY_SCHEMA);
 
 	setup_dialog (builder);
-	widget = _gtk_builder_get_widget (builder, "network_dialog");
+	widget = GET_WIDGET ("network_dialog");
 
-        GtkNotebook* nb = GTK_NOTEBOOK (_gtk_builder_get_widget (builder, "notebook1"));
+        GtkNotebook* nb = GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1"));
         gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
         g_signal_connect (GTK_WIDGET (nb), "scroll-event",
                           G_CALLBACK (capplet_dialog_page_scroll_event_cb),

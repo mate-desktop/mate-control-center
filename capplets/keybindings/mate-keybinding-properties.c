@@ -2,6 +2,8 @@
  * Blandford <jrb@gnome.org>
  */
 
+#define GET_WIDGET(x) (GTK_WIDGET (gtk_builder_get_object (builder, (x))))
+
 #include <config.h>
 
 #include <stdlib.h>
@@ -93,11 +95,6 @@ static gboolean block_accels = FALSE;
 static GtkWidget *custom_shortcut_dialog = NULL;
 static GtkWidget *custom_shortcut_name_entry = NULL;
 static GtkWidget *custom_shortcut_command_entry = NULL;
-
-static GtkWidget* _gtk_builder_get_widget(GtkBuilder* builder, const gchar* name)
-{
-    return GTK_WIDGET (gtk_builder_get_object (builder, name));
-}
 
 static GtkBuilder *
 create_builder (void)
@@ -360,7 +357,7 @@ clear_old_model (GtkBuilder *builder)
   GtkWidget *actions_swindow;
   GtkTreeModel *model;
 
-  tree_view = _gtk_builder_get_widget (builder, "shortcut_treeview");
+  tree_view = GET_WIDGET ("shortcut_treeview");
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
 
   if (model == NULL)
@@ -415,7 +412,7 @@ clear_old_model (GtkBuilder *builder)
       gtk_tree_store_clear (GTK_TREE_STORE (model));
     }
 
-  actions_swindow = _gtk_builder_get_widget (builder, "actions_swindow");
+  actions_swindow = GET_WIDGET ("actions_swindow");
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (actions_swindow),
                   GTK_POLICY_NEVER, GTK_POLICY_NEVER);
   gtk_widget_set_size_request (actions_swindow, -1, -1);
@@ -531,10 +528,8 @@ ensure_scrollbar (GtkBuilder *builder, int i)
   if (i == MAX_ELEMENTS_BEFORE_SCROLLING)
     {
       GtkRequisition rectangle;
-      GObject *actions_swindow = gtk_builder_get_object (builder,
-                                                         "actions_swindow");
-      GtkWidget *treeview = _gtk_builder_get_widget (builder,
-                                                     "shortcut_treeview");
+      GObject *actions_swindow = gtk_builder_get_object (builder, "actions_swindow");
+      GtkWidget *treeview = GET_WIDGET ("shortcut_treeview");
       gtk_widget_get_preferred_size (treeview, &rectangle, NULL);
       gtk_widget_set_size_request (treeview, -1, rectangle.height);
       gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (actions_swindow),
@@ -718,9 +713,9 @@ append_keys_to_tree (GtkBuilder         *builder,
     gtk_tree_store_remove (GTK_TREE_STORE (model), &parent_iter);
 
   if (i == 0)
-      gtk_widget_hide (_gtk_builder_get_widget (builder, "shortcuts_vbox"));
+      gtk_widget_hide (GET_WIDGET ("shortcuts_vbox"));
   else
-      gtk_widget_show (_gtk_builder_get_widget (builder, "shortcuts_vbox"));
+      gtk_widget_show (GET_WIDGET ("shortcuts_vbox"));
 }
 
 static void
@@ -1929,13 +1924,13 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
   /* set up the dialog */
   reload_key_entries (builder);
 
-  widget = _gtk_builder_get_widget (builder, "mate-keybinding-dialog");
+  widget = GET_WIDGET ("mate-keybinding-dialog");
   gtk_window_set_default_size (GTK_WINDOW (widget), 400, 500);
-  widget = _gtk_builder_get_widget (builder, "label-suggest");
+  widget = GET_WIDGET ("label-suggest");
   gtk_label_set_line_wrap (GTK_LABEL (widget), TRUE);
   gtk_label_set_max_width_chars (GTK_LABEL (widget), 60);
 
-  widget = _gtk_builder_get_widget (builder, "mate-keybinding-dialog");
+  widget = GET_WIDGET ("mate-keybinding-dialog");
   capplet_set_icon (widget, "preferences-desktop-keyboard-shortcuts");
   gtk_widget_show (widget);
 
@@ -1945,21 +1940,18 @@ setup_dialog (GtkBuilder *builder, GSettings *marco_settings)
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
   g_signal_connect (selection, "changed",
                     G_CALLBACK (selection_changed),
-            _gtk_builder_get_widget (builder, "remove-button"));
+            GET_WIDGET ("remove-button"));
 
   /* setup the custom shortcut dialog */
-  custom_shortcut_dialog = _gtk_builder_get_widget (builder,
-                                                    "custom-shortcut-dialog");
-  custom_shortcut_name_entry = _gtk_builder_get_widget (builder,
-                                                        "custom-shortcut-name-entry");
-  custom_shortcut_command_entry = _gtk_builder_get_widget (builder,
-                                                           "custom-shortcut-command-entry");
+  custom_shortcut_dialog = GET_WIDGET ("custom-shortcut-dialog");
+  custom_shortcut_name_entry = GET_WIDGET ("custom-shortcut-name-entry");
+  custom_shortcut_command_entry = GET_WIDGET ("custom-shortcut-command-entry");
   gtk_dialog_set_default_response (GTK_DIALOG (custom_shortcut_dialog),
                    GTK_RESPONSE_OK);
   gtk_window_set_transient_for (GTK_WINDOW (custom_shortcut_dialog),
                                 GTK_WINDOW (widget));
-  button = _gtk_builder_get_widget (builder, "custom-shortcut-command-button");
-  widget = _gtk_builder_get_widget (builder, "custom-shortcut-application-dialog");
+  button = GET_WIDGET ("custom-shortcut-command-button");
+  widget = GET_WIDGET ("custom-shortcut-application-dialog");
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_dialog_run), widget);
   g_signal_connect (widget, "response", G_CALLBACK (cb_app_dialog_response), NULL);
   widget = gtk_app_chooser_dialog_get_widget (GTK_APP_CHOOSER_DIALOG (widget));
