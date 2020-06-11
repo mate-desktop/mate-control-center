@@ -149,6 +149,9 @@ notifications_button_clicked_cb (GtkWidget *button, GtkBuilder *dialog)
 	w = NWID ("togglekeys_enable");
 	g_settings_bind (a11y_settings, "togglekeys-enable", w, "active", G_SETTINGS_BIND_DEFAULT);
 
+	w = NWID ("capslock_beep_enable");
+	g_settings_bind (a11y_settings, "capslock-beep-enable", w, "active", G_SETTINGS_BIND_DEFAULT);
+
 	w = NWID ("stickykeys_modifier_beep");
 	g_settings_bind (a11y_settings, "stickykeys-modifier-beep", w, "active", G_SETTINGS_BIND_DEFAULT);
 
