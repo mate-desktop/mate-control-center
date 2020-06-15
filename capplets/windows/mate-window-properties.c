@@ -54,6 +54,9 @@
 #define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
 #define MARCO_BUTTON_LAYOUT_KEY "button-layout"
 
+#define INTERFACE_SCHEMA "org.mate.interface"
+#define GTK_BUTTON_LAYOUT_KEY "gtk-decoration-layout"
+
 #define MARCO_BUTTON_LAYOUT_RIGHT "menu:minimize,maximize,close"
 #define MARCO_BUTTON_LAYOUT_LEFT "close,minimize,maximize:"
 
@@ -99,6 +102,7 @@ static GtkWidget *titlebar_layout_optionmenu;
 static GtkWidget *alt_click_vbox;
 
 static GSettings *marco_settings;
+static GSettings *interface_settings;
 
 static MouseClickModifier *mouse_modifiers = NULL;
 static int n_mouse_modifiers = 0;
@@ -194,9 +198,11 @@ titlebar_layout_changed_callback (GtkWidget *optionmenu,
 
     if (value == 0) {
         g_settings_set_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_RIGHT);
+        g_settings_set_string (interface_settings, GTK_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_RIGHT);
     }
     else if (value == 1) {
         g_settings_set_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_LEFT);
+        g_settings_set_string (interface_settings, GTK_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_LEFT);
     }
 }
 
@@ -319,12 +325,14 @@ main (int argc, char **argv)
     }
 
     marco_settings = g_settings_new (MARCO_SCHEMA);
+    interface_settings = g_settings_new (INTERFACE_SCHEMA);
 
     builder = gtk_builder_new ();
     if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/windows/window-properties.ui", &error) == 0) {
         g_warning ("Could not load UI: %s", error->message);
         g_error_free (error);
         g_object_unref (marco_settings);
+        g_object_unref (interface_settings);
         g_object_unref (builder);
         return -1;
     }
@@ -458,6 +466,7 @@ main (int argc, char **argv)
     gtk_main ();
 
     g_object_unref (marco_settings);
+    g_object_unref (interface_settings);
 
     return 0;
 }
