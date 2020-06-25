@@ -1,62 +1,84 @@
+### mate-control-center 1.25.0
+
+  * Translations update
+  * Add git.mk to generate .gitignore
+  * shell-window: Remove unused function shell_window_handle_size_request
+  * shell-window: Remove shell_window_paint_window
+  * shell-window: Remove warning ‘gtk_paint_flat_box’ is deprecated
+  * appearance-ui: Remove unused function button_press_block_cb
+  * support tab scrolling in mate-window-,- and mate-appearance-properties
+  * mate-theme-info: Use of memory after it is freed
+  * build: silent build warnings for distcheck
+  * use default MATE_COMPILE_WARNINGS level
+  * Port libslab_handle_g_error to the built-in GLib logging framework
+  * libslab: Remove libslab_get_current_time_millis
+  * typing-break: Remove warning ‘GTimeVal’ is deprecated
+  * remove warnings: function declaration isn’t a prototype
+  * mate-about-me: Fix memory leak
+  * appearance: Fix memory leak
+  * windows: Remove unused function
+  * Do not collect the translation for Icon
+  * time-admin: dereference of NULL ‘db’ in function ‘CreateCityList’
+
 ### mate-control-center 1.24.0
 
-    tx: sync with transifex
-    mate-theme-info: fix memory leak
-    mate-wp-info: fix memory leak
-    glib-genmarshal: Using --header and --body at the same time is deprecated
-    build: show compiler/flags info on configure summary
-    build: do not override WARN_CFLAGS
-    build: use warning flags
-    time-admin: make portable backward file path
-    appearance: backgrounds dir should be portable
-    appearance: remove I/O error on window close
-    autoconf: AC_PROG_CC was called before AX_CHECK_ENABLE_DEBUG
-    Fix build using gcc 10 -fno-common flag
+  * Translations update
+  * mate-theme-info: fix memory leak
+  * mate-wp-info: fix memory leak
+  * glib-genmarshal: Using --header and --body at the same time is deprecated
+  * build: show compiler/flags info on configure summary
+  * build: do not override WARN_CFLAGS
+  * build: use warning flags
+  * time-admin: make portable backward file path
+  * appearance: backgrounds dir should be portable
+  * appearance: remove I/O error on window close
+  * autoconf: AC_PROG_CC was called before AX_CHECK_ENABLE_DEBUG
+  * Fix build using gcc 10 -fno-common flag
 
 ### mate-control-center 1.23.3
 
-    tx: sync with transifex
-    Update copyright to 2020
-    about-me: Fix UI validation
-    mouse: Fix UI validation
-    time-admin: Add license info in time-admin.ui file
-    time-admin: Fix UI validation
-    at-properties: Fix UI validation
-    Search system themes in system data dirs
-    display: Fix UI validation
-    display: Enable help button
-    windows: Add window-properties.ui
-    avoid redundant redeclarations
-    keybindings: Fix schema creation in makefile
-    appearance: Fix desktop file creation
-    shell: Fix typo in keyword name
-    migrate from intltool to gettext
-    default-applications: Load icons as cairo surfaces
-    icons: Force uniform size on icons (#505)
-    remove warning: "__sun" is not defined, evaluates to 0
-    fv: thumbnailer: add font/collection to the supported mimetypes
-    font-viewer: Add font/ttf and font/otf mime types
-    time-admin: fix memory leak
-    time-admin: Don't share «void QuitApp(TimeAdmin *ta)» method
-    default-applications: Remove messenger options from ui file
-    time-admin: Remove unreachable code
-    time-admin: Simplify date & time displaying
-    time-admin: Save button cannot be enabled if NTP sync is active
-    time-admin: Display current time in time-admin.ui on startup
-    time-admin: Rename adjustament to adjustment in time-admin.ui
-    time-admin: A11y time-admin.ui
-    time-admin: Add time-admin.ui
-    default-applications: Fix Word Processor top margin
+  * Translations update
+  * Update copyright to 2020
+  * about-me: Fix UI validation
+  * mouse: Fix UI validation
+  * time-admin: Add license info in time-admin.ui file
+  * time-admin: Fix UI validation
+  * at-properties: Fix UI validation
+  * Search system themes in system data dirs
+  * display: Fix UI validation
+  * display: Enable help button
+  * windows: Add window-properties.ui
+  * avoid redundant redeclarations
+  * keybindings: Fix schema creation in makefile
+  * appearance: Fix desktop file creation
+  * shell: Fix typo in keyword name
+  * migrate from intltool to gettext
+  * default-applications: Load icons as cairo surfaces
+  * icons: Force uniform size on icons (#505)
+  * remove warning: "__sun" is not defined, evaluates to 0
+  * fv: thumbnailer: add font/collection to the supported mimetypes
+  * font-viewer: Add font/ttf and font/otf mime types
+  * time-admin: fix memory leak
+  * time-admin: Don't share «void QuitApp(TimeAdmin *ta)» method
+  * default-applications: Remove messenger options from ui file
+  * time-admin: Remove unreachable code
+  * time-admin: Simplify date & time displaying
+  * time-admin: Save button cannot be enabled if NTP sync is active
+  * time-admin: Display current time in time-admin.ui on startup
+  * time-admin: Rename adjustament to adjustment in time-admin.ui
+  * time-admin: A11y time-admin.ui
+  * time-admin: Add time-admin.ui
+  * default-applications: Fix Word Processor top margin
 
 ### mate-control-center 1.23.2
 
-    tx: sync with transifex
-    travis: update mate-desktop and mate-settings-daemon required versions
-    mouse: Add support for Acceleration Profiles
-    appearance: fix memory leak
-    appearance: add new font for user
-    Stop propagate error
-    at-properties: migrate from dbus-glib to gdbus
+  * Translations update
+  * travis: update mate-desktop and mate-settings-daemon required versions
+  * mouse: Add support for Acceleration Profiles
+  * appearance: fix memory leak
+  * appearance: add new font for user
+  * Stop propagate error
+  * at-properties: migrate from dbus-glib to gdbus
 
 ### mate-control-center 1.23.1
 
