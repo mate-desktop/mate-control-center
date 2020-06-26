@@ -2,10 +2,9 @@
 #include <config.h>
 #endif
 
-#include <mate-settings-client.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-
+#include <gio/gio.h>
 #include "activate-settings-daemon.h"
 
 static void popup_error_message (void)
@@ -26,35 +25,39 @@ static void popup_error_message (void)
 gboolean
 activate_settings_daemon (void)
 {
-  DBusGConnection *connection = NULL;
-  DBusGProxy *proxy = NULL;
-  GError *error = NULL;
+  GError     *error = NULL;
+  GDBusProxy *proxy = NULL;
+  GVariant *ret;
 
-  connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-  if (connection == NULL)
-    {
-      popup_error_message ();
-      g_error_free (error);
-      return FALSE;
-    }
+  proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                         G_DBUS_PROXY_FLAGS_NONE,
+                                         NULL,
+                                         "org.mate.SettingsDaemon",
+                                         "/org/mate/SettingsDaemon",
+                                         "org.mate.SettingsDaemon",
+                                         NULL,
+                                         &error);
+  if (proxy == NULL) {
+    popup_error_message ();
+    g_error_free (error);
+    return FALSE;
+  }
 
-  proxy = dbus_g_proxy_new_for_name (connection,
-                                     "org.mate.SettingsDaemon",
-                                     "/org/mate/SettingsDaemon",
-                                     "org.mate.SettingsDaemon");
-
-  if (proxy == NULL)
-    {
-      popup_error_message ();
-      return FALSE;
-    }
-
-  if (!org_mate_SettingsDaemon_awake(proxy, &error))
-    {
-      popup_error_message ();
-      g_error_free (error);
-      return FALSE;
-    }
+  ret = g_dbus_proxy_call_sync (proxy,
+                                "Awake",
+                                g_variant_new ("()"),
+                                G_DBUS_CALL_FLAGS_NONE,
+                                -1,
+                                NULL,
+                                &error);
+  if (ret == NULL) {
+    popup_error_message ();
+    g_error_free (error);
+    return FALSE;
+  } else {
+    g_variant_get (ret, "()");
+    g_variant_unref (ret);
+  }
 
   return TRUE;
 }

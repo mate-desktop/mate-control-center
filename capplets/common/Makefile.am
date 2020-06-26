@@ -11,10 +11,8 @@ AM_CPPFLAGS = \
 	-DPIXMAP_DIR=\""$(datadir)/mate-control-center/pixmaps"\"	\
 	$(WARN_CFLAGS)							\
 	$(CAPPLET_CFLAGS)						\
-	$(DBUS_CFLAGS)							\
 	$(MATE_DESKTOP_CFLAGS)						\
 	$(MARCO_CFLAGS)							\
-	$(GSD_DBUS_CFLAGS)						\
 	$(GIO_CFLAGS)							\
 	$(DCONF_CFLAGS)
 
@@ -44,7 +42,6 @@ libcommon_la_SOURCES = \
 libcommon_la_LIBADD =							\
 	$(top_builddir)/libwindow-settings/libmate-window-settings.la  \
 	$(MARCO_LIBS)						\
-	$(DBUS_LIBS)							\
 	$(MATE_DESKTOP_LIBS)						\
 	$(GIO_LIBS)									\
 	$(DCONF_LIBS)

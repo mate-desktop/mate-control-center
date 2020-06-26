@@ -6,6 +6,7 @@ requires:
     # Useful URL: https://git.archlinux.org/svntogit/community.git/tree/mate-control-center
     - autoconf-archive
     - clang
+    - dbus-glib
     - file
     - gcc
     - git
@@ -13,11 +14,12 @@ requires:
     - intltool
     - itstool
     - libxss
+    - libmatekbd
     - make
     - marco
     - mate-common
     - mate-menus
-    - mate-settings-daemon
+    - polkit
     - which
     - yelp-tools
 
@@ -59,7 +61,7 @@ requires:
     - libpolkit-gobject-1-dev
     - make
     - mate-common
-    - mate-settings-daemon-dev
+    - policykit-1
     - python3-lxml
     - shared-mime-info
     - xsltproc
@@ -73,6 +75,7 @@ requires:
     - clang
     - clang-analyzer
     - cppcheck-htmlreport
+    - dbus-glib-devel
     - dconf-devel
     - desktop-file-utils
     - gcc
@@ -93,7 +96,6 @@ requires:
     - polkit-devel
     - python3-lxml
     - mate-common
-    - mate-settings-daemon-devel
     - redhat-rpm-config
     - startup-notification-devel
     - which
@@ -103,6 +105,7 @@ requires:
     - curl
     - clang
     - clang-tools
+    - libdbus-glib-1-dev
     - desktop-file-utils
     - git
     - gobject-introspection
@@ -133,7 +136,7 @@ requires:
     - libpolkit-gobject-1-dev
     - make
     - mate-common
-    - mate-settings-daemon-dev
+    - policykit-1
     - python3-lxml
     - shared-mime-info
     - xsltproc
@@ -188,29 +191,13 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -f mate-settings-daemon-1.23.1.tar.xz ]; then
-  -     curl -Ls -o mate-settings-daemon-1.23.1.tar.xz https://github.com/mate-desktop/mate-settings-daemon/releases/download/v1.23.1/mate-settings-daemon-1.23.1.tar.xz
-  - fi
-  - tar xf mate-settings-daemon-1.23.1.tar.xz
-  - cd mate-settings-daemon-1.23.1
-  - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
-  -     ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
-  - else
-  -     ./configure --prefix=/usr
-  - fi
-  - if [ ${TRAVIS} == "false" ]; then
-  -     make clean
-  - fi
-  - make
-  - make install
-
   - curl -Ls -o /usr/bin/gla11y https://github.com/hypra/gla11y/raw/v0.3/gla11y
   - chmod +x /usr/bin/gla11y
 
 build_scripts:
   - if [ ${DISTRO_NAME} == "debian" ];then
   -     export CFLAGS+=" -Wsign-compare -Wunused-parameter"
-  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
+  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' .
   - fi
 
   - NOCONFIGURE=1 ./autogen.sh
@@ -223,7 +210,7 @@ build_scripts:
 
 after_scripts:
   - if [ ${DISTRO_NAME} == "fedora" ];then
-  -   cppcheck --xml --output-file=cppcheck.xml --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' -i'mate-settings-daemon-1.23.1' .
+  -   cppcheck --xml --output-file=cppcheck.xml --enable=warning,style,performance,portability,information,missingInclude -i'mate-desktop-1.23.2' .
   -   cppcheck-htmlreport --title=${REPO_NAME} --file=cppcheck.xml --report-dir=cppcheck-htmlreport
   -   ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/categories/preferences-desktop.png
   - fi
