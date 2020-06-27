@@ -4,7 +4,7 @@ cappletname = about-me
 ui_files = mate-about-me-dialog.ui mate-about-me-password.ui mate-about-me-fingerprint.ui
 Desktop_in_files = mate-about-me.desktop.in
 
-BUILT_SOURCES = marshal.c marshal.h mate-about-me-resources.h mate-about-me-resources.c
+BUILT_SOURCES = mate-about-me-resources.h mate-about-me-resources.c
 nodist_mate_about_me_SOURCES = \
 	$(BUILT_SOURCES)
 mate_about_me_SOURCES =	 	\
@@ -17,10 +17,6 @@ mate_about_me_SOURCES =	 	\
 	fingerprint-strings.h		\
 	mate-about-me.c
 
-marshal.h: fprintd-marshal.list
-	@GLIB_GENMARSHAL@ --prefix=fprintd_marshal $< --header > $@
-marshal.c: fprintd-marshal.list
-	@GLIB_GENMARSHAL@ --prefix=fprintd_marshal $< --body --prototypes > $@
 mate-about-me-resources.h mate-about-me-resources.c: org.mate.mcc.am.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.am.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name about_me $<
 
@@ -56,7 +52,6 @@ endif
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 EXTRA_DIST = \
 	$(ui_files) \
-	fprintd-marshal.list \
 	$(Desktop_in_files) \
 	org.mate.mcc.am.gresource.xml \
 	ui-a11y.suppr
