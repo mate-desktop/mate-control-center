@@ -26,7 +26,6 @@
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 #include <unistd.h>
-#include <dbus/dbus-glib-bindings.h>
 
 #if HAVE_ACCOUNTSSERVICE
 #include <act/act.h>
@@ -38,7 +37,6 @@
 #include "e-image-chooser.h"
 #include "mate-about-me-password.h"
 #include "mate-about-me-fingerprint.h"
-#include "marshal.h"
 
 #include "capplet-util.h"
 
@@ -534,9 +532,6 @@ main (int argc, char **argv)
 	int rc = 0;
 
 	capplet_init (NULL, &argc, &argv);
-
-	dbus_g_object_register_marshaller (fprintd_marshal_VOID__STRING_BOOLEAN,
-					   G_TYPE_NONE, G_TYPE_STRING, G_TYPE_BOOLEAN, G_TYPE_INVALID);
 
 	rc = about_me_setup_dialog ();
 
