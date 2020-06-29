@@ -346,9 +346,10 @@ main (int argc, char **argv)
     /* Notebook */
     nb = GTK_WIDGET (gtk_builder_get_object (builder, "nb"));
     gtk_widget_add_events (nb, GDK_SCROLL_MASK);
-    g_signal_connect (nb, "scroll-event",
-                      G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                      GTK_WINDOW (dialog_win));
+    g_signal_connect (nb,
+                      "scroll-event",
+                      G_CALLBACK (capplet_notebook_scroll_event_cb),
+                      NULL);
 
     /* Compositing manager */
     compositing_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_checkbutton"));

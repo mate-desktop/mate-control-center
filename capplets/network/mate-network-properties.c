@@ -482,9 +482,10 @@ main (int argc, char **argv)
 
         GtkNotebook* nb = GTK_NOTEBOOK (_gtk_builder_get_widget (builder, "notebook1"));
         gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-        g_signal_connect (GTK_WIDGET (nb), "scroll-event",
-                          G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                          GTK_WINDOW (widget));
+        g_signal_connect (GTK_WIDGET (nb),
+                          "scroll-event",
+                          G_CALLBACK (capplet_notebook_scroll_event_cb),
+                          NULL);
 
 	capplet_set_icon (widget, "network-server");
 	gtk_widget_show_all (widget);

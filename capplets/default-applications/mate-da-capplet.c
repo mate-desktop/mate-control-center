@@ -789,9 +789,10 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
         GtkNotebook* nb = GTK_NOTEBOOK(get_widget("preferred_apps_notebook"));
         gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-        g_signal_connect (GTK_WIDGET (nb), "scroll-event",
-                          G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                          GTK_WINDOW (capplet->window));
+        g_signal_connect (GTK_WIDGET (nb),
+                          "scroll-event",
+                          G_CALLBACK (capplet_notebook_scroll_event_cb),
+                          NULL);
 
 	if (start_page != NULL)
 	{
