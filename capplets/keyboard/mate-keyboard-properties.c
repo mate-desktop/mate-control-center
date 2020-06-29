@@ -245,9 +245,10 @@ main (int argc, char **argv)
 
         GtkNotebook* nb = GTK_NOTEBOOK (WID ("keyboard_notebook"));
         gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-        g_signal_connect (GTK_WIDGET (nb), "scroll-event",
-                          G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                          GTK_WINDOW (WID ("keyboard_dialog")));
+        g_signal_connect (GTK_WIDGET (nb),
+                          "scroll-event",
+                          G_CALLBACK (capplet_notebook_scroll_event_cb),
+                          NULL);
 
 	if (switch_to_typing_break_page) {
 		gtk_notebook_set_current_page (nb, 4);

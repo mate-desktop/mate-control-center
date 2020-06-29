@@ -465,9 +465,10 @@ main (int argc, char **argv)
 
                 GtkNotebook* nb = GTK_NOTEBOOK (WID ("prefs_widget"));
                 gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-                g_signal_connect (GTK_WIDGET (nb), "scroll-event",
-                                  G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                                  GTK_WINDOW (dialog_win));
+                g_signal_connect (GTK_WIDGET (nb),
+                                  "scroll-event",
+                                  G_CALLBACK (capplet_notebook_scroll_event_cb),
+                                  NULL);
 
 
 		if (start_page != NULL) {

@@ -171,7 +171,8 @@ capplet_file_delete_recursive (GFile *file, GError **error)
 }
 
 gboolean
-capplet_dialog_page_scroll_event_cb (GtkWidget *widget, GdkEventScroll *event, GtkWindow *window)
+capplet_notebook_scroll_event_cb (GtkWidget      *widget,
+                                  GdkEventScroll *event)
 {
     GtkNotebook *notebook = GTK_NOTEBOOK (widget);
     GtkWidget *child, *event_widget, *action_widget;

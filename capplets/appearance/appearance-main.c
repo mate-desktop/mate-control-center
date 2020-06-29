@@ -208,9 +208,10 @@ main (int argc, char **argv)
 
   nb = appearance_capplet_get_widget (data, "main_notebook");
   gtk_widget_add_events (nb, GDK_SCROLL_MASK);
-  g_signal_connect (nb, "scroll-event",
-                    G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                    GTK_WINDOW (w));
+  g_signal_connect (nb,
+                    "scroll-event",
+                    G_CALLBACK (capplet_notebook_scroll_event_cb),
+                    NULL);
 
   if (start_page != NULL) {
     gchar *page_name;
@@ -242,9 +243,10 @@ main (int argc, char **argv)
 
   nb_custom_theme = appearance_capplet_get_widget (data, "notebook2");
   gtk_widget_add_events (nb_custom_theme, GDK_SCROLL_MASK);
-  g_signal_connect (nb_custom_theme, "scroll-event",
-                    G_CALLBACK (capplet_dialog_page_scroll_event_cb),
-                    GTK_WINDOW (w));
+  g_signal_connect (nb_custom_theme,
+                    "scroll-event",
+                    G_CALLBACK (capplet_notebook_scroll_event_cb),
+                    NULL);
 
   /* start the mainloop */
   gtk_main ();
