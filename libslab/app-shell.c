@@ -45,7 +45,6 @@
 #include "themed-icon.h"
 
 #define TILE_EXEC_NAME "Tile_desktop_exec_name"
-#define SECONDS_IN_DAY 86400
 #define CC_SCHEMA "org.mate.control-center"
 #define EXIT_SHELL_ON_ACTION_START "cc-exit-shell-on-action-start"
 #define EXIT_SHELL_ON_ACTION_HELP "cc-exit-shell-on-action-help"

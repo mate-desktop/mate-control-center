@@ -31,7 +31,6 @@
 #define GTK_THEME_KEY           "gtk-theme"
 #define COLOR_SCHEME_KEY        "gtk-color-scheme"
 #define ICON_THEME_KEY          "icon-theme"
-#define FONT_KEY                "font-name"
 
 #define MARCO_SCHEMA            "org.mate.Marco.general"
 #define MARCO_THEME_KEY         "theme"

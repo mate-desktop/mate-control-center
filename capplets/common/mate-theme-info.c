@@ -50,7 +50,6 @@
 #define CURSOR_THEME_KEY "X-GNOME-Metatheme/CursorTheme"
 #define NOTIFICATION_THEME_KEY "X-GNOME-Metatheme/NotificationTheme"
 #define CURSOR_SIZE_KEY "X-GNOME-Metatheme/CursorSize"
-#define SOUND_THEME_KEY "X-GNOME-Metatheme/SoundTheme"
 #define APPLICATION_FONT_KEY "X-GNOME-Metatheme/ApplicationFont"
 #define DOCUMENTS_FONT_KEY "X-GNOME-Metatheme/DocumentsFont"
 #define DESKTOP_FONT_KEY "X-GNOME-Metatheme/DesktopFont"

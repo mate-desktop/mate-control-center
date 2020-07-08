@@ -95,7 +95,6 @@ static const gchar *app_menu =
     "  <menu>"
     "</interface>";
 
-#define VIEW_ITEM_WIDTH 140
 #define VIEW_ITEM_WRAP_WIDTH 128
 #define VIEW_COLUMN_SPACING 36
 #define VIEW_MARGIN 16
