@@ -25,8 +25,6 @@
 
 #include "app-resizer.h"
 
-#define SHELL_WINDOW_BORDER_WIDTH 6
-
 G_DEFINE_TYPE (ShellWindow, shell_window, GTK_TYPE_FRAME);
 
 static void

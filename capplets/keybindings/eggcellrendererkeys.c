@@ -1,20 +1,11 @@
 #include <config.h>
-#include <libintl.h>
+#include <glib.h>
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include "eggcellrendererkeys.h"
 #include "eggaccelerators.h"
-
-#ifndef EGG_COMPILATION
-	#ifndef _
-		#define _(x) dgettext (GETTEXT_PACKAGE, x)
-		#define N_(x) x
-	#endif
-#else
-	#define _(x) x
-	#define N_(x) x
-#endif
 
 #define EGG_CELL_RENDERER_TEXT_PATH "egg-cell-renderer-text"
 

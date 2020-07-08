@@ -36,7 +36,6 @@
 #define MARCO_THEME_KEY "theme"
 #define MARCO_FONT_KEY  "titlebar-font"
 #define MARCO_FOCUS_KEY "focus-mode"
-#define MARCO_USE_SYSTEM_FONT_KEY "titlebar-uses-system-font"
 #define MARCO_AUTORAISE_KEY "auto-raise"
 #define MARCO_AUTORAISE_DELAY_KEY "auto-raise-delay"
 #define MARCO_MOUSE_MODIFIER_KEY "mouse-button-modifier"

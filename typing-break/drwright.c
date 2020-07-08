@@ -49,9 +49,6 @@
 #define BLINK_TIMEOUT_FACTOR 100
 #endif /* HAVE_APP_INDICATOR */
 
-#define POPUP_ITEM_ENABLED 1
-#define POPUP_ITEM_BREAK   2
-
 typedef enum {
 	STATE_START,
 	STATE_RUNNING,
