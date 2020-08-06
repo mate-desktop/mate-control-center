@@ -174,11 +174,12 @@ before_scripts:
   - make install
 
   - cd ${START_DIR}
-  - if [ ! -f mate-desktop-1.23.2.tar.xz ];then
-  -     curl -Ls -o mate-desktop-1.23.2.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v1.23.2/mate-desktop-1.23.2.tar.xz
+  - MATE_DESKTOP_VERSION=1.25.0
+  - if [ ! -f mate-desktop-${MATE_DESKTOP_VERSION}.tar.xz ];then
+  -     curl -Ls -o mate-desktop-${MATE_DESKTOP_VERSION}.tar.xz https://github.com/mate-desktop/mate-desktop/releases/download/v${MATE_DESKTOP_VERSION}/mate-desktop-${MATE_DESKTOP_VERSION}.tar.xz
   - fi
-  - tar xf mate-desktop-1.23.2.tar.xz
-  - cd mate-desktop-1.23.2
+  - tar xf mate-desktop-${MATE_DESKTOP_VERSION}.tar.xz
+  - cd mate-desktop-${MATE_DESKTOP_VERSION}
   - if [ ${DISTRO_NAME} == "debian" -o ${DISTRO_NAME} == "ubuntu" ];then
   -     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu
   - else
