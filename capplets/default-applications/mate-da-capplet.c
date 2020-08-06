@@ -340,54 +340,10 @@ refresh_combo_box_icons(GtkIconTheme* theme, GtkComboBox* combo_box, GList* app_
 	}
 }
 
-static struct {
-	const char* name;
-	const char* icon;
-} icons[] = {
-	{"web_browser_image",  "web-browser"},
-	{"mail_reader_image",  "emblem-mail"},
-	{"media_player_image", "audio-x-generic"},
-	{"visual_image",       "zoom-best-fit"},
-	{"mobility_image",     "preferences-desktop-accessibility"},
-	{"messenger_image",    "instant-messaging"},
-	{"filemanager_image",  "file-manager"},
-	{"imageviewer_image",  "image-x-generic"},
-	{"video_image",        "video-x-generic"},
-	{"text_image",         "text-editor"},
-	{"terminal_image",     "terminal"},
-	{"document_image",     "application-pdf"},
-	{"word_image",         "x-office-document"},
-	{"spreadsheet_image",  "x-office-spreadsheet"},
-	{"calculator_image",   "accessories-calculator"},
-};
-
 /* Callback for icon theme change */
 static void
 theme_changed_cb(GtkIconTheme* theme, MateDACapplet* capplet)
 {
-	GObject* icon;
-	gint i;
-	gint scale_factor;
-	cairo_surface_t *surface;
-
-	scale_factor = gtk_widget_get_scale_factor (capplet->window);
-
-	for (i = 0; i < G_N_ELEMENTS(icons); i++)
-	{
-		icon = gtk_builder_get_object(capplet->builder, icons[i].name);
-
-		surface = gtk_icon_theme_load_surface (theme, icons[i].icon,
-		                                       32, scale_factor,
-		                                       NULL,
-		                                       GTK_ICON_LOOKUP_FORCE_SIZE,
-		                                       NULL);
-
-		gtk_image_set_from_surface (GTK_IMAGE(icon), surface);
-
-		if (surface)
-			cairo_surface_destroy (surface);
-	}
-
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers);
 	refresh_combo_box_icons(theme, GTK_COMBO_BOX(capplet->media_combo_box), capplet->media_players);
