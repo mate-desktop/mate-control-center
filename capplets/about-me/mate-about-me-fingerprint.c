@@ -732,9 +732,9 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 		g_variant_get (ret, "(a{sv})", &iter);
 		while (g_variant_iter_loop (iter, "{sv}", &key, &value))
 		{
-			if (g_str_equal (key, "name") && g_variant_get_type (value) == G_VARIANT_TYPE_STRING) {
+			if (g_str_equal (key, "name") && g_variant_is_of_type (value, G_VARIANT_TYPE ("(s)"))) {
 				data->name = g_strdup (g_variant_get_string (value, NULL));
-			} else if (g_str_equal (key, "scan-type") && g_variant_get_type (value) == G_VARIANT_TYPE_STRING) {
+			} else if (g_str_equal (key, "scan-type") && g_variant_is_of_type (value, G_VARIANT_TYPE ("(s)"))) {
 				if (g_str_equal (g_variant_get_string (value, NULL), "swipe"))
 					data->is_swipe = TRUE;
 			}
