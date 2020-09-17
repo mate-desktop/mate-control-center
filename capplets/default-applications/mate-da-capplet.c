@@ -100,6 +100,7 @@ set_changed(GtkComboBox* combo, MateDACapplet* capplet, GList* list, gint type)
 				break;
 
 			case DA_TYPE_MEDIA:
+				g_app_info_set_as_default_for_type(item, "audio/flac", NULL);
 				g_app_info_set_as_default_for_type(item, "audio/mpeg", NULL);
 				g_app_info_set_as_default_for_type(item, "audio/x-mpegurl", NULL);
 				g_app_info_set_as_default_for_type(item, "audio/x-scpls", NULL);
