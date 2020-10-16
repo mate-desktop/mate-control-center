@@ -1019,11 +1019,6 @@ style_init (AppearanceData *data)
   w = appearance_capplet_get_widget (data, "color_scheme_message_hbox");
   gtk_widget_set_no_show_all (w, TRUE);
 
-  w = appearance_capplet_get_widget (data, "color_scheme_defaults_button");
-  gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_icon_name ("document-revert",
-                                                      GTK_ICON_SIZE_BUTTON));
-
   settings = gtk_settings_get_default ();
   g_signal_connect (settings, "notify::gtk-color-scheme", (GCallback) color_scheme_changed, data);
 
