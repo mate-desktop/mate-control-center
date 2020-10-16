@@ -137,3 +137,4 @@ typedef struct {
 } AppearanceData;
 
 #define appearance_capplet_get_widget(x, y) (GtkWidget*) gtk_builder_get_object(x->ui, y)
+#define GET_WINDOW(x) (GTK_WINDOW (gtk_builder_get_object (data->ui, (x))))

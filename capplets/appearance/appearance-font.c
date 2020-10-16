@@ -610,7 +610,7 @@ cb_add_new_font (GtkWidget *button,
     gint res;
 
     dialog = gtk_file_chooser_dialog_new (_("Select Font"),
-            GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")),
+            GET_WINDOW ("appearance_window"),
             action,
             _("_Cancel"),
             GTK_RESPONSE_CANCEL,
@@ -648,7 +648,7 @@ cb_show_details (GtkWidget *button,
     data->font_details = appearance_capplet_get_widget (data, "render_details");
 
     gtk_window_set_transient_for (GTK_WINDOW (data->font_details),
-                                  GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")));
+                                  GET_WINDOW ("appearance_window"));
 
     spinner = appearance_capplet_get_widget (data, "dpi_spinner");
     toggle = appearance_capplet_get_widget (data, "dpi_reset_switch");
