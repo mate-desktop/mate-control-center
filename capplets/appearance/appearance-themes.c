@@ -1070,18 +1070,12 @@ void themes_init(AppearanceData* data)
   g_signal_connect_after (icon_view, "realize", (GCallback) theme_select_name, meta_theme->name);
 
   w = appearance_capplet_get_widget (data, "theme_install");
-  gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_icon_name ("document-open", GTK_ICON_SIZE_BUTTON));
   g_signal_connect (w, "clicked", (GCallback) theme_install_cb, data);
 
   w = appearance_capplet_get_widget (data, "theme_save");
-  gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_icon_name ("document-save-as", GTK_ICON_SIZE_BUTTON));
   g_signal_connect (w, "clicked", (GCallback) theme_save_cb, data);
 
   w = appearance_capplet_get_widget (data, "theme_custom");
-  gtk_button_set_image (GTK_BUTTON (w),
-                        gtk_image_new_from_icon_name ("gtk-edit", GTK_ICON_SIZE_BUTTON));
   g_signal_connect (w, "clicked", (GCallback) theme_custom_cb, data);
 
   del_button = appearance_capplet_get_widget (data, "theme_delete");

@@ -1332,8 +1332,6 @@ desktop_init (AppearanceData *data,
                     (GCallback) wp_scolor_changed, data);
 
   add_button = appearance_capplet_get_widget (data, "wp_add_button");
-  gtk_button_set_image (GTK_BUTTON (add_button),
-                        gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_BUTTON));
 
   g_signal_connect (add_button, "clicked",
                     (GCallback) wp_file_open_dialog, data);
