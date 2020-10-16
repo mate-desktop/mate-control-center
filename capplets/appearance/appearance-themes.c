@@ -784,11 +784,10 @@ theme_selection_changed_cb (GtkWidget *icon_view, AppearanceData *data)
 static void
 theme_custom_cb (GtkWidget *button, AppearanceData *data)
 {
-  GtkWidget *w, *parent;
+  GtkWidget *w;
 
   w = appearance_capplet_get_widget (data, "theme_details");
-  parent = appearance_capplet_get_widget (data, "appearance_window");
-  gtk_window_set_transient_for (GTK_WINDOW (w), GTK_WINDOW (parent));
+  gtk_window_set_transient_for (GTK_WINDOW (w), GET_WINDOW ("appearance_window"));
   gtk_widget_show_all (w);
 }
 
@@ -801,8 +800,7 @@ theme_save_cb (GtkWidget *button, AppearanceData *data)
 static void
 theme_install_cb (GtkWidget *button, AppearanceData *data)
 {
-  mate_theme_installer_run (
-      GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")));
+  mate_theme_installer_run (GET_WINDOW ("appearance_window"));
 }
 
 static void
@@ -963,8 +961,7 @@ theme_drag_data_received_cb (GtkWidget *widget,
   if (uris != NULL && uris[0] != NULL) {
     GFile *f = g_file_new_for_uri (uris[0]);
 
-    mate_theme_install (f,
-        GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")));
+    mate_theme_install (f, GET_WINDOW ("appearance_window"));
     g_object_unref (f);
   }
 

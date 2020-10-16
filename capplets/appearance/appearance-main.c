@@ -193,7 +193,7 @@ main (int argc, char **argv)
 
   /* prepare the main window */
   w = appearance_capplet_get_widget (data, "appearance_window");
-  context = gtk_widget_get_style_context (GTK_WIDGET (w));
+  context = gtk_widget_get_style_context (w);
   gtk_style_context_add_class (context, "appearance-window");
 
   capplet_set_icon (w, "preferences-desktop-theme");

@@ -378,6 +378,6 @@ theme_save_dialog_run (MateThemeMetaInfo *theme_info,
   gtk_text_buffer_set_text (text_buffer, "", 0);
   g_object_set_data (G_OBJECT (data->theme_save_dialog), "meta-theme-info", theme_info);
   gtk_window_set_transient_for (GTK_WINDOW (data->theme_save_dialog),
-                                GTK_WINDOW (appearance_capplet_get_widget (data, "appearance_window")));
+                                GET_WINDOW ("appearance_window"));
   gtk_widget_show (data->theme_save_dialog);
 }
