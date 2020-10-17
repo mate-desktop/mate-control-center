@@ -816,7 +816,7 @@ wp_update_preview (GtkFileChooser *chooser,
   if (uri)
   {
     GdkPixbuf *pixbuf = NULL;
-    const gchar *mime_type = NULL;
+    gchar *mime_type = NULL;
     GFile *file;
     GFileInfo *file_info;
 
@@ -829,15 +829,19 @@ wp_update_preview (GtkFileChooser *chooser,
 
     if (file_info != NULL)
     {
-      mime_type = g_file_info_get_content_type (file_info);
+      const gchar *content_type;
+
+      if ((content_type = g_file_info_get_content_type (file_info)) != NULL)
+        mime_type = g_content_type_get_mime_type (content_type);
       g_object_unref (file_info);
     }
 
     if (mime_type)
     {
       pixbuf = mate_desktop_thumbnail_factory_generate_thumbnail (data->thumb_factory,
-								   uri,
-								   mime_type);
+                                                                  uri,
+                                                                  mime_type);
+      g_free (mime_type);
     }
 
     if (pixbuf != NULL)
