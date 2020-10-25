@@ -40,16 +40,20 @@
 #include "capplet-util.h"
 
 #define MARCO_SCHEMA "org.mate.Marco.general"
+
+#define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
+#define MARCO_ALLOW_TILING_KEY "allow-tiling"
+#define MARCO_SHOW_TAB_BORDER_KEY "show-tab-border"
+#define MARCO_BUTTON_LAYOUT_KEY "button-layout"
+#define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
 #define MARCO_FOCUS_KEY "focus-mode"
 #define MARCO_AUTORAISE_KEY "auto-raise"
 #define MARCO_AUTORAISE_DELAY_KEY "auto-raise-delay"
+#define MARCO_REDUCED_RESOURCES_KEY "reduced-resources"
 #define MARCO_MOUSE_MODIFIER_KEY "mouse-button-modifier"
-#define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
+
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
-#define MARCO_ALLOW_TILING_KEY "allow-tiling"
-#define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
-#define MARCO_BUTTON_LAYOUT_KEY "button-layout"
 
 #define MARCO_BUTTON_LAYOUT_RIGHT "menu:minimize,maximize,close"
 #define MARCO_BUTTON_LAYOUT_LEFT "close,minimize,maximize:"
@@ -66,6 +70,7 @@ enum
     ACTION_TITLEBAR_LOWER,
     ACTION_TITLEBAR_MENU
 };
+
 enum
 {
     FOCUS_MODE_CLICK,
@@ -82,18 +87,23 @@ typedef struct
 } MouseClickModifier;
 
 static GtkWidget *dialog_win;
-static GtkWidget *compositing_checkbutton;
-static GtkWidget *compositing_fast_alt_tab_checkbutton;
-static GtkWidget *allow_tiling_checkbutton;
+
+/* General */
 static GtkWidget *center_new_windows_checkbutton;
+static GtkWidget *allow_tiling_checkbutton;
+static GtkWidget *show_tab_border_checkbutton;
+static GtkWidget *titlebar_layout_optionmenu;
+static GtkWidget *double_click_titlebar_optionmenu;
 static GtkWidget *focus_mode_checkbutton;
 static GtkWidget *focus_mode_mouse_checkbutton;
 static GtkWidget *autoraise_checkbutton;
-static GtkWidget *autoraise_delay_slider;
-static GtkWidget *autoraise_delay_hbox;
-static GtkWidget *double_click_titlebar_optionmenu;
-static GtkWidget *titlebar_layout_optionmenu;
+static GtkWidget *autoraise_delay_spinbutton;
+static GtkWidget *reduced_resources_checkbutton;
 static GtkWidget *alt_click_vbox;
+
+/* Compositing Manager */
+static GtkWidget *compositing_checkbutton;
+static GtkWidget *compositing_fast_alt_tab_checkbutton;
 
 static GSettings *marco_settings;
 
@@ -107,18 +117,20 @@ update_sensitivity (void)
 {
     gchar *str;
 
-    gtk_widget_set_sensitive (GTK_WIDGET (compositing_fast_alt_tab_checkbutton),
+    gtk_widget_set_sensitive (compositing_fast_alt_tab_checkbutton,
                               g_settings_get_boolean (marco_settings, MARCO_COMPOSITING_MANAGER_KEY));
-    gtk_widget_set_sensitive (GTK_WIDGET (focus_mode_mouse_checkbutton),
+    gtk_widget_set_sensitive (allow_tiling_checkbutton,
+                              !g_settings_get_boolean (marco_settings, MARCO_REDUCED_RESOURCES_KEY));
+    gtk_widget_set_sensitive (focus_mode_mouse_checkbutton,
                               g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
-    gtk_widget_set_sensitive (GTK_WIDGET (autoraise_checkbutton),
+    gtk_widget_set_sensitive (autoraise_checkbutton,
                               g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
-    gtk_widget_set_sensitive (GTK_WIDGET (autoraise_delay_hbox),
+    gtk_widget_set_sensitive (autoraise_delay_spinbutton,
                               g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK &&
                               g_settings_get_boolean (marco_settings, MARCO_AUTORAISE_KEY));
 
     str = g_settings_get_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY);
-    gtk_widget_set_sensitive (GTK_WIDGET (titlebar_layout_optionmenu),
+    gtk_widget_set_sensitive (titlebar_layout_optionmenu,
                               g_strcmp0 (str, MARCO_BUTTON_LAYOUT_LEFT) == 0 ||
                               g_strcmp0 (str, MARCO_BUTTON_LAYOUT_RIGHT) == 0);
     g_free (str);
@@ -167,12 +179,12 @@ mouse_focus_changed_callback (GSettings *settings,
 }
 
 static void
-autoraise_delay_value_changed_callback (GtkWidget *slider,
-                                        void      *data)
+autoraise_delay_spinbutton_value_callback (GtkWidget *spinbutton,
+                                           void      *data)
 {
     g_settings_set_int (marco_settings,
                         MARCO_AUTORAISE_DELAY_KEY,
-                        gtk_range_get_value (GTK_RANGE (slider)) * 1000);
+                        gtk_spin_button_get_value (GTK_SPIN_BUTTON (spinbutton)) * 1000);
 }
 
 static void
@@ -292,7 +304,6 @@ response_cb (GtkWidget *dialog_win,
 int
 main (int argc, char **argv)
 {
-    GError     *error = NULL;
     GtkBuilder *builder;
     GdkScreen  *screen;
     GtkWidget  *nb;
@@ -315,21 +326,12 @@ main (int argc, char **argv)
         return 1;
     }
 
-    marco_settings = g_settings_new (MARCO_SCHEMA);
-
-    builder = gtk_builder_new ();
-    if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/windows/window-properties.ui", &error) == 0) {
-        g_warning ("Could not load UI: %s", error->message);
-        g_error_free (error);
-        g_object_unref (marco_settings);
-        g_object_unref (builder);
-        return -1;
-    }
+    builder = gtk_builder_new_from_resource ("/org/mate/mcc/windows/window-properties.ui");
 
     gtk_builder_add_callback_symbols (builder,
                                       "on_dialog_win_response",                        G_CALLBACK (response_cb),
-                                      "on_autoraise_delay_slider_value_changed",       G_CALLBACK (autoraise_delay_value_changed_callback),
                                       "on_double_click_titlebar_optionmenu_changed",   G_CALLBACK (double_click_titlebar_changed_callback),
+                                      "on_autoraise_delay_spinbutton_value_changed",   G_CALLBACK (autoraise_delay_spinbutton_value_callback),
                                       "on_titlebar_layout_optionmenu_changed",         G_CALLBACK (titlebar_layout_changed_callback),
                                       "on_focus_mode_checkbutton_toggled",             G_CALLBACK (mouse_focus_toggled_callback),
                                       "on_focus_mode_mouse_checkbutton_toggled",       G_CALLBACK (mouse_focus_toggled_callback),
@@ -337,46 +339,42 @@ main (int argc, char **argv)
 
     gtk_builder_connect_signals (builder, NULL);
 
+    #define GET_WIDGET(x) GTK_WIDGET(gtk_builder_get_object(builder, x))
+
     /* Window */
-    dialog_win = GTK_WIDGET (gtk_builder_get_object (builder, "dialog_win"));
+    dialog_win = GET_WIDGET ("dialog_win");
 
     /* Notebook */
-    nb = GTK_WIDGET (gtk_builder_get_object (builder, "nb"));
+    nb = GET_WIDGET ("nb");
     gtk_widget_add_events (nb, GDK_SCROLL_MASK);
     g_signal_connect (nb,
                       "scroll-event",
                       G_CALLBACK (capplet_notebook_scroll_event_cb),
                       NULL);
 
-    /* Compositing manager */
-    compositing_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_checkbutton"));
-    compositing_fast_alt_tab_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "compositing_fast_alt_tab_checkbutton"));
+    /* General */
+    center_new_windows_checkbutton = GET_WIDGET ("center_new_windows_checkbutton");
+    allow_tiling_checkbutton = GET_WIDGET ("allow_tiling_checkbutton");
+    show_tab_border_checkbutton = GET_WIDGET ("show_tab_border_checkbutton");
+    titlebar_layout_optionmenu = GET_WIDGET ("titlebar_layout_optionmenu");
+    double_click_titlebar_optionmenu = GET_WIDGET ("double_click_titlebar_optionmenu");
+    focus_mode_checkbutton = GET_WIDGET ("focus_mode_checkbutton");
+    focus_mode_mouse_checkbutton = GET_WIDGET ("focus_mode_mouse_checkbutton");
+    autoraise_checkbutton = GET_WIDGET ("autoraise_checkbutton");
+    autoraise_delay_spinbutton = GET_WIDGET ("autoraise_delay_spinbutton");
+    reduced_resources_checkbutton = GET_WIDGET ("reduced_resources_checkbutton");
+    alt_click_vbox = GET_WIDGET ("alt_click_vbox");
 
-    /* Titlebar buttons */
-    titlebar_layout_optionmenu = GTK_WIDGET (gtk_builder_get_object (builder, "titlebar_layout_optionmenu"));
-
-    /* New Windows */
-    center_new_windows_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "center_new_windows_checkbutton"));
-
-    /* Window Snapping */
-    allow_tiling_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "allow_tiling_checkbutton"));
-
-    /* Window Selection */
-    focus_mode_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "focus_mode_checkbutton"));
-    focus_mode_mouse_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "focus_mode_mouse_checkbutton"));
-    autoraise_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise_checkbutton"));
-    autoraise_delay_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise_delay_hbox"));
-    autoraise_delay_slider = GTK_WIDGET (gtk_builder_get_object (builder, "autoraise_delay_slider"));
-
-    /* Titlebar Action */
-    double_click_titlebar_optionmenu = GTK_WIDGET (gtk_builder_get_object (builder, "double_click_titlebar_optionmenu"));
-
-    /* Movement Key */
-    alt_click_vbox = GTK_WIDGET (gtk_builder_get_object (builder, "alt_click_vbox"));
-
+    /* Composition Manager */
+    compositing_checkbutton = GET_WIDGET ("compositing_checkbutton");
+    compositing_fast_alt_tab_checkbutton = GET_WIDGET ("compositing_fast_alt_tab_checkbutton");
 
     g_object_unref (builder);
 
+    #undef GET_WIDGET
+
+    /* Load settings */
+    marco_settings = g_settings_new (MARCO_SCHEMA);
 
     reload_mouse_modifiers ();
 
@@ -389,11 +387,36 @@ main (int argc, char **argv)
                               g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
 
     set_alt_click_value ();
-    gtk_range_set_value (GTK_RANGE (autoraise_delay_slider),
-                         g_settings_get_int (marco_settings, MARCO_AUTORAISE_DELAY_KEY) / 1000.0);
+
     gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
                               g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
 
+    /* General */
+    g_settings_bind (marco_settings,
+                     MARCO_CENTER_NEW_WINDOWS_KEY,
+                     center_new_windows_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (marco_settings,
+                     MARCO_ALLOW_TILING_KEY,
+                     allow_tiling_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (marco_settings,
+                     MARCO_SHOW_TAB_BORDER_KEY,
+                     show_tab_border_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (marco_settings,
+                     MARCO_REDUCED_RESOURCES_KEY,
+                     reduced_resources_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    /* Composition Manager */
     g_settings_bind (marco_settings,
                      MARCO_COMPOSITING_MANAGER_KEY,
                      compositing_checkbutton,
@@ -406,18 +429,6 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    g_settings_bind (marco_settings,
-                     MARCO_ALLOW_TILING_KEY,
-                     allow_tiling_checkbutton,
-                     "active",
-                     G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind (marco_settings,
-                     MARCO_CENTER_NEW_WINDOWS_KEY,
-                     center_new_windows_checkbutton,
-                     "active",
-                     G_SETTINGS_BIND_DEFAULT);
-
     /* Initialize the checkbox state appropriately */
     mouse_focus_changed_callback(marco_settings, MARCO_FOCUS_KEY, NULL);
 
@@ -426,7 +437,6 @@ main (int argc, char **argv)
                      autoraise_checkbutton,
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
-
 
     g_signal_connect (G_OBJECT (dialog_win), "destroy",
                       G_CALLBACK (gtk_main_quit), NULL);
