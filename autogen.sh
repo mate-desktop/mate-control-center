@@ -18,11 +18,10 @@ which mate-autogen || {
 }
 
 which yelp-build || {
-    echo "You need to install yelp-tools" 
+    echo "You need to install yelp-tools"
 }
 
 REQUIRED_AUTOMAKE_VERSION=1.9
-USE_MATE2_MACROS=1
 USE_COMMON_DOC_BUILD=yes
 
 . mate-autogen
