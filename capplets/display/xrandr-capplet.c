@@ -2500,7 +2500,7 @@ restart:
 	break;
 
     case GTK_RESPONSE_HELP:
-        gtk_show_uri_on_window (GTK_DIALOG (app->dialog),
+        gtk_show_uri_on_window (GTK_WINDOW (app->dialog),
                                 "help:mate-user-guide/goscustdesk-70",
                                 gtk_get_current_event_time (),
                                 &error);
