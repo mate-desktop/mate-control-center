@@ -628,8 +628,9 @@ update_user_list_menu_item (ApplicationTile *this)
 
 		gtk_widget_show_all (item);
 	}
-	else
+	else {
 		/* do nothing */ ;
+	}
 
 	action = TILE (this)->actions [APPLICATION_TILE_ACTION_UPDATE_MAIN_MENU];
 
