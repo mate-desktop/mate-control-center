@@ -73,21 +73,18 @@ menus_have_icons_cb (GSettings *settings,
 void
 ui_init (AppearanceData *data)
 {
-    GtkWidget* widget;
-
     /* FIXME maybe just remove that stuff from .ui file */
     GtkWidget* container = appearance_capplet_get_widget(data, "vbox24");
 
-    // Remove menu accels and toolbar style toggles for new GTK versions
+    /* Remove menu accels and toolbar style toggles for new GTK versions */
     gtk_container_remove((GtkContainer *) container,
                          appearance_capplet_get_widget(data, "menu_accel_toggle"));
     gtk_container_remove((GtkContainer *) container,
                          appearance_capplet_get_widget(data, "hbox11"));
 
-    widget = appearance_capplet_get_widget(data, "menu_icons_toggle");
     g_settings_bind (data->interface_settings,
                      MENU_ICONS_KEY,
-                     G_OBJECT (widget),
+                     gtk_builder_get_object (data->ui, "menu_icons_toggle"),
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
     g_signal_connect (data->interface_settings, "changed::" MENU_ICONS_KEY,
@@ -97,10 +94,33 @@ ui_init (AppearanceData *data)
                     g_settings_get_boolean (data->interface_settings,
                                             MENU_ICONS_KEY));
 
-    widget = appearance_capplet_get_widget(data, "button_icons_toggle");
     g_settings_bind (data->interface_settings,
                      BUTTON_ICONS_KEY,
-                     G_OBJECT (widget),
+                     gtk_builder_get_object (data->ui, "button_icons_toggle"),
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (data->filechooser_settings,
+                     FILECHOOSER_HIDDEN_ITEMS_KEY,
+                     gtk_builder_get_object (data->ui, "filechooser_hidden_items_toggle"),
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (data->filechooser_settings,
+                     FILECHOOSER_SIZE_COL_KEY,
+                     gtk_builder_get_object (data->ui, "filechooser_size_column_toggle"),
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (data->filechooser_settings,
+                     FILECHOOSER_TYPE_COL_KEY,
+                     gtk_builder_get_object (data->ui, "filechooser_type_column_toggle"),
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (data->filechooser_settings,
+                     FILECHOOSER_DIR_FIRST_KEY,
+                     gtk_builder_get_object (data->ui, "filechooser_sort_directories_first_toggle"),
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 }

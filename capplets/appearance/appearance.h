@@ -28,6 +28,7 @@
 #include "mate-theme-info.h"
 
 #define APPEARANCE_SCHEMA            "org.mate.control-center.appearance"
+#define FILECHOOSER_SCHEMA           "org.gtk.Settings.FileChooser"
 #define MORE_THEMES_URL_KEY          "more-themes-url"
 #define MORE_BACKGROUNDS_URL_KEY     "more-backgrounds-url"
 
@@ -38,18 +39,22 @@
 #define WP_PCOLOR_KEY                "primary-color"
 #define WP_SCOLOR_KEY                "secondary-color"
 
-#define INTERFACE_SCHEMA             "org.mate.interface"
-#define GTK_FONT_KEY                 "font-name"
-#define MONOSPACE_FONT_KEY           "monospace-font-name"
+#define ACCEL_CHANGE_KEY             "can-change-accels"
+#define BUTTON_ICONS_KEY             "buttons-have-icons"
+#define COLOR_SCHEME_KEY             "gtk-color-scheme"
 #define DOCUMENT_FONT_KEY            "document-font-name"
+#define FILECHOOSER_DIR_FIRST_KEY    "sort-directories-first"
+#define FILECHOOSER_HIDDEN_ITEMS_KEY "show-hidden"
+#define FILECHOOSER_SIZE_COL_KEY     "show-size-column"
+#define FILECHOOSER_TYPE_COL_KEY     "show-type-column"
+#define GTK_FONT_DEFAULT_VALUE       "Sans 10"
+#define GTK_FONT_KEY                 "font-name"
 #define GTK_THEME_KEY                "gtk-theme"
 #define ICON_THEME_KEY               "icon-theme"
-#define COLOR_SCHEME_KEY             "gtk-color-scheme"
-#define ACCEL_CHANGE_KEY             "can-change-accels"
+#define INTERFACE_SCHEMA             "org.mate.interface"
 #define MENU_ICONS_KEY               "menus-have-icons"
-#define BUTTON_ICONS_KEY             "buttons-have-icons"
+#define MONOSPACE_FONT_KEY           "monospace-font-name"
 #define TOOLBAR_STYLE_KEY            "toolbar-style"
-#define GTK_FONT_DEFAULT_VALUE       "Sans 10"
 
 #define LOCKDOWN_SCHEMA              "org.mate.lockdown"
 #define DISABLE_THEMES_SETTINGS_KEY  "disable-theme-settings"
@@ -79,6 +84,7 @@ typedef struct {
 	GSettings* settings;
 	GSettings* wp_settings;
 	GSettings* caja_settings;
+	GSettings* filechooser_settings;
 	GSettings* interface_settings;
 	GSettings* marco_settings;
 	GSettings* mouse_settings;
