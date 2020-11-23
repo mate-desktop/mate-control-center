@@ -64,6 +64,7 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
       else
         data->caja_settings = NULL;
 
+      data->filechooser_settings = g_settings_new (FILECHOOSER_SCHEMA);
       data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
       data->marco_settings = g_settings_new (MARCO_SCHEMA);
       data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
@@ -98,6 +99,7 @@ main_window_response (GtkWidget *widget,
     if (data->caja_settings)
       g_object_unref (data->caja_settings);
 
+    g_object_unref (data->filechooser_settings);
     g_object_unref (data->interface_settings);
     g_object_unref (data->marco_settings);
     g_object_unref (data->mouse_settings);
