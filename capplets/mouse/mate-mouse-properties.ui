@@ -401,7 +401,7 @@ Author: Wolfgang Ulbrich
                         <property name="top-padding">6</property>
                         <property name="left-padding">12</property>
                         <child>
-                          <!-- n-columns=3 n-rows=3 -->
+                          <!-- n-columns=2 n-rows=3 -->
                           <object class="GtkGrid" id="table2">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -593,15 +593,6 @@ Author: Wolfgang Ulbrich
                                 <property name="left-attach">1</property>
                                 <property name="top-attach">2</property>
                               </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
                             </child>
                           </object>
                         </child>
@@ -1611,5 +1602,30 @@ Author: Wolfgang Ulbrich
       <action-widget response="-11">helpbutton1</action-widget>
       <action-widget response="2">closebutton1</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="acceleration_label"/>
+      <widget name="sensitivity_label"/>
+      <widget name="mouse_accel_profile_label"/>
+      <widget name="threshold_label"/>
+      <widget name="timeout_label"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="acceleration_fast_label"/>
+      <widget name="sensitivity_high_label"/>
+      <widget name="threshold_large_label"/>
+      <widget name="timeout_long_label"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="acceleration_slow_label"/>
+      <widget name="sensitivity_low_label"/>
+      <widget name="threshold_small_label"/>
+      <widget name="timeout_short_label"/>
+    </widgets>
   </object>
 </interface>

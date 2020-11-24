@@ -382,7 +382,6 @@ static GtkBuilder *
 create_dialog (void)
 {
 	GtkBuilder   *dialog;
-	GtkSizeGroup *size_group;
 	GError       *error = NULL;
 
 	dialog = gtk_builder_new ();
@@ -392,24 +391,6 @@ create_dialog (void)
 		g_object_unref (dialog);
 		return NULL;
 	}
-
-	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget (size_group, WID ("acceleration_label"));
-	gtk_size_group_add_widget (size_group, WID ("sensitivity_label"));
-	gtk_size_group_add_widget (size_group, WID ("threshold_label"));
-	gtk_size_group_add_widget (size_group, WID ("timeout_label"));
-
-	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget (size_group, WID ("acceleration_fast_label"));
-	gtk_size_group_add_widget (size_group, WID ("sensitivity_high_label"));
-	gtk_size_group_add_widget (size_group, WID ("threshold_large_label"));
-	gtk_size_group_add_widget (size_group, WID ("timeout_long_label"));
-
-	size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget (size_group, WID ("acceleration_slow_label"));
-	gtk_size_group_add_widget (size_group, WID ("sensitivity_low_label"));
-	gtk_size_group_add_widget (size_group, WID ("threshold_small_label"));
-	gtk_size_group_add_widget (size_group, WID ("timeout_short_label"));
 
 	return dialog;
 }
