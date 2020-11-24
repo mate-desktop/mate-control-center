@@ -50,23 +50,6 @@ static GSettings * keyboard_settings = NULL;
 static GSettings * interface_settings = NULL;
 static GSettings * typing_break_settings = NULL;
 
-static GtkBuilder *
-create_dialog (void)
-{
-	GtkBuilder *dialog;
-	GError *error = NULL;
-
-	dialog = gtk_builder_new ();
-	if (gtk_builder_add_from_resource (dialog, "/org/mate/mcc/keyboard/mate-keyboard-properties-dialog.ui", &error) == 0) {
-		g_warning ("Could not load UI: %s", error->message);
-		g_error_free (error);
-		g_object_unref (dialog);
-		return NULL;
-	}
-
-	return dialog;
-}
-
 static void
 dialog_response (GtkWidget * widget,
 		 gint response_id, guint data)
@@ -211,9 +194,7 @@ main (int argc, char **argv)
 	interface_settings = g_settings_new (INTERFACE_SCHEMA);
 	typing_break_settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
-	dialog = create_dialog ();
-	if (!dialog) /* Warning was already printed to console */
-		exit (EXIT_FAILURE);
+	dialog = gtk_builder_new_from_resource ("/org/mate/mcc/keyboard/mate-keyboard-properties-dialog.ui");
 
 	setup_dialog (dialog);
 
