@@ -55,7 +55,6 @@ create_dialog (void)
 {
 	GtkBuilder *dialog;
 	GtkSizeGroup *size_group;
-	GtkWidget *image;
 	GError *error = NULL;
 
 	dialog = gtk_builder_new ();
@@ -83,12 +82,6 @@ create_dialog (void)
 	gtk_size_group_add_widget (size_group, WID ("repeat_speed_scale"));
 	gtk_size_group_add_widget (size_group, WID ("cursor_blink_time_scale"));
 	g_object_unref (G_OBJECT (size_group));
-
-	image = gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_BUTTON);
-	gtk_button_set_image (GTK_BUTTON (WID ("xkb_layouts_add")), image);
-
-	image = gtk_image_new_from_icon_name ("view-refresh", GTK_ICON_SIZE_BUTTON);
-	gtk_button_set_image (GTK_BUTTON (WID ("xkb_reset_to_defaults")), image);
 
 	return dialog;
 }
