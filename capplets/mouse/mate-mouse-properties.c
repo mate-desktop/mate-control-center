@@ -372,25 +372,6 @@ setup_dialog (GtkBuilder *dialog)
 
 }
 
-/* Construct the dialog */
-
-static GtkBuilder *
-create_dialog (void)
-{
-	GtkBuilder   *dialog;
-	GError       *error = NULL;
-
-	dialog = gtk_builder_new ();
-	if (gtk_builder_add_from_resource (dialog, "/org/mate/mcc/mouse/mate-mouse-properties.ui", &error) == 0) {
-		g_warning ("Error loading UI file: %s", error->message);
-		g_error_free (error);
-		g_object_unref (dialog);
-		return NULL;
-	}
-
-	return dialog;
-}
-
 /* Callback issued when a button is clicked on the dialog */
 
 static void
@@ -431,48 +412,45 @@ main (int argc, char **argv)
 	interface_settings = g_settings_new (INTERFACE_SCHEMA);
 	touchpad_settings = g_settings_new (TOUCHPAD_SCHEMA);
 
-	dialog = create_dialog ();
+	dialog = gtk_builder_new_from_resource ("/org/mate/mcc/mouse/mate-mouse-properties.ui");
 
-	if (dialog) {
-		setup_dialog (dialog);
+	setup_dialog (dialog);
 
-		dialog_win = WID ("mouse_properties_dialog");
-		g_signal_connect (dialog_win, "response",
-				  G_CALLBACK (dialog_response_cb), NULL);
+	dialog_win = WID ("mouse_properties_dialog");
+	g_signal_connect (dialog_win, "response",
+			  G_CALLBACK (dialog_response_cb), NULL);
 
-                GtkNotebook* nb = GTK_NOTEBOOK (WID ("prefs_widget"));
-                gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-                g_signal_connect (GTK_WIDGET (nb),
-                                  "scroll-event",
-                                  G_CALLBACK (capplet_notebook_scroll_event_cb),
-                                  NULL);
+	GtkNotebook* nb = GTK_NOTEBOOK (WID ("prefs_widget"));
+	gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
+	g_signal_connect (GTK_WIDGET (nb),
+	                  "scroll-event",
+	                  G_CALLBACK (capplet_notebook_scroll_event_cb),
+	                  NULL);
 
 
-		if (start_page != NULL) {
-			gchar *page_name;
+	if (start_page != NULL) {
+		gchar *page_name;
 
-			page_name = g_strconcat (start_page, "_vbox", NULL);
-			g_free (start_page);
+		page_name = g_strconcat (start_page, "_vbox", NULL);
+		g_free (start_page);
 
-			w = WID (page_name);
-			if (w != NULL) {
-				gint pindex;
+		w = WID (page_name);
+		if (w != NULL) {
+			gint pindex;
 
-				pindex = gtk_notebook_page_num (nb, w);
-				if (pindex != -1)
-					gtk_notebook_set_current_page (nb, pindex);
-			}
-			g_free (page_name);
+			pindex = gtk_notebook_page_num (nb, w);
+			if (pindex != -1)
+				gtk_notebook_set_current_page (nb, pindex);
 		}
-
-		capplet_set_icon (dialog_win, "input-mouse");
-		gtk_widget_show (dialog_win);
-
-		gtk_main ();
-
-		g_object_unref (dialog);
+		g_free (page_name);
 	}
 
+	capplet_set_icon (dialog_win, "input-mouse");
+	gtk_widget_show (dialog_win);
+
+	gtk_main ();
+
+	g_object_unref (dialog);
 	g_object_unref (mouse_settings);
 	g_object_unref (interface_settings);
 	g_object_unref (touchpad_settings);
