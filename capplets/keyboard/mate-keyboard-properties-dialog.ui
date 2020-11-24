@@ -2188,4 +2188,25 @@ default settings</property>
       <action-widget response="-1">close_button</action-widget>
     </action-widgets>
   </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="delay_short_label"/>
+      <widget name="repeat_slow_label"/>
+      <widget name="blink_slow_label"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="delay_long_label"/>
+      <widget name="repeat_fast_label"/>
+      <widget name="blink_fast_label"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="repeat_delay_scale"/>
+      <widget name="repeat_speed_scale"/>
+      <widget name="cursor_blink_time_scale"/>
+    </widgets>
+  </object>
 </interface>
