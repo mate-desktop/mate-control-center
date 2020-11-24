@@ -74,6 +74,31 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkImage" id="close_button_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">window-close</property>
+  </object>
+  <object class="GtkImage" id="help_button_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">help-browser</property>
+  </object>
+  <object class="GtkImage" id="xkb_layouts_add_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">list-add</property>
+  </object>
+  <object class="GtkImage" id="xkb_layouts_remove_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">list-remove</property>
+  </object>
+  <object class="GtkImage" id="xkb_reset_to_defaults_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">view-refresh</property>
+  </object>
   <object class="GtkDialog" id="keyboard_dialog">
     <property name="name">mate-keyboard-dialog</property>
     <property name="can-focus">False</property>
@@ -94,13 +119,15 @@
             <property name="can-focus">False</property>
             <property name="layout-style">end</property>
             <child>
-              <object class="GtkButton" id="helpbutton1">
-                <property name="label">gtk-help</property>
+              <object class="GtkButton" id="help_button">
+                <property name="label" translatable="yes">_Help</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="can-default">True</property>
                 <property name="receives-default">False</property>
-                <property name="use-stock">True</property>
+                <property name="image">help_button_img</property>
+                <property name="use-underline">True</property>
+                <property name="always-show-image">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -109,15 +136,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button4">
-                <property name="label">gtk-close</property>
+              <object class="GtkButton" id="close_button">
+                <property name="label" translatable="yes">_Close</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="has-focus">True</property>
                 <property name="can-default">True</property>
                 <property name="has-default">True</property>
                 <property name="receives-default">False</property>
-                <property name="use-stock">True</property>
+                <property name="image">close_button_img</property>
+                <property name="use-underline">True</property>
+                <property name="always-show-image">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -676,7 +705,9 @@
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">True</property>
                                     <property name="tooltip-text" translatable="yes">Select a keyboard layout to be added to the list</property>
+                                    <property name="image">xkb_layouts_add_img</property>
                                     <property name="use-underline">True</property>
+                                    <property name="always-show-image">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
@@ -686,12 +717,14 @@
                                 </child>
                                 <child>
                                   <object class="GtkButton" id="xkb_layouts_remove">
-                                    <property name="label">gtk-remove</property>
+                                    <property name="label" translatable="yes">_Remove</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">True</property>
                                     <property name="tooltip-text" translatable="yes">Remove the selected keyboard layout from the list</property>
-                                    <property name="use-stock">True</property>
+                                    <property name="image">xkb_layouts_remove_img</property>
+                                    <property name="use-underline">True</property>
+                                    <property name="always-show-image">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
@@ -906,7 +939,9 @@
                             <property name="receives-default">True</property>
                             <property name="tooltip-text" translatable="yes">Replace the current keyboard layout settings with the
 default settings</property>
+                            <property name="image">xkb_reset_to_defaults_img</property>
                             <property name="use-underline">True</property>
+                            <property name="always-show-image">True</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2149,8 +2184,8 @@ default settings</property>
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-11">helpbutton1</action-widget>
-      <action-widget response="-1">button4</action-widget>
+      <action-widget response="-11">help_button</action-widget>
+      <action-widget response="-1">close_button</action-widget>
     </action-widgets>
   </object>
 </interface>
