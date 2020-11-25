@@ -26,9 +26,7 @@
 
 #include "app-shell.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define INITIAL_NUM_COLS 3
 #define APP_RESIZER_TYPE            (app_resizer_get_type ())
@@ -69,7 +67,6 @@ void app_resizer_set_table_cache (AppResizer * widget, GList * cache_list);
 void app_resizer_layout_table_default (AppResizer * widget, GtkTable * table, GList * element_list);
 void app_resizer_set_vadjustment_value (GtkWidget * widget, gdouble value);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __APP_RESIZER_H__ */

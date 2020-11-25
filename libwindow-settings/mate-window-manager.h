@@ -26,8 +26,8 @@
 #ifndef MATE_WINDOW_MANAGER_H
 #define MATE_WINDOW_MANAGER_H
 
+#include <glib.h>
 #include <glib-object.h>
-
 #include <libmate-desktop/mate-desktop-item.h>
 
 /* Increment if backward-incompatible changes are made, so we get a clean
@@ -87,9 +87,7 @@ typedef struct
 
 } MateWMSettings;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define MATE_WINDOW_MANAGER(obj)          G_TYPE_CHECK_INSTANCE_CAST (obj, mate_window_manager_get_type (), MateWindowManager)
 #define MATE_WINDOW_MANAGER_CLASS(klass)  G_TYPE_CHECK_CLASS_CAST (klass, mate_window_manager_get_type (), MateWindowManagerClass)
@@ -168,8 +166,6 @@ void mate_window_manager_get_double_click_actions (MateWindowManager            
 MateWMSettings *mate_wm_settings_copy (MateWMSettings *settings);
 void             mate_wm_settings_free (MateWMSettings *settings);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
 #endif /* MATE_WINDOW_MANAGER_H */

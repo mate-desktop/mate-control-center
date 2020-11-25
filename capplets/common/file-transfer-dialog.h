@@ -24,11 +24,10 @@
 #ifndef __FILE_TRANSFER_DIALOG_H__
 #define __FILE_TRANSFER_DIALOG_H__
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define FILE_TRANSFER_DIALOG(obj)          G_TYPE_CHECK_INSTANCE_CAST (obj, file_transfer_dialog_get_type (), FileTransferDialog)
 #define FILE_TRANSFER_DIALOG_CLASS(klass)  G_TYPE_CHECK_CLASS_CAST (klass, file_transfer_dialog_get_type (), FileTransferDialogClass)
@@ -66,8 +65,6 @@ void	       file_transfer_dialog_copy_async (FileTransferDialog *dlg,
 						int priority);
 
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
 #endif /* __FILE_TRANSFER_DIALOG_H__ */

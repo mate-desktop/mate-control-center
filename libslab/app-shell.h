@@ -31,9 +31,7 @@
 #include "slab-section.h"
 #include "tile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define GROUP_POSITION_NUMBER_KEY "Unique Group Position Number"
 #define APP_ACTION_KEY  "Unique Application Action Key"
@@ -139,7 +137,6 @@ void hide_shell (AppShellData * app_data);
 
 void show_shell (AppShellData * app_data);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __APP_SHELL_H__ */

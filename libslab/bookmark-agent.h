@@ -22,11 +22,10 @@
 #define __BOOKMARK_AGENT_H__
 
 #include <time.h>
+#include <glib.h>
 #include <glib-object.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define BOOKMARK_AGENT_TYPE         (bookmark_agent_get_type ())
 #define BOOKMARK_AGENT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), BOOKMARK_AGENT_TYPE, BookmarkAgent))
@@ -87,8 +86,6 @@ void	       bookmark_agent_purge_items (BookmarkAgent *this);
 
 void           bookmark_item_free           (BookmarkItem *item);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
-#endif
+#endif /* __BOOKMARK_AGENT_H__ */

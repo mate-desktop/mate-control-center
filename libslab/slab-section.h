@@ -24,9 +24,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define SLAB_SECTION_TYPE (slab_section_get_type ())
 #define SLAB_SECTION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SLAB_SECTION_TYPE,    SlabSection))
@@ -69,7 +67,6 @@ void slab_section_set_title (SlabSection * section, const gchar * title);
 void slab_section_set_contents (SlabSection * section, GtkWidget * contents);
 void slab_section_set_selected (SlabSection * section, gboolean selected);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __SLAB_SECTION_H__ */

@@ -22,11 +22,10 @@
 #ifndef __DRW_BREAK_WINDOW_H__
 #define __DRW_BREAK_WINDOW_H__
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define DRW_TYPE_BREAK_WINDOW         (drw_break_window_get_type ())
 #define DRW_BREAK_WINDOW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), DRW_TYPE_BREAK_WINDOW, DrwBreakWindow))
@@ -52,8 +51,6 @@ struct _DrwBreakWindowClass {
 GType       drw_break_window_get_type (void) G_GNUC_CONST;
 GtkWidget * drw_break_window_new      (void);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
 #endif /* __DRW_BREAK_WINDOW_H__ */

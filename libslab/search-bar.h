@@ -21,11 +21,10 @@
 #ifndef __NLD_SEARCH_BAR_H__
 #define __NLD_SEARCH_BAR_H__
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define NLD_TYPE_SEARCH_BAR            (nld_search_bar_get_type ())
 #define NLD_SEARCH_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), NLD_TYPE_SEARCH_BAR, NldSearchBar))
@@ -62,7 +61,6 @@ void nld_search_bar_set_search_timeout (NldSearchBar * search_bar, int search_ti
 const char *nld_search_bar_get_text (NldSearchBar * search_bar);
 void nld_search_bar_set_text (NldSearchBar * search_bar, const char *text, gboolean activate);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __NLD_SEARCH_BAR_H__ */

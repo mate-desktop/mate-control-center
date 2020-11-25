@@ -24,9 +24,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define TILE_TYPE         (tile_get_type ())
 #define TILE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), TILE_TYPE, Tile))
@@ -124,7 +122,6 @@ TileAction *tile_action_new (Tile * tile, TileActionFunc func, const gchar * men
 void tile_action_set_menu_item_label (TileAction * action, const gchar * markup);
 GtkMenuItem *tile_action_get_menu_item (TileAction * action);
 
-#ifdef __cplusplus
-}
-#endif
-#endif
+G_END_DECLS
+
+#endif /* __TILE_H__ */
