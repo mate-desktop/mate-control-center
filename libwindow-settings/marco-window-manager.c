@@ -24,8 +24,6 @@
  */
 
 #include <config.h>
-#include <sys/types.h>
-#include <dirent.h>
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
@@ -103,57 +101,59 @@ window_manager_new (int expected_interface_version)
 static GList *
 add_themes_from_dir (GList *current_list, const char *path)
 {
-        DIR *theme_dir;
-        struct dirent *entry;
+        GDir *theme_dir;
+        const gchar *entry;
         char *theme_file_path;
         GList *node;
         gboolean found = FALSE;
+        GError *error = NULL;
 
         if (!(g_file_test (path, G_FILE_TEST_EXISTS) && g_file_test (path, G_FILE_TEST_IS_DIR))) {
                 return current_list;
         }
 
-        theme_dir = opendir (path);
-        /* If this is NULL, then we couldn't open ~/.themes.  The test above
-         * only checks existence, not wether we can really read it.*/
-        if (theme_dir == NULL)
-                return current_list;
+        theme_dir = g_dir_open (path, 0, &error);
 
-        for (entry = readdir (theme_dir); entry != NULL; entry = readdir (theme_dir)) {
-                theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-2.xml", NULL);
+        if (error) {
+                g_debug ("Could not open the folder: %s", error->message);
+                g_error_free (error);
+                return current_list;
+        }
+
+        while ((entry = g_dir_read_name (theme_dir)) != NULL) {
+                theme_file_path = g_build_filename (path, entry, "metacity-1/metacity-theme-2.xml", NULL);
 
                 if (g_file_test (theme_file_path, G_FILE_TEST_EXISTS)) {
 
                         for (node = current_list; (node != NULL) && (!found); node = node->next) {
-                                found = (strcmp (node->data, entry->d_name) == 0);
+                                found = (strcmp (node->data, entry) == 0);
                         }
 
                         if (!found) {
-                                current_list = g_list_prepend (current_list, g_strdup (entry->d_name));
+                                current_list = g_list_prepend (current_list, g_strdup (entry));
                         }
                 }
                 else {
                         g_free (theme_file_path);
-                        theme_file_path = g_build_filename (path, entry->d_name, "metacity-1/metacity-theme-1.xml", NULL);
+                        theme_file_path = g_build_filename (path, entry, "metacity-1/metacity-theme-1.xml", NULL);
 
                         if (g_file_test (theme_file_path, G_FILE_TEST_EXISTS)) {
 
                                 for (node = current_list; (node != NULL) && (!found); node = node->next) {
-                                        found = (strcmp (node->data, entry->d_name) == 0);
+                                        found = (strcmp (node->data, entry) == 0);
                                 }
 
                                 if (!found) {
-                                        current_list = g_list_prepend (current_list, g_strdup (entry->d_name));
+                                        current_list = g_list_prepend (current_list, g_strdup (entry));
                                 }
                         }
                 }
 
                 found = FALSE;
-                /*g_free (entry);*/
                 g_free (theme_file_path);
         }
 
-        closedir (theme_dir);
+        g_dir_close (theme_dir);
 
         return current_list;
 }
