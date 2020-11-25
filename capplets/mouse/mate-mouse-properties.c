@@ -35,10 +35,6 @@
 #include "activate-settings-daemon.h"
 #include "msd-input-helper.h"
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
-
 #include <X11/Xatom.h>
 #include <X11/extensions/XInput.h>
 
