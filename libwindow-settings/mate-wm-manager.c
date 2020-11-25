@@ -38,17 +38,17 @@
 #include <string.h>
 
 typedef struct {
-        MateDesktopItem *ditem;
-        char *name; /* human readable, localized */
-        char *identify_name; /* name we expect to be set on the screen */
-        char *exec;
-        char *config_exec;
-        char *config_tryexec;
-        char *module;
-        guint session_managed : 1;
-        guint is_user : 1;
-        guint is_present : 1;
-        guint is_config_present : 1;
+        MateDesktopItem   *ditem;
+        char              *name; /* human readable, localized */
+        char              *identify_name; /* name we expect to be set on the screen */
+        char              *exec;
+        char              *config_exec;
+        char              *config_tryexec;
+        char              *module;
+        gboolean           session_managed;
+        gboolean           is_user;
+        gboolean           is_present;
+        gboolean           is_config_present;
         MateWindowManager *mate_wm;
 } AvailableWindowManager;
 
