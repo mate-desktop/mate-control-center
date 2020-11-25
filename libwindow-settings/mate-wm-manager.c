@@ -42,6 +42,7 @@ typedef struct {
         char              *name; /* human readable, localized */
         char              *identify_name; /* name we expect to be set on the screen */
         char              *exec;
+        char              *tryexec;
         char              *config_exec;
         char              *config_tryexec;
         char              *module;
@@ -60,6 +61,7 @@ wm_free (AvailableWindowManager *wm)
 {
         g_free (wm->name);
         g_free (wm->exec);
+        g_free (wm->tryexec);
         g_free (wm->config_exec);
         g_free (wm->config_tryexec);
         g_free (wm->module);
@@ -114,13 +116,12 @@ static AvailableWindowManager*
 wm_load (const char *desktop_file,
          gboolean    is_user)
 {
-        gchar *path;
         AvailableWindowManager *wm;
+        gchar                  *path;
 
         wm = g_new0 (AvailableWindowManager, 1);
 
         wm->ditem = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
-
         if (wm->ditem == NULL) {
                 g_free (wm);
                 return NULL;
@@ -128,56 +129,45 @@ wm_load (const char *desktop_file,
 
         mate_desktop_item_set_entry_type (wm->ditem, MATE_DESKTOP_ITEM_TYPE_APPLICATION);
 
-        wm->exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                            MATE_DESKTOP_ITEM_EXEC));
+        #define GET_STRING(X) g_strdup (mate_desktop_item_get_string (wm->ditem, (X)))
+        #define GET_BOOLEAN(X) mate_desktop_item_get_boolean (wm->ditem, (X))
 
-        wm->name = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                            MATE_DESKTOP_ITEM_NAME));
+        wm->exec            = GET_STRING (MATE_DESKTOP_ITEM_EXEC);
+        wm->tryexec         = GET_STRING (MATE_DESKTOP_ITEM_TRY_EXEC);
+        wm->name            = GET_STRING (MATE_DESKTOP_ITEM_NAME);
+        wm->config_exec     = GET_STRING ("ConfigExec");
+        wm->config_tryexec  = GET_STRING ("ConfigTryExec");
+        wm->session_managed = GET_BOOLEAN ("SessionManaged");
+        wm->module          = GET_STRING ("X-MATE-WMSettingsModule");
+        wm->identify_name   = GET_STRING ("X-MATE-WMName");
+        wm->is_user         = is_user;
 
-        wm->config_exec = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                                   "ConfigExec"));
-        wm->config_tryexec = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                                      "ConfigTryExec"));
-        wm->session_managed = mate_desktop_item_get_boolean (wm->ditem,
-                                                              "SessionManaged");
+        #undef GET_STRING
+        #undef GET_BOOLEAN
 
-        wm->module = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                              "X-MATE-WMSettingsModule"));
+        if (wm->exec) {
+                const char* exec;
 
-        wm->identify_name = g_strdup (mate_desktop_item_get_string (wm->ditem,
-                                                                     "X-MATE-WMName"));
-
-        wm->is_user = is_user;
-
-        if (mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_EXEC)) {
-                const char *tryexec;
-
-                tryexec = mate_desktop_item_get_string (wm->ditem, MATE_DESKTOP_ITEM_TRY_EXEC);
-
-                if (tryexec) {
-                        path = g_find_program_in_path (tryexec);
-                        wm->is_present = (path != NULL);
-                        if (path)
-                                g_free (path);
-                } else
+                exec  = wm->tryexec ? wm->tryexec : wm->exec;
+                if ((path = g_find_program_in_path (exec)) != NULL) {
                         wm->is_present = TRUE;
-        } else
-                wm->is_present = FALSE;
+                        g_free (path);
+                } else {
+                        wm->is_present = FALSE;
+                }
+        }
 
         if (wm->config_exec) {
-                if (wm->config_tryexec) {
-                        path = g_find_program_in_path (wm->config_tryexec);
-                        wm->is_config_present = (path != NULL);
-                        if (path)
-                                g_free (path);
+                const char* exec;
+
+                exec  = wm->config_tryexec ? wm->config_tryexec : wm->config_exec;
+                if ((path = g_find_program_in_path (exec)) != NULL) {
+                        wm->is_config_present = TRUE;
+                        g_free (path);
                 } else {
-			path = g_find_program_in_path (wm->config_exec);
-                        wm->is_config_present = (path != NULL);
-                        if (path)
-                                g_free (path);
-		}
-        } else
-                wm->is_config_present = FALSE;
+                        wm->is_config_present = FALSE;
+                }
+        }
 
         if (wm->name && wm->exec &&
             (wm->is_user || wm->is_present))
