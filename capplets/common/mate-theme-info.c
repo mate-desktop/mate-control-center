@@ -23,12 +23,10 @@
  */
 
 #ifdef HAVE_CONFIG_H
-	#include <config.h>
+#include <config.h>
 #endif
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
+#include <glib.h>
 #include <glib/gi18n.h>
 #include <gmodule.h>
 #include <gtk/gtk.h>
@@ -1797,7 +1795,7 @@ mate_theme_init ()
     }
 
   /* ~/.themes */
-  top_theme_dir_string  = g_build_filename (g_get_home_dir (), ".themes", NULL);
+  top_theme_dir_string = g_build_filename (g_get_home_dir (), ".themes", NULL);
   top_theme_dir = g_file_new_for_path (top_theme_dir_string);
   g_free (top_theme_dir_string);
   if (!g_file_query_exists (top_theme_dir, NULL))
