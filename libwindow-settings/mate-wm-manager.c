@@ -32,9 +32,6 @@
 #include <glib/gi18n.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-
-#include <sys/types.h>
-#include <dirent.h>
 #include <string.h>
 
 typedef struct {
@@ -73,29 +70,46 @@ wm_free (AvailableWindowManager *wm)
 static GList *
 list_desktop_files_in_dir (const gchar *directory)
 {
-        DIR *dir;
-        struct dirent *child;
-        GList *result = NULL;
-        gchar *suffix;
+        GDir        *dir;
+        GList       *result = NULL;
+        const gchar *suffix;
+        const gchar *name;
+        const char* const ext = ".desktop";
+        size_t       ext_len;
+        GError      *error = NULL;
 
-        if ((dir = opendir (directory)) == NULL)
+        dir = g_dir_open (directory, 0, &error);
+
+        if (error) {
+                g_debug ("Could not read the folder content: %s",
+                         error->message);
+                g_error_free (error);
                 return NULL;
+        }
 
-        while ((child = readdir (dir)) != NULL) {
+        ext_len = strlen (ext);
+
+        while ((name = g_dir_read_name (dir)) != NULL) {
                 /* Ignore files without .desktop suffix, and ignore
                  * .desktop files with no prefix
                  */
-                suffix = child->d_name + strlen (child->d_name) - 8;
-                /* strlen(".desktop") == 8 */
+                size_t name_len;
 
-                if (suffix <= child->d_name ||
-                    strcmp (suffix, ".desktop") != 0)
+                name_len = strlen (name);
+
+                if (name_len <= ext_len)
+                        continue;
+
+                suffix = name + name_len - ext_len;
+
+                if (strcmp (suffix, ext) != 0)
                         continue;
 
                 result = g_list_prepend (result,
-                                         g_build_filename (directory, child->d_name, NULL));
+                                         g_build_filename (directory, name, NULL));
         }
-        closedir (dir);
+
+        g_dir_close (dir);
 
         return result;
 }
