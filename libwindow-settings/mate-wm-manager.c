@@ -198,8 +198,7 @@ scan_wm_directory (const gchar *directory, gboolean is_user)
                 tmp_list = tmp_list->next;
         }
 
-        g_list_foreach (files, (GFunc) g_free, NULL);
-        g_list_free (files);
+        g_list_free_full (files, g_free);
 }
 
 void
