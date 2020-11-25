@@ -25,9 +25,7 @@
 #include <gtk/gtk.h>
 #include <libmate-desktop/mate-desktop-item.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 MateDesktopItem *load_desktop_item_from_unknown (const gchar * id);
 
@@ -36,7 +34,6 @@ gboolean open_desktop_item_help (MateDesktopItem * desktop_item);
 
 void copy_file (const gchar * src_uri, const gchar * dst_uri);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __SLAB_MATE_UTIL_H__ */

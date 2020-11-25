@@ -24,9 +24,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define THEMED_ICON_TYPE            (themed_icon_get_type ())
 #define THEMED_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), THEMED_ICON_TYPE, ThemedIcon))
@@ -51,7 +49,6 @@ typedef struct
 GType themed_icon_get_type (void);
 GtkWidget *themed_icon_new (const gchar * id, GtkIconSize size);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __THEMED_ICON_H__ */

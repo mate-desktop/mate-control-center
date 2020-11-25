@@ -23,11 +23,10 @@
 
 #include "tile.h"
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define NAMEPLATE_TILE_TYPE         (nameplate_tile_get_type ())
 #define NAMEPLATE_TILE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), NAMEPLATE_TILE_TYPE, NameplateTile))
@@ -53,7 +52,6 @@ GType nameplate_tile_get_type (void);
 GtkWidget *nameplate_tile_new (const gchar * uri, GtkWidget * image, GtkWidget * header,
 	GtkWidget * subheader);
 
-#ifdef __cplusplus
-}
-#endif
-#endif
+G_END_DECLS
+
+#endif /* __NAMEPLATE_TILE_H__  */

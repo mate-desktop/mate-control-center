@@ -21,11 +21,10 @@
 #ifndef __DOUBLE_CLICK_DETECTOR_H__
 #define __DOUBLE_CLICK_DETECTOR_H__
 
+#include <glib.h>
 #include <glib-object.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define DOUBLE_CLICK_DETECTOR_TYPE         (double_click_detector_get_type ())
 #define DOUBLE_CLICK_DETECTOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), DOUBLE_CLICK_DETECTOR_TYPE, DoubleClickDetector))
@@ -54,7 +53,6 @@ DoubleClickDetector *double_click_detector_new (void);
 gboolean double_click_detector_is_double_click (DoubleClickDetector * detector, guint32 event_time,
 	gboolean auto_update);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __DOUBLE_CLICK_DETECTOR_H__ */

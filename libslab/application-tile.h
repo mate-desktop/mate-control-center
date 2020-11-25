@@ -23,11 +23,10 @@
 
 #include "nameplate-tile.h"
 
+#include <glib.h>
 #include <libmate-desktop/mate-desktop-item.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define APPLICATION_TILE_TYPE         (application_tile_get_type ())
 #define APPLICATION_TILE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), APPLICATION_TILE_TYPE, ApplicationTile))
@@ -63,7 +62,6 @@ GtkWidget *application_tile_new_full (const gchar * desktop_item_id,
 
 MateDesktopItem *application_tile_get_desktop_item (ApplicationTile * tile);
 
-#ifdef __cplusplus
-}
-#endif
-#endif
+G_END_DECLS
+
+#endif /* __APPLICATION_TILE_H__ */

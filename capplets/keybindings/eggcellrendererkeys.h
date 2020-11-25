@@ -20,12 +20,11 @@
 #ifndef __EGG_CELL_RENDERER_KEYS_H__
 #define __EGG_CELL_RENDERER_KEYS_H__
 
+#include <glib.h>
 #include <gtk/gtk.h>
 #include "eggaccelerators.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define EGG_TYPE_CELL_RENDERER_KEYS		(egg_cell_renderer_keys_get_type ())
 #define EGG_CELL_RENDERER_KEYS(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), EGG_TYPE_CELL_RENDERER_KEYS, EggCellRendererKeys))
@@ -84,10 +83,6 @@ void             egg_cell_renderer_keys_get_accelerator (EggCellRendererKeys    
 void             egg_cell_renderer_keys_set_accel_mode  (EggCellRendererKeys     *keys,
 							 EggCellRendererKeysMode  accel_mode);
 
-
-#ifdef __cplusplus
-}
-#endif
-
+G_END_DECLS
 
 #endif /* __GTK_CELL_RENDERER_KEYS_H__ */

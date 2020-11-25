@@ -26,9 +26,7 @@
 
 #include "app-shell.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #define SHELL_WINDOW_TYPE            (shell_window_get_type ())
 #define SHELL_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELL_WINDOW_TYPE, ShellWindow))
@@ -62,7 +60,6 @@ void shell_window_set_contents (ShellWindow * window, GtkWidget * left_pane,
 	GtkWidget * right_pane);
 void shell_window_clear_resize_handler (ShellWindow * win);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __SHELL_WINDOW_H__ */

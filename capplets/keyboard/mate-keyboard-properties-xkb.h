@@ -24,13 +24,13 @@
 #ifndef __MATE_KEYBOARD_PROPERTY_XKB_H
 #define __MATE_KEYBOARD_PROPERTY_XKB_H
 
+#include <glib.h>
 #include <gio/gio.h>
 
 #include "libmatekbd/matekbd-keyboard-config.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
+
 #define CWID(s) GTK_WIDGET (gtk_builder_get_object (chooser_dialog, s))
 extern XklEngine *engine;
 extern XklConfigRegistry *config_registry;
@@ -91,7 +91,6 @@ extern void xkb_save_default_group (gint group_no);
 
 extern gint xkb_get_default_group (void);
 
-#ifdef __cplusplus
-}
-#endif
-#endif				/* __MATE_KEYBOARD_PROPERTY_XKB_H */
+G_END_DECLS
+
+#endif /* __MATE_KEYBOARD_PROPERTY_XKB_H */

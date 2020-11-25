@@ -21,16 +21,14 @@
 #ifndef __MATE_UTILS_H__
 #define __MATE_UTILS_H__
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 gboolean load_image_by_id (GtkImage * image, GtkIconSize size,
 	const gchar * image_id);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
+
 #endif /* __MATE_UTILS_H__ */
