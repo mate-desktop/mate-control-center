@@ -69,15 +69,14 @@ wm_free (AvailableWindowManager *wm)
 }
 
 static GList *
-list_desktop_files_in_dir (gchar *directory)
+list_desktop_files_in_dir (const gchar *directory)
 {
         DIR *dir;
         struct dirent *child;
         GList *result = NULL;
         gchar *suffix;
 
-        dir = opendir (directory);
-        if (dir == NULL)
+        if ((dir = opendir (directory)) == NULL)
                 return NULL;
 
         while ((child = readdir (dir)) != NULL) {
@@ -190,7 +189,7 @@ wm_load (const char *desktop_file,
 }
 
 static void
-scan_wm_directory (gchar *directory, gboolean is_user)
+scan_wm_directory (const gchar *directory, gboolean is_user)
 {
         GList *tmp_list;
         GList *files;
@@ -213,27 +212,26 @@ scan_wm_directory (gchar *directory, gboolean is_user)
         g_list_free (files);
 }
 
-void mate_wm_manager_init(void)
+void
+mate_wm_manager_init (void)
 {
-	char* tempdir;
+        gchar *user_config_dir;
 
-	if (done_scan)
-	{
-		return;
-	}
+        if (done_scan)
+        {
+                return;
+        }
+        done_scan = TRUE;
 
-	done_scan = TRUE;
+        /* look up WMs on system config folder */
+        scan_wm_directory (MATE_WM_PROPERTY_PATH, FALSE);
 
-	tempdir = g_build_filename(MATE_WM_PROPERTY_PATH, NULL);
-	scan_wm_directory(tempdir, FALSE);
-	g_free(tempdir);
+        /* look up WMs on user config folder */
+        user_config_dir = g_build_filename (g_get_user_config_dir (), "mate", "wm-properties", NULL);
+        scan_wm_directory (user_config_dir, TRUE);
+        g_free (user_config_dir);
 
-		tempdir = g_build_filename(g_get_user_config_dir(), "mate", "wm-properties", NULL);
-
-	scan_wm_directory(tempdir, TRUE);
-	g_free(tempdir);
-
-	available_wms = g_list_sort(available_wms, wm_compare);
+        available_wms = g_list_sort (available_wms, wm_compare);
 }
 
 static AvailableWindowManager*
