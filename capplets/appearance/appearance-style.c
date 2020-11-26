@@ -322,8 +322,7 @@ check_color_schemes_enabled (GtkSettings *settings,
     enable_colors |= found;
   }
 
-  g_slist_foreach (symbolic_colors, (GFunc) g_free, NULL);
-  g_slist_free (symbolic_colors);
+  g_slist_free_full (symbolic_colors, g_free);
 
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "color_scheme_table"), enable_colors);
   gtk_widget_set_sensitive (appearance_capplet_get_widget (data, "color_scheme_defaults_button"), enable_colors);

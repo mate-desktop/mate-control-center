@@ -392,15 +392,16 @@ enum_group_create (GSettings           *settings,
 }
 
 static void
-enum_group_destroy (EnumGroup *group)
+enum_group_destroy (gpointer data)
 {
+  EnumGroup *group = data;
+
   g_signal_handler_disconnect (group->settings, group->settings_signal_id);
   g_clear_object (&group->settings);
   group->settings_signal_id = 0;
   g_free (group->settings_key);
 
-  g_slist_foreach (group->items, (GFunc) g_free, NULL);
-  g_slist_free (group->items);
+  g_slist_free_full (group->items, g_free);
 
   g_free (group);
 }
@@ -795,10 +796,8 @@ void font_init(AppearanceData* data)
 	g_signal_connect (appearance_capplet_get_widget (data, "details_button"), "clicked", G_CALLBACK (cb_show_details), data);
 }
 
-void font_shutdown(AppearanceData* data)
+void font_shutdown (AppearanceData *data)
 {
-	g_slist_foreach(data->font_groups, (GFunc) enum_group_destroy, NULL);
-	g_slist_free(data->font_groups);
-	g_slist_foreach(font_pairs, (GFunc) g_free, NULL);
-	g_slist_free(font_pairs);
+	g_slist_free_full (data->font_groups, enum_group_destroy);
+	g_slist_free_full (font_pairs, g_free);
 }
