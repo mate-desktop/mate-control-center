@@ -387,10 +387,8 @@ static void
 file_transfer_job_destroy (FileTransferJob *job)
 {
 	g_object_unref (job->dialog);
-	g_slist_foreach (job->source_files, (GFunc) g_object_unref, NULL);
-	g_slist_foreach (job->target_files, (GFunc) g_object_unref, NULL);
-	g_slist_free (job->source_files);
-	g_slist_free (job->target_files);
+	g_slist_free_full (job->source_files, g_object_unref);
+	g_slist_free_full (job->target_files, g_object_unref);
 	if (job->overwrite_dialog != NULL)
 		gtk_widget_destroy (GTK_WIDGET (job->overwrite_dialog));
 	g_free (job);

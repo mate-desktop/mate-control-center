@@ -1378,8 +1378,7 @@ desktop_shutdown (AppearanceData *data)
     data->screen_size_handler = 0;
   }
 
-  g_slist_foreach (data->wp_uris, (GFunc) g_free, NULL);
-  g_slist_free (data->wp_uris);
+  g_slist_free_full (data->wp_uris, g_free);
   if (data->wp_filesel)
   {
     g_object_ref_sink (data->wp_filesel);

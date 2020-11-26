@@ -169,8 +169,7 @@ void gtkrc_get_details(gchar* filename, GSList** engines, GSList** symbolic_colo
 		}
 	}
 
-	g_slist_foreach (read_files, (GFunc) g_free, NULL);
-	g_slist_free (read_files);
+	g_slist_free_full (read_files, g_free);
 
 	g_scanner_destroy (scanner);
 }
@@ -235,8 +234,7 @@ gtkrc_get_color_scheme (const gchar *gtkrc_file)
 		}
 	}
 
-	g_slist_foreach (read_files, (GFunc) g_free, NULL);
-	g_slist_free (read_files);
+	g_slist_free_full (read_files, g_free);
 
 	g_scanner_destroy (scanner);
 	return result;

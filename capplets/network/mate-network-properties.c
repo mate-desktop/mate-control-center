@@ -231,8 +231,7 @@ cb_dialog_response (GtkDialog *dialog, gint response_id)
 	else if (response_id == GTK_RESPONSE_CLOSE || response_id == GTK_RESPONSE_DELETE_EVENT)
 	{
 		if (ignore_hosts) {
-			g_slist_foreach (ignore_hosts, (GFunc) g_free, NULL);
-			g_slist_free (ignore_hosts);
+			g_slist_free_full (ignore_hosts, g_free);
 		}
 
 		gtk_main_quit ();
@@ -368,8 +367,7 @@ connect_sensitivity_signals (GtkBuilder *builder, GSList *mode_group)
 static void
 cb_ignore_hosts_gsettings_changed (GSettings *settings, gchar *key, gpointer user_data)
 {
-	g_slist_foreach (ignore_hosts, (GFunc) g_free, NULL);
-	g_slist_free (ignore_hosts);
+	g_slist_free_full (ignore_hosts, g_free);
 
 	read_ignore_hosts_from_gsettings ();
 
