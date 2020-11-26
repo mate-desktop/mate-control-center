@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.1 
+<!-- Generated with glade 3.38.2 
 
 window-properties.ui - MATE window properties dialog
 Copyright (C) MATE Developers
@@ -31,7 +31,7 @@ Author: Robert Buj
   <object class="GtkAdjustment" id="adjustment1">
     <property name="upper">10</property>
     <property name="value">1</property>
-    <property name="step-increment">0.1</property>
+    <property name="step-increment">0.10</property>
     <property name="page-increment">10</property>
   </object>
   <object class="GtkImage" id="image_help_browser">
@@ -108,188 +108,12 @@ Author: Robert Buj
             <property name="can-focus">True</property>
             <property name="border-width">6</property>
             <child>
-              <object class="GtkBox" id="windows_vbox">
+              <object class="GtkBox" id="behaviour_vbox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="border-width">12</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">18</property>
-                <child>
-                  <object class="GtkBox" id="position_and_behaviour_main_vbox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">6</property>
-                    <child>
-                      <object class="GtkLabel" id="position_and_behavior_label">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="label" translatable="yes">Position and Behaviour</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="position_and_behavior_vbox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-start">6</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
-                        <child>
-                          <object class="GtkCheckButton" id="center_new_windows_checkbutton">
-                            <property name="label" translatable="yes">Center _new windows</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="use-underline">True</property>
-                            <property name="draw-indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="allow_tiling_checkbutton">
-                            <property name="label" translatable="yes">Enable window _tiling</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="use-underline">True</property>
-                            <property name="draw-indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="show_tab_border_checkbutton">
-                            <property name="label" translatable="yes">Show window border in Alt-Tab</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="use-underline">True</property>
-                            <property name="draw-indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="position_of_titlebar_buttons_hbox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="spacing">6</property>
-                            <child>
-                              <object class="GtkLabel" id="position_of_titlebar_buttons_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">_Position of titlebar buttons:</property>
-                                <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">titlebar_layout_optionmenu</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBoxText" id="titlebar_layout_optionmenu">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <items>
-                                  <item translatable="yes">Right</item>
-                                  <item translatable="yes">Left</item>
-                                </items>
-                                <signal name="changed" handler="on_titlebar_layout_optionmenu_changed" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">7</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="double_click_titlebar_action_hbox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="spacing">6</property>
-                            <child>
-                              <object class="GtkLabel" id="double_click_titlebar_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">_Double-click titlebar action:</property>
-                                <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">double_click_titlebar_optionmenu</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBoxText" id="double_click_titlebar_optionmenu">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <items>
-                                  <item translatable="yes">Roll up</item>
-                                  <item translatable="yes">Maximize</item>
-                                  <item translatable="yes">Maximize Horizontally</item>
-                                  <item translatable="yes">Maximize Vertically</item>
-                                  <item translatable="yes">Minimize</item>
-                                  <item translatable="yes">None</item>
-                                </items>
-                                <signal name="changed" handler="on_double_click_titlebar_optionmenu_changed" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">8</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
                 <child>
                   <object class="GtkBox" id="window_selection_main_vbox">
                     <property name="visible">True</property>
@@ -379,7 +203,7 @@ Author: Robert Buj
                                 <property name="can-focus">True</property>
                                 <property name="text" translatable="yes">1,0</property>
                                 <property name="adjustment">adjustment1</property>
-                                <property name="climb-rate">0.1</property>
+                                <property name="climb-rate">0.10</property>
                                 <property name="digits">1</property>
                                 <property name="snap-to-ticks">True</property>
                                 <property name="numeric">True</property>
@@ -393,7 +217,7 @@ Author: Robert Buj
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="seconds_label">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">seconds</property>
@@ -422,7 +246,154 @@ Author: Robert Buj
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="titlebar_action_main_vbox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="titlebar_action_label">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Titlebar Action</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="titlebar_action_vbox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">6</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkBox" id="double_click_titlebar_action_hbox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="double_click_titlebar_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">_Double-click titlebar action:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">double_click_titlebar_optionmenu</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="double_click_titlebar_optionmenu">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <items>
+                                  <item translatable="yes">Roll up</item>
+                                  <item translatable="yes">Maximize</item>
+                                  <item translatable="yes">Maximize Horizontally</item>
+                                  <item translatable="yes">Maximize Vertically</item>
+                                  <item translatable="yes">Minimize</item>
+                                  <item translatable="yes">None</item>
+                                </items>
+                                <signal name="changed" handler="on_double_click_titlebar_optionmenu_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">8</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="alt_tab_main_vbox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="alt_tab_label">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Alt-Tab</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="position_and_behavior_vbox3">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">6</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkCheckButton" id="show_tab_border_checkbutton">
+                            <property name="label" translatable="yes">Show window border in _Alt-Tab</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="use-underline">True</property>
+                            <property name="draw-indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
@@ -456,7 +427,7 @@ Author: Robert Buj
                         <property name="spacing">6</property>
                         <child>
                           <object class="GtkCheckButton" id="reduced_resources_checkbutton">
-                            <property name="label" translatable="yes">Use reduced resources</property>
+                            <property name="label" translatable="yes">Use _reduced resources</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">False</property>
@@ -480,7 +451,7 @@ Author: Robert Buj
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
@@ -490,7 +461,7 @@ Author: Robert Buj
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkLabel" id="movement_key__label">
+                      <object class="GtkLabel" id="movement_key_label">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">start</property>
@@ -513,7 +484,7 @@ Author: Robert Buj
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="movement_description_label">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="label" translatable="yes">To move a window, press-and-hold this key then grab the window:</property>
@@ -551,18 +522,259 @@ Author: Robert Buj
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
               </object>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="general_label">
+              <object class="GtkLabel" id="behaviour_label">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">General</property>
+                <property name="label" translatable="yes">Behaviour</property>
               </object>
               <packing>
+                <property name="position">1</property>
+                <property name="tab-fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="placement_vbox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="border-width">12</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">18</property>
+                <child>
+                  <object class="GtkBox" id="new_windows_main_vbox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="new_windows_label">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">New Windows</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="center_new_windows_vbox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">6</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkCheckButton" id="center_new_windows_checkbutton">
+                            <property name="label" translatable="yes">Centre _new windows</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="use-underline">True</property>
+                            <property name="draw-indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="window_snapping_main_vbox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="window_snapping_label">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Window Snapping</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="window_snapping_vbox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">6</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkCheckButton" id="enable_tiling_checkbutton">
+                            <property name="label" translatable="yes">Enable window _tiling</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="use-underline">True</property>
+                            <property name="draw-indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="allow_top_tiling_checkbutton">
+                            <property name="label" translatable="yes">Allow _top tiling</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="margin-start">12</property>
+                            <property name="use-underline">True</property>
+                            <property name="draw-indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="titlebar_buttons_main_vbox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="titlebar_buttons_label">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Titlebar Buttons</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="titlebar_buttons_vbox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">6</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkBox" id="position_of_titlebar_buttons_hbox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="position_of_titlebar_buttons_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">_Position of titlebar buttons:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">titlebar_layout_optionmenu</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="titlebar_layout_optionmenu">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <items>
+                                  <item translatable="yes">Right</item>
+                                  <item translatable="yes">Left</item>
+                                </items>
+                                <signal name="changed" handler="on_titlebar_layout_optionmenu_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="placement_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Placement</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
                 <property name="tab-fill">False</property>
               </packing>
             </child>
@@ -649,7 +861,7 @@ Author: Robert Buj
                 </child>
               </object>
               <packing>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child type="tab">
@@ -659,7 +871,7 @@ Author: Robert Buj
                 <property name="label" translatable="yes">Compositing Manager</property>
               </object>
               <packing>
-                <property name="position">1</property>
+                <property name="position">2</property>
                 <property name="tab-fill">False</property>
               </packing>
             </child>
@@ -676,11 +888,5 @@ Author: Robert Buj
       <action-widget response="-11">button_help_browser</action-widget>
       <action-widget response="-7">button_window_close</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkSizeGroup" id="sizegroup_position_behaviour">
-    <widgets>
-      <widget name="position_of_titlebar_buttons_label"/>
-      <widget name="double_click_titlebar_label"/>
-    </widgets>
   </object>
 </interface>
