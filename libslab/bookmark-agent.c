@@ -997,7 +997,7 @@ update_user_spec_path (BookmarkAgent *this)
 		}
 	}
 
-	if (libslab_strcmp (priv->store_path, path)) {
+	if (g_strcmp0 (priv->store_path, path)) {
 		g_free (priv->store_path);
 		priv->store_path = path;
 
@@ -1060,7 +1060,7 @@ create_app_item (BookmarkAgent *this, const gchar *uri)
 	if (! uri_new)
 		return;
 
-	if (libslab_strcmp (uri, uri_new))
+	if (g_strcmp0 (uri, uri_new))
 		g_bookmark_file_move_item (priv->store, uri, uri_new, NULL);
 
 	g_free (uri_new);
@@ -1119,7 +1119,7 @@ create_doc_item (BookmarkAgent *this, const gchar *uri)
 	if (!uri_new)
 		return;
 
-	if (libslab_strcmp (uri, uri_new))
+	if (g_strcmp0 (uri, uri_new))
 		g_bookmark_file_move_item (priv->store, uri, uri_new, NULL);
 
 	g_free (uri_new);
@@ -1203,7 +1203,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 	if (name)
 		g_bookmark_file_set_title (priv->store, uri, name);
 
-	if (uri_new && libslab_strcmp (uri, uri_new))
+	if (uri_new && g_strcmp0 (uri, uri_new))
 		g_bookmark_file_move_item (priv->store, uri, uri_new, NULL);
 
 	if (gotta_free_name) {
