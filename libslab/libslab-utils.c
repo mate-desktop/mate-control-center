@@ -92,18 +92,3 @@ libslab_get_current_screen (void)
 
 	return screen;
 }
-
-gint
-libslab_strcmp (const gchar *a, const gchar *b)
-{
-	if (! a && ! b)
-		return 0;
-
-	if (! a)
-		return strcmp ("", b);
-
-	if (! b)
-		return strcmp (a, "");
-
-	return strcmp (a, b);
-}
