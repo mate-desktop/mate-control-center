@@ -9,8 +9,6 @@ G_BEGIN_DECLS
 
 MateDesktopItem *libslab_mate_desktop_item_new_from_unknown_id (const gchar *id);
 
-GdkScreen *libslab_get_current_screen (void);
-
 G_END_DECLS
 
 #endif /* __LIBSLAB_UTILS_H__ */
