@@ -69,26 +69,3 @@ libslab_mate_desktop_item_new_from_unknown_id (const gchar *id)
 
 	return NULL;
 }
-
-/* Ugh, here we don't have knowledge of the screen that is being used.  So, do
- * what we can to find it.
- */
-GdkScreen *
-libslab_get_current_screen (void)
-{
-	GdkEvent *event;
-	GdkScreen *screen = NULL;
-
-	event = gtk_get_current_event ();
-	if (event) {
-		if (event->any.window)
-			screen = gtk_window_get_screen (GTK_WINDOW (event->any.window));
-
-		gdk_event_free (event);
-	}
-
-	if (!screen)
-		screen = gdk_screen_get_default ();
-
-	return screen;
-}
