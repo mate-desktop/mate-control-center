@@ -1002,14 +1002,6 @@ check_specific_apps_hack (MateDesktopItem * item)
 	/* This seems like an ugly hack but it's the way it's currently done in the old control center */
 	exec = mate_desktop_item_get_string (item, MATE_DESKTOP_ITEM_EXEC);
 
-	/* discard xscreensaver if mate-screensaver is installed */
-	if ((exec && !strcmp (exec, "xscreensaver-demo"))
-		&& (path = g_find_program_in_path ("mate-screensaver-preferences")))
-	{
-		g_free (path);
-		return TRUE;
-	}
-
 	/* discard gnome-keyring-manager if CASA is installed */
 	if ((exec && !strcmp (exec, "gnome-keyring-manager"))
 		&& (path = g_find_program_in_path ("CASAManager.sh")))
