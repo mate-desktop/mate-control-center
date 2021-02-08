@@ -311,7 +311,10 @@ dnl - Show summary
 dnl ---------------------------------------------------------------------------
 
 echo "
-              mate-control-center
+Configure summary:
+
+        ${PACKAGE_STRING}
+        `echo $PACKAGE_STRING | sed "s/./=/g"`
 
         Compiler:              ${CC}
         Compiler flags:        ${CFLAGS}
