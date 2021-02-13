@@ -36,10 +36,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <libintl.h>
 #include <glib/gi18n.h>
 
-#include <libmate-desktop/mate-languages.h>
+#include <libmate-desktop/mate-languages.h> /* mate_get_country_from_code */
 
 #define DEFAULT_TZ "Europe/London"
 #define BACKFILE   TIMPZONEDIR "backward"
