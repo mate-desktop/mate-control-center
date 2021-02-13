@@ -21,7 +21,11 @@ Desktop_in_files = mate-settings-mouse.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(Desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 mate-mouse-properties-resources.h mate-mouse-properties-resources.c: org.mate.mcc.mouse.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.mouse.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name mouse $<

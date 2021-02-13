@@ -21,11 +21,13 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#include <config.h>
 #endif
 
 #include <stdio.h>
+#ifdef ENABLE_NLS
 #include <locale.h>
+#endif /* ENABLE_NLS */
 #include <ft2build.h>
 #include <math.h>
 #include FT_FREETYPE_H
@@ -196,11 +198,12 @@ main (int argc,
 	    { NULL }
     };
 
+#ifdef ENABLE_NLS
+    setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
-
-    setlocale (LC_ALL, "");
+#endif /* ENABLE_NLS */
 
     context = g_option_context_new (NULL);
     g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);

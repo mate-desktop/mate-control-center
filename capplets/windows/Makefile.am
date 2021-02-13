@@ -20,7 +20,11 @@ mate-window-properties-resources.h mate-window-properties-resources.c: org.mate.
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name window_properties $<
 
 $(desktop_DATA): $(Desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 AM_CPPFLAGS =				\
 	$(WARN_CFLAGS)			\

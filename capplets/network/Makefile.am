@@ -18,7 +18,11 @@ desktop_in_files = mate-network-properties.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 mate-network-properties-resources.h mate-network-properties-resources.c: org.mate.mcc.network.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.network.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name network $<

@@ -26,7 +26,9 @@
 #include "config.h"
 
 #include <errno.h>
+#ifdef ENABLE_NLS
 #include <locale.h>
+#endif /* ENABLE_NLS */
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -138,10 +140,12 @@ main (int argc, char **argv)
 	int dest_fd;
 	char template[100];
 
+#ifdef ENABLE_NLS
 	setlocale (LC_ALL, "");
 	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
+#endif /* ENABLE_NLS */
 
 	/* We only run as root */
 	uid = getuid ();

@@ -23,7 +23,11 @@ desktopdir = $(datadir)/applications
 Desktop_in_files = mate-default-applications-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 $(desktop_DATA): $(Desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-default-applications.pc

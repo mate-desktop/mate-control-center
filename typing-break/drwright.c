@@ -869,7 +869,9 @@ drwright_new (void)
 	dr->ui_manager = gtk_ui_manager_new ();
 
 	action_group = gtk_action_group_new ("MenuActions");
+#ifdef ENABLE_NLS
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+#endif /* ENABLE_NLS */
 	gtk_action_group_add_actions (action_group, actions, G_N_ELEMENTS (actions), dr);
 	gtk_ui_manager_insert_action_group (dr->ui_manager, action_group, 0);
 	gtk_ui_manager_add_ui_from_string (dr->ui_manager, ui_description, -1, NULL);

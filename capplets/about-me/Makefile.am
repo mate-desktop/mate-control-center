@@ -31,7 +31,11 @@ mate_about_me_LDFLAGS = -export-dynamic
 desktopdir = $(datadir)/applications
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 $(desktop_DATA): $(Desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 include $(top_srcdir)/gla11y.mk
 

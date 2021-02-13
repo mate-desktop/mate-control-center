@@ -22,7 +22,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#include <config.h>
 #endif
 
 #include <ctype.h>
@@ -242,10 +242,12 @@ capplet_init (GOptionContext *context,
 	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
-#endif
+#endif /* ENABLE_NLS */
 
 	if (context) {
+#ifdef ENABLE_NLS
 		g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
+#endif /* ENABLE_NLS */
 		g_option_context_add_group (context, gtk_get_option_group (TRUE));
 
 		if (!g_option_context_parse (context, argc, argv, &err)) {

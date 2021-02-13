@@ -124,10 +124,12 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 	xmlNode* list;
 	xmlNode* wpa;
 	xmlChar* nodelang;
+#ifdef ENABLE_NLS
 	const char* const* syslangs;
+	gint i;
+#endif /* ENABLE_NLS */
 	GdkRGBA color1;
 	GdkRGBA color2;
-	gint i;
 
 	wplist = xmlParseFile(filename);
 
@@ -136,7 +138,9 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 		return;
 	}
 
+#ifdef ENABLE_NLS
 	syslangs = g_get_language_names();
+#endif /* ENABLE_NLS */
 
 	root = xmlDocGetRootElement(wplist);
 
@@ -193,6 +197,7 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 						{
 							wp->name = g_strdup (g_strstrip ((char *)wpa->last->content));
 						}
+#ifdef ENABLE_NLS
 						else
 						{
 							for (i = 0; syslangs[i] != NULL; i++)
@@ -205,6 +210,7 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 								}
 							}
 						}
+#endif /* ENABLE_NLS */
 
 						xmlFree (nodelang);
 					}
