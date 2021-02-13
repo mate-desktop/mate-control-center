@@ -23,8 +23,9 @@ AC_PATH_PROG([GLA11Y], [gla11y], [true])
 YELP_HELP_INIT
 
 # Internationalization support
-AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
+AM_CONDITIONAL([USE_NLS], [test "x${USE_NLS}" = "xyes"])
 
 GETTEXT_PACKAGE=mate-control-center
 AC_SUBST(GETTEXT_PACKAGE)
@@ -313,12 +314,13 @@ dnl ---------------------------------------------------------------------------
 echo "
               mate-control-center
 
-        Compiler:              ${CC}
-        Compiler flags:        ${CFLAGS}
-        Warning flags:         ${WARN_CFLAGS}
-        Linker flags:          ${LDFLAGS}
+        Compiler:                  ${CC}
+        Compiler flags:            ${CFLAGS}
+        Warning flags:             ${WARN_CFLAGS}
+        Linker flags:              ${LDFLAGS}
 
-        Appindicator:          ${enable_appindicator}
-        Libmate-slab:          ${have_libmateslab}
-        Accountsservice:       ${have_accountsservice}
+        Appindicator:              ${enable_appindicator}
+        Libmate-slab:              ${have_libmateslab}
+        Accountsservice:           ${have_accountsservice}
+        Native Language support:   ${USE_NLS}
 "

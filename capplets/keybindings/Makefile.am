@@ -23,14 +23,23 @@ Desktop_in_files = mate-keybinding.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(Desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 xmldir = $(pkgdatadir)/keybindings
 xml_in_files = 00-multimedia-key.xml.in 01-desktop-key.xml.in
 xml_DATA = $(xml_in_files:.xml.in=.xml)
 
 %.xml: %.xml.in
+if USE_NLS
 	$(AM_V_GEN) GETTEXTDATADIR=$(top_srcdir) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) cp -f $< $@
+endif
+
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mate-keybindings.pc
 

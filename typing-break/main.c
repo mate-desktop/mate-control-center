@@ -68,12 +68,16 @@ main (int argc, char *argv[])
         GError *error = NULL;
         gboolean retval;
 
+#ifdef ENABLE_NLS
 	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
+#endif /* ENABLE_NLS */
 
         option_context = g_option_context_new (NULL);
+#ifdef ENABLE_NLS
         g_option_context_set_translation_domain (option_context, GETTEXT_PACKAGE);
+#endif /* ENABLE_NLS */
         g_option_context_add_main_entries (option_context, options, GETTEXT_PACKAGE);
         g_option_context_add_group (option_context, gtk_get_option_group (TRUE));
 

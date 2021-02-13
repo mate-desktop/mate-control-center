@@ -1,4 +1,8 @@
-SUBDIRS = po libwindow-settings capplets font-viewer help man
+if USE_NLS
+PO_SUBDIR = po
+endif
+
+SUBDIRS = $(PO_SUBDIR) libwindow-settings capplets font-viewer help man
 DIST_SUBDIRS = po libwindow-settings capplets font-viewer help libslab shell typing-break man
 
 if HAVE_LIBMATESLAB

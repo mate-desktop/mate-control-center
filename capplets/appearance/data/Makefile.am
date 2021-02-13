@@ -23,16 +23,23 @@ desktop_in_files = \
 	mate-theme-installer.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 %.desktop: %.desktop.in
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 xml_in_files = \
 	mate-theme-package.xml.in
 
 mimedir = $(datadir)/mime/packages
 mime_DATA = $(xml_in_files:.xml.in=.xml)
-
 $(mime_DATA): $(xml_in_files)
+if USE_NLS
 	$(AM_V_GEN) GETTEXTDATADIR=$(top_srcdir) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) cp -f $< $@
+endif
 
 install-data-hook:
 if ENABLE_UPDATE_MIMEDB

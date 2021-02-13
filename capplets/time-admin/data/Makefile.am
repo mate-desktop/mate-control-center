@@ -28,10 +28,13 @@ desktop_in_files = mate-time-admin.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(desktop_in_files)
+if USE_NLS
 	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+else
+	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+endif
 
 CLEANFILES = $(desktop_DATA)
-EXTRA_DIST = \
-    $(desktop_in_files)
+EXTRA_DIST = $(desktop_in_files)
 
 -include $(top_srcdir)/git.mk
