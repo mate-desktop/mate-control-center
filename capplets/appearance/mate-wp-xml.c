@@ -159,11 +159,12 @@ static void mate_wp_xml_load_xml(AppearanceData* data, const char* filename)
 
 			for (wpa = list->children; wpa != NULL; wpa = wpa->next)
 			{
-				if (wpa->type == XML_COMMENT_NODE)
+				if (wpa->type != XML_ELEMENT_NODE)
 				{
 					continue;
 				}
-				else if (!strcmp ((char*) wpa->name, "filename"))
+
+				if (!strcmp ((char*) wpa->name, "filename"))
 				{
 					if (wpa->last != NULL && wpa->last->content != NULL)
 					{
