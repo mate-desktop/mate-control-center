@@ -29,8 +29,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
-#include <locale.h>
-#include <libintl.h>
 #include <gio/gio.h>
 
 extern int TimeoutFlag;
