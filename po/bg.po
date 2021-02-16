@@ -6,20 +6,20 @@
 # Translators:
 # breaker loc <breaker9loc@gmail.com>, 2018
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2018
-# Georgi Georgiev <georgiev_1994@abv.bg>, 2018
-# Martin Wimpress <code@flexion.org>, 2018
+# Georgi Georgiev (Жоро) <g.georgiev.shumen@gmail.com>, 2018
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
 # Замфир Йончев <zamfir.yonchev@gmail.com>, 2019
-# Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Любомир Василев, 2020
+# Stefano Karapetsas <stefano@karapetsas.com>, 2021
+# Martin Wimpress <code@flexion.org>, 2021
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.23.2\n"
+"Project-Id-Version: mate-control-center 1.25.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2020-01-12 13:03+0100\n"
+"POT-Creation-Date: 2021-02-03 09:02+0100\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Любомир Василев, 2020\n"
+"Last-Translator: Martin Wimpress <code@flexion.org>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/mate/teams/13566/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -140,7 +140,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Команда, свързана с потребителска клавишна комбинация."
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:202
+#: font-viewer/font-view.c:201
 msgid "Name"
 msgstr "Име"
 
@@ -148,25 +148,25 @@ msgstr "Име"
 msgid "Description associated with a custom keybinding."
 msgstr "Описание, свързано с потребителска клавишна комбинация."
 
-#: capplets/about-me/mate-about-me.c:293
+#: capplets/about-me/mate-about-me.c:292
 msgid "Select Image"
 msgstr "Избор на изображение"
 
-#: capplets/about-me/mate-about-me.c:295
+#: capplets/about-me/mate-about-me.c:294
 msgid "No Image"
 msgstr "Няма изображение"
 
-#: capplets/about-me/mate-about-me.c:323
+#: capplets/about-me/mate-about-me.c:322
 #: capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Изображения"
 
-#: capplets/about-me/mate-about-me.c:327
+#: capplets/about-me/mate-about-me.c:326
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: capplets/about-me/mate-about-me.c:500
+#: capplets/about-me/mate-about-me.c:499
 #, c-format
 msgid "About %s"
 msgstr "Относно %s"
@@ -179,11 +179,16 @@ msgstr "За мен"
 #: capplets/about-me/mate-about-me-dialog.ui:54
 #: capplets/about-me/mate-about-me-password.ui:54
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:119
+#: capplets/appearance/data/appearance.ui:61
+#: capplets/appearance/data/appearance.ui:1215
+#: capplets/appearance/data/appearance.ui:2069
+#: capplets/default-applications/mate-default-applications-properties.ui:55
 #: capplets/display/display-capplet.ui:106
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:140
 #: capplets/mouse/mate-mouse-properties.ui:140
-#: capplets/windows/window-properties.ui:84
+#: capplets/windows/window-properties.ui:83
 #: capplets/time-admin/src/time-admin.ui:386
-#: capplets/time-admin/src/time-zone.c:472
+#: capplets/time-admin/src/time-zone.c:473
 msgid "_Close"
 msgstr "_Затваряне"
 
@@ -215,42 +220,36 @@ msgstr "Изключване на влизането с _отпечатък…"
 msgid "Set your personal information"
 msgstr "Настройване на личната ви информация"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/about-me/mate-about-me.desktop.in:7
-msgid "user-info"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/about-me/mate-about-me.desktop.in:13
 msgid "mate-control-center;MATE;personal;information;"
 msgstr ""
 
-#: capplets/about-me/mate-about-me-fingerprint.c:100
+#: capplets/about-me/mate-about-me-fingerprint.c:123
 msgid ""
 "You are not allowed to access the device. Contact your system administrator."
 msgstr ""
 "Нямате право на достъп до това устройство. Обърнете се към системния си "
 "администратор."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:102
+#: capplets/about-me/mate-about-me-fingerprint.c:125
 msgid "The device is already in use."
 msgstr "Устройството вече се ползва."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:104
+#: capplets/about-me/mate-about-me-fingerprint.c:127
 msgid "An internal error occurred"
 msgstr "Възникна вътрешна грешка"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:221
+#: capplets/about-me/mate-about-me-fingerprint.c:270
 msgid "Delete registered fingerprints?"
 msgstr "Изтриване на въведените отпечатъци?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:224
+#: capplets/about-me/mate-about-me-fingerprint.c:273
 msgid "_Delete Fingerprints"
 msgstr "_Изтриване на отпечатъците"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:231
+#: capplets/about-me/mate-about-me-fingerprint.c:280
 msgid ""
 "Do you want to delete your registered fingerprints so fingerprint login is "
 "disabled?"
@@ -258,36 +257,36 @@ msgstr ""
 "Искате ли да изтриете въведените си отпечатъци и да изключите влизането с "
 "тях?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:359
+#: capplets/about-me/mate-about-me-fingerprint.c:440
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "Готово!"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:405
-#: capplets/about-me/mate-about-me-fingerprint.c:427
+#: capplets/about-me/mate-about-me-fingerprint.c:515
+#: capplets/about-me/mate-about-me-fingerprint.c:560
 #, c-format
 msgid "Could not access '%s' device"
 msgstr "Устройство „%s“ е недостъпно"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:476
+#: capplets/about-me/mate-about-me-fingerprint.c:621
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr "Устройство „%s“ не може да започне сканирането на пръстовия отпечатък"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:524
+#: capplets/about-me/mate-about-me-fingerprint.c:691
 msgid "Could not access any fingerprint readers"
 msgstr "Не може да бъде достъпен никакъв четец на пръстови отпечатъци"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:525
+#: capplets/about-me/mate-about-me-fingerprint.c:692
 msgid "Please contact your system administrator for help."
 msgstr "Обърнете се към системния си администратор за помощ."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:559
+#: capplets/about-me/mate-about-me-fingerprint.c:756
 #: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "Включване на влизането с пръстов отпечатък"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:589
+#: capplets/about-me/mate-about-me-fingerprint.c:786
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -296,11 +295,11 @@ msgstr ""
 "За да включите влизането с пръстови отпечатъци, трябва да запазите отпечатък"
 " чрез устройството „%s“."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:598
+#: capplets/about-me/mate-about-me-fingerprint.c:795
 msgid "Swipe finger on reader"
 msgstr "Преминете с пръст върху четеца"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:600
+#: capplets/about-me/mate-about-me-fingerprint.c:797
 msgid "Place finger on reader"
 msgstr "Поставете пръста си върху четеца"
 
@@ -502,9 +501,13 @@ msgid "Assistive Technologies Preferences"
 msgstr "Настройки на помощните технологии"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:86
+#: capplets/appearance/data/appearance.ui:1198
+#: capplets/appearance/data/appearance.ui:2051
+#: capplets/default-applications/mate-default-applications-properties.ui:38
 #: capplets/display/display-capplet.ui:58
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:123
 #: capplets/mouse/mate-mouse-properties.ui:124
-#: capplets/windows/window-properties.ui:68
+#: capplets/windows/window-properties.ui:67
 msgid "_Help"
 msgstr "_Помощ"
 
@@ -570,12 +573,6 @@ msgstr "Преминаване към прозореца за достъпен �
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Изберете кои помощни технологии да се включат при влизане"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:7
-msgid "preferences-desktop-accessibility"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
@@ -590,21 +587,22 @@ msgstr "Добавяне на фон"
 msgid "All files"
 msgstr "Всички файлове"
 
-#: capplets/appearance/appearance-font.c:612
+#: capplets/appearance/appearance-font.c:613
 msgid "Select Font"
 msgstr ""
 
-#: capplets/appearance/appearance-font.c:615
+#: capplets/appearance/appearance-font.c:616
+#: capplets/appearance/data/appearance.ui:951
 msgid "_Cancel"
 msgstr "_Отказ"
 
-#: capplets/appearance/appearance-font.c:617
+#: capplets/appearance/appearance-font.c:618
 #: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
 msgid "_Open"
 msgstr "О_тваряне"
 
-#: capplets/appearance/appearance-font.c:622
-#: capplets/appearance/data/appearance.ui:2867
+#: capplets/appearance/appearance-font.c:623
+#: capplets/appearance/data/appearance.ui:3075
 msgid "Fonts"
 msgstr "Шрифтове"
 
@@ -613,17 +611,17 @@ msgstr "Шрифтове"
 msgid "Could not load user interface file: %s"
 msgstr "Неуспех при зареждането на файл за потребителския интерфейс: %s"
 
-#: capplets/appearance/appearance-main.c:153
+#: capplets/appearance/appearance-main.c:157
 msgid "Specify the filename of a theme to install"
 msgstr ""
 "Посочете името на файл с тема, който да\n"
 "                                       се инсталира"
 
-#: capplets/appearance/appearance-main.c:154
+#: capplets/appearance/appearance-main.c:158
 msgid "filename"
 msgstr "име_на_файла"
 
-#: capplets/appearance/appearance-main.c:161
+#: capplets/appearance/appearance-main.c:165
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr ""
@@ -632,25 +630,25 @@ msgstr ""
 "                                       (фон), „fonts“ (шрифтове), „interface“\n"
 "                                       (интерфейс)"
 
-#: capplets/appearance/appearance-main.c:162
-#: capplets/default-applications/mate-da-capplet.c:839
-#: capplets/mouse/mate-mouse-properties.c:443
+#: capplets/appearance/appearance-main.c:166
+#: capplets/default-applications/mate-da-capplet.c:798
+#: capplets/mouse/mate-mouse-properties.c:401
 msgid "page"
 msgstr "страница"
 
-#: capplets/appearance/appearance-main.c:169
+#: capplets/appearance/appearance-main.c:173
 msgid "[WALLPAPER...]"
 msgstr "[ФОН…]"
 
 #: capplets/appearance/appearance-style.c:171
-#: capplets/common/mate-theme-info.c:494
+#: capplets/common/mate-theme-info.c:491
 msgid "Default Pointer"
 msgstr "Стандартен показалец"
 
 #: capplets/appearance/appearance-style.c:233
 #: capplets/appearance/appearance-themes.c:658
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
-#: font-viewer/font-view.c:569
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
+#: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Инсталиране"
 
@@ -706,372 +704,409 @@ msgstr "Последното предложение за шрифт може д�
 msgid "The current theme suggests a font."
 msgstr "Текущата тема предлага шрифт."
 
-#: capplets/appearance/appearance-themes.c:1015
+#: capplets/appearance/appearance-themes.c:1011
 msgid "Custom"
 msgstr "Потребителски"
 
-#: capplets/appearance/data/appearance.ui:40
-msgid "Customize Theme"
-msgstr "Промяна на темата"
-
-#: capplets/appearance/data/appearance.ui:189
-msgid "Controls"
-msgstr "Бутони и декорации"
-
-#: capplets/appearance/data/appearance.ui:226
-msgid "The current controls theme does not support color schemes."
-msgstr "Текущата тема за графични обекти не поддържа цветови схеми."
-
-#: capplets/appearance/data/appearance.ui:281
-msgid "_Tooltips:"
-msgstr "_Съвети:"
-
-#: capplets/appearance/data/appearance.ui:367
-msgid "Text"
-msgstr "Текст"
-
-#: capplets/appearance/data/appearance.ui:379
-#: capplets/appearance/data/appearance.ui:2397
-msgid "Background"
-msgstr "Фон"
-
-#: capplets/appearance/data/appearance.ui:391
-msgid "_Selected items:"
-msgstr "_Избрани записи:"
-
-#: capplets/appearance/data/appearance.ui:405
-msgid "_Input boxes:"
-msgstr "_Кутии за въвеждане:"
-
-#: capplets/appearance/data/appearance.ui:419
-msgid "_Windows:"
-msgstr "П_розорци:"
-
-#: capplets/appearance/data/appearance.ui:446
-msgid "_Reset to Defaults"
-msgstr "_Стандартни настройки"
-
-#: capplets/appearance/data/appearance.ui:476
-msgid "Colors"
-msgstr "Цветове"
-
-#: capplets/appearance/data/appearance.ui:557
-msgid "Window Border"
-msgstr "Рамки на прозорците"
-
-#: capplets/appearance/data/appearance.ui:638
-msgid "Icons"
-msgstr "Иконки"
-
-#: capplets/appearance/data/appearance.ui:688
-msgid "_Size:"
-msgstr "_Размер:"
-
-#. small threshold
-#: capplets/appearance/data/appearance.ui:709
-#: capplets/mouse/mate-mouse-properties.ui:679
-msgid "Small"
-msgstr "Малки"
-
-#. large threshold
-#: capplets/appearance/data/appearance.ui:739
-#: capplets/mouse/mate-mouse-properties.ui:716
-msgid "Large"
-msgstr "Големи"
-
-#: capplets/appearance/data/appearance.ui:803
-msgid "Pointer"
-msgstr "Показалци"
-
-#: capplets/appearance/data/appearance.ui:828
+#: capplets/appearance/data/appearance.ui:45
 msgid "Font Rendering Details"
 msgstr "Информация за изписването на шрифтовете"
 
-#: capplets/appearance/data/appearance.ui:886
+#: capplets/appearance/data/appearance.ui:102
 msgid "R_esolution"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:909
+#: capplets/appearance/data/appearance.ui:125
 msgid "Dots per inch (DPI):"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:945
+#: capplets/appearance/data/appearance.ui:161
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:946
+#: capplets/appearance/data/appearance.ui:162
 msgid "Automatic detection:"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:990
+#: capplets/appearance/data/appearance.ui:206
 msgid "Smoothing"
 msgstr "Заглаждане"
 
-#: capplets/appearance/data/appearance.ui:1023
+#: capplets/appearance/data/appearance.ui:240
 msgid "Gra_yscale"
 msgstr "С_тепени на сивото"
 
-#: capplets/appearance/data/appearance.ui:1069
+#: capplets/appearance/data/appearance.ui:286
 msgid "Sub_pixel (LCDs)"
 msgstr "_Подпикселно (за LCD)"
 
-#: capplets/appearance/data/appearance.ui:1115
+#: capplets/appearance/data/appearance.ui:332
 msgid "_None"
 msgstr "_Без"
 
 #. font hinting
-#: capplets/appearance/data/appearance.ui:1180
+#: capplets/appearance/data/appearance.ui:412
 msgid "Hinting"
 msgstr "Шрифтови подсказки"
 
-#: capplets/appearance/data/appearance.ui:1212
+#: capplets/appearance/data/appearance.ui:445
 msgid "N_one"
 msgstr "Б_ез"
 
-#: capplets/appearance/data/appearance.ui:1257
+#: capplets/appearance/data/appearance.ui:490
 msgid "_Slight"
 msgstr "_Леки"
 
-#: capplets/appearance/data/appearance.ui:1303
+#: capplets/appearance/data/appearance.ui:536
 msgid "_Full"
 msgstr "П_ълни"
 
-#: capplets/appearance/data/appearance.ui:1349
+#: capplets/appearance/data/appearance.ui:582
 msgid "_Medium"
 msgstr "_Средни"
 
-#: capplets/appearance/data/appearance.ui:1413
+#: capplets/appearance/data/appearance.ui:661
 msgid "Subpixel Order"
 msgstr "Подпикселна подредба"
 
 #. pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:1443
+#: capplets/appearance/data/appearance.ui:692
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:1482
+#: capplets/appearance/data/appearance.ui:731
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:1522
+#: capplets/appearance/data/appearance.ui:771
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:811
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: capplets/appearance/data/appearance.ui:1631
+#: capplets/appearance/data/appearance.ui:935
 msgid "Save Theme As..."
 msgstr "Запазване на темата като…"
 
-#: capplets/appearance/data/appearance.ui:1727
+#: capplets/appearance/data/appearance.ui:968
+#: capplets/time-admin/src/time-admin.ui:370
+msgid "_Save"
+msgstr "_Запазване"
+
+#: capplets/appearance/data/appearance.ui:1033
 msgid "Save _background image"
 msgstr "Запазване на _фона"
 
-#: capplets/appearance/data/appearance.ui:1741
+#: capplets/appearance/data/appearance.ui:1047
 msgid "Save _notification theme"
 msgstr "Запази темата за _уведомленията"
 
-#: capplets/appearance/data/appearance.ui:1758
+#: capplets/appearance/data/appearance.ui:1064
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "_Име:"
 
-#: capplets/appearance/data/appearance.ui:1773
+#: capplets/appearance/data/appearance.ui:1079
 msgid "_Description:"
 msgstr "_Описание:"
 
-#: capplets/appearance/data/appearance.ui:1809
+#: capplets/appearance/data/appearance.ui:1157
 msgid "Text below items"
 msgstr "текст под иконките"
 
-#: capplets/appearance/data/appearance.ui:1812
+#: capplets/appearance/data/appearance.ui:1160
 msgid "Text beside items"
 msgstr "текст до иконките"
 
-#: capplets/appearance/data/appearance.ui:1815
+#: capplets/appearance/data/appearance.ui:1163
 msgid "Icons only"
 msgstr "само иконки"
 
-#: capplets/appearance/data/appearance.ui:1818
+#: capplets/appearance/data/appearance.ui:1166
 msgid "Text only"
 msgstr "Само текст"
 
-#: capplets/appearance/data/appearance.ui:1829
+#: capplets/appearance/data/appearance.ui:1179
+msgid "Customize Theme"
+msgstr "Промяна на темата"
+
+#: capplets/appearance/data/appearance.ui:1301
+#: capplets/appearance/data/appearance.ui:1671
+#: capplets/appearance/data/appearance.ui:1754
+#: capplets/appearance/data/appearance.ui:1913
+#: capplets/appearance/data/appearance.ui:2157
+msgid "_Delete"
+msgstr "_Изтриване"
+
+#: capplets/appearance/data/appearance.ui:1331
+msgid "Controls"
+msgstr "Бутони и декорации"
+
+#: capplets/appearance/data/appearance.ui:1368
+msgid "The current controls theme does not support color schemes."
+msgstr "Текущата тема за графични обекти не поддържа цветови схеми."
+
+#: capplets/appearance/data/appearance.ui:1424
+msgid "_Tooltips:"
+msgstr "_Съвети:"
+
+#: capplets/appearance/data/appearance.ui:1510
+msgid "Text"
+msgstr "Текст"
+
+#: capplets/appearance/data/appearance.ui:1522
+#: capplets/appearance/data/appearance.ui:2573
+msgid "Background"
+msgstr "Фон"
+
+#: capplets/appearance/data/appearance.ui:1534
+msgid "_Selected items:"
+msgstr "_Избрани записи:"
+
+#: capplets/appearance/data/appearance.ui:1548
+msgid "_Input boxes:"
+msgstr "_Кутии за въвеждане:"
+
+#: capplets/appearance/data/appearance.ui:1562
+msgid "_Windows:"
+msgstr "П_розорци:"
+
+#: capplets/appearance/data/appearance.ui:1589
+msgid "_Reset to Defaults"
+msgstr "_Стандартни настройки"
+
+#: capplets/appearance/data/appearance.ui:1621
+msgid "Colors"
+msgstr "Цветове"
+
+#: capplets/appearance/data/appearance.ui:1704
+msgid "Window Border"
+msgstr "Рамки на прозорците"
+
+#: capplets/appearance/data/appearance.ui:1787
+msgid "Icons"
+msgstr "Иконки"
+
+#: capplets/appearance/data/appearance.ui:1837
+msgid "_Size:"
+msgstr "_Размер:"
+
+#. small threshold
+#: capplets/appearance/data/appearance.ui:1858
+#: capplets/mouse/mate-mouse-properties.ui:680
+msgid "Small"
+msgstr "Малки"
+
+#. large threshold
+#: capplets/appearance/data/appearance.ui:1888
+#: capplets/mouse/mate-mouse-properties.ui:717
+msgid "Large"
+msgstr "Големи"
+
+#: capplets/appearance/data/appearance.ui:1954
+msgid "Pointer"
+msgstr "Показалци"
+
+#: capplets/appearance/data/appearance.ui:1987
 msgid "Solid color"
 msgstr "плътен цвят"
 
-#: capplets/appearance/data/appearance.ui:1832
+#: capplets/appearance/data/appearance.ui:1990
 msgid "Horizontal gradient"
 msgstr "хоризонтална преливка"
 
-#: capplets/appearance/data/appearance.ui:1835
+#: capplets/appearance/data/appearance.ui:1993
 msgid "Vertical gradient"
 msgstr "вертикална преливка"
 
-#: capplets/appearance/data/appearance.ui:1846
+#: capplets/appearance/data/appearance.ui:2009
 msgid "Tile"
 msgstr "на плочки"
 
-#: capplets/appearance/data/appearance.ui:1849
+#: capplets/appearance/data/appearance.ui:2012
 msgid "Zoom"
 msgstr "Мащаб"
 
-#: capplets/appearance/data/appearance.ui:1852
+#: capplets/appearance/data/appearance.ui:2015
 msgid "Center"
 msgstr "в центъра на екрана"
 
-#: capplets/appearance/data/appearance.ui:1855
+#: capplets/appearance/data/appearance.ui:2018
 msgid "Scale"
 msgstr "увеличаване в екрана"
 
-#: capplets/appearance/data/appearance.ui:1858
+#: capplets/appearance/data/appearance.ui:2021
 msgid "Stretch"
 msgstr "разтегляне по екрана"
 
-#: capplets/appearance/data/appearance.ui:1861
+#: capplets/appearance/data/appearance.ui:2024
 msgid "Span"
 msgstr "Пренасяне"
 
-#: capplets/appearance/data/appearance.ui:1869
+#: capplets/appearance/data/appearance.ui:2032
 msgid "Appearance Preferences"
 msgstr "Настройки на външния вид"
 
-#: capplets/appearance/data/appearance.ui:2009
+#: capplets/appearance/data/appearance.ui:2175
 msgid "Save _As..."
 msgstr "Запазване _като…"
 
-#: capplets/appearance/data/appearance.ui:2025
+#: capplets/appearance/data/appearance.ui:2193
 msgid "C_ustomize..."
 msgstr "_Потребителски настройки…"
 
-#: capplets/appearance/data/appearance.ui:2040
+#: capplets/appearance/data/appearance.ui:2210
 msgid "_Install..."
 msgstr "_Инсталиране…"
 
-#: capplets/appearance/data/appearance.ui:2066
+#: capplets/appearance/data/appearance.ui:2238
 msgid "Get more themes online"
 msgstr "Допълнителни теми от Интернет"
 
-#: capplets/appearance/data/appearance.ui:2096
+#: capplets/appearance/data/appearance.ui:2268
 msgid "Theme"
 msgstr "Тема"
 
-#: capplets/appearance/data/appearance.ui:2166
+#: capplets/appearance/data/appearance.ui:2338
 msgid "_Style:"
 msgstr "_Стил:"
 
-#: capplets/appearance/data/appearance.ui:2210
+#: capplets/appearance/data/appearance.ui:2382
 msgid "C_olors:"
 msgstr "_Цветове:"
 
-#: capplets/appearance/data/appearance.ui:2250
-#: capplets/appearance/data/appearance.ui:2266
+#: capplets/appearance/data/appearance.ui:2422
+#: capplets/appearance/data/appearance.ui:2438
 msgid "Open a dialog to specify the color"
 msgstr "Отваряне на прозорец, за да се определи цвета"
 
-#: capplets/appearance/data/appearance.ui:2321
+#: capplets/appearance/data/appearance.ui:2493
 msgid "Get more backgrounds online"
 msgstr "Допълнителни фонове от Интернет"
 
-#: capplets/appearance/data/appearance.ui:2359
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
+#: capplets/appearance/data/appearance.ui:2533
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:703
 msgid "_Add..."
 msgstr "_Добавяне…"
 
-#: capplets/appearance/data/appearance.ui:2492
+#: capplets/appearance/data/appearance.ui:2669
 msgid "_Application font:"
 msgstr "_Шрифт за програмите:"
 
-#: capplets/appearance/data/appearance.ui:2507
+#: capplets/appearance/data/appearance.ui:2684
 msgid "_Document font:"
 msgstr "Шрифт за _документите:"
 
-#: capplets/appearance/data/appearance.ui:2521
+#: capplets/appearance/data/appearance.ui:2698
 msgid "Des_ktop font:"
 msgstr "Шрифт за _работния плот:"
 
-#: capplets/appearance/data/appearance.ui:2536
+#: capplets/appearance/data/appearance.ui:2713
 msgid "_Window title font:"
 msgstr "Шрифт за _заглавието на прозорците"
 
-#: capplets/appearance/data/appearance.ui:2551
+#: capplets/appearance/data/appearance.ui:2728
 msgid "_Fixed width font:"
 msgstr "Р_авноширок шрифт:"
 
-#: capplets/appearance/data/appearance.ui:2576
+#: capplets/appearance/data/appearance.ui:2768
 msgid "Add new f_ont..."
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:2607
+#: capplets/appearance/data/appearance.ui:2799
 msgid "Rendering"
 msgstr "<b>Изписване на шрифтовете</b>"
 
-#: capplets/appearance/data/appearance.ui:2638
+#: capplets/appearance/data/appearance.ui:2831
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "Подпикселно за_глаждане (за LCD)"
 
-#: capplets/appearance/data/appearance.ui:2684
+#: capplets/appearance/data/appearance.ui:2877
 msgid "Best _shapes"
 msgstr "Най-добри _форми"
 
-#: capplets/appearance/data/appearance.ui:2730
+#: capplets/appearance/data/appearance.ui:2923
 msgid "_Monochrome"
 msgstr "_Черно-бяло"
 
-#: capplets/appearance/data/appearance.ui:2775
+#: capplets/appearance/data/appearance.ui:2968
 msgid "Best co_ntrast"
 msgstr "Най-добър _контраст"
 
-#: capplets/appearance/data/appearance.ui:2837
+#: capplets/appearance/data/appearance.ui:3045
 msgid "D_etails..."
 msgstr "Под_робности…"
 
-#: capplets/appearance/data/appearance.ui:2892
+#: capplets/appearance/data/appearance.ui:3100
 msgid "Menus and Toolbars"
 msgstr "Менюта и ленти с инструменти"
 
-#: capplets/appearance/data/appearance.ui:2927
+#: capplets/appearance/data/appearance.ui:3135
 msgid "Show _icons in menus"
 msgstr "Показване на _иконки в менютата"
 
-#: capplets/appearance/data/appearance.ui:2944
+#: capplets/appearance/data/appearance.ui:3152
 msgid "_Editable menu shortcut keys"
 msgstr "Бързи клавиши за _редактируемото меню"
 
-#: capplets/appearance/data/appearance.ui:2967
+#: capplets/appearance/data/appearance.ui:3175
 msgid "Toolbar _button labels:"
 msgstr "Етикети на бутоните в лентата на задачите:"
 
-#: capplets/appearance/data/appearance.ui:3035
+#: capplets/appearance/data/appearance.ui:3243
 msgid "Buttons"
 msgstr "Бутони"
 
-#: capplets/appearance/data/appearance.ui:3064
+#: capplets/appearance/data/appearance.ui:3272
 msgid "Show icons on buttons"
 msgstr "Показване на иконки на бутоните"
 
-#: capplets/appearance/data/appearance.ui:3068
+#: capplets/appearance/data/appearance.ui:3276
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr "Дали в бутоните да се показват икони в допълнение към текста"
 
-#: capplets/appearance/data/appearance.ui:3105
+#: capplets/appearance/data/appearance.ui:3313
+msgid "File Chooser"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3348
+msgid "Show hidden items"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3365
+msgid "Show size column"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3381
+msgid "Show type column"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3397
+msgid "Sort directories first"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3443
 msgid "Preview"
 msgstr "Преглед"
 
-#: capplets/appearance/data/appearance.ui:3145
+#: capplets/appearance/data/appearance.ui:3483
 msgid "_File"
 msgstr "_Файл"
 
-#: capplets/appearance/data/appearance.ui:3215
+#: capplets/appearance/data/appearance.ui:3553
 msgid "Edit"
 msgstr "Редактиране"
 
-#: capplets/appearance/data/appearance.ui:3344
+#: capplets/appearance/data/appearance.ui:3610
+msgid "New"
+msgstr "Нов"
+
+#: capplets/appearance/data/appearance.ui:3683
 msgid "Interface"
 msgstr "Интерфейс"
 
@@ -1082,15 +1117,6 @@ msgstr "Външен вид"
 #: capplets/appearance/data/mate-appearance-properties.desktop.in:4
 msgid "Customize the look of the desktop"
 msgstr "Настройване на външния вид на работния плот"
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/appearance/data/mate-appearance-properties.desktop.in:7
-#: capplets/appearance/data/mate-theme-installer.desktop.in:7
-msgid "preferences-desktop-theme"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1293,7 +1319,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Темата вече съществува. Искате ли да я замените?"
 
 #: capplets/appearance/theme-save.c:158
-#: capplets/common/file-transfer-dialog.c:438
+#: capplets/common/file-transfer-dialog.c:436
 msgid "_Overwrite"
 msgstr "_Презаписване"
 
@@ -1305,7 +1331,7 @@ msgstr "Искате ли да изтриете тази тема?"
 msgid "Could not install theme engine"
 msgstr "Неуспех при инсталирането графичното ядро на темата"
 
-#: capplets/common/activate-settings-daemon.c:16
+#: capplets/common/activate-settings-daemon.c:15
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
@@ -1381,20 +1407,20 @@ msgstr "Общо адреси"
 msgid "Total number of URIs"
 msgstr "Общ брой на адресите"
 
-#: capplets/common/file-transfer-dialog.c:432
+#: capplets/common/file-transfer-dialog.c:430
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Файлът „%s“ вече съществува. Искате ли да го презапишете?"
 
-#: capplets/common/file-transfer-dialog.c:435
+#: capplets/common/file-transfer-dialog.c:433
 msgid "_Skip"
 msgstr "_Пропускане"
 
-#: capplets/common/file-transfer-dialog.c:436
+#: capplets/common/file-transfer-dialog.c:434
 msgid "Overwrite _All"
 msgstr "_Презаписване на всички"
 
-#: capplets/common/mate-theme-info.c:1578
+#: capplets/common/mate-theme-info.c:1577
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1403,7 +1429,7 @@ msgstr ""
 "Тази тема ще изглежда по различен от оригиналния начин, защото необходимата "
 "ѝ тема на GTK+ — „%s“ не е инсталирана."
 
-#: capplets/common/mate-theme-info.c:1588
+#: capplets/common/mate-theme-info.c:1587
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1412,7 +1438,7 @@ msgstr ""
 "Тази тема ще изглежда по различен от оригиналния начин, защото необходимата "
 "ѝ тема на мениджъра на прозорци — „%s“ не е инсталирана."
 
-#: capplets/common/mate-theme-info.c:1596
+#: capplets/common/mate-theme-info.c:1595
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1422,7 +1448,7 @@ msgstr ""
 "ѝ тема с иконки — „%s“, не е инсталирана."
 
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:3
-#: capplets/default-applications/mate-default-applications-properties.ui:13
+#: capplets/default-applications/mate-default-applications-properties.ui:23
 msgid "Preferred Applications"
 msgstr "Предпочитани програми"
 
@@ -1430,27 +1456,21 @@ msgstr "Предпочитани програми"
 msgid "Select your default applications"
 msgstr "Избиране на стандартните програми"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/default-applications/mate-default-applications-properties.desktop.in:7
-msgid "preferences-desktop-default-applications"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:13
 msgid "mate-control-center;MATE;default;preferred;applications;"
 msgstr ""
 
-#: capplets/default-applications/mate-da-capplet.c:639
+#: capplets/default-applications/mate-da-capplet.c:597
 msgid "Could not load the main interface"
 msgstr "Неуспех при зареждането на главния интерфейс"
 
-#: capplets/default-applications/mate-da-capplet.c:640
+#: capplets/default-applications/mate-da-capplet.c:598
 msgid "Please make sure that the applet is properly installed"
 msgstr "Проверете дали аплетът е инсталиран правилно"
 
-#: capplets/default-applications/mate-da-capplet.c:838
+#: capplets/default-applications/mate-da-capplet.c:797
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Указване на страницата, която да се\n"
@@ -1458,96 +1478,96 @@ msgstr ""
 "                                       „multimedia“ (мултимедия), „system“\n"
 "                                       (система), „a11y“ (достъпност)"
 
-#: capplets/default-applications/mate-da-capplet.c:844
+#: capplets/default-applications/mate-da-capplet.c:803
 msgid "- MATE Default Applications"
 msgstr "— стандартни програми на MATE"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:134
+#: capplets/default-applications/mate-default-applications-properties.ui:147
 msgid "Web Browser"
 msgstr "Интернет браузър"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:202
+#: capplets/default-applications/mate-default-applications-properties.ui:217
 msgid "Mail Reader"
 msgstr "Програма за е-поща"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:270
+#: capplets/default-applications/mate-default-applications-properties.ui:287
 msgid "Instant Messenger"
 msgstr "Бързи съобщения"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:289
+#: capplets/default-applications/mate-default-applications-properties.ui:306
 msgid "Internet"
 msgstr "Интернет"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:357
+#: capplets/default-applications/mate-default-applications-properties.ui:376
 msgid "Image Viewer"
 msgstr "Преглед на изображения"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:425
+#: capplets/default-applications/mate-default-applications-properties.ui:446
 msgid "Multimedia Player"
 msgstr "Програма за мултимедия"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:493
+#: capplets/default-applications/mate-default-applications-properties.ui:516
 msgid "Video Player"
 msgstr "Гледане на филми"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:515
+#: capplets/default-applications/mate-default-applications-properties.ui:538
 msgid "Multimedia"
 msgstr "Мултимедия"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:584
+#: capplets/default-applications/mate-default-applications-properties.ui:609
 msgid "Text Editor"
 msgstr "Текстов редактор"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:652
+#: capplets/default-applications/mate-default-applications-properties.ui:679
 msgid "Terminal Emulator"
 msgstr "Терминален емулатор"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:720
+#: capplets/default-applications/mate-default-applications-properties.ui:749
 msgid "File Manager"
 msgstr "Файлов Мениджър"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:788
+#: capplets/default-applications/mate-default-applications-properties.ui:819
 msgid "Calculator"
 msgstr "Калкулатор"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:810
+#: capplets/default-applications/mate-default-applications-properties.ui:841
 msgid "System"
 msgstr "Система"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:879
+#: capplets/default-applications/mate-default-applications-properties.ui:912
 msgid "Document Viewer"
 msgstr "Преглед на документи"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:947
+#: capplets/default-applications/mate-default-applications-properties.ui:982
 msgid "Word Processor"
 msgstr "Текстов редактор"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1015
+#: capplets/default-applications/mate-default-applications-properties.ui:1052
 msgid "Spreadsheet Editor"
 msgstr "Табличен редактор"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1037
+#: capplets/default-applications/mate-default-applications-properties.ui:1074
 msgid "Office"
 msgstr "Офис"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1094
+#: capplets/default-applications/mate-default-applications-properties.ui:1133
 msgid "_Run at start"
 msgstr "Стартиране в _началото на сесията"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1122
+#: capplets/default-applications/mate-default-applications-properties.ui:1161
 msgid "Visual"
 msgstr "Визуална помощ"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1178
+#: capplets/default-applications/mate-default-applications-properties.ui:1219
 msgid "Run at st_art"
 msgstr "Стартиране в _началото на сесията"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1206
+#: capplets/default-applications/mate-default-applications-properties.ui:1247
 msgid "Mobility"
 msgstr "Двигателна помощ"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1228
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1527
+#: capplets/default-applications/mate-default-applications-properties.ui:1269
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1562
 msgid "Accessibility"
 msgstr "Достъпност"
 
@@ -1558,13 +1578,13 @@ msgstr "Нормален"
 
 #: capplets/display/display-capplet.ui:25
 #: capplets/display/xrandr-capplet.c:307
-#: capplets/windows/window-properties.ui:222
+#: capplets/windows/window-properties.ui:734
 msgid "Left"
 msgstr "Ляво"
 
 #: capplets/display/display-capplet.ui:28
 #: capplets/display/xrandr-capplet.c:308
-#: capplets/windows/window-properties.ui:221
+#: capplets/windows/window-properties.ui:733
 msgid "Right"
 msgstr "Дясно"
 
@@ -1653,12 +1673,6 @@ msgstr "Монитори"
 #: capplets/display/mate-display-properties.desktop.in:4
 msgid "Change resolution and position of monitors and projectors"
 msgstr "Промени резолюцията и позицията на мониторите и проекторите"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/display/mate-display-properties.desktop.in:7
-msgid "preferences-desktop-display"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1900,7 +1914,7 @@ msgstr "Следваща песен"
 msgid "Eject"
 msgstr "Изваждане"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1153
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
 msgid "Desktop"
 msgstr "Работен плот"
 
@@ -1940,8 +1954,8 @@ msgstr "Заключване на екрана"
 msgid "Home folder"
 msgstr "Домашна папка"
 
-#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:843
-#: libslab/bookmark-agent.c:1192
+#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
+#: libslab/bookmark-agent.c:1196
 msgid "Search"
 msgstr "Търсене"
 
@@ -1949,36 +1963,36 @@ msgstr "Търсене"
 msgid "Launch settings"
 msgstr ""
 
-#: capplets/keybindings/eggcellrendererkeys.c:21
+#: capplets/keybindings/eggcellrendererkeys.c:12
 msgid "New shortcut..."
 msgstr "Нова клавишна комбинация…"
 
-#: capplets/keybindings/eggcellrendererkeys.c:157
-#: capplets/keybindings/eggcellrendererkeys.c:158
+#: capplets/keybindings/eggcellrendererkeys.c:148
+#: capplets/keybindings/eggcellrendererkeys.c:149
 msgid "Accelerator key"
 msgstr "Клавиш на ускорение"
 
-#: capplets/keybindings/eggcellrendererkeys.c:167
-#: capplets/keybindings/eggcellrendererkeys.c:168
+#: capplets/keybindings/eggcellrendererkeys.c:158
+#: capplets/keybindings/eggcellrendererkeys.c:159
 msgid "Accelerator modifiers"
 msgstr "Модификатори за ускорение"
 
-#: capplets/keybindings/eggcellrendererkeys.c:176
-#: capplets/keybindings/eggcellrendererkeys.c:177
+#: capplets/keybindings/eggcellrendererkeys.c:167
+#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator keycode"
 msgstr "Клавиш на ускорение"
 
-#: capplets/keybindings/eggcellrendererkeys.c:187
+#: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "Accel Mode"
 msgstr "Ускорен режим"
 
-#: capplets/keybindings/eggcellrendererkeys.c:188
+#: capplets/keybindings/eggcellrendererkeys.c:179
 msgid "The type of accelerator."
 msgstr "Вид на ускорителя."
 
-#: capplets/keybindings/eggcellrendererkeys.c:231
+#: capplets/keybindings/eggcellrendererkeys.c:222
 #: capplets/keybindings/mate-keybinding-properties.c:133
-#: capplets/mouse/mate-mouse-properties.c:347 typing-break/drwright.c:528
+#: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Изключена"
 
@@ -2063,253 +2077,258 @@ msgstr ""
 msgid "Assign shortcut keys to commands"
 msgstr "Поставяне на клавишни комбинации за команди"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/keybindings/mate-keybinding.desktop.in:7
-msgid "preferences-desktop-keyboard-shortcuts"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keybindings/mate-keybinding.desktop.in:13
 msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties.c:207
-#: capplets/keyboard/mate-keyboard-properties.c:212
+#: capplets/keyboard/mate-keyboard-properties.c:164
+#: capplets/keyboard/mate-keyboard-properties.c:169
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr "Използване само на настройките и излизане"
 
-#: capplets/keyboard/mate-keyboard-properties.c:217
+#: capplets/keyboard/mate-keyboard-properties.c:174
 msgid "Start the page with the typing break settings showing"
 msgstr ""
 "Показване на подпрозореца „Почивки при\n"
 "                                    писане“"
 
-#: capplets/keyboard/mate-keyboard-properties.c:222
+#: capplets/keyboard/mate-keyboard-properties.c:179
 msgid "Start the page with the accessibility settings showing"
 msgstr "Показване на подпрозореца „Достъпност“"
 
-#: capplets/keyboard/mate-keyboard-properties.c:228
+#: capplets/keyboard/mate-keyboard-properties.c:185
 msgid "- MATE Keyboard Preferences"
 msgstr "— Настройки на клавиатурата"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:15
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:14
 msgid "Keyboard Accessibility Audio Feedback"
 msgstr "Звукови уведомления за достъпност на клавиатурата"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:90
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:616
-#: capplets/mouse/mate-mouse-properties.ui:277
-#: capplets/mouse/mate-mouse-properties.ui:1008
-#: capplets/windows/window-properties.ui:260
-msgid "General"
-msgstr "Общи"
-
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:128
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:86
 msgid "Beep when _accessibility features are turned on or off"
 msgstr "Звук при _включване/изключване на функции чрез клавиатурата"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:145
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:102
 msgid "Beep when a _toggle key is pressed"
 msgstr "Звук при натискане на клавиш за превкл_ючване"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:194
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1019
-msgid "Sticky Keys"
-msgstr "Лепкави клавиши"
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:123
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:645
+#: capplets/mouse/mate-mouse-properties.ui:277
+#: capplets/mouse/mate-mouse-properties.ui:1009
+msgid "General"
+msgstr "Общи"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:232
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:152
 msgid "Beep when a _modifier key is pressed"
 msgstr "Звук при натискане на _модификатор"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:279
-msgid "Visual cues for sounds"
-msgstr "Визуални подсказки за звуци"
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:173
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1054
+msgid "Sticky Keys"
+msgstr "Лепкави клавиши"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:314
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:201
 msgid "Show _visual feedback for the alert sound"
 msgstr "_Визуално подсказване при системни звуци"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:352
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:224
 msgid "Flash _window titlebar"
 msgstr "Проблясване на _заглавната лента на прозореца"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:369
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:241
 msgid "Flash entire _screen"
 msgstr "Проблясване на _целия екран"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:433
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1140
-msgid "Slow Keys"
-msgstr "Бавни клавиши"
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:270
+msgid "Visual cues for sounds"
+msgstr "Визуални подсказки за звуци"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:471
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:298
 msgid "Beep when a key is pr_essed"
 msgstr "Звук при натискане на _клавиш"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:488
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:314
 msgid "Beep when key is _accepted"
 msgstr "Звук при п_риемане на клавиша"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:505
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:330
 msgid "Beep when key is _rejected"
 msgstr "Звук при от_хвърляне на клавиша"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:554
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1321
-msgid "Bounce Keys"
-msgstr "Подскачащи клавиши"
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:351
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1175
+msgid "Slow Keys"
+msgstr "Бавни клавиши"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:592
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:379
 msgid "Beep when a key is reje_cted"
 msgstr "Звук при _отхвърляне на клавиша"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:81
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:400
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1356
+msgid "Bounce Keys"
+msgstr "Подскачащи клавиши"
+
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
+msgid "Beep when pressing a key while Caps_Lock is active"
+msgstr ""
+
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
+msgid "Caps Lock"
+msgstr ""
+
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:106
 msgid "Keyboard Preferences"
 msgstr "Настройки на клавиатурата"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:166
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:195
 msgid "Repeat Keys"
 msgstr "Повторни клавиши"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:201
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:230
 msgid "Key presses _repeat when key is held down"
 msgstr "_Натискането на бутона се повтаря, ако той бъде задържан"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:231
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1203
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1775
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:260
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1238
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1811
 msgid "_Delay:"
 msgstr "З_акъснение:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:247
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1760
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:276
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1796
 msgid "_Speed:"
 msgstr "_Скорост:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:278
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1226
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1407
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1697
-#: capplets/mouse/mate-mouse-properties.ui:826
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:307
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1261
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1442
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1733
+#: capplets/mouse/mate-mouse-properties.ui:827
 msgid "Short"
 msgstr "Късо"
 
 #. slow acceleration
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:297
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:563
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1601
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1680
-#: capplets/mouse/mate-mouse-properties.ui:435
-#: capplets/mouse/mate-mouse-properties.ui:1396
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:326
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:592
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1637
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1716
+#: capplets/mouse/mate-mouse-properties.ui:436
+#: capplets/mouse/mate-mouse-properties.ui:1414
 msgid "Slow"
 msgstr "Бавна"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:343
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:372
 msgid "Repeat keys speed"
 msgstr "Скорост на повтаряне на клавишите"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:371
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1261
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1442
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1728
-#: capplets/mouse/mate-mouse-properties.ui:861
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:400
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1296
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1477
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1764
+#: capplets/mouse/mate-mouse-properties.ui:862
 msgid "Long"
 msgstr "Дълго"
 
 #. fast acceleration
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:388
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:528
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1618
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1663
-#: capplets/mouse/mate-mouse-properties.ui:467
-#: capplets/mouse/mate-mouse-properties.ui:1428
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:417
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:557
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1654
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1699
+#: capplets/mouse/mate-mouse-properties.ui:468
+#: capplets/mouse/mate-mouse-properties.ui:1446
 msgid "Fast"
 msgstr "Бърза"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:446
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:475
 msgid "Cursor Blinking"
 msgstr "Мигащ курсор"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:481
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:510
 msgid "Cursor _blinks in text fields"
 msgstr "_Мигащ курсор в текстовите полета"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:505
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:534
 msgid "S_peed:"
 msgstr "С_корост:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:548
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1246
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1427
-#: capplets/mouse/mate-mouse-properties.ui:702
-#: capplets/mouse/mate-mouse-properties.ui:847
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:577
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1281
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1462
+#: capplets/mouse/mate-mouse-properties.ui:703
+#: capplets/mouse/mate-mouse-properties.ui:848
 msgid "Cursor blinks speed"
 msgstr "Скорост на мигане на курсора"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:645
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
 msgid "List of keyboard layouts selected for usage"
 msgstr "Списък с избраните за ползване подредби"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:678
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:707
 msgid "Select a keyboard layout to be added to the list"
 msgstr "Избиране на подредба, която да се добави към списъка"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:693
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:720
+msgid "_Remove"
+msgstr "_Премахване"
+
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:724
 msgid "Remove the selected keyboard layout from the list"
 msgstr "Изваждане на избраната подредба от списъка"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:718
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:751
 msgid "Move _Up"
 msgstr "Преместване на_долу"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:722
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:755
 msgid "Move the selected keyboard layout up in the list"
 msgstr "Преместване на избраната подредба нагоре в списъка"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:733
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:766
 msgid "Move _Down"
 msgstr "Преместване на_горе"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:737
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:770
 msgid "Move the selected keyboard layout down in the list"
 msgstr "Преместване на избраната подредба надолу в списъка"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:762
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:795
 msgid "_Show..."
 msgstr "_Показване…"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:766
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:799
 msgid "Print a diagram of the selected keyboard layout"
 msgstr "Отпечатване на диаграма на избраната подредба"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:802
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:835
 msgid "_Separate layout for each window"
 msgstr "_Отделна подредба за всеки прозорец"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:818
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:851
 msgid "New windows u_se active window's layout"
 msgstr "Новите прозорци унаследяват подредбата на прозореца на _фокус"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:849
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:882
 msgid "Keyboard _model:"
 msgstr "_Модел на клавиатурата:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:887
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:920
 msgid "_Options..."
 msgstr "Настро_йки…"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:892
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:925
 msgid "View and edit keyboard layout options"
 msgstr "Разглеждане и редактиране на настройките на подредбата"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:903
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:936
 msgid "Reset to De_faults"
 msgstr "_Стандартни настройки"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:907
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:940
 msgid ""
 "Replace the current keyboard layout settings with the\n"
 "default settings"
@@ -2317,61 +2336,61 @@ msgstr ""
 "Замяна на текущите настройки на подредбата на клавиатурата\n"
 "със стандартните"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:934
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:969
 msgid "Layouts"
 msgstr "Подредби"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:970
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1005
 msgid "_Accessibility features can be toggled with keyboard shortcuts"
 msgstr "В_ключване/изключване на достъпността чрез клавишни комбинации"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1057
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1092
 msgid "_Simulate simultaneous keypresses"
 msgstr "Симу_лиране на едновременно натискане"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1074
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1109
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr "_Изключване при натискането на два клавиша едновременно"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1091
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1126
 msgid "_Latch modifiers when pressed twice"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1178
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1213
 msgid "_Only accept long keypresses"
 msgstr "_Приемане само на задържани клавиши"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1359
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1394
 msgid "_Ignore fast duplicate keypresses"
 msgstr "И_гнориране на бързо натискане на еднакви клавиши"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1384
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1419
 msgid "D_elay:"
 msgstr "_Закъснение:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1497
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1532
 msgid "Audio _Feedback..."
 msgstr "Звукови _уведомления…"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1550
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1585
 msgid "_Pointer can be controlled using the keypad"
 msgstr "П_оказалецът може да се движи чрез клавиатурата"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1745
-#: capplets/mouse/mate-mouse-properties.ui:413
-#: capplets/mouse/mate-mouse-properties.ui:1374
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1781
+#: capplets/mouse/mate-mouse-properties.ui:414
+#: capplets/mouse/mate-mouse-properties.ui:1392
 msgid "_Acceleration:"
 msgstr "_Ускорение:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1823
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1859
 msgid "Mouse Keys"
 msgstr "Клавиши за мишка"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1851
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1887
 msgid "_Lock screen to enforce typing break"
 msgstr "За_ключване на екрана за почивка при писане"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1855
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1891
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
@@ -2379,40 +2398,40 @@ msgstr ""
 "Заключване на екрана след определено време, за предотвратяването на травми "
 "при прекалено дълго писане на клавиатурата."
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1904
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1940
 msgid "_Work interval lasts:"
 msgstr "Продължителност на ра_ботата:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1919
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1955
 msgid "_Break interval lasts:"
 msgstr "Продължителност на по_чивката:"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1951
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1987
 msgid "Duration of work before forcing a break"
 msgstr "Периодът на работа, преди да се пусне почивка"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1965
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2001
 msgid "Duration of the break when typing is disallowed"
 msgstr "Продължителност на почивката, през която писането е забранено"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1993
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2006
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2029
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2042
 msgid "minutes"
 msgstr "минути"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2037
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2073
 msgid "All_ow postponing of breaks"
 msgstr "_Разрешаване на отлагането на почивките"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2041
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2077
 msgid "Check if breaks are allowed to be postponed"
 msgstr "Проверяване дали е разрешено да се отлагат почивките"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2089
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2125
 msgid "Typing Break"
 msgstr "Почивки при писане"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2112
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2148
 msgid "_Type to test settings:"
 msgstr "Пи_шете, за да изпробвате настройките:"
 
@@ -2478,7 +2497,7 @@ msgid "Models"
 msgstr "Модели"
 
 #: capplets/keyboard/mate-keyboard-properties-xkbot.c:237
-#: capplets/mouse/mate-mouse-properties.ui:586
+#: capplets/mouse/mate-mouse-properties.ui:587
 msgid "Default"
 msgstr "По подразбиране"
 
@@ -2490,35 +2509,29 @@ msgstr "Клавиатура"
 msgid "Set your keyboard preferences"
 msgstr "Настройки на клавиатурата"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/keyboard/mate-keyboard.desktop.in:7
-msgid "input-keyboard"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keyboard/mate-keyboard.desktop.in:13
 msgid "mate-control-center;MATE;keyboard;preferences;"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:347
+#: capplets/mouse/mate-mouse-properties.c:343
 msgid "Left button"
 msgstr "Ляв бутон"
 
-#: capplets/mouse/mate-mouse-properties.c:347
+#: capplets/mouse/mate-mouse-properties.c:343
 msgid "Middle button"
 msgstr "Среден бутон"
 
-#: capplets/mouse/mate-mouse-properties.c:347
+#: capplets/mouse/mate-mouse-properties.c:343
 msgid "Right button"
 msgstr "Десен бутон"
 
-#: capplets/mouse/mate-mouse-properties.c:442
+#: capplets/mouse/mate-mouse-properties.c:400
 msgid "Specify the name of the page to show (general)"
 msgstr "Указване на страницата, която да се покаже (общи)"
 
-#: capplets/mouse/mate-mouse-properties.c:447
+#: capplets/mouse/mate-mouse-properties.c:405
 msgid "- MATE Mouse Preferences"
 msgstr "— Настройки за мишката"
 
@@ -2551,129 +2564,123 @@ msgid "Enable middlemouse paste"
 msgstr ""
 
 #: capplets/mouse/mate-mouse-properties.ui:385
-#: capplets/mouse/mate-mouse-properties.ui:1346
+#: capplets/mouse/mate-mouse-properties.ui:1363
 msgid "Pointer Speed"
 msgstr "Скорост на показалеца"
 
 #. low sensitivity
-#: capplets/mouse/mate-mouse-properties.ui:498
-#: capplets/mouse/mate-mouse-properties.ui:1459
+#: capplets/mouse/mate-mouse-properties.ui:499
+#: capplets/mouse/mate-mouse-properties.ui:1477
 msgid "Low"
 msgstr "Нисък"
 
 #. high sensitivity
-#: capplets/mouse/mate-mouse-properties.ui:530
-#: capplets/mouse/mate-mouse-properties.ui:1491
+#: capplets/mouse/mate-mouse-properties.ui:531
+#: capplets/mouse/mate-mouse-properties.ui:1509
 msgid "High"
 msgstr "Висок"
 
-#: capplets/mouse/mate-mouse-properties.ui:554
-#: capplets/mouse/mate-mouse-properties.ui:1515
+#: capplets/mouse/mate-mouse-properties.ui:555
+#: capplets/mouse/mate-mouse-properties.ui:1533
 msgid "_Sensitivity:"
 msgstr "_Чувствителност"
 
-#: capplets/mouse/mate-mouse-properties.ui:569
+#: capplets/mouse/mate-mouse-properties.ui:570
 msgid "Acceleration _Profile:"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:587
+#: capplets/mouse/mate-mouse-properties.ui:588
 msgid "Adaptive"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:588
+#: capplets/mouse/mate-mouse-properties.ui:589
 msgid "Flat"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:624
+#: capplets/mouse/mate-mouse-properties.ui:625
 msgid "Drag and Drop"
 msgstr "Влачене и пускане"
 
-#: capplets/mouse/mate-mouse-properties.ui:658
+#: capplets/mouse/mate-mouse-properties.ui:659
 msgid "Thr_eshold:"
 msgstr "П_раг:"
 
-#: capplets/mouse/mate-mouse-properties.ui:771
+#: capplets/mouse/mate-mouse-properties.ui:772
 msgid "Double-Click Timeout"
 msgstr "Пауза между две натискания"
 
-#: capplets/mouse/mate-mouse-properties.ui:805
+#: capplets/mouse/mate-mouse-properties.ui:806
 msgid "_Timeout:"
 msgstr "П_ауза:"
 
-#: capplets/mouse/mate-mouse-properties.ui:901
+#: capplets/mouse/mate-mouse-properties.ui:902
 msgid ""
 "To test your double-click settings, try to double-click on the triangle and "
 "you must see the mate desktop logo with both rings showing."
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:963
+#: capplets/mouse/mate-mouse-properties.ui:964
 #: capplets/mouse/mate-settings-mouse.desktop.in:3
 msgid "Mouse"
 msgstr "Мишка"
 
-#: capplets/mouse/mate-mouse-properties.ui:980
+#: capplets/mouse/mate-mouse-properties.ui:981
 msgid "Enable _touchpad"
 msgstr "Включване на _сензорния панел"
 
-#: capplets/mouse/mate-mouse-properties.ui:1028
+#: capplets/mouse/mate-mouse-properties.ui:1029
 msgid "Disable touchpad _while typing"
 msgstr "Изключи тъчпада при писане"
 
-#: capplets/mouse/mate-mouse-properties.ui:1055
+#: capplets/mouse/mate-mouse-properties.ui:1056
 msgid "Enable _mouse clicks with touchpad"
 msgstr "_Натискане на мишката чрез потупване на панела"
 
-#: capplets/mouse/mate-mouse-properties.ui:1091
+#: capplets/mouse/mate-mouse-properties.ui:1093
 msgid "Two-finger click emulation:"
 msgstr "Емулация на щракване с два пръста:"
 
-#: capplets/mouse/mate-mouse-properties.ui:1131
+#: capplets/mouse/mate-mouse-properties.ui:1133
 msgid "Three-finger click emulation:"
 msgstr "Емулация на щракване с три пръста:"
 
-#: capplets/mouse/mate-mouse-properties.ui:1155
+#: capplets/mouse/mate-mouse-properties.ui:1172
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
 "Внимание: симулацията на докосване с няколко пръста може да забрани някои "
 "софтуерни бутони"
 
-#: capplets/mouse/mate-mouse-properties.ui:1186
+#: capplets/mouse/mate-mouse-properties.ui:1203
 msgid "Scrolling"
 msgstr "Придвижване"
 
-#: capplets/mouse/mate-mouse-properties.ui:1206
+#: capplets/mouse/mate-mouse-properties.ui:1223
 msgid "_Vertical edge scrolling"
 msgstr "_Вертикално ъглово превъртане"
 
-#: capplets/mouse/mate-mouse-properties.ui:1232
+#: capplets/mouse/mate-mouse-properties.ui:1249
 msgid "H_orizontal edge scrolling"
 msgstr "_Хоризонтално ъглово превъртане"
 
-#: capplets/mouse/mate-mouse-properties.ui:1258
+#: capplets/mouse/mate-mouse-properties.ui:1275
 msgid "V_ertical two-finger scrolling"
 msgstr "Вертикално превъртане с два пръста"
 
-#: capplets/mouse/mate-mouse-properties.ui:1284
+#: capplets/mouse/mate-mouse-properties.ui:1301
 msgid "Hor_izontal two-finger scrolling"
 msgstr "Хоризонтално превъртане с два пръста"
 
-#: capplets/mouse/mate-mouse-properties.ui:1310
+#: capplets/mouse/mate-mouse-properties.ui:1327
 msgid "Enable _natural scrolling"
 msgstr "Включване на _обърнато превъртане"
 
-#: capplets/mouse/mate-mouse-properties.ui:1551
+#: capplets/mouse/mate-mouse-properties.ui:1584
 msgid "Touchpad"
 msgstr "Сензорен панел"
 
 #: capplets/mouse/mate-settings-mouse.desktop.in:4
 msgid "Set your mouse preferences"
 msgstr "Настройки на вашата мишка"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/mouse/mate-settings-mouse.desktop.in:7
-msgid "input-mouse"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -2688,12 +2695,6 @@ msgstr "Мрежов сървър-посредник"
 #: capplets/network/mate-network-properties.desktop.in:4
 msgid "Set your network proxy preferences"
 msgstr "Настройки на мрежовия сървър-посредник"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/network/mate-network-properties.desktop.in:7
-msgid "network-server"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -2781,32 +2782,32 @@ msgid "Metacity Preferences"
 msgstr "Metacity Настройки"
 
 #: capplets/windows/mate-metacity-support.c:51
-#: capplets/windows/window-properties.ui:175
+#: capplets/windows/window-properties.ui:871
 msgid "Compositing Manager"
 msgstr "Мениджър за наслагване"
 
 #: capplets/windows/mate-metacity-support.c:58
-#: capplets/windows/window-properties.ui:138
+#: capplets/windows/window-properties.ui:819
 msgid "Enable software _compositing window manager"
 msgstr "Активиране на софтуера _наслагване на мениджъра на прозорци"
 
-#: capplets/windows/mate-window-properties.c:264
+#: capplets/windows/mate-window-properties.c:281
 msgid "The current window manager is unsupported"
 msgstr "Текущият мениджър на прозорци не се поддържа"
 
-#: capplets/windows/mate-window-properties.c:581
+#: capplets/windows/mate-window-properties.c:599
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:587
+#: capplets/windows/mate-window-properties.c:605
 msgid "H_yper"
 msgstr "_Hyper"
 
-#: capplets/windows/mate-window-properties.c:594
+#: capplets/windows/mate-window-properties.c:612
 msgid "S_uper (or \"Windows logo\")"
 msgstr "_Super (или „Логото на Windows“)"
 
-#: capplets/windows/mate-window-properties.c:601
+#: capplets/windows/mate-window-properties.c:619
 msgid "_Meta"
 msgstr "_Мета"
 
@@ -2818,128 +2819,146 @@ msgstr "Прозорци"
 msgid "Set your window properties"
 msgstr "Задаване на настройки за прозореца ви"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/windows/mate-window-properties.desktop.in:7
-msgid "preferences-system-windows"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/windows/mate-window-properties.desktop.in:13
 msgid "mate-control-center;MATE;window;manager;properties;marco;preferences;"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:47
+#: capplets/windows/window-properties.ui:49
 msgid "Window Preferences"
 msgstr "Предпочитания за прозорец"
 
-#: capplets/windows/window-properties.ui:153
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr "Деактивиране на _миниатюри в Alt-Tab"
-
-#: capplets/windows/window-properties.ui:208
-msgid "Position:"
-msgstr "Позиция:"
-
-#: capplets/windows/window-properties.ui:241
-msgid "Titlebar Buttons"
-msgstr "Бутони на заглавната лента"
-
-#: capplets/windows/window-properties.ui:294
-msgid "_Select windows when the mouse moves over them"
-msgstr "_Избиране на прозорците, когато показалецът преминава над тях"
-
-#: capplets/windows/window-properties.ui:319
-msgid "U_nselect windows when the mouse leaves them"
-msgstr "Премахни селекцията от прозорците, когато мишката се махне от тях"
-
-#: capplets/windows/window-properties.ui:340
-msgid "_Raise selected windows after an interval"
-msgstr "Пов_дигане на избрания прозорец след определен интервал"
-
-#: capplets/windows/window-properties.ui:365
-msgid "_Interval before raising:"
-msgstr "_Интервал преди вдигане:"
-
-#: capplets/windows/window-properties.ui:392
-msgid "seconds"
-msgstr "секунди"
-
-#: capplets/windows/window-properties.ui:430
+#: capplets/windows/window-properties.ui:128
 msgid "Window Selection"
 msgstr "Избор на прозорец"
 
-#: capplets/windows/window-properties.ui:463
-msgid "_Double-click titlebar to perform this action:"
-msgstr "_Двукратното натискане върху лентата със заглавието:"
+#: capplets/windows/window-properties.ui:148
+msgid "_Select windows when the mouse moves over them"
+msgstr "_Избиране на прозорците, когато показалецът преминава над тях"
 
-#: capplets/windows/window-properties.ui:477
-#: libwindow-settings/marco-window-manager.c:394
-msgid "Roll up"
-msgstr "навива"
+#: capplets/windows/window-properties.ui:164
+msgid "U_nselect windows when the mouse leaves them"
+msgstr "Премахни селекцията от прозорците, когато мишката се махне от тях"
 
-#: capplets/windows/window-properties.ui:478
-#: libwindow-settings/marco-window-manager.c:395
-msgid "Maximize"
-msgstr "максимизира"
+#: capplets/windows/window-properties.ui:187
+msgid "_Raise selected windows after"
+msgstr ""
 
-#: capplets/windows/window-properties.ui:479
-#: libwindow-settings/marco-window-manager.c:396
-msgid "Maximize Horizontally"
-msgstr "максимизира хоризонтално"
+#: capplets/windows/window-properties.ui:204
+msgid "1,0"
+msgstr ""
 
-#: capplets/windows/window-properties.ui:480
-#: libwindow-settings/marco-window-manager.c:397
-msgid "Maximize Vertically"
-msgstr "максимизира вертикално"
+#: capplets/windows/window-properties.ui:223
+msgid "seconds"
+msgstr "секунди"
 
-#: capplets/windows/window-properties.ui:481
-#: libwindow-settings/marco-window-manager.c:398
-msgid "Minimize"
-msgstr "минимизира"
-
-#: capplets/windows/window-properties.ui:482
-#: libwindow-settings/marco-window-manager.c:399
-msgid "None"
-msgstr "Без"
-
-#: capplets/windows/window-properties.ui:501
+#: capplets/windows/window-properties.ui:263
 msgid "Titlebar Action"
 msgstr "Действие на заглавната лента"
 
-#: capplets/windows/window-properties.ui:535
+#: capplets/windows/window-properties.ui:290
+msgid "_Double-click titlebar action:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:305
+#: libwindow-settings/marco-window-manager.c:393
+msgid "Roll up"
+msgstr "навива"
+
+#: capplets/windows/window-properties.ui:306
+#: libwindow-settings/marco-window-manager.c:394
+msgid "Maximize"
+msgstr "максимизира"
+
+#: capplets/windows/window-properties.ui:307
+#: libwindow-settings/marco-window-manager.c:395
+msgid "Maximize Horizontally"
+msgstr "максимизира хоризонтално"
+
+#: capplets/windows/window-properties.ui:308
+#: libwindow-settings/marco-window-manager.c:396
+msgid "Maximize Vertically"
+msgstr "максимизира вертикално"
+
+#: capplets/windows/window-properties.ui:309
+#: libwindow-settings/marco-window-manager.c:397
+msgid "Minimize"
+msgstr "минимизира"
+
+#: capplets/windows/window-properties.ui:310
+#: libwindow-settings/marco-window-manager.c:398
+msgid "None"
+msgstr "Без"
+
+#: capplets/windows/window-properties.ui:352
+msgid "Alt-Tab"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:372
+msgid "Show window border in _Alt-Tab"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:410
+msgid "Performance"
+msgstr "Производителност"
+
+#: capplets/windows/window-properties.ui:430
+msgid "Use _reduced resources"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:468
+msgid "Movement Key"
+msgstr "Клавиш за движение"
+
+#: capplets/windows/window-properties.ui:490
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 "Кой клавиш в комбинация с хващане на прозореца води до преместването му."
 
-#: capplets/windows/window-properties.ui:568
-msgid "Movement Key"
-msgstr "Клавиш за движение"
-
-#: capplets/windows/window-properties.ui:590
+#: capplets/windows/window-properties.ui:534
 msgid "Behaviour"
 msgstr "Поведение"
 
-#: capplets/windows/window-properties.ui:620
-msgid "Center _new windows"
-msgstr "Центриране на новите прозорци"
-
-#: capplets/windows/window-properties.ui:635
+#: capplets/windows/window-properties.ui:559
 msgid "New Windows"
 msgstr "Нови прозорци"
 
-#: capplets/windows/window-properties.ui:661
-msgid "Enable window _tiling"
-msgstr "Включване на _подреждането на прозорците един до друг"
+#: capplets/windows/window-properties.ui:579
+msgid "Centre _new windows"
+msgstr ""
 
-#: capplets/windows/window-properties.ui:676
+#: capplets/windows/window-properties.ui:617
 msgid "Window Snapping"
 msgstr "Прихващане на прозорец"
 
-#: capplets/windows/window-properties.ui:698
+#: capplets/windows/window-properties.ui:637
+msgid "Enable window _tiling"
+msgstr "Включване на _подреждането на прозорците един до друг"
+
+#: capplets/windows/window-properties.ui:652
+msgid "Allow _top tiling"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:691
+msgid "Titlebar Buttons"
+msgstr "Бутони на заглавната лента"
+
+#: capplets/windows/window-properties.ui:718
+msgid "_Position of titlebar buttons:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:774
 msgid "Placement"
 msgstr "Разположение"
+
+#: capplets/windows/window-properties.ui:799
+msgid "Software Compositing"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:834
+msgid "Disable _thumbnails in Alt-Tab"
+msgstr "Деактивиране на _миниатюри в Alt-Tab"
 
 #: capplets/time-admin/src/main.c:34
 #, c-format
@@ -3011,10 +3030,6 @@ msgstr "Дата"
 msgid "Click to save the specified date and time."
 msgstr ""
 
-#: capplets/time-admin/src/time-admin.ui:370
-msgid "_Save"
-msgstr "_Запазване"
-
 #: capplets/time-admin/src/time-tool.c:135
 msgid "GetNtpState"
 msgstr ""
@@ -3028,7 +3043,7 @@ msgstr ""
 msgid "Set Ntp sync"
 msgstr ""
 
-#: capplets/time-admin/src/time-share.c:47
+#: capplets/time-admin/src/time-share.c:49
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
@@ -3048,15 +3063,15 @@ msgstr ""
 msgid "%R"
 msgstr ""
 
-#: capplets/time-admin/src/time-zone.c:378
+#: capplets/time-admin/src/time-zone.c:379
 msgid "Time Zone"
 msgstr "Часови пояс"
 
-#: capplets/time-admin/src/time-zone.c:465
+#: capplets/time-admin/src/time-zone.c:466
 msgid "Time Zone Selection"
 msgstr ""
 
-#: capplets/time-admin/src/time-zone.c:480
+#: capplets/time-admin/src/time-zone.c:481
 msgid "Con_firm"
 msgstr ""
 
@@ -4768,19 +4783,13 @@ msgstr ""
 msgid "Setting the time and date of the local system"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/time-admin/data/mate-time-admin.desktop.in:9
-msgid "preferences-system-time"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/time-admin/data/mate-time-admin.desktop.in:13
 msgid "mate-control-center;MATE;clock;date;time;preferences;"
 msgstr ""
 
-#: libwindow-settings/mate-wm-manager.c:317
+#: libwindow-settings/mate-wm-manager.c:318
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr "Мениджърът на прозорци „%s“ не е регистрирал инструмент за настройки\n"
@@ -4819,22 +4828,10 @@ msgstr "Инструмент за настройки на MATE"
 msgid "Configure MATE settings"
 msgstr "Настройване на MATE"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: shell/matecc.desktop.in:7
-msgid "preferences-desktop"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: shell/matecc.desktop.in:14
 msgid "MATE;control;center;configuration;tool;desktop;preferences;"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: shell/matecc.directory.desktop.in:5
-msgid "mate-settings"
 msgstr ""
 
 #: typing-break/drw-break-window.c:179
@@ -4845,39 +4842,39 @@ msgstr "_Отлагане на почивката"
 msgid "Take a break!"
 msgstr "Време е за почивка"
 
-#: typing-break/drwright.c:138
+#: typing-break/drwright.c:135
 msgid "_Preferences"
 msgstr "_Настройки"
 
-#: typing-break/drwright.c:139
+#: typing-break/drwright.c:136
 msgid "_About"
 msgstr "_Относно…"
 
-#: typing-break/drwright.c:140
+#: typing-break/drwright.c:137
 msgid "_Take a Break"
 msgstr "_Взимане на почивка"
 
-#: typing-break/drwright.c:537
+#: typing-break/drwright.c:534
 #, c-format
 msgid "Take a break now (next in %dm)"
 msgstr "Взимане на почивка сега (следващата е след %d мин.)"
 
-#: typing-break/drwright.c:539
+#: typing-break/drwright.c:536
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d минута до следващата почивка"
 msgstr[1] "%d минути до следващата почивка"
 
-#: typing-break/drwright.c:545
+#: typing-break/drwright.c:542
 msgid "Take a break now (next in less than one minute)"
 msgstr "Взимане на почивка сега (следващата е след по-малко от минута)"
 
-#: typing-break/drwright.c:547
+#: typing-break/drwright.c:544
 msgid "Less than one minute until the next break"
 msgstr "По-малко от минута до следващата почивка"
 
-#: typing-break/drwright.c:637
+#: typing-break/drwright.c:634
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
@@ -4886,19 +4883,19 @@ msgstr ""
 "Прозорецът с настройките за почивките при писане не може да се покаже поради"
 " следната грешка: %s"
 
-#: typing-break/drwright.c:654
+#: typing-break/drwright.c:651
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Написано от Richard Hult <richard@imendio.com>"
 
-#: typing-break/drwright.c:655
+#: typing-break/drwright.c:652
 msgid "Eye candy added by Anders Carlsson"
 msgstr "Шаренийките са добавени от Anders Carlsson"
 
-#: typing-break/drwright.c:664
+#: typing-break/drwright.c:661
 msgid "A computer break reminder."
 msgstr "Напомняне за почивки."
 
-#: typing-break/drwright.c:666 font-viewer/font-view.c:786
+#: typing-break/drwright.c:663 font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr ""
 "Владимир „Kaladan“ Петков <vpetkov@i-space.org>\n"
@@ -4934,67 +4931,61 @@ msgstr ""
 "добавите като щракнете с десния бутон на мишката върху панела и изберете "
 "„Добавяне към панела“ → „Полезни“ → „Област за уведомяване“."
 
-#: font-viewer/font-view.c:205
+#: font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Стил"
 
-#: font-viewer/font-view.c:215
+#: font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Вид"
 
-#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
+#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Версия"
 
-#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
+#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Авторски права"
 
-#: font-viewer/font-view.c:271
+#: font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Описание"
 
-#: font-viewer/font-view.c:289
+#: font-viewer/font-view.c:288
 msgid "Install Failed"
 msgstr "Неуспешно инсталиране"
 
-#: font-viewer/font-view.c:295
+#: font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Инсталиран"
 
-#: font-viewer/font-view.c:432
+#: font-viewer/font-view.c:431
 msgid "This font could not be displayed."
 msgstr "Този шрифт не може да бъде възпроизведен."
 
-#: font-viewer/font-view.c:495 font-viewer/font-view.c:562
+#: font-viewer/font-view.c:494 font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Информация"
 
-#: font-viewer/font-view.c:575
+#: font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Назад"
 
-#: font-viewer/font-view.c:679
+#: font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "Всички шрифтове"
 
-#: font-viewer/font-view.c:783 font-viewer/font-view.c:835
+#: font-viewer/font-view.c:782 font-viewer/font-view.c:834
 msgid "Font Viewer"
 msgstr "Преглед на шрифтове"
 
-#: font-viewer/font-view.c:784 font-viewer/mate-font-viewer.desktop.in:4
+#: font-viewer/font-view.c:783 font-viewer/mate-font-viewer.desktop.in:4
 msgid "View fonts on your system"
 msgstr "Преглед на шрифтовете в системата"
 
 #: font-viewer/mate-font-viewer.desktop.in:3
 msgid "MATE Font Viewer"
 msgstr "Преглед на шрифтове"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: font-viewer/mate-font-viewer.desktop.in:6
-msgid "preferences-desktop-font"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -5022,20 +5013,20 @@ msgstr "РАЗМЕР"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ШРИФТОВ_ФАЙЛ ИЗХОДЕН_ФАЙЛ"
 
-#: libslab/app-shell.c:763
+#: libslab/app-shell.c:762
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Филтърът ви „%s“ не напасва с никой запис."
 
-#: libslab/app-shell.c:765
+#: libslab/app-shell.c:764
 msgid "No matches found."
 msgstr "Няма съвпадения."
 
-#: libslab/app-shell.c:874
+#: libslab/app-shell.c:873
 msgid "New Applications"
 msgstr "Нови програми"
 
-#: libslab/app-shell.c:936
+#: libslab/app-shell.c:935
 msgid "Other"
 msgstr "Други"
 
@@ -5048,43 +5039,43 @@ msgstr "Стартиране на %s"
 msgid "Help"
 msgstr "Помощ"
 
-#: libslab/application-tile.c:642
+#: libslab/application-tile.c:643
 msgid "Remove from Favorites"
 msgstr "Премахване от любимите"
 
-#: libslab/application-tile.c:644
+#: libslab/application-tile.c:645
 msgid "Add to Favorites"
 msgstr "Добавяне към любимите"
 
-#: libslab/application-tile.c:729
+#: libslab/application-tile.c:730
 msgid "Remove from Startup Programs"
 msgstr "Да не се стартира в началото"
 
-#: libslab/application-tile.c:731
+#: libslab/application-tile.c:732
 msgid "Add to Startup Programs"
 msgstr "Да се стартира в началото"
 
-#: libslab/bookmark-agent.c:1082
+#: libslab/bookmark-agent.c:1086
 msgid "New Spreadsheet"
 msgstr "Нова електронна таблица"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1090
 msgid "New Document"
 msgstr "Нов документ"
 
-#: libslab/bookmark-agent.c:1140
+#: libslab/bookmark-agent.c:1144
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Домашна папка"
 
-#: libslab/bookmark-agent.c:1147
+#: libslab/bookmark-agent.c:1151
 msgid "Documents"
 msgstr "Документи"
 
-#: libslab/bookmark-agent.c:1158
+#: libslab/bookmark-agent.c:1162
 msgid "File System"
 msgstr "Файлова система"
 
-#: libslab/bookmark-agent.c:1161
+#: libslab/bookmark-agent.c:1165
 msgid "Network Servers"
 msgstr "Мрежови сървъри"

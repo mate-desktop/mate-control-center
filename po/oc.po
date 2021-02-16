@@ -6,18 +6,18 @@
 # Translators:
 # 48c2de07903ce5a77a8e90265f95c4c2_8909374 <837c8d0ab97b27e737893c19f79bd4de_348476>, 2018
 # Tot en òc <totenoc@gmail.com>, 2018
-# Martin Wimpress <code@flexion.org>, 2018
-# Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Cédric Valmary <cvalmary@yahoo.fr>, 2020
-# Quentin PAGÈS, 2020
+# Stefano Karapetsas <stefano@karapetsas.com>, 2021
+# Martin Wimpress <code@flexion.org>, 2021
+# Quentin PAGÈS, 2021
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.23.2\n"
+"Project-Id-Version: mate-control-center 1.25.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2020-01-12 13:03+0100\n"
+"POT-Creation-Date: 2021-02-03 09:02+0100\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Quentin PAGÈS, 2020\n"
+"Last-Translator: Quentin PAGÈS, 2021\n"
 "Language-Team: Occitan (post 1500) (https://www.transifex.com/mate/teams/13566/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,10 +30,12 @@ msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
 msgstr ""
+"[ 'Cambiar tèma;mate-appearance-properties.desktop', 'Definir las "
+"aplicacions preferidas;mate-default-applications-properties.desktop' ]"
 
 #: org.mate.control-center.gschema.xml.in:6
 msgid "Task names and associated .desktop files"
-msgstr ""
+msgstr "Noms dels prètzfaches e fichièrs .desktop ligats"
 
 #: org.mate.control-center.gschema.xml.in:7
 msgid ""
@@ -89,7 +91,7 @@ msgstr ""
 
 #: org.mate.control-center.gschema.xml.in:38
 msgid "More backgrounds URL"
-msgstr "URL per mai d'imatges de rèire plan"
+msgstr "URL per mai d'imatges de rèireplan"
 
 #: org.mate.control-center.gschema.xml.in:39
 msgid ""
@@ -113,7 +115,7 @@ msgstr ""
 
 #: org.mate.control-center.keybinding.gschema.xml.in:5
 msgid "Keybinding"
-msgstr ""
+msgstr "Acorchis"
 
 #: org.mate.control-center.keybinding.gschema.xml.in:6
 msgid "Keybinding associated with a custom shortcut."
@@ -128,7 +130,7 @@ msgid "Command associated with a custom keybinding."
 msgstr ""
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:202
+#: font-viewer/font-view.c:201
 msgid "Name"
 msgstr "Nom"
 
@@ -136,25 +138,25 @@ msgstr "Nom"
 msgid "Description associated with a custom keybinding."
 msgstr ""
 
-#: capplets/about-me/mate-about-me.c:293
+#: capplets/about-me/mate-about-me.c:292
 msgid "Select Image"
 msgstr "Causissètz un imatge"
 
-#: capplets/about-me/mate-about-me.c:295
+#: capplets/about-me/mate-about-me.c:294
 msgid "No Image"
 msgstr "Pas cap d'imatge"
 
-#: capplets/about-me/mate-about-me.c:323
+#: capplets/about-me/mate-about-me.c:322
 #: capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Imatges"
 
-#: capplets/about-me/mate-about-me.c:327
+#: capplets/about-me/mate-about-me.c:326
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Totes los fichièrs"
 
-#: capplets/about-me/mate-about-me.c:500
+#: capplets/about-me/mate-about-me.c:499
 #, c-format
 msgid "About %s"
 msgstr "A prepaus de %s"
@@ -167,17 +169,22 @@ msgstr "A prepaus de ieu"
 #: capplets/about-me/mate-about-me-dialog.ui:54
 #: capplets/about-me/mate-about-me-password.ui:54
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:119
+#: capplets/appearance/data/appearance.ui:61
+#: capplets/appearance/data/appearance.ui:1215
+#: capplets/appearance/data/appearance.ui:2069
+#: capplets/default-applications/mate-default-applications-properties.ui:55
 #: capplets/display/display-capplet.ui:106
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:140
 #: capplets/mouse/mate-mouse-properties.ui:140
-#: capplets/windows/window-properties.ui:84
+#: capplets/windows/window-properties.ui:83
 #: capplets/time-admin/src/time-admin.ui:386
-#: capplets/time-admin/src/time-zone.c:472
+#: capplets/time-admin/src/time-zone.c:473
 msgid "_Close"
 msgstr "_Tampar"
 
 #: capplets/about-me/mate-about-me-dialog.ui:100
 msgid "Select your photo"
-msgstr "Causir vòstre fòto"
+msgstr "Causir vòstra fòto"
 
 #: capplets/about-me/mate-about-me-dialog.ui:116
 msgid "Full Name"
@@ -203,41 +210,35 @@ msgstr "Desactivar l'identificacion per _emprencha digitala..."
 msgid "Set your personal information"
 msgstr "Definir vòstras entresenhas personalas"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/about-me/mate-about-me.desktop.in:7
-msgid "user-info"
-msgstr "user-info"
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/about-me/mate-about-me.desktop.in:13
 msgid "mate-control-center;MATE;personal;information;"
-msgstr ""
+msgstr "mate-control-center;MATE;personal;information;informacion;"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:100
+#: capplets/about-me/mate-about-me-fingerprint.c:123
 msgid ""
 "You are not allowed to access the device. Contact your system administrator."
 msgstr ""
-"Avètz pas accès al periferic. Contactatz vòstre administrator del sistèma."
+"Avètz pas accès al periferic. Contactatz vòstre administrator sistèma."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:102
+#: capplets/about-me/mate-about-me-fingerprint.c:125
 msgid "The device is already in use."
 msgstr "Lo periferic es ja utilizat."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:104
+#: capplets/about-me/mate-about-me-fingerprint.c:127
 msgid "An internal error occurred"
-msgstr ""
+msgstr "Una error intèrna se’s producha"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:221
+#: capplets/about-me/mate-about-me-fingerprint.c:270
 msgid "Delete registered fingerprints?"
 msgstr "Suprimir las emprenchas enregistradas ?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:224
+#: capplets/about-me/mate-about-me-fingerprint.c:273
 msgid "_Delete Fingerprints"
 msgstr "_Suprimir las emprenchas"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:231
+#: capplets/about-me/mate-about-me-fingerprint.c:280
 msgid ""
 "Do you want to delete your registered fingerprints so fingerprint login is "
 "disabled?"
@@ -245,36 +246,36 @@ msgstr ""
 "Volètz suprimir las emprenchas digitalas enregistradas e desactivar atal "
 "l'identificacion per emprenchas digitalas ?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:359
+#: capplets/about-me/mate-about-me-fingerprint.c:440
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "Acabat !"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:405
-#: capplets/about-me/mate-about-me-fingerprint.c:427
+#: capplets/about-me/mate-about-me-fingerprint.c:515
+#: capplets/about-me/mate-about-me-fingerprint.c:560
 #, c-format
 msgid "Could not access '%s' device"
-msgstr "Impossible d'accedir al periferic « %s »"
+msgstr "Accès impossible al periferic « %s »"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:476
+#: capplets/about-me/mate-about-me-fingerprint.c:621
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr "Impossible d'aviar la captura d'emprenchas amb lo periferic « %s »"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:524
+#: capplets/about-me/mate-about-me-fingerprint.c:691
 msgid "Could not access any fingerprint readers"
 msgstr "Impossible d'accedir a cap de lector d'emprencha digitala"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:525
+#: capplets/about-me/mate-about-me-fingerprint.c:692
 msgid "Please contact your system administrator for help."
 msgstr "Contactatz vòstre administrator del sistèma per assisténcia."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:559
+#: capplets/about-me/mate-about-me-fingerprint.c:756
 #: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "Activar l'identificacion per emprencha digitala"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:589
+#: capplets/about-me/mate-about-me-fingerprint.c:786
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -283,11 +284,11 @@ msgstr ""
 "Per activar l'autentificacion per emprenchas digitalas, vos cal enregistrar "
 "una de vòstras emprenchas amb l'ajuda del periferic « %s »."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:598
+#: capplets/about-me/mate-about-me-fingerprint.c:795
 msgid "Swipe finger on reader"
 msgstr "Lisar un det sul lector"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:600
+#: capplets/about-me/mate-about-me-fingerprint.c:797
 msgid "Place finger on reader"
 msgstr "Plaçar un det sul lector"
 
@@ -409,7 +410,7 @@ msgstr "L'ancian e lo novèl senhal son identics."
 
 #: capplets/about-me/mate-about-me-password.c:555
 msgid "The new password has already been used recently."
-msgstr ""
+msgstr "Lo senhal novèl es ja estat utilizat fa pas gaire."
 
 #: capplets/about-me/mate-about-me-password.c:826
 #, c-format
@@ -488,9 +489,13 @@ msgid "Assistive Technologies Preferences"
 msgstr "Preferéncias de las aisinas d'accessibilitat"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:86
+#: capplets/appearance/data/appearance.ui:1198
+#: capplets/appearance/data/appearance.ui:2051
+#: capplets/default-applications/mate-default-applications-properties.ui:38
 #: capplets/display/display-capplet.ui:58
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:123
 #: capplets/mouse/mate-mouse-properties.ui:124
-#: capplets/windows/window-properties.ui:68
+#: capplets/windows/window-properties.ui:67
 msgid "_Help"
 msgstr "Aju_da"
 
@@ -558,17 +563,12 @@ msgstr ""
 "Causida de las foncionalitats d'accessibilitat d'activar al moment de la "
 "connexion"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:7
-msgid "preferences-desktop-accessibility"
-msgstr "preferences-desktop-accessibility"
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
 msgid "mate-control-center;MATE;accessibility;features;"
 msgstr ""
+"mate-control-center;MATE;accessibility;features;accessibilitat;foncion;"
 
 #: capplets/appearance/appearance-desktop.c:615
 msgid "Add Wallpaper"
@@ -578,62 +578,63 @@ msgstr "Apondre un fons"
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: capplets/appearance/appearance-font.c:612
+#: capplets/appearance/appearance-font.c:613
 msgid "Select Font"
-msgstr ""
+msgstr "Seleccionar la poliça"
 
-#: capplets/appearance/appearance-font.c:615
+#: capplets/appearance/appearance-font.c:616
+#: capplets/appearance/data/appearance.ui:951
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: capplets/appearance/appearance-font.c:617
+#: capplets/appearance/appearance-font.c:618
 #: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
 msgid "_Open"
 msgstr "_Dobrir"
 
-#: capplets/appearance/appearance-font.c:622
-#: capplets/appearance/data/appearance.ui:2867
+#: capplets/appearance/appearance-font.c:623
+#: capplets/appearance/data/appearance.ui:3075
 msgid "Fonts"
 msgstr "Poliças"
 
 #: capplets/appearance/appearance-main.c:52
 #, c-format
 msgid "Could not load user interface file: %s"
-msgstr ""
+msgstr "Cargament impossible de l’interfàcia utilizaire : %s"
 
-#: capplets/appearance/appearance-main.c:153
+#: capplets/appearance/appearance-main.c:157
 msgid "Specify the filename of a theme to install"
 msgstr "Especificatz lo nom de fichièr d'un tèma d'installar"
 
-#: capplets/appearance/appearance-main.c:154
+#: capplets/appearance/appearance-main.c:158
 msgid "filename"
 msgstr "nom de fichièr"
 
-#: capplets/appearance/appearance-main.c:161
+#: capplets/appearance/appearance-main.c:165
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr ""
 "Indica lo nom de la pagina d'afichar (theme|background|fonts|interface)"
 
-#: capplets/appearance/appearance-main.c:162
-#: capplets/default-applications/mate-da-capplet.c:839
-#: capplets/mouse/mate-mouse-properties.c:443
+#: capplets/appearance/appearance-main.c:166
+#: capplets/default-applications/mate-da-capplet.c:798
+#: capplets/mouse/mate-mouse-properties.c:401
 msgid "page"
 msgstr "pagina"
 
-#: capplets/appearance/appearance-main.c:169
+#: capplets/appearance/appearance-main.c:173
 msgid "[WALLPAPER...]"
-msgstr "[PAPIÈR PINTRAT...]"
+msgstr "[RÈIREPLAN...]"
 
 #: capplets/appearance/appearance-style.c:171
-#: capplets/common/mate-theme-info.c:494
+#: capplets/common/mate-theme-info.c:491
 msgid "Default Pointer"
 msgstr "Puntador per defaut"
 
 #: capplets/appearance/appearance-style.c:233
 #: capplets/appearance/appearance-themes.c:658
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
-#: font-viewer/font-view.c:569
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
+#: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Installar"
 
@@ -689,372 +690,409 @@ msgstr "La darrièra suggestion de poliça aplicada pòt èsser restablida."
 msgid "The current theme suggests a font."
 msgstr "Lo tèma actual prepausa una poliça."
 
-#: capplets/appearance/appearance-themes.c:1015
+#: capplets/appearance/appearance-themes.c:1011
 msgid "Custom"
 msgstr "Personalizada"
 
-#: capplets/appearance/data/appearance.ui:40
-msgid "Customize Theme"
-msgstr "Personalizar lo tèma"
-
-#: capplets/appearance/data/appearance.ui:189
-msgid "Controls"
-msgstr "Contraròtles"
-
-#: capplets/appearance/data/appearance.ui:226
-msgid "The current controls theme does not support color schemes."
-msgstr "Lo tèma de contraròtles actual pren pas en carga los jòcs de colors."
-
-#: capplets/appearance/data/appearance.ui:281
-msgid "_Tooltips:"
-msgstr "_Infobullas :"
-
-#: capplets/appearance/data/appearance.ui:367
-msgid "Text"
-msgstr "Tèxte"
-
-#: capplets/appearance/data/appearance.ui:379
-#: capplets/appearance/data/appearance.ui:2397
-msgid "Background"
-msgstr "Rèireplan"
-
-#: capplets/appearance/data/appearance.ui:391
-msgid "_Selected items:"
-msgstr "Elements _seleccionats :"
-
-#: capplets/appearance/data/appearance.ui:405
-msgid "_Input boxes:"
-msgstr "_Zònas de picada :"
-
-#: capplets/appearance/data/appearance.ui:419
-msgid "_Windows:"
-msgstr "_Fenèstras :"
-
-#: capplets/appearance/data/appearance.ui:446
-msgid "_Reset to Defaults"
-msgstr "_Reïnicializar a las valors per defaut"
-
-#: capplets/appearance/data/appearance.ui:476
-msgid "Colors"
-msgstr "Colors"
-
-#: capplets/appearance/data/appearance.ui:557
-msgid "Window Border"
-msgstr "Bordadura de la fenèstra"
-
-#: capplets/appearance/data/appearance.ui:638
-msgid "Icons"
-msgstr "Icònas"
-
-#: capplets/appearance/data/appearance.ui:688
-msgid "_Size:"
-msgstr "_Talha :"
-
-#. small threshold
-#: capplets/appearance/data/appearance.ui:709
-#: capplets/mouse/mate-mouse-properties.ui:679
-msgid "Small"
-msgstr "Pichona"
-
-#. large threshold
-#: capplets/appearance/data/appearance.ui:739
-#: capplets/mouse/mate-mouse-properties.ui:716
-msgid "Large"
-msgstr "Granda"
-
-#: capplets/appearance/data/appearance.ui:803
-msgid "Pointer"
-msgstr "Puntador"
-
-#: capplets/appearance/data/appearance.ui:828
+#: capplets/appearance/data/appearance.ui:45
 msgid "Font Rendering Details"
 msgstr "Detalhs dels renduts de las poliças"
 
-#: capplets/appearance/data/appearance.ui:886
+#: capplets/appearance/data/appearance.ui:102
 msgid "R_esolution"
 msgstr "R_esolucion"
 
-#: capplets/appearance/data/appearance.ui:909
+#: capplets/appearance/data/appearance.ui:125
 msgid "Dots per inch (DPI):"
-msgstr ""
+msgstr "Punts per poce (DPI) :"
 
-#: capplets/appearance/data/appearance.ui:945
+#: capplets/appearance/data/appearance.ui:161
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:946
+#: capplets/appearance/data/appearance.ui:162
 msgid "Automatic detection:"
-msgstr ""
+msgstr "Deteccion automatica :"
 
-#: capplets/appearance/data/appearance.ui:990
+#: capplets/appearance/data/appearance.ui:206
 msgid "Smoothing"
 msgstr "Lissatge"
 
-#: capplets/appearance/data/appearance.ui:1023
+#: capplets/appearance/data/appearance.ui:240
 msgid "Gra_yscale"
 msgstr "_Nivèls de gris"
 
-#: capplets/appearance/data/appearance.ui:1069
+#: capplets/appearance/data/appearance.ui:286
 msgid "Sub_pixel (LCDs)"
 msgstr "Sos_pixèl (LCD)"
 
-#: capplets/appearance/data/appearance.ui:1115
+#: capplets/appearance/data/appearance.ui:332
 msgid "_None"
 msgstr "_Pas cap"
 
 #. font hinting
-#: capplets/appearance/data/appearance.ui:1180
+#: capplets/appearance/data/appearance.ui:412
 msgid "Hinting"
 msgstr "Optimizacion"
 
-#: capplets/appearance/data/appearance.ui:1212
+#: capplets/appearance/data/appearance.ui:445
 msgid "N_one"
 msgstr "_Pas cap"
 
-#: capplets/appearance/data/appearance.ui:1257
+#: capplets/appearance/data/appearance.ui:490
 msgid "_Slight"
 msgstr "_Leugièra"
 
-#: capplets/appearance/data/appearance.ui:1303
+#: capplets/appearance/data/appearance.ui:536
 msgid "_Full"
 msgstr "_Totala"
 
-#: capplets/appearance/data/appearance.ui:1349
+#: capplets/appearance/data/appearance.ui:582
 msgid "_Medium"
 msgstr "_Mejana"
 
-#: capplets/appearance/data/appearance.ui:1413
+#: capplets/appearance/data/appearance.ui:661
 msgid "Subpixel Order"
 msgstr "Òrdre sospixèl"
 
 #. pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:1443
+#: capplets/appearance/data/appearance.ui:692
 msgid "_RGB"
 msgstr "_RVB"
 
 #. pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:1482
+#: capplets/appearance/data/appearance.ui:731
 msgid "_BGR"
 msgstr "_BVR"
 
 #. vertical hinting, pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:1522
+#: capplets/appearance/data/appearance.ui:771
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:811
 msgid "_VRGB"
 msgstr "_vRVB"
 
-#: capplets/appearance/data/appearance.ui:1631
+#: capplets/appearance/data/appearance.ui:935
 msgid "Save Theme As..."
 msgstr "Enregistrar lo tèma..."
 
-#: capplets/appearance/data/appearance.ui:1727
+#: capplets/appearance/data/appearance.ui:968
+#: capplets/time-admin/src/time-admin.ui:370
+msgid "_Save"
+msgstr "_Enregistrar"
+
+#: capplets/appearance/data/appearance.ui:1033
 msgid "Save _background image"
 msgstr "Enre_gistrar l'imatge de rèireplan"
 
-#: capplets/appearance/data/appearance.ui:1741
+#: capplets/appearance/data/appearance.ui:1047
 msgid "Save _notification theme"
-msgstr ""
+msgstr "Enregistrar lo tèma de _notificacion"
 
-#: capplets/appearance/data/appearance.ui:1758
+#: capplets/appearance/data/appearance.ui:1064
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "_Nom :"
 
-#: capplets/appearance/data/appearance.ui:1773
+#: capplets/appearance/data/appearance.ui:1079
 msgid "_Description:"
 msgstr "_Descripcion :"
 
-#: capplets/appearance/data/appearance.ui:1809
+#: capplets/appearance/data/appearance.ui:1157
 msgid "Text below items"
 msgstr "Tèxte jos las icònas"
 
-#: capplets/appearance/data/appearance.ui:1812
+#: capplets/appearance/data/appearance.ui:1160
 msgid "Text beside items"
 msgstr "Tèxte al costat de las icònas"
 
-#: capplets/appearance/data/appearance.ui:1815
+#: capplets/appearance/data/appearance.ui:1163
 msgid "Icons only"
 msgstr "Sonque las icònas"
 
-#: capplets/appearance/data/appearance.ui:1818
+#: capplets/appearance/data/appearance.ui:1166
 msgid "Text only"
 msgstr "Sonque lo tèxte"
 
-#: capplets/appearance/data/appearance.ui:1829
+#: capplets/appearance/data/appearance.ui:1179
+msgid "Customize Theme"
+msgstr "Personalizar lo tèma"
+
+#: capplets/appearance/data/appearance.ui:1301
+#: capplets/appearance/data/appearance.ui:1671
+#: capplets/appearance/data/appearance.ui:1754
+#: capplets/appearance/data/appearance.ui:1913
+#: capplets/appearance/data/appearance.ui:2157
+msgid "_Delete"
+msgstr "_Suprimir"
+
+#: capplets/appearance/data/appearance.ui:1331
+msgid "Controls"
+msgstr "Contraròtles"
+
+#: capplets/appearance/data/appearance.ui:1368
+msgid "The current controls theme does not support color schemes."
+msgstr "Lo tèma de contraròtles actual pren pas en carga los jòcs de colors."
+
+#: capplets/appearance/data/appearance.ui:1424
+msgid "_Tooltips:"
+msgstr "_Infobullas :"
+
+#: capplets/appearance/data/appearance.ui:1510
+msgid "Text"
+msgstr "Tèxte"
+
+#: capplets/appearance/data/appearance.ui:1522
+#: capplets/appearance/data/appearance.ui:2573
+msgid "Background"
+msgstr "Rèireplan"
+
+#: capplets/appearance/data/appearance.ui:1534
+msgid "_Selected items:"
+msgstr "Elements _seleccionats :"
+
+#: capplets/appearance/data/appearance.ui:1548
+msgid "_Input boxes:"
+msgstr "_Zònas de picada :"
+
+#: capplets/appearance/data/appearance.ui:1562
+msgid "_Windows:"
+msgstr "_Fenèstras :"
+
+#: capplets/appearance/data/appearance.ui:1589
+msgid "_Reset to Defaults"
+msgstr "_Reïnicializar a las valors per defaut"
+
+#: capplets/appearance/data/appearance.ui:1621
+msgid "Colors"
+msgstr "Colors"
+
+#: capplets/appearance/data/appearance.ui:1704
+msgid "Window Border"
+msgstr "Bordadura de la fenèstra"
+
+#: capplets/appearance/data/appearance.ui:1787
+msgid "Icons"
+msgstr "Icònas"
+
+#: capplets/appearance/data/appearance.ui:1837
+msgid "_Size:"
+msgstr "_Talha :"
+
+#. small threshold
+#: capplets/appearance/data/appearance.ui:1858
+#: capplets/mouse/mate-mouse-properties.ui:680
+msgid "Small"
+msgstr "Pichona"
+
+#. large threshold
+#: capplets/appearance/data/appearance.ui:1888
+#: capplets/mouse/mate-mouse-properties.ui:717
+msgid "Large"
+msgstr "Granda"
+
+#: capplets/appearance/data/appearance.ui:1954
+msgid "Pointer"
+msgstr "Puntador"
+
+#: capplets/appearance/data/appearance.ui:1987
 msgid "Solid color"
 msgstr "Color unida"
 
-#: capplets/appearance/data/appearance.ui:1832
+#: capplets/appearance/data/appearance.ui:1990
 msgid "Horizontal gradient"
 msgstr "Degradat orizontal"
 
-#: capplets/appearance/data/appearance.ui:1835
+#: capplets/appearance/data/appearance.ui:1993
 msgid "Vertical gradient"
 msgstr "Degradat vertical"
 
-#: capplets/appearance/data/appearance.ui:1846
+#: capplets/appearance/data/appearance.ui:2009
 msgid "Tile"
 msgstr "Títol"
 
-#: capplets/appearance/data/appearance.ui:1849
+#: capplets/appearance/data/appearance.ui:2012
 msgid "Zoom"
 msgstr "Zoom"
 
-#: capplets/appearance/data/appearance.ui:1852
+#: capplets/appearance/data/appearance.ui:2015
 msgid "Center"
 msgstr "Centre"
 
-#: capplets/appearance/data/appearance.ui:1855
+#: capplets/appearance/data/appearance.ui:2018
 msgid "Scale"
 msgstr "Escala"
 
-#: capplets/appearance/data/appearance.ui:1858
+#: capplets/appearance/data/appearance.ui:2021
 msgid "Stretch"
-msgstr ""
+msgstr "Estirat"
 
-#: capplets/appearance/data/appearance.ui:1861
+#: capplets/appearance/data/appearance.ui:2024
 msgid "Span"
 msgstr "Espandir"
 
-#: capplets/appearance/data/appearance.ui:1869
+#: capplets/appearance/data/appearance.ui:2032
 msgid "Appearance Preferences"
 msgstr "Preferéncias de l'aparéncia"
 
-#: capplets/appearance/data/appearance.ui:2009
+#: capplets/appearance/data/appearance.ui:2175
 msgid "Save _As..."
 msgstr "Enregistrar _jos..."
 
-#: capplets/appearance/data/appearance.ui:2025
+#: capplets/appearance/data/appearance.ui:2193
 msgid "C_ustomize..."
 msgstr "Pers_onalizar..."
 
-#: capplets/appearance/data/appearance.ui:2040
+#: capplets/appearance/data/appearance.ui:2210
 msgid "_Install..."
 msgstr "_Installar..."
 
-#: capplets/appearance/data/appearance.ui:2066
+#: capplets/appearance/data/appearance.ui:2238
 msgid "Get more themes online"
 msgstr "Obténer de tèmas en linha mai"
 
-#: capplets/appearance/data/appearance.ui:2096
+#: capplets/appearance/data/appearance.ui:2268
 msgid "Theme"
 msgstr "Tèma"
 
-#: capplets/appearance/data/appearance.ui:2166
+#: capplets/appearance/data/appearance.ui:2338
 msgid "_Style:"
 msgstr "_Estil :"
 
-#: capplets/appearance/data/appearance.ui:2210
+#: capplets/appearance/data/appearance.ui:2382
 msgid "C_olors:"
 msgstr "C_olors :"
 
-#: capplets/appearance/data/appearance.ui:2250
-#: capplets/appearance/data/appearance.ui:2266
+#: capplets/appearance/data/appearance.ui:2422
+#: capplets/appearance/data/appearance.ui:2438
 msgid "Open a dialog to specify the color"
 msgstr "Dobrir una bóstia per definir la color"
 
-#: capplets/appearance/data/appearance.ui:2321
+#: capplets/appearance/data/appearance.ui:2493
 msgid "Get more backgrounds online"
 msgstr "Obténer d'autres imatges de rèireplan en linha"
 
-#: capplets/appearance/data/appearance.ui:2359
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
+#: capplets/appearance/data/appearance.ui:2533
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:703
 msgid "_Add..."
 msgstr "_Apondre..."
 
-#: capplets/appearance/data/appearance.ui:2492
+#: capplets/appearance/data/appearance.ui:2669
 msgid "_Application font:"
 msgstr "Poliça de l'_aplicacion :"
 
-#: capplets/appearance/data/appearance.ui:2507
+#: capplets/appearance/data/appearance.ui:2684
 msgid "_Document font:"
 msgstr "Poliça del _document :"
 
-#: capplets/appearance/data/appearance.ui:2521
+#: capplets/appearance/data/appearance.ui:2698
 msgid "Des_ktop font:"
 msgstr "Poliça del _burèu :"
 
-#: capplets/appearance/data/appearance.ui:2536
+#: capplets/appearance/data/appearance.ui:2713
 msgid "_Window title font:"
 msgstr "Poliça del títol de la fenèstra :"
 
-#: capplets/appearance/data/appearance.ui:2551
+#: capplets/appearance/data/appearance.ui:2728
 msgid "_Fixed width font:"
-msgstr "Poliça de chassa fi_x :a"
+msgstr "Poliça de chassa fi_xa :"
 
-#: capplets/appearance/data/appearance.ui:2576
+#: capplets/appearance/data/appearance.ui:2768
 msgid "Add new f_ont..."
 msgstr "Ajustar una poliça novèla…"
 
-#: capplets/appearance/data/appearance.ui:2607
+#: capplets/appearance/data/appearance.ui:2799
 msgid "Rendering"
 msgstr "Rendut"
 
-#: capplets/appearance/data/appearance.ui:2638
+#: capplets/appearance/data/appearance.ui:2831
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "Lissatge sos_pixèl (LCD)"
 
-#: capplets/appearance/data/appearance.ui:2684
+#: capplets/appearance/data/appearance.ui:2877
 msgid "Best _shapes"
 msgstr "Melhor _rendut"
 
-#: capplets/appearance/data/appearance.ui:2730
+#: capplets/appearance/data/appearance.ui:2923
 msgid "_Monochrome"
 msgstr "_Monocròm"
 
-#: capplets/appearance/data/appearance.ui:2775
+#: capplets/appearance/data/appearance.ui:2968
 msgid "Best co_ntrast"
 msgstr "Melhor _contraste"
 
-#: capplets/appearance/data/appearance.ui:2837
+#: capplets/appearance/data/appearance.ui:3045
 msgid "D_etails..."
 msgstr "D_etalhs..."
 
-#: capplets/appearance/data/appearance.ui:2892
+#: capplets/appearance/data/appearance.ui:3100
 msgid "Menus and Toolbars"
 msgstr "Menús e barras d’aisinas"
 
-#: capplets/appearance/data/appearance.ui:2927
+#: capplets/appearance/data/appearance.ui:3135
 msgid "Show _icons in menus"
 msgstr "Afichar las _icònas dins los menús"
 
-#: capplets/appearance/data/appearance.ui:2944
+#: capplets/appearance/data/appearance.ui:3152
 msgid "_Editable menu shortcut keys"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:2967
+#: capplets/appearance/data/appearance.ui:3175
 msgid "Toolbar _button labels:"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3035
+#: capplets/appearance/data/appearance.ui:3243
 msgid "Buttons"
 msgstr "Botons"
 
-#: capplets/appearance/data/appearance.ui:3064
+#: capplets/appearance/data/appearance.ui:3272
 msgid "Show icons on buttons"
 msgstr "Afichar las icònas dins los botons"
 
-#: capplets/appearance/data/appearance.ui:3068
+#: capplets/appearance/data/appearance.ui:3276
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3105
+#: capplets/appearance/data/appearance.ui:3313
+msgid "File Chooser"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3348
+msgid "Show hidden items"
+msgstr "Mostrar los elements amagats"
+
+#: capplets/appearance/data/appearance.ui:3365
+msgid "Show size column"
+msgstr "Mostrar la colomna talha"
+
+#: capplets/appearance/data/appearance.ui:3381
+msgid "Show type column"
+msgstr "Mostrar la colomna tipe"
+
+#: capplets/appearance/data/appearance.ui:3397
+msgid "Sort directories first"
+msgstr "Triar los repertòris en primièr"
+
+#: capplets/appearance/data/appearance.ui:3443
 msgid "Preview"
 msgstr "Apercebut"
 
-#: capplets/appearance/data/appearance.ui:3145
+#: capplets/appearance/data/appearance.ui:3483
 msgid "_File"
 msgstr "_Fichièr"
 
-#: capplets/appearance/data/appearance.ui:3215
+#: capplets/appearance/data/appearance.ui:3553
 msgid "Edit"
 msgstr "Edicion"
 
-#: capplets/appearance/data/appearance.ui:3344
+#: capplets/appearance/data/appearance.ui:3610
+msgid "New"
+msgstr "Novèl"
+
+#: capplets/appearance/data/appearance.ui:3683
 msgid "Interface"
 msgstr "Interfàcia"
 
@@ -1068,18 +1106,11 @@ msgstr "Personalizar l'aparéncia del burèu"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/appearance/data/mate-appearance-properties.desktop.in:7
-#: capplets/appearance/data/mate-theme-installer.desktop.in:7
-msgid "preferences-desktop-theme"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/appearance/data/mate-appearance-properties.desktop.in:13
 msgid "mate-control-center;MATE;appearance;properties;desktop;customize;look;"
 msgstr ""
+"mate-control-"
+"center;MATE;appearance;properties;desktop;customize;look;proprietats;burèu;personalizacion;fons;aparencia;"
 
 #: capplets/appearance/data/mate-theme-installer.desktop.in:3
 msgid "Theme Installer"
@@ -1093,7 +1124,7 @@ msgstr "Installar los paquets de tèmas per las divèrsas partidas del burèu"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/appearance/data/mate-theme-installer.desktop.in:14
 msgid "mate-control-center;MATE;install;desktop;themes;"
-msgstr ""
+msgstr "mate-control-center;MATE;install;desktop;themes;tèma;burèu;installar;"
 
 #: capplets/appearance/data/mate-theme-package.xml.in:5
 msgid "Mate Theme Package"
@@ -1128,7 +1159,7 @@ msgstr "%d %s sus %d %s"
 #: capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
-msgstr[0] "pixèls"
+msgstr[0] "pixèl"
 msgstr[1] "pixèls"
 
 #: capplets/appearance/mate-wp-item.c:319
@@ -1164,7 +1195,7 @@ msgstr "Imatge absent"
 #: capplets/appearance/theme-installer.c:186
 #: capplets/appearance/theme-installer.c:242
 msgid "Cannot install theme"
-msgstr "Impossible d'installar lo tèma"
+msgstr "Installacion impossibla del tèma"
 
 #: capplets/appearance/theme-installer.c:188
 #, c-format
@@ -1210,7 +1241,7 @@ msgstr "Anullar"
 #: capplets/appearance/theme-installer.c:409
 #: capplets/appearance/theme-util.c:122
 msgid "Theme cannot be deleted"
-msgstr "Impossible de suprimir lo tèma"
+msgstr "Supression impossibla del tèma"
 
 #: capplets/appearance/theme-installer.c:427
 #, c-format
@@ -1277,7 +1308,7 @@ msgid "The theme already exists. Would you like to replace it?"
 msgstr "Lo tèma existís ja, lo volètz remplaçar ?"
 
 #: capplets/appearance/theme-save.c:158
-#: capplets/common/file-transfer-dialog.c:438
+#: capplets/common/file-transfer-dialog.c:436
 msgid "_Overwrite"
 msgstr "_Remplaçar"
 
@@ -1287,9 +1318,9 @@ msgstr "Volètz suprimir aqueste tèma ?"
 
 #: capplets/appearance/theme-util.c:282
 msgid "Could not install theme engine"
-msgstr "Impossible d'installar lo motor de tèma"
+msgstr "Installacion impossibla del motor de tèma"
 
-#: capplets/common/activate-settings-daemon.c:16
+#: capplets/common/activate-settings-daemon.c:15
 msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
@@ -1310,7 +1341,7 @@ msgstr "Còpia del fichièr : %u sus %u"
 #: capplets/common/file-transfer-dialog.c:143
 #, c-format
 msgid "Copying '%s'"
-msgstr "Còpia de '%s'"
+msgstr "Còpia de « %s »"
 
 #: capplets/common/file-transfer-dialog.c:183
 #: capplets/common/file-transfer-dialog.c:308
@@ -1327,11 +1358,11 @@ msgstr "Fenèstra parenta de la bóstia de dialòg"
 
 #: capplets/common/file-transfer-dialog.c:229
 msgid "From URI"
-msgstr "Dempuèi l'URI"
+msgstr "A partir de l'URI"
 
 #: capplets/common/file-transfer-dialog.c:230
 msgid "URI currently transferring from"
-msgstr "Transferiment en cors dempuèi l'URI"
+msgstr "Transferiment en cors a partir de l'URI"
 
 #: capplets/common/file-transfer-dialog.c:237
 msgid "To URI"
@@ -1355,7 +1386,7 @@ msgstr "Indèx d'URI en cors"
 
 #: capplets/common/file-transfer-dialog.c:254
 msgid "Current URI index - starts from 1"
-msgstr "Indèx d'URI en cors - s'avia dempuèi 1"
+msgstr "Indèx d'URI en cors - s'avia a partir de 1"
 
 #: capplets/common/file-transfer-dialog.c:261
 msgid "Total URIs"
@@ -1365,20 +1396,20 @@ msgstr "Total d'URI"
 msgid "Total number of URIs"
 msgstr "Nombre total d'URI"
 
-#: capplets/common/file-transfer-dialog.c:432
+#: capplets/common/file-transfer-dialog.c:430
 #, c-format
 msgid "File '%s' already exists. Do you want to overwrite it?"
 msgstr "Lo fichièr « %s » existís ja. Lo volètz espotir ?"
 
-#: capplets/common/file-transfer-dialog.c:435
+#: capplets/common/file-transfer-dialog.c:433
 msgid "_Skip"
 msgstr "_Ignorar"
 
-#: capplets/common/file-transfer-dialog.c:436
+#: capplets/common/file-transfer-dialog.c:434
 msgid "Overwrite _All"
 msgstr "_Remplaçar tot"
 
-#: capplets/common/mate-theme-info.c:1578
+#: capplets/common/mate-theme-info.c:1577
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1387,7 +1418,7 @@ msgstr ""
 "Aqueste tèma aurà pas l'aspècte desirat perque lo tèma GTK+ requerit « %s » "
 "es pas installat."
 
-#: capplets/common/mate-theme-info.c:1588
+#: capplets/common/mate-theme-info.c:1587
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1396,7 +1427,7 @@ msgstr ""
 "Aqueste tèma aurà pas l'aspècte desirat perque lo tèma requerit del "
 "gestionari de fenèstra « %s » es pas installat."
 
-#: capplets/common/mate-theme-info.c:1596
+#: capplets/common/mate-theme-info.c:1595
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1406,7 +1437,7 @@ msgstr ""
 "%s » es pas installada."
 
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:3
-#: capplets/default-applications/mate-default-applications-properties.ui:13
+#: capplets/default-applications/mate-default-applications-properties.ui:23
 msgid "Preferred Applications"
 msgstr "Aplicacions preferidas"
 
@@ -1414,121 +1445,117 @@ msgstr "Aplicacions preferidas"
 msgid "Select your default applications"
 msgstr "Seleccionatz vòstras aplicacions per defaut"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/default-applications/mate-default-applications-properties.desktop.in:7
-msgid "preferences-desktop-default-applications"
-msgstr "preferences-desktop-default-applications"
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:13
 msgid "mate-control-center;MATE;default;preferred;applications;"
 msgstr ""
+"mate-control-"
+"center;MATE;default;preferred;applications;configuracion;aplicacions;paramètres;contrarotle;"
 
-#: capplets/default-applications/mate-da-capplet.c:639
+#: capplets/default-applications/mate-da-capplet.c:597
 msgid "Could not load the main interface"
-msgstr "Impossible de cargar l'interfàcia principala"
+msgstr "Cargament impossible de l’interfàcia principala"
 
-#: capplets/default-applications/mate-da-capplet.c:640
+#: capplets/default-applications/mate-da-capplet.c:598
 msgid "Please make sure that the applet is properly installed"
 msgstr "Verificatz que l'applet es installada corrèctament"
 
-#: capplets/default-applications/mate-da-capplet.c:838
+#: capplets/default-applications/mate-da-capplet.c:797
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Indica lo nom de la pagina d'afichar (internet|multimedia|system|a11y)"
 
-#: capplets/default-applications/mate-da-capplet.c:844
+#: capplets/default-applications/mate-da-capplet.c:803
 msgid "- MATE Default Applications"
 msgstr "- Aplicacions per defaut de MATE"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:134
+#: capplets/default-applications/mate-default-applications-properties.ui:147
 msgid "Web Browser"
-msgstr "Navigador internet"
+msgstr "Navegador internet"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:202
+#: capplets/default-applications/mate-default-applications-properties.ui:217
 msgid "Mail Reader"
 msgstr "Legidor de corrièrs electronics"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:270
+#: capplets/default-applications/mate-default-applications-properties.ui:287
 msgid "Instant Messenger"
 msgstr "Messatjariá instantanèa"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:289
+#: capplets/default-applications/mate-default-applications-properties.ui:306
 msgid "Internet"
 msgstr "Internet"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:357
+#: capplets/default-applications/mate-default-applications-properties.ui:376
 msgid "Image Viewer"
-msgstr "Afichador d'imatges"
+msgstr "Visualizaira d'imatges"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:425
+#: capplets/default-applications/mate-default-applications-properties.ui:446
 msgid "Multimedia Player"
 msgstr "Lector multimèdia"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:493
+#: capplets/default-applications/mate-default-applications-properties.ui:516
 msgid "Video Player"
 msgstr "Lector Vidèo"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:515
+#: capplets/default-applications/mate-default-applications-properties.ui:538
 msgid "Multimedia"
 msgstr "Multimèdia"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:584
+#: capplets/default-applications/mate-default-applications-properties.ui:609
 msgid "Text Editor"
 msgstr "Editor de tèxte"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:652
+#: capplets/default-applications/mate-default-applications-properties.ui:679
 msgid "Terminal Emulator"
 msgstr "Emulator de terminal"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:720
+#: capplets/default-applications/mate-default-applications-properties.ui:749
 msgid "File Manager"
 msgstr "Gestionari de fichièrs"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:788
+#: capplets/default-applications/mate-default-applications-properties.ui:819
 msgid "Calculator"
 msgstr "Calculadoira"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:810
+#: capplets/default-applications/mate-default-applications-properties.ui:841
 msgid "System"
 msgstr "Sistèma"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:879
+#: capplets/default-applications/mate-default-applications-properties.ui:912
 msgid "Document Viewer"
 msgstr "Afichador de documents"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:947
+#: capplets/default-applications/mate-default-applications-properties.ui:982
 msgid "Word Processor"
-msgstr ""
+msgstr "Picada de tèxtes"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1015
+#: capplets/default-applications/mate-default-applications-properties.ui:1052
 msgid "Spreadsheet Editor"
-msgstr ""
+msgstr "Editor de fuèlh de calcul"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1037
+#: capplets/default-applications/mate-default-applications-properties.ui:1074
 msgid "Office"
 msgstr "Burèu"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1094
+#: capplets/default-applications/mate-default-applications-properties.ui:1133
 msgid "_Run at start"
-msgstr "Executar a la d_obertura de sesilha"
+msgstr "Executar a la d_obertura de session"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1122
+#: capplets/default-applications/mate-default-applications-properties.ui:1161
 msgid "Visual"
 msgstr "Visual"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1178
+#: capplets/default-applications/mate-default-applications-properties.ui:1219
 msgid "Run at st_art"
-msgstr "Executar a la d_obertura de sesilha"
+msgstr "Executar a la d_obertura de session"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1206
+#: capplets/default-applications/mate-default-applications-properties.ui:1247
 msgid "Mobility"
 msgstr "Mobilitat"
 
-#: capplets/default-applications/mate-default-applications-properties.ui:1228
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1527
+#: capplets/default-applications/mate-default-applications-properties.ui:1269
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1562
 msgid "Accessibility"
 msgstr "Accessibilitat"
 
@@ -1539,15 +1566,15 @@ msgstr "Normala"
 
 #: capplets/display/display-capplet.ui:25
 #: capplets/display/xrandr-capplet.c:307
-#: capplets/windows/window-properties.ui:222
+#: capplets/windows/window-properties.ui:734
 msgid "Left"
 msgstr "Esquèrra"
 
 #: capplets/display/display-capplet.ui:28
 #: capplets/display/xrandr-capplet.c:308
-#: capplets/windows/window-properties.ui:221
+#: capplets/windows/window-properties.ui:733
 msgid "Right"
-msgstr "Dreita"
+msgstr "Drecha"
 
 #: capplets/display/display-capplet.ui:31
 msgid "Upside-down"
@@ -1559,7 +1586,7 @@ msgstr "Preferéncias del monitor"
 
 #: capplets/display/display-capplet.ui:75
 msgid "Apply system-wide"
-msgstr ""
+msgstr "Aplicar a tot lo sistèma"
 
 #: capplets/display/display-capplet.ui:79
 msgid ""
@@ -1569,7 +1596,7 @@ msgstr ""
 
 #: capplets/display/display-capplet.ui:90
 msgid "_Apply"
-msgstr ""
+msgstr "_Aplicar"
 
 #: capplets/display/display-capplet.ui:161
 msgid "Sa_me image in all monitors"
@@ -1609,11 +1636,11 @@ msgstr "Inclure lo _tablèu de bòrd"
 
 #: capplets/display/display-capplet.ui:400
 msgid "Set as primary"
-msgstr ""
+msgstr "Definir coma principal"
 
 #: capplets/display/display-capplet.ui:405
 msgid "Sets the selected monitor as primary."
-msgstr ""
+msgstr "Definís l’ecran coma principal."
 
 #: capplets/display/display-capplet.ui:417
 msgid "R_otation:"
@@ -1626,17 +1653,11 @@ msgstr "Ecran"
 
 #: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
-msgstr ""
+msgstr "Afichatges"
 
 #: capplets/display/mate-display-properties.desktop.in:4
 msgid "Change resolution and position of monitors and projectors"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/display/mate-display-properties.desktop.in:7
-msgid "preferences-desktop-display"
-msgstr ""
+msgstr "Modificar la resolucion e la posicion dels ecrans e projectors"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1644,6 +1665,8 @@ msgstr ""
 msgid ""
 "mate-control-center;MATE;resolution;position;monitors;display;properties;"
 msgstr ""
+"mate-control-"
+"center;MATE;resolution;position;monitors;display;properties;afichatge;ecran;resolucion;proprietats;"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:44
 #, c-format
@@ -1674,7 +1697,7 @@ msgstr ""
 #: capplets/display/mate-display-properties-install-systemwide.c:179
 #, c-format
 msgid "Could not open %s: %s\n"
-msgstr ""
+msgstr "Dubertura impossibla de %s : %s\n"
 
 #. Translators: first %s is a filename; second %s is an error message
 #: capplets/display/mate-display-properties-install-systemwide.c:188
@@ -1685,7 +1708,7 @@ msgstr ""
 #: capplets/display/mate-display-properties-install-systemwide.c:195
 #, c-format
 msgid "%s must be a regular file\n"
-msgstr ""
+msgstr "%s deu èsser un fichièr normal\n"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:204
 msgid "This program must only be run through pkexec(1)"
@@ -1712,19 +1735,19 @@ msgstr ""
 #: capplets/display/mate-display-properties-install-systemwide.c:231
 #, c-format
 msgid "%s must be a directory\n"
-msgstr ""
+msgstr "%s deu èsser un repertòri\n"
 
 #. Translators: the first %s/%s is a directory/filename; the last %s is an
 #. error message
 #: capplets/display/mate-display-properties-install-systemwide.c:242
 #, c-format
 msgid "Could not open %s/%s: %s\n"
-msgstr ""
+msgstr "Dubertura impossibla de %s / %s : %s\n"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:262
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
-msgstr ""
+msgstr "Impossible de renommar %s en %s : %s\n"
 
 #: capplets/display/org.mate.randr.policy.in:17
 msgid "Install multi-monitor settings for the whole system"
@@ -1768,24 +1791,26 @@ msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
 msgstr ""
+"Seleccionatz un ecran per modificar sas proprietats ; fasètz-lo lisar per "
+"cambiar son emplaçament."
 
 #: capplets/display/xrandr-capplet.c:2081
 msgid "Could not save the monitor configuration"
-msgstr ""
+msgstr "Impossible d'enregistrar la configuracion de l'ecran"
 
 #: capplets/display/xrandr-capplet.c:2102
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
-"Impossible d'obténer lo bus de sesilha al moment de l'aplicacion de la "
+"Impossible d'obténer lo bus de session al moment de l'aplicacion de la "
 "configuracion d'afichatge"
 
 #: capplets/display/xrandr-capplet.c:2121
 msgid "Could not detect displays"
-msgstr "Impossible de detectar los ecrans"
+msgstr "Deteccion impossibla dels ecrans"
 
 #: capplets/display/xrandr-capplet.c:2303
 msgid "The monitor configuration has been saved"
-msgstr ""
+msgstr "La configuracion del monitor es estada enregistrada"
 
 #: capplets/display/xrandr-capplet.c:2305
 msgid "This configuration will be used the next time someone logs in."
@@ -1793,15 +1818,15 @@ msgstr ""
 
 #: capplets/display/xrandr-capplet.c:2314
 msgid "Could not set the default configuration for monitors"
-msgstr ""
+msgstr "Definicion impossibla de la configuracion per defaut pels monitors"
 
 #: capplets/display/xrandr-capplet.c:2393
 msgid "Could not get screen information"
-msgstr "Impossible d'obténer las informacions de l'ecran"
+msgstr "Obtencion impossibla de las informacions de l'ecran"
 
 #: capplets/display/xrandr-capplet.c:2509
 msgid "Could not open help content"
-msgstr ""
+msgstr "Obtencion impossibla del contengut d’ajuda"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:2
 msgid "Sound"
@@ -1821,15 +1846,15 @@ msgstr "Aumentar lo volum"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:10
 msgid "Volume mute quietly"
-msgstr ""
+msgstr "Amudir lo volum silenciosament"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:12
 msgid "Volume down quietly"
-msgstr ""
+msgstr "Baissar lo volum silenciosament"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:14
 msgid "Volume up quietly"
-msgstr ""
+msgstr "Montar lo volum silenciosament"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:16
 msgid "Microphone mute"
@@ -1845,7 +1870,7 @@ msgstr "Lectura (o Lectura/Pausa)"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:22
 msgid "Pause playback"
-msgstr ""
+msgstr "Metre en pausa la lectura"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:24
 msgid "Stop playback"
@@ -1863,7 +1888,7 @@ msgstr "Pista seguenta"
 msgid "Eject"
 msgstr "Ejectar"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1153
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
 msgid "Desktop"
 msgstr "Burèu"
 
@@ -1897,14 +1922,14 @@ msgstr "Atudar"
 
 #: capplets/keybindings/01-desktop-key.xml.in:18
 msgid "Lock screen"
-msgstr "Varrolhar l'ecran"
+msgstr "Verrolhatge de l'ecran"
 
 #: capplets/keybindings/01-desktop-key.xml.in:20
 msgid "Home folder"
 msgstr "Repertòri personal"
 
-#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:843
-#: libslab/bookmark-agent.c:1192
+#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
+#: libslab/bookmark-agent.c:1196
 msgid "Search"
 msgstr "Recercar"
 
@@ -1912,36 +1937,36 @@ msgstr "Recercar"
 msgid "Launch settings"
 msgstr "Anar als paramètres"
 
-#: capplets/keybindings/eggcellrendererkeys.c:21
+#: capplets/keybindings/eggcellrendererkeys.c:12
 msgid "New shortcut..."
 msgstr "Acorchi novèl…"
 
-#: capplets/keybindings/eggcellrendererkeys.c:157
-#: capplets/keybindings/eggcellrendererkeys.c:158
+#: capplets/keybindings/eggcellrendererkeys.c:148
+#: capplets/keybindings/eggcellrendererkeys.c:149
 msgid "Accelerator key"
 msgstr "Acorchi de clavièr"
 
-#: capplets/keybindings/eggcellrendererkeys.c:167
-#: capplets/keybindings/eggcellrendererkeys.c:168
+#: capplets/keybindings/eggcellrendererkeys.c:158
+#: capplets/keybindings/eggcellrendererkeys.c:159
 msgid "Accelerator modifiers"
 msgstr "Modificadors de l'acorchi de clavièr"
 
-#: capplets/keybindings/eggcellrendererkeys.c:176
-#: capplets/keybindings/eggcellrendererkeys.c:177
+#: capplets/keybindings/eggcellrendererkeys.c:167
+#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator keycode"
 msgstr "Còde de la tòca de l'acorchi de clavièr"
 
-#: capplets/keybindings/eggcellrendererkeys.c:187
+#: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "Accel Mode"
 msgstr "Mòde de l'acorchi de clavièr"
 
-#: capplets/keybindings/eggcellrendererkeys.c:188
+#: capplets/keybindings/eggcellrendererkeys.c:179
 msgid "The type of accelerator."
 msgstr "Lo tipe de l'acorchi de clavièr."
 
-#: capplets/keybindings/eggcellrendererkeys.c:231
+#: capplets/keybindings/eggcellrendererkeys.c:222
 #: capplets/keybindings/mate-keybinding-properties.c:133
-#: capplets/mouse/mate-mouse-properties.c:347 typing-break/drwright.c:528
+#: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Desactivat"
 
@@ -1980,10 +2005,11 @@ msgstr ""
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
+"Se tornatz atribuir l’acorchi « %s  », l’acorchi « %s » serà desactivat."
 
 #: capplets/keybindings/mate-keybinding-properties.c:1326
 msgid "_Reassign"
-msgstr ""
+msgstr "_Reatribuir"
 
 #: capplets/keybindings/mate-keybinding-properties.c:1581
 msgid "Too many custom shortcuts"
@@ -2007,7 +2033,7 @@ msgstr "Co_manda :"
 
 #: capplets/keybindings/mate-keybinding-properties.ui:132
 msgid "_Browse applications..."
-msgstr ""
+msgstr "_Percórrer las aplicacion..."
 
 #: capplets/keybindings/mate-keybinding-properties.ui:194
 #: capplets/keybindings/mate-keybinding.desktop.in:3
@@ -2022,358 +2048,367 @@ msgstr ""
 
 #: capplets/keybindings/mate-keybinding.desktop.in:4
 msgid "Assign shortcut keys to commands"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/keybindings/mate-keybinding.desktop.in:7
-msgid "preferences-desktop-keyboard-shortcuts"
-msgstr ""
+msgstr "Assignar d'acorchis de clavièr a las comandas"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keybindings/mate-keybinding.desktop.in:13
 msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
 msgstr ""
+"mate-control-"
+"center;MATE;assign;keyboard;shortcuts;keybindings;clavièr;agençament;acorchi;"
 
-#: capplets/keyboard/mate-keyboard-properties.c:207
-#: capplets/keyboard/mate-keyboard-properties.c:212
+#: capplets/keyboard/mate-keyboard-properties.c:164
+#: capplets/keyboard/mate-keyboard-properties.c:169
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties.c:217
+#: capplets/keyboard/mate-keyboard-properties.c:174
 msgid "Start the page with the typing break settings showing"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties.c:222
+#: capplets/keyboard/mate-keyboard-properties.c:179
 msgid "Start the page with the accessibility settings showing"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties.c:228
+#: capplets/keyboard/mate-keyboard-properties.c:185
 msgid "- MATE Keyboard Preferences"
-msgstr ""
+msgstr "- preferéncias de clavièr MATE"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:15
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:14
 msgid "Keyboard Accessibility Audio Feedback"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:90
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:616
-#: capplets/mouse/mate-mouse-properties.ui:277
-#: capplets/mouse/mate-mouse-properties.ui:1008
-#: capplets/windows/window-properties.ui:260
-msgid "General"
-msgstr "General"
-
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:128
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:86
 msgid "Beep when _accessibility features are turned on or off"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:145
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:102
 msgid "Beep when a _toggle key is pressed"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:194
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1019
-msgid "Sticky Keys"
-msgstr ""
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:123
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:645
+#: capplets/mouse/mate-mouse-properties.ui:277
+#: capplets/mouse/mate-mouse-properties.ui:1009
+msgid "General"
+msgstr "General"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:232
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:152
 msgid "Beep when a _modifier key is pressed"
-msgstr ""
+msgstr "Emetre un bip quand una tòca _modificadoira es quichada"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:279
-msgid "Visual cues for sounds"
-msgstr ""
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:173
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1054
+msgid "Sticky Keys"
+msgstr "Tòcas remanentas"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:314
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:201
 msgid "Show _visual feedback for the alert sound"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:352
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:224
 msgid "Flash _window titlebar"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:369
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:241
 msgid "Flash entire _screen"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:433
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1140
-msgid "Slow Keys"
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:270
+msgid "Visual cues for sounds"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:471
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:298
 msgid "Beep when a key is pr_essed"
-msgstr ""
+msgstr "Emetre un bip quand una tòca es _quichada"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:488
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:314
 msgid "Beep when key is _accepted"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:505
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:330
 msgid "Beep when key is _rejected"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:554
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1321
-msgid "Bounce Keys"
-msgstr ""
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:351
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1175
+msgid "Slow Keys"
+msgstr "Tòcas lentas"
 
-#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:592
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:379
 msgid "Beep when a key is reje_cted"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:81
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:400
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1356
+msgid "Bounce Keys"
+msgstr "Rebombs de tòcas"
+
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
+msgid "Beep when pressing a key while Caps_Lock is active"
+msgstr ""
+
+#: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
+msgid "Caps Lock"
+msgstr "Ver. Maj."
+
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:106
 msgid "Keyboard Preferences"
 msgstr "Preferéncias del clavièr"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:166
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:195
 msgid "Repeat Keys"
-msgstr ""
+msgstr "Tòcas de repeticion"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:201
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:230
 msgid "Key presses _repeat when key is held down"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:231
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1203
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1775
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:260
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1238
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1811
 msgid "_Delay:"
 msgstr "_Delai :"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:247
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1760
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:276
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1796
 msgid "_Speed:"
 msgstr "_Velocitat :"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:278
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1226
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1407
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1697
-#: capplets/mouse/mate-mouse-properties.ui:826
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:307
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1261
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1442
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1733
+#: capplets/mouse/mate-mouse-properties.ui:827
 msgid "Short"
 msgstr "Cort"
 
 #. slow acceleration
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:297
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:563
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1601
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1680
-#: capplets/mouse/mate-mouse-properties.ui:435
-#: capplets/mouse/mate-mouse-properties.ui:1396
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:326
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:592
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1637
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1716
+#: capplets/mouse/mate-mouse-properties.ui:436
+#: capplets/mouse/mate-mouse-properties.ui:1414
 msgid "Slow"
 msgstr "Lent"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:343
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:372
 msgid "Repeat keys speed"
-msgstr ""
+msgstr "Velocitat de repeticion de las tòcas"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:371
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1261
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1442
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1728
-#: capplets/mouse/mate-mouse-properties.ui:861
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:400
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1296
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1477
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1764
+#: capplets/mouse/mate-mouse-properties.ui:862
 msgid "Long"
 msgstr "Long"
 
 #. fast acceleration
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:388
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:528
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1618
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1663
-#: capplets/mouse/mate-mouse-properties.ui:467
-#: capplets/mouse/mate-mouse-properties.ui:1428
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:417
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:557
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1654
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1699
+#: capplets/mouse/mate-mouse-properties.ui:468
+#: capplets/mouse/mate-mouse-properties.ui:1446
 msgid "Fast"
 msgstr "Rapid"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:446
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:475
 msgid "Cursor Blinking"
-msgstr ""
+msgstr "Cluquejament del cursor"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:481
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:510
 msgid "Cursor _blinks in text fields"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:505
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:534
 msgid "S_peed:"
 msgstr "_Velocitat :"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:548
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1246
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1427
-#: capplets/mouse/mate-mouse-properties.ui:702
-#: capplets/mouse/mate-mouse-properties.ui:847
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:577
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1281
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1462
+#: capplets/mouse/mate-mouse-properties.ui:703
+#: capplets/mouse/mate-mouse-properties.ui:848
 msgid "Cursor blinks speed"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:645
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
 msgid "List of keyboard layouts selected for usage"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:678
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:707
 msgid "Select a keyboard layout to be added to the list"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:693
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:720
+msgid "_Remove"
+msgstr "_Suprimir"
+
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:724
 msgid "Remove the selected keyboard layout from the list"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:718
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:751
 msgid "Move _Up"
 msgstr "Desplaçar cap en_naut"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:722
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:755
 msgid "Move the selected keyboard layout up in the list"
-msgstr ""
+msgstr "Montar l’agençament del clavièr amont dins la lista"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:733
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:766
 msgid "Move _Down"
-msgstr ""
+msgstr "Desplaçar cap a_val"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:737
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:770
 msgid "Move the selected keyboard layout down in the list"
-msgstr ""
+msgstr "Davalar l’agençament del clavièr amont dins la lista"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:762
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:795
 msgid "_Show..."
 msgstr "_Mostrar…"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:766
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:799
 msgid "Print a diagram of the selected keyboard layout"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:802
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:835
 msgid "_Separate layout for each window"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:818
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:851
 msgid "New windows u_se active window's layout"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:849
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:882
 msgid "Keyboard _model:"
 msgstr "_Modèl de clavièr :"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:887
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:920
 msgid "_Options..."
 msgstr "_Opcions..."
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:892
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:925
 msgid "View and edit keyboard layout options"
-msgstr ""
+msgstr "Veire e modificar las opcions d’agençament del clavièr"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:903
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:936
 msgid "Reset to De_faults"
-msgstr ""
+msgstr "Reïnicializar a las valors per de_faut"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:907
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:940
 msgid ""
 "Replace the current keyboard layout settings with the\n"
 "default settings"
 msgstr ""
+"Remplaça los paramètres actuals d'agençament de clavièr\n"
+"pels paramètres per defaut"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:934
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:969
 msgid "Layouts"
-msgstr ""
+msgstr "Agençaments"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:970
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1005
 msgid "_Accessibility features can be toggled with keyboard shortcuts"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1057
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1092
 msgid "_Simulate simultaneous keypresses"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1074
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1109
 msgid "Disa_ble sticky keys if two keys are pressed together"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1091
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1126
 msgid "_Latch modifiers when pressed twice"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1178
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1213
 msgid "_Only accept long keypresses"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1359
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1394
 msgid "_Ignore fast duplicate keypresses"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1384
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1419
 msgid "D_elay:"
-msgstr ""
+msgstr "Re_lambi :"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1497
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1532
 msgid "Audio _Feedback..."
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1550
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1585
 msgid "_Pointer can be controlled using the keypad"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1745
-#: capplets/mouse/mate-mouse-properties.ui:413
-#: capplets/mouse/mate-mouse-properties.ui:1374
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1781
+#: capplets/mouse/mate-mouse-properties.ui:414
+#: capplets/mouse/mate-mouse-properties.ui:1392
 msgid "_Acceleration:"
 msgstr "_Acceleracion :"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1823
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1859
 msgid "Mouse Keys"
 msgstr "Claus de la mirga"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1851
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1887
 msgid "_Lock screen to enforce typing break"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1855
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1891
 msgid ""
 "Lock screen after a certain duration to help prevent repetitive keyboard use"
 " injuries"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1904
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1940
 msgid "_Work interval lasts:"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1919
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1955
 msgid "_Break interval lasts:"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1951
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1987
 msgid "Duration of work before forcing a break"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1965
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2001
 msgid "Duration of the break when typing is disallowed"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:1993
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2006
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2029
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2042
 msgid "minutes"
 msgstr "minutas"
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2037
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2073
 msgid "All_ow postponing of breaks"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2041
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2077
 msgid "Check if breaks are allowed to be postponed"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2089
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2125
 msgid "Typing Break"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2112
+#: capplets/keyboard/mate-keyboard-properties-dialog.ui:2148
 msgid "_Type to test settings:"
-msgstr ""
+msgstr "_Picatz per ensajar los paramètres :"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:15
 msgid "Choose a Layout"
-msgstr "Causissètz una disposicion"
+msgstr "Causissètz un agençament"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:134
 msgid "_Country:"
@@ -2414,7 +2449,7 @@ msgstr "_Modèls :"
 
 #: capplets/keyboard/mate-keyboard-properties-options-dialog.ui:14
 msgid "Keyboard Layout Options"
-msgstr "Error al mment de l'enregistrament de la configuracion : %s"
+msgstr "Opcions d’agençament del clavièr"
 
 #: capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
@@ -2422,7 +2457,7 @@ msgstr "Desconegut"
 
 #: capplets/keyboard/mate-keyboard-properties-xkblt.c:240
 msgid "Layout"
-msgstr "Presentacion"
+msgstr "Agençament"
 
 #: capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
 msgid "Vendors"
@@ -2433,7 +2468,7 @@ msgid "Models"
 msgstr "Modèls"
 
 #: capplets/keyboard/mate-keyboard-properties-xkbot.c:237
-#: capplets/mouse/mate-mouse-properties.ui:586
+#: capplets/mouse/mate-mouse-properties.ui:587
 msgid "Default"
 msgstr "Per defaut"
 
@@ -2445,35 +2480,31 @@ msgstr "Clavièr"
 msgid "Set your keyboard preferences"
 msgstr "Definir los paramètres de vòstre clavièr"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/keyboard/mate-keyboard.desktop.in:7
-msgid "input-keyboard"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keyboard/mate-keyboard.desktop.in:13
 msgid "mate-control-center;MATE;keyboard;preferences;"
 msgstr ""
+"mate-control-"
+"center;MATE;keyboard;preferences;preferéncias;clavièr;contraròtle;"
 
-#: capplets/mouse/mate-mouse-properties.c:347
+#: capplets/mouse/mate-mouse-properties.c:343
 msgid "Left button"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:347
+#: capplets/mouse/mate-mouse-properties.c:343
 msgid "Middle button"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:347
+#: capplets/mouse/mate-mouse-properties.c:343
 msgid "Right button"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:442
+#: capplets/mouse/mate-mouse-properties.c:400
 msgid "Specify the name of the page to show (general)"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:447
+#: capplets/mouse/mate-mouse-properties.c:405
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferéncias de MATE per la mirga"
 
@@ -2483,7 +2514,7 @@ msgstr "Preferéncias de la mirga"
 
 #: capplets/mouse/mate-mouse-properties.ui:187
 msgid "Mouse Orientation"
-msgstr ""
+msgstr "Orientacion de la mirga"
 
 #: capplets/mouse/mate-mouse-properties.ui:214
 msgid "_Right-handed"
@@ -2506,133 +2537,127 @@ msgid "Enable middlemouse paste"
 msgstr ""
 
 #: capplets/mouse/mate-mouse-properties.ui:385
-#: capplets/mouse/mate-mouse-properties.ui:1346
+#: capplets/mouse/mate-mouse-properties.ui:1363
 msgid "Pointer Speed"
 msgstr "Velocitat del puntador"
 
 #. low sensitivity
-#: capplets/mouse/mate-mouse-properties.ui:498
-#: capplets/mouse/mate-mouse-properties.ui:1459
+#: capplets/mouse/mate-mouse-properties.ui:499
+#: capplets/mouse/mate-mouse-properties.ui:1477
 msgid "Low"
 msgstr "Bassa"
 
 #. high sensitivity
-#: capplets/mouse/mate-mouse-properties.ui:530
-#: capplets/mouse/mate-mouse-properties.ui:1491
+#: capplets/mouse/mate-mouse-properties.ui:531
+#: capplets/mouse/mate-mouse-properties.ui:1509
 msgid "High"
 msgstr "Elevada"
 
-#: capplets/mouse/mate-mouse-properties.ui:554
-#: capplets/mouse/mate-mouse-properties.ui:1515
+#: capplets/mouse/mate-mouse-properties.ui:555
+#: capplets/mouse/mate-mouse-properties.ui:1533
 msgid "_Sensitivity:"
 msgstr "_Sensibilitat :"
 
-#: capplets/mouse/mate-mouse-properties.ui:569
+#: capplets/mouse/mate-mouse-properties.ui:570
 msgid "Acceleration _Profile:"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:587
-msgid "Adaptive"
-msgstr ""
-
 #: capplets/mouse/mate-mouse-properties.ui:588
+msgid "Adaptive"
+msgstr "Adaptatiu"
+
+#: capplets/mouse/mate-mouse-properties.ui:589
 msgid "Flat"
-msgstr ""
+msgstr "Plan"
 
-#: capplets/mouse/mate-mouse-properties.ui:624
+#: capplets/mouse/mate-mouse-properties.ui:625
 msgid "Drag and Drop"
-msgstr ""
+msgstr "Lissar depausar"
 
-#: capplets/mouse/mate-mouse-properties.ui:658
+#: capplets/mouse/mate-mouse-properties.ui:659
 msgid "Thr_eshold:"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:771
+#: capplets/mouse/mate-mouse-properties.ui:772
 msgid "Double-Click Timeout"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:805
+#: capplets/mouse/mate-mouse-properties.ui:806
 msgid "_Timeout:"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:901
+#: capplets/mouse/mate-mouse-properties.ui:902
 msgid ""
 "To test your double-click settings, try to double-click on the triangle and "
 "you must see the mate desktop logo with both rings showing."
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:963
+#: capplets/mouse/mate-mouse-properties.ui:964
 #: capplets/mouse/mate-settings-mouse.desktop.in:3
 msgid "Mouse"
 msgstr "Mirga"
 
-#: capplets/mouse/mate-mouse-properties.ui:980
+#: capplets/mouse/mate-mouse-properties.ui:981
 msgid "Enable _touchpad"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1028
+#: capplets/mouse/mate-mouse-properties.ui:1029
 msgid "Disable touchpad _while typing"
-msgstr ""
+msgstr "Desactivar lo pavat tactil pendent la quichada"
 
-#: capplets/mouse/mate-mouse-properties.ui:1055
+#: capplets/mouse/mate-mouse-properties.ui:1056
 msgid "Enable _mouse clicks with touchpad"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1091
+#: capplets/mouse/mate-mouse-properties.ui:1093
 msgid "Two-finger click emulation:"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1131
+#: capplets/mouse/mate-mouse-properties.ui:1133
 msgid "Three-finger click emulation:"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1155
+#: capplets/mouse/mate-mouse-properties.ui:1172
 msgid "Warning: multi-finger emulation may disable software buttons"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1186
+#: capplets/mouse/mate-mouse-properties.ui:1203
 msgid "Scrolling"
 msgstr "Desfilament"
 
-#: capplets/mouse/mate-mouse-properties.ui:1206
+#: capplets/mouse/mate-mouse-properties.ui:1223
 msgid "_Vertical edge scrolling"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1232
+#: capplets/mouse/mate-mouse-properties.ui:1249
 msgid "H_orizontal edge scrolling"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1258
+#: capplets/mouse/mate-mouse-properties.ui:1275
 msgid "V_ertical two-finger scrolling"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1284
+#: capplets/mouse/mate-mouse-properties.ui:1301
 msgid "Hor_izontal two-finger scrolling"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1310
+#: capplets/mouse/mate-mouse-properties.ui:1327
 msgid "Enable _natural scrolling"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.ui:1551
+#: capplets/mouse/mate-mouse-properties.ui:1584
 msgid "Touchpad"
-msgstr ""
+msgstr "Pavat tactil"
 
 #: capplets/mouse/mate-settings-mouse.desktop.in:4
 msgid "Set your mouse preferences"
 msgstr "Configurar la mirga"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/mouse/mate-settings-mouse.desktop.in:7
-msgid "input-mouse"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/mouse/mate-settings-mouse.desktop.in:13
 msgid "mate-control-center;MATE;mouse;preferences;"
-msgstr ""
+msgstr "mate-control-center;MATE;mouse;preferences;mirga;preferéncia;souris;"
 
 #: capplets/network/mate-network-properties.desktop.in:3
 msgid "Network Proxy"
@@ -2640,19 +2665,15 @@ msgstr "Servidor mandatari"
 
 #: capplets/network/mate-network-properties.desktop.in:4
 msgid "Set your network proxy preferences"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/network/mate-network-properties.desktop.in:7
-msgid "network-server"
-msgstr "network-server"
+msgstr "Configuratz vòstras preferéncias de ret mandatari"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/network/mate-network-properties.desktop.in:13
 msgid "mate-control-center;MATE;network;http;socks;proxy;"
 msgstr ""
+"mate-control-"
+"center;MATE;network;http;socks;proxy;ret;malhum;mandatari;servidor;connexion;"
 
 #: capplets/network/mate-network-properties.ui:34
 msgid "Network Proxy Preferences"
@@ -2683,7 +2704,7 @@ msgstr "Proxy H_TTP :"
 
 #: capplets/network/mate-network-properties.ui:393
 msgid "_Secure HTTP proxy:"
-msgstr ""
+msgstr "Servidor mandatari HTTP _segur :"
 
 #: capplets/network/mate-network-properties.ui:407
 msgid "_FTP proxy:"
@@ -2695,7 +2716,7 @@ msgstr ""
 
 #: capplets/network/mate-network-properties.ui:479
 msgid "<b>_Automatic proxy configuration</b>"
-msgstr ""
+msgstr "<b>Configuracion servidor mandatari _auto</b>"
 
 #: capplets/network/mate-network-properties.ui:517
 msgid "Autoconfiguration _URL:"
@@ -2707,7 +2728,7 @@ msgstr "Configuracion del proxy"
 
 #: capplets/network/mate-network-properties.ui:592
 msgid "Ignore Host List"
-msgstr ""
+msgstr "Ignorar la lista Òstes"
 
 #: capplets/network/mate-network-properties.ui:730
 msgid "Ignored Hosts"
@@ -2719,7 +2740,7 @@ msgstr "Detalhs del proxy HTTP"
 
 #: capplets/network/mate-network-properties.ui:829
 msgid "<b>_Use authentication</b>"
-msgstr ""
+msgstr "<b>_Utilizar l’autenticacion</b>"
 
 #: capplets/network/mate-network-properties.ui:869
 msgid "U_sername:"
@@ -2734,32 +2755,32 @@ msgid "Metacity Preferences"
 msgstr ""
 
 #: capplets/windows/mate-metacity-support.c:51
-#: capplets/windows/window-properties.ui:175
+#: capplets/windows/window-properties.ui:871
 msgid "Compositing Manager"
 msgstr "Gestionari de composicion"
 
 #: capplets/windows/mate-metacity-support.c:58
-#: capplets/windows/window-properties.ui:138
+#: capplets/windows/window-properties.ui:819
 msgid "Enable software _compositing window manager"
 msgstr ""
 
-#: capplets/windows/mate-window-properties.c:264
+#: capplets/windows/mate-window-properties.c:281
 msgid "The current window manager is unsupported"
-msgstr ""
+msgstr "Lo gestionari de fenèstras actual es pas pres en carga"
 
-#: capplets/windows/mate-window-properties.c:581
+#: capplets/windows/mate-window-properties.c:599
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:587
+#: capplets/windows/mate-window-properties.c:605
 msgid "H_yper"
 msgstr "_Iper"
 
-#: capplets/windows/mate-window-properties.c:594
+#: capplets/windows/mate-window-properties.c:612
 msgid "S_uper (or \"Windows logo\")"
-msgstr ""
+msgstr "S_uper (o logotipe « Windows »)"
 
-#: capplets/windows/mate-window-properties.c:601
+#: capplets/windows/mate-window-properties.c:619
 msgid "_Meta"
 msgstr "_Mèta"
 
@@ -2769,128 +2790,148 @@ msgstr "Fenèstras"
 
 #: capplets/windows/mate-window-properties.desktop.in:4
 msgid "Set your window properties"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/windows/mate-window-properties.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
+msgstr "Definir vòstras proprietats de fenèstras"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/windows/mate-window-properties.desktop.in:13
 msgid "mate-control-center;MATE;window;manager;properties;marco;preferences;"
 msgstr ""
+"mate-control-"
+"center;MATE;window;manager;properties;marco;preferences;preferéncias;gestionari;fenèstra;proprietats;"
 
-#: capplets/windows/window-properties.ui:47
+#: capplets/windows/window-properties.ui:49
 msgid "Window Preferences"
 msgstr "Preferéncias de la fenèstra"
 
-#: capplets/windows/window-properties.ui:153
-msgid "Disable _thumbnails in Alt-Tab"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:208
-msgid "Position:"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:241
-msgid "Titlebar Buttons"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:294
-msgid "_Select windows when the mouse moves over them"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:319
-msgid "U_nselect windows when the mouse leaves them"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:340
-msgid "_Raise selected windows after an interval"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:365
-msgid "_Interval before raising:"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:392
-msgid "seconds"
-msgstr "segondas"
-
-#: capplets/windows/window-properties.ui:430
+#: capplets/windows/window-properties.ui:128
 msgid "Window Selection"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:463
-msgid "_Double-click titlebar to perform this action:"
+#: capplets/windows/window-properties.ui:148
+msgid "_Select windows when the mouse moves over them"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:477
-#: libwindow-settings/marco-window-manager.c:394
-msgid "Roll up"
+#: capplets/windows/window-properties.ui:164
+msgid "U_nselect windows when the mouse leaves them"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:478
-#: libwindow-settings/marco-window-manager.c:395
-msgid "Maximize"
-msgstr "Maximizar"
-
-#: capplets/windows/window-properties.ui:479
-#: libwindow-settings/marco-window-manager.c:396
-msgid "Maximize Horizontally"
+#: capplets/windows/window-properties.ui:187
+msgid "_Raise selected windows after"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:480
-#: libwindow-settings/marco-window-manager.c:397
-msgid "Maximize Vertically"
-msgstr ""
+#: capplets/windows/window-properties.ui:204
+msgid "1,0"
+msgstr "1,0"
 
-#: capplets/windows/window-properties.ui:481
-#: libwindow-settings/marco-window-manager.c:398
-msgid "Minimize"
-msgstr ""
+#: capplets/windows/window-properties.ui:223
+msgid "seconds"
+msgstr "segondas"
 
-#: capplets/windows/window-properties.ui:482
-#: libwindow-settings/marco-window-manager.c:399
-msgid "None"
-msgstr "Pas cap"
-
-#: capplets/windows/window-properties.ui:501
+#: capplets/windows/window-properties.ui:263
 msgid "Titlebar Action"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:535
-msgid "To move a window, press-and-hold this key then grab the window:"
+#: capplets/windows/window-properties.ui:290
+msgid "_Double-click titlebar action:"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:568
+#: capplets/windows/window-properties.ui:305
+#: libwindow-settings/marco-window-manager.c:393
+msgid "Roll up"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:306
+#: libwindow-settings/marco-window-manager.c:394
+msgid "Maximize"
+msgstr "Maximizar"
+
+#: capplets/windows/window-properties.ui:307
+#: libwindow-settings/marco-window-manager.c:395
+msgid "Maximize Horizontally"
+msgstr "Maximizar orizontalament"
+
+#: capplets/windows/window-properties.ui:308
+#: libwindow-settings/marco-window-manager.c:396
+msgid "Maximize Vertically"
+msgstr "Maximizar verticalament"
+
+#: capplets/windows/window-properties.ui:309
+#: libwindow-settings/marco-window-manager.c:397
+msgid "Minimize"
+msgstr "Reduire"
+
+#: capplets/windows/window-properties.ui:310
+#: libwindow-settings/marco-window-manager.c:398
+msgid "None"
+msgstr "Pas cap"
+
+#: capplets/windows/window-properties.ui:352
+msgid "Alt-Tab"
+msgstr "Alt-Tab"
+
+#: capplets/windows/window-properties.ui:372
+msgid "Show window border in _Alt-Tab"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:410
+msgid "Performance"
+msgstr "Performància"
+
+#: capplets/windows/window-properties.ui:430
+msgid "Use _reduced resources"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:468
 msgid "Movement Key"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:590
+#: capplets/windows/window-properties.ui:490
+msgid "To move a window, press-and-hold this key then grab the window:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:534
 msgid "Behaviour"
 msgstr "Compòrtament"
 
-#: capplets/windows/window-properties.ui:620
-msgid "Center _new windows"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:635
+#: capplets/windows/window-properties.ui:559
 msgid "New Windows"
 msgstr "Fenèstra novèla"
 
-#: capplets/windows/window-properties.ui:661
-msgid "Enable window _tiling"
+#: capplets/windows/window-properties.ui:579
+msgid "Centre _new windows"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:676
+#: capplets/windows/window-properties.ui:617
 msgid "Window Snapping"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:698
+#: capplets/windows/window-properties.ui:637
+msgid "Enable window _tiling"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:652
+msgid "Allow _top tiling"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:691
+msgid "Titlebar Buttons"
+msgstr "Botons de la barra de títol"
+
+#: capplets/windows/window-properties.ui:718
+msgid "_Position of titlebar buttons:"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:774
 msgid "Placement"
+msgstr "Posicionament"
+
+#: capplets/windows/window-properties.ui:799
+msgid "Software Compositing"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:834
+msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #: capplets/time-admin/src/main.c:34
@@ -2941,7 +2982,7 @@ msgstr "Gestionari d’ora e data"
 
 #: capplets/time-admin/src/time-admin.ui:96
 msgid "NTP sync"
-msgstr ""
+msgstr "Sincro. NTP"
 
 #: capplets/time-admin/src/time-admin.ui:123
 msgid "Time zone"
@@ -2949,7 +2990,7 @@ msgstr "Fus orari"
 
 #: capplets/time-admin/src/time-admin.ui:161
 msgid "Click the button to edit time zone."
-msgstr ""
+msgstr "Clicar lo oton per modificar la zòna orària."
 
 #: capplets/time-admin/src/time-admin.ui:283
 msgid "Time"
@@ -2961,11 +3002,7 @@ msgstr "Data"
 
 #: capplets/time-admin/src/time-admin.ui:368
 msgid "Click to save the specified date and time."
-msgstr ""
-
-#: capplets/time-admin/src/time-admin.ui:370
-msgid "_Save"
-msgstr "_Enregistrar"
+msgstr "Clicar per enregistrar la date e l’ora especificats."
 
 #: capplets/time-admin/src/time-tool.c:135
 msgid "GetNtpState"
@@ -2973,18 +3010,20 @@ msgstr ""
 
 #: capplets/time-admin/src/time-tool.c:198
 msgid "Set time zone"
-msgstr ""
+msgstr "Definir la zòna orària"
 
 #: capplets/time-admin/src/time-tool.c:230
 #: capplets/time-admin/src/time-tool.c:277
 msgid "Set Ntp sync"
-msgstr ""
+msgstr "Definir sincro. Ntp"
 
-#: capplets/time-admin/src/time-share.c:47
+#: capplets/time-admin/src/time-share.c:49
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr ""
+"La sincronizacion de l’ora amb lo ret es estat definir. Lo parametratge "
+"manual es desactivat."
 
 #: capplets/time-admin/src/time-zone.c:277
 #, c-format
@@ -2994,1275 +3033,1275 @@ msgstr "%s, %s"
 
 #: capplets/time-admin/src/time-zone.c:304
 msgid "UTC%:::z"
-msgstr ""
+msgstr "UTC%:::z"
 
 #: capplets/time-admin/src/time-zone.c:309
 msgid "%R"
-msgstr ""
+msgstr "%R"
 
-#: capplets/time-admin/src/time-zone.c:378
+#: capplets/time-admin/src/time-zone.c:379
 msgid "Time Zone"
 msgstr "Fus orari"
 
-#: capplets/time-admin/src/time-zone.c:465
+#: capplets/time-admin/src/time-zone.c:466
 msgid "Time Zone Selection"
-msgstr ""
+msgstr "Seleccion de zòna orària"
 
-#: capplets/time-admin/src/time-zone.c:480
+#: capplets/time-admin/src/time-zone.c:481
 msgid "Con_firm"
-msgstr ""
+msgstr "Con_firmar"
 
 #: capplets/time-admin/src/time-zones.h:27
 msgid "Africa/Abidjan"
-msgstr ""
+msgstr "Africa/Abidjan"
 
 #: capplets/time-admin/src/time-zones.h:28
 msgid "Africa/Accra"
-msgstr ""
+msgstr "Africa/Accra"
 
 #: capplets/time-admin/src/time-zones.h:29
 msgid "Africa/Addis_Ababa"
-msgstr ""
+msgstr "Africa/Addis Abeba"
 
 #: capplets/time-admin/src/time-zones.h:30
 msgid "Africa/Algiers"
-msgstr ""
+msgstr "Africa/Argièr"
 
 #: capplets/time-admin/src/time-zones.h:31
 msgid "Africa/Asmara"
-msgstr ""
+msgstr "Africa/Asmara"
 
 #: capplets/time-admin/src/time-zones.h:32
 msgid "Africa/Bamako"
-msgstr ""
+msgstr "Africa/Bamako"
 
 #: capplets/time-admin/src/time-zones.h:33
 msgid "Africa/Bangui"
-msgstr ""
+msgstr "Africa/Bangui"
 
 #: capplets/time-admin/src/time-zones.h:34
 msgid "Africa/Banjul"
-msgstr ""
+msgstr "Africa/Banjul"
 
 #: capplets/time-admin/src/time-zones.h:35
 msgid "Africa/Bissau"
-msgstr ""
+msgstr "Africa/Bissau"
 
 #: capplets/time-admin/src/time-zones.h:36
 msgid "Africa/Blantyre"
-msgstr ""
+msgstr "Africa/Blantyre"
 
 #: capplets/time-admin/src/time-zones.h:37
 msgid "Africa/Brazzaville"
-msgstr ""
+msgstr "Africa/Brazzaville"
 
 #: capplets/time-admin/src/time-zones.h:38
 msgid "Africa/Bujumbura"
-msgstr ""
+msgstr "Africa/Bujumbura"
 
 #: capplets/time-admin/src/time-zones.h:39
 msgid "Africa/Cairo"
-msgstr ""
+msgstr "Africa/Lo_Caire"
 
 #: capplets/time-admin/src/time-zones.h:40
 msgid "Africa/Casablanca"
-msgstr ""
+msgstr "Africa/Casablanca"
 
 #: capplets/time-admin/src/time-zones.h:41
 msgid "Africa/Ceuta"
-msgstr ""
+msgstr "Africa/Ceuta"
 
 #: capplets/time-admin/src/time-zones.h:42
 msgid "Africa/Conakry"
-msgstr ""
+msgstr "Africa/Conakry"
 
 #: capplets/time-admin/src/time-zones.h:43
 msgid "Africa/Dakar"
-msgstr ""
+msgstr "Africa/Dakar"
 
 #: capplets/time-admin/src/time-zones.h:44
 msgid "Africa/Dar_es_Salaam"
-msgstr ""
+msgstr "Africa/Dar_es_Salaam"
 
 #: capplets/time-admin/src/time-zones.h:45
 msgid "Africa/Djibouti"
-msgstr ""
+msgstr "Africa/Jiboti"
 
 #: capplets/time-admin/src/time-zones.h:46
 msgid "Africa/Douala"
-msgstr ""
+msgstr "Africa/Douala"
 
 #: capplets/time-admin/src/time-zones.h:47
 msgid "Africa/El_Aaiun"
-msgstr ""
+msgstr "Africa/El_Aaiun"
 
 #: capplets/time-admin/src/time-zones.h:48
 msgid "Africa/Freetown"
-msgstr ""
+msgstr "Africa/Freetown"
 
 #: capplets/time-admin/src/time-zones.h:49
 msgid "Africa/Gaborone"
-msgstr ""
+msgstr "Africa/Gaborone"
 
 #: capplets/time-admin/src/time-zones.h:50
 msgid "Africa/Harare"
-msgstr ""
+msgstr "Africa/Harare"
 
 #: capplets/time-admin/src/time-zones.h:51
 msgid "Africa/Johannesburg"
-msgstr ""
+msgstr "Africa/Johannesburg"
 
 #: capplets/time-admin/src/time-zones.h:52
 msgid "Africa/Juba"
-msgstr ""
+msgstr "Africa/Juba"
 
 #: capplets/time-admin/src/time-zones.h:53
 msgid "Africa/Kampala"
-msgstr ""
+msgstr "Africa/Kampala"
 
 #: capplets/time-admin/src/time-zones.h:54
 msgid "Africa/Khartoum"
-msgstr ""
+msgstr "Africa/Khartom"
 
 #: capplets/time-admin/src/time-zones.h:55
 msgid "Africa/Kigali"
-msgstr ""
+msgstr "Africa/Kigali"
 
 #: capplets/time-admin/src/time-zones.h:56
 msgid "Africa/Kinshasa"
-msgstr ""
+msgstr "Africa/Kinshasa"
 
 #: capplets/time-admin/src/time-zones.h:57
 msgid "Africa/Lagos"
-msgstr ""
+msgstr "Africa/Lagos"
 
 #: capplets/time-admin/src/time-zones.h:58
 msgid "Africa/Libreville"
-msgstr ""
+msgstr "Africa/Libreville"
 
 #: capplets/time-admin/src/time-zones.h:59
 msgid "Africa/Lome"
-msgstr ""
+msgstr "Africa/Lomé"
 
 #: capplets/time-admin/src/time-zones.h:60
 msgid "Africa/Luanda"
-msgstr ""
+msgstr "Africa/Luanda"
 
 #: capplets/time-admin/src/time-zones.h:61
 msgid "Africa/Lubumbashi"
-msgstr ""
+msgstr "Africa/Lubumbashi"
 
 #: capplets/time-admin/src/time-zones.h:62
 msgid "Africa/Lusaka"
-msgstr ""
+msgstr "Africa/Lusaka"
 
 #: capplets/time-admin/src/time-zones.h:63
 msgid "Africa/Malabo"
-msgstr ""
+msgstr "Africa/Malabo"
 
 #: capplets/time-admin/src/time-zones.h:64
 msgid "Africa/Maputo"
-msgstr ""
+msgstr "Africa/Maputo"
 
 #: capplets/time-admin/src/time-zones.h:65
 msgid "Africa/Maseru"
-msgstr ""
+msgstr "Africa/Maseru"
 
 #: capplets/time-admin/src/time-zones.h:66
 msgid "Africa/Mbabane"
-msgstr ""
+msgstr "Africa/Mbabane"
 
 #: capplets/time-admin/src/time-zones.h:67
 msgid "Africa/Mogadishu"
-msgstr ""
+msgstr "Africa/Mogadishu"
 
 #: capplets/time-admin/src/time-zones.h:68
 msgid "Africa/Monrovia"
-msgstr ""
+msgstr "Africa/Monrovia"
 
 #: capplets/time-admin/src/time-zones.h:69
 msgid "Africa/Nairobi"
-msgstr ""
+msgstr "Africa/Nairobi"
 
 #: capplets/time-admin/src/time-zones.h:70
 msgid "Africa/Ndjamena"
-msgstr ""
+msgstr "Africa/Ndjamena"
 
 #: capplets/time-admin/src/time-zones.h:71
 msgid "Africa/Niamey"
-msgstr ""
+msgstr "Africa/Niamey"
 
 #: capplets/time-admin/src/time-zones.h:72
 msgid "Africa/Nouakchott"
-msgstr ""
+msgstr "Africa/Nouakchott"
 
 #: capplets/time-admin/src/time-zones.h:73
 msgid "Africa/Ouagadougou"
-msgstr ""
+msgstr "Africa/Oagadogo"
 
 #: capplets/time-admin/src/time-zones.h:74
 msgid "Africa/Porto-Novo"
-msgstr ""
+msgstr "Africa/Porto-Novo"
 
 #: capplets/time-admin/src/time-zones.h:75
 msgid "Africa/Sao_Tome"
-msgstr ""
+msgstr "Africa/Sao_Tome"
 
 #: capplets/time-admin/src/time-zones.h:76
 msgid "Africa/Tripoli"
-msgstr ""
+msgstr "Africa/Trípol"
 
 #: capplets/time-admin/src/time-zones.h:77
 msgid "Africa/Tunis"
-msgstr ""
+msgstr "Africa/Tunis"
 
 #: capplets/time-admin/src/time-zones.h:78
 msgid "Africa/Windhoek"
-msgstr ""
+msgstr "Africa/Windhoek"
 
 #: capplets/time-admin/src/time-zones.h:79
 msgid "America/Adak"
-msgstr ""
+msgstr "America/Adak"
 
 #: capplets/time-admin/src/time-zones.h:80
 msgid "America/Anchorage"
-msgstr ""
+msgstr "America/Anchorage"
 
 #: capplets/time-admin/src/time-zones.h:81
 msgid "America/Anguilla"
-msgstr ""
+msgstr "America/Anguilla"
 
 #: capplets/time-admin/src/time-zones.h:82
 msgid "America/Antigua"
-msgstr ""
+msgstr "America/Antigua"
 
 #: capplets/time-admin/src/time-zones.h:83
 msgid "America/Araguaina"
-msgstr ""
+msgstr "America/Araguaina"
 
 #: capplets/time-admin/src/time-zones.h:84
 msgid "America/Argentina/Buenos_Aires"
-msgstr ""
+msgstr "America/Argentina/Buenos_Aires"
 
 #: capplets/time-admin/src/time-zones.h:85
 msgid "America/Argentina/Catamarca"
-msgstr ""
+msgstr "America/Argentina/Catamarca"
 
 #: capplets/time-admin/src/time-zones.h:86
 msgid "America/Argentina/Cordoba"
-msgstr ""
+msgstr "America/Argentina/Cordoba"
 
 #: capplets/time-admin/src/time-zones.h:87
 msgid "America/Argentina/Jujuy"
-msgstr ""
+msgstr "America/Argentina/Jujuy"
 
 #: capplets/time-admin/src/time-zones.h:88
 msgid "America/Argentina/La_Rioja"
-msgstr ""
+msgstr "America/Argentina/La_Rioja"
 
 #: capplets/time-admin/src/time-zones.h:89
 msgid "America/Argentina/Mendoza"
-msgstr ""
+msgstr "America/Argentina/Mendoza"
 
 #: capplets/time-admin/src/time-zones.h:90
 msgid "America/Argentina/Rio_Gallegos"
-msgstr ""
+msgstr "America/Argentina/Rio_Gallegos"
 
 #: capplets/time-admin/src/time-zones.h:91
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "America/Argentina/Salta"
 
 #: capplets/time-admin/src/time-zones.h:92
 msgid "America/Argentina/San_Juan"
-msgstr ""
+msgstr "America/Argentina/San_Juan"
 
 #: capplets/time-admin/src/time-zones.h:93
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "America/Argentina/San_Luis"
 
 #: capplets/time-admin/src/time-zones.h:94
 msgid "America/Argentina/Tucuman"
-msgstr ""
+msgstr "America/Argentina/Tucuman"
 
 #: capplets/time-admin/src/time-zones.h:95
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "America/Argentina/Ushuaia"
 
 #: capplets/time-admin/src/time-zones.h:96
 msgid "America/Aruba"
-msgstr ""
+msgstr "America/Aruba"
 
 #: capplets/time-admin/src/time-zones.h:97
 msgid "America/Asuncion"
-msgstr ""
+msgstr "America/Asuncion"
 
 #: capplets/time-admin/src/time-zones.h:98
 msgid "America/Atikokan"
-msgstr ""
+msgstr "America/Atikokan"
 
 #: capplets/time-admin/src/time-zones.h:99
 msgid "America/Bahia"
-msgstr ""
+msgstr "America/Bahia"
 
 #: capplets/time-admin/src/time-zones.h:100
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "America/Bahia_Banderas"
 
 #: capplets/time-admin/src/time-zones.h:101
 msgid "America/Barbados"
-msgstr ""
+msgstr "America/Barbade"
 
 #: capplets/time-admin/src/time-zones.h:102
 msgid "America/Belem"
-msgstr ""
+msgstr "America/Belem"
 
 #: capplets/time-admin/src/time-zones.h:103
 msgid "America/Belize"
-msgstr ""
+msgstr "America/Belize"
 
 #: capplets/time-admin/src/time-zones.h:104
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "America/Blanc-Sablon"
 
 #: capplets/time-admin/src/time-zones.h:105
 msgid "America/Boa_Vista"
-msgstr ""
+msgstr "America/Boa_Vista"
 
 #: capplets/time-admin/src/time-zones.h:106
 msgid "America/Bogota"
-msgstr ""
+msgstr "America/Bogota"
 
 #: capplets/time-admin/src/time-zones.h:107
 msgid "America/Boise"
-msgstr ""
+msgstr "America/Boise"
 
 #: capplets/time-admin/src/time-zones.h:108
 msgid "America/Cambridge_Bay"
-msgstr ""
+msgstr "America/Cambridge_Bay"
 
 #: capplets/time-admin/src/time-zones.h:109
 msgid "America/Campo_Grande"
-msgstr ""
+msgstr "America/Campo_Grande"
 
 #: capplets/time-admin/src/time-zones.h:110
 msgid "America/Cancun"
-msgstr ""
+msgstr "America/Cancun"
 
 #: capplets/time-admin/src/time-zones.h:111
 msgid "America/Caracas"
-msgstr ""
+msgstr "America/Caracas"
 
 #: capplets/time-admin/src/time-zones.h:112
 msgid "America/Cayenne"
-msgstr ""
+msgstr "America/Cayenne"
 
 #: capplets/time-admin/src/time-zones.h:113
 msgid "America/Cayman"
-msgstr ""
+msgstr "America/Cayman"
 
 #: capplets/time-admin/src/time-zones.h:114
 msgid "America/Chicago"
-msgstr ""
+msgstr "America/Chicago"
 
 #: capplets/time-admin/src/time-zones.h:115
 msgid "America/Chihuahua"
-msgstr ""
+msgstr "America/Chihuahua"
 
 #: capplets/time-admin/src/time-zones.h:116
 msgid "America/Costa_Rica"
-msgstr ""
+msgstr "America/Costa_Rica"
 
 #: capplets/time-admin/src/time-zones.h:117
 msgid "America/Creston"
-msgstr ""
+msgstr "America/Creston"
 
 #: capplets/time-admin/src/time-zones.h:118
 msgid "America/Cuiaba"
-msgstr ""
+msgstr "America/Cuiaba"
 
 #: capplets/time-admin/src/time-zones.h:119
 msgid "America/Curacao"
-msgstr ""
+msgstr "America/Curacao"
 
 #: capplets/time-admin/src/time-zones.h:120
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "America/Danmarkshavn"
 
 #: capplets/time-admin/src/time-zones.h:121
 msgid "America/Dawson"
-msgstr ""
+msgstr "America/Dawson"
 
 #: capplets/time-admin/src/time-zones.h:122
 msgid "America/Dawson_Creek"
-msgstr ""
+msgstr "America/Dawson_Creek"
 
 #: capplets/time-admin/src/time-zones.h:123
 msgid "America/Denver"
-msgstr ""
+msgstr "America/Denver"
 
 #: capplets/time-admin/src/time-zones.h:124
 msgid "America/Detroit"
-msgstr ""
+msgstr "America/Detroit"
 
 #: capplets/time-admin/src/time-zones.h:125
 msgid "America/Dominica"
-msgstr ""
+msgstr "America/Dominica"
 
 #: capplets/time-admin/src/time-zones.h:126
 msgid "America/Edmonton"
-msgstr ""
+msgstr "America/Edmonton"
 
 #: capplets/time-admin/src/time-zones.h:127
 msgid "America/Eirunepe"
-msgstr ""
+msgstr "America/Eirunepe"
 
 #: capplets/time-admin/src/time-zones.h:128
 msgid "America/El_Salvador"
-msgstr ""
+msgstr "America/El_Salvador"
 
 #: capplets/time-admin/src/time-zones.h:129
 msgid "America/Fortaleza"
-msgstr ""
+msgstr "America/Fortaleza"
 
 #: capplets/time-admin/src/time-zones.h:130
 msgid "America/Fort_Nelson"
-msgstr ""
+msgstr "America/Fort_Nelson"
 
 #: capplets/time-admin/src/time-zones.h:131
 msgid "America/Glace_Bay"
-msgstr ""
+msgstr "America/Glace_Bay"
 
 #: capplets/time-admin/src/time-zones.h:132
 msgid "America/Godthab"
-msgstr ""
+msgstr "America/Godthab"
 
 #: capplets/time-admin/src/time-zones.h:133
 msgid "America/Goose_Bay"
-msgstr ""
+msgstr "America/Goose_Bay"
 
 #: capplets/time-admin/src/time-zones.h:134
 msgid "America/Grand_Turk"
-msgstr ""
+msgstr "America/Grand_Turk"
 
 #: capplets/time-admin/src/time-zones.h:135
 msgid "America/Grenada"
-msgstr ""
+msgstr "America/Grenada"
 
 #: capplets/time-admin/src/time-zones.h:136
 msgid "America/Guadeloupe"
-msgstr ""
+msgstr "America/Guadeloupe"
 
 #: capplets/time-admin/src/time-zones.h:137
 msgid "America/Guatemala"
-msgstr ""
+msgstr "America/Guatemala"
 
 #: capplets/time-admin/src/time-zones.h:138
 msgid "America/Guayaquil"
-msgstr ""
+msgstr "America/Guayaquil"
 
 #: capplets/time-admin/src/time-zones.h:139
 msgid "America/Guyana"
-msgstr ""
+msgstr "America/Guiana"
 
 #: capplets/time-admin/src/time-zones.h:140
 msgid "America/Halifax"
-msgstr ""
+msgstr "America/Halifax"
 
 #: capplets/time-admin/src/time-zones.h:141
 msgid "America/Havana"
-msgstr ""
+msgstr "America/L'Avana"
 
 #: capplets/time-admin/src/time-zones.h:142
 msgid "America/Hermosillo"
-msgstr ""
+msgstr "America/Hermosillo"
 
 #: capplets/time-admin/src/time-zones.h:143
 msgid "America/Indiana/Indianapolis"
-msgstr ""
+msgstr "America/Indiana/Indianapolis"
 
 #: capplets/time-admin/src/time-zones.h:144
 msgid "America/Indiana/Knox"
-msgstr ""
+msgstr "America/Indiana/Knox"
 
 #: capplets/time-admin/src/time-zones.h:145
 msgid "America/Indiana/Marengo"
-msgstr ""
+msgstr "America/Indiana/Marengo"
 
 #: capplets/time-admin/src/time-zones.h:146
 msgid "America/Indiana/Petersburg"
-msgstr ""
+msgstr "America/Indiana/Petersburg"
 
 #: capplets/time-admin/src/time-zones.h:147
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "America/Indiana/Tell_City"
 
 #: capplets/time-admin/src/time-zones.h:148
 msgid "America/Indiana/Vevay"
-msgstr ""
+msgstr "America/Indiana/Vevay"
 
 #: capplets/time-admin/src/time-zones.h:149
 msgid "America/Indiana/Vincennes"
-msgstr ""
+msgstr "America/Indiana/Vincennes"
 
 #: capplets/time-admin/src/time-zones.h:150
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "America/Indiana/Winamac"
 
 #: capplets/time-admin/src/time-zones.h:151
 msgid "America/Inuvik"
-msgstr ""
+msgstr "America/Inuvik"
 
 #: capplets/time-admin/src/time-zones.h:152
 msgid "America/Iqaluit"
-msgstr ""
+msgstr "America/Iqaluit"
 
 #: capplets/time-admin/src/time-zones.h:153
 msgid "America/Jamaica"
-msgstr ""
+msgstr "America/Jamaïque"
 
 #: capplets/time-admin/src/time-zones.h:154
 msgid "America/Juneau"
-msgstr ""
+msgstr "America/Juneau"
 
 #: capplets/time-admin/src/time-zones.h:155
 msgid "America/Kentucky/Louisville"
-msgstr ""
+msgstr "America/Kentucky/Louisville"
 
 #: capplets/time-admin/src/time-zones.h:156
 msgid "America/Kentucky/Monticello"
-msgstr ""
+msgstr "America/Kentucky/Monticello"
 
 #: capplets/time-admin/src/time-zones.h:157
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "America/Kralendijk"
 
 #: capplets/time-admin/src/time-zones.h:158
 msgid "America/La_Paz"
-msgstr ""
+msgstr "America/La Paz"
 
 #: capplets/time-admin/src/time-zones.h:159
 msgid "America/Lima"
-msgstr ""
+msgstr "America/Lima"
 
 #: capplets/time-admin/src/time-zones.h:160
 msgid "America/Los_Angeles"
-msgstr ""
+msgstr "America/Los_Angeles"
 
 #: capplets/time-admin/src/time-zones.h:161
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "America/Lower_Princes"
 
 #: capplets/time-admin/src/time-zones.h:162
 msgid "America/Maceio"
-msgstr ""
+msgstr "America/Maceio"
 
 #: capplets/time-admin/src/time-zones.h:163
 msgid "America/Managua"
-msgstr ""
+msgstr "America/Managua"
 
 #: capplets/time-admin/src/time-zones.h:164
 msgid "America/Manaus"
-msgstr ""
+msgstr "America/Manaus"
 
 #: capplets/time-admin/src/time-zones.h:165
 msgid "America/Marigot"
-msgstr ""
+msgstr "America/Marigot"
 
 #: capplets/time-admin/src/time-zones.h:166
 msgid "America/Martinique"
-msgstr ""
+msgstr "America/Martinica"
 
 #: capplets/time-admin/src/time-zones.h:167
 msgid "America/Matamoros"
-msgstr ""
+msgstr "America/Matamoros"
 
 #: capplets/time-admin/src/time-zones.h:168
 msgid "America/Mazatlan"
-msgstr ""
+msgstr "America/Mazatlan"
 
 #: capplets/time-admin/src/time-zones.h:169
 msgid "America/Menominee"
-msgstr ""
+msgstr "America/Menominee"
 
 #: capplets/time-admin/src/time-zones.h:170
 msgid "America/Merida"
-msgstr ""
+msgstr "America/Merida"
 
 #: capplets/time-admin/src/time-zones.h:171
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "America/Metlakatla"
 
 #: capplets/time-admin/src/time-zones.h:172
 msgid "America/Mexico_City"
-msgstr ""
+msgstr "America/Mexic"
 
 #: capplets/time-admin/src/time-zones.h:173
 msgid "America/Miquelon"
-msgstr ""
+msgstr "America/Miquelon"
 
 #: capplets/time-admin/src/time-zones.h:174
 msgid "America/Moncton"
-msgstr ""
+msgstr "America/Moncton"
 
 #: capplets/time-admin/src/time-zones.h:175
 msgid "America/Monterrey"
-msgstr ""
+msgstr "America/Monterrey"
 
 #: capplets/time-admin/src/time-zones.h:176
 msgid "America/Montevideo"
-msgstr ""
+msgstr "America/Montevideo"
 
 #: capplets/time-admin/src/time-zones.h:177
 msgid "America/Montserrat"
-msgstr ""
+msgstr "America/Montserrat"
 
 #: capplets/time-admin/src/time-zones.h:178
 msgid "America/Nassau"
-msgstr ""
+msgstr "America/Nassau"
 
 #: capplets/time-admin/src/time-zones.h:179
 msgid "America/New_York"
-msgstr ""
+msgstr "America/Nòva York"
 
 #: capplets/time-admin/src/time-zones.h:180
 msgid "America/Nipigon"
-msgstr ""
+msgstr "America/Nipigon"
 
 #: capplets/time-admin/src/time-zones.h:181
 msgid "America/Nome"
-msgstr ""
+msgstr "America/Nome"
 
 #: capplets/time-admin/src/time-zones.h:182
 msgid "America/Noronha"
-msgstr ""
+msgstr "America/Noronha"
 
 #: capplets/time-admin/src/time-zones.h:183
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "America/North_Dakota/Center"
 
 #: capplets/time-admin/src/time-zones.h:184
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "America/North_Dakota/Center"
 
 #: capplets/time-admin/src/time-zones.h:185
 msgid "America/North_Dakota/New_Salem"
-msgstr ""
+msgstr "America/North_Dakota/New_Salem"
 
 #: capplets/time-admin/src/time-zones.h:186
 msgid "America/Ojinaga"
-msgstr ""
+msgstr "America/Ojinaga"
 
 #: capplets/time-admin/src/time-zones.h:187
 msgid "America/Panama"
-msgstr ""
+msgstr "America/Panama"
 
 #: capplets/time-admin/src/time-zones.h:188
 msgid "America/Pangnirtung"
-msgstr ""
+msgstr "America/Pangnirtung"
 
 #: capplets/time-admin/src/time-zones.h:189
 msgid "America/Paramaribo"
-msgstr ""
+msgstr "America/Paramaribo"
 
 #: capplets/time-admin/src/time-zones.h:190
 msgid "America/Phoenix"
-msgstr ""
+msgstr "America/Phoenix"
 
 #: capplets/time-admin/src/time-zones.h:191
 msgid "America/Port-au-Prince"
-msgstr ""
+msgstr "America/Port-au-Prince"
 
 #: capplets/time-admin/src/time-zones.h:192
 msgid "America/Port_of_Spain"
-msgstr ""
+msgstr "America/Port of Spain"
 
 #: capplets/time-admin/src/time-zones.h:193
 msgid "America/Porto_Velho"
-msgstr ""
+msgstr "America/Porto Velho"
 
 #: capplets/time-admin/src/time-zones.h:194
 msgid "America/Puerto_Rico"
-msgstr ""
+msgstr "America/Puerto Rico"
 
 #: capplets/time-admin/src/time-zones.h:195
 msgid "America/Punta_Arenas"
-msgstr ""
+msgstr "America/Punta_Arenas"
 
 #: capplets/time-admin/src/time-zones.h:196
 msgid "America/Rainy_River"
-msgstr ""
+msgstr "America/Rainy River"
 
 #: capplets/time-admin/src/time-zones.h:197
 msgid "America/Rankin_Inlet"
-msgstr ""
+msgstr "America/Rankin Inlet"
 
 #: capplets/time-admin/src/time-zones.h:198
 msgid "America/Recife"
-msgstr ""
+msgstr "America/Recife"
 
 #: capplets/time-admin/src/time-zones.h:199
 msgid "America/Regina"
-msgstr ""
+msgstr "America/Regina"
 
 #: capplets/time-admin/src/time-zones.h:200
 msgid "America/Resolute"
-msgstr ""
+msgstr "America/Resolute"
 
 #: capplets/time-admin/src/time-zones.h:201
 msgid "America/Rio_Branco"
-msgstr ""
+msgstr "America/Rio_Branco"
 
 #: capplets/time-admin/src/time-zones.h:202
 msgid "America/Santarem"
-msgstr ""
+msgstr "America/Santarem"
 
 #: capplets/time-admin/src/time-zones.h:203
 msgid "America/Santiago"
-msgstr ""
+msgstr "America/Santiago"
 
 #: capplets/time-admin/src/time-zones.h:204
 msgid "America/Santo_Domingo"
-msgstr ""
+msgstr "America/Santo_Domingo"
 
 #: capplets/time-admin/src/time-zones.h:205
 msgid "America/Sao_Paulo"
-msgstr ""
+msgstr "America/Sao_Paulo"
 
 #: capplets/time-admin/src/time-zones.h:206
 msgid "America/Scoresbysund"
-msgstr ""
+msgstr "America/Scoresbysund"
 
 #: capplets/time-admin/src/time-zones.h:207
 msgid "America/Sitka"
-msgstr ""
+msgstr "America/Sitka"
 
 #: capplets/time-admin/src/time-zones.h:208
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "America/St_Barthelemy"
 
 #: capplets/time-admin/src/time-zones.h:209
 msgid "America/St_Johns"
-msgstr ""
+msgstr "America/St_Johns"
 
 #: capplets/time-admin/src/time-zones.h:210
 msgid "America/St_Kitts"
-msgstr ""
+msgstr "America/St_Kitts"
 
 #: capplets/time-admin/src/time-zones.h:211
 msgid "America/St_Lucia"
-msgstr ""
+msgstr "America/St_Lucia"
 
 #: capplets/time-admin/src/time-zones.h:212
 msgid "America/St_Thomas"
-msgstr ""
+msgstr "America/St_Thomas"
 
 #: capplets/time-admin/src/time-zones.h:213
 msgid "America/St_Vincent"
-msgstr ""
+msgstr "America/St_Vincent"
 
 #: capplets/time-admin/src/time-zones.h:214
 msgid "America/Swift_Current"
-msgstr ""
+msgstr "America/Swift_Current"
 
 #: capplets/time-admin/src/time-zones.h:215
 msgid "America/Tegucigalpa"
-msgstr ""
+msgstr "America/Tegucigalpa"
 
 #: capplets/time-admin/src/time-zones.h:216
 msgid "America/Thule"
-msgstr ""
+msgstr "America/Thule"
 
 #: capplets/time-admin/src/time-zones.h:217
 msgid "America/Thunder_Bay"
-msgstr ""
+msgstr "America/Thunder_Bay"
 
 #: capplets/time-admin/src/time-zones.h:218
 msgid "America/Tijuana"
-msgstr ""
+msgstr "America/Tijuana"
 
 #: capplets/time-admin/src/time-zones.h:219
 msgid "America/Toronto"
-msgstr ""
+msgstr "America/Toronto"
 
 #: capplets/time-admin/src/time-zones.h:220
 msgid "America/Tortola"
-msgstr ""
+msgstr "America/Tortola"
 
 #: capplets/time-admin/src/time-zones.h:221
 msgid "America/Vancouver"
-msgstr ""
+msgstr "America/Vancouver"
 
 #: capplets/time-admin/src/time-zones.h:222
 msgid "America/Whitehorse"
-msgstr ""
+msgstr "America/Whitehorse"
 
 #: capplets/time-admin/src/time-zones.h:223
 msgid "America/Winnipeg"
-msgstr ""
+msgstr "America/Winnipeg"
 
 #: capplets/time-admin/src/time-zones.h:224
 msgid "America/Yakutat"
-msgstr ""
+msgstr "America/Yakutat"
 
 #: capplets/time-admin/src/time-zones.h:225
 msgid "America/Yellowknife"
-msgstr ""
+msgstr "America/Yellowknife"
 
 #: capplets/time-admin/src/time-zones.h:226
 msgid "Antarctica/Casey"
-msgstr ""
+msgstr "Antartic/Casey"
 
 #: capplets/time-admin/src/time-zones.h:227
 msgid "Antarctica/Davis"
-msgstr ""
+msgstr "Antartic/Davis"
 
 #: capplets/time-admin/src/time-zones.h:228
 msgid "Antarctica/DumontDUrville"
-msgstr ""
+msgstr "Antartic/DumontDurville"
 
 #: capplets/time-admin/src/time-zones.h:229
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "Antarctica/Macquarie"
 
 #: capplets/time-admin/src/time-zones.h:230
 msgid "Antarctica/Mawson"
-msgstr ""
+msgstr "Antartic/Mawson"
 
 #: capplets/time-admin/src/time-zones.h:231
 msgid "Antarctica/McMurdo"
-msgstr ""
+msgstr "Antartic/McMurdo"
 
 #: capplets/time-admin/src/time-zones.h:232
 msgid "Antarctica/Palmer"
-msgstr ""
+msgstr "Antartic/Palmer"
 
 #: capplets/time-admin/src/time-zones.h:233
 msgid "Antarctica/Rothera"
-msgstr ""
+msgstr "Antarctica/Rothera"
 
 #: capplets/time-admin/src/time-zones.h:234
 msgid "Antarctica/Syowa"
-msgstr ""
+msgstr "Antartic/Syowa"
 
 #: capplets/time-admin/src/time-zones.h:235
 msgid "Antarctica/Troll"
-msgstr ""
+msgstr "Antartic/Troll"
 
 #: capplets/time-admin/src/time-zones.h:236
 msgid "Antarctica/Vostok"
-msgstr ""
+msgstr "Antartic/Vostok"
 
 #: capplets/time-admin/src/time-zones.h:237
 msgid "Arctic/Longyearbyen"
-msgstr ""
+msgstr "Artic/Longyearbyen"
 
 #: capplets/time-admin/src/time-zones.h:238
 msgid "Asia/Aden"
-msgstr ""
+msgstr "Asia/Aden"
 
 #: capplets/time-admin/src/time-zones.h:239
 msgid "Asia/Almaty"
-msgstr ""
+msgstr "Asia/Almaty"
 
 #: capplets/time-admin/src/time-zones.h:240
 msgid "Asia/Amman"
-msgstr ""
+msgstr "Asia/Amman"
 
 #: capplets/time-admin/src/time-zones.h:241
 msgid "Asia/Anadyr"
-msgstr ""
+msgstr "Asia/Anadyr"
 
 #: capplets/time-admin/src/time-zones.h:242
 msgid "Asia/Aqtau"
-msgstr ""
+msgstr "Asia/Aqtau"
 
 #: capplets/time-admin/src/time-zones.h:243
 msgid "Asia/Aqtobe"
-msgstr ""
+msgstr "Asia/Aqtobe"
 
 #: capplets/time-admin/src/time-zones.h:244
 msgid "Asia/Ashgabat"
-msgstr ""
+msgstr "Asia/Ashgabat"
 
 #: capplets/time-admin/src/time-zones.h:245
 msgid "Asia/Atyrau"
-msgstr ""
+msgstr "Asia/Atyrau"
 
 #: capplets/time-admin/src/time-zones.h:246
 msgid "Asia/Baghdad"
-msgstr ""
+msgstr "Asia/Baghdad"
 
 #: capplets/time-admin/src/time-zones.h:247
 msgid "Asia/Bahrain"
-msgstr ""
+msgstr "Asia/Barhain"
 
 #: capplets/time-admin/src/time-zones.h:248
 msgid "Asia/Baku"
-msgstr ""
+msgstr "Asia/Baku"
 
 #: capplets/time-admin/src/time-zones.h:249
 msgid "Asia/Bangkok"
-msgstr ""
+msgstr "Asia/Bangkok"
 
 #: capplets/time-admin/src/time-zones.h:250
 msgid "Asia/Barnaul"
-msgstr ""
+msgstr "Asia/Barnaul"
 
 #: capplets/time-admin/src/time-zones.h:251
 msgid "Asia/Beirut"
-msgstr ""
+msgstr "Asia/Beyrouth"
 
 #: capplets/time-admin/src/time-zones.h:252
 msgid "Asia/Bishkek"
-msgstr ""
+msgstr "Asia/Bishkek"
 
 #: capplets/time-admin/src/time-zones.h:253
 msgid "Asia/Brunei"
-msgstr ""
+msgstr "Asia/Brunei"
 
 #: capplets/time-admin/src/time-zones.h:254
 msgid "Asia/Chita"
-msgstr ""
+msgstr "Asia/Chita"
 
 #: capplets/time-admin/src/time-zones.h:255
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "Asia/Choibalsan"
 
 #: capplets/time-admin/src/time-zones.h:256
 msgid "Asia/Colombo"
-msgstr ""
+msgstr "Asia/Colombo"
 
 #: capplets/time-admin/src/time-zones.h:257
 msgid "Asia/Damascus"
-msgstr ""
+msgstr "Asia/Damascus"
 
 #: capplets/time-admin/src/time-zones.h:258
 msgid "Asia/Dhaka"
-msgstr ""
+msgstr "Asia/Dhaka"
 
 #: capplets/time-admin/src/time-zones.h:259
 msgid "Asia/Dili"
-msgstr ""
+msgstr "Asia/Dili"
 
 #: capplets/time-admin/src/time-zones.h:260
 msgid "Asia/Dubai"
-msgstr ""
+msgstr "Asia/Dubai"
 
 #: capplets/time-admin/src/time-zones.h:261
 msgid "Asia/Dushanbe"
-msgstr ""
+msgstr "Asia/Dushanbe"
 
 #: capplets/time-admin/src/time-zones.h:262
 msgid "Asia/Famagusta"
-msgstr ""
+msgstr "Asia/Famagusta"
 
 #: capplets/time-admin/src/time-zones.h:263
 msgid "Asia/Gaza"
-msgstr ""
+msgstr "Asia/Gaza"
 
 #: capplets/time-admin/src/time-zones.h:264
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Asia/Hebron"
 
 #: capplets/time-admin/src/time-zones.h:265
 msgid "Asia/Ho_Chi_Minh"
-msgstr ""
+msgstr "Asia/Ho_Chi_Minh"
 
 #: capplets/time-admin/src/time-zones.h:266
 msgid "Asia/Hong_Kong"
-msgstr ""
+msgstr "Asia/Hong_Kong"
 
 #: capplets/time-admin/src/time-zones.h:267
 msgid "Asia/Hovd"
-msgstr ""
+msgstr "Asia/Hovd"
 
 #: capplets/time-admin/src/time-zones.h:268
 msgid "Asia/Irkutsk"
-msgstr ""
+msgstr "Asia/Irkutsk"
 
 #: capplets/time-admin/src/time-zones.h:269
 msgid "Asia/Jakarta"
-msgstr ""
+msgstr "Asia/Jakarta"
 
 #: capplets/time-admin/src/time-zones.h:270
 msgid "Asia/Jayapura"
-msgstr ""
+msgstr "Asia/Jayapura"
 
 #: capplets/time-admin/src/time-zones.h:271
 msgid "Asia/Jerusalem"
-msgstr ""
+msgstr "Asia/Jerusalèm"
 
 #: capplets/time-admin/src/time-zones.h:272
 msgid "Asia/Kabul"
-msgstr ""
+msgstr "Asia/Kabol"
 
 #: capplets/time-admin/src/time-zones.h:273
 msgid "Asia/Kamchatka"
-msgstr ""
+msgstr "Asia/Kamchatka"
 
 #: capplets/time-admin/src/time-zones.h:274
 msgid "Asia/Karachi"
-msgstr ""
+msgstr "Asia/Karachi"
 
 #: capplets/time-admin/src/time-zones.h:275
 msgid "Asia/Kathmandu"
-msgstr ""
+msgstr "Asia/Katmandou"
 
 #: capplets/time-admin/src/time-zones.h:276
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Asia/Khandyga"
 
 #: capplets/time-admin/src/time-zones.h:277
 msgid "Asia/Kolkata"
-msgstr ""
+msgstr "Asia/Kolkata"
 
 #: capplets/time-admin/src/time-zones.h:278
 msgid "Asia/Krasnoyarsk"
-msgstr ""
+msgstr "Asia/Krasnoyarsk"
 
 #: capplets/time-admin/src/time-zones.h:279
 msgid "Asia/Kuala_Lumpur"
-msgstr ""
+msgstr "Asia/Kuala_Lumpur"
 
 #: capplets/time-admin/src/time-zones.h:280
 msgid "Asia/Kuching"
-msgstr ""
+msgstr "Asia/Kuching"
 
 #: capplets/time-admin/src/time-zones.h:281
 msgid "Asia/Kuwait"
-msgstr ""
+msgstr "Asia/Koweït"
 
 #: capplets/time-admin/src/time-zones.h:282
 msgid "Asia/Macau"
-msgstr ""
+msgstr "Asia/Macau"
 
 #: capplets/time-admin/src/time-zones.h:283
 msgid "Asia/Magadan"
-msgstr ""
+msgstr "Asia/Magadan"
 
 #: capplets/time-admin/src/time-zones.h:284
 msgid "Asia/Makassar"
-msgstr ""
+msgstr "Asia/Makassar"
 
 #: capplets/time-admin/src/time-zones.h:285
 msgid "Asia/Manila"
-msgstr ""
+msgstr "Asia/Manilha"
 
 #: capplets/time-admin/src/time-zones.h:286
 msgid "Asia/Muscat"
-msgstr ""
+msgstr "Asia/Muscat"
 
 #: capplets/time-admin/src/time-zones.h:287
 msgid "Asia/Nicosia"
-msgstr ""
+msgstr "Asia/Nicòsia"
 
 #: capplets/time-admin/src/time-zones.h:288
 msgid "Asia/Novokuznetsk"
-msgstr ""
+msgstr "Asia/Novokuznetsk"
 
 #: capplets/time-admin/src/time-zones.h:289
 msgid "Asia/Novosibirsk"
-msgstr ""
+msgstr "Asia/Novosibirsk"
 
 #: capplets/time-admin/src/time-zones.h:290
 msgid "Asia/Omsk"
-msgstr ""
+msgstr "Asia/Omsk"
 
 #: capplets/time-admin/src/time-zones.h:291
 msgid "Asia/Oral"
-msgstr ""
+msgstr "Asia/Oral"
 
 #: capplets/time-admin/src/time-zones.h:292
 msgid "Asia/Phnom_Penh"
-msgstr ""
+msgstr "Asia/Phnom_Penh"
 
 #: capplets/time-admin/src/time-zones.h:293
 msgid "Asia/Pontianak"
-msgstr ""
+msgstr "Asia/Pontianak"
 
 #: capplets/time-admin/src/time-zones.h:294
 msgid "Asia/Pyongyang"
-msgstr ""
+msgstr "Asia/Pyongyang"
 
 #: capplets/time-admin/src/time-zones.h:295
 msgid "Asia/Qatar"
-msgstr ""
+msgstr "Asia/Qatar"
 
 #: capplets/time-admin/src/time-zones.h:296
 msgid "Asia/Qostanay"
-msgstr ""
+msgstr "Asia/Qostanay"
 
 #: capplets/time-admin/src/time-zones.h:297
 msgid "Asia/Qyzylorda"
-msgstr ""
+msgstr "Asia/Qyzylorda"
 
 #: capplets/time-admin/src/time-zones.h:298
 msgid "Asia/Riyadh"
-msgstr ""
+msgstr "Asia/Riyadh"
 
 #: capplets/time-admin/src/time-zones.h:299
 msgid "Asia/Sakhalin"
-msgstr ""
+msgstr "Asia/Sakhalin"
 
 #: capplets/time-admin/src/time-zones.h:300
 msgid "Asia/Samarkand"
-msgstr ""
+msgstr "Asia/Samarkand"
 
 #: capplets/time-admin/src/time-zones.h:301
 msgid "Asia/Seoul"
-msgstr ""
+msgstr "Asia/Seol"
 
 #: capplets/time-admin/src/time-zones.h:302
 msgid "Asia/Shanghai"
-msgstr ""
+msgstr "Asia/Shanghai"
 
 #: capplets/time-admin/src/time-zones.h:303
 msgid "Asia/Singapore"
-msgstr ""
+msgstr "Asia/Singapor"
 
 #: capplets/time-admin/src/time-zones.h:304
 msgid "Asia/Srednekolymsk"
-msgstr ""
+msgstr "Asia/Srednekolymsk"
 
 #: capplets/time-admin/src/time-zones.h:305
 msgid "Asia/Taipei"
-msgstr ""
+msgstr "Asia/Taipei"
 
 #: capplets/time-admin/src/time-zones.h:306
 msgid "Asia/Tashkent"
-msgstr ""
+msgstr "Asia/Tashkent"
 
 #: capplets/time-admin/src/time-zones.h:307
 msgid "Asia/Tbilisi"
-msgstr ""
+msgstr "Asia/Tbilisi"
 
 #: capplets/time-admin/src/time-zones.h:308
 msgid "Asia/Tehran"
-msgstr ""
+msgstr "Asia/Teheran"
 
 #: capplets/time-admin/src/time-zones.h:309
 msgid "Asia/Thimphu"
-msgstr ""
+msgstr "Asia/Thimphu"
 
 #: capplets/time-admin/src/time-zones.h:310
 msgid "Asia/Tokyo"
-msgstr ""
+msgstr "Asia/Tòquio"
 
 #: capplets/time-admin/src/time-zones.h:311
 msgid "Asia/Tomsk"
-msgstr ""
+msgstr "Asia/Tomsk"
 
 #: capplets/time-admin/src/time-zones.h:312
 msgid "Asia/Ulaanbaatar"
-msgstr ""
+msgstr "Asia/Ulaanbaatar"
 
 #: capplets/time-admin/src/time-zones.h:313
 msgid "Asia/Urumqi"
-msgstr ""
+msgstr "Asia/Urumqi"
 
 #: capplets/time-admin/src/time-zones.h:314
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Asia/Ust-Nera"
 
 #: capplets/time-admin/src/time-zones.h:315
 msgid "Asia/Vientiane"
-msgstr ""
+msgstr "Asia/Vientiane"
 
 #: capplets/time-admin/src/time-zones.h:316
 msgid "Asia/Vladivostok"
-msgstr ""
+msgstr "Asia/Vladivostok"
 
 #: capplets/time-admin/src/time-zones.h:317
 msgid "Asia/Yakutsk"
-msgstr ""
+msgstr "Asia/Yakutsk"
 
 #: capplets/time-admin/src/time-zones.h:318
 msgid "Asia/Yangon"
-msgstr ""
+msgstr "Asia/Yangon"
 
 #: capplets/time-admin/src/time-zones.h:319
 msgid "Asia/Yekaterinburg"
-msgstr ""
+msgstr "Asia/Yekaterinburg"
 
 #: capplets/time-admin/src/time-zones.h:320
 msgid "Asia/Yerevan"
-msgstr ""
+msgstr "Asia/Yerevan"
 
 #: capplets/time-admin/src/time-zones.h:321
 msgid "Atlantic/Azores"
-msgstr ""
+msgstr "Atlantic/Açòras"
 
 #: capplets/time-admin/src/time-zones.h:322
 msgid "Atlantic/Bermuda"
-msgstr ""
+msgstr "Atlantic/Bermudas"
 
 #: capplets/time-admin/src/time-zones.h:323
 msgid "Atlantic/Canary"
-msgstr ""
+msgstr "Atlantic/Canarias"
 
 #: capplets/time-admin/src/time-zones.h:324
 msgid "Atlantic/Cape_Verde"
-msgstr ""
+msgstr "Atlantic/Cap Verd"
 
 #: capplets/time-admin/src/time-zones.h:325
 msgid "Atlantic/Faroe"
-msgstr ""
+msgstr "Atlantic/Feròe"
 
 #: capplets/time-admin/src/time-zones.h:326
 msgid "Atlantic/Madeira"
-msgstr ""
+msgstr "Atlantic/Madèra"
 
 #: capplets/time-admin/src/time-zones.h:327
 msgid "Atlantic/Reykjavik"
-msgstr ""
+msgstr "Atlantic/Reykjavik"
 
 #: capplets/time-admin/src/time-zones.h:328
 msgid "Atlantic/South_Georgia"
-msgstr ""
+msgstr "Atlantic/South_Georgia"
 
 #: capplets/time-admin/src/time-zones.h:329
 msgid "Atlantic/Stanley"
-msgstr ""
+msgstr "Atlantic/Stanley"
 
 #: capplets/time-admin/src/time-zones.h:330
 msgid "Atlantic/St_Helena"
-msgstr ""
+msgstr "Atlantic/Santa_Elena"
 
 #: capplets/time-admin/src/time-zones.h:331
 msgid "Australia/Adelaide"
-msgstr ""
+msgstr "Australia/Adelaïda"
 
 #: capplets/time-admin/src/time-zones.h:332
 msgid "Australia/Brisbane"
-msgstr ""
+msgstr "Australia/Brisbane"
 
 #: capplets/time-admin/src/time-zones.h:333
 msgid "Australia/Broken_Hill"
-msgstr ""
+msgstr "Austràlia/Broken_Hill"
 
 #: capplets/time-admin/src/time-zones.h:334
 msgid "Australia/Currie"
-msgstr ""
+msgstr "Austràlia/Currie"
 
 #: capplets/time-admin/src/time-zones.h:335
 msgid "Australia/Darwin"
-msgstr ""
+msgstr "Austràlia/Darwin"
 
 #: capplets/time-admin/src/time-zones.h:336
 msgid "Australia/Eucla"
-msgstr ""
+msgstr "Austràlia/Eucla"
 
 #: capplets/time-admin/src/time-zones.h:337
 msgid "Australia/Hobart"
-msgstr ""
+msgstr "Austràlia/Hobart"
 
 #: capplets/time-admin/src/time-zones.h:338
 msgid "Australia/Lindeman"
-msgstr ""
+msgstr "Austràlia/Lindeman"
 
 #: capplets/time-admin/src/time-zones.h:339
 msgid "Australia/Lord_Howe"
-msgstr ""
+msgstr "Austràlia/Lord_Howe"
 
 #: capplets/time-admin/src/time-zones.h:340
 msgid "Australia/Melbourne"
@@ -4270,15 +4309,15 @@ msgstr "Australia/Melbourne"
 
 #: capplets/time-admin/src/time-zones.h:341
 msgid "Australia/Perth"
-msgstr ""
+msgstr "Australia/Perth"
 
 #: capplets/time-admin/src/time-zones.h:342
 msgid "Australia/Sydney"
-msgstr ""
+msgstr "Australia/Sydney"
 
 #: capplets/time-admin/src/time-zones.h:343
 msgid "Europe/Amsterdam"
-msgstr ""
+msgstr "Euròpa/Amsterdam"
 
 #: capplets/time-admin/src/time-zones.h:344
 msgid "Europe/Andorra"
@@ -4286,95 +4325,95 @@ msgstr "Euròpa/Andòrra"
 
 #: capplets/time-admin/src/time-zones.h:345
 msgid "Europe/Astrakhan"
-msgstr ""
+msgstr "Euròpa/Astrakhan"
 
 #: capplets/time-admin/src/time-zones.h:346
 msgid "Europe/Athens"
-msgstr ""
+msgstr "Euròpa/Atènas"
 
 #: capplets/time-admin/src/time-zones.h:347
 msgid "Europe/Belgrade"
-msgstr ""
+msgstr "Euròpa/Belgrad"
 
 #: capplets/time-admin/src/time-zones.h:348
 msgid "Europe/Berlin"
-msgstr ""
+msgstr "Euròpa/Berlin"
 
 #: capplets/time-admin/src/time-zones.h:349
 msgid "Europe/Bratislava"
-msgstr ""
+msgstr "Euròpa/Bratislava"
 
 #: capplets/time-admin/src/time-zones.h:350
 msgid "Europe/Brussels"
-msgstr ""
+msgstr "Euròpa/Brussèlas"
 
 #: capplets/time-admin/src/time-zones.h:351
 msgid "Europe/Bucharest"
-msgstr ""
+msgstr "Euròpa/Bucarèst"
 
 #: capplets/time-admin/src/time-zones.h:352
 msgid "Europe/Budapest"
-msgstr ""
+msgstr "Euròpa/Budapèst"
 
 #: capplets/time-admin/src/time-zones.h:353
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Euròpa/Busingen"
 
 #: capplets/time-admin/src/time-zones.h:354
 msgid "Europe/Chisinau"
-msgstr ""
+msgstr "Euròpa/Chisinau"
 
 #: capplets/time-admin/src/time-zones.h:355
 msgid "Europe/Copenhagen"
-msgstr ""
+msgstr "Euròpa/Copenaga"
 
 #: capplets/time-admin/src/time-zones.h:356
 msgid "Europe/Dublin"
-msgstr ""
+msgstr "Euròpa/Dublin"
 
 #: capplets/time-admin/src/time-zones.h:357
 msgid "Europe/Gibraltar"
-msgstr ""
+msgstr "Euròpa/Girbartar"
 
 #: capplets/time-admin/src/time-zones.h:358
 msgid "Europe/Guernsey"
-msgstr ""
+msgstr "Euròpa/Guernesei"
 
 #: capplets/time-admin/src/time-zones.h:359
 msgid "Europe/Helsinki"
-msgstr ""
+msgstr "Euròpa/Helsinki"
 
 #: capplets/time-admin/src/time-zones.h:360
 msgid "Europe/Isle_of_Man"
-msgstr ""
+msgstr "Euròpa/Illa_de_Man"
 
 #: capplets/time-admin/src/time-zones.h:361
 msgid "Europe/Istanbul"
-msgstr ""
+msgstr "Euròpa/Istambol"
 
 #: capplets/time-admin/src/time-zones.h:362
 msgid "Europe/Jersey"
-msgstr ""
+msgstr "Euròpa/Jersei"
 
 #: capplets/time-admin/src/time-zones.h:363
 msgid "Europe/Kaliningrad"
-msgstr ""
+msgstr "Euròpa/Kaliningrad"
 
 #: capplets/time-admin/src/time-zones.h:364
 msgid "Europe/Kiev"
-msgstr ""
+msgstr "Euròpa/Kiev"
 
 #: capplets/time-admin/src/time-zones.h:365
 msgid "Europe/Kirov"
-msgstr ""
+msgstr "Euròpa/Kirov"
 
 #: capplets/time-admin/src/time-zones.h:366
 msgid "Europe/Lisbon"
-msgstr ""
+msgstr "Euròpa/Lisbona"
 
 #: capplets/time-admin/src/time-zones.h:367
 msgid "Europe/Ljubljana"
-msgstr ""
+msgstr "Euròpa/Ljubljana"
 
 #: capplets/time-admin/src/time-zones.h:368
 msgid "Europe/London"
@@ -4382,7 +4421,7 @@ msgstr "Euròpa/Londres"
 
 #: capplets/time-admin/src/time-zones.h:369
 msgid "Europe/Luxembourg"
-msgstr ""
+msgstr "Euròpa/Luxemborg"
 
 #: capplets/time-admin/src/time-zones.h:370
 msgid "Europe/Madrid"
@@ -4390,27 +4429,27 @@ msgstr "Euròpa/Madrid"
 
 #: capplets/time-admin/src/time-zones.h:371
 msgid "Europe/Malta"
-msgstr ""
+msgstr "Euròpa/Malta"
 
 #: capplets/time-admin/src/time-zones.h:372
 msgid "Europe/Mariehamn"
-msgstr ""
+msgstr "Euròpa/Mariehamn"
 
 #: capplets/time-admin/src/time-zones.h:373
 msgid "Europe/Minsk"
-msgstr ""
+msgstr "Euròpa/Minsk"
 
 #: capplets/time-admin/src/time-zones.h:374
 msgid "Europe/Monaco"
-msgstr ""
+msgstr "Euròpa/Mónegue"
 
 #: capplets/time-admin/src/time-zones.h:375
 msgid "Europe/Moscow"
-msgstr ""
+msgstr "Euròpa/Moscòu"
 
 #: capplets/time-admin/src/time-zones.h:376
 msgid "Europe/Oslo"
-msgstr ""
+msgstr "Euròpa/Òslo"
 
 #: capplets/time-admin/src/time-zones.h:377
 msgid "Europe/Paris"
@@ -4418,7 +4457,7 @@ msgstr "Euròpa/París"
 
 #: capplets/time-admin/src/time-zones.h:378
 msgid "Europe/Podgorica"
-msgstr ""
+msgstr "Euròpa/Podgorica"
 
 #: capplets/time-admin/src/time-zones.h:379
 msgid "Europe/Prague"
@@ -4426,7 +4465,7 @@ msgstr "Euròpa/Praga"
 
 #: capplets/time-admin/src/time-zones.h:380
 msgid "Europe/Riga"
-msgstr ""
+msgstr "Euròpa/Riga"
 
 #: capplets/time-admin/src/time-zones.h:381
 msgid "Europe/Rome"
@@ -4434,283 +4473,283 @@ msgstr "Euròpa/Roma"
 
 #: capplets/time-admin/src/time-zones.h:382
 msgid "Europe/Samara"
-msgstr ""
+msgstr "Euròpa/Samara"
 
 #: capplets/time-admin/src/time-zones.h:383
 msgid "Europe/San_Marino"
-msgstr ""
+msgstr "Euròpa/Sant_Marin"
 
 #: capplets/time-admin/src/time-zones.h:384
 msgid "Europe/Sarajevo"
-msgstr ""
+msgstr "Euròpa/Sarajevo"
 
 #: capplets/time-admin/src/time-zones.h:385
 msgid "Europe/Saratov"
-msgstr ""
+msgstr "Euròpa/Saratov"
 
 #: capplets/time-admin/src/time-zones.h:386
 msgid "Europe/Simferopol"
-msgstr ""
+msgstr "Euròpa/Simferopol"
 
 #: capplets/time-admin/src/time-zones.h:387
 msgid "Europe/Skopje"
-msgstr ""
+msgstr "Euròpa/Skopje"
 
 #: capplets/time-admin/src/time-zones.h:388
 msgid "Europe/Sofia"
-msgstr ""
+msgstr "Euròpa/Sòfia"
 
 #: capplets/time-admin/src/time-zones.h:389
 msgid "Europe/Stockholm"
-msgstr ""
+msgstr "Euròpa/Estocòlme"
 
 #: capplets/time-admin/src/time-zones.h:390
 msgid "Europe/Tallinn"
-msgstr ""
+msgstr "Euròpa/Tallinn"
 
 #: capplets/time-admin/src/time-zones.h:391
 msgid "Europe/Tirane"
-msgstr ""
+msgstr "Euròpa/Tirana"
 
 #: capplets/time-admin/src/time-zones.h:392
 msgid "Europe/Ulyanovsk"
-msgstr ""
+msgstr "Euròpa/Ulyanovsk"
 
 #: capplets/time-admin/src/time-zones.h:393
 msgid "Europe/Uzhgorod"
-msgstr ""
+msgstr "Euròpa/Uzhgorod"
 
 #: capplets/time-admin/src/time-zones.h:394
 msgid "Europe/Vaduz"
-msgstr ""
+msgstr "Euròpa/Vaduz"
 
 #: capplets/time-admin/src/time-zones.h:395
 msgid "Europe/Vatican"
-msgstr ""
+msgstr "Euròpa/Vatican"
 
 #: capplets/time-admin/src/time-zones.h:396
 msgid "Europe/Vienna"
-msgstr ""
+msgstr "Euròpa/Vièna"
 
 #: capplets/time-admin/src/time-zones.h:397
 msgid "Europe/Vilnius"
-msgstr ""
+msgstr "Euròpa/Vilnius"
 
 #: capplets/time-admin/src/time-zones.h:398
 msgid "Europe/Volgograd"
-msgstr ""
+msgstr "Euròpa/Volgograd"
 
 #: capplets/time-admin/src/time-zones.h:399
 msgid "Europe/Warsaw"
-msgstr ""
+msgstr "Euròpa/Varsòvia"
 
 #: capplets/time-admin/src/time-zones.h:400
 msgid "Europe/Zagreb"
-msgstr ""
+msgstr "Euròpa/Zagrèb"
 
 #: capplets/time-admin/src/time-zones.h:401
 msgid "Europe/Zaporozhye"
-msgstr ""
+msgstr "Euròpa/Zaporozhye"
 
 #: capplets/time-admin/src/time-zones.h:402
 msgid "Europe/Zurich"
-msgstr ""
+msgstr "Euròpa/Zuric"
 
 #: capplets/time-admin/src/time-zones.h:403
 msgid "Indian/Antananarivo"
-msgstr ""
+msgstr "Indian/Tananarive"
 
 #: capplets/time-admin/src/time-zones.h:404
 msgid "Indian/Chagos"
-msgstr ""
+msgstr "Indian/Chagos"
 
 #: capplets/time-admin/src/time-zones.h:405
 msgid "Indian/Christmas"
-msgstr ""
+msgstr "Indian/Christmas"
 
 #: capplets/time-admin/src/time-zones.h:406
 msgid "Indian/Cocos"
-msgstr ""
+msgstr "Indian/Cocos"
 
 #: capplets/time-admin/src/time-zones.h:407
 msgid "Indian/Comoro"
-msgstr ""
+msgstr "Indian/Comòras"
 
 #: capplets/time-admin/src/time-zones.h:408
 msgid "Indian/Kerguelen"
-msgstr ""
+msgstr "Indian/Kerguelen"
 
 #: capplets/time-admin/src/time-zones.h:409
 msgid "Indian/Mahe"
-msgstr ""
+msgstr "Indian/Mahe"
 
 #: capplets/time-admin/src/time-zones.h:410
 msgid "Indian/Maldives"
-msgstr ""
+msgstr "Indian/Maldivas"
 
 #: capplets/time-admin/src/time-zones.h:411
 msgid "Indian/Mauritius"
-msgstr ""
+msgstr "Indian/Maurici"
 
 #: capplets/time-admin/src/time-zones.h:412
 msgid "Indian/Mayotte"
-msgstr ""
+msgstr "Indian/Maiòta"
 
 #: capplets/time-admin/src/time-zones.h:413
 msgid "Indian/Reunion"
-msgstr ""
+msgstr "Indian/Reünion"
 
 #: capplets/time-admin/src/time-zones.h:414
 msgid "Pacific/Apia"
-msgstr ""
+msgstr "Pacific/Apia"
 
 #: capplets/time-admin/src/time-zones.h:415
 msgid "Pacific/Auckland"
-msgstr ""
+msgstr "Pacific/Auckland"
 
 #: capplets/time-admin/src/time-zones.h:416
 msgid "Pacific/Bougainville"
-msgstr ""
+msgstr "Pacific/Bougainville"
 
 #: capplets/time-admin/src/time-zones.h:417
 msgid "Pacific/Chatham"
-msgstr ""
+msgstr "Pacific/Chatham"
 
 #: capplets/time-admin/src/time-zones.h:418
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "Pacific/Chuuk"
 
 #: capplets/time-admin/src/time-zones.h:419
 msgid "Pacific/Easter"
-msgstr ""
+msgstr "Pacific/Easter"
 
 #: capplets/time-admin/src/time-zones.h:420
 msgid "Pacific/Efate"
-msgstr ""
+msgstr "Pacific/Efate"
 
 #: capplets/time-admin/src/time-zones.h:421
 msgid "Pacific/Enderbury"
-msgstr ""
+msgstr "Pacific/Enderbury"
 
 #: capplets/time-admin/src/time-zones.h:422
 msgid "Pacific/Fakaofo"
-msgstr ""
+msgstr "Pacific/Fakaofo"
 
 #: capplets/time-admin/src/time-zones.h:423
 msgid "Pacific/Fiji"
-msgstr ""
+msgstr "Pacific/Fiji"
 
 #: capplets/time-admin/src/time-zones.h:424
 msgid "Pacific/Funafuti"
-msgstr ""
+msgstr "Pacific/Funafuti"
 
 #: capplets/time-admin/src/time-zones.h:425
 msgid "Pacific/Galapagos"
-msgstr ""
+msgstr "Pacific/Galapagos"
 
 #: capplets/time-admin/src/time-zones.h:426
 msgid "Pacific/Gambier"
-msgstr ""
+msgstr "Pacific/Gambier"
 
 #: capplets/time-admin/src/time-zones.h:427
 msgid "Pacific/Guadalcanal"
-msgstr ""
+msgstr "Pacific/Guadalcanal"
 
 #: capplets/time-admin/src/time-zones.h:428
 msgid "Pacific/Guam"
-msgstr ""
+msgstr "Pacific/Guam"
 
 #: capplets/time-admin/src/time-zones.h:429
 msgid "Pacific/Honolulu"
-msgstr ""
+msgstr "Pacific/Honolulu"
 
 #: capplets/time-admin/src/time-zones.h:430
 msgid "Pacific/Kiritimati"
-msgstr ""
+msgstr "Pacific/Kiritimati"
 
 #: capplets/time-admin/src/time-zones.h:431
 msgid "Pacific/Kosrae"
-msgstr ""
+msgstr "Pacific/Kosrae"
 
 #: capplets/time-admin/src/time-zones.h:432
 msgid "Pacific/Kwajalein"
-msgstr ""
+msgstr "Pacific/Kwajalein"
 
 #: capplets/time-admin/src/time-zones.h:433
 msgid "Pacific/Majuro"
-msgstr ""
+msgstr "Pacific/Majuro"
 
 #: capplets/time-admin/src/time-zones.h:434
 msgid "Pacific/Marquesas"
-msgstr ""
+msgstr "Pacific/Marquesas"
 
 #: capplets/time-admin/src/time-zones.h:435
 msgid "Pacific/Midway"
-msgstr ""
+msgstr "Pacific/Midway"
 
 #: capplets/time-admin/src/time-zones.h:436
 msgid "Pacific/Nauru"
-msgstr ""
+msgstr "Pacific/Nauru"
 
 #: capplets/time-admin/src/time-zones.h:437
 msgid "Pacific/Niue"
-msgstr ""
+msgstr "Pacific/Niue"
 
 #: capplets/time-admin/src/time-zones.h:438
 msgid "Pacific/Norfolk"
-msgstr ""
+msgstr "Pacific/Norfolk"
 
 #: capplets/time-admin/src/time-zones.h:439
 msgid "Pacific/Noumea"
-msgstr ""
+msgstr "Pacific/Noumea"
 
 #: capplets/time-admin/src/time-zones.h:440
 msgid "Pacific/Pago_Pago"
-msgstr ""
+msgstr "Pacific/Pago_Pago"
 
 #: capplets/time-admin/src/time-zones.h:441
 msgid "Pacific/Palau"
-msgstr ""
+msgstr "Pacific/Palau"
 
 #: capplets/time-admin/src/time-zones.h:442
 msgid "Pacific/Pitcairn"
-msgstr ""
+msgstr "Pacific/Pitcairn"
 
 #: capplets/time-admin/src/time-zones.h:443
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "Pacific/Pohnpei"
 
 #: capplets/time-admin/src/time-zones.h:444
 msgid "Pacific/Port_Moresby"
-msgstr ""
+msgstr "Pacific/Port_Moresby"
 
 #: capplets/time-admin/src/time-zones.h:445
 msgid "Pacific/Rarotonga"
-msgstr ""
+msgstr "Pacific/Rarotonga"
 
 #: capplets/time-admin/src/time-zones.h:446
 msgid "Pacific/Saipan"
-msgstr ""
+msgstr "Pacific/Saipan"
 
 #: capplets/time-admin/src/time-zones.h:447
 msgid "Pacific/Tahiti"
-msgstr ""
+msgstr "Pacific/Tahiti"
 
 #: capplets/time-admin/src/time-zones.h:448
 msgid "Pacific/Tarawa"
-msgstr ""
+msgstr "Pacific/Tarawa"
 
 #: capplets/time-admin/src/time-zones.h:449
 msgid "Pacific/Tongatapu"
-msgstr ""
+msgstr "Pacific/Tongatapu"
 
 #: capplets/time-admin/src/time-zones.h:450
 msgid "Pacific/Wake"
-msgstr ""
+msgstr "Pacific/Wake"
 
 #: capplets/time-admin/src/time-zones.h:451
 msgid "Pacific/Wallis"
-msgstr ""
+msgstr "Pacific/Wallis"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:3
 msgid "Time And Date Manager"
@@ -4718,21 +4757,17 @@ msgstr "Gestionari d’ora e data"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/time-admin/data/mate-time-admin.desktop.in:9
-msgid "preferences-system-time"
-msgstr "preferences-system-time"
+msgstr "Paramètre d’ora e de data del sistèma local"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/time-admin/data/mate-time-admin.desktop.in:13
 msgid "mate-control-center;MATE;clock;date;time;preferences;"
 msgstr ""
+"mate-control-"
+"center;MATE;clock;date;time;preferences;preferéncias;data;relotge;ora;temps;"
 
-#: libwindow-settings/mate-wm-manager.c:317
+#: libwindow-settings/mate-wm-manager.c:318
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
 msgstr ""
@@ -4740,7 +4775,7 @@ msgstr ""
 #: shell/control-center.c:58
 #, c-format
 msgid "%s key is empty\n"
-msgstr "la clau %s es void\n"
+msgstr "la clau %s es voida\n"
 
 #: shell/control-center.c:137
 msgid "Filter"
@@ -4752,7 +4787,7 @@ msgstr "Grops"
 
 #: shell/control-center.c:137
 msgid "Common Tasks"
-msgstr ""
+msgstr "Prètzfaches ordinaris"
 
 #: shell/control-center.c:145 shell/matecc.desktop.in:3
 #: shell/matecc.directory.desktop.in:3
@@ -4761,7 +4796,7 @@ msgstr "Centre de contraròtle"
 
 #: shell/control-center.c:164
 msgid "Hide on start (useful to preload the shell)"
-msgstr ""
+msgstr "Amagar a l’aviada (util per precargar lo terminal)"
 
 #: shell/matecc.desktop.in:4
 msgid "The MATE configuration tool"
@@ -4771,23 +4806,12 @@ msgstr "L'aisina de configuracion de MATE"
 msgid "Configure MATE settings"
 msgstr "Configurar las paramètres de MATE"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: shell/matecc.desktop.in:7
-msgid "preferences-desktop"
-msgstr "preferences-desktop"
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: shell/matecc.desktop.in:14
 msgid "MATE;control;center;configuration;tool;desktop;preferences;"
 msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: shell/matecc.directory.desktop.in:5
-msgid "mate-settings"
-msgstr "mate-settings"
+"MATE;control;center;configuration;tool;desktop;preferences;burèu;configuracion;centre;aisina;"
 
 #: typing-break/drw-break-window.c:179
 msgid "_Postpone Break"
@@ -4797,58 +4821,58 @@ msgstr ""
 msgid "Take a break!"
 msgstr "Arrestatz-vos un pauc !"
 
-#: typing-break/drwright.c:138
+#: typing-break/drwright.c:135
 msgid "_Preferences"
 msgstr "_Preferéncias"
 
-#: typing-break/drwright.c:139
+#: typing-break/drwright.c:136
 msgid "_About"
 msgstr "A _prepaus"
 
-#: typing-break/drwright.c:140
+#: typing-break/drwright.c:137
 msgid "_Take a Break"
 msgstr "_Far una pausa"
 
-#: typing-break/drwright.c:537
+#: typing-break/drwright.c:534
 #, c-format
 msgid "Take a break now (next in %dm)"
-msgstr ""
+msgstr "Fasètz una pausa ara (la venetna d’aquí %d minutas)"
 
-#: typing-break/drwright.c:539
+#: typing-break/drwright.c:536
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "demòra %d minuta abans la pausa venenta"
 msgstr[1] "demòran %d minutas abans la pausa venenta"
 
-#: typing-break/drwright.c:545
+#: typing-break/drwright.c:542
 msgid "Take a break now (next in less than one minute)"
-msgstr ""
+msgstr "Fasètz una pausa ara (la venenta serà d’aquí mens d’una minuta)"
 
-#: typing-break/drwright.c:547
+#: typing-break/drwright.c:544
 msgid "Less than one minute until the next break"
 msgstr "Mens d'una minuta abans la pausa seguenta"
 
-#: typing-break/drwright.c:637
+#: typing-break/drwright.c:634
 #, c-format
 msgid ""
 "Unable to bring up the typing break properties dialog with the following "
 "error: %s"
 msgstr ""
 
-#: typing-break/drwright.c:654
+#: typing-break/drwright.c:651
 msgid "Written by Richard Hult <richard@imendio.com>"
 msgstr "Escrich per Richard Hult <richard@imendio.com>"
 
-#: typing-break/drwright.c:655
+#: typing-break/drwright.c:652
 msgid "Eye candy added by Anders Carlsson"
 msgstr ""
 
-#: typing-break/drwright.c:664
+#: typing-break/drwright.c:661
 msgid "A computer break reminder."
-msgstr ""
+msgstr "Un recòrd de pausa ordenador."
 
-#: typing-break/drwright.c:666 font-viewer/font-view.c:786
+#: typing-break/drwright.c:663 font-viewer/font-view.c:785
 msgid "translator-credits"
 msgstr ""
 "Yannig Marchegay (Kokoyaya) <yannig@marchegay.org> & Cédric Valmary "
@@ -4860,11 +4884,11 @@ msgstr "Activa lo còdi de desbugatge"
 
 #: typing-break/main.c:64
 msgid "Don't check whether the notification area exists"
-msgstr ""
+msgstr "Verificar pas se la zòna de notificacion existís"
 
 #: typing-break/main.c:88
 msgid "Typing Monitor"
-msgstr ""
+msgstr "Monitor de picada"
 
 #: typing-break/main.c:105
 msgid ""
@@ -4874,67 +4898,61 @@ msgid ""
 "'Notification area' and clicking 'Add'."
 msgstr ""
 
-#: font-viewer/font-view.c:205
+#: font-viewer/font-view.c:204
 msgid "Style"
 msgstr "Estil"
 
-#: font-viewer/font-view.c:215
+#: font-viewer/font-view.c:214
 msgid "Type"
 msgstr "Tipe"
 
-#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
+#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
 msgid "Version"
 msgstr "Version"
 
-#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
+#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
 msgid "Copyright"
 msgstr "Copyright"
 
-#: font-viewer/font-view.c:271
+#: font-viewer/font-view.c:270
 msgid "Description"
 msgstr "Descripcion"
 
-#: font-viewer/font-view.c:289
+#: font-viewer/font-view.c:288
 msgid "Install Failed"
-msgstr ""
+msgstr "Fracàs de l’installacion"
 
-#: font-viewer/font-view.c:295
+#: font-viewer/font-view.c:294
 msgid "Installed"
 msgstr "Installat"
 
-#: font-viewer/font-view.c:432
+#: font-viewer/font-view.c:431
 msgid "This font could not be displayed."
-msgstr ""
+msgstr "Aquesta poliça a pas pogut èsser afichada."
 
-#: font-viewer/font-view.c:495 font-viewer/font-view.c:562
+#: font-viewer/font-view.c:494 font-viewer/font-view.c:561
 msgid "Info"
 msgstr "Info"
 
-#: font-viewer/font-view.c:575
+#: font-viewer/font-view.c:574
 msgid "Back"
 msgstr "Precedent"
 
-#: font-viewer/font-view.c:679
+#: font-viewer/font-view.c:678
 msgid "All Fonts"
 msgstr "Totas las poliças"
 
-#: font-viewer/font-view.c:783 font-viewer/font-view.c:835
+#: font-viewer/font-view.c:782 font-viewer/font-view.c:834
 msgid "Font Viewer"
 msgstr "Visualizaira de poliças"
 
-#: font-viewer/font-view.c:784 font-viewer/mate-font-viewer.desktop.in:4
+#: font-viewer/font-view.c:783 font-viewer/mate-font-viewer.desktop.in:4
 msgid "View fonts on your system"
 msgstr "Visualizar las poliças de vòstre sistèma"
 
 #: font-viewer/mate-font-viewer.desktop.in:3
 msgid "MATE Font Viewer"
 msgstr "Visualizaira de poliças MATE"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: font-viewer/mate-font-viewer.desktop.in:6
-msgid "preferences-desktop-font"
-msgstr "preferences-desktop-font"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -4946,7 +4964,7 @@ msgstr ""
 
 #: font-viewer/font-thumbnailer.c:191
 msgid "Text to thumbnail (default: Aa)"
-msgstr ""
+msgstr "Tèxte de miniaturizar (per defaut : Aa)"
 
 #: font-viewer/font-thumbnailer.c:191
 msgid "TEXT"
@@ -4954,7 +4972,7 @@ msgstr "TÈXTE"
 
 #: font-viewer/font-thumbnailer.c:193
 msgid "Thumbnail size (default: 128)"
-msgstr ""
+msgstr "Talha vinheta (per defaut : 128)"
 
 #: font-viewer/font-thumbnailer.c:193
 msgid "SIZE"
@@ -4962,22 +4980,22 @@ msgstr "TALHA"
 
 #: font-viewer/font-thumbnailer.c:195
 msgid "FONT-FILE OUTPUT-FILE"
-msgstr ""
+msgstr "FICHIÈR-POLIÇA FICHIÈR-SORTIDA"
 
-#: libslab/app-shell.c:763
+#: libslab/app-shell.c:762
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
-msgstr ""
+msgstr "Vòstre filtre « %s » correspond pas a cap d’elements."
 
-#: libslab/app-shell.c:765
+#: libslab/app-shell.c:764
 msgid "No matches found."
-msgstr ""
+msgstr "Cap de correspondéncia pas trobada."
 
-#: libslab/app-shell.c:874
+#: libslab/app-shell.c:873
 msgid "New Applications"
 msgstr "Novèlas aplicacions"
 
-#: libslab/app-shell.c:936
+#: libslab/app-shell.c:935
 msgid "Other"
 msgstr "Autre"
 
@@ -4990,43 +5008,43 @@ msgstr "Aviar %s"
 msgid "Help"
 msgstr "Ajuda"
 
-#: libslab/application-tile.c:642
+#: libslab/application-tile.c:643
 msgid "Remove from Favorites"
 msgstr "Tirar dels favorits"
 
-#: libslab/application-tile.c:644
+#: libslab/application-tile.c:645
 msgid "Add to Favorites"
 msgstr "Ajustar als favorits"
 
-#: libslab/application-tile.c:729
+#: libslab/application-tile.c:730
 msgid "Remove from Startup Programs"
-msgstr "Tirar dels favorits"
+msgstr "Tirar dels programas del lançament"
 
-#: libslab/application-tile.c:731
+#: libslab/application-tile.c:732
 msgid "Add to Startup Programs"
 msgstr "Ajustar als programas del lançament"
 
-#: libslab/bookmark-agent.c:1082
-msgid "New Spreadsheet"
-msgstr ""
-
 #: libslab/bookmark-agent.c:1086
+msgid "New Spreadsheet"
+msgstr "Fuèlh de calcul novèl"
+
+#: libslab/bookmark-agent.c:1090
 msgid "New Document"
 msgstr "Document novèl"
 
-#: libslab/bookmark-agent.c:1140
+#: libslab/bookmark-agent.c:1144
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Acuèlh"
 
-#: libslab/bookmark-agent.c:1147
+#: libslab/bookmark-agent.c:1151
 msgid "Documents"
 msgstr "Documents"
 
-#: libslab/bookmark-agent.c:1158
+#: libslab/bookmark-agent.c:1162
 msgid "File System"
 msgstr "Sistèma de fichièrs"
 
-#: libslab/bookmark-agent.c:1161
+#: libslab/bookmark-agent.c:1165
 msgid "Network Servers"
 msgstr "Servidors ret"
