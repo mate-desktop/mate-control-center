@@ -1,3 +1,48 @@
+### mate-control-center 1.25.1
+
+  * Translations update
+  * time-admin: remove unused includes
+  * build: allow users to disable gettext support (--disable-nls)
+  * build: show the package version in the configure summary
+  * mate-wm-manager: do not use dirent.h
+  * mate-wm-manager: Use g_list_free_full
+  * mate-wm-manager: compact the code using macros
+  * mate-wm-manager: Remove warning -Wconversion
+  * mate-wm-manager: directory parameter is an immutable string on scan_wm_directory
+  * marco-window-manager: do not use dirent.h
+  * libslab-utils: Remove dead function libslab_get_current_screen
+  * libslab-utils: Remove libslab_strcmp and use g_strcmp0 instead
+  * build: remove legacy variable MATE_ICONDIR
+  * mate-keyboard-properties: drop create_dialog
+  * mate-keyboard-properties: size groups on ui file
+  * mate-keyboard-properties: Do not use stock icons on ui file
+  * mate-keyboard-properties-dialog: upgrade ui label names
+  * mate-mouse-properties: drop create_dialog
+  * mate-mouse-properties: size groups on ui file
+  * mate-mouse-properties: upgrade ui label names
+  * Revisit windows applet, add allow-top-tiling option
+  * Use G_BEGIN_DECLS/G_END_DECLS macros
+  * Use g_slist_free_full
+  * mate-theme-info: remove unused includes
+  * mate-mouse-properties: remove unused includes
+  * appearance: Add file chooser settings
+  * xrandr-capplet: warning -Wincompatible-pointer-types
+  * application-tile: warning -Wempty-body
+  * appearance: Set icon-name in ui file
+  * appearance: Introduce GET_WINDOW macro
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+  * mcc: windows-applet: Rewrite windows-properties.ui and add new settings.
+  * appearance: Fix preview in Add Wallpaper dialog
+  * Default applications: Add flac/x-flac format (mime-type) for media
+  * keyboard-properties-a11y-notifications.ui: Fix a11y warnings
+  * mate-about-me-fingerprint: Use g_variant_is_of_type for checking types
+  * default-applications: Set icon-name in ui file
+  * about-me: migrate from dbus-glib to GDBus
+  * keyboard-a11y: Add UI for capslock-beep
+  * Remove unused macros
+  * Remove unused variable from capplet_notebook_scroll_event_cb
+  * common: migrate to GDBus
+
 ### mate-control-center 1.25.0
 
   * Translations update
