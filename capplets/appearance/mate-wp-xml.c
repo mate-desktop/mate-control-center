@@ -19,6 +19,7 @@
  */
 
 #include "appearance.h"
+#include "mate-wp-xml.h"
 #include "mate-wp-item.h"
 #include <gio/gio.h>
 #include <string.h>
