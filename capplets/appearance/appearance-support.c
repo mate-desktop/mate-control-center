@@ -20,6 +20,7 @@
 
 #include "appearance.h"
 #include "wm-common.h"
+#include "appearance-support.h"
 
 #include <glib.h>
 #include <gio/gio.h>

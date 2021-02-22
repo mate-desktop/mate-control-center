@@ -24,6 +24,8 @@
 #include "mate-wp-info.h"
 #include "mate-wp-item.h"
 #include "mate-wp-xml.h"
+#include "appearance-desktop.h"
+
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <string.h>

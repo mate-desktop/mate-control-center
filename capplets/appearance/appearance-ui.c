@@ -20,7 +20,9 @@
  */
 
 #include "appearance.h"
-#include "stdio.h"
+#include "appearance-ui.h"
+
+#include <stdio.h>
 
 static void
 set_have_icons (AppearanceData *data, gboolean value)

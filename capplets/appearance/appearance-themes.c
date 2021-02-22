@@ -26,6 +26,7 @@
 #include "theme-save.h"
 #include "theme-util.h"
 #include "gtkrc-utils.h"
+#include "appearance-themes.h"
 
 #include <glib/gi18n.h>
 #include <libwindow-settings/mate-wm-manager.h>
