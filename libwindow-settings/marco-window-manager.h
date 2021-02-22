@@ -25,5 +25,6 @@ struct _MarcoWindowManagerClass
 };
 
 GType      marco_window_manager_get_type             (void);
+GObject*   window_manager_new                        (int expected_interface_version);
 
 #endif
