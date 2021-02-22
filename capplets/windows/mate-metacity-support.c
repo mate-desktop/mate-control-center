@@ -23,6 +23,8 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
+#include "mate-metacity-support.h"
+
 #define METACITY_SCHEMA "org.gnome.metacity"
 #define COMPOSITING_KEY "compositing-manager"
 
