@@ -17,6 +17,9 @@
  * 02110-1301, USA.
  */
 
+#ifndef __MATE_ABOUT_ME_FINGERPRINT_H__
+#define __MATE_ABOUT_ME_FINGERPRINT_H__
+
 #include <gtk/gtk.h>
 
 void set_fingerprint_label (GtkWidget *enable,
@@ -25,3 +28,4 @@ void fingerprint_button_clicked (GtkBuilder *dialog,
 				 GtkWidget *enable,
 				 GtkWidget *disable);
 
+#endif /* __MATE_ABOUT_ME_FINGERPRINT_H__ */

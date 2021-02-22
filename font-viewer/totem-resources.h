@@ -25,9 +25,13 @@
  *
  */
 
+#ifndef __TOTEM_RESOURCES_H__
+#define __TOTEM_RESOURCES_H__
+
 #include <glib.h>
 
 void totem_resources_monitor_start	(const char *input,
 					 gint wall_clock_time);
 void totem_resources_monitor_stop	(void);
 
+#endif /* __TOTEM_RESOURCES_H__ */

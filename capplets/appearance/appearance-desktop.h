@@ -18,5 +18,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#ifndef __APPEARANCE_DESKTOP_H__
+#define __APPEARANCE_DESKTOP_H__
+
 void desktop_init (AppearanceData *data, const gchar **uris);
 void desktop_shutdown (AppearanceData *data);
+
+#endif /* __APPEARANCE_DESKTOP_H__ */

@@ -18,6 +18,9 @@
  *
  */
 
+#ifndef __MATE_WP_ITEM_H__
+#define __MATE_WP_ITEM_H__
+
 #include <glib.h>
 #include <gio/gio.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -26,9 +29,6 @@
 #include <libmate-desktop/mate-bg.h>
 
 #include "mate-wp-info.h"
-
-#ifndef _MATE_WP_ITEM_H_
-#define _MATE_WP_ITEM_H_
 
 typedef struct _MateWPItem MateWPItem;
 
@@ -84,4 +84,4 @@ const gchar *wp_item_shading_to_string (MateBGColorType type);
 MateBGPlacement wp_item_string_to_option (const gchar *option);
 MateBGColorType wp_item_string_to_shading (const gchar *shade_type);
 
-#endif
+#endif /* __MATE_WP_ITEM_H__ */

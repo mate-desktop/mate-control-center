@@ -20,6 +20,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#ifndef __FINGERPRINT_STRINGS_H__
+#define __FINGERPRINT_STRINGS_H__
+
 struct {
 	const char *dbus_name;
 	const char *place_str;
@@ -83,3 +86,4 @@ static const char *enroll_result_str_to_msg(const char *result, gboolean is_swip
 	return NULL;
 }
 
+#endif /* __FINGERPRINT_STRINGS_H__ */
