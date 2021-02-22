@@ -30,6 +30,8 @@
 #include <fcntl.h>
 #include <gtk/gtk.h>
 
+#include "gtkrc-utils.h"
+
 #define INCLUDE_SYMBOL ((gpointer) 1)
 #define ENGINE_SYMBOL ((gpointer) 2)
 #define COLOR_SCHEME_SYMBOL ((gpointer) 3)
