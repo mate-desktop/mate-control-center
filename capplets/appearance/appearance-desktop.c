@@ -607,7 +607,7 @@ wp_props_wp_selected (GtkTreeSelection *selection,
   }
 }
 
-void
+static void
 wp_create_filechooser (AppearanceData *data)
 {
   const char *start_dir, *pictures = NULL;
