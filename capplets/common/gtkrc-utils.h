@@ -19,7 +19,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#ifndef __GTKRC_UTILS_H__
+#define __GTKRC_UTILS_H__
+
 void gtkrc_get_details (gchar *filename, GSList **engines, GSList **symbolic_colors);
 gchar * gtkrc_find_named (const gchar *name);
 gchar * gtkrc_get_color_scheme (const gchar *filename);
 gchar * gtkrc_get_color_scheme_for_theme (const gchar *theme_name);
+
+#endif /* __GTKRC_UTILS_H__ */

@@ -18,6 +18,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#ifndef __THEME_UTIL_H__
+#define __THEME_UTIL_H__
+
 enum {
 	COL_THUMBNAIL,
 	COL_LABEL,
@@ -41,3 +44,5 @@ gboolean theme_find_in_model(GtkTreeModel* model, const gchar* name, GtkTreeIter
 
 void theme_install_file(GtkWindow* parent, const gchar* path);
 gboolean packagekit_available(void);
+
+#endif /* __THEME_UTIL_H__ */

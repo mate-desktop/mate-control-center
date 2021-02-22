@@ -18,5 +18,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#ifndef __APPEARANCE_STYLE_H__
+#define __APPEARANCE_STYLE_H__
+
 void style_init (AppearanceData *data);
 void style_shutdown (AppearanceData *data);
+
+#endif /* __APPEARANCE_STYLE_H__ */

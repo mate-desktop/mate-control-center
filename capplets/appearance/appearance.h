@@ -18,6 +18,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#ifndef __APPEARANCE_H__
+#define __APPEARANCE_H__
+
 #include "config.h"
 
 #include <glib.h>
@@ -144,3 +147,5 @@ typedef struct {
 
 #define appearance_capplet_get_widget(x, y) (GtkWidget*) gtk_builder_get_object(x->ui, y)
 #define GET_WINDOW(x) (GTK_WINDOW (gtk_builder_get_object (data->ui, (x))))
+
+#endif /* __APPEARANCE_H__ */
