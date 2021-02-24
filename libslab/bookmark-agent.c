@@ -148,22 +148,6 @@ bookmark_agent_get_type ()
 	return g_define_type_id;
 }
 
-BookmarkAgent *
-bookmark_agent_get_instance (BookmarkStoreType type)
-{
-	g_return_val_if_fail (0 <= type, NULL);
-	g_return_val_if_fail (type < BOOKMARK_STORE_N_TYPES, NULL);
-
-	if (! instances [type]) {
-		instances [type] = bookmark_agent_new (type);
-		g_object_weak_ref (G_OBJECT (instances [type]), weak_destroy_cb, GINT_TO_POINTER (type));
-	}
-	else
-		g_object_ref (G_OBJECT (instances [type]));
-
-	return instances [type];
-}
-
 gboolean
 bookmark_agent_has_item (BookmarkAgent *this, const gchar *uri)
 {
@@ -560,6 +544,22 @@ bookmark_agent_new (BookmarkStoreType type)
 	update_agent (this);
 
 	return this;
+}
+
+BookmarkAgent *
+bookmark_agent_get_instance (BookmarkStoreType type)
+{
+	g_return_val_if_fail (0 <= type, NULL);
+	g_return_val_if_fail (type < BOOKMARK_STORE_N_TYPES, NULL);
+
+	if (! instances [type]) {
+		instances [type] = bookmark_agent_new (type);
+		g_object_weak_ref (G_OBJECT (instances [type]), weak_destroy_cb, GINT_TO_POINTER (type));
+	}
+	else
+		g_object_ref (G_OBJECT (instances [type]));
+
+	return instances [type];
 }
 
 static void
