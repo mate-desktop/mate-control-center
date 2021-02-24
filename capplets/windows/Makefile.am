@@ -28,9 +28,7 @@ endif
 
 AM_CPPFLAGS =				\
 	$(WARN_CFLAGS)			\
-	$(MATECC_CAPPLETS_CFLAGS)	\
-	-DUIDIR=\""$(uidir)"\"		\
-	-DPIXMAPDIR=\""$(pixmapdir)"\"
+	$(MATECC_CAPPLETS_CFLAGS)
 
 CLEANFILES = $(BUILT_SOURCES) $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA)
 EXTRA_DIST = $(Desktop_in_files) org.mate.mcc.windows.gresource.xml window-properties.ui
