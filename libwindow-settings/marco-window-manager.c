@@ -163,14 +163,21 @@ marco_get_theme_list (MateWindowManager *wm)
 {
         GList *themes = NULL;
         char *home_dir_themes;
+        const gchar* const* xdg_data_dirs;
+        int i;
 
         home_dir_themes = g_build_filename (g_get_home_dir (), ".themes", NULL);
+        themes = add_themes_from_dir (themes, home_dir_themes);
+        g_free (home_dir_themes);
+
+        xdg_data_dirs = g_get_system_data_dirs ();
+        for (i = 0; xdg_data_dirs[i] != NULL; i++) {
+                char *sys_dir_themes = g_build_filename (xdg_data_dirs[i], "themes", NULL);
+                themes = add_themes_from_dir (themes, sys_dir_themes);
+                g_free (sys_dir_themes);
+        }
 
         themes = add_themes_from_dir (themes, MARCO_THEME_DIR);
-        themes = add_themes_from_dir (themes, "/usr/share/themes");
-        themes = add_themes_from_dir (themes, home_dir_themes);
-
-        g_free (home_dir_themes);
 
         return themes;
 }
