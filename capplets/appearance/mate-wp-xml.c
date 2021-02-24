@@ -475,7 +475,6 @@ void mate_wp_xml_save_list(AppearanceData* data)
 	xmlDoc* wplist;
 	xmlNode* root;
 	xmlNode* wallpaper;
-	//xmlNode* item;
 	GSList* list = NULL;
 
 	g_hash_table_foreach(data->wp_hash, (GHFunc) mate_wp_list_flatten, &list);
