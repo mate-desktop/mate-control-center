@@ -99,22 +99,6 @@ static GtkWidget* _gtk_builder_get_widget(GtkBuilder* builder, const gchar* name
     return GTK_WIDGET (gtk_builder_get_object (builder, name));
 }
 
-static GtkBuilder *
-create_builder (void)
-{
-  GtkBuilder *builder = gtk_builder_new();
-  GError *error = NULL;
-
-  if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/keybindings/mate-keybinding-properties.ui", &error) == 0) {
-    g_warning ("Could not load UI: %s", error->message);
-    g_error_free (error);
-    g_object_unref (builder);
-    builder = NULL;
-  }
-
-  return builder;
-}
-
 static char* binding_name(guint keyval, guint keycode, EggVirtualModifierType mask, gboolean translate)
 {
     if (keyval != 0 || keycode != 0)
@@ -1982,10 +1966,7 @@ main (int argc, char *argv[])
 
   activate_settings_daemon ();
 
-  builder = create_builder ();
-
-  if (!builder) /* Warning was already printed to console */
-    exit (EXIT_FAILURE);
+  builder = gtk_builder_new_from_resource ("/org/mate/mcc/keybindings/mate-keybinding-properties.ui");
 
   wm_common_register_window_manager_change ((GFunc) on_window_manager_change, builder);
 
