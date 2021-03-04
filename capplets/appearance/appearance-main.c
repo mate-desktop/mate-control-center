@@ -37,41 +37,30 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
 {
   AppearanceData *data = NULL;
   GtkBuilder *ui;
-  GError *err = NULL;
 
   theme_thumbnail_factory_init (*argc, *argv);
   capplet_init (context, argc, argv);
   activate_settings_daemon ();
 
   /* set up the data */
-  ui = gtk_builder_new ();
-  gtk_builder_add_from_resource (ui, "/org/mate/mcc/appearance/data/appearance.ui", &err);
+  ui = gtk_builder_new_from_resource ("/org/mate/mcc/appearance/data/appearance.ui");
 
-  if (err)
-    {
-      g_warning (_("Could not load user interface file: %s"), err->message);
-      g_error_free (err);
-      g_object_unref (ui);
-    }
+  data = g_new (AppearanceData, 1);
+  data->settings = g_settings_new (APPEARANCE_SCHEMA);
+  data->wp_settings = g_settings_new (WP_SCHEMA);
+
+  if (mate_gsettings_schema_exists (CAJA_SCHEMA))
+    data->caja_settings = g_settings_new (CAJA_SCHEMA);
   else
-    {
-      data = g_new (AppearanceData, 1);
-      data->settings = g_settings_new (APPEARANCE_SCHEMA);
-      data->wp_settings = g_settings_new (WP_SCHEMA);
+    data->caja_settings = NULL;
 
-      if (mate_gsettings_schema_exists (CAJA_SCHEMA))
-        data->caja_settings = g_settings_new (CAJA_SCHEMA);
-      else
-        data->caja_settings = NULL;
-
-      data->filechooser_settings = g_settings_new (FILECHOOSER_SCHEMA);
-      data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
-      data->marco_settings = g_settings_new (MARCO_SCHEMA);
-      data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
-      data->font_settings = g_settings_new (FONT_RENDER_SCHEMA);
-      data->ui = ui;
-      data->thumb_factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
-    }
+  data->filechooser_settings = g_settings_new (FILECHOOSER_SCHEMA);
+  data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
+  data->marco_settings = g_settings_new (MARCO_SCHEMA);
+  data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
+  data->font_settings = g_settings_new (FONT_RENDER_SCHEMA);
+  data->ui = ui;
+  data->thumb_factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
 
   return data;
 }
