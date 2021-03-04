@@ -2376,15 +2376,7 @@ run_application (App *app)
     GtkWidget *align;
     GError *error = NULL;
 
-    builder = gtk_builder_new ();
-
-    if (gtk_builder_add_from_resource (builder, "/org/mate/mcc/display/display-capplet.ui", &error) == 0)
-    {
-	g_warning ("Could not parse UI definition: %s", error->message);
-	g_error_free (error);
-	g_object_unref (builder);
-	return;
-    }
+    builder = gtk_builder_new_from_resource ("/org/mate/mcc/display/display-capplet.ui");
 
     app->screen = mate_rr_screen_new (gdk_screen_get_default (), &error);
     g_signal_connect (app->screen, "changed", G_CALLBACK (on_screen_changed), app);
