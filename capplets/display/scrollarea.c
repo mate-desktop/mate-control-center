@@ -54,14 +54,14 @@ struct InputRegion
 
 struct AutoScrollInfo
 {
-    int				dx;
-    int				dy;
-    int				timeout_id;
-    int				begin_x;
-    int				begin_y;
-    double			res_x;
-    double			res_y;
-    GTimer		       *timer;
+    int                         dx;
+    int                         dy;
+    guint                       timeout_id;
+    int                         begin_x;
+    int                         begin_y;
+    double                      res_x;
+    double                      res_y;
+    GTimer                     *timer;
 };
 
 struct FooScrollAreaPrivate
@@ -403,7 +403,7 @@ static void
 clear_exposed_input_region (FooScrollArea *area,
 			    cairo_region_t *exposed)	/* in canvas coordinates */
 {
-    int i;
+    guint i;
     cairo_region_t *viewport;
     GdkRectangle allocation;
 
@@ -788,7 +788,7 @@ process_event (FooScrollArea	       *scroll_area,
 	       int			y)
 {
     GtkWidget *widget = GTK_WIDGET (scroll_area);
-    int i;
+    guint i;
 
     allocation_to_canvas (scroll_area, &x, &y);
 
@@ -874,7 +874,7 @@ foo_scroll_area_button_press (GtkWidget *widget,
 {
     FooScrollArea *area = FOO_SCROLL_AREA (widget);
 
-    process_gdk_event (area, event->x, event->y, (GdkEvent *)event);
+    process_gdk_event (area, (int) event->x, (int) event->y, (GdkEvent *)event);
 
     return TRUE;
 }
@@ -885,7 +885,7 @@ foo_scroll_area_button_release (GtkWidget *widget,
 {
     FooScrollArea *area = FOO_SCROLL_AREA (widget);
 
-    process_gdk_event (area, event->x, event->y, (GdkEvent *)event);
+    process_gdk_event (area, (int) event->x, (int) event->y, (GdkEvent *)event);
 
     return FALSE;
 }
@@ -896,7 +896,7 @@ foo_scroll_area_motion (GtkWidget *widget,
 {
     FooScrollArea *area = FOO_SCROLL_AREA (widget);
 
-    process_gdk_event (area, event->x, event->y, (GdkEvent *)event);
+    process_gdk_event (area, (int) event->x, (int) event->y, (GdkEvent *)event);
     return TRUE;
 }
 
@@ -1042,21 +1042,22 @@ foo_scrollbar_adjustment_changed (GtkAdjustment *adj,
     gint dx = 0;
     gint dy = 0;
     GdkRectangle old_viewport, new_viewport;
+    gdouble aux;
+    int offset;
 
     get_viewport (scroll_area, &old_viewport);
 
+    aux = gtk_adjustment_get_value (adj);
+    offset = (int) aux;
     if (adj == scroll_area->priv->hadj)
     {
-	/* FIXME: do we treat the offset as int or double, and,
-	 * if int, how do we round?
-	 */
-	dx = (int)gtk_adjustment_get_value (adj) - scroll_area->priv->x_offset;
-	scroll_area->priv->x_offset = gtk_adjustment_get_value (adj);
+	dx = offset - scroll_area->priv->x_offset;
+	scroll_area->priv->x_offset = offset;
     }
     else if (adj == scroll_area->priv->vadj)
     {
-	dy = (int)gtk_adjustment_get_value (adj) - scroll_area->priv->y_offset;
-	scroll_area->priv->y_offset = gtk_adjustment_get_value (adj);
+	dy = offset - scroll_area->priv->y_offset;
+	scroll_area->priv->y_offset = offset;
     }
     else
     {
@@ -1375,8 +1376,8 @@ scroll_idle (gpointer data)
     info->res_x = elapsed * info->dx / 0.2;
     info->res_y = elapsed * info->dy / 0.2;
 
-    new_x = viewport.x + info->res_x;
-    new_y = viewport.y + info->res_y;
+    new_x = viewport.x + (int) info->res_x;
+    new_y = viewport.y + (int) info->res_y;
 
     foo_scroll_area_set_viewport_pos (area, new_x, new_y);
 

@@ -91,10 +91,7 @@ static void on_rate_changed (GtkComboBox *box, gpointer data);
 static gboolean output_overlaps (MateRROutputInfo *output, MateRRConfig *config);
 static void select_current_output_from_dialog_position (App *app);
 static void monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data);
-static void get_geometry (MateRROutputInfo *output, int *w, int *h);
 static void apply_configuration_returned_cb (GObject *source_object, GAsyncResult *res, gpointer data);
-static gboolean get_clone_size (MateRRScreen *screen, int *width, int *height);
-static gboolean output_info_supports_mode (App *app, MateRROutputInfo *info, int width, int height);
 
 static void
 error_message (App *app, const char *primary_text, const char *secondary_text)
@@ -221,10 +218,12 @@ foreach (GtkTreeModel *model,
 }
 
 static void
-add_key (GtkWidget *widget,
-	 const char *text,
-	 int width, int height, int rate,
-	 MateRRRotation rotation)
+add_key (GtkWidget       *widget,
+         const char      *text,
+         guint            width,
+         guint            height,
+         int              rate,
+         MateRRRotation   rotation)
 {
     ForeachInfo info;
     GtkComboBox *box = GTK_COMBO_BOX (widget);
@@ -238,8 +237,8 @@ add_key (GtkWidget *widget,
 
     if (!info.found)
     {
-	GtkTreeIter iter;
-	gtk_list_store_insert_with_values (store, &iter, -1,
+        GtkTreeIter iter;
+        gtk_list_store_insert_with_values (store, &iter, -1,
                                            0, text,
                                            1, width,
                                            2, height,
@@ -247,7 +246,6 @@ add_key (GtkWidget *widget,
                                            4, width * height,
                                            5, rotation,
                                            -1);
-
     }
 }
 
@@ -310,7 +308,7 @@ rebuild_rotation_combo (App *app)
     };
     const char *selection;
     MateRRRotation current;
-    int i;
+    unsigned int i;
 
     clear_combo (app->rotation_combo);
 
@@ -370,26 +368,31 @@ rebuild_rate_combo (App *app)
     best = -1;
     for (i = 0; modes[i] != NULL; ++i)
     {
-	MateRRMode *mode = modes[i];
-	int width, height, rate;
-	int output_width, output_height;
+        MateRRMode *mode = modes[i];
+        guint width;
+        guint height;
+        int rate;
+        int output_width;
+        int output_height;
 
-	mate_rr_output_info_get_geometry (app->current_output, NULL, NULL, &output_width, &output_height);
+        mate_rr_output_info_get_geometry (app->current_output, NULL, NULL,
+                                          &output_width,
+                                          &output_height);
 
-	width = mate_rr_mode_get_width (mode);
-	height = mate_rr_mode_get_height (mode);
-	rate = mate_rr_mode_get_freq (mode);
+        width  = mate_rr_mode_get_width (mode);
+        height = mate_rr_mode_get_height (mode);
+        rate   = mate_rr_mode_get_freq (mode);
 
-	if (width == output_width		&&
-	    height == output_height)
-	{
-	    add_key (app->refresh_combo,
-		     idle_free (make_rate_string (rate)),
-		     0, 0, rate, -1);
+        if ((width  == (guint) output_width) &&
+            (height == (guint) output_height))
+        {
+            add_key (app->refresh_combo,
+                     idle_free (make_rate_string (rate)),
+                     0, 0, rate, -1);
 
-	    if (rate > best)
-		best = rate;
-	}
+            if (rate > best)
+                best = rate;
+        }
     }
 
     if (!combo_select (app->refresh_combo, idle_free (make_rate_string (mate_rr_output_info_get_refresh_rate (app->current_output)))))
@@ -411,6 +414,74 @@ count_active_outputs (App *app)
     return count;
 }
 
+/* FIXME: this function is copied from mate-settings-daemon/plugins/xrandr/gsd-xrandr-manager.c.
+ * Do we need to put this function in mate-desktop for public use?
+ */
+static gboolean
+get_clone_size (MateRRScreen *screen,
+                guint        *width,
+                guint        *height)
+{
+    MateRRMode **modes = mate_rr_screen_list_clone_modes (screen);
+    guint best_w = 0;
+    guint best_h = 0;
+    guint i;
+
+    for (i = 0; modes[i] != NULL; ++i) {
+        MateRRMode *mode = modes[i];
+        guint w, h;
+
+        w = mate_rr_mode_get_width (mode);
+        h = mate_rr_mode_get_height (mode);
+
+        if (w * h > best_w * best_h) {
+            best_w = w;
+            best_h = h;
+        }
+    }
+
+    if (best_w > 0 && best_h > 0) {
+        if (width)
+            *width = best_w;
+        if (height)
+            *height = best_h;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static gboolean
+output_info_supports_mode (App              *app,
+                           MateRROutputInfo *info,
+                           guint             width,
+                           guint             height)
+{
+    MateRROutput *output;
+    MateRRMode **modes;
+    guint i;
+
+    if (!mate_rr_output_info_is_connected (info))
+        return FALSE;
+
+    output = mate_rr_screen_get_output_by_name (app->screen, mate_rr_output_info_get_name (info));
+    if (!output)
+        return FALSE;
+
+    modes = mate_rr_output_list_modes (output);
+
+    for (i = 0; modes[i]; i++) {
+        if ((mate_rr_mode_get_width  (modes[i]) == width) &&
+            (mate_rr_mode_get_height (modes[i]) == height))
+        {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 /* Computes whether "Mirror Screens" (clone mode) is supported based on these criteria:
  *
  * 1. There is an available size for cloning.
@@ -420,7 +491,8 @@ count_active_outputs (App *app)
 static gboolean
 mirror_screens_is_supported (App *app)
 {
-    int clone_width, clone_height;
+    guint clone_width;
+    guint clone_height;
     gboolean have_clone_size;
     gboolean mirror_is_supported;
 
@@ -429,11 +501,9 @@ mirror_screens_is_supported (App *app)
     have_clone_size = get_clone_size (app->screen, &clone_width, &clone_height);
 
     if (have_clone_size) {
-	int i;
-	int num_outputs_with_clone_size;
+	guint i;
+	guint num_outputs_with_clone_size = 0;
 	MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
-
-	num_outputs_with_clone_size = 0;
 
 	for (i = 0; outputs[i] != NULL; i++)
 	{
@@ -441,8 +511,11 @@ mirror_screens_is_supported (App *app)
 	     * doesn't matter if those outputs aren't actually On currently; we
 	     * will turn them on in on_clone_changed().
 	     */
-	    if (mate_rr_output_info_is_connected (outputs[i]) && output_info_supports_mode (app, outputs[i], clone_width, clone_height))
+	    if (mate_rr_output_info_is_connected (outputs[i]) &&
+                output_info_supports_mode (app, outputs[i], clone_width, clone_height))
+            {
 		num_outputs_with_clone_size++;
+            }
 	}
 
 	if (num_outputs_with_clone_size >= 2)
@@ -551,38 +624,41 @@ rebuild_on_off_radios (App *app)
 }
 
 static char *
-make_resolution_string (int width, int height)
+make_resolution_string (guint width,
+                        guint height)
 {
-    return g_strdup_printf (_("%d x %d"), width, height);
+    return g_strdup_printf (_("%u x %u"), width, height);
 }
 
 static void
-find_best_mode (MateRRMode **modes, int *out_width, int *out_height)
+find_best_mode (MateRRMode **modes,
+                guint       *out_width,
+                guint       *out_height)
 {
-    int i;
+    guint i;
 
     *out_width = 0;
     *out_height = 0;
 
     for (i = 0; modes[i] != NULL; i++)
     {
-	int w, h;
+        guint w, h;
 
-	w = mate_rr_mode_get_width (modes[i]);
-	h = mate_rr_mode_get_height (modes[i]);
+        w = mate_rr_mode_get_width (modes[i]);
+        h = mate_rr_mode_get_height (modes[i]);
 
-	if (w * h > *out_width * *out_height)
-	{
-	    *out_width = w;
-	    *out_height = h;
-	}
+        if ((w * h) > ((*out_width) * (*out_height)))
+        {
+            *out_width = w;
+            *out_height = h;
+        }
     }
 }
 
 static void
 rebuild_resolution_combo (App *app)
 {
-    int i;
+    guint i;
     MateRRMode **modes;
     const char *current;
     int output_width, output_height;
@@ -606,24 +682,24 @@ rebuild_resolution_combo (App *app)
 
     for (i = 0; modes[i] != NULL; ++i)
     {
-	int width, height;
+        guint width, height;
 
-	width = mate_rr_mode_get_width (modes[i]);
-	height = mate_rr_mode_get_height (modes[i]);
+        width = mate_rr_mode_get_width (modes[i]);
+        height = mate_rr_mode_get_height (modes[i]);
 
-	add_key (app->resolution_combo,
-		 idle_free (make_resolution_string (width, height)),
-		 width, height, 0, -1);
+        add_key (app->resolution_combo,
+                 idle_free (make_resolution_string (width, height)),
+                 width, height, 0, -1);
     }
 
-    current = idle_free (make_resolution_string (output_width, output_height));
+    current = idle_free (make_resolution_string ((guint) output_width, (guint) output_height));
 
     if (!combo_select (app->resolution_combo, current))
     {
-	int best_w, best_h;
+        guint best_w, best_h;
 
-	find_best_mode (modes, &best_w, &best_h);
-	combo_select (app->resolution_combo, idle_free (make_resolution_string (best_w, best_h)));
+        find_best_mode (modes, &best_w, &best_h);
+        combo_select (app->resolution_combo, idle_free (make_resolution_string (best_w, best_h)));
     }
 }
 
@@ -732,7 +808,9 @@ select_resolution_for_current_output (App *app)
 {
     MateRRMode **modes;
     int width, height;
+    guint best_w, best_h;
     int x, y;
+
     mate_rr_output_info_get_geometry (app->current_output, &x, &y, NULL, NULL);
 
     width = mate_rr_output_info_get_preferred_width (app->current_output);
@@ -748,9 +826,8 @@ select_resolution_for_current_output (App *app)
     if (!modes)
 	return;
 
-    find_best_mode (modes, &width, &height);
-
-    mate_rr_output_info_set_geometry (app->current_output, x, y, width, height);
+    find_best_mode (modes, &best_w, &best_h);
+    mate_rr_output_info_set_geometry (app->current_output, x, y, (int) best_w, (int) best_w);
 }
 
 static void
@@ -913,69 +990,6 @@ lay_out_outputs_horizontally (App *app)
 
 }
 
-/* FIXME: this function is copied from mate-settings-daemon/plugins/xrandr/gsd-xrandr-manager.c.
- * Do we need to put this function in mate-desktop for public use?
- */
-static gboolean
-get_clone_size (MateRRScreen *screen, int *width, int *height)
-{
-        MateRRMode **modes = mate_rr_screen_list_clone_modes (screen);
-        int best_w, best_h;
-        int i;
-
-        best_w = 0;
-        best_h = 0;
-
-        for (i = 0; modes[i] != NULL; ++i) {
-                MateRRMode *mode = modes[i];
-                int w, h;
-
-                w = mate_rr_mode_get_width (mode);
-                h = mate_rr_mode_get_height (mode);
-
-                if (w * h > best_w * best_h) {
-                        best_w = w;
-                        best_h = h;
-                }
-        }
-
-        if (best_w > 0 && best_h > 0) {
-                if (width)
-                        *width = best_w;
-                if (height)
-                        *height = best_h;
-
-                return TRUE;
-        }
-
-        return FALSE;
-}
-
-static gboolean
-output_info_supports_mode (App *app, MateRROutputInfo *info, int width, int height)
-{
-    MateRROutput *output;
-    MateRRMode **modes;
-    int i;
-
-    if (!mate_rr_output_info_is_connected (info))
-	return FALSE;
-
-    output = mate_rr_screen_get_output_by_name (app->screen, mate_rr_output_info_get_name (info));
-    if (!output)
-	return FALSE;
-
-    modes = mate_rr_output_list_modes (output);
-
-    for (i = 0; modes[i]; i++) {
-	if (mate_rr_mode_get_width (modes[i]) == width
-	    && mate_rr_mode_get_height (modes[i]) == height)
-	    return TRUE;
-    }
-
-    return FALSE;
-}
-
 static void
 on_clone_changed (GtkWidget *box, gpointer data)
 {
@@ -983,63 +997,62 @@ on_clone_changed (GtkWidget *box, gpointer data)
 
     mate_rr_config_set_clone (app->current_configuration, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (app->clone_checkbox)));
 
-    if (mate_rr_config_get_clone (app->current_configuration))
-    {
-	int i;
-	int width, height;
-	MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
+    if (mate_rr_config_get_clone (app->current_configuration)) {
+        guint i;
+        guint width;
+        guint height;
+        MateRROutputInfo **outputs = mate_rr_config_get_outputs (app->current_configuration);
 
-	for (i = 0; outputs[i]; ++i)
-	{
-	    if (mate_rr_output_info_is_connected(outputs[i]))
-	    {
-		app->current_output = outputs[i];
-		break;
-	    }
+        for (i = 0; outputs[i]; ++i) {
+            if (mate_rr_output_info_is_connected(outputs[i])) {
+                app->current_output = outputs[i];
+                break;
+            }
+        }
+
+        /* Turn on all the connected screens that support the best clone mode.
+         * The user may hit "Mirror Screens", but he shouldn't have to turn on
+         * all the required outputs as well.
+         */
+
+        get_clone_size (app->screen, &width, &height);
+
+        for (i = 0; outputs[i]; i++) {
+            int x, y;
+
+            if (output_info_supports_mode (app, outputs[i], width, height)) {
+                mate_rr_output_info_set_active (outputs[i], TRUE);
+                mate_rr_output_info_get_geometry (outputs[i], &x, &y, NULL, NULL);
+                mate_rr_output_info_set_geometry (outputs[i], x, y, (int) width, (int) height);
+            }
 	}
-
-	/* Turn on all the connected screens that support the best clone mode.
-	 * The user may hit "Mirror Screens", but he shouldn't have to turn on
-	 * all the required outputs as well.
-	 */
-
-	get_clone_size (app->screen, &width, &height);
-
-	for (i = 0; outputs[i]; i++) {
-	    int x, y;
-	    if (output_info_supports_mode (app, outputs[i], width, height)) {
-		mate_rr_output_info_set_active (outputs[i], TRUE);
-		mate_rr_output_info_get_geometry (outputs[i], &x, &y, NULL, NULL);
-		mate_rr_output_info_set_geometry (outputs[i], x, y, width, height);
-	    }
-	}
-    }
-    else
-    {
+    } else {
 	if (output_overlaps (app->current_output, app->current_configuration))
-	    lay_out_outputs_horizontally (app);
+            lay_out_outputs_horizontally (app);
     }
 
     rebuild_gui (app);
 }
 
+#define SPACE 15
+#define MARGIN  15
+
 static void
-get_geometry (MateRROutputInfo *output, int *w, int *h)
+get_geometry (MateRROutputInfo *output,
+              int              *w,
+              int              *h)
 {
     MateRRRotation rotation;
 
-    if (mate_rr_output_info_is_active (output))
-    {
-	mate_rr_output_info_get_geometry (output, NULL, NULL, w, h);
-    }
-    else
-    {
-	*h = mate_rr_output_info_get_preferred_height (output);
-	*w = mate_rr_output_info_get_preferred_width (output);
+    if (mate_rr_output_info_is_active (output)) {
+        mate_rr_output_info_get_geometry (output, NULL, NULL, w, h);
+    } else {
+        *h = mate_rr_output_info_get_preferred_height (output);
+        *w = mate_rr_output_info_get_preferred_width (output);
     }
    rotation = mate_rr_output_info_get_rotation (output);
-   if ((rotation & MATE_RR_ROTATION_90) || (rotation & MATE_RR_ROTATION_270))
-   {
+   if ((rotation & MATE_RR_ROTATION_90) ||
+       (rotation & MATE_RR_ROTATION_270)) {
         int tmp;
         tmp = *h;
         *h = *w;
@@ -1047,48 +1060,46 @@ get_geometry (MateRROutputInfo *output, int *w, int *h)
    }
 }
 
-#define SPACE 15
-#define MARGIN  15
-
 static GList *
-list_connected_outputs (App *app, int *total_w, int *total_h)
+list_connected_outputs (App   *app,
+                        int   *total_w,
+                        int   *total_h)
 {
-    int i, dummy;
+    guint i;
+    int dummy;
     GList *result = NULL;
     MateRROutputInfo **outputs;
 
     if (!total_w)
-	total_w = &dummy;
+        total_w = &dummy;
     if (!total_h)
-	total_h = &dummy;
+        total_h = &dummy;
 
     *total_w = 0;
     *total_h = 0;
 
     outputs = mate_rr_config_get_outputs(app->current_configuration);
-    for (i = 0; outputs[i] != NULL; ++i)
-    {
-	if (mate_rr_output_info_is_connected (outputs[i]))
-	{
-	    int w, h;
+    for (i = 0; outputs[i] != NULL; ++i) {
+        if (mate_rr_output_info_is_connected (outputs[i])) {
+            int w, h;
 
-	    result = g_list_prepend (result, outputs[i]);
+            result = g_list_prepend (result, outputs[i]);
 
-	    get_geometry (outputs[i], &w, &h);
+            get_geometry (outputs[i], &w, &h);
 
-	    *total_w += w;
-	    *total_h += h;
-	}
+            *total_w += w;
+            *total_h += h;
+        }
     }
 
     return g_list_reverse (result);
 }
 
-static int
+static guint
 get_n_connected (App *app)
 {
     GList *connected_outputs = list_connected_outputs (app, NULL, NULL);
-    int n = g_list_length (connected_outputs);
+    guint n = g_list_length (connected_outputs);
 
     g_list_free (connected_outputs);
 
@@ -1100,7 +1111,7 @@ compute_scale (App *app)
 {
     int available_w, available_h;
     int total_w, total_h;
-    int n_monitors;
+    guint n_monitors;
     GdkRectangle viewport;
     GList *connected_outputs;
 
@@ -1112,8 +1123,8 @@ compute_scale (App *app)
 
     g_list_free (connected_outputs);
 
-    available_w = viewport.width - 2 * MARGIN - (n_monitors - 1) * SPACE;
-    available_h = viewport.height - 2 * MARGIN - (n_monitors - 1) * SPACE;
+    available_w = viewport.width  - 2 * MARGIN - ((int) n_monitors - 1) * SPACE;
+    available_h = viewport.height - 2 * MARGIN - ((int) n_monitors - 1) * SPACE;
 
     return MIN ((double)available_w / total_w, (double)available_h / total_h);
 }
@@ -1257,24 +1268,21 @@ add_edge_snaps (Edge *snapper, Edge *snappee, GArray *snaps)
 static void
 list_snaps (MateRROutputInfo *output, GArray *edges, GArray *snaps)
 {
-    int i;
+    guint i;
 
-    for (i = 0; i < edges->len; ++i)
-    {
-	Edge *output_edge = &(g_array_index (edges, Edge, i));
+    for (i = 0; i < edges->len; ++i) {
+        Edge *output_edge = &(g_array_index (edges, Edge, i));
 
-	if (output_edge->output == output)
-	{
-	    int j;
+        if (output_edge->output == output) {
+            guint j;
 
-	    for (j = 0; j < edges->len; ++j)
-	    {
-		Edge *edge = &(g_array_index (edges, Edge, j));
+            for (j = 0; j < edges->len; ++j) {
+                Edge *edge = &(g_array_index (edges, Edge, j));
 
-		if (edge->output != output)
+                if (edge->output != output)
 		    add_edge_snaps (output_edge, edge, snaps);
-	    }
-	}
+            }
+        }
     }
 }
 
@@ -1314,33 +1322,27 @@ static gboolean
 output_is_aligned (MateRROutputInfo *output, GArray *edges)
 {
     gboolean result = FALSE;
-    int i;
+    guint i;
 
-    for (i = 0; i < edges->len; ++i)
-    {
-	Edge *output_edge = &(g_array_index (edges, Edge, i));
+    for (i = 0; i < edges->len; ++i) {
+        Edge *output_edge = &(g_array_index (edges, Edge, i));
 
-	if (output_edge->output == output)
-	{
-	    int j;
+        if (output_edge->output == output) {
+            guint j;
 
-	    for (j = 0; j < edges->len; ++j)
-	    {
-		Edge *edge = &(g_array_index (edges, Edge, j));
+	    for (j = 0; j < edges->len; ++j) {
+                Edge *edge = &(g_array_index (edges, Edge, j));
 
-		/* We are aligned if an output edge matches
-		 * an edge of another output
-		 */
-		if (edge->output != output_edge->output)
-		{
-		    if (edges_align (output_edge, edge))
-		    {
-			result = TRUE;
-			goto done;
-		    }
-		}
-	    }
-	}
+                /* We are aligned if an output edge matches
+                 * an edge of another output
+                 */
+                if ((edge->output != output_edge->output) &&
+                    edges_align (output_edge, edge)) {
+                    result = TRUE;
+                    goto done;
+                }
+            }
+        }
     }
 done:
 
@@ -1491,9 +1493,9 @@ set_monitors_tooltip (App *app, gboolean is_dragging)
 }
 
 static void
-on_output_event (FooScrollArea *area,
-		 FooScrollAreaEvent *event,
-		 gpointer data)
+on_output_event (FooScrollArea      *area,
+                 FooScrollAreaEvent *event,
+                 gpointer            data)
 {
     MateRROutputInfo *output = data;
     App *app = g_object_get_data (G_OBJECT (area), "app");
@@ -1541,12 +1543,12 @@ on_output_event (FooScrollArea *area,
 	    int old_x, old_y;
 	    int width, height;
 	    int new_x, new_y;
-	    int i;
+	    guint i;
 	    GArray *edges, *snaps, *new_edges;
 
 	    mate_rr_output_info_get_geometry (output, &old_x, &old_y, &width, &height);
-	    new_x = info->output_x + (event->x - info->grab_x) / scale;
-	    new_y = info->output_y + (event->y - info->grab_y) / scale;
+	    new_x = info->output_x + (int) ((double)(event->x - info->grab_x) / scale);
+	    new_y = info->output_y + (int) ((double)(event->y - info->grab_y) / scale);
 
 	    mate_rr_output_info_set_geometry (output, new_x, new_y, width, height);
 
@@ -1687,7 +1689,9 @@ paint_background (FooScrollArea *area,
 }
 
 static void
-paint_output (App *app, cairo_t *cr, int i)
+paint_output (App     *app,
+              cairo_t *cr,
+              guint    i)
 {
     int w, h;
     double scale = compute_scale (app);
@@ -1839,10 +1843,13 @@ on_area_paint (FooScrollArea *area,
 
     for (list = connected_outputs; list != NULL; list = list->next)
     {
-	paint_output (app, cr, g_list_position (connected_outputs, list));
+        int pos;
 
-	if (mate_rr_config_get_clone (app->current_configuration))
-	    break;
+        if ((pos = g_list_position (connected_outputs, list)) != -1)
+            paint_output (app, cr, (guint) pos);
+
+        if (mate_rr_config_get_clone (app->current_configuration))
+            break;
     }
 }
 
