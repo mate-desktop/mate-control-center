@@ -38,6 +38,9 @@
 
 #include "capplet-util.h"
 
+#define MATE_INTERFACE_SCHEMA                 "org.mate.interface"
+#define WINDOW_SCALE_KEY                      "window-scaling-factor"
+
 typedef struct App App;
 typedef struct GrabInfo GrabInfo;
 
@@ -58,6 +61,8 @@ struct App
     GtkWidget	   *refresh_combo;
     GtkWidget	   *rotation_combo;
     GtkWidget	   *panel_checkbox;
+    GtkWidget	   *scale_vbox;
+    GtkWidget	   *scale_bbox;
     GtkWidget	   *clone_checkbox;
     GtkWidget	   *show_icon_checkbox;
     GtkWidget      *primary_button;
@@ -69,6 +74,7 @@ struct App
     GtkWidget      *area;
     gboolean	    ignore_gui_changes;
     GSettings	   *settings;
+    GSettings	   *scale_settings;
 
     /* These are used while we are waiting for the ApplyConfiguration method to be executed over D-bus */
     GDBusConnection *connection;
@@ -453,6 +459,58 @@ mirror_screens_is_supported (App *app)
 }
 
 static void
+on_scale_btn_active_changed_cb (GtkWidget *widget,
+                                App       *app)
+{
+    gint scale;
+
+    if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
+        return;
+
+    scale = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "scale"));
+    g_settings_set_int (app->scale_settings, WINDOW_SCALE_KEY, scale);
+}
+
+static void
+rebuild_scale_window (App *app)
+{
+    GtkRadioButton *group = NULL;
+    gint32          scale;
+    int             i;
+    const char     *button_label[] = {_("auto detect"), _("100%"), _("200%"), NULL};
+
+    if (app->scale_bbox != NULL)
+        return;
+
+    app->scale_bbox = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+    gtk_container_set_border_width (GTK_CONTAINER (app->scale_bbox), 6);
+    gtk_container_add (GTK_CONTAINER (app->scale_vbox), app->scale_bbox);
+
+    scale = g_settings_get_int (app->scale_settings, WINDOW_SCALE_KEY);
+
+    for (i = 0; button_label[i] != NULL; i++)
+    {
+        GtkWidget      *scale_btn;
+        scale_btn = gtk_radio_button_new_with_label_from_widget (group, button_label[i]);
+        if (!group)
+            group = GTK_RADIO_BUTTON (scale_btn);
+        if (i == scale)
+            gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (scale_btn), TRUE);
+
+        g_object_set_data (G_OBJECT (scale_btn),
+                          "scale",
+                           GINT_TO_POINTER (i));
+
+        g_signal_connect (scale_btn,
+                         "toggled",
+                          G_CALLBACK (on_scale_btn_active_changed_cb),
+                          app);
+        gtk_container_add (GTK_CONTAINER (app->scale_bbox), scale_btn);
+    }
+    gtk_widget_show_all (app->scale_bbox);
+}
+
+static void
 rebuild_mirror_screens (App *app)
 {
     gboolean mirror_is_active;
@@ -646,6 +704,7 @@ rebuild_gui (App *app)
 #endif
 
     rebuild_mirror_screens (app);
+    rebuild_scale_window (app);
     rebuild_current_monitor_label (app);
     rebuild_on_off_radios (app);
     rebuild_resolution_combo (app);
@@ -2397,6 +2456,7 @@ run_application (App *app)
     }
 
     app->settings = g_settings_new (MSD_XRANDR_SCHEMA);
+    app->scale_settings = g_settings_new (MATE_INTERFACE_SCHEMA);
 
     app->dialog = _gtk_builder_get_widget (builder, "dialog");
     g_signal_connect_after (app->dialog, "map-event",
@@ -2432,6 +2492,8 @@ run_application (App *app)
     app->rotation_combo = _gtk_builder_get_widget (builder, "rotation_combo");
     g_signal_connect (app->rotation_combo, "changed",
 		      G_CALLBACK (on_rotation_changed), app);
+
+    app->scale_vbox = _gtk_builder_get_widget (builder, "scale_vbox");
 
     app->clone_checkbox = _gtk_builder_get_widget (builder, "clone_checkbox");
     g_signal_connect (app->clone_checkbox, "toggled",
@@ -2526,6 +2588,7 @@ restart:
     gtk_widget_destroy (app->dialog);
     g_object_unref (app->screen);
     g_object_unref (app->settings);
+    g_object_unref (app->scale_settings);
 }
 
 int
