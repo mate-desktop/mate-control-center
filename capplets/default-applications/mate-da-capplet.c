@@ -586,23 +586,8 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	#define get_widget(name) GTK_WIDGET(gtk_builder_get_object(builder, name))
 
 	GtkBuilder* builder;
-	guint builder_result;
 
-	capplet->builder = builder = gtk_builder_new ();
-
-	builder_result = gtk_builder_add_from_resource (builder, "/org/mate/mcc/da/mate-default-applications-properties.ui", NULL);
-
-	if (builder_result == 0)
-	{
-		GtkWidget* dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, _("Could not load the main interface"));
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), _("Please make sure that the applet is properly installed"));
-		gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-
-		gtk_dialog_run(GTK_DIALOG(dialog));
-
-		gtk_widget_destroy(dialog);
-		exit(EXIT_FAILURE);
-	}
+	capplet->builder = builder = gtk_builder_new_from_resource ("/org/mate/mcc/da/mate-default-applications-properties.ui");
 
 	capplet->window = get_widget("preferred_apps_dialog");
 
