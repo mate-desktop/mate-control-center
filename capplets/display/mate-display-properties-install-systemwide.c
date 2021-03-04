@@ -75,8 +75,8 @@ static gboolean
 copy_file (int source_fd, int dest_fd)
 {
 	char buf[1024];
-	int num_read;
-	int num_written;
+	ssize_t num_read;
+	ssize_t num_written;
 
 	while (TRUE) {
 		char *p;
@@ -94,7 +94,7 @@ copy_file (int source_fd, int dest_fd)
 
 		p = buf;
 		while (num_read > 0) {
-			num_written = write (dest_fd, p, num_read);
+			num_written = write (dest_fd, p, (size_t) num_read);
 			if (num_written == -1) {
 				if (errno == EINTR)
 					continue;
@@ -133,7 +133,7 @@ main (int argc, char **argv)
 	const char *source_filename;
 	const char *dest_name;
 	const char *pkexec_uid_str;
-	int pkexec_uid;
+	unsigned int pkexec_uid;
 	struct stat statbuf;
 	int err;
 	int source_fd;
