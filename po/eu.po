@@ -11,14 +11,15 @@
 # Alexander Gabilondo <alexgabi@disroot.org>, 2020
 # Martin Wimpress <code@flexion.org>, 2020
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
+# David García-Abad <dgarciabad@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.23.2\n"
+"Project-Id-Version: mate-control-center 1.24.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2020-01-12 13:03+0100\n"
+"POT-Creation-Date: 2020-08-15 14:25+0200\n"
 "PO-Revision-Date: 2020-02-15 13:20+0000\n"
-"Last-Translator: Egoitz Rodriguez <egoitzro@gmail.com>, 2020\n"
+"Last-Translator: David García-Abad <dgarciabad@gmail.com>, 2020\n"
 "Language-Team: Basque (https://www.transifex.com/mate/teams/13566/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -150,25 +151,25 @@ msgstr "Izena"
 msgid "Description associated with a custom keybinding."
 msgstr ""
 
-#: capplets/about-me/mate-about-me.c:293
+#: capplets/about-me/mate-about-me.c:294
 msgid "Select Image"
 msgstr "Hautatu irudia"
 
-#: capplets/about-me/mate-about-me.c:295
+#: capplets/about-me/mate-about-me.c:296
 msgid "No Image"
 msgstr "Irudirik gabe"
 
-#: capplets/about-me/mate-about-me.c:323
+#: capplets/about-me/mate-about-me.c:324
 #: capplets/appearance/appearance-desktop.c:646
 msgid "Images"
 msgstr "Irudiak"
 
-#: capplets/about-me/mate-about-me.c:327
+#: capplets/about-me/mate-about-me.c:328
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Fitxategi guztiak"
 
-#: capplets/about-me/mate-about-me.c:500
+#: capplets/about-me/mate-about-me.c:501
 #, c-format
 msgid "About %s"
 msgstr "%s(r)i buruz"
@@ -216,12 +217,6 @@ msgstr "Desgaitu _hatz-markarekin saioa-hastea..."
 #: capplets/about-me/mate-about-me.desktop.in:4
 msgid "Set your personal information"
 msgstr "Ezarri zure datu pertsonalak"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/about-me/mate-about-me.desktop.in:7
-msgid "user-info"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -572,12 +567,6 @@ msgstr "Saltatu erabilerraztasuneko saio-hasieraren elkarrizketa-koadrora"
 msgid "Choose which accessibility features to enable when you log in"
 msgstr "Aukeratu erabilgarritasunaren zein eginbide gaitu saioa hastean"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/accessibility/at-properties/mate-at-properties.desktop.in:7
-msgid "preferences-desktop-accessibility"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
@@ -594,7 +583,7 @@ msgstr "Fitxategi guztiak"
 
 #: capplets/appearance/appearance-font.c:612
 msgid "Select Font"
-msgstr ""
+msgstr "Hautatu Letra Tipoa"
 
 #: capplets/appearance/appearance-font.c:615
 msgid "_Cancel"
@@ -703,7 +692,7 @@ msgstr "Aplikatutako azken letra-tipoaren iradokizuna alderantzika daiteke."
 msgid "The current theme suggests a font."
 msgstr "Gai honek letra-tipoa iradokitzen du."
 
-#: capplets/appearance/appearance-themes.c:1015
+#: capplets/appearance/appearance-themes.c:1014
 msgid "Custom"
 msgstr "Pertsonalizatua"
 
@@ -798,7 +787,7 @@ msgstr ""
 
 #: capplets/appearance/data/appearance.ui:946
 msgid "Automatic detection:"
-msgstr ""
+msgstr "Detekzio automatikoa"
 
 #: capplets/appearance/data/appearance.ui:990
 msgid "Smoothing"
@@ -1082,15 +1071,6 @@ msgstr "Pertsonalizatu mahaigainaren itxura"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/appearance/data/mate-appearance-properties.desktop.in:7
-#: capplets/appearance/data/mate-theme-installer.desktop.in:7
-msgid "preferences-desktop-theme"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/appearance/data/mate-appearance-properties.desktop.in:13
 msgid "mate-control-center;MATE;appearance;properties;desktop;customize;look;"
 msgstr ""
@@ -1210,11 +1190,11 @@ msgstr ""
 #: capplets/appearance/theme-installer.c:375
 #, c-format
 msgid "The theme \"%s\" already exists."
-msgstr ""
+msgstr "\"%s\" izeneko gaia esistitzen da dagoeneko."
 
 #: capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
-msgstr ""
+msgstr "Berriro instalatu nahi duzu?"
 
 #: capplets/appearance/theme-installer.c:388
 msgid "Cancel"
@@ -1391,7 +1371,7 @@ msgstr "_Saltatu"
 msgid "Overwrite _All"
 msgstr "_Gainidatzi denak"
 
-#: capplets/common/mate-theme-info.c:1578
+#: capplets/common/mate-theme-info.c:1580
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1400,7 +1380,7 @@ msgstr ""
 "Gai honek ez du beharko lukeen itxura izango, behar duen '%s' GTK+ gaia ez "
 "dagoelako instalatuta."
 
-#: capplets/common/mate-theme-info.c:1588
+#: capplets/common/mate-theme-info.c:1590
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1409,7 +1389,7 @@ msgstr ""
 "Gai honek ez du beharko lukeen itxura izango, behar duen leiho-"
 "kudeatzailearen '%s' gaia ez dagoelako instalatuta."
 
-#: capplets/common/mate-theme-info.c:1596
+#: capplets/common/mate-theme-info.c:1598
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1426,12 +1406,6 @@ msgstr "Hobetsitako aplikazioak"
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:4
 msgid "Select your default applications"
 msgstr "Hautatu zure aplikazio lehenetsiak"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/default-applications/mate-default-applications-properties.desktop.in:7
-msgid "preferences-desktop-default-applications"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1514,11 +1488,11 @@ msgstr "Dokumentu ikustailea"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:947
 msgid "Word Processor"
-msgstr ""
+msgstr "Testu Prozesatzailea"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:1015
 msgid "Spreadsheet Editor"
-msgstr ""
+msgstr "Kalkulu Orri Editorea"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:1037
 msgid "Office"
@@ -1572,7 +1546,7 @@ msgstr "Pantailaren hobespenak"
 
 #: capplets/display/display-capplet.ui:75
 msgid "Apply system-wide"
-msgstr ""
+msgstr "Sistema osan ezarri"
 
 #: capplets/display/display-capplet.ui:79
 msgid ""
@@ -1643,12 +1617,6 @@ msgstr ""
 
 #: capplets/display/mate-display-properties.desktop.in:4
 msgid "Change resolution and position of monitors and projectors"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/display/mate-display-properties.desktop.in:7
-msgid "preferences-desktop-display"
 msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
@@ -1887,7 +1855,7 @@ msgstr "Hurrengo pista"
 msgid "Eject"
 msgstr "Egotzi"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1153
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
 msgid "Desktop"
 msgstr "Mahaigaina"
 
@@ -1917,7 +1885,7 @@ msgstr "Amaitu saioa"
 
 #: capplets/keybindings/01-desktop-key.xml.in:16
 msgid "Shut down"
-msgstr ""
+msgstr "Itzali"
 
 #: capplets/keybindings/01-desktop-key.xml.in:18
 msgid "Lock screen"
@@ -1928,7 +1896,7 @@ msgid "Home folder"
 msgstr "Karpeta nagusia"
 
 #: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:843
-#: libslab/bookmark-agent.c:1192
+#: libslab/bookmark-agent.c:1196
 msgid "Search"
 msgstr "Bilatu"
 
@@ -2049,12 +2017,6 @@ msgstr ""
 #: capplets/keybindings/mate-keybinding.desktop.in:4
 msgid "Assign shortcut keys to commands"
 msgstr "Esleitu laster-teklak komandoei"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/keybindings/mate-keybinding.desktop.in:7
-msgid "preferences-desktop-keyboard-shortcuts"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -2481,12 +2443,6 @@ msgstr "Teklatua"
 msgid "Set your keyboard preferences"
 msgstr "Ezarri zure teklatuaren hobespenak"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/keyboard/mate-keyboard.desktop.in:7
-msgid "input-keyboard"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keyboard/mate-keyboard.desktop.in:13
@@ -2658,12 +2614,6 @@ msgstr "Touchpad-a"
 msgid "Set your mouse preferences"
 msgstr "Ezarri saguaren hobespenak"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/mouse/mate-settings-mouse.desktop.in:7
-msgid "input-mouse"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/mouse/mate-settings-mouse.desktop.in:13
@@ -2677,12 +2627,6 @@ msgstr "Sareko proxy-a"
 #: capplets/network/mate-network-properties.desktop.in:4
 msgid "Set your network proxy preferences"
 msgstr "Sareko proxy-aren hobespenak ezartzen ditu"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/network/mate-network-properties.desktop.in:7
-msgid "network-server"
-msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -2807,12 +2751,6 @@ msgstr "Leihoak"
 msgid "Set your window properties"
 msgstr "Leihoaren propietateak ezartzen ditu"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/windows/mate-window-properties.desktop.in:7
-msgid "preferences-system-windows"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/windows/mate-window-properties.desktop.in:13
@@ -2829,7 +2767,7 @@ msgstr ""
 
 #: capplets/windows/window-properties.ui:208
 msgid "Position:"
-msgstr ""
+msgstr "Kokapena:"
 
 #: capplets/windows/window-properties.ui:241
 msgid "Titlebar Buttons"
@@ -2939,7 +2877,7 @@ msgstr "%s"
 
 #: capplets/time-admin/src/main.c:190 capplets/time-admin/src/main.c:233
 msgid "open file"
-msgstr ""
+msgstr "ireki fitxategia"
 
 #: capplets/time-admin/src/main.c:190
 msgid "Create pid file failed"
@@ -2947,7 +2885,7 @@ msgstr ""
 
 #: capplets/time-admin/src/main.c:199
 msgid "write file"
-msgstr ""
+msgstr "idatzi fitxategia"
 
 #: capplets/time-admin/src/main.c:199
 msgid "write pid file failed"
@@ -3018,7 +2956,7 @@ msgstr ""
 msgid "Set Ntp sync"
 msgstr ""
 
-#: capplets/time-admin/src/time-share.c:47
+#: capplets/time-admin/src/time-share.c:49
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
@@ -4758,12 +4696,6 @@ msgstr ""
 msgid "Setting the time and date of the local system"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: capplets/time-admin/data/mate-time-admin.desktop.in:9
-msgid "preferences-system-time"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/time-admin/data/mate-time-admin.desktop.in:13
@@ -4809,22 +4741,10 @@ msgstr "MATEren konfigurazio-tresna"
 msgid "Configure MATE settings"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: shell/matecc.desktop.in:7
-msgid "preferences-desktop"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: shell/matecc.desktop.in:14
 msgid "MATE;control;center;configuration;tool;desktop;preferences;"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: shell/matecc.directory.desktop.in:5
-msgid "mate-settings"
 msgstr ""
 
 #: typing-break/drw-break-window.c:179
@@ -4974,12 +4894,6 @@ msgstr ""
 msgid "MATE Font Viewer"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: font-viewer/mate-font-viewer.desktop.in:6
-msgid "preferences-desktop-font"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: font-viewer/mate-font-viewer.desktop.in:14
@@ -5048,27 +4962,27 @@ msgstr "Kendu hasierako programa-zerrendatik"
 msgid "Add to Startup Programs"
 msgstr "Gehitu hasierako programa-zerrendari"
 
-#: libslab/bookmark-agent.c:1082
+#: libslab/bookmark-agent.c:1086
 msgid "New Spreadsheet"
 msgstr "Kalkulu-orri berria"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1090
 msgid "New Document"
 msgstr "Dokumentu berria"
 
-#: libslab/bookmark-agent.c:1140
+#: libslab/bookmark-agent.c:1144
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Karpeta nagusia"
 
-#: libslab/bookmark-agent.c:1147
+#: libslab/bookmark-agent.c:1151
 msgid "Documents"
 msgstr "Dokumentuak"
 
-#: libslab/bookmark-agent.c:1158
+#: libslab/bookmark-agent.c:1162
 msgid "File System"
 msgstr "Fitxategi-sistema"
 
-#: libslab/bookmark-agent.c:1161
+#: libslab/bookmark-agent.c:1165
 msgid "Network Servers"
 msgstr "Sareko zerbitzariak"
