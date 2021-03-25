@@ -296,7 +296,16 @@ update_timezone (TimezoneMap *map)
     current_location = timezone_map_get_location (TIMEZONEMAP (map));
     city_country = translated_city_name (current_location);
 
+#if GLIB_CHECK_VERSION (2, 68, 0)
+    if ((timezone =  g_time_zone_new_identifier (current_location->zone)) == NULL) {
+        timezone_map_set_bubble_text (TIMEZONEMAP (map),
+                                      _("Error: timezone identifier cannot be parsed or loaded"));
+        return;
+    }
+#else
     timezone = g_time_zone_new (current_location->zone);
+#endif
+
     current_date = g_date_time_new_now_local ();
     date = g_date_time_to_timezone (current_date, timezone);
 
