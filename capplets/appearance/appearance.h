@@ -49,7 +49,9 @@
 #define FILECHOOSER_DIR_FIRST_KEY    "sort-directories-first"
 #define FILECHOOSER_HIDDEN_ITEMS_KEY "show-hidden"
 #define FILECHOOSER_SIZE_COL_KEY     "show-size-column"
+#if GTK_CHECK_VERSION(3, 24, 12)
 #define FILECHOOSER_TYPE_COL_KEY     "show-type-column"
+#endif /* GTK_CHECK_VERSION(3, 24, 12) */
 #define GTK_FONT_DEFAULT_VALUE       "Sans 10"
 #define GTK_FONT_KEY                 "font-name"
 #define GTK_THEME_KEY                "gtk-theme"

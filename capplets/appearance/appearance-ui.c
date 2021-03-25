@@ -114,11 +114,13 @@ ui_init (AppearanceData *data)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
+#if GTK_CHECK_VERSION(3, 24, 12)
     g_settings_bind (data->filechooser_settings,
                      FILECHOOSER_TYPE_COL_KEY,
                      gtk_builder_get_object (data->ui, "filechooser_type_column_toggle"),
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
+#endif /* GTK_CHECK_VERSION(3, 24, 12) */
 
     g_settings_bind (data->filechooser_settings,
                      FILECHOOSER_DIR_FIRST_KEY,

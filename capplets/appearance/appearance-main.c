@@ -190,6 +190,10 @@ main (int argc, char **argv)
   capplet_set_icon (w, "preferences-desktop-theme");
   gtk_widget_show_all (w);
 
+#if !GTK_CHECK_VERSION(3, 24, 12)
+  gtk_widget_hide (GTK_WIDGET (gtk_builder_get_object (data->ui, "filechooser_type_column_toggle")));
+#endif /* !GTK_CHECK_VERSION(3, 24, 12) */
+
   g_signal_connect_after (w, "response",
                           (GCallback) main_window_response, data);
 
