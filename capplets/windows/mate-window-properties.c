@@ -55,8 +55,21 @@
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
 
-#define MARCO_BUTTON_LAYOUT_RIGHT "menu:minimize,maximize,close"
-#define MARCO_BUTTON_LAYOUT_LEFT "close,minimize,maximize:"
+enum
+{
+    MARCO_BUTTON_LAYOUT_RIGHT_WITH_MENU = 0,
+    MARCO_BUTTON_LAYOUT_LEFT_WITH_MENU,
+    MARCO_BUTTON_LAYOUT_RIGHT,
+    MARCO_BUTTON_LAYOUT_LEFT,
+    MARCO_BUTTON_LAYOUT_COUNT
+};
+
+static const char *button_layout [MARCO_BUTTON_LAYOUT_COUNT] = {
+   [MARCO_BUTTON_LAYOUT_RIGHT_WITH_MENU] = "menu:minimize,maximize,close",
+   [MARCO_BUTTON_LAYOUT_LEFT_WITH_MENU]  = "close,minimize,maximize:menu",
+   [MARCO_BUTTON_LAYOUT_RIGHT]           = ":minimize,maximize,close",
+   [MARCO_BUTTON_LAYOUT_LEFT]            = "close,minimize,maximize:"
+};
 
 /* keep following enums in sync with marco */
 enum
@@ -118,8 +131,6 @@ static void reload_mouse_modifiers (void);
 static void
 update_sensitivity (void)
 {
-    gchar *str;
-
     gtk_widget_set_sensitive (compositing_fast_alt_tab_checkbutton,
                               g_settings_get_boolean (marco_settings, MARCO_COMPOSITING_MANAGER_KEY));
     gtk_widget_set_sensitive (allow_top_tiling_checkbutton,
@@ -131,12 +142,6 @@ update_sensitivity (void)
     gtk_widget_set_sensitive (autoraise_delay_spinbutton,
                               g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK &&
                               g_settings_get_boolean (marco_settings, MARCO_AUTORAISE_KEY));
-
-    str = g_settings_get_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY);
-    gtk_widget_set_sensitive (titlebar_layout_optionmenu,
-                              g_strcmp0 (str, MARCO_BUTTON_LAYOUT_LEFT) == 0 ||
-                              g_strcmp0 (str, MARCO_BUTTON_LAYOUT_RIGHT) == 0);
-    g_free (str);
 }
 
 static void
@@ -198,18 +203,48 @@ double_click_titlebar_changed_callback (GtkWidget *optionmenu,
                          gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
 }
 
+static gchar *custom_titlebar_button_layout = NULL;
+
 static void
-titlebar_layout_changed_callback (GtkWidget *optionmenu,
-                                  void      *data)
+titlebar_layout_changed_callback (GtkWidget *optionmenu)
 {
     gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu));
 
-    if (value == 0) {
-        g_settings_set_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_RIGHT);
+    if (value < MARCO_BUTTON_LAYOUT_COUNT) {
+        g_settings_set_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY, button_layout[value]);
+        g_settings_set_string (interface_settings, GTK_BUTTON_LAYOUT_KEY, button_layout[value]);
     }
-    else if (value == 1) {
-        g_settings_set_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_LEFT);
+    /* Custom Layout */
+    else if ((value == MARCO_BUTTON_LAYOUT_COUNT) && custom_titlebar_button_layout) {
+        g_settings_set_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY, custom_titlebar_button_layout);
+        g_settings_set_string (interface_settings, GTK_BUTTON_LAYOUT_KEY, custom_titlebar_button_layout);
     }
+}
+
+static void
+set_titlebar_button_layout(void)
+{
+    gchar    *str;
+    gboolean  found = FALSE;
+
+    str = g_settings_get_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY);
+    for (gint i = 0; i < MARCO_BUTTON_LAYOUT_COUNT; i++) {
+        if (g_strcmp0 (str, button_layout[i]) == 0) {
+            gtk_combo_box_set_active (GTK_COMBO_BOX (titlebar_layout_optionmenu), i);
+            found = TRUE;
+            break;
+        }
+    }
+    /* A custom value is found in MARCO_BUTTON_LAYOUT_KEY
+     * (maybe the user changed the value in dconf-editor) */
+    if (!found) {
+        g_free (custom_titlebar_button_layout);
+        custom_titlebar_button_layout = g_strdup(str);
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (titlebar_layout_optionmenu), _("Custom"));
+        gtk_combo_box_set_active (GTK_COMBO_BOX (titlebar_layout_optionmenu), 4);
+    }
+
+    g_free(str);
 }
 
 static void
@@ -310,7 +345,6 @@ main (int argc, char **argv)
     GtkBuilder *builder;
     GdkScreen  *screen;
     GtkWidget  *nb;
-    gchar      *str;
     const char *current_wm;
     int i;
 
@@ -384,13 +418,10 @@ main (int argc, char **argv)
 
     reload_mouse_modifiers ();
 
-    str = g_settings_get_string (marco_settings, MARCO_BUTTON_LAYOUT_KEY);
-    gtk_combo_box_set_active (GTK_COMBO_BOX (titlebar_layout_optionmenu),
-                              g_strcmp0 (str, MARCO_BUTTON_LAYOUT_RIGHT) == 0 ? 0 : 1);
-    g_free (str);
-
     gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
                               g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
+
+    set_titlebar_button_layout ();
 
     set_alt_click_value ();
 
@@ -473,6 +504,8 @@ main (int argc, char **argv)
     gtk_main ();
 
     g_object_unref (marco_settings);
+
+    g_free (custom_titlebar_button_layout);
 
     return 0;
 }
