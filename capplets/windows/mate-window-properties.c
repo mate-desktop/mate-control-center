@@ -40,6 +40,9 @@
 #include "capplet-util.h"
 
 #define MARCO_SCHEMA "org.mate.Marco.general"
+#define INTERFACE_SCHEMA "org.mate.interface"
+
+#define GTK_BUTTON_LAYOUT_KEY "gtk-decoration-layout"
 
 #define MARCO_CENTER_NEW_WINDOWS_KEY "center-new-windows"
 #define MARCO_ALLOW_TILING_KEY "allow-tiling"
@@ -122,6 +125,7 @@ static GtkWidget *titlebar_layout_optionmenu;
 static GtkWidget *compositing_checkbutton;
 
 static GSettings *marco_settings;
+static GSettings *interface_settings;
 
 static MouseClickModifier *mouse_modifiers = NULL;
 static int n_mouse_modifiers = 0;
@@ -415,6 +419,7 @@ main (int argc, char **argv)
 
     /* Load settings */
     marco_settings = g_settings_new (MARCO_SCHEMA);
+    interface_settings = g_settings_new (INTERFACE_SCHEMA);
 
     reload_mouse_modifiers ();
 
@@ -504,6 +509,7 @@ main (int argc, char **argv)
     gtk_main ();
 
     g_object_unref (marco_settings);
+    g_object_unref (interface_settings);
 
     g_free (custom_titlebar_button_layout);
 
