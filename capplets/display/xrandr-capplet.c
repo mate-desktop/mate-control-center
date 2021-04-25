@@ -91,6 +91,16 @@ enum {
     RESPONSE_MAKE_DEFAULT = 1
 };
 
+enum {
+    COL_TEXT = 0,
+    COL_WIDTH,
+    COL_HEIGHT,
+    COL_RATE,
+    COL_PIXELS,
+    COL_ROTATION,
+    COL_COUNT
+};
+
 static void rebuild_gui (App *app);
 static void on_clone_changed (GtkWidget *box, gpointer data);
 static void on_rate_changed (GtkComboBox *box, gpointer data);
@@ -209,7 +219,7 @@ foreach (GtkTreeModel *model,
     ForeachInfo *info = data;
     char *text = NULL;
 
-    gtk_tree_model_get (model, iter, 0, &text, -1);
+    gtk_tree_model_get (model, iter, COL_TEXT, &text, -1);
 
     g_assert (text != NULL);
 
@@ -245,12 +255,12 @@ add_key (GtkWidget       *widget,
     {
         GtkTreeIter iter;
         gtk_list_store_insert_with_values (store, &iter, -1,
-                                           0, text,
-                                           1, width,
-                                           2, height,
-                                           3, rate,
-                                           4, width * height,
-                                           5, rotation,
+                                           COL_TEXT, text,
+                                           COL_WIDTH, width,
+                                           COL_HEIGHT, height,
+                                           COL_RATE, rate,
+                                           COL_PIXELS, width * height,
+                                           COL_ROTATION, rotation,
                                            -1);
     }
 }
@@ -822,11 +832,11 @@ get_mode (GtkWidget *widget, int *width, int *height, int *freq, MateRRRotation 
 
     model = gtk_combo_box_get_model (box);
     gtk_tree_model_get (model, &iter,
-			1, width,
-			2, height,
-			3, freq,
-			5, rot,
-			-1);
+                        COL_WIDTH, width,
+                        COL_HEIGHT, height,
+                        COL_RATE, freq,
+                        COL_ROTATION, rot,
+                        -1);
 
     return TRUE;
 
@@ -1915,17 +1925,18 @@ on_area_paint (FooScrollArea *area,
 static void
 make_text_combo (GtkWidget *widget, int sort_column)
 {
-    GtkComboBox *box = GTK_COMBO_BOX (widget);
-    GtkListStore *store = gtk_list_store_new (
-	6,
-	G_TYPE_STRING,		/* Text */
-	G_TYPE_INT,		/* Width */
-	G_TYPE_INT,		/* Height */
-	G_TYPE_INT,		/* Frequency */
-	G_TYPE_INT,		/* Width * Height */
-	G_TYPE_INT);		/* Rotation */
-
+    GtkComboBox     *box;
+    GtkListStore    *store;
     GtkCellRenderer *cell;
+
+    box = GTK_COMBO_BOX (widget);
+    store = gtk_list_store_new (COL_COUNT,
+                                G_TYPE_STRING,    /* Text */
+                                G_TYPE_INT,       /* Width */
+                                G_TYPE_INT,       /* Height */
+                                G_TYPE_INT,       /* Frequency */
+                                G_TYPE_INT,       /* Width * Height */
+                                G_TYPE_INT);      /* Rotation */
 
     gtk_cell_layout_clear (GTK_CELL_LAYOUT (widget));
 
