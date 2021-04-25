@@ -44,14 +44,13 @@ Author: Robert Buj
     <property name="can-focus">False</property>
     <property name="icon-name">window-close</property>
   </object>
-  <object class="GtkDialog" id="dialog_win">
+  <template class="MccWindowPropertiesDialog" parent="GtkDialog">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Window Preferences</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="icon-name">preferences-system-windows</property>
     <property name="type-hint">normal</property>
-    <signal name="response" handler="on_dialog_win_response" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="main_vbox">
         <property name="visible">True</property>
@@ -151,7 +150,7 @@ Author: Robert Buj
                             <property name="receives-default">False</property>
                             <property name="use-underline">True</property>
                             <property name="draw-indicator">True</property>
-                            <signal name="toggled" handler="on_focus_mode_checkbutton_toggled" swapped="no"/>
+                            <signal name="toggled" handler="mouse_focus_toggled_callback" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -168,7 +167,7 @@ Author: Robert Buj
                             <property name="margin-start">12</property>
                             <property name="use-underline">True</property>
                             <property name="draw-indicator">True</property>
-                            <signal name="toggled" handler="on_focus_mode_mouse_checkbutton_toggled" swapped="no"/>
+                            <signal name="toggled" handler="mouse_focus_toggled_callback" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -828,5 +827,5 @@ Author: Robert Buj
       <action-widget response="-11">button_help_browser</action-widget>
       <action-widget response="-7">button_window_close</action-widget>
     </action-widgets>
-  </object>
+  </template>
 </interface>

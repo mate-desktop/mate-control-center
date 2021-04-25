@@ -8,9 +8,11 @@ mate_window_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 BUILT_SOURCES = mate-window-properties-resources.h mate-window-properties-resources.c
 nodist_mate_window_properties_SOURCES = $(BUILT_SOURCES)
 mate_window_properties_SOURCES = \
+	main.c \
 	mate-metacity-support.h \
 	mate-metacity-support.c \
-	mate-window-properties.c
+	mcc-window-properties-dialog.h \
+	mcc-window-properties-dialog.c
 
 desktopdir = $(datadir)/applications
 Desktop_in_files = mate-window-properties.desktop.in
