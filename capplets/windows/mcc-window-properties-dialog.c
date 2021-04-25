@@ -74,12 +74,12 @@ enum
     ACTION_TITLEBAR_MENU
 };
 
-enum
+typedef enum
 {
-    FOCUS_MODE_CLICK,
+    FOCUS_MODE_CLICK = 0,
     FOCUS_MODE_SLOPPY,
     FOCUS_MODE_MOUSE
-};
+} FocusMode;
 
 typedef struct
 {
@@ -128,17 +128,20 @@ static void
 update_sensitivity (MccWindowPropertiesDialog *dialog)
 {
     gchar *str;
+    FocusMode focus_mode;
 
     gtk_widget_set_sensitive (dialog->compositing_fast_alt_tab_checkbutton,
                               g_settings_get_boolean (dialog->marco_settings, MARCO_COMPOSITING_MANAGER_KEY));
     gtk_widget_set_sensitive (dialog->allow_top_tiling_checkbutton,
                               g_settings_get_boolean (dialog->marco_settings, MARCO_ALLOW_TILING_KEY));
+
+    focus_mode = g_settings_get_enum (dialog->marco_settings, MARCO_FOCUS_KEY);
     gtk_widget_set_sensitive (dialog->focus_mode_mouse_checkbutton,
-                              g_settings_get_enum (dialog->marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
+                              focus_mode != FOCUS_MODE_CLICK);
     gtk_widget_set_sensitive (dialog->autoraise_delay_hbox,
-                              g_settings_get_enum (dialog->marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
+                              focus_mode != FOCUS_MODE_CLICK);
     gtk_widget_set_sensitive (dialog->autoraise_delay_spinbutton,
-                              g_settings_get_enum (dialog->marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK &&
+                              focus_mode != FOCUS_MODE_CLICK &&
                               g_settings_get_boolean (dialog->marco_settings, MARCO_AUTORAISE_KEY));
 
     str = g_settings_get_string (dialog->marco_settings, MARCO_BUTTON_LAYOUT_KEY);
@@ -163,16 +166,18 @@ mouse_focus_toggled_callback (GtkWidget *button,
                               gpointer   data)
 {
     MccWindowPropertiesDialog *dialog = data;
+    FocusMode focus_mode;
 
     if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_checkbutton))) {
-        g_settings_set_enum (dialog->marco_settings,
-                             MARCO_FOCUS_KEY,
-                             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_mouse_checkbutton)) ?
-                             FOCUS_MODE_MOUSE : FOCUS_MODE_SLOPPY);
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_mouse_checkbutton)))
+            focus_mode = FOCUS_MODE_MOUSE;
+        else
+            focus_mode = FOCUS_MODE_SLOPPY;
     }
     else {
-        g_settings_set_enum (dialog->marco_settings, MARCO_FOCUS_KEY, FOCUS_MODE_CLICK);
+        focus_mode = FOCUS_MODE_CLICK;
     }
+    g_settings_set_enum (dialog->marco_settings, MARCO_FOCUS_KEY, focus_mode);
 }
 
 static void
@@ -181,19 +186,30 @@ mouse_focus_changed_callback (GSettings   *settings,
                               gpointer     data)
 {
     MccWindowPropertiesDialog *dialog = data;
+    FocusMode focus_mode;
+    gboolean active_focus_mode;
+    gboolean active_focus_mode_mouse;
 
-    if (g_settings_get_enum (settings, key) == FOCUS_MODE_MOUSE) {
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_checkbutton), TRUE);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_mouse_checkbutton), TRUE);
+    focus_mode = g_settings_get_enum (settings, key);
+    switch (focus_mode) {
+        case FOCUS_MODE_MOUSE:
+            active_focus_mode       = TRUE;
+            active_focus_mode_mouse = TRUE;
+            break;
+        case FOCUS_MODE_SLOPPY:
+            active_focus_mode       = TRUE;
+            active_focus_mode_mouse = FALSE;
+            break;
+        default:
+            active_focus_mode       = FALSE;
+            active_focus_mode_mouse = FALSE;
     }
-    else if (g_settings_get_enum (settings, key) == FOCUS_MODE_SLOPPY) {
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_checkbutton), TRUE);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_mouse_checkbutton), FALSE);
-    }
-    else {
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_checkbutton), FALSE);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_mouse_checkbutton), FALSE);
-    }
+
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_checkbutton),
+                                  active_focus_mode);
+
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_mode_mouse_checkbutton),
+                                  active_focus_mode_mouse);
 }
 
 static void
@@ -221,14 +237,20 @@ on_titlebar_layout_optionmenu_changed (GtkWidget *optionmenu,
                                        gpointer   data)
 {
     MccWindowPropertiesDialog *dialog = data;
-    gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu));
+    gint value;
+    const char* button_layout = NULL;
 
-    if (value == 0) {
-        g_settings_set_string (dialog->marco_settings, MARCO_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_RIGHT);
+    value = gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu));
+    switch (value) {
+        case 0:
+            button_layout = MARCO_BUTTON_LAYOUT_RIGHT;
+            break;
+        case 1:
+            button_layout = MARCO_BUTTON_LAYOUT_LEFT;
     }
-    else if (value == 1) {
-        g_settings_set_string (dialog->marco_settings, MARCO_BUTTON_LAYOUT_KEY, MARCO_BUTTON_LAYOUT_LEFT);
-    }
+
+    if (button_layout != NULL)
+        g_settings_set_string (dialog->marco_settings, MARCO_BUTTON_LAYOUT_KEY, button_layout);
 }
 
 static void
