@@ -50,6 +50,7 @@
 #define MARCO_FOCUS_KEY "focus-mode"
 #define MARCO_AUTORAISE_KEY "auto-raise"
 #define MARCO_AUTORAISE_DELAY_KEY "auto-raise-delay"
+#define MARCO_REDUCED_RESOURCES_KEY "reduced-resources"
 #define MARCO_MOUSE_MODIFIER_KEY "mouse-button-modifier"
 
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
@@ -90,13 +91,13 @@ static GtkWidget *dialog_win;
 
 /* Behaviour */
 static GtkWidget *show_tab_border_checkbutton;
-static GtkWidget *compositing_fast_alt_tab_checkbutton;
 static GtkWidget *double_click_titlebar_optionmenu;
 static GtkWidget *focus_mode_checkbutton;
 static GtkWidget *focus_mode_mouse_checkbutton;
 static GtkWidget *autoraise_checkbutton;
 static GtkWidget *autoraise_delay_spinbutton;
 static GtkWidget *autoraise_delay_hbox;
+static GtkWidget *reduced_resources_checkbutton;
 static GtkWidget *alt_click_vbox;
 
 /* Placement */
@@ -107,6 +108,7 @@ static GtkWidget *titlebar_layout_optionmenu;
 
 /* Compositing Manager */
 static GtkWidget *compositing_checkbutton;
+static GtkWidget *compositing_fast_alt_tab_checkbutton;
 
 static GSettings *marco_settings;
 
@@ -122,8 +124,11 @@ update_sensitivity (void)
 
     gtk_widget_set_sensitive (compositing_fast_alt_tab_checkbutton,
                               g_settings_get_boolean (marco_settings, MARCO_COMPOSITING_MANAGER_KEY));
+    gtk_widget_set_sensitive (enable_tiling_checkbutton,
+                              !g_settings_get_boolean (marco_settings, MARCO_REDUCED_RESOURCES_KEY));
     gtk_widget_set_sensitive (allow_top_tiling_checkbutton,
-                              g_settings_get_boolean (marco_settings, MARCO_ALLOW_TILING_KEY));
+                              g_settings_get_boolean (marco_settings, MARCO_ALLOW_TILING_KEY) &&
+                             !g_settings_get_boolean (marco_settings, MARCO_REDUCED_RESOURCES_KEY));
     gtk_widget_set_sensitive (focus_mode_mouse_checkbutton,
                               g_settings_get_enum (marco_settings, MARCO_FOCUS_KEY) != FOCUS_MODE_CLICK);
     gtk_widget_set_sensitive (autoraise_delay_hbox,
@@ -357,13 +362,13 @@ main (int argc, char **argv)
 
     /* Behaviour */
     show_tab_border_checkbutton = GET_WIDGET ("show_tab_border_checkbutton");
-    compositing_fast_alt_tab_checkbutton = GET_WIDGET ("compositing_fast_alt_tab_checkbutton");
     double_click_titlebar_optionmenu = GET_WIDGET ("double_click_titlebar_optionmenu");
     focus_mode_checkbutton = GET_WIDGET ("focus_mode_checkbutton");
     focus_mode_mouse_checkbutton = GET_WIDGET ("focus_mode_mouse_checkbutton");
     autoraise_delay_hbox = GET_WIDGET ("autoraise_delay_hbox");
     autoraise_checkbutton = GET_WIDGET ("autoraise_checkbutton");
     autoraise_delay_spinbutton = GET_WIDGET ("autoraise_delay_spinbutton");
+    reduced_resources_checkbutton = GET_WIDGET ("reduced_resources_checkbutton");
     alt_click_vbox = GET_WIDGET ("alt_click_vbox");
 
     /* Placement */
@@ -372,8 +377,9 @@ main (int argc, char **argv)
     allow_top_tiling_checkbutton = GET_WIDGET ("allow_top_tiling_checkbutton");
     titlebar_layout_optionmenu = GET_WIDGET ("titlebar_layout_optionmenu");
 
-    /* Compositing Manager */
+    /* Composition Manager */
     compositing_checkbutton = GET_WIDGET ("compositing_checkbutton");
+    compositing_fast_alt_tab_checkbutton = GET_WIDGET ("compositing_fast_alt_tab_checkbutton");
 
     g_object_unref (builder);
 
@@ -405,10 +411,10 @@ main (int argc, char **argv)
                      G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind (marco_settings,
-                     MARCO_COMPOSITING_FAST_ALT_TAB_KEY,
-                     compositing_fast_alt_tab_checkbutton,
+                     MARCO_REDUCED_RESOURCES_KEY,
+                     reduced_resources_checkbutton,
                      "active",
-                     G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN);
+                     G_SETTINGS_BIND_DEFAULT);
 
     /* Placement */
     g_settings_bind (marco_settings,
@@ -429,10 +435,16 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    /* Compositing Manager */
+    /* Composition Manager */
     g_settings_bind (marco_settings,
                      MARCO_COMPOSITING_MANAGER_KEY,
                      compositing_checkbutton,
+                     "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (marco_settings,
+                     MARCO_COMPOSITING_FAST_ALT_TAB_KEY,
+                     compositing_fast_alt_tab_checkbutton,
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
