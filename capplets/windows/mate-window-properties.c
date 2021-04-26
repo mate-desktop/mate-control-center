@@ -377,7 +377,7 @@ main (int argc, char **argv)
     allow_top_tiling_checkbutton = GET_WIDGET ("allow_top_tiling_checkbutton");
     titlebar_layout_optionmenu = GET_WIDGET ("titlebar_layout_optionmenu");
 
-    /* Composition Manager */
+    /* Compositing Window Manager */
     compositing_checkbutton = GET_WIDGET ("compositing_checkbutton");
     compositing_fast_alt_tab_checkbutton = GET_WIDGET ("compositing_fast_alt_tab_checkbutton");
 
