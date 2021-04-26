@@ -72,12 +72,12 @@ main (int argc, char **argv)
     screen = gdk_display_get_default_screen (gdk_display_get_default ());
     current_wm = gdk_x11_screen_get_window_manager_name (screen);
 
-    if (g_strcmp0 (current_wm, WM_COMMON_METACITY) == 0) {
+    if (strcmp (current_wm, WM_COMMON_METACITY) == 0) {
         mate_metacity_config_tool ();
         return EXIT_SUCCESS;
     }
 
-    if (g_strcmp0 (current_wm, WM_COMMON_MARCO) != 0) {
+    if (strcmp (current_wm, WM_COMMON_MARCO) != 0) {
         wm_unsupported ();
         return EXIT_FAILURE;
     }

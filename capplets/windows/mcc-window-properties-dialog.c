@@ -313,7 +313,7 @@ wm_changed_callback (GdkScreen *screen,
     MccWindowPropertiesDialog *dialog = data;
 
     current_wm = gdk_x11_screen_get_window_manager_name (screen);
-    gtk_widget_set_sensitive (GTK_WIDGET (dialog), g_strcmp0 (current_wm, WM_COMMON_MARCO) == 0);
+    gtk_widget_set_sensitive (GTK_WIDGET (dialog), strcmp (current_wm, WM_COMMON_MARCO) == 0);
 }
 
 static void
