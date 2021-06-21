@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 Stefano Karapetsas
+ * Copyright (C) 2012-2021 MATE Developers
  * Authors: Stefano Karapetsas <stefano@karapetsas.com>
  * All Rights Reserved
  *

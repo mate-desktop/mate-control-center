@@ -2,6 +2,7 @@
  * mate-font-viewer:
  *
  * Copyright (C) 2012 Cosimo Cecchi <cosimoc@gnome.org>
+ * Copyright (C) 2013-2021 MATE Developers
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

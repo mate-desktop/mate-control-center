@@ -2,6 +2,7 @@
  * mate-font-viewer
  *
  * Copyright (C) 2012 Cosimo Cecchi <cosimoc@gnome.org>
+ * Copyright (C) 2013-2021 MATE Developers
  *
  * based on font-method.c code from
  *

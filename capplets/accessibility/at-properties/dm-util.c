@@ -3,6 +3,7 @@
  * dm-util.c: This file is part of mate-control-center.
  *
  * Copyright (C) 2019 Wu Xiaotian <yetist@gmail.com>
+ * Copyright (C) 2019-2021 MATE developers
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

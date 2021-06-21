@@ -4,6 +4,7 @@
  *
  * Copyright (C) 2002-2003  James Henstridge <james@daa.com.au>
  * Copyright (C) 2012 Cosimo Cecchi <cosimoc@gnome.org>
+ * Copyright (C) 2013-2021 MATE Developers
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

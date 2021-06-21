@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * Copyright (C) 2019 MATE Developers
+ * Copyright (C) 2019-2021 MATE Developers
  *
  * These are the timezone names from /usr/share/zoneinfo/zone.tab.
 

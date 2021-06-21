@@ -1,7 +1,8 @@
 /* mate-network-properties.c: network preferences capplet
  *
  * Copyright (C) 2002 Sun Microsystems Inc.
- *               2012 Stefano Karapetsas
+ * Copyright (C) 2012 Stefano Karapetsas
+ * Copyright (C) 2012-2021 MATE Developers
  *
  * Written by: Mark McLoughlin <mark@skynet.ie>
  *             Stefano Karapetsas <stefano@karapetsas.com>

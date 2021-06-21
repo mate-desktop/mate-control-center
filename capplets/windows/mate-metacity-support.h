@@ -1,5 +1,6 @@
 /* metacity.h
  * Copyright (C) 2014 Stefano Karapetsas
+ * Copyright (C) 2019-2021 MATE Developers
  *
  * Written by: Stefano Karapetsas <stefano@karapetsas.com>
  *

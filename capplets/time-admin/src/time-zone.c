@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2019 MATE Developers
- * Copyright (C) 2018, 2019 zhuyaliang https://github.com/zhuyaliang/
- * Copyright (C) 2010-2018 The GNOME Project
  * Copyright (C) 2010 Intel, Inc
+ * Copyright (C) 2010-2018 The GNOME Project
+ * Copyright (C) 2018, 2019 zhuyaliang https://github.com/zhuyaliang/
+ * Copyright (C) 2019-2021 MATE Developers
  *
  * Portions from Ubiquity, Copyright (C) 2009 Canonical Ltd.
  * Written by Evan Dandrea <evand@ubuntu.com>
