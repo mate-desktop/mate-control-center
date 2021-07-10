@@ -1,0 +1,350 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - mate-control-center</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(id) {
+        var elements = document.querySelectorAll("." + id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("d-none");
+        }
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll("input");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var el = elements[i];
+
+          if (el.checked) {
+            el.checked = false;
+          } else {
+            el.checked = true;
+          }
+
+          toggleDisplay(el.id);
+        }
+      }
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="header" class="header">
+      <h1>Cppcheck report - mate-control-center: </h1>
+    </div>
+    <div class="wrapper">
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Defect summary;</a> </p>
+
+       <label><input type="checkbox" onclick="toggleAll()" checked> Toggle all</label>
+       <table>
+           <tr><th>Show</th><th>#</th><th>Defect ID</th></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="variableScope" name="variableScope" checked></td><td>71</td><td>variableScope</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="unusedStructMember" name="unusedStructMember" checked></td><td>48</td><td>unusedStructMember</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="unreadVariable" name="unreadVariable" checked></td><td>17</td><td>unreadVariable</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="varFuncNullUB" name="varFuncNullUB" checked></td><td>8</td><td>varFuncNullUB</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="nullPointerRedundantCheck" name="nullPointerRedundantCheck" checked></td><td>4</td><td>nullPointerRedundantCheck</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="shadowVariable" name="shadowVariable" checked></td><td>4</td><td>shadowVariable</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="unknownMacro" name="unknownMacro" checked></td><td>4</td><td>unknownMacro</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="knownConditionTrueFalse" name="knownConditionTrueFalse" checked></td><td>3</td><td>knownConditionTrueFalse</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="duplicateExpression" name="duplicateExpression" checked></td><td>1</td><td>duplicateExpression</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="invalidScanfArgType_int" name="invalidScanfArgType_int" checked></td><td>1</td><td>invalidScanfArgType_int</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="missingInclude" name="missingInclude" checked></td><td>1</td><td>missingInclude</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="redundantAssignment" name="redundantAssignment" checked></td><td>1</td><td>redundantAssignment</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="redundantInitialization" name="redundantInitialization" checked></td><td>1</td><td>redundantInitialization</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="shadowArgument" name="shadowArgument" checked></td><td>1</td><td>shadowArgument</td></tr>
+            <tr><td><input type="checkbox" onclick="toggleDisplay(this.id)" id="unreachableCode" name="unreachableCode" checked></td><td>1</td><td>unreachableCode</td></tr>
+           <tr><td></td><td>166</td><td>total</td></tr>
+       </table>
+       <p><a href="stats.html">Statistics</a></p>
+    </div>
+    <div id="content_index">
+
+       <table>
+       <tr><th>Line</th><th>Id</th><th>CWE</th><th>Severity</th><th>Message</th></tr>
+       <tr><td colspan="5"><a href="57.html"></a></td></tr>
+         <tr class="missingInclude"><td></td><td>missingInclude</td><td></td><td>information</td><td>Cppcheck cannot find all the include files (use --check-config for details)</td></tr>
+       <tr><td colspan="5"><a href="0.html">capplets/about-me/e-image-chooser.c</a></td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-248">248</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;scaled&apos; can be reduced.</td></tr>
+       <tr class="shadowArgument"><td><a href="0.html#line-367">367</a></td><td>shadowArgument</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >Local variable &apos;info&apos; shadows outer argument</td></tr>
+       <tr><td colspan="5"><a href="1.html">capplets/about-me/mate-about-me-fingerprint.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="1.html#line-375">375</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="1.html#line-388">388</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="1.html#line-425">425</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr><td colspan="5"><a href="2.html">capplets/about-me/mate-about-me-password.c</a></td></tr>
+       <tr class="varFuncNullUB"><td><a href="2.html#line-454">454</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="2.html#line-488">488</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="2.html#line-516">516</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="2.html#line-584">584</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="2.html#line-589">589</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="unreadVariable"><td><a href="2.html#line-676">676</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="2.html#line-750">750</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-816">816</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;details&apos; can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="2.html#line-912">912</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr><td colspan="5"><a href="3.html">capplets/about-me/mate-about-me-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="3.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="3.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="3.html#line-395">395</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="3.html#line-395">395</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="4.html">capplets/about-me/mate-about-me.c</a></td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-95">95</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;act_file&apos; can be reduced.</td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="4.html#line-104">104</a></td><td>knownConditionTrueFalse</td><td><a href="https://cwe.mitre.org/data/definitions/571.html">571</a></td><td>style</td><td >Condition &apos;file==NULL&apos; is always true</td></tr>
+       <tr class="unreadVariable"><td><a href="4.html#line-137">137</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;scalex&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="4.html#line-137">137</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;scaley&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="4.html#line-289">289</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="4.html#line-399">399</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;dialog&apos; is assigned a value that is never used.</td></tr>
+       <tr><td colspan="5"><a href="5.html">capplets/accessibility/at-properties/mate-at-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="5.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="5.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="5.html#line-171">171</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="5.html#line-171">171</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="6.html">capplets/appearance/appearance-desktop.c</a></td></tr>
+       <tr class="variableScope"><td><a href="6.html#line-402">402</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;path&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="6.html#line-1166">1166</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;cr&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="6.html#line-1189">1189</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;item&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="7.html">capplets/appearance/appearance-font.c</a></td></tr>
+       <tr class="varFuncNullUB"><td><a href="7.html#line-688">688</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="7.html#line-701">701</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="7.html#line-718">718</a></td><td>varFuncNullUB</td><td><a href="https://cwe.mitre.org/data/definitions/475.html">475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr><td colspan="5"><a href="8.html">capplets/appearance/appearance-style.c</a></td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-263">263</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;widget&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-341">341</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;widget&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-344">344</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;colstr&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="9.html">capplets/appearance/appearance-themes.c</a></td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-568">568</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;font&apos; can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="9.html#line-750">750</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;is_custom&apos; is assigned a value that is never used.</td></tr>
+       <tr><td colspan="5"><a href="10.html">capplets/appearance/mate-appearance-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="10.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="10.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="10.html#line-635">635</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="10.html#line-635">635</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="11.html">capplets/appearance/mate-wp-xml.c</a></td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-479">479</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;wallpaper&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="12.html">capplets/appearance/theme-installer.c</a></td></tr>
+       <tr class="variableScope"><td><a href="12.html#line-554">554</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;dialog&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="13.html">capplets/appearance/theme-save.c</a></td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-185">185</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;current_background&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-187">187</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;settings&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="14.html">capplets/common/mate-theme-info.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="14.html#line-663">663</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;change_str&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="14.html#line-665">665</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;change_str&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="14.html#line-667">667</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;change_str&apos; is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="14.html#line-1694">1694</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;color_scheme_pair&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="15.html">capplets/common/theme-thumbnail.c</a></td></tr>
+       <tr class="unreachableCode"><td><a href="15.html#line-934">934</a></td><td>unreachableCode</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td >Statements following return, break, continue, goto or throw will never be executed.</td></tr>
+       <tr><td colspan="5"><a href="16.html">capplets/default-applications/mate-da-capplet.c</a></td></tr>
+       <tr class="variableScope"><td><a href="16.html#line-70">70</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;item&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="16.html#line-308">308</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;surface&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="16.html#line-391">391</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;surface&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="17.html">capplets/default-applications/mate-default-applications-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-192">192</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-192">192</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="18.html">capplets/display/mate-display-properties-install-systemwide.c</a></td></tr>
+       <tr class="variableScope"><td><a href="18.html#line-78">78</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;num_read&apos; can be reduced.</td></tr>
+       <tr class="invalidScanfArgType_int"><td><a href="18.html#line-212">212</a></td><td>invalidScanfArgType_int</td><td><a href="https://cwe.mitre.org/data/definitions/686.html">686</a></td><td>warning</td><td >%d in format string (no. 1) requires &apos;int *&apos; but the argument type is &apos;unsigned int *&apos;.</td></tr>
+       <tr><td colspan="5"><a href="19.html">capplets/display/mate-display-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="19.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="19.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="19.html#line-163">163</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="19.html#line-163">163</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="20.html">capplets/display/scrollarea.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-355">355</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >struct member &apos;Box::x1&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-355">355</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >struct member &apos;Box::y1&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-355">355</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >struct member &apos;Box::x2&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-355">355</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >struct member &apos;Box::y2&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="21.html">capplets/display/xrandr-capplet.c</a></td></tr>
+       <tr class="variableScope"><td><a href="21.html#line-280">280</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;output&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="21.html#line-608">608</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;tmp&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="21.html#line-1571">1571</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;info&apos; can be reduced.</td></tr>
+       <tr class="shadowVariable"><td><a href="21.html#line-1628">1628</a></td><td>shadowVariable</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >Local variable &apos;new_edges&apos; shadows outer variable</td></tr>
+       <tr><td colspan="5"><a href="22.html">capplets/keybindings/eggaccelerators.c</a></td></tr>
+       <tr class="duplicateExpression"><td><a href="22.html#line-369">369</a></td><td>duplicateExpression</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >Same expression on both sides of &apos;-=&apos;.</td></tr>
+       <tr><td colspan="5"><a href="23.html">capplets/keybindings/eggcellrendererkeys.c</a></td></tr>
+       <tr class="variableScope"><td><a href="23.html#line-673">673</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;text&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="24.html">capplets/keybindings/mate-keybinding-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="24.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="24.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="24.html#line-139">139</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="24.html#line-139">139</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="25.html">capplets/keybindings/mate-keybinding-properties.c</a></td></tr>
+       <tr class="redundantInitialization"><td><a href="25.html#line-867">867</a></td><td>redundantInitialization</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Redundant initialization for &apos;p&apos;. The initialized value is overwritten before it is read.</td></tr>
+       <tr class="shadowVariable"><td><a href="25.html#line-992">992</a></td><td>shadowVariable</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >Local variable &apos;i&apos; shadows outer variable</td></tr>
+       <tr class="nullPointerRedundantCheck"><td><a href="25.html#line-1091">1091</a></td><td>nullPointerRedundantCheck</td><td><a href="https://cwe.mitre.org/data/definitions/476.html">476</a></td><td>warning</td><td >Either the condition &apos;if(new_key&amp;&amp;new_key-&gt;settings)&apos; is redundant or there is possible null pointer dereference: new_key.</td></tr>
+       <tr class="variableScope"><td><a href="25.html#line-1580">1580</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;path&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="25.html#line-1718">1718</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;idle_data&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="26.html">capplets/keyboard/mate-keyboard-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="26.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="26.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="26.html#line-764">764</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="26.html#line-764">764</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="27.html">capplets/keyboard/mate-keyboard-properties-xkbmc.c</a></td></tr>
+       <tr class="variableScope"><td><a href="27.html#line-49">49</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;path&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="27.html#line-185">185</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;path&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="27.html#line-250">250</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;path&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="28.html">capplets/keyboard/mate-keyboard-properties-xkbot.c</a></td></tr>
+       <tr class="variableScope"><td><a href="28.html#line-307">307</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;option_check&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="28.html#line-390">390</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;expander&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="29.html">capplets/keyboard/mate-keyboard-properties-xkbpv.c</a></td></tr>
+       <tr class="variableScope"><td><a href="29.html#line-88">88</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;p&apos; can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="29.html#line-96">96</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;p&apos; is assigned a value that is never used.</td></tr>
+       <tr><td colspan="5"><a href="30.html">capplets/mouse/mate-mouse-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="30.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="30.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="30.html#line-741">741</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="30.html#line-741">741</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="31.html">capplets/mouse/mate-mouse-properties.c</a></td></tr>
+       <tr class="variableScope"><td><a href="31.html#line-391">391</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;w&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="32.html">capplets/mouse/msd-input-helper.c</a></td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="32.html#line-121">121</a></td><td>knownConditionTrueFalse</td><td><a href="https://cwe.mitre.org/data/definitions/571.html">571</a></td><td>style</td><td >Condition &apos;device_info!=NULL&apos; is always true</td></tr>
+       <tr><td colspan="5"><a href="33.html">capplets/network/mate-network-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="33.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="33.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="33.html#line-224">224</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="33.html#line-224">224</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="35.html">capplets/time-admin/src/mate-time-admin-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="35.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="35.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="35.html#line-172">172</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="35.html#line-172">172</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="34.html">capplets/time-admin/src/time-zone.h</a></td></tr>
+       <tr class="unknownMacro"><td><a href="34.html#line-82">82</a></td><td>unknownMacro</td><td></td><td>error</td><td class="error">There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_AUTOPTR_CLEANUP_FUNC is a macro then please configure it.</td></tr>
+       <tr class="unknownMacro"><td><a href="34.html#line-82">82</a></td><td>unknownMacro</td><td></td><td>error</td><td class="error">There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_AUTOPTR_CLEANUP_FUNC is a macro then please configure it.</td></tr>
+       <tr class="unknownMacro"><td><a href="34.html#line-82">82</a></td><td>unknownMacro</td><td></td><td>error</td><td class="error">There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_AUTOPTR_CLEANUP_FUNC is a macro then please configure it.</td></tr>
+       <tr><td colspan="5"><a href="36.html">capplets/windows/mate-window-properties-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="36.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="36.html#line-10">10</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="36.html#line-221">221</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::alignment&apos; is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="36.html#line-221">221</a></td><td>unusedStructMember</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >union member &apos;Anonymous0::ptr&apos; is never used.</td></tr>
+       <tr><td colspan="5"><a href="37.html">capplets/windows/mate-window-properties.c</a></td></tr>
+       <tr class="variableScope"><td><a href="37.html#line-260">260</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;value&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="37.html#line-276">276</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;value&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="38.html">font-viewer/font-model.c</a></td></tr>
+       <tr class="variableScope"><td><a href="38.html#line-521">521</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;file&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="38.html#line-522">522</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;monitor&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="39.html">font-viewer/font-thumbnailer.c</a></td></tr>
+       <tr class="variableScope"><td><a href="39.html#line-142">142</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;ptr&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="39.html#line-142">142</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;end&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="40.html">font-viewer/font-view.c</a></td></tr>
+       <tr class="variableScope"><td><a href="40.html#line-109">109</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;str&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="40.html#line-111">111</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;len&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="40.html#line-197">197</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;s&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="40.html#line-625">625</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;file&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="41.html">font-viewer/gd-main-toolbar.c</a></td></tr>
+       <tr class="variableScope"><td><a href="41.html#line-460">460</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;w&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="42.html">font-viewer/sushi-font-widget.c</a></td></tr>
+       <tr class="nullPointerRedundantCheck"><td><a href="42.html#line-109">109</a></td><td>nullPointerRedundantCheck</td><td><a href="https://cwe.mitre.org/data/definitions/476.html">476</a></td><td>warning</td><td >Either the condition &apos;pos_y!=NULL&apos; is redundant or there is possible null pointer dereference: pos_y.</td></tr>
+       <tr class="nullPointerRedundantCheck"><td><a href="42.html#line-112">112</a></td><td>nullPointerRedundantCheck</td><td><a href="https://cwe.mitre.org/data/definitions/476.html">476</a></td><td>warning</td><td >Either the condition &apos;pos_y!=NULL&apos; is redundant or there is possible null pointer dereference: pos_y.</td></tr>
+       <tr class="variableScope"><td><a href="42.html#line-182">182</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;ptr&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="42.html#line-182">182</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;end&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="43.html">libslab/app-resizer.c</a></td></tr>
+       <tr class="variableScope"><td><a href="43.html#line-110">110</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;table&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="43.html#line-111">111</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;launcher_list&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="44.html">libslab/app-shell.c</a></td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-195">195</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;app&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-233">233</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;app&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-318">318</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;data&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-394">394</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;launcher&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-397">397</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;action&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-398">398</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;a11y_cat&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-610">610</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;temp1&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-610">610</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;temp2&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-689">689</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;a11y_cat&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-984">984</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;COMMAND_LINE_LOCKDOWN_SCHEMA&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-985">985</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;COMMAND_LINE_LOCKDOWN_KEY&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-986">986</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;COMMAND_LINE_LOCKDOWN_DESKTOP_CATEGORY&apos; can be reduced.</td></tr>
+       <tr class="shadowVariable"><td><a href="44.html#line-1111">1111</a></td><td>shadowVariable</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >Local variable &apos;categories&apos; shadows outer variable</td></tr>
+       <tr class="shadowVariable"><td><a href="44.html#line-1111">1111</a></td><td>shadowVariable</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >Local variable &apos;launchers&apos; shadows outer variable</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-1375">1375</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;app&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="44.html#line-1396">1396</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;app&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="45.html">libslab/application-tile.c</a></td></tr>
+       <tr class="variableScope"><td><a href="45.html#line-665">665</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;user_target&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="46.html">libslab/bookmark-agent.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="46.html#line-651">651</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;rank&apos; is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="46.html#line-652">652</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;rank_corr&apos; is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="46.html#line-870">870</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;groups&apos; can be reduced.</td></tr>
+       <tr class="redundantAssignment"><td><a href="46.html#line-1185">1185</a></td><td>redundantAssignment</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td >Variable &apos;tag_close_ptr[0]&apos; is reassigned a value before the old one has been used.</td></tr>
+       <tr><td colspan="5"><a href="47.html">libslab/mate-utils.c</a></td></tr>
+       <tr class="variableScope"><td><a href="47.html#line-13">13</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;icon_theme&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="48.html">libslab/nameplate-tile.c</a></td></tr>
+       <tr class="unknownMacro"><td><a href="48.html#line-46">46</a></td><td>unknownMacro</td><td></td><td>error</td><td class="error">There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_TYPE_WITH_PRIVATE is a macro then please configure it.</td></tr>
+       <tr><td colspan="5"><a href="49.html">libslab/slab-mate-util.c</a></td></tr>
+       <tr class="variableScope"><td><a href="49.html#line-107">107</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;help_uri&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="50.html">libslab/tile.c</a></td></tr>
+       <tr class="variableScope"><td><a href="50.html#line-413">413</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;tile_event&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="51.html">libwindow-settings/marco-window-manager.c</a></td></tr>
+       <tr class="variableScope"><td><a href="51.html#line-106">106</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;theme_file_path&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="52.html">libwindow-settings/mate-window-manager.c</a></td></tr>
+       <tr class="nullPointerRedundantCheck"><td><a href="52.html#line-42">42</a></td><td>nullPointerRedundantCheck</td><td><a href="https://cwe.mitre.org/data/definitions/476.html">476</a></td><td>warning</td><td >Either the condition &apos;wm_new_func==NULL&apos; is redundant or there is possible null pointer dereference: wm_new_func.</td></tr>
+       <tr><td colspan="5"><a href="53.html">shell/control-center.c</a></td></tr>
+       <tr class="variableScope"><td><a href="53.html#line-42">42</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;action&apos; can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="53.html#line-96">96</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;app&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="54.html">typing-break/drw-break-window.c</a></td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="54.html#line-498">498</a></td><td>knownConditionTrueFalse</td><td><a href="https://cwe.mitre.org/data/definitions/571.html">571</a></td><td>style</td><td >Condition &apos;!phrase&apos; is always true</td></tr>
+       <tr><td colspan="5"><a href="55.html">typing-break/drw-monitor.c</a></td></tr>
+       <tr class="variableScope"><td><a href="55.html#line-145">145</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;now&apos; can be reduced.</td></tr>
+       <tr><td colspan="5"><a href="56.html">typing-break/drwright.c</a></td></tr>
+       <tr class="variableScope"><td><a href="56.html#line-802">802</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td >The scope of the variable &apos;window&apos; can be reduced.</td></tr>
+       </table>
+      </div> <!-- /.wrapper -->
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Cppcheck 2.3 - a tool for static C/C++ code analysis<br>
+        <br>
+        Internet: <a href="http://cppcheck.net">http://cppcheck.net</a><br>
+        IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a><br>
+      </p>
+    </div>
+  </body>
+</html>

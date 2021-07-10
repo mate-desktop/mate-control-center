@@ -1,0 +1,233 @@
+<html>
+<head>
+<title>rootdir - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>rootdir - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>root@7f735e7e50e8</td></tr>
+<tr><th>Working Directory:</th><td>/rootdir</td></tr>
+<tr><th>Command Line:</th><td>make -j 3</td></tr>
+<tr><th>Clang Version:</th><td>clang version 12.0.0 (Fedora 12.0.0-2.fc34)
+</td></tr>
+<tr><th>Date:</th><td>Sat Jul 10 11:34:05 2021</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">43</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>API</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Argument with 'nonnull' attribute passed null</td><td class="Q">4</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_api_argument_with_nonnull_attribute_passed_null');" checked/></center></td></tr>
+<tr><th>Dead code</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Unreachable code</td><td class="Q">14</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_code_unreachable_code');" checked/></center></td></tr>
+<tr><th>Dead store</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead nested assignment</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_nested_assignment');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Cast from non-struct type to struct type</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_cast_from_non-struct_type_to_struct_type');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Garbage return value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_garbage_return_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Out-of-bound access</td><td class="Q">11</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_out-of-bound_access');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><th>Memory error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>capplets/appearance/appearance-themes.c</td><td class="DESC">theme_message_area_update</td><td class="Q">608</td><td class="Q">35</td><td><a href="report-13cd35.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-13cd35.html" -->
+</tr>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>capplets/appearance/appearance-themes.c</td><td class="DESC">theme_message_area_update</td><td class="Q">622</td><td class="Q">36</td><td><a href="report-35e84e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-35e84e.html" -->
+</tr>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>capplets/appearance/appearance-themes.c</td><td class="DESC">theme_message_area_update</td><td class="Q">615</td><td class="Q">33</td><td><a href="report-9edf81.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9edf81.html" -->
+</tr>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>capplets/appearance/appearance-themes.c</td><td class="DESC">theme_message_area_update</td><td class="Q">601</td><td class="Q">29</td><td><a href="report-de8597.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-de8597.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>capplets/keybindings/mate-keybinding-properties.c</td><td class="DESC">append_keys_to_tree_from_gsettings</td><td class="Q">1001</td><td class="Q">1</td><td><a href="report-88e9f9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-88e9f9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>capplets/keybindings/mate-keybinding-properties.c</td><td class="DESC">append_keys_to_tree_from_file</td><td class="Q">905</td><td class="Q">1</td><td><a href="report-c29eb2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c29eb2.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>capplets/keybindings/mate-keybinding-properties.c</td><td class="DESC">append_keys_to_tree_from_file</td><td class="Q">939</td><td class="Q">1</td><td><a href="report-fac38c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fac38c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>capplets/keyboard/mate-keyboard-properties-xkbltadd.c</td><td class="DESC">xkl_layout_chooser_add_default_switcher_if_necessary</td><td class="Q">406</td><td class="Q">1</td><td><a href="report-eb690e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-eb690e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_nested_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead nested assignment</td><td>capplets/keyboard/mate-keyboard-properties-xkbpv.c</td><td class="DESC">xkb_layout_preview_set_drawing_layout</td><td class="Q">93</td><td class="Q">1</td><td><a href="report-3b35fe.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3b35fe.html" -->
+</tr>
+<tr class="bt_dead_store_dead_nested_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead nested assignment</td><td>capplets/keyboard/mate-keyboard-properties-xkbpv.c</td><td class="DESC">xkb_layout_preview_set_drawing_layout</td><td class="Q">96</td><td class="Q">1</td><td><a href="report-60373f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-60373f.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>capplets/common/gtkrc-utils.c</td><td class="DESC">gtkrc_get_details</td><td class="Q">165</td><td class="Q">24</td><td><a href="report-097ee0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-097ee0.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>capplets/common/gtkrc-utils.c</td><td class="DESC">gtkrc_get_details</td><td class="Q">165</td><td class="Q">24</td><td><a href="report-96c4f3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-96c4f3.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>capplets/keybindings/mate-keybinding-properties.c</td><td class="DESC">show_error</td><td class="Q">1193</td><td class="Q">22</td><td><a href="report-96ea95.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-96ea95.html" -->
+</tr>
+<tr class="bt_logic_error_garbage_return_value"><td class="DESC">Logic error</td><td class="DESC">Garbage return value</td><td>font-viewer/font-thumbnailer.c</td><td class="DESC">check_font_contain_text</td><td class="Q">96</td><td class="Q">20</td><td><a href="report-e0914f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e0914f.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>capplets/common/mate-theme-info.c</td><td class="DESC">real_add_top_theme_dir_monitor</td><td class="Q">1232</td><td class="Q">16</td><td><a href="report-8cc2cd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8cc2cd.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>capplets/common/mate-theme-info.c</td><td class="DESC">real_add_top_theme_dir_monitor</td><td class="Q">1232</td><td class="Q">16</td><td><a href="report-d5b532.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d5b532.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>libslab/bookmark-agent.c</td><td class="DESC">update_items</td><td class="Q">719</td><td class="Q">26</td><td><a href="report-4769f4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4769f4.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>libslab/bookmark-agent.c</td><td class="DESC">update_items</td><td class="Q">719</td><td class="Q">26</td><td><a href="report-5a2a8b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5a2a8b.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">76</td><td class="Q">17</td><td><a href="report-66001a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-66001a.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">72</td><td class="Q">17</td><td><a href="report-b7e78f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b7e78f.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">64</td><td class="Q">17</td><td><a href="report-c024f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c024f5.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">71</td><td class="Q">23</td><td><a href="report-d018a3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d018a3.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">67</td><td class="Q">23</td><td><a href="report-d19baf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d19baf.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">68</td><td class="Q">17</td><td><a href="report-d76f7a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d76f7a.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">63</td><td class="Q">23</td><td><a href="report-dbc118.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dbc118.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">75</td><td class="Q">23</td><td><a href="report-f4f19f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f4f19f.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>capplets/appearance/theme-save.c</td><td class="DESC">escape_string_and_dup</td><td class="Q">79</td><td class="Q">14</td><td><a href="report-ff15e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ff15e9.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>font-viewer/sushi-font-widget.c</td><td class="DESC">sushi_font_widget_draw</td><td class="Q">507</td><td class="Q">13</td><td><a href="report-7b1dbd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7b1dbd.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>capplets/display/xrandr-capplet.c</td><td class="DESC">on_clone_changed</td><td class="Q">1082</td><td class="Q">15</td><td><a href="report-f78ac6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f78ac6.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/appearance-main.c</td><td class="DESC">main</td><td class="Q">172</td><td class="Q">1</td><td><a href="report-0f3866.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0f3866.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_shading_to_string</td><td class="Q">66</td><td class="Q">1</td><td><a href="report-17737c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-17737c.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_option_to_string</td><td class="Q">35</td><td class="Q">1</td><td><a href="report-258696.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-258696.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>typing-break/drw-break-window.c</td><td class="DESC">postpone_clicked_cb</td><td class="Q">504</td><td class="Q">1</td><td><a href="report-30d010.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30d010.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_shading_to_string</td><td class="Q">63</td><td class="Q">1</td><td><a href="report-41b32c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-41b32c.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_option_to_string</td><td class="Q">44</td><td class="Q">1</td><td><a href="report-4b1053.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4b1053.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_shading_to_string</td><td class="Q">60</td><td class="Q">1</td><td><a href="report-532f80.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-532f80.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_option_to_string</td><td class="Q">50</td><td class="Q">1</td><td><a href="report-637e91.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-637e91.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/common/theme-thumbnail.c</td><td class="DESC">generate_gtk_theme_thumbnail</td><td class="Q">934</td><td class="Q">1</td><td><a href="report-8df20a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8df20a.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_option_to_string</td><td class="Q">38</td><td class="Q">1</td><td><a href="report-91a5e4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-91a5e4.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_option_to_string</td><td class="Q">41</td><td class="Q">1</td><td><a href="report-9bf11e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9bf11e.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>typing-break/drw-break-window.c</td><td class="DESC">postpone_clicked_cb</td><td class="Q">498</td><td class="Q">1</td><td><a href="report-a3b05d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a3b05d.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/appearance/mate-wp-item.c</td><td class="DESC">wp_item_option_to_string</td><td class="Q">47</td><td class="Q">1</td><td><a href="report-b1b012.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b1b012.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>capplets/common/theme-thumbnail.c</td><td class="DESC">generate_gtk_theme_thumbnail</td><td class="Q">934</td><td class="Q">1</td><td><a href="report-d45607.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d45607.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>

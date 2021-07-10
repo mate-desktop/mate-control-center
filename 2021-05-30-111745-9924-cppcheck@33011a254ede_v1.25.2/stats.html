@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - mate-control-center</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(id) {
+        var elements = document.querySelectorAll("." + id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("d-none");
+        }
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll("input");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var el = elements[i];
+
+          if (el.checked) {
+            el.checked = false;
+          } else {
+            el.checked = true;
+          }
+
+          toggleDisplay(el.id);
+        }
+      }
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="header" class="header">
+      <h1>Cppcheck report - mate-control-center: Statistics</h1>
+    </div>
+    <div class="wrapper">
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Back to summary</a> </p>
+
+    </div>
+    <div id="content_index">
+<p>Top 10 files for error severity, total findings: 4<br>
+&#160;&#160;&#160;3&#160;<a href="34.html">  capplets/time-admin/src/time-zone.h</a><br>
+&#160;&#160;&#160;1&#160;<a href="48.html">  libslab/nameplate-tile.c</a><br>
+</p>
+<p>Top 10 files for warning severity, total findings: 5<br>
+&#160;&#160;&#160;2&#160;<a href="42.html">  font-viewer/sushi-font-widget.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="52.html">  libwindow-settings/mate-window-manager.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="25.html">  capplets/keybindings/mate-keybinding-properties.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="18.html">  capplets/display/mate-display-properties-install-systemwide.c</a><br>
+</p>
+<p>Top 10 files for portability severity, total findings: 8<br>
+&#160;&#160;&#160;5&#160;<a href="2.html">  capplets/about-me/mate-about-me-password.c</a><br>
+&#160;&#160;&#160;3&#160;<a href="7.html">  capplets/appearance/appearance-font.c</a><br>
+</p>
+<p>Top 10 files for style severity, total findings: 148<br>
+&#160;&#160;&#160;16&#160;<a href="44.html">  libslab/app-shell.c</a><br>
+&#160;&#160;&#160;6&#160;&#160;<a href="4.html">  capplets/about-me/mate-about-me.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="46.html">  libslab/bookmark-agent.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="40.html">  font-viewer/font-view.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="36.html">  capplets/windows/mate-window-properties-resources.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="35.html">  capplets/time-admin/src/mate-time-admin-resources.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="33.html">  capplets/network/mate-network-properties-resources.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="30.html">  capplets/mouse/mate-mouse-properties-resources.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="26.html">  capplets/keyboard/mate-keyboard-properties-resources.c</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="25.html">  capplets/keybindings/mate-keybinding-properties.c</a><br>
+</p>
+
+      </div> <!-- /.wrapper -->
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Cppcheck 2.3 - a tool for static C/C++ code analysis<br>
+        <br>
+        Internet: <a href="http://cppcheck.net">http://cppcheck.net</a><br>
+        IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a><br>
+      </p>
+    </div>
+  </body>
+</html>
