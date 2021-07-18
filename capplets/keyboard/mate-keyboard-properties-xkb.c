@@ -253,7 +253,7 @@ enable_disable_restoring (GtkBuilder * dialog)
 	gtk_widget_set_sensitive (WID ("xkb_reset_to_defaults"), enable);
 }
 
-void
+static void
 xkb_save_gslist_as_strv (gchar *schema, gchar *key, GSList *list)
 {
 	GSettings *settings;

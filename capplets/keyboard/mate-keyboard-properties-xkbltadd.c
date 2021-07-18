@@ -366,20 +366,7 @@ xkb_layout_chooser_available_layouts_fill (GtkBuilder *
 				  chooser_dialog);
 }
 
-GSList*
-xkb_layout_gslist_from_strv (gchar **array)
-{
-    GSList *list = NULL;
-    gint i;
-    if (array != NULL) {
-        for (i = 0; array[i]; i++) {
-            list = g_slist_append (list, g_strdup (array[i]));
-        }
-    }
-    return list;
-}
-
-gchar **
+static gchar **
 xkb_layout_strv_from_gslist (GSList *list)
 {
     GArray *array;
@@ -393,7 +380,7 @@ xkb_layout_strv_from_gslist (GSList *list)
 
 
 
-void
+static void
 xkl_layout_chooser_add_default_switcher_if_necessary (GSList *
 						      layouts_list)
 {
