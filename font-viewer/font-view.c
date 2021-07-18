@@ -45,6 +45,7 @@
 #define FONT_VIEW_APPLICATION(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST ((obj), FONT_VIEW_TYPE_APPLICATION, FontViewApplication))
 
+static GType font_view_application_get_type (void);
 typedef struct {
     GtkApplication parent;
 

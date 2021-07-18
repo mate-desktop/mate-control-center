@@ -42,6 +42,7 @@
 #endif
 
 #include "capplet-util.h"
+#include "mate-about-me-password.h"
 
 /* Passwd states */
 typedef enum {
@@ -90,7 +91,7 @@ typedef struct {
  */
 #define PASSDLG_ERROR (mate_about_me_password_error_quark())
 
-GQuark mate_about_me_password_error_quark(void)
+static GQuark mate_about_me_password_error_quark(void)
 {
 	static GQuark q = 0;
 
