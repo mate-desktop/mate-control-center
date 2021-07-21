@@ -464,7 +464,7 @@ populate_groups_section (AppShellData * app_data)
 		CategoryData *data = (CategoryData *) cat_list->data;
 		if (NULL != data->filtered_launcher_list)
 		{
-			gtk_widget_set_state (GTK_WIDGET (data->group_launcher), GTK_STATE_NORMAL);
+			gtk_widget_set_state_flags (GTK_WIDGET (data->group_launcher), GTK_STATE_FLAG_NORMAL, FALSE);
 			gtk_box_pack_start (vbox, GTK_WIDGET (data->group_launcher),
 				FALSE, FALSE, 0);
 		}
@@ -623,7 +623,7 @@ generate_filtered_lists (gpointer catdata, gpointer user_data)
 
 		/* Since the filter may remove this entry from the
 		   container it will not get a mouse out event */
-		gtk_widget_set_state (GTK_WIDGET (launcher), GTK_STATE_NORMAL);
+		gtk_widget_set_state_flags (GTK_WIDGET (launcher), GTK_STATE_FLAG_NORMAL, FALSE);
 		filename = g_object_get_data (G_OBJECT (launcher), TILE_EXEC_NAME); /* do I need to free this */
 
 		temp1 = g_ascii_strdown (launcher->name, -1);
