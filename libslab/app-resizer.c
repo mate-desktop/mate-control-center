@@ -62,33 +62,22 @@ remove_container_entries (GtkContainer * widget)
 }
 
 static void
-resize_table (GtkTable * table, gint columns, GList * launcher_list)
+resize_table (AppResizer *widget, GtkGrid * table, gint columns)
 {
-	float rows, remainder;
-
 	remove_container_entries (GTK_CONTAINER (table));
-
-	rows = ((float) g_list_length (launcher_list)) / (float) columns;
-	remainder = rows - ((int) rows);
-	if (remainder != 0.0)
-		rows += 1;
-
-	gtk_table_resize (table, (int) rows, columns);
+	widget->column = columns;
 }
 
 static void
-relayout_table (GtkTable * table, GList * element_list)
+relayout_table (AppResizer *widget, GtkGrid * table, GList * element_list)
 {
-	guint maxcols, maxrows;
-	gtk_table_get_size (GTK_TABLE (table), &maxrows, &maxcols);
 	gint row = 0, col = 0;
 	do
 	{
 		GtkWidget *element = GTK_WIDGET (element_list->data);
-		gtk_table_attach (table, element, col, col + 1, row, row + 1, GTK_EXPAND | GTK_FILL,
-			GTK_EXPAND | GTK_FILL, 0, 0);
+		gtk_grid_attach (table, element, col, row, 1, 1);
 		col++;
-		if (col == maxcols)
+		if (col == widget->column)
 		{
 			col = 0;
 			row++;
@@ -98,26 +87,26 @@ relayout_table (GtkTable * table, GList * element_list)
 }
 
 void
-app_resizer_layout_table_default (AppResizer * widget, GtkTable * table, GList * element_list)
+app_resizer_layout_table_default (AppResizer * widget, GtkGrid * table, GList * element_list)
 {
-	resize_table (table, widget->cur_num_cols, element_list);
-	relayout_table (table, element_list);
+	resize_table (widget, table, widget->cur_num_cols);
+	relayout_table (widget, table, element_list);
 }
 
 static void
 relayout_tables (AppResizer * widget, gint num_cols)
 {
-	GtkTable *table;
+	GtkGrid *table;
 	GList *table_list, *launcher_list;
 
 	for (table_list = widget->cached_tables_list; table_list != NULL;
 		table_list = g_list_next (table_list))
 	{
-		table = GTK_TABLE (table_list->data);
+		table = GTK_GRID (table_list->data);
 		launcher_list = gtk_container_get_children (GTK_CONTAINER (table));
 		launcher_list = g_list_reverse (launcher_list);	/* Fixme - ugly hack because table stores prepend */
-		resize_table (table, num_cols, launcher_list);
-		relayout_table (table, launcher_list);
+		resize_table (widget, table, num_cols);
+		relayout_table (widget, table, launcher_list);
 		g_list_free (launcher_list);
 	}
 }
@@ -131,7 +120,7 @@ calculate_num_cols (AppResizer * resizer, gint avail_width)
 
 		if (resizer->cached_element_width == -1)
 		{
-			GtkTable *table = GTK_TABLE (resizer->cached_tables_list->data);
+			GtkGrid *table = GTK_GRID (resizer->cached_tables_list->data);
 			GList *children = gtk_container_get_children (GTK_CONTAINER (table));
 			GtkWidget *table_element = GTK_WIDGET (children->data);
 			gint natural_width;
@@ -139,7 +128,7 @@ calculate_num_cols (AppResizer * resizer, gint avail_width)
 
 			gtk_widget_get_preferred_width (table_element, NULL, &natural_width);
 			resizer->cached_element_width = natural_width;
-			resizer->cached_table_spacing = gtk_table_get_default_col_spacing (table);
+			resizer->cached_table_spacing = gtk_grid_get_column_spacing (table);
 		}
 
 		num_cols =
@@ -185,7 +174,6 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 
 	static gboolean first_time = TRUE;
 	gint new_num_cols;
-	gint useable_area;
 
 	if (first_time)
 	{
@@ -223,11 +211,8 @@ app_resizer_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
 	GtkRequisition other_requisiton;
 	gtk_widget_get_preferred_size (GTK_WIDGET (resizer->cached_tables_list->data), &other_requisiton, NULL);
 
-	useable_area =
-		allocation->width - (child_requisition.width -
-		other_requisiton.width);
 	new_num_cols =
-		relayout_tables_if_needed (APP_RESIZER (resizer), useable_area,
+		relayout_tables_if_needed (APP_RESIZER (resizer), allocation->width,
 		resizer->cur_num_cols);
 	if (resizer->cur_num_cols != new_num_cols)
 	{

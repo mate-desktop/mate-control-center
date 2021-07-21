@@ -723,9 +723,9 @@ create_application_category_sections (AppShellData * app_data)
 		g_free (markup);
 
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-		table = gtk_table_new (0, 0, TRUE);
-		gtk_table_set_col_spacings (GTK_TABLE (table), 5);
-		gtk_table_set_row_spacings (GTK_TABLE (table), 5);
+		table = gtk_grid_new ();
+		gtk_grid_set_column_spacing (GTK_GRID (table), 5);
+		gtk_grid_set_row_spacing (GTK_GRID (table), 5);
 		gtk_box_pack_start (GTK_BOX (hbox), table, FALSE, FALSE, 15);
 		slab_section_set_contents (SLAB_SECTION (data->section), hbox);
 	}
@@ -804,7 +804,7 @@ populate_application_category_section (AppShellData * app_data, SlabSection * se
 	GList * launcher_list)
 {
 	GtkWidget *hbox;
-	GtkTable *table;
+	GtkGrid *table;
 	GList *children;
 
 	hbox = GTK_WIDGET (section->contents);
@@ -813,8 +813,8 @@ populate_application_category_section (AppShellData * app_data, SlabSection * se
 	table = children->data;
 	g_list_free (children);
 
-	/* Make sure our implementation has not changed and it's still a GtkTable */
-	g_assert (GTK_IS_TABLE (table));
+	/* Make sure our implementation has not changed and it's still a GtkGrid */
+	g_assert (GTK_IS_GRID (table));
 
 	app_data->cached_tables_list = g_list_append (app_data->cached_tables_list, table);
 
