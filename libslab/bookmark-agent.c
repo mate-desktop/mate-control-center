@@ -112,8 +112,6 @@ static void store_monitor_cb (GFileMonitor *, GFile *, GFile *,
                               GFileMonitorEvent, gpointer);
 static void weak_destroy_cb  (gpointer, GObject *);
 
-static gint recent_item_mru_comp_func (gconstpointer a, gconstpointer b);
-
 static gchar *find_package_data_file (const gchar *filename);
 
 static gint BookmarkAgent_private_offset;
@@ -170,7 +168,7 @@ bookmark_agent_add_item (BookmarkAgent *this, const BookmarkItem *item)
 	g_bookmark_file_set_mime_type (priv->store, item->uri, item->mime_type);
 
 	if (item->mtime)
-		g_bookmark_file_set_modified (priv->store, item->uri, item->mtime);
+		g_bookmark_file_set_modified_date_time (priv->store, item->uri, item->mtime);
 
 	if (item->title)
 		g_bookmark_file_set_title (priv->store, item->uri, item->title);
@@ -323,13 +321,13 @@ make_items_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *store)
 
 			item->uri       = g_strdup (uris [i]);
 			item->mime_type = g_bookmark_file_get_mime_type (store, uris [i], NULL);
-			item->mtime     = g_bookmark_file_get_modified  (store, uris [i], NULL);
+			item->mtime     = g_bookmark_file_get_modified_date_time  (store, uris [i], NULL);
 
 			items_ordered = g_list_prepend (items_ordered, item);
 		}
 	}
 
-	items_ordered = g_list_sort (items_ordered, recent_item_mru_comp_func);
+	items_ordered = g_list_sort (items_ordered, g_date_time_compare);
 
 	g_strfreev (uris);
 
@@ -358,7 +356,7 @@ bookmark_agent_update_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *st
 		item = (BookmarkItem *) node->data;
 
 		g_bookmark_file_set_mime_type (priv->store, item->uri, item->mime_type);
-		g_bookmark_file_set_modified  (priv->store, item->uri, item->mtime);
+		g_bookmark_file_set_modified_date_time  (priv->store, item->uri, item->mtime);
 
 		bookmark_item_free (item);
 	}
@@ -720,7 +718,7 @@ update_items (BookmarkAgent *this)
 			priv->items [i]->uri       = g_strdup (uris_ordered [i]);
 			priv->items [i]->title     = g_bookmark_file_get_title     (priv->store, uris_ordered [i], NULL);
 			priv->items [i]->mime_type = g_bookmark_file_get_mime_type (priv->store, uris_ordered [i], NULL);
-			priv->items [i]->mtime     = g_bookmark_file_get_modified  (priv->store, uris_ordered [i], NULL);
+			priv->items [i]->mtime     = g_bookmark_file_get_modified_date_time (priv->store, uris_ordered [i], NULL);
 			priv->items [i]->app_name  = NULL;
 			priv->items [i]->app_exec  = NULL;
 
@@ -1225,10 +1223,4 @@ static void
 weak_destroy_cb (gpointer data, GObject *g_obj)
 {
 	instances [GPOINTER_TO_INT (data)] = NULL;
-}
-
-static gint
-recent_item_mru_comp_func (gconstpointer a, gconstpointer b)
-{
-	return ((BookmarkItem *) b)->mtime - ((BookmarkItem *) a)->mtime;
 }

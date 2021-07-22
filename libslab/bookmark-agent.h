@@ -41,7 +41,7 @@ typedef struct {
 	gchar  *uri;
 	gchar  *title;
 	gchar  *mime_type;
-	time_t  mtime;
+	GDateTime  *mtime;
 	gchar  *icon;
 	gchar  *app_name;
 	gchar  *app_exec;
