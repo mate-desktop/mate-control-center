@@ -307,14 +307,16 @@ static void
 tile_clicked (GtkButton * widget)
 {
 	TileEvent *tile_event;
+	GdkEvent  *event;
+	gboolean   handled;
 
 	tile_event = g_new0 (TileEvent, 1);
 	tile_event->type = TILE_EVENT_ACTIVATED_DOUBLE_CLICK;
 	tile_event->time = gtk_get_current_event_time ();
 
 	g_signal_emit (widget, tile_signals[TILE_ACTIVATED_SIGNAL], 0, tile_event);
+	g_signal_emit_by_name (widget, "button-release-event", &event, &handled);
 
-	gtk_button_released (widget);
 	g_free (tile_event);
 }
 
@@ -363,6 +365,7 @@ tile_button_release (GtkWidget * widget, GdkEventButton * event)
 	TilePrivate *priv = tile_get_instance_private (tile);
 
 	TileEvent *tile_event;
+	gboolean   handled;
 
 	if (priv->is_dragging)
 	{
@@ -384,8 +387,8 @@ tile_button_release (GtkWidget * widget, GdkEventButton * event)
 			tile_event->type = TILE_EVENT_ACTIVATED_SINGLE_CLICK;
 
 		g_signal_emit (tile, tile_signals[TILE_ACTIVATED_SIGNAL], 0, tile_event);
+		g_signal_emit_by_name (GTK_BUTTON (widget), "button-release-event", &event, &handled);
 
-		gtk_button_released (GTK_BUTTON (widget));
 		g_free (tile_event);
 
 		break;
