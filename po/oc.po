@@ -13,9 +13,9 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.25.0\n"
+"Project-Id-Version: mate-control-center 1.25.1\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2021-02-04 09:45+0100\n"
+"POT-Creation-Date: 2021-05-30 12:21+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
 "Last-Translator: Quentin PAGÈS, 2021\n"
 "Language-Team: Occitan (post 1500) (https://www.transifex.com/mate/teams/13566/oc/)\n"
@@ -30,7 +30,7 @@ msgid ""
 "[ 'Change Theme;mate-appearance-properties.desktop', 'Set Preferred "
 "Applications;mate-default-applications-properties.desktop' ]"
 msgstr ""
-"[ 'Cambiar la tèma;mate-appearance-properties.desktop', 'Definir las "
+"[ 'Cambiar lo tèma;mate-appearance-properties.desktop', 'Definir las "
 "aplicacions preferidas;mate-default-applications-properties.desktop' ]"
 
 #: org.mate.control-center.gschema.xml.in:6
@@ -46,7 +46,7 @@ msgstr ""
 
 #: org.mate.control-center.gschema.xml.in:11
 msgid "Close the control-center when a task is activated"
-msgstr ""
+msgstr "Tampar lo Centre de contraròtle quand un prètzfach es activat"
 
 #: org.mate.control-center.gschema.xml.in:12
 msgid ""
@@ -147,7 +147,7 @@ msgid "No Image"
 msgstr "Pas cap d'imatge"
 
 #: capplets/about-me/mate-about-me.c:322
-#: capplets/appearance/appearance-desktop.c:646
+#: capplets/appearance/appearance-desktop.c:648
 msgid "Images"
 msgstr "Imatges"
 
@@ -178,7 +178,7 @@ msgstr "A prepaus de ieu"
 #: capplets/mouse/mate-mouse-properties.ui:140
 #: capplets/windows/window-properties.ui:83
 #: capplets/time-admin/src/time-admin.ui:386
-#: capplets/time-admin/src/time-zone.c:473
+#: capplets/time-admin/src/time-zone.c:481
 msgid "_Close"
 msgstr "_Tampar"
 
@@ -192,7 +192,7 @@ msgstr "Nom complet"
 
 #: capplets/about-me/mate-about-me-dialog.ui:147
 msgid "User name:"
-msgstr "Nom d'utilizaire :"
+msgstr "Nom d'utilizaire :"
 
 #: capplets/about-me/mate-about-me-dialog.ui:176
 msgid "Change Passwo_rd..."
@@ -249,7 +249,7 @@ msgstr ""
 #: capplets/about-me/mate-about-me-fingerprint.c:440
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
-msgstr "Acabat !"
+msgstr "Acabat !"
 
 #: capplets/about-me/mate-about-me-fingerprint.c:515
 #: capplets/about-me/mate-about-me-fingerprint.c:560
@@ -372,21 +372,21 @@ msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
 msgstr ""
-"Vòstre mot de pas es estat modificat dempuèi vòstra connexion ! Tornatz-vos "
+"Vòstre senhal es estat modificat dempuèi vòstra connexion ! Tornatz-vos "
 "indentificar."
 
 #: capplets/about-me/mate-about-me-password.c:475
 msgid "That password was incorrect."
-msgstr "Lo mot de pas es incorrècte."
+msgstr "Lo senhal es incorrècte."
 
 #: capplets/about-me/mate-about-me-password.c:526
 msgid "Your password has been changed."
-msgstr "Vòstre mot de pas es estat modificat."
+msgstr "Vòstre senhal es estat modificat."
 
 #: capplets/about-me/mate-about-me-password.c:536
 #, c-format
 msgid "System error: %s."
-msgstr "Error de sistèma : %s."
+msgstr "Error de sistèma : %s."
 
 #: capplets/about-me/mate-about-me-password.c:539
 msgid "The password is too short."
@@ -474,11 +474,11 @@ msgstr "Sen_hal actual :"
 
 #: capplets/about-me/mate-about-me-password.ui:187
 msgid "_New password:"
-msgstr "Senhal _novèl :"
+msgstr "Senhal _novèl :"
 
 #: capplets/about-me/mate-about-me-password.ui:203
 msgid "_Retype new password:"
-msgstr "_Tornar picar lo senhal novèl :"
+msgstr "_Tornar picar lo senhal novèl :"
 
 #: capplets/about-me/mate-about-me-password.ui:276
 msgid "_Authenticate"
@@ -570,87 +570,82 @@ msgid "mate-control-center;MATE;accessibility;features;"
 msgstr ""
 "mate-control-center;MATE;accessibility;features;accessibilitat;foncion;"
 
-#: capplets/appearance/appearance-desktop.c:615
+#: capplets/appearance/appearance-desktop.c:617
 msgid "Add Wallpaper"
 msgstr "Apondre un fons"
 
-#: capplets/appearance/appearance-desktop.c:650
+#: capplets/appearance/appearance-desktop.c:652
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: capplets/appearance/appearance-font.c:613
+#: capplets/appearance/appearance-font.c:614
 msgid "Select Font"
 msgstr "Seleccionar la poliça"
 
-#: capplets/appearance/appearance-font.c:616
+#: capplets/appearance/appearance-font.c:617
 #: capplets/appearance/data/appearance.ui:951
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: capplets/appearance/appearance-font.c:618
+#: capplets/appearance/appearance-font.c:619
 #: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
 msgid "_Open"
 msgstr "_Dobrir"
 
-#: capplets/appearance/appearance-font.c:623
+#: capplets/appearance/appearance-font.c:624
 #: capplets/appearance/data/appearance.ui:3075
 msgid "Fonts"
 msgstr "Poliças"
 
-#: capplets/appearance/appearance-main.c:52
-#, c-format
-msgid "Could not load user interface file: %s"
-msgstr "Cargament impossible de l’interfàcia utilizaire : %s"
-
-#: capplets/appearance/appearance-main.c:157
+#: capplets/appearance/appearance-main.c:146
 msgid "Specify the filename of a theme to install"
 msgstr "Especificatz lo nom de fichièr d'un tèma d'installar"
 
-#: capplets/appearance/appearance-main.c:158
+#: capplets/appearance/appearance-main.c:147
 msgid "filename"
 msgstr "nom de fichièr"
 
-#: capplets/appearance/appearance-main.c:165
+#: capplets/appearance/appearance-main.c:154
 msgid ""
 "Specify the name of the page to show (theme|background|fonts|interface)"
 msgstr ""
 "Indica lo nom de la pagina d'afichar (theme|background|fonts|interface)"
 
-#: capplets/appearance/appearance-main.c:166
-#: capplets/default-applications/mate-da-capplet.c:798
+#: capplets/appearance/appearance-main.c:155
+#: capplets/default-applications/mate-da-capplet.c:783
 #: capplets/mouse/mate-mouse-properties.c:401
 msgid "page"
 msgstr "pagina"
 
-#: capplets/appearance/appearance-main.c:173
+#: capplets/appearance/appearance-main.c:162
 msgid "[WALLPAPER...]"
 msgstr "[RÈIREPLAN...]"
 
-#: capplets/appearance/appearance-style.c:171
+#: capplets/appearance/appearance-style.c:173
 #: capplets/common/mate-theme-info.c:491
 msgid "Default Pointer"
 msgstr "Puntador per defaut"
 
-#: capplets/appearance/appearance-style.c:233
-#: capplets/appearance/appearance-themes.c:658
+#: capplets/appearance/appearance-style.c:235
+#: capplets/appearance/appearance-themes.c:659
 #: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
 #: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Installar"
 
-#: capplets/appearance/appearance-themes.c:646
+#: capplets/appearance/appearance-themes.c:647
 msgid "Apply Background"
 msgstr "Aplicar lo rèireplan"
 
-#: capplets/appearance/appearance-themes.c:650
+#: capplets/appearance/appearance-themes.c:651
 msgid "Apply Font"
 msgstr "Aplicar la poliça"
 
-#: capplets/appearance/appearance-themes.c:654
+#: capplets/appearance/appearance-themes.c:655
 msgid "Revert Font"
 msgstr "Restablir la poliça"
 
-#: capplets/appearance/appearance-themes.c:687
+#: capplets/appearance/appearance-themes.c:688
 msgid ""
 "The current theme suggests a background and a font. Also, the last applied "
 "font suggestion can be reverted."
@@ -658,7 +653,7 @@ msgstr ""
 "Lo tèma actual prepausa un rèire plan e una poliça. La darrièra suggestion "
 "de poliça aplicada pòt èsser restablida."
 
-#: capplets/appearance/appearance-themes.c:689
+#: capplets/appearance/appearance-themes.c:690
 msgid ""
 "The current theme suggests a background. Also, the last applied font "
 "suggestion can be reverted."
@@ -666,11 +661,11 @@ msgstr ""
 "Lo tèma actual prepausa un rèireplan. La darrièra suggestion de poliça "
 "aplicada pòt èsser restablida."
 
-#: capplets/appearance/appearance-themes.c:691
+#: capplets/appearance/appearance-themes.c:692
 msgid "The current theme suggests a background and a font."
 msgstr "Lo tèma actual prepausa un rèireplan e una poliça."
 
-#: capplets/appearance/appearance-themes.c:693
+#: capplets/appearance/appearance-themes.c:694
 msgid ""
 "The current theme suggests a font. Also, the last applied font suggestion "
 "can be reverted."
@@ -678,19 +673,20 @@ msgstr ""
 "Lo tèma actual prepausa una poliça. La darrièra suggestion de poliça "
 "aplicada pòt èsser restablida."
 
-#: capplets/appearance/appearance-themes.c:695
+#: capplets/appearance/appearance-themes.c:696
 msgid "The current theme suggests a background."
 msgstr "Lo tèma actual prepausa un rèireplan."
 
-#: capplets/appearance/appearance-themes.c:697
+#: capplets/appearance/appearance-themes.c:698
 msgid "The last applied font suggestion can be reverted."
 msgstr "La darrièra suggestion de poliça aplicada pòt èsser restablida."
 
-#: capplets/appearance/appearance-themes.c:699
+#: capplets/appearance/appearance-themes.c:700
 msgid "The current theme suggests a font."
 msgstr "Lo tèma actual prepausa una poliça."
 
-#: capplets/appearance/appearance-themes.c:1011
+#: capplets/appearance/appearance-themes.c:1012
+#: capplets/windows/mate-window-properties.c:247
 msgid "Custom"
 msgstr "Personalizada"
 
@@ -795,11 +791,11 @@ msgstr "Enregistrar lo tèma de _notificacion"
 #: capplets/appearance/data/appearance.ui:1064
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
-msgstr "_Nom :"
+msgstr "_Nom :"
 
 #: capplets/appearance/data/appearance.ui:1079
 msgid "_Description:"
-msgstr "_Descripcion :"
+msgstr "_Descripcion :"
 
 #: capplets/appearance/data/appearance.ui:1157
 msgid "Text below items"
@@ -880,7 +876,7 @@ msgstr "Icònas"
 
 #: capplets/appearance/data/appearance.ui:1837
 msgid "_Size:"
-msgstr "_Talha :"
+msgstr "_Talha :"
 
 #. small threshold
 #: capplets/appearance/data/appearance.ui:1858
@@ -960,7 +956,7 @@ msgstr "Tèma"
 
 #: capplets/appearance/data/appearance.ui:2338
 msgid "_Style:"
-msgstr "_Estil :"
+msgstr "_Estil :"
 
 #: capplets/appearance/data/appearance.ui:2382
 msgid "C_olors:"
@@ -982,19 +978,19 @@ msgstr "_Apondre..."
 
 #: capplets/appearance/data/appearance.ui:2669
 msgid "_Application font:"
-msgstr "Poliça de l'_aplicacion :"
+msgstr "Poliça de l'_aplicacion :"
 
 #: capplets/appearance/data/appearance.ui:2684
 msgid "_Document font:"
-msgstr "Poliça del _document :"
+msgstr "Poliça del _document :"
 
 #: capplets/appearance/data/appearance.ui:2698
 msgid "Des_ktop font:"
-msgstr "Poliça del _burèu :"
+msgstr "Poliça del _burèu :"
 
 #: capplets/appearance/data/appearance.ui:2713
 msgid "_Window title font:"
-msgstr "Poliça del títol de la fenèstra :"
+msgstr "_Poliça del títol de la fenèstra :"
 
 #: capplets/appearance/data/appearance.ui:2728
 msgid "_Fixed width font:"
@@ -1002,7 +998,7 @@ msgstr "Poliça de chassa fi_xa :"
 
 #: capplets/appearance/data/appearance.ui:2768
 msgid "Add new f_ont..."
-msgstr "Ajustar una poliça novèla…"
+msgstr "Ajustar una _poliça novèla..."
 
 #: capplets/appearance/data/appearance.ui:2799
 msgid "Rendering"
@@ -1172,8 +1168,8 @@ msgid ""
 msgstr ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Dorsièr : %s\n"
-"Artista : %s"
+"Dossièr : %s\n"
+"Artista : %s"
 
 #: capplets/appearance/mate-wp-item.c:334
 #, c-format
@@ -1185,8 +1181,8 @@ msgid ""
 msgstr ""
 "<b>%s</b>\n"
 "%s\n"
-"Dorsièr : %s\n"
-"Artista : %s"
+"Dorsièr : %s\n"
+"Artista : %s"
 
 #: capplets/appearance/mate-wp-item.c:339
 msgid "Image missing"
@@ -1222,7 +1218,7 @@ msgid ""
 "\"%s\" does not appear to be a valid theme. It may be a theme engine which "
 "you need to compile."
 msgstr ""
-"Sembla que « %s » es pas un tèma valid. Se pòt agir d'un motor de tèma que "
+"Sembla que « %s » es pas un tèma valid. Se pòt agir d'un motor de tèma que "
 "vos cal compilar."
 
 #: capplets/appearance/theme-installer.c:375
@@ -1331,12 +1327,12 @@ msgstr ""
 #: capplets/common/capplet-util.c:82
 #, c-format
 msgid "There was an error displaying help: %s"
-msgstr "I a agut una error al moment d'afichar l'ajuda : %s"
+msgstr "I a agut una error al moment d'afichar l'ajuda : %s"
 
 #: capplets/common/file-transfer-dialog.c:96
 #, c-format
 msgid "Copying file: %u of %u"
-msgstr "Còpia del fichièr : %u sus %u"
+msgstr "Còpia del fichièr : %u sus %u"
 
 #: capplets/common/file-transfer-dialog.c:143
 #, c-format
@@ -1453,20 +1449,12 @@ msgstr ""
 "mate-control-"
 "center;MATE;default;preferred;applications;configuracion;aplicacions;paramètres;contrarotle;"
 
-#: capplets/default-applications/mate-da-capplet.c:597
-msgid "Could not load the main interface"
-msgstr "Cargament impossible de l’interfàcia principala"
-
-#: capplets/default-applications/mate-da-capplet.c:598
-msgid "Please make sure that the applet is properly installed"
-msgstr "Verificatz que l'applet es installada corrèctament"
-
-#: capplets/default-applications/mate-da-capplet.c:797
+#: capplets/default-applications/mate-da-capplet.c:782
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "Indica lo nom de la pagina d'afichar (internet|multimedia|system|a11y)"
 
-#: capplets/default-applications/mate-da-capplet.c:803
+#: capplets/default-applications/mate-da-capplet.c:788
 msgid "- MATE Default Applications"
 msgstr "- Aplicacions per defaut de MATE"
 
@@ -1560,19 +1548,19 @@ msgid "Accessibility"
 msgstr "Accessibilitat"
 
 #: capplets/display/display-capplet.ui:22
-#: capplets/display/xrandr-capplet.c:306 capplets/display/xrandr-capplet.c:345
+#: capplets/display/xrandr-capplet.c:310 capplets/display/xrandr-capplet.c:349
 msgid "Normal"
 msgstr "Normala"
 
 #: capplets/display/display-capplet.ui:25
-#: capplets/display/xrandr-capplet.c:307
-#: capplets/windows/window-properties.ui:734
+#: capplets/display/xrandr-capplet.c:311
+#: capplets/windows/window-properties.ui:692
 msgid "Left"
 msgstr "Esquèrra"
 
 #: capplets/display/display-capplet.ui:28
-#: capplets/display/xrandr-capplet.c:308
-#: capplets/windows/window-properties.ui:733
+#: capplets/display/xrandr-capplet.c:312
+#: capplets/windows/window-properties.ui:691
 msgid "Right"
 msgstr "Drecha"
 
@@ -1598,58 +1586,62 @@ msgstr ""
 msgid "_Apply"
 msgstr "_Aplicar"
 
-#: capplets/display/display-capplet.ui:161
+#: capplets/display/display-capplet.ui:162
 msgid "Sa_me image in all monitors"
 msgstr "_Meteis imatge sus totes los ecrans"
 
-#: capplets/display/display-capplet.ui:176
+#: capplets/display/display-capplet.ui:177
 msgid "_Detect monitors"
 msgstr "_Detectar los ecrans"
 
-#: capplets/display/display-capplet.ui:211
-msgid "Panel icon"
-msgstr "Icòna del tablèu de bòrd"
-
-#: capplets/display/display-capplet.ui:230
-msgid "_Show monitors in panel"
-msgstr "_Afichar los ecrans sul tablèu de bòrd"
-
-#: capplets/display/display-capplet.ui:268
+#: capplets/display/display-capplet.ui:220
 msgid "_Resolution:"
-msgstr "Resolucion :"
+msgstr "_Resolucion :"
 
-#: capplets/display/display-capplet.ui:282
+#: capplets/display/display-capplet.ui:234
 msgid "Re_fresh rate:"
 msgstr "Fre_quéncia de refrescament :"
 
-#: capplets/display/display-capplet.ui:319
+#: capplets/display/display-capplet.ui:271
 msgid "On"
 msgstr "Alucat"
 
-#: capplets/display/display-capplet.ui:335
+#: capplets/display/display-capplet.ui:287
 msgid "Off"
 msgstr "Atudat"
 
-#: capplets/display/display-capplet.ui:374
+#: capplets/display/display-capplet.ui:326
 msgid "Include _panel"
 msgstr "Inclure lo _tablèu de bòrd"
 
-#: capplets/display/display-capplet.ui:400
+#: capplets/display/display-capplet.ui:352
 msgid "Set as primary"
 msgstr "Definir coma principal"
 
-#: capplets/display/display-capplet.ui:405
+#: capplets/display/display-capplet.ui:357
 msgid "Sets the selected monitor as primary."
 msgstr "Definís l’ecran coma principal."
 
-#: capplets/display/display-capplet.ui:417
+#: capplets/display/display-capplet.ui:369
 msgid "R_otation:"
 msgstr "R_otacion :"
 
-#: capplets/display/display-capplet.ui:436
-#: capplets/display/xrandr-capplet.c:495
+#: capplets/display/display-capplet.ui:388
+#: capplets/display/xrandr-capplet.c:626
 msgid "Monitor"
 msgstr "Ecran"
+
+#: capplets/display/display-capplet.ui:426
+msgid "Panel icon"
+msgstr "Icòna del tablèu de bòrd"
+
+#: capplets/display/display-capplet.ui:445
+msgid "_Show monitors in panel"
+msgstr "_Afichar los ecrans sul tablèu de bòrd"
+
+#: capplets/display/display-capplet.ui:477
+msgid "Scaling"
+msgstr "Mesa a l'escala"
 
 #: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
@@ -1668,7 +1660,7 @@ msgstr ""
 "mate-control-"
 "center;MATE;resolution;position;monitors;display;properties;afichatge;ecran;resolucion;proprietats;"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:44
+#: capplets/display/mate-display-properties-install-systemwide.c:46
 #, c-format
 msgid ""
 "Usage: %s SOURCE_FILE DEST_NAME\n"
@@ -1685,108 +1677,122 @@ msgid ""
 msgstr ""
 
 #. Translators: only able to install RANDR profiles as root
-#: capplets/display/mate-display-properties-install-systemwide.c:151
+#: capplets/display/mate-display-properties-install-systemwide.c:155
 msgid "This program can only be used by the root user"
 msgstr "Sonque l’utilizaire root pòt utilizar aqueste programa"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:168
+#: capplets/display/mate-display-properties-install-systemwide.c:172
 msgid "The source filename must be absolute"
-msgstr ""
+msgstr "Lo nom de fichièr font deu èsser absolut"
 
 #. Translators: first %s is a filename; second %s is an error message
-#: capplets/display/mate-display-properties-install-systemwide.c:179
+#: capplets/display/mate-display-properties-install-systemwide.c:183
 #, c-format
 msgid "Could not open %s: %s\n"
 msgstr "Dubertura impossibla de %s : %s\n"
 
 #. Translators: first %s is a filename; second %s is an error message
-#: capplets/display/mate-display-properties-install-systemwide.c:188
+#: capplets/display/mate-display-properties-install-systemwide.c:192
 #, c-format
 msgid "Could not get information for %s: %s\n"
 msgstr "Obtencion impossibla de las informacions per %s : %s\n"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:195
+#: capplets/display/mate-display-properties-install-systemwide.c:199
 #, c-format
 msgid "%s must be a regular file\n"
 msgstr "%s deu èsser un fichièr normal\n"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:204
+#: capplets/display/mate-display-properties-install-systemwide.c:208
 msgid "This program must only be run through pkexec(1)"
-msgstr ""
+msgstr "Sonque pkexec(1) deu executar aqueste programa"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:209
+#: capplets/display/mate-display-properties-install-systemwide.c:213
 msgid "PKEXEC_UID must be set to an integer value"
-msgstr ""
+msgstr "PKEXEC_UID deu èsser una valor d’entièr"
 
 #. Translators: we are complaining that a file must be really owned by the
 #. user who called this program
-#: capplets/display/mate-display-properties-install-systemwide.c:215
+#: capplets/display/mate-display-properties-install-systemwide.c:219
 #, c-format
 msgid "%s must be owned by you\n"
 msgstr "devètz possedir %s\n"
 
 #. Translators: here we are saying that a plain filename must look like
 #. "filename", not like "some_dir/filename"
-#: capplets/display/mate-display-properties-install-systemwide.c:223
+#: capplets/display/mate-display-properties-install-systemwide.c:227
 #, c-format
 msgid "%s must not have any directory components\n"
-msgstr ""
+msgstr "%s deu pas aver de compausants de repertòri\n"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:231
+#: capplets/display/mate-display-properties-install-systemwide.c:235
 #, c-format
 msgid "%s must be a directory\n"
 msgstr "%s deu èsser un repertòri\n"
 
 #. Translators: the first %s/%s is a directory/filename; the last %s is an
 #. error message
-#: capplets/display/mate-display-properties-install-systemwide.c:242
+#: capplets/display/mate-display-properties-install-systemwide.c:246
 #, c-format
 msgid "Could not open %s/%s: %s\n"
 msgstr "Dubertura impossibla de %s / %s : %s\n"
 
-#: capplets/display/mate-display-properties-install-systemwide.c:262
+#: capplets/display/mate-display-properties-install-systemwide.c:266
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Impossible de renommar %s en %s : %s\n"
 
 #: capplets/display/org.mate.randr.policy.in:17
 msgid "Install multi-monitor settings for the whole system"
-msgstr ""
+msgstr "Paramètres multi-monitor per tot lo sistèma"
 
 #: capplets/display/org.mate.randr.policy.in:18
 msgid ""
 "Authentication is required to install multi-monitor settings for all users"
 msgstr ""
+"Autentificacion requerida per installar de paramètres multi-monitor per "
+"totes los utilizaires"
 
-#: capplets/display/xrandr-capplet.c:309
+#: capplets/display/xrandr-capplet.c:313
 msgid "Upside Down"
 msgstr "Inversat"
 
-#: capplets/display/xrandr-capplet.c:351
+#: capplets/display/xrandr-capplet.c:355
 #, c-format
 msgid "%d Hz"
 msgstr "%d Hz"
+
+#: capplets/display/xrandr-capplet.c:553
+msgid "auto detect"
+msgstr "auto deteccion"
+
+#: capplets/display/xrandr-capplet.c:553
+msgid "100%"
+msgstr "100%"
+
+#: capplets/display/xrandr-capplet.c:553
+msgid "200%"
+msgstr "200 %"
 
 #. Translators:  this is the feature where what you see on your laptop's
 #. * screen is the same as your external monitor.  Here, "Mirror" is being
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-#: capplets/display/xrandr-capplet.c:484
-#: capplets/display/xrandr-capplet.c:1632
+#: capplets/display/xrandr-capplet.c:615
+#: capplets/display/xrandr-capplet.c:1693
 msgid "Mirror Screens"
 msgstr "Ecrans clòns"
 
-#: capplets/display/xrandr-capplet.c:486
+#: capplets/display/xrandr-capplet.c:617
 #, c-format
 msgid "Monitor: %s"
 msgstr "Ecran : %s"
 
-#: capplets/display/xrandr-capplet.c:556
+#: capplets/display/xrandr-capplet.c:688
 #, c-format
-msgid "%d x %d"
-msgstr "%d x %d"
+msgid "%u x %u"
+msgstr "%u x %u"
 
-#: capplets/display/xrandr-capplet.c:1488
+#: capplets/display/xrandr-capplet.c:1549
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1794,37 +1800,39 @@ msgstr ""
 "Seleccionatz un ecran per modificar sas proprietats ; fasètz-lo lisar per "
 "cambiar son emplaçament."
 
-#: capplets/display/xrandr-capplet.c:2081
+#: capplets/display/xrandr-capplet.c:2147
 msgid "Could not save the monitor configuration"
 msgstr "Impossible d'enregistrar la configuracion de l'ecran"
 
-#: capplets/display/xrandr-capplet.c:2102
+#: capplets/display/xrandr-capplet.c:2168
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
 "Impossible d'obténer lo bus de session al moment de l'aplicacion de la "
 "configuracion d'afichatge"
 
-#: capplets/display/xrandr-capplet.c:2121
+#: capplets/display/xrandr-capplet.c:2187
 msgid "Could not detect displays"
 msgstr "Deteccion impossibla dels ecrans"
 
-#: capplets/display/xrandr-capplet.c:2303
+#: capplets/display/xrandr-capplet.c:2369
 msgid "The monitor configuration has been saved"
 msgstr "La configuracion del monitor es estada enregistrada"
 
-#: capplets/display/xrandr-capplet.c:2305
+#: capplets/display/xrandr-capplet.c:2371
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
+"Aquesta configuracion serà utilizada lo còp que ven que qualqu’un se "
+"connècta."
 
-#: capplets/display/xrandr-capplet.c:2314
+#: capplets/display/xrandr-capplet.c:2380
 msgid "Could not set the default configuration for monitors"
 msgstr "Definicion impossibla de la configuracion per defaut pels monitors"
 
-#: capplets/display/xrandr-capplet.c:2393
+#: capplets/display/xrandr-capplet.c:2451
 msgid "Could not get screen information"
 msgstr "Obtencion impossibla de las informacions de l'ecran"
 
-#: capplets/display/xrandr-capplet.c:2509
+#: capplets/display/xrandr-capplet.c:2570
 msgid "Could not open help content"
 msgstr "Obtencion impossibla del contengut d’ajuda"
 
@@ -1939,7 +1947,7 @@ msgstr "Anar als paramètres"
 
 #: capplets/keybindings/eggcellrendererkeys.c:12
 msgid "New shortcut..."
-msgstr "Acorchi novèl…"
+msgstr "Acorchi novèl..."
 
 #: capplets/keybindings/eggcellrendererkeys.c:148
 #: capplets/keybindings/eggcellrendererkeys.c:149
@@ -1965,25 +1973,25 @@ msgid "The type of accelerator."
 msgstr "Lo tipe de l'acorchi de clavièr."
 
 #: capplets/keybindings/eggcellrendererkeys.c:222
-#: capplets/keybindings/mate-keybinding-properties.c:133
+#: capplets/keybindings/mate-keybinding-properties.c:117
 #: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Desactivat"
 
-#: capplets/keybindings/mate-keybinding-properties.c:215
+#: capplets/keybindings/mate-keybinding-properties.c:199
 msgid "<Unknown Action>"
 msgstr "<Accion desconeguda>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1018
-#: capplets/keybindings/mate-keybinding-properties.c:1626
+#: capplets/keybindings/mate-keybinding-properties.c:1002
+#: capplets/keybindings/mate-keybinding-properties.c:1610
 msgid "Custom Shortcuts"
 msgstr "Acorchis personalizats"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1206
+#: capplets/keybindings/mate-keybinding-properties.c:1190
 msgid "Error saving the new shortcut"
 msgstr "Error al moment de l'enregistrament de l'acorchi novèl"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1282
+#: capplets/keybindings/mate-keybinding-properties.c:1266
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1992,7 +2000,7 @@ msgstr ""
 "L'acorchi « %s » pòt pas èsser utilizat perque serà impossible de picar en utilizant aquesta tòca.\n"
 "Ensajatz amb una tòca coma Ctrl, Alt o Maj al meteis temps."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1314
+#: capplets/keybindings/mate-keybinding-properties.c:1298
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2001,25 +2009,25 @@ msgstr ""
 "L'acorchi de clavièr « %s » es ja utilizat per \n"
 "« %s »"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1321
+#: capplets/keybindings/mate-keybinding-properties.c:1305
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Se tornatz atribuir l’acorchi « %s  », l’acorchi « %s » serà desactivat."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1326
+#: capplets/keybindings/mate-keybinding-properties.c:1310
 msgid "_Reassign"
 msgstr "_Reatribuir"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1581
+#: capplets/keybindings/mate-keybinding-properties.c:1565
 msgid "Too many custom shortcuts"
 msgstr "Tròp d’acorchis personalizats"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1895
+#: capplets/keybindings/mate-keybinding-properties.c:1879
 msgid "Action"
 msgstr "Accion"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1917
+#: capplets/keybindings/mate-keybinding-properties.c:1901
 msgid "Shortcut"
 msgstr "Acorchi"
 
@@ -2029,7 +2037,7 @@ msgstr "Acorchi personalizat"
 
 #: capplets/keybindings/mate-keybinding-properties.ui:108
 msgid "C_ommand:"
-msgstr "Co_manda :"
+msgstr "Co_manda :"
 
 #: capplets/keybindings/mate-keybinding-properties.ui:132
 msgid "_Browse applications..."
@@ -2070,7 +2078,7 @@ msgstr ""
 
 #: capplets/keyboard/mate-keyboard-properties.c:179
 msgid "Start the page with the accessibility settings showing"
-msgstr ""
+msgstr "Lançar la pagina amb los paramètres d’accessibilitat aparents"
 
 #: capplets/keyboard/mate-keyboard-properties.c:185
 msgid "- MATE Keyboard Preferences"
@@ -2083,6 +2091,8 @@ msgstr ""
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:86
 msgid "Beep when _accessibility features are turned on or off"
 msgstr ""
+"Emetre un bip quand las foncionalitats d’_accessibilitat son activadas o "
+"desactivadas"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:102
 msgid "Beep when a _toggle key is pressed"
@@ -2149,6 +2159,7 @@ msgstr "Rebombs de tòcas"
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
 msgid "Beep when pressing a key while Caps_Lock is active"
 msgstr ""
+"Emetre un bip quand una tòca es quichada mentre que Verr. Maj. es activat"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
 msgid "Caps Lock"
@@ -2175,7 +2186,7 @@ msgstr "_Delai :"
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:276
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1796
 msgid "_Speed:"
-msgstr "_Velocitat :"
+msgstr "_Velocitat :"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:307
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1261
@@ -2227,7 +2238,7 @@ msgstr ""
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:534
 msgid "S_peed:"
-msgstr "_Velocitat :"
+msgstr "_Velocitat :"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:577
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1281
@@ -2239,11 +2250,11 @@ msgstr ""
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
 msgid "List of keyboard layouts selected for usage"
-msgstr ""
+msgstr "Lista dels agençaments de clavièr seleccionats per utilizacion"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:707
 msgid "Select a keyboard layout to be added to the list"
-msgstr ""
+msgstr "Causir un agençament de clavièr d’apondre a la lista"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:720
 msgid "_Remove"
@@ -2251,7 +2262,7 @@ msgstr "_Suprimir"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:724
 msgid "Remove the selected keyboard layout from the list"
-msgstr ""
+msgstr "Tirar un agençament de clavièr d’apondre de la lista"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:751
 msgid "Move _Up"
@@ -2271,7 +2282,7 @@ msgstr "Davalar l’agençament del clavièr amont dins la lista"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:795
 msgid "_Show..."
-msgstr "_Mostrar…"
+msgstr "_Mostrar..."
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:799
 msgid "Print a diagram of the selected keyboard layout"
@@ -2279,7 +2290,7 @@ msgstr ""
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:835
 msgid "_Separate layout for each window"
-msgstr ""
+msgstr "Agençament _separat per cada fenèstra"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:851
 msgid "New windows u_se active window's layout"
@@ -2287,7 +2298,7 @@ msgstr ""
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:882
 msgid "Keyboard _model:"
-msgstr "_Modèl de clavièr :"
+msgstr "_Modèl de clavièr :"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:920
 msgid "_Options..."
@@ -2335,25 +2346,25 @@ msgstr ""
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1394
 msgid "_Ignore fast duplicate keypresses"
-msgstr ""
+msgstr "_Ignorar las picadas doblas rapidas"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1419
 msgid "D_elay:"
-msgstr "Re_lambi :"
+msgstr "Re_lambi :"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1532
 msgid "Audio _Feedback..."
-msgstr ""
+msgstr "_Retorn àudio..."
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1585
 msgid "_Pointer can be controlled using the keypad"
-msgstr ""
+msgstr "Lo pavat tactil pòt contrarotlar lo _puntador"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1781
 #: capplets/mouse/mate-mouse-properties.ui:414
 #: capplets/mouse/mate-mouse-properties.ui:1392
 msgid "_Acceleration:"
-msgstr "_Acceleracion :"
+msgstr "_Acceleracion :"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1859
 msgid "Mouse Keys"
@@ -2412,7 +2423,7 @@ msgstr "Causissètz un agençament"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:134
 msgid "_Country:"
-msgstr "_País :"
+msgstr "_País :"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:148
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:225
@@ -2425,7 +2436,7 @@ msgstr "Per _país"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:211
 msgid "_Language:"
-msgstr "_Lenga :"
+msgstr "_Lenga :"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:245
 msgid "By _language"
@@ -2433,7 +2444,7 @@ msgstr "Per _lenga"
 
 #: capplets/keyboard/mate-keyboard-properties-layout-chooser.ui:278
 msgid "Preview:"
-msgstr "Previsualizacion :"
+msgstr "Previsualizacion :"
 
 #: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:15
 msgid "Choose a Keyboard Model"
@@ -2445,7 +2456,7 @@ msgstr "_Fabricants :"
 
 #: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:118
 msgid "_Models:"
-msgstr "_Modèls :"
+msgstr "_Modèls :"
 
 #: capplets/keyboard/mate-keyboard-properties-options-dialog.ui:14
 msgid "Keyboard Layout Options"
@@ -2527,6 +2538,7 @@ msgstr "_Esquerrièr"
 #: capplets/mouse/mate-mouse-properties.ui:297
 msgid "Sh_ow position of pointer when the Control key is pressed"
 msgstr ""
+"M_ostrar la posicion del puntador quand la tòca Contraròtle es quichada"
 
 #: capplets/mouse/mate-mouse-properties.ui:322
 msgid "Emulate middle button through simultaneous left and right click"
@@ -2556,11 +2568,11 @@ msgstr "Elevada"
 #: capplets/mouse/mate-mouse-properties.ui:555
 #: capplets/mouse/mate-mouse-properties.ui:1533
 msgid "_Sensitivity:"
-msgstr "_Sensibilitat :"
+msgstr "_Sensibilitat :"
 
 #: capplets/mouse/mate-mouse-properties.ui:570
 msgid "Acceleration _Profile:"
-msgstr ""
+msgstr "_Perfil d’acceleracion :"
 
 #: capplets/mouse/mate-mouse-properties.ui:588
 msgid "Adaptive"
@@ -2576,7 +2588,7 @@ msgstr "Lisar depausar"
 
 #: capplets/mouse/mate-mouse-properties.ui:659
 msgid "Thr_eshold:"
-msgstr ""
+msgstr "Sulh_et :"
 
 #: capplets/mouse/mate-mouse-properties.ui:772
 msgid "Double-Click Timeout"
@@ -2599,11 +2611,11 @@ msgstr "Mirga"
 
 #: capplets/mouse/mate-mouse-properties.ui:981
 msgid "Enable _touchpad"
-msgstr ""
+msgstr "Activar lo pavat _tactil"
 
 #: capplets/mouse/mate-mouse-properties.ui:1029
 msgid "Disable touchpad _while typing"
-msgstr "Desactivar lo pavat tactil pendent la quichada"
+msgstr "Desactivar lo pavat tactil _pendent la quichada"
 
 #: capplets/mouse/mate-mouse-properties.ui:1056
 msgid "Enable _mouse clicks with touchpad"
@@ -2643,7 +2655,7 @@ msgstr ""
 
 #: capplets/mouse/mate-mouse-properties.ui:1327
 msgid "Enable _natural scrolling"
-msgstr ""
+msgstr "Activar lo desfilament _natural"
 
 #: capplets/mouse/mate-mouse-properties.ui:1584
 msgid "Touchpad"
@@ -2692,7 +2704,7 @@ msgstr "<b>Configuracion _manuala del proxy</b>"
 #: capplets/network/mate-network-properties.ui:268
 #: capplets/network/mate-network-properties.ui:283
 msgid "Port:"
-msgstr "Pòrt :"
+msgstr "Pòrt :"
 
 #: capplets/network/mate-network-properties.ui:363
 msgid "_Details"
@@ -2700,7 +2712,7 @@ msgstr "_Detalhs"
 
 #: capplets/network/mate-network-properties.ui:379
 msgid "H_TTP proxy:"
-msgstr "Proxy H_TTP :"
+msgstr "Proxy H_TTP :"
 
 #: capplets/network/mate-network-properties.ui:393
 msgid "_Secure HTTP proxy:"
@@ -2708,7 +2720,7 @@ msgstr "Servidor mandatari HTTP _segur :"
 
 #: capplets/network/mate-network-properties.ui:407
 msgid "_FTP proxy:"
-msgstr "Proxy _FTP :"
+msgstr "Proxy _FTP :"
 
 #: capplets/network/mate-network-properties.ui:421
 msgid "S_ocks host:"
@@ -2720,7 +2732,7 @@ msgstr "<b>Configuracion servidor mandatari _auto</b>"
 
 #: capplets/network/mate-network-properties.ui:517
 msgid "Autoconfiguration _URL:"
-msgstr "_URL de configuracion automatica :"
+msgstr "_URL de configuracion automatica :"
 
 #: capplets/network/mate-network-properties.ui:574
 msgid "Proxy Configuration"
@@ -2744,42 +2756,42 @@ msgstr "<b>_Utilizar l’autenticacion</b>"
 
 #: capplets/network/mate-network-properties.ui:869
 msgid "U_sername:"
-msgstr "Nom d'u_tilizaire :"
+msgstr "Nom d'u_tilizaire :"
 
 #: capplets/network/mate-network-properties.ui:908
 msgid "_Password:"
-msgstr "Sen_hal :"
+msgstr "Sen_hal :"
 
-#: capplets/windows/mate-metacity-support.c:40
+#: capplets/windows/mate-metacity-support.c:42
 msgid "Metacity Preferences"
 msgstr "Preferéncias Metacity"
 
-#: capplets/windows/mate-metacity-support.c:51
-#: capplets/windows/window-properties.ui:871
+#: capplets/windows/mate-metacity-support.c:53
+#: capplets/windows/window-properties.ui:813
 msgid "Compositing Manager"
 msgstr "Gestionari de composicion"
 
-#: capplets/windows/mate-metacity-support.c:58
+#: capplets/windows/mate-metacity-support.c:60
 msgid "Enable software _compositing window manager"
 msgstr ""
 
-#: capplets/windows/mate-window-properties.c:281
+#: capplets/windows/mate-window-properties.c:315
 msgid "The current window manager is unsupported"
 msgstr "Lo gestionari de fenèstras actual es pas pres en carga"
 
-#: capplets/windows/mate-window-properties.c:599
+#: capplets/windows/mate-window-properties.c:626
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:605
+#: capplets/windows/mate-window-properties.c:632
 msgid "H_yper"
 msgstr "_Iper"
 
-#: capplets/windows/mate-window-properties.c:612
+#: capplets/windows/mate-window-properties.c:639
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (o logotipe « Windows »)"
 
-#: capplets/windows/mate-window-properties.c:619
+#: capplets/windows/mate-window-properties.c:646
 msgid "_Meta"
 msgstr "_Mèta"
 
@@ -2805,7 +2817,7 @@ msgstr "Preferéncias de la fenèstra"
 
 #: capplets/windows/window-properties.ui:128
 msgid "Window Selection"
-msgstr ""
+msgstr "Seleccion de fenèstra"
 
 #: capplets/windows/window-properties.ui:148
 msgid "_Select windows when the mouse moves over them"
@@ -2825,39 +2837,39 @@ msgstr "segondas"
 
 #: capplets/windows/window-properties.ui:263
 msgid "Titlebar Action"
-msgstr ""
+msgstr "Accion de la barra de títol"
 
 #: capplets/windows/window-properties.ui:290
 msgid "_Double-click titlebar action:"
 msgstr ""
 
 #: capplets/windows/window-properties.ui:305
-#: libwindow-settings/marco-window-manager.c:393
+#: libwindow-settings/marco-window-manager.c:400
 msgid "Roll up"
 msgstr ""
 
 #: capplets/windows/window-properties.ui:306
-#: libwindow-settings/marco-window-manager.c:394
+#: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize"
 msgstr "Maximizar"
 
 #: capplets/windows/window-properties.ui:307
-#: libwindow-settings/marco-window-manager.c:395
+#: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Horizontally"
 msgstr "Maximizar orizontalament"
 
 #: capplets/windows/window-properties.ui:308
-#: libwindow-settings/marco-window-manager.c:396
+#: libwindow-settings/marco-window-manager.c:403
 msgid "Maximize Vertically"
 msgstr "Maximizar verticalament"
 
 #: capplets/windows/window-properties.ui:309
-#: libwindow-settings/marco-window-manager.c:397
+#: libwindow-settings/marco-window-manager.c:404
 msgid "Minimize"
 msgstr "Reduire"
 
 #: capplets/windows/window-properties.ui:310
-#: libwindow-settings/marco-window-manager.c:398
+#: libwindow-settings/marco-window-manager.c:405
 msgid "None"
 msgstr "Pas cap"
 
@@ -2865,72 +2877,72 @@ msgstr "Pas cap"
 msgid "Alt-Tab"
 msgstr "Alt-Tab"
 
-#: capplets/windows/window-properties.ui:372
+#: capplets/windows/window-properties.ui:371
+msgid "Show _thumbnails in Alt-Tab"
+msgstr ""
+
+#: capplets/windows/window-properties.ui:386
 msgid "Show window _border in Alt-Tab"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:410
-msgid "Performance"
-msgstr "Performança"
-
-#: capplets/windows/window-properties.ui:430
-msgid "Use _reduced resources"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:468
+#: capplets/windows/window-properties.ui:424
 msgid "Movement Key"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:490
+#: capplets/windows/window-properties.ui:446
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:534
+#: capplets/windows/window-properties.ui:490
 msgid "Behaviour"
 msgstr "Compòrtament"
 
-#: capplets/windows/window-properties.ui:559
+#: capplets/windows/window-properties.ui:515
 msgid "New Windows"
 msgstr "Fenèstra novèla"
 
-#: capplets/windows/window-properties.ui:579
+#: capplets/windows/window-properties.ui:535
 msgid "Centre _new windows"
-msgstr ""
+msgstr "Centrar las fenèstras _novèlas"
 
-#: capplets/windows/window-properties.ui:617
+#: capplets/windows/window-properties.ui:573
 msgid "Window Snapping"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:637
+#: capplets/windows/window-properties.ui:593
 msgid "Enable window _tiling"
-msgstr ""
+msgstr "Activar la _juxtaposicion de fenèstra"
 
-#: capplets/windows/window-properties.ui:652
+#: capplets/windows/window-properties.ui:608
 msgid "Allow t_op tiling"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:691
+#: capplets/windows/window-properties.ui:647
 msgid "Titlebar Buttons"
 msgstr "Botons de la barra de títol"
 
-#: capplets/windows/window-properties.ui:718
+#: capplets/windows/window-properties.ui:674
 msgid "_Position of titlebar buttons:"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:774
+#: capplets/windows/window-properties.ui:689
+msgid "Right (with menu)"
+msgstr "Drecha (amb menú)"
+
+#: capplets/windows/window-properties.ui:690
+msgid "Left (with menu)"
+msgstr "Esquèrra (amb menú)"
+
+#: capplets/windows/window-properties.ui:732
 msgid "Placement"
 msgstr "Posicionament"
 
-#: capplets/windows/window-properties.ui:799
+#: capplets/windows/window-properties.ui:757
 msgid "Software Compositing"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:819
+#: capplets/windows/window-properties.ui:777
 msgid "Enable _software compositing window manager"
-msgstr ""
-
-#: capplets/windows/window-properties.ui:834
-msgid "Disable _thumbnails in Alt-Tab"
 msgstr ""
 
 #: capplets/time-admin/src/main.c:34
@@ -3024,29 +3036,33 @@ msgstr ""
 "La sincronizacion de l’ora amb lo ret es estat definir. Lo parametratge "
 "manual es desactivat."
 
-#: capplets/time-admin/src/time-zone.c:277
+#: capplets/time-admin/src/time-zone.c:276
 #, c-format
 msgctxt "timezone loc"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: capplets/time-admin/src/time-zone.c:304
+#: capplets/time-admin/src/time-zone.c:302
+msgid "Error: timezone identifier cannot be parsed or loaded"
+msgstr "Error : analisi o cargament impossible del identificador de fus orari"
+
+#: capplets/time-admin/src/time-zone.c:312
 msgid "UTC%:::z"
 msgstr "UTC%:::z"
 
-#: capplets/time-admin/src/time-zone.c:309
+#: capplets/time-admin/src/time-zone.c:317
 msgid "%R"
 msgstr "%R"
 
-#: capplets/time-admin/src/time-zone.c:379
+#: capplets/time-admin/src/time-zone.c:387
 msgid "Time Zone"
 msgstr "Fus orari"
 
-#: capplets/time-admin/src/time-zone.c:466
+#: capplets/time-admin/src/time-zone.c:474
 msgid "Time Zone Selection"
 msgstr "Seleccion de zòna orària"
 
-#: capplets/time-admin/src/time-zone.c:481
+#: capplets/time-admin/src/time-zone.c:489
 msgid "Con_firm"
 msgstr "Con_firmar"
 
@@ -4818,7 +4834,7 @@ msgstr ""
 
 #: typing-break/drw-break-window.c:238
 msgid "Take a break!"
-msgstr "Arrestatz-vos un pauc !"
+msgstr "Arrestatz-vos un pauc !"
 
 #: typing-break/drwright.c:135
 msgid "_Preferences"
@@ -4885,11 +4901,11 @@ msgstr "Activa lo còdi de desbugatge"
 msgid "Don't check whether the notification area exists"
 msgstr "Verificar pas se la zòna de notificacion existís"
 
-#: typing-break/main.c:88
+#: typing-break/main.c:92
 msgid "Typing Monitor"
 msgstr "Monitor de picada"
 
-#: typing-break/main.c:105
+#: typing-break/main.c:109
 msgid ""
 "The typing monitor uses the notification area to display information. You "
 "don't seem to have a notification area on your panel. You can add it by "
@@ -4961,23 +4977,23 @@ msgstr ""
 "mate-control-"
 "center;MATE;font;viewer;preview;desktop;preferences;poliça;preferéncia;perso;"
 
-#: font-viewer/font-thumbnailer.c:191
+#: font-viewer/font-thumbnailer.c:193
 msgid "Text to thumbnail (default: Aa)"
-msgstr "Tèxte de miniaturizar (per defaut : Aa)"
+msgstr "Tèxte de miniaturizar (per defaut : Aa)"
 
-#: font-viewer/font-thumbnailer.c:191
+#: font-viewer/font-thumbnailer.c:193
 msgid "TEXT"
 msgstr "TÈXTE"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:195
 msgid "Thumbnail size (default: 128)"
 msgstr "Talha vinheta (per defaut : 128)"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:195
 msgid "SIZE"
 msgstr "TALHA"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:197
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FICHIÈR-POLIÇA FICHIÈR-SORTIDA"
 
