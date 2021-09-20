@@ -63,6 +63,9 @@ typedef struct {
 	GtkImage *dialog_image;
 	GtkLabel *status_label;
 
+	/* We need to save message from libpwquality globaly */
+	gchar *ext_msg;
+
 	/* Whether we have authenticated */
 	gboolean authenticated;
 
@@ -71,20 +74,22 @@ typedef struct {
 
 	GIOChannel *backend_stdin;
 	GIOChannel *backend_stdout;
+	GIOChannel *backend_stderr;
 
 	GQueue *backend_stdin_queue;		/* Write queue to backend_stdin */
 
 	/* GMainLoop IDs */
 	guint backend_child_watch_id;		/* g_child_watch_add (PID) */
 	guint backend_stdout_watch_id;		/* g_io_add_watch (stdout) */
+	guint backend_stderr_watch_id;		/* g_io_add_watch (stderr) */
 
 	/* State of the passwd program */
 	PasswdState backend_state;
 
 } PasswordDialog;
 
-/* Buffer size for backend output */
-#define BUFSIZE 64
+/* Buffer size for backend output (64 is too small to store message from libpwquality)*/
+#define BUFSIZE 128
 
 /*
  * Error handling {{
@@ -204,31 +209,22 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 		return FALSE;
 	}
 
-	/* 2>&1 */
-	if (dup2 (my_stderr, my_stdout) == -1) {
-		/* Failed! */
-		g_set_error (error,
-					 PASSDLG_ERROR,
-					 PASSDLG_ERROR_BACKEND,
-					 "%s",
-					 strerror (errno));
-
-		/* Clean up */
-		stop_passwd (pdialog);
-
-		return FALSE;
-	}
+	/* Initialize ext_msg with NULL */
+	pdialog->ext_msg = NULL;
 
 	/* Open IO Channels */
 	pdialog->backend_stdin = g_io_channel_unix_new (my_stdin);
 	pdialog->backend_stdout = g_io_channel_unix_new (my_stdout);
-
+	pdialog->backend_stderr = g_io_channel_unix_new (my_stderr);
+	
 	/* Set raw encoding */
 	/* Set nonblocking mode */
 	if (g_io_channel_set_encoding (pdialog->backend_stdin, NULL, error) != G_IO_STATUS_NORMAL ||
 		g_io_channel_set_encoding (pdialog->backend_stdout, NULL, error) != G_IO_STATUS_NORMAL ||
+		g_io_channel_set_encoding (pdialog->backend_stderr, NULL, error) != G_IO_STATUS_NORMAL ||
 		g_io_channel_set_flags (pdialog->backend_stdin, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
-		g_io_channel_set_flags (pdialog->backend_stdout, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ) {
+		g_io_channel_set_flags (pdialog->backend_stdout, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL ||
+		g_io_channel_set_flags (pdialog->backend_stderr, G_IO_FLAG_NONBLOCK, error) != G_IO_STATUS_NORMAL) {
 
 		/* Clean up */
 		stop_passwd (pdialog);
@@ -238,9 +234,13 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 	/* Turn off buffering */
 	g_io_channel_set_buffered (pdialog->backend_stdin, FALSE);
 	g_io_channel_set_buffered (pdialog->backend_stdout, FALSE);
+	g_io_channel_set_buffered (pdialog->backend_stderr, FALSE);
 
 	/* Add IO Channel watcher */
 	pdialog->backend_stdout_watch_id = g_io_add_watch (pdialog->backend_stdout,
+													   G_IO_IN | G_IO_PRI,
+													   (GIOFunc) io_watch_stdout, pdialog);
+	pdialog->backend_stderr_watch_id = g_io_add_watch (pdialog->backend_stderr,
 													   G_IO_IN | G_IO_PRI,
 													   (GIOFunc) io_watch_stdout, pdialog);
 
@@ -317,6 +317,19 @@ free_passwd_resources (PasswordDialog *pdialog)
 		pdialog->backend_stdout = NULL;
 	}
 
+	if (pdialog->backend_stderr != NULL) {
+
+		if (g_io_channel_shutdown (pdialog->backend_stderr, TRUE, &error) != G_IO_STATUS_NORMAL) {
+			g_warning (_("Could not shutdown backend_stderr IO channel: %s"), error->message);
+			g_error_free (error);
+			error = NULL;
+		}
+
+		g_io_channel_unref (pdialog->backend_stderr);
+
+		pdialog->backend_stderr = NULL;
+	}
+
 	/* Remove IO watcher */
 	if (pdialog->backend_stdout_watch_id != 0) {
 
@@ -324,6 +337,14 @@ free_passwd_resources (PasswordDialog *pdialog)
 
 		pdialog->backend_stdout_watch_id = 0;
 	}
+
+	if (pdialog->backend_stderr_watch_id != 0) {
+
+		g_source_remove (pdialog->backend_stderr_watch_id);
+
+		pdialog->backend_stderr_watch_id = 0;
+	}
+
 
 	/* Close PID */
 	if (pdialog->backend_pid != -1) {
@@ -356,7 +377,6 @@ io_queue_pop (GQueue *queue, GIOChannel *channel)
 	buf = g_queue_pop_head (queue);
 
 	if (buf != NULL) {
-
 		if (g_io_channel_write_chars (channel, buf, -1, &bytes_written, &error) != G_IO_STATUS_NORMAL) {
 			g_warning ("Could not write queue element \"%s\" to channel: %s", buf, error->message);
 			g_error_free (error);
@@ -394,7 +414,7 @@ is_string_complete (gchar *str, ...)
 
 /* Authentication attempt succeeded. Update the GUI accordingly. */
 static void
-authenticated_user (PasswordDialog *pdialog)
+authenticated_user (PasswordDialog *pdialog, gboolean retry)
 {
 	pdialog->backend_state = PASSWD_STATE_NEW;
 
@@ -406,7 +426,9 @@ authenticated_user (PasswordDialog *pdialog)
 
 	/* Update UI state */
 	passdlg_set_auth_state (pdialog, TRUE);
-	passdlg_set_status (pdialog, _("Authenticated!"));
+	if (!retry) {
+		passdlg_set_status (pdialog, _("Authenticated!"));
+	}
 
 	/* Check to see if the passwords are valid
 	 * (They might be non-empty if the user had to re-authenticate,
@@ -446,24 +468,21 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 	}
 
 	str = g_string_append_len (str, buf, bytes_read);
-
 	/* In which state is the backend? */
 	switch (pdialog->backend_state) {
 		case PASSWD_STATE_AUTH:
 			/* Passwd is asking for our current password */
-
 			if (is_string_complete (str->str, "assword: ", "failure", "wrong", "error", NULL)) {
 				/* Which response did we get? */
 				passdlg_set_busy (pdialog, FALSE);
 
-				if (g_strrstr (str->str, "assword: ") != NULL) {
+				if (g_strrstr (str->str, "New password: ") != NULL) {
 					/* Authentication successful */
 
-					authenticated_user (pdialog);
+					authenticated_user (pdialog, FALSE);
 
 				} else {
 					/* Authentication failed */
-
 					if (pdialog->authenticated) {
 						/* This is a re-auth, and it failed.
 						 * The password must have been changed in the meantime!
@@ -485,20 +504,20 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 			break;
 		case PASSWD_STATE_NEW:
 			/* Passwd is asking for our new password */
-
-			if (is_string_complete (str->str, "assword: ", NULL)) {
-				/* Advance to next state */
-				pdialog->backend_state = PASSWD_STATE_RETYPE;
-
+			if (is_string_complete (str->str, " new password: ", NULL)) {
 				/* Pop retyped password from queue and into IO channel */
 				io_queue_pop (pdialog->backend_stdin_queue, pdialog->backend_stdin);
-
+				reinit = TRUE;
+				
+			} else if (is_string_complete (str->str, "New password: ", NULL)) {
+				authenticated_user(pdialog, TRUE);
 				reinit = TRUE;
 			}
+			/* Advance to next state */
+			pdialog->backend_state = PASSWD_STATE_RETYPE;
 			break;
 		case PASSWD_STATE_RETYPE:
 			/* Passwd is asking for our retyped new password */
-
 			if (is_string_complete (str->str, "successfully",
 							  "short",
 							  "longer",
@@ -515,6 +534,9 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 							  "match",
 							  "1 numeric or special",
 							  "failure",
+							  "rotated",
+							  "error",
+							  "BAD PASSWORD",
 							  NULL)) {
 
 				/* What response did we get? */
@@ -559,26 +581,36 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 						msg = g_strdup (_("Your password has been changed since you initially authenticated! Please re-authenticate."));
 
 						passdlg_set_auth_state (pdialog, FALSE);
+					} else if (g_strrstr (str->str, "BAD PASSWORD") != NULL) {
+						/* Actual error description from libpwquality is located in the first string */
+						msg = g_strdup("Password hasn't changed!");
+						pdialog->ext_msg = g_strdup(g_strsplit(str->str, "\n", 2)[0]);
+						stop_passwd(pdialog);
 					}
 				}
-
-				reinit = TRUE;
-
+				/* child_watch_cb should clean up for us now */
+			}
+			reinit = TRUE;
 				if (msg != NULL) {
 					/* An error occurred! */
+					passdlg_clear(pdialog);
 					passdlg_set_status (pdialog, msg);
-					g_free (msg);
 
 					/* At this point, passwd might have exited, in which case
 					 * child_watch_cb should clean up for us and remove this watcher.
 					 * On some error conditions though, passwd just re-prompts us
 					 * for our new password. */
-
+					if (pdialog->ext_msg != NULL) {
+						passdlg_clear(pdialog);
+						passdlg_set_status (pdialog, g_strconcat(msg, "\n", 
+											 pdialog->ext_msg, NULL));
+						g_free (pdialog->ext_msg);
+					}
 					pdialog->backend_state = PASSWD_STATE_ERR;
+					/* Clean backen_stdin_queue if error occured */
+					g_queue_clear_full(pdialog->backend_stdin_queue, g_free);
+					g_free (msg);
 				}
-
-				/* child_watch_cb should clean up for us now */
-			}
 			break;
 		case PASSWD_STATE_NONE:
 			/* Passwd is not asking for anything yet */
@@ -593,7 +625,7 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					pdialog->backend_state = PASSWD_STATE_NEW;
 
 					passdlg_set_busy (pdialog, FALSE);
-					authenticated_user (pdialog);
+					authenticated_user (pdialog, FALSE);
 
 					/* since passwd didn't ask for our old password
 					 * in this case, simply remove it from the queue */
@@ -1041,6 +1073,7 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 	/* Initialize IO Channels */
 	pdialog->backend_stdin = NULL;
 	pdialog->backend_stdout = NULL;
+	pdialog->backend_stderr = NULL;
 
 	/* Initialize write queue */
 	pdialog->backend_stdin_queue = g_queue_new ();
@@ -1048,6 +1081,7 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 	/* Initialize watchers */
 	pdialog->backend_child_watch_id = 0;
 	pdialog->backend_stdout_watch_id = 0;
+	pdialog->backend_stderr_watch_id = 0;
 
 	/* Initialize backend state */
 	pdialog->backend_state = PASSWD_STATE_NONE;
