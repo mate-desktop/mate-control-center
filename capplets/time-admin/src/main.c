@@ -261,7 +261,7 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
     ta->Connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
     if(ta->Connection == NULL)
     {
-        ErrorMessage (_("g_bus_get_sync"), error->message);
+        ErrorMessage ("g_bus_get_sync", error->message);
         goto EXIT;
     }
     ta->proxy = g_dbus_proxy_new_sync (ta->Connection,
@@ -274,7 +274,7 @@ static gboolean InitDbusProxy(TimeAdmin *ta)
                                       &error);
     if(ta->proxy == NULL)
     {
-        ErrorMessage (_("g_bus_proxy_new"), error->message);
+        ErrorMessage ("g_bus_proxy_new", error->message);
         goto EXIT;
     }
 
