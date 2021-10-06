@@ -182,26 +182,26 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 	argv[0] = "/usr/bin/passwd";	/* Is it safe to rely on a hard-coded path? */
 	argv[1] = NULL;
 
-	envp[0] = NULL;					/* If we pass an empty array as the environment,
-									 * will the childs environment be empty, and the
-									 * locales set to the C default? From the manual:
-									 * "If envp is NULL, the child inherits its
-									 * parent'senvironment."
-									 * If I'm wrong here, we somehow have to set
-									 * the locales here.
-									 */
+	envp[0] = NULL;		/* If we pass an empty array as the environment,
+				 * will the childs environment be empty, and the
+				 * locales set to the C default? From the manual:
+				 * "If envp is NULL, the child inherits its
+				 * parent'senvironment."
+				 * If I'm wrong here, we somehow have to set
+				 * the locales here.
+				 */
 
-	if (!g_spawn_async_with_pipes (NULL,						/* Working directory */
-								   argv,						/* Argument vector */
-								   envp,						/* Environment */
-								   G_SPAWN_DO_NOT_REAP_CHILD,	/* Flags */
-								   NULL,						/* Child setup */
-								   NULL,						/* Data to child setup */
-								   &pdialog->backend_pid,		/* PID */
-								   &my_stdin,						/* Stdin */
-								   &my_stdout,						/* Stdout */
-								   &my_stderr,						/* Stderr */
-								   error)) {					/* GError */
+	if (!g_spawn_async_with_pipes (NULL,				/* Working directory */
+				       argv,				/* Argument vector */
+				       envp,				/* Environment */
+				       G_SPAWN_DO_NOT_REAP_CHILD,	/* Flags */
+				       NULL,				/* Child setup */
+				       NULL,				/* Data to child setup */
+				       &pdialog->backend_pid,		/* PID */
+				       &my_stdin,			/* Stdin */
+				       &my_stdout,			/* Stdout */
+				       &my_stderr,			/* Stderr */
+				       error)) {			/* GError */
 
 		/* An error occurred */
 		free_passwd_resources (pdialog);
@@ -238,11 +238,11 @@ spawn_passwd (PasswordDialog *pdialog, GError **error)
 
 	/* Add IO Channel watcher */
 	pdialog->backend_stdout_watch_id = g_io_add_watch (pdialog->backend_stdout,
-													   G_IO_IN | G_IO_PRI,
-													   (GIOFunc) io_watch_stdout, pdialog);
+							   G_IO_IN | G_IO_PRI,
+							   (GIOFunc) io_watch_stdout, pdialog);
 	pdialog->backend_stderr_watch_id = g_io_add_watch (pdialog->backend_stderr,
-													   G_IO_IN | G_IO_PRI,
-													   (GIOFunc) io_watch_stdout, pdialog);
+							   G_IO_IN | G_IO_PRI,
+							   (GIOFunc) io_watch_stdout, pdialog);
 
 	/* Add child watcher */
 	pdialog->backend_child_watch_id = g_child_watch_add (pdialog->backend_pid, (GChildWatchFunc) child_watch_cb, pdialog);
@@ -443,7 +443,7 @@ authenticated_user (PasswordDialog *pdialog, gboolean retry)
 static gboolean
 io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdialog)
 {
-	static GString *str = NULL;	/* Persistent buffer */
+	static GString *str = NULL;		/* Persistent buffer */
 
 	gchar		buf[BUFSIZE];		/* Temporary buffer */
 	gsize		bytes_read;
@@ -602,8 +602,7 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					 * for our new password. */
 					if (pdialog->ext_msg != NULL) {
 						passdlg_clear(pdialog);
-						passdlg_set_status (pdialog, g_strconcat(msg, "\n", 
-											 pdialog->ext_msg, NULL));
+						passdlg_set_status (pdialog, g_strconcat(msg, "\n", pdialog->ext_msg, NULL));
 						g_free (pdialog->ext_msg);
 					}
 					pdialog->backend_state = PASSWD_STATE_ERR;
