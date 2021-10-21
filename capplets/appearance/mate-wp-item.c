@@ -190,6 +190,7 @@ void mate_wp_item_free (MateWPItem * item) {
   g_free (item->name);
   g_free (item->filename);
   g_free (item->description);
+  g_free (item->artist);
 
   if (item->pcolor != NULL)
     gdk_rgba_free (item->pcolor);
@@ -276,7 +277,7 @@ void mate_wp_item_update_description (MateWPItem * item) {
   if (!strcmp (item->filename, "(none)")) {
     item->description = g_strdup (item->name);
   } else {
-    const gchar *description;
+    gchar *description;
     gchar *size;
     gchar *dirname = g_path_get_dirname (item->filename);
     gchar *artist;
@@ -292,9 +293,9 @@ void mate_wp_item_update_description (MateWPItem * item) {
     if (strcmp (item->fileinfo->mime_type, "application/xml") == 0)
       {
         if (mate_bg_changes_with_time (item->bg))
-          description = _("Slide Show");
+          description = g_strdup (_("Slide Show"));
         else if (item->width > 0 && item->height > 0)
-          description = _("Image");
+          description = g_strdup (_("Image"));
       }
     else
       description = g_content_type_get_description (item->fileinfo->mime_type);
@@ -344,5 +345,6 @@ void mate_wp_item_update_description (MateWPItem * item) {
     g_free (size);
     g_free (dirname);
     g_free (artist);
+    g_free (description);
   }
 }
