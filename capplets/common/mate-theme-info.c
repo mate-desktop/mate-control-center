@@ -1560,6 +1560,7 @@ void mate_theme_meta_info_free(MateThemeMetaInfo* meta_theme_info)
 	g_free (meta_theme_info->path);
 	g_free (meta_theme_info->sound_theme_name);
 	g_free (meta_theme_info->windowtitle_font);
+	g_free (meta_theme_info->readable_name);
 	g_free (meta_theme_info);
 }
 
