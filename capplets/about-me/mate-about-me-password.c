@@ -607,7 +607,13 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					}
 					pdialog->backend_state = PASSWD_STATE_ERR;
 					/* Clean backen_stdin_queue if error occured */
-					g_queue_clear_full(pdialog->backend_stdin_queue, g_free);
+#if GLIB_CHECK_VERSION(2, 60, 0)
+					g_queue_clear_full (pdialog->backend_stdin_queue, g_free);
+#else
+					/* TODO: Remove this if/when GLib compatibility gets dropped. */
+					g_queue_foreach (pdialog->backend_stdin_queue, (GFunc) g_free, NULL);
+					g_queue_clear (pdialog->backend_stdin_queue);
+#endif
 					g_free (msg);
 				}
 			break;
