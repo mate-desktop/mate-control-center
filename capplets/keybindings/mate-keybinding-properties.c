@@ -861,7 +861,8 @@ static gboolean
 strv_contains (char **strv,
            char  *str)
 {
-  char **p = strv;
+  char **p;
+
   for (p = strv; *p; p++)
     if (strcmp (*p, str) == 0)
       return TRUE;
