@@ -404,6 +404,7 @@ main (int argc, char **argv)
 	context = g_option_context_new (_("- MATE Mouse Preferences"));
 	g_option_context_add_main_entries (context, cap_options, GETTEXT_PACKAGE);
 	capplet_init (context, &argc, &argv);
+	g_option_context_free (context);
 
 	activate_settings_daemon ();
 
