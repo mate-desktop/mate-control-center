@@ -187,6 +187,7 @@ main (int argc, char **argv)
 					   GETTEXT_PACKAGE);
 
 	capplet_init (context, &argc, &argv);
+	g_option_context_free (context);
 
 	activate_settings_daemon ();
 
