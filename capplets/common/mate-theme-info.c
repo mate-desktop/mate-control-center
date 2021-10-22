@@ -1213,11 +1213,14 @@ real_add_top_theme_dir_monitor (GFile    *uri,
   tuple->priority = priority;
 
   /* Monitor the top directory */
-  monitor = g_file_monitor_directory (uri, G_FILE_MONITOR_NONE, NULL, NULL);
-  if (monitor != NULL) {
+  if ((monitor = g_file_monitor_directory (uri, G_FILE_MONITOR_NONE, NULL, NULL)) != NULL) {
     g_signal_connect (monitor, "changed",
                       (GCallback) (icon_theme ? top_icon_theme_dir_changed : top_theme_dir_changed),
                       tuple);
+  } else {
+    g_hash_table_destroy (tuple->handle_hash);
+    g_free (tuple);
+    return FALSE;
   }
 
   /* Go through the directory to add monitoring */
