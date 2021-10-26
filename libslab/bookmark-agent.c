@@ -168,11 +168,11 @@ bookmark_agent_add_item (BookmarkAgent *this, const BookmarkItem *item)
 	g_bookmark_file_set_mime_type (priv->store, item->uri, item->mime_type);
 
 	if (item->mtime)
-		#if GLIB_CHECK_VERSION(2,66,0)
+#if GLIB_CHECK_VERSION(2,66,0)
 		g_bookmark_file_set_modified_date_time (priv->store, item->uri, item->mtime);
-		#else
+#else
 		g_bookmark_file_set_modified (priv->store, item->uri, item->mtime);
-		#endif
+#endif
 
 	if (item->title)
 		g_bookmark_file_set_title (priv->store, item->uri, item->title);
@@ -331,11 +331,11 @@ make_items_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *store)
 
 			item->uri       = g_strdup (uris [i]);
 			item->mime_type = g_bookmark_file_get_mime_type (store, uris [i], NULL);
-			#if GLIB_CHECK_VERSION(2,66,0)
+#if GLIB_CHECK_VERSION(2,66,0)
 			item->mtime     = g_bookmark_file_get_modified_date_time  (store, uris [i], NULL);
-			#else
+#else
 			item->mtime     = g_bookmark_file_get_modified (store, uris [i], NULL);
-			#endif
+#endif
 
 			items_ordered = g_list_prepend (items_ordered, item);
 		}
