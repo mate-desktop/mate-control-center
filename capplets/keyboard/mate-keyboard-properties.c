@@ -41,6 +41,8 @@
 #define INTERFACE_SCHEMA "org.mate.interface"
 #define TYPING_BREAK_SCHEMA "org.mate.typing-break"
 
+#define GET_RANGE(s) GTK_RANGE (gtk_builder_get_object (dialog, s))
+
 enum {
 	RESPONSE_APPLY = 1,
 	RESPONSE_CLOSE
@@ -65,84 +67,59 @@ setup_dialog (GtkBuilder * dialog)
 {
 	gchar *monitor;
 
-	g_settings_bind (keyboard_settings,
-					 "repeat",
-					 WID ("repeat_toggle"),
-					 "active",
-					 G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (keyboard_settings,
-					 "repeat",
-					 WID ("repeat_table"),
-					 "sensitive",
-					 G_SETTINGS_BIND_DEFAULT);
-
-	g_settings_bind (keyboard_settings,
-					 "delay",
-					 gtk_range_get_adjustment (GTK_RANGE (WID ("repeat_delay_scale"))),
-					 "value",
-					 G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (keyboard_settings,
-					 "rate",
-					 gtk_range_get_adjustment (GTK_RANGE (WID ("repeat_speed_scale"))),
-					 "value",
-					 G_SETTINGS_BIND_DEFAULT);
-
-	g_settings_bind (interface_settings,
-					 "cursor-blink",
-					 WID ("cursor_toggle"),
-					 "active",
-					 G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (interface_settings,
-					 "cursor-blink",
-					 WID ("cursor_hbox"),
-					 "sensitive",
-					 G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (interface_settings,
-					 "cursor-blink-time",
-					 gtk_range_get_adjustment (GTK_RANGE (WID ("cursor_blink_time_scale"))),
-					 "value",
-					 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (keyboard_settings, "repeat",
+	                 gtk_builder_get_object (dialog, "repeat_toggle"), "active",
+	                 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (keyboard_settings, "repeat",
+	                 gtk_builder_get_object (dialog, "repeat_table"), "sensitive",
+	                 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (keyboard_settings, "delay",
+	                 gtk_range_get_adjustment (GET_RANGE ("repeat_delay_scale")), "value",
+	                 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (keyboard_settings, "rate",
+	                 gtk_range_get_adjustment (GET_RANGE ("repeat_speed_scale")), "value",
+	                 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (interface_settings, "cursor-blink",
+	                 gtk_builder_get_object (dialog, "cursor_toggle"), "active",
+	                 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (interface_settings, "cursor-blink",
+	                 gtk_builder_get_object (dialog, "cursor_hbox"), "sensitive",
+	                 G_SETTINGS_BIND_DEFAULT);
+	g_settings_bind (interface_settings, "cursor-blink-time",
+	                 gtk_range_get_adjustment (GET_RANGE ("cursor_blink_time_scale")), "value",
+	                 G_SETTINGS_BIND_DEFAULT);
 
 	/* Ergonomics */
 	monitor = g_find_program_in_path ("mate-typing-monitor");
 	if (monitor != NULL) {
 		g_free (monitor);
 
-		g_settings_bind (typing_break_settings,
-						 "enabled",
-						 WID ("break_enabled_toggle"),
-						 "active",
-						 G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (typing_break_settings,
-						 "enabled",
-						 WID ("break_details_table"),
-						 "sensitive",
-						 G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (typing_break_settings,
-						 "type-time",
-						 WID ("break_enabled_spin"),
-						 "value",
-						 G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (typing_break_settings,
-						 "break-time",
-						 WID ("break_interval_spin"),
-						 "value",
-						 G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (typing_break_settings,
-						 "allow-postpone",
-						 WID ("break_postponement_toggle"),
-						 "active",
-						 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings, "enabled",
+		                 gtk_builder_get_object (dialog, "break_enabled_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings, "enabled",
+		                 gtk_builder_get_object (dialog, "break_details_table"), "sensitive",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings, "type-time",
+		                 gtk_builder_get_object (dialog, "break_enabled_spin"), "value",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings, "break-time",
+		                 gtk_builder_get_object (dialog, "break_interval_spin"), "value",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (typing_break_settings, "allow-postpone",
+		                 gtk_builder_get_object (dialog, "break_postponement_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
 
 	} else {
 		/* don't show the typing break tab if the daemon is not available */
-		GtkNotebook *nb = GTK_NOTEBOOK (WID ("keyboard_notebook"));
+		GtkNotebook *nb = GTK_NOTEBOOK (gtk_builder_get_object (dialog, "keyboard_notebook"));
 		gint tb_page = gtk_notebook_page_num (nb, WID ("break_enabled_toggle"));
 		gtk_notebook_remove_page (nb, tb_page);
 	}
 
-	g_signal_connect (WID ("keyboard_dialog"), "response",
-			  (GCallback) dialog_response, NULL);
+	g_signal_connect (gtk_builder_get_object (dialog, "keyboard_dialog"), "response",
+	                  (GCallback) dialog_response,
+	                  NULL);
 
 	setup_xkb_tabs (dialog);
 	setup_a11y_tabs (dialog);
@@ -198,10 +175,9 @@ main (int argc, char **argv)
 
 	setup_dialog (dialog);
 
-        GtkNotebook* nb = GTK_NOTEBOOK (WID ("keyboard_notebook"));
+        GtkNotebook* nb = GTK_NOTEBOOK (gtk_builder_get_object (dialog, "keyboard_notebook"));
         gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-        g_signal_connect (GTK_WIDGET (nb),
-                          "scroll-event",
+        g_signal_connect (nb, "scroll-event",
                           G_CALLBACK (capplet_notebook_scroll_event_cb),
                           NULL);
 

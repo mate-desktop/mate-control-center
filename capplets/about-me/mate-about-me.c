@@ -288,13 +288,15 @@ about_me_image_clicked_cb (GtkWidget *button, MateAboutMe *me)
 
 	dialog = me->dialog;
 
-	chooser_dialog = GTK_FILE_CHOOSER (
-			 gtk_file_chooser_dialog_new (_("Select Image"), GTK_WINDOW (WID ("about-me-dialog")),
-							GTK_FILE_CHOOSER_ACTION_OPEN,
-							_("No Image"), GTK_RESPONSE_NO,
-							"gtk-cancel", GTK_RESPONSE_CANCEL,
-							"gtk-open", GTK_RESPONSE_ACCEPT,
-							NULL));
+	chooser_dialog =
+		GTK_FILE_CHOOSER (
+			gtk_file_chooser_dialog_new (_("Select Image"),
+			GTK_WINDOW (gtk_builder_get_object (dialog, "about-me-dialog")),
+			GTK_FILE_CHOOSER_ACTION_OPEN,
+			_("No Image"), GTK_RESPONSE_NO,
+			"gtk-cancel", GTK_RESPONSE_CANCEL,
+			"gtk-open", GTK_RESPONSE_ACCEPT,
+			NULL));
 	gtk_window_set_modal (GTK_WINDOW (chooser_dialog), TRUE);
 	gtk_dialog_set_default_response (GTK_DIALOG (chooser_dialog), GTK_RESPONSE_ACCEPT);
 
@@ -397,7 +399,7 @@ about_me_passwd_clicked_cb (GtkWidget *button, MateAboutMe *me)
 	GtkBuilder *dialog;
 
 	dialog = me->dialog;
-	mate_about_me_password (GTK_WINDOW (WID ("about-me-dialog")));
+	mate_about_me_password (GTK_WINDOW (gtk_builder_get_object (dialog, "about-me-dialog")));
 }
 
 static void
@@ -444,7 +446,7 @@ about_me_setup_dialog (void)
         }
 
 	me->image_chooser = e_image_chooser_new_with_size (MAX_WIDTH, MAX_HEIGHT);
-	gtk_container_add (GTK_CONTAINER (WID ("button-image")), me->image_chooser);
+	gtk_container_add (GTK_CONTAINER (gtk_builder_get_object (dialog, "button-image")), me->image_chooser);
 
 	if (dialog == NULL) {
 		about_me_destroy ();

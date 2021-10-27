@@ -1094,11 +1094,11 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 	 */
 
 	/* Initialize pdialog widgets */
-	pdialog->current_password	= GTK_ENTRY (WID ("current-password"));
-	pdialog->new_password		= GTK_ENTRY (WID ("new-password"));
-	pdialog->retyped_password	= GTK_ENTRY (WID ("retyped-password"));
-	pdialog->dialog_image		= GTK_IMAGE (WID ("dialog-image"));
-	pdialog->status_label		= GTK_LABEL (WID ("status-label"));
+	pdialog->current_password	= GTK_ENTRY (gtk_builder_get_object (dialog, "current-password"));
+	pdialog->new_password		= GTK_ENTRY (gtk_builder_get_object (dialog, "new-password"));
+	pdialog->retyped_password	= GTK_ENTRY (gtk_builder_get_object (dialog, "retyped-password"));
+	pdialog->dialog_image		= GTK_IMAGE (gtk_builder_get_object (dialog, "dialog-image"));
+	pdialog->status_label		= GTK_LABEL (gtk_builder_get_object (dialog, "status-label"));
 
 	/* Initialize accelerators */
 	gtk_widget_add_accelerator (GTK_WIDGET (pdialog->current_password),
