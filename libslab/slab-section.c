@@ -100,17 +100,19 @@ slab_section_set_selected (SlabSection * section, gboolean selected)
 		return;
 	section->selected = selected;
 
-	/*
-	   if(selected)
-	   {
-	   section->expose_handler_id = g_signal_connect(G_OBJECT(section),
-	   "expose-event", G_CALLBACK(slab_section_expose_event), NULL);
-	   }
-	   else
-	   {
-	   g_signal_handler_disconnect(section, section->expose_handler_id);
-	   }
-	 */
+/*
+	if(selected)
+	{
+		section->expose_handler_id =
+			g_signal_connect (section, "expose-event",
+			                  G_CALLBACK (slab_section_expose_event),
+				          NULL);
+	}
+	else
+	{
+		g_signal_handler_disconnect(section, section->expose_handler_id);
+	}
+*/
 
 	slab_section_set_title_color (GTK_WIDGET (section));
 }
@@ -151,8 +153,9 @@ slab_section_new_with_markup (const gchar * title_markup, SlabStyle style)
 	gtk_label_set_xalign (GTK_LABEL (section->title), 0.0);
 
 	gtk_widget_set_name (GTK_WIDGET (section), widget_theming_name);
-	g_signal_connect (G_OBJECT (section), "style-set", G_CALLBACK (slab_section_style_set),
-		NULL);
+	g_signal_connect (section, "style-set",
+	                  G_CALLBACK (slab_section_style_set),
+	                  NULL);
 
 	gtk_box_pack_start (section->childbox, section->title, FALSE, FALSE, 0);
 

@@ -622,7 +622,7 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
 
   keys->grab_widget = widget;
 
-  g_signal_connect (G_OBJECT (widget), "key_press_event",
+  g_signal_connect (widget, "key_press_event",
                     G_CALLBACK (grab_key_callback),
                     keys);
 
@@ -659,8 +659,9 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
 
   gtk_widget_show_all (keys->edit_widget);
 
-  g_signal_connect (G_OBJECT (keys->edit_widget), "unrealize",
-                    G_CALLBACK (ungrab_stuff), keys);
+  g_signal_connect (keys->edit_widget, "unrealize",
+                    G_CALLBACK (ungrab_stuff),
+                    keys);
 
   keys->edit_key = keys->accel_key;
 

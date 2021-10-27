@@ -48,9 +48,9 @@ capplet_error_dialog (GtkWindow *parent, char const *msg, GError *err)
 			GTK_BUTTONS_CLOSE,
 			msg, err->message);
 
-		g_signal_connect (G_OBJECT (dialog),
-			"response",
-			G_CALLBACK (gtk_widget_destroy), NULL);
+		g_signal_connect (dialog, "response",
+		                  G_CALLBACK (gtk_widget_destroy),
+		                  NULL);
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 		gtk_widget_show (dialog);
 		g_error_free (err);

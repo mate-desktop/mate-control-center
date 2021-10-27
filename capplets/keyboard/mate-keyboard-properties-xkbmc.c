@@ -217,11 +217,9 @@ fill_vendors_list (GtkBuilder * chooser_dialog)
 		fill_models_list (chooser_dialog);
 	}
 
-	g_signal_connect (G_OBJECT
-			  (gtk_tree_view_get_selection
-			   (GTK_TREE_VIEW (vendors_list))), "changed",
-			  G_CALLBACK (xkb_model_chooser_change_vendor_sel),
-			  chooser_dialog);
+	g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW (vendors_list)), "changed",
+	                  G_CALLBACK (xkb_model_chooser_change_vendor_sel),
+	                  chooser_dialog);
 
 	return gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list_store),
 					      &iter);
@@ -278,11 +276,9 @@ fill_models_list (GtkBuilder * chooser_dialog)
 		}
 	}
 
-	g_signal_connect (G_OBJECT
-			  (gtk_tree_view_get_selection
-			   (GTK_TREE_VIEW (models_list))), "changed",
-			  G_CALLBACK (xkb_model_chooser_change_model_sel),
-			  chooser_dialog);
+	g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW (models_list)), "changed",
+	                  G_CALLBACK (xkb_model_chooser_change_model_sel),
+	                  chooser_dialog);
 }
 
 static void
@@ -335,10 +331,9 @@ choose_model (GtkBuilder * dialog)
 		fill_models_list (chooser_dialog);
 	}
 
-	g_signal_connect (G_OBJECT (chooser),
-			  "response",
-			  G_CALLBACK (xkb_model_chooser_response),
-			  chooser_dialog);
+	g_signal_connect (chooser, "response",
+	                  G_CALLBACK (xkb_model_chooser_response),
+	                  chooser_dialog);
 	gtk_dialog_run (GTK_DIALOG (chooser));
 	gtk_widget_destroy (chooser);
 	g_free (current_model_name);

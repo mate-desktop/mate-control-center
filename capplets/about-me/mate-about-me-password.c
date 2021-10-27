@@ -1112,12 +1112,14 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 								0);
 
 	/* Activate authenticate-button when enter is pressed in current-password */
-	g_signal_connect (G_OBJECT (pdialog->current_password), "activate",
-					  G_CALLBACK (passdlg_activate), WID ("authenticate-button"));
+	g_signal_connect (pdialog->current_password, "activate",
+	                  G_CALLBACK (passdlg_activate),
+	                  WID ("authenticate-button"));
 
 	/* Activate retyped-password when enter is pressed in new-password */
-	g_signal_connect (G_OBJECT (pdialog->new_password), "activate",
-					  G_CALLBACK (passdlg_activate), pdialog->retyped_password);
+	g_signal_connect (pdialog->new_password, "activate",
+	                  G_CALLBACK (passdlg_activate),
+	                  pdialog->retyped_password);
 
 	/* Clear status message */
 	passdlg_set_status (pdialog, "");
@@ -1126,14 +1128,17 @@ passdlg_init (PasswordDialog *pdialog, GtkWindow *parent)
 	passdlg_set_auth_state (pdialog, FALSE);
 
 	/* Connect signal handlers */
-	g_signal_connect (G_OBJECT (WID ("authenticate-button")), "clicked",
-					  G_CALLBACK (passdlg_authenticate), pdialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "authenticate-button"), "clicked",
+	                  G_CALLBACK (passdlg_authenticate),
+	                  pdialog);
 
 	/* Verify new passwords on-the-fly */
-	g_signal_connect (G_OBJECT (WID ("new-password")), "changed",
-					  G_CALLBACK (passdlg_check_password), pdialog);
-	g_signal_connect (G_OBJECT (WID ("retyped-password")), "changed",
-					  G_CALLBACK (passdlg_check_password), pdialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "new-password"), "changed",
+	                  G_CALLBACK (passdlg_check_password),
+	                  pdialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "retyped-password"), "changed",
+	                  G_CALLBACK (passdlg_check_password),
+	                  pdialog);
 
 	/* Set misc dialog properties */
 	gtk_window_set_resizable (GTK_WINDOW (wpassdlg), FALSE);

@@ -756,24 +756,31 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 	gtk_window_set_title (GTK_WINDOW (ass), _("Enable Fingerprint Login"));
 	gtk_window_set_transient_for (GTK_WINDOW (ass), parent);
 	gtk_window_set_position (GTK_WINDOW (ass), GTK_WIN_POS_CENTER_ON_PARENT);
-	g_signal_connect (G_OBJECT (ass), "cancel",
-			  G_CALLBACK (assistant_cancelled), data);
-	g_signal_connect (G_OBJECT (ass), "close",
-			  G_CALLBACK (assistant_cancelled), data);
-	g_signal_connect (G_OBJECT (ass), "prepare",
-			  G_CALLBACK (assistant_prepare), data);
+	g_signal_connect (ass, "cancel",
+	                  G_CALLBACK (assistant_cancelled),
+	                  data);
+	g_signal_connect (ass, "close",
+	                  G_CALLBACK (assistant_cancelled),
+	                  data);
+	g_signal_connect (ass, "prepare",
+	                  G_CALLBACK (assistant_prepare),
+	                  data);
 
 	/* Page 1 */
 	gtk_combo_box_set_active (GTK_COMBO_BOX (WID ("finger_combobox")), 0);
 
-	g_signal_connect (G_OBJECT (WID ("radiobutton1")), "toggled",
-			  G_CALLBACK (finger_radio_button_toggled), data);
-	g_signal_connect (G_OBJECT (WID ("radiobutton2")), "toggled",
-			  G_CALLBACK (finger_radio_button_toggled), data);
-	g_signal_connect (G_OBJECT (WID ("radiobutton3")), "toggled",
-			  G_CALLBACK (finger_radio_button_toggled), data);
-	g_signal_connect (G_OBJECT (WID ("finger_combobox")), "changed",
-			  G_CALLBACK (finger_combobox_changed), data);
+	g_signal_connect (gtk_builder_get_object (dialog, "radiobutton1"), "toggled",
+	                  G_CALLBACK (finger_radio_button_toggled),
+	                  data);
+	g_signal_connect (gtk_builder_get_object (dialog, "radiobutton2"), "toggled",
+	                  G_CALLBACK (finger_radio_button_toggled),
+	                  data);
+	g_signal_connect (gtk_builder_get_object (dialog, "radiobutton3"), "toggled",
+	                  G_CALLBACK (finger_radio_button_toggled),
+	                  data);
+	g_signal_connect (gtk_builder_get_object (dialog, "finger_combobox"), "changed",
+	                  G_CALLBACK (finger_combobox_changed),
+	                  data);
 
 	data->finger = selected_finger (dialog);
 

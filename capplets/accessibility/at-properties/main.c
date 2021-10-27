@@ -248,9 +248,9 @@ setup_dialog (GtkBuilder *builder, GSettings *settings)
 						     "at_properties_dialog"));
 	capplet_set_icon (widget, "preferences-desktop-accessibility");
 
-	g_signal_connect (G_OBJECT (widget),
-			  "response",
-			  G_CALLBACK (cb_dialog_response), NULL);
+	g_signal_connect (widget, "response",
+	                  G_CALLBACK (cb_dialog_response),
+	                  NULL);
 
 	gtk_widget_show (widget);
 }

@@ -211,29 +211,28 @@ setup_xkb_tabs (GtkBuilder * dialog)
 				      xkb_get_default_group () < 0);
 
 	xkb_layouts_register_buttons_handlers (dialog);
-	g_signal_connect (G_OBJECT (WID ("xkb_reset_to_defaults")),
-			  "clicked", G_CALLBACK (reset_to_defaults),
-			  dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "xkb_reset_to_defaults"), "clicked",
+	                  G_CALLBACK (reset_to_defaults),
+	                  dialog);
 
-	g_signal_connect (G_OBJECT (chk_new_windows_inherit_layout),
-			  "toggled", (GCallback)
-			  chk_new_windows_inherit_layout_toggled, dialog);
+	g_signal_connect (chk_new_windows_inherit_layout, "toggled",
+	                  (GCallback) chk_new_windows_inherit_layout_toggled,
+	                  dialog);
 
-	g_signal_connect_swapped (G_OBJECT (WID ("xkb_layout_options")),
-				  "clicked",
-				  G_CALLBACK (xkb_options_popup_dialog),
-				  dialog);
+	g_signal_connect_swapped (gtk_builder_get_object (dialog, "xkb_layout_options"), "clicked",
+	                          G_CALLBACK (xkb_options_popup_dialog),
+	                          dialog);
 
-	g_signal_connect_swapped (G_OBJECT (WID ("xkb_model_pick")),
-				  "clicked", G_CALLBACK (choose_model),
-				  dialog);
+	g_signal_connect_swapped (gtk_builder_get_object (dialog, "xkb_model_pick"), "clicked",
+	                          G_CALLBACK (choose_model),
+	                          dialog);
 
 	xkb_layouts_register_gsettings_listener (dialog);
 	xkb_options_register_gsettings_listener (dialog);
 
-	g_signal_connect (G_OBJECT (WID ("keyboard_dialog")),
-			  "destroy", G_CALLBACK (cleanup_xkb_tabs),
-			  dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "keyboard_dialog"), "destroy",
+	                  G_CALLBACK (cleanup_xkb_tabs),
+	                  dialog);
 
 	enable_disable_restoring (dialog);
 }

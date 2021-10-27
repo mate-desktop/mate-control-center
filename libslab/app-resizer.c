@@ -245,7 +245,9 @@ app_resizer_new (GtkBox * child, gint initial_num_columns, gboolean homogeneous,
 	widget->setting_style = FALSE;
 	widget->app_data = app_data;
 
-	g_signal_connect (G_OBJECT (widget), "draw", G_CALLBACK (app_resizer_paint_window), app_data);
+	g_signal_connect (widget, "draw",
+	                  G_CALLBACK (app_resizer_paint_window),
+	                  app_data);
 
 	gtk_container_add (GTK_CONTAINER (widget), GTK_WIDGET (child));
 	widget->child = child;

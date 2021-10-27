@@ -359,9 +359,9 @@ connect_sensitivity_signals (GtkBuilder *builder, GSList *mode_group)
 {
 	for (; mode_group != NULL; mode_group = mode_group->next)
 	{
-		g_signal_connect (G_OBJECT (mode_group->data), "clicked",
-				  G_CALLBACK(proxy_mode_radiobutton_clicked_cb),
-				  builder);
+		g_signal_connect (mode_group->data, "clicked",
+		                  G_CALLBACK(proxy_mode_radiobutton_clicked_cb),
+		                  builder);
 	}
 }
 
