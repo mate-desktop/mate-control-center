@@ -35,7 +35,6 @@
 #include "capplet-util.h"
 #include "mate-keyboard-properties-xkb.h"
 
-
 #define SEL_LAYOUT_TREE_COL_DESCRIPTION 0
 #define SEL_LAYOUT_TREE_COL_ID 1
 #define SEL_LAYOUT_TREE_COL_ENABLED 2

@@ -181,7 +181,6 @@ main (int argc, char **argv)
 		{NULL}
 	};
 
-
 	context = g_option_context_new (_("- MATE Keyboard Preferences"));
 	g_option_context_add_main_entries (context, cap_options,
 					   GETTEXT_PACKAGE);

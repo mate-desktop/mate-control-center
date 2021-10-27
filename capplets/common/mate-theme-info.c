@@ -88,7 +88,6 @@ typedef struct {
 	gint priority;
 } CallbackTuple;
 
-
 /* Hash tables */
 
 /* The hashes_by_dir are indexed by an escaped uri of the common_theme_dir that
@@ -1019,7 +1018,6 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
                     (GCallback) common_theme_dir_changed, monitor_data);
 
   monitor_data->common_theme_dir_handle = monitor;
-
 
   /* gtk-2 theme subdir */
   subdir = g_file_get_child (theme_dir_uri, "gtk-2.0");

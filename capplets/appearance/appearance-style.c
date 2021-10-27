@@ -511,7 +511,6 @@ update_cursor_size_scale (MateThemeCursorInfo *theme,
     adjustment = gtk_range_get_adjustment (range);
     g_object_set (adjustment, "upper", (gdouble) theme->sizes->len - 1, NULL);
 
-
     /* fallback if the gsettings value is bigger than all available sizes;
        use the largest we have */
     index = theme->sizes->len - 1;

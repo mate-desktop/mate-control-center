@@ -130,7 +130,6 @@ application_tile_new_full (const gchar *desktop_item_id,
 
 	MateDesktopItem *desktop_item;
 
-
 	desktop_item = load_desktop_item_from_unknown (desktop_item_id);
 
 	if (
@@ -405,7 +404,6 @@ create_header (const gchar *name)
 {
 	GtkWidget *header;
 
-
 	header = gtk_label_new (name);
 	gtk_label_set_line_wrap (GTK_LABEL (header), TRUE);
 	gtk_label_set_xalign (GTK_LABEL (header), 0.0);
@@ -423,7 +421,6 @@ static GtkWidget *
 create_subheader (const gchar *desc)
 {
 	GtkWidget *subheader;
-
 
 	subheader = gtk_label_new (desc);
 	gtk_label_set_ellipsize (GTK_LABEL (subheader), PANGO_ELLIPSIZE_END);
@@ -473,7 +470,6 @@ add_to_user_list (ApplicationTile *this)
 	ApplicationTilePrivate *priv = application_tile_get_instance_private (this);
 
 	BookmarkItem *item;
-
 
 	item = g_new0 (BookmarkItem, 1);
 	item->uri       = TILE (this)->uri;
@@ -607,7 +603,6 @@ update_user_list_menu_item (ApplicationTile *this)
 
 	TileAction *action;
 	GtkWidget  *item;
-
 
 	if (priv->agent_status == BOOKMARK_STORE_ABSENT) {
 		if (TILE (this)->actions [APPLICATION_TILE_ACTION_UPDATE_MAIN_MENU])

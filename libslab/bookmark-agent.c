@@ -245,7 +245,6 @@ bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
         gint    rank_i;
         gint    i;
 
-
         g_return_if_fail (priv->user_modifiable);
 
 	if (! bookmark_agent_has_item (this, uri))
@@ -286,7 +285,6 @@ bookmark_agent_reorder_items (BookmarkAgent *this, const gchar **uris)
 	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gint i;
-
 
 	g_return_if_fail (priv->reorderable);
 
@@ -578,7 +576,6 @@ get_property (GObject *g_obj, guint prop_id, GValue *value, GParamSpec *pspec)
 	BookmarkAgent        *this = BOOKMARK_AGENT (g_obj);
 	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
-
 	switch (prop_id) {
 		case PROP_ITEMS:
 			g_value_set_pointer (value, priv->items);
@@ -603,7 +600,6 @@ finalize (GObject *g_obj)
 	BookmarkAgentPrivate *priv = bookmark_agent_get_instance_private (this);
 
 	gint i;
-
 
 	for (i = 0; priv->items && priv->items [i]; ++i)
 		bookmark_item_free (priv->items [i]);
@@ -665,7 +661,6 @@ update_items (BookmarkAgent *this)
 	gchar     *new_title, *old_title;
 
 	gint i;
-
 
 	uris = g_bookmark_file_get_uris (priv->store, & n_uris);
 	uris_ordered = g_new0 (gchar *, n_uris + 1);
@@ -762,7 +757,6 @@ save_store (BookmarkAgent *this)
 
 	gchar *dir;
 
-
 	g_return_if_fail (priv->user_modifiable);
 
 	priv->needs_sync = TRUE;
@@ -785,7 +779,6 @@ get_rank (BookmarkAgent *this, const gchar *uri)
 	gint    rank;
 
 	gint i;
-
 
 	if (! priv->reorderable)
 		return -1;
@@ -818,7 +811,6 @@ set_rank (BookmarkAgent *this, const gchar *uri, gint rank)
 	gchar  *group;
 
 	gint i;
-
 
 	if (! (priv->reorderable && bookmark_agent_has_item (this, uri)))
 		return;
@@ -943,7 +935,6 @@ find_package_data_file (const gchar *filename)
 	const gchar * const *dirs = NULL;
 	gchar               *path = NULL;
 	gint                 i;
-
 
 	dirs = g_get_system_data_dirs ();
 

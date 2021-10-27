@@ -262,7 +262,6 @@ GdkPixbuf * mate_wp_item_get_frame_thumbnail (MateWPItem * item,
   return pixbuf;
 }
 
-
 GdkPixbuf * mate_wp_item_get_thumbnail (MateWPItem * item,
 					 MateDesktopThumbnailFactory * thumbs,
                                          gint width,

@@ -110,7 +110,6 @@ drw_selection_claim (DrwSelection *drw_selection)
 	g_signal_connect (drw_selection->invisible, "selection-clear-event",
 			  G_CALLBACK (drw_selection_clear), drw_selection);
 
-
 	if (gtk_selection_owner_set (drw_selection->invisible,
 				     gdk_atom_intern (SELECTION_NAME, FALSE),
 				     GDK_CURRENT_TIME)) {

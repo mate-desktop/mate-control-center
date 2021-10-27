@@ -633,8 +633,6 @@ append_keys_to_tree (GtkBuilder         *builder,
             g_warning ("No description for key '%s'", key_string);
         }
 
-
-
       if (keys_list[j].cmd_key != NULL)
         {
           command = g_settings_get_string (settings, keys_list[j].cmd_key);
@@ -1404,7 +1402,6 @@ description_edited_callback (GtkCellRendererText *renderer,
   if (!g_settings_set_string (key_entry->settings, key_entry->desc_gsettings_key, new_text))
     key_entry->desc_editable = FALSE;
 }
-
 
 typedef struct
 {

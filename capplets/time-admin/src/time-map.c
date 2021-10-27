@@ -249,7 +249,6 @@ convert_latitude_to_y (gdouble latitude, gdouble map_height)
     return y;
 }
 
-
 static void
 draw_text_bubble (cairo_t *cr,
                   GtkWidget *widget,
@@ -465,7 +464,6 @@ button_press_event (TimezoneMap    *map,
     x = event->x;
     y = event->y;
 
-
     rowstride = map->visible_map_rowstride;
     pixels = map->visible_map_pixels;
 
@@ -473,7 +471,6 @@ button_press_event (TimezoneMap    *map,
     g = pixels[(rowstride * y + x * 4) + 1];
     b = pixels[(rowstride * y + x * 4) + 2];
     a = pixels[(rowstride * y + x * 4) + 3];
-
 
     for (i = 0; color_codes[i].offset != -100; i++)
     {
@@ -533,7 +530,6 @@ timezone_map_class_init (TimezoneMapClass *klass)
     widget_class->realize = cc_timezone_map_realize;
     widget_class->draw = cc_timezone_map_draw;
     widget_class->state_flags_changed = cc_timezone_map_state_flags_changed;
-
 
     signals[LOCATION_CHANGED] = g_signal_new ("location-changed",
                                                TYPE_TIMEZONE_MAP,

@@ -289,7 +289,6 @@ free_passwd_resources (PasswordDialog *pdialog)
 		pdialog->backend_child_watch_id = 0;
 	}
 
-
 	/* Close IO channels (internal file descriptors are automatically closed) */
 	if (pdialog->backend_stdin != NULL) {
 
@@ -344,7 +343,6 @@ free_passwd_resources (PasswordDialog *pdialog)
 
 		pdialog->backend_stderr_watch_id = 0;
 	}
-
 
 	/* Close PID */
 	if (pdialog->backend_pid != -1) {

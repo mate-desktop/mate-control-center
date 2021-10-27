@@ -32,7 +32,6 @@ load_desktop_item_from_unknown (const gchar *id)
 
 	GError *error = NULL;
 
-
 	item = mate_desktop_item_new_from_uri (id, 0, &error);
 
 	if (! error)

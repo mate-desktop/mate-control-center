@@ -28,7 +28,6 @@ static gboolean app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppS
 
 G_DEFINE_TYPE (AppResizer, app_resizer, GTK_TYPE_LAYOUT);
 
-
 static void
 app_resizer_class_init (AppResizerClass * klass)
 {

@@ -214,7 +214,6 @@ e_image_chooser_dispose (GObject *object)
 
 	priv = e_image_chooser_get_instance_private (E_IMAGE_CHOOSER (object));
 
-
 	if (priv->image_buf) {
 		g_free (priv->image_buf);
 		priv->image_buf = NULL;
@@ -223,7 +222,6 @@ e_image_chooser_dispose (GObject *object)
 	if (G_OBJECT_CLASS (e_image_chooser_parent_class)->dispose)
 		(* G_OBJECT_CLASS (e_image_chooser_parent_class)->dispose) (object);
 }
-
 
 static gboolean
 set_image_from_data (EImageChooser *chooser,
