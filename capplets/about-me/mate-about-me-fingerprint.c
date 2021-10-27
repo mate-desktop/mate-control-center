@@ -263,11 +263,11 @@ delete_fingerprints_question (GtkBuilder *dialog, GtkWidget *enable, GtkWidget *
 	GtkWidget *question;
 	GtkWidget *button;
 
-	question = gtk_message_dialog_new (GTK_WINDOW (WID ("about-me-dialog")),
-					   GTK_DIALOG_MODAL,
-					   GTK_MESSAGE_QUESTION,
-					   GTK_BUTTONS_NONE,
-					   _("Delete registered fingerprints?"));
+	question = gtk_message_dialog_new (GTK_WINDOW (gtk_builder_get_object (dialog, "about-me-dialog")),
+	                                   GTK_DIALOG_MODAL,
+	                                   GTK_MESSAGE_QUESTION,
+	                                   GTK_BUTTONS_NONE,
+	                                   _("Delete registered fingerprints?"));
 	gtk_dialog_add_button (GTK_DIALOG (question), "gtk-cancel", GTK_RESPONSE_CANCEL);
 
 	button = gtk_button_new_with_mnemonic (_("_Delete Fingerprints"));
@@ -333,18 +333,24 @@ enroll_data_destroy (EnrollData *data)
 static const char *
 selected_finger (GtkBuilder *dialog)
 {
+	GtkWidget *finger_combobox;
 	int index;
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (WID ("radiobutton1")))) {
-		gtk_widget_set_sensitive (WID ("finger_combobox"), FALSE);
+	finger_combobox = WID ("finger_combobox");
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (dialog, "radiobutton1")))) {
+		gtk_widget_set_sensitive (finger_combobox, FALSE);
 		return "right-index-finger";
 	}
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (WID ("radiobutton2")))) {
-		gtk_widget_set_sensitive (WID ("finger_combobox"), FALSE);
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (dialog, "radiobutton2")))) {
+		gtk_widget_set_sensitive (finger_combobox, FALSE);
 		return "left-index-finger";
 	}
-	gtk_widget_set_sensitive (WID ("finger_combobox"), TRUE);
-	index = gtk_combo_box_get_active (GTK_COMBO_BOX (WID ("finger_combobox")));
+
+	gtk_widget_set_sensitive (finger_combobox, TRUE);
+
+	index = gtk_combo_box_get_active (GTK_COMBO_BOX (finger_combobox));
 	switch (index) {
 	case 0:
 		return "left-thumb";
@@ -372,13 +378,12 @@ selected_finger (GtkBuilder *dialog)
 static void
 finger_radio_button_toggled (GtkToggleButton *button, EnrollData *data)
 {
-	GtkBuilder *dialog = data->dialog;
 	char *msg;
 
 	data->finger = selected_finger (data->dialog);
 
 	msg = g_strdup_printf (TR(finger_str_to_msg (data->finger, data->is_swipe)), data->name);
-	gtk_label_set_text (GTK_LABEL (WID("enroll-label")), msg);
+	gtk_label_set_text (GTK_LABEL (gtk_builder_get_object (data->dialog, "enroll-label")), msg);
 	g_free (msg);
 }
 
@@ -432,12 +437,12 @@ on_signal (GDBusProxy *proxy G_GNUC_UNUSED,
 		data->num_stages_done++;
 		name = g_strdup_printf ("image%d", data->num_stages_done);
 		path = g_build_filename (MATECC_PIXMAP_DIR, "print_ok.png", NULL);
-		gtk_image_set_from_file (GTK_IMAGE (WID (name)), path);
+		gtk_image_set_from_file (GTK_IMAGE (gtk_builder_get_object (dialog, name)), path);
 		g_free (name);
 		g_free (path);
 	}
 	if (g_str_equal (result, "enroll-completed")) {
-		gtk_label_set_text (GTK_LABEL (WID ("status-label")), _("Done!"));
+		gtk_label_set_text (GTK_LABEL (gtk_builder_get_object (dialog, "status-label")), _("Done!"));
 		gtk_assistant_set_page_complete (GTK_ASSISTANT (data->ass), WID ("page2"), TRUE);
 	}
 
@@ -476,7 +481,7 @@ on_signal (GDBusProxy *proxy G_GNUC_UNUSED,
 	}
 
 	msg = g_strdup_printf (TR(enroll_result_str_to_msg (result, data->is_swipe)), data->name);
-	gtk_label_set_text (GTK_LABEL (WID ("status-label")), msg);
+	gtk_label_set_text (GTK_LABEL (gtk_builder_get_object (dialog, "status-label")), msg);
 	g_free (msg);
 	g_free (result);
 }
@@ -598,7 +603,7 @@ out:
 		for (i = 1; i <= data->num_enroll_stages; i++) {
 			char *image_name;
 			image_name = g_strdup_printf ("image%d", i);
-			gtk_image_set_from_file (GTK_IMAGE (WID (image_name)), path);
+			gtk_image_set_from_file (GTK_IMAGE (gtk_builder_get_object (dialog, image_name)), path);
 			g_free (image_name);
 		}
 		g_free (path);
@@ -767,7 +772,7 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 	                  data);
 
 	/* Page 1 */
-	gtk_combo_box_set_active (GTK_COMBO_BOX (WID ("finger_combobox")), 0);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (gtk_builder_get_object (dialog, "finger_combobox")), 0);
 
 	g_signal_connect (gtk_builder_get_object (dialog, "radiobutton1"), "toggled",
 	                  G_CALLBACK (finger_radio_button_toggled),
@@ -784,7 +789,7 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 
 	data->finger = selected_finger (dialog);
 
-	g_object_set_data (G_OBJECT (WID("page1")), "name", "intro");
+	g_object_set_data (gtk_builder_get_object (dialog, "page1"), "name", "intro");
 
 	/* translators:
 	 * The variable is the name of the device, for example:
@@ -792,7 +797,7 @@ enroll_fingerprints (GtkWindow *parent, GtkWidget *enable, GtkWidget *disable)
 	 * 'Digital Persona U.are.U 4000/4000B' device." */
 	msg = g_strdup_printf (_("To enable fingerprint login, you need to save one of your fingerprints, using the '%s' device."),
 			       data->name);
-	gtk_label_set_text (GTK_LABEL (WID("intro-label")), msg);
+	gtk_label_set_text (GTK_LABEL (gtk_builder_get_object (dialog, "intro-label")), msg);
 	g_free (msg);
 
 	gtk_assistant_set_page_complete (GTK_ASSISTANT (ass), WID("page1"), TRUE);
@@ -827,6 +832,6 @@ fingerprint_button_clicked (GtkBuilder *dialog,
 	if (is_disable != FALSE) {
 		delete_fingerprints_question (dialog, enable, disable);
 	} else {
-		enroll_fingerprints (GTK_WINDOW (WID ("about-me-dialog")), enable, disable);
+		enroll_fingerprints (GTK_WINDOW (gtk_builder_get_object (dialog, "about-me-dialog")), enable, disable);
 	}
 }

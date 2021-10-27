@@ -167,7 +167,7 @@ orientation_radio_button_toggled (GtkToggleButton *togglebutton,
 				        GtkBuilder *dialog)
 {
 	gboolean left_handed;
-	left_handed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (WID ("left_handed_radio")));
+	left_handed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (dialog, "left_handed_radio")));
 	g_settings_set_boolean (mouse_settings, "left-handed", left_handed);
 }
 
@@ -205,7 +205,7 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 			/* Property data is booleans for has_left, has_middle,
 			 * has_right, has_double, has_triple */
 			if (!data[0]) {
-				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WID ("tap_to_click_toggle")), TRUE);
+				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (dialog, "tap_to_click_toggle")), TRUE);
 				gtk_widget_set_sensitive (WID ("tap_to_click_toggle"), FALSE);
 			}
 
@@ -231,7 +231,7 @@ comboxbox_changed (GtkWidget *combobox, GtkBuilder *dialog, const char *key)
 {
 	gint value = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
 	gint value2, value3;
-	GtkLabel *warn = GTK_LABEL (WID ("multi_finger_warning"));
+	GtkLabel *warn = GTK_LABEL (gtk_builder_get_object (dialog, "multi_finger_warning"));
 
 	g_settings_set_int (touchpad_settings, (const gchar *) key, value);
 
@@ -260,7 +260,7 @@ setup_dialog (GtkBuilder *dialog)
 	GtkRadioButton    *radio;
 
 	/* Orientation radio buttons */
-	radio = GTK_RADIO_BUTTON (WID ("left_handed_radio"));
+	radio = GTK_RADIO_BUTTON (gtk_builder_get_object (dialog, "left_handed_radio"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(radio),
 		g_settings_get_boolean(mouse_settings, "left-handed"));
 	/* explicitly connect to button-release so that you can change orientation with either button */
@@ -286,66 +286,80 @@ setup_dialog (GtkBuilder *dialog)
 
 	/* Double-click time */
 	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
-		gtk_range_get_adjustment (GTK_RANGE (WID ("delay_scale"))), "value",
+		gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "delay_scale"))), "value",
 		G_SETTINGS_BIND_DEFAULT);
 
-	gtk_image_set_from_resource (GTK_IMAGE (WID ("double_click_image")), "/org/mate/mcc/mouse/double-click-off.svg");
-	g_object_set_data (G_OBJECT (WID ("double_click_eventbox")), "image", WID ("double_click_image"));
-	g_signal_connect (WID ("double_click_eventbox"), "button_press_event",
-			  G_CALLBACK (event_box_button_press_event), NULL);
+	gtk_image_set_from_resource (GTK_IMAGE (gtk_builder_get_object (dialog, "double_click_image")),
+	                             "/org/mate/mcc/mouse/double-click-off.svg");
+	g_object_set_data (gtk_builder_get_object (dialog, "double_click_eventbox"),
+	                   "image", WID ("double_click_image"));
+	g_signal_connect (gtk_builder_get_object (dialog, "double_click_eventbox"), "button_press_event",
+	                  G_CALLBACK (event_box_button_press_event),
+	                  NULL);
 
 	/* speed */
 	g_settings_bind (mouse_settings, "motion-acceleration",
-		gtk_range_get_adjustment (GTK_RANGE (WID ("accel_scale"))), "value",
-		G_SETTINGS_BIND_DEFAULT);
+	                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "accel_scale"))), "value",
+	                 G_SETTINGS_BIND_DEFAULT);
 	g_settings_bind (mouse_settings, "motion-threshold",
-		gtk_range_get_adjustment (GTK_RANGE (WID ("sensitivity_scale"))), "value",
-		G_SETTINGS_BIND_DEFAULT);
+	                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "sensitivity_scale"))), "value",
+	                 G_SETTINGS_BIND_DEFAULT);
 
 	g_signal_connect (WID ("mouse_accel_profile"), "changed",
-			  G_CALLBACK (accel_profile_combobox_changed_callback), NULL);
-	gtk_combo_box_set_active (GTK_COMBO_BOX (WID ("mouse_accel_profile")),
+			  G_CALLBACK (accel_profile_combobox_changed_callback),
+	                  NULL);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (gtk_builder_get_object (dialog, "mouse_accel_profile")),
 				  g_settings_get_enum (mouse_settings, "accel-profile"));
 
 	/* DnD threshold */
 	g_settings_bind (mouse_settings, "drag-threshold",
-		gtk_range_get_adjustment (GTK_RANGE (WID ("drag_threshold_scale"))), "value",
-		G_SETTINGS_BIND_DEFAULT);
+	                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "drag_threshold_scale"))), "value",
+	                 G_SETTINGS_BIND_DEFAULT);
 
 	/* Trackpad page */
 	if (touchpad_is_present () == FALSE)
-		gtk_notebook_remove_page (GTK_NOTEBOOK (WID ("prefs_widget")), -1);
+		gtk_notebook_remove_page (GTK_NOTEBOOK (gtk_builder_get_object (dialog, "prefs_widget")), -1);
 	else {
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
-			WID ("touchpad_enable"), "active",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_builder_get_object (dialog, "touchpad_enable"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
-			WID ("vbox_touchpad_general"), "sensitive",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_builder_get_object (dialog, "vbox_touchpad_general"), "sensitive",
+		                 G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
-			WID ("vbox_touchpad_scrolling"), "sensitive",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_builder_get_object (dialog, "vbox_touchpad_scrolling"), "sensitive",
+		                 G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
-			WID ("vbox_touchpad_pointer_speed"), "sensitive",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_builder_get_object (dialog, "vbox_touchpad_pointer_speed"), "sensitive",
+		                 G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "disable-while-typing",
-			WID ("disable_w_typing_toggle"), "active",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_builder_get_object (dialog, "disable_w_typing_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "tap-to-click",
-			WID ("tap_to_click_toggle"), "active",
-			G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "vertical-edge-scrolling", WID ("vert_edge_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "horizontal-edge-scrolling", WID ("horiz_edge_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "vertical-two-finger-scrolling", WID ("vert_twofinger_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "horizontal-two-finger-scrolling", WID ("horiz_twofinger_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
-		g_settings_bind (touchpad_settings, "natural-scroll", WID ("natural_scroll_toggle"), "active", G_SETTINGS_BIND_DEFAULT);
+		                 gtk_builder_get_object (dialog, "tap_to_click_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "vertical-edge-scrolling",
+		                 gtk_builder_get_object (dialog, "vert_edge_scroll_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "horizontal-edge-scrolling",
+		                 gtk_builder_get_object (dialog, "horiz_edge_scroll_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "vertical-two-finger-scrolling",
+		                 gtk_builder_get_object (dialog, "vert_twofinger_scroll_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "horizontal-two-finger-scrolling",
+		                 gtk_builder_get_object (dialog, "horiz_twofinger_scroll_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
+		g_settings_bind (touchpad_settings, "natural-scroll",
+		                 gtk_builder_get_object (dialog, "natural_scroll_toggle"), "active",
+		                 G_SETTINGS_BIND_DEFAULT);
 
 		char * emulation_values[] = { _("Disabled"), _("Left button"), _("Middle button"), _("Right button") };
 
 		GtkWidget *two_click_comboxbox = gtk_combo_box_text_new ();
 		GtkWidget *three_click_comboxbox = gtk_combo_box_text_new ();
-		gtk_box_pack_start (GTK_BOX (WID ("hbox_two_finger_click")), two_click_comboxbox, FALSE, FALSE, 6);
-		gtk_box_pack_start (GTK_BOX (WID ("hbox_three_finger_click")), three_click_comboxbox, FALSE, FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (dialog, "hbox_two_finger_click")), two_click_comboxbox, FALSE, FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (dialog, "hbox_three_finger_click")), three_click_comboxbox, FALSE, FALSE, 6);
 		int i;
 		for (i=0; i<4; i++) {
 			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (two_click_comboxbox), emulation_values[i]);
@@ -361,11 +375,11 @@ setup_dialog (GtkBuilder *dialog)
 
 		/* speed */
 		g_settings_bind (touchpad_settings, "motion-acceleration",
-			gtk_range_get_adjustment (GTK_RANGE (WID ("touchpad_accel_scale"))), "value",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_accel_scale"))), "value",
+		                 G_SETTINGS_BIND_DEFAULT);
 		g_settings_bind (touchpad_settings, "motion-threshold",
-			gtk_range_get_adjustment (GTK_RANGE (WID ("touchpad_sensitivity_scale"))), "value",
-			G_SETTINGS_BIND_DEFAULT);
+		                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_sensitivity_scale"))), "value",
+		                 G_SETTINGS_BIND_DEFAULT);
 
 		synaptics_check_capabilities (dialog);
 	}
@@ -420,10 +434,9 @@ main (int argc, char **argv)
 	g_signal_connect (dialog_win, "response",
 			  G_CALLBACK (dialog_response_cb), NULL);
 
-	GtkNotebook* nb = GTK_NOTEBOOK (WID ("prefs_widget"));
+	GtkNotebook* nb = GTK_NOTEBOOK (gtk_builder_get_object (dialog, "prefs_widget"));
 	gtk_widget_add_events (GTK_WIDGET (nb), GDK_SCROLL_MASK);
-	g_signal_connect (GTK_WIDGET (nb),
-	                  "scroll-event",
+	g_signal_connect (nb, "scroll-event",
 	                  G_CALLBACK (capplet_notebook_scroll_event_cb),
 	                  NULL);
 

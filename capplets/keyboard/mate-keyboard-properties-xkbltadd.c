@@ -182,7 +182,7 @@ xkb_layout_chooser_enable_disable_buttons (GtkBuilder * chooser_dialog)
 {
 	GtkWidget *cbv =
 	    CWID (gtk_notebook_get_current_page
-		  (GTK_NOTEBOOK (CWID ("choosers_nb"))) ?
+		  (GTK_NOTEBOOK (gtk_builder_get_object (chooser_dialog, "choosers_nb"))) ?
 		  "xkb_language_variants_available" :
 		  "xkb_country_variants_available");
 	GtkTreeIter viter;
@@ -561,7 +561,7 @@ xkb_layout_chooser_get_selected_id (GtkBuilder * chooser_dialog)
 {
 	GtkWidget *cbv =
 	    CWID (gtk_notebook_get_current_page
-		  (GTK_NOTEBOOK (CWID ("choosers_nb"))) ?
+		  (GTK_NOTEBOOK (gtk_builder_get_object (chooser_dialog, "choosers_nb"))) ?
 		  "xkb_language_variants_available" :
 		  "xkb_country_variants_available");
 	GtkTreeModel *vm = gtk_combo_box_get_model (GTK_COMBO_BOX (cbv));
