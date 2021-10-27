@@ -481,7 +481,7 @@ main (int argc, char **argv)
                      "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    g_signal_connect (G_OBJECT (dialog_win), "destroy",
+    g_signal_connect (dialog_win, "destroy",
                       G_CALLBACK (gtk_main_quit), NULL);
 
     g_signal_connect (marco_settings, "changed",
@@ -490,12 +490,12 @@ main (int argc, char **argv)
     g_signal_connect (marco_settings, "changed::" MARCO_FOCUS_KEY,
                       G_CALLBACK (mouse_focus_changed_callback), NULL);
 
-    g_signal_connect (G_OBJECT (screen), "window_manager_changed",
+    g_signal_connect (screen, "window_manager_changed",
                       G_CALLBACK (wm_changed_callback), NULL);
 
     i = 0;
     while (i < n_mouse_modifiers) {
-        g_signal_connect (G_OBJECT (mouse_modifiers[i].radio), "toggled",
+        g_signal_connect (mouse_modifiers[i].radio, "toggled",
                           G_CALLBACK (alt_click_radio_toggled_callback),
                           &mouse_modifiers[i]);
         ++i;

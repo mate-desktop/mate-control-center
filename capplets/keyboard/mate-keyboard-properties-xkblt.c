@@ -258,10 +258,9 @@ xkb_layouts_prepare_selected_tree (GtkBuilder * dialog)
 	gtk_tree_view_append_column (GTK_TREE_VIEW (tree_view),
 				     desc_column);
 
-	g_signal_connect_swapped (G_OBJECT (selection), "changed",
-				  G_CALLBACK
-				  (xkb_layouts_enable_disable_buttons),
-				  dialog);
+	g_signal_connect_swapped (selection, "changed",
+	                          G_CALLBACK(xkb_layouts_enable_disable_buttons),
+	                          dialog);
 	max_selected_layouts = xkl_engine_get_max_num_groups (engine);
 
 	/* Setting up DnD */
@@ -271,11 +270,12 @@ xkb_layouts_prepare_selected_tree (GtkBuilder * dialog)
 	gtk_drag_dest_set (tree_view, GTK_DEST_DEFAULT_ALL,
 			   &self_drag_target, 1, GDK_ACTION_MOVE);
 
-	g_signal_connect (G_OBJECT (tree_view), "drag_data_get",
-			  G_CALLBACK (xkb_layouts_dnd_data_get), dialog);
-	g_signal_connect (G_OBJECT (tree_view), "drag_data_received",
-			  G_CALLBACK (xkb_layouts_dnd_data_received),
-			  dialog);
+	g_signal_connect (tree_view, "drag_data_get",
+	                  G_CALLBACK (xkb_layouts_dnd_data_get),
+	                  dialog);
+	g_signal_connect (tree_view, "drag_data_received",
+	                  G_CALLBACK (xkb_layouts_dnd_data_received),
+	                  dialog);
 }
 
 gchar *
@@ -437,18 +437,21 @@ move_down_selected_layout (GtkWidget * button, GtkBuilder * dialog)
 void
 xkb_layouts_register_buttons_handlers (GtkBuilder * dialog)
 {
-	g_signal_connect (G_OBJECT (WID ("xkb_layouts_add")), "clicked",
-			  G_CALLBACK (add_selected_layout), dialog);
-	g_signal_connect (G_OBJECT (WID ("xkb_layouts_show")), "clicked",
-			  G_CALLBACK (show_selected_layout), dialog);
-	g_signal_connect (G_OBJECT (WID ("xkb_layouts_remove")), "clicked",
-			  G_CALLBACK (remove_selected_layout), dialog);
-	g_signal_connect (G_OBJECT (WID ("xkb_layouts_move_up")),
-			  "clicked", G_CALLBACK (move_up_selected_layout),
-			  dialog);
-	g_signal_connect (G_OBJECT (WID ("xkb_layouts_move_down")),
-			  "clicked",
-			  G_CALLBACK (move_down_selected_layout), dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "xkb_layouts_add"), "clicked",
+	                  G_CALLBACK (add_selected_layout),
+	                  dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "xkb_layouts_show"), "clicked",
+	                  G_CALLBACK (show_selected_layout),
+	                  dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "xkb_layouts_remove"), "clicked",
+	                  G_CALLBACK (remove_selected_layout),
+	                  dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "xkb_layouts_move_up"), "clicked",
+	                  G_CALLBACK (move_up_selected_layout),
+	                  dialog);
+	g_signal_connect (gtk_builder_get_object (dialog, "xkb_layouts_move_down"), "clicked",
+	                  G_CALLBACK (move_down_selected_layout),
+	                  dialog);
 }
 
 static void
@@ -461,8 +464,7 @@ xkb_layouts_update_list (GSettings * settings, gchar * key, GtkBuilder * dialog)
 void
 xkb_layouts_register_gsettings_listener (GtkBuilder * dialog)
 {
-	g_signal_connect (xkb_kbd_settings,
-			  "changed::layouts",
-			  G_CALLBACK (xkb_layouts_update_list),
-			  dialog);
+	g_signal_connect (xkb_kbd_settings, "changed::layouts",
+	                  G_CALLBACK (xkb_layouts_update_list),
+	                  dialog);
 }

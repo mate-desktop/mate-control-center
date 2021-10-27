@@ -719,12 +719,12 @@ cb_show_details (GtkWidget *button,
                                NULL);
     data->font_groups = g_slist_prepend (data->font_groups, group);
 
-    g_signal_connect (G_OBJECT (data->font_details),
-		      "response",
-		      G_CALLBACK (cb_details_response), NULL);
-    g_signal_connect (G_OBJECT (data->font_details),
-		      "delete_event",
-		      G_CALLBACK (gtk_true), NULL);
+    g_signal_connect (data->font_details, "response",
+                      G_CALLBACK (cb_details_response),
+                      NULL);
+    g_signal_connect (data->font_details, "delete_event",
+                      G_CALLBACK (gtk_true),
+                      NULL);
   }
 
   gtk_window_present (GTK_WINDOW (data->font_details));

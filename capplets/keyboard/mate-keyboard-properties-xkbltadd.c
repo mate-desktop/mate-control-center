@@ -349,8 +349,9 @@ xkb_layout_chooser_available_layouts_fill (GtkBuilder *
 					      COMBO_BOX_MODEL_COL_SORT,
 					      GTK_SORT_ASCENDING);
 
-	g_signal_connect_swapped (G_OBJECT (cbl), "changed",
-				  combo_changed_notify, chooser_dialog);
+	g_signal_connect_swapped (cbl, "changed",
+	                          G_CALLBACK (combo_changed_notify),
+	                          chooser_dialog);
 
 	/* Setup the variants combo */
 	renderer = gtk_cell_renderer_text_new ();
@@ -360,10 +361,9 @@ xkb_layout_chooser_available_layouts_fill (GtkBuilder *
 					renderer, "markup",
 					COMBO_BOX_MODEL_COL_VISIBLE, NULL);
 
-	g_signal_connect_swapped (G_OBJECT (cbev), "changed",
-				  G_CALLBACK
-				  (xkb_layout_chooser_available_variant_changed),
-				  chooser_dialog);
+	g_signal_connect_swapped (cbev, "changed",
+	                          G_CALLBACK(xkb_layout_chooser_available_variant_changed),
+	                          chooser_dialog);
 }
 
 static gchar **
@@ -491,10 +491,9 @@ xkb_layout_choose (GtkBuilder * dialog)
 						   G_CALLBACK
 						   (xkb_layout_chooser_available_language_changed));
 
-	g_signal_connect_after (G_OBJECT (notebook), "switch_page",
-				G_CALLBACK
-				(xkb_layout_chooser_page_changed),
-				chooser_dialog);
+	g_signal_connect_after (notebook, "switch_page",
+	                        G_CALLBACK(xkb_layout_chooser_page_changed),
+	                        chooser_dialog);
 
 	gtk_combo_box_set_active (GTK_COMBO_BOX
 				  (CWID ("xkb_countries_available")),
@@ -536,10 +535,9 @@ xkb_layout_choose (GtkBuilder * dialog)
 		gtk_widget_hide (CWID ("btnPrint"));
 	}
 
-	g_signal_connect (G_OBJECT (chooser),
-			  "response",
-			  G_CALLBACK (xkb_layout_chooser_response),
-			  chooser_dialog);
+	g_signal_connect (chooser, "response",
+	                  G_CALLBACK (xkb_layout_chooser_response),
+	                  chooser_dialog);
 
 	toplevel = gtk_widget_get_toplevel (chooser);
 	if (gtk_widget_is_toplevel (toplevel)) {

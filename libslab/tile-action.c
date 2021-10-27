@@ -88,8 +88,9 @@ tile_action_set_menu_item_label (TileAction * this, const gchar * markup)
 		this->menu_item = GTK_MENU_ITEM (gtk_menu_item_new ());
 		gtk_container_add (GTK_CONTAINER (this->menu_item), label);
 
-		g_signal_connect (G_OBJECT (this->menu_item), "activate",
-			G_CALLBACK (tile_action_menu_item_activate_cb), this);
+		g_signal_connect (this->menu_item, "activate",
+		                  G_CALLBACK (tile_action_menu_item_activate_cb),
+		                  this);
 	}
 }
 

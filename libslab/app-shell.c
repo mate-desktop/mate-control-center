@@ -542,8 +542,9 @@ create_filter_section (AppShellData * app_data, const gchar * title)
 	nld_search_bar_set_search_timeout (NLD_SEARCH_BAR (search_bar), 0);
 	slab_section_set_contents (SLAB_SECTION (section), search_bar);
 
-	g_signal_connect (G_OBJECT (search_bar), "search", G_CALLBACK (handle_filter_changed),
-		app_data);
+	g_signal_connect (search_bar, "search",
+	                  G_CALLBACK (handle_filter_changed),
+	                  app_data);
 
 	return section;
 }
