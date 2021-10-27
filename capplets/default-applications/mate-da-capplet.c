@@ -34,7 +34,6 @@
 #include "mate-da-capplet.h"
 #include "capplet-util.h"
 
-
 enum {
 	DA_TYPE_WEB_BROWSER,
 	DA_TYPE_EMAIL,

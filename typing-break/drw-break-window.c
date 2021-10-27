@@ -241,7 +241,6 @@ drw_break_window_init (DrwBreakWindow *window)
 
 	gtk_box_pack_start (GTK_BOX (hbox), priv->break_label, FALSE, FALSE, 12);
 
-
 	priv->clock_label = gtk_label_new (NULL);
 	gtk_widget_show (priv->clock_label);
 	gtk_box_pack_start (GTK_BOX (vbox), priv->clock_label, TRUE, TRUE, 8);

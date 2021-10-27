@@ -188,7 +188,6 @@ mate_window_manager_class_init (MateWindowManagerClass *class)
 
 	parent_class = g_type_class_peek_parent (class);
 
-
         signals[SETTINGS_CHANGED] =
                 g_signal_new ("settings_changed",
                               G_OBJECT_CLASS_TYPE (class),
@@ -198,7 +197,6 @@ mate_window_manager_class_init (MateWindowManagerClass *class)
                               g_cclosure_marshal_VOID__VOID,
                               G_TYPE_NONE, 0);
 }
-
 
 GType
 mate_window_manager_get_type (void)
@@ -227,7 +225,6 @@ mate_window_manager_get_type (void)
 
 	return mate_window_manager_type;
 }
-
 
 void
 mate_window_manager_settings_changed (MateWindowManager *wm)

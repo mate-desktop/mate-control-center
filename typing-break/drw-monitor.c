@@ -49,7 +49,6 @@ enum {
 	LAST_SIGNAL
 };
 
-
 static void     drw_monitor_class_init    (DrwMonitorClass *klass);
 static void     drw_monitor_init          (DrwMonitor      *monitor);
 static void     drw_monitor_finalize      (GObject         *object);
@@ -57,7 +56,6 @@ static gboolean drw_monitor_setup         (DrwMonitor      *monitor);
 
 static GObjectClass *parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
-
 
 GType
 drw_monitor_get_type (void)

@@ -46,7 +46,6 @@ static const GtkTargetEntry drag_types[] = {
 	{"text/uri-list", GTK_TARGET_OTHER_WIDGET, TARGET_URI_LIST}
 };
 
-
 static void wp_update_preview(GtkFileChooser* chooser, AppearanceData* data);
 
 static void select_item(AppearanceData* data, MateWPItem* item, gboolean scroll)

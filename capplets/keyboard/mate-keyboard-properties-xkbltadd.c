@@ -49,15 +49,6 @@ typedef struct {
 } AddVariantData;
 
 static void
-
-
-
-
-
-
-
-
-
 xkb_layout_chooser_available_layouts_fill (GtkBuilder * chooser_dialog,
 					   const gchar cblid[],
 					   const gchar cbvid[],
@@ -67,28 +58,10 @@ xkb_layout_chooser_available_layouts_fill (GtkBuilder * chooser_dialog,
 					   GCallback combo_changed_notify);
 
 static void
-
-
-
-
-
-
-
-
-
 xkb_layout_chooser_available_language_variants_fill (GtkBuilder *
 						     chooser_dialog);
 
 static void
-
-
-
-
-
-
-
-
-
 xkb_layout_chooser_available_country_variants_fill (GtkBuilder *
 						    chooser_dialog);
 
@@ -377,8 +350,6 @@ xkb_layout_strv_from_gslist (GSList *list)
     }
     return (gchar **) array->data;
 }
-
-
 
 static void
 xkl_layout_chooser_add_default_switcher_if_necessary (GSList *

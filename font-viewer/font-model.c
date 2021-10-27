@@ -588,7 +588,6 @@ font_view_model_init (FontViewModel *self)
                                      font_view_model_sort_func,
                                      NULL, NULL);
 
-
     self->priv->fallback_icon = get_fallback_icon ();
 
     g_idle_add (ensure_font_list_idle, self);

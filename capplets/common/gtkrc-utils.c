@@ -176,7 +176,6 @@ void gtkrc_get_details(gchar* filename, GSList** engines, GSList** symbolic_colo
 	g_scanner_destroy (scanner);
 }
 
-
 gchar *
 gtkrc_get_color_scheme (const gchar *gtkrc_file)
 {

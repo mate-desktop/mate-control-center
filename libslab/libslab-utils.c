@@ -21,7 +21,6 @@ libslab_mate_desktop_item_new_from_unknown_id (const gchar *id)
 
 	GError *error = NULL;
 
-
 	if (! id)
 		return NULL;
 

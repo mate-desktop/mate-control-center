@@ -507,7 +507,6 @@ void SetupTimezoneDialog(TimeAdmin *ta)
     Vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_style_context_add_class (gtk_widget_get_style_context (Vbox), "linked");
 
-
     TimeZoneFrame = CreateZoneFrame(ta);
     Scrolled = CreateZoneScrolled(ta);
     gtk_container_add (GTK_CONTAINER (TimeZoneFrame), Scrolled);

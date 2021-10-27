@@ -22,7 +22,6 @@ static GtkCellEditable *egg_cell_renderer_keys_start_editing (GtkCellRenderer   
 							      const GdkRectangle       *cell_area,
 							      GtkCellRendererState      flags);
 
-
 static void egg_cell_renderer_keys_get_property (GObject         *object,
 						 guint            param_id,
 						 GValue          *value,
@@ -38,7 +37,6 @@ static void egg_cell_renderer_keys_get_size	(GtkCellRenderer    *cell,
 						 gint               *y_offset,
 						 gint               *width,
 						 gint               *height);
-
 
 enum {
   PROP_0,
@@ -204,7 +202,6 @@ egg_cell_renderer_keys_class_init (EggCellRendererKeysClass *cell_keys_class)
                 G_TYPE_NONE, 1,
 		G_TYPE_STRING);
 }
-
 
 GtkCellRenderer* egg_cell_renderer_keys_new(void)
 {

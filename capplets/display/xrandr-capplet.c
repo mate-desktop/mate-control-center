@@ -964,7 +964,6 @@ realign_outputs_after_resolution_change (App *app, MateRROutputInfo *output_that
 	else if (output_x + output_width == old_right_edge)
 	  output_x = x + width - output_width;
 
-
 	if (output_y >= old_bottom_edge)
 	    output_y += dy;
 	else if (output_y + output_height == old_bottom_edge)
@@ -1810,7 +1809,6 @@ paint_output (App     *app,
     cairo_translate (cr,
 		     - x - (w * scale + 0.5) / 2,
 		     - y - (h * scale + 0.5) / 2);
-
 
     cairo_rectangle (cr, x, y, w * scale + 0.5, h * scale + 0.5);
     cairo_clip_preserve (cr);

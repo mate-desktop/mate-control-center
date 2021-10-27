@@ -402,7 +402,6 @@ install_button_clicked_cb (GtkButton *button,
     dest_file = g_file_get_child (dest_location, dest_filename);
     g_free (dest_filename);
 
-
     /* TODO: show error dialog if file exists */
     g_file_copy_async (self->font_file, dest_file, G_FILE_COPY_NONE, 0, NULL, NULL, NULL,
                        font_install_finished_cb, self);

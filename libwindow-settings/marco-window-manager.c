@@ -41,7 +41,6 @@
 #define MARCO_COMPOSITING_MANAGER_KEY "compositing-manager"
 #define MARCO_COMPOSITING_FAST_ALT_TAB_KEY "compositing-fast-alt-tab"
 
-
 /* keep following enums in sync with marco */
 enum
 {
@@ -451,7 +450,6 @@ marco_window_manager_finalize (GObject *object)
         G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
-
 static void
 marco_window_manager_class_init (MarcoWindowManagerClass *class)
 {
@@ -500,5 +498,4 @@ marco_window_manager_get_type (void)
 
         return marco_window_manager_type;
 }
-
 

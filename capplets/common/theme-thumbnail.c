@@ -19,7 +19,6 @@
 #include "gtkrc-utils.h"
 #include "capplet-util.h"
 
-
 typedef struct {
 	gboolean set;
 	gint thumbnail_width;
@@ -32,7 +31,6 @@ typedef struct {
 	GIOChannel* channel;
 	guint watch_id;
 } ThemeThumbnailAsyncData;
-
 
 static ThemeThumbnailAsyncData async_data;
 
@@ -89,7 +87,6 @@ static int pipe_from_factory_fd[2];
 #define MARCO_THUMBNAIL_WIDTH  120
 #define MARCO_THUMBNAIL_HEIGHT  60
 
-
 static void pixbuf_apply_mask_region(GdkPixbuf* pixbuf, cairo_region_t* region)
 {
   gint nchannels, rowstride, w, h;
@@ -101,7 +98,6 @@ static void pixbuf_apply_mask_region(GdkPixbuf* pixbuf, cairo_region_t* region)
   nchannels = gdk_pixbuf_get_n_channels (pixbuf);
   rowstride = gdk_pixbuf_get_rowstride (pixbuf);
   pixels = gdk_pixbuf_get_pixels (pixbuf);
-
 
   /* we need an alpha channel ... */
   if (!gdk_pixbuf_get_has_alpha (pixbuf) || nchannels != 4)
@@ -408,7 +404,6 @@ create_marco_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   pixbuf_apply_mask_region (pixbuf, region);
   cairo_region_destroy (region);
 
-
   retval = gdk_pixbuf_scale_simple (pixbuf,
                                     MARCO_THUMBNAIL_WIDTH,
                                     MARCO_THUMBNAIL_HEIGHT,
@@ -426,7 +421,6 @@ create_icon_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 {
   return create_folder_icon ((char *) theme_thumbnail_data->icon_theme_name->data);
 }
-
 
 static void
 handle_bytes (const guint8       *buffer,
