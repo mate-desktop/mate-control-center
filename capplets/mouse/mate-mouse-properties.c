@@ -399,7 +399,7 @@ main (int argc, char **argv)
 		 /* TRANSLATORS: don't translate the terms in brackets */
 		 N_("Specify the name of the page to show (general)"),
 		 N_("page") },
-		{NULL}
+		{ NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
 	};
 
 	context = g_option_context_new (_("- MATE Mouse Preferences"));

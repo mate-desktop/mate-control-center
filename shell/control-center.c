@@ -162,7 +162,7 @@ int main(int argc, char* argv[])
 	GError* error;
 	GOptionEntry options[] = {
 		{"hide", 0, 0, G_OPTION_ARG_NONE, &hidden, N_("Hide on start (useful to preload the shell)"), NULL},
-		{NULL}
+		{NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL}
 	};
 
 #ifdef ENABLE_NLS

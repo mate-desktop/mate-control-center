@@ -160,7 +160,7 @@ main (int argc, char **argv)
       	&wallpaper_files,
       	NULL,
       	N_("[WALLPAPER...]") },
-      { NULL }
+      { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
     };
 
   option_context = g_option_context_new (NULL);

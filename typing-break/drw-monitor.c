@@ -75,6 +75,7 @@ drw_monitor_get_type (void)
 			sizeof (DrwMonitor),
 			0,              /* n_preallocs */
 			(GInstanceInitFunc) drw_monitor_init,
+			NULL
 		};
 
 		object_type = g_type_register_static (G_TYPE_OBJECT,

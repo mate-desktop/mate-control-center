@@ -178,7 +178,7 @@ main (int argc, char **argv)
 		 N_
 		 ("Start the page with the accessibility settings showing"),
 		 NULL},
-		{NULL}
+		{ NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
 	};
 
 

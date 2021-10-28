@@ -196,7 +196,7 @@ main (int argc,
 	      N_("Thumbnail size (default: 128)"), N_("SIZE") },
 	    { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &arguments,
 	      NULL, N_("FONT-FILE OUTPUT-FILE") },
-	    { NULL }
+	    { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
     };
 
 #ifdef ENABLE_NLS
