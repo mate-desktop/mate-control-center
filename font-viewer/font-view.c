@@ -791,8 +791,8 @@ action_about (GSimpleAction *action,
 }
 
 static GActionEntry action_entries[] = {
-    { "about", action_about, NULL, NULL, NULL },
-    { "quit", action_quit, NULL, NULL, NULL }
+    { "about", action_about, NULL, NULL, NULL, { 0 } },
+    { "quit", action_quit, NULL, NULL, NULL, { 0 } }
 };
 
 static void

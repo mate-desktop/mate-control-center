@@ -782,7 +782,9 @@ main(int argc, char** argv)
 			N_("Specify the name of the page to show (internet|multimedia|system|a11y)"),
 			N_("page")
 		},
-		{NULL}
+		{
+			NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL
+		}
 	};
 
 	GOptionContext* context = g_option_context_new(_("- MATE Default Applications"));

@@ -66,7 +66,8 @@ GType egg_cell_renderer_keys_get_type(void)
 			NULL,		/* class_data */
 			sizeof (EggCellRendererKeys),
 			0,              /* n_preallocs */
-			(GInstanceInitFunc) egg_cell_renderer_keys_init
+			(GInstanceInitFunc) egg_cell_renderer_keys_init,
+			NULL
 		};
 
 	  cell_keys_type = g_type_register_static (GTK_TYPE_CELL_RENDERER_TEXT, "EggCellRendererKeys", &cell_keys_info, 0);
@@ -522,6 +523,7 @@ pointless_eventbox_subclass_get_type (void)
         sizeof (GtkEventBox),
 	0,              /* n_preallocs */
         (GInstanceInitFunc) NULL,
+        NULL
       };
 
       static const GInterfaceInfo cell_editable_info = {
