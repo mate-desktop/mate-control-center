@@ -21,9 +21,12 @@
 #ifndef __BOOKMARK_AGENT_H__
 #define __BOOKMARK_AGENT_H__
 
-#include <time.h>
 #include <glib.h>
 #include <glib-object.h>
+
+#if !GLIB_CHECK_VERSION(2,66,0)
+#include <time.h>
+#endif
 
 G_BEGIN_DECLS
 
@@ -41,7 +44,11 @@ typedef struct {
 	gchar  *uri;
 	gchar  *title;
 	gchar  *mime_type;
+#if GLIB_CHECK_VERSION(2,66,0)
 	GDateTime  *mtime;
+#else
+	time_t  mtime;
+#endif
 	gchar  *icon;
 	gchar  *app_name;
 	gchar  *app_exec;
