@@ -296,6 +296,14 @@ bookmark_agent_reorder_items (BookmarkAgent *this, const gchar **uris)
 	save_store (this);
 }
 
+#if !GLIB_CHECK_VERSION(2,66,0)
+static gint
+recent_item_mru_comp_func (gconstpointer a, gconstpointer b)
+{
+	return ((BookmarkItem *) b)->mtime - ((BookmarkItem *) a)->mtime;
+}
+#endif
+
 static GList *
 make_items_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *store)
 {
@@ -335,8 +343,11 @@ make_items_from_bookmark_file (BookmarkAgent *this, GBookmarkFile *store)
 		}
 	}
 
+#if GLIB_CHECK_VERSION(2,66,0)
 	items_ordered = g_list_sort (items_ordered, g_date_time_compare);
-
+#else
+	items_ordered = g_list_sort (items_ordered, recent_item_mru_comp_func);
+#endif
 	g_strfreev (uris);
 
 	return items_ordered;
