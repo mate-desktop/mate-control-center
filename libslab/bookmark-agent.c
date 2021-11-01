@@ -384,6 +384,9 @@ bookmark_item_free (BookmarkItem *item)
 	if (! item)
 		return;
 
+#if GLIB_CHECK_VERSION(2,66,0)
+	g_date_time_unref (item->mtime);
+#endif
 	g_free (item->uri);
 	g_free (item->title);
 	g_free (item->mime_type);
