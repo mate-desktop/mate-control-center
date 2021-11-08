@@ -790,6 +790,7 @@ main(int argc, char** argv)
 	g_option_context_add_main_entries(context, option_entries, GETTEXT_PACKAGE);
 
 	capplet_init(context, &argc, &argv);
+	g_option_context_free(context);
 
 	MateDACapplet* capplet = g_new0(MateDACapplet, 1);
 
