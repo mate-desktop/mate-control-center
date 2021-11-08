@@ -253,6 +253,7 @@ static void update_message_area(AppearanceData* data)
 		gtk_box_pack_start (GTK_BOX (parent), data->style_message_area, FALSE, FALSE, 0);
 	}
 
+  g_free (engine);
   gtk_widget_hide(data->style_message_area);
 }
 
