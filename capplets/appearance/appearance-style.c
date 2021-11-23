@@ -472,9 +472,11 @@ cursor_size_scale_value_changed_cb (GtkRange *range, AppearanceData *data)
   g_free (name);
 
   if (theme) {
+    gdouble value;
     gint size;
 
-    size = g_array_index (theme->sizes, gint, (int) gtk_range_get_value (range));
+    value = gtk_range_get_value (range);
+    size = g_array_index (theme->sizes, gint, (int) value);
     cursor_size_changed_cb (size, data);
   }
 }
