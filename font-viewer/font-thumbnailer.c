@@ -152,7 +152,7 @@ build_fallback_thumbstr (FT_Face face)
     total_chars = g_utf8_strlen (chars, -1);
 
     while (idx < 2) {
-        total_chars = (gint) floor (total_chars / 2.0);
+        total_chars = total_chars / 2;
         ptr = g_utf8_offset_to_pointer (chars, total_chars);
         end = g_utf8_find_next_char (ptr, NULL);
 
