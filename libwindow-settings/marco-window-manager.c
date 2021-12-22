@@ -287,8 +287,8 @@ marco_get_settings (MateWindowManager *wm,
         }
 
         if (to_get & MATE_WM_SETTING_AUTORAISE) {
-                settings->autoraise = g_settings_get_boolean (meta_wm->p->settings,
-                                                              MARCO_AUTORAISE_KEY);
+                settings->autoraise = (g_settings_get_boolean (meta_wm->p->settings,
+                                                               MARCO_AUTORAISE_KEY) != FALSE);
                 settings->flags |= MATE_WM_SETTING_AUTORAISE;
         }
 

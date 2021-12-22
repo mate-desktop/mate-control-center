@@ -742,13 +742,13 @@ update_theme_index (GFile            *index_uri,
 
     if (key_element & MATE_THEME_GTK_2) {
       theme_used_to_exist = theme_info->has_gtk;
-      theme_info->has_gtk = theme_exists;
+      theme_info->has_gtk = (theme_exists != FALSE);
     } else if (key_element & MATE_THEME_GTK_2_KEYBINDING) {
       theme_used_to_exist = theme_info->has_keybinding;
-      theme_info->has_keybinding = theme_exists;
+      theme_info->has_keybinding = (theme_exists != FALSE);
     } else if (key_element & MATE_THEME_MARCO) {
       theme_used_to_exist = theme_info->has_marco;
-      theme_info->has_marco = theme_exists;
+      theme_info->has_marco = (theme_exists != FALSE);
     }
 
     if (!theme_info->has_marco && !theme_info->has_keybinding && !theme_info->has_gtk) {
