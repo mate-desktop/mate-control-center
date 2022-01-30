@@ -412,32 +412,43 @@ typedef struct {
   gboolean found;
 } KeyMatchData;
 
-static gboolean key_match(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data)
+static gboolean
+key_match (GtkTreeModel *model,
+           GtkTreePath  *path,
+           GtkTreeIter  *iter,
+           gpointer      data)
 {
-    KeyMatchData* match_data = data;
-    KeyEntry* element = NULL;
+    KeyMatchData *match_data = data;
+    KeyEntry *element;
     gchar *element_schema = NULL;
     gchar *element_path = NULL;
+    gboolean found = FALSE;
 
-    gtk_tree_model_get(model, iter,
-        KEYENTRY_COLUMN, &element,
-        -1);
+    gtk_tree_model_get (model, iter,
+                        KEYENTRY_COLUMN, &element,
+                        -1);
 
-    if (element && element->settings && G_IS_SETTINGS(element->settings))
-    {
-            g_object_get (element->settings, "schema-id", &element_schema, NULL);
-        g_object_get (element->settings, "path", &element_path, NULL);
-    }
+    if (!element)
+        return FALSE;
 
-    if (element && g_strcmp0(element->gsettings_key, match_data->key) == 0
-            && g_strcmp0(element_schema, match_data->schema) == 0
-            && g_strcmp0(element_path, match_data->path) == 0)
+    if (!element->settings || !G_IS_SETTINGS (element->settings))
+        return FALSE;
+
+    g_object_get (element->settings, "schema-id", &element_schema, NULL);
+    g_object_get (element->settings, "path", &element_path, NULL);
+
+    if ((g_strcmp0 (element->gsettings_key, match_data->key) == 0) &&
+        (g_strcmp0 (element_schema, match_data->schema) == 0) &&
+        (g_strcmp0 (element_path, match_data->path) == 0))
     {
         match_data->found = TRUE;
-        return TRUE;
+        found = TRUE;
     }
 
-    return FALSE;
+    g_free (element_schema);
+    g_free (element_path);
+
+    return found;
 }
 
 static gboolean key_is_already_shown(GtkTreeModel* model, const KeyListEntry* entry)
@@ -529,28 +540,31 @@ ensure_scrollbar (GtkBuilder *builder, int i)
 static void
 find_section (GtkTreeModel *model,
               GtkTreeIter  *iter,
-          const char   *title)
+              const char   *title)
 {
+  GtkTreeStore *store;
   gboolean success;
 
   success = gtk_tree_model_get_iter_first (model, iter);
   while (success)
     {
-      char *description = NULL;
+      char *description;
+      gint  res;
 
       gtk_tree_model_get (model, iter,
-              DESCRIPTION_COLUMN, &description,
-              -1);
-
-      if (g_strcmp0 (description, title) == 0)
+                          DESCRIPTION_COLUMN, &description,
+                          -1);
+      res = g_strcmp0 (description, title);
+      g_free (description);
+      if (res == 0)
         return;
       success = gtk_tree_model_iter_next (model, iter);
     }
-
-    gtk_tree_store_append (GTK_TREE_STORE (model), iter, NULL);
-    gtk_tree_store_set (GTK_TREE_STORE (model), iter,
-                        DESCRIPTION_COLUMN, title,
-                        -1);
+  store = GTK_TREE_STORE (model);
+  gtk_tree_store_append (store, iter, NULL);
+  gtk_tree_store_set (store, iter,
+                      DESCRIPTION_COLUMN, title,
+                      -1);
 }
 
 static void
