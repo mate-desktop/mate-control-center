@@ -43,27 +43,30 @@ static void fill_models_list (GtkBuilder * chooser_dialog);
 static gboolean fill_vendors_list (GtkBuilder * chooser_dialog);
 
 static GtkTreePath *
-gtk_list_store_find_entry (GtkListStore * list_store,
-			   GtkTreeIter * iter, gchar * name, int column_id)
+gtk_list_store_find_entry (GtkListStore   *list_store,
+                           GtkTreeIter    *iter,
+                           gchar          *name,
+                           int             column_id)
 {
-	GtkTreePath *path;
-	char *current_name = NULL;
-	if (gtk_tree_model_get_iter_first
-	    (GTK_TREE_MODEL (list_store), iter)) {
-		do {
-			gtk_tree_model_get (GTK_TREE_MODEL
-					    (list_store), iter, column_id,
-					    &current_name, -1);
-			if (!g_ascii_strcasecmp (name, current_name)) {
-				path =
-				    gtk_tree_model_get_path
-				    (GTK_TREE_MODEL (list_store), iter);
-				return path;
-			}
-			g_free (current_name);
-		} while (gtk_tree_model_iter_next
-			 (GTK_TREE_MODEL (list_store), iter));
-	}
+	GtkTreeModel *tree_model = GTK_TREE_MODEL (list_store);
+
+	if (!gtk_tree_model_get_iter_first (tree_model, iter))
+		return NULL;
+
+	do {
+		char *current_name;
+		gint  res;
+
+		gtk_tree_model_get (tree_model, iter,
+		                    column_id, &current_name,
+		                    -1);
+		res = g_ascii_strcasecmp (name, current_name);
+		g_free (current_name);
+		if (res == 0) {
+			return gtk_tree_model_get_path (tree_model, iter);
+		}
+	} while (gtk_tree_model_iter_next (tree_model, iter));
+
 	return NULL;
 }
 
