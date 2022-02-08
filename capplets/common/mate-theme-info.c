@@ -66,26 +66,26 @@
  */
 
 typedef struct _ThemeCallbackData {
-	ThemeChangedCallback func;
-	gpointer data;
+  ThemeChangedCallback   func;
+  gpointer               data;
 } ThemeCallbackData;
 
 typedef struct {
-	GFileMonitor* common_theme_dir_handle;
-	GFileMonitor* gtk2_dir_handle;
-	GFileMonitor* keybinding_dir_handle;
-	GFileMonitor* marco_dir_handle;
-	gint priority;
+  GFileMonitor  *common_theme_dir_handle;
+  GFileMonitor  *gtk2_dir_handle;
+  GFileMonitor  *keybinding_dir_handle;
+  GFileMonitor  *marco_dir_handle;
+  gint           priority;
 } CommonThemeDirMonitorData;
 
 typedef struct {
-	GFileMonitor* common_icon_theme_dir_handle;
-	gint priority;
+  GFileMonitor  *common_icon_theme_dir_handle;
+  gint           priority;
 } CommonIconThemeDirMonitorData;
 
 typedef struct {
-	GHashTable* handle_hash;
-	gint priority;
+  GHashTable  *handle_hash;
+  gint         priority;
 } CallbackTuple;
 
 /* Hash tables */
@@ -102,29 +102,27 @@ typedef struct {
  * well as globally in $prefix.  All access to them must be done via helper
  * functions.
  */
-static GList* callbacks = NULL;
+static GList      *callbacks = NULL;
 
-static GHashTable* meta_theme_hash_by_uri;
-static GHashTable* meta_theme_hash_by_name;
-static GHashTable* icon_theme_hash_by_uri;
-static GHashTable* icon_theme_hash_by_name;
-static GHashTable* cursor_theme_hash_by_uri;
-static GHashTable* cursor_theme_hash_by_name;
-static GHashTable* theme_hash_by_uri;
-static GHashTable* theme_hash_by_name;
-static gboolean initting = FALSE;
+static GHashTable *meta_theme_hash_by_uri;
+static GHashTable *meta_theme_hash_by_name;
+static GHashTable *icon_theme_hash_by_uri;
+static GHashTable *icon_theme_hash_by_name;
+static GHashTable *cursor_theme_hash_by_uri;
+static GHashTable *cursor_theme_hash_by_name;
+static GHashTable *theme_hash_by_uri;
+static GHashTable *theme_hash_by_name;
+static gboolean    initting = FALSE;
 
 /* private functions */
-static gint safe_strcmp(const gchar* a_str, const gchar* b_str)
+static gint
+safe_strcmp (const gchar *a_str,
+             const gchar *b_str)
 {
-	if (a_str && b_str)
-	{
-		return strcmp(a_str, b_str);
-	}
-	else
-	{
-		return a_str - b_str;
-	}
+  if (a_str && b_str)
+    return strcmp (a_str, b_str);
+  else
+    return a_str - b_str;
 }
 
 static GFileType
@@ -179,7 +177,9 @@ add_theme_to_hash_by_name (GHashTable *hash_table,
     if (!added)
       list = g_list_append (list, info);
   }
-  g_hash_table_insert (hash_table, g_strdup (info->name), list);
+  g_hash_table_insert (hash_table,
+                       g_strdup (info->name),
+                       list);
 }
 
 static void
@@ -273,164 +273,176 @@ theme_free (MateThemeCommonInfo *info)
   }
 }
 
-GQuark mate_theme_info_error_quark(void)
+GQuark
+mate_theme_info_error_quark (void)
 {
-	return g_quark_from_static_string("mate-theme-info-error-quark");
+  return g_quark_from_static_string ("mate-theme-info-error-quark");
 }
 
-MateThemeMetaInfo* mate_theme_read_meta_theme(GFile* meta_theme_uri)
+MateThemeMetaInfo *
+mate_theme_read_meta_theme (GFile *meta_theme_uri)
 {
-	MateThemeMetaInfo* meta_theme_info;
-	GFile* common_theme_dir_uri;
-	MateDesktopItem* meta_theme_ditem;
-	gchar* meta_theme_file;
-	const gchar* str;
-	gchar* scheme;
+  MateThemeMetaInfo *meta_theme_info;
+  GFile             *common_theme_dir_uri;
+  MateDesktopItem   *meta_theme_ditem;
+  gchar             *meta_theme_file;
+  const gchar       *str;
+  gchar             *scheme;
 
-	meta_theme_file = g_file_get_uri(meta_theme_uri);
-	meta_theme_ditem = mate_desktop_item_new_from_uri(meta_theme_file, 0, NULL);
-	g_free(meta_theme_file);
+  meta_theme_file = g_file_get_uri (meta_theme_uri);
+  meta_theme_ditem = mate_desktop_item_new_from_uri (meta_theme_file, 0, NULL);
+  g_free (meta_theme_file);
 
-	if (meta_theme_ditem == NULL)
-		return NULL;
+  if (meta_theme_ditem == NULL)
+    return NULL;
 
-	common_theme_dir_uri = g_file_get_parent(meta_theme_uri);
-	meta_theme_info = mate_theme_meta_info_new();
-	meta_theme_info->path = g_file_get_path(meta_theme_uri);
-	meta_theme_info->name = g_file_get_basename(common_theme_dir_uri);
-	g_object_unref(common_theme_dir_uri);
+  common_theme_dir_uri = g_file_get_parent (meta_theme_uri);
 
-	str = mate_desktop_item_get_localestring(meta_theme_ditem, THEME_NAME);
+  meta_theme_info = mate_theme_meta_info_new ();
 
-	if (!str)
-	{
-		str = mate_desktop_item_get_localestring(meta_theme_ditem, MATE_DESKTOP_ITEM_NAME);
-		if (!str)
-		{ /* shouldn't reach */
-			mate_theme_meta_info_free(meta_theme_info);
-			return NULL;
-		}
-	}
+  /* meta_theme_info->path */
+  meta_theme_info->path = g_file_get_path (meta_theme_uri);
 
-	meta_theme_info->readable_name = g_strdup(str);
+  /* meta_theme_info->name */
+  meta_theme_info->name = g_file_get_basename (common_theme_dir_uri);
 
-	str = mate_desktop_item_get_localestring(meta_theme_ditem, THEME_COMMENT);
+  g_object_unref (common_theme_dir_uri);
 
-	if (str == NULL)
-		str = mate_desktop_item_get_localestring(meta_theme_ditem, MATE_DESKTOP_ITEM_COMMENT);
+  /* meta_theme_info->readable_name */
+  str = mate_desktop_item_get_localestring (meta_theme_ditem,
+                                            THEME_NAME);
+  if (str == NULL) {
+    str = mate_desktop_item_get_localestring (meta_theme_ditem,
+                                              MATE_DESKTOP_ITEM_NAME);
+    if (str == NULL) /* shouldn't reach */
+      goto mate_theme_read_meta_theme_out;
+  }
+  meta_theme_info->readable_name = g_strdup (str);
 
-	if (str != NULL)
-		meta_theme_info->comment = g_strdup(str);
+  /* meta_theme_info->comment */
+  str = mate_desktop_item_get_localestring (meta_theme_ditem,
+                                            THEME_COMMENT);
+  if (str == NULL)
+    str = mate_desktop_item_get_localestring (meta_theme_ditem,
+                                              MATE_DESKTOP_ITEM_COMMENT);
+  if (str != NULL)
+    meta_theme_info->comment = g_strdup (str);
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, MATE_DESKTOP_ITEM_ICON);
+  /* meta_theme_info->icon_file */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      MATE_DESKTOP_ITEM_ICON);
+  if (str != NULL)
+    meta_theme_info->icon_file = g_strdup(str);
 
-	if (str != NULL)
-		meta_theme_info->icon_file = g_strdup(str);
+  /* meta_theme_info->gtk_theme_name */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      GTK_THEME_KEY);
+  if (str == NULL)
+    goto mate_theme_read_meta_theme_out;
+  meta_theme_info->gtk_theme_name = g_strdup (str);
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, GTK_THEME_KEY);
+  /* meta_theme_info->gtk_color_scheme */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      GTK_COLOR_SCHEME_KEY);
+  if (str == NULL || str[0] == '\0')
+    scheme = gtkrc_get_color_scheme_for_theme (meta_theme_info->gtk_theme_name);
+  else
+    scheme = g_strdup(str);
 
-	if (str == NULL)
-	{
-		mate_theme_meta_info_free(meta_theme_info);
-		return NULL;
-	}
-	meta_theme_info->gtk_theme_name = g_strdup(str);
+  if (scheme != NULL) {
+    meta_theme_info->gtk_color_scheme = scheme;
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, GTK_COLOR_SCHEME_KEY);
+    for (; *scheme != '\0'; scheme++)
+      if (*scheme == ',')
 
-	if (str == NULL || str[0] == '\0')
-		scheme = gtkrc_get_color_scheme_for_theme(meta_theme_info->gtk_theme_name);
-	else
-		scheme = g_strdup(str);
+    *scheme = '\n';
+  }
 
-	if (scheme != NULL)
-	{
-		meta_theme_info->gtk_color_scheme = scheme;
+  /* meta_theme_info->marco_theme_name */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      MARCO_THEME_KEY);
+  if (str == NULL)
+    goto mate_theme_read_meta_theme_out;
+  meta_theme_info->marco_theme_name = g_strdup (str);
 
-		for (; *scheme != '\0'; scheme++)
-			if (*scheme == ',')
-				*scheme = '\n';
-	}
+  /* meta_theme_info->icon_theme_name */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      ICON_THEME_KEY);
+  if (str == NULL)
+    goto mate_theme_read_meta_theme_out;
+  meta_theme_info->icon_theme_name = g_strdup (str);
 
-	str = mate_desktop_item_get_string (meta_theme_ditem, MARCO_THEME_KEY);
+  /* meta_theme_info->notification_theme_name */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      NOTIFICATION_THEME_KEY);
+  if (str != NULL)
+     meta_theme_info->notification_theme_name = g_strdup (str);
 
-	if (str == NULL)
-	{
-		mate_theme_meta_info_free (meta_theme_info);
-		return NULL;
-	}
+  /* meta_theme_info->cursor_theme_name
+   * meta_theme_info->cursor_size */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      CURSOR_THEME_KEY);
+  if (str != NULL) {
+    meta_theme_info->cursor_theme_name = g_strdup (str);
 
-	meta_theme_info->marco_theme_name = g_strdup (str);
+    str = mate_desktop_item_get_string (meta_theme_ditem,
+                                        CURSOR_SIZE_KEY);
+    if (str != NULL)
+      meta_theme_info->cursor_size = (int) g_ascii_strtoll (str, NULL, 10);
+    else
+      meta_theme_info->cursor_size = 24;
+  } else {
+    meta_theme_info->cursor_theme_name = g_strdup ("default");
+    meta_theme_info->cursor_size = 24;
+  }
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, ICON_THEME_KEY);
+  /* meta_theme_info->application_font */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      APPLICATION_FONT_KEY);
+  if (str != NULL)
+    meta_theme_info->application_font = g_strdup (str);
 
-	if (str == NULL)
-	{
-		mate_theme_meta_info_free(meta_theme_info);
-		return NULL;
-	}
+  /* meta_theme_info->documents_font */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      DOCUMENTS_FONT_KEY);
+  if (str != NULL)
+    meta_theme_info->documents_font = g_strdup (str);
 
-	meta_theme_info->icon_theme_name = g_strdup(str);
+  /* meta_theme_info->desktop_font */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      DESKTOP_FONT_KEY);
+  if (str != NULL)
+    meta_theme_info->desktop_font = g_strdup (str);
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, NOTIFICATION_THEME_KEY);
+  /* meta_theme_info->windowtitle_font */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      WINDOWTITLE_FONT_KEY);
+  if (str != NULL)
+    meta_theme_info->windowtitle_font = g_strdup (str);
 
-	if (str != NULL)
-		meta_theme_info->notification_theme_name = g_strdup(str);
+  /* meta_theme_info->monospace_font */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      MONOSPACE_FONT_KEY);
+  if (str != NULL)
+    meta_theme_info->monospace_font = g_strdup (str);
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, CURSOR_THEME_KEY);
+  /* meta_theme_info->background_image */
+  str = mate_desktop_item_get_string (meta_theme_ditem,
+                                      BACKGROUND_IMAGE_KEY);
+  if (str != NULL)
+      meta_theme_info->background_image = g_strdup (str);
 
-	if (str != NULL)
-	{
-		meta_theme_info->cursor_theme_name = g_strdup(str);
+  /* meta_theme_info->hidden */
+  meta_theme_info->hidden = mate_desktop_item_get_boolean (meta_theme_ditem,
+                                                           HIDDEN_KEY);
 
-		str = mate_desktop_item_get_string(meta_theme_ditem, CURSOR_SIZE_KEY);
+  mate_desktop_item_unref (meta_theme_ditem);
 
-		if (str)
-			meta_theme_info->cursor_size = (int) g_ascii_strtoll(str, NULL, 10);
-		else
-			meta_theme_info->cursor_size = 24;
-	}
-	else
-	{
-		meta_theme_info->cursor_theme_name = g_strdup("default");
-		meta_theme_info->cursor_size = 24;
-	}
+  return meta_theme_info;
 
-	str = mate_desktop_item_get_string(meta_theme_ditem, APPLICATION_FONT_KEY);
-
-	if (str != NULL)
-		meta_theme_info->application_font = g_strdup(str);
-
-	str = mate_desktop_item_get_string(meta_theme_ditem, DOCUMENTS_FONT_KEY);
-
-	if (str != NULL)
-		meta_theme_info->documents_font = g_strdup(str);
-
-	str = mate_desktop_item_get_string(meta_theme_ditem, DESKTOP_FONT_KEY);
-
-	if (str != NULL)
-		meta_theme_info->desktop_font = g_strdup(str);
-
-	str = mate_desktop_item_get_string(meta_theme_ditem, WINDOWTITLE_FONT_KEY);
-
-	if (str != NULL)
-		meta_theme_info->windowtitle_font = g_strdup(str);
-
-	str = mate_desktop_item_get_string(meta_theme_ditem, MONOSPACE_FONT_KEY);
-
-	if (str != NULL)
-		meta_theme_info->monospace_font = g_strdup(str);
-
-	str = mate_desktop_item_get_string(meta_theme_ditem, BACKGROUND_IMAGE_KEY);
-
-	if (str != NULL)
-		meta_theme_info->background_image = g_strdup(str);
-
-	meta_theme_info->hidden = mate_desktop_item_get_boolean(meta_theme_ditem, HIDDEN_KEY);
-
-	mate_desktop_item_unref(meta_theme_ditem);
-
-	return meta_theme_info;
+mate_theme_read_meta_theme_out:
+  mate_theme_meta_info_free (meta_theme_info);
+  return NULL;
 }
 
 static MateThemeIconInfo *
@@ -450,26 +462,26 @@ read_icon_theme (GFile *icon_theme_uri)
   if (icon_theme_ditem == NULL)
     return NULL;
 
-  name = mate_desktop_item_get_localestring (icon_theme_ditem, "Icon Theme/Name");
+  name = mate_desktop_item_get_localestring (icon_theme_ditem,
+                                             "Icon Theme/Name");
   if (!name) {
-    name = mate_desktop_item_get_localestring (icon_theme_ditem, MATE_DESKTOP_ITEM_NAME);
-    if (!name) {
-      mate_desktop_item_unref (icon_theme_ditem);
-      return NULL;
-    }
+    name = mate_desktop_item_get_localestring (icon_theme_ditem,
+                                               MATE_DESKTOP_ITEM_NAME);
+    if (!name)
+      goto read_icon_theme_out;
   }
 
   /* If index.theme has no Directories entry, it is only a cursor theme */
-  directories = mate_desktop_item_get_string (icon_theme_ditem, "Icon Theme/Directories");
-  if (directories == NULL) {
-    mate_desktop_item_unref (icon_theme_ditem);
-    return NULL;
-  }
+  directories = mate_desktop_item_get_string (icon_theme_ditem,
+                                              "Icon Theme/Directories");
+  if (directories == NULL)
+    goto read_icon_theme_out;
 
   icon_theme_info = mate_theme_icon_info_new ();
   icon_theme_info->readable_name = g_strdup (name);
   icon_theme_info->path = g_file_get_path (icon_theme_uri);
-  icon_theme_info->hidden = mate_desktop_item_get_boolean (icon_theme_ditem, "Icon Theme/Hidden");
+  icon_theme_info->hidden = mate_desktop_item_get_boolean (icon_theme_ditem,
+                                                           "Icon Theme/Hidden");
   dir_name = g_path_get_dirname (icon_theme_info->path);
   icon_theme_info->name = g_path_get_basename (dir_name);
   g_free (dir_name);
@@ -477,6 +489,10 @@ read_icon_theme (GFile *icon_theme_uri)
   mate_desktop_item_unref (icon_theme_ditem);
 
   return icon_theme_info;
+
+read_icon_theme_out:
+  mate_desktop_item_unref (icon_theme_ditem);
+  return NULL;
 }
 
 static void
@@ -519,11 +535,11 @@ gdk_pixbuf_from_xcursor_image (XcursorImage *cursor)
   }
 
   pixbuf = gdk_pixbuf_new_from_data ((const guchar *) buf,
-                        GDK_COLORSPACE_RGB, TRUE, 8,
-                        cursor->width, cursor->height,
-                        cursor->width * 4,
-                        (GdkPixbufDestroyNotify) g_free,
-                        NULL);
+                                     GDK_COLORSPACE_RGB, TRUE, 8,
+                                     cursor->width, cursor->height,
+                                     cursor->width * 4,
+                                     (GdkPixbufDestroyNotify) g_free,
+                                     NULL);
 
   if (!pixbuf)
     g_free (buf);
@@ -599,14 +615,14 @@ read_cursor_theme (GFile *cursor_theme_uri)
         const gchar *readable_name;
 
         readable_name = mate_desktop_item_get_string (cursor_theme_ditem,
-                                                       "Icon Theme/Name");
+                                                      "Icon Theme/Name");
         if (readable_name)
           cursor_theme_info->readable_name = g_strdup (readable_name);
         else
           cursor_theme_info->readable_name = g_strdup (name);
 
         cursor_theme_info->hidden = mate_desktop_item_get_boolean (cursor_theme_ditem,
-                                                                    "Icon Theme/Hidden");
+                                                                   "Icon Theme/Hidden");
 
         mate_desktop_item_unref (cursor_theme_ditem);
       } else {
@@ -623,8 +639,8 @@ read_cursor_theme (GFile *cursor_theme_uri)
 
 static void
 handle_change_signal (gpointer             data,
-                      MateThemeChangeType change_type,
-                      MateThemeElement    element_type)
+                      MateThemeChangeType  change_type,
+                      MateThemeElement     element_type)
 {
 #ifdef DEBUG
   gchar *type_str = NULL;
@@ -684,7 +700,7 @@ handle_change_signal (gpointer             data,
 /* index_uri should point to the gtkrc file that was modified */
 static void
 update_theme_index (GFile            *index_uri,
-                    MateThemeElement key_element,
+                    MateThemeElement  key_element,
                     gint              priority)
 {
   gboolean theme_exists;
@@ -762,27 +778,33 @@ static void
 update_gtk2_index (GFile *gtk2_index_uri,
                    gint   priority)
 {
-  update_theme_index (gtk2_index_uri, MATE_THEME_GTK_2, priority);
+  update_theme_index (gtk2_index_uri,
+                      MATE_THEME_GTK_2,
+                      priority);
 }
 
 static void
 update_keybinding_index (GFile *keybinding_index_uri,
                          gint   priority)
 {
-  update_theme_index (keybinding_index_uri, MATE_THEME_GTK_2_KEYBINDING, priority);
+  update_theme_index (keybinding_index_uri,
+                      MATE_THEME_GTK_2_KEYBINDING,
+                      priority);
 }
 
 static void
 update_marco_index (GFile *marco_index_uri,
-                       gint   priority)
+                    gint   priority)
 {
-  update_theme_index (marco_index_uri, MATE_THEME_MARCO, priority);
+  update_theme_index (marco_index_uri,
+                      MATE_THEME_MARCO,
+                      priority);
 }
 
 static void
-update_common_theme_dir_index (GFile         *theme_index_uri,
-                               MateThemeType type,
-                               gint           priority)
+update_common_theme_dir_index (GFile          *theme_index_uri,
+                               MateThemeType   type,
+                               gint            priority)
 {
   gboolean theme_exists;
   MateThemeCommonInfo *theme_info = NULL;
@@ -870,21 +892,27 @@ static void
 update_meta_theme_index (GFile *meta_theme_index_uri,
                          gint   priority)
 {
-  update_common_theme_dir_index (meta_theme_index_uri, MATE_THEME_TYPE_METATHEME, priority);
+  update_common_theme_dir_index (meta_theme_index_uri,
+                                 MATE_THEME_TYPE_METATHEME,
+                                 priority);
 }
 
 static void
 update_icon_theme_index (GFile *icon_theme_index_uri,
                          gint   priority)
 {
-  update_common_theme_dir_index (icon_theme_index_uri, MATE_THEME_TYPE_ICON, priority);
+  update_common_theme_dir_index (icon_theme_index_uri,
+                                 MATE_THEME_TYPE_ICON,
+                                 priority);
 }
 
 static void
 update_cursor_theme_index (GFile *cursor_theme_index_uri,
                            gint   priority)
 {
-  update_common_theme_dir_index (cursor_theme_index_uri, MATE_THEME_TYPE_CURSOR, priority);
+  update_common_theme_dir_index (cursor_theme_index_uri,
+                                 MATE_THEME_TYPE_CURSOR,
+                                 priority);
 }
 
 static void
@@ -927,10 +955,10 @@ keybinding_dir_changed (GFileMonitor              *monitor,
 
 static void
 marco_dir_changed (GFileMonitor              *monitor,
-                      GFile                     *file,
-                      GFile                     *other_file,
-                      GFileMonitorEvent          event_type,
-                      CommonThemeDirMonitorData *monitor_data)
+                   GFile                     *file,
+                   GFile                     *other_file,
+                   GFileMonitorEvent          event_type,
+                   CommonThemeDirMonitorData *monitor_data)
 {
   gchar *affected_file;
 
@@ -1015,7 +1043,8 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
     return FALSE;
 
   g_signal_connect (monitor, "changed",
-                    (GCallback) common_theme_dir_changed, monitor_data);
+                    (GCallback) common_theme_dir_changed,
+                    monitor_data);
 
   monitor_data->common_theme_dir_handle = monitor;
 
@@ -1030,7 +1059,8 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
   monitor = g_file_monitor_directory (subdir, G_FILE_MONITOR_NONE, NULL, NULL);
   if (monitor != NULL) {
     g_signal_connect (monitor, "changed",
-                      (GCallback) gtk2_dir_changed, monitor_data);
+                      (GCallback) gtk2_dir_changed,
+                      monitor_data);
   }
   monitor_data->gtk2_dir_handle = monitor;
   g_object_unref (subdir);
@@ -1046,7 +1076,8 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
   monitor = g_file_monitor_directory (subdir, G_FILE_MONITOR_NONE, NULL, NULL);
   if (monitor != NULL) {
     g_signal_connect (monitor, "changed",
-                      (GCallback) keybinding_dir_changed, monitor_data);
+                      (GCallback) keybinding_dir_changed,
+                      monitor_data);
   }
   monitor_data->keybinding_dir_handle = monitor;
   g_object_unref (subdir);
@@ -1069,7 +1100,8 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
   monitor = g_file_monitor_directory (subdir, G_FILE_MONITOR_NONE, NULL, NULL);
   if (monitor != NULL) {
     g_signal_connect (monitor, "changed",
-                      (GCallback) marco_dir_changed, monitor_data);
+                      (GCallback) marco_dir_changed,
+                      monitor_data);
   }
   monitor_data->marco_dir_handle = monitor;
   g_object_unref (subdir);
@@ -1096,7 +1128,8 @@ add_common_icon_theme_dir_monitor (GFile                          *theme_dir_uri
     return FALSE;
 
   g_signal_connect (monitor, "changed",
-                    (GCallback) common_icon_theme_dir_changed, monitor_data);
+                    (GCallback) common_icon_theme_dir_changed,
+                    monitor_data);
 
   monitor_data->common_icon_theme_dir_handle = monitor;
   return TRUE;
@@ -1118,11 +1151,11 @@ remove_common_icon_theme_dir_monitor (CommonIconThemeDirMonitorData *monitor_dat
 }
 
 static void
-top_theme_dir_changed (GFileMonitor     *monitor,
-                       GFile            *file,
-                       GFile            *other_file,
-                       GFileMonitorEvent event_type,
-                       CallbackTuple    *tuple)
+top_theme_dir_changed (GFileMonitor      *monitor,
+                       GFile             *file,
+                       GFile             *other_file,
+                       GFileMonitorEvent  event_type,
+                       CallbackTuple     *tuple)
 {
   GHashTable *handle_hash;
   CommonThemeDirMonitorData *monitor_data;
@@ -1153,11 +1186,11 @@ top_theme_dir_changed (GFileMonitor     *monitor,
 }
 
 static void
-top_icon_theme_dir_changed (GFileMonitor     *monitor,
-                            GFile            *file,
-                            GFile            *other_file,
-                            GFileMonitorEvent event_type,
-                            CallbackTuple    *tuple)
+top_icon_theme_dir_changed (GFileMonitor      *monitor,
+                            GFile             *file,
+                            GFile             *other_file,
+                            GFileMonitorEvent  event_type,
+                            CallbackTuple     *tuple)
 {
   GHashTable *handle_hash;
   CommonIconThemeDirMonitorData *monitor_data;
@@ -1352,69 +1385,61 @@ mate_theme_info_find_by_type (guint elements)
   return data.list;
 }
 
-static void mate_theme_info_find_all_helper(const gchar* key, GList* list, GList** themes)
+static void
+mate_theme_info_find_all_helper (const gchar  *key,
+                                 GList        *list,
+                                 GList       **themes)
 {
-	/* only return visible themes */
-	if (!((MateThemeCommonInfo*) list->data)->hidden)
-	{
-		*themes = g_list_prepend(*themes, list->data);
-	}
+  /* only return visible themes */
+  if (!((MateThemeCommonInfo*) list->data)->hidden)
+    *themes = g_list_prepend(*themes, list->data);
 }
 
-gchar* gtk_theme_info_missing_engine(const gchar* gtk_theme, gboolean name_only)
+gchar*
+gtk_theme_info_missing_engine (const gchar *gtk_theme,
+                               gboolean     name_only)
 {
-	gchar* engine = NULL;
-	gchar* gtkrc;
+  gchar* engine = NULL;
+  gchar* gtkrc;
 
-	gtkrc = gtkrc_find_named(gtk_theme);
+  gtkrc = gtkrc_find_named (gtk_theme);
 
-	if (gtkrc)
-	{
-		GSList* engines = NULL;
-		GSList* l;
+  if (gtkrc) {
+    GSList *engines = NULL;
+    GSList *l;
 
-    	gtkrc_get_details(gtkrc, &engines, NULL);
+    gtkrc_get_details (gtkrc, &engines, NULL);
+    g_free (gtkrc);
 
-   		g_free(gtkrc);
+    for (l = engines; l; l = l->next) {
+      /* This code do not work on distros with more of one gtk theme
+       * engine path. Like debian. But yes on others like Archlinux.
+       * Example, debian use:
+       * /usr/lib/i386-linux-gnu/2.10.0/engines/
+       * and /usr/lib/2.10.0/engines/
+       *
+       * some links
+       * http://forums.linuxmint.com/viewtopic.php?f=190&t=85015
+       */
+      gchar *full = g_module_build_path (GTK_ENGINE_DIR, l->data);
+      gboolean found = g_file_test (full, G_FILE_TEST_EXISTS);
+      if (!found) {
+         if (name_only) {
+           engine = g_strdup(l->data);
+           g_free (full);
+         } else {
+           engine = full;
+         }
+         break;
+       }
 
-		for (l = engines; l; l = l->next)
-		{
-			/* This code do not work on distros with more of one gtk theme
-			 * engine path. Like debian. But yes on others like Archlinux.
-			 * Example, debian use:
-			 * /usr/lib/i386-linux-gnu/2.10.0/engines/
-			 * and /usr/lib/2.10.0/engines/
-			 *
-			 * some links
-			 * http://forums.linuxmint.com/viewtopic.php?f=190&t=85015
-			 */
-			gchar* full = g_module_build_path(GTK_ENGINE_DIR, l->data);
+       g_free(full);
+    }
 
-			gboolean found = g_file_test(full, G_FILE_TEST_EXISTS);
-
-			if (!found)
-			{
-				if (name_only)
-				{
-         			engine = g_strdup(l->data);
-         			g_free(full);
-        		}
-        		else
-        		{
-        			engine = full;
-        		}
-
-        		break;
-        	}
-
-        	g_free(full);
-        }
-
-		g_slist_foreach(engines, (GFunc) g_free, NULL);
-		g_slist_free(engines);
-	}
-
-	return engine;
+    g_slist_foreach (engines, (GFunc) g_free, NULL);
+    g_slist_free (engines);
+  }
+  return engine;
 }
 
 /* Icon themes */
@@ -1461,7 +1486,7 @@ mate_theme_icon_info_find_all (void)
 
 gint
 mate_theme_icon_info_compare (MateThemeIconInfo *a,
-                               MateThemeIconInfo *b)
+                              MateThemeIconInfo *b)
 {
   gint cmp;
 
@@ -1518,7 +1543,7 @@ mate_theme_cursor_info_find_all (void)
 
 gint
 mate_theme_cursor_info_compare (MateThemeCursorInfo *a,
-                                 MateThemeCursorInfo *b)
+                                MateThemeCursorInfo *b)
 {
   gint cmp;
 
@@ -1529,95 +1554,98 @@ mate_theme_cursor_info_compare (MateThemeCursorInfo *a,
 }
 
 /* Meta themes */
-MateThemeMetaInfo* mate_theme_meta_info_new(void)
+MateThemeMetaInfo*
+mate_theme_meta_info_new (void)
 {
-	MateThemeMetaInfo* theme_info;
+  MateThemeMetaInfo* theme_info;
 
-	theme_info = g_new0(MateThemeMetaInfo, 1);
-	theme_info->type = MATE_THEME_TYPE_METATHEME;
+  theme_info = g_new0 (MateThemeMetaInfo, 1);
+  theme_info->type = MATE_THEME_TYPE_METATHEME;
 
-	return theme_info;
+  return theme_info;
 }
 
-void mate_theme_meta_info_free(MateThemeMetaInfo* meta_theme_info)
+void
+mate_theme_meta_info_free (MateThemeMetaInfo *meta_theme_info)
 {
-	g_free (meta_theme_info->application_font);
-	g_free (meta_theme_info->background_image);
-	g_free (meta_theme_info->comment);
-	g_free (meta_theme_info->cursor_theme_name);
-	g_free (meta_theme_info->desktop_font);
-	g_free (meta_theme_info->documents_font);
-	g_free (meta_theme_info->gtk_color_scheme);
-	g_free (meta_theme_info->gtk_theme_name);
-	g_free (meta_theme_info->icon_file);
-	g_free (meta_theme_info->icon_theme_name);
-	g_free (meta_theme_info->marco_theme_name);
-	g_free (meta_theme_info->monospace_font);
-	g_free (meta_theme_info->name);
-	g_free (meta_theme_info->notification_theme_name);
-	g_free (meta_theme_info->path);
-	g_free (meta_theme_info->sound_theme_name);
-	g_free (meta_theme_info->windowtitle_font);
-	g_free (meta_theme_info->readable_name);
-	g_free (meta_theme_info);
+  g_free (meta_theme_info->application_font);
+  g_free (meta_theme_info->background_image);
+  g_free (meta_theme_info->comment);
+  g_free (meta_theme_info->cursor_theme_name);
+  g_free (meta_theme_info->desktop_font);
+  g_free (meta_theme_info->documents_font);
+  g_free (meta_theme_info->gtk_color_scheme);
+  g_free (meta_theme_info->gtk_theme_name);
+  g_free (meta_theme_info->icon_file);
+  g_free (meta_theme_info->icon_theme_name);
+  g_free (meta_theme_info->marco_theme_name);
+  g_free (meta_theme_info->monospace_font);
+  g_free (meta_theme_info->name);
+  g_free (meta_theme_info->notification_theme_name);
+  g_free (meta_theme_info->path);
+  g_free (meta_theme_info->sound_theme_name);
+  g_free (meta_theme_info->windowtitle_font);
+  g_free (meta_theme_info->readable_name);
+  g_free (meta_theme_info);
 }
 
-gboolean mate_theme_meta_info_validate(const MateThemeMetaInfo* info, GError** error)
+gboolean
+mate_theme_meta_info_validate (const MateThemeMetaInfo   *info,
+                               GError                   **error)
 {
-	MateThemeInfo* theme;
+  MateThemeInfo *theme;
 
-	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-	theme = mate_theme_info_find (info->gtk_theme_name);
+  theme = mate_theme_info_find (info->gtk_theme_name);
+  if (!theme || !theme->has_gtk) {
+    g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_GTK_THEME_NOT_AVAILABLE,
+                 _("This theme will not look as intended because the required GTK+ theme '%s' is not installed."),
+                info->gtk_theme_name);
+    return FALSE;
+  }
 
-	if (!theme || !theme->has_gtk)
-	{
-		g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_GTK_THEME_NOT_AVAILABLE,
-			_("This theme will not look as intended because the required GTK+ theme '%s' is not installed."),
-			info->gtk_theme_name);
-		return FALSE;
-	}
+  theme = mate_theme_info_find (info->marco_theme_name);
+  if (!theme || !theme->has_marco) {
+    g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_WM_THEME_NOT_AVAILABLE,
+                 _("This theme will not look as intended because the required window manager theme '%s' is not installed."),
+                 info->marco_theme_name);
+    return FALSE;
+  }
 
-	theme = mate_theme_info_find (info->marco_theme_name);
+  if (!mate_theme_icon_info_find (info->icon_theme_name)) {
+    g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_ICON_THEME_NOT_AVAILABLE,
+                 _("This theme will not look as intended because the required icon theme '%s' is not installed."),
+                 info->icon_theme_name);
+    return FALSE;
+  }
 
-	if (!theme || !theme->has_marco)
-	{
-		g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_WM_THEME_NOT_AVAILABLE,
-			_("This theme will not look as intended because the required window manager theme '%s' is not installed."),
-			info->marco_theme_name);
-		return FALSE;
-	}
-
-	if (!mate_theme_icon_info_find (info->icon_theme_name))
-	{
-		g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_ICON_THEME_NOT_AVAILABLE,
-			_("This theme will not look as intended because the required icon theme '%s' is not installed."),
-			info->icon_theme_name);
-		return FALSE;
-	}
-
-	return TRUE;
+  return TRUE;
 }
 
-MateThemeMetaInfo* mate_theme_meta_info_find(const char* meta_theme_name)
+MateThemeMetaInfo *
+mate_theme_meta_info_find (const char *meta_theme_name)
 {
-	g_return_val_if_fail(meta_theme_name != NULL, NULL);
+  g_return_val_if_fail(meta_theme_name != NULL, NULL);
 
-	return (MateThemeMetaInfo*) get_theme_from_hash_by_name (meta_theme_hash_by_name, meta_theme_name, -1);
+  return (MateThemeMetaInfo*) get_theme_from_hash_by_name (meta_theme_hash_by_name, meta_theme_name, -1);
 }
 
-GList* mate_theme_meta_info_find_all(void)
+GList *
+mate_theme_meta_info_find_all (void)
 {
-  GList* list = NULL;
+  GList *list = NULL;
 
-  g_hash_table_foreach (meta_theme_hash_by_name, (GHFunc) mate_theme_info_find_all_helper, &list);
+  g_hash_table_foreach (meta_theme_hash_by_name,
+                        (GHFunc) mate_theme_info_find_all_helper,
+                        &list);
 
   return list;
 }
 
 gint
 mate_theme_meta_info_compare (MateThemeMetaInfo *a,
-                               MateThemeMetaInfo *b)
+                              MateThemeMetaInfo *b)
 {
   gint cmp;
 
@@ -1674,7 +1702,7 @@ mate_theme_meta_info_compare (MateThemeMetaInfo *a,
 
 void
 mate_theme_info_register_theme_change (ThemeChangedCallback func,
-                                        gpointer data)
+                                       gpointer             data)
 {
   ThemeCallbackData *callback_data;
 
@@ -1688,7 +1716,8 @@ mate_theme_info_register_theme_change (ThemeChangedCallback func,
 }
 
 gboolean
-mate_theme_color_scheme_parse (const gchar *scheme, GdkRGBA *colors)
+mate_theme_color_scheme_parse (const gchar *scheme,
+                               GdkRGBA     *colors)
 {
   gchar **color_scheme_strings, **color_scheme_pair, *current_string;
   gint i;
@@ -1741,7 +1770,8 @@ mate_theme_color_scheme_parse (const gchar *scheme, GdkRGBA *colors)
 }
 
 gboolean
-mate_theme_color_scheme_equal (const gchar *s1, const gchar *s2)
+mate_theme_color_scheme_equal (const gchar *s1,
+                               const gchar *s2)
 {
   GdkRGBA c1[NUM_SYMBOLIC_COLORS], c2[NUM_SYMBOLIC_COLORS];
   int i;
