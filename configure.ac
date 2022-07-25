@@ -174,7 +174,7 @@ dnl
 
 ACCOUNTSSERVICE_REQUIRED=0.6.21
 
-AC_ARG_WITH([accountsservice], AC_HELP_STRING([--without-accountsservice], [disable accountsservice support]))
+AC_ARG_WITH([accountsservice], AS_HELP_STRING([--without-accountsservice], [disable accountsservice support]))
 have_accountsservice=no
 if test x$with_accountsservice != xno; then
     PKG_CHECK_MODULES(ACCOUNTSSERVICE, accountsservice >= $ACCOUNTSSERVICE_REQUIRED, have_accountsservice=yes, have_accountsservice=no)
@@ -263,7 +263,7 @@ dnl =======================================
 AC_PATH_PROG(UPDATE_MIME_DATABASE, update-mime-database, no)
 
 AC_ARG_ENABLE(update-mimedb,
-   AC_HELP_STRING([--disable-update-mimedb],
+   AS_HELP_STRING([--disable-update-mimedb],
                    [do not update mime database after installation]),,
                    enable_update_mimedb=yes)
 AM_CONDITIONAL(ENABLE_UPDATE_MIMEDB, test x$enable_update_mimedb = xyes)
