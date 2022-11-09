@@ -28,23 +28,24 @@
 # Herick Vinicius <herick.gustavo@gmail.com>, 2020
 # Delberto M. <delberto@gmail.com>, 2020
 # Matheus Macabu <mkbu95@gmail.com>, 2021
-# LemFre, 2021
+# 808007d4a0e569ece8fbccc32b57c592_b53d1a5, 2021
 # Stefano Karapetsas <stefano@karapetsas.com>, 2021
 # Marcelo Ghelman <marcelo.ghelman@gmail.com>, 2021
+# Luciano Luck, 2022
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.25.1\n"
+"Project-Id-Version: mate-control-center 1.26.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2021-05-30 12:21+0200\n"
+"POT-Creation-Date: 2022-10-29 15:31+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>, 2021\n"
+"Last-Translator: Luciano Luck, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/mate/teams/13566/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: org.mate.control-center.gschema.xml.in:5
 msgid ""
@@ -162,7 +163,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Comando associado a um combinação de teclas personalizada."
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:201
+#: font-viewer/font-view.c:202
 msgid "Name"
 msgstr "Nome"
 
@@ -170,25 +171,25 @@ msgstr "Nome"
 msgid "Description associated with a custom keybinding."
 msgstr "Descrição associada a uma combinação de teclas personalizada."
 
-#: capplets/about-me/mate-about-me.c:292
+#: capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Selecionar Imagem"
 
-#: capplets/about-me/mate-about-me.c:294
+#: capplets/about-me/mate-about-me.c:296
 msgid "No Image"
 msgstr "Nenhuma imagem"
 
-#: capplets/about-me/mate-about-me.c:322
-#: capplets/appearance/appearance-desktop.c:648
+#: capplets/about-me/mate-about-me.c:324
+#: capplets/appearance/appearance-desktop.c:647
 msgid "Images"
 msgstr "Imagens"
 
-#: capplets/about-me/mate-about-me.c:326
+#: capplets/about-me/mate-about-me.c:328
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: capplets/about-me/mate-about-me.c:499
+#: capplets/about-me/mate-about-me.c:501
 #, c-format
 msgid "About %s"
 msgstr "Sobre %s"
@@ -246,7 +247,7 @@ msgstr "Definir suas informações pessoais"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/about-me/mate-about-me.desktop.in:13
 msgid "mate-control-center;MATE;personal;information;"
-msgstr ""
+msgstr "mate-control-center;MATE;pessoal;informações;"
 
 #: capplets/about-me/mate-about-me-fingerprint.c:123
 msgid ""
@@ -279,38 +280,38 @@ msgstr ""
 "Você quer excluir suas impressões digitais registradas, desabilitando assim "
 "o login via impressão digital?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:440
+#: capplets/about-me/mate-about-me-fingerprint.c:445
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "Concluído!"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:515
-#: capplets/about-me/mate-about-me-fingerprint.c:560
+#: capplets/about-me/mate-about-me-fingerprint.c:520
+#: capplets/about-me/mate-about-me-fingerprint.c:565
 #, c-format
 msgid "Could not access '%s' device"
 msgstr "Não foi possível acessar o dispositivo '%s'"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:621
+#: capplets/about-me/mate-about-me-fingerprint.c:626
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr ""
 "Não foi possível iniciar a captura de impressões digitais no dispositivo "
 "'%s'"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:691
+#: capplets/about-me/mate-about-me-fingerprint.c:696
 msgid "Could not access any fingerprint readers"
 msgstr "Não foi possível acessar nenhum leitor de impressões digitais"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:692
+#: capplets/about-me/mate-about-me-fingerprint.c:697
 msgid "Please contact your system administrator for help."
 msgstr "Por favor peça ajuda ao seu administrador de sistemas."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:756
+#: capplets/about-me/mate-about-me-fingerprint.c:761
 #: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "Habilitar o login via impressão digital"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:786
+#: capplets/about-me/mate-about-me-fingerprint.c:798
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -319,11 +320,11 @@ msgstr ""
 "Para habilitar o login via impressão digital, você precisa salvar uma de "
 "suas impressões digitais através do dispositivo '%s'."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:795
+#: capplets/about-me/mate-about-me-fingerprint.c:807
 msgid "Swipe finger on reader"
 msgstr "Deslize o dedo no leitor"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:797
+#: capplets/about-me/mate-about-me-fingerprint.c:809
 msgid "Place finger on reader"
 msgstr "Coloque o dedo no leitor"
 
@@ -383,7 +384,7 @@ msgstr ""
 "Sua impressão digital foi salva com sucesso. Agora você poderá fazer login "
 "usando seu leitor de impressões digitais."
 
-#: capplets/about-me/mate-about-me-password.c:160
+#: capplets/about-me/mate-about-me-password.c:166
 msgid "Child exited unexpectedly"
 msgstr "Processo filho terminou inesperadamente"
 
@@ -397,12 +398,17 @@ msgstr "Não foi possível encerrar o canal de E/S backend_stdin: %s"
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "Não foi possível encerrar o canal de E/S backend_stdout: %s"
 
-#: capplets/about-me/mate-about-me-password.c:408
+#: capplets/about-me/mate-about-me-password.c:322
+#, c-format
+msgid "Could not shutdown backend_stderr IO channel: %s"
+msgstr ""
+
+#: capplets/about-me/mate-about-me-password.c:428
 msgid "Authenticated!"
 msgstr "Autenticado!"
 
-#: capplets/about-me/mate-about-me-password.c:473
-#: capplets/about-me/mate-about-me-password.c:558
+#: capplets/about-me/mate-about-me-password.c:491
+#: capplets/about-me/mate-about-me-password.c:579
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
@@ -410,77 +416,77 @@ msgstr ""
 "Sua senha foi alterada desde sua autenticação inicial! Por favor autentique-"
 "se novamente."
 
-#: capplets/about-me/mate-about-me-password.c:475
+#: capplets/about-me/mate-about-me-password.c:493
 msgid "That password was incorrect."
 msgstr "Senha incorreta."
 
-#: capplets/about-me/mate-about-me-password.c:526
+#: capplets/about-me/mate-about-me-password.c:547
 msgid "Your password has been changed."
 msgstr "Sua senha foi alterada."
 
-#: capplets/about-me/mate-about-me-password.c:536
+#: capplets/about-me/mate-about-me-password.c:557
 #, c-format
 msgid "System error: %s."
 msgstr "Erro de sistema: %s."
 
-#: capplets/about-me/mate-about-me-password.c:539
+#: capplets/about-me/mate-about-me-password.c:560
 msgid "The password is too short."
 msgstr "A senha é curta demais."
 
-#: capplets/about-me/mate-about-me-password.c:543
+#: capplets/about-me/mate-about-me-password.c:564
 msgid "The password is too simple."
 msgstr "A senha é simples demais."
 
-#: capplets/about-me/mate-about-me-password.c:548
+#: capplets/about-me/mate-about-me-password.c:569
 msgid "The old and new passwords are too similar."
 msgstr "As senhas antiga e nova são semelhantes demais."
 
-#: capplets/about-me/mate-about-me-password.c:550
+#: capplets/about-me/mate-about-me-password.c:571
 msgid "The new password must contain numeric or special character(s)."
 msgstr ""
 "A nova senha deve conter um ou mais caracteres numéricos ou especiais."
 
-#: capplets/about-me/mate-about-me-password.c:553
+#: capplets/about-me/mate-about-me-password.c:574
 msgid "The old and new passwords are the same."
 msgstr "As senhas antiga e nova são iguais."
 
-#: capplets/about-me/mate-about-me-password.c:555
+#: capplets/about-me/mate-about-me-password.c:576
 msgid "The new password has already been used recently."
 msgstr "A nova senha já foi utilizada recentemente."
 
-#: capplets/about-me/mate-about-me-password.c:826
+#: capplets/about-me/mate-about-me-password.c:862
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Não foi possível executar %s: %s"
 
-#: capplets/about-me/mate-about-me-password.c:830
+#: capplets/about-me/mate-about-me-password.c:866
 msgid "Unable to launch backend"
 msgstr "Não foi possível executar o backend"
 
-#: capplets/about-me/mate-about-me-password.c:831
+#: capplets/about-me/mate-about-me-password.c:867
 msgid "A system error has occurred"
 msgstr "Ocorreu um erro de sistema"
 
-#: capplets/about-me/mate-about-me-password.c:851
+#: capplets/about-me/mate-about-me-password.c:887
 msgid "Checking password..."
 msgstr "Verificando senha..."
 
-#: capplets/about-me/mate-about-me-password.c:935
+#: capplets/about-me/mate-about-me-password.c:971
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Clique em <b>Alterar senha</b> para mudar a sua senha."
 
-#: capplets/about-me/mate-about-me-password.c:938
+#: capplets/about-me/mate-about-me-password.c:974
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Por favor digite sua senha no campo <b>Nova senha</b>."
 
-#: capplets/about-me/mate-about-me-password.c:941
+#: capplets/about-me/mate-about-me-password.c:977
 #: capplets/about-me/mate-about-me-password.ui:348
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr ""
 "Por favor digite sua senha novamente no campo <b>Redigite a nova senha</b>."
 
-#: capplets/about-me/mate-about-me-password.c:944
+#: capplets/about-me/mate-about-me-password.c:980
 msgid "The two passwords are not equal."
 msgstr "As duas senhas não são iguais."
 
@@ -601,13 +607,13 @@ msgstr "Escolha quais recursos de acessibilidade habilitar ao fazer login"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
 msgid "mate-control-center;MATE;accessibility;features;"
-msgstr ""
+msgstr "mate-control-center;MATE;acessibilidade;recursos;"
 
-#: capplets/appearance/appearance-desktop.c:617
+#: capplets/appearance/appearance-desktop.c:616
 msgid "Add Wallpaper"
 msgstr "Adicionar plano de fundo"
 
-#: capplets/appearance/appearance-desktop.c:652
+#: capplets/appearance/appearance-desktop.c:651
 msgid "All files"
 msgstr "Todos os arquivos"
 
@@ -621,7 +627,7 @@ msgid "_Cancel"
 msgstr "_Cancelar"
 
 #: capplets/appearance/appearance-font.c:619
-#: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
+#: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "_Abrir"
 
@@ -644,8 +650,8 @@ msgid ""
 msgstr "Informe o nome da página a exibir (theme|background|fonts|interface)"
 
 #: capplets/appearance/appearance-main.c:155
-#: capplets/default-applications/mate-da-capplet.c:783
-#: capplets/mouse/mate-mouse-properties.c:401
+#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/mouse/mate-mouse-properties.c:414
 msgid "page"
 msgstr "página"
 
@@ -654,13 +660,13 @@ msgid "[WALLPAPER...]"
 msgstr "[PLANO DE FUNDO...]"
 
 #: capplets/appearance/appearance-style.c:173
-#: capplets/common/mate-theme-info.c:491
+#: capplets/common/mate-theme-info.c:506
 msgid "Default Pointer"
 msgstr "Cursor padrão"
 
 #: capplets/appearance/appearance-style.c:235
 #: capplets/appearance/appearance-themes.c:659
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
 #: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Instalar"
@@ -1088,23 +1094,23 @@ msgstr "Se botões devem exibir um ícone a cada texto do botão"
 
 #: capplets/appearance/data/appearance.ui:3313
 msgid "File Chooser"
-msgstr ""
+msgstr "Escolher Arquivo"
 
 #: capplets/appearance/data/appearance.ui:3348
 msgid "Show hidden items"
-msgstr ""
+msgstr "Mostrar itens ocultos"
 
 #: capplets/appearance/data/appearance.ui:3365
 msgid "Show size column"
-msgstr ""
+msgstr "Mostrar coluna de tamanho"
 
 #: capplets/appearance/data/appearance.ui:3381
 msgid "Show type column"
-msgstr ""
+msgstr "Mostrar tipo de coluna"
 
 #: capplets/appearance/data/appearance.ui:3397
 msgid "Sort directories first"
-msgstr ""
+msgstr "Classifique os diretórios primeiro"
 
 #: capplets/appearance/data/appearance.ui:3443
 msgid "Preview"
@@ -1139,6 +1145,8 @@ msgstr "Personalizar a aparência da área de trabalho"
 #: capplets/appearance/data/mate-appearance-properties.desktop.in:13
 msgid "mate-control-center;MATE;appearance;properties;desktop;customize;look;"
 msgstr ""
+"mate-control-center;MATE;aparência;propriedades;área de "
+"trabalho;personalizar;olhar;"
 
 #: capplets/appearance/data/mate-theme-installer.desktop.in:3
 msgid "Theme Installer"
@@ -1152,7 +1160,7 @@ msgstr "Instala pacotes de temas para várias partes da área de trabalho"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/appearance/data/mate-theme-installer.desktop.in:14
 msgid "mate-control-center;MATE;install;desktop;themes;"
-msgstr ""
+msgstr "mate-controle-center;MATE;instalar;desktop;temas;"
 
 #: capplets/appearance/data/mate-theme-package.xml.in:5
 msgid "Mate Theme Package"
@@ -1189,6 +1197,7 @@ msgid "pixel"
 msgid_plural "pixels"
 msgstr[0] "pixels"
 msgstr[1] "pixels"
+msgstr[2] "pixels"
 
 #: capplets/appearance/mate-wp-item.c:319
 #, c-format
@@ -1436,7 +1445,7 @@ msgstr "_Ignorar"
 msgid "Overwrite _All"
 msgstr "_Sobrescrever todos"
 
-#: capplets/common/mate-theme-info.c:1577
+#: capplets/common/mate-theme-info.c:1606
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1445,7 +1454,7 @@ msgstr ""
 "Este tema não será exibido conforme pretendido porque o tema GTK+ '%s' não "
 "está instalado."
 
-#: capplets/common/mate-theme-info.c:1587
+#: capplets/common/mate-theme-info.c:1614
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1454,7 +1463,7 @@ msgstr ""
 "Este tema não será exibido conforme pretendido porque o tema '%s' do "
 "gerenciador de janelas não está instalado."
 
-#: capplets/common/mate-theme-info.c:1595
+#: capplets/common/mate-theme-info.c:1621
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1476,13 +1485,13 @@ msgstr "Selecione seus aplicativos padrão"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:13
 msgid "mate-control-center;MATE;default;preferred;applications;"
-msgstr ""
+msgstr "mate-control-center;MATE;padrão;preferido;aplicativos;"
 
-#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/default-applications/mate-da-capplet.c:781
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Informe o nome da página a exibir (internet|multimedia|system|a11y)"
 
-#: capplets/default-applications/mate-da-capplet.c:788
+#: capplets/default-applications/mate-da-capplet.c:789
 msgid "- MATE Default Applications"
 msgstr "- Aplicativos Padrões do MATE"
 
@@ -1815,7 +1824,7 @@ msgstr "200%"
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: capplets/display/xrandr-capplet.c:615
-#: capplets/display/xrandr-capplet.c:1693
+#: capplets/display/xrandr-capplet.c:1692
 msgid "Mirror Screens"
 msgstr "Telas Espelhadas"
 
@@ -1829,7 +1838,7 @@ msgstr "Monitor: %s"
 msgid "%u x %u"
 msgstr ""
 
-#: capplets/display/xrandr-capplet.c:1549
+#: capplets/display/xrandr-capplet.c:1548
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1837,38 +1846,38 @@ msgstr ""
 "Selecione um monitor para alterar suas propriedades; arraste-o para ajustar "
 "seu posicionamento."
 
-#: capplets/display/xrandr-capplet.c:2147
+#: capplets/display/xrandr-capplet.c:2145
 msgid "Could not save the monitor configuration"
 msgstr "Não foi possível salvar a configuração do monitor"
 
-#: capplets/display/xrandr-capplet.c:2168
+#: capplets/display/xrandr-capplet.c:2166
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
 "Não foi possível obter o barramento da sessão ao aplicar as configurações de"
 " exibição"
 
-#: capplets/display/xrandr-capplet.c:2187
+#: capplets/display/xrandr-capplet.c:2185
 msgid "Could not detect displays"
 msgstr "Não foi possível detectar o(s) monitor(es)"
 
-#: capplets/display/xrandr-capplet.c:2369
+#: capplets/display/xrandr-capplet.c:2367
 msgid "The monitor configuration has been saved"
 msgstr "A configuração do(s) monitor(es) foi salva"
 
-#: capplets/display/xrandr-capplet.c:2371
+#: capplets/display/xrandr-capplet.c:2369
 msgid "This configuration will be used the next time someone logs in."
 msgstr ""
 "A configuração será utilizada da próxima vez em que alguém fizer login."
 
-#: capplets/display/xrandr-capplet.c:2380
+#: capplets/display/xrandr-capplet.c:2378
 msgid "Could not set the default configuration for monitors"
 msgstr "Não foi possível definir a configuração padrão para o(s) monitor(es)"
 
-#: capplets/display/xrandr-capplet.c:2451
+#: capplets/display/xrandr-capplet.c:2449
 msgid "Could not get screen information"
 msgstr "Não foi possível obter informações sobre o(s) monitor(es)"
 
-#: capplets/display/xrandr-capplet.c:2570
+#: capplets/display/xrandr-capplet.c:2568
 msgid "Could not open help content"
 msgstr ""
 
@@ -1932,7 +1941,7 @@ msgstr "Próxima faixa"
 msgid "Eject"
 msgstr "Ejetar"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1173
 msgid "Desktop"
 msgstr "Área de trabalho"
 
@@ -1973,7 +1982,7 @@ msgid "Home folder"
 msgstr "Pasta pessoal"
 
 #: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
-#: libslab/bookmark-agent.c:1196
+#: libslab/bookmark-agent.c:1212
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -1985,32 +1994,32 @@ msgstr ""
 msgid "New shortcut..."
 msgstr "Novo atalho..."
 
+#: capplets/keybindings/eggcellrendererkeys.c:147
 #: capplets/keybindings/eggcellrendererkeys.c:148
-#: capplets/keybindings/eggcellrendererkeys.c:149
 msgid "Accelerator key"
 msgstr "Tecla de atalho"
 
+#: capplets/keybindings/eggcellrendererkeys.c:157
 #: capplets/keybindings/eggcellrendererkeys.c:158
-#: capplets/keybindings/eggcellrendererkeys.c:159
 msgid "Accelerator modifiers"
 msgstr "Modificadores de atalhos"
 
+#: capplets/keybindings/eggcellrendererkeys.c:166
 #: capplets/keybindings/eggcellrendererkeys.c:167
-#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator keycode"
 msgstr "Código de tecla de atalho"
 
-#: capplets/keybindings/eggcellrendererkeys.c:178
+#: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accel Mode"
 msgstr "Modo de atalho"
 
-#: capplets/keybindings/eggcellrendererkeys.c:179
+#: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "The type of accelerator."
 msgstr "O tipo de atalho."
 
-#: capplets/keybindings/eggcellrendererkeys.c:222
+#: capplets/keybindings/eggcellrendererkeys.c:220
 #: capplets/keybindings/mate-keybinding-properties.c:117
-#: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
+#: capplets/mouse/mate-mouse-properties.c:356 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Oculta"
 
@@ -2018,16 +2027,16 @@ msgstr "Oculta"
 msgid "<Unknown Action>"
 msgstr "<Ação desconhecida>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1002
-#: capplets/keybindings/mate-keybinding-properties.c:1610
+#: capplets/keybindings/mate-keybinding-properties.c:1001
+#: capplets/keybindings/mate-keybinding-properties.c:1608
 msgid "Custom Shortcuts"
 msgstr "Atalhos personalizados"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1190
+#: capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Erro ao salvar o novo atalho"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1266
+#: capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2036,7 +2045,7 @@ msgstr ""
 "O atalho \"%s\" não pode ser usado porque se tornaria impossível digitar usando esta tecla.\n"
 "Por favor tente pressionando simultaneamente outra tecla tal como Control, Alt ou Shift."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1298
+#: capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2045,24 +2054,24 @@ msgstr ""
 "O atalho \"%s\" já está sendo usado por\n"
 "\"%s\""
 
-#: capplets/keybindings/mate-keybinding-properties.c:1305
+#: capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Se você reatribuir o atalho para \"%s\", o atalho \"%s\" será desativado."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1310
+#: capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Reatribuir"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1565
+#: capplets/keybindings/mate-keybinding-properties.c:1563
 msgid "Too many custom shortcuts"
 msgstr "Número excessivo de atalhos personalizados"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1879
+#: capplets/keybindings/mate-keybinding-properties.c:1877
 msgid "Action"
 msgstr "Ação"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1901
+#: capplets/keybindings/mate-keybinding-properties.c:1899
 msgid "Shortcut"
 msgstr "Atalho"
 
@@ -2101,23 +2110,23 @@ msgstr "Atribuir teclas de atalho a comandos"
 msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties.c:164
-#: capplets/keyboard/mate-keyboard-properties.c:169
+#: capplets/keyboard/mate-keyboard-properties.c:141
+#: capplets/keyboard/mate-keyboard-properties.c:146
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Apenas aplicar as configurações e sair (apenas para compatibilidade; agora "
 "tratado pelo daemon)"
 
-#: capplets/keyboard/mate-keyboard-properties.c:174
+#: capplets/keyboard/mate-keyboard-properties.c:151
 msgid "Start the page with the typing break settings showing"
 msgstr "Iniciar a página exibindo as configurações de intervalo de digitação"
 
-#: capplets/keyboard/mate-keyboard-properties.c:179
+#: capplets/keyboard/mate-keyboard-properties.c:156
 msgid "Start the page with the accessibility settings showing"
 msgstr "Iniciar a página exibindo as configurações de acessibilidade"
 
-#: capplets/keyboard/mate-keyboard-properties.c:185
+#: capplets/keyboard/mate-keyboard-properties.c:161
 msgid "- MATE Keyboard Preferences"
 msgstr "- Preferências do Teclado MATE"
 
@@ -2182,7 +2191,7 @@ msgstr "Soar um bipe quando uma tecla for _rejeitada"
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:351
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1175
 msgid "Slow Keys"
-msgstr "Teclas lentas"
+msgstr "Teclas Lentas"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:379
 msgid "Beep when a key is reje_cted"
@@ -2506,7 +2515,7 @@ msgstr "Opções de disposição do teclado"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+#: capplets/keyboard/mate-keyboard-properties-xkblt.c:239
 msgid "Layout"
 msgstr "Disposição"
 
@@ -2514,7 +2523,7 @@ msgstr "Disposição"
 msgid "Vendors"
 msgstr "Fabricantes"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
 msgid "Models"
 msgstr "Modelos"
 
@@ -2537,23 +2546,23 @@ msgstr "Definir suas preferências de teclado"
 msgid "mate-control-center;MATE;keyboard;preferences;"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Left button"
 msgstr "Botão esquerdo"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Middle button"
 msgstr "Botão do meio"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Right button"
 msgstr "Botão direito"
 
-#: capplets/mouse/mate-mouse-properties.c:400
+#: capplets/mouse/mate-mouse-properties.c:413
 msgid "Specify the name of the page to show (general)"
 msgstr "Informe o nome da página a exibir (geral)"
 
-#: capplets/mouse/mate-mouse-properties.c:405
+#: capplets/mouse/mate-mouse-properties.c:418
 msgid "- MATE Mouse Preferences"
 msgstr "- Preferências de Mouse do MATE"
 
@@ -2798,16 +2807,16 @@ msgstr "Nome de u_suário:"
 msgid "_Password:"
 msgstr "_Senha:"
 
-#: capplets/windows/mate-metacity-support.c:42
+#: capplets/windows/mate-metacity-support.c:43
 msgid "Metacity Preferences"
 msgstr "Preferências do Metacity"
 
-#: capplets/windows/mate-metacity-support.c:53
+#: capplets/windows/mate-metacity-support.c:54
 #: capplets/windows/window-properties.ui:813
 msgid "Compositing Manager"
 msgstr "Gerenciador de Janelas com Suporte a Composição"
 
-#: capplets/windows/mate-metacity-support.c:60
+#: capplets/windows/mate-metacity-support.c:61
 msgid "Enable software _compositing window manager"
 msgstr "Ativa gerenciador de janelas com suporte a _composição"
 
@@ -2878,32 +2887,32 @@ msgid "_Double-click titlebar action:"
 msgstr ""
 
 #: capplets/windows/window-properties.ui:305
-#: libwindow-settings/marco-window-manager.c:400
+#: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "Enrolar"
 
 #: capplets/windows/window-properties.ui:306
-#: libwindow-settings/marco-window-manager.c:401
+#: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "Maximizar"
 
 #: capplets/windows/window-properties.ui:307
-#: libwindow-settings/marco-window-manager.c:402
+#: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "Maximizar horizontalmente"
 
 #: capplets/windows/window-properties.ui:308
-#: libwindow-settings/marco-window-manager.c:403
+#: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "Maximizar verticalmente"
 
 #: capplets/windows/window-properties.ui:309
-#: libwindow-settings/marco-window-manager.c:404
+#: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "Minimizar"
 
 #: capplets/windows/window-properties.ui:310
-#: libwindow-settings/marco-window-manager.c:405
+#: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "Nenhuma"
 
@@ -3014,14 +3023,6 @@ msgstr "ler arquivo"
 #: capplets/time-admin/src/main.c:238
 msgid "read pid file failed"
 msgstr "ler arquivo pid falhou"
-
-#: capplets/time-admin/src/main.c:264
-msgid "g_bus_get_sync"
-msgstr ""
-
-#: capplets/time-admin/src/main.c:277
-msgid "g_bus_proxy_new"
-msgstr ""
 
 #: capplets/time-admin/src/time-admin.ui:58
 msgid "Time and Date Manager"
@@ -4855,7 +4856,7 @@ msgstr "Ferramenta de Configuração do MATE"
 
 #: shell/matecc.desktop.in:5
 msgid "Configure MATE settings"
-msgstr "Configurar o MATE"
+msgstr "Ajuste as configurações do MATE"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -4894,6 +4895,7 @@ msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
 msgstr[0] "%d minutos até o próximo intervalo"
 msgstr[1] "%d minutos até o próximo intervalo"
+msgstr[2] "%d minutos até o próximo intervalo"
 
 #: typing-break/drwright.c:542
 msgid "Take a break now (next in less than one minute)"
@@ -4973,31 +4975,31 @@ msgstr ""
 "la clicando no painel com o botão direito e escolhendo \"Adicionar ao "
 "painel\", selecionando \"Área de notificação\" e clicando em \"Adicionar\"."
 
-#: font-viewer/font-view.c:204
+#: font-viewer/font-view.c:205
 msgid "Style"
 msgstr "Estilo"
 
-#: font-viewer/font-view.c:214
+#: font-viewer/font-view.c:215
 msgid "Type"
 msgstr "Tipo"
 
-#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
+#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
 msgid "Version"
 msgstr "Versão"
 
-#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
+#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "Copyright"
 
-#: font-viewer/font-view.c:270
+#: font-viewer/font-view.c:271
 msgid "Description"
 msgstr "Descrição"
 
-#: font-viewer/font-view.c:288
+#: font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "Instalação falhou"
 
-#: font-viewer/font-view.c:294
+#: font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "Instalado"
 
@@ -5035,89 +5037,89 @@ msgstr "Visualizador de Fontes do MATE"
 msgid "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
 msgstr ""
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Texto para miniaturas (padrão: Aa)"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
 msgstr "TEXTO"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "Thumbnail size (default: 128)"
 msgstr "Texto para miniaturas (padrão: 128)"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "SIZE"
 msgstr "TAMANHO"
 
-#: font-viewer/font-thumbnailer.c:197
+#: font-viewer/font-thumbnailer.c:198
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ARQUIVO-FONTE ARQUIVO-SAIDA"
 
-#: libslab/app-shell.c:762
+#: libslab/app-shell.c:763
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "O seu filtro \"%s\" não corresponde a nenhum item."
 
-#: libslab/app-shell.c:764
+#: libslab/app-shell.c:765
 msgid "No matches found."
 msgstr "Nenhum resultado encontrado."
 
-#: libslab/app-shell.c:873
+#: libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Novos Aplicativos"
 
-#: libslab/app-shell.c:935
+#: libslab/app-shell.c:936
 msgid "Other"
 msgstr "Outros"
 
-#: libslab/application-tile.c:339
+#: libslab/application-tile.c:338
 #, c-format
 msgid "Start %s"
 msgstr "Iniciar %s"
 
-#: libslab/application-tile.c:360
+#: libslab/application-tile.c:359
 msgid "Help"
 msgstr "Ajuda"
 
-#: libslab/application-tile.c:643
+#: libslab/application-tile.c:638
 msgid "Remove from Favorites"
 msgstr "Remover dos favoritos"
 
-#: libslab/application-tile.c:645
+#: libslab/application-tile.c:640
 msgid "Add to Favorites"
 msgstr "Adicionar aos favoritos"
 
-#: libslab/application-tile.c:730
+#: libslab/application-tile.c:725
 msgid "Remove from Startup Programs"
 msgstr "Remover dos programas iniciais"
 
-#: libslab/application-tile.c:732
+#: libslab/application-tile.c:727
 msgid "Add to Startup Programs"
 msgstr "Adicionar aos programas iniciais"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1102
 msgid "New Spreadsheet"
 msgstr "Nova planilha"
 
-#: libslab/bookmark-agent.c:1090
+#: libslab/bookmark-agent.c:1106
 msgid "New Document"
 msgstr "Novo documento"
 
-#: libslab/bookmark-agent.c:1144
+#: libslab/bookmark-agent.c:1160
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Pasta Pessoal"
 
-#: libslab/bookmark-agent.c:1151
+#: libslab/bookmark-agent.c:1167
 msgid "Documents"
 msgstr "Documentos"
 
-#: libslab/bookmark-agent.c:1162
+#: libslab/bookmark-agent.c:1178
 msgid "File System"
 msgstr "Sistema de arquivos"
 
-#: libslab/bookmark-agent.c:1165
+#: libslab/bookmark-agent.c:1181
 msgid "Network Servers"
 msgstr "Servidores de rede"

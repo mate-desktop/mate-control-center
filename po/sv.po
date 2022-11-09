@@ -17,14 +17,16 @@
 # Luna Jernberg <bittin@cafe8bitar.se>, 2021
 # Stefano Karapetsas <stefano@karapetsas.com>, 2021
 # Philip Andersen <renegadevi@codeofmagi.net>, 2021
+# Oskar R., 2022
+# Andreas Collsén, 2022
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.25.1\n"
+"Project-Id-Version: mate-control-center 1.26.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2021-05-30 12:21+0200\n"
+"POT-Creation-Date: 2022-10-29 15:31+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Philip Andersen <renegadevi@codeofmagi.net>, 2021\n"
+"Last-Translator: Andreas Collsén, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/mate/teams/13566/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -147,7 +149,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Kommando associerad med en anpassad genväg."
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:201
+#: font-viewer/font-view.c:202
 msgid "Name"
 msgstr "Namn"
 
@@ -155,25 +157,25 @@ msgstr "Namn"
 msgid "Description associated with a custom keybinding."
 msgstr "Beskrivning associerad med en anpassad tangentbindning."
 
-#: capplets/about-me/mate-about-me.c:292
+#: capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Välj bild"
 
-#: capplets/about-me/mate-about-me.c:294
+#: capplets/about-me/mate-about-me.c:296
 msgid "No Image"
 msgstr "Ingen bild"
 
-#: capplets/about-me/mate-about-me.c:322
-#: capplets/appearance/appearance-desktop.c:648
+#: capplets/about-me/mate-about-me.c:324
+#: capplets/appearance/appearance-desktop.c:647
 msgid "Images"
 msgstr "Bilder"
 
-#: capplets/about-me/mate-about-me.c:326
+#: capplets/about-me/mate-about-me.c:328
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Alla filer"
 
-#: capplets/about-me/mate-about-me.c:499
+#: capplets/about-me/mate-about-me.c:501
 #, c-format
 msgid "About %s"
 msgstr "Om %s"
@@ -262,36 +264,36 @@ msgstr ""
 "Vill du ta bort dina registrerade fingeravtryck så att "
 "fingeravtrycksinloggning inaktiveras?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:440
+#: capplets/about-me/mate-about-me-fingerprint.c:445
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "Färdigt!"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:515
-#: capplets/about-me/mate-about-me-fingerprint.c:560
+#: capplets/about-me/mate-about-me-fingerprint.c:520
+#: capplets/about-me/mate-about-me-fingerprint.c:565
 #, c-format
 msgid "Could not access '%s' device"
 msgstr "Kunde inte komma åt enheten \"%s\""
 
-#: capplets/about-me/mate-about-me-fingerprint.c:621
+#: capplets/about-me/mate-about-me-fingerprint.c:626
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr "Kunde inte starta fingeravläsning på enheten \"%s\""
 
-#: capplets/about-me/mate-about-me-fingerprint.c:691
+#: capplets/about-me/mate-about-me-fingerprint.c:696
 msgid "Could not access any fingerprint readers"
 msgstr "Kunde inte komma åt några fingeravtrycksläsare"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:692
+#: capplets/about-me/mate-about-me-fingerprint.c:697
 msgid "Please contact your system administrator for help."
 msgstr "Kontakta din systemadministratör för hjälp."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:756
+#: capplets/about-me/mate-about-me-fingerprint.c:761
 #: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "Aktivera fingeravtrycksinloggning"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:786
+#: capplets/about-me/mate-about-me-fingerprint.c:798
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -300,11 +302,11 @@ msgstr ""
 "Du behöver spara ett av dina fingeravtryck, med hjälp av enheten \"%s\", för"
 " att aktivera fingeravtrycksinloggning."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:795
+#: capplets/about-me/mate-about-me-fingerprint.c:807
 msgid "Swipe finger on reader"
 msgstr "Dra finger på läsaren"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:797
+#: capplets/about-me/mate-about-me-fingerprint.c:809
 msgid "Place finger on reader"
 msgstr "Placera finger på läsaren"
 
@@ -364,7 +366,7 @@ msgstr ""
 "Ditt fingeravtryck sparades. Du ska nu kunna logga in med hjälp av din "
 "fingeravtrycksläsare."
 
-#: capplets/about-me/mate-about-me-password.c:160
+#: capplets/about-me/mate-about-me-password.c:166
 msgid "Child exited unexpectedly"
 msgstr "Barnprocess avslutades oväntat"
 
@@ -378,12 +380,17 @@ msgstr "Kunde inte stänga ner backend_stdin IO-kanal: %s"
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "Kunde inte stänga ner backend_stdout IO-kanal: %s"
 
-#: capplets/about-me/mate-about-me-password.c:408
+#: capplets/about-me/mate-about-me-password.c:322
+#, c-format
+msgid "Could not shutdown backend_stderr IO channel: %s"
+msgstr ""
+
+#: capplets/about-me/mate-about-me-password.c:428
 msgid "Authenticated!"
 msgstr "Autentiserad!"
 
-#: capplets/about-me/mate-about-me-password.c:473
-#: capplets/about-me/mate-about-me-password.c:558
+#: capplets/about-me/mate-about-me-password.c:491
+#: capplets/about-me/mate-about-me-password.c:579
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
@@ -391,76 +398,76 @@ msgstr ""
 "Ditt lösenord har ändrats sedan du initialt autentiserades! Autentisera dig "
 "igen."
 
-#: capplets/about-me/mate-about-me-password.c:475
+#: capplets/about-me/mate-about-me-password.c:493
 msgid "That password was incorrect."
 msgstr "Lösenord var felaktigt."
 
-#: capplets/about-me/mate-about-me-password.c:526
+#: capplets/about-me/mate-about-me-password.c:547
 msgid "Your password has been changed."
 msgstr "Ditt lösenord har ändrats."
 
-#: capplets/about-me/mate-about-me-password.c:536
+#: capplets/about-me/mate-about-me-password.c:557
 #, c-format
 msgid "System error: %s."
 msgstr "Systemfel: %s."
 
-#: capplets/about-me/mate-about-me-password.c:539
+#: capplets/about-me/mate-about-me-password.c:560
 msgid "The password is too short."
 msgstr "Lösenordet är för kort."
 
-#: capplets/about-me/mate-about-me-password.c:543
+#: capplets/about-me/mate-about-me-password.c:564
 msgid "The password is too simple."
 msgstr "Lösenordet är för enkelt."
 
-#: capplets/about-me/mate-about-me-password.c:548
+#: capplets/about-me/mate-about-me-password.c:569
 msgid "The old and new passwords are too similar."
 msgstr "Det gamla och det nya lösenordet är för lika."
 
-#: capplets/about-me/mate-about-me-password.c:550
+#: capplets/about-me/mate-about-me-password.c:571
 msgid "The new password must contain numeric or special character(s)."
 msgstr "Det nya lösenordet måste innehålla numeriska eller specialtecken."
 
-#: capplets/about-me/mate-about-me-password.c:553
+#: capplets/about-me/mate-about-me-password.c:574
 msgid "The old and new passwords are the same."
 msgstr "Det gamla och det nya lösenordet är identiska."
 
-#: capplets/about-me/mate-about-me-password.c:555
+#: capplets/about-me/mate-about-me-password.c:576
 msgid "The new password has already been used recently."
 msgstr "Det nya lösenordet har använts tidigare."
 
-#: capplets/about-me/mate-about-me-password.c:826
+#: capplets/about-me/mate-about-me-password.c:862
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Kunde inte starta %s: %s"
 
-#: capplets/about-me/mate-about-me-password.c:830
+#: capplets/about-me/mate-about-me-password.c:866
 msgid "Unable to launch backend"
 msgstr "Kan inte starta bakände"
 
-#: capplets/about-me/mate-about-me-password.c:831
+#: capplets/about-me/mate-about-me-password.c:867
 msgid "A system error has occurred"
 msgstr "Ett systemfel har inträffat"
 
-#: capplets/about-me/mate-about-me-password.c:851
+#: capplets/about-me/mate-about-me-password.c:887
 msgid "Checking password..."
 msgstr "Kontrollerar lösenord..."
 
-#: capplets/about-me/mate-about-me-password.c:935
+#: capplets/about-me/mate-about-me-password.c:971
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Klicka på <b>Byt lösenord</b> för att byta ditt lösenord."
 
-#: capplets/about-me/mate-about-me-password.c:938
+#: capplets/about-me/mate-about-me-password.c:974
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Skriv in ditt lösenord i fältet <b>Nytt lösenord</b>."
 
-#: capplets/about-me/mate-about-me-password.c:941
+#: capplets/about-me/mate-about-me-password.c:977
 #: capplets/about-me/mate-about-me-password.ui:348
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr ""
 "Skriv in ditt lösenord igen i fältet <b>Ange ditt nya lösenord igen</b>."
 
-#: capplets/about-me/mate-about-me-password.c:944
+#: capplets/about-me/mate-about-me-password.c:980
 msgid "The two passwords are not equal."
 msgstr "De två lösenorden är inte lika."
 
@@ -583,11 +590,11 @@ msgstr "Välj vilka hjälpmedelsfunktioner som ska aktiveras när du loggar in"
 msgid "mate-control-center;MATE;accessibility;features;"
 msgstr ""
 
-#: capplets/appearance/appearance-desktop.c:617
+#: capplets/appearance/appearance-desktop.c:616
 msgid "Add Wallpaper"
 msgstr "Lägg till bakgrundsbild"
 
-#: capplets/appearance/appearance-desktop.c:652
+#: capplets/appearance/appearance-desktop.c:651
 msgid "All files"
 msgstr "Alla filer"
 
@@ -601,7 +608,7 @@ msgid "_Cancel"
 msgstr "_Avbryt"
 
 #: capplets/appearance/appearance-font.c:619
-#: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
+#: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "_Öppna"
 
@@ -624,8 +631,8 @@ msgid ""
 msgstr "Ange namnet på sidan som ska visas (theme|background|fonts|interface)"
 
 #: capplets/appearance/appearance-main.c:155
-#: capplets/default-applications/mate-da-capplet.c:783
-#: capplets/mouse/mate-mouse-properties.c:401
+#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/mouse/mate-mouse-properties.c:414
 msgid "page"
 msgstr "sida"
 
@@ -634,13 +641,13 @@ msgid "[WALLPAPER...]"
 msgstr "[BAKGRUNDSBILD...]"
 
 #: capplets/appearance/appearance-style.c:173
-#: capplets/common/mate-theme-info.c:491
+#: capplets/common/mate-theme-info.c:506
 msgid "Default Pointer"
 msgstr "Standardmuspekare"
 
 #: capplets/appearance/appearance-style.c:235
 #: capplets/appearance/appearance-themes.c:659
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
 #: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Installera"
@@ -1068,23 +1075,23 @@ msgstr "Huruvida knappar kan visa en ikon som tillägg till knapptexten."
 
 #: capplets/appearance/data/appearance.ui:3313
 msgid "File Chooser"
-msgstr ""
+msgstr "Filväljare"
 
 #: capplets/appearance/data/appearance.ui:3348
 msgid "Show hidden items"
-msgstr ""
+msgstr "Visa dolda objekt"
 
 #: capplets/appearance/data/appearance.ui:3365
 msgid "Show size column"
-msgstr ""
+msgstr "Visa storlekskolumn"
 
 #: capplets/appearance/data/appearance.ui:3381
 msgid "Show type column"
-msgstr ""
+msgstr "Visa typkolumn"
 
 #: capplets/appearance/data/appearance.ui:3397
 msgid "Sort directories first"
-msgstr ""
+msgstr "Sortera mappar först"
 
 #: capplets/appearance/data/appearance.ui:3443
 msgid "Preview"
@@ -1416,7 +1423,7 @@ msgstr "_Hoppa över"
 msgid "Overwrite _All"
 msgstr "Skriv över _alla"
 
-#: capplets/common/mate-theme-info.c:1577
+#: capplets/common/mate-theme-info.c:1606
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1425,7 +1432,7 @@ msgstr ""
 "Detta tema kommer inte att se ut som det var tänkt därför att det nödvändiga"
 " GTK+-temat \"%s\" inte är installerat."
 
-#: capplets/common/mate-theme-info.c:1587
+#: capplets/common/mate-theme-info.c:1614
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1434,7 +1441,7 @@ msgstr ""
 "Detta tema kommer inte att se ut som det var tänkt därför att det nödvändiga"
 " fönsterhanterartemat \"%s\" inte är installerat."
 
-#: capplets/common/mate-theme-info.c:1595
+#: capplets/common/mate-theme-info.c:1621
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1458,11 +1465,11 @@ msgstr "Välj dina standardprogram"
 msgid "mate-control-center;MATE;default;preferred;applications;"
 msgstr ""
 
-#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/default-applications/mate-da-capplet.c:781
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Ange namnet på sidan som ska visas (internet|multimedia|system|a11y)"
 
-#: capplets/default-applications/mate-da-capplet.c:788
+#: capplets/default-applications/mate-da-capplet.c:789
 msgid "- MATE Default Applications"
 msgstr "- MATE-standardprogram"
 
@@ -1652,7 +1659,7 @@ msgstr "_Visa skärmar i panelen"
 
 #: capplets/display/display-capplet.ui:477
 msgid "Scaling"
-msgstr ""
+msgstr "Skalning"
 
 #: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
@@ -1798,7 +1805,7 @@ msgstr "200%"
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: capplets/display/xrandr-capplet.c:615
-#: capplets/display/xrandr-capplet.c:1693
+#: capplets/display/xrandr-capplet.c:1692
 msgid "Mirror Screens"
 msgstr "Spegla skärmar"
 
@@ -1812,7 +1819,7 @@ msgstr "Skärm: %s"
 msgid "%u x %u"
 msgstr ""
 
-#: capplets/display/xrandr-capplet.c:1549
+#: capplets/display/xrandr-capplet.c:1548
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1820,37 +1827,37 @@ msgstr ""
 "Välj en skärm för att ändra dess egenskaper; dra den för att ändra dess "
 "placering."
 
-#: capplets/display/xrandr-capplet.c:2147
+#: capplets/display/xrandr-capplet.c:2145
 msgid "Could not save the monitor configuration"
 msgstr "Kunde inte spara skärmkonfigurationen"
 
-#: capplets/display/xrandr-capplet.c:2168
+#: capplets/display/xrandr-capplet.c:2166
 msgid "Could not get session bus while applying display configuration"
 msgstr ""
 "Kunde inte få tag på sessionsbussen under verkställning av "
 "skärmkonfigurationen"
 
-#: capplets/display/xrandr-capplet.c:2187
+#: capplets/display/xrandr-capplet.c:2185
 msgid "Could not detect displays"
 msgstr "Kunde inte detektera display"
 
-#: capplets/display/xrandr-capplet.c:2369
+#: capplets/display/xrandr-capplet.c:2367
 msgid "The monitor configuration has been saved"
 msgstr "Skärmkonfigurationen har sparats"
 
-#: capplets/display/xrandr-capplet.c:2371
+#: capplets/display/xrandr-capplet.c:2369
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Denna konfiguration kommer att användas nästa gång någon loggar in."
 
-#: capplets/display/xrandr-capplet.c:2380
+#: capplets/display/xrandr-capplet.c:2378
 msgid "Could not set the default configuration for monitors"
 msgstr "Kunde inte ställa in standardkonfiguration för skärmar"
 
-#: capplets/display/xrandr-capplet.c:2451
+#: capplets/display/xrandr-capplet.c:2449
 msgid "Could not get screen information"
 msgstr "Kunde inte få tag på skärminformation"
 
-#: capplets/display/xrandr-capplet.c:2570
+#: capplets/display/xrandr-capplet.c:2568
 msgid "Could not open help content"
 msgstr ""
 
@@ -1914,7 +1921,7 @@ msgstr "Nästa spår"
 msgid "Eject"
 msgstr "Mata ut"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1173
 msgid "Desktop"
 msgstr "Skrivbord"
 
@@ -1955,7 +1962,7 @@ msgid "Home folder"
 msgstr "Hemmapp"
 
 #: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
-#: libslab/bookmark-agent.c:1196
+#: libslab/bookmark-agent.c:1212
 msgid "Search"
 msgstr "Sök"
 
@@ -1967,32 +1974,32 @@ msgstr "Starta inställningar"
 msgid "New shortcut..."
 msgstr "Ny genväg..."
 
+#: capplets/keybindings/eggcellrendererkeys.c:147
 #: capplets/keybindings/eggcellrendererkeys.c:148
-#: capplets/keybindings/eggcellrendererkeys.c:149
 msgid "Accelerator key"
 msgstr "Snabbtangent"
 
+#: capplets/keybindings/eggcellrendererkeys.c:157
 #: capplets/keybindings/eggcellrendererkeys.c:158
-#: capplets/keybindings/eggcellrendererkeys.c:159
 msgid "Accelerator modifiers"
 msgstr "Snabbtangentsmodifierare"
 
+#: capplets/keybindings/eggcellrendererkeys.c:166
 #: capplets/keybindings/eggcellrendererkeys.c:167
-#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator keycode"
 msgstr "Snabbtangentskod"
 
-#: capplets/keybindings/eggcellrendererkeys.c:178
+#: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accel Mode"
 msgstr "Snabbtangentsläge"
 
-#: capplets/keybindings/eggcellrendererkeys.c:179
+#: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "The type of accelerator."
 msgstr "Typen av snabbtangent."
 
-#: capplets/keybindings/eggcellrendererkeys.c:222
+#: capplets/keybindings/eggcellrendererkeys.c:220
 #: capplets/keybindings/mate-keybinding-properties.c:117
-#: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
+#: capplets/mouse/mate-mouse-properties.c:356 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Inaktiverad"
 
@@ -2000,16 +2007,16 @@ msgstr "Inaktiverad"
 msgid "<Unknown Action>"
 msgstr "<Okänd åtgärd>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1002
-#: capplets/keybindings/mate-keybinding-properties.c:1610
+#: capplets/keybindings/mate-keybinding-properties.c:1001
+#: capplets/keybindings/mate-keybinding-properties.c:1608
 msgid "Custom Shortcuts"
 msgstr "Anpassade genvägar"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1190
+#: capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Fel vid sparande av ny genväg"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1266
+#: capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2018,7 +2025,7 @@ msgstr ""
 "Genvägen \"%s\" kan inte användas på grund av att den kommer att bli omöjlig att ange med\n"
 "den här tangenten. Prova med en tangent såsom Control, Alt eller Skift på samma gång."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1298
+#: capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2027,26 +2034,26 @@ msgstr ""
 "Genvägen \"%s\" används redan för\n"
 " \"%s\""
 
-#: capplets/keybindings/mate-keybinding-properties.c:1305
+#: capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Om du omtilldelar genvägen till \"%s\" kommer genvägen \"%s\" att "
 "inaktiveras."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1310
+#: capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Omtilldela"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1565
+#: capplets/keybindings/mate-keybinding-properties.c:1563
 msgid "Too many custom shortcuts"
 msgstr "För många anpassade genvägar"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1879
+#: capplets/keybindings/mate-keybinding-properties.c:1877
 msgid "Action"
 msgstr "Åtgärd"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1901
+#: capplets/keybindings/mate-keybinding-properties.c:1899
 msgid "Shortcut"
 msgstr "Genväg"
 
@@ -2085,23 +2092,23 @@ msgstr "Associera snabbtangenter med kommandon"
 msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
 msgstr ""
 
-#: capplets/keyboard/mate-keyboard-properties.c:164
-#: capplets/keyboard/mate-keyboard-properties.c:169
+#: capplets/keyboard/mate-keyboard-properties.c:141
+#: capplets/keyboard/mate-keyboard-properties.c:146
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Verkställ bara ändringar och avsluta (endast för kompatibilitet; hanteras nu"
 " av demon)"
 
-#: capplets/keyboard/mate-keyboard-properties.c:174
+#: capplets/keyboard/mate-keyboard-properties.c:151
 msgid "Start the page with the typing break settings showing"
 msgstr "Starta sidan utan att inställningarna för skrivandepaus visas"
 
-#: capplets/keyboard/mate-keyboard-properties.c:179
+#: capplets/keyboard/mate-keyboard-properties.c:156
 msgid "Start the page with the accessibility settings showing"
 msgstr "Starta sidan med visade hjälpmedelsinställningar"
 
-#: capplets/keyboard/mate-keyboard-properties.c:185
+#: capplets/keyboard/mate-keyboard-properties.c:161
 msgid "- MATE Keyboard Preferences"
 msgstr "- Tangentbordsinställningar för MATE"
 
@@ -2486,7 +2493,7 @@ msgstr "Alternativ för tangentbordslayout"
 msgid "Unknown"
 msgstr "Okänt"
 
-#: capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+#: capplets/keyboard/mate-keyboard-properties-xkblt.c:239
 msgid "Layout"
 msgstr "Layout"
 
@@ -2494,7 +2501,7 @@ msgstr "Layout"
 msgid "Vendors"
 msgstr "Tillverkare"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
 msgid "Models"
 msgstr "Modeller"
 
@@ -2517,23 +2524,23 @@ msgstr "Ställ in dina tangentbordsinställningar"
 msgid "mate-control-center;MATE;keyboard;preferences;"
 msgstr ""
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Left button"
 msgstr "Vänster knapp"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Middle button"
 msgstr "Mittenknapp"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Right button"
 msgstr "Höger knapp"
 
-#: capplets/mouse/mate-mouse-properties.c:400
+#: capplets/mouse/mate-mouse-properties.c:413
 msgid "Specify the name of the page to show (general)"
 msgstr "Ange namnet på sidan som ska visas (general)"
 
-#: capplets/mouse/mate-mouse-properties.c:405
+#: capplets/mouse/mate-mouse-properties.c:418
 msgid "- MATE Mouse Preferences"
 msgstr "- Musinställningar för MATE"
 
@@ -2781,16 +2788,16 @@ msgstr "_Användarnamn:"
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: capplets/windows/mate-metacity-support.c:42
+#: capplets/windows/mate-metacity-support.c:43
 msgid "Metacity Preferences"
 msgstr "Inställningar för Metacity "
 
-#: capplets/windows/mate-metacity-support.c:53
+#: capplets/windows/mate-metacity-support.c:54
 #: capplets/windows/window-properties.ui:813
 msgid "Compositing Manager"
 msgstr "Kompositeringshanterare"
 
-#: capplets/windows/mate-metacity-support.c:60
+#: capplets/windows/mate-metacity-support.c:61
 msgid "Enable software _compositing window manager"
 msgstr "Aktivera mjukvarubaserad _kompositerande fönsterhanterare"
 
@@ -2861,32 +2868,32 @@ msgid "_Double-click titlebar action:"
 msgstr ""
 
 #: capplets/windows/window-properties.ui:305
-#: libwindow-settings/marco-window-manager.c:400
+#: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "Rulla upp"
 
 #: capplets/windows/window-properties.ui:306
-#: libwindow-settings/marco-window-manager.c:401
+#: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "Maximera"
 
 #: capplets/windows/window-properties.ui:307
-#: libwindow-settings/marco-window-manager.c:402
+#: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "Maximera horisontellt"
 
 #: capplets/windows/window-properties.ui:308
-#: libwindow-settings/marco-window-manager.c:403
+#: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "Maximera vertikalt"
 
 #: capplets/windows/window-properties.ui:309
-#: libwindow-settings/marco-window-manager.c:404
+#: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "Minimera"
 
 #: capplets/windows/window-properties.ui:310
-#: libwindow-settings/marco-window-manager.c:405
+#: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "Ingen"
 
@@ -2998,17 +3005,9 @@ msgstr "läs fil"
 msgid "read pid file failed"
 msgstr ""
 
-#: capplets/time-admin/src/main.c:264
-msgid "g_bus_get_sync"
-msgstr ""
-
-#: capplets/time-admin/src/main.c:277
-msgid "g_bus_proxy_new"
-msgstr ""
-
 #: capplets/time-admin/src/time-admin.ui:58
 msgid "Time and Date Manager"
-msgstr ""
+msgstr "Datum och tid"
 
 #: capplets/time-admin/src/time-admin.ui:96
 msgid "NTP sync"
@@ -3020,7 +3019,7 @@ msgstr "Tidszon"
 
 #: capplets/time-admin/src/time-admin.ui:161
 msgid "Click the button to edit time zone."
-msgstr ""
+msgstr "Klicka på knappen för att ändra tidszon."
 
 #: capplets/time-admin/src/time-admin.ui:283
 msgid "Time"
@@ -4785,11 +4784,11 @@ msgstr "Stilla_Havet/Wallis"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:3
 msgid "Time And Date Manager"
-msgstr ""
+msgstr "Tid och datum hanterare"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
-msgstr ""
+msgstr "Ställ in tid och datum för det lokala systemet"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -4931,31 +4930,31 @@ msgstr ""
 "högerklicka på panelen och välja \"Lägg till i panelen\", välja "
 "\"Notifieringsyta\" och klicka på \"Lägg till\"."
 
-#: font-viewer/font-view.c:204
+#: font-viewer/font-view.c:205
 msgid "Style"
 msgstr "Stil"
 
-#: font-viewer/font-view.c:214
+#: font-viewer/font-view.c:215
 msgid "Type"
 msgstr "Typ"
 
-#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
+#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
 msgid "Version"
 msgstr "Version"
 
-#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
+#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "Copyright"
 
-#: font-viewer/font-view.c:270
+#: font-viewer/font-view.c:271
 msgid "Description"
 msgstr "Beskrivning"
 
-#: font-viewer/font-view.c:288
+#: font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "Installationen misslyckades"
 
-#: font-viewer/font-view.c:294
+#: font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "Installerat"
 
@@ -4993,89 +4992,89 @@ msgstr "MATE Typsnittsvisare"
 msgid "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
 msgstr ""
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Text till miniatyrbild (standard: Aa)"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
 msgstr "TEXT"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "Thumbnail size (default: 128)"
 msgstr "Storlek för miniatyrbild (standard: 128)"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "SIZE"
 msgstr "STORLEK"
 
-#: font-viewer/font-thumbnailer.c:197
+#: font-viewer/font-thumbnailer.c:198
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "TYPSNITTSFIL UTDATAFIL"
 
-#: libslab/app-shell.c:762
+#: libslab/app-shell.c:763
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Ditt filter \"%s\" matchar inte några objekt."
 
-#: libslab/app-shell.c:764
+#: libslab/app-shell.c:765
 msgid "No matches found."
 msgstr "Inga sökträffar hittades."
 
-#: libslab/app-shell.c:873
+#: libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Nya program"
 
-#: libslab/app-shell.c:935
+#: libslab/app-shell.c:936
 msgid "Other"
 msgstr "Övrigt"
 
-#: libslab/application-tile.c:339
+#: libslab/application-tile.c:338
 #, c-format
 msgid "Start %s"
 msgstr "Starta %s"
 
-#: libslab/application-tile.c:360
+#: libslab/application-tile.c:359
 msgid "Help"
 msgstr "Hjälp"
 
-#: libslab/application-tile.c:643
+#: libslab/application-tile.c:638
 msgid "Remove from Favorites"
 msgstr "Ta bort från favoriter"
 
-#: libslab/application-tile.c:645
+#: libslab/application-tile.c:640
 msgid "Add to Favorites"
 msgstr "Lägg till i favoriter"
 
-#: libslab/application-tile.c:730
+#: libslab/application-tile.c:725
 msgid "Remove from Startup Programs"
 msgstr "Ta bort från uppstartsprogram"
 
-#: libslab/application-tile.c:732
+#: libslab/application-tile.c:727
 msgid "Add to Startup Programs"
 msgstr "Lägg till i uppstartsprogram"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1102
 msgid "New Spreadsheet"
 msgstr "Nytt kalkylblad"
 
-#: libslab/bookmark-agent.c:1090
+#: libslab/bookmark-agent.c:1106
 msgid "New Document"
 msgstr "Nytt dokument"
 
-#: libslab/bookmark-agent.c:1144
+#: libslab/bookmark-agent.c:1160
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Hem"
 
-#: libslab/bookmark-agent.c:1151
+#: libslab/bookmark-agent.c:1167
 msgid "Documents"
 msgstr "Dokument"
 
-#: libslab/bookmark-agent.c:1162
+#: libslab/bookmark-agent.c:1178
 msgid "File System"
 msgstr "Filsystem"
 
-#: libslab/bookmark-agent.c:1165
+#: libslab/bookmark-agent.c:1181
 msgid "Network Servers"
 msgstr "Nätverksservrar"

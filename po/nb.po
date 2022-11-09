@@ -17,9 +17,9 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.25.1\n"
+"Project-Id-Version: mate-control-center 1.26.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2021-05-30 12:21+0200\n"
+"POT-Creation-Date: 2022-10-29 15:31+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
 "Last-Translator: heskjestad <cato@heskjestad.xyz>, 2021\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/mate/teams/13566/nb/)\n"
@@ -145,7 +145,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Kommando forbundet med en tilpasset tastatursnarvei."
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:201
+#: font-viewer/font-view.c:202
 msgid "Name"
 msgstr "Navn"
 
@@ -153,25 +153,25 @@ msgstr "Navn"
 msgid "Description associated with a custom keybinding."
 msgstr "Beskrivelse tilhørende tilpasset tastatursnarvei."
 
-#: capplets/about-me/mate-about-me.c:292
+#: capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Velg bilde"
 
-#: capplets/about-me/mate-about-me.c:294
+#: capplets/about-me/mate-about-me.c:296
 msgid "No Image"
 msgstr "Ingen bilder"
 
-#: capplets/about-me/mate-about-me.c:322
-#: capplets/appearance/appearance-desktop.c:648
+#: capplets/about-me/mate-about-me.c:324
+#: capplets/appearance/appearance-desktop.c:647
 msgid "Images"
 msgstr "Bilder"
 
-#: capplets/about-me/mate-about-me.c:326
+#: capplets/about-me/mate-about-me.c:328
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Alle filer"
 
-#: capplets/about-me/mate-about-me.c:499
+#: capplets/about-me/mate-about-me.c:501
 #, c-format
 msgid "About %s"
 msgstr "Om %s"
@@ -260,36 +260,36 @@ msgstr ""
 "Vil du slette dine registrerte fingeravtrykk slik at innlogging med "
 "fingeravtrykk slås av?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:440
+#: capplets/about-me/mate-about-me-fingerprint.c:445
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "Ferdig"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:515
-#: capplets/about-me/mate-about-me-fingerprint.c:560
+#: capplets/about-me/mate-about-me-fingerprint.c:520
+#: capplets/about-me/mate-about-me-fingerprint.c:565
 #, c-format
 msgid "Could not access '%s' device"
 msgstr "Kunne ikke aksessere enheten «%s»"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:621
+#: capplets/about-me/mate-about-me-fingerprint.c:626
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr "Kunne ikke starte innlesing av data på enhet «%s»"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:691
+#: capplets/about-me/mate-about-me-fingerprint.c:696
 msgid "Could not access any fingerprint readers"
 msgstr "Kunne ikke aksessere fingeravtrykkleser"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:692
+#: capplets/about-me/mate-about-me-fingerprint.c:697
 msgid "Please contact your system administrator for help."
 msgstr "Kontakt din systemadministrator for hjelp."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:756
+#: capplets/about-me/mate-about-me-fingerprint.c:761
 #: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "Slå på innlogging med fingeravtrykk"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:786
+#: capplets/about-me/mate-about-me-fingerprint.c:798
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -298,11 +298,11 @@ msgstr ""
 "Du må lagre ett av dine fingeravtrykk med enheten «%s» for å slå på "
 "innlogging med fingeravtrykk."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:795
+#: capplets/about-me/mate-about-me-fingerprint.c:807
 msgid "Swipe finger on reader"
 msgstr "Dra fingeren over leseren"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:797
+#: capplets/about-me/mate-about-me-fingerprint.c:809
 msgid "Place finger on reader"
 msgstr "Plasser fingeren på leseren"
 
@@ -362,7 +362,7 @@ msgstr ""
 "Fingeravtrykket ditt ble lagret. Du skal nå kunne logge inn med din "
 "fingeravtrykkleser."
 
-#: capplets/about-me/mate-about-me-password.c:160
+#: capplets/about-me/mate-about-me-password.c:166
 msgid "Child exited unexpectedly"
 msgstr "Underprosess avsluttet uventet"
 
@@ -376,87 +376,92 @@ msgstr "Kunne ikke stenge ned backend_stdin IO-kanal: %s"
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "Kunne ikke stenge ned backend_stdout IO-kanal: %s"
 
-#: capplets/about-me/mate-about-me-password.c:408
+#: capplets/about-me/mate-about-me-password.c:322
+#, c-format
+msgid "Could not shutdown backend_stderr IO channel: %s"
+msgstr ""
+
+#: capplets/about-me/mate-about-me-password.c:428
 msgid "Authenticated!"
 msgstr "Autentisert!"
 
-#: capplets/about-me/mate-about-me-password.c:473
-#: capplets/about-me/mate-about-me-password.c:558
+#: capplets/about-me/mate-about-me-password.c:491
+#: capplets/about-me/mate-about-me-password.c:579
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
 msgstr ""
 "Passordet ditt er endret siden første autentisering! Autentiser på nytt."
 
-#: capplets/about-me/mate-about-me-password.c:475
+#: capplets/about-me/mate-about-me-password.c:493
 msgid "That password was incorrect."
 msgstr "Passordet var ikke korrekt."
 
-#: capplets/about-me/mate-about-me-password.c:526
+#: capplets/about-me/mate-about-me-password.c:547
 msgid "Your password has been changed."
 msgstr "Passordet ditt er endret."
 
-#: capplets/about-me/mate-about-me-password.c:536
+#: capplets/about-me/mate-about-me-password.c:557
 #, c-format
 msgid "System error: %s."
 msgstr "Systemfeil: %s."
 
-#: capplets/about-me/mate-about-me-password.c:539
+#: capplets/about-me/mate-about-me-password.c:560
 msgid "The password is too short."
 msgstr "Passordet er for kort."
 
-#: capplets/about-me/mate-about-me-password.c:543
+#: capplets/about-me/mate-about-me-password.c:564
 msgid "The password is too simple."
 msgstr "Passordet er for enkelt."
 
-#: capplets/about-me/mate-about-me-password.c:548
+#: capplets/about-me/mate-about-me-password.c:569
 msgid "The old and new passwords are too similar."
 msgstr "Gammelt og nytt passord er for like."
 
-#: capplets/about-me/mate-about-me-password.c:550
+#: capplets/about-me/mate-about-me-password.c:571
 msgid "The new password must contain numeric or special character(s)."
 msgstr "Det nye passordet må inneholde tall eller spesielle tegn."
 
-#: capplets/about-me/mate-about-me-password.c:553
+#: capplets/about-me/mate-about-me-password.c:574
 msgid "The old and new passwords are the same."
 msgstr "Gammelt og nytt passord er det samme."
 
-#: capplets/about-me/mate-about-me-password.c:555
+#: capplets/about-me/mate-about-me-password.c:576
 msgid "The new password has already been used recently."
 msgstr "Det nye passordet har vært brukt nylig."
 
-#: capplets/about-me/mate-about-me-password.c:826
+#: capplets/about-me/mate-about-me-password.c:862
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Kan ikke starte %s: %s"
 
-#: capplets/about-me/mate-about-me-password.c:830
+#: capplets/about-me/mate-about-me-password.c:866
 msgid "Unable to launch backend"
 msgstr "Kunne ikke kjøre bakstykke"
 
-#: capplets/about-me/mate-about-me-password.c:831
+#: capplets/about-me/mate-about-me-password.c:867
 msgid "A system error has occurred"
 msgstr "En systemfeil har oppstått"
 
-#: capplets/about-me/mate-about-me-password.c:851
+#: capplets/about-me/mate-about-me-password.c:887
 msgid "Checking password..."
 msgstr "Sjekker passord …"
 
-#: capplets/about-me/mate-about-me-password.c:935
+#: capplets/about-me/mate-about-me-password.c:971
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Klikk <b>Endre passord</b> for å endre passord."
 
-#: capplets/about-me/mate-about-me-password.c:938
+#: capplets/about-me/mate-about-me-password.c:974
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Skriv inn passordet i feltet <b>Nytt passord</b>."
 
-#: capplets/about-me/mate-about-me-password.c:941
+#: capplets/about-me/mate-about-me-password.c:977
 #: capplets/about-me/mate-about-me-password.ui:348
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr "Oppgi passordet på nytt i feltet <b>Oppgi nytt passord igjen</b>."
 
-#: capplets/about-me/mate-about-me-password.c:944
+#: capplets/about-me/mate-about-me-password.c:980
 msgid "The two passwords are not equal."
 msgstr "De to passordene er ikke like."
 
@@ -581,11 +586,11 @@ msgstr ""
 msgid "mate-control-center;MATE;accessibility;features;"
 msgstr "mate-control-center;MATE;tilgjengelighet;hjelpefunksjoner;"
 
-#: capplets/appearance/appearance-desktop.c:617
+#: capplets/appearance/appearance-desktop.c:616
 msgid "Add Wallpaper"
 msgstr "Legg til bakgrunn"
 
-#: capplets/appearance/appearance-desktop.c:652
+#: capplets/appearance/appearance-desktop.c:651
 msgid "All files"
 msgstr "Alle filer"
 
@@ -599,7 +604,7 @@ msgid "_Cancel"
 msgstr "_Avbryt"
 
 #: capplets/appearance/appearance-font.c:619
-#: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
+#: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "_Åpne"
 
@@ -622,8 +627,8 @@ msgid ""
 msgstr "Oppgi navn på fanen som skal vises (theme|background|fonts|interface)"
 
 #: capplets/appearance/appearance-main.c:155
-#: capplets/default-applications/mate-da-capplet.c:783
-#: capplets/mouse/mate-mouse-properties.c:401
+#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/mouse/mate-mouse-properties.c:414
 msgid "page"
 msgstr "side"
 
@@ -632,13 +637,13 @@ msgid "[WALLPAPER...]"
 msgstr "[BAKGRUNN…]"
 
 #: capplets/appearance/appearance-style.c:173
-#: capplets/common/mate-theme-info.c:491
+#: capplets/common/mate-theme-info.c:506
 msgid "Default Pointer"
 msgstr "Forvalgt peker"
 
 #: capplets/appearance/appearance-style.c:235
 #: capplets/appearance/appearance-themes.c:659
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
 #: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Installer"
@@ -1412,7 +1417,7 @@ msgstr "_Hopp over"
 msgid "Overwrite _All"
 msgstr "Overskriv _alle"
 
-#: capplets/common/mate-theme-info.c:1577
+#: capplets/common/mate-theme-info.c:1606
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1421,7 +1426,7 @@ msgstr ""
 "Denne drakten vil ikke se ut som tiltenkt fordi GTK+-drakten «%s» ikke er "
 "installert."
 
-#: capplets/common/mate-theme-info.c:1587
+#: capplets/common/mate-theme-info.c:1614
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1430,7 +1435,7 @@ msgstr ""
 "Denne drakten vil ikke se ut som tiltenkt fordi påkrevd drakt «%s» for "
 "vindushåndtereren ikke er installert."
 
-#: capplets/common/mate-theme-info.c:1595
+#: capplets/common/mate-theme-info.c:1621
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
@@ -1454,11 +1459,11 @@ msgstr "Sett dine forvalgte programmer"
 msgid "mate-control-center;MATE;default;preferred;applications;"
 msgstr "mate-control-center;MATE;standardprogrammer;foretrukne;programmer;"
 
-#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/default-applications/mate-da-capplet.c:781
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr "Oppgi navn på siden som skal vises (internet|multimedia|system|a11y)"
 
-#: capplets/default-applications/mate-da-capplet.c:788
+#: capplets/default-applications/mate-da-capplet.c:789
 msgid "- MATE Default Applications"
 msgstr "- MATE forvalgte programmer"
 
@@ -1778,7 +1783,7 @@ msgstr "%d Hz"
 
 #: capplets/display/xrandr-capplet.c:553
 msgid "auto detect"
-msgstr "gjenkjen automatisk"
+msgstr "gjenkjenn automatisk"
 
 #: capplets/display/xrandr-capplet.c:553
 msgid "100%"
@@ -1793,7 +1798,7 @@ msgstr "200%"
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: capplets/display/xrandr-capplet.c:615
-#: capplets/display/xrandr-capplet.c:1693
+#: capplets/display/xrandr-capplet.c:1692
 msgid "Mirror Screens"
 msgstr "Speil skjermer"
 
@@ -1807,7 +1812,7 @@ msgstr "Skjerm: %s"
 msgid "%u x %u"
 msgstr "%u × %u"
 
-#: capplets/display/xrandr-capplet.c:1549
+#: capplets/display/xrandr-capplet.c:1548
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1815,35 +1820,35 @@ msgstr ""
 "Velg en skjerm for å endre egenskaper for denne. Dra den rundt for å bytte "
 "plassering."
 
-#: capplets/display/xrandr-capplet.c:2147
+#: capplets/display/xrandr-capplet.c:2145
 msgid "Could not save the monitor configuration"
 msgstr "Kunne ikke lagre skjermoppsett"
 
-#: capplets/display/xrandr-capplet.c:2168
+#: capplets/display/xrandr-capplet.c:2166
 msgid "Could not get session bus while applying display configuration"
-msgstr "Kunne ikke finne øktbussen under aktivering av skjermoppsett"
+msgstr "Fant ikke øktbussen under aktivering av skjermoppsett"
 
-#: capplets/display/xrandr-capplet.c:2187
+#: capplets/display/xrandr-capplet.c:2185
 msgid "Could not detect displays"
 msgstr "Kunne ikke søke etter skjermer"
 
-#: capplets/display/xrandr-capplet.c:2369
+#: capplets/display/xrandr-capplet.c:2367
 msgid "The monitor configuration has been saved"
 msgstr "Skjermoppsett lagret"
 
-#: capplets/display/xrandr-capplet.c:2371
+#: capplets/display/xrandr-capplet.c:2369
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Dette oppsettet vil bli brukt neste gang noen logger inn."
 
-#: capplets/display/xrandr-capplet.c:2380
+#: capplets/display/xrandr-capplet.c:2378
 msgid "Could not set the default configuration for monitors"
 msgstr "Kunne ikke sette forvalgt oppsett for skjermer"
 
-#: capplets/display/xrandr-capplet.c:2451
+#: capplets/display/xrandr-capplet.c:2449
 msgid "Could not get screen information"
 msgstr "Fant ikke informasjon om skjermen"
 
-#: capplets/display/xrandr-capplet.c:2570
+#: capplets/display/xrandr-capplet.c:2568
 msgid "Could not open help content"
 msgstr "Klarte ikke åpne hjelpeinnholdet"
 
@@ -1907,7 +1912,7 @@ msgstr "Neste spor"
 msgid "Eject"
 msgstr "Løs ut"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1173
 msgid "Desktop"
 msgstr "Skrivebord"
 
@@ -1948,7 +1953,7 @@ msgid "Home folder"
 msgstr "Hjemmemappe"
 
 #: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
-#: libslab/bookmark-agent.c:1196
+#: libslab/bookmark-agent.c:1212
 msgid "Search"
 msgstr "Søk"
 
@@ -1960,32 +1965,32 @@ msgstr "Åpne innstillinger"
 msgid "New shortcut..."
 msgstr "Ny snarvei …"
 
+#: capplets/keybindings/eggcellrendererkeys.c:147
 #: capplets/keybindings/eggcellrendererkeys.c:148
-#: capplets/keybindings/eggcellrendererkeys.c:149
 msgid "Accelerator key"
 msgstr "Hurtigtast"
 
+#: capplets/keybindings/eggcellrendererkeys.c:157
 #: capplets/keybindings/eggcellrendererkeys.c:158
-#: capplets/keybindings/eggcellrendererkeys.c:159
 msgid "Accelerator modifiers"
 msgstr "Endringstaster for hurtigtaster"
 
+#: capplets/keybindings/eggcellrendererkeys.c:166
 #: capplets/keybindings/eggcellrendererkeys.c:167
-#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator keycode"
 msgstr "Tastekode for hurtigtast"
 
-#: capplets/keybindings/eggcellrendererkeys.c:178
+#: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accel Mode"
 msgstr "Akselleratormodus"
 
-#: capplets/keybindings/eggcellrendererkeys.c:179
+#: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "The type of accelerator."
 msgstr "Type hurtigtast."
 
-#: capplets/keybindings/eggcellrendererkeys.c:222
+#: capplets/keybindings/eggcellrendererkeys.c:220
 #: capplets/keybindings/mate-keybinding-properties.c:117
-#: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
+#: capplets/mouse/mate-mouse-properties.c:356 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Avskrudd"
 
@@ -1993,16 +1998,16 @@ msgstr "Avskrudd"
 msgid "<Unknown Action>"
 msgstr "<Ukjent handling>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1002
-#: capplets/keybindings/mate-keybinding-properties.c:1610
+#: capplets/keybindings/mate-keybinding-properties.c:1001
+#: capplets/keybindings/mate-keybinding-properties.c:1608
 msgid "Custom Shortcuts"
 msgstr "Egendefinerte snarveier"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1190
+#: capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
 msgstr "Feil ved lagring av ny snarvei"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1266
+#: capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2011,7 +2016,7 @@ msgstr ""
 "Snarveien «%s» kan ikke brukes fordi den vil være umulig å skrive med denne tasten.\n"
 "Prøv igjen med en tastekombinasjon som inneholder Ctrl, Alt eller Shift."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1298
+#: capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2020,24 +2025,24 @@ msgstr ""
 "Snarveien «%s» er allerede brukt for\n"
 "«%s»"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1305
+#: capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Hvis du omfordeler snarveien til «%s» vil snarvei «%s» bli slått av."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1310
+#: capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Tildel på nytt"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1565
+#: capplets/keybindings/mate-keybinding-properties.c:1563
 msgid "Too many custom shortcuts"
 msgstr "For mange egendefinerte snarveier"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1879
+#: capplets/keybindings/mate-keybinding-properties.c:1877
 msgid "Action"
 msgstr "Handling"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1901
+#: capplets/keybindings/mate-keybinding-properties.c:1899
 msgid "Shortcut"
 msgstr "Snarvei"
 
@@ -2076,23 +2081,23 @@ msgstr "Tilegn snarveitaster til kommandoer"
 msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
 msgstr "mate-control-center;MATE;tilordne;tastatur;hurtigtaster;snarveier;"
 
-#: capplets/keyboard/mate-keyboard-properties.c:164
-#: capplets/keyboard/mate-keyboard-properties.c:169
+#: capplets/keyboard/mate-keyboard-properties.c:141
+#: capplets/keyboard/mate-keyboard-properties.c:146
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Bare aktiver innstillinger og avslutt (kun for kompatibilitet; håndteres av "
 "en daemon nå)"
 
-#: capplets/keyboard/mate-keyboard-properties.c:174
+#: capplets/keyboard/mate-keyboard-properties.c:151
 msgid "Start the page with the typing break settings showing"
 msgstr "Start siden med innstillingene for skrivepause fremme"
 
-#: capplets/keyboard/mate-keyboard-properties.c:179
+#: capplets/keyboard/mate-keyboard-properties.c:156
 msgid "Start the page with the accessibility settings showing"
 msgstr "Vis siden med innstillingene for tilgjengelighet"
 
-#: capplets/keyboard/mate-keyboard-properties.c:185
+#: capplets/keyboard/mate-keyboard-properties.c:161
 msgid "- MATE Keyboard Preferences"
 msgstr "- Brukervalg for tastatur"
 
@@ -2477,7 +2482,7 @@ msgstr "Alternativer for tastaturutforming"
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+#: capplets/keyboard/mate-keyboard-properties-xkblt.c:239
 msgid "Layout"
 msgstr "Utseende"
 
@@ -2485,7 +2490,7 @@ msgstr "Utseende"
 msgid "Vendors"
 msgstr "Leverandører"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
 msgid "Models"
 msgstr "Modeller"
 
@@ -2508,23 +2513,23 @@ msgstr "Sett dine brukervalg for tastatur"
 msgid "mate-control-center;MATE;keyboard;preferences;"
 msgstr "mate-control-center;MATE;tastatur;innstillinger;"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Left button"
 msgstr "Venstre knapp"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Middle button"
 msgstr "Midterste knapp"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Right button"
 msgstr "Høyre knapp"
 
-#: capplets/mouse/mate-mouse-properties.c:400
+#: capplets/mouse/mate-mouse-properties.c:413
 msgid "Specify the name of the page to show (general)"
 msgstr "Angi navnet for siden som skal vises (generelt)"
 
-#: capplets/mouse/mate-mouse-properties.c:405
+#: capplets/mouse/mate-mouse-properties.c:418
 msgid "- MATE Mouse Preferences"
 msgstr "- Brukervalg for mus"
 
@@ -2741,7 +2746,7 @@ msgstr "<b>_Automatisk oppsett av mellomtjener</b>"
 
 #: capplets/network/mate-network-properties.ui:517
 msgid "Autoconfiguration _URL:"
-msgstr "_URL for automatisk konfigurasjon:"
+msgstr "_URL for automatisk oppsett:"
 
 #: capplets/network/mate-network-properties.ui:574
 msgid "Proxy Configuration"
@@ -2771,16 +2776,16 @@ msgstr "Br_ukernavn:"
 msgid "_Password:"
 msgstr "_Passord:"
 
-#: capplets/windows/mate-metacity-support.c:42
+#: capplets/windows/mate-metacity-support.c:43
 msgid "Metacity Preferences"
 msgstr "Metacity-innstillinger"
 
-#: capplets/windows/mate-metacity-support.c:53
+#: capplets/windows/mate-metacity-support.c:54
 #: capplets/windows/window-properties.ui:813
 msgid "Compositing Manager"
 msgstr "Kompositeringsbehandler"
 
-#: capplets/windows/mate-metacity-support.c:60
+#: capplets/windows/mate-metacity-support.c:61
 msgid "Enable software _compositing window manager"
 msgstr "Skru på programvarebasert _kompositering av vinduer"
 
@@ -2852,32 +2857,32 @@ msgid "_Double-click titlebar action:"
 msgstr "Handling ved _dobbeltklikking av tittellinjen:"
 
 #: capplets/windows/window-properties.ui:305
-#: libwindow-settings/marco-window-manager.c:400
+#: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "Rull opp"
 
 #: capplets/windows/window-properties.ui:306
-#: libwindow-settings/marco-window-manager.c:401
+#: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "Maksimer"
 
 #: capplets/windows/window-properties.ui:307
-#: libwindow-settings/marco-window-manager.c:402
+#: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "Maksimer horisontalt"
 
 #: capplets/windows/window-properties.ui:308
-#: libwindow-settings/marco-window-manager.c:403
+#: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "Maksimer vertikalt"
 
 #: capplets/windows/window-properties.ui:309
-#: libwindow-settings/marco-window-manager.c:404
+#: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "Minimer"
 
 #: capplets/windows/window-properties.ui:310
-#: libwindow-settings/marco-window-manager.c:405
+#: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "Ingen"
 
@@ -2986,14 +2991,6 @@ msgstr "les fil"
 #: capplets/time-admin/src/main.c:238
 msgid "read pid file failed"
 msgstr "klarte ikke lese pid-fil"
-
-#: capplets/time-admin/src/main.c:264
-msgid "g_bus_get_sync"
-msgstr "g_bus_get_sync"
-
-#: capplets/time-admin/src/main.c:277
-msgid "g_bus_proxy_new"
-msgstr "g_bus_proxy_new"
 
 #: capplets/time-admin/src/time-admin.ui:58
 msgid "Time and Date Manager"
@@ -4791,7 +4788,7 @@ msgstr "mate-control-center;MATE;klokke;dato;tid;innstillinger;"
 #: libwindow-settings/mate-wm-manager.c:318
 #, c-format
 msgid "Window manager \"%s\" has not registered a configuration tool\n"
-msgstr "Vindushåndterer «%s» har ikke registrert et konfigurasjonsverktøy\n"
+msgstr "Vindusbehandleren «%s» har ikke registrert et oppsettsverktøy\n"
 
 #: shell/control-center.c:58
 #, c-format
@@ -4821,7 +4818,7 @@ msgstr "Skjul ved oppstart (nyttig ved forhåndslasting av skallet)"
 
 #: shell/matecc.desktop.in:4
 msgid "The MATE configuration tool"
-msgstr "Konfigurasjonsverktøy for MATE"
+msgstr "Oppsettsverktøy for MATE"
 
 #: shell/matecc.desktop.in:5
 msgid "Configure MATE settings"
@@ -4931,31 +4928,31 @@ msgstr ""
 "høyreklikke på panelet og velge «Legg til på panelet» og velge "
 "«Varslingsområde»."
 
-#: font-viewer/font-view.c:204
+#: font-viewer/font-view.c:205
 msgid "Style"
 msgstr "Stil"
 
-#: font-viewer/font-view.c:214
+#: font-viewer/font-view.c:215
 msgid "Type"
 msgstr "Type"
 
-#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
+#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
 msgid "Version"
 msgstr "Versjon"
 
-#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
+#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "Opphavsrett"
 
-#: font-viewer/font-view.c:270
+#: font-viewer/font-view.c:271
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: font-viewer/font-view.c:288
+#: font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "Installering mislyktes"
 
-#: font-viewer/font-view.c:294
+#: font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "Installert"
 
@@ -4994,89 +4991,89 @@ msgid "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
 msgstr ""
 "mate-control-center;MATE;skrift;vise;forhåndsvise;skrivebord;innstillinger;"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Tekst for miniatyrbilde (forvalg: Aa)"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
 msgstr "TEKST"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "Thumbnail size (default: 128)"
 msgstr "Miniatyrbildestørrelse (forvalg: 128)"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "SIZE"
 msgstr "STØRRELSE"
 
-#: font-viewer/font-thumbnailer.c:197
+#: font-viewer/font-thumbnailer.c:198
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "SKRIFTFIL UTDATA-FIL"
 
-#: libslab/app-shell.c:762
+#: libslab/app-shell.c:763
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filter «%s» gir ingen treff."
 
-#: libslab/app-shell.c:764
+#: libslab/app-shell.c:765
 msgid "No matches found."
-msgstr "Ingen treff funnet."
+msgstr "Fant ingen treff."
 
-#: libslab/app-shell.c:873
+#: libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Nye programmer"
 
-#: libslab/app-shell.c:935
+#: libslab/app-shell.c:936
 msgid "Other"
 msgstr "Annet"
 
-#: libslab/application-tile.c:339
+#: libslab/application-tile.c:338
 #, c-format
 msgid "Start %s"
 msgstr "Start %s"
 
-#: libslab/application-tile.c:360
+#: libslab/application-tile.c:359
 msgid "Help"
 msgstr "Hjelp"
 
-#: libslab/application-tile.c:643
+#: libslab/application-tile.c:638
 msgid "Remove from Favorites"
 msgstr "Fjern fra favoritter"
 
-#: libslab/application-tile.c:645
+#: libslab/application-tile.c:640
 msgid "Add to Favorites"
 msgstr "Legg til i favoritter"
 
-#: libslab/application-tile.c:730
+#: libslab/application-tile.c:725
 msgid "Remove from Startup Programs"
 msgstr "Fjern fra oppstartsprogrammer"
 
-#: libslab/application-tile.c:732
+#: libslab/application-tile.c:727
 msgid "Add to Startup Programs"
 msgstr "Legg til i oppstartsprogrammer"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1102
 msgid "New Spreadsheet"
 msgstr "Nytt regneark"
 
-#: libslab/bookmark-agent.c:1090
+#: libslab/bookmark-agent.c:1106
 msgid "New Document"
 msgstr "Nytt dokument"
 
-#: libslab/bookmark-agent.c:1144
+#: libslab/bookmark-agent.c:1160
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Hjem"
 
-#: libslab/bookmark-agent.c:1151
+#: libslab/bookmark-agent.c:1167
 msgid "Documents"
 msgstr "Dokumenter"
 
-#: libslab/bookmark-agent.c:1162
+#: libslab/bookmark-agent.c:1178
 msgid "File System"
 msgstr "Filsystem"
 
-#: libslab/bookmark-agent.c:1165
+#: libslab/bookmark-agent.c:1181
 msgid "Network Servers"
 msgstr "Nettverkstjenere"

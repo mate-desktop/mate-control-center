@@ -6,7 +6,6 @@
 # Translators:
 # Umut Barış GÖKMEN <umtbrsgkmn@gmail.com>, 2018
 # Emre FIRAT <emrefirat93@gmail.com>, 2018
-# Mehmet, 2018
 # Martin Wimpress <code@flexion.org>, 2018
 # Yaşar Çiv <yasarciv@protonmail.com>, 2018
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2019
@@ -15,14 +14,16 @@
 # mauron, 2021
 # Stefano Karapetsas <stefano@karapetsas.com>, 2021
 # Butterfly <gokhanlnx@gmail.com>, 2021
+# Mehmet, 2022
+# Sabri Ünal <libreajans@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.25.1\n"
+"Project-Id-Version: mate-control-center 1.26.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2021-05-30 12:21+0200\n"
+"POT-Creation-Date: 2022-10-29 15:31+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Butterfly <gokhanlnx@gmail.com>, 2021\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>, 2022\n"
 "Language-Team: Turkish (https://www.transifex.com/mate/teams/13566/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,14 +81,14 @@ msgstr "Yardım eylemi gerçekleştirildiğinde kabuğun kapatılmasını belirt
 
 #: org.mate.control-center.gschema.xml.in:26
 msgid "Exit shell on add or remove action performed"
-msgstr "Bir ekleme ya da çıkartma eylemi gerçekleştiğinde kabuktan çık"
+msgstr "Bir ekleme ya da kaldırma eylemi gerçekleştiğinde kabuktan çık"
 
 #: org.mate.control-center.gschema.xml.in:27
 msgid ""
 "Indicates whether to close the shell when an add or remove action is "
 "performed."
 msgstr ""
-"Ekleme ya da çıkartma eylemi gerçekleştirildiğinde kabuğun kapatılmasını "
+"Ekleme ya da kaldırma eylemi gerçekleştirildiğinde kabuğun kapatılmasını "
 "belirtir."
 
 #: org.mate.control-center.gschema.xml.in:31
@@ -143,7 +144,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Özel tuş ataması ile ilişkili komut."
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:201
+#: font-viewer/font-view.c:202
 msgid "Name"
 msgstr "İsim"
 
@@ -151,25 +152,25 @@ msgstr "İsim"
 msgid "Description associated with a custom keybinding."
 msgstr "Özel tuş ataması ile ilişkili açıklama."
 
-#: capplets/about-me/mate-about-me.c:292
+#: capplets/about-me/mate-about-me.c:293
 msgid "Select Image"
 msgstr "Resim Seç"
 
-#: capplets/about-me/mate-about-me.c:294
+#: capplets/about-me/mate-about-me.c:296
 msgid "No Image"
 msgstr "Resim Yok"
 
-#: capplets/about-me/mate-about-me.c:322
-#: capplets/appearance/appearance-desktop.c:648
+#: capplets/about-me/mate-about-me.c:324
+#: capplets/appearance/appearance-desktop.c:647
 msgid "Images"
 msgstr "Resimler"
 
-#: capplets/about-me/mate-about-me.c:326
+#: capplets/about-me/mate-about-me.c:328
 #: capplets/appearance/theme-installer.c:830
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: capplets/about-me/mate-about-me.c:499
+#: capplets/about-me/mate-about-me.c:501
 #, c-format
 msgid "About %s"
 msgstr "%s Hakkında"
@@ -227,7 +228,7 @@ msgstr "Kişisel bilgilerinizi ayarlayın"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/about-me/mate-about-me.desktop.in:13
 msgid "mate-control-center;MATE;personal;information;"
-msgstr ""
+msgstr "mate-control-center;MATE;kişisel;bilgi;"
 
 #: capplets/about-me/mate-about-me-fingerprint.c:123
 msgid ""
@@ -258,36 +259,36 @@ msgid ""
 msgstr ""
 "Kayıtlı parmak izlerini silerek parmak izi girişini kapatmak ister misiniz?"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:440
+#: capplets/about-me/mate-about-me-fingerprint.c:445
 #: capplets/about-me/mate-about-me-fingerprint.ui:344
 msgid "Done!"
 msgstr "Tamamlandı!"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:515
-#: capplets/about-me/mate-about-me-fingerprint.c:560
+#: capplets/about-me/mate-about-me-fingerprint.c:520
+#: capplets/about-me/mate-about-me-fingerprint.c:565
 #, c-format
 msgid "Could not access '%s' device"
 msgstr "'%s' aygıtına erişilemedi"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:621
+#: capplets/about-me/mate-about-me-fingerprint.c:626
 #, c-format
 msgid "Could not start finger capture on '%s' device"
 msgstr "'%s' aygıtı üzerinde parmak yakalama başlatılamadı"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:691
+#: capplets/about-me/mate-about-me-fingerprint.c:696
 msgid "Could not access any fingerprint readers"
 msgstr "Hiçbir parmak izi okuyucusuna erişilemedi"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:692
+#: capplets/about-me/mate-about-me-fingerprint.c:697
 msgid "Please contact your system administrator for help."
 msgstr "Lütfen yardım için sistem yöneticinizle bağlantıya geçin."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:756
+#: capplets/about-me/mate-about-me-fingerprint.c:761
 #: capplets/about-me/mate-about-me-fingerprint.ui:66
 msgid "Enable Fingerprint Login"
 msgstr "Parmak İzi Girişi Etkinleştir"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:786
+#: capplets/about-me/mate-about-me-fingerprint.c:798
 #, c-format
 msgid ""
 "To enable fingerprint login, you need to save one of your fingerprints, "
@@ -296,11 +297,11 @@ msgstr ""
 "Parmak izi girişin etkinleşebilmesi için parmak izlerinizden bir tanesini "
 "'%s' aygıtını kullanarak kaydetmelisiniz."
 
-#: capplets/about-me/mate-about-me-fingerprint.c:795
+#: capplets/about-me/mate-about-me-fingerprint.c:807
 msgid "Swipe finger on reader"
 msgstr "Parmağınızı okuyucu üzerinden geçirin"
 
-#: capplets/about-me/mate-about-me-fingerprint.c:797
+#: capplets/about-me/mate-about-me-fingerprint.c:809
 msgid "Place finger on reader"
 msgstr "Parmağınızı okuyucuya koyun"
 
@@ -360,7 +361,7 @@ msgstr ""
 "Parmak iziniz başarıyla kaydedildi. Artık parmak izi okuyucusunu kullanarak "
 "giriş yapabilirsiniz."
 
-#: capplets/about-me/mate-about-me-password.c:160
+#: capplets/about-me/mate-about-me-password.c:166
 msgid "Child exited unexpectedly"
 msgstr "Alt beklenmeyen biçimde çıktı"
 
@@ -374,12 +375,17 @@ msgstr "backend_stdin IO kanalı kapatılamadı: %s"
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "backend_stdout IO kanalı kapatılamadı: %s"
 
-#: capplets/about-me/mate-about-me-password.c:408
+#: capplets/about-me/mate-about-me-password.c:322
+#, c-format
+msgid "Could not shutdown backend_stderr IO channel: %s"
+msgstr ""
+
+#: capplets/about-me/mate-about-me-password.c:428
 msgid "Authenticated!"
 msgstr "Kimlik doğrulandı!"
 
-#: capplets/about-me/mate-about-me-password.c:473
-#: capplets/about-me/mate-about-me-password.c:558
+#: capplets/about-me/mate-about-me-password.c:491
+#: capplets/about-me/mate-about-me-password.c:579
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
@@ -387,76 +393,76 @@ msgstr ""
 "Parolanız daha önce kimlik doğrulaması yaptığınız için değiştirildi! Lütfen "
 "tekrar kimlik doğrulaması yapın."
 
-#: capplets/about-me/mate-about-me-password.c:475
+#: capplets/about-me/mate-about-me-password.c:493
 msgid "That password was incorrect."
 msgstr "Bu parola yanlış."
 
-#: capplets/about-me/mate-about-me-password.c:526
+#: capplets/about-me/mate-about-me-password.c:547
 msgid "Your password has been changed."
 msgstr "Parolanız değişti."
 
-#: capplets/about-me/mate-about-me-password.c:536
+#: capplets/about-me/mate-about-me-password.c:557
 #, c-format
 msgid "System error: %s."
 msgstr "Sistem hatası: %s."
 
-#: capplets/about-me/mate-about-me-password.c:539
+#: capplets/about-me/mate-about-me-password.c:560
 msgid "The password is too short."
 msgstr "Parola çok kısa."
 
-#: capplets/about-me/mate-about-me-password.c:543
+#: capplets/about-me/mate-about-me-password.c:564
 msgid "The password is too simple."
 msgstr "Parola çok basit."
 
-#: capplets/about-me/mate-about-me-password.c:548
+#: capplets/about-me/mate-about-me-password.c:569
 msgid "The old and new passwords are too similar."
 msgstr "Eski ve yeni parolalar birbirine çok benziyor."
 
-#: capplets/about-me/mate-about-me-password.c:550
+#: capplets/about-me/mate-about-me-password.c:571
 msgid "The new password must contain numeric or special character(s)."
 msgstr "Yeni parola rakam ya da özel karakterler içermeli."
 
-#: capplets/about-me/mate-about-me-password.c:553
+#: capplets/about-me/mate-about-me-password.c:574
 msgid "The old and new passwords are the same."
 msgstr "Eski ve yeni parolalar birbirinin aynısı."
 
-#: capplets/about-me/mate-about-me-password.c:555
+#: capplets/about-me/mate-about-me-password.c:576
 msgid "The new password has already been used recently."
 msgstr "Yeni parola zaten yakın geçmişte kullanılmıştı."
 
-#: capplets/about-me/mate-about-me-password.c:826
+#: capplets/about-me/mate-about-me-password.c:862
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "%s çalıştırılamadı: %s"
 
-#: capplets/about-me/mate-about-me-password.c:830
+#: capplets/about-me/mate-about-me-password.c:866
 msgid "Unable to launch backend"
 msgstr "Araç çalıştırılamadı"
 
-#: capplets/about-me/mate-about-me-password.c:831
+#: capplets/about-me/mate-about-me-password.c:867
 msgid "A system error has occurred"
 msgstr "Sistem hatası oluştu"
 
-#: capplets/about-me/mate-about-me-password.c:851
+#: capplets/about-me/mate-about-me-password.c:887
 msgid "Checking password..."
 msgstr "Parola kontrol ediliyor..."
 
-#: capplets/about-me/mate-about-me-password.c:935
+#: capplets/about-me/mate-about-me-password.c:971
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Parolayı değiştirmek için <b>Parola değiştir</b>'in üzerine tıklayın."
 
-#: capplets/about-me/mate-about-me-password.c:938
+#: capplets/about-me/mate-about-me-password.c:974
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Lütfen parolanızı <b>Yeni parola</b> alanına yazın."
 
-#: capplets/about-me/mate-about-me-password.c:941
+#: capplets/about-me/mate-about-me-password.c:977
 #: capplets/about-me/mate-about-me-password.ui:348
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
 msgstr ""
 "Lütfen parolanızı <b>Yeni parolanızı tekrar yazın</b> alanına tekrar yazın."
 
-#: capplets/about-me/mate-about-me-password.c:944
+#: capplets/about-me/mate-about-me-password.c:980
 msgid "The two passwords are not equal."
 msgstr "İki parola aynı değil."
 
@@ -579,19 +585,19 @@ msgstr ""
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
 msgid "mate-control-center;MATE;accessibility;features;"
-msgstr ""
+msgstr "mate-control-center;MATE;erişebilirlik;özellikler;"
 
-#: capplets/appearance/appearance-desktop.c:617
+#: capplets/appearance/appearance-desktop.c:616
 msgid "Add Wallpaper"
 msgstr "Duvar Kağıdı Ekle"
 
-#: capplets/appearance/appearance-desktop.c:652
+#: capplets/appearance/appearance-desktop.c:651
 msgid "All files"
 msgstr "Tüm dosyalar"
 
 #: capplets/appearance/appearance-font.c:614
 msgid "Select Font"
-msgstr ""
+msgstr "Yazıtipi Seç"
 
 #: capplets/appearance/appearance-font.c:617
 #: capplets/appearance/data/appearance.ui:951
@@ -599,7 +605,7 @@ msgid "_Cancel"
 msgstr "_Vazgeç"
 
 #: capplets/appearance/appearance-font.c:619
-#: capplets/common/theme-thumbnail.c:224 capplets/common/theme-thumbnail.c:306
+#: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "_Aç"
 
@@ -623,8 +629,8 @@ msgstr ""
 "(theme|background|fonts|interface) göstermek için sayfanın ismini belirtin"
 
 #: capplets/appearance/appearance-main.c:155
-#: capplets/default-applications/mate-da-capplet.c:783
-#: capplets/mouse/mate-mouse-properties.c:401
+#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/mouse/mate-mouse-properties.c:414
 msgid "page"
 msgstr "sayfa"
 
@@ -633,13 +639,13 @@ msgid "[WALLPAPER...]"
 msgstr "[DUVAR KAĞIDI...]"
 
 #: capplets/appearance/appearance-style.c:173
-#: capplets/common/mate-theme-info.c:491
+#: capplets/common/mate-theme-info.c:506
 msgid "Default Pointer"
 msgstr "Öntanımlı Belirteç"
 
 #: capplets/appearance/appearance-style.c:235
 #: capplets/appearance/appearance-themes.c:659
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
 #: font-viewer/font-view.c:568
 msgid "Install"
 msgstr "Kur"
@@ -820,7 +826,7 @@ msgstr "Metin öğelerin yanında"
 
 #: capplets/appearance/data/appearance.ui:1163
 msgid "Icons only"
-msgstr "Sadece simgeler"
+msgstr "Sadece ikonlar"
 
 #: capplets/appearance/data/appearance.ui:1166
 msgid "Text only"
@@ -885,7 +891,7 @@ msgstr "Pencere Kenarı"
 
 #: capplets/appearance/data/appearance.ui:1787
 msgid "Icons"
-msgstr "Simgeler"
+msgstr "İkonlar"
 
 #: capplets/appearance/data/appearance.ui:1837
 msgid "_Size:"
@@ -1011,7 +1017,7 @@ msgstr "_Sabit genişlikli yazıtipi:"
 
 #: capplets/appearance/data/appearance.ui:2768
 msgid "Add new f_ont..."
-msgstr ""
+msgstr "_Yeni yazıtipi ekle..."
 
 #: capplets/appearance/data/appearance.ui:2799
 msgid "Rendering"
@@ -1043,7 +1049,7 @@ msgstr "Menüler ve Araç Çubukları"
 
 #: capplets/appearance/data/appearance.ui:3135
 msgid "Show _icons in menus"
-msgstr "Menülerde _simgeleri göster"
+msgstr "Menülerde _ikonları göster"
 
 #: capplets/appearance/data/appearance.ui:3152
 msgid "_Editable menu shortcut keys"
@@ -1059,31 +1065,31 @@ msgstr "Düğmeler"
 
 #: capplets/appearance/data/appearance.ui:3272
 msgid "Show icons on buttons"
-msgstr "Düğmelerde simgeleri göster"
+msgstr "Düğmelerde ikonları göster"
 
 #: capplets/appearance/data/appearance.ui:3276
 msgid "Whether buttons may display an icon in addition to the button text"
-msgstr "Düğmelerde girdilerin yanında simgelerin gösterilip gösterilmeyeceği"
+msgstr "Düğmelerde girdilerin yanında ikonların gösterilip gösterilmeyeceği"
 
 #: capplets/appearance/data/appearance.ui:3313
 msgid "File Chooser"
-msgstr ""
+msgstr "Dosya Seçici"
 
 #: capplets/appearance/data/appearance.ui:3348
 msgid "Show hidden items"
-msgstr ""
+msgstr "Gizli ögeleri göster"
 
 #: capplets/appearance/data/appearance.ui:3365
 msgid "Show size column"
-msgstr ""
+msgstr "Boyut sütununu göster"
 
 #: capplets/appearance/data/appearance.ui:3381
 msgid "Show type column"
-msgstr ""
+msgstr "Tür sütununu göster"
 
 #: capplets/appearance/data/appearance.ui:3397
 msgid "Sort directories first"
-msgstr ""
+msgstr "Klasörleri önce sırala"
 
 #: capplets/appearance/data/appearance.ui:3443
 msgid "Preview"
@@ -1118,6 +1124,7 @@ msgstr "Masaüstü görünümünü özelleştir"
 #: capplets/appearance/data/mate-appearance-properties.desktop.in:13
 msgid "mate-control-center;MATE;appearance;properties;desktop;customize;look;"
 msgstr ""
+"mate-control-center;MATE;görünüm;özellikler;masaüstü;özelleştirme;görünüm;"
 
 #: capplets/appearance/data/mate-theme-installer.desktop.in:3
 msgid "Theme Installer"
@@ -1131,7 +1138,7 @@ msgstr "Masaüstünün farklı noktaları için tema yükler"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/appearance/data/mate-theme-installer.desktop.in:14
 msgid "mate-control-center;MATE;install;desktop;themes;"
-msgstr ""
+msgstr "mate-control-center;MATE;kur;masaüstü;tema;temalar;"
 
 #: capplets/appearance/data/mate-theme-package.xml.in:5
 msgid "Mate Theme Package"
@@ -1179,7 +1186,7 @@ msgid ""
 msgstr ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"Dizin: %s\n"
+"Klasör: %s\n"
 "Sanatçı: %s"
 
 #: capplets/appearance/mate-wp-item.c:334
@@ -1234,7 +1241,7 @@ msgstr ""
 #: capplets/appearance/theme-installer.c:375
 #, c-format
 msgid "The theme \"%s\" already exists."
-msgstr ""
+msgstr "\"%s\" teması zaten mevcut."
 
 #: capplets/appearance/theme-installer.c:385
 msgid "Do you want to install it again?"
@@ -1417,7 +1424,7 @@ msgstr "_Atla"
 msgid "Overwrite _All"
 msgstr "Ü_zerine Yaz"
 
-#: capplets/common/mate-theme-info.c:1577
+#: capplets/common/mate-theme-info.c:1606
 #, c-format
 msgid ""
 "This theme will not look as intended because the required GTK+ theme '%s' is"
@@ -1426,7 +1433,7 @@ msgstr ""
 "Bu tema istenildiği gibi görünmeyecek çünkü gerekli GTK+ teması '%s' kurulu "
 "değil."
 
-#: capplets/common/mate-theme-info.c:1587
+#: capplets/common/mate-theme-info.c:1614
 #, c-format
 msgid ""
 "This theme will not look as intended because the required window manager "
@@ -1435,14 +1442,14 @@ msgstr ""
 "Bu tema istenildiği gibi görünmeyecek çünkü pencere yöneticisi teması '%s' "
 "kurulu değil."
 
-#: capplets/common/mate-theme-info.c:1595
+#: capplets/common/mate-theme-info.c:1621
 #, c-format
 msgid ""
 "This theme will not look as intended because the required icon theme '%s' is"
 " not installed."
 msgstr ""
-"Bu tema istenildiği gibi görünmeyecek çünkü gerekli simge teması '%s' kurulu"
-" değil."
+"Bu tema istenildiği gibi görünmeyecek çünkü gerekli ikon teması '%s' kurulu "
+"değil."
 
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:3
 #: capplets/default-applications/mate-default-applications-properties.ui:23
@@ -1458,13 +1465,14 @@ msgstr "Öntanımlı uygulamalarınızı seçin"
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:13
 msgid "mate-control-center;MATE;default;preferred;applications;"
 msgstr ""
+"mate-control-center;MATE;varsayılan;tercih edilen;uygulama;uygulamalar;"
 
-#: capplets/default-applications/mate-da-capplet.c:782
+#: capplets/default-applications/mate-da-capplet.c:781
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
 msgstr ""
 "(internet|multimedia|system|a11y) göstermek için sayfanın ismini belirtin"
 
-#: capplets/default-applications/mate-da-capplet.c:788
+#: capplets/default-applications/mate-da-capplet.c:789
 msgid "- MATE Default Applications"
 msgstr "- MATE Öntanımlı Uygulamaları"
 
@@ -1596,7 +1604,7 @@ msgstr ""
 
 #: capplets/display/display-capplet.ui:90
 msgid "_Apply"
-msgstr ""
+msgstr "_Uygula"
 
 #: capplets/display/display-capplet.ui:162
 msgid "Sa_me image in all monitors"
@@ -1645,7 +1653,7 @@ msgstr "Ekran"
 
 #: capplets/display/display-capplet.ui:426
 msgid "Panel icon"
-msgstr "Panel simgesi"
+msgstr "Panel ikonu"
 
 #: capplets/display/display-capplet.ui:445
 msgid "_Show monitors in panel"
@@ -1653,7 +1661,7 @@ msgstr "Ekranları _panelde göster"
 
 #: capplets/display/display-capplet.ui:477
 msgid "Scaling"
-msgstr ""
+msgstr "Ölçek"
 
 #: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
@@ -1661,7 +1669,7 @@ msgstr "Ekranlar"
 
 #: capplets/display/mate-display-properties.desktop.in:4
 msgid "Change resolution and position of monitors and projectors"
-msgstr "Monitör ve projektörlerin çözünürlüğünü ve konumunu değiştir"
+msgstr "Ekranların ve projektörlerin çözünürlüğünü ve konumunu değiştir"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1669,6 +1677,9 @@ msgstr "Monitör ve projektörlerin çözünürlüğünü ve konumunu değiştir
 msgid ""
 "mate-control-center;MATE;resolution;position;monitors;display;properties;"
 msgstr ""
+"mate-control-"
+"center;MATE;çözünürlük;konum;monitör;monitörler;ekran;ekranlar;ekran "
+"özellikleri;"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:46
 #, c-format
@@ -1784,7 +1795,7 @@ msgstr "%d Hz"
 
 #: capplets/display/xrandr-capplet.c:553
 msgid "auto detect"
-msgstr ""
+msgstr "otomatik algıla"
 
 #: capplets/display/xrandr-capplet.c:553
 msgid "100%"
@@ -1799,7 +1810,7 @@ msgstr "%200"
 #. * used as an adjective, not as a verb.  For example, the Spanish
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: capplets/display/xrandr-capplet.c:615
-#: capplets/display/xrandr-capplet.c:1693
+#: capplets/display/xrandr-capplet.c:1692
 msgid "Mirror Screens"
 msgstr "Ekranları Yansıt"
 
@@ -1811,9 +1822,9 @@ msgstr "Ekran: %s"
 #: capplets/display/xrandr-capplet.c:688
 #, c-format
 msgid "%u x %u"
-msgstr ""
+msgstr "%u x %u"
 
-#: capplets/display/xrandr-capplet.c:1549
+#: capplets/display/xrandr-capplet.c:1548
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
@@ -1821,37 +1832,37 @@ msgstr ""
 "Özelliklerini değiştirmek için bir ekran seçin, konumunu düzenlemek için "
 "kaydırın."
 
-#: capplets/display/xrandr-capplet.c:2147
+#: capplets/display/xrandr-capplet.c:2145
 msgid "Could not save the monitor configuration"
 msgstr "Ekran yapılandırması kaydedilemedi"
 
-#: capplets/display/xrandr-capplet.c:2168
+#: capplets/display/xrandr-capplet.c:2166
 msgid "Could not get session bus while applying display configuration"
 msgstr "Görüntü yapılandırması uygulanırken oturum veri yolu alınamadı"
 
-#: capplets/display/xrandr-capplet.c:2187
+#: capplets/display/xrandr-capplet.c:2185
 msgid "Could not detect displays"
 msgstr "Ekranlar tespit edilemedi"
 
-#: capplets/display/xrandr-capplet.c:2369
+#: capplets/display/xrandr-capplet.c:2367
 msgid "The monitor configuration has been saved"
 msgstr "Ekran yapılandırması kaydedilmiştir"
 
-#: capplets/display/xrandr-capplet.c:2371
+#: capplets/display/xrandr-capplet.c:2369
 msgid "This configuration will be used the next time someone logs in."
 msgstr "Bu yapılandırma birisi giriş yaptığında kullanılacaktır."
 
-#: capplets/display/xrandr-capplet.c:2380
+#: capplets/display/xrandr-capplet.c:2378
 msgid "Could not set the default configuration for monitors"
 msgstr "Ekranlar için varsayılan yapılandırma atanamadı"
 
-#: capplets/display/xrandr-capplet.c:2451
+#: capplets/display/xrandr-capplet.c:2449
 msgid "Could not get screen information"
 msgstr "Ekran bilgisi alınamadı"
 
-#: capplets/display/xrandr-capplet.c:2570
+#: capplets/display/xrandr-capplet.c:2568
 msgid "Could not open help content"
-msgstr ""
+msgstr "Yardım belgesi açılamadı"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:2
 msgid "Sound"
@@ -1871,19 +1882,19 @@ msgstr "Sesi arttır"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:10
 msgid "Volume mute quietly"
-msgstr ""
+msgstr "Sesi sessizce kapat"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:12
 msgid "Volume down quietly"
-msgstr ""
+msgstr "Sesi sessizce azalt"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:14
 msgid "Volume up quietly"
-msgstr ""
+msgstr "Sesi sessizce artır"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:16
 msgid "Microphone mute"
-msgstr ""
+msgstr "Mikrofon sessiz"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:18
 msgid "Launch media player"
@@ -1913,13 +1924,13 @@ msgstr "Diğer parça"
 msgid "Eject"
 msgstr "Çıkart"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1173
 msgid "Desktop"
 msgstr "Masaüstü"
 
 #: capplets/keybindings/01-desktop-key.xml.in:4
 msgid "Launch help browser"
-msgstr "Yardım tarayıcı aç"
+msgstr "Yardım tarayıcıyı başlat"
 
 #: capplets/keybindings/01-desktop-key.xml.in:6
 msgid "Launch calculator"
@@ -1931,15 +1942,15 @@ msgstr "E-posta istemcisini başlat"
 
 #: capplets/keybindings/01-desktop-key.xml.in:10
 msgid "Launch instant messenger"
-msgstr ""
+msgstr "Anında mesajlaşmayı başlat"
 
 #: capplets/keybindings/01-desktop-key.xml.in:12
 msgid "Launch web browser"
-msgstr "Web tarayıcı aç"
+msgstr "Web tarayıcıyı başlat"
 
 #: capplets/keybindings/01-desktop-key.xml.in:14
 msgid "Log out"
-msgstr "Çıkış"
+msgstr "Oturumu kapat"
 
 #: capplets/keybindings/01-desktop-key.xml.in:16
 msgid "Shut down"
@@ -1951,10 +1962,10 @@ msgstr "Ekranı kilitle"
 
 #: capplets/keybindings/01-desktop-key.xml.in:20
 msgid "Home folder"
-msgstr "Başlangıç dizini"
+msgstr "Ev klasörü"
 
 #: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
-#: libslab/bookmark-agent.c:1196
+#: libslab/bookmark-agent.c:1212
 msgid "Search"
 msgstr "Ara"
 
@@ -1966,32 +1977,32 @@ msgstr "Başlatma ayarları"
 msgid "New shortcut..."
 msgstr "Yeni kısayol..."
 
+#: capplets/keybindings/eggcellrendererkeys.c:147
 #: capplets/keybindings/eggcellrendererkeys.c:148
-#: capplets/keybindings/eggcellrendererkeys.c:149
 msgid "Accelerator key"
 msgstr "Hızlandırma tuşu"
 
+#: capplets/keybindings/eggcellrendererkeys.c:157
 #: capplets/keybindings/eggcellrendererkeys.c:158
-#: capplets/keybindings/eggcellrendererkeys.c:159
 msgid "Accelerator modifiers"
 msgstr "Hızlandırma düzenleyicileri"
 
+#: capplets/keybindings/eggcellrendererkeys.c:166
 #: capplets/keybindings/eggcellrendererkeys.c:167
-#: capplets/keybindings/eggcellrendererkeys.c:168
 msgid "Accelerator keycode"
 msgstr "Hızlandırma tuş kodu"
 
-#: capplets/keybindings/eggcellrendererkeys.c:178
+#: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accel Mode"
 msgstr "Hızlandırma Kipi"
 
-#: capplets/keybindings/eggcellrendererkeys.c:179
+#: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "The type of accelerator."
 msgstr "Hızlandırıcı türü."
 
-#: capplets/keybindings/eggcellrendererkeys.c:222
+#: capplets/keybindings/eggcellrendererkeys.c:220
 #: capplets/keybindings/mate-keybinding-properties.c:117
-#: capplets/mouse/mate-mouse-properties.c:343 typing-break/drwright.c:525
+#: capplets/mouse/mate-mouse-properties.c:356 typing-break/drwright.c:525
 msgid "Disabled"
 msgstr "Devre dışı"
 
@@ -1999,16 +2010,16 @@ msgstr "Devre dışı"
 msgid "<Unknown Action>"
 msgstr "<Bilinmeyen Eylem>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1002
-#: capplets/keybindings/mate-keybinding-properties.c:1610
+#: capplets/keybindings/mate-keybinding-properties.c:1001
+#: capplets/keybindings/mate-keybinding-properties.c:1608
 msgid "Custom Shortcuts"
 msgstr "Özel Kısayollar"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1190
+#: capplets/keybindings/mate-keybinding-properties.c:1189
 msgid "Error saving the new shortcut"
-msgstr "Yeni kısa yol kaydedilirken hata"
+msgstr "Yeni kısayol kaydedilirken hata"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1266
+#: capplets/keybindings/mate-keybinding-properties.c:1265
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2017,7 +2028,7 @@ msgstr ""
 "Kısayol tuşu \"%s\" kullanılamıyor çünkü kullanımı halinde bu tuş kullanılarak yazmak mümkün olmayacak.\n"
 "Lütfen Control, Alt ya da Shift gibi tuşlar ile aynı anda deneyin."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1298
+#: capplets/keybindings/mate-keybinding-properties.c:1297
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2026,26 +2037,26 @@ msgstr ""
 "\"%s\" kısayolu bu işlem için kullanılıyor:\n"
 "\"%s\""
 
-#: capplets/keybindings/mate-keybinding-properties.c:1305
+#: capplets/keybindings/mate-keybinding-properties.c:1304
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Eğer kısayolu \"%s\" olarak tekrar atarsanız, \"%s\" kısayolu "
 "etkinsizleştirilecek."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1310
+#: capplets/keybindings/mate-keybinding-properties.c:1309
 msgid "_Reassign"
 msgstr "_Tekrar ata"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1565
+#: capplets/keybindings/mate-keybinding-properties.c:1563
 msgid "Too many custom shortcuts"
 msgstr "Çok fazla özel kısayol"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1879
+#: capplets/keybindings/mate-keybinding-properties.c:1877
 msgid "Action"
 msgstr "Eylem"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1901
+#: capplets/keybindings/mate-keybinding-properties.c:1899
 msgid "Shortcut"
 msgstr "Kısayol"
 
@@ -2082,25 +2093,25 @@ msgstr "Komutlara kısayol ata"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keybindings/mate-keybinding.desktop.in:13
 msgid "mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;"
-msgstr ""
+msgstr "mate-control-center;MATE;ata;klavye;kısayol;kısayol atama;"
 
-#: capplets/keyboard/mate-keyboard-properties.c:164
-#: capplets/keyboard/mate-keyboard-properties.c:169
+#: capplets/keyboard/mate-keyboard-properties.c:141
+#: capplets/keyboard/mate-keyboard-properties.c:146
 msgid ""
 "Just apply settings and quit (compatibility only; now handled by daemon)"
 msgstr ""
 "Sadece ayarları uygula ve çık (uyumluluk için; artık servis tarafından "
 "yapılır)"
 
-#: capplets/keyboard/mate-keyboard-properties.c:174
+#: capplets/keyboard/mate-keyboard-properties.c:151
 msgid "Start the page with the typing break settings showing"
 msgstr "Yazım molası ayarlarını göstererek sayfayı başlat"
 
-#: capplets/keyboard/mate-keyboard-properties.c:179
+#: capplets/keyboard/mate-keyboard-properties.c:156
 msgid "Start the page with the accessibility settings showing"
 msgstr "Sayfayı erişilebilirlik ayarları göstererek başlat"
 
-#: capplets/keyboard/mate-keyboard-properties.c:185
+#: capplets/keyboard/mate-keyboard-properties.c:161
 msgid "- MATE Keyboard Preferences"
 msgstr "- MATE Klavye Tercihleri"
 
@@ -2176,11 +2187,11 @@ msgstr "Sıçrama Tuşları"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
 msgid "Beep when pressing a key while Caps_Lock is active"
-msgstr ""
+msgstr "Caps_Lock etkinken bir tuşa basıldığında bip sesi çıkar"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
 msgid "Caps Lock"
-msgstr ""
+msgstr "Caps Lock"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:106
 msgid "Keyboard Preferences"
@@ -2275,7 +2286,7 @@ msgstr "Listeye ilâve edilecek klavye düzenini seç"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:720
 msgid "_Remove"
-msgstr "_Sil"
+msgstr "_Kaldır"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:724
 msgid "Remove the selected keyboard layout from the list"
@@ -2487,7 +2498,7 @@ msgstr "Klavye Düzen Seçenekleri"
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: capplets/keyboard/mate-keyboard-properties-xkblt.c:240
+#: capplets/keyboard/mate-keyboard-properties-xkblt.c:239
 msgid "Layout"
 msgstr "Düzen"
 
@@ -2495,7 +2506,7 @@ msgstr "Düzen"
 msgid "Vendors"
 msgstr "Üreticiler"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:236
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
 msgid "Models"
 msgstr "Modeller"
 
@@ -2516,25 +2527,25 @@ msgstr "Klavye tercihlerini yapın"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/keyboard/mate-keyboard.desktop.in:13
 msgid "mate-control-center;MATE;keyboard;preferences;"
-msgstr ""
+msgstr "mate-control-center;MATE;klayye;tercihler;"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Left button"
 msgstr "Sol düğme"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Middle button"
 msgstr "Orta düğme"
 
-#: capplets/mouse/mate-mouse-properties.c:343
+#: capplets/mouse/mate-mouse-properties.c:356
 msgid "Right button"
 msgstr "Sağ düğme"
 
-#: capplets/mouse/mate-mouse-properties.c:400
+#: capplets/mouse/mate-mouse-properties.c:413
 msgid "Specify the name of the page to show (general)"
 msgstr "Görüntülenecek sayfanın ismini belirtin (general)"
 
-#: capplets/mouse/mate-mouse-properties.c:405
+#: capplets/mouse/mate-mouse-properties.c:418
 msgid "- MATE Mouse Preferences"
 msgstr "- MATE Fare Tercihleri"
 
@@ -2590,15 +2601,15 @@ msgstr "_Duyarlılık:"
 
 #: capplets/mouse/mate-mouse-properties.ui:570
 msgid "Acceleration _Profile:"
-msgstr ""
+msgstr "Hızlanma _Profili:"
 
 #: capplets/mouse/mate-mouse-properties.ui:588
 msgid "Adaptive"
-msgstr ""
+msgstr "Uyumlu"
 
 #: capplets/mouse/mate-mouse-properties.ui:589
 msgid "Flat"
-msgstr ""
+msgstr "Düz"
 
 #: capplets/mouse/mate-mouse-properties.ui:625
 msgid "Drag and Drop"
@@ -2621,6 +2632,8 @@ msgid ""
 "To test your double-click settings, try to double-click on the triangle and "
 "you must see the mate desktop logo with both rings showing."
 msgstr ""
+"Çift tıklama ayarlarınızı sınamak için üçgene çift tıkladığınızda mate "
+"masaüstünün logosunun halkalarını görmelisiniz."
 
 #: capplets/mouse/mate-mouse-properties.ui:964
 #: capplets/mouse/mate-settings-mouse.desktop.in:3
@@ -2688,7 +2701,7 @@ msgstr "Fare tercihlerini yapın"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/mouse/mate-settings-mouse.desktop.in:13
 msgid "mate-control-center;MATE;mouse;preferences;"
-msgstr ""
+msgstr "mate-control-center;MATE;fare;tercihler;"
 
 #: capplets/network/mate-network-properties.desktop.in:3
 msgid "Network Proxy"
@@ -2702,7 +2715,7 @@ msgstr "Ağ vekil tercihlerini ayarlayın"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/network/mate-network-properties.desktop.in:13
 msgid "mate-control-center;MATE;network;http;socks;proxy;"
-msgstr ""
+msgstr "mate-control-center;MATE;ağ;http;https;socks;proxy;ağ geçidi;"
 
 #: capplets/network/mate-network-properties.ui:34
 msgid "Network Proxy Preferences"
@@ -2779,16 +2792,16 @@ msgstr "_Kullanıcı adı:"
 msgid "_Password:"
 msgstr "_Parola:"
 
-#: capplets/windows/mate-metacity-support.c:42
+#: capplets/windows/mate-metacity-support.c:43
 msgid "Metacity Preferences"
 msgstr "Metacity Tercihleri"
 
-#: capplets/windows/mate-metacity-support.c:53
+#: capplets/windows/mate-metacity-support.c:54
 #: capplets/windows/window-properties.ui:813
 msgid "Compositing Manager"
-msgstr "Görüntü Birleştirme Yöneticisi"
+msgstr "Kompozisyon Yöneticisi"
 
-#: capplets/windows/mate-metacity-support.c:60
+#: capplets/windows/mate-metacity-support.c:61
 msgid "Enable software _compositing window manager"
 msgstr "Yazılım _kompozisyonlu pencere yöneticisini etkinleştir"
 
@@ -2824,7 +2837,7 @@ msgstr "Pencere özelliklerinizi ayarlayın"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/windows/mate-window-properties.desktop.in:13
 msgid "mate-control-center;MATE;window;manager;properties;marco;preferences;"
-msgstr ""
+msgstr "mate-control-center;MATE;pencere;yönetici;özellikler;makro;tercihler;"
 
 #: capplets/windows/window-properties.ui:49
 msgid "Window Preferences"
@@ -2844,7 +2857,7 @@ msgstr "Fare onu terk ettiğinde pencerenin s_eçilmişliğini kaldır"
 
 #: capplets/windows/window-properties.ui:187
 msgid "_Raise selected windows after"
-msgstr ""
+msgstr "_Seçilen pencereyi şu kadar sonra yükselt"
 
 #: capplets/windows/window-properties.ui:223
 msgid "seconds"
@@ -2856,49 +2869,49 @@ msgstr "Başlık Çubuğu Eylemi"
 
 #: capplets/windows/window-properties.ui:290
 msgid "_Double-click titlebar action:"
-msgstr ""
+msgstr "_Başlık çubuğuna çift tıklama eylemi:"
 
 #: capplets/windows/window-properties.ui:305
-#: libwindow-settings/marco-window-manager.c:400
+#: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "Yukarı sar"
 
 #: capplets/windows/window-properties.ui:306
-#: libwindow-settings/marco-window-manager.c:401
+#: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "Büyült"
 
 #: capplets/windows/window-properties.ui:307
-#: libwindow-settings/marco-window-manager.c:402
+#: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "Yatay Büyült"
 
 #: capplets/windows/window-properties.ui:308
-#: libwindow-settings/marco-window-manager.c:403
+#: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "Dikey Büyült"
 
 #: capplets/windows/window-properties.ui:309
-#: libwindow-settings/marco-window-manager.c:404
+#: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "Küçült"
 
 #: capplets/windows/window-properties.ui:310
-#: libwindow-settings/marco-window-manager.c:405
+#: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "Hiçbiri"
 
 #: capplets/windows/window-properties.ui:352
 msgid "Alt-Tab"
-msgstr ""
+msgstr "Alt-Tab"
 
 #: capplets/windows/window-properties.ui:371
 msgid "Show _thumbnails in Alt-Tab"
-msgstr ""
+msgstr "Alt+Tab'da _önizlemeleri göster"
 
 #: capplets/windows/window-properties.ui:386
 msgid "Show window _border in Alt-Tab"
-msgstr ""
+msgstr "_Alt-Tab'da pencere kenarlıklarını göster"
 
 #: capplets/windows/window-properties.ui:424
 msgid "Movement Key"
@@ -2919,7 +2932,7 @@ msgstr "Yeni Pencereler"
 
 #: capplets/windows/window-properties.ui:535
 msgid "Centre _new windows"
-msgstr ""
+msgstr "Yeni _pencereleri ortala"
 
 #: capplets/windows/window-properties.ui:573
 msgid "Window Snapping"
@@ -2931,7 +2944,7 @@ msgstr "Pencere _döşemeyi etkinleştir"
 
 #: capplets/windows/window-properties.ui:608
 msgid "Allow t_op tiling"
-msgstr ""
+msgstr "_En üst döşemeye izin ver"
 
 #: capplets/windows/window-properties.ui:647
 msgid "Titlebar Buttons"
@@ -2939,7 +2952,7 @@ msgstr "Başlık Çubuğu Düğmeleri"
 
 #: capplets/windows/window-properties.ui:674
 msgid "_Position of titlebar buttons:"
-msgstr ""
+msgstr "_Başlangıç çubuğu düğmelerinin  konumu"
 
 #: capplets/windows/window-properties.ui:689
 msgid "Right (with menu)"
@@ -2955,11 +2968,11 @@ msgstr "Yerleştirme"
 
 #: capplets/windows/window-properties.ui:757
 msgid "Software Compositing"
-msgstr ""
+msgstr "Yazılım Kompozisyonu"
 
 #: capplets/windows/window-properties.ui:777
 msgid "Enable _software compositing window manager"
-msgstr ""
+msgstr "Yazılım _kompozisyonlu pencere yöneticisini etkinleştir"
 
 #: capplets/time-admin/src/main.c:34
 #, c-format
@@ -2995,21 +3008,13 @@ msgstr "dosya oku"
 msgid "read pid file failed"
 msgstr "pid dosyası okuma başarısız"
 
-#: capplets/time-admin/src/main.c:264
-msgid "g_bus_get_sync"
-msgstr ""
-
-#: capplets/time-admin/src/main.c:277
-msgid "g_bus_proxy_new"
-msgstr ""
-
 #: capplets/time-admin/src/time-admin.ui:58
 msgid "Time and Date Manager"
-msgstr ""
+msgstr "Zaman ve Tarih Yönetici"
 
 #: capplets/time-admin/src/time-admin.ui:96
 msgid "NTP sync"
-msgstr ""
+msgstr "NTP eşitleme"
 
 #: capplets/time-admin/src/time-admin.ui:123
 msgid "Time zone"
@@ -3017,7 +3022,7 @@ msgstr "Zaman dilimi"
 
 #: capplets/time-admin/src/time-admin.ui:161
 msgid "Click the button to edit time zone."
-msgstr ""
+msgstr "Zaman dilimini düzenlemek için düğmeye tıklayın."
 
 #: capplets/time-admin/src/time-admin.ui:283
 msgid "Time"
@@ -3029,26 +3034,27 @@ msgstr "Tarih"
 
 #: capplets/time-admin/src/time-admin.ui:368
 msgid "Click to save the specified date and time."
-msgstr ""
+msgstr "Belirtilen tarih ve saati kaydetmek için tıklayın."
 
 #: capplets/time-admin/src/time-tool.c:135
 msgid "GetNtpState"
-msgstr ""
+msgstr "GetNtpState"
 
 #: capplets/time-admin/src/time-tool.c:198
 msgid "Set time zone"
-msgstr ""
+msgstr "Zaman dilimi ayarla"
 
 #: capplets/time-admin/src/time-tool.c:230
 #: capplets/time-admin/src/time-tool.c:277
 msgid "Set Ntp sync"
-msgstr ""
+msgstr "Ntp eşitleme ayarla"
 
 #: capplets/time-admin/src/time-share.c:49
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr ""
+"Ağ zaman eşitlemesi (NTP) ayarlandı. Elle saat/tarih ayarlama devre dışı."
 
 #: capplets/time-admin/src/time-zone.c:276
 #, c-format
@@ -3058,15 +3064,15 @@ msgstr "%s, %s"
 
 #: capplets/time-admin/src/time-zone.c:302
 msgid "Error: timezone identifier cannot be parsed or loaded"
-msgstr ""
+msgstr "Hata: saat dilimi tanımlayıcısı ayrıştırılamadı veya yüklenemedi"
 
 #: capplets/time-admin/src/time-zone.c:312
 msgid "UTC%:::z"
-msgstr ""
+msgstr "UTC%:::z"
 
 #: capplets/time-admin/src/time-zone.c:317
 msgid "%R"
-msgstr ""
+msgstr "%R"
 
 #: capplets/time-admin/src/time-zone.c:387
 msgid "Time Zone"
@@ -3074,11 +3080,11 @@ msgstr "Zaman Dilimi"
 
 #: capplets/time-admin/src/time-zone.c:474
 msgid "Time Zone Selection"
-msgstr ""
+msgstr "Zaman Dilimi Seçimi"
 
 #: capplets/time-admin/src/time-zone.c:489
 msgid "Con_firm"
-msgstr ""
+msgstr "_Onayla"
 
 #: capplets/time-admin/src/time-zones.h:27
 msgid "Africa/Abidjan"
@@ -3182,7 +3188,7 @@ msgstr "Afrika/Yohanesburg"
 
 #: capplets/time-admin/src/time-zones.h:52
 msgid "Africa/Juba"
-msgstr ""
+msgstr "Afrika/Juba"
 
 #: capplets/time-admin/src/time-zones.h:53
 msgid "Africa/Kampala"
@@ -3442,7 +3448,7 @@ msgstr "Amerika/Kosta_Rika"
 
 #: capplets/time-admin/src/time-zones.h:117
 msgid "America/Creston"
-msgstr ""
+msgstr "Amerika/Creston"
 
 #: capplets/time-admin/src/time-zones.h:118
 msgid "America/Cuiaba"
@@ -3494,7 +3500,7 @@ msgstr "Amerika/Fortaleza"
 
 #: capplets/time-admin/src/time-zones.h:130
 msgid "America/Fort_Nelson"
-msgstr ""
+msgstr "Amerika/Fort_Nelson"
 
 #: capplets/time-admin/src/time-zones.h:131
 msgid "America/Glace_Bay"
@@ -3602,7 +3608,7 @@ msgstr "Amerika/Kentucky/Monticello"
 
 #: capplets/time-admin/src/time-zones.h:157
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "Amerika/Kralendijk"
 
 #: capplets/time-admin/src/time-zones.h:158
 msgid "America/La_Paz"
@@ -3618,7 +3624,7 @@ msgstr "Amerika/Los_Angeles"
 
 #: capplets/time-admin/src/time-zones.h:161
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "Amerika/Lower_Princes"
 
 #: capplets/time-admin/src/time-zones.h:162
 msgid "America/Maceio"
@@ -3658,7 +3664,7 @@ msgstr "Amerika/Mendoza"
 
 #: capplets/time-admin/src/time-zones.h:171
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "Amerika/Metlakatla"
 
 #: capplets/time-admin/src/time-zones.h:172
 msgid "America/Mexico_City"
@@ -3706,7 +3712,7 @@ msgstr "Amerika/Noronha"
 
 #: capplets/time-admin/src/time-zones.h:183
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "Amerika/North_Dakota/Beulah"
 
 #: capplets/time-admin/src/time-zones.h:184
 msgid "America/North_Dakota/Center"
@@ -3754,7 +3760,7 @@ msgstr "Amerika/Porto_Riko"
 
 #: capplets/time-admin/src/time-zones.h:195
 msgid "America/Punta_Arenas"
-msgstr ""
+msgstr "Amerika/Punta_Arenas"
 
 #: capplets/time-admin/src/time-zones.h:196
 msgid "America/Rainy_River"
@@ -3802,7 +3808,7 @@ msgstr "Amerika/Scoresbysund"
 
 #: capplets/time-admin/src/time-zones.h:207
 msgid "America/Sitka"
-msgstr ""
+msgstr "Amerika/Sitka"
 
 #: capplets/time-admin/src/time-zones.h:208
 msgid "America/St_Barthelemy"
@@ -3878,47 +3884,47 @@ msgstr "Amerika/Yellowknife"
 
 #: capplets/time-admin/src/time-zones.h:226
 msgid "Antarctica/Casey"
-msgstr "Antartika/Casey"
+msgstr "Antarktika/Casey"
 
 #: capplets/time-admin/src/time-zones.h:227
 msgid "Antarctica/Davis"
-msgstr "Antartika/Davis"
+msgstr "Antarktika/Davis"
 
 #: capplets/time-admin/src/time-zones.h:228
 msgid "Antarctica/DumontDUrville"
-msgstr "Antartika/DumontDUrville"
+msgstr "Antarktika/DumontDUrville"
 
 #: capplets/time-admin/src/time-zones.h:229
 msgid "Antarctica/Macquarie"
-msgstr "Antartika/Macquarie"
+msgstr "Antarktika/Macquarie"
 
 #: capplets/time-admin/src/time-zones.h:230
 msgid "Antarctica/Mawson"
-msgstr "Antartika/Mawson"
+msgstr "Antarktika/Mawson"
 
 #: capplets/time-admin/src/time-zones.h:231
 msgid "Antarctica/McMurdo"
-msgstr "Antartika/McMurdo"
+msgstr "Antarktika/McMurdo"
 
 #: capplets/time-admin/src/time-zones.h:232
 msgid "Antarctica/Palmer"
-msgstr "Antartika/Palmer"
+msgstr "Antarktika/Palmer"
 
 #: capplets/time-admin/src/time-zones.h:233
 msgid "Antarctica/Rothera"
-msgstr "Antartika/Rothera"
+msgstr "Antarktika/Rothera"
 
 #: capplets/time-admin/src/time-zones.h:234
 msgid "Antarctica/Syowa"
-msgstr "Antartika/Syowa"
+msgstr "Antarktika/Syowa"
 
 #: capplets/time-admin/src/time-zones.h:235
 msgid "Antarctica/Troll"
-msgstr ""
+msgstr "Antarktika/Troll"
 
 #: capplets/time-admin/src/time-zones.h:236
 msgid "Antarctica/Vostok"
-msgstr "Antartika/Vostok"
+msgstr "Antarktika/Vostok"
 
 #: capplets/time-admin/src/time-zones.h:237
 msgid "Arctic/Longyearbyen"
@@ -3954,7 +3960,7 @@ msgstr "Asya/Aşkabad"
 
 #: capplets/time-admin/src/time-zones.h:245
 msgid "Asia/Atyrau"
-msgstr ""
+msgstr "Asya/Atyrau"
 
 #: capplets/time-admin/src/time-zones.h:246
 msgid "Asia/Baghdad"
@@ -3974,7 +3980,7 @@ msgstr "Asya/Bangkok"
 
 #: capplets/time-admin/src/time-zones.h:250
 msgid "Asia/Barnaul"
-msgstr ""
+msgstr "Asya/Barnaul"
 
 #: capplets/time-admin/src/time-zones.h:251
 msgid "Asia/Beirut"
@@ -3990,7 +3996,7 @@ msgstr "Asya/Brunei"
 
 #: capplets/time-admin/src/time-zones.h:254
 msgid "Asia/Chita"
-msgstr ""
+msgstr "Asya/Chita"
 
 #: capplets/time-admin/src/time-zones.h:255
 msgid "Asia/Choibalsan"
@@ -4022,7 +4028,7 @@ msgstr "Asya/Duşanbe"
 
 #: capplets/time-admin/src/time-zones.h:262
 msgid "Asia/Famagusta"
-msgstr ""
+msgstr "Asya/Famagusta"
 
 #: capplets/time-admin/src/time-zones.h:263
 msgid "Asia/Gaza"
@@ -4030,7 +4036,7 @@ msgstr "Asya/Gaza"
 
 #: capplets/time-admin/src/time-zones.h:264
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Asya/Hebron-El-Halil"
 
 #: capplets/time-admin/src/time-zones.h:265
 msgid "Asia/Ho_Chi_Minh"
@@ -4078,7 +4084,7 @@ msgstr "Asya/Katmandu"
 
 #: capplets/time-admin/src/time-zones.h:276
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Asya/Khandyga"
 
 #: capplets/time-admin/src/time-zones.h:277
 msgid "Asia/Kolkata"
@@ -4158,7 +4164,7 @@ msgstr "Asya/Katar"
 
 #: capplets/time-admin/src/time-zones.h:296
 msgid "Asia/Qostanay"
-msgstr ""
+msgstr "Asya/Qostanay"
 
 #: capplets/time-admin/src/time-zones.h:297
 msgid "Asia/Qyzylorda"
@@ -4190,7 +4196,7 @@ msgstr "Asya/Singapur"
 
 #: capplets/time-admin/src/time-zones.h:304
 msgid "Asia/Srednekolymsk"
-msgstr ""
+msgstr "Asya/Srednekolymsk"
 
 #: capplets/time-admin/src/time-zones.h:305
 msgid "Asia/Taipei"
@@ -4218,7 +4224,7 @@ msgstr "Asya/Tokyo"
 
 #: capplets/time-admin/src/time-zones.h:311
 msgid "Asia/Tomsk"
-msgstr ""
+msgstr "Asya/Tomsk"
 
 #: capplets/time-admin/src/time-zones.h:312
 msgid "Asia/Ulaanbaatar"
@@ -4230,7 +4236,7 @@ msgstr "Asya/Urumqi"
 
 #: capplets/time-admin/src/time-zones.h:314
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Asya/Ust-Nera"
 
 #: capplets/time-admin/src/time-zones.h:315
 msgid "Asia/Vientiane"
@@ -4246,7 +4252,7 @@ msgstr "Asya/Yakutsk"
 
 #: capplets/time-admin/src/time-zones.h:318
 msgid "Asia/Yangon"
-msgstr ""
+msgstr "Asya/Yangon-Rangoon"
 
 #: capplets/time-admin/src/time-zones.h:319
 msgid "Asia/Yekaterinburg"
@@ -4354,7 +4360,7 @@ msgstr "Avrupa/Andorra"
 
 #: capplets/time-admin/src/time-zones.h:345
 msgid "Europe/Astrakhan"
-msgstr ""
+msgstr "Avrupa/Astrahan"
 
 #: capplets/time-admin/src/time-zones.h:346
 msgid "Europe/Athens"
@@ -4386,7 +4392,7 @@ msgstr "Avrupa/Budapeşte"
 
 #: capplets/time-admin/src/time-zones.h:353
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Avrupa/Busingen"
 
 #: capplets/time-admin/src/time-zones.h:354
 msgid "Europe/Chisinau"
@@ -4434,7 +4440,7 @@ msgstr "Avrupa/Kiev"
 
 #: capplets/time-admin/src/time-zones.h:365
 msgid "Europe/Kirov"
-msgstr ""
+msgstr "Avrupa/Kirov"
 
 #: capplets/time-admin/src/time-zones.h:366
 msgid "Europe/Lisbon"
@@ -4514,7 +4520,7 @@ msgstr "Avrupa/Saray_Bosna"
 
 #: capplets/time-admin/src/time-zones.h:385
 msgid "Europe/Saratov"
-msgstr ""
+msgstr "Avrupa/Saratov"
 
 #: capplets/time-admin/src/time-zones.h:386
 msgid "Europe/Simferopol"
@@ -4542,7 +4548,7 @@ msgstr "Avrupa/Tiran"
 
 #: capplets/time-admin/src/time-zones.h:392
 msgid "Europe/Ulyanovsk"
-msgstr ""
+msgstr "Avrupa/Ulyanovsk"
 
 #: capplets/time-admin/src/time-zones.h:393
 msgid "Europe/Uzhgorod"
@@ -4638,7 +4644,7 @@ msgstr "Pasifik/Auckland"
 
 #: capplets/time-admin/src/time-zones.h:416
 msgid "Pacific/Bougainville"
-msgstr ""
+msgstr "Pasifik/Bougainville"
 
 #: capplets/time-admin/src/time-zones.h:417
 msgid "Pacific/Chatham"
@@ -4782,17 +4788,17 @@ msgstr "Pasifik/Wallis"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:3
 msgid "Time And Date Manager"
-msgstr ""
+msgstr "Zaman ve Tarih Yönetici"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
-msgstr ""
+msgstr "Yerel sistemin saatini ve tarihini ayarlama"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/time-admin/data/mate-time-admin.desktop.in:13
 msgid "mate-control-center;MATE;clock;date;time;preferences;"
-msgstr ""
+msgstr "mate-control-center;MATE;saat;tarih;zaman;tercihler;"
 
 #: libwindow-settings/mate-wm-manager.c:318
 #, c-format
@@ -4837,7 +4843,7 @@ msgstr "MATE ayarlarını yapılandır"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: shell/matecc.desktop.in:14
 msgid "MATE;control;center;configuration;tool;desktop;preferences;"
-msgstr ""
+msgstr "MATE;denetim;kontrol;merkez;yapılandırma;araç;tercihler;masaüstü;"
 
 #: typing-break/drw-break-window.c:179
 msgid "_Postpone Break"
@@ -4919,7 +4925,7 @@ msgstr "Hata ayıklama kodunu etkinleştir"
 
 #: typing-break/main.c:64
 msgid "Don't check whether the notification area exists"
-msgstr "Uyarı alanının mevcut olup olmadığını kontrol etme"
+msgstr "Bildirim alanının mevcut olup olmadığını kontrol etme"
 
 #: typing-break/main.c:92
 msgid "Typing Monitor"
@@ -4932,35 +4938,35 @@ msgid ""
 "right-clicking on your panel and choosing 'Add to panel', selecting "
 "'Notification area' and clicking 'Add'."
 msgstr ""
-"Yazım gözetleyicisi bilgileri göstermek için uyarı alanını kullanır. "
-"Panelinizde uyarı alanı yok gibi görülüyor. Panele sağ tıklayıp 'Panele "
-"ekle', 'Uyarı alanı' ve 'Ekle'yi tıklayarak alanı ekleyebilirsiniz."
+"Yazım gözetleyicisi bilgileri göstermek için bildirim alanını kullanır. "
+"Panelinizde bildirim alanı yok gibi görülüyor. Panele sağ tıklayıp 'Panele "
+"ekle', 'Bildirim alanı' ve 'Ekle'yi tıklayarak alanı ekleyebilirsiniz."
 
-#: font-viewer/font-view.c:204
+#: font-viewer/font-view.c:205
 msgid "Style"
 msgstr "Tarz"
 
-#: font-viewer/font-view.c:214
+#: font-viewer/font-view.c:215
 msgid "Type"
 msgstr "Tür"
 
-#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
+#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
 msgid "Version"
 msgstr "Sürüm"
 
-#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
+#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "Telif hakkı"
 
-#: font-viewer/font-view.c:270
+#: font-viewer/font-view.c:271
 msgid "Description"
 msgstr "Tanımlama"
 
-#: font-viewer/font-view.c:288
+#: font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "Kurulum Başarısız"
 
-#: font-viewer/font-view.c:294
+#: font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "Kurulu"
 
@@ -4997,90 +5003,92 @@ msgstr "MATE Yazıtipi Görüntüleyicisi"
 #: font-viewer/mate-font-viewer.desktop.in:14
 msgid "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
 msgstr ""
+"mate-control-center;MATE;yazı tipi;görüntüleyici;ön "
+"izleme;masaüstü;tercihler;"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Örneklendirilecek metin (öntanımlı: Aa)"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
 msgstr "METİN"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "Thumbnail size (default: 128)"
 msgstr "Küçük resim boyutu (varsayılan: 128)"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "SIZE"
 msgstr "BOYUT"
 
-#: font-viewer/font-thumbnailer.c:197
+#: font-viewer/font-thumbnailer.c:198
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "YAZITİPİ-DOSYASI ÇIKTI-DOSYASI"
 
-#: libslab/app-shell.c:762
+#: libslab/app-shell.c:763
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filtreniz \"%s\" hiçbir öğe ile eşleşmedi."
 
-#: libslab/app-shell.c:764
+#: libslab/app-shell.c:765
 msgid "No matches found."
 msgstr "Hiçbir eşleşme bulunamadı."
 
-#: libslab/app-shell.c:873
+#: libslab/app-shell.c:874
 msgid "New Applications"
 msgstr "Yeni Uygulamalar"
 
-#: libslab/app-shell.c:935
+#: libslab/app-shell.c:936
 msgid "Other"
 msgstr "Diğer"
 
-#: libslab/application-tile.c:339
+#: libslab/application-tile.c:338
 #, c-format
 msgid "Start %s"
 msgstr "%s Başlat"
 
-#: libslab/application-tile.c:360
+#: libslab/application-tile.c:359
 msgid "Help"
 msgstr "Yardım"
 
-#: libslab/application-tile.c:643
+#: libslab/application-tile.c:638
 msgid "Remove from Favorites"
-msgstr "Sık Kullanılanlardan Çıkart"
+msgstr "Sık Kullanılanlardan Kaldır"
 
-#: libslab/application-tile.c:645
+#: libslab/application-tile.c:640
 msgid "Add to Favorites"
 msgstr "Sık Kullanılanlara Ekle"
 
-#: libslab/application-tile.c:730
+#: libslab/application-tile.c:725
 msgid "Remove from Startup Programs"
-msgstr "Başlangıç Programlarından Çıkart"
+msgstr "Başlangıç Programlarından Kaldır"
 
-#: libslab/application-tile.c:732
+#: libslab/application-tile.c:727
 msgid "Add to Startup Programs"
 msgstr "Başlangıç Programlarına Ekle"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1102
 msgid "New Spreadsheet"
 msgstr "Yeni Çizelge"
 
-#: libslab/bookmark-agent.c:1090
+#: libslab/bookmark-agent.c:1106
 msgid "New Document"
 msgstr "Yeni Belge"
 
-#: libslab/bookmark-agent.c:1144
+#: libslab/bookmark-agent.c:1160
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Ev Dizini"
 
-#: libslab/bookmark-agent.c:1151
+#: libslab/bookmark-agent.c:1167
 msgid "Documents"
 msgstr "Belgeler"
 
-#: libslab/bookmark-agent.c:1162
+#: libslab/bookmark-agent.c:1178
 msgid "File System"
 msgstr "Dosya Sistemi"
 
-#: libslab/bookmark-agent.c:1165
+#: libslab/bookmark-agent.c:1181
 msgid "Network Servers"
 msgstr "Ağ Sunucuları"
