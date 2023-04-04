@@ -27,6 +27,7 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 #include <libmate-desktop/mate-desktop-thumbnail.h>
+#include <libmate-desktop/mate-image-menu-item.h>
 
 #include "mate-theme-info.h"
 
