@@ -28,6 +28,46 @@ Author: Wolfgang Ulbrich
   <!-- interface-description appearance properties dialog window -->
   <!-- interface-copyright MATE Developers -->
   <!-- interface-authors Wolfgang Ulbrich -->
+  <object class="GtkImage" id="menu_gtk_paste">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-paste</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_new">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-new</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_open">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-open</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_save">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-save</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_print">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-print</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_quit">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-quit</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_cut">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-cut</property>
+  </object>
+  <object class="GtkImage" id="menu_gtk_copy">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon-name">gtk-copy</property>
+  </object>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="upper">100</property>
     <property name="step-increment">1</property>
@@ -3486,30 +3526,30 @@ Author: Wolfgang Ulbrich
                                       <object class="GtkMenu" id="File Menu_menu">
                                         <property name="can-focus">False</property>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="menu_item_1">
-                                            <property name="label">gtk-new</property>
+                                          <object class="MateImageMenuItem" id="menu_item_1">
+                                            <property name="label" translatable="yes">_New</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_new</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="menu_item_2">
-                                            <property name="label">gtk-open</property>
+                                          <object class="MateImageMenuItem" id="menu_item_2">
+                                            <property name="label" translatable="yes">_Open</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_open</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="menu_item_3">
-                                            <property name="label">gtk-save</property>
+                                          <object class="MateImageMenuItem" id="menu_item_3">
+                                            <property name="label" translatable="yes">_Save</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_save</property>
                                           </object>
                                         </child>
                                         <child>
@@ -3519,12 +3559,12 @@ Author: Wolfgang Ulbrich
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="menu_item_4">
-                                            <property name="label">gtk-print</property>
+                                          <object class="MateImageMenuItem" id="menu_item_4">
+                                            <property name="label" translatable="yes">_Print</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_print</property>
                                           </object>
                                         </child>
                                         <child>
@@ -3534,12 +3574,12 @@ Author: Wolfgang Ulbrich
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="menu_item_5">
-                                            <property name="label">gtk-quit</property>
+                                          <object class="MateImageMenuItem" id="menu_item_5">
+                                            <property name="label" translatable="yes">_Quit</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_quit</property>
                                           </object>
                                         </child>
                                       </object>
@@ -3556,30 +3596,30 @@ Author: Wolfgang Ulbrich
                                       <object class="GtkMenu" id="edit1_menu">
                                         <property name="can-focus">False</property>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="cut">
-                                            <property name="label">gtk-cut</property>
+                                          <object class="MateImageMenuItem" id="cut">
+                                            <property name="label" translatable="yes">cu_T</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_cut</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="copy">
-                                            <property name="label">gtk-copy</property>
+                                          <object class="MateImageMenuItem" id="copy">
+                                            <property name="label" translatable="yes">_Copy</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_copy</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkImageMenuItem" id="paste">
-                                            <property name="label">gtk-paste</property>
+                                          <object class="MateImageMenuItem" id="paste">
+                                            <property name="label" translatable="yes">_Paste</property>
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="use-underline">True</property>
-                                            <property name="use-stock">True</property>
+                                            <property name="image">menu_gtk_paste</property>
                                           </object>
                                         </child>
                                       </object>
