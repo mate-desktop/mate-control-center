@@ -4,33 +4,35 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# ogalho Carlos Dias Martins <ogalho@gmail.com>, 2018
-# Luis Filipe Teixeira <lufilte@gmail.com>, 2018
-# Diogo Oliveira <diogodesigns@gmail.com>, 2018
-# Martin Wimpress <code@flexion.org>, 2018
-# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2019
-# José Vieira <jvieira33@sapo.pt>, 2019
-# Sérgio Marques <smarquespt@gmail.com>, 2019
-# Rui <xymarior@yandex.com>, 2019
-# Manuela Silva <mmsrs@sky.com>, 2019
-# Guilherme Campos <guilhermemiguel97@hotmail.com>, 2020
+# clefebvre <clement.lefebvre@linuxmint.com>, 2021
+# Luis Filipe Teixeira <lufilte@gmail.com>, 2021
+# Sérgio Marques <smarquespt@gmail.com>, 2021
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2021
 # Carlos Moreira, 2021
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021
 # Stefano Karapetsas <stefano@karapetsas.com>, 2021
+# Martin Wimpress <code@flexion.org>, 2021
+# Wolfgang Ulbrich <mate@raveit.de>, 2021
+# ogalho Carlos Dias Martins <ogalho@gmail.com>, 2021
+# Diogo Oliveira <diogodesigns@gmail.com>, 2021
+# Rui <xymarior@yandex.com>, 2021
+# Manuela Silva <mmsrs@sky.com>, 2021
+# José Vieira <jvieira33@sapo.pt>, 2021
+# Guilherme Campos <guilhermemiguel97@hotmail.com>, 2021
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.25.1\n"
+"Project-Id-Version: mate-control-center 1.26.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2021-05-30 12:21+0200\n"
-"PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2021\n"
-"Language-Team: Portuguese (https://www.transifex.com/mate/teams/13566/pt/)\n"
+"POT-Creation-Date: 2021-09-24 15:01+0200\n"
+"PO-Revision-Date: 2021-09-19 12:41+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2022\n"
+"Language-Team: Portuguese (https://app.transifex.com/mate/teams/13566/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: org.mate.control-center.gschema.xml.in:5
 msgid ""
@@ -148,7 +150,7 @@ msgid "Command associated with a custom keybinding."
 msgstr "Comando associado a um atalho de teclado personalizado."
 
 #: org.mate.control-center.keybinding.gschema.xml.in:15
-#: font-viewer/font-view.c:201
+#: font-viewer/font-view.c:202
 msgid "Name"
 msgstr "Nome"
 
@@ -367,26 +369,26 @@ msgstr ""
 "A sua impressão digital foi bem gravada. Agora deverá ser capaz de iniciar "
 "sessão usando o leitor de impressões digitais"
 
-#: capplets/about-me/mate-about-me-password.c:160
+#: capplets/about-me/mate-about-me-password.c:161
 msgid "Child exited unexpectedly"
 msgstr "Filho terminou inesperadamente"
 
-#: capplets/about-me/mate-about-me-password.c:296
+#: capplets/about-me/mate-about-me-password.c:297
 #, c-format
 msgid "Could not shutdown backend_stdin IO channel: %s"
 msgstr "Não se conseguiu encerrar o canal de ES backend_stdin: %s"
 
-#: capplets/about-me/mate-about-me-password.c:309
+#: capplets/about-me/mate-about-me-password.c:310
 #, c-format
 msgid "Could not shutdown backend_stdout IO channel: %s"
 msgstr "Não se conseguiu encerrar o canal de ES backend_stdout: %s"
 
-#: capplets/about-me/mate-about-me-password.c:408
+#: capplets/about-me/mate-about-me-password.c:409
 msgid "Authenticated!"
 msgstr "Autenticado!"
 
-#: capplets/about-me/mate-about-me-password.c:473
-#: capplets/about-me/mate-about-me-password.c:558
+#: capplets/about-me/mate-about-me-password.c:474
+#: capplets/about-me/mate-about-me-password.c:559
 msgid ""
 "Your password has been changed since you initially authenticated! Please re-"
 "authenticate."
@@ -394,69 +396,69 @@ msgstr ""
 "A sua senha mudou desde que se autenticou inicialmente! Por favor "
 "reautentique-se."
 
-#: capplets/about-me/mate-about-me-password.c:475
+#: capplets/about-me/mate-about-me-password.c:476
 msgid "That password was incorrect."
 msgstr "Essa senha está incorreta."
 
-#: capplets/about-me/mate-about-me-password.c:526
+#: capplets/about-me/mate-about-me-password.c:527
 msgid "Your password has been changed."
 msgstr "A sua senha foi alterada."
 
-#: capplets/about-me/mate-about-me-password.c:536
+#: capplets/about-me/mate-about-me-password.c:537
 #, c-format
 msgid "System error: %s."
 msgstr "Erro de sistema: %s."
 
-#: capplets/about-me/mate-about-me-password.c:539
+#: capplets/about-me/mate-about-me-password.c:540
 msgid "The password is too short."
 msgstr "A senha é demasiado curta."
 
-#: capplets/about-me/mate-about-me-password.c:543
+#: capplets/about-me/mate-about-me-password.c:544
 msgid "The password is too simple."
 msgstr "A senha é demasiado simples."
 
-#: capplets/about-me/mate-about-me-password.c:548
+#: capplets/about-me/mate-about-me-password.c:549
 msgid "The old and new passwords are too similar."
 msgstr "As senhas antiga e nova são demasiado semelhantes."
 
-#: capplets/about-me/mate-about-me-password.c:550
+#: capplets/about-me/mate-about-me-password.c:551
 msgid "The new password must contain numeric or special character(s)."
 msgstr "A nova senha deve conter caracteres numéricos ou especiais."
 
-#: capplets/about-me/mate-about-me-password.c:553
+#: capplets/about-me/mate-about-me-password.c:554
 msgid "The old and new passwords are the same."
 msgstr "As senhas antiga e nova são as mesmas."
 
-#: capplets/about-me/mate-about-me-password.c:555
+#: capplets/about-me/mate-about-me-password.c:556
 msgid "The new password has already been used recently."
 msgstr "A nova senha já foi usada recentemente."
 
-#: capplets/about-me/mate-about-me-password.c:826
+#: capplets/about-me/mate-about-me-password.c:827
 #, c-format
 msgid "Unable to launch %s: %s"
 msgstr "Incapaz de lançar %s: %s"
 
-#: capplets/about-me/mate-about-me-password.c:830
+#: capplets/about-me/mate-about-me-password.c:831
 msgid "Unable to launch backend"
 msgstr "Incapaz de lançar backend"
 
-#: capplets/about-me/mate-about-me-password.c:831
+#: capplets/about-me/mate-about-me-password.c:832
 msgid "A system error has occurred"
 msgstr "Ocorreu um erro de sistema"
 
-#: capplets/about-me/mate-about-me-password.c:851
+#: capplets/about-me/mate-about-me-password.c:852
 msgid "Checking password..."
 msgstr "A verificar senha..."
 
-#: capplets/about-me/mate-about-me-password.c:935
+#: capplets/about-me/mate-about-me-password.c:936
 msgid "Click <b>Change password</b> to change your password."
 msgstr "Clique <b>Alterar senha</b> para mudar a sua senha."
 
-#: capplets/about-me/mate-about-me-password.c:938
+#: capplets/about-me/mate-about-me-password.c:939
 msgid "Please type your password in the <b>New password</b> field."
 msgstr "Por favor escreva a sua senha no campo <b>Nova senha</b>."
 
-#: capplets/about-me/mate-about-me-password.c:941
+#: capplets/about-me/mate-about-me-password.c:942
 #: capplets/about-me/mate-about-me-password.ui:348
 msgid ""
 "Please type your password again in the <b>Retype new password</b> field."
@@ -464,7 +466,7 @@ msgstr ""
 "Por favor escreva a sua senha novamente no campo <b>Reescreva a nova "
 "senha</b>."
 
-#: capplets/about-me/mate-about-me-password.c:944
+#: capplets/about-me/mate-about-me-password.c:945
 msgid "The two passwords are not equal."
 msgstr "As duas senhas não são iguais."
 
@@ -517,7 +519,7 @@ msgstr "Preferências de Tecnologias Assistivas"
 #: capplets/mouse/mate-mouse-properties.ui:124
 #: capplets/windows/window-properties.ui:67
 msgid "_Help"
-msgstr "A_juda"
+msgstr "_Ajuda"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:102
 msgid "Close and _Log Out"
@@ -645,8 +647,8 @@ msgstr "Ponteiro Padrão"
 
 #: capplets/appearance/appearance-style.c:235
 #: capplets/appearance/appearance-themes.c:659
-#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:297
-#: font-viewer/font-view.c:568
+#: capplets/appearance/theme-installer.c:391 font-viewer/font-view.c:298
+#: font-viewer/font-view.c:569
 msgid "Install"
 msgstr "Instalar"
 
@@ -1074,23 +1076,23 @@ msgstr ""
 
 #: capplets/appearance/data/appearance.ui:3313
 msgid "File Chooser"
-msgstr ""
+msgstr "Seletor de ficheiros"
 
 #: capplets/appearance/data/appearance.ui:3348
 msgid "Show hidden items"
-msgstr ""
+msgstr "Mostrar itens ocultos"
 
 #: capplets/appearance/data/appearance.ui:3365
 msgid "Show size column"
-msgstr ""
+msgstr "Mostrar coluna de tamanho"
 
 #: capplets/appearance/data/appearance.ui:3381
 msgid "Show type column"
-msgstr ""
+msgstr "Mostrar coluna de tipo"
 
 #: capplets/appearance/data/appearance.ui:3397
 msgid "Sort directories first"
-msgstr ""
+msgstr "Ordenar os diretórios primeiro"
 
 #: capplets/appearance/data/appearance.ui:3443
 msgid "Preview"
@@ -1175,8 +1177,9 @@ msgstr "%d %s por %d %s"
 #: capplets/appearance/mate-wp-item.c:310
 msgid "pixel"
 msgid_plural "pixels"
-msgstr[0] "pixel"
-msgstr[1] "pixels"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: capplets/appearance/mate-wp-item.c:319
 #, c-format
@@ -1340,8 +1343,8 @@ msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
 msgstr ""
-"Incapaz de iniciar o gestor de definições 'mate-settings-daemon'.\n"
-"Sem o gestor de definições MATE a correr, algumas preferências poderão não ter efeito. Isto pode indicar um problema com DBus, ou um gestor de definições que não seja o MATE (por ex.: KDE) poderá estar já ativo e em conflito com o gestor de definições MATE."
+"Não é possível iniciar o gestor de definições 'mate-settings-daemon'.\n"
+"Sem o gestor de definições do MATE em execução, algumas preferências poderão não ter efeito. Isto poderá indicar um problema com DBus, ou um gestor de definições que não seja o MATE (por exemplo: KDE) poderá estar já ativo e em conflito com o gestor de definições do MATE."
 
 #: capplets/common/capplet-util.c:82
 #, c-format
@@ -1661,7 +1664,7 @@ msgstr "_Mostrar monitores no painel"
 
 #: capplets/display/display-capplet.ui:477
 msgid "Scaling"
-msgstr ""
+msgstr "Escala"
 
 #: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
@@ -1696,14 +1699,15 @@ msgid ""
 msgstr ""
 "Utilização: %s SOURCE_FILE DEST_NAME\n"
 "\n"
-"Este programa instala um perfil RANDR para configurações multi-monitor  num\n"
-"local para todo o sistema.  O perfil resultante será usado quando o plugin RANDR for executado em mate-settings-daemon.\n"
+"Este programa instala um perfil RANDR para configurações multimonitor  num\n"
+"local para todo o sistema.  O perfil resultante será utilizado quando o plug-in\n"
+"RANDR for executado em mate-settings-daemon.\n"
 "\n"
-"SOURCE_FILE - um nome de caminho completo, tipicamente /home/nomedeutilizador/.config/monitors.xml\n"
+"SOURCE_FILE - um nome de caminho completo, tipicamente /home/username/.config/monitors.xml\n"
 "\n"
 "DEST_NAME - nome relativo para o ficheiro instalado.  Este será colocado na\n"
-"            pasta global para configurações RANDR,\n"
-"            portanto o resultado será geralmente %s/DEST_NAME\n"
+"            diretoria global para as configurações RANDR,\n"
+"            e assim o resultado será geralmente %s/DEST_NAME\n"
 
 #. Translators: only able to install RANDR profiles as root
 #: capplets/display/mate-display-properties-install-systemwide.c:155
@@ -1776,7 +1780,7 @@ msgstr "Não se conseguiu renomear %s para %s: %s\n"
 
 #: capplets/display/org.mate.randr.policy.in:17
 msgid "Install multi-monitor settings for the whole system"
-msgstr "Instalar definições multimonitor em todo o sistema"
+msgstr "Instalar as definições de multimonitor para todo o sistema"
 
 #: capplets/display/org.mate.randr.policy.in:18
 msgid ""
@@ -1796,7 +1800,7 @@ msgstr "%d Hz"
 
 #: capplets/display/xrandr-capplet.c:553
 msgid "auto detect"
-msgstr ""
+msgstr "Detetar automaticamente"
 
 #: capplets/display/xrandr-capplet.c:553
 msgid "100%"
@@ -1823,7 +1827,7 @@ msgstr "Monitor: %s"
 #: capplets/display/xrandr-capplet.c:688
 #, c-format
 msgid "%u x %u"
-msgstr ""
+msgstr "%u x %u"
 
 #: capplets/display/xrandr-capplet.c:1549
 msgid ""
@@ -1884,15 +1888,15 @@ msgstr "Aumentar o volume"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:10
 msgid "Volume mute quietly"
-msgstr ""
+msgstr "Cortar o som lentamente"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:12
 msgid "Volume down quietly"
-msgstr ""
+msgstr "Reduzir o som lentamente"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:14
 msgid "Volume up quietly"
-msgstr ""
+msgstr "Aumentar o som lentamente"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:16
 msgid "Microphone mute"
@@ -1926,9 +1930,9 @@ msgstr "Faixa seguinte"
 msgid "Eject"
 msgstr "Ejetar"
 
-#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1157
+#: capplets/keybindings/01-desktop-key.xml.in:2 libslab/bookmark-agent.c:1171
 msgid "Desktop"
-msgstr "Área de Trabalho"
+msgstr "Ambiente de trabalho"
 
 #: capplets/keybindings/01-desktop-key.xml.in:4
 msgid "Launch help browser"
@@ -1966,8 +1970,8 @@ msgstr "Trancar ecrã"
 msgid "Home folder"
 msgstr "Pasta pessoal"
 
-#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
-#: libslab/bookmark-agent.c:1196
+#: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:843
+#: libslab/bookmark-agent.c:1210
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -2191,15 +2195,15 @@ msgstr "Teclas Sonoras"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
 msgid "Beep when pressing a key while Caps_Lock is active"
-msgstr ""
+msgstr "Apitar ao premir uma tecla com o CapsLock ativo."
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
 msgid "Caps Lock"
-msgstr ""
+msgstr "Caps Lock"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:106
 msgid "Keyboard Preferences"
-msgstr "Preferências do Teclado"
+msgstr "Preferências de Teclado"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:195
 msgid "Repeat Keys"
@@ -2496,7 +2500,7 @@ msgstr "_Modelos:"
 
 #: capplets/keyboard/mate-keyboard-properties-options-dialog.ui:14
 msgid "Keyboard Layout Options"
-msgstr "Opções da Disposição de Teclado"
+msgstr "Opções de Disposição de Teclado"
 
 #: capplets/keyboard/mate-keyboard-properties-xkb.c:83
 msgid "Unknown"
@@ -2607,7 +2611,7 @@ msgstr "_Sensibilidade:"
 
 #: capplets/mouse/mate-mouse-properties.ui:570
 msgid "Acceleration _Profile:"
-msgstr ""
+msgstr "_Perfil de Aceleração:"
 
 #: capplets/mouse/mate-mouse-properties.ui:588
 msgid "Adaptive"
@@ -2639,7 +2643,8 @@ msgid ""
 "you must see the mate desktop logo with both rings showing."
 msgstr ""
 "Para testar as suas definições de clique duplo, tente clicar duas vezes no "
-"triângulo e deverá ser capaz de ver o símbolo do mate com ambos os anéis."
+"triângulo e deverá ser capaz de ver o símbolo do ambiente de trabalho mate "
+"com ambos os anéis."
 
 #: capplets/mouse/mate-mouse-properties.ui:964
 #: capplets/mouse/mate-settings-mouse.desktop.in:3
@@ -2724,7 +2729,7 @@ msgstr "mate-control-center;MATE;rede;http;socks;proxy;"
 
 #: capplets/network/mate-network-properties.ui:34
 msgid "Network Proxy Preferences"
-msgstr "Preferências do proxy"
+msgstr "Preferências de Proxy de Rede"
 
 #: capplets/network/mate-network-properties.ui:113
 msgid "<b>Di_rect internet connection</b>"
@@ -2797,16 +2802,16 @@ msgstr "Nome de _utilizador:"
 msgid "_Password:"
 msgstr "_Senha:"
 
-#: capplets/windows/mate-metacity-support.c:42
+#: capplets/windows/mate-metacity-support.c:43
 msgid "Metacity Preferences"
 msgstr "Preferências de Metacity"
 
-#: capplets/windows/mate-metacity-support.c:53
+#: capplets/windows/mate-metacity-support.c:54
 #: capplets/windows/window-properties.ui:813
 msgid "Compositing Manager"
 msgstr "Gestor de Composições"
 
-#: capplets/windows/mate-metacity-support.c:60
+#: capplets/windows/mate-metacity-support.c:61
 msgid "Enable software _compositing window manager"
 msgstr "Ativar gestor de janelas na _composição de software"
 
@@ -2863,7 +2868,7 @@ msgstr "Desfazer a _seleção das janelas quando o rato sair das mesmas"
 
 #: capplets/windows/window-properties.ui:187
 msgid "_Raise selected windows after"
-msgstr ""
+msgstr "_Levantar janelas escolhidas após"
 
 #: capplets/windows/window-properties.ui:223
 msgid "seconds"
@@ -2875,7 +2880,7 @@ msgstr "Ação da Barra de Título"
 
 #: capplets/windows/window-properties.ui:290
 msgid "_Double-click titlebar action:"
-msgstr ""
+msgstr "Ação da barra de título com _duplo clique:"
 
 #: capplets/windows/window-properties.ui:305
 #: libwindow-settings/marco-window-manager.c:400
@@ -2909,15 +2914,15 @@ msgstr "Nenhuma"
 
 #: capplets/windows/window-properties.ui:352
 msgid "Alt-Tab"
-msgstr ""
+msgstr "Alt-Tab"
 
 #: capplets/windows/window-properties.ui:371
 msgid "Show _thumbnails in Alt-Tab"
-msgstr ""
+msgstr "Mostrar _miniaturas em Alt-Tab"
 
 #: capplets/windows/window-properties.ui:386
 msgid "Show window _border in Alt-Tab"
-msgstr ""
+msgstr "Mostrar _contorno da janela em Alt-Tab"
 
 #: capplets/windows/window-properties.ui:424
 msgid "Movement Key"
@@ -2939,7 +2944,7 @@ msgstr "Novas Janelas"
 
 #: capplets/windows/window-properties.ui:535
 msgid "Centre _new windows"
-msgstr ""
+msgstr "Centrar _novas janelas"
 
 #: capplets/windows/window-properties.ui:573
 msgid "Window Snapping"
@@ -2951,7 +2956,7 @@ msgstr "Ativar posicionamento _lado a lado"
 
 #: capplets/windows/window-properties.ui:608
 msgid "Allow t_op tiling"
-msgstr ""
+msgstr "Permitir janelas lado a lado superior"
 
 #: capplets/windows/window-properties.ui:647
 msgid "Titlebar Buttons"
@@ -2959,7 +2964,7 @@ msgstr "Botões da Barra de Título"
 
 #: capplets/windows/window-properties.ui:674
 msgid "_Position of titlebar buttons:"
-msgstr ""
+msgstr "_Posição dos botões da barra de título:"
 
 #: capplets/windows/window-properties.ui:689
 msgid "Right (with menu)"
@@ -2975,11 +2980,11 @@ msgstr "Colocação"
 
 #: capplets/windows/window-properties.ui:757
 msgid "Software Compositing"
-msgstr ""
+msgstr "Software compositor"
 
 #: capplets/windows/window-properties.ui:777
 msgid "Enable _software compositing window manager"
-msgstr ""
+msgstr "Ativar o _software compositor do gestor de janelas"
 
 #: capplets/time-admin/src/main.c:34
 #, c-format
@@ -3015,21 +3020,13 @@ msgstr "ler ficheiro"
 msgid "read pid file failed"
 msgstr "a leitura do ficheiro pid falhou"
 
-#: capplets/time-admin/src/main.c:264
-msgid "g_bus_get_sync"
-msgstr ""
-
-#: capplets/time-admin/src/main.c:277
-msgid "g_bus_proxy_new"
-msgstr ""
-
 #: capplets/time-admin/src/time-admin.ui:58
 msgid "Time and Date Manager"
 msgstr "Gestor de Data e Hora"
 
 #: capplets/time-admin/src/time-admin.ui:96
 msgid "NTP sync"
-msgstr ""
+msgstr "Sincronização NTP"
 
 #: capplets/time-admin/src/time-admin.ui:123
 msgid "Time zone"
@@ -3053,7 +3050,7 @@ msgstr "Clique para gravar a data e hora especificada."
 
 #: capplets/time-admin/src/time-tool.c:135
 msgid "GetNtpState"
-msgstr ""
+msgstr "Obter o Estado Ntp"
 
 #: capplets/time-admin/src/time-tool.c:198
 msgid "Set time zone"
@@ -3062,13 +3059,15 @@ msgstr "Definir fuso horário"
 #: capplets/time-admin/src/time-tool.c:230
 #: capplets/time-admin/src/time-tool.c:277
 msgid "Set Ntp sync"
-msgstr ""
+msgstr "Definir a sincronização Ntp"
 
 #: capplets/time-admin/src/time-share.c:49
 msgid ""
 "Network time synchronization has been set up. Manual time/date setting is "
 "disabled."
 msgstr ""
+"Foi definida a sincronização pela hora da rede. A definição manual da data-"
+"hora está desactivada."
 
 #: capplets/time-admin/src/time-zone.c:276
 #, c-format
@@ -3079,6 +3078,7 @@ msgstr "%s, %s"
 #: capplets/time-admin/src/time-zone.c:302
 msgid "Error: timezone identifier cannot be parsed or loaded"
 msgstr ""
+"Erro: não foi possível analisar ou carregar o identificador do fuso horário"
 
 #: capplets/time-admin/src/time-zone.c:312
 msgid "UTC%:::z"
@@ -3462,7 +3462,7 @@ msgstr "América/Costa_Rica"
 
 #: capplets/time-admin/src/time-zones.h:117
 msgid "America/Creston"
-msgstr ""
+msgstr "America/Creston"
 
 #: capplets/time-admin/src/time-zones.h:118
 msgid "America/Cuiaba"
@@ -3514,7 +3514,7 @@ msgstr "América/Fortaleza"
 
 #: capplets/time-admin/src/time-zones.h:130
 msgid "America/Fort_Nelson"
-msgstr ""
+msgstr "America/Fort_Nelson"
 
 #: capplets/time-admin/src/time-zones.h:131
 msgid "America/Glace_Bay"
@@ -3622,7 +3622,7 @@ msgstr "América/Kentucky/Monticello"
 
 #: capplets/time-admin/src/time-zones.h:157
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "America/Kralendijk"
 
 #: capplets/time-admin/src/time-zones.h:158
 msgid "America/La_Paz"
@@ -3638,7 +3638,7 @@ msgstr "América/Los_Angeles"
 
 #: capplets/time-admin/src/time-zones.h:161
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "America/Lower_Princes"
 
 #: capplets/time-admin/src/time-zones.h:162
 msgid "America/Maceio"
@@ -3678,7 +3678,7 @@ msgstr "América/Merida"
 
 #: capplets/time-admin/src/time-zones.h:171
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "America/Metlakatla"
 
 #: capplets/time-admin/src/time-zones.h:172
 msgid "America/Mexico_City"
@@ -3726,7 +3726,7 @@ msgstr "América/Noronha"
 
 #: capplets/time-admin/src/time-zones.h:183
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "America/North_Dakota/Beulah"
 
 #: capplets/time-admin/src/time-zones.h:184
 msgid "America/North_Dakota/Center"
@@ -3774,7 +3774,7 @@ msgstr "América/Puerto_Rico"
 
 #: capplets/time-admin/src/time-zones.h:195
 msgid "America/Punta_Arenas"
-msgstr ""
+msgstr "America/Punta_Arenas"
 
 #: capplets/time-admin/src/time-zones.h:196
 msgid "America/Rainy_River"
@@ -3822,7 +3822,7 @@ msgstr "América/Scoresbysund"
 
 #: capplets/time-admin/src/time-zones.h:207
 msgid "America/Sitka"
-msgstr ""
+msgstr "America/Sitka"
 
 #: capplets/time-admin/src/time-zones.h:208
 msgid "America/St_Barthelemy"
@@ -3934,7 +3934,7 @@ msgstr "Antárctica/Syowa"
 
 #: capplets/time-admin/src/time-zones.h:235
 msgid "Antarctica/Troll"
-msgstr ""
+msgstr "Antarctica/Troll"
 
 #: capplets/time-admin/src/time-zones.h:236
 msgid "Antarctica/Vostok"
@@ -3974,7 +3974,7 @@ msgstr "Ásia/Ashgabat"
 
 #: capplets/time-admin/src/time-zones.h:245
 msgid "Asia/Atyrau"
-msgstr ""
+msgstr "Asia/Atyrau"
 
 #: capplets/time-admin/src/time-zones.h:246
 msgid "Asia/Baghdad"
@@ -3994,7 +3994,7 @@ msgstr "Ásia/Bangkok"
 
 #: capplets/time-admin/src/time-zones.h:250
 msgid "Asia/Barnaul"
-msgstr ""
+msgstr "Asia/Barnaul"
 
 #: capplets/time-admin/src/time-zones.h:251
 msgid "Asia/Beirut"
@@ -4010,7 +4010,7 @@ msgstr "Ásia/Brunei"
 
 #: capplets/time-admin/src/time-zones.h:254
 msgid "Asia/Chita"
-msgstr ""
+msgstr "Asia/Chita"
 
 #: capplets/time-admin/src/time-zones.h:255
 msgid "Asia/Choibalsan"
@@ -4042,7 +4042,7 @@ msgstr "Ásia/Dushanbe"
 
 #: capplets/time-admin/src/time-zones.h:262
 msgid "Asia/Famagusta"
-msgstr ""
+msgstr "Asia/Famagusta"
 
 #: capplets/time-admin/src/time-zones.h:263
 msgid "Asia/Gaza"
@@ -4050,7 +4050,7 @@ msgstr "Ásia/Gaza"
 
 #: capplets/time-admin/src/time-zones.h:264
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Asia/Hebron"
 
 #: capplets/time-admin/src/time-zones.h:265
 msgid "Asia/Ho_Chi_Minh"
@@ -4098,7 +4098,7 @@ msgstr "Ásia/Áden"
 
 #: capplets/time-admin/src/time-zones.h:276
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Asia/Khandyga"
 
 #: capplets/time-admin/src/time-zones.h:277
 msgid "Asia/Kolkata"
@@ -4178,7 +4178,7 @@ msgstr "Ásia/Qatar"
 
 #: capplets/time-admin/src/time-zones.h:296
 msgid "Asia/Qostanay"
-msgstr ""
+msgstr "Asia/Qostanay"
 
 #: capplets/time-admin/src/time-zones.h:297
 msgid "Asia/Qyzylorda"
@@ -4210,7 +4210,7 @@ msgstr "Ásia/Singapore"
 
 #: capplets/time-admin/src/time-zones.h:304
 msgid "Asia/Srednekolymsk"
-msgstr ""
+msgstr "Asia/Srednekolymsk"
 
 #: capplets/time-admin/src/time-zones.h:305
 msgid "Asia/Taipei"
@@ -4238,7 +4238,7 @@ msgstr "Ásia/Tokyo"
 
 #: capplets/time-admin/src/time-zones.h:311
 msgid "Asia/Tomsk"
-msgstr ""
+msgstr "Asia/Tomsk"
 
 #: capplets/time-admin/src/time-zones.h:312
 msgid "Asia/Ulaanbaatar"
@@ -4250,7 +4250,7 @@ msgstr "Ásia/Urumqi"
 
 #: capplets/time-admin/src/time-zones.h:314
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Asia/Ust-Nera"
 
 #: capplets/time-admin/src/time-zones.h:315
 msgid "Asia/Vientiane"
@@ -4266,7 +4266,7 @@ msgstr "Ásia/Yakutsk"
 
 #: capplets/time-admin/src/time-zones.h:318
 msgid "Asia/Yangon"
-msgstr ""
+msgstr "Asia/Yangon"
 
 #: capplets/time-admin/src/time-zones.h:319
 msgid "Asia/Yekaterinburg"
@@ -4374,7 +4374,7 @@ msgstr "Europa/Andorra"
 
 #: capplets/time-admin/src/time-zones.h:345
 msgid "Europe/Astrakhan"
-msgstr ""
+msgstr "Europe/Astrakhan"
 
 #: capplets/time-admin/src/time-zones.h:346
 msgid "Europe/Athens"
@@ -4406,7 +4406,7 @@ msgstr "Europa/Budapeste"
 
 #: capplets/time-admin/src/time-zones.h:353
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Europe/Busingen"
 
 #: capplets/time-admin/src/time-zones.h:354
 msgid "Europe/Chisinau"
@@ -4562,7 +4562,7 @@ msgstr "Europa/Tirane"
 
 #: capplets/time-admin/src/time-zones.h:392
 msgid "Europe/Ulyanovsk"
-msgstr ""
+msgstr "Europe/Ulyanovsk"
 
 #: capplets/time-admin/src/time-zones.h:393
 msgid "Europe/Uzhgorod"
@@ -4658,7 +4658,7 @@ msgstr "Pacífico/Auckland"
 
 #: capplets/time-admin/src/time-zones.h:416
 msgid "Pacific/Bougainville"
-msgstr ""
+msgstr "Pacific/Bougainville"
 
 #: capplets/time-admin/src/time-zones.h:417
 msgid "Pacific/Chatham"
@@ -4806,7 +4806,7 @@ msgstr "Gestor de Data de Hora"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
-msgstr ""
+msgstr "Definir a data e a hora do sistema local"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -4875,7 +4875,7 @@ msgstr "_Preferências"
 
 #: typing-break/drwright.c:136
 msgid "_About"
-msgstr "_Sobre"
+msgstr "_Acerca"
 
 #: typing-break/drwright.c:137
 msgid "_Take a Break"
@@ -4890,8 +4890,9 @@ msgstr "Fazer um intervalo agora (próximo em %dm)"
 #, c-format
 msgid "%d minute until the next break"
 msgid_plural "%d minutes until the next break"
-msgstr[0] "%d minuto até ao próximo intervalo"
-msgstr[1] "%d minutos até ao próximo intervalo"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: typing-break/drwright.c:542
 msgid "Take a break now (next in less than one minute)"
@@ -4922,9 +4923,11 @@ msgstr "Arte visual criada por Anders Carlsson"
 msgid "A computer break reminder."
 msgstr "Um lembrete para intervalos no computador."
 
-#: typing-break/drwright.c:663 font-viewer/font-view.c:785
+#: typing-break/drwright.c:663 font-viewer/font-view.c:786
 msgid "translator-credits"
-msgstr "Hugo Carvalho <hugokarvalho@gmail.com>"
+msgstr ""
+"Hugo Carvalho <hugokarvalho@hotmail.com>, 2018\n"
+"José Vieira <jvieira33@sapo.pt>, 2021"
 
 #: typing-break/main.c:62
 msgid "Enable debugging code"
@@ -4950,55 +4953,55 @@ msgstr ""
 "adicioná-la clicando com botão direito do rato no painel e escolher "
 "'Adicionar ao painel', selecione 'Área de notificação' e clicar 'Adicionar'."
 
-#: font-viewer/font-view.c:204
+#: font-viewer/font-view.c:205
 msgid "Style"
 msgstr "Estilo"
 
-#: font-viewer/font-view.c:214
+#: font-viewer/font-view.c:215
 msgid "Type"
 msgstr "Tipo"
 
-#: font-viewer/font-view.c:260 font-viewer/font-view.c:275
+#: font-viewer/font-view.c:261 font-viewer/font-view.c:276
 msgid "Version"
 msgstr "Versão"
 
-#: font-viewer/font-view.c:265 font-viewer/font-view.c:277
+#: font-viewer/font-view.c:266 font-viewer/font-view.c:278
 msgid "Copyright"
 msgstr "Copyright"
 
-#: font-viewer/font-view.c:270
+#: font-viewer/font-view.c:271
 msgid "Description"
 msgstr "Descrição"
 
-#: font-viewer/font-view.c:288
+#: font-viewer/font-view.c:289
 msgid "Install Failed"
 msgstr "Falha ao instalar"
 
-#: font-viewer/font-view.c:294
+#: font-viewer/font-view.c:295
 msgid "Installed"
 msgstr "Instalada"
 
-#: font-viewer/font-view.c:431
+#: font-viewer/font-view.c:432
 msgid "This font could not be displayed."
 msgstr "Esta fonte não pode ser apresentada."
 
-#: font-viewer/font-view.c:494 font-viewer/font-view.c:561
+#: font-viewer/font-view.c:495 font-viewer/font-view.c:562
 msgid "Info"
 msgstr "Info"
 
-#: font-viewer/font-view.c:574
+#: font-viewer/font-view.c:575
 msgid "Back"
 msgstr "Voltar"
 
-#: font-viewer/font-view.c:678
+#: font-viewer/font-view.c:679
 msgid "All Fonts"
 msgstr "Todas as Fontes"
 
-#: font-viewer/font-view.c:782 font-viewer/font-view.c:834
+#: font-viewer/font-view.c:783 font-viewer/font-view.c:835
 msgid "Font Viewer"
 msgstr "Visualizador de tipo de letra"
 
-#: font-viewer/font-view.c:783 font-viewer/mate-font-viewer.desktop.in:4
+#: font-viewer/font-view.c:784 font-viewer/mate-font-viewer.desktop.in:4
 msgid "View fonts on your system"
 msgstr "Ver tipos de letra no seu sistema"
 
@@ -5014,23 +5017,23 @@ msgstr ""
 "mate-control-center;MATE;tipo de letra;visualizador;previsão;ambiente de "
 "trabalho;preferências;"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
 msgstr "Texto de miniatura (predefinição: Aa)"
 
-#: font-viewer/font-thumbnailer.c:193
+#: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
 msgstr "TEXTO"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "Thumbnail size (default: 128)"
 msgstr "Tamanho das miniaturas (predefinição: 128)"
 
-#: font-viewer/font-thumbnailer.c:195
+#: font-viewer/font-thumbnailer.c:196
 msgid "SIZE"
 msgstr "TAMANHO"
 
-#: font-viewer/font-thumbnailer.c:197
+#: font-viewer/font-thumbnailer.c:198
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FICHEIRO-FONTE FICHEIRO-RESULTADO"
 
@@ -5076,27 +5079,27 @@ msgstr "Remover dos Programas de Início"
 msgid "Add to Startup Programs"
 msgstr "Adicionar aos Programas de Início"
 
-#: libslab/bookmark-agent.c:1086
+#: libslab/bookmark-agent.c:1100
 msgid "New Spreadsheet"
 msgstr "Nova Folha"
 
-#: libslab/bookmark-agent.c:1090
+#: libslab/bookmark-agent.c:1104
 msgid "New Document"
 msgstr "Novo Documento"
 
-#: libslab/bookmark-agent.c:1144
+#: libslab/bookmark-agent.c:1158
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Pasta pessoal"
 
-#: libslab/bookmark-agent.c:1151
+#: libslab/bookmark-agent.c:1165
 msgid "Documents"
 msgstr "Documentos"
 
-#: libslab/bookmark-agent.c:1162
+#: libslab/bookmark-agent.c:1176
 msgid "File System"
 msgstr "Sistema de Ficheiros"
 
-#: libslab/bookmark-agent.c:1165
+#: libslab/bookmark-agent.c:1179
 msgid "Network Servers"
 msgstr "Servidores de Rede"
