@@ -113,6 +113,7 @@ static GtkWidget *focus_mode_mouse_checkbutton;
 static GtkWidget *autoraise_checkbutton;
 static GtkWidget *autoraise_delay_spinbutton;
 static GtkWidget *autoraise_delay_hbox;
+static GtkWidget *movement_description_label;
 static GtkWidget *alt_click_vbox;
 
 /* Placement */
@@ -402,6 +403,7 @@ main (int argc, char **argv)
     autoraise_delay_hbox = GET_WIDGET ("autoraise_delay_hbox");
     autoraise_checkbutton = GET_WIDGET ("autoraise_checkbutton");
     autoraise_delay_spinbutton = GET_WIDGET ("autoraise_delay_spinbutton");
+    movement_description_label = GET_WIDGET ("movement_description_label");
     alt_click_vbox = GET_WIDGET ("alt_click_vbox");
 
     /* Placement */
@@ -543,6 +545,7 @@ reload_mouse_modifiers (void)
     gboolean have_super;
     int min_keycode, max_keycode;
     int mod_meta, mod_super, mod_hyper;
+    AtkObject *label_accessible;
 
     XDisplayKeycodes (gdk_x11_display_get_xdisplay(gdk_display_get_default()),
                       &min_keycode,
@@ -654,5 +657,24 @@ reload_mouse_modifiers (void)
     while (i < n_mouse_modifiers) {
         fill_radio (i == 0 ? NULL : GTK_RADIO_BUTTON (mouse_modifiers[i-1].radio), &mouse_modifiers[i]);
         ++i;
+    }
+
+    /* set up accessibility relationships between the main label and each
+     * radio button, because GTK doesn't do it for us (usually, it expects the
+     * label of the radio button to be enough, but our case is better served
+     * with associating the main label as well). */
+    label_accessible = gtk_widget_get_accessible (movement_description_label);
+    if (ATK_IS_OBJECT (label_accessible)) {
+        for (i = 0; i < n_mouse_modifiers; i++) {
+            AtkObject *radio_accessible = gtk_widget_get_accessible (mouse_modifiers[i].radio);
+            if (ATK_IS_OBJECT (radio_accessible)) {
+                atk_object_add_relationship (label_accessible,
+                                             ATK_RELATION_LABEL_FOR,
+                                             radio_accessible);
+                atk_object_add_relationship (radio_accessible,
+                                             ATK_RELATION_LABELLED_BY,
+                                             label_accessible);
+            }
+        }
     }
 }
