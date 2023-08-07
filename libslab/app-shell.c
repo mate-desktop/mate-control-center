@@ -265,9 +265,19 @@ layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar *
 	right_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
 	num_cols = SIZING_SCREEN_WIDTH_LARGE_NUMCOLS;
-	if (WidthOfScreen (gdk_x11_screen_get_xscreen (gdk_screen_get_default ())) <= SIZING_SCREEN_WIDTH_LARGE)
+
+	GdkRectangle geometry = {0};
+
+	GdkDisplay *display;
+	GdkMonitor *monitor;
+
+	display= gdk_screen_get_display (gdk_screen_get_default ());
+	monitor = gdk_display_get_monitor (display, 0);
+	gdk_monitor_get_geometry (monitor, &geometry);
+
+	if (geometry.width <= SIZING_SCREEN_WIDTH_LARGE)
 	{
-		if (WidthOfScreen (gdk_x11_screen_get_xscreen (gdk_screen_get_default ())) <= SIZING_SCREEN_WIDTH_MEDIUM)
+		if (geometry.width <= SIZING_SCREEN_WIDTH_MEDIUM)
 			num_cols = SIZING_SCREEN_WIDTH_SMALL_NUMCOLS;
 		else
 			num_cols = SIZING_SCREEN_WIDTH_MEDIUM_NUMCOLS;
