@@ -25,7 +25,6 @@
 #include <libmate-desktop/mate-desktop-item.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <sys/types.h>
 #include <sys/stat.h>
