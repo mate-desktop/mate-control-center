@@ -67,6 +67,7 @@ AC_SUBST(TYPING_BREAK)
 AC_SUBST(SCREENSAVER_LIBS)
 
 GLIB_REQUIRED=2.64.0
+SYSTEMD_REQUIRED=248
 GTK_REQUIRED=3.22.0
 MARCO_REQUIRED=1.17.0
 MATEKBD_REQUIRED=1.17.0
@@ -130,6 +131,8 @@ COMMON_MODULES="gtk+-3.0 >= $GTK_REQUIRED dnl
  gio-2.0 dnl
  gio-unix-2.0 dnl
  libxml-2.0 dnl
+ udisks2 dnl
+ libgtop-2.0 dnl
  mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
 PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.21.0)
@@ -141,10 +144,15 @@ PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
 PKG_CHECK_MODULES(MARCO, libmarco-private >= $MARCO_REQUIRED)
 PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 >= $GLIB_REQUIRED gio-2.0 gtk+-3.0 >= $GTK_REQUIRED)
 PKG_CHECK_MODULES(GIO, gio-2.0)
+PKG_CHECK_MODULES(GLIBTOP, libgtop-2.0)
+PKG_CHECK_MODULES(UDISKS, udisks2)
+PKG_CHECK_MODULES(SYSTEMD, systemd >= $SYSTEMD_REQUIRED)
 
 PKG_CHECK_MODULES([DCONF], [dconf >= 0.13.4])
 AC_SUBST(DCONF_CFLAGS)
 AC_SUBST(DCONF_LIBS)
+AC_SUBST(GLIBTOP_CFLAGS)
+AC_SUBST(GLIBTOP_LIBS)
 
 gtk_lib_dir=`$PKG_CONFIG --variable libdir gtk+-3.0`
 gtk_binary_version=`$PKG_CONFIG --variable gtk_binary_version gtk+-3.0`
@@ -287,6 +295,7 @@ capplets/keybindings/Makefile
 capplets/keybindings/mate-keybindings.pc
 capplets/keyboard/Makefile
 capplets/mouse/Makefile
+capplets/system-info/Makefile
 capplets/network/Makefile
 capplets/time-admin/Makefile
 capplets/time-admin/src/Makefile
