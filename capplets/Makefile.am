@@ -10,7 +10,8 @@ SUBDIRS = \
 	network \
 	time-admin \
 	windows \
-	about-me
+	about-me \
+	system-info
 
 DIST_SUBDIRS = \
 	common \
@@ -24,6 +25,7 @@ DIST_SUBDIRS = \
 	time-admin \
 	windows \
 	display \
-	about-me
+	about-me \
+	system-info
 
 -include $(top_srcdir)/git.mk

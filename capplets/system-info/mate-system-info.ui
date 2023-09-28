@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <template class="MateSystemInfo" parent="GtkDialog">
+    <property name="can-focus">False</property>
+    <property name="icon-name">mate-desktop</property>
+    <property name="type_hint">dialog</property>
+
+      <child internal-child="vbox">
+        <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="valign">center</property>
+        <property name="spacing">30</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage" id="logo_image">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+          </packing>
+        </child>
+
+        <child>
+          <object class="GtkListBox">
+            <property name="visible">True</property>
+            <property name="selection-mode">none</property>
+            <style>
+              <class name="frame" />
+            </style>
+
+            <!-- Device name -->
+            <child>
+              <object class="GtkListBoxRow" id="hostname_row">
+                <property name="visible">True</property>
+              </object>
+            </child>
+
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkListBox" id="hardware_box">
+            <property name="visible">True</property>
+            <property name="selection-mode">none</property>
+            <style>
+              <class name="frame" />
+            </style>
+
+            <!-- Hardware Model -->
+            <child>
+              <object class="GtkListBoxRow" id="hardware_model_row">
+                <property name="visible">False</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- Memory -->
+            <child>
+              <object class="GtkListBoxRow" id="memory_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- Processor -->
+            <child>
+              <object class="GtkListBoxRow" id="processor_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- Graphics -->
+            <child>
+              <object class="GtkListBoxRow" id="graphics_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- Disk Capacity -->
+            <child>
+              <object class="GtkListBoxRow" id="disk_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkListBox" id="os_box">
+            <property name="visible">True</property>
+            <property name="selection-mode">none</property>
+            <style>
+              <class name="frame" />
+            </style>
+
+            <!-- OS Name -->
+            <child>
+              <object class="GtkListBoxRow" id="os_name_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- OS Type -->
+            <child>
+              <object class="GtkListBoxRow" id="os_type_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- MATE Version -->
+            <child>
+              <object class="GtkListBoxRow" id="mate_version_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- Windowing System -->
+            <child>
+              <object class="GtkListBoxRow" id="windowing_system_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+
+            <!-- Virtualization -->
+            <child>
+              <object class="GtkListBoxRow" id="virtualization_row">
+                <property name="visible">False</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+            
+            <!-- Kernel -->
+            <child>
+              <object class="GtkListBoxRow" id="kernel_row">
+                <property name="visible">True</property>
+                <property name="activatable">False</property>
+              </object>
+            </child>
+          </object>
+        </child>
+     </object>
+    </child>
+  </template>
+</interface>
