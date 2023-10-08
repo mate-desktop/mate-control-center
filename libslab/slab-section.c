@@ -46,21 +46,59 @@ slab_section_finalize (GObject * obj)
 }
 
 static void
+set_override_color (GtkWidget *widget,
+                    GdkRGBA   *rgba)
+{
+  gchar          *css;
+  GtkCssProvider *provider;
+
+  provider = gtk_css_provider_new ();
+
+  css = g_strdup_printf ("* { color: %s;}",
+                         gdk_rgba_to_string (rgba));
+  gtk_css_provider_load_from_data (provider, css, -1, NULL);
+  g_free (css);
+
+  gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
+                                  GTK_STYLE_PROVIDER (provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (provider);
+}
+
+static void
 slab_section_set_title_color (GtkWidget * widget)
 {
+	GtkStyleContext *context;
+	GdkRGBA         *rgba = NULL;
+
+	context = gtk_widget_get_style_context (widget);
+
 	switch (SLAB_SECTION (widget)->style)
 	{
 	case Style1:
-		gtk_widget_modify_fg (SLAB_SECTION (widget)->title, GTK_STATE_NORMAL,
-			&gtk_widget_get_style (widget)->bg[GTK_STATE_SELECTED]);
+		gtk_style_context_get (context,
+		                       GTK_STATE_FLAG_SELECTED,
+		                       "background-color", &rgba,
+		                       NULL);
+		set_override_color (SLAB_SECTION (widget)->title, rgba);
 		break;
 	case Style2:
 		if (SLAB_SECTION (widget)->selected)
-			gtk_widget_modify_fg (SLAB_SECTION (widget)->title, GTK_STATE_NORMAL,
-				&gtk_widget_get_style (widget)->dark[GTK_STATE_SELECTED]);
+		{
+			gtk_style_context_get (context,
+			                       GTK_STATE_FLAG_SELECTED,
+			                       "background-color", &rgba,
+			                       NULL);
+			set_override_color (SLAB_SECTION (widget)->title, rgba);
+		}
 		else
-			gtk_widget_modify_fg (SLAB_SECTION (widget)->title, GTK_STATE_NORMAL,
-				&gtk_widget_get_style (widget)->text[GTK_STATE_INSENSITIVE]);
+		{
+			gtk_style_context_get (context,
+			                       GTK_STATE_FLAG_INSENSITIVE,
+			                       "color", &rgba,
+			                       NULL);
+			set_override_color (SLAB_SECTION (widget)->title, rgba);
+		}
 		break;
 	default:
 		g_assert_not_reached ();
