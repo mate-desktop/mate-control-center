@@ -549,6 +549,46 @@ font_view_ensure_model (FontViewApplication *self)
 }
 
 static void
+set_override_background_color (GtkWidget *widget,
+                               GdkRGBA   *rgba)
+{
+    gchar          *css;
+    GtkCssProvider *provider;
+
+    provider = gtk_css_provider_new ();
+
+    css = g_strdup_printf ("* { background-color: %s;}",
+                           gdk_rgba_to_string (rgba));
+    gtk_css_provider_load_from_data (provider, css, -1, NULL);
+    g_free (css);
+
+    gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
+                                    GTK_STYLE_PROVIDER (provider),
+                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    g_object_unref (provider);
+}
+
+static void
+set_override_color (GtkWidget *widget,
+                    GdkRGBA   *rgba)
+{
+    gchar          *css;
+    GtkCssProvider *provider;
+
+    provider = gtk_css_provider_new ();
+
+    css = g_strdup_printf ("* { color: %s;}",
+                           gdk_rgba_to_string (rgba));
+    gtk_css_provider_load_from_data (provider, css, -1, NULL);
+    g_free (css);
+
+    gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
+                                    GTK_STYLE_PROVIDER (provider),
+                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    g_object_unref (provider);
+}
+
+static void
 font_view_application_do_open (FontViewApplication *self,
                                GFile *file,
                                gint face_index)
@@ -587,8 +627,8 @@ font_view_application_do_open (FontViewApplication *self,
 
         self->font_widget = GTK_WIDGET (sushi_font_widget_new (uri, face_index));
 
-        gtk_widget_override_color (self->font_widget, GTK_STATE_NORMAL, &black);
-        gtk_widget_override_background_color (self->font_widget, GTK_STATE_FLAG_NORMAL, &white);
+        set_override_color (self->font_widget, &black);
+        set_override_background_color (self->font_widget, &white);
 
         w = gtk_viewport_new (NULL, NULL);
         gtk_viewport_set_shadow_type (GTK_VIEWPORT (w), GTK_SHADOW_NONE);
