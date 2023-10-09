@@ -40,7 +40,6 @@ mate_appearance_properties_SOURCES = \
 AM_CFLAGS = -DMATE_DESKTOP_USE_UNSTABLE_API
 
 mate_appearance_properties_LDADD = \
-	$(top_builddir)/libwindow-settings/libmate-window-settings.la \
 	$(top_builddir)/capplets/common/libcommon.la \
 	$(MATECC_CAPPLETS_LIBS) \
 	$(FONT_CAPPLET_LIBS) \

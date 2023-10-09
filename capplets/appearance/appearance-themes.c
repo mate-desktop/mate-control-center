@@ -29,7 +29,6 @@
 #include "appearance-themes.h"
 
 #include <glib/gi18n.h>
-#include <libwindow-settings/mate-wm-manager.h>
 #include <string.h>
 #include <libmate-desktop/mate-desktop-thumbnail.h>
 #include <libmate-desktop/mate-gsettings.h>
@@ -988,7 +987,6 @@ void themes_init(AppearanceData* data)
 
   /* initialise some stuff */
   mate_theme_init ();
-  mate_wm_manager_init ();
 
   data->revert_application_font = NULL;
   data->revert_documents_font = NULL;
