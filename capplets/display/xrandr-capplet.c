@@ -603,6 +603,28 @@ rebuild_mirror_screens (App *app)
 }
 
 static void
+set_override_color (GtkWidget  *widget,
+                    const char *style,
+                    GdkRGBA    *rgba)
+{
+  gchar          *css;
+  GtkCssProvider *provider;
+
+  provider = gtk_css_provider_new ();
+
+  css = g_strdup_printf ("* { %s: %s;}",
+                         style,
+                         gdk_rgba_to_string (rgba));
+  gtk_css_provider_load_from_data (provider, css, -1, NULL);
+  g_free (css);
+
+  gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
+                                  GTK_STYLE_PROVIDER (provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (provider);
+}
+
+static void
 rebuild_current_monitor_label (App *app)
 {
 	char *str, *tmp;
@@ -634,13 +656,8 @@ rebuild_current_monitor_label (App *app)
 	{
 	    GdkRGBA black = { 0, 0, 0, 1.0 };
 
-	    gtk_widget_override_background_color (app->current_monitor_event_box, gtk_widget_get_state_flags (app->current_monitor_event_box), &color);
-
-	    /* Make the label explicitly black.  We don't want it to follow the
-	     * theme's colors, since the label is always shown against a light
-	     * pastel background.  See bgo#556050
-	     */
-	    gtk_widget_override_color (app->current_monitor_label, gtk_widget_get_state_flags (app->current_monitor_label), &black);
+	    set_override_color (app->current_monitor_event_box, "background-color", &color);
+	    set_override_color (app->current_monitor_label, "color", &black);
 	}
 
 	gtk_event_box_set_visible_window (GTK_EVENT_BOX (app->current_monitor_event_box), use_color);

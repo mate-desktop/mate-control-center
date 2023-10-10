@@ -431,27 +431,35 @@ clear_exposed_input_region (FooScrollArea *area,
 }
 
 static void
-setup_background_cr (GdkWindow *window,
+setup_background_cr (GtkWidget *widget,
 		     cairo_t   *cr,
 		     int        x_offset,
 		     int        y_offset)
 {
-    GdkWindow *parent = gdk_window_get_parent (window);
-    cairo_pattern_t *bg_pattern;
+    GdkWindow *window = gtk_widget_get_window (widget);
+    GtkWidget *parent = gtk_widget_get_parent (widget);
+    GtkStyleContext *context;
+    GdkRGBA         *pattern_rgba = NULL;
+    GtkStateFlags    state;
 
-    bg_pattern = gdk_window_get_background_pattern (window);
-    if (bg_pattern == NULL && parent)
+    context = gtk_widget_get_style_context (widget);
+    state = gtk_style_context_get_state (context);
+
+    gtk_style_context_get (context, state, GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &pattern_rgba, NULL);
+
+    if (parent)
     {
       gint window_x, window_y;
 
       gdk_window_get_position (window, &window_x, &window_y);
       setup_background_cr (parent, cr, x_offset + window_x, y_offset + window_y);
     }
-    else if (bg_pattern)
+    else if (pattern_rgba)
     {
       cairo_translate (cr, - x_offset, - y_offset);
-      cairo_set_source (cr, bg_pattern);
+      gdk_cairo_set_source_rgba (cr, pattern_rgba);
       cairo_translate (cr, x_offset, y_offset);
+      gdk_rgba_free (pattern_rgba);
     }
 }
 
@@ -459,7 +467,7 @@ static void
 initialize_background (GtkWidget *widget,
 		       cairo_t   *cr)
 {
-    setup_background_cr (gtk_widget_get_window (widget), cr, 0, 0);
+    setup_background_cr (widget, cr, 0, 0);
 
     cairo_paint (cr);
 }
@@ -604,6 +612,8 @@ foo_scroll_area_realize (GtkWidget *widget)
     GtkAllocation widget_allocation;
     GdkWindow *window;
     gint attributes_mask;
+    GdkDrawingContext *gdc;
+    cairo_region_t    *cairo_region;
     cairo_t *cr;
 
     gtk_widget_get_allocation (widget, &widget_allocation);
@@ -633,14 +643,18 @@ foo_scroll_area_realize (GtkWidget *widget)
 
     area->priv->input_window = gdk_window_new (window,
 					       &attributes, attributes_mask);
-    cr = gdk_cairo_create (gtk_widget_get_window (widget));
+
+    cairo_region = cairo_region_create ();
+    gdc = gdk_window_begin_draw_frame (gtk_widget_get_window (widget), cairo_region);
+    cr = gdk_drawing_context_get_cairo_context (gdc);
+
     area->priv->surface = cairo_surface_create_similar (cairo_get_target (cr), CAIRO_CONTENT_COLOR,
 							widget_allocation.width, widget_allocation.height);
-    cairo_destroy (cr);
+
+    gdk_window_end_draw_frame (gtk_widget_get_window (widget), gdc);
+    cairo_region_destroy (cairo_region);
 
     gdk_window_set_user_data (area->priv->input_window, area);
-
-    gtk_widget_style_attach (widget);
 }
 
 static void
@@ -663,17 +677,22 @@ create_new_surface (GtkWidget *widget,
                     cairo_surface_t *old)
 {
     GtkAllocation widget_allocation;
+    GdkDrawingContext *gdc;
+    cairo_region_t    *cairo_region;
     cairo_t *cr;
     cairo_surface_t *new;
 
     gtk_widget_get_allocation (widget, &widget_allocation);
 
-    cr = gdk_cairo_create (gtk_widget_get_window (widget));
+    cairo_region = cairo_region_create ();
+    gdc = gdk_window_begin_draw_frame (gtk_widget_get_window (widget), cairo_region);
+    cr = gdk_drawing_context_get_cairo_context (gdc);
     new = cairo_surface_create_similar (cairo_get_target (cr),
 					CAIRO_CONTENT_COLOR,
 					widget_allocation.width,
 					widget_allocation.height);
-    cairo_destroy (cr);
+    gdk_window_end_draw_frame (gtk_widget_get_window (widget), gdc);
+    cairo_region_destroy (cairo_region);
 
     /* Unfortunately we don't know in which direction we were resized,
      * so we just assume we were dragged from the south-east corner.
@@ -813,8 +832,12 @@ process_event (FooScrollArea	       *scroll_area,
 	    {
 		cairo_t *cr;
 		gboolean inside;
+		GdkDrawingContext *gdc;
+		cairo_region_t    *cairo_region;
 
-		cr = gdk_cairo_create (gtk_widget_get_window (widget));
+		cairo_region = cairo_region_create ();
+		gdc = gdk_window_begin_draw_frame (gtk_widget_get_window (widget), cairo_region);
+		cr = gdk_drawing_context_get_cairo_context (gdc);
 		cairo_set_fill_rule (cr, path->fill_rule);
 		cairo_set_line_width (cr, path->line_width);
 		cairo_append_path (cr, path->path);
@@ -823,8 +846,9 @@ process_event (FooScrollArea	       *scroll_area,
 		    inside = cairo_in_stroke (cr, x, y);
 		else
 		    inside = cairo_in_fill (cr, x, y);
+		gdk_window_end_draw_frame (gtk_widget_get_window (widget), gdc);
+		cairo_region_destroy (cairo_region);
 
-		cairo_destroy (cr);
 
 		if (inside)
 		{
