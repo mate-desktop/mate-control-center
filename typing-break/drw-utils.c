@@ -115,12 +115,14 @@ window_draw_event   (GtkWidget      *widget,
 static void
 set_pixmap_background (GtkWidget *window)
 {
-	GdkScreen    *screen;
-	GdkPixbuf    *tmp_pixbuf, *pixbuf, *tile_pixbuf;
-	GdkRectangle  rect;
-	GdkColor      color;
-	gint          width, height, scale;
-	cairo_t      *cr;
+	GdkScreen         *screen;
+	GdkPixbuf         *tmp_pixbuf, *pixbuf, *tile_pixbuf;
+	GdkRectangle       rect;
+	GdkColor           color;
+	gint               width, height, scale;
+	cairo_t           *cr;
+	cairo_region_t    *cairo_region;
+	GdkDrawingContext *gdc;
 
 	gtk_widget_realize (window);
 
@@ -168,13 +170,15 @@ set_pixmap_background (GtkWidget *window)
 
 	g_object_unref (tile_pixbuf);
 
-	cr = gdk_cairo_create (gtk_widget_get_window (window));
+	cairo_region = cairo_region_create ();
+	gdc = gdk_window_begin_draw_frame (gtk_widget_get_window (window), cairo_region);
+	cr = gdk_drawing_context_get_cairo_context (gdc);
 	gdk_cairo_set_source_pixbuf (cr, tmp_pixbuf, 0, 0);
 	cairo_paint (cr);
 
 	g_object_unref (tmp_pixbuf);
-
-	cairo_destroy (cr);
+	gdk_window_end_draw_frame (gtk_widget_get_window (window), gdc);
+	cairo_region_destroy (cairo_region);
 }
 
 void
