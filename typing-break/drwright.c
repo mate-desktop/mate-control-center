@@ -71,7 +71,8 @@ struct _DrWright {
 
 	DrwMonitor      *monitor;
 
-	GtkUIManager    *ui_manager;
+	GtkWidget       *menu;
+	GtkWidget       *break_item;
 
 	DrwState         state;
 	DrwTimer        *timer;
@@ -118,12 +119,17 @@ static void     break_window_postpone_cb       (GtkWidget      *window,
 						DrWright       *dr);
 static void     break_window_destroy_cb        (GtkWidget      *window,
 						DrWright       *dr);
-static void     popup_break_cb                 (GtkAction      *action,
-						DrWright       *dr);
-static void     popup_preferences_cb           (GtkAction      *action,
-						DrWright       *dr);
-static void     popup_about_cb                 (GtkAction      *action,
-						DrWright       *dr);
+static void     popup_break_cb                 (GSimpleAction  *action,
+                                                GVariant       *parameter,
+                                                gpointer        data);
+
+static void     popup_preferences_cb           (GSimpleAction  *action,
+                                                GVariant       *parameter,
+                                                gpointer        data);
+
+static void     popup_about_cb                 (GSimpleAction  *action,
+                                                GVariant       *parameter,
+                                                gpointer        data);
 #ifdef HAVE_APP_INDICATOR
 static void     init_app_indicator             (DrWright       *dr);
 #else
@@ -131,10 +137,10 @@ static void     init_tray_icon                 (DrWright       *dr);
 #endif /* HAVE_APP_INDICATOR */
 static GList *  create_secondary_break_windows (void);
 
-static const GtkActionEntry actions[] = {
-  {"Preferences", "preferences-desktop", N_("_Preferences"), NULL, NULL, G_CALLBACK (popup_preferences_cb)},
-  {"About", "help-about", N_("_About"), NULL, NULL, G_CALLBACK (popup_about_cb)},
-  {"TakeABreak", NULL, N_("_Take a Break"), NULL, NULL, G_CALLBACK (popup_break_cb)}
+static const GActionEntry action_entries[] = {
+  {"Preferences", popup_preferences_cb, NULL, NULL, NULL, { 0 } },
+  {"About", popup_about_cb, NULL, NULL, NULL, { 0 } },
+  {"TakeABreak", popup_break_cb, NULL, NULL, NULL, { 0 } }
 };
 
 extern gboolean debug;
@@ -512,9 +518,6 @@ update_status (DrWright *dr)
 {
 	gint       min;
 	gchar     *str;
-#ifdef HAVE_APP_INDICATOR
-	GtkWidget *item;
-#endif /* HAVE_APP_INDICATOR */
 
 	if (!dr->enabled) {
 #ifdef HAVE_APP_INDICATOR
@@ -546,8 +549,7 @@ update_status (DrWright *dr)
 	}
 
 #ifdef HAVE_APP_INDICATOR
-	item = gtk_ui_manager_get_widget (dr->ui_manager, "/Pop/TakeABreak");
-	gtk_menu_item_set_label (GTK_MENU_ITEM (item), str);
+	gtk_menu_item_set_label (GTK_MENU_ITEM (dr->break_item), str);
 #else
 	gtk_status_icon_set_tooltip_text (dr->icon, str);
 #endif /* HAVE_APP_INDICATOR */
@@ -580,7 +582,6 @@ gsettings_notify_cb (GSettings *settings,
 		 gpointer     user_data)
 {
 	DrWright  *dr = user_data;
-	GtkWidget *item;
 
 	if (!strcmp (key, "type-time")) {
 		dr->type_time = 60 * g_settings_get_int (settings, key);
@@ -596,9 +597,7 @@ gsettings_notify_cb (GSettings *settings,
 		dr->enabled = g_settings_get_boolean (settings, key);
 		dr->state = STATE_START;
 
-		item = gtk_ui_manager_get_widget (dr->ui_manager,
-						  "/Pop/TakeABreak");
-		gtk_widget_set_sensitive (item, dr->enabled);
+		gtk_widget_set_sensitive (dr->break_item, dr->enabled);
 
 		update_status (dr);
 	}
@@ -607,8 +606,11 @@ gsettings_notify_cb (GSettings *settings,
 }
 
 static void
-popup_break_cb (GtkAction *action, DrWright *dr)
+popup_break_cb (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       data)
 {
+	DrWright *dr = data;
 	if (dr->enabled) {
 		dr->state = STATE_BREAK_SETUP;
 		maybe_change_state (dr);
@@ -616,14 +618,15 @@ popup_break_cb (GtkAction *action, DrWright *dr)
 }
 
 static void
-popup_preferences_cb (GtkAction *action, DrWright *dr)
+popup_preferences_cb (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       data)
 {
+	DrWright *dr = data;
 	GdkScreen *screen;
 	GError    *error = NULL;
-	GtkWidget *menu;
 
-	menu = gtk_ui_manager_get_widget (dr->ui_manager, "/Pop");
-	screen = gtk_widget_get_screen (menu);
+	screen = gtk_widget_get_screen (dr->menu);
 
 	if (!mate_gdk_spawn_command_line_on_screen (screen, "mate-keyboard-properties --typing-break", &error)) {
 		GtkWidget *error_dialog;
@@ -644,7 +647,9 @@ popup_preferences_cb (GtkAction *action, DrWright *dr)
 }
 
 static void
-popup_about_cb (GtkAction *action, DrWright *dr)
+popup_about_cb (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       data)
 {
 	gint   i;
 	gchar *authors[] = {
@@ -672,17 +677,13 @@ popup_menu_cb (GtkWidget *widget,
 	       guint      activate_time,
 	       DrWright  *dr)
 {
-	GtkWidget *menu;
-
-	menu = gtk_ui_manager_get_widget (dr->ui_manager, "/Pop");
-
-	gtk_menu_popup (GTK_MENU (menu),
+	gtk_menu_popup (GTK_MENU (dr->menu),
 			NULL,
 			NULL,
 			gtk_status_icon_position_menu,
 			dr->icon,
-			0,
-			gtk_get_current_event_time ());
+			button,
+			activate_time);
 }
 #endif /* HAVE_APP_INDICATOR */
 
@@ -749,8 +750,6 @@ break_window_destroy_cb (GtkWidget *window,
 static void
 init_app_indicator (DrWright *dr)
 {
-	GtkWidget *indicator_menu;
-
 	dr->indicator =
 		app_indicator_new_with_path ("typing-break-indicator",
 					     TYPING_MONITOR_ACTIVE_ICON,
@@ -764,8 +763,7 @@ init_app_indicator (DrWright *dr)
 					  APP_INDICATOR_STATUS_PASSIVE);
 	}
 
-	indicator_menu = gtk_ui_manager_get_widget (dr->ui_manager, "/Pop");
-	app_indicator_set_menu (dr->indicator, GTK_MENU (indicator_menu));
+	app_indicator_set_menu (dr->indicator, GTK_MENU (dr->menu));
 	app_indicator_set_attention_icon (dr->indicator, TYPING_MONITOR_ATTENTION_ICON);
 
 	update_status (dr);
@@ -833,22 +831,59 @@ create_secondary_break_windows (void)
 DrWright *
 drwright_new (void)
 {
-	DrWright  *dr;
-	GtkWidget *item;
-	GSettings *settings;
-	GtkActionGroup *action_group;
+	DrWright           *dr;
+	GtkBuilder         *ui_builder;
+	GSettings          *settings;
+	GSimpleActionGroup *action_group;
 
-	static const char ui_description[] =
-	  "<ui>"
-	  "  <popup name='Pop'>"
-	  "    <menuitem action='Preferences'/>"
-	  "    <menuitem action='About'/>"
-	  "    <separator/>"
-	  "    <menuitem action='TakeABreak'/>"
-	  "  </popup>"
-	  "</ui>";
+	static const gchar *ui_description =
+	  "<interface>"
+	    "<object class=\"GtkImage\" id=\"menu_icon_pre\">"
+	      "<property name=\"visible\">True</property>"
+	      "<property name=\"can_focus\">False</property>"
+	      "<property name=\"icon-name\">preferences-desktop</property>"
+	    "</object>"
+	    "<object class=\"GtkImage\" id=\"menu_icon_about\">"
+	      "<property name=\"visible\">True</property>"
+	      "<property name=\"can_focus\">False</property>"
+	      "<property name=\"icon-name\">help-about</property>"
+	    "</object>"
+	    "<object class=\"GtkMenu\" id=\"pop_menu\">"
+	        "<property name=\"visible\">1</property>"
+	    "<child>"
+	      "<object class=\"GtkImageMenuItem\" id=\"preferences_item\">"
+	        "<property name=\"visible\">1</property>"
+	        "<property name=\"label\" translatable=\"yes\">_Preferences</property>"
+	        "<property name=\"use-underline\">1</property>"
+	        "<property name=\"image\">menu_icon_pre</property>"
+	        "<property name=\"action-name\">win.Preferences</property>"
+	      "</object>"
+	    "</child>"
+	    "<child>"
+	      "<object class=\"GtkImageMenuItem\" id=\"about_item\">"
+	        "<property name=\"visible\">1</property>"
+	        "<property name=\"label\" translatable=\"yes\">_About</property>"
+	        "<property name=\"use-underline\">1</property>"
+	        "<property name=\"image\">menu_icon_about</property>"
+	        "<property name=\"action-name\">win.About</property>"
+	      "</object>"
+	    "</child>"
+	    "<child>"
+	      "<object class=\"GtkSeparatorMenuItem\">"
+	        "<property name=\"visible\">1</property>"
+	      "</object>"
+	    "</child>"
+	    "<child>"
+	      "<object class=\"GtkMenuItem\" id=\"take_break_item\">"
+	        "<property name=\"visible\">1</property>"
+	        "<property name=\"label\" translatable=\"yes\">_Take a Break</property>"
+	        "<property name=\"use-underline\">1</property>"
+	        "<property name=\"action-name\">win.TakeABreak</property>"
+	      "</object>"
+	    "</child>"
+	 "</interface>";
 
-        dr = g_new0 (DrWright, 1);
+	dr = g_new0 (DrWright, 1);
 
 	settings = g_settings_new (TYPING_BREAK_SCHEMA);
 
@@ -866,18 +901,22 @@ drwright_new (void)
 		setup_debug_values (dr);
 	}
 
-	dr->ui_manager = gtk_ui_manager_new ();
-
-	action_group = gtk_action_group_new ("MenuActions");
+	ui_builder = gtk_builder_new ();
 #ifdef ENABLE_NLS
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+	gtk_builder_set_translation_domain (ui_builder, GETTEXT_PACKAGE);
 #endif /* ENABLE_NLS */
-	gtk_action_group_add_actions (action_group, actions, G_N_ELEMENTS (actions), dr);
-	gtk_ui_manager_insert_action_group (dr->ui_manager, action_group, 0);
-	gtk_ui_manager_add_ui_from_string (dr->ui_manager, ui_description, -1, NULL);
+	gtk_builder_add_from_string (ui_builder, ui_description, -1, NULL);
+	dr->menu = (GtkWidget*) g_object_ref (gtk_builder_get_object (ui_builder, "pop_menu"));
+	dr->break_item = (GtkWidget *)gtk_builder_get_object (ui_builder, "take_break_item");
+	gtk_widget_set_sensitive (dr->break_item, dr->enabled);
 
-	item = gtk_ui_manager_get_widget (dr->ui_manager, "/Pop/TakeABreak");
-	gtk_widget_set_sensitive (item, dr->enabled);
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 action_entries,
+	                                 G_N_ELEMENTS (action_entries),
+	                                 dr);
+
+	gtk_widget_insert_action_group (dr->menu, "win", G_ACTION_GROUP (action_group));
 
 	dr->timer = drw_timer_new ();
 	dr->idle_timer = drw_timer_new ();
@@ -909,6 +948,9 @@ drwright_new (void)
 	g_timeout_add_seconds (1,
 			       (GSourceFunc) maybe_change_state,
 			       dr);
+
+	g_object_unref (action_group);
+	g_object_unref (ui_builder);
 
 	return dr;
 }

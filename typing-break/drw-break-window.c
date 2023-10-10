@@ -551,7 +551,7 @@ get_layout_location (GtkLabel *label,
 	ypad = margin_top + margin_bottom;
 
 	gtk_widget_get_allocation (widget, &widget_allocation);
-	gtk_widget_get_requisition (widget, &widget_requisition);
+	gtk_widget_get_preferred_size (widget, &widget_requisition, NULL);
 	widget_allocation.x /= scale;
 	widget_allocation.y /= scale;
 	widget_requisition.width /= scale;
@@ -591,14 +591,10 @@ label_draw_event_cb (GtkLabel *label,
 
 	pango_cairo_show_layout (cr, gtk_label_get_layout (label));
 
-	gtk_paint_layout (gtk_widget_get_style (widget),
-			  cr,
-			  gtk_widget_get_state (widget),
-			  FALSE,
-			  widget,
-			  "label",
-			  x, y,
-			  gtk_label_get_layout (label));
+	gtk_render_layout (gtk_widget_get_style_context (widget),
+	                   cr,
+	                   (double)x, (double)y,
+	                   gtk_label_get_layout (label));
 
 	return TRUE;
 }
