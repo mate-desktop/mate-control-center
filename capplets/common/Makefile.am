@@ -7,7 +7,6 @@ AM_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"capplet-common\"				\
 	-DINSTALL_PREFIX=\"$(prefix)\"					\
 	-I$(top_srcdir)							\
-	-I$(top_srcdir)/libwindow-settings				\
 	-DPIXMAP_DIR=\""$(datadir)/mate-control-center/pixmaps"\"	\
 	$(WARN_CFLAGS)							\
 	$(CAPPLET_CFLAGS)						\
@@ -40,7 +39,6 @@ libcommon_la_SOURCES = \
 	wm-common.h
 
 libcommon_la_LIBADD =							\
-	$(top_builddir)/libwindow-settings/libmate-window-settings.la  \
 	$(MARCO_LIBS)						\
 	$(MATE_DESKTOP_LIBS)						\
 	$(GIO_LIBS)									\

@@ -303,8 +303,6 @@ capplets/time-admin/data/Makefile
 capplets/windows/Makefile
 font-viewer/Makefile
 help/Makefile
-libwindow-settings/Makefile
-libwindow-settings/mate-window-settings-2.0.pc
 man/Makefile
 po/Makefile.in
 libslab/mate-slab.pc
