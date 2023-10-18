@@ -85,31 +85,6 @@ AM_CONDITIONAL(HAVE_LIBCANBERRA_GTK, test "x$CANBERRA_GTK" = "x1")
 
 AM_CONDITIONAL(HAVE_TYPING_BREAK, test "x$TYPING_BREAK" = xtyping-break)
 
-dnl app indicator
-APPINDICATOR_PKG=appindicator3-0.1
-
-AC_ARG_ENABLE(appindicator,
-                        AS_HELP_STRING([--enable-appindicator[=@<:@no/auto/yes@:>@]],[Build support for application indicators ]),
-                        [enable_appindicator=$enableval],
-                        [enable_appindicator="auto"])
-
-if test x$enable_appindicator = xauto ; then
-        PKG_CHECK_EXISTS([$APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
-                         enable_appindicator="yes",
-                         enable_appindicator="no")
-fi
-
-if test x$enable_appindicator = xyes ; then
-        PKG_CHECK_EXISTS([$APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],,
-                         AC_MSG_ERROR([appindicator-0.1 is not installed]))
-        PKG_CHECK_MODULES(APP_INDICATOR,
-                        $APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED)
-        AC_SUBST(APP_INDICATOR_CFLAGS)
-        AC_SUBST(APP_INDICATOR_LIBS)
-        AC_DEFINE(HAVE_APP_INDICATOR, 1, [Have AppIndicator])
-fi
-AM_CONDITIONAL(HAVE_APP_INDICATOR, test x"$enable_appindicator" = xyes)
-
 dnl keyboard-properties-capplet
 savecppflags=$CPPFLAGS
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
@@ -193,6 +168,27 @@ fi
 
 AM_CONDITIONAL([HAVE_ACCOUNTSSERVICE], [test "x$have_accountsservice" = xyes])
 
+AYATANA_APPINDICATOR_PKG=ayatana-appindicator3-0.1
+UBUNTU_APPINDICATOR_PKG=appindicator3-0.1
+
+AC_ARG_ENABLE([libappindicator],
+              [AS_HELP_STRING([--enable-libappindicator[=@<:@no/auto/yes@:>@]],[Use libappindicator instead of ayatana-indicator @<:@default=auto@:>@])],
+              [enable_appindicator=$enableval],
+              [PKG_CHECK_EXISTS([$AYATANA_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
+                                [enable_appindicator=no],
+                                [PKG_CHECK_EXISTS([$UBUNTU_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
+                                                  [enable_appindicator=yes],
+                                                  [enable_appindicator=no])])])
+
+AS_IF([test "x$enable_appindicator" = xyes],
+      [AC_MSG_NOTICE([Buidling against Ubuntu AppIndicator.])
+       PKG_CHECK_MODULES([APPINDICATOR],
+                         [$UBUNTU_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
+                         [AC_DEFINE(HAVE_UBUNTU_APPINDICATOR, 1, [Have Ubuntu AppIndicator])])],
+      [AC_MSG_NOTICE([Buidling against Ayatana AppIndicator.])
+       PKG_CHECK_MODULES([APPINDICATOR],
+                         [$AYATANA_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
+                         [AC_DEFINE(HAVE_AYATANA_APPINDICATOR, 1, [Have Ayatana AppIndicator])])])
 
 PKG_CHECK_MODULES(FONT_CAPPLET, $COMMON_MODULES pango)
 PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES fontconfig freetype2 mate-desktop-2.0)
@@ -329,7 +325,9 @@ Configure summary:
         Warning flags:             ${WARN_CFLAGS}
         Linker flags:              ${LDFLAGS}
 
-        Appindicator:              ${enable_appindicator}
+        Ayatana AppIndicator (preferred)   $(test "x$enable_appindicator" = xyes && echo no || echo yes)
+        Ubuntu AppIndicator (legacy)       $(test "x$enable_appindicator" = xyes && echo yes || echo no)
+
         Libmate-slab:              ${have_libmateslab}
         Accountsservice:           ${have_accountsservice}
         Native Language support:   ${USE_NLS}
