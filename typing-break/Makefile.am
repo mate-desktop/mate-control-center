@@ -21,20 +21,16 @@ mate_typing_monitor_CPPFLAGS = \
 	$(AM_CPPFLAGS)
 mate_typing_monitor_CFLAGS = \
 	@TYPING_CFLAGS@	\
+	@APPINDICATOR_CFLAGS@ \
 	@MATE_DESKTOP_CFLAGS@ \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS)
 
-mate_typing_monitor_LDADD = @TYPING_LIBS@ @MATE_DESKTOP_LIBS@ @SCREENSAVER_LIBS@
+mate_typing_monitor_LDADD = @TYPING_LIBS@ @APPINDICATOR_LIBS@ @MATE_DESKTOP_LIBS@ @SCREENSAVER_LIBS@
 
 if HAVE_LIBCANBERRA_GTK
   mate_typing_monitor_CFLAGS += -DHAVE_CANBERRA_GTK @LIBCANBERRA_GTK_CFLAGS@ 
   mate_typing_monitor_LDADD += @LIBCANBERRA_GTK_LIBS@
-endif
-
-if HAVE_APP_INDICATOR
-  mate_typing_monitor_CFLAGS += -DHAVE_APP_INDICATOR @APP_INDICATOR_CFLAGS@
-  mate_typing_monitor_LDADD += @APP_INDICATOR_LIBS@
 endif
 
 imagedir = $(pkgdatadir)/pixmaps

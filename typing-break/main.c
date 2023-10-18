@@ -29,28 +29,40 @@
 #include "drw-selection.h"
 #include "drwright.h"
 
+#define NOTIFIERAREA_NAME          "org.kde.StatusNotifierWatcher"
+#define NOTIFIERAREA_PATH          "/StatusNotifierWatcher"
+#define NOTIFIERAREA_INTERFACE     "org.kde.StatusNotifierWatcher"
+#define NOTIFIERAREA_PROPERTY      "IsStatusNotifierHostRegistered"
+
 gboolean debug = FALSE;
 
-#ifndef HAVE_APP_INDICATOR
 static gboolean
-have_tray (void)
+is_status_notifier_host_available (void)
 {
-	Screen *xscreen = DefaultScreenOfDisplay (gdk_x11_display_get_xdisplay(gdk_display_get_default()));
-	Atom    selection_atom;
-	char   *selection_atom_name;
+	g_autoptr (GDBusProxy) proxy = NULL;
+	g_autoptr (GError) error = NULL;
 
-	selection_atom_name = g_strdup_printf ("_NET_SYSTEM_TRAY_S%d",
-					       XScreenNumberOfScreen (xscreen));
-	selection_atom = gdk_x11_get_xatom_by_name (selection_atom_name);
-	g_free (selection_atom_name);
+	proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+	                                       G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS |
+	                                       G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START,
+	                                       NULL,
+	                                       NOTIFIERAREA_NAME,
+	                                       NOTIFIERAREA_PATH,
+	                                       NOTIFIERAREA_INTERFACE,
+	                                       NULL, &error);
 
-	if (XGetSelectionOwner (DisplayOfScreen (xscreen), selection_atom)) {
-		return TRUE;
-	} else {
+	if (proxy == NULL || error)
+	{
 		return FALSE;
 	}
+	g_autoptr (GVariant) variant = g_dbus_proxy_get_cached_property (proxy, NOTIFIERAREA_PROPERTY);
+	if (! variant)
+	{
+		return FALSE;
+	}
+
+	return g_variant_get_boolean (variant);
 }
-#endif /* HAVE_APP_INDICATOR */
 
 int
 main (int argc, char *argv[])
@@ -70,7 +82,7 @@ main (int argc, char *argv[])
 
 #ifdef ENABLE_NLS
 	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
-        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 #endif /* ENABLE_NLS */
 
@@ -98,8 +110,7 @@ main (int argc, char *argv[])
 		return 0;
 	}
 
-#ifndef HAVE_APP_INDICATOR
-	if (!no_check && !have_tray ()) {
+	if (!no_check && !is_status_notifier_host_available ()) {
 		GtkWidget *dialog;
 
 		dialog = gtk_message_dialog_new (
@@ -116,7 +127,6 @@ main (int argc, char *argv[])
 
 		gtk_widget_destroy (dialog);
 	}
-#endif /* HAVE_APP_INDICATOR */
 
 	drwright_new ();
 

@@ -30,9 +30,11 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
-#ifdef HAVE_APP_INDICATOR
+#ifdef HAVE_UBUNTU_APPINDICATOR
 #include <libappindicator/app-indicator.h>
-#endif /* HAVE_APP_INDICATOR */
+#else
+#include <libayatana-appindicator/app-indicator.h>
+#endif
 
 #define MATE_DESKTOP_USE_UNSTABLE_API
 #include <libmate-desktop/mate-desktop-utils.h>
@@ -42,12 +44,6 @@
 #include "drw-monitor.h"
 #include "drw-utils.h"
 #include "drw-timer.h"
-
-#ifndef HAVE_APP_INDICATOR
-#define BLINK_TIMEOUT        200
-#define BLINK_TIMEOUT_MIN    120
-#define BLINK_TIMEOUT_FACTOR 100
-#endif /* HAVE_APP_INDICATOR */
 
 typedef enum {
 	STATE_START,
@@ -59,10 +55,8 @@ typedef enum {
 	STATE_BREAK_DONE
 } DrwState;
 
-#ifdef HAVE_APP_INDICATOR
 #define TYPING_MONITOR_ACTIVE_ICON "bar-green"
 #define TYPING_MONITOR_ATTENTION_ICON "bar-red"
-#endif /* HAVE_APP_INDICATOR */
 
 struct _DrWright {
 	/* Widgets. */
@@ -89,22 +83,7 @@ struct _DrWright {
 	gboolean         enabled;
 
 	guint            clock_timeout_id;
-#ifdef HAVE_APP_INDICATOR
 	AppIndicator    *indicator;
-#else
-	guint            blink_timeout_id;
-
-	gboolean         blink_on;
-
-	GtkStatusIcon   *icon;
-
-	cairo_surface_t *neutral_bar;
-	cairo_surface_t *red_bar;
-	cairo_surface_t *green_bar;
-	cairo_surface_t *disabled_bar;
-	GdkPixbuf       *composite_bar;
-#endif /* HAVE_APP_INDICATOR */
-
 	GtkWidget      *warn_dialog;
 };
 
@@ -130,11 +109,7 @@ static void     popup_preferences_cb           (GSimpleAction  *action,
 static void     popup_about_cb                 (GSimpleAction  *action,
                                                 GVariant       *parameter,
                                                 gpointer        data);
-#ifdef HAVE_APP_INDICATOR
 static void     init_app_indicator             (DrWright       *dr);
-#else
-static void     init_tray_icon                 (DrWright       *dr);
-#endif /* HAVE_APP_INDICATOR */
 static GList *  create_secondary_break_windows (void);
 
 static const GActionEntry action_entries[] = {
@@ -153,7 +128,6 @@ setup_debug_values (DrWright *dr)
 	dr->break_time = 10;
 }
 
-#ifdef HAVE_APP_INDICATOR
 static void
 update_app_indicator (DrWright *dr)
 {
@@ -176,166 +150,6 @@ update_app_indicator (DrWright *dr)
 	}
 
 	app_indicator_set_status (dr->indicator, new_status);
-}
-#else
-
-static void
-set_status_icon (GtkStatusIcon *icon, cairo_surface_t *surface)
-{
-	GdkPixbuf *pixbuf;
-
-	pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
-					      cairo_image_surface_get_width (surface),
-					      cairo_image_surface_get_height (surface));
-
-	gtk_status_icon_set_from_pixbuf (icon, pixbuf);
-
-	g_object_unref (pixbuf);
-}
-
-static void
-update_icon (DrWright *dr)
-{
-	GdkPixbuf *pixbuf;
-	GdkPixbuf *tmp_pixbuf;
-	gint       width, height;
-	gfloat     r;
-	gint       offset;
-	gboolean   set_pixbuf;
-
-	if (!dr->enabled) {
-		set_status_icon (dr->icon, dr->disabled_bar);
-		return;
-	}
-
-	width = cairo_image_surface_get_width (dr->neutral_bar);
-	height = cairo_image_surface_get_height (dr->neutral_bar);
-
-	tmp_pixbuf = gdk_pixbuf_get_from_surface (dr->neutral_bar,
-						  0, 0,
-						  width, height);
-
-	set_pixbuf = TRUE;
-
-	switch (dr->state) {
-	case STATE_BREAK:
-	case STATE_BREAK_SETUP:
-		r = 1;
-		break;
-
-	case STATE_BREAK_DONE:
-	case STATE_BREAK_DONE_SETUP:
-	case STATE_START:
-		r = 0;
-		break;
-
-	default:
-		r = (float) (drw_timer_elapsed (dr->timer) + dr->save_last_time) /
-		    (float) dr->type_time;
-		break;
-	}
-
-	offset = CLAMP ((height - 0) * (1.0 - r), 1, height - 0);
-
-	switch (dr->state) {
-	case STATE_WARN:
-		pixbuf = gdk_pixbuf_get_from_surface (dr->red_bar, 0, 0, width, height);
-		set_pixbuf = FALSE;
-		break;
-
-	case STATE_BREAK_SETUP:
-	case STATE_BREAK:
-		pixbuf = gdk_pixbuf_get_from_surface (dr->red_bar, 0, 0, width, height);
-		break;
-
-	default:
-		pixbuf = gdk_pixbuf_get_from_surface (dr->green_bar, 0, 0, width, height);
-	}
-
-	gdk_pixbuf_composite (pixbuf,
-			      tmp_pixbuf,
-			      0,
-			      offset,
-			      width,
-			      height - offset,
-			      0,
-			      0,
-			      1.0,
-			      1.0,
-			      GDK_INTERP_BILINEAR,
-			      255);
-
-	if (set_pixbuf) {
-		gtk_status_icon_set_from_pixbuf (dr->icon,
-						 tmp_pixbuf);
-	}
-
-	if (dr->composite_bar) {
-		g_object_unref (dr->composite_bar);
-	}
-
-	dr->composite_bar = tmp_pixbuf;
-
-	g_object_unref (pixbuf);
-}
-
-static gboolean
-blink_timeout_cb (DrWright *dr)
-{
-	gfloat r;
-	gint   timeout;
-
-	r = (dr->type_time - drw_timer_elapsed (dr->timer) - dr->save_last_time) / dr->warn_time;
-	timeout = BLINK_TIMEOUT + BLINK_TIMEOUT_FACTOR * r;
-
-	if (timeout < BLINK_TIMEOUT_MIN) {
-		timeout = BLINK_TIMEOUT_MIN;
-	}
-
-	if (dr->blink_on || timeout == 0) {
-		gtk_status_icon_set_from_pixbuf (dr->icon, dr->composite_bar);
-	} else {
-		set_status_icon (dr->icon, dr->neutral_bar);
-	}
-
-	dr->blink_on = !dr->blink_on;
-
-	if (timeout) {
-		dr->blink_timeout_id = g_timeout_add (timeout,
-						      (GSourceFunc) blink_timeout_cb,
-						      dr);
-	} else {
-		dr->blink_timeout_id = 0;
-	}
-
-	return FALSE;
-}
-#endif /* HAVE_APP_INDICATOR */
-
-static void
-start_blinking (DrWright *dr)
-{
-#ifndef HAVE_APP_INDICATOR
-	if (!dr->blink_timeout_id) {
-		dr->blink_on = TRUE;
-		blink_timeout_cb (dr);
-	}
-
-	/*gtk_widget_show (GTK_WIDGET (dr->icon));*/
-#endif /* HAVE_APP_INDICATOR */
-}
-
-static void
-stop_blinking (DrWright *dr)
-{
-#ifndef HAVE_APP_INDICATOR
-	if (dr->blink_timeout_id) {
-		g_source_remove (dr->blink_timeout_id);
-		dr->blink_timeout_id = 0;
-	}
-
-	/*gtk_widget_hide (GTK_WIDGET (dr->icon));*/
-#endif /* HAVE_APP_INDICATOR */
 }
 
 static gboolean
@@ -403,10 +217,6 @@ maybe_change_state (DrWright *dr)
 			dr->break_window = NULL;
 		}
 
-#ifndef HAVE_APP_INDICATOR
-		set_status_icon (dr->icon, dr->neutral_bar);
-#endif /* HAVE_APP_INDICATOR */
-
 		dr->save_last_time = 0;
 
 		drw_timer_start (dr->timer);
@@ -417,7 +227,6 @@ maybe_change_state (DrWright *dr)
 		}
 
 		update_status (dr);
-		stop_blinking (dr);
 		break;
 
 	case STATE_RUNNING:
@@ -429,7 +238,6 @@ maybe_change_state (DrWright *dr)
 		} else if (dr->state != STATE_WARN
 			   && elapsed_time >= dr->type_time - dr->warn_time) {
 			dr->state = STATE_WARN;
-			start_blinking (dr);
 		}
 		break;
 
@@ -441,11 +249,6 @@ maybe_change_state (DrWright *dr)
 			dr->state = STATE_BREAK;
 			break;
 		}
-
-		stop_blinking (dr);
-#ifndef HAVE_APP_INDICATOR
-		set_status_icon (dr->icon, dr->red_bar);
-#endif /* HAVE_APP_INDICATOR */
 
 		drw_timer_start (dr->timer);
 
@@ -485,10 +288,6 @@ maybe_change_state (DrWright *dr)
 		break;
 
 	case STATE_BREAK_DONE_SETUP:
-		stop_blinking (dr);
-#ifndef HAVE_APP_INDICATOR
-		set_status_icon (dr->icon, dr->green_bar);
-#endif /* HAVE_APP_INDICATOR */
 
 		dr->state = STATE_BREAK_DONE;
 		break;
@@ -504,11 +303,7 @@ maybe_change_state (DrWright *dr)
 
 	dr->last_elapsed_time = elapsed_time;
 
-#ifdef HAVE_APP_INDICATOR
 	update_app_indicator (dr);
-#else
-	update_icon (dr);
-#endif /* HAVE_APP_INDICATOR */
 
 	return TRUE;
 }
@@ -520,39 +315,20 @@ update_status (DrWright *dr)
 	gchar     *str;
 
 	if (!dr->enabled) {
-#ifdef HAVE_APP_INDICATOR
 		app_indicator_set_status (dr->indicator,
 					  APP_INDICATOR_STATUS_PASSIVE);
-#else
-		gtk_status_icon_set_tooltip_text (dr->icon,
-						  _("Disabled"));
-#endif /* HAVE_APP_INDICATOR */
 		return TRUE;
 	}
 
 	min = get_time_left (dr);
 
 	if (min >= 1) {
-#ifdef HAVE_APP_INDICATOR
 		str = g_strdup_printf (_("Take a break now (next in %dm)"), min);
-#else
-		str = g_strdup_printf (ngettext("%d minute until the next break",
-						"%d minutes until the next break",
-						min), min);
-#endif /* HAVE_APP_INDICATOR */
 	} else {
-#ifdef HAVE_APP_INDICATOR
 		str = g_strdup_printf (_("Take a break now (next in less than one minute)"));
-#else
-		str = g_strdup_printf (_("Less than one minute until the next break"));
-#endif /* HAVE_APP_INDICATOR */
 	}
 
-#ifdef HAVE_APP_INDICATOR
 	gtk_menu_item_set_label (GTK_MENU_ITEM (dr->break_item), str);
-#else
-	gtk_status_icon_set_tooltip_text (dr->icon, str);
-#endif /* HAVE_APP_INDICATOR */
 
 	g_free (str);
 
@@ -670,23 +446,6 @@ popup_about_cb (GSimpleAction *action,
 			       NULL);
 }
 
-#ifndef HAVE_APP_INDICATOR
-static void
-popup_menu_cb (GtkWidget *widget,
-	       guint      button,
-	       guint      activate_time,
-	       DrWright  *dr)
-{
-	gtk_menu_popup (GTK_MENU (dr->menu),
-			NULL,
-			NULL,
-			gtk_status_icon_position_menu,
-			dr->icon,
-			button,
-			activate_time);
-}
-#endif /* HAVE_APP_INDICATOR */
-
 static void
 break_window_done_cb (GtkWidget *window,
 		      DrWright  *dr)
@@ -725,11 +484,7 @@ break_window_postpone_cb (GtkWidget *window,
 	drw_timer_start (dr->timer);
 	maybe_change_state (dr);
 	update_status (dr);
-#ifdef HAVE_APP_INDICATOR
 	update_app_indicator (dr);
-#else
-	update_icon (dr);
-#endif /* HAVE_APP_INDICATOR */
 }
 
 static void
@@ -746,7 +501,6 @@ break_window_destroy_cb (GtkWidget *window,
 	dr->secondary_break_windows = NULL;
 }
 
-#ifdef HAVE_APP_INDICATOR
 static void
 init_app_indicator (DrWright *dr)
 {
@@ -769,28 +523,6 @@ init_app_indicator (DrWright *dr)
 	update_status (dr);
 	update_app_indicator (dr);
 }
-#else
-static void
-init_tray_icon (DrWright *dr)
-{
-	GdkPixbuf *pixbuf;
-
-	pixbuf = gdk_pixbuf_get_from_surface (dr->neutral_bar, 0, 0,
-					      cairo_image_surface_get_width (dr->neutral_bar),
-					      cairo_image_surface_get_height (dr->neutral_bar));
-
-	dr->icon = gtk_status_icon_new_from_pixbuf (pixbuf);
-	g_object_unref (pixbuf);
-
-	update_status (dr);
-	update_icon (dr);
-
-	g_signal_connect (dr->icon,
-			  "popup_menu",
-			  G_CALLBACK (popup_menu_cb),
-			  dr);
-}
-#endif /* HAVE_APP_INDICATOR */
 
 static GList *
 create_secondary_break_windows (void)
@@ -930,16 +662,7 @@ drwright_new (void)
 			  G_CALLBACK (activity_detected_cb),
 			  dr);
 
-#ifdef HAVE_APP_INDICATOR
 	init_app_indicator (dr);
-#else
-	dr->neutral_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar.png");
-	dr->red_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar-red.png");
-	dr->green_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar-green.png");
-	dr->disabled_bar = cairo_image_surface_create_from_png (IMAGEDIR "/bar-disabled.png");
-
-	init_tray_icon (dr);
-#endif /* HAVE_APP_INDICATOR */
 
 	g_timeout_add_seconds (12,
 			       (GSourceFunc) update_status,
