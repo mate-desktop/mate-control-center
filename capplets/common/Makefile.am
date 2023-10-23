@@ -3,6 +3,7 @@ EXTRA_DIST =
 AM_CPPFLAGS = \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""				\
 	-DMATELOCALEDIR="\"$(datadir)/locale\""				\
+	-DMATEDATADIR="\"$(datadir)\""				\
 	-DGTK_ENGINE_DIR="\"$(GTK_ENGINE_DIR)\"" 			\
 	-DG_LOG_DOMAIN=\"capplet-common\"				\
 	-DINSTALL_PREFIX=\"$(prefix)\"					\

@@ -3,6 +3,22 @@
 #include <string.h>
 #include "mate-theme-info.h"
 
+static gchar *
+mate_rc_get_theme_dir (void)
+{
+  const gchar *var;
+  gchar *path;
+
+  var = g_getenv ("GTK_DATA_PREFIX");
+
+  if (var)
+    path = g_build_filename (var, "share", "themes", NULL);
+  else
+    path = g_build_filename (MATEDATADIR, "share", "themes", NULL);
+
+  return path;
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -71,7 +87,7 @@ main (int argc, char *argv[])
       gchar *str;
 
       g_print ("No gtk-2 themes were found.  The following directories were tested:\n");
-      str = gtk_rc_get_theme_dir ();
+      str = mate_rc_get_theme_dir ();
       g_print ("\t%s\n", str);
       g_free (str);
       str = g_build_filename (g_get_home_dir (), ".themes", NULL);
