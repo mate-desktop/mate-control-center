@@ -176,6 +176,51 @@ void gtkrc_get_details(gchar* filename, GSList** engines, GSList** symbolic_colo
 	g_scanner_destroy (scanner);
 }
 
+static const GScannerConfig gtk_rc_scanner_config =
+{
+  (
+   " \t\r\n"
+   )            /* cset_skip_characters */,
+  (
+   "_"
+   G_CSET_a_2_z
+   G_CSET_A_2_Z
+   )            /* cset_identifier_first */,
+  (
+   G_CSET_DIGITS
+   "-_"
+   G_CSET_a_2_z
+   G_CSET_A_2_Z
+   )            /* cset_identifier_nth */,
+  ( "#\n" )     /* cpair_comment_single */,
+
+  TRUE          /* case_sensitive */,
+
+  TRUE          /* skip_comment_multi */,
+  TRUE          /* skip_comment_single */,
+  TRUE          /* scan_comment_multi */,
+  TRUE          /* scan_identifier */,
+  FALSE         /* scan_identifier_1char */,
+  FALSE         /* scan_identifier_NULL */,
+  TRUE          /* scan_symbols */,
+  TRUE          /* scan_binary */,
+  TRUE          /* scan_octal */,
+  TRUE          /* scan_float */,
+  TRUE          /* scan_hex */,
+  TRUE          /* scan_hex_dollar */,
+  TRUE          /* scan_string_sq */,
+  TRUE          /* scan_string_dq */,
+  TRUE          /* numbers_2_int */,
+  FALSE         /* int_2_float */,
+  FALSE         /* identifier_2_string */,
+  TRUE          /* char_2_token */,
+  TRUE          /* symbol_2_token */,
+  FALSE         /* scope_0_fallback */,
+  FALSE         /* store_int64 */,
+
+  0             /* < private > padding_dummy*/,
+};
+
 gchar *
 gtkrc_get_color_scheme (const gchar *gtkrc_file)
 {
@@ -184,7 +229,7 @@ gtkrc_get_color_scheme (const gchar *gtkrc_file)
 	GSList *files = NULL;
 	GSList *read_files = NULL;
 	GTokenType token;
-	GScanner *scanner = gtk_rc_scanner_new ();
+	GScanner *scanner = g_scanner_new (&gtk_rc_scanner_config);
 
 	g_scanner_scope_add_symbol (scanner, 0, "include", INCLUDE_SYMBOL);
 	g_scanner_scope_add_symbol (scanner, 0, "gtk_color_scheme", COLOR_SCHEME_SYMBOL);
