@@ -34,6 +34,10 @@
 #include "theme-installer.h"
 #include "theme-util.h"
 
+#if !GLIB_CHECK_VERSION(2,70,0)
+#define g_pattern_spec_match_string g_pattern_match_string
+#endif
+
 enum {
 	THEME_INVALID,
 	THEME_ICON,
@@ -52,18 +56,18 @@ enum {
 	DIRECTORY
 };
 
-static gboolean
-cleanup_tmp_dir (GIOSchedulerJob *job,
-		 GCancellable *cancellable,
-		 const gchar *tmp_dir)
+static void
+cleanup_tmp_dir (GTask        *task G_GNUC_UNUSED,
+                 gpointer      source_object G_GNUC_UNUSED,
+                 gpointer      task_data,
+                 GCancellable *cancellable G_GNUC_UNUSED)
 {
 	GFile *directory;
+	char  *tmp_dir = task_data;
 
 	directory = g_file_new_for_path (tmp_dir);
 	capplet_file_delete_recursive (directory, NULL);
 	g_object_unref (directory);
-
-	return FALSE;
 }
 
 static int
@@ -88,12 +92,12 @@ file_theme_type (const gchar *dir)
 		g_free (filename);
 
 		pattern = g_pattern_spec_new ("*[Icon Theme]*");
-		match = g_pattern_match_string (pattern, file_contents);
+		match = g_pattern_spec_match_string (pattern, file_contents);
 		g_pattern_spec_free (pattern);
 
 		if (match) {
 			pattern = g_pattern_spec_new ("*Directories=*");
-			match = g_pattern_match_string (pattern, file_contents);
+			match = g_pattern_spec_match_string (pattern, file_contents);
 			g_pattern_spec_free (pattern);
 			g_free (file_contents);
 
@@ -112,7 +116,7 @@ file_theme_type (const gchar *dir)
 		}
 
 		pattern = g_pattern_spec_new ("*[X-GNOME-Metatheme]*");
-		match = g_pattern_match_string (pattern, file_contents);
+		match = g_pattern_spec_match_string (pattern, file_contents);
 		g_pattern_spec_free (pattern);
 		g_free (file_contents);
 
@@ -548,6 +552,18 @@ end:
 }
 
 static void
+theme_cleanup_tmp_dir (char *tmp_dir)
+{
+	GTask *task;
+
+	task = g_task_new (NULL, NULL, NULL, NULL);
+	g_task_set_task_data (task, tmp_dir, g_free);
+	g_task_run_in_thread (task, cleanup_tmp_dir);
+
+	g_object_unref (task);
+}
+
+static void
 process_local_theme (GtkWindow  *parent,
 		     const char *path)
 {
@@ -606,12 +622,7 @@ process_local_theme (GtkWindow  *parent,
 
 		if (!process_local_theme_archive (parent, filetype, tmp_dir, path)
 		    || ((dir = g_dir_open (tmp_dir, 0, NULL)) == NULL)) {
-			g_io_scheduler_push_job ((GIOSchedulerJobFunc) cleanup_tmp_dir,
-						 g_strdup (tmp_dir),
-						 g_free,
-						 G_PRIORITY_DEFAULT,
-						 NULL);
-			g_free (tmp_dir);
+			theme_cleanup_tmp_dir (tmp_dir);
 			return;
 		}
 
@@ -663,9 +674,7 @@ process_local_theme (GtkWindow  *parent,
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 		}
-		g_io_scheduler_push_job ((GIOSchedulerJobFunc) cleanup_tmp_dir,
-					 tmp_dir, g_free,
-					 G_PRIORITY_DEFAULT, NULL);
+		theme_cleanup_tmp_dir (tmp_dir);
 	}
 }
 
