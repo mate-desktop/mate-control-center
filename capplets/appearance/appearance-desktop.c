@@ -1042,26 +1042,21 @@ static GdkPixbuf *buttons[3];
 static void
 create_button_images (AppearanceData  *data)
 {
-  GtkWidget *widget = (GtkWidget*)data->wp_view;
-  GtkStyle *style = gtk_widget_get_style (widget);
-  GtkIconSet *icon_set;
-  GdkPixbuf *pixbuf, *pb, *pb2;
-  gint i, w, h;
+  GtkIconTheme *theme;
+  GdkPixbuf    *pixbuf, *pb, *pb2;
+  gint          i, w, h;
 
-  icon_set = gtk_style_lookup_icon_set (style, "gtk-media-play");
-  pb = gtk_icon_set_render_icon (icon_set,
-                                 style,
-                                 GTK_TEXT_DIR_RTL,
-                                 GTK_STATE_NORMAL,
+  theme = gtk_icon_theme_get_default ();
+  pb = gtk_icon_theme_load_icon (theme,
+                                 "media-playback-start",
                                  GTK_ICON_SIZE_MENU,
-                                 widget,
+                                 GTK_ICON_LOOKUP_DIR_RTL,
                                  NULL);
-  pb2 = gtk_icon_set_render_icon (icon_set,
-                                  style,
-                                  GTK_TEXT_DIR_LTR,
-                                  GTK_STATE_NORMAL,
+
+  pb2 = gtk_icon_theme_load_icon (theme,
+                                  "media-playback-start",
                                   GTK_ICON_SIZE_MENU,
-                                  widget,
+                                  GTK_ICON_LOOKUP_DIR_LTR,
                                   NULL);
   w = gdk_pixbuf_get_width (pb);
   h = gdk_pixbuf_get_height (pb);
