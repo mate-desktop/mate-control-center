@@ -111,7 +111,7 @@ COMMON_MODULES="gtk+-3.0 >= $GTK_REQUIRED dnl
  mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED"
 PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
 PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.21.0)
-PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu)
+PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu librsvg-2.0 pango)
 
 PKG_CHECK_MODULES(POLKIT, polkit-gobject-1)
 PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED)
@@ -136,20 +136,8 @@ AC_SUBST(GTK_ENGINE_DIR)
 
 PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED $GMODULE_ADD)
 
-dnl
-dnl Check dependencies of libmate-slab
-dnl
-PKG_CHECK_MODULES(LIBSLAB, [
-			   gio-2.0 mate-desktop-2.0 librsvg-2.0 libmate-menu pango
-			   ],
-			   have_libmateslab=yes,
-			   have_libmateslab=no)
 
-AC_SUBST(LIBMATESLAB_CFLAGS)
-AC_SUBST(LIBMATESLAB_LIBS)
-AC_SUBST(WARN_CFLAGS)
-
-AM_CONDITIONAL(HAVE_LIBMATESLAB, [test $have_libmateslab = yes])
+AC_SUBST(LIBMATECC_SHELL_CFLAGS)
 
 dnl
 dnl Check dependencies of accountsservice
@@ -301,8 +289,6 @@ font-viewer/Makefile
 help/Makefile
 man/Makefile
 po/Makefile.in
-libslab/mate-slab.pc
-libslab/Makefile
 shell/Makefile
 typing-break/Makefile
 ])
@@ -328,7 +314,6 @@ Configure summary:
         Ayatana AppIndicator (preferred)   $(test "x$enable_appindicator" = xyes && echo no || echo yes)
         Ubuntu AppIndicator (legacy)       $(test "x$enable_appindicator" = xyes && echo yes || echo no)
 
-        Libmate-slab:              ${have_libmateslab}
         Accountsservice:           ${have_accountsservice}
         Native Language support:   ${USE_NLS}
 "

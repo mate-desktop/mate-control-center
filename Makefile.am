@@ -3,15 +3,9 @@ PO_SUBDIR = po
 endif
 
 SUBDIRS = $(PO_SUBDIR) capplets font-viewer help man
-DIST_SUBDIRS = po capplets font-viewer help libslab shell typing-break man
+DIST_SUBDIRS = po capplets font-viewer help shell typing-break man
 
-if HAVE_LIBMATESLAB
-SUBDIRS += libslab
-endif
-
-if HAVE_LIBMATESLAB
 SUBDIRS += shell
-endif
 
 if HAVE_TYPING_BREAK
 SUBDIRS += typing-break
