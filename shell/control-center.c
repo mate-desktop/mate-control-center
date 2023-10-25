@@ -23,7 +23,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
-#include <libslab/slab.h>
+#include "slab.h"
 
 void handle_static_action_clicked(Tile* tile, TileEvent* event, gpointer data);
 static GSList* get_actions_list(void);
