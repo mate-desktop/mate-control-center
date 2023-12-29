@@ -15,7 +15,7 @@ sources += gnome.compile_resources(
 
 cflags += [
   '-DMATECC_DATA_DIR="@0@"'.format(mcc_pkgdatadir),
-  '-DTIMPZONEDIR="@0@"'.format(mcc_timezonedir),
+  '-DTIMPZONEDIR="@0@""/"'.format(mcc_timezonedir),
 ]
 
 executable(
