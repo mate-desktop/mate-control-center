@@ -11,18 +11,19 @@
 # Martin Wimpress <code@flexion.org>, 2018
 # zubr139, 2019
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2019
-# Stefano Karapetsas <stefano@karapetsas.com>, 2021
-# Микола Ткач <chistomov@gmail.com>, 2021
 # Sergiy <sergiy@gorichenko.com>, 2022
+# Anton Gladky <gladk@debian.org>, 2022
+# Микола Ткач <chistomov@gmail.com>, 2023
+# Stefano Karapetsas <stefano@karapetsas.com>, 2023
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.26.0\n"
+"Project-Id-Version: mate-control-center 1.27.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2022-10-29 15:31+0200\n"
+"POT-Creation-Date: 2023-09-02 16:51+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Sergiy <sergiy@gorichenko.com>, 2022\n"
-"Language-Team: Ukrainian (https://www.transifex.com/mate/teams/13566/uk/)\n"
+"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2023\n"
+"Language-Team: Ukrainian (https://app.transifex.com/mate/teams/13566/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -180,9 +181,9 @@ msgstr "Про мене"
 #: capplets/about-me/mate-about-me-dialog.ui:54
 #: capplets/about-me/mate-about-me-password.ui:54
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:119
-#: capplets/appearance/data/appearance.ui:61
-#: capplets/appearance/data/appearance.ui:1215
-#: capplets/appearance/data/appearance.ui:2069
+#: capplets/appearance/data/appearance.ui:101
+#: capplets/appearance/data/appearance.ui:1255
+#: capplets/appearance/data/appearance.ui:2109
 #: capplets/default-applications/mate-default-applications-properties.ui:55
 #: capplets/display/display-capplet.ui:106
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:140
@@ -376,7 +377,7 @@ msgstr "Не вдається закрити канал вводу-виводу 
 #: capplets/about-me/mate-about-me-password.c:322
 #, c-format
 msgid "Could not shutdown backend_stderr IO channel: %s"
-msgstr ""
+msgstr "Не вдається закрити канал вводу-виводу backend_stderr: %s"
 
 #: capplets/about-me/mate-about-me-password.c:428
 msgid "Authenticated!"
@@ -418,7 +419,7 @@ msgstr "Старий і новий паролі схожі між собою."
 
 #: capplets/about-me/mate-about-me-password.c:571
 msgid "The new password must contain numeric or special character(s)."
-msgstr "Має містити цифрові, чи спеціальні символ(и)."
+msgstr "Новий пароль має містити числові чи спеціальні символ(и)"
 
 #: capplets/about-me/mate-about-me-password.c:574
 msgid "The old and new passwords are the same."
@@ -473,7 +474,7 @@ msgstr "Змінити _пароль"
 
 #: capplets/about-me/mate-about-me-password.ui:124
 msgid "Change your password"
-msgstr "Змінити пароль"
+msgstr "Змінити Ваш пароль"
 
 #: capplets/about-me/mate-about-me-password.ui:142
 msgid ""
@@ -493,19 +494,19 @@ msgstr "_Новий пароль:"
 
 #: capplets/about-me/mate-about-me-password.ui:203
 msgid "_Retype new password:"
-msgstr "Схва_лення паролю: "
+msgstr "Під_твердження паролю: "
 
 #: capplets/about-me/mate-about-me-password.ui:276
 msgid "_Authenticate"
-msgstr "_Розпізнання"
+msgstr "_Розпізнати"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:70
 msgid "Assistive Technologies Preferences"
 msgstr "Параметри технологій доступности"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:86
-#: capplets/appearance/data/appearance.ui:1198
-#: capplets/appearance/data/appearance.ui:2051
+#: capplets/appearance/data/appearance.ui:1238
+#: capplets/appearance/data/appearance.ui:2091
 #: capplets/default-applications/mate-default-applications-properties.ui:38
 #: capplets/display/display-capplet.ui:58
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:123
@@ -521,7 +522,7 @@ msgstr "Закрити та _вийти з системи"
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:165
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:3
 msgid "Assistive Technologies"
-msgstr "Можливості доступности"
+msgstr "Допоміжні технології"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:202
 msgid "_Preferred Applications"
@@ -539,7 +540,9 @@ msgstr "_Увімкнути допоміжні технології"
 msgid ""
 "Changes to enable assistive technologies will not take effect until your "
 "next log in."
-msgstr "Зміна цього параметру не матиме дії до наступного входу в сеанс."
+msgstr ""
+"Зміна параметру допоміжних технологій не матиме дії до наступного входу в "
+"сеанс."
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:284
 #: capplets/time-admin/src/time-admin.ui:185
@@ -593,17 +596,18 @@ msgid "Select Font"
 msgstr "Оберіть шрифт"
 
 #: capplets/appearance/appearance-font.c:617
-#: capplets/appearance/data/appearance.ui:951
+#: capplets/appearance/data/appearance.ui:991
 msgid "_Cancel"
 msgstr "_Скасувати"
 
 #: capplets/appearance/appearance-font.c:619
+#: capplets/appearance/data/appearance.ui:3539
 #: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "_Відкрити"
 
 #: capplets/appearance/appearance-font.c:624
-#: capplets/appearance/data/appearance.ui:3075
+#: capplets/appearance/data/appearance.ui:3115
 msgid "Fonts"
 msgstr "Шрифти"
 
@@ -695,409 +699,434 @@ msgid "The current theme suggests a font."
 msgstr "У поточній темі пропонується шрифт:"
 
 #: capplets/appearance/appearance-themes.c:1012
-#: capplets/windows/mate-window-properties.c:247
+#: capplets/windows/mate-window-properties.c:248
 msgid "Custom"
-msgstr "Инше"
+msgstr "Інше"
 
-#: capplets/appearance/data/appearance.ui:45
+#: capplets/appearance/data/appearance.ui:85
 msgid "Font Rendering Details"
 msgstr "Подробиці відтворення шрифтів"
 
-#: capplets/appearance/data/appearance.ui:102
+#: capplets/appearance/data/appearance.ui:142
 msgid "R_esolution"
 msgstr "_Роздільність:"
 
-#: capplets/appearance/data/appearance.ui:125
+#: capplets/appearance/data/appearance.ui:165
 msgid "Dots per inch (DPI):"
 msgstr "точок на дюйм"
 
-#: capplets/appearance/data/appearance.ui:161
+#: capplets/appearance/data/appearance.ui:201
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr "Скидає DPI шрифту до значення самочинно-визначеного Xserver."
 
-#: capplets/appearance/data/appearance.ui:162
+#: capplets/appearance/data/appearance.ui:202
 msgid "Automatic detection:"
 msgstr "Самочинне визначення:"
 
-#: capplets/appearance/data/appearance.ui:206
+#: capplets/appearance/data/appearance.ui:246
 msgid "Smoothing"
 msgstr "Згладжування"
 
-#: capplets/appearance/data/appearance.ui:240
+#: capplets/appearance/data/appearance.ui:280
 msgid "Gra_yscale"
 msgstr "Від_тінки сірого"
 
-#: capplets/appearance/data/appearance.ui:286
+#: capplets/appearance/data/appearance.ui:326
 msgid "Sub_pixel (LCDs)"
 msgstr "С_убпіксельне (РК-монітори)"
 
-#: capplets/appearance/data/appearance.ui:332
+#: capplets/appearance/data/appearance.ui:372
 msgid "_None"
 msgstr "_Немає"
 
 #. font hinting
-#: capplets/appearance/data/appearance.ui:412
+#: capplets/appearance/data/appearance.ui:452
 msgid "Hinting"
 msgstr "Уточнення"
 
-#: capplets/appearance/data/appearance.ui:445
+#: capplets/appearance/data/appearance.ui:485
 msgid "N_one"
 msgstr "Н_емає"
 
-#: capplets/appearance/data/appearance.ui:490
+#: capplets/appearance/data/appearance.ui:530
 msgid "_Slight"
 msgstr "Сл_абке"
 
-#: capplets/appearance/data/appearance.ui:536
+#: capplets/appearance/data/appearance.ui:576
 msgid "_Full"
 msgstr "_Повне"
 
-#: capplets/appearance/data/appearance.ui:582
+#: capplets/appearance/data/appearance.ui:622
 msgid "_Medium"
 msgstr "_Середнє"
 
-#: capplets/appearance/data/appearance.ui:661
+#: capplets/appearance/data/appearance.ui:701
 msgid "Subpixel Order"
 msgstr "Субпіксельне згладжування"
 
 #. pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:692
+#: capplets/appearance/data/appearance.ui:732
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:731
+#: capplets/appearance/data/appearance.ui:771
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:771
+#: capplets/appearance/data/appearance.ui:811
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:811
+#: capplets/appearance/data/appearance.ui:851
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: capplets/appearance/data/appearance.ui:935
+#: capplets/appearance/data/appearance.ui:975
 msgid "Save Theme As..."
 msgstr "Зберегти тему як..."
 
-#: capplets/appearance/data/appearance.ui:968
+#: capplets/appearance/data/appearance.ui:1008
+#: capplets/appearance/data/appearance.ui:3548
 #: capplets/time-admin/src/time-admin.ui:370
 msgid "_Save"
 msgstr "З_берегти"
 
-#: capplets/appearance/data/appearance.ui:1033
+#: capplets/appearance/data/appearance.ui:1073
 msgid "Save _background image"
 msgstr "Зберегти _зображення тла"
 
-#: capplets/appearance/data/appearance.ui:1047
+#: capplets/appearance/data/appearance.ui:1087
 msgid "Save _notification theme"
 msgstr "Зберегти тему _сповіщення"
 
-#: capplets/appearance/data/appearance.ui:1064
+#: capplets/appearance/data/appearance.ui:1104
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "_Назва:"
 
-#: capplets/appearance/data/appearance.ui:1079
+#: capplets/appearance/data/appearance.ui:1119
 msgid "_Description:"
 msgstr "_Опис:"
 
-#: capplets/appearance/data/appearance.ui:1157
+#: capplets/appearance/data/appearance.ui:1197
 msgid "Text below items"
 msgstr "Текст під піктограмами"
 
-#: capplets/appearance/data/appearance.ui:1160
+#: capplets/appearance/data/appearance.ui:1200
 msgid "Text beside items"
 msgstr "Текст поруч із піктограмами"
 
-#: capplets/appearance/data/appearance.ui:1163
+#: capplets/appearance/data/appearance.ui:1203
 msgid "Icons only"
 msgstr "Лише піктограми"
 
-#: capplets/appearance/data/appearance.ui:1166
+#: capplets/appearance/data/appearance.ui:1206
 msgid "Text only"
 msgstr "Лише текст"
 
-#: capplets/appearance/data/appearance.ui:1179
+#: capplets/appearance/data/appearance.ui:1219
 msgid "Customize Theme"
 msgstr "Инша тема"
 
-#: capplets/appearance/data/appearance.ui:1301
-#: capplets/appearance/data/appearance.ui:1671
-#: capplets/appearance/data/appearance.ui:1754
-#: capplets/appearance/data/appearance.ui:1913
-#: capplets/appearance/data/appearance.ui:2157
+#: capplets/appearance/data/appearance.ui:1341
+#: capplets/appearance/data/appearance.ui:1711
+#: capplets/appearance/data/appearance.ui:1794
+#: capplets/appearance/data/appearance.ui:1953
+#: capplets/appearance/data/appearance.ui:2197
 msgid "_Delete"
 msgstr "В_илучити"
 
-#: capplets/appearance/data/appearance.ui:1331
+#: capplets/appearance/data/appearance.ui:1371
 msgid "Controls"
 msgstr "Елементи керування"
 
-#: capplets/appearance/data/appearance.ui:1368
+#: capplets/appearance/data/appearance.ui:1408
 msgid "The current controls theme does not support color schemes."
 msgstr "Поточна тема елементів керування не підтримує схеми кольорів."
 
-#: capplets/appearance/data/appearance.ui:1424
+#: capplets/appearance/data/appearance.ui:1464
 msgid "_Tooltips:"
 msgstr "_Підказки:"
 
-#: capplets/appearance/data/appearance.ui:1510
+#: capplets/appearance/data/appearance.ui:1550
 msgid "Text"
 msgstr "Текст"
 
-#: capplets/appearance/data/appearance.ui:1522
-#: capplets/appearance/data/appearance.ui:2573
+#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:2613
 msgid "Background"
 msgstr "Тло"
 
-#: capplets/appearance/data/appearance.ui:1534
+#: capplets/appearance/data/appearance.ui:1574
 msgid "_Selected items:"
 msgstr "_Виділені елементи:"
 
-#: capplets/appearance/data/appearance.ui:1548
+#: capplets/appearance/data/appearance.ui:1588
 msgid "_Input boxes:"
 msgstr "_Поля вводу:"
 
-#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:1602
 msgid "_Windows:"
 msgstr "_Вікна:"
 
-#: capplets/appearance/data/appearance.ui:1589
+#: capplets/appearance/data/appearance.ui:1629
 msgid "_Reset to Defaults"
 msgstr "Скинути на _типові значення"
 
-#: capplets/appearance/data/appearance.ui:1621
+#: capplets/appearance/data/appearance.ui:1661
 msgid "Colors"
 msgstr "Кольори"
 
-#: capplets/appearance/data/appearance.ui:1704
+#: capplets/appearance/data/appearance.ui:1744
 msgid "Window Border"
 msgstr "Рамка вікна"
 
-#: capplets/appearance/data/appearance.ui:1787
+#: capplets/appearance/data/appearance.ui:1827
 msgid "Icons"
 msgstr "Піктограми"
 
-#: capplets/appearance/data/appearance.ui:1837
+#: capplets/appearance/data/appearance.ui:1877
 msgid "_Size:"
 msgstr "_Розмір:"
 
 #. small threshold
-#: capplets/appearance/data/appearance.ui:1858
+#: capplets/appearance/data/appearance.ui:1898
 #: capplets/mouse/mate-mouse-properties.ui:680
 msgid "Small"
 msgstr "Маленькі"
 
 #. large threshold
-#: capplets/appearance/data/appearance.ui:1888
+#: capplets/appearance/data/appearance.ui:1928
 #: capplets/mouse/mate-mouse-properties.ui:717
 msgid "Large"
 msgstr "Великі"
 
-#: capplets/appearance/data/appearance.ui:1954
+#: capplets/appearance/data/appearance.ui:1994
 msgid "Pointer"
 msgstr "Вказівник"
 
-#: capplets/appearance/data/appearance.ui:1987
+#: capplets/appearance/data/appearance.ui:2027
 msgid "Solid color"
 msgstr "Суцільний колір"
 
-#: capplets/appearance/data/appearance.ui:1990
+#: capplets/appearance/data/appearance.ui:2030
 msgid "Horizontal gradient"
 msgstr "Горизонтальний градієнт"
 
-#: capplets/appearance/data/appearance.ui:1993
+#: capplets/appearance/data/appearance.ui:2033
 msgid "Vertical gradient"
 msgstr "Вертикальний градієнт"
 
-#: capplets/appearance/data/appearance.ui:2009
+#: capplets/appearance/data/appearance.ui:2049
 msgid "Tile"
 msgstr "Черепицею"
 
-#: capplets/appearance/data/appearance.ui:2012
+#: capplets/appearance/data/appearance.ui:2052
 msgid "Zoom"
 msgstr "Припасувати"
 
-#: capplets/appearance/data/appearance.ui:2015
+#: capplets/appearance/data/appearance.ui:2055
 msgid "Center"
 msgstr "За центром"
 
-#: capplets/appearance/data/appearance.ui:2018
+#: capplets/appearance/data/appearance.ui:2058
 msgid "Scale"
 msgstr "Припасовувати"
 
-#: capplets/appearance/data/appearance.ui:2021
+#: capplets/appearance/data/appearance.ui:2061
 msgid "Stretch"
 msgstr "Розтягувати"
 
-#: capplets/appearance/data/appearance.ui:2024
+#: capplets/appearance/data/appearance.ui:2064
 msgid "Span"
 msgstr "Діапазон"
 
-#: capplets/appearance/data/appearance.ui:2032
+#: capplets/appearance/data/appearance.ui:2072
 msgid "Appearance Preferences"
 msgstr "Параметри вигляду"
 
-#: capplets/appearance/data/appearance.ui:2175
+#: capplets/appearance/data/appearance.ui:2215
 msgid "Save _As..."
 msgstr "Зберегти _як..."
 
-#: capplets/appearance/data/appearance.ui:2193
+#: capplets/appearance/data/appearance.ui:2233
 msgid "C_ustomize..."
 msgstr "_Налаштувати..."
 
-#: capplets/appearance/data/appearance.ui:2210
+#: capplets/appearance/data/appearance.ui:2250
 msgid "_Install..."
 msgstr "_Встановити..."
 
-#: capplets/appearance/data/appearance.ui:2238
+#: capplets/appearance/data/appearance.ui:2278
 msgid "Get more themes online"
 msgstr "Отримати теми з мережі"
 
-#: capplets/appearance/data/appearance.ui:2268
+#: capplets/appearance/data/appearance.ui:2308
 msgid "Theme"
 msgstr "Тема"
 
-#: capplets/appearance/data/appearance.ui:2338
+#: capplets/appearance/data/appearance.ui:2378
 msgid "_Style:"
 msgstr "_Стиль:"
 
-#: capplets/appearance/data/appearance.ui:2382
+#: capplets/appearance/data/appearance.ui:2422
 msgid "C_olors:"
 msgstr "_Кольори:"
 
-#: capplets/appearance/data/appearance.ui:2422
-#: capplets/appearance/data/appearance.ui:2438
+#: capplets/appearance/data/appearance.ui:2462
+#: capplets/appearance/data/appearance.ui:2478
 msgid "Open a dialog to specify the color"
 msgstr "Відкрити діалог для вказування кольору"
 
-#: capplets/appearance/data/appearance.ui:2493
+#: capplets/appearance/data/appearance.ui:2533
 msgid "Get more backgrounds online"
 msgstr "Отримати зображення для тла з мережі"
 
-#: capplets/appearance/data/appearance.ui:2533
+#: capplets/appearance/data/appearance.ui:2573
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:703
 msgid "_Add..."
 msgstr "_Додати..."
 
-#: capplets/appearance/data/appearance.ui:2669
+#: capplets/appearance/data/appearance.ui:2709
 msgid "_Application font:"
 msgstr "Шрифт п_рограм:"
 
-#: capplets/appearance/data/appearance.ui:2684
+#: capplets/appearance/data/appearance.ui:2724
 msgid "_Document font:"
 msgstr "Шрифт _документу:"
 
-#: capplets/appearance/data/appearance.ui:2698
+#: capplets/appearance/data/appearance.ui:2738
 msgid "Des_ktop font:"
 msgstr "Шрифт _стільниці:"
 
-#: capplets/appearance/data/appearance.ui:2713
+#: capplets/appearance/data/appearance.ui:2753
 msgid "_Window title font:"
 msgstr "Шрифт за_головку вікна:"
 
-#: capplets/appearance/data/appearance.ui:2728
+#: capplets/appearance/data/appearance.ui:2768
 msgid "_Fixed width font:"
 msgstr "Моно_ширинний шрифт:"
 
-#: capplets/appearance/data/appearance.ui:2768
+#: capplets/appearance/data/appearance.ui:2808
 msgid "Add new f_ont..."
 msgstr "Додати новий шр_ифт..."
 
-#: capplets/appearance/data/appearance.ui:2799
+#: capplets/appearance/data/appearance.ui:2839
 msgid "Rendering"
 msgstr "Режим виводу шрифтів"
 
-#: capplets/appearance/data/appearance.ui:2831
+#: capplets/appearance/data/appearance.ui:2871
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "С_убпіксельне згладжування (РК-монітори)"
 
-#: capplets/appearance/data/appearance.ui:2877
+#: capplets/appearance/data/appearance.ui:2917
 msgid "Best _shapes"
 msgstr "Найкраща _форма"
 
-#: capplets/appearance/data/appearance.ui:2923
+#: capplets/appearance/data/appearance.ui:2963
 msgid "_Monochrome"
 msgstr "_Монохромний"
 
-#: capplets/appearance/data/appearance.ui:2968
+#: capplets/appearance/data/appearance.ui:3008
 msgid "Best co_ntrast"
 msgstr "Найкраща _контрастність"
 
-#: capplets/appearance/data/appearance.ui:3045
+#: capplets/appearance/data/appearance.ui:3085
 msgid "D_etails..."
 msgstr "Докладно..."
 
-#: capplets/appearance/data/appearance.ui:3100
+#: capplets/appearance/data/appearance.ui:3140
 msgid "Menus and Toolbars"
 msgstr "Меню та панелі знарядь"
 
-#: capplets/appearance/data/appearance.ui:3135
+#: capplets/appearance/data/appearance.ui:3175
 msgid "Show _icons in menus"
 msgstr "Показувати _піктограми у меню"
 
-#: capplets/appearance/data/appearance.ui:3152
+#: capplets/appearance/data/appearance.ui:3192
 msgid "_Editable menu shortcut keys"
 msgstr "_Редаговані меню сполучень клавішів"
 
-#: capplets/appearance/data/appearance.ui:3175
+#: capplets/appearance/data/appearance.ui:3215
 msgid "Toolbar _button labels:"
 msgstr "Позначки _кнопок панелі знарядь"
 
-#: capplets/appearance/data/appearance.ui:3243
+#: capplets/appearance/data/appearance.ui:3283
 msgid "Buttons"
 msgstr "Кнопки"
 
-#: capplets/appearance/data/appearance.ui:3272
+#: capplets/appearance/data/appearance.ui:3312
 msgid "Show icons on buttons"
 msgstr "Показувати піктограми на кнопках"
 
-#: capplets/appearance/data/appearance.ui:3276
+#: capplets/appearance/data/appearance.ui:3316
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr "Чи показувати піктограми поряд із текстом кнопки"
 
-#: capplets/appearance/data/appearance.ui:3313
+#: capplets/appearance/data/appearance.ui:3353
 msgid "File Chooser"
 msgstr "Вибір файлів"
 
-#: capplets/appearance/data/appearance.ui:3348
+#: capplets/appearance/data/appearance.ui:3388
 msgid "Show hidden items"
 msgstr "Показати приховані елементи"
 
-#: capplets/appearance/data/appearance.ui:3365
+#: capplets/appearance/data/appearance.ui:3405
 msgid "Show size column"
 msgstr "Показати розмір стовпця"
 
-#: capplets/appearance/data/appearance.ui:3381
+#: capplets/appearance/data/appearance.ui:3421
 msgid "Show type column"
 msgstr "Показати тип стовпця"
 
-#: capplets/appearance/data/appearance.ui:3397
+#: capplets/appearance/data/appearance.ui:3437
 msgid "Sort directories first"
 msgstr "Спочатку ґатункувати каталоги"
 
-#: capplets/appearance/data/appearance.ui:3443
+#: capplets/appearance/data/appearance.ui:3483
 msgid "Preview"
 msgstr "Перегляд"
 
-#: capplets/appearance/data/appearance.ui:3483
+#: capplets/appearance/data/appearance.ui:3523
 msgid "_File"
 msgstr "_Файл"
 
-#: capplets/appearance/data/appearance.ui:3553
+#: capplets/appearance/data/appearance.ui:3530
+msgid "_New"
+msgstr "_Створити"
+
+#: capplets/appearance/data/appearance.ui:3563
+msgid "_Print"
+msgstr "Д_рук"
+
+#: capplets/appearance/data/appearance.ui:3578
+msgid "_Quit"
+msgstr "_Вийти"
+
+#: capplets/appearance/data/appearance.ui:3593
 msgid "Edit"
 msgstr "Зміни"
 
-#: capplets/appearance/data/appearance.ui:3610
+#: capplets/appearance/data/appearance.ui:3600
+msgid "cu_T"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3609
+msgid "_Copy"
+msgstr "_Копіювати"
+
+#: capplets/appearance/data/appearance.ui:3618
+msgid "_Paste"
+msgstr "Вст_авити"
+
+#: capplets/appearance/data/appearance.ui:3650
 msgid "New"
 msgstr "Створити"
 
-#: capplets/appearance/data/appearance.ui:3683
+#: capplets/appearance/data/appearance.ui:3723
 msgid "Interface"
 msgstr "Інтерфейс"
 
@@ -1449,7 +1478,7 @@ msgstr "Стандартні програми"
 
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:4
 msgid "Select your default applications"
-msgstr "Обрання усталених програм"
+msgstr "Відкрити у типовій програмі"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1467,7 +1496,7 @@ msgstr "Відкрити у типовій програмі"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:147
 msgid "Web Browser"
-msgstr "Оглядач тенет"
+msgstr "Перегляд файлів"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:217
 msgid "Mail Reader"
@@ -1479,7 +1508,7 @@ msgstr "Миттєві повідомлення"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:306
 msgid "Internet"
-msgstr "Тенета"
+msgstr "Інтернет"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:376
 msgid "Image Viewer"
@@ -1507,7 +1536,7 @@ msgstr "Емулятор терміналу"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:749
 msgid "File Manager"
-msgstr "Упорядник файлів"
+msgstr "Менеджер файлів"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:819
 msgid "Calculator"
@@ -1539,7 +1568,7 @@ msgstr "Запускати на _старті"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:1161
 msgid "Visual"
-msgstr "Наочний"
+msgstr "Візуальний"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:1219
 msgid "Run at st_art"
@@ -1561,13 +1590,13 @@ msgstr "Початковий"
 
 #: capplets/display/display-capplet.ui:25
 #: capplets/display/xrandr-capplet.c:311
-#: capplets/windows/window-properties.ui:692
+#: capplets/windows/window-properties.ui:616
 msgid "Left"
 msgstr "Лівий"
 
 #: capplets/display/display-capplet.ui:28
 #: capplets/display/xrandr-capplet.c:312
-#: capplets/windows/window-properties.ui:691
+#: capplets/windows/window-properties.ui:615
 msgid "Right"
 msgstr "Правий"
 
@@ -1775,7 +1804,7 @@ msgstr ""
 
 #: capplets/display/xrandr-capplet.c:313
 msgid "Upside Down"
-msgstr "Догоридриґа"
+msgstr "Згори вниз"
 
 #: capplets/display/xrandr-capplet.c:355
 #, c-format
@@ -1937,7 +1966,7 @@ msgstr "Запустити миттєвий обмін повідомлення�
 
 #: capplets/keybindings/01-desktop-key.xml.in:12
 msgid "Launch web browser"
-msgstr "Запуск оглядача тенет"
+msgstr "Запуск веб-браузера"
 
 #: capplets/keybindings/01-desktop-key.xml.in:14
 msgid "Log out"
@@ -1953,7 +1982,7 @@ msgstr "Блокування екрану"
 
 #: capplets/keybindings/01-desktop-key.xml.in:20
 msgid "Home folder"
-msgstr "Домівка"
+msgstr "Домашня тека"
 
 #: capplets/keybindings/01-desktop-key.xml.in:22 font-viewer/font-view.c:842
 #: libslab/bookmark-agent.c:1212
@@ -1971,7 +2000,7 @@ msgstr "Нове сполучення клавішів..."
 #: capplets/keybindings/eggcellrendererkeys.c:147
 #: capplets/keybindings/eggcellrendererkeys.c:148
 msgid "Accelerator key"
-msgstr "Клавіш"
+msgstr "Клавіша"
 
 #: capplets/keybindings/eggcellrendererkeys.c:157
 #: capplets/keybindings/eggcellrendererkeys.c:158
@@ -1981,7 +2010,7 @@ msgstr "Модифікатор"
 #: capplets/keybindings/eggcellrendererkeys.c:166
 #: capplets/keybindings/eggcellrendererkeys.c:167
 msgid "Accelerator keycode"
-msgstr "Код клавіша-пришвидшувача"
+msgstr "Код клавіши-пришвидшувача"
 
 #: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accel Mode"
@@ -2001,16 +2030,16 @@ msgstr "Вимк."
 msgid "<Unknown Action>"
 msgstr "<Невідома дія>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1001
-#: capplets/keybindings/mate-keybinding-properties.c:1608
+#: capplets/keybindings/mate-keybinding-properties.c:1015
+#: capplets/keybindings/mate-keybinding-properties.c:1622
 msgid "Custom Shortcuts"
 msgstr "Власне сполучення клавішів"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1189
+#: capplets/keybindings/mate-keybinding-properties.c:1203
 msgid "Error saving the new shortcut"
 msgstr "Помилка при збереженні нового сполучення клавішів"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1265
+#: capplets/keybindings/mate-keybinding-properties.c:1279
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2019,7 +2048,7 @@ msgstr ""
 "Сполучення клавішів \"%s\" не можна використовувати, бо використання цього клавіша для звичайного вводу стане неможливим.\n"
 "Спробуйте з такими клавішами, як Control, Alt, чи Shift одночасно."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1297
+#: capplets/keybindings/mate-keybinding-properties.c:1311
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2028,25 +2057,25 @@ msgstr ""
 "Сполучення клавішів \"%s\" вже використовується для\n"
 " \"%s\""
 
-#: capplets/keybindings/mate-keybinding-properties.c:1304
+#: capplets/keybindings/mate-keybinding-properties.c:1318
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr ""
 "Після перепризначення сполучення клавішів «%s» на «%s» вона буде вимкнена."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1309
+#: capplets/keybindings/mate-keybinding-properties.c:1323
 msgid "_Reassign"
 msgstr "_Перепризначити"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1563
+#: capplets/keybindings/mate-keybinding-properties.c:1577
 msgid "Too many custom shortcuts"
 msgstr "Забагато сполучень клавішів"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1877
+#: capplets/keybindings/mate-keybinding-properties.c:1891
 msgid "Action"
 msgstr "Дія"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1899
+#: capplets/keybindings/mate-keybinding-properties.c:1913
 msgid "Shortcut"
 msgstr "Сполучення клавішів"
 
@@ -2152,15 +2181,15 @@ msgstr "Ефекти для звуків"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:298
 msgid "Beep when a key is pr_essed"
-msgstr "Подавати сигнал, коли _клавіш натиснуто"
+msgstr "Подавати сигнал, коли _клавіша натиснута"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:314
 msgid "Beep when key is _accepted"
-msgstr "Подавати сигнал, коли клавіш при_йнято"
+msgstr "Подавати сигнал, коли клавіша при_йнята"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:330
 msgid "Beep when key is _rejected"
-msgstr "Подавати сигнал, коли клавіш відк_инуто"
+msgstr "Подавати сигнал, коли клавіша відк_инута"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:351
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1175
@@ -2169,7 +2198,7 @@ msgstr "\"Повільні\" клавіші"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:379
 msgid "Beep when a key is reje_cted"
-msgstr "Подавати сигнал, коли клавіш від_кинуто"
+msgstr "Подавати сигнал, коли клавіша від_кинуто"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:400
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1356
@@ -2178,7 +2207,7 @@ msgstr "Пружні клавіші"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
 msgid "Beep when pressing a key while Caps_Lock is active"
-msgstr "Звуковий сигнал при натисканні клавіша, коли Caps_Lock активний"
+msgstr "Звуковий сигнал при натисканні клавіши, коли Caps_Lock активний"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
 msgid "Caps Lock"
@@ -2186,7 +2215,7 @@ msgstr "Caps Lock"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:106
 msgid "Keyboard Preferences"
-msgstr "Параметри набірниці"
+msgstr "Параметри клавіатури"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:195
 msgid "Repeat Keys"
@@ -2194,7 +2223,7 @@ msgstr "Автоповтор"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:230
 msgid "Key presses _repeat when key is held down"
-msgstr "_Повторення набірниці при утримуванні клавіша"
+msgstr "_Повторення набірниці при утримуванні клавіши"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:260
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1238
@@ -2227,7 +2256,7 @@ msgstr "Повільно"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:372
 msgid "Repeat keys speed"
-msgstr "Швидкість повтору клавішів"
+msgstr "Швидкість повтору клавіш"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:400
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1296
@@ -2235,7 +2264,7 @@ msgstr "Швидкість повтору клавішів"
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1764
 #: capplets/mouse/mate-mouse-properties.ui:862
 msgid "Long"
-msgstr "Більше"
+msgstr "Довго"
 
 #. fast acceleration
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:417
@@ -2491,11 +2520,11 @@ msgstr "Невідомий"
 msgid "Layout"
 msgstr "Розташування"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "Виробники"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:237
 msgid "Models"
 msgstr "Моделі"
 
@@ -2536,7 +2565,7 @@ msgstr "Вкажіть назву показуваної сторінки (gener
 
 #: capplets/mouse/mate-mouse-properties.c:418
 msgid "- MATE Mouse Preferences"
-msgstr "- параметри миші"
+msgstr "- Параметри миші MATE"
 
 #: capplets/mouse/mate-mouse-properties.ui:107
 msgid "Mouse Preferences"
@@ -2596,11 +2625,11 @@ msgstr "Пришвидшення _Профіль:"
 
 #: capplets/mouse/mate-mouse-properties.ui:588
 msgid "Adaptive"
-msgstr "Адаптація"
+msgstr "Адаптивний"
 
 #: capplets/mouse/mate-mouse-properties.ui:589
 msgid "Flat"
-msgstr "Плаский"
+msgstr "Плоский"
 
 #: capplets/mouse/mate-mouse-properties.ui:625
 msgid "Drag and Drop"
@@ -2657,7 +2686,7 @@ msgstr "Попередження: емуляція мульти-тач може 
 
 #: capplets/mouse/mate-mouse-properties.ui:1203
 msgid "Scrolling"
-msgstr "Гортання"
+msgstr "Прокрутка"
 
 #: capplets/mouse/mate-mouse-properties.ui:1223
 msgid "_Vertical edge scrolling"
@@ -2713,7 +2742,7 @@ msgstr "Параметри проксі-серверів"
 
 #: capplets/network/mate-network-properties.ui:113
 msgid "<b>Di_rect internet connection</b>"
-msgstr "<b>Пр_яме з'єднання з Тенетами</b>"
+msgstr "<b>Пр_яме з'єднання з Інтернет</b>"
 
 #: capplets/network/mate-network-properties.ui:150
 msgid "<b>_Manual proxy configuration</b>"
@@ -2760,11 +2789,11 @@ msgstr "Параметри проксі"
 
 #: capplets/network/mate-network-properties.ui:592
 msgid "Ignore Host List"
-msgstr "Нехтувані вузли"
+msgstr "Ігнорувати вузли"
 
 #: capplets/network/mate-network-properties.ui:730
 msgid "Ignored Hosts"
-msgstr "Нехтувані вузли"
+msgstr "Ігноровані вузли"
 
 #: capplets/network/mate-network-properties.ui:758
 msgid "HTTP Proxy Details"
@@ -2787,31 +2816,31 @@ msgid "Metacity Preferences"
 msgstr "Параметри Metacity"
 
 #: capplets/windows/mate-metacity-support.c:54
-#: capplets/windows/window-properties.ui:813
+#: capplets/windows/window-properties.ui:733
 msgid "Compositing Manager"
-msgstr "Керівник композитинґу"
+msgstr "Менеджер композиції"
 
 #: capplets/windows/mate-metacity-support.c:61
 msgid "Enable software _compositing window manager"
 msgstr "Увімкнути програмний _композитний упорядник вікон"
 
-#: capplets/windows/mate-window-properties.c:315
+#: capplets/windows/mate-window-properties.c:316
 msgid "The current window manager is unsupported"
 msgstr "Поточний упорядник вікон не підтримується"
 
-#: capplets/windows/mate-window-properties.c:626
+#: capplets/windows/mate-window-properties.c:629
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:632
+#: capplets/windows/mate-window-properties.c:635
 msgid "H_yper"
 msgstr "H_yper"
 
-#: capplets/windows/mate-window-properties.c:639
+#: capplets/windows/mate-window-properties.c:642
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (чи \"Емблема Windows\")"
 
-#: capplets/windows/mate-window-properties.c:646
+#: capplets/windows/mate-window-properties.c:649
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2834,137 +2863,137 @@ msgstr ""
 msgid "Window Preferences"
 msgstr "Параметри вікон"
 
-#: capplets/windows/window-properties.ui:128
-msgid "Window Selection"
-msgstr "Вибір вікон"
-
-#: capplets/windows/window-properties.ui:148
+#: capplets/windows/window-properties.ui:132
 msgid "_Select windows when the mouse moves over them"
 msgstr "Пере_микатися на вікна, коли над ними проходить вказівник"
 
-#: capplets/windows/window-properties.ui:164
+#: capplets/windows/window-properties.ui:148
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "З_няти виділення вікон, коли миша покидає їх"
 
-#: capplets/windows/window-properties.ui:187
+#: capplets/windows/window-properties.ui:171
 msgid "_Raise selected windows after"
 msgstr "_Підняти вибрані вікна після"
 
-#: capplets/windows/window-properties.ui:223
+#: capplets/windows/window-properties.ui:207
 msgid "seconds"
 msgstr "секунд"
 
-#: capplets/windows/window-properties.ui:263
-msgid "Titlebar Action"
-msgstr "Клац по заголовку"
+#: capplets/windows/window-properties.ui:229
+msgid "Window Selection"
+msgstr "Вибір вікон"
 
-#: capplets/windows/window-properties.ui:290
+#: capplets/windows/window-properties.ui:264
 msgid "_Double-click titlebar action:"
 msgstr "Дія для _подвійного клацання по заголовку:"
 
-#: capplets/windows/window-properties.ui:305
+#: capplets/windows/window-properties.ui:279
 #: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "Згорнути"
 
-#: capplets/windows/window-properties.ui:306
+#: capplets/windows/window-properties.ui:280
 #: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
-msgstr "Унайбільшити"
+msgstr "Розгорнути"
 
-#: capplets/windows/window-properties.ui:307
+#: capplets/windows/window-properties.ui:281
 #: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
-msgstr "Розтягнути горизонтально"
+msgstr "Розгорнути горизонтально"
 
-#: capplets/windows/window-properties.ui:308
+#: capplets/windows/window-properties.ui:282
 #: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
-msgstr "Розтягнути вертикально"
+msgstr "Розгорнути вертикально"
 
-#: capplets/windows/window-properties.ui:309
+#: capplets/windows/window-properties.ui:283
 #: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
-msgstr "Унайменшити"
+msgstr "Мінімізувати"
 
-#: capplets/windows/window-properties.ui:310
+#: capplets/windows/window-properties.ui:284
 #: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "Немає"
 
-#: capplets/windows/window-properties.ui:352
-msgid "Alt-Tab"
-msgstr "Alt-Tab"
+#: capplets/windows/window-properties.ui:308
+msgid "Titlebar Action"
+msgstr "Дія заголовку"
 
-#: capplets/windows/window-properties.ui:371
+#: capplets/windows/window-properties.ui:335
 msgid "Show _thumbnails in Alt-Tab"
 msgstr "Показувати _мініатюри у Alt-Tab"
 
-#: capplets/windows/window-properties.ui:386
+#: capplets/windows/window-properties.ui:350
 msgid "Show window _border in Alt-Tab"
 msgstr "Показувати _край вікна у Alt-Tab"
 
-#: capplets/windows/window-properties.ui:424
-msgid "Movement Key"
-msgstr "Клавіш переміщення"
+#: capplets/windows/window-properties.ui:370
+msgid "Alt-Tab"
+msgstr "Alt-Tab"
 
-#: capplets/windows/window-properties.ui:446
+#: capplets/windows/window-properties.ui:400
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
-"Для переміщення вікна, натиснути та тримати цей клавіш, а потім захопити "
+"Для переміщення вікна, натиснути та тримати цю клавішу, а потім захопити "
 "вікно:"
 
-#: capplets/windows/window-properties.ui:490
+#: capplets/windows/window-properties.ui:431
+msgid "Movement Key"
+msgstr "Клавіша переміщення"
+
+#: capplets/windows/window-properties.ui:450
 msgid "Behaviour"
 msgstr "Поведінка"
 
-#: capplets/windows/window-properties.ui:515
-msgid "New Windows"
-msgstr "Нові вікна"
-
-#: capplets/windows/window-properties.ui:535
+#: capplets/windows/window-properties.ui:479
 msgid "Centre _new windows"
 msgstr "Центрувати _нові вікна"
 
-#: capplets/windows/window-properties.ui:573
-msgid "Window Snapping"
-msgstr "Прив’язка вікон"
+#: capplets/windows/window-properties.ui:499
+msgid "New Windows"
+msgstr "Нові вікна"
 
-#: capplets/windows/window-properties.ui:593
+#: capplets/windows/window-properties.ui:527
 msgid "Enable window _tiling"
 msgstr "Увімкнути віконний _тайлінґ"
 
-#: capplets/windows/window-properties.ui:608
+#: capplets/windows/window-properties.ui:542
 msgid "Allow t_op tiling"
 msgstr "Дозволити _верхнє розміщення"
 
-#: capplets/windows/window-properties.ui:647
-msgid "Titlebar Buttons"
-msgstr "Кнопки заголовку"
+#: capplets/windows/window-properties.ui:563
+msgid "Window Snapping"
+msgstr "Прив’язка вікон"
 
-#: capplets/windows/window-properties.ui:674
+#: capplets/windows/window-properties.ui:598
 msgid "_Position of titlebar buttons:"
 msgstr "_Положення кнопок на рядку заголовка:"
 
-#: capplets/windows/window-properties.ui:689
+#: capplets/windows/window-properties.ui:613
 msgid "Right (with menu)"
 msgstr "Правий (із меню)"
 
-#: capplets/windows/window-properties.ui:690
+#: capplets/windows/window-properties.ui:614
 msgid "Left (with menu)"
 msgstr "Лівий (із меню)"
 
-#: capplets/windows/window-properties.ui:732
+#: capplets/windows/window-properties.ui:640
+msgid "Titlebar Buttons"
+msgstr "Кнопки заголовку"
+
+#: capplets/windows/window-properties.ui:662
 msgid "Placement"
 msgstr "Розташування"
 
-#: capplets/windows/window-properties.ui:757
-msgid "Software Compositing"
-msgstr "Програмний композитинґ"
-
-#: capplets/windows/window-properties.ui:777
+#: capplets/windows/window-properties.ui:691
 msgid "Enable _software compositing window manager"
 msgstr "Увімкнути _програмний композитинґ упорядника вікон"
+
+#: capplets/windows/window-properties.ui:711
+msgid "Software Compositing"
+msgstr "Програмний композитинґ"
 
 #: capplets/time-admin/src/main.c:34
 #, c-format
@@ -3095,7 +3124,7 @@ msgstr "Африка/Адіс-Абеба"
 
 #: capplets/time-admin/src/time-zones.h:30
 msgid "Africa/Algiers"
-msgstr "Африка/Алжір"
+msgstr "Африка/Алжир"
 
 #: capplets/time-admin/src/time-zones.h:31
 msgid "Africa/Asmara"
@@ -3151,7 +3180,7 @@ msgstr "Африка/Дакар"
 
 #: capplets/time-admin/src/time-zones.h:44
 msgid "Africa/Dar_es_Salaam"
-msgstr "Африка/Дар ес Салаам"
+msgstr "Африка/Дар_ес_Салаам"
 
 #: capplets/time-admin/src/time-zones.h:45
 msgid "Africa/Djibouti"
@@ -3163,7 +3192,7 @@ msgstr "Африка/Доуала"
 
 #: capplets/time-admin/src/time-zones.h:47
 msgid "Africa/El_Aaiun"
-msgstr "Африка/Ель-Ааюн"
+msgstr "Африка/Ель_Ааюн"
 
 #: capplets/time-admin/src/time-zones.h:48
 msgid "Africa/Freetown"
@@ -3275,7 +3304,7 @@ msgstr "Африка/Порто-Ново"
 
 #: capplets/time-admin/src/time-zones.h:75
 msgid "Africa/Sao_Tome"
-msgstr "Африка/Сао Томе"
+msgstr "Африка/Сао_Томе"
 
 #: capplets/time-admin/src/time-zones.h:76
 msgid "Africa/Tripoli"
@@ -3311,23 +3340,23 @@ msgstr "Америка/Араґуаїна"
 
 #: capplets/time-admin/src/time-zones.h:84
 msgid "America/Argentina/Buenos_Aires"
-msgstr "Америка/Арґентина/Буенос-Айрос"
+msgstr "Америка/Аргентина/Буенос_Айрос"
 
 #: capplets/time-admin/src/time-zones.h:85
 msgid "America/Argentina/Catamarca"
-msgstr "Америка/Арґентина/Катамарка"
+msgstr "Америка/Аргентина/Катамарка"
 
 #: capplets/time-admin/src/time-zones.h:86
 msgid "America/Argentina/Cordoba"
-msgstr "Америка/Арґентина/Кордоба"
+msgstr "Америка/Аргентина/Кордоба"
 
 #: capplets/time-admin/src/time-zones.h:87
 msgid "America/Argentina/Jujuy"
-msgstr "Америка/Арґентина/Жужуй"
+msgstr "Америка/Аргентина/Жужуй"
 
 #: capplets/time-admin/src/time-zones.h:88
 msgid "America/Argentina/La_Rioja"
-msgstr "Америка/Арґентина/Ла-Ріоха"
+msgstr "Америка/Аргентина/Ла-Ріоха"
 
 #: capplets/time-admin/src/time-zones.h:89
 msgid "America/Argentina/Mendoza"
@@ -3335,7 +3364,7 @@ msgstr "Америка/Аргентина/Мендоза"
 
 #: capplets/time-admin/src/time-zones.h:90
 msgid "America/Argentina/Rio_Gallegos"
-msgstr "Америка/Арґентина/Ріо-Ґальєґос"
+msgstr "Америка/Аргентина/Ріо_Ґальєґос"
 
 #: capplets/time-admin/src/time-zones.h:91
 msgid "America/Argentina/Salta"
@@ -3343,19 +3372,19 @@ msgstr "Америка/Аргентина/Сальта"
 
 #: capplets/time-admin/src/time-zones.h:92
 msgid "America/Argentina/San_Juan"
-msgstr "Америка/Арґентина/Сан-Хуан"
+msgstr "Америка/Аргентина/Сан_Хуан"
 
 #: capplets/time-admin/src/time-zones.h:93
 msgid "America/Argentina/San_Luis"
-msgstr "Америка/Арґентина/Сан-Луіс"
+msgstr "Америка/Аргентина/Сан_Луіс"
 
 #: capplets/time-admin/src/time-zones.h:94
 msgid "America/Argentina/Tucuman"
-msgstr "Америка/Арґентина/Тукуман"
+msgstr "Америка/Аргентина/Тукуман"
 
 #: capplets/time-admin/src/time-zones.h:95
 msgid "America/Argentina/Ushuaia"
-msgstr "Америка/Арґентина/Ушуая"
+msgstr "Америка/Аргентина/Ушуая"
 
 #: capplets/time-admin/src/time-zones.h:96
 msgid "America/Aruba"
@@ -3375,7 +3404,7 @@ msgstr "Америка/Баїя"
 
 #: capplets/time-admin/src/time-zones.h:100
 msgid "America/Bahia_Banderas"
-msgstr "Америка/Баїя-де-Бандерас"
+msgstr "Америка/Баїя_Бандерас"
 
 #: capplets/time-admin/src/time-zones.h:101
 msgid "America/Barbados"
@@ -3383,7 +3412,7 @@ msgstr "Америка/Барбадос"
 
 #: capplets/time-admin/src/time-zones.h:102
 msgid "America/Belem"
-msgstr "Америка/Белен"
+msgstr "Америка/Белем"
 
 #: capplets/time-admin/src/time-zones.h:103
 msgid "America/Belize"
@@ -3391,11 +3420,11 @@ msgstr "Америка/Беліз"
 
 #: capplets/time-admin/src/time-zones.h:104
 msgid "America/Blanc-Sablon"
-msgstr "Америка/Бланк-Саблон"
+msgstr "Америка/Бланк_Саблон"
 
 #: capplets/time-admin/src/time-zones.h:105
 msgid "America/Boa_Vista"
-msgstr "Америка/Боа-Віста"
+msgstr "Америка/Боа_Віста"
 
 #: capplets/time-admin/src/time-zones.h:106
 msgid "America/Bogota"
@@ -3407,11 +3436,11 @@ msgstr "Америка/Бойсе"
 
 #: capplets/time-admin/src/time-zones.h:108
 msgid "America/Cambridge_Bay"
-msgstr "Америка/Кембридж-Бей"
+msgstr "Америка/Кембридж_Бей"
 
 #: capplets/time-admin/src/time-zones.h:109
 msgid "America/Campo_Grande"
-msgstr "Америка/Кампо-Ґранде"
+msgstr "Америка/Кампо_Гранде"
 
 #: capplets/time-admin/src/time-zones.h:110
 msgid "America/Cancun"
@@ -3431,7 +3460,7 @@ msgstr "Америка/Кайман"
 
 #: capplets/time-admin/src/time-zones.h:114
 msgid "America/Chicago"
-msgstr "Америка/Чикаґо"
+msgstr "Америка/Чикаго"
 
 #: capplets/time-admin/src/time-zones.h:115
 msgid "America/Chihuahua"
@@ -3439,7 +3468,7 @@ msgstr "Америка/Чиуауа"
 
 #: capplets/time-admin/src/time-zones.h:116
 msgid "America/Costa_Rica"
-msgstr "Америка/Коста-Ріка"
+msgstr "Америка/Коста_Ріка"
 
 #: capplets/time-admin/src/time-zones.h:117
 msgid "America/Creston"
@@ -3463,7 +3492,7 @@ msgstr "Америка/Доусон"
 
 #: capplets/time-admin/src/time-zones.h:122
 msgid "America/Dawson_Creek"
-msgstr "Америка/Бухта Доусона"
+msgstr "Америка/Доусон_Крік"
 
 #: capplets/time-admin/src/time-zones.h:123
 msgid "America/Denver"
@@ -3487,7 +3516,7 @@ msgstr "Америка/Ейрунепе"
 
 #: capplets/time-admin/src/time-zones.h:128
 msgid "America/El_Salvador"
-msgstr "Америка/Ель-Сальвадор"
+msgstr "Америка/Ель_Сальвадор"
 
 #: capplets/time-admin/src/time-zones.h:129
 msgid "America/Fortaleza"
@@ -3495,31 +3524,31 @@ msgstr "Америка/Форталеза"
 
 #: capplets/time-admin/src/time-zones.h:130
 msgid "America/Fort_Nelson"
-msgstr "Америка/Форт-Нельсон"
+msgstr "Америка/Форт_Нельсон"
 
 #: capplets/time-admin/src/time-zones.h:131
 msgid "America/Glace_Bay"
-msgstr "Америка/Ґлейс-Бей"
+msgstr "Америка/Глейс_Бей"
 
 #: capplets/time-admin/src/time-zones.h:132
 msgid "America/Godthab"
-msgstr "Америка/Ґотхоб"
+msgstr "Америка/Готдаб"
 
 #: capplets/time-admin/src/time-zones.h:133
 msgid "America/Goose_Bay"
-msgstr "Америка/Ґус-Бей"
+msgstr "Америка/Гус_Бей"
 
 #: capplets/time-admin/src/time-zones.h:134
 msgid "America/Grand_Turk"
-msgstr "Америка/Ґранд-Турк"
+msgstr "Америка/Гранд_Турк"
 
 #: capplets/time-admin/src/time-zones.h:135
 msgid "America/Grenada"
-msgstr "Америка/Ґренада"
+msgstr "Америка/Гренада"
 
 #: capplets/time-admin/src/time-zones.h:136
 msgid "America/Guadeloupe"
-msgstr "Америка/Ґваделупа"
+msgstr "Америка/Гваделупа"
 
 #: capplets/time-admin/src/time-zones.h:137
 msgid "America/Guatemala"
@@ -3527,11 +3556,11 @@ msgstr "Америка/Гватемала"
 
 #: capplets/time-admin/src/time-zones.h:138
 msgid "America/Guayaquil"
-msgstr "Америка/Ґуянакіль"
+msgstr "Америка/Гуянакіль"
 
 #: capplets/time-admin/src/time-zones.h:139
 msgid "America/Guyana"
-msgstr "Америка/Ґаяна"
+msgstr "Америка/Гаяна"
 
 #: capplets/time-admin/src/time-zones.h:140
 msgid "America/Halifax"
@@ -3555,7 +3584,7 @@ msgstr "Америка/Індіана/Нокс"
 
 #: capplets/time-admin/src/time-zones.h:145
 msgid "America/Indiana/Marengo"
-msgstr "Америка/Індіана/Маренґо"
+msgstr "Америка/Індіана/Маренго"
 
 #: capplets/time-admin/src/time-zones.h:146
 msgid "America/Indiana/Petersburg"
@@ -3563,7 +3592,7 @@ msgstr "Америка/Індіана/Петербург"
 
 #: capplets/time-admin/src/time-zones.h:147
 msgid "America/Indiana/Tell_City"
-msgstr "Америка/Індіана/Телл-Сіті"
+msgstr "Америка/Індіана/Телл_Сіті"
 
 #: capplets/time-admin/src/time-zones.h:148
 msgid "America/Indiana/Vevay"
@@ -3607,7 +3636,7 @@ msgstr "Америка/Кралендейк"
 
 #: capplets/time-admin/src/time-zones.h:158
 msgid "America/La_Paz"
-msgstr "Америка/Ла-Пас"
+msgstr "Америка/Ла_Пас"
 
 #: capplets/time-admin/src/time-zones.h:159
 msgid "America/Lima"
@@ -3615,11 +3644,11 @@ msgstr "Америка/Ліма"
 
 #: capplets/time-admin/src/time-zones.h:160
 msgid "America/Los_Angeles"
-msgstr "Америка/Лос-Анжелес"
+msgstr "Америка/Лос_Анжелес"
 
 #: capplets/time-admin/src/time-zones.h:161
 msgid "America/Lower_Princes"
-msgstr "Америка/Лоуер-Принс"
+msgstr "Америка/Лоуер_Принс"
 
 #: capplets/time-admin/src/time-zones.h:162
 msgid "America/Maceio"
@@ -3627,7 +3656,7 @@ msgstr "Америка/Масейо"
 
 #: capplets/time-admin/src/time-zones.h:163
 msgid "America/Managua"
-msgstr "Америка/Манаґуа"
+msgstr "Америка/Манагуа"
 
 #: capplets/time-admin/src/time-zones.h:164
 msgid "America/Manaus"
@@ -3635,7 +3664,7 @@ msgstr "Америка/Манаус"
 
 #: capplets/time-admin/src/time-zones.h:165
 msgid "America/Marigot"
-msgstr "Америка/Маріґо"
+msgstr "Америка/Маріго"
 
 #: capplets/time-admin/src/time-zones.h:166
 msgid "America/Martinique"
@@ -3663,7 +3692,7 @@ msgstr "Америка/Метлакатла"
 
 #: capplets/time-admin/src/time-zones.h:172
 msgid "America/Mexico_City"
-msgstr "Америка/Мехіко-Сіті"
+msgstr "Америка/Мехіко_Сіті"
 
 #: capplets/time-admin/src/time-zones.h:173
 msgid "America/Miquelon"
@@ -3691,7 +3720,7 @@ msgstr "Америка/Нассау"
 
 #: capplets/time-admin/src/time-zones.h:179
 msgid "America/New_York"
-msgstr "Америка/Нью-Йорк"
+msgstr "Америка/Нью_Йорк"
 
 #: capplets/time-admin/src/time-zones.h:180
 msgid "America/Nipigon"
@@ -3707,19 +3736,19 @@ msgstr "Америка/Норонха"
 
 #: capplets/time-admin/src/time-zones.h:183
 msgid "America/North_Dakota/Beulah"
-msgstr "Америка/Північна Дакота/Беула"
+msgstr "Америка/Північна_Дакота/Беула"
 
 #: capplets/time-admin/src/time-zones.h:184
 msgid "America/North_Dakota/Center"
-msgstr "Америка/Північна Дакота/Центр"
+msgstr "Америка/Північна_Дакота/Центр"
 
 #: capplets/time-admin/src/time-zones.h:185
 msgid "America/North_Dakota/New_Salem"
-msgstr "Америка/Північна Дакота/Нью_Салем"
+msgstr "Америка/Північна_Дакота/Нью_Салем"
 
 #: capplets/time-admin/src/time-zones.h:186
 msgid "America/Ojinaga"
-msgstr "Америка/Оджіґа"
+msgstr "Америка/Оджіга"
 
 #: capplets/time-admin/src/time-zones.h:187
 msgid "America/Panama"
@@ -3727,7 +3756,7 @@ msgstr "Америка/Панама"
 
 #: capplets/time-admin/src/time-zones.h:188
 msgid "America/Pangnirtung"
-msgstr "Америка/Панґніртунґ"
+msgstr "Америка/Пангніртунг"
 
 #: capplets/time-admin/src/time-zones.h:189
 msgid "America/Paramaribo"
@@ -3735,7 +3764,7 @@ msgstr "Америка/Парамарібо"
 
 #: capplets/time-admin/src/time-zones.h:190
 msgid "America/Phoenix"
-msgstr "Америка/Фінікс"
+msgstr "Америка/Фенікс"
 
 #: capplets/time-admin/src/time-zones.h:191
 msgid "America/Port-au-Prince"
@@ -3743,27 +3772,27 @@ msgstr "Америка/Порт-о-Пренс"
 
 #: capplets/time-admin/src/time-zones.h:192
 msgid "America/Port_of_Spain"
-msgstr "Америка/Порт-оф-Спейн"
+msgstr "Америка/Порт_оф_Спейн"
 
 #: capplets/time-admin/src/time-zones.h:193
 msgid "America/Porto_Velho"
-msgstr "Америка/Порту-Велью"
+msgstr "Америка/Порту_Велью"
 
 #: capplets/time-admin/src/time-zones.h:194
 msgid "America/Puerto_Rico"
-msgstr "Америка/Пуерто-Ріко"
+msgstr "Америка/Пуерто_Ріко"
 
 #: capplets/time-admin/src/time-zones.h:195
 msgid "America/Punta_Arenas"
-msgstr "Америка/Пунта-Аренас"
+msgstr "Америка/Пунта_Аренас"
 
 #: capplets/time-admin/src/time-zones.h:196
 msgid "America/Rainy_River"
-msgstr "Америка/Рейні-Рівер"
+msgstr "Америка/Рейні_Рівер"
 
 #: capplets/time-admin/src/time-zones.h:197
 msgid "America/Rankin_Inlet"
-msgstr "Америка/Ранкін-Інлет"
+msgstr "Америка/Ранкін_Інлет"
 
 #: capplets/time-admin/src/time-zones.h:198
 msgid "America/Recife"
@@ -3771,7 +3800,7 @@ msgstr "Америка/Ресіфі"
 
 #: capplets/time-admin/src/time-zones.h:199
 msgid "America/Regina"
-msgstr "Америка/Реґіна"
+msgstr "Америка/Регіна"
 
 #: capplets/time-admin/src/time-zones.h:200
 msgid "America/Resolute"
@@ -3779,7 +3808,7 @@ msgstr "Америка/Резольют"
 
 #: capplets/time-admin/src/time-zones.h:201
 msgid "America/Rio_Branco"
-msgstr "Америка/Ріо-Бранко"
+msgstr "Америка/Ріо_Бранко"
 
 #: capplets/time-admin/src/time-zones.h:202
 msgid "America/Santarem"
@@ -3787,19 +3816,19 @@ msgstr "Америка/Сантарем"
 
 #: capplets/time-admin/src/time-zones.h:203
 msgid "America/Santiago"
-msgstr "Америка/Сант'яґо"
+msgstr "Америка/Сант'яго"
 
 #: capplets/time-admin/src/time-zones.h:204
 msgid "America/Santo_Domingo"
-msgstr "Америка/Санто-Домінґо"
+msgstr "Америка/Санто_Домінго"
 
 #: capplets/time-admin/src/time-zones.h:205
 msgid "America/Sao_Paulo"
-msgstr "Америка/Сан-Паулу"
+msgstr "Америка/Сан_Паулу"
 
 #: capplets/time-admin/src/time-zones.h:206
 msgid "America/Scoresbysund"
-msgstr "Америка/Скорсбісунн"
+msgstr "Америка/Скорсбізунд"
 
 #: capplets/time-admin/src/time-zones.h:207
 msgid "America/Sitka"
@@ -3807,35 +3836,35 @@ msgstr "Америка/Ситка"
 
 #: capplets/time-admin/src/time-zones.h:208
 msgid "America/St_Barthelemy"
-msgstr "Америка/Сен-Бартельмі"
+msgstr "Америка/Сен_Бартельмі"
 
 #: capplets/time-admin/src/time-zones.h:209
 msgid "America/St_Johns"
-msgstr "Америка/Сент-Джон"
+msgstr "Америка/Сент_Джон"
 
 #: capplets/time-admin/src/time-zones.h:210
 msgid "America/St_Kitts"
-msgstr "Америка/Сент-Кітс"
+msgstr "Америка/Сент_Кітс"
 
 #: capplets/time-admin/src/time-zones.h:211
 msgid "America/St_Lucia"
-msgstr "Америка/Сент-Люсія"
+msgstr "Америка/Сент_Люсія"
 
 #: capplets/time-admin/src/time-zones.h:212
 msgid "America/St_Thomas"
-msgstr "Америка/Сент-Томас"
+msgstr "Америка/Сент_Томас"
 
 #: capplets/time-admin/src/time-zones.h:213
 msgid "America/St_Vincent"
-msgstr "Америка/Сент-Вінсент"
+msgstr "Америка/Сент_Вінсент"
 
 #: capplets/time-admin/src/time-zones.h:214
 msgid "America/Swift_Current"
-msgstr "Америка/Свіфт-Керрент"
+msgstr "Америка/Свіфт_Керрент"
 
 #: capplets/time-admin/src/time-zones.h:215
 msgid "America/Tegucigalpa"
-msgstr "Америка/Теґусіґальпа"
+msgstr "Америка/Тегусігальпа"
 
 #: capplets/time-admin/src/time-zones.h:216
 msgid "America/Thule"
@@ -3843,7 +3872,7 @@ msgstr "Америка/Туле"
 
 #: capplets/time-admin/src/time-zones.h:217
 msgid "America/Thunder_Bay"
-msgstr "Америка/Тáндер-Бей"
+msgstr "Америка/Тандер_Бей"
 
 #: capplets/time-admin/src/time-zones.h:218
 msgid "America/Tijuana"
@@ -3867,7 +3896,7 @@ msgstr "Америка/Вайтгорс"
 
 #: capplets/time-admin/src/time-zones.h:223
 msgid "America/Winnipeg"
-msgstr "Америка/Вінніпеґ"
+msgstr "Америка/Вінніпег"
 
 #: capplets/time-admin/src/time-zones.h:224
 msgid "America/Yakutat"
@@ -3931,7 +3960,7 @@ msgstr "Азія/Аден"
 
 #: capplets/time-admin/src/time-zones.h:239
 msgid "Asia/Almaty"
-msgstr "Азія/Алма-Ата"
+msgstr "Азія/Алмати"
 
 #: capplets/time-admin/src/time-zones.h:240
 msgid "Asia/Amman"
@@ -3951,7 +3980,7 @@ msgstr "Азія/Актобе"
 
 #: capplets/time-admin/src/time-zones.h:244
 msgid "Asia/Ashgabat"
-msgstr "Азія/Ашґабад"
+msgstr "Азія/Ашхабад"
 
 #: capplets/time-admin/src/time-zones.h:245
 msgid "Asia/Atyrau"
@@ -4023,11 +4052,11 @@ msgstr "Азія/Душанбе"
 
 #: capplets/time-admin/src/time-zones.h:262
 msgid "Asia/Famagusta"
-msgstr "Азія/Фамаґуста"
+msgstr "Азія/Фамагуста"
 
 #: capplets/time-admin/src/time-zones.h:263
 msgid "Asia/Gaza"
-msgstr "Азія/Ґаза"
+msgstr "Азія/Газа"
 
 #: capplets/time-admin/src/time-zones.h:264
 msgid "Asia/Hebron"
@@ -4035,15 +4064,15 @@ msgstr "Азія/Хеврон"
 
 #: capplets/time-admin/src/time-zones.h:265
 msgid "Asia/Ho_Chi_Minh"
-msgstr "Азія/Хо-Чі-Мін"
+msgstr "Азія/Хо_Чі_Мін"
 
 #: capplets/time-admin/src/time-zones.h:266
 msgid "Asia/Hong_Kong"
-msgstr "Азія/Гонг-Конґ"
+msgstr "Азія/Гонг_Конґ"
 
 #: capplets/time-admin/src/time-zones.h:267
 msgid "Asia/Hovd"
-msgstr "Азія/Кобдо"
+msgstr "Азія/Ховд"
 
 #: capplets/time-admin/src/time-zones.h:268
 msgid "Asia/Irkutsk"
@@ -4091,7 +4120,7 @@ msgstr "Азія/Красноярськ"
 
 #: capplets/time-admin/src/time-zones.h:279
 msgid "Asia/Kuala_Lumpur"
-msgstr "Азія/Куала-Лумпур"
+msgstr "Азія/Куала_Лумпур"
 
 #: capplets/time-admin/src/time-zones.h:280
 msgid "Asia/Kuching"
@@ -4187,11 +4216,11 @@ msgstr "Азія/Шанхай"
 
 #: capplets/time-admin/src/time-zones.h:303
 msgid "Asia/Singapore"
-msgstr "Азія/Сінґапур"
+msgstr "Азія/Сінгапур"
 
 #: capplets/time-admin/src/time-zones.h:304
 msgid "Asia/Srednekolymsk"
-msgstr "Азія/Среньоколимськ"
+msgstr "Азія/Среднеколимськ"
 
 #: capplets/time-admin/src/time-zones.h:305
 msgid "Asia/Taipei"
@@ -4247,7 +4276,7 @@ msgstr "Азія/Якутськ"
 
 #: capplets/time-admin/src/time-zones.h:318
 msgid "Asia/Yangon"
-msgstr "Азія/Янґон"
+msgstr "Азія/Янгон"
 
 #: capplets/time-admin/src/time-zones.h:319
 msgid "Asia/Yekaterinburg"
@@ -4271,7 +4300,7 @@ msgstr "Атлантика/Канарські о-ви"
 
 #: capplets/time-admin/src/time-zones.h:324
 msgid "Atlantic/Cape_Verde"
-msgstr "Атлантика/Капе Верде"
+msgstr "Атлантика/Капе_Верде"
 
 #: capplets/time-admin/src/time-zones.h:325
 msgid "Atlantic/Faroe"
@@ -4307,7 +4336,7 @@ msgstr "Австралія/Брісбен"
 
 #: capplets/time-admin/src/time-zones.h:333
 msgid "Australia/Broken_Hill"
-msgstr "Австралія/Брокен-Гілл"
+msgstr "Австралія/Брокен_Гілл"
 
 #: capplets/time-admin/src/time-zones.h:334
 msgid "Australia/Currie"
@@ -4331,7 +4360,7 @@ msgstr "Австралія/Ліндеман"
 
 #: capplets/time-admin/src/time-zones.h:339
 msgid "Australia/Lord_Howe"
-msgstr "Австралія/Лорд-Хау"
+msgstr "Австралія/Лорд_Хау"
 
 #: capplets/time-admin/src/time-zones.h:340
 msgid "Australia/Melbourne"
@@ -4359,231 +4388,231 @@ msgstr "Европа/Астрахань"
 
 #: capplets/time-admin/src/time-zones.h:346
 msgid "Europe/Athens"
-msgstr "Европа/Атени"
+msgstr "Європа/Афіни"
 
 #: capplets/time-admin/src/time-zones.h:347
 msgid "Europe/Belgrade"
-msgstr "Европа/Белград"
+msgstr "Європа//Белград"
 
 #: capplets/time-admin/src/time-zones.h:348
 msgid "Europe/Berlin"
-msgstr "Европа/Берлін"
+msgstr "Європа/Берлін"
 
 #: capplets/time-admin/src/time-zones.h:349
 msgid "Europe/Bratislava"
-msgstr "Европа/Братислава"
+msgstr "Європа/Братислава"
 
 #: capplets/time-admin/src/time-zones.h:350
 msgid "Europe/Brussels"
-msgstr "Европа/Брюссель"
+msgstr "Європа/Брюссель"
 
 #: capplets/time-admin/src/time-zones.h:351
 msgid "Europe/Bucharest"
-msgstr "Европа/Бухарест"
+msgstr "Європа/Бухарест"
 
 #: capplets/time-admin/src/time-zones.h:352
 msgid "Europe/Budapest"
-msgstr "Европа/Будапешт"
+msgstr "Європа/Будапешт"
 
 #: capplets/time-admin/src/time-zones.h:353
 msgid "Europe/Busingen"
-msgstr "Европа/Бюзінґен"
+msgstr "Європа/Бюзінген"
 
 #: capplets/time-admin/src/time-zones.h:354
 msgid "Europe/Chisinau"
-msgstr "Европа/Кишинів"
+msgstr "Європа/Кишинів"
 
 #: capplets/time-admin/src/time-zones.h:355
 msgid "Europe/Copenhagen"
-msgstr "Европа/Копенгаґен"
+msgstr "Європа/Копенгаґен"
 
 #: capplets/time-admin/src/time-zones.h:356
 msgid "Europe/Dublin"
-msgstr "Европа/Дублін"
+msgstr "Європа/Дублін"
 
 #: capplets/time-admin/src/time-zones.h:357
 msgid "Europe/Gibraltar"
-msgstr "Европа/Ґібралтар"
+msgstr "Європа/Гібралтар"
 
 #: capplets/time-admin/src/time-zones.h:358
 msgid "Europe/Guernsey"
-msgstr "Европа/Ґернси"
+msgstr "Європа/Гернси"
 
 #: capplets/time-admin/src/time-zones.h:359
 msgid "Europe/Helsinki"
-msgstr "Европа/Гельсінкі"
+msgstr "Європа/Гельсінкі"
 
 #: capplets/time-admin/src/time-zones.h:360
 msgid "Europe/Isle_of_Man"
-msgstr "Европа/Острів_Мен"
+msgstr "Європа/Острів_Мен"
 
 #: capplets/time-admin/src/time-zones.h:361
 msgid "Europe/Istanbul"
-msgstr "Европа/Стамбул"
+msgstr "Європа/Стамбул"
 
 #: capplets/time-admin/src/time-zones.h:362
 msgid "Europe/Jersey"
-msgstr "Европа/Джерсі"
+msgstr "Європа/Джерсі"
 
 #: capplets/time-admin/src/time-zones.h:363
 msgid "Europe/Kaliningrad"
-msgstr "Европа/Калінінград"
+msgstr "Європа/Калінінград"
 
 #: capplets/time-admin/src/time-zones.h:364
 msgid "Europe/Kiev"
-msgstr "Европа/Київ"
+msgstr "Європа/Київ"
 
 #: capplets/time-admin/src/time-zones.h:365
 msgid "Europe/Kirov"
-msgstr "Европа/Кіров"
+msgstr "Європа/Кіров"
 
 #: capplets/time-admin/src/time-zones.h:366
 msgid "Europe/Lisbon"
-msgstr "Европа/Лісабон"
+msgstr "Європа/Лісабон"
 
 #: capplets/time-admin/src/time-zones.h:367
 msgid "Europe/Ljubljana"
-msgstr "Европа/Любляна"
+msgstr "Європа/Любляна"
 
 #: capplets/time-admin/src/time-zones.h:368
 msgid "Europe/London"
-msgstr "Европа/Лондон"
+msgstr "Європа/Лондон"
 
 #: capplets/time-admin/src/time-zones.h:369
 msgid "Europe/Luxembourg"
-msgstr "Европа/Люксембурґ"
+msgstr "Європа/Люксембург"
 
 #: capplets/time-admin/src/time-zones.h:370
 msgid "Europe/Madrid"
-msgstr "Европа/Мадрид"
+msgstr "Європа/Мадрид"
 
 #: capplets/time-admin/src/time-zones.h:371
 msgid "Europe/Malta"
-msgstr "Европа/Мальта"
+msgstr "Європа/Мальта"
 
 #: capplets/time-admin/src/time-zones.h:372
 msgid "Europe/Mariehamn"
-msgstr "Европа/Марієхамн"
+msgstr "Європа/Марієхамн"
 
 #: capplets/time-admin/src/time-zones.h:373
 msgid "Europe/Minsk"
-msgstr "Европа/Мінськ"
+msgstr "Європа/Мінськ"
 
 #: capplets/time-admin/src/time-zones.h:374
 msgid "Europe/Monaco"
-msgstr "Европа/Монако"
+msgstr "Європа/Монако"
 
 #: capplets/time-admin/src/time-zones.h:375
 msgid "Europe/Moscow"
-msgstr "Европа/Москва"
+msgstr "Європа/Москва"
 
 #: capplets/time-admin/src/time-zones.h:376
 msgid "Europe/Oslo"
-msgstr "Европа/Осло"
+msgstr "Європа/Осло"
 
 #: capplets/time-admin/src/time-zones.h:377
 msgid "Europe/Paris"
-msgstr "Европа/Париж"
+msgstr "Європа/Париж"
 
 #: capplets/time-admin/src/time-zones.h:378
 msgid "Europe/Podgorica"
-msgstr "Европа/Подґориця"
+msgstr "Європа/Подгориця"
 
 #: capplets/time-admin/src/time-zones.h:379
 msgid "Europe/Prague"
-msgstr "Европа/Праґа"
+msgstr "Європа/Прага"
 
 #: capplets/time-admin/src/time-zones.h:380
 msgid "Europe/Riga"
-msgstr "Европа/Риґа"
+msgstr "Європа/Рига"
 
 #: capplets/time-admin/src/time-zones.h:381
 msgid "Europe/Rome"
-msgstr "Европа/Рим"
+msgstr "Європа/Рим"
 
 #: capplets/time-admin/src/time-zones.h:382
 msgid "Europe/Samara"
-msgstr "Европа/Самара"
+msgstr "Європа/Самара"
 
 #: capplets/time-admin/src/time-zones.h:383
 msgid "Europe/San_Marino"
-msgstr "Европа/Сан Мартіно"
+msgstr "Європа/Сан_Мартіно"
 
 #: capplets/time-admin/src/time-zones.h:384
 msgid "Europe/Sarajevo"
-msgstr "Европа/Сараєво"
+msgstr "Європа/Сараєво"
 
 #: capplets/time-admin/src/time-zones.h:385
 msgid "Europe/Saratov"
-msgstr "Европа/Саратов"
+msgstr "Європа/Саратов"
 
 #: capplets/time-admin/src/time-zones.h:386
 msgid "Europe/Simferopol"
-msgstr "Европа/Сімферополь"
+msgstr "Європа/Сімферополь"
 
 #: capplets/time-admin/src/time-zones.h:387
 msgid "Europe/Skopje"
-msgstr "Европа/Скопьє"
+msgstr "Європа/Скопьє"
 
 #: capplets/time-admin/src/time-zones.h:388
 msgid "Europe/Sofia"
-msgstr "Европа/Софія"
+msgstr "Європа/Софія"
 
 #: capplets/time-admin/src/time-zones.h:389
 msgid "Europe/Stockholm"
-msgstr "Европа/Стокгольм"
+msgstr "Європа/Стокгольм"
 
 #: capplets/time-admin/src/time-zones.h:390
 msgid "Europe/Tallinn"
-msgstr "Европа/Таллін"
+msgstr "Європа/Таллін"
 
 #: capplets/time-admin/src/time-zones.h:391
 msgid "Europe/Tirane"
-msgstr "Европа/Тирана"
+msgstr "Європа/Тирана"
 
 #: capplets/time-admin/src/time-zones.h:392
 msgid "Europe/Ulyanovsk"
-msgstr "Европа/Ульяновськ"
+msgstr "Європа/Ульяновськ"
 
 #: capplets/time-admin/src/time-zones.h:393
 msgid "Europe/Uzhgorod"
-msgstr "Европа/Ужгород"
+msgstr "Європа/Ужгород"
 
 #: capplets/time-admin/src/time-zones.h:394
 msgid "Europe/Vaduz"
-msgstr "Европа/Вадуц"
+msgstr "Європа/Вадуц"
 
 #: capplets/time-admin/src/time-zones.h:395
 msgid "Europe/Vatican"
-msgstr "Европа/Ватикан"
+msgstr "Європа/Ватикан"
 
 #: capplets/time-admin/src/time-zones.h:396
 msgid "Europe/Vienna"
-msgstr "Европа/Відень"
+msgstr "Європа/Відень"
 
 #: capplets/time-admin/src/time-zones.h:397
 msgid "Europe/Vilnius"
-msgstr "Европа/Вільнюс"
+msgstr "Європа/Вільнюс"
 
 #: capplets/time-admin/src/time-zones.h:398
 msgid "Europe/Volgograd"
-msgstr "Европа/Волґоґрад"
+msgstr "Європа/Волгоград"
 
 #: capplets/time-admin/src/time-zones.h:399
 msgid "Europe/Warsaw"
-msgstr "Европа/Варшава"
+msgstr "Європа/Варшава"
 
 #: capplets/time-admin/src/time-zones.h:400
 msgid "Europe/Zagreb"
-msgstr "Европа/Заґреб"
+msgstr "Європа/Загреб"
 
 #: capplets/time-admin/src/time-zones.h:401
 msgid "Europe/Zaporozhye"
-msgstr "Европа/Запоріжжя"
+msgstr "Європа/Запоріжжя"
 
 #: capplets/time-admin/src/time-zones.h:402
 msgid "Europe/Zurich"
-msgstr "Европа/Цюріх"
+msgstr "Європа/Цюріх"
 
 #: capplets/time-admin/src/time-zones.h:403
 msgid "Indian/Antananarivo"
@@ -4735,7 +4764,7 @@ msgstr "Тихий океан/Нумеа"
 
 #: capplets/time-admin/src/time-zones.h:440
 msgid "Pacific/Pago_Pago"
-msgstr "Тихий океан/Паґо-Паґо"
+msgstr "Тихий океан/Паґо_Паґо"
 
 #: capplets/time-admin/src/time-zones.h:441
 msgid "Pacific/Palau"
@@ -4751,7 +4780,7 @@ msgstr "Тихий океан/Понпей"
 
 #: capplets/time-admin/src/time-zones.h:444
 msgid "Pacific/Port_Moresby"
-msgstr "Тихий океан/Порт-Морсбі"
+msgstr "Тихий океан/Порт_Морсбі"
 
 #: capplets/time-admin/src/time-zones.h:445
 msgid "Pacific/Rarotonga"
@@ -4783,7 +4812,7 @@ msgstr "Тихий океан/Уолліс"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:3
 msgid "Time And Date Manager"
-msgstr "Упорядник часу та дати"
+msgstr "Керівник файлами"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
@@ -4909,7 +4938,8 @@ msgid "translator-credits"
 msgstr ""
 "Yarema aka Knedlyk <yupadmin@gmail.com>,\n"
 "Микола Ткач <Stuartlittle1970@gmail.com>,\n"
-"Oleh Tsyupka <myr4yk@gmail.com>"
+"Oleh Tsyupka <myr4yk@gmail.com>\n"
+"Anton Gladky <gladk@debian.org>"
 
 #: typing-break/main.c:62
 msgid "Enable debugging code"
@@ -5018,22 +5048,22 @@ msgstr "РОЗМІР"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "ФАЙЛ-ШРИФТУ ФАЙЛ-ВИВОДУ"
 
-#: libslab/app-shell.c:763
+#: libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Ваш фільтр \"%s\" не збігається з жодним пунктом."
 
-#: libslab/app-shell.c:765
+#: libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "Збігів не виявлено."
 
-#: libslab/app-shell.c:874
+#: libslab/app-shell.c:883
 msgid "New Applications"
 msgstr "Нові додатки"
 
-#: libslab/app-shell.c:936
+#: libslab/app-shell.c:945
 msgid "Other"
-msgstr "Инше"
+msgstr "Iнше"
 
 #: libslab/application-tile.c:338
 #, c-format

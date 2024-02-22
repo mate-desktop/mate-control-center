@@ -11,7 +11,6 @@
 # emariusek <wisniowy@g.pl>, 2018
 # Kajetan Rosiak <roskaj@gmail.com>, 2018
 # marcin mikołajczak <me@mkljczk.pl>, 2018
-# Marcin Kralka <marcink96@gmail.com>, 2018
 # Paweł Bandura <gawelx@gmail.com>, 2018
 # Jan Bońkowski <bonkowskijan@gmail.com>, 2018
 # Marcin GTriderXC <gtriderxc@yahoo.com>, 2018
@@ -27,17 +26,19 @@
 # clefebvre <clement.lefebvre@linuxmint.com>, 2020
 # Dominik Adrian Grzywak, 2020
 # Michal Herman <szalejot@gmail.com>, 2021
-# Stefano Karapetsas <stefano@karapetsas.com>, 2021
-# Marek Adamski, 2022
+# Marcin Kralka <marcink96@gmail.com>, 2023
+# Krzysztof Kokot <kokot300@gmail.com>, 2023
+# Stefano Karapetsas <stefano@karapetsas.com>, 2023
+# Marek Adamski, 2023
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.26.0\n"
+"Project-Id-Version: mate-control-center 1.27.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2022-10-29 15:31+0200\n"
+"POT-Creation-Date: 2023-09-02 16:51+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Marek Adamski, 2022\n"
-"Language-Team: Polish (https://www.transifex.com/mate/teams/13566/pl/)\n"
+"Last-Translator: Marek Adamski, 2023\n"
+"Language-Team: Polish (https://app.transifex.com/mate/teams/13566/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -196,9 +197,9 @@ msgstr "O mnie"
 #: capplets/about-me/mate-about-me-dialog.ui:54
 #: capplets/about-me/mate-about-me-password.ui:54
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:119
-#: capplets/appearance/data/appearance.ui:61
-#: capplets/appearance/data/appearance.ui:1215
-#: capplets/appearance/data/appearance.ui:2069
+#: capplets/appearance/data/appearance.ui:101
+#: capplets/appearance/data/appearance.ui:1255
+#: capplets/appearance/data/appearance.ui:2109
 #: capplets/default-applications/mate-default-applications-properties.ui:55
 #: capplets/display/display-capplet.ui:106
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:140
@@ -524,8 +525,8 @@ msgid "Assistive Technologies Preferences"
 msgstr "Preferencje technologii wspierających"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:86
-#: capplets/appearance/data/appearance.ui:1198
-#: capplets/appearance/data/appearance.ui:2051
+#: capplets/appearance/data/appearance.ui:1238
+#: capplets/appearance/data/appearance.ui:2091
 #: capplets/default-applications/mate-default-applications-properties.ui:38
 #: capplets/display/display-capplet.ui:58
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:123
@@ -615,17 +616,18 @@ msgid "Select Font"
 msgstr "Wybierz czcionkę"
 
 #: capplets/appearance/appearance-font.c:617
-#: capplets/appearance/data/appearance.ui:951
+#: capplets/appearance/data/appearance.ui:991
 msgid "_Cancel"
 msgstr "_Anuluj"
 
 #: capplets/appearance/appearance-font.c:619
+#: capplets/appearance/data/appearance.ui:3539
 #: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "_Otwórz"
 
 #: capplets/appearance/appearance-font.c:624
-#: capplets/appearance/data/appearance.ui:3075
+#: capplets/appearance/data/appearance.ui:3115
 msgid "Fonts"
 msgstr "Czcionki"
 
@@ -718,410 +720,435 @@ msgid "The current theme suggests a font."
 msgstr "Ten motyw sugeruje użycie określonej czcionki."
 
 #: capplets/appearance/appearance-themes.c:1012
-#: capplets/windows/mate-window-properties.c:247
+#: capplets/windows/mate-window-properties.c:248
 msgid "Custom"
 msgstr "Własny"
 
-#: capplets/appearance/data/appearance.ui:45
+#: capplets/appearance/data/appearance.ui:85
 msgid "Font Rendering Details"
 msgstr "Szczegóły renderowania czcionek"
 
-#: capplets/appearance/data/appearance.ui:102
+#: capplets/appearance/data/appearance.ui:142
 msgid "R_esolution"
 msgstr "Ro_zdzielczość"
 
-#: capplets/appearance/data/appearance.ui:125
+#: capplets/appearance/data/appearance.ui:165
 msgid "Dots per inch (DPI):"
 msgstr "Punktów na cal (DPI):"
 
-#: capplets/appearance/data/appearance.ui:161
+#: capplets/appearance/data/appearance.ui:201
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr ""
 "To przywróci DPI czcionki do wartości automatycznie wykrytej przez serwer X."
 
-#: capplets/appearance/data/appearance.ui:162
+#: capplets/appearance/data/appearance.ui:202
 msgid "Automatic detection:"
 msgstr "Automatyczne wykrywanie:"
 
-#: capplets/appearance/data/appearance.ui:206
+#: capplets/appearance/data/appearance.ui:246
 msgid "Smoothing"
 msgstr "Wygładzanie"
 
-#: capplets/appearance/data/appearance.ui:240
+#: capplets/appearance/data/appearance.ui:280
 msgid "Gra_yscale"
 msgstr "S_kala szarości"
 
-#: capplets/appearance/data/appearance.ui:286
+#: capplets/appearance/data/appearance.ui:326
 msgid "Sub_pixel (LCDs)"
 msgstr "_Podpikselowe (wyświetlacze LCD)"
 
-#: capplets/appearance/data/appearance.ui:332
+#: capplets/appearance/data/appearance.ui:372
 msgid "_None"
 msgstr "_Brak"
 
 #. font hinting
-#: capplets/appearance/data/appearance.ui:412
+#: capplets/appearance/data/appearance.ui:452
 msgid "Hinting"
 msgstr "Hinting"
 
-#: capplets/appearance/data/appearance.ui:445
+#: capplets/appearance/data/appearance.ui:485
 msgid "N_one"
 msgstr "_Brak"
 
-#: capplets/appearance/data/appearance.ui:490
+#: capplets/appearance/data/appearance.ui:530
 msgid "_Slight"
 msgstr "_Lekki"
 
-#: capplets/appearance/data/appearance.ui:536
+#: capplets/appearance/data/appearance.ui:576
 msgid "_Full"
 msgstr "_Pełny"
 
-#: capplets/appearance/data/appearance.ui:582
+#: capplets/appearance/data/appearance.ui:622
 msgid "_Medium"
 msgstr "Śr_edni"
 
-#: capplets/appearance/data/appearance.ui:661
+#: capplets/appearance/data/appearance.ui:701
 msgid "Subpixel Order"
 msgstr "Kolejność składowych pikseli"
 
 #. pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:692
+#: capplets/appearance/data/appearance.ui:732
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:731
+#: capplets/appearance/data/appearance.ui:771
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:771
+#: capplets/appearance/data/appearance.ui:811
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:811
+#: capplets/appearance/data/appearance.ui:851
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: capplets/appearance/data/appearance.ui:935
+#: capplets/appearance/data/appearance.ui:975
 msgid "Save Theme As..."
 msgstr "Zapisz motyw jako..."
 
-#: capplets/appearance/data/appearance.ui:968
+#: capplets/appearance/data/appearance.ui:1008
+#: capplets/appearance/data/appearance.ui:3548
 #: capplets/time-admin/src/time-admin.ui:370
 msgid "_Save"
 msgstr "_Zapisz"
 
-#: capplets/appearance/data/appearance.ui:1033
+#: capplets/appearance/data/appearance.ui:1073
 msgid "Save _background image"
 msgstr "Zapisz obraz _tła"
 
-#: capplets/appearance/data/appearance.ui:1047
+#: capplets/appearance/data/appearance.ui:1087
 msgid "Save _notification theme"
 msgstr "Zapisz wygląd _powiadomień"
 
-#: capplets/appearance/data/appearance.ui:1064
+#: capplets/appearance/data/appearance.ui:1104
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "_Nazwa:"
 
-#: capplets/appearance/data/appearance.ui:1079
+#: capplets/appearance/data/appearance.ui:1119
 msgid "_Description:"
 msgstr "_Opis:"
 
-#: capplets/appearance/data/appearance.ui:1157
+#: capplets/appearance/data/appearance.ui:1197
 msgid "Text below items"
 msgstr "Tekst pod ikonami"
 
-#: capplets/appearance/data/appearance.ui:1160
+#: capplets/appearance/data/appearance.ui:1200
 msgid "Text beside items"
 msgstr "Tekst przy ikonach"
 
-#: capplets/appearance/data/appearance.ui:1163
+#: capplets/appearance/data/appearance.ui:1203
 msgid "Icons only"
 msgstr "Tylko ikony"
 
-#: capplets/appearance/data/appearance.ui:1166
+#: capplets/appearance/data/appearance.ui:1206
 msgid "Text only"
 msgstr "Tylko tekst"
 
-#: capplets/appearance/data/appearance.ui:1179
+#: capplets/appearance/data/appearance.ui:1219
 msgid "Customize Theme"
 msgstr "Własny motyw"
 
-#: capplets/appearance/data/appearance.ui:1301
-#: capplets/appearance/data/appearance.ui:1671
-#: capplets/appearance/data/appearance.ui:1754
-#: capplets/appearance/data/appearance.ui:1913
-#: capplets/appearance/data/appearance.ui:2157
+#: capplets/appearance/data/appearance.ui:1341
+#: capplets/appearance/data/appearance.ui:1711
+#: capplets/appearance/data/appearance.ui:1794
+#: capplets/appearance/data/appearance.ui:1953
+#: capplets/appearance/data/appearance.ui:2197
 msgid "_Delete"
 msgstr "_Usuń"
 
-#: capplets/appearance/data/appearance.ui:1331
+#: capplets/appearance/data/appearance.ui:1371
 msgid "Controls"
 msgstr "Elementy sterujące"
 
-#: capplets/appearance/data/appearance.ui:1368
+#: capplets/appearance/data/appearance.ui:1408
 msgid "The current controls theme does not support color schemes."
 msgstr "Bieżący motyw nie obsługuje schematów kolorów."
 
-#: capplets/appearance/data/appearance.ui:1424
+#: capplets/appearance/data/appearance.ui:1464
 msgid "_Tooltips:"
 msgstr "P_odpowiedzi:"
 
-#: capplets/appearance/data/appearance.ui:1510
+#: capplets/appearance/data/appearance.ui:1550
 msgid "Text"
 msgstr "Tekst"
 
-#: capplets/appearance/data/appearance.ui:1522
-#: capplets/appearance/data/appearance.ui:2573
+#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:2613
 msgid "Background"
 msgstr "Tło"
 
-#: capplets/appearance/data/appearance.ui:1534
+#: capplets/appearance/data/appearance.ui:1574
 msgid "_Selected items:"
 msgstr "_Wybrane elementy:"
 
-#: capplets/appearance/data/appearance.ui:1548
+#: capplets/appearance/data/appearance.ui:1588
 msgid "_Input boxes:"
 msgstr "_Pola wejściowe:"
 
-#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:1602
 msgid "_Windows:"
 msgstr "O_kna:"
 
-#: capplets/appearance/data/appearance.ui:1589
+#: capplets/appearance/data/appearance.ui:1629
 msgid "_Reset to Defaults"
 msgstr "Przywróć _domyślne"
 
-#: capplets/appearance/data/appearance.ui:1621
+#: capplets/appearance/data/appearance.ui:1661
 msgid "Colors"
 msgstr "Kolory"
 
-#: capplets/appearance/data/appearance.ui:1704
+#: capplets/appearance/data/appearance.ui:1744
 msgid "Window Border"
 msgstr "Krawędź okna"
 
-#: capplets/appearance/data/appearance.ui:1787
+#: capplets/appearance/data/appearance.ui:1827
 msgid "Icons"
 msgstr "Ikony"
 
-#: capplets/appearance/data/appearance.ui:1837
+#: capplets/appearance/data/appearance.ui:1877
 msgid "_Size:"
 msgstr "_Rozmiar:"
 
 #. small threshold
-#: capplets/appearance/data/appearance.ui:1858
+#: capplets/appearance/data/appearance.ui:1898
 #: capplets/mouse/mate-mouse-properties.ui:680
 msgid "Small"
 msgstr "Mały"
 
 #. large threshold
-#: capplets/appearance/data/appearance.ui:1888
+#: capplets/appearance/data/appearance.ui:1928
 #: capplets/mouse/mate-mouse-properties.ui:717
 msgid "Large"
 msgstr "Duży"
 
-#: capplets/appearance/data/appearance.ui:1954
+#: capplets/appearance/data/appearance.ui:1994
 msgid "Pointer"
 msgstr "Kursor"
 
-#: capplets/appearance/data/appearance.ui:1987
+#: capplets/appearance/data/appearance.ui:2027
 msgid "Solid color"
 msgstr "Kolor jednolity"
 
-#: capplets/appearance/data/appearance.ui:1990
+#: capplets/appearance/data/appearance.ui:2030
 msgid "Horizontal gradient"
 msgstr "Gradient poziomy"
 
-#: capplets/appearance/data/appearance.ui:1993
+#: capplets/appearance/data/appearance.ui:2033
 msgid "Vertical gradient"
 msgstr "Gradient pionowy"
 
-#: capplets/appearance/data/appearance.ui:2009
+#: capplets/appearance/data/appearance.ui:2049
 msgid "Tile"
 msgstr "Sąsiadująco"
 
-#: capplets/appearance/data/appearance.ui:2012
+#: capplets/appearance/data/appearance.ui:2052
 msgid "Zoom"
 msgstr "Powiększenie"
 
-#: capplets/appearance/data/appearance.ui:2015
+#: capplets/appearance/data/appearance.ui:2055
 msgid "Center"
 msgstr "Wyśrodkowanie"
 
-#: capplets/appearance/data/appearance.ui:2018
+#: capplets/appearance/data/appearance.ui:2058
 msgid "Scale"
 msgstr "Skala"
 
-#: capplets/appearance/data/appearance.ui:2021
+#: capplets/appearance/data/appearance.ui:2061
 msgid "Stretch"
 msgstr "Rozciąganie"
 
-#: capplets/appearance/data/appearance.ui:2024
+#: capplets/appearance/data/appearance.ui:2064
 msgid "Span"
 msgstr "Rozdzielenie"
 
-#: capplets/appearance/data/appearance.ui:2032
+#: capplets/appearance/data/appearance.ui:2072
 msgid "Appearance Preferences"
 msgstr "Preferencje wyglądu"
 
-#: capplets/appearance/data/appearance.ui:2175
+#: capplets/appearance/data/appearance.ui:2215
 msgid "Save _As..."
 msgstr "Z_apisz jako..."
 
-#: capplets/appearance/data/appearance.ui:2193
+#: capplets/appearance/data/appearance.ui:2233
 msgid "C_ustomize..."
 msgstr "_Dostosuj..."
 
-#: capplets/appearance/data/appearance.ui:2210
+#: capplets/appearance/data/appearance.ui:2250
 msgid "_Install..."
 msgstr "_Zainstaluj..."
 
-#: capplets/appearance/data/appearance.ui:2238
+#: capplets/appearance/data/appearance.ui:2278
 msgid "Get more themes online"
 msgstr "Więcej motywów online"
 
-#: capplets/appearance/data/appearance.ui:2268
+#: capplets/appearance/data/appearance.ui:2308
 msgid "Theme"
 msgstr "Motyw"
 
-#: capplets/appearance/data/appearance.ui:2338
+#: capplets/appearance/data/appearance.ui:2378
 msgid "_Style:"
 msgstr "_Styl:"
 
-#: capplets/appearance/data/appearance.ui:2382
+#: capplets/appearance/data/appearance.ui:2422
 msgid "C_olors:"
 msgstr "K_olory:"
 
-#: capplets/appearance/data/appearance.ui:2422
-#: capplets/appearance/data/appearance.ui:2438
+#: capplets/appearance/data/appearance.ui:2462
+#: capplets/appearance/data/appearance.ui:2478
 msgid "Open a dialog to specify the color"
 msgstr "Otwiera okno do określenia koloru"
 
-#: capplets/appearance/data/appearance.ui:2493
+#: capplets/appearance/data/appearance.ui:2533
 msgid "Get more backgrounds online"
 msgstr "Więcej teł online"
 
-#: capplets/appearance/data/appearance.ui:2533
+#: capplets/appearance/data/appearance.ui:2573
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:703
 msgid "_Add..."
 msgstr "_Dodaj..."
 
-#: capplets/appearance/data/appearance.ui:2669
+#: capplets/appearance/data/appearance.ui:2709
 msgid "_Application font:"
 msgstr "Czcionk_a używana przez programy:"
 
-#: capplets/appearance/data/appearance.ui:2684
+#: capplets/appearance/data/appearance.ui:2724
 msgid "_Document font:"
 msgstr "Czcionka używana przez _dokumenty:"
 
-#: capplets/appearance/data/appearance.ui:2698
+#: capplets/appearance/data/appearance.ui:2738
 msgid "Des_ktop font:"
 msgstr "Czcionka używana przez p_ulpit:"
 
-#: capplets/appearance/data/appearance.ui:2713
+#: capplets/appearance/data/appearance.ui:2753
 msgid "_Window title font:"
 msgstr "C_zcionka tytułu okna:"
 
-#: capplets/appearance/data/appearance.ui:2728
+#: capplets/appearance/data/appearance.ui:2768
 msgid "_Fixed width font:"
 msgstr "Czcionka o s_tałej szerokości:"
 
-#: capplets/appearance/data/appearance.ui:2768
+#: capplets/appearance/data/appearance.ui:2808
 msgid "Add new f_ont..."
 msgstr "Dodaj nową czci_onkę..."
 
-#: capplets/appearance/data/appearance.ui:2799
+#: capplets/appearance/data/appearance.ui:2839
 msgid "Rendering"
 msgstr "Renderowanie"
 
-#: capplets/appearance/data/appearance.ui:2831
+#: capplets/appearance/data/appearance.ui:2871
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "_Wygładzanie podpikselowe (wyświetlacze LCD)"
 
-#: capplets/appearance/data/appearance.ui:2877
+#: capplets/appearance/data/appearance.ui:2917
 msgid "Best _shapes"
 msgstr "_Najlepsze kształty"
 
-#: capplets/appearance/data/appearance.ui:2923
+#: capplets/appearance/data/appearance.ui:2963
 msgid "_Monochrome"
 msgstr "M_onochromatyczne"
 
-#: capplets/appearance/data/appearance.ui:2968
+#: capplets/appearance/data/appearance.ui:3008
 msgid "Best co_ntrast"
 msgstr "Najlepszy _kontrast"
 
-#: capplets/appearance/data/appearance.ui:3045
+#: capplets/appearance/data/appearance.ui:3085
 msgid "D_etails..."
 msgstr "_Szczegóły..."
 
-#: capplets/appearance/data/appearance.ui:3100
+#: capplets/appearance/data/appearance.ui:3140
 msgid "Menus and Toolbars"
 msgstr "Menu i paski narzędzi"
 
-#: capplets/appearance/data/appearance.ui:3135
+#: capplets/appearance/data/appearance.ui:3175
 msgid "Show _icons in menus"
 msgstr "Pokaż _ikony w menu"
 
-#: capplets/appearance/data/appearance.ui:3152
+#: capplets/appearance/data/appearance.ui:3192
 msgid "_Editable menu shortcut keys"
 msgstr "_Edytowalne klawisze skrótu menu"
 
-#: capplets/appearance/data/appearance.ui:3175
+#: capplets/appearance/data/appearance.ui:3215
 msgid "Toolbar _button labels:"
 msgstr "Opisy _przycisków paska narzędzi:"
 
-#: capplets/appearance/data/appearance.ui:3243
+#: capplets/appearance/data/appearance.ui:3283
 msgid "Buttons"
 msgstr "Przyciski"
 
-#: capplets/appearance/data/appearance.ui:3272
+#: capplets/appearance/data/appearance.ui:3312
 msgid "Show icons on buttons"
 msgstr "Wyświetlanie ikon na przyciskach"
 
-#: capplets/appearance/data/appearance.ui:3276
+#: capplets/appearance/data/appearance.ui:3316
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr "Czy przyciski mogą wyświetlać ikony wraz z tekstem przycisku"
 
-#: capplets/appearance/data/appearance.ui:3313
+#: capplets/appearance/data/appearance.ui:3353
 msgid "File Chooser"
 msgstr "Wybór plików"
 
-#: capplets/appearance/data/appearance.ui:3348
+#: capplets/appearance/data/appearance.ui:3388
 msgid "Show hidden items"
 msgstr "Wyświetlanie ukrytych elementów"
 
-#: capplets/appearance/data/appearance.ui:3365
+#: capplets/appearance/data/appearance.ui:3405
 msgid "Show size column"
 msgstr "Wyświetlanie kolumny rozmiaru"
 
-#: capplets/appearance/data/appearance.ui:3381
+#: capplets/appearance/data/appearance.ui:3421
 msgid "Show type column"
 msgstr "Wyświetlanie kolumny typu"
 
-#: capplets/appearance/data/appearance.ui:3397
+#: capplets/appearance/data/appearance.ui:3437
 msgid "Sort directories first"
 msgstr "Sortowanie najpierw katalogów"
 
-#: capplets/appearance/data/appearance.ui:3443
+#: capplets/appearance/data/appearance.ui:3483
 msgid "Preview"
 msgstr "Podgląd"
 
-#: capplets/appearance/data/appearance.ui:3483
+#: capplets/appearance/data/appearance.ui:3523
 msgid "_File"
 msgstr "_Plik"
 
-#: capplets/appearance/data/appearance.ui:3553
+#: capplets/appearance/data/appearance.ui:3530
+msgid "_New"
+msgstr "_Nowy"
+
+#: capplets/appearance/data/appearance.ui:3563
+msgid "_Print"
+msgstr "Wy_drukuj"
+
+#: capplets/appearance/data/appearance.ui:3578
+msgid "_Quit"
+msgstr "_Zakończ"
+
+#: capplets/appearance/data/appearance.ui:3593
 msgid "Edit"
 msgstr "Edycja"
 
-#: capplets/appearance/data/appearance.ui:3610
+#: capplets/appearance/data/appearance.ui:3600
+msgid "cu_T"
+msgstr "_Wytnij"
+
+#: capplets/appearance/data/appearance.ui:3609
+msgid "_Copy"
+msgstr "S_kopiuj"
+
+#: capplets/appearance/data/appearance.ui:3618
+msgid "_Paste"
+msgstr "Wk_lej"
+
+#: capplets/appearance/data/appearance.ui:3650
 msgid "New"
 msgstr "Nowe"
 
-#: capplets/appearance/data/appearance.ui:3683
+#: capplets/appearance/data/appearance.ui:3723
 msgid "Interface"
 msgstr "Interfejs"
 
@@ -1585,13 +1612,13 @@ msgstr "Zwykły"
 
 #: capplets/display/display-capplet.ui:25
 #: capplets/display/xrandr-capplet.c:311
-#: capplets/windows/window-properties.ui:692
+#: capplets/windows/window-properties.ui:616
 msgid "Left"
 msgstr "Lewo"
 
 #: capplets/display/display-capplet.ui:28
 #: capplets/display/xrandr-capplet.c:312
-#: capplets/windows/window-properties.ui:691
+#: capplets/windows/window-properties.ui:615
 msgid "Right"
 msgstr "Prawo"
 
@@ -2025,16 +2052,16 @@ msgstr "Wyłączone"
 msgid "<Unknown Action>"
 msgstr "<Nieznane działanie>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1001
-#: capplets/keybindings/mate-keybinding-properties.c:1608
+#: capplets/keybindings/mate-keybinding-properties.c:1015
+#: capplets/keybindings/mate-keybinding-properties.c:1622
 msgid "Custom Shortcuts"
 msgstr "Własne skróty"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1189
+#: capplets/keybindings/mate-keybinding-properties.c:1203
 msgid "Error saving the new shortcut"
 msgstr "Błąd podczas zapisywania nowego skrótu"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1265
+#: capplets/keybindings/mate-keybinding-properties.c:1279
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2043,7 +2070,7 @@ msgstr ""
 "Skrót \"%s\" nie może być użyty, ponieważ nie będzie możliwe pisanie przy użyciu wybranego klawisza.\n"
 "Proszę spróbować w połączeniu z klawiszem takim jak Control, Alt lub Shift."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1297
+#: capplets/keybindings/mate-keybinding-properties.c:1311
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2052,24 +2079,24 @@ msgstr ""
 "Skrót \"%s\" jest już wykorzystywany przez\n"
 " \"%s\""
 
-#: capplets/keybindings/mate-keybinding-properties.c:1304
+#: capplets/keybindings/mate-keybinding-properties.c:1318
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "Jeśli skrót zostanie zmieniony na \"%s\", skrót \"%s\" zostanie wyłączony."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1309
+#: capplets/keybindings/mate-keybinding-properties.c:1323
 msgid "_Reassign"
 msgstr "_Zmień"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1563
+#: capplets/keybindings/mate-keybinding-properties.c:1577
 msgid "Too many custom shortcuts"
 msgstr "Za dużo własnych skrótów"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1877
+#: capplets/keybindings/mate-keybinding-properties.c:1891
 msgid "Action"
 msgstr "Działanie"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1899
+#: capplets/keybindings/mate-keybinding-properties.c:1913
 msgid "Shortcut"
 msgstr "Skrót"
 
@@ -2515,11 +2542,11 @@ msgstr "Nieznany"
 msgid "Layout"
 msgstr "Układ"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "Dostawcy"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:237
 msgid "Models"
 msgstr "Modele"
 
@@ -2811,7 +2838,7 @@ msgid "Metacity Preferences"
 msgstr "Preferencje Metacity"
 
 #: capplets/windows/mate-metacity-support.c:54
-#: capplets/windows/window-properties.ui:813
+#: capplets/windows/window-properties.ui:733
 msgid "Compositing Manager"
 msgstr "Menedżer kompozycji"
 
@@ -2819,23 +2846,23 @@ msgstr "Menedżer kompozycji"
 msgid "Enable software _compositing window manager"
 msgstr "Włącz programową _kompozycję menedżera okien"
 
-#: capplets/windows/mate-window-properties.c:315
+#: capplets/windows/mate-window-properties.c:316
 msgid "The current window manager is unsupported"
 msgstr "Używany menedżer okien nie jest wspierany"
 
-#: capplets/windows/mate-window-properties.c:626
+#: capplets/windows/mate-window-properties.c:629
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:632
+#: capplets/windows/mate-window-properties.c:635
 msgid "H_yper"
 msgstr "_Hyper"
 
-#: capplets/windows/mate-window-properties.c:639
+#: capplets/windows/mate-window-properties.c:642
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (lub \"klawisz Windows\")"
 
-#: capplets/windows/mate-window-properties.c:646
+#: capplets/windows/mate-window-properties.c:649
 msgid "_Meta"
 msgstr "M_eta"
 
@@ -2857,137 +2884,137 @@ msgstr "mate-control-center;MATE;okno;menedżer;właściwości;marco;preferencje
 msgid "Window Preferences"
 msgstr "Preferencje okien"
 
-#: capplets/windows/window-properties.ui:128
-msgid "Window Selection"
-msgstr "Wybór okna"
-
-#: capplets/windows/window-properties.ui:148
+#: capplets/windows/window-properties.ui:132
 msgid "_Select windows when the mouse moves over them"
 msgstr "_Zaznaczanie okna po umieszczeniu kursora nad jego obszarem"
 
-#: capplets/windows/window-properties.ui:164
+#: capplets/windows/window-properties.ui:148
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "_Odznaczanie okna gdy kursor myszy opuszcza jego obszar"
 
-#: capplets/windows/window-properties.ui:187
+#: capplets/windows/window-properties.ui:171
 msgid "_Raise selected windows after"
 msgstr "_Przełączanie do zaznaczonego okna"
 
-#: capplets/windows/window-properties.ui:223
+#: capplets/windows/window-properties.ui:207
 msgid "seconds"
 msgstr "sekund"
 
-#: capplets/windows/window-properties.ui:263
-msgid "Titlebar Action"
-msgstr "Działanie paska tytułowego"
+#: capplets/windows/window-properties.ui:229
+msgid "Window Selection"
+msgstr "Wybór okna"
 
-#: capplets/windows/window-properties.ui:290
+#: capplets/windows/window-properties.ui:264
 msgid "_Double-click titlebar action:"
 msgstr "Po dwukrotnym kliknięciu paska _tytułowego:"
 
-#: capplets/windows/window-properties.ui:305
+#: capplets/windows/window-properties.ui:279
 #: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "Rozwinięcie"
 
-#: capplets/windows/window-properties.ui:306
+#: capplets/windows/window-properties.ui:280
 #: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "Maksymalizacja"
 
-#: capplets/windows/window-properties.ui:307
+#: capplets/windows/window-properties.ui:281
 #: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "Maksymalizacja w poziomie"
 
-#: capplets/windows/window-properties.ui:308
+#: capplets/windows/window-properties.ui:282
 #: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "Maksymalizacja w pionie"
 
-#: capplets/windows/window-properties.ui:309
+#: capplets/windows/window-properties.ui:283
 #: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "Minimalizacja"
 
-#: capplets/windows/window-properties.ui:310
+#: capplets/windows/window-properties.ui:284
 #: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "Brak"
 
-#: capplets/windows/window-properties.ui:352
-msgid "Alt-Tab"
-msgstr "Alt-Tab"
+#: capplets/windows/window-properties.ui:308
+msgid "Titlebar Action"
+msgstr "Działanie paska tytułowego"
 
-#: capplets/windows/window-properties.ui:371
+#: capplets/windows/window-properties.ui:335
 msgid "Show _thumbnails in Alt-Tab"
 msgstr "Pokaż _miniaturki przy Alt-Tab"
 
-#: capplets/windows/window-properties.ui:386
+#: capplets/windows/window-properties.ui:350
 msgid "Show window _border in Alt-Tab"
 msgstr "Pokaż _obramowanie okna przy Alt-Tab"
 
-#: capplets/windows/window-properties.ui:424
-msgid "Movement Key"
-msgstr "Klawisz przesuwania"
+#: capplets/windows/window-properties.ui:370
+msgid "Alt-Tab"
+msgstr "Alt-Tab"
 
-#: capplets/windows/window-properties.ui:446
+#: capplets/windows/window-properties.ui:400
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr ""
 "Aby przesunąć okno, należy wcisnąć wybrany poniżej klawisz, a następnie "
 "przeciągnąć okno przy użyciu myszy:"
 
-#: capplets/windows/window-properties.ui:490
+#: capplets/windows/window-properties.ui:431
+msgid "Movement Key"
+msgstr "Klawisz przesuwania"
+
+#: capplets/windows/window-properties.ui:450
 msgid "Behaviour"
 msgstr "Zachowanie"
 
-#: capplets/windows/window-properties.ui:515
-msgid "New Windows"
-msgstr "Nowe okna"
-
-#: capplets/windows/window-properties.ui:535
+#: capplets/windows/window-properties.ui:479
 msgid "Centre _new windows"
 msgstr "Wyśrodkuj _nowe okna"
 
-#: capplets/windows/window-properties.ui:573
-msgid "Window Snapping"
-msgstr "Przyciąganie okien"
+#: capplets/windows/window-properties.ui:499
+msgid "New Windows"
+msgstr "Nowe okna"
 
-#: capplets/windows/window-properties.ui:593
+#: capplets/windows/window-properties.ui:527
 msgid "Enable window _tiling"
 msgstr "_Kafelkowanie okien"
 
-#: capplets/windows/window-properties.ui:608
+#: capplets/windows/window-properties.ui:542
 msgid "Allow t_op tiling"
 msgstr "Zezwolenie na _górne kafelkowanie"
 
-#: capplets/windows/window-properties.ui:647
-msgid "Titlebar Buttons"
-msgstr "Przyciski paska tytułowego"
+#: capplets/windows/window-properties.ui:563
+msgid "Window Snapping"
+msgstr "Przyciąganie okien"
 
-#: capplets/windows/window-properties.ui:674
+#: capplets/windows/window-properties.ui:598
 msgid "_Position of titlebar buttons:"
 msgstr "_Pozycja przycisków paska tytułowego:"
 
-#: capplets/windows/window-properties.ui:689
+#: capplets/windows/window-properties.ui:613
 msgid "Right (with menu)"
 msgstr "Prawo (z menu)"
 
-#: capplets/windows/window-properties.ui:690
+#: capplets/windows/window-properties.ui:614
 msgid "Left (with menu)"
 msgstr "Lewo (z menu)"
 
-#: capplets/windows/window-properties.ui:732
+#: capplets/windows/window-properties.ui:640
+msgid "Titlebar Buttons"
+msgstr "Przyciski paska tytułowego"
+
+#: capplets/windows/window-properties.ui:662
 msgid "Placement"
 msgstr "Umieszczenie"
 
-#: capplets/windows/window-properties.ui:757
-msgid "Software Compositing"
-msgstr "Kompozycja programowa"
-
-#: capplets/windows/window-properties.ui:777
+#: capplets/windows/window-properties.ui:691
 msgid "Enable _software compositing window manager"
 msgstr "Włącz _programową kompozycję menedżera okien"
+
+#: capplets/windows/window-properties.ui:711
+msgid "Software Compositing"
+msgstr "Kompozycja programowa"
 
 #: capplets/time-admin/src/main.c:34
 #, c-format
@@ -5048,20 +5075,20 @@ msgstr "ROZMIAR"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "PLIK-CZCIONKI PLIK-WYJŚCIOWY"
 
-#: libslab/app-shell.c:763
+#: libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Filtr \"%s\" nie pasuje do żadnych elementów."
 
-#: libslab/app-shell.c:765
+#: libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "Nie odnaleziono wyników."
 
-#: libslab/app-shell.c:874
+#: libslab/app-shell.c:883
 msgid "New Applications"
 msgstr "Nowe aplikacje"
 
-#: libslab/app-shell.c:936
+#: libslab/app-shell.c:945
 msgid "Other"
 msgstr "Inne"
 

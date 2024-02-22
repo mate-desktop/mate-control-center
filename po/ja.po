@@ -16,21 +16,21 @@
 # c7a0a66e0476db158663636124cfb54f_370a183, 2019
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2019
 # Aefgh Threenine <aefgh3962@gmail.com>, 2019
-# fbc955180bc2b956cb4ef52d00eb80a0_91487f8, 2019
 # ABE Tsunehiko, 2020
 # Yoshifumi Kinoshita <yoshifumi1975@gmail.com>, 2020
-# Stefano Karapetsas <stefano@karapetsas.com>, 2021
-# jeiday, 2021
-# Green, 2022
+# d6170a00d05f3d9fb2ee36b64ce8db85_b78b25d, 2021
+# fbc955180bc2b956cb4ef52d00eb80a0_91487f8, 2023
+# Stefano Karapetsas <stefano@karapetsas.com>, 2023
+# Green <usergreen@users.osdn.me>, 2024
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.26.0\n"
+"Project-Id-Version: mate-control-center 1.27.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2022-10-29 15:31+0200\n"
+"POT-Creation-Date: 2023-09-02 16:51+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Green, 2022\n"
-"Language-Team: Japanese (https://www.transifex.com/mate/teams/13566/ja/)\n"
+"Last-Translator: Green <usergreen@users.osdn.me>, 2024\n"
+"Language-Team: Japanese (https://app.transifex.com/mate/teams/13566/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,17 +55,17 @@ msgid ""
 "separator then the filename of an associated .desktop file to launch for "
 "that task."
 msgstr ""
-"コントロールセンターの中に表示するタスクの名前です。その後ろに \";\" で区切ってタスクを起動する際に使用する .desktop "
+"コントロールセンタの中に表示するタスクの名前です。その後ろに \";\" で区切ってタスクを起動する際に使用する .desktop "
 "ファイルを指定します。"
 
 #: org.mate.control-center.gschema.xml.in:11
 msgid "Close the control-center when a task is activated"
-msgstr "タスクを起動したらコントロールセンターを閉じる"
+msgstr "タスクを起動したらコントロールセンタを閉じる"
 
 #: org.mate.control-center.gschema.xml.in:12
 msgid ""
 "if true, the control-center will close when a \"Common Task\" is activated."
-msgstr "TRUE にすると、よく利用するタスク\" を起動した際にコントロールセンターを閉じます。"
+msgstr "TRUE にすると、よく利用するタスク\" を起動した際にコントロールセンタを閉じます。"
 
 #: org.mate.control-center.gschema.xml.in:16
 msgid "Exit shell on start action performed"
@@ -179,9 +179,9 @@ msgstr "個人情報"
 #: capplets/about-me/mate-about-me-dialog.ui:54
 #: capplets/about-me/mate-about-me-password.ui:54
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:119
-#: capplets/appearance/data/appearance.ui:61
-#: capplets/appearance/data/appearance.ui:1215
-#: capplets/appearance/data/appearance.ui:2069
+#: capplets/appearance/data/appearance.ui:101
+#: capplets/appearance/data/appearance.ui:1255
+#: capplets/appearance/data/appearance.ui:2109
 #: capplets/default-applications/mate-default-applications-properties.ui:55
 #: capplets/display/display-capplet.ui:106
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:140
@@ -494,8 +494,8 @@ msgid "Assistive Technologies Preferences"
 msgstr "操作支援技術の設定"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:86
-#: capplets/appearance/data/appearance.ui:1198
-#: capplets/appearance/data/appearance.ui:2051
+#: capplets/appearance/data/appearance.ui:1238
+#: capplets/appearance/data/appearance.ui:2091
 #: capplets/default-applications/mate-default-applications-properties.ui:38
 #: capplets/display/display-capplet.ui:58
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:123
@@ -568,7 +568,7 @@ msgstr "ログイン時に有効にする操作支援機能を選択します。
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/accessibility/at-properties/mate-at-properties.desktop.in:13
 msgid "mate-control-center;MATE;accessibility;features;"
-msgstr "mate-control-center;MATE;accessibility;features;"
+msgstr "mate-control-center;MATE;accessibility;操作支援;features;"
 
 #: capplets/appearance/appearance-desktop.c:616
 msgid "Add Wallpaper"
@@ -583,17 +583,18 @@ msgid "Select Font"
 msgstr "フォントの選択"
 
 #: capplets/appearance/appearance-font.c:617
-#: capplets/appearance/data/appearance.ui:951
+#: capplets/appearance/data/appearance.ui:991
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
 #: capplets/appearance/appearance-font.c:619
+#: capplets/appearance/data/appearance.ui:3539
 #: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
 msgstr "開く(_O)"
 
 #: capplets/appearance/appearance-font.c:624
-#: capplets/appearance/data/appearance.ui:3075
+#: capplets/appearance/data/appearance.ui:3115
 msgid "Fonts"
 msgstr "フォント"
 
@@ -623,7 +624,7 @@ msgstr "[壁紙...]"
 #: capplets/appearance/appearance-style.c:173
 #: capplets/common/mate-theme-info.c:506
 msgid "Default Pointer"
-msgstr "デフォルトのポインタ"
+msgstr "既定のポインタ"
 
 #: capplets/appearance/appearance-style.c:235
 #: capplets/appearance/appearance-themes.c:659
@@ -679,411 +680,436 @@ msgid "The current theme suggests a font."
 msgstr "このテーマは推奨するフォントの情報を提供しています。"
 
 #: capplets/appearance/appearance-themes.c:1012
-#: capplets/windows/mate-window-properties.c:247
+#: capplets/windows/mate-window-properties.c:248
 msgid "Custom"
 msgstr "カスタム"
 
-#: capplets/appearance/data/appearance.ui:45
+#: capplets/appearance/data/appearance.ui:85
 msgid "Font Rendering Details"
 msgstr "レンダリングの詳細"
 
-#: capplets/appearance/data/appearance.ui:102
+#: capplets/appearance/data/appearance.ui:142
 msgid "R_esolution"
 msgstr "解像度(_E)"
 
-#: capplets/appearance/data/appearance.ui:125
+#: capplets/appearance/data/appearance.ui:165
 msgid "Dots per inch (DPI):"
 msgstr "DPI (1インチ毎のドット数):"
 
-#: capplets/appearance/data/appearance.ui:161
+#: capplets/appearance/data/appearance.ui:201
 msgid "This resets the font DPI to the auto-detected value from Xserver."
-msgstr "Xサーバーから自動検出した値をDPIに設定します。"
+msgstr "Xサーバから自動検出した値をDPIに設定します。"
 
-#: capplets/appearance/data/appearance.ui:162
+#: capplets/appearance/data/appearance.ui:202
 msgid "Automatic detection:"
 msgstr "自動検出:"
 
-#: capplets/appearance/data/appearance.ui:206
+#: capplets/appearance/data/appearance.ui:246
 msgid "Smoothing"
 msgstr "滑らかさの補正 (スムージング)"
 
-#: capplets/appearance/data/appearance.ui:240
+#: capplets/appearance/data/appearance.ui:280
 msgid "Gra_yscale"
 msgstr "グレースケール(_Y)"
 
-#: capplets/appearance/data/appearance.ui:286
+#: capplets/appearance/data/appearance.ui:326
 msgid "Sub_pixel (LCDs)"
 msgstr "サブピクセル (LCDs)(_P)"
 
-#: capplets/appearance/data/appearance.ui:332
+#: capplets/appearance/data/appearance.ui:372
 msgid "_None"
 msgstr "なし(_N)"
 
 #. font hinting
-#: capplets/appearance/data/appearance.ui:412
+#: capplets/appearance/data/appearance.ui:452
 msgid "Hinting"
 msgstr "線幅の補正 (ヒンティング)"
 
-#: capplets/appearance/data/appearance.ui:445
+#: capplets/appearance/data/appearance.ui:485
 msgid "N_one"
 msgstr "なし(_O)"
 
-#: capplets/appearance/data/appearance.ui:490
+#: capplets/appearance/data/appearance.ui:530
 msgid "_Slight"
 msgstr "細身(_S)"
 
-#: capplets/appearance/data/appearance.ui:536
+#: capplets/appearance/data/appearance.ui:576
 msgid "_Full"
 msgstr "すべて(_F)"
 
-#: capplets/appearance/data/appearance.ui:582
+#: capplets/appearance/data/appearance.ui:622
 msgid "_Medium"
 msgstr "中間(_M)"
 
-#: capplets/appearance/data/appearance.ui:661
+#: capplets/appearance/data/appearance.ui:701
 msgid "Subpixel Order"
 msgstr "サブピクセルの順番"
 
 #. pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:692
+#: capplets/appearance/data/appearance.ui:732
 msgid "_RGB"
 msgstr "RGB(_R)"
 
 #. pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:731
+#: capplets/appearance/data/appearance.ui:771
 msgid "_BGR"
 msgstr "BGR(_B)"
 
 #. vertical hinting, pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:771
+#: capplets/appearance/data/appearance.ui:811
 msgid "VB_GR"
 msgstr "VBGR(_G)"
 
 #. vertical hinting, pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:811
+#: capplets/appearance/data/appearance.ui:851
 msgid "_VRGB"
 msgstr "VRGB(_V)"
 
-#: capplets/appearance/data/appearance.ui:935
+#: capplets/appearance/data/appearance.ui:975
 msgid "Save Theme As..."
 msgstr "テーマを別名で保存..."
 
-#: capplets/appearance/data/appearance.ui:968
+#: capplets/appearance/data/appearance.ui:1008
+#: capplets/appearance/data/appearance.ui:3548
 #: capplets/time-admin/src/time-admin.ui:370
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: capplets/appearance/data/appearance.ui:1033
+#: capplets/appearance/data/appearance.ui:1073
 msgid "Save _background image"
 msgstr "背景も一緒に保存する(_B)"
 
-#: capplets/appearance/data/appearance.ui:1047
+#: capplets/appearance/data/appearance.ui:1087
 msgid "Save _notification theme"
 msgstr "通知のテーマを保存(_N)"
 
-#: capplets/appearance/data/appearance.ui:1064
+#: capplets/appearance/data/appearance.ui:1104
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "名前(_N):"
 
-#: capplets/appearance/data/appearance.ui:1079
+#: capplets/appearance/data/appearance.ui:1119
 msgid "_Description:"
 msgstr "説明(_D):"
 
-#: capplets/appearance/data/appearance.ui:1157
+#: capplets/appearance/data/appearance.ui:1197
 msgid "Text below items"
 msgstr "アイコンの下にラベル"
 
-#: capplets/appearance/data/appearance.ui:1160
+#: capplets/appearance/data/appearance.ui:1200
 msgid "Text beside items"
 msgstr "アイコンの横にラベル"
 
-#: capplets/appearance/data/appearance.ui:1163
+#: capplets/appearance/data/appearance.ui:1203
 msgid "Icons only"
 msgstr "アイコンのみ"
 
-#: capplets/appearance/data/appearance.ui:1166
+#: capplets/appearance/data/appearance.ui:1206
 msgid "Text only"
 msgstr "ラベルのみ"
 
-#: capplets/appearance/data/appearance.ui:1179
+#: capplets/appearance/data/appearance.ui:1219
 msgid "Customize Theme"
 msgstr "テーマのカスタマイズ"
 
-#: capplets/appearance/data/appearance.ui:1301
-#: capplets/appearance/data/appearance.ui:1671
-#: capplets/appearance/data/appearance.ui:1754
-#: capplets/appearance/data/appearance.ui:1913
-#: capplets/appearance/data/appearance.ui:2157
+#: capplets/appearance/data/appearance.ui:1341
+#: capplets/appearance/data/appearance.ui:1711
+#: capplets/appearance/data/appearance.ui:1794
+#: capplets/appearance/data/appearance.ui:1953
+#: capplets/appearance/data/appearance.ui:2197
 msgid "_Delete"
 msgstr "削除(_D)"
 
-#: capplets/appearance/data/appearance.ui:1331
+#: capplets/appearance/data/appearance.ui:1371
 msgid "Controls"
 msgstr "コントロール"
 
-#: capplets/appearance/data/appearance.ui:1368
+#: capplets/appearance/data/appearance.ui:1408
 msgid "The current controls theme does not support color schemes."
 msgstr "このコントロールのテーマは色のスキーマをサポートしていません。"
 
-#: capplets/appearance/data/appearance.ui:1424
+#: capplets/appearance/data/appearance.ui:1464
 msgid "_Tooltips:"
 msgstr "ツールチップ(_T):"
 
-#: capplets/appearance/data/appearance.ui:1510
+#: capplets/appearance/data/appearance.ui:1550
 msgid "Text"
 msgstr "テキスト"
 
-#: capplets/appearance/data/appearance.ui:1522
-#: capplets/appearance/data/appearance.ui:2573
+#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:2613
 msgid "Background"
 msgstr "背景"
 
-#: capplets/appearance/data/appearance.ui:1534
+#: capplets/appearance/data/appearance.ui:1574
 msgid "_Selected items:"
 msgstr "選択したアイテム(_S):"
 
-#: capplets/appearance/data/appearance.ui:1548
+#: capplets/appearance/data/appearance.ui:1588
 msgid "_Input boxes:"
 msgstr "入力ボックス(_I):"
 
-#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:1602
 msgid "_Windows:"
 msgstr "ウィンドウ(_W):"
 
-#: capplets/appearance/data/appearance.ui:1589
+#: capplets/appearance/data/appearance.ui:1629
 msgid "_Reset to Defaults"
-msgstr "デフォルトに戻す(_R)"
+msgstr "既定に戻す(_R)"
 
-#: capplets/appearance/data/appearance.ui:1621
+#: capplets/appearance/data/appearance.ui:1661
 msgid "Colors"
 msgstr "色"
 
-#: capplets/appearance/data/appearance.ui:1704
+#: capplets/appearance/data/appearance.ui:1744
 msgid "Window Border"
 msgstr "ウィンドウの境界"
 
-#: capplets/appearance/data/appearance.ui:1787
+#: capplets/appearance/data/appearance.ui:1827
 msgid "Icons"
 msgstr "アイコン"
 
-#: capplets/appearance/data/appearance.ui:1837
+#: capplets/appearance/data/appearance.ui:1877
 msgid "_Size:"
 msgstr "サイズ(_S):"
 
 #. small threshold
-#: capplets/appearance/data/appearance.ui:1858
+#: capplets/appearance/data/appearance.ui:1898
 #: capplets/mouse/mate-mouse-properties.ui:680
 msgid "Small"
 msgstr "小"
 
 #. large threshold
-#: capplets/appearance/data/appearance.ui:1888
+#: capplets/appearance/data/appearance.ui:1928
 #: capplets/mouse/mate-mouse-properties.ui:717
 msgid "Large"
 msgstr "大"
 
-#: capplets/appearance/data/appearance.ui:1954
+#: capplets/appearance/data/appearance.ui:1994
 msgid "Pointer"
 msgstr "ポインタ"
 
-#: capplets/appearance/data/appearance.ui:1987
+#: capplets/appearance/data/appearance.ui:2027
 msgid "Solid color"
 msgstr "単色"
 
-#: capplets/appearance/data/appearance.ui:1990
+#: capplets/appearance/data/appearance.ui:2030
 msgid "Horizontal gradient"
 msgstr "横方向にグラデーション"
 
-#: capplets/appearance/data/appearance.ui:1993
+#: capplets/appearance/data/appearance.ui:2033
 msgid "Vertical gradient"
 msgstr "縦方向にグラデーション"
 
-#: capplets/appearance/data/appearance.ui:2009
+#: capplets/appearance/data/appearance.ui:2049
 msgid "Tile"
 msgstr "並べて表示"
 
-#: capplets/appearance/data/appearance.ui:2012
+#: capplets/appearance/data/appearance.ui:2052
 msgid "Zoom"
 msgstr "画面の幅に合わせる"
 
-#: capplets/appearance/data/appearance.ui:2015
+#: capplets/appearance/data/appearance.ui:2055
 msgid "Center"
 msgstr "中央に表示"
 
-#: capplets/appearance/data/appearance.ui:2018
+#: capplets/appearance/data/appearance.ui:2058
 msgid "Scale"
 msgstr "画像の縦横比を維持"
 
-#: capplets/appearance/data/appearance.ui:2021
+#: capplets/appearance/data/appearance.ui:2061
 msgid "Stretch"
 msgstr "画像の縦横比を無視"
 
-#: capplets/appearance/data/appearance.ui:2024
+#: capplets/appearance/data/appearance.ui:2064
 msgid "Span"
 msgstr "ディスプレイをまたぐ"
 
-#: capplets/appearance/data/appearance.ui:2032
+#: capplets/appearance/data/appearance.ui:2072
 msgid "Appearance Preferences"
 msgstr "外観の設定"
 
-#: capplets/appearance/data/appearance.ui:2175
+#: capplets/appearance/data/appearance.ui:2215
 msgid "Save _As..."
 msgstr "別名で保存(_A)..."
 
-#: capplets/appearance/data/appearance.ui:2193
+#: capplets/appearance/data/appearance.ui:2233
 msgid "C_ustomize..."
 msgstr "カスタマイズ(_U)..."
 
-#: capplets/appearance/data/appearance.ui:2210
+#: capplets/appearance/data/appearance.ui:2250
 msgid "_Install..."
 msgstr "インストール(_I)..."
 
-#: capplets/appearance/data/appearance.ui:2238
+#: capplets/appearance/data/appearance.ui:2278
 msgid "Get more themes online"
 msgstr "追加のテーマをネットから入手する"
 
-#: capplets/appearance/data/appearance.ui:2268
+#: capplets/appearance/data/appearance.ui:2308
 msgid "Theme"
 msgstr "テーマ"
 
-#: capplets/appearance/data/appearance.ui:2338
+#: capplets/appearance/data/appearance.ui:2378
 msgid "_Style:"
 msgstr "スタイル(_S):"
 
-#: capplets/appearance/data/appearance.ui:2382
+#: capplets/appearance/data/appearance.ui:2422
 msgid "C_olors:"
 msgstr "色(_O):"
 
-#: capplets/appearance/data/appearance.ui:2422
-#: capplets/appearance/data/appearance.ui:2438
+#: capplets/appearance/data/appearance.ui:2462
+#: capplets/appearance/data/appearance.ui:2478
 msgid "Open a dialog to specify the color"
 msgstr "色を指定するダイアログを開きます"
 
-#: capplets/appearance/data/appearance.ui:2493
+#: capplets/appearance/data/appearance.ui:2533
 msgid "Get more backgrounds online"
 msgstr "追加の背景をネットから入手する"
 
-#: capplets/appearance/data/appearance.ui:2533
+#: capplets/appearance/data/appearance.ui:2573
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:703
 msgid "_Add..."
 msgstr "追加(_A)..."
 
-#: capplets/appearance/data/appearance.ui:2669
+#: capplets/appearance/data/appearance.ui:2709
 msgid "_Application font:"
 msgstr "アプリケーションのフォント(_A):"
 
-#: capplets/appearance/data/appearance.ui:2684
+#: capplets/appearance/data/appearance.ui:2724
 msgid "_Document font:"
 msgstr "文書のフォント(_D):"
 
-#: capplets/appearance/data/appearance.ui:2698
+#: capplets/appearance/data/appearance.ui:2738
 msgid "Des_ktop font:"
 msgstr "デスクトップのフォント(_K):"
 
-#: capplets/appearance/data/appearance.ui:2713
+#: capplets/appearance/data/appearance.ui:2753
 msgid "_Window title font:"
 msgstr "ウィンドウタイトルのフォント(_W):"
 
-#: capplets/appearance/data/appearance.ui:2728
+#: capplets/appearance/data/appearance.ui:2768
 msgid "_Fixed width font:"
 msgstr "固定幅のフォント(_F):"
 
-#: capplets/appearance/data/appearance.ui:2768
+#: capplets/appearance/data/appearance.ui:2808
 msgid "Add new f_ont..."
 msgstr "新しいフォントの追加(_O)"
 
-#: capplets/appearance/data/appearance.ui:2799
+#: capplets/appearance/data/appearance.ui:2839
 msgid "Rendering"
 msgstr "描画の種類"
 
-#: capplets/appearance/data/appearance.ui:2831
+#: capplets/appearance/data/appearance.ui:2871
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "サブピクセルのスムージング (LCDs)(_P)"
 
-#: capplets/appearance/data/appearance.ui:2877
+#: capplets/appearance/data/appearance.ui:2917
 msgid "Best _shapes"
 msgstr "最適なシェイプ(_S)"
 
-#: capplets/appearance/data/appearance.ui:2923
+#: capplets/appearance/data/appearance.ui:2963
 msgid "_Monochrome"
 msgstr "モノクロ(_M)"
 
-#: capplets/appearance/data/appearance.ui:2968
+#: capplets/appearance/data/appearance.ui:3008
 msgid "Best co_ntrast"
 msgstr "最適なコントラスト(_N)"
 
-#: capplets/appearance/data/appearance.ui:3045
+#: capplets/appearance/data/appearance.ui:3085
 msgid "D_etails..."
 msgstr "詳細(_E)..."
 
-#: capplets/appearance/data/appearance.ui:3100
+#: capplets/appearance/data/appearance.ui:3140
 msgid "Menus and Toolbars"
 msgstr "メニューとツールバー"
 
-#: capplets/appearance/data/appearance.ui:3135
+#: capplets/appearance/data/appearance.ui:3175
 msgid "Show _icons in menus"
 msgstr "メニューにアイコンを表示(_I)"
 
-#: capplets/appearance/data/appearance.ui:3152
+#: capplets/appearance/data/appearance.ui:3192
 msgid "_Editable menu shortcut keys"
 msgstr "編集可能なメニューのショットカットキー(_E)"
 
-#: capplets/appearance/data/appearance.ui:3175
+#: capplets/appearance/data/appearance.ui:3215
 msgid "Toolbar _button labels:"
 msgstr "ツールバーボタンのラベル(_B):"
 
-#: capplets/appearance/data/appearance.ui:3243
+#: capplets/appearance/data/appearance.ui:3283
 msgid "Buttons"
 msgstr "いろいろなボタン"
 
-#: capplets/appearance/data/appearance.ui:3272
+#: capplets/appearance/data/appearance.ui:3312
 msgid "Show icons on buttons"
 msgstr "ボタンにアイコンを表示"
 
-#: capplets/appearance/data/appearance.ui:3276
+#: capplets/appearance/data/appearance.ui:3316
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr "ボタンにラベルとアイコンの両方を表示するかどうかです"
 
-#: capplets/appearance/data/appearance.ui:3313
+#: capplets/appearance/data/appearance.ui:3353
 msgid "File Chooser"
 msgstr "ファイル選択"
 
-#: capplets/appearance/data/appearance.ui:3348
+#: capplets/appearance/data/appearance.ui:3388
 msgid "Show hidden items"
 msgstr "隠しアイテムを表示"
 
-#: capplets/appearance/data/appearance.ui:3365
+#: capplets/appearance/data/appearance.ui:3405
 msgid "Show size column"
 msgstr "列のサイズを表示"
 
-#: capplets/appearance/data/appearance.ui:3381
+#: capplets/appearance/data/appearance.ui:3421
 msgid "Show type column"
 msgstr "列の種類を表示"
 
-#: capplets/appearance/data/appearance.ui:3397
+#: capplets/appearance/data/appearance.ui:3437
 msgid "Sort directories first"
 msgstr "ディレクトリ順に並び替える"
 
-#: capplets/appearance/data/appearance.ui:3443
+#: capplets/appearance/data/appearance.ui:3483
 msgid "Preview"
 msgstr "プレビュー"
 
-#: capplets/appearance/data/appearance.ui:3483
+#: capplets/appearance/data/appearance.ui:3523
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: capplets/appearance/data/appearance.ui:3553
+#: capplets/appearance/data/appearance.ui:3530
+msgid "_New"
+msgstr "新規(_N)"
+
+#: capplets/appearance/data/appearance.ui:3563
+msgid "_Print"
+msgstr "印刷(_P)"
+
+#: capplets/appearance/data/appearance.ui:3578
+msgid "_Quit"
+msgstr "終了(_Q)"
+
+#: capplets/appearance/data/appearance.ui:3593
 msgid "Edit"
 msgstr "編集"
 
-#: capplets/appearance/data/appearance.ui:3610
+#: capplets/appearance/data/appearance.ui:3600
+msgid "cu_T"
+msgstr "切り取り(_T)"
+
+#: capplets/appearance/data/appearance.ui:3609
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: capplets/appearance/data/appearance.ui:3618
+msgid "_Paste"
+msgstr "貼り付け(_P)"
+
+#: capplets/appearance/data/appearance.ui:3650
 msgid "New"
 msgstr "新規"
 
-#: capplets/appearance/data/appearance.ui:3683
+#: capplets/appearance/data/appearance.ui:3723
 msgid "Interface"
-msgstr "インターフェイス"
+msgstr "インタフェース"
 
 #: capplets/appearance/data/mate-appearance-properties.desktop.in:3
 msgid "Appearance"
@@ -1102,7 +1128,7 @@ msgstr ""
 
 #: capplets/appearance/data/mate-theme-installer.desktop.in:3
 msgid "Theme Installer"
-msgstr "テーマインストーラー"
+msgstr "テーマインストーラ"
 
 #: capplets/appearance/data/mate-theme-installer.desktop.in:4
 msgid "Installs themes packages for various parts of the desktop"
@@ -1159,7 +1185,7 @@ msgid ""
 msgstr ""
 "<b>%s</b>\n"
 "%s, %s\n"
-"フォルダー: %s\n"
+"フォルダ: %s\n"
 "アーティスト: %s"
 
 #: capplets/appearance/mate-wp-item.c:334
@@ -1172,7 +1198,7 @@ msgid ""
 msgstr ""
 "<b>%s</b>\n"
 "%s\n"
-"フォルダー: %s\n"
+"フォルダ: %s\n"
 "アーティスト: %s"
 
 #: capplets/appearance/mate-wp-item.c:339
@@ -1309,8 +1335,8 @@ msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
 msgstr ""
-"MATE 設定マネージャー ('mate-settings-daemon') を起動することができません。\n"
-"設定マネージャーが起動できない場合、いくつかの設定が反映されません。これは DBus の問題、あるいは MATE ではない (KDE などの) 別の設定マネージャが既に起動されていて MATE 設定マネージャと衝突していることが原因かもしれません。"
+"MATE 設定マネージャ ('mate-settings-daemon') を起動することができません。\n"
+"設定マネージャが起動できない場合、いくつかの設定が反映されません。これは DBus の問題、あるいは MATE ではない (KDE などの) 別の設定マネージャが既に起動されていて MATE 設定マネージャと衝突していることが原因かもしれません。"
 
 #: capplets/common/capplet-util.c:82
 #, c-format
@@ -1405,7 +1431,7 @@ msgstr "GTK+ のテーマ '%s' がインストールされていないため、�
 msgid ""
 "This theme will not look as intended because the required window manager "
 "theme '%s' is not installed."
-msgstr "ウィンドウマネージャーのテーマ '%s' がインストールされていないため、このテーマは意図通りに表示されません。"
+msgstr "ウィンドウマネージャのテーマ '%s' がインストールされていないため、このテーマは意図通りに表示されません。"
 
 #: capplets/common/mate-theme-info.c:1621
 #, c-format
@@ -1421,13 +1447,13 @@ msgstr "お気に入りのアプリ"
 
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:4
 msgid "Select your default applications"
-msgstr "デフォルトで使用するアプリケーションを設定します"
+msgstr "既定で使用するアプリケーションを選択します"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:13
 msgid "mate-control-center;MATE;default;preferred;applications;"
-msgstr "mate-control-center;MATE;default;preferred;applications;"
+msgstr "mate-control-center;MATE;default;既定;preferred;applications;アプリケーション;"
 
 #: capplets/default-applications/mate-da-capplet.c:781
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
@@ -1435,7 +1461,7 @@ msgstr "表示するページの名前を指定する (internet|multimedia|syste
 
 #: capplets/default-applications/mate-da-capplet.c:789
 msgid "- MATE Default Applications"
-msgstr "- MATE のデフォルトのアプリ"
+msgstr "- MATE の既定アプリケーション"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:147
 msgid "Web Browser"
@@ -1447,7 +1473,7 @@ msgstr "メールリーダー"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:287
 msgid "Instant Messenger"
-msgstr "インスタントメッセンジャー"
+msgstr "インスタントメッセンジャ"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:306
 msgid "Internet"
@@ -1475,7 +1501,7 @@ msgstr "テキストエディタ"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:679
 msgid "Terminal Emulator"
-msgstr "端末エミュレーター"
+msgstr "端末エミュレータ"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:749
 msgid "File Manager"
@@ -1524,7 +1550,7 @@ msgstr "操作支援"
 #: capplets/default-applications/mate-default-applications-properties.ui:1269
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1562
 msgid "Accessibility"
-msgstr "アクセシビリティ"
+msgstr "操作支援"
 
 #: capplets/display/display-capplet.ui:22
 #: capplets/display/xrandr-capplet.c:310 capplets/display/xrandr-capplet.c:349
@@ -1533,13 +1559,13 @@ msgstr "標準"
 
 #: capplets/display/display-capplet.ui:25
 #: capplets/display/xrandr-capplet.c:311
-#: capplets/windows/window-properties.ui:692
+#: capplets/windows/window-properties.ui:616
 msgid "Left"
 msgstr "左"
 
 #: capplets/display/display-capplet.ui:28
 #: capplets/display/xrandr-capplet.c:312
-#: capplets/windows/window-properties.ui:691
+#: capplets/windows/window-properties.ui:615
 msgid "Right"
 msgstr "右"
 
@@ -1549,7 +1575,7 @@ msgstr "逆さま"
 
 #: capplets/display/display-capplet.ui:43
 msgid "Monitor Preferences"
-msgstr "モニターの設定"
+msgstr "モニタの設定"
 
 #: capplets/display/display-capplet.ui:75
 msgid "Apply system-wide"
@@ -1559,7 +1585,7 @@ msgstr "システム全体に適用"
 msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
-msgstr "このコンピューターを使用する全ての MATE ユーザーに対して現在の設定を適用します。ログイン画面や他のデスクトップ環境には影響しません。"
+msgstr "このコンピュータを使用する全ての MATE ユーザに対して現在の設定を適用します。ログイン画面や他のデスクトップ環境には影響しません。"
 
 #: capplets/display/display-capplet.ui:90
 msgid "_Apply"
@@ -1567,11 +1593,11 @@ msgstr "適用(_A)"
 
 #: capplets/display/display-capplet.ui:162
 msgid "Sa_me image in all monitors"
-msgstr "すべてのモニターで同じ画像(_M)"
+msgstr "すべてのモニタで同じ画像(_M)"
 
 #: capplets/display/display-capplet.ui:177
 msgid "_Detect monitors"
-msgstr "モニターの検出(_D)"
+msgstr "モニタの検出(_D)"
 
 #: capplets/display/display-capplet.ui:220
 msgid "_Resolution:"
@@ -1595,11 +1621,11 @@ msgstr "パネルを含める(_P)"
 
 #: capplets/display/display-capplet.ui:352
 msgid "Set as primary"
-msgstr "プライマリーに設定"
+msgstr "プライマリに設定"
 
 #: capplets/display/display-capplet.ui:357
 msgid "Sets the selected monitor as primary."
-msgstr "選択されたモニターをプライマリーとして設定します。"
+msgstr "選択されたモニタをプライマリとして設定します。"
 
 #: capplets/display/display-capplet.ui:369
 msgid "R_otation:"
@@ -1608,7 +1634,7 @@ msgstr "回転(_O):"
 #: capplets/display/display-capplet.ui:388
 #: capplets/display/xrandr-capplet.c:626
 msgid "Monitor"
-msgstr "モニター"
+msgstr "モニタ"
 
 #: capplets/display/display-capplet.ui:426
 msgid "Panel icon"
@@ -1616,7 +1642,7 @@ msgstr "パネルのアイコン"
 
 #: capplets/display/display-capplet.ui:445
 msgid "_Show monitors in panel"
-msgstr "モニターをパネルに表示する(_S)"
+msgstr "モニタをパネルに表示する(_S)"
 
 #: capplets/display/display-capplet.ui:477
 msgid "Scaling"
@@ -1628,7 +1654,7 @@ msgstr "ディスプレイ"
 
 #: capplets/display/mate-display-properties.desktop.in:4
 msgid "Change resolution and position of monitors and projectors"
-msgstr "モニターとプロジェクターの解像度と位置を変更します。"
+msgstr "モニタとプロジェクタの解像度と位置を変更します。"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
@@ -1668,7 +1694,7 @@ msgstr ""
 #. Translators: only able to install RANDR profiles as root
 #: capplets/display/mate-display-properties-install-systemwide.c:155
 msgid "This program can only be used by the root user"
-msgstr "このプログラムは root ユーザーのみが使用できます"
+msgstr "このプログラムは root ユーザのみが使用できます"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:172
 msgid "The source filename must be absolute"
@@ -1711,12 +1737,12 @@ msgstr "%s はあなたによって所有されてなくてはなりません\n"
 #: capplets/display/mate-display-properties-install-systemwide.c:227
 #, c-format
 msgid "%s must not have any directory components\n"
-msgstr "%s にはディレクトリー名が含まれていてはいけません\n"
+msgstr "%s にはディレクトリ名が含まれていてはいけません\n"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:235
 #, c-format
 msgid "%s must be a directory\n"
-msgstr "%s はディレクトリーでなくてはなりません\n"
+msgstr "%s はディレクトリでなくてはなりません\n"
 
 #. Translators: the first %s/%s is a directory/filename; the last %s is an
 #. error message
@@ -1732,12 +1758,12 @@ msgstr "%s を %s に名前を変更することができません: %s\n"
 
 #: capplets/display/org.mate.randr.policy.in:17
 msgid "Install multi-monitor settings for the whole system"
-msgstr "システム全体にマルチモニターの設定をインストールする"
+msgstr "システム全体にマルチモニタの設定をインストールする"
 
 #: capplets/display/org.mate.randr.policy.in:18
 msgid ""
 "Authentication is required to install multi-monitor settings for all users"
-msgstr "マルチモニターの設定をすべてのユーザーに対して行うには、認証が必要です"
+msgstr "マルチモニタの設定をすべてのユーザに対して行うには、認証が必要です"
 
 #: capplets/display/xrandr-capplet.c:313
 msgid "Upside Down"
@@ -1772,7 +1798,7 @@ msgstr "複数の画面をミラーする"
 #: capplets/display/xrandr-capplet.c:617
 #, c-format
 msgid "Monitor: %s"
-msgstr "モニター: %s"
+msgstr "モニタ: %s"
 
 #: capplets/display/xrandr-capplet.c:688
 #, c-format
@@ -1783,11 +1809,11 @@ msgstr "%u x %u"
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
-msgstr "設定を変更するモニターを選んでください。ドラッグして位置を調整してください。"
+msgstr "設定を変更するモニタを選んでください。ドラッグして位置を調整してください。"
 
 #: capplets/display/xrandr-capplet.c:2145
 msgid "Could not save the monitor configuration"
-msgstr "モニターの設定を保存できませんでした"
+msgstr "モニタの設定を保存できませんでした"
 
 #: capplets/display/xrandr-capplet.c:2166
 msgid "Could not get session bus while applying display configuration"
@@ -1799,7 +1825,7 @@ msgstr "ディスプレイを検出できませんでした"
 
 #: capplets/display/xrandr-capplet.c:2367
 msgid "The monitor configuration has been saved"
-msgstr "モニターの設定が保存されました"
+msgstr "モニタの設定が保存されました"
 
 #: capplets/display/xrandr-capplet.c:2369
 msgid "This configuration will be used the next time someone logs in."
@@ -1807,7 +1833,7 @@ msgstr "この設定は次回ログインした時に有効になります。"
 
 #: capplets/display/xrandr-capplet.c:2378
 msgid "Could not set the default configuration for monitors"
-msgstr "モニターのデフォルトの設定ができませんでした"
+msgstr "モニタの既定の設定ができませんでした"
 
 #: capplets/display/xrandr-capplet.c:2449
 msgid "Could not get screen information"
@@ -1851,7 +1877,7 @@ msgstr "マイクのミュート"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:18
 msgid "Launch media player"
-msgstr "メディア・プレイヤーを起動する"
+msgstr "メディアプレイヤーを起動する"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:20
 msgid "Play (or play/pause)"
@@ -1895,7 +1921,7 @@ msgstr "電子メールクライアントを起動する"
 
 #: capplets/keybindings/01-desktop-key.xml.in:10
 msgid "Launch instant messenger"
-msgstr "インスタント・メッセンジャーを起動します"
+msgstr "インスタントメッセンジャを起動します"
 
 #: capplets/keybindings/01-desktop-key.xml.in:12
 msgid "Launch web browser"
@@ -1933,25 +1959,25 @@ msgstr "新しいショートカット..."
 #: capplets/keybindings/eggcellrendererkeys.c:147
 #: capplets/keybindings/eggcellrendererkeys.c:148
 msgid "Accelerator key"
-msgstr "アクセラレーターキー"
+msgstr "アクセラレータキー"
 
 #: capplets/keybindings/eggcellrendererkeys.c:157
 #: capplets/keybindings/eggcellrendererkeys.c:158
 msgid "Accelerator modifiers"
-msgstr "アクセラレーターの修飾キー"
+msgstr "アクセラレータの修飾キー"
 
 #: capplets/keybindings/eggcellrendererkeys.c:166
 #: capplets/keybindings/eggcellrendererkeys.c:167
 msgid "Accelerator keycode"
-msgstr "アクセラレーターキーコード"
+msgstr "アクセラレータのキーコード"
 
 #: capplets/keybindings/eggcellrendererkeys.c:177
 msgid "Accel Mode"
-msgstr "アクセラレーターモード"
+msgstr "アクセラレータモード"
 
 #: capplets/keybindings/eggcellrendererkeys.c:178
 msgid "The type of accelerator."
-msgstr "アクセラレーターの種類です"
+msgstr "アクセラレータの種類です。"
 
 #: capplets/keybindings/eggcellrendererkeys.c:220
 #: capplets/keybindings/mate-keybinding-properties.c:117
@@ -1963,16 +1989,16 @@ msgstr "無効"
 msgid "<Unknown Action>"
 msgstr "<不明な操作>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1001
-#: capplets/keybindings/mate-keybinding-properties.c:1608
+#: capplets/keybindings/mate-keybinding-properties.c:1015
+#: capplets/keybindings/mate-keybinding-properties.c:1622
 msgid "Custom Shortcuts"
 msgstr "独自のショートカット"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1189
+#: capplets/keybindings/mate-keybinding-properties.c:1203
 msgid "Error saving the new shortcut"
 msgstr "新しいショートカットを保存する際にエラーが発生しました"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1265
+#: capplets/keybindings/mate-keybinding-properties.c:1279
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -1981,7 +2007,7 @@ msgstr ""
 "このキーでは入力できないので \"%s\" というショートカットは利用できません。\n"
 "Control や Alt や Shift といった修飾キーを併用してください。"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1297
+#: capplets/keybindings/mate-keybinding-properties.c:1311
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -1990,24 +2016,24 @@ msgstr ""
 "\"%s\" というショートカットは既に登録済です:\n"
 "\"%s\""
 
-#: capplets/keybindings/mate-keybinding-properties.c:1304
+#: capplets/keybindings/mate-keybinding-properties.c:1318
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "ショートカットを \"%s\" に変更すると、\"%s\" というショートカットが無効になります。"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1309
+#: capplets/keybindings/mate-keybinding-properties.c:1323
 msgid "_Reassign"
 msgstr "割り当てる(_R)"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1563
+#: capplets/keybindings/mate-keybinding-properties.c:1577
 msgid "Too many custom shortcuts"
 msgstr "独自のショートカットが多すぎます"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1877
+#: capplets/keybindings/mate-keybinding-properties.c:1891
 msgid "Action"
 msgstr "操作"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1899
+#: capplets/keybindings/mate-keybinding-properties.c:1913
 msgid "Shortcut"
 msgstr "ショートカット"
 
@@ -2032,7 +2058,7 @@ msgstr "キーボードショートカット"
 msgid ""
 "To edit a shortcut key, double-click on the corresponding row and type a new"
 " key combination, or press backspace to clear."
-msgstr "ショートカット・キーを編集するには、該当の行を２回クリックして新しいキーの組み合わせを入力するか、バックスペース・キーを押して消去します。"
+msgstr "ショートカットキーを編集するには、該当の行をダブルリックして新しいキーの組み合わせを入力するか、バックスペース・キーを押して消去します。"
 
 #: capplets/keybindings/mate-keybinding.desktop.in:4
 msgid "Assign shortcut keys to commands"
@@ -2056,7 +2082,7 @@ msgstr "入力中断設定を表示させてページを開始します"
 
 #: capplets/keyboard/mate-keyboard-properties.c:156
 msgid "Start the page with the accessibility settings showing"
-msgstr "アクセシビリティの設定を表示させてページを開始します"
+msgstr "操作支援の設定を表示させてページを開始します"
 
 #: capplets/keyboard/mate-keyboard-properties.c:161
 msgid "- MATE Keyboard Preferences"
@@ -2064,15 +2090,15 @@ msgstr "- キーボードの設定"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:14
 msgid "Keyboard Accessibility Audio Feedback"
-msgstr "キーボードアクセシビリティのサウンドフィードバック"
+msgstr "キーボード操作支援のサウンドフィードバック"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:86
 msgid "Beep when _accessibility features are turned on or off"
-msgstr "アクセシビリティ機能の ON/OFF を切り替えたらビープ音を鳴らす(_A)"
+msgstr "操作支援機能の ON/OFF を切り替えたら、ビープ音を鳴らす(_A)"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:102
 msgid "Beep when a _toggle key is pressed"
-msgstr "トグルキーが押されたらビープ音を鳴らす(_T)"
+msgstr "トグルキーを押したら、ビープ音を鳴らす(_T)"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:123
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:645
@@ -2083,7 +2109,7 @@ msgstr "全般"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:152
 msgid "Beep when a _modifier key is pressed"
-msgstr "修飾キーが押されたらビープ音を鳴らす(_M)"
+msgstr "修飾キーを押したらビープ音を鳴らす(_M)"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:173
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1054
@@ -2134,7 +2160,7 @@ msgstr "バウンスキー"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:429
 msgid "Beep when pressing a key while Caps_Lock is active"
-msgstr "Caps Lockが有効な状態でキーを押すとビープ音が鳴ります(_L)"
+msgstr "Caps Lock が有効な状態でキーを押すとビープ音が鳴ります(_L)"
 
 #: capplets/keyboard/mate-keyboard-properties-a11y-notifications.ui:451
 msgid "Caps Lock"
@@ -2225,7 +2251,7 @@ msgstr "カーソルが点滅する速さ"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:674
 msgid "List of keyboard layouts selected for usage"
-msgstr "使用するキーボードのレイアウトの一覧"
+msgstr "使用するキーボード・レイアウトの一覧"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:707
 msgid "Select a keyboard layout to be added to the list"
@@ -2285,13 +2311,13 @@ msgstr "キーボードレイアウトのオプションを表示・編集しま
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:936
 msgid "Reset to De_faults"
-msgstr "デフォルトに戻す(_F)"
+msgstr "既定に戻す(_F)"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:940
 msgid ""
 "Replace the current keyboard layout settings with the\n"
 "default settings"
-msgstr "現在のキーボードレイアウトをデフォルトの設定に置き換えます"
+msgstr "現在のキーボードレイアウトを既定の設定に置き換えます"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:969
 msgid "Layouts"
@@ -2299,7 +2325,7 @@ msgstr "レイアウト"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1005
 msgid "_Accessibility features can be toggled with keyboard shortcuts"
-msgstr "キーボードからアクセシビリティの機能を切り替えられるようにする(_A)"
+msgstr "キーボードから操作支援の機能を切り替えられるようにする(_A)"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:1092
 msgid "_Simulate simultaneous keypresses"
@@ -2425,7 +2451,7 @@ msgstr "キーボードの型式の選択"
 
 #: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:81
 msgid "_Vendors:"
-msgstr "ベンダー(_V):"
+msgstr "ベンダ(_V):"
 
 #: capplets/keyboard/mate-keyboard-properties-model-chooser.ui:118
 msgid "_Models:"
@@ -2443,18 +2469,18 @@ msgstr "不明"
 msgid "Layout"
 msgstr "レイアウト"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
-msgstr "ベンダー"
+msgstr "ベンダ"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:237
 msgid "Models"
 msgstr "型式"
 
 #: capplets/keyboard/mate-keyboard-properties-xkbot.c:237
 #: capplets/mouse/mate-mouse-properties.ui:587
 msgid "Default"
-msgstr "デフォルト"
+msgstr "既定"
 
 #: capplets/keyboard/mate-keyboard.desktop.in:3
 msgid "Keyboard"
@@ -2521,7 +2547,7 @@ msgstr "中クリックによる貼り付けを有効にする"
 #: capplets/mouse/mate-mouse-properties.ui:385
 #: capplets/mouse/mate-mouse-properties.ui:1363
 msgid "Pointer Speed"
-msgstr "ポインターの速度"
+msgstr "ポインタの速度"
 
 #. low sensitivity
 #: capplets/mouse/mate-mouse-properties.ui:499
@@ -2602,7 +2628,7 @@ msgstr "3 本指クリックエミュレーション:"
 
 #: capplets/mouse/mate-mouse-properties.ui:1172
 msgid "Warning: multi-finger emulation may disable software buttons"
-msgstr "警告：マルチフィンガーエミュレーションによって、ソフトウェアボタンが無効になるかもしれません"
+msgstr "警告：マルチフィンガのエミュレーションによって、ソフトウェアボタンが無効になるかもしれません"
 
 #: capplets/mouse/mate-mouse-properties.ui:1203
 msgid "Scrolling"
@@ -2640,7 +2666,7 @@ msgstr "お使いのマウスの動きを設定します"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/mouse/mate-settings-mouse.desktop.in:13
 msgid "mate-control-center;MATE;mouse;preferences;"
-msgstr "mate-control-center;MATE;mouse;preferences;"
+msgstr "mate-control-center;MATE;mouse;マウス;preferences;設定;"
 
 #: capplets/network/mate-network-properties.desktop.in:3
 msgid "Network Proxy"
@@ -2654,7 +2680,7 @@ msgstr "お使いのネットワークプロキシを設定します"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/network/mate-network-properties.desktop.in:13
 msgid "mate-control-center;MATE;network;http;socks;proxy;"
-msgstr "mate-control-center;MATE;network;http;socks;proxy;"
+msgstr "mate-control-center;MATE;network;ネットワーク;http;socks;proxy;プロキシ;"
 
 #: capplets/network/mate-network-properties.ui:34
 msgid "Network Proxy Preferences"
@@ -2725,7 +2751,7 @@ msgstr "<b>認証を行う(_U)</b>"
 
 #: capplets/network/mate-network-properties.ui:869
 msgid "U_sername:"
-msgstr "ユーザー名(_S):"
+msgstr "ユーザ名(_S):"
 
 #: capplets/network/mate-network-properties.ui:908
 msgid "_Password:"
@@ -2736,7 +2762,7 @@ msgid "Metacity Preferences"
 msgstr "Metacity の設定"
 
 #: capplets/windows/mate-metacity-support.c:54
-#: capplets/windows/window-properties.ui:813
+#: capplets/windows/window-properties.ui:733
 msgid "Compositing Manager"
 msgstr "コンポジットマネージャ"
 
@@ -2744,23 +2770,23 @@ msgstr "コンポジットマネージャ"
 msgid "Enable software _compositing window manager"
 msgstr "ソフトウェアコンポジット・ウィンドウマネージャを有効にする(_C)"
 
-#: capplets/windows/mate-window-properties.c:315
+#: capplets/windows/mate-window-properties.c:316
 msgid "The current window manager is unsupported"
 msgstr "現在のウィンドウマネージャはサポートしていません"
 
-#: capplets/windows/mate-window-properties.c:626
+#: capplets/windows/mate-window-properties.c:629
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:632
+#: capplets/windows/mate-window-properties.c:635
 msgid "H_yper"
 msgstr "H_yper"
 
-#: capplets/windows/mate-window-properties.c:639
+#: capplets/windows/mate-window-properties.c:642
 msgid "S_uper (or \"Windows logo\")"
 msgstr "S_uper (Windows キー)"
 
-#: capplets/windows/mate-window-properties.c:646
+#: capplets/windows/mate-window-properties.c:649
 msgid "_Meta"
 msgstr "_Meta"
 
@@ -2782,135 +2808,135 @@ msgstr "mate-control-center;MATE;window;manager;properties;marco;preferences;"
 msgid "Window Preferences"
 msgstr "ウィンドウの設定"
 
-#: capplets/windows/window-properties.ui:128
-msgid "Window Selection"
-msgstr "ウィンドウの選択"
-
-#: capplets/windows/window-properties.ui:148
+#: capplets/windows/window-properties.ui:132
 msgid "_Select windows when the mouse moves over them"
 msgstr "マウスが移動した先のウィンドウを選択する(_S)"
 
-#: capplets/windows/window-properties.ui:164
+#: capplets/windows/window-properties.ui:148
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "マウスが離れた際にウィンドウの選択を解除する(_N)"
 
-#: capplets/windows/window-properties.ui:187
+#: capplets/windows/window-properties.ui:171
 msgid "_Raise selected windows after"
 msgstr "選択されたウィンドウを上へ(_R)"
 
-#: capplets/windows/window-properties.ui:223
+#: capplets/windows/window-properties.ui:207
 msgid "seconds"
 msgstr "秒"
 
-#: capplets/windows/window-properties.ui:263
-msgid "Titlebar Action"
-msgstr "タイトルバーアクション"
+#: capplets/windows/window-properties.ui:229
+msgid "Window Selection"
+msgstr "ウィンドウの選択"
 
-#: capplets/windows/window-properties.ui:290
+#: capplets/windows/window-properties.ui:264
 msgid "_Double-click titlebar action:"
 msgstr "タイトルバーをダブルクリックしたとき:(_D)"
 
-#: capplets/windows/window-properties.ui:305
+#: capplets/windows/window-properties.ui:279
 #: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "巻き上げる"
 
-#: capplets/windows/window-properties.ui:306
+#: capplets/windows/window-properties.ui:280
 #: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "最大化する"
 
-#: capplets/windows/window-properties.ui:307
+#: capplets/windows/window-properties.ui:281
 #: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "横方向に最大化する"
 
-#: capplets/windows/window-properties.ui:308
+#: capplets/windows/window-properties.ui:282
 #: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "縦方向に最大化する"
 
-#: capplets/windows/window-properties.ui:309
+#: capplets/windows/window-properties.ui:283
 #: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "最小化する"
 
-#: capplets/windows/window-properties.ui:310
+#: capplets/windows/window-properties.ui:284
 #: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "なし"
 
-#: capplets/windows/window-properties.ui:352
-msgid "Alt-Tab"
-msgstr "Alt-Tab"
+#: capplets/windows/window-properties.ui:308
+msgid "Titlebar Action"
+msgstr "タイトルバーアクション"
 
-#: capplets/windows/window-properties.ui:371
+#: capplets/windows/window-properties.ui:335
 msgid "Show _thumbnails in Alt-Tab"
 msgstr "Alt-Tab でサムネイルを表示(_T)"
 
-#: capplets/windows/window-properties.ui:386
+#: capplets/windows/window-properties.ui:350
 msgid "Show window _border in Alt-Tab"
-msgstr "Alt-Tab でウィンドウのボーダーを表示(_B)"
+msgstr "Alt-Tab でウィンドウのボーダを表示(_B)"
 
-#: capplets/windows/window-properties.ui:424
-msgid "Movement Key"
-msgstr "ウィンドウの移動"
+#: capplets/windows/window-properties.ui:370
+msgid "Alt-Tab"
+msgstr "Alt-Tab"
 
-#: capplets/windows/window-properties.ui:446
+#: capplets/windows/window-properties.ui:400
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "ウィンドウをつかんで移動する際に使用する修飾キー:"
 
-#: capplets/windows/window-properties.ui:490
+#: capplets/windows/window-properties.ui:431
+msgid "Movement Key"
+msgstr "ウィンドウの移動"
+
+#: capplets/windows/window-properties.ui:450
 msgid "Behaviour"
 msgstr "挙動"
 
-#: capplets/windows/window-properties.ui:515
-msgid "New Windows"
-msgstr "新しいウィンドウ"
-
-#: capplets/windows/window-properties.ui:535
+#: capplets/windows/window-properties.ui:479
 msgid "Centre _new windows"
 msgstr "新規ウィンドウを中央に配置する(_N)"
 
-#: capplets/windows/window-properties.ui:573
-msgid "Window Snapping"
-msgstr "ウインドウのスナップ"
+#: capplets/windows/window-properties.ui:499
+msgid "New Windows"
+msgstr "新しいウィンドウ"
 
-#: capplets/windows/window-properties.ui:593
+#: capplets/windows/window-properties.ui:527
 msgid "Enable window _tiling"
 msgstr "ウインドウのタイルを有効にする"
 
-#: capplets/windows/window-properties.ui:608
+#: capplets/windows/window-properties.ui:542
 msgid "Allow t_op tiling"
 msgstr "タイルの貼付けを可能にする(_O)"
 
-#: capplets/windows/window-properties.ui:647
-msgid "Titlebar Buttons"
-msgstr "タイトルバーボタン"
+#: capplets/windows/window-properties.ui:563
+msgid "Window Snapping"
+msgstr "ウインドウのスナップ"
 
-#: capplets/windows/window-properties.ui:674
+#: capplets/windows/window-properties.ui:598
 msgid "_Position of titlebar buttons:"
 msgstr "タイトルバーボタンの位置:(_P)"
 
-#: capplets/windows/window-properties.ui:689
+#: capplets/windows/window-properties.ui:613
 msgid "Right (with menu)"
 msgstr "右 (メニューボタン有り)"
 
-#: capplets/windows/window-properties.ui:690
+#: capplets/windows/window-properties.ui:614
 msgid "Left (with menu)"
 msgstr "左 (メニューボタン有り)"
 
-#: capplets/windows/window-properties.ui:732
+#: capplets/windows/window-properties.ui:640
+msgid "Titlebar Buttons"
+msgstr "タイトルバーボタン"
+
+#: capplets/windows/window-properties.ui:662
 msgid "Placement"
 msgstr "場所"
 
-#: capplets/windows/window-properties.ui:757
+#: capplets/windows/window-properties.ui:691
+msgid "Enable _software compositing window manager"
+msgstr "ソフトウェアコンポジットのウィンドウマネージャを有効にする(_S)"
+
+#: capplets/windows/window-properties.ui:711
 msgid "Software Compositing"
 msgstr "ソフトウェアのコンポジット"
-
-#: capplets/windows/window-properties.ui:777
-msgid "Enable _software compositing window manager"
-msgstr "ソフトウェアコンポジットのウィンドウ・マネージャーを有効にする(_S)"
 
 #: capplets/time-admin/src/main.c:34
 #, c-format
@@ -2948,7 +2974,7 @@ msgstr "pid ファイルの読み込めません"
 
 #: capplets/time-admin/src/time-admin.ui:58
 msgid "Time and Date Manager"
-msgstr "日付と時刻の管理"
+msgstr "日付と時刻の設定"
 
 #: capplets/time-admin/src/time-admin.ui:96
 msgid "NTP sync"
@@ -2956,11 +2982,11 @@ msgstr "NTP 同期"
 
 #: capplets/time-admin/src/time-admin.ui:123
 msgid "Time zone"
-msgstr "時間帯:"
+msgstr "時刻帯（タイムゾーン）"
 
 #: capplets/time-admin/src/time-admin.ui:161
 msgid "Click the button to edit time zone."
-msgstr "ボタンをクリックして時間帯を編集します"
+msgstr "ボタンをクリックして時刻帯を編集します"
 
 #: capplets/time-admin/src/time-admin.ui:283
 msgid "Time"
@@ -3001,7 +3027,7 @@ msgstr "%s、%s"
 
 #: capplets/time-admin/src/time-zone.c:302
 msgid "Error: timezone identifier cannot be parsed or loaded"
-msgstr "エラー:時間帯の識別子を解析またはロードできません"
+msgstr "エラー:時刻帯の識別子を解析またはロードできません"
 
 #: capplets/time-admin/src/time-zone.c:312
 msgid "UTC%:::z"
@@ -3013,11 +3039,11 @@ msgstr "%R"
 
 #: capplets/time-admin/src/time-zone.c:387
 msgid "Time Zone"
-msgstr "時間帯"
+msgstr "時刻帯（タイムゾーン）"
 
 #: capplets/time-admin/src/time-zone.c:474
 msgid "Time Zone Selection"
-msgstr "時間帯の選択"
+msgstr "時刻帯の選択"
 
 #: capplets/time-admin/src/time-zone.c:489
 msgid "Con_firm"
@@ -4725,7 +4751,7 @@ msgstr "太平洋/ウォリス諸島"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:3
 msgid "Time And Date Manager"
-msgstr "日付と時刻の管理"
+msgstr "日付と時刻の設定"
 
 #: capplets/time-admin/data/mate-time-admin.desktop.in:4
 msgid "Setting the time and date of the local system"
@@ -4749,7 +4775,7 @@ msgstr "%s キーは空です\n"
 
 #: shell/control-center.c:137
 msgid "Filter"
-msgstr "フィルター"
+msgstr "フィルタ"
 
 #: shell/control-center.c:137
 msgid "Groups"
@@ -4762,7 +4788,7 @@ msgstr "よく利用するタスク"
 #: shell/control-center.c:145 shell/matecc.desktop.in:3
 #: shell/matecc.directory.desktop.in:3
 msgid "Control Center"
-msgstr "コントロールセンター"
+msgstr "コントロールセンタ"
 
 #: shell/control-center.c:164
 msgid "Hide on start (useful to preload the shell)"
@@ -4853,7 +4879,7 @@ msgstr ""
 "やまね ひでき \n"
 "草野 貴之 \n"
 "松澤 二郎 \n"
-"Green, alias usergreen\n"
+"Green, aka usergreen\n"
 "日本GNOMEユーザー会 http://www.gnome.gr.jp/\n"
 "MATE 文書化チーム https://www.transifex.com/mate/ "
 
@@ -4944,7 +4970,7 @@ msgstr "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
 
 #: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
-msgstr "サムネイル表示する文字列 (デフォルトは Aa)"
+msgstr "サムネイル表示する文字列 (既定は Aa)"
 
 #: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
@@ -4962,20 +4988,20 @@ msgstr "サイズ"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "フォントファイル 出力先ファイル"
 
-#: libslab/app-shell.c:763
+#: libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
-msgstr "フィルター \"%s\" が、どのアイテムともマッチしません"
+msgstr "フィルタ \"%s\" が、どのアイテムともマッチしません"
 
-#: libslab/app-shell.c:765
+#: libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "どれもマッチしませんでした。"
 
-#: libslab/app-shell.c:874
+#: libslab/app-shell.c:883
 msgid "New Applications"
 msgstr "新しいアプリケーション"
 
-#: libslab/app-shell.c:936
+#: libslab/app-shell.c:945
 msgid "Other"
 msgstr "その他"
 
@@ -5027,4 +5053,4 @@ msgstr "ファイルシステム"
 
 #: libslab/bookmark-agent.c:1181
 msgid "Network Servers"
-msgstr "ネットワークサーバー"
+msgstr "ネットワークサーバ"
