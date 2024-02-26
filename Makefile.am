@@ -48,6 +48,37 @@ EXTRA_DIST = \
 	its	\
 	$(gsettingsschema_in_files)
 
+EXTRA_DIST += \
+	meson.build					\
+	meson_options.txt				\
+	meson_post_install.py				\
+	capplets/meson.build				\
+	capplets/about-me/meson.build			\
+	capplets/accessibility/at-properties/meson.build \
+	capplets/appearance/meson.build			\
+	capplets/appearance/data/meson.build		\
+	capplets/common/meson.build		\
+	capplets/default-applications/meson.build	\
+	capplets/default-applications/icons/meson.build \
+	capplets/display/meson.build			\
+	capplets/display/meson.build			\
+	capplets/keyboard/meson.build			\
+	capplets/keybindings/meson.build		\
+	capplets/mouse/meson.build			\
+	capplets/network/meson.build			\
+	capplets/system-info/meson.build		\
+	capplets/time-admin/meson.build			\
+	capplets/time-admin/data/meson.build		\
+	capplets/time-admin/src/meson.build		\
+	capplets/windows/meson.build			\
+	font-viewer/meson.build				\
+	help/meson.build				\
+	help/LINGUAS					\
+	man/meson.build					\
+	po/meson.build					\
+	shell/meson.build				\
+	typing-break/meson.build
+
 DISTCHECK_CONFIGURE_FLAGS = \
 	--disable-update-mimedb \
 	--enable-compile-warnings=no \
