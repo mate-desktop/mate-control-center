@@ -21,6 +21,7 @@
  *
  */
 #include <gtk/gtk.h>
+#include <glib.h>
 #include <glibtop/fsusage.h>
 #include <glibtop/mountlist.h>
 #include <glibtop/mem.h>
@@ -159,6 +160,7 @@ mate_system_info_set_row (MateSystemInfo *info)
 static char *
 get_system_hostname (void)
 {
+# ifdef HAVE_SYSTEMD
     GDBusProxy         *hostnamed_proxy;
     g_autoptr(GVariant) variant = NULL;
     g_autoptr(GError)   error = NULL; 
@@ -206,6 +208,9 @@ get_system_hostname (void)
         g_object_unref (hostnamed_proxy);
         return g_variant_dup_string (variant, NULL);
     }
+# else
+    return g_strdup (g_get_host_name ());
+# endif
 }
 
 static char *
@@ -493,7 +498,9 @@ static struct {
     { "openvz", "OpenVZ" },
     { "lxc", "LXC" },
     { "lxc-libvirt", "LXC (libvirt)" },
-    { "systemd-nspawn", "systemd (nspawn)" }
+# ifdef HAVE_SYSTEMD
+    { "systemd-nspawn", "systemd (nspawn)" },
+# endif
 };
 
 static char *
@@ -666,7 +673,7 @@ mate_system_info_setup (MateSystemInfo *info)
     kernel_text = get_kernel_vesrion ();
     label = g_object_get_data (G_OBJECT (info->kernel_row), "labelvalue");
     set_lable_style (label, "gray", 12, kernel_text, FALSE);
-
+# ifdef HAVE_SYSTEMD
     virt_text = get_system_virt ();
     if (virt_text != NULL)
     {
@@ -674,6 +681,7 @@ mate_system_info_setup (MateSystemInfo *info)
         label = g_object_get_data (G_OBJECT (info->virtualization_row), "labelvalue");
         set_lable_style (label, "gray", 12, virt_text, FALSE);
     }
+# endif
     windowing_system_text = get_windowing_system ();
     label = g_object_get_data (G_OBJECT (info->windowing_system_row), "labelvalue");
     set_lable_style (label, "gray", 12, windowing_system_text, FALSE);

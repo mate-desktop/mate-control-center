@@ -121,7 +121,6 @@ PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 >= $GLIB_REQUIRED gio-2.0 gtk+-3
 PKG_CHECK_MODULES(GIO, gio-2.0)
 PKG_CHECK_MODULES(GLIBTOP, libgtop-2.0)
 PKG_CHECK_MODULES(UDISKS, udisks2)
-PKG_CHECK_MODULES(SYSTEMD, systemd >= $SYSTEMD_REQUIRED)
 
 PKG_CHECK_MODULES([DCONF], [dconf >= 0.13.4])
 AC_SUBST(DCONF_CFLAGS)
@@ -167,6 +166,20 @@ AC_ARG_ENABLE([libappindicator],
                                 [PKG_CHECK_EXISTS([$UBUNTU_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
                                                   [enable_appindicator=yes],
                                                   [enable_appindicator=no])])])
+
+AC_ARG_ENABLE([systemd],
+              [AS_HELP_STRING([--enable-systemd[=@<:@no/auto/yes@:>@]],[Use systemd @<:@default=yes@:>@])],
+              [enable_systemd=$enableval],
+              [PKG_CHECK_EXISTS([$SYSTEMD >= $SYSTEMD_REQUIRED],
+                                [enable_systemd=no],
+                                ,
+                                )])
+
+AS_IF([test "x$enable_systemd" = xyes],
+      [AC_MSG_NOTICE([Building with systemd support.])
+       PKG_CHECK_MODULES([SYSTEMD],
+                         [systemd >= $SYSTEMD_REQUIRED],
+                         [AC_DEFINE(HAVE_SYSTEMD, 1, [Have systemd])])])
 
 AS_IF([test "x$enable_appindicator" = xyes],
       [AC_MSG_NOTICE([Buidling against Ubuntu AppIndicator.])
@@ -313,6 +326,7 @@ Configure summary:
 
         Ayatana AppIndicator (preferred)   $(test "x$enable_appindicator" = xyes && echo no || echo yes)
         Ubuntu AppIndicator (legacy)       $(test "x$enable_appindicator" = xyes && echo yes || echo no)
+	Systemd:                           $(test "x$enable_systemd" = xyes && echo yes || echo no)
 
         Accountsservice:           ${have_accountsservice}
         Native Language support:   ${USE_NLS}
