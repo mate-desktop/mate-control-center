@@ -132,13 +132,15 @@ static void
 mate_system_info_set_row (MateSystemInfo *info)
 {
     mate_system_info_row_fill (info->hostname_row, _("Device Name"), FALSE);
+# ifdef HAVE_SYSTEMD
     mate_system_info_row_fill (info->hardware_model_row, _("Hardware Model"), TRUE);
+    mate_system_info_row_fill (info->virtualization_row, _("Virtualization"), TRUE);
+# endif
     mate_system_info_row_fill (info->memory_row, _("Memory"), TRUE);
     mate_system_info_row_fill (info->processor_row, _("Processor"), TRUE);
     mate_system_info_row_fill (info->graphics_row, _("Graphics"), TRUE);
     mate_system_info_row_fill (info->disk_row, _("Disk Capacity"), FALSE);
     mate_system_info_row_fill (info->kernel_row, _("Kernel Version"), FALSE);
-    mate_system_info_row_fill (info->virtualization_row, _("Virtualization"), TRUE);
     mate_system_info_row_fill (info->windowing_system_row, _("Windowing System"), TRUE);
     mate_system_info_row_fill (info->mate_version_row, _("MATE Version"), TRUE);
     mate_system_info_row_fill (info->os_name_row, _("OS Name"), TRUE);
@@ -213,6 +215,7 @@ get_system_hostname (void)
 # endif
 }
 
+# ifdef HAVE_SYSTEMD
 static char *
 get_hardware_model (void)
 {
@@ -263,6 +266,7 @@ get_hardware_model (void)
 
     return NULL;
 }
+# endif
 
 static char *
 get_cpu_info (void)
@@ -483,6 +487,7 @@ get_kernel_vesrion (void)
     return g_strdup_printf ("%s %s", un.sysname, un.release);
 }
 
+# ifdef HAVE_SYSTEMD
 static struct {
     const char *id;
     const char *display;
@@ -498,9 +503,7 @@ static struct {
     { "openvz", "OpenVZ" },
     { "lxc", "LXC" },
     { "lxc-libvirt", "LXC (libvirt)" },
-# ifdef HAVE_SYSTEMD
-    { "systemd-nspawn", "systemd (nspawn)" },
-# endif
+    { "systemd-nspawn", "systemd (nspawn)" }
 };
 
 static char *
@@ -567,6 +570,7 @@ get_system_virt (void)
 
     return get_virtualization_label (g_variant_get_string (inner, NULL));
 }
+# endif
 
 static char *
 get_mate_desktop_version ()
@@ -622,7 +626,10 @@ mate_system_info_setup (MateSystemInfo *info)
 {
     g_autofree char *logo_name = NULL;
     g_autofree char *hostname_text = NULL;
+# ifdef HAVE_SYSTEMD
     g_autofree char *hw_model_text = NULL;
+    g_autofree char *virt_text = NULL;
+# endif
     g_autofree char *memory_text = NULL;
     g_autofree char *cpu_text = NULL;
     g_autofree char *os_type_text = NULL;
@@ -630,7 +637,6 @@ mate_system_info_setup (MateSystemInfo *info)
     g_autofree char *disk_text = NULL;
     g_autofree char *kernel_text = NULL;
     g_autofree char *windowing_system_text = NULL;
-    g_autofree char *virt_text = NULL;
     g_autofree char *de_text = NULL;
     g_autofree char *graphics_hardware_string = NULL;
 
@@ -645,6 +651,7 @@ mate_system_info_setup (MateSystemInfo *info)
     label = g_object_get_data (G_OBJECT (info->hostname_row), "labelvalue");
     set_lable_style (label, "gray", 12, hostname_text, FALSE);
 
+# if HAVE_SYSTEMD
     hw_model_text = get_hardware_model ();
     if (hw_model_text != NULL)
     {
@@ -652,7 +659,7 @@ mate_system_info_setup (MateSystemInfo *info)
         label = g_object_get_data (G_OBJECT (info->hardware_model_row), "labelvalue");
         set_lable_style (label, "gray", 12, hw_model_text, FALSE);
     }
-
+# endif
     glibtop_get_mem (&mem);
     memory_text = g_format_size_full (mem.total, G_FORMAT_SIZE_IEC_UNITS);
     label = g_object_get_data (G_OBJECT (info->memory_row), "labelvalue");
@@ -714,7 +721,10 @@ mate_system_info_class_init (MateSystemInfoClass *klass)
     gtk_widget_class_set_template_from_resource (widget_class, "/org/mate/control-center/system-info/mate-system-info.ui");
 
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, hostname_row);
+# ifdef HAVE_SYSTEMD
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, hardware_box);
+    gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, virtualization_row);
+# endif
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, disk_row);
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, mate_version_row);
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, graphics_row);
@@ -725,7 +735,6 @@ mate_system_info_class_init (MateSystemInfoClass *klass)
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, os_name_row);
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, os_type_row);
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, processor_row);
-    gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, virtualization_row);
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, kernel_row);
     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, windowing_system_row);
 }
