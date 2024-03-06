@@ -327,7 +327,7 @@ Configure summary:
 
         Ayatana AppIndicator (preferred)   $(test "x$enable_appindicator" = xyes && echo no || echo yes)
         Ubuntu AppIndicator (legacy)       $(test "x$enable_appindicator" = xyes && echo yes || echo no)
-	Systemd:                           $(test "x$enable_systemd" = xyes && echo yes || echo no)
+	Systemd:                           ${have_systemd}
 
         Accountsservice:           ${have_accountsservice}
         Native Language support:   ${USE_NLS}
