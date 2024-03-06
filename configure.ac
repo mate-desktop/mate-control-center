@@ -167,20 +167,6 @@ AC_ARG_ENABLE([libappindicator],
                                                   [enable_appindicator=yes],
                                                   [enable_appindicator=no])])])
 
-AC_ARG_ENABLE([systemd],
-              [AS_HELP_STRING([--enable-systemd[=@<:@no/auto/yes@:>@]],[Use systemd @<:@default=yes@:>@])],
-              [enable_systemd=$enableval],
-              [PKG_CHECK_EXISTS([$SYSTEMD >= $SYSTEMD_REQUIRED],
-                                [enable_systemd=no],
-                                ,
-                                )])
-
-AS_IF([test "x$enable_systemd" = xyes],
-      [AC_MSG_NOTICE([Building with systemd support.])
-       PKG_CHECK_MODULES([SYSTEMD],
-                         [systemd >= $SYSTEMD_REQUIRED],
-                         [AC_DEFINE(HAVE_SYSTEMD, 1, [Have systemd])])])
-
 AS_IF([test "x$enable_appindicator" = xyes],
       [AC_MSG_NOTICE([Buidling against Ubuntu AppIndicator.])
        PKG_CHECK_MODULES([APPINDICATOR],
@@ -190,6 +176,21 @@ AS_IF([test "x$enable_appindicator" = xyes],
        PKG_CHECK_MODULES([APPINDICATOR],
                          [$AYATANA_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
                          [AC_DEFINE(HAVE_AYATANA_APPINDICATOR, 1, [Have Ayatana AppIndicator])])])
+
+have_systemd=no
+AC_ARG_ENABLE(systemd, AS_HELP_STRING([--disable-systemd], [disable systemd support]),enable_systemd="$enableval",enable_systemd=auto)
+if test "x$enable_systemd" != "xno"; then
+	PKG_CHECK_MODULES(SYSTEMD, [libsystemd], [have_systemd=yes],
+	                  [PKG_CHECK_MODULES(SYSTEMD, [libsystemd >= $SYSTEMD_REQUIRED],
+	                  [have_systemd=yes])])
+	if test "x$have_systemd" = xno && test "x$enable_systemd" = xyes; then
+		AC_MSG_ERROR([*** systemd support requested but libraries not found])
+	elif test "x$have_systemd" = xyes; then
+		AC_DEFINE(HAVE_SYSTEMD, 1, [Define if systemd is available])
+	fi
+fi
+
+AM_CONDITIONAL(HAVE_SYSTEMD, [test "$have_systemd" = "yes"])
 
 PKG_CHECK_MODULES(FONT_CAPPLET, $COMMON_MODULES pango)
 PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES fontconfig freetype2 mate-desktop-2.0)
