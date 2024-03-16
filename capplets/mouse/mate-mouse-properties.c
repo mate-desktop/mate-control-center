@@ -310,6 +310,11 @@ setup_dialog (GtkBuilder *dialog)
 	gtk_combo_box_set_active (GTK_COMBO_BOX (gtk_builder_get_object (dialog, "mouse_accel_profile")),
 				  g_settings_get_enum (mouse_settings, "accel-profile"));
 
+	/* Pointer size */
+	g_settings_bind (mouse_settings, "cursor-size",
+			 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "pointer_size_scale"))),
+			 "value", G_SETTINGS_BIND_DEFAULT);
+
 	/* DnD threshold */
 	g_settings_bind (mouse_settings, "drag-threshold",
 	                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "drag_threshold_scale"))), "value",
@@ -379,6 +384,11 @@ setup_dialog (GtkBuilder *dialog)
 		g_settings_bind (touchpad_settings, "motion-threshold",
 		                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_sensitivity_scale"))), "value",
 		                 G_SETTINGS_BIND_DEFAULT);
+
+		/* Pointer size */
+		g_settings_bind (mouse_settings, "cursor-size",
+				 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_pointer_size_scale"))),
+				 "value", G_SETTINGS_BIND_DEFAULT);
 
 		synaptics_check_capabilities (dialog);
 	}
