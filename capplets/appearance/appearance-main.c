@@ -163,6 +163,10 @@ main (int argc, char **argv)
       { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
     };
 
+
+  /*Set the backend to use x11 (must use xwayland in wayland session*/
+  gdk_set_allowed_backends ("x11");
+
   option_context = g_option_context_new (NULL);
   g_option_context_add_main_entries (option_context, option_entries, GETTEXT_PACKAGE);
 
