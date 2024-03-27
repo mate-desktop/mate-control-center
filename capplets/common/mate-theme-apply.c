@@ -26,8 +26,10 @@
 #include <libmate-desktop/mate-gsettings.h>
 #include "mate-theme-apply.h"
 #include "gtkrc-utils.h"
+#include <gdk/gdkx.h>
 
 #define INTERFACE_SCHEMA        "org.mate.interface"
+#define INTERFACE_GNOME_SCHEMA  "org.gnome.desktop.interface"
 #define GTK_THEME_KEY           "gtk-theme"
 #define COLOR_SCHEME_KEY        "gtk-color-scheme"
 #define ICON_THEME_KEY          "icon-theme"
@@ -48,11 +50,26 @@ void
 mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 {
   GSettings *interface_settings;
+  GSettings *interface_gnome_settings = NULL;
   GSettings *marco_settings;
   GSettings *mouse_settings;
   GSettings *notification_settings = NULL;
   gchar *old_key;
   gint old_key_int;
+
+  /*Load the gnome interface schema if we are running under wayland and it is present*/
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+  {
+    GSettingsSchemaSource *source = g_settings_schema_source_get_default ();
+
+    if (source)
+    {
+      GSettingsSchema *schema = g_settings_schema_source_lookup (source, INTERFACE_GNOME_SCHEMA, TRUE);
+
+      if (schema)
+        interface_gnome_settings = g_settings_new_full (schema, NULL, NULL);
+    }
+  }
 
   interface_settings = g_settings_new (INTERFACE_SCHEMA);
   marco_settings = g_settings_new (MARCO_SCHEMA);
@@ -68,6 +85,11 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   if (compare (old_key, meta_theme_info->gtk_theme_name))
     {
       g_settings_set_string (interface_settings, GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
+
+      if (interface_gnome_settings)
+          g_settings_set_string (interface_gnome_settings, 
+                                 GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
+
     }
   g_free (old_key);
 
@@ -97,12 +119,17 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 
   /* Set the wm key */
   g_settings_set_string (marco_settings, MARCO_THEME_KEY, meta_theme_info->marco_theme_name);
+  /*To also control decoration theme in wayland we need a decorator that uses marco themes
+   *and queries gsettings to determine which theme to use to this is a TODO */
 
   /* set the icon theme */
   old_key = g_settings_get_string (interface_settings, ICON_THEME_KEY);
   if (compare (old_key, meta_theme_info->icon_theme_name))
     {
       g_settings_set_string (interface_settings, ICON_THEME_KEY, meta_theme_info->icon_theme_name);
+      if (interface_gnome_settings)
+        g_settings_set_string (interface_gnome_settings,
+                             ICON_THEME_KEY, meta_theme_info->icon_theme_name);
     }
   g_free (old_key);
 
@@ -125,6 +152,12 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   if (compare (old_key, meta_theme_info->cursor_theme_name))
     {
       g_settings_set_string (mouse_settings, CURSOR_THEME_KEY, meta_theme_info->cursor_theme_name);
+      if (interface_gnome_settings)
+      {
+        /*Note that this key is in a different place in GNOME than it is in MATE*/
+        g_settings_set_string (interface_gnome_settings,
+                             CURSOR_THEME_KEY, meta_theme_info->cursor_theme_name);
+      }
     }
 
   old_key_int = g_settings_get_int (mouse_settings, CURSOR_SIZE_KEY);
