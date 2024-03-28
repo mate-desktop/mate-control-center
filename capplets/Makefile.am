@@ -8,10 +8,13 @@ SUBDIRS = \
 	keybindings \
 	mouse \
 	network \
-	time-admin \
 	windows \
 	about-me \
 	system-info
+
+if HAVE_SYSTEMD
+SUBDIRS += time-admin
+endif
 
 DIST_SUBDIRS = \
 	common \
