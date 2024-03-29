@@ -38,9 +38,6 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   AppearanceData *data = NULL;
   GtkBuilder *ui;
 
-  /*Set the backend to use x11 (must use xwayland in wayland session*/
-  gdk_set_allowed_backends ("x11"); 
-
   theme_thumbnail_factory_init (*argc, *argv);
   capplet_init (context, argc, argv);
   activate_settings_daemon ();

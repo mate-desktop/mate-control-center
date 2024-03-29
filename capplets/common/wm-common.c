@@ -30,9 +30,12 @@ wm_common_get_window_manager_property (Atom atom)
   if (wm_window == None)
     return NULL;
 
+  display = gdk_display_get_default ();
+  if (!(GDK_IS_X11_DISPLAY (display)))
+    return NULL;
+
   utf8_string = gdk_x11_get_xatom_by_name ("UTF8_STRING");
 
-  display = gdk_display_get_default ();
   gdk_x11_display_error_trap_push (display);
 
   val = NULL;
@@ -64,6 +67,9 @@ wm_common_get_window_manager_property (Atom atom)
 char*
 wm_common_get_current_window_manager (void)
 {
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+    return g_strdup (WM_COMMON_UNKNOWN);
+
   Atom atom = gdk_x11_get_xatom_by_name ("_NET_WM_NAME");
   char *result;
 
@@ -77,6 +83,15 @@ wm_common_get_current_window_manager (void)
 char**
 wm_common_get_current_keybindings (void)
 {
+
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+  {
+    /*This should never reached in wayland as compositors control
+     *and limit keybindings
+     */
+    return NULL;
+  }
+
   Atom keybindings_atom = gdk_x11_get_xatom_by_name ("_MATE_WM_KEYBINDINGS");
   char *keybindings = wm_common_get_window_manager_property (keybindings_atom);
   char **results;
@@ -115,6 +130,10 @@ update_wm_window (void)
   gulong bytes_after;
 
   display = gdk_display_get_default ();
+
+  if (!(GDK_IS_X11_DISPLAY (display)))
+    return;
+
   XGetWindowProperty (GDK_DISPLAY_XDISPLAY(display), GDK_ROOT_WINDOW (),
 		      gdk_x11_get_xatom_by_name ("_NET_SUPPORTING_WM_CHECK"),
 		      0, G_MAXLONG, False, XA_WINDOW, &type, &format,
@@ -146,6 +165,9 @@ wm_window_event_filter (GdkXEvent *xev,
 			GdkEvent  *event,
 			gpointer   data)
 {
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+    return GDK_FILTER_CONTINUE;
+
   WMCallbackData *ncb_data = (WMCallbackData*) data;
   XEvent *xevent = (XEvent *)xev;
 
@@ -171,6 +193,9 @@ wm_common_register_window_manager_change (GFunc    func,
 					  gpointer data)
 {
   WMCallbackData *ncb_data;
+
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+    return;
 
   ncb_data = g_new0 (WMCallbackData, 1);
 

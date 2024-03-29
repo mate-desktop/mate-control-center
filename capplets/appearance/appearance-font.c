@@ -421,20 +421,40 @@ dpi_from_pixels_and_mm (int pixels, int mm)
 }
 
 static double
-get_dpi_from_x_server (void)
+get_dpi_from_x_server_or_monitor (void)
 {
   GdkScreen  *screen;
+  GdkDisplay *display;
   double dpi;
 
   screen = gdk_screen_get_default ();
+  display = gdk_display_get_default();
 
   if (screen) {
     double width_dpi, height_dpi;
 
-    Screen *xscreen = gdk_x11_screen_get_xscreen (screen);
+    if (GDK_IS_X11_DISPLAY (display))
+    {
+      Screen *xscreen = gdk_x11_screen_get_xscreen (screen);
 
-    width_dpi = dpi_from_pixels_and_mm (WidthOfScreen (xscreen), WidthMMOfScreen (xscreen));
-    height_dpi = dpi_from_pixels_and_mm (HeightOfScreen (xscreen), HeightMMOfScreen (xscreen));
+      width_dpi = dpi_from_pixels_and_mm (WidthOfScreen (xscreen), WidthMMOfScreen (xscreen));
+      height_dpi = dpi_from_pixels_and_mm (HeightOfScreen (xscreen), HeightMMOfScreen (xscreen));
+    }
+    else
+    {
+      GdkMonitor *monitor;
+      GdkRectangle geometry = {0};
+
+      /*FIXME: we have to use the main monitor for this
+       *which may not always be the leftmost monitor
+       *Separate per-monitor settings for this would be ideal
+       */
+      monitor = gdk_display_get_monitor (display, 0);
+      gdk_monitor_get_geometry (monitor, &geometry);
+
+      width_dpi = dpi_from_pixels_and_mm (geometry.width, gdk_monitor_get_width_mm(monitor));
+      height_dpi = dpi_from_pixels_and_mm (geometry.height, gdk_monitor_get_height_mm(monitor));
+    }
 
     if (width_dpi < DPI_LOW_REASONABLE_VALUE || width_dpi > DPI_HIGH_REASONABLE_VALUE ||
         height_dpi < DPI_LOW_REASONABLE_VALUE || height_dpi > DPI_HIGH_REASONABLE_VALUE)
@@ -465,7 +485,7 @@ dpi_load (GSettings     *settings,
   dpi = g_settings_get_double (settings, FONT_DPI_KEY);
 
   if (dpi == 0)
-    dpi = get_dpi_from_x_server ();
+    dpi = get_dpi_from_x_server_or_monitor ();
 
   dpi *= (double)scale;
   dpi = CLAMP(dpi, DPI_LOW_REASONABLE_VALUE, DPI_HIGH_REASONABLE_VALUE);
