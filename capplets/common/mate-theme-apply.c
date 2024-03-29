@@ -26,6 +26,7 @@
 #include <libmate-desktop/mate-gsettings.h>
 #include "mate-theme-apply.h"
 #include "gtkrc-utils.h"
+#include <gdk/gdkx.h>
 
 #define INTERFACE_SCHEMA        "org.mate.interface"
 #define INTERFACE_GNOME_SCHEMA  "org.gnome.desktop.interface"
@@ -55,13 +56,15 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   GSettings *notification_settings = NULL;
   gchar *old_key;
   gint old_key_int;
-  int ret;
+  gboolean wayland;
 
-  /*Find out if we are running under wayland and have xwayland
-   *Sending signal 0 with killall doesn't kill the process but
-   *the return value tells us whether the process exists
-   */
-  ret = system ("killall -0 -e Xwayland");
+  /*Find out whether we are running under wayland or x11 */
+
+  if (GDK_IS_X11_DISPLAY ((gdk_display_get_default())))
+    wayland = FALSE;
+
+  else
+    wayland = TRUE;
 
   interface_settings = g_settings_new (INTERFACE_SCHEMA);
   interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
@@ -79,7 +82,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
     {
       g_settings_set_string (interface_settings, GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
 
-      if (ret == 0)
+      if (wayland == TRUE)
           g_settings_set_string (interface_gnome_settings, 
                                  GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
 
@@ -120,7 +123,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   if (compare (old_key, meta_theme_info->icon_theme_name))
     {
       g_settings_set_string (interface_settings, ICON_THEME_KEY, meta_theme_info->icon_theme_name);
-      if (ret == 0)
+      if (wayland == TRUE)
         g_settings_set_string (interface_gnome_settings,
                              ICON_THEME_KEY, meta_theme_info->icon_theme_name);
     }
@@ -145,7 +148,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   if (compare (old_key, meta_theme_info->cursor_theme_name))
     {
       g_settings_set_string (mouse_settings, CURSOR_THEME_KEY, meta_theme_info->cursor_theme_name);
-      if (ret == 0)
+      if (wayland == TRUE)
       {
         /*Note that this key is in a different place in GNOME than it is in MATE*/
         g_settings_set_string (interface_gnome_settings,

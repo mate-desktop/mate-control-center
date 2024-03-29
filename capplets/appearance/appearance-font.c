@@ -753,7 +753,6 @@ cb_show_details (GtkWidget *button,
 void font_init(AppearanceData* data)
 {
 	GtkWidget* widget;
-	int ret;
 
 	data->font_details = NULL;
 	data->font_groups = NULL;
@@ -804,13 +803,9 @@ void font_init(AppearanceData* data)
 
 	/*In a wayland session we must manage MATE font settings for xwayland
 	 *and also manage GNOME font settings for native wayland applications
-	 *
-	 *First find out if we are running under a wayland session
+	 *so if not running under x11, set the GNOME interface keys too
 	 */
-
-	ret = system ("killall -0 -e Xwayland");
-	/*If we are, set the GNOME interface keys too*/
-	if (ret == 0)
+	if (!(GDK_IS_X11_DISPLAY ((gdk_display_get_default()))))
 	{
 		widget = appearance_capplet_get_widget(data, "application_font");
 		g_settings_bind (data->interface_gnome_settings,
