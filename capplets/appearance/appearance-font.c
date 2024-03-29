@@ -733,6 +733,7 @@ cb_show_details (GtkWidget *button,
 void font_init(AppearanceData* data)
 {
 	GtkWidget* widget;
+	int ret;
 
 	data->font_details = NULL;
 	data->font_groups = NULL;
@@ -780,6 +781,40 @@ void font_init(AppearanceData* data)
 			  "changed::" WINDOW_TITLE_USES_SYSTEM_KEY,
 			  G_CALLBACK (marco_changed),
 			  data);
+
+	/*In a wayland session we must manage MATE font settings for xwayland
+	 *and also manage GNOME font settings for native wayland applications
+	 *
+	 *First find out if we are running under a wayland session
+	 */
+
+	ret = system ("killall -0 -e Xwayland");
+	/*If we are, set the GNOME interface keys too*/
+	if (ret == 0)
+	{
+		widget = appearance_capplet_get_widget(data, "application_font");
+		g_settings_bind (data->interface_gnome_settings,
+				 GTK_FONT_KEY,
+				 G_OBJECT (widget),
+				 "font-name",
+				 G_SETTINGS_BIND_DEFAULT);
+
+		widget = appearance_capplet_get_widget (data, "document_font");
+		g_settings_bind (data->interface_gnome_settings,
+				 DOCUMENT_FONT_KEY,
+				 G_OBJECT (widget),
+				 "font-name",
+				 G_SETTINGS_BIND_DEFAULT);
+
+/* The monospace font seems to apply properly if and only if set only for MATE
+		widget = appearance_capplet_get_widget (data, "monospace_font");
+		g_settings_bind (data->interface_gnome_settings,
+				 MONOSPACE_FONT_KEY,
+				 G_OBJECT (widget),
+				 "font-name",
+				 G_SETTINGS_BIND_DEFAULT);
+*/
+	}
 
 	g_signal_connect (appearance_capplet_get_widget (data, "add_new_font"), "clicked", G_CALLBACK (cb_add_new_font), data);
 

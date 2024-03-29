@@ -38,6 +38,9 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   AppearanceData *data = NULL;
   GtkBuilder *ui;
 
+  /*Set the backend to use x11 (must use xwayland in wayland session*/
+  gdk_set_allowed_backends ("x11"); 
+
   theme_thumbnail_factory_init (*argc, *argv);
   capplet_init (context, argc, argv);
   activate_settings_daemon ();
@@ -56,6 +59,8 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
 
   data->filechooser_settings = g_settings_new (FILECHOOSER_SCHEMA);
   data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
+  /*Loading this unconditionally may be cheaper than another system() call*/
+  data->interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
   data->marco_settings = g_settings_new (MARCO_SCHEMA);
   data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
   data->font_settings = g_settings_new (FONT_RENDER_SCHEMA);
@@ -162,10 +167,6 @@ main (int argc, char **argv)
       	N_("[WALLPAPER...]") },
       { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
     };
-
-
-  /*Set the backend to use x11 (must use xwayland in wayland session*/
-  gdk_set_allowed_backends ("x11");
 
   option_context = g_option_context_new (NULL);
   g_option_context_add_main_entries (option_context, option_entries, GETTEXT_PACKAGE);

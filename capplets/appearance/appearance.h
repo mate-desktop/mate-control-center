@@ -58,6 +58,7 @@
 #define GTK_THEME_KEY                "gtk-theme"
 #define ICON_THEME_KEY               "icon-theme"
 #define INTERFACE_SCHEMA             "org.mate.interface"
+#define INTERFACE_GNOME_SCHEMA       "org.gnome.desktop.interface"
 #define MENU_ICONS_KEY               "menus-have-icons"
 #define MONOSPACE_FONT_KEY           "monospace-font-name"
 #define TOOLBAR_STYLE_KEY            "toolbar-style"
@@ -92,6 +93,10 @@ typedef struct {
 	GSettings* caja_settings;
 	GSettings* filechooser_settings;
 	GSettings* interface_settings;
+	/*We have to accomodate wayland theme setting here
+	 *whether we are using it or not
+	 */
+	GSettings* interface_gnome_settings;
 	GSettings* marco_settings;
 	GSettings* mouse_settings;
 	GSettings* font_settings;
