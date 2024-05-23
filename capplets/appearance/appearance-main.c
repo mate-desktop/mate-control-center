@@ -58,11 +58,20 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
   data->filechooser_settings = g_settings_new (FILECHOOSER_SCHEMA);
   data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
 
+  data->interface_gnome_settings = NULL;
+  /*Load the gnome interface schema if we are running under wayland and it is present*/
   if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
-    data->interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
-  else
-    data->interface_gnome_settings = NULL;
+  {
+    GSettingsSchemaSource *source = g_settings_schema_source_get_default ();
 
+    if (source)
+    {
+      GSettingsSchema *schema = g_settings_schema_source_lookup (source, INTERFACE_GNOME_SCHEMA, TRUE);
+
+      if (schema)
+        data->interface_gnome_settings = g_settings_new_full (schema, NULL, NULL);
+    }
+  }
   data->marco_settings = g_settings_new (MARCO_SCHEMA);
   data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
   data->font_settings = g_settings_new (FONT_RENDER_SCHEMA);

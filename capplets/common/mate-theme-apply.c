@@ -57,11 +57,20 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   gchar *old_key;
   gint old_key_int;
 
-  /*We only want to touch GNOME settings under Wayland */
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default()))
-    interface_gnome_settings = NULL;
-  else
-    interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
+  interface_gnome_settings = NULL;
+  /*Load the gnome interface schema if we are running under wayland and it is present*/
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+  {
+    GSettingsSchemaSource *source = g_settings_schema_source_get_default ();
+
+    if (source)
+    {
+      GSettingsSchema *schema = g_settings_schema_source_lookup (source, INTERFACE_GNOME_SCHEMA, TRUE);
+
+      if (schema)
+        interface_gnome_settings = g_settings_new_full (schema, NULL, NULL);
+    }
+  }
 
   interface_settings = g_settings_new (INTERFACE_SCHEMA);
   marco_settings = g_settings_new (MARCO_SCHEMA);
