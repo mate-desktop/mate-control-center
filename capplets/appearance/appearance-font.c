@@ -804,8 +804,10 @@ void font_init(AppearanceData* data)
 	/*In a wayland session we must manage MATE font settings for xwayland
 	 *and also manage GNOME font settings for native wayland applications
 	 *so if not running under x11, set the GNOME interface keys too
+	 *Ignore this if for any reason the GNOME schema was not found,
+	 *As we can only set this for compositors using either the MATE or the GNOME gsettings
 	 */
-	if (!(GDK_IS_X11_DISPLAY ((gdk_display_get_default()))))
+	if (data->interface_gnome_settings)
 	{
 		widget = appearance_capplet_get_widget(data, "application_font");
 		g_settings_bind (data->interface_gnome_settings,

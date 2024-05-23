@@ -56,18 +56,14 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   GSettings *notification_settings = NULL;
   gchar *old_key;
   gint old_key_int;
-  gboolean wayland;
 
-  /*Find out whether we are running under wayland or x11 */
-
-  if (GDK_IS_X11_DISPLAY ((gdk_display_get_default())))
-    wayland = FALSE;
-
+  /*We only want to touch GNOME settings under Wayland */
+  if (GDK_IS_X11_DISPLAY (gdk_display_get_default()))
+    interface_gnome_settings = NULL;
   else
-    wayland = TRUE;
+    interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
 
   interface_settings = g_settings_new (INTERFACE_SCHEMA);
-  interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
   marco_settings = g_settings_new (MARCO_SCHEMA);
   mouse_settings = g_settings_new (MOUSE_SCHEMA);
 
@@ -82,7 +78,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
     {
       g_settings_set_string (interface_settings, GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
 
-      if (wayland == TRUE)
+      if (interface_gnome_settings)
           g_settings_set_string (interface_gnome_settings, 
                                  GTK_THEME_KEY, meta_theme_info->gtk_theme_name);
 
@@ -123,7 +119,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   if (compare (old_key, meta_theme_info->icon_theme_name))
     {
       g_settings_set_string (interface_settings, ICON_THEME_KEY, meta_theme_info->icon_theme_name);
-      if (wayland == TRUE)
+      if (interface_gnome_settings)
         g_settings_set_string (interface_gnome_settings,
                              ICON_THEME_KEY, meta_theme_info->icon_theme_name);
     }
@@ -148,7 +144,7 @@ mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
   if (compare (old_key, meta_theme_info->cursor_theme_name))
     {
       g_settings_set_string (mouse_settings, CURSOR_THEME_KEY, meta_theme_info->cursor_theme_name);
-      if (wayland == TRUE)
+      if (interface_gnome_settings)
       {
         /*Note that this key is in a different place in GNOME than it is in MATE*/
         g_settings_set_string (interface_gnome_settings,

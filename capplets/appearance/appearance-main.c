@@ -31,6 +31,7 @@
 #include "theme-thumbnail.h"
 #include "activate-settings-daemon.h"
 #include "capplet-util.h"
+#include <gdk/gdkx.h>
 
 static AppearanceData *
 init_appearance_data (int *argc, char ***argv, GOptionContext *context)
@@ -56,8 +57,12 @@ init_appearance_data (int *argc, char ***argv, GOptionContext *context)
 
   data->filechooser_settings = g_settings_new (FILECHOOSER_SCHEMA);
   data->interface_settings = g_settings_new (INTERFACE_SCHEMA);
-  /*Loading this unconditionally may be cheaper than another system() call*/
-  data->interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
+
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+    data->interface_gnome_settings = g_settings_new (INTERFACE_GNOME_SCHEMA);
+  else
+    data->interface_gnome_settings = NULL;
+
   data->marco_settings = g_settings_new (MARCO_SCHEMA);
   data->mouse_settings = g_settings_new (MOUSE_SCHEMA);
   data->font_settings = g_settings_new (FONT_RENDER_SCHEMA);
