@@ -50,14 +50,13 @@ void
 mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info)
 {
   GSettings *interface_settings;
-  GSettings *interface_gnome_settings;
+  GSettings *interface_gnome_settings = NULL;
   GSettings *marco_settings;
   GSettings *mouse_settings;
   GSettings *notification_settings = NULL;
   gchar *old_key;
   gint old_key_int;
 
-  interface_gnome_settings = NULL;
   /*Load the gnome interface schema if we are running under wayland and it is present*/
   if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
   {
