@@ -30,6 +30,7 @@
 #include "theme-thumbnail.h"
 #include "capplet-util.h"
 #include "appearance-style.h"
+#include <gdk/gdkx.h>
 
 #define GSETTINGS_SETTINGS "GSETTINGS_SETTINGS"
 #define GSETTINGS_KEY      "GSETTINGS_KEY"
@@ -152,6 +153,30 @@ treeview_selection_changed_callback (GtkTreeSelection *selection, guint data)
 
     if (list_value) {
       g_settings_set_string (settings, key, list_value);
+
+    /*Load the gnome interface schema if we are running under wayland and it is present*/
+      if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+      {
+        GSettingsSchemaSource *source = g_settings_schema_source_get_default ();
+
+        if (source)
+        {
+          GSettingsSchema *schema = g_settings_schema_source_lookup (source, INTERFACE_GNOME_SCHEMA, TRUE);
+          {
+            if (schema)
+            {
+              GSettings *interface_gnome_settings = NULL;
+              interface_gnome_settings = g_settings_new_full (schema, NULL, NULL);
+
+              if ((strcmp (key, GTK_THEME_KEY) == 0) ||
+                 (strcmp (key, ICON_THEME_KEY) == 0) ||
+                 (strcmp (key, CURSOR_THEME_KEY) == 0))
+                      g_settings_set_string (interface_gnome_settings, key, list_value);
+
+            }
+          }
+        }
+      }
     }
   }
 }
