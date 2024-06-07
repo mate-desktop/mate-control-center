@@ -482,6 +482,27 @@ static void
 cursor_size_changed_cb (int size, AppearanceData *data)
 {
   g_settings_set_int (data->mouse_settings, CURSOR_SIZE_KEY, size);
+
+  /*If running under wayland and the GNOME interface schema is installed
+   *set the cursor size under the GNOME gsettings too
+   */
+  if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
+  {
+    GSettingsSchemaSource *source = g_settings_schema_source_get_default ();
+
+    if (source)
+    {
+      GSettingsSchema *schema = g_settings_schema_source_lookup (source, INTERFACE_GNOME_SCHEMA, TRUE);
+      {
+        if (schema)
+        {
+          GSettings *interface_gnome_settings = NULL;
+          interface_gnome_settings = g_settings_new_full (schema, NULL, NULL);
+          g_settings_set_int (interface_gnome_settings, CURSOR_SIZE_KEY, size);
+        }
+      }
+    }
+  }
 }
 
 static void
