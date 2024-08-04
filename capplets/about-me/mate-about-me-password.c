@@ -474,7 +474,7 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 				/* Which response did we get? */
 				passdlg_set_busy (pdialog, FALSE);
 
-				if (g_strrstr (str->str, "New password: ") != NULL) {
+				if ((g_strrstr (str->str, "New password: ") != NULL) || (g_strrstr (str->str, "Enter new password: ") != NULL)) {
 					/* Authentication successful */
 
 					authenticated_user (pdialog, FALSE);
