@@ -150,6 +150,18 @@ chk_separate_group_per_window_toggled (GSettings * settings,
 }
 
 static void
+chk_load_extra_items_toggled (GSettings * settings,
+				       gchar * key,
+				       GtkBuilder * dialog)
+{
+	matekbd_desktop_config_load_from_gsettings (&desktop_config);
+
+	xkl_config_registry_load (config_registry, desktop_config.load_extra_items);
+
+	xkb_layouts_fill_selected_tree (dialog);
+}
+
+static void
 chk_new_windows_inherit_layout_toggled (GtkWidget *
 					chk_new_windows_inherit_layout,
 					GtkBuilder * dialog)
@@ -192,6 +204,18 @@ setup_xkb_tabs (GtkBuilder * dialog)
 					 "changed::group-per-window",
 					 G_CALLBACK (chk_separate_group_per_window_toggled),
 					 dialog);
+
+	g_settings_bind (xkb_general_settings,
+					 "load-extra-items",
+					 WID ("chk_load_extra_items"),
+					 "active",
+					 G_SETTINGS_BIND_DEFAULT);
+
+	g_signal_connect (xkb_general_settings,
+					 "changed::load-extra-items",
+					 G_CALLBACK (chk_load_extra_items_toggled),
+					 dialog);
+
 
 #ifdef HAVE_X11_EXTENSIONS_XKB_H
 	if (strcmp (xkl_engine_get_backend_name (engine), "XKB"))
