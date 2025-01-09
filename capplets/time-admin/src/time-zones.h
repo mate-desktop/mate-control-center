@@ -361,7 +361,7 @@ N_("Europe/Isle_of_Man");
 N_("Europe/Istanbul");
 N_("Europe/Jersey");
 N_("Europe/Kaliningrad");
-N_("Europe/Kiev");
+N_("Europe/Kyiv");
 N_("Europe/Kirov");
 N_("Europe/Lisbon");
 N_("Europe/Ljubljana");
