@@ -627,6 +627,8 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
                     keys);
 
   eventbox = g_object_new (pointless_eventbox_subclass_get_type (),
+			   "tooltip-text", _("Press the keys for the new accelerator, Backspace to clear, or Escape to cancel edition"),
+			   "can-focus", TRUE,
                            NULL);
   keys->edit_widget = eventbox;
   g_object_add_weak_pointer (G_OBJECT (keys->edit_widget),
