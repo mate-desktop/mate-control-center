@@ -11,6 +11,8 @@
 
 #define TOOLTIP_TEXT _("New shortcut...")
 
+static void update_text (EggCellRendererKeys *keys);
+
 static void             egg_cell_renderer_keys_finalize      (GObject             *object);
 static void             egg_cell_renderer_keys_init          (EggCellRendererKeys *cell_keys);
 static void             egg_cell_renderer_keys_class_init    (EggCellRendererKeysClass *cell_keys_class);
@@ -76,6 +78,8 @@ GType egg_cell_renderer_keys_get_type(void)
 
 static void egg_cell_renderer_keys_init(EggCellRendererKeys* cell_keys)
 {
+	g_signal_connect (cell_keys, "notify::visible", G_CALLBACK (update_text), NULL);
+
 	cell_keys->accel_mode = EGG_CELL_RENDERER_KEYS_MODE_GTK;
 }
 
@@ -223,6 +227,27 @@ static gchar* convert_keysym_state_to_string(guint keysym, guint keycode, EggVir
 	{
 		return egg_virtual_accelerator_label(keysym, keycode, mask);
 	}
+}
+
+static void update_text (EggCellRendererKeys *keys)
+{
+  gboolean visible;
+
+  g_object_get (keys, "visible", &visible, NULL);
+
+  /* For screen reader's sake, make the text empty when hidden, otherwise a
+   * more or less random value is presented.  This could also be fixed in the
+   * accessibility implementation side, but we rely on GTK's, so it's easier
+   * to clean it up here than modify GTK or subclass it further. */
+  if (! visible)
+    g_object_set (keys, "text", "", NULL);
+  else
+  {
+    /* sync string to the key values */
+    gchar *text = convert_keysym_state_to_string (keys->accel_key, keys->keycode, keys->accel_mask);
+    g_object_set (keys, "text", text, NULL);
+    g_free (text);
+  }
 }
 
 static void
@@ -672,7 +697,6 @@ egg_cell_renderer_keys_start_editing (GtkCellRenderer      *cell,
 
 void egg_cell_renderer_keys_set_accelerator(EggCellRendererKeys* keys, guint keyval, guint keycode, EggVirtualModifierType mask)
 {
-	char *text;
 	gboolean changed;
 
 	g_return_if_fail (EGG_IS_CELL_RENDERER_KEYS (keys));
@@ -707,12 +731,7 @@ void egg_cell_renderer_keys_set_accelerator(EggCellRendererKeys* keys, guint key
 	g_object_thaw_notify (G_OBJECT (keys));
 
 	if (changed)
-	{
-		/* sync string to the key values */
-		text = convert_keysym_state_to_string (keys->accel_key, keys->keycode, keys->accel_mask);
-		g_object_set (keys, "text", text, NULL);
-		g_free (text);
-	}
+		update_text (keys);
 }
 
 void egg_cell_renderer_keys_get_accelerator(EggCellRendererKeys* keys, guint* keyval, EggVirtualModifierType* mask)
