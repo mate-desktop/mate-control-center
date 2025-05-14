@@ -658,6 +658,8 @@ font_view_application_do_open (FontViewApplication *self,
 
     gtk_widget_show_all (self->swin_preview);
     gtk_notebook_set_current_page (GTK_NOTEBOOK (self->notebook), 1);
+
+    gtk_window_present (GTK_WINDOW (self->main_window));
 }
 
 static gboolean
@@ -933,6 +935,8 @@ font_view_application_activate (GApplication *application)
 
     G_APPLICATION_CLASS (font_view_application_parent_class)->activate (application);
     font_view_application_do_overview (self);
+
+    gtk_window_present (GTK_WINDOW (self->main_window));
 }
 
 static void
