@@ -22,7 +22,7 @@ before_install:
 install:
   - pip3 install --upgrade pip
   - pip3 install PyGithub
-  - ./docker-build --name ${DISTRO} --config .build.yml --install
+  - travis_wait ./docker-build --name ${DISTRO} --config .build.yml --install
 
 script:
   - ./docker-build --name ${DISTRO} --verbose --config .build.yml --build scripts
