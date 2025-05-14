@@ -20,8 +20,8 @@ before_install:
   - chmod +x docker-build gen-index
 
 install:
-  - pip3 install --upgrade pip
-  - pip3 install PyGithub
+  - sudo pip3 install --upgrade pip
+  - sudo pip3 install PyGithub
   - travis_wait ./docker-build --name ${DISTRO} --config .build.yml --install
 
 script:
