@@ -1,5 +1,13 @@
 #!/usr/bin/bash
 
+# Use grouped output messages
+infobegin() {
+	echo "::group::${1}"
+}
+infoend() {
+	echo "::endgroup::"
+}
+
 # Required packages on Debian
 requires=(
 	autoconf-archive
@@ -52,7 +60,12 @@ dev_requires=(
 	libxt-dev
 )
 
+infobegin "Update system"
 apt-get update -qq
+infoend
+
+infobegin "Install dependency packages"
 apt-get install --assume-yes --no-install-recommends \
 	${requires[@]} \
 	${dev_requires[@]}
+infoend
