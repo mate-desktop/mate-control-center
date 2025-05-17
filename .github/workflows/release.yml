@@ -4,6 +4,10 @@ on:
     tags:
       - "v*.*.*"
 
+env:
+  MATE_DESKTOP_VERSION: 1.28.2
+  CACHE_PATH: /tmp/.cache
+
 jobs:
   release:
     name: Release New Version
@@ -14,6 +18,9 @@ jobs:
 
       - name: Install dependency packages
         run: sudo .github/workflows/ubuntu.sh
+
+      - name: Install higher version Mate component packages
+        run: sudo .github/workflows/mate-desktop.sh ${{env.MATE_DESKTOP_VERSION}} ${{ env.CACHE_PATH }}
 
       - name: Build the source code
         run: .github/workflows/builds.sh
