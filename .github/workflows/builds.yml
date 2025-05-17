@@ -16,6 +16,7 @@ concurrency:
 
 env:
   MATE_DESKTOP_VERSION: 1.28.2
+  SHA: ${{ github.workflow_sha }}
   CACHE_PATH: /tmp/.cache
   JOBS: 2
 
@@ -58,9 +59,9 @@ jobs:
         run: |
           split=(${CONTAINER//:/ })
           distro=${split[0]}
-          echo DISTRO=$distro >> $GITHUB_ENV
-          echo "DISTRO=$distro" >> $GITHUB_OUTPUT
-          echo "SHORT_COMMIT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          short_sha=${SHA:0:8}
+          echo "DISTRO=$distro" | tee -a  $GITHUB_ENV
+          echo "SHORT_COMMIT=$short_sha" | tee -a $GITHUB_ENV
       - name: Repository checkout
         uses: actions/checkout@v3
       - name: Install dependency packages
