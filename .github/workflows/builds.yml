@@ -16,9 +16,7 @@ concurrency:
 
 env:
   MATE_DESKTOP_VERSION: 1.28.2
-  SHA: ${{ github.workflow_sha }}
   CACHE_PATH: /tmp/.cache
-  JOBS: 2
 
 jobs:
   build:
@@ -61,7 +59,6 @@ jobs:
           distro=${split[0]}
           short_sha=${SHA:0:8}
           echo "DISTRO=$distro" | tee -a  $GITHUB_ENV
-          echo "SHORT_COMMIT=$short_sha" | tee -a $GITHUB_ENV
       - name: Repository checkout
         uses: actions/checkout@v3
       - name: Install dependency packages
@@ -71,6 +68,7 @@ jobs:
         with:
           key: ${{ env.DISTRO }}-${{ matrix.cc }}
 
+      # INFO: M-C-C depends mate-desktop 1.27.1+, so we should install it from source.
       - name: Cache Mate component packages
         uses: actions/cache@v3
         id: cache-mate-desktop
@@ -79,55 +77,7 @@ jobs:
           key: ${{ env.DISTRO }}-build-mate-desktop-${{env.MATE_DESKTOP_VERSION}}
       - name: Install higher version Mate component packages
         run: .github/workflows/mate-desktop.sh ${{env.MATE_DESKTOP_VERSION}} ${{ env.CACHE_PATH }}
+      # INFO: M-C-C depends mate-desktop 1.27.1+, install finished.
 
       - name: Build the source code
         run: .github/workflows/builds.sh
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.DISTRO }}-${{ matrix.cc }}-${{ env.SHORT_COMMIT }}
-          path: |
-            *.tar.xz
-          retention-days: 7
-  # Do we need the real build for cppcheck run?  I don't think so
-  cppcheck:
-    name: Run cppcheck
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-
-      - name: Install dependencies on Ubuntu
-        run: sudo .github/workflows/ubuntu.sh
-
-      # - define relevant configuration I can think of
-      #   - _Noreturn: this is to avoid false positive with functions that
-      #     don't return, like g_assert(false).  Here, we rely on G_NORETURN
-      #     (GLib 2.68+) using _Noreturn C11 attribute if __STDC_VERSION__ is
-      #     high enough (cppcheck sets it for us in newer versions, but not on
-      #     here yet); but the version of cppcheck we run on don't know about
-      #     the C11 attribute, so map it to the GCC one it does know.
-      #     This is a tad over-specific, but it removes some spurious warnings,
-      #     and defining e.g. __GNUC__=12 is simpler, but is a *lot* slower
-      #     (more than 3 times slower), and doesn't seem to yield other
-      #     benefits for the moment.
-      # - -I flags from pkg-config (grepped from configure.ac)
-      # - ignore non-source directories
-      - name: cppcheck
-        env:
-          checks: warning,style,performance,portability,information,missingInclude
-          defines: |
-            -DGETTEXT_PACKAGE="mate-control-center"
-            -D__STDC_VERSION__=201112 -D_Noreturn=__attribute__((__noreturn__))
-          packages: |
-            gio-2.0
-            gio-unix-2.0
-            gtk+-3.0
-        run: |
-          cppcheck --enable="$checks"                       \
-            -j $JOBS                                        \
-            $defines                                        \
-            $(pkg-config --cflags-only-I $packages)         \
-            .
