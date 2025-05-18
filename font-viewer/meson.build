@@ -8,6 +8,7 @@ deps = [
   common_deps,
   pango_dep,
   fontconfig_dep,
+  freetype_dep,
   libm,
 ]
 executable(

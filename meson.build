@@ -86,6 +86,7 @@ xi_dep = dependency('xi', version: '>= 1.5')
 xext_dep = dependency('xext')
 xscrnsaver_dep = dependency('xscrnsaver')
 m_dep = cc.find_library('m')
+freetype_dep = dependency('freetype2')
 
 enable_accountsservice = get_option('accountsservice')
 accounts_dep = dependency('accountsservice', version: '>= 0.6.39', required: enable_accountsservice)
