@@ -50,6 +50,10 @@
 #define MARCO_SHOW_TAB_BORDER_KEY "show-tab-border"
 #define MARCO_BUTTON_LAYOUT_KEY "button-layout"
 #define MARCO_DOUBLE_CLICK_TITLEBAR_KEY "action-double-click-titlebar"
+#define MARCO_MIDDLE_CLICK_TITLEBAR_KEY "action-middle-click-titlebar"
+#define MARCO_RIGHT_CLICK_TITLEBAR_KEY "action-right-click-titlebar"
+#define MARCO_SCROLL_UP_TITLEBAR_KEY "action-scroll-up-titlebar"
+#define MARCO_SCROLL_DOWN_TITLEBAR_KEY "action-scroll-down-titlebar"
 #define MARCO_FOCUS_KEY "focus-mode"
 #define MARCO_AUTORAISE_KEY "auto-raise"
 #define MARCO_AUTORAISE_DELAY_KEY "auto-raise-delay"
@@ -77,14 +81,20 @@ static const char *button_layout [MARCO_BUTTON_LAYOUT_COUNT] = {
 /* keep following enums in sync with marco */
 enum
 {
-    ACTION_TITLEBAR_TOGGLE_SHADE,
+    ACTION_TITLEBAR_CLOSE,
+    ACTION_TITLEBAR_MINIMIZE,
     ACTION_TITLEBAR_TOGGLE_MAXIMIZE,
     ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY,
     ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY,
-    ACTION_TITLEBAR_MINIMIZE,
-    ACTION_TITLEBAR_NONE,
+    ACTION_TITLEBAR_TOGGLE_SHADE,
+    ACTION_TITLEBAR_SHADE,
+    ACTION_TITLEBAR_UNSHADE,
+    ACTION_TITLEBAR_RAISE,
     ACTION_TITLEBAR_LOWER,
-    ACTION_TITLEBAR_MENU
+    ACTION_TITLEBAR_TOGGLE_STICK,
+    ACTION_TITLEBAR_TOGGLE_ABOVE,
+    ACTION_TITLEBAR_MENU,
+    ACTION_TITLEBAR_NONE
 };
 
 enum
@@ -108,6 +118,10 @@ static GtkWidget *dialog_win;
 static GtkWidget *show_tab_border_checkbutton;
 static GtkWidget *compositing_fast_alt_tab_checkbutton;
 static GtkWidget *double_click_titlebar_optionmenu;
+static GtkWidget *middle_click_titlebar_optionmenu;
+static GtkWidget *right_click_titlebar_optionmenu;
+static GtkWidget *scroll_up_titlebar_optionmenu;
+static GtkWidget *scroll_down_titlebar_optionmenu;
 static GtkWidget *focus_mode_checkbutton;
 static GtkWidget *focus_mode_mouse_checkbutton;
 static GtkWidget *autoraise_checkbutton;
@@ -205,6 +219,38 @@ double_click_titlebar_changed_callback (GtkWidget *optionmenu,
                                         void      *data)
 {
     g_settings_set_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY,
+                         gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
+}
+
+static void
+middle_click_titlebar_changed_callback (GtkWidget *optionmenu,
+                                        void      *data)
+{
+    g_settings_set_enum (marco_settings, MARCO_MIDDLE_CLICK_TITLEBAR_KEY,
+                         gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
+}
+
+static void
+right_click_titlebar_changed_callback (GtkWidget *optionmenu,
+                                       void      *data)
+{
+    g_settings_set_enum (marco_settings, MARCO_RIGHT_CLICK_TITLEBAR_KEY,
+                         gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
+}
+
+static void
+scroll_up_titlebar_changed_callback (GtkWidget *optionmenu,
+                                     void      *data)
+{
+    g_settings_set_enum (marco_settings, MARCO_SCROLL_UP_TITLEBAR_KEY,
+                         gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
+}
+
+static void
+scroll_down_titlebar_changed_callback (GtkWidget *optionmenu,
+                                       void      *data)
+{
+    g_settings_set_enum (marco_settings, MARCO_SCROLL_DOWN_TITLEBAR_KEY,
                          gtk_combo_box_get_active (GTK_COMBO_BOX (optionmenu)));
 }
 
@@ -373,6 +419,10 @@ main (int argc, char **argv)
     gtk_builder_add_callback_symbols (builder,
                                       "on_dialog_win_response",                        G_CALLBACK (response_cb),
                                       "on_double_click_titlebar_optionmenu_changed",   G_CALLBACK (double_click_titlebar_changed_callback),
+                                      "on_middle_click_titlebar_optionmenu_changed",   G_CALLBACK (middle_click_titlebar_changed_callback),
+                                      "on_right_click_titlebar_optionmenu_changed",    G_CALLBACK (right_click_titlebar_changed_callback),
+                                      "on_scroll_up_titlebar_optionmenu_changed",      G_CALLBACK (scroll_up_titlebar_changed_callback),
+                                      "on_scroll_down_titlebar_optionmenu_changed",    G_CALLBACK (scroll_down_titlebar_changed_callback),
                                       "on_autoraise_delay_spinbutton_value_changed",   G_CALLBACK (autoraise_delay_spinbutton_value_callback),
                                       "on_titlebar_layout_optionmenu_changed",         G_CALLBACK (titlebar_layout_changed_callback),
                                       "on_focus_mode_checkbutton_toggled",             G_CALLBACK (mouse_focus_toggled_callback),
@@ -398,6 +448,10 @@ main (int argc, char **argv)
     show_tab_border_checkbutton = GET_WIDGET ("show_tab_border_checkbutton");
     compositing_fast_alt_tab_checkbutton = GET_WIDGET ("compositing_fast_alt_tab_checkbutton");
     double_click_titlebar_optionmenu = GET_WIDGET ("double_click_titlebar_optionmenu");
+    middle_click_titlebar_optionmenu = GET_WIDGET ("middle_click_titlebar_optionmenu");
+    right_click_titlebar_optionmenu = GET_WIDGET ("right_click_titlebar_optionmenu");
+    scroll_up_titlebar_optionmenu = GET_WIDGET ("scroll_up_titlebar_optionmenu");
+    scroll_down_titlebar_optionmenu = GET_WIDGET ("scroll_down_titlebar_optionmenu");
     focus_mode_checkbutton = GET_WIDGET ("focus_mode_checkbutton");
     focus_mode_mouse_checkbutton = GET_WIDGET ("focus_mode_mouse_checkbutton");
     autoraise_delay_hbox = GET_WIDGET ("autoraise_delay_hbox");
@@ -427,13 +481,18 @@ main (int argc, char **argv)
 
     gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
                               g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
+    gtk_combo_box_set_active (GTK_COMBO_BOX (middle_click_titlebar_optionmenu),
+                              g_settings_get_enum (marco_settings, MARCO_MIDDLE_CLICK_TITLEBAR_KEY));
+    gtk_combo_box_set_active (GTK_COMBO_BOX (right_click_titlebar_optionmenu),
+                              g_settings_get_enum (marco_settings, MARCO_RIGHT_CLICK_TITLEBAR_KEY));
+    gtk_combo_box_set_active (GTK_COMBO_BOX (scroll_up_titlebar_optionmenu),
+                              g_settings_get_enum (marco_settings, MARCO_SCROLL_UP_TITLEBAR_KEY));
+    gtk_combo_box_set_active (GTK_COMBO_BOX (scroll_down_titlebar_optionmenu),
+                              g_settings_get_enum (marco_settings, MARCO_SCROLL_DOWN_TITLEBAR_KEY));
 
     set_titlebar_button_layout ();
 
     set_alt_click_value ();
-
-    gtk_combo_box_set_active (GTK_COMBO_BOX (double_click_titlebar_optionmenu),
-                              g_settings_get_enum (marco_settings, MARCO_DOUBLE_CLICK_TITLEBAR_KEY));
 
     /* Behaviour */
     g_settings_bind (marco_settings,
