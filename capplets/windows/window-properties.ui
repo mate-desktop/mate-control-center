@@ -279,11 +279,19 @@ Author: Robert Buj
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <items>
-                                  <item translatable="yes">Roll up</item>
-                                  <item translatable="yes">Maximize</item>
-                                  <item translatable="yes">Maximize Horizontally</item>
-                                  <item translatable="yes">Maximize Vertically</item>
+                                  <item translatable="yes">Close</item>
                                   <item translatable="yes">Minimize</item>
+                                  <item translatable="yes">Toggle Maximize</item>
+                                  <item translatable="yes">Toggle Maximize Horizontally</item>
+                                  <item translatable="yes">Toggle Maximize Vertically</item>
+                                  <item translatable="yes">Toggle Shade</item>
+                                  <item translatable="yes">Shade</item>
+                                  <item translatable="yes">Unshade</item>
+                                  <item translatable="yes">Raise</item>
+                                  <item translatable="yes">Lower</item>
+                                  <item translatable="yes">Toggle Stick</item>
+                                  <item translatable="yes">Toggle Above</item>
+                                  <item translatable="yes">Menu</item>
                                   <item translatable="yes">None</item>
                                 </items>
                                 <signal name="changed" handler="on_double_click_titlebar_optionmenu_changed" swapped="no"/>
@@ -298,7 +306,223 @@ Author: Robert Buj
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">8</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="middle_click_titlebar_action_hbox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="middle_click_titlebar_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">_Middle-click titlebar action:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">middle_click_titlebar_optionmenu</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="middle_click_titlebar_optionmenu">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <items>
+                                  <item translatable="yes">Close</item>
+                                  <item translatable="yes">Minimize</item>
+                                  <item translatable="yes">Toggle Maximize</item>
+                                  <item translatable="yes">Toggle Maximize Horizontally</item>
+                                  <item translatable="yes">Toggle Maximize Vertically</item>
+                                  <item translatable="yes">Toggle Shade</item>
+                                  <item translatable="yes">Shade</item>
+                                  <item translatable="yes">Unshade</item>
+                                  <item translatable="yes">Raise</item>
+                                  <item translatable="yes">Lower</item>
+                                  <item translatable="yes">Toggle Stick</item>
+                                  <item translatable="yes">Toggle Above</item>
+                                  <item translatable="yes">Menu</item>
+                                  <item translatable="yes">None</item>
+                                </items>
+                                <signal name="changed" handler="on_middle_click_titlebar_optionmenu_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="right_click_titlebar_action_hbox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="right_click_titlebar_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">_Right-click titlebar action:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">right_click_titlebar_optionmenu</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="right_click_titlebar_optionmenu">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <items>
+                                  <item translatable="yes">Close</item>
+                                  <item translatable="yes">Minimize</item>
+                                  <item translatable="yes">Toggle Maximize</item>
+                                  <item translatable="yes">Toggle Maximize Horizontally</item>
+                                  <item translatable="yes">Toggle Maximize Vertically</item>
+                                  <item translatable="yes">Toggle Shade</item>
+                                  <item translatable="yes">Shade</item>
+                                  <item translatable="yes">Unshade</item>
+                                  <item translatable="yes">Raise</item>
+                                  <item translatable="yes">Lower</item>
+                                  <item translatable="yes">Toggle Stick</item>
+                                  <item translatable="yes">Toggle Above</item>
+                                  <item translatable="yes">Menu</item>
+                                  <item translatable="yes">None</item>
+                                </items>
+                                <signal name="changed" handler="on_right_click_titlebar_optionmenu_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="scroll_up_titlebar_action_hbox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="scroll_up_titlebar_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">_Scroll up titlebar action:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">scroll_up_titlebar_optionmenu</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="scroll_up_titlebar_optionmenu">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <items>
+                                  <item translatable="yes">Close</item>
+                                  <item translatable="yes">Minimize</item>
+                                  <item translatable="yes">Toggle Maximize</item>
+                                  <item translatable="yes">Toggle Maximize Horizontally</item>
+                                  <item translatable="yes">Toggle Maximize Vertically</item>
+                                  <item translatable="yes">Toggle Shade</item>
+                                  <item translatable="yes">Shade</item>
+                                  <item translatable="yes">Unshade</item>
+                                  <item translatable="yes">Raise</item>
+                                  <item translatable="yes">Lower</item>
+                                  <item translatable="yes">Toggle Stick</item>
+                                  <item translatable="yes">Toggle Above</item>
+                                  <item translatable="yes">Menu</item>
+                                  <item translatable="yes">None</item>
+                                </items>
+                                <signal name="changed" handler="on_scroll_up_titlebar_optionmenu_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="scroll_down_titlebar_action_hbox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="scroll_down_titlebar_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Scroll _down titlebar action:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">scroll_down_titlebar_optionmenu</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="scroll_down_titlebar_optionmenu">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <items>
+                                  <item translatable="yes">Close</item>
+                                  <item translatable="yes">Minimize</item>
+                                  <item translatable="yes">Toggle Maximize</item>
+                                  <item translatable="yes">Toggle Maximize Horizontally</item>
+                                  <item translatable="yes">Toggle Maximize Vertically</item>
+                                  <item translatable="yes">Toggle Shade</item>
+                                  <item translatable="yes">Shade</item>
+                                  <item translatable="yes">Unshade</item>
+                                  <item translatable="yes">Raise</item>
+                                  <item translatable="yes">Lower</item>
+                                  <item translatable="yes">Toggle Stick</item>
+                                  <item translatable="yes">Toggle Above</item>
+                                  <item translatable="yes">Menu</item>
+                                  <item translatable="yes">None</item>
+                                </items>
+                                <signal name="changed" handler="on_scroll_down_titlebar_optionmenu_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">4</property>
                           </packing>
                         </child>
                       </object>
