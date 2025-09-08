@@ -597,24 +597,33 @@ font_view_application_do_open (FontViewApplication *self,
 
     font_view_ensure_model (self);
 
-    self->info_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                                    NULL, _("Info"),
-                                                    FALSE);
-    g_signal_connect (self->info_button, "clicked",
-                      G_CALLBACK (info_button_clicked_cb), self);
+    if (self->info_button == NULL)
+    {
+        self->info_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                                        NULL, _("Info"),
+                                                        FALSE);
+        g_signal_connect (self->info_button, "clicked",
+                          G_CALLBACK (info_button_clicked_cb), self);
+    }
 
     /* add install button */
-    self->install_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                                       NULL, _("Install"),
-                                                       FALSE);
-    g_signal_connect (self->install_button, "clicked",
-                      G_CALLBACK (install_button_clicked_cb), self);
+    if (self->install_button == NULL)
+    {
+        self->install_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                                           NULL, _("Install"),
+                                                           FALSE);
+        g_signal_connect (self->install_button, "clicked",
+                          G_CALLBACK (install_button_clicked_cb), self);
+    }
 
-    self->back_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
-                                                    "go-previous-symbolic", _("Back"),
-                                                    TRUE);
-    g_signal_connect (self->back_button, "clicked",
-                      G_CALLBACK (back_button_clicked_cb), self);
+    if (self->back_button == NULL)
+    {
+        self->back_button = gd_main_toolbar_add_button (GD_MAIN_TOOLBAR (self->toolbar),
+                                                        "go-previous-symbolic", _("Back"),
+                                                        TRUE);
+        g_signal_connect (self->back_button, "clicked",
+                          G_CALLBACK (back_button_clicked_cb), self);
+    }
 
     gtk_widget_set_vexpand (self->toolbar, FALSE);
 
@@ -649,6 +658,8 @@ font_view_application_do_open (FontViewApplication *self,
 
     gtk_widget_show_all (self->swin_preview);
     gtk_notebook_set_current_page (GTK_NOTEBOOK (self->notebook), 1);
+
+    gtk_window_present (GTK_WINDOW (self->main_window));
 }
 
 static gboolean
@@ -924,6 +935,8 @@ font_view_application_activate (GApplication *application)
 
     G_APPLICATION_CLASS (font_view_application_parent_class)->activate (application);
     font_view_application_do_overview (self);
+
+    gtk_window_present (GTK_WINDOW (self->main_window));
 }
 
 static void
