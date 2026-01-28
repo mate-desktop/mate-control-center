@@ -16,6 +16,7 @@ concurrency:
 
 env:
   MATE_DESKTOP_VERSION: 1.28.2
+  MARCO_VERSION: 1.29.0
   CACHE_PATH: /tmp/.cache
 
 jobs:
@@ -89,6 +90,17 @@ jobs:
       - name: Built and install mate-desktop from source
         run: .github/workflows/mate-desktop.sh ${{env.MATE_DESKTOP_VERSION}} ${{ env.CACHE_PATH }}
       # INFO: M-C-C depends mate-desktop 1.27.1+, install finished.
+
+      # INFO: M-C-C depends on marco 1.29.0+, so we should install it from source.
+      - name: Cache marco binary packages
+        uses: actions/cache@v5
+        id: cache-marco
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: ${{ env.DISTRO }}-build-marco-${{env.MARCO_VERSION}}
+      - name: Built and install marco from source
+        run: .github/workflows/marco.sh ${{env.MARCO_VERSION}} ${{ env.CACHE_PATH }}
+      # INFO: M-C-C depends on marco 1.29.0+, install finished.
 
       - name: Build the source code
         run: .github/workflows/builds.sh
