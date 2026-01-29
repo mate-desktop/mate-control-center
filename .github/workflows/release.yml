@@ -29,7 +29,7 @@ jobs:
         run: sudo .github/workflows/marco.sh ${{env.MARCO_VERSION}} ${{ env.CACHE_PATH }}
 
       - name: Build the source code
-        run: .github/workflows/builds.sh
+        run: .github/workflows/builds.sh autotools
 
       - name: Install GH CLI
         uses: dev-hanz-ops/install-gh-cli-action@v0.2.1
