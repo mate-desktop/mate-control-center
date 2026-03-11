@@ -582,7 +582,9 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					} else if (g_strrstr (str->str, "BAD PASSWORD") != NULL) {
 						/* Actual error description from libpwquality is located in the first string */
 						msg = g_strdup("Password hasn't changed!");
-						pdialog->ext_msg = g_strdup(g_strsplit(str->str, "\n", 2)[0]);
+						gchar **_parts = g_strsplit(str->str, "\n", 2);
+						pdialog->ext_msg = g_strdup(_parts[0]);
+						g_strfreev(_parts);
 						stop_passwd(pdialog);
 					}
 				}
@@ -600,7 +602,9 @@ io_watch_stdout (GIOChannel *source, GIOCondition condition, PasswordDialog *pdi
 					 * for our new password. */
 					if (pdialog->ext_msg != NULL) {
 						passdlg_clear(pdialog);
-						passdlg_set_status (pdialog, g_strconcat(msg, "\n", pdialog->ext_msg, NULL));
+						gchar *_combined = g_strconcat(msg, "\n", pdialog->ext_msg, NULL);
+						passdlg_set_status (pdialog, _combined);
+						g_free (_combined);
 						g_free (pdialog->ext_msg);
 					}
 					pdialog->backend_state = PASSWD_STATE_ERR;
