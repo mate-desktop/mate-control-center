@@ -9,23 +9,26 @@
 # Martin Wimpress <code@flexion.org>, 2018
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2019
 # shy tzedaka <shaytzedaka123@gmail.com>, 2020
-# Yaron Shahrabani <sh.yaron@gmail.com>, 2021
-# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
-# Stefano Karapetsas <stefano@karapetsas.com>, 2021
+# 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e <ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2021
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2024
+# Omer I.S., 2025
+# Avi Markovitz <avi.markovitz@gmail.com>, 2025
+# Stefano Karapetsas <stefano@karapetsas.com>, 2025
+# Transifex Bot <>, 2026
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-control-center 1.26.0\n"
+"Project-Id-Version: mate-control-center 1.27.0\n"
 "Report-Msgid-Bugs-To: http://www.mate-desktop.org/\n"
-"POT-Creation-Date: 2022-10-29 15:31+0200\n"
+"POT-Creation-Date: 2023-09-02 16:51+0200\n"
 "PO-Revision-Date: 2018-03-11 10:35+0000\n"
-"Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2021\n"
-"Language-Team: Hebrew (https://www.transifex.com/mate/teams/13566/he/)\n"
+"Last-Translator: Transifex Bot <>, 2026\n"
+"Language-Team: Hebrew (https://app.transifex.com/mate/teams/13566/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 
 #: org.mate.control-center.gschema.xml.in:5
 msgid ""
@@ -180,9 +183,9 @@ msgstr "על אודותי"
 #: capplets/about-me/mate-about-me-dialog.ui:54
 #: capplets/about-me/mate-about-me-password.ui:54
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:119
-#: capplets/appearance/data/appearance.ui:61
-#: capplets/appearance/data/appearance.ui:1215
-#: capplets/appearance/data/appearance.ui:2069
+#: capplets/appearance/data/appearance.ui:101
+#: capplets/appearance/data/appearance.ui:1255
+#: capplets/appearance/data/appearance.ui:2109
 #: capplets/default-applications/mate-default-applications-properties.ui:55
 #: capplets/display/display-capplet.ui:106
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:140
@@ -191,7 +194,7 @@ msgstr "על אודותי"
 #: capplets/time-admin/src/time-admin.ui:386
 #: capplets/time-admin/src/time-zone.c:481
 msgid "_Close"
-msgstr "_סגור"
+msgstr "_סגירה"
 
 #: capplets/about-me/mate-about-me-dialog.ui:100
 msgid "Select your photo"
@@ -501,8 +504,8 @@ msgid "Assistive Technologies Preferences"
 msgstr "העדפות טכנולוגיות מסייעות"
 
 #: capplets/accessibility/at-properties/at-enable-dialog.ui:86
-#: capplets/appearance/data/appearance.ui:1198
-#: capplets/appearance/data/appearance.ui:2051
+#: capplets/appearance/data/appearance.ui:1238
+#: capplets/appearance/data/appearance.ui:2091
 #: capplets/default-applications/mate-default-applications-properties.ui:38
 #: capplets/display/display-capplet.ui:58
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:123
@@ -587,20 +590,21 @@ msgstr "כל הקבצים"
 
 #: capplets/appearance/appearance-font.c:614
 msgid "Select Font"
-msgstr ""
+msgstr "בחירת גופן"
 
 #: capplets/appearance/appearance-font.c:617
-#: capplets/appearance/data/appearance.ui:951
+#: capplets/appearance/data/appearance.ui:991
 msgid "_Cancel"
 msgstr "_ביטול"
 
 #: capplets/appearance/appearance-font.c:619
+#: capplets/appearance/data/appearance.ui:3539
 #: capplets/common/theme-thumbnail.c:220 capplets/common/theme-thumbnail.c:302
 msgid "_Open"
-msgstr "_פתח"
+msgstr "_פתיחה"
 
 #: capplets/appearance/appearance-font.c:624
-#: capplets/appearance/data/appearance.ui:3075
+#: capplets/appearance/data/appearance.ui:3115
 msgid "Fonts"
 msgstr "גופנים"
 
@@ -693,409 +697,434 @@ msgid "The current theme suggests a font."
 msgstr "ערכת הנושא הנוכחית מציעה גופן."
 
 #: capplets/appearance/appearance-themes.c:1012
-#: capplets/windows/mate-window-properties.c:247
+#: capplets/windows/mate-window-properties.c:248
 msgid "Custom"
 msgstr "מותאם אישית"
 
-#: capplets/appearance/data/appearance.ui:45
+#: capplets/appearance/data/appearance.ui:85
 msgid "Font Rendering Details"
 msgstr "פרטי ציור גופן"
 
-#: capplets/appearance/data/appearance.ui:102
+#: capplets/appearance/data/appearance.ui:142
 msgid "R_esolution"
 msgstr "_רזולוציה"
 
-#: capplets/appearance/data/appearance.ui:125
+#: capplets/appearance/data/appearance.ui:165
 msgid "Dots per inch (DPI):"
 msgstr "נקודות לאינטש (DPI):"
 
-#: capplets/appearance/data/appearance.ui:161
+#: capplets/appearance/data/appearance.ui:201
 msgid "This resets the font DPI to the auto-detected value from Xserver."
 msgstr "פעולה זו מאפסת את ה־DPI לערך שזוהה אוטומטית מ־Xserver."
 
-#: capplets/appearance/data/appearance.ui:162
+#: capplets/appearance/data/appearance.ui:202
 msgid "Automatic detection:"
 msgstr "זיהוי אוטומטי:"
 
-#: capplets/appearance/data/appearance.ui:206
+#: capplets/appearance/data/appearance.ui:246
 msgid "Smoothing"
 msgstr "החלקה"
 
-#: capplets/appearance/data/appearance.ui:240
+#: capplets/appearance/data/appearance.ui:280
 msgid "Gra_yscale"
 msgstr "גווני _אפור"
 
-#: capplets/appearance/data/appearance.ui:286
+#: capplets/appearance/data/appearance.ui:326
 msgid "Sub_pixel (LCDs)"
 msgstr "תת _פיקסל (צגי LCD)"
 
-#: capplets/appearance/data/appearance.ui:332
+#: capplets/appearance/data/appearance.ui:372
 msgid "_None"
 msgstr "_ללא"
 
 #. font hinting
-#: capplets/appearance/data/appearance.ui:412
+#: capplets/appearance/data/appearance.ui:452
 msgid "Hinting"
 msgstr "רמיזה"
 
-#: capplets/appearance/data/appearance.ui:445
+#: capplets/appearance/data/appearance.ui:485
 msgid "N_one"
 msgstr "_ללא"
 
-#: capplets/appearance/data/appearance.ui:490
+#: capplets/appearance/data/appearance.ui:530
 msgid "_Slight"
 msgstr "מו_עטת"
 
-#: capplets/appearance/data/appearance.ui:536
+#: capplets/appearance/data/appearance.ui:576
 msgid "_Full"
 msgstr "_מלאה"
 
-#: capplets/appearance/data/appearance.ui:582
+#: capplets/appearance/data/appearance.ui:622
 msgid "_Medium"
 msgstr "_בינונית"
 
-#: capplets/appearance/data/appearance.ui:661
+#: capplets/appearance/data/appearance.ui:701
 msgid "Subpixel Order"
 msgstr "סדר תת־פיקסל"
 
 #. pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:692
+#: capplets/appearance/data/appearance.ui:732
 msgid "_RGB"
 msgstr "_RGB"
 
 #. pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:731
+#: capplets/appearance/data/appearance.ui:771
 msgid "_BGR"
 msgstr "_BGR"
 
 #. vertical hinting, pixel order blue, green, red
-#: capplets/appearance/data/appearance.ui:771
+#: capplets/appearance/data/appearance.ui:811
 msgid "VB_GR"
 msgstr "VB_GR"
 
 #. vertical hinting, pixel order red, green, blue
-#: capplets/appearance/data/appearance.ui:811
+#: capplets/appearance/data/appearance.ui:851
 msgid "_VRGB"
 msgstr "_VRGB"
 
-#: capplets/appearance/data/appearance.ui:935
+#: capplets/appearance/data/appearance.ui:975
 msgid "Save Theme As..."
 msgstr "_שמירת ערכת נושא בשם..."
 
-#: capplets/appearance/data/appearance.ui:968
+#: capplets/appearance/data/appearance.ui:1008
+#: capplets/appearance/data/appearance.ui:3548
 #: capplets/time-admin/src/time-admin.ui:370
 msgid "_Save"
-msgstr "_שמור"
+msgstr "_שמירה"
 
-#: capplets/appearance/data/appearance.ui:1033
+#: capplets/appearance/data/appearance.ui:1073
 msgid "Save _background image"
-msgstr "שמירת תמונת ה_רקע"
+msgstr "שמירת תמונת _רקע"
 
-#: capplets/appearance/data/appearance.ui:1047
+#: capplets/appearance/data/appearance.ui:1087
 msgid "Save _notification theme"
-msgstr "שמירת ערכת ה_תרעות"
+msgstr "שמירת ערכת נושא _הודעות"
 
-#: capplets/appearance/data/appearance.ui:1064
+#: capplets/appearance/data/appearance.ui:1104
 #: capplets/keybindings/mate-keybinding-properties.ui:80
 msgid "_Name:"
 msgstr "_שם:"
 
-#: capplets/appearance/data/appearance.ui:1079
+#: capplets/appearance/data/appearance.ui:1119
 msgid "_Description:"
 msgstr "_תיאור:"
 
-#: capplets/appearance/data/appearance.ui:1157
+#: capplets/appearance/data/appearance.ui:1197
 msgid "Text below items"
 msgstr "כיתוב מתחת לפריטים"
 
-#: capplets/appearance/data/appearance.ui:1160
+#: capplets/appearance/data/appearance.ui:1200
 msgid "Text beside items"
 msgstr "כיתוב לצד הפריטים"
 
-#: capplets/appearance/data/appearance.ui:1163
+#: capplets/appearance/data/appearance.ui:1203
 msgid "Icons only"
 msgstr "סמלים בלבד"
 
-#: capplets/appearance/data/appearance.ui:1166
+#: capplets/appearance/data/appearance.ui:1206
 msgid "Text only"
-msgstr "טקסט בלבד"
+msgstr "כיתוב בלבד"
 
-#: capplets/appearance/data/appearance.ui:1179
+#: capplets/appearance/data/appearance.ui:1219
 msgid "Customize Theme"
 msgstr "התאמה אישית של ערכת נושא"
 
-#: capplets/appearance/data/appearance.ui:1301
-#: capplets/appearance/data/appearance.ui:1671
-#: capplets/appearance/data/appearance.ui:1754
-#: capplets/appearance/data/appearance.ui:1913
-#: capplets/appearance/data/appearance.ui:2157
+#: capplets/appearance/data/appearance.ui:1341
+#: capplets/appearance/data/appearance.ui:1711
+#: capplets/appearance/data/appearance.ui:1794
+#: capplets/appearance/data/appearance.ui:1953
+#: capplets/appearance/data/appearance.ui:2197
 msgid "_Delete"
 msgstr "מ_חיקה"
 
-#: capplets/appearance/data/appearance.ui:1331
+#: capplets/appearance/data/appearance.ui:1371
 msgid "Controls"
 msgstr "פקדים"
 
-#: capplets/appearance/data/appearance.ui:1368
+#: capplets/appearance/data/appearance.ui:1408
 msgid "The current controls theme does not support color schemes."
 msgstr "ערכת הנושא של הפקדים לא תומכת בערכות צבעים."
 
-#: capplets/appearance/data/appearance.ui:1424
+#: capplets/appearance/data/appearance.ui:1464
 msgid "_Tooltips:"
 msgstr "רמזים _צצים:"
 
-#: capplets/appearance/data/appearance.ui:1510
+#: capplets/appearance/data/appearance.ui:1550
 msgid "Text"
-msgstr "טקסט"
+msgstr "כיתוב"
 
-#: capplets/appearance/data/appearance.ui:1522
-#: capplets/appearance/data/appearance.ui:2573
+#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:2613
 msgid "Background"
 msgstr "תמונת רקע"
 
-#: capplets/appearance/data/appearance.ui:1534
+#: capplets/appearance/data/appearance.ui:1574
 msgid "_Selected items:"
 msgstr "פריטים _נבחרים:"
 
-#: capplets/appearance/data/appearance.ui:1548
+#: capplets/appearance/data/appearance.ui:1588
 msgid "_Input boxes:"
 msgstr "_תיבות קלט:"
 
-#: capplets/appearance/data/appearance.ui:1562
+#: capplets/appearance/data/appearance.ui:1602
 msgid "_Windows:"
 msgstr "_חלונות:"
 
-#: capplets/appearance/data/appearance.ui:1589
+#: capplets/appearance/data/appearance.ui:1629
 msgid "_Reset to Defaults"
 msgstr "_חזרה לבררת מחדל"
 
-#: capplets/appearance/data/appearance.ui:1621
+#: capplets/appearance/data/appearance.ui:1661
 msgid "Colors"
 msgstr "צבעים"
 
-#: capplets/appearance/data/appearance.ui:1704
+#: capplets/appearance/data/appearance.ui:1744
 msgid "Window Border"
 msgstr "מסגרת החלון"
 
-#: capplets/appearance/data/appearance.ui:1787
+#: capplets/appearance/data/appearance.ui:1827
 msgid "Icons"
 msgstr "סמלים"
 
-#: capplets/appearance/data/appearance.ui:1837
+#: capplets/appearance/data/appearance.ui:1877
 msgid "_Size:"
 msgstr "_גודל:"
 
 #. small threshold
-#: capplets/appearance/data/appearance.ui:1858
+#: capplets/appearance/data/appearance.ui:1898
 #: capplets/mouse/mate-mouse-properties.ui:680
 msgid "Small"
 msgstr "קטן"
 
 #. large threshold
-#: capplets/appearance/data/appearance.ui:1888
+#: capplets/appearance/data/appearance.ui:1928
 #: capplets/mouse/mate-mouse-properties.ui:717
 msgid "Large"
 msgstr "גדול"
 
-#: capplets/appearance/data/appearance.ui:1954
+#: capplets/appearance/data/appearance.ui:1994
 msgid "Pointer"
 msgstr "סמן"
 
-#: capplets/appearance/data/appearance.ui:1987
+#: capplets/appearance/data/appearance.ui:2027
 msgid "Solid color"
 msgstr "צבע אחיד"
 
-#: capplets/appearance/data/appearance.ui:1990
+#: capplets/appearance/data/appearance.ui:2030
 msgid "Horizontal gradient"
 msgstr "מדרג אופקי"
 
-#: capplets/appearance/data/appearance.ui:1993
+#: capplets/appearance/data/appearance.ui:2033
 msgid "Vertical gradient"
 msgstr "מדרג אנכי"
 
-#: capplets/appearance/data/appearance.ui:2009
+#: capplets/appearance/data/appearance.ui:2049
 msgid "Tile"
 msgstr "פרישה"
 
-#: capplets/appearance/data/appearance.ui:2012
+#: capplets/appearance/data/appearance.ui:2052
 msgid "Zoom"
 msgstr "תקריב"
 
-#: capplets/appearance/data/appearance.ui:2015
+#: capplets/appearance/data/appearance.ui:2055
 msgid "Center"
 msgstr "ממורכז"
 
-#: capplets/appearance/data/appearance.ui:2018
+#: capplets/appearance/data/appearance.ui:2058
 msgid "Scale"
 msgstr "בגודל מותאם"
 
-#: capplets/appearance/data/appearance.ui:2021
+#: capplets/appearance/data/appearance.ui:2061
 msgid "Stretch"
 msgstr "מתיחה"
 
-#: capplets/appearance/data/appearance.ui:2024
+#: capplets/appearance/data/appearance.ui:2064
 msgid "Span"
 msgstr "פריסה"
 
-#: capplets/appearance/data/appearance.ui:2032
+#: capplets/appearance/data/appearance.ui:2072
 msgid "Appearance Preferences"
 msgstr "העדפות מראה"
 
-#: capplets/appearance/data/appearance.ui:2175
+#: capplets/appearance/data/appearance.ui:2215
 msgid "Save _As..."
 msgstr "שמירה _בשם..."
 
-#: capplets/appearance/data/appearance.ui:2193
+#: capplets/appearance/data/appearance.ui:2233
 msgid "C_ustomize..."
 msgstr "ה_תאמה אישית..."
 
-#: capplets/appearance/data/appearance.ui:2210
+#: capplets/appearance/data/appearance.ui:2250
 msgid "_Install..."
 msgstr "ה_תקנה..."
 
-#: capplets/appearance/data/appearance.ui:2238
+#: capplets/appearance/data/appearance.ui:2278
 msgid "Get more themes online"
 msgstr "הורדת ערכות נושא נוספות מהרשת"
 
-#: capplets/appearance/data/appearance.ui:2268
+#: capplets/appearance/data/appearance.ui:2308
 msgid "Theme"
 msgstr "ערכת נושא"
 
-#: capplets/appearance/data/appearance.ui:2338
+#: capplets/appearance/data/appearance.ui:2378
 msgid "_Style:"
 msgstr "_סגנון:"
 
-#: capplets/appearance/data/appearance.ui:2382
+#: capplets/appearance/data/appearance.ui:2422
 msgid "C_olors:"
 msgstr "צ_בעים:"
 
-#: capplets/appearance/data/appearance.ui:2422
-#: capplets/appearance/data/appearance.ui:2438
+#: capplets/appearance/data/appearance.ui:2462
+#: capplets/appearance/data/appearance.ui:2478
 msgid "Open a dialog to specify the color"
-msgstr "פתיחת תיבת דו־שיח כדי לבחור צבע"
+msgstr "פתיחת תיבת דו־שיח לבחירת הצבע"
 
-#: capplets/appearance/data/appearance.ui:2493
+#: capplets/appearance/data/appearance.ui:2533
 msgid "Get more backgrounds online"
 msgstr "הורדת רקעים נוספים מהרשת"
 
-#: capplets/appearance/data/appearance.ui:2533
+#: capplets/appearance/data/appearance.ui:2573
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:703
 msgid "_Add..."
 msgstr "הו_ספה..."
 
-#: capplets/appearance/data/appearance.ui:2669
+#: capplets/appearance/data/appearance.ui:2709
 msgid "_Application font:"
 msgstr "גופן ה_יישום:"
 
-#: capplets/appearance/data/appearance.ui:2684
+#: capplets/appearance/data/appearance.ui:2724
 msgid "_Document font:"
 msgstr "_גופן מסמכים:"
 
-#: capplets/appearance/data/appearance.ui:2698
+#: capplets/appearance/data/appearance.ui:2738
 msgid "Des_ktop font:"
 msgstr "גופן שול_חן העבודה:"
 
-#: capplets/appearance/data/appearance.ui:2713
+#: capplets/appearance/data/appearance.ui:2753
 msgid "_Window title font:"
 msgstr "גופן כותרת ה_חלון:"
 
-#: capplets/appearance/data/appearance.ui:2728
+#: capplets/appearance/data/appearance.ui:2768
 msgid "_Fixed width font:"
 msgstr "גופן _רוחב קבוע:"
 
-#: capplets/appearance/data/appearance.ui:2768
+#: capplets/appearance/data/appearance.ui:2808
 msgid "Add new f_ont..."
 msgstr "הוספת גופן ח_דש..."
 
-#: capplets/appearance/data/appearance.ui:2799
+#: capplets/appearance/data/appearance.ui:2839
 msgid "Rendering"
 msgstr "עיבוד"
 
-#: capplets/appearance/data/appearance.ui:2831
+#: capplets/appearance/data/appearance.ui:2871
 msgid "Sub_pixel smoothing (LCDs)"
 msgstr "החלקת תת _פיקסל (לצגי LCD)"
 
-#: capplets/appearance/data/appearance.ui:2877
+#: capplets/appearance/data/appearance.ui:2917
 msgid "Best _shapes"
 msgstr "ה_צורות הטובות ביותר"
 
-#: capplets/appearance/data/appearance.ui:2923
+#: capplets/appearance/data/appearance.ui:2963
 msgid "_Monochrome"
 msgstr "מונו_כרום"
 
-#: capplets/appearance/data/appearance.ui:2968
+#: capplets/appearance/data/appearance.ui:3008
 msgid "Best co_ntrast"
 msgstr "ה_ניגוד הטוב ביותר"
 
-#: capplets/appearance/data/appearance.ui:3045
+#: capplets/appearance/data/appearance.ui:3085
 msgid "D_etails..."
 msgstr "_פרטים..."
 
-#: capplets/appearance/data/appearance.ui:3100
+#: capplets/appearance/data/appearance.ui:3140
 msgid "Menus and Toolbars"
 msgstr "תפריטים וסרגלי כלים"
 
-#: capplets/appearance/data/appearance.ui:3135
+#: capplets/appearance/data/appearance.ui:3175
 msgid "Show _icons in menus"
 msgstr "הצגת _סמלים בתפריטים"
 
-#: capplets/appearance/data/appearance.ui:3152
+#: capplets/appearance/data/appearance.ui:3192
 msgid "_Editable menu shortcut keys"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3175
+#: capplets/appearance/data/appearance.ui:3215
 msgid "Toolbar _button labels:"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3243
+#: capplets/appearance/data/appearance.ui:3283
 msgid "Buttons"
 msgstr "כפתורים"
 
-#: capplets/appearance/data/appearance.ui:3272
+#: capplets/appearance/data/appearance.ui:3312
 msgid "Show icons on buttons"
 msgstr "הצג סמלים בכפתורים"
 
-#: capplets/appearance/data/appearance.ui:3276
+#: capplets/appearance/data/appearance.ui:3316
 msgid "Whether buttons may display an icon in addition to the button text"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3313
+#: capplets/appearance/data/appearance.ui:3353
 msgid "File Chooser"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3348
+#: capplets/appearance/data/appearance.ui:3388
 msgid "Show hidden items"
-msgstr ""
+msgstr "הצגת פריטים מוסתרים"
 
-#: capplets/appearance/data/appearance.ui:3365
+#: capplets/appearance/data/appearance.ui:3405
 msgid "Show size column"
-msgstr ""
+msgstr "הצגת גודל עמודה"
 
-#: capplets/appearance/data/appearance.ui:3381
+#: capplets/appearance/data/appearance.ui:3421
 msgid "Show type column"
-msgstr ""
+msgstr "הצגת סוג עמודה"
 
-#: capplets/appearance/data/appearance.ui:3397
+#: capplets/appearance/data/appearance.ui:3437
 msgid "Sort directories first"
 msgstr ""
 
-#: capplets/appearance/data/appearance.ui:3443
+#: capplets/appearance/data/appearance.ui:3483
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: capplets/appearance/data/appearance.ui:3483
+#: capplets/appearance/data/appearance.ui:3523
 msgid "_File"
 msgstr "_קובץ"
 
-#: capplets/appearance/data/appearance.ui:3553
+#: capplets/appearance/data/appearance.ui:3530
+msgid "_New"
+msgstr "_חדש"
+
+#: capplets/appearance/data/appearance.ui:3563
+msgid "_Print"
+msgstr "_הדפס"
+
+#: capplets/appearance/data/appearance.ui:3578
+msgid "_Quit"
+msgstr "_יציאה"
+
+#: capplets/appearance/data/appearance.ui:3593
 msgid "Edit"
 msgstr "עריכה"
 
-#: capplets/appearance/data/appearance.ui:3610
+#: capplets/appearance/data/appearance.ui:3600
+msgid "cu_T"
+msgstr ""
+
+#: capplets/appearance/data/appearance.ui:3609
+msgid "_Copy"
+msgstr "ה_עתקה"
+
+#: capplets/appearance/data/appearance.ui:3618
+msgid "_Paste"
+msgstr "ה_דבקה"
+
+#: capplets/appearance/data/appearance.ui:3650
 msgid "New"
 msgstr "חדש"
 
-#: capplets/appearance/data/appearance.ui:3683
+#: capplets/appearance/data/appearance.ui:3723
 msgid "Interface"
 msgstr "ממשק"
 
@@ -1129,7 +1158,7 @@ msgstr ""
 
 #: capplets/appearance/data/mate-theme-package.xml.in:5
 msgid "Mate Theme Package"
-msgstr "חבילת ערכת נושא של MATE"
+msgstr "חבילת ערכת נושא מאטה"
 
 #: capplets/appearance/mate-wp-info.c:51
 msgid "No Desktop Background"
@@ -1163,7 +1192,6 @@ msgid_plural "pixels"
 msgstr[0] "פיקסל"
 msgstr[1] "פיקסלים"
 msgstr[2] "פיקסלים"
-msgstr[3] "פיקסלים"
 
 #: capplets/appearance/mate-wp-item.c:319
 #, c-format
@@ -1269,7 +1297,7 @@ msgstr "החלת ערכת נושא חדשה"
 #: capplets/appearance/theme-installer.c:534
 #, c-format
 msgid "MATE Theme %s correctly installed"
-msgstr "ערכת הנושא של MATE %s הותקנה בהצלחה"
+msgstr "ערכת נושא מאטה %s הותקנה נכון"
 
 #: capplets/appearance/theme-installer.c:600
 msgid "Failed to create temporary directory"
@@ -1326,8 +1354,8 @@ msgid ""
 "Unable to start the settings manager 'mate-settings-daemon'.\n"
 "Without the MATE settings manager running, some preferences may not take effect. This could indicate a problem with DBus, or a non-MATE (e.g. KDE) settings manager may already be active and conflicting with the MATE settings manager."
 msgstr ""
-"לא ניתן להפעיל את מנהל ההגדרות 'mate-settings-daemon'.\n"
-"בלי שמנהל ההגדרות של MATE פועל, חלק מההעדפות לא יכולות לפעול. מצב זה יכול להצביע על בעיה עם DBus או על מנהל הגדרות שאינו MATE (לדוגמה KDE) הנמצא בשימוש ועלול להתנגש עם מנהל ההגדרות של MATE."
+"לא ניתן לאתחל את מנהל ההגדרות 'mate-settings-daemon'.\n"
+"בלי שמנהל ההגדרות מאטה פועל, חלק מההעדפות יכנסו לתוקף. מצב זה יכול להצביע על בעיה ב־DBus או על מנהל הגדרות שאינו מאטה (לדוגמה KDE) שנמצא בשימוש ועלול להתנגש עם מנהל ההגדרות של מאטה."
 
 #: capplets/common/capplet-util.c:82
 #, c-format
@@ -1337,17 +1365,17 @@ msgstr "אירעה שגיאה בהצגת העזרה: %s"
 #: capplets/common/file-transfer-dialog.c:96
 #, c-format
 msgid "Copying file: %u of %u"
-msgstr "מעתיק קובץ: %u מתוך %u"
+msgstr "העתקת קובץ: %u מתוך %u"
 
 #: capplets/common/file-transfer-dialog.c:143
 #, c-format
 msgid "Copying '%s'"
-msgstr "'%s' מועתק"
+msgstr "העתקת '%s' "
 
 #: capplets/common/file-transfer-dialog.c:183
 #: capplets/common/file-transfer-dialog.c:308
 msgid "Copying files"
-msgstr "מעתיק קבצים"
+msgstr "העתקת  קבצים"
 
 #: capplets/common/file-transfer-dialog.c:222
 msgid "Parent Window"
@@ -1445,7 +1473,7 @@ msgstr "בחירת יישומי בררת המחדל שלך"
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: capplets/default-applications/mate-default-applications-properties.desktop.in:13
 msgid "mate-control-center;MATE;default;preferred;applications;"
-msgstr ""
+msgstr "mate-control-center;MATE;default;preferred;applications;"
 
 #: capplets/default-applications/mate-da-capplet.c:781
 msgid "Specify the name of the page to show (internet|multimedia|system|a11y)"
@@ -1454,7 +1482,7 @@ msgstr ""
 
 #: capplets/default-applications/mate-da-capplet.c:789
 msgid "- MATE Default Applications"
-msgstr "- יישומי ברירת המחדל של MATE"
+msgstr "- יישומי ברירת מחדל מאטה"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:147
 msgid "Web Browser"
@@ -1490,7 +1518,7 @@ msgstr "מולטימדיה"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:609
 msgid "Text Editor"
-msgstr "עורך טקסט"
+msgstr "עורך מלל"
 
 #: capplets/default-applications/mate-default-applications-properties.ui:679
 msgid "Terminal Emulator"
@@ -1552,13 +1580,13 @@ msgstr "רגיל"
 
 #: capplets/display/display-capplet.ui:25
 #: capplets/display/xrandr-capplet.c:311
-#: capplets/windows/window-properties.ui:692
+#: capplets/windows/window-properties.ui:616
 msgid "Left"
 msgstr "שמאלה"
 
 #: capplets/display/display-capplet.ui:28
 #: capplets/display/xrandr-capplet.c:312
-#: capplets/windows/window-properties.ui:691
+#: capplets/windows/window-properties.ui:615
 msgid "Right"
 msgstr "ימינה"
 
@@ -1579,8 +1607,8 @@ msgid ""
 "Applies the current configuration for other MATE users on the computer. Note"
 " that this doesn't affect login screens or other desktop environments."
 msgstr ""
-"חל על ההגדרה הנוכחית למשתמשי MATE נוספים במחשב. נא לשים לב שפעולה זו אינה "
-"חלה על מסכי כניסה או סביבות שולחן עבודה אחרות."
+"החלת תצורה נוכחית למשתמשי מאטה אחרים במחשב. לתשומת לב, פעולה זו לא משפיעה על"
+" חלון ההתחברות או סביבות שולחן עבודה אחרות."
 
 #: capplets/display/display-capplet.ui:90
 msgid "_Apply"
@@ -1641,7 +1669,7 @@ msgstr "ה_צגת הצגים בלוח"
 
 #: capplets/display/display-capplet.ui:477
 msgid "Scaling"
-msgstr ""
+msgstr "קנה מידה"
 
 #: capplets/display/mate-display-properties.desktop.in:3
 msgid "Displays"
@@ -1657,6 +1685,7 @@ msgstr "שינוי הרזולוציה לרבות מיקום הצגים והמק�
 msgid ""
 "mate-control-center;MATE;resolution;position;monitors;display;properties;"
 msgstr ""
+"mate-control-center;MATE;resolution;position;monitors;display;properties;"
 
 #: capplets/display/mate-display-properties-install-systemwide.c:46
 #, c-format
@@ -1797,7 +1826,7 @@ msgstr "צג: %s"
 #: capplets/display/xrandr-capplet.c:688
 #, c-format
 msgid "%u x %u"
-msgstr ""
+msgstr "%u x %u"
 
 #: capplets/display/xrandr-capplet.c:1548
 msgid ""
@@ -1835,7 +1864,7 @@ msgstr "לא ניתן לאחזר את נתוני הצג"
 
 #: capplets/display/xrandr-capplet.c:2568
 msgid "Could not open help content"
-msgstr ""
+msgstr "לא ניתן לפתוח תכולת עזרה"
 
 #: capplets/keybindings/00-multimedia-key.xml.in:2
 msgid "Sound"
@@ -1983,16 +2012,16 @@ msgstr "מכובה"
 msgid "<Unknown Action>"
 msgstr "<פעולה לא ידועה>"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1001
-#: capplets/keybindings/mate-keybinding-properties.c:1608
+#: capplets/keybindings/mate-keybinding-properties.c:1015
+#: capplets/keybindings/mate-keybinding-properties.c:1622
 msgid "Custom Shortcuts"
 msgstr "קיצורי דרך מותאמים אישית"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1189
+#: capplets/keybindings/mate-keybinding-properties.c:1203
 msgid "Error saving the new shortcut"
 msgstr "שגיאה בשמירת קיצור הדרך החדש"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1265
+#: capplets/keybindings/mate-keybinding-properties.c:1279
 #, c-format
 msgid ""
 "The shortcut \"%s\" cannot be used because it will become impossible to type using this key.\n"
@@ -2001,7 +2030,7 @@ msgstr ""
 "לא ניתן להשתמש בקיצור הדרך \"%s\" מכיוון שלא ניתן יהיה להקליד באמצעות מקש זה.\n"
 "נא נסה מקש או צירוף מקשים שונה כגון לחיצה על Ctrl, Alt או Shift יחדיו."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1297
+#: capplets/keybindings/mate-keybinding-properties.c:1311
 #, c-format
 msgid ""
 "The shortcut \"%s\" is already used for\n"
@@ -2010,24 +2039,24 @@ msgstr ""
 "קיצור הדרך \"%s\" כבר משמש ל־:\n"
 "\"%s\"‏"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1304
+#: capplets/keybindings/mate-keybinding-properties.c:1318
 #, c-format
 msgid "If you reassign the shortcut to \"%s\", the \"%s\" shortcut will be disabled."
 msgstr "אם קיצור הדרך יוקצה מחדש אל \"%s\", קיצור הדרך \"%s\" יבוטל."
 
-#: capplets/keybindings/mate-keybinding-properties.c:1309
+#: capplets/keybindings/mate-keybinding-properties.c:1323
 msgid "_Reassign"
 msgstr "הקצאה _מחדש"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1563
+#: capplets/keybindings/mate-keybinding-properties.c:1577
 msgid "Too many custom shortcuts"
 msgstr "יותר מדי קיצורי דרך מותאמים אישית"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1877
+#: capplets/keybindings/mate-keybinding-properties.c:1891
 msgid "Action"
 msgstr "פעולה"
 
-#: capplets/keybindings/mate-keybinding-properties.c:1899
+#: capplets/keybindings/mate-keybinding-properties.c:1913
 msgid "Shortcut"
 msgstr "קיצור"
 
@@ -2231,7 +2260,7 @@ msgstr "הבהוב סמן"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:510
 msgid "Cursor _blinks in text fields"
-msgstr "סמן מ_הבהב בשדות טקסט"
+msgstr "הבהוב סמן בשדות מלל"
 
 #: capplets/keyboard/mate-keyboard-properties-dialog.ui:534
 msgid "S_peed:"
@@ -2467,11 +2496,11 @@ msgstr "לא ידוע"
 msgid "Layout"
 msgstr "פריסה"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:170
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:173
 msgid "Vendors"
 msgstr "יצרנים"
 
-#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:234
+#: capplets/keyboard/mate-keyboard-properties-xkbmc.c:237
 msgid "Models"
 msgstr "דגמים"
 
@@ -2759,7 +2788,7 @@ msgid "Metacity Preferences"
 msgstr "העדפות Metacity"
 
 #: capplets/windows/mate-metacity-support.c:54
-#: capplets/windows/window-properties.ui:813
+#: capplets/windows/window-properties.ui:733
 msgid "Compositing Manager"
 msgstr "מנהל תפעול חלונות"
 
@@ -2767,23 +2796,23 @@ msgstr "מנהל תפעול חלונות"
 msgid "Enable software _compositing window manager"
 msgstr "הפעלת מנהל חלונות המתפעל _חלונות תכנתית"
 
-#: capplets/windows/mate-window-properties.c:315
+#: capplets/windows/mate-window-properties.c:316
 msgid "The current window manager is unsupported"
 msgstr "מנהל החלונות הנוכחי אינו נתמך"
 
-#: capplets/windows/mate-window-properties.c:626
+#: capplets/windows/mate-window-properties.c:629
 msgid "_Alt"
 msgstr "_Alt"
 
-#: capplets/windows/mate-window-properties.c:632
+#: capplets/windows/mate-window-properties.c:635
 msgid "H_yper"
 msgstr "ה_יפר"
 
-#: capplets/windows/mate-window-properties.c:639
+#: capplets/windows/mate-window-properties.c:642
 msgid "S_uper (or \"Windows logo\")"
 msgstr "_סופר (או \"סמל Windows\")"
 
-#: capplets/windows/mate-window-properties.c:646
+#: capplets/windows/mate-window-properties.c:649
 msgid "_Meta"
 msgstr "מ_טא"
 
@@ -2805,134 +2834,134 @@ msgstr ""
 msgid "Window Preferences"
 msgstr "העדפות חלון"
 
-#: capplets/windows/window-properties.ui:128
-msgid "Window Selection"
-msgstr "בחירת חלונות"
-
-#: capplets/windows/window-properties.ui:148
+#: capplets/windows/window-properties.ui:132
 msgid "_Select windows when the mouse moves over them"
 msgstr "_בחירת חלונות כאשר הסמן זז מעליהם"
 
-#: capplets/windows/window-properties.ui:164
+#: capplets/windows/window-properties.ui:148
 msgid "U_nselect windows when the mouse leaves them"
 msgstr "ביטול ב_חירת חלונות בעת עזיבת סמן העכבר"
 
-#: capplets/windows/window-properties.ui:187
+#: capplets/windows/window-properties.ui:171
 msgid "_Raise selected windows after"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:223
+#: capplets/windows/window-properties.ui:207
 msgid "seconds"
 msgstr "שניות"
 
-#: capplets/windows/window-properties.ui:263
-msgid "Titlebar Action"
-msgstr "פעולת שורת הכותרת"
+#: capplets/windows/window-properties.ui:229
+msgid "Window Selection"
+msgstr "בחירת חלונות"
 
-#: capplets/windows/window-properties.ui:290
+#: capplets/windows/window-properties.ui:264
 msgid "_Double-click titlebar action:"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:305
+#: capplets/windows/window-properties.ui:279
 #: libwindow-settings/marco-window-manager.c:399
 msgid "Roll up"
 msgstr "גלילה מעלה"
 
-#: capplets/windows/window-properties.ui:306
+#: capplets/windows/window-properties.ui:280
 #: libwindow-settings/marco-window-manager.c:400
 msgid "Maximize"
 msgstr "הגדלה"
 
-#: capplets/windows/window-properties.ui:307
+#: capplets/windows/window-properties.ui:281
 #: libwindow-settings/marco-window-manager.c:401
 msgid "Maximize Horizontally"
 msgstr "הגדלה אופקית"
 
-#: capplets/windows/window-properties.ui:308
+#: capplets/windows/window-properties.ui:282
 #: libwindow-settings/marco-window-manager.c:402
 msgid "Maximize Vertically"
 msgstr "הגדלה אנכית"
 
-#: capplets/windows/window-properties.ui:309
+#: capplets/windows/window-properties.ui:283
 #: libwindow-settings/marco-window-manager.c:403
 msgid "Minimize"
 msgstr "מזעור"
 
-#: capplets/windows/window-properties.ui:310
+#: capplets/windows/window-properties.ui:284
 #: libwindow-settings/marco-window-manager.c:404
 msgid "None"
 msgstr "ללא"
 
-#: capplets/windows/window-properties.ui:352
-msgid "Alt-Tab"
-msgstr ""
+#: capplets/windows/window-properties.ui:308
+msgid "Titlebar Action"
+msgstr "פעולת שורת הכותרת"
 
-#: capplets/windows/window-properties.ui:371
+#: capplets/windows/window-properties.ui:335
 msgid "Show _thumbnails in Alt-Tab"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:386
+#: capplets/windows/window-properties.ui:350
 msgid "Show window _border in Alt-Tab"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:424
-msgid "Movement Key"
-msgstr "מקש תזוזה"
+#: capplets/windows/window-properties.ui:370
+msgid "Alt-Tab"
+msgstr ""
 
-#: capplets/windows/window-properties.ui:446
+#: capplets/windows/window-properties.ui:400
 msgid "To move a window, press-and-hold this key then grab the window:"
 msgstr "כדי להזיז חלון, יש ללחוץ ולהחזיק מקש זה ואז לגרור את החלון:"
 
-#: capplets/windows/window-properties.ui:490
+#: capplets/windows/window-properties.ui:431
+msgid "Movement Key"
+msgstr "מקש תזוזה"
+
+#: capplets/windows/window-properties.ui:450
 msgid "Behaviour"
 msgstr "התנהגות"
 
-#: capplets/windows/window-properties.ui:515
-msgid "New Windows"
-msgstr "חלונות חדשים"
-
-#: capplets/windows/window-properties.ui:535
+#: capplets/windows/window-properties.ui:479
 msgid "Centre _new windows"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:573
-msgid "Window Snapping"
-msgstr "הצמדת חלונות"
+#: capplets/windows/window-properties.ui:499
+msgid "New Windows"
+msgstr "חלונות חדשים"
 
-#: capplets/windows/window-properties.ui:593
+#: capplets/windows/window-properties.ui:527
 msgid "Enable window _tiling"
 msgstr "הפעלת _ריצוף חלונות"
 
-#: capplets/windows/window-properties.ui:608
+#: capplets/windows/window-properties.ui:542
 msgid "Allow t_op tiling"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:647
-msgid "Titlebar Buttons"
-msgstr "כפתורי שורת כותרת"
+#: capplets/windows/window-properties.ui:563
+msgid "Window Snapping"
+msgstr "הצמדת חלונות"
 
-#: capplets/windows/window-properties.ui:674
+#: capplets/windows/window-properties.ui:598
 msgid "_Position of titlebar buttons:"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:689
+#: capplets/windows/window-properties.ui:613
 msgid "Right (with menu)"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:690
+#: capplets/windows/window-properties.ui:614
 msgid "Left (with menu)"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:732
+#: capplets/windows/window-properties.ui:640
+msgid "Titlebar Buttons"
+msgstr "כפתורי שורת כותרת"
+
+#: capplets/windows/window-properties.ui:662
 msgid "Placement"
 msgstr "העמדה"
 
-#: capplets/windows/window-properties.ui:757
-msgid "Software Compositing"
+#: capplets/windows/window-properties.ui:691
+msgid "Enable _software compositing window manager"
 msgstr ""
 
-#: capplets/windows/window-properties.ui:777
-msgid "Enable _software compositing window manager"
+#: capplets/windows/window-properties.ui:711
+msgid "Software Compositing"
 msgstr ""
 
 #: capplets/time-admin/src/main.c:34
@@ -2995,7 +3024,7 @@ msgstr "תאריך"
 
 #: capplets/time-admin/src/time-admin.ui:368
 msgid "Click to save the specified date and time."
-msgstr ""
+msgstr "הקשה לשמירת התאריך ושעה שצוינו."
 
 #: capplets/time-admin/src/time-tool.c:135
 msgid "GetNtpState"
@@ -4395,7 +4424,7 @@ msgid "Europe/Kaliningrad"
 msgstr "אירופה/קלינינגרד"
 
 #: capplets/time-admin/src/time-zones.h:364
-msgid "Europe/Kiev"
+msgid "Europe/Kyiv"
 msgstr "אירופה/קייב"
 
 #: capplets/time-admin/src/time-zones.h:365
@@ -4759,6 +4788,7 @@ msgstr "הגדרת השעה והתאריך של המערכת המקומית"
 #: capplets/time-admin/data/mate-time-admin.desktop.in:13
 msgid "mate-control-center;MATE;clock;date;time;preferences;"
 msgstr ""
+"mate-control-center;MATE;clock;date;time;preferences;שעון;תאריך;שעה;העדפות;"
 
 #: libwindow-settings/mate-wm-manager.c:318
 #, c-format
@@ -4793,17 +4823,19 @@ msgstr "Hide on start (useful to preload the shell)"
 
 #: shell/matecc.desktop.in:4
 msgid "The MATE configuration tool"
-msgstr "כלי ההגדרה של MATE"
+msgstr "כלי התיצור של מאטה"
 
 #: shell/matecc.desktop.in:5
 msgid "Configure MATE settings"
-msgstr "הגדרת התצורה של MATE"
+msgstr "תצור הגדרות של מאטה"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: shell/matecc.desktop.in:14
 msgid "MATE;control;center;configuration;tool;desktop;preferences;"
 msgstr ""
+"MATE;control;center;configuration;tool;desktop;preferences;מרכז;בקרה;הבקרה;הגדרה;תצורה;שולחן"
+" העבודה;העדפות;"
 
 #: typing-break/drw-break-window.c:179
 msgid "_Postpone Break"
@@ -4837,7 +4869,6 @@ msgid_plural "%d minutes until the next break"
 msgstr[0] "דקה %d עד ההפסקה הבאה"
 msgstr[1] "%d דקות עד ההפסקה הבאה"
 msgstr[2] "%d דקות עד ההפסקה הבאה"
-msgstr[3] "%d דקות עד ההפסקה הבאה"
 
 #: typing-break/drwright.c:542
 msgid "Take a break now (next in less than one minute)"
@@ -4947,21 +4978,21 @@ msgstr "הצגת הגופנים שבמערכת שלך"
 
 #: font-viewer/mate-font-viewer.desktop.in:3
 msgid "MATE Font Viewer"
-msgstr "מציג הגופנים של MATE"
+msgstr "משקף גופנים של מאטה"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: font-viewer/mate-font-viewer.desktop.in:14
 msgid "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
-msgstr ""
+msgstr "mate-control-center;MATE;font;viewer;preview;desktop;preferences;"
 
 #: font-viewer/font-thumbnailer.c:194
 msgid "Text to thumbnail (default: Aa)"
-msgstr "Text to thumbnail (default: Aa)"
+msgstr "מלל לדוגמיות (ברירת מחדל:Aa)"
 
 #: font-viewer/font-thumbnailer.c:194
 msgid "TEXT"
-msgstr "TEXT"
+msgstr "מלל"
 
 #: font-viewer/font-thumbnailer.c:196
 msgid "Thumbnail size (default: 128)"
@@ -4975,20 +5006,20 @@ msgstr "SIZE"
 msgid "FONT-FILE OUTPUT-FILE"
 msgstr "FONT-FILE OUTPUT-FILE"
 
-#: libslab/app-shell.c:763
+#: libslab/app-shell.c:772
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "המסנן \"%s\" לא תואם לאף פריט."
 
-#: libslab/app-shell.c:765
+#: libslab/app-shell.c:774
 msgid "No matches found."
 msgstr "לא נמצאו התאמות."
 
-#: libslab/app-shell.c:874
+#: libslab/app-shell.c:883
 msgid "New Applications"
 msgstr "יישומים חדשים"
 
-#: libslab/app-shell.c:936
+#: libslab/app-shell.c:945
 msgid "Other"
 msgstr "אחר"
 
