@@ -806,7 +806,6 @@ process_event (FooScrollArea	       *scroll_area,
 	       int			x,
 	       int			y)
 {
-    GtkWidget *widget = GTK_WIDGET (scroll_area);
     guint i;
 
     allocation_to_canvas (scroll_area, &x, &y);
@@ -832,12 +831,10 @@ process_event (FooScrollArea	       *scroll_area,
 	    {
 		cairo_t *cr;
 		gboolean inside;
-		GdkDrawingContext *gdc;
-		cairo_region_t    *cairo_region;
+		cairo_surface_t *surface;
 
-		cairo_region = cairo_region_create ();
-		gdc = gdk_window_begin_draw_frame (gtk_widget_get_window (widget), cairo_region);
-		cr = gdk_drawing_context_get_cairo_context (gdc);
+		surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 1, 1);
+		cr = cairo_create (surface);
 		cairo_set_fill_rule (cr, path->fill_rule);
 		cairo_set_line_width (cr, path->line_width);
 		cairo_append_path (cr, path->path);
@@ -846,8 +843,8 @@ process_event (FooScrollArea	       *scroll_area,
 		    inside = cairo_in_stroke (cr, x, y);
 		else
 		    inside = cairo_in_fill (cr, x, y);
-		gdk_window_end_draw_frame (gtk_widget_get_window (widget), gdc);
-		cairo_region_destroy (cairo_region);
+		cairo_destroy (cr);
+		cairo_surface_destroy (surface);
 
 
 		if (inside)
@@ -1247,32 +1244,6 @@ foo_scroll_area_invalidate (FooScrollArea *scroll_area)
 				     allocation.height);
 }
 
-static void
-canvas_to_window (FooScrollArea *area,
-		  cairo_region_t *region)
-{
-    GtkAllocation allocation;
-    GtkWidget *widget = GTK_WIDGET (area);
-
-    gtk_widget_get_allocation (widget, &allocation);
-    cairo_region_translate (region,
-		       -area->priv->x_offset + allocation.x,
-		       -area->priv->y_offset + allocation.y);
-}
-
-static void
-window_to_canvas (FooScrollArea *area,
-		  cairo_region_t *region)
-{
-    GtkAllocation allocation;
-    GtkWidget *widget = GTK_WIDGET (area);
-
-    gtk_widget_get_allocation (widget, &allocation);
-    cairo_region_translate (region,
-		       area->priv->x_offset - allocation.x,
-		       area->priv->y_offset - allocation.y);
-}
-
 void
 foo_scroll_area_invalidate_region (FooScrollArea *area,
 				   cairo_region_t     *region)
@@ -1287,12 +1258,7 @@ foo_scroll_area_invalidate_region (FooScrollArea *area,
 
     if (gtk_widget_get_realized (widget))
     {
-	canvas_to_window (area, region);
-
-	gdk_window_invalidate_region (gtk_widget_get_window (widget),
-	                              region, TRUE);
-
-	window_to_canvas (area, region);
+	gtk_widget_queue_draw (widget);
     }
 }
 
