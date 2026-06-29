@@ -82,7 +82,7 @@ jobs:
 
       # INFO: M-C-C depends mate-desktop 1.27.1+, so we should install it from source.
       - name: Cache mate-desktop binary packages
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: cache-mate-desktop
         with:
           path: ${{ env.CACHE_PATH }}
@@ -93,7 +93,7 @@ jobs:
 
       # INFO: M-C-C depends on marco 1.29.0+, so we should install it from source.
       - name: Cache marco binary packages
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: cache-marco
         with:
           path: ${{ env.CACHE_PATH }}
