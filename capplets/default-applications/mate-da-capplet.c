@@ -579,6 +579,46 @@ compare_apps (gconstpointer a, gconstpointer b)
 	return ret;
 }
 
+static gint
+app_info_cmp (gconstpointer a, gconstpointer b)
+{
+	return g_app_info_equal (G_APP_INFO (a), G_APP_INFO (b)) ? 0 : 1;
+}
+
+/* Get all apps that support a MIME type by checking both mimeinfo.cache and
+ * the MimeType= field in each .desktop file directly. The cache lookup misses
+ * apps installed in non-standard ways or that have a stale cache. */
+static GList*
+get_all_apps_for_type (const gchar *mime_type, GList *all_apps)
+{
+	GList *app_list;
+	GList *entry;
+
+	app_list = g_app_info_get_all_for_type (mime_type);
+
+	for (entry = all_apps; entry != NULL; entry = g_list_next (entry))
+	{
+		GAppInfo *info = G_APP_INFO (entry->data);
+		gchar *mime_types;
+
+		if (!G_IS_DESKTOP_APP_INFO (info))
+			continue;
+
+		mime_types = g_desktop_app_info_get_string (G_DESKTOP_APP_INFO (info), "MimeType");
+		if (mime_types == NULL)
+			continue;
+
+		if (strstr (mime_types, mime_type) != NULL &&
+		    !g_list_find_custom (app_list, info, (GCompareFunc) app_info_cmp))
+		{
+			app_list = g_list_prepend (app_list, info);
+		}
+		g_free (mime_types);
+	}
+
+	return app_list;
+}
+
 static void
 show_dialog(MateDACapplet* capplet, const gchar* start_page)
 {
@@ -615,16 +655,19 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	screen_changed_cb(capplet->window, gdk_screen_get_default(), capplet);
 
 	/* Lists of default applications */
-	capplet->web_browsers = g_app_info_get_all_for_type("x-scheme-handler/http");
-	capplet->mail_readers = g_app_info_get_all_for_type("x-scheme-handler/mailto");
-	capplet->media_players = g_app_info_get_all_for_type("audio/x-vorbis+ogg");
-	capplet->video_players = g_app_info_get_all_for_type("video/x-ogm+ogg");
-	capplet->text_editors = g_app_info_get_all_for_type("text/plain");
-	capplet->image_viewers = g_app_info_get_all_for_type("image/png");
-	capplet->file_managers = g_app_info_get_all_for_type("inode/directory");
-	capplet->document_viewers = g_app_info_get_all_for_type("application/pdf");
-	capplet->word_editors = g_app_info_get_all_for_type("application/msword");
-	capplet->spreadsheet_editors = g_app_info_get_all_for_type("application/vnd.ms-excel");
+	GList *all_apps;
+	all_apps = g_app_info_get_all ();
+
+	capplet->web_browsers = get_all_apps_for_type ("x-scheme-handler/http", all_apps);
+	capplet->mail_readers = get_all_apps_for_type ("x-scheme-handler/mailto", all_apps);
+	capplet->media_players = get_all_apps_for_type ("audio/x-vorbis+ogg", all_apps);
+	capplet->video_players = get_all_apps_for_type ("video/x-ogm+ogg", all_apps);
+	capplet->text_editors = get_all_apps_for_type ("text/plain", all_apps);
+	capplet->image_viewers = get_all_apps_for_type ("image/png", all_apps);
+	capplet->file_managers = get_all_apps_for_type ("inode/directory", all_apps);
+	capplet->document_viewers = get_all_apps_for_type ("application/pdf", all_apps);
+	capplet->word_editors = get_all_apps_for_type ("application/msword", all_apps);
+	capplet->spreadsheet_editors = get_all_apps_for_type ("application/vnd.ms-excel", all_apps);
 
 	capplet->visual_ats = NULL;
         const gchar *const *sys_config_dirs = g_get_system_config_dirs();
@@ -645,9 +688,7 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	/* Terminal havent mime types, so check in .desktop files for
 	   Categories=TerminalEmulator */
 	GList *entry;
-	GList *all_apps;
 	capplet->terminals = NULL;
-	all_apps = g_app_info_get_all();
 	for (entry = all_apps; entry != NULL; entry = g_list_next(entry))
 	{
 		GDesktopAppInfo* item = (GDesktopAppInfo*) entry->data;
@@ -662,7 +703,6 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 	/* Calculator havent mime types, so check in .desktop files for
 	   Categories=Calculator */
 	capplet->calculators = NULL;
-	all_apps = g_app_info_get_all();
 	for (entry = all_apps; entry != NULL; entry = g_list_next(entry))
 	{
 		GDesktopAppInfo* item = (GDesktopAppInfo*) entry->data;
@@ -676,21 +716,20 @@ show_dialog(MateDACapplet* capplet, const gchar* start_page)
 
 	/* Messenger havent mime types, so check in .desktop files for
 	   Categories=InstantMessaging */
-	capplet->messengers = g_app_info_get_all_for_type ("x-scheme-handler/irc");
-	all_apps = g_app_info_get_all();
+	capplet->messengers = get_all_apps_for_type ("x-scheme-handler/irc", all_apps);
 	for (entry = all_apps; entry != NULL; entry = g_list_next(entry))
 	{
-		if (capplet->messengers && g_list_index (capplet->messengers, entry) != -1)
-			continue;
-
 		GDesktopAppInfo* item = (GDesktopAppInfo*) entry->data;
 		if (g_desktop_app_info_get_categories (item) != NULL &&
-			g_strrstr (g_desktop_app_info_get_categories (item), "InstantMessaging"))
+			g_strrstr (g_desktop_app_info_get_categories (item), "InstantMessaging") &&
+			!g_list_find_custom (capplet->messengers, item, (GCompareFunc) app_info_cmp))
 		{
 			capplet->messengers = g_list_prepend (capplet->messengers, item);
 		}
 	}
 	capplet->messengers = g_list_sort (capplet->messengers, compare_apps);
+
+	g_list_free (all_apps);
 
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->web_combo_box), capplet->web_browsers, "x-scheme-handler/http");
 	fill_combo_box(capplet->icon_theme, GTK_COMBO_BOX(capplet->mail_combo_box), capplet->mail_readers, "x-scheme-handler/mailto");
