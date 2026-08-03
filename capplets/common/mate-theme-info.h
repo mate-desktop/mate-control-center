@@ -45,7 +45,8 @@ typedef enum {
 typedef enum {
 	MATE_THEME_MARCO = 1 << 0,
 	MATE_THEME_GTK_2 = 1 << 1,
-	MATE_THEME_GTK_2_KEYBINDING = 1 << 2
+	MATE_THEME_GTK_2_KEYBINDING = 1 << 2,
+	MATE_THEME_GTK_3 = 1 << 3
 } MateThemeElement;
 
 typedef struct _MateThemeCommonInfo MateThemeCommonInfo;
@@ -70,7 +71,8 @@ struct _MateThemeInfo
 	gint priority;
 	gboolean hidden;
 
-	guint has_gtk : 1;
+	guint has_gtk2 : 1;
+	guint has_gtk3 : 1;
 	guint has_keybinding : 1;
 	guint has_marco : 1;
 };
