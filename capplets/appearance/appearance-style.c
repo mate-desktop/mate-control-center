@@ -759,7 +759,7 @@ create_thumbnail (const gchar *name, GdkPixbuf *default_thumb, AppearanceData *d
   } else if (default_thumb == data->gtk_theme_icon) {
     MateThemeInfo *info;
     info = mate_theme_info_find (name);
-    if (info != NULL && info->has_gtk) {
+    if (info != NULL && (info->has_gtk2 || info->has_gtk3)) {
       generate_gtk_theme_thumbnail_async (info,
           (ThemeThumbnailFunc) gtk_theme_thumbnail_cb, data, NULL);
     }
@@ -783,17 +783,28 @@ changed_on_disk_cb (MateThemeCommonInfo *theme,
     MateThemeInfo *info = (MateThemeInfo *) theme;
 
     if (change_type == MATE_THEME_CHANGE_DELETED) {
-      if (element_type & MATE_THEME_GTK_2)
-        remove_from_treeview ("gtk_themes_list", info->name, data);
+      if (element_type & (MATE_THEME_GTK_2 | MATE_THEME_GTK_3)) {
+        /* Only remove from list if neither GTK2 nor GTK3 theme remains */
+        if (!info->has_gtk2 && !info->has_gtk3)
+          remove_from_treeview ("gtk_themes_list", info->name, data);
+      }
       if (element_type & MATE_THEME_MARCO)
         remove_from_treeview ("window_themes_list", info->name, data);
 
     } else {
-      if (element_type & MATE_THEME_GTK_2) {
-        if (change_type == MATE_THEME_CHANGE_CREATED)
-          add_to_treeview ("gtk_themes_list", info->name, info->name, data->gtk_theme_icon, data);
-        else if (change_type == MATE_THEME_CHANGE_CHANGED)
+      if (element_type & (MATE_THEME_GTK_2 | MATE_THEME_GTK_3)) {
+        if (change_type == MATE_THEME_CHANGE_CREATED) {
+          GtkTreeView *tv = GTK_TREE_VIEW (appearance_capplet_get_widget (data, "gtk_themes_list"));
+          GtkTreeModel *model = gtk_tree_model_sort_get_model (GTK_TREE_MODEL_SORT (gtk_tree_view_get_model (tv)));
+          GtkTreeIter iter;
+
+          if (theme_find_in_model (model, info->name, &iter))
+            update_in_treeview ("gtk_themes_list", info->name, info->name, data);
+          else
+            add_to_treeview ("gtk_themes_list", info->name, info->name, data->gtk_theme_icon, data);
+        } else if (change_type == MATE_THEME_CHANGE_CHANGED) {
           update_in_treeview ("gtk_themes_list", info->name, info->name, data);
+        }
 
         generate_gtk_theme_thumbnail_async (info,
             (ThemeThumbnailFunc) gtk_theme_thumbnail_cb, data, NULL);
@@ -857,7 +868,7 @@ prepare_list (AppearanceData *data, GtkWidget *list, ThemeType type, GCallback c
   switch (type)
   {
     case THEME_TYPE_GTK:
-      themes = mate_theme_info_find_by_type (MATE_THEME_GTK_2);
+      themes = mate_theme_info_find_by_type (MATE_THEME_GTK_2 | MATE_THEME_GTK_3);
       thumbnail = data->gtk_theme_icon;
       settings = data->interface_settings;
       key = GTK_THEME_KEY;

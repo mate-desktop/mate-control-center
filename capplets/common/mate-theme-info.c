@@ -73,6 +73,7 @@ typedef struct _ThemeCallbackData {
 typedef struct {
   GFileMonitor  *common_theme_dir_handle;
   GFileMonitor  *gtk2_dir_handle;
+  GFileMonitor  *gtk3_dir_handle;
   GFileMonitor  *keybinding_dir_handle;
   GFileMonitor  *marco_dir_handle;
   gint           priority;
@@ -668,6 +669,8 @@ handle_change_signal (gpointer             data,
   else if (theme->type == MATE_THEME_TYPE_REGULAR) {
     if (element_type & MATE_THEME_GTK_2)
       element_str = "gtk-2";
+    else if (element_type & MATE_THEME_GTK_3)
+      element_str = "gtk-3";
     else if (element_type & MATE_THEME_GTK_2_KEYBINDING)
       element_str = "keybinding";
     else if (element_type & MATE_THEME_MARCO)
@@ -727,7 +730,9 @@ update_theme_index (GFile            *index_uri,
       theme_info->readable_name = g_strdup (theme_info->name);
       theme_info->priority = priority;
       if (key_element & MATE_THEME_GTK_2)
-        theme_info->has_gtk = TRUE;
+        theme_info->has_gtk2 = TRUE;
+      else if (key_element & MATE_THEME_GTK_3)
+        theme_info->has_gtk3 = TRUE;
       else if (key_element & MATE_THEME_GTK_2_KEYBINDING)
         theme_info->has_keybinding = TRUE;
       else if (key_element & MATE_THEME_MARCO)
@@ -741,8 +746,11 @@ update_theme_index (GFile            *index_uri,
     gboolean theme_used_to_exist = FALSE;
 
     if (key_element & MATE_THEME_GTK_2) {
-      theme_used_to_exist = theme_info->has_gtk;
-      theme_info->has_gtk = (theme_exists != FALSE);
+      theme_used_to_exist = theme_info->has_gtk2;
+      theme_info->has_gtk2 = (theme_exists != FALSE);
+    } else if (key_element & MATE_THEME_GTK_3) {
+      theme_used_to_exist = theme_info->has_gtk3;
+      theme_info->has_gtk3 = (theme_exists != FALSE);
     } else if (key_element & MATE_THEME_GTK_2_KEYBINDING) {
       theme_used_to_exist = theme_info->has_keybinding;
       theme_info->has_keybinding = (theme_exists != FALSE);
@@ -751,7 +759,7 @@ update_theme_index (GFile            *index_uri,
       theme_info->has_marco = (theme_exists != FALSE);
     }
 
-    if (!theme_info->has_marco && !theme_info->has_keybinding && !theme_info->has_gtk) {
+    if (!theme_info->has_marco && !theme_info->has_keybinding && !theme_info->has_gtk2 && !theme_info->has_gtk3) {
       g_hash_table_remove (theme_hash_by_uri, common_theme_dir);
       remove_theme_from_hash_by_name (theme_hash_by_name, theme_info);
     }
@@ -764,7 +772,7 @@ update_theme_index (GFile            *index_uri,
       handle_change_signal (theme_info, MATE_THEME_CHANGE_DELETED, key_element);
     }
 
-    if (!theme_info->has_marco && !theme_info->has_keybinding && !theme_info->has_gtk) {
+    if (!theme_info->has_marco && !theme_info->has_keybinding && !theme_info->has_gtk2 && !theme_info->has_gtk3) {
       mate_theme_info_free (theme_info);
     }
   }
@@ -780,6 +788,15 @@ update_gtk2_index (GFile *gtk2_index_uri,
 {
   update_theme_index (gtk2_index_uri,
                       MATE_THEME_GTK_2,
+                      priority);
+}
+
+static void
+update_gtk3_index (GFile *gtk3_index_uri,
+                   gint   priority)
+{
+  update_theme_index (gtk3_index_uri,
+                      MATE_THEME_GTK_3,
                       priority);
 }
 
@@ -935,6 +952,25 @@ gtk2_dir_changed (GFileMonitor              *monitor,
 }
 
 static void
+gtk3_dir_changed (GFileMonitor              *monitor,
+                  GFile                     *file,
+                  GFile                     *other_file,
+                  GFileMonitorEvent          event_type,
+                  CommonThemeDirMonitorData *monitor_data)
+{
+  gchar *affected_file;
+
+  affected_file = g_file_get_basename (file);
+
+  /* The only file we care about is gtk.css */
+  if (!strcmp (affected_file, "gtk.css")) {
+    update_gtk3_index (file, monitor_data->priority);
+  }
+
+  g_free (affected_file);
+}
+
+static void
 keybinding_dir_changed (GFileMonitor              *monitor,
                         GFile                     *file,
                         GFile                     *other_file,
@@ -1065,6 +1101,23 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
   monitor_data->gtk2_dir_handle = monitor;
   g_object_unref (subdir);
 
+  /* gtk-3 theme subdir */
+  subdir = g_file_get_child (theme_dir_uri, "gtk-3.0");
+  uri = g_file_get_child (subdir, "gtk.css");
+  if (g_file_query_exists (uri, NULL)) {
+    update_gtk3_index (uri, monitor_data->priority);
+  }
+  g_object_unref (uri);
+
+  monitor = g_file_monitor_directory (subdir, G_FILE_MONITOR_NONE, NULL, NULL);
+  if (monitor != NULL) {
+    g_signal_connect (monitor, "changed",
+                      (GCallback) gtk3_dir_changed,
+                      monitor_data);
+  }
+  monitor_data->gtk3_dir_handle = monitor;
+  g_object_unref (subdir);
+
   /* keybinding theme subdir */
   subdir = g_file_get_child (theme_dir_uri, "gtk-2.0-key");
   uri = g_file_get_child (subdir, "gtkrc");
@@ -1140,6 +1193,7 @@ remove_common_theme_dir_monitor (CommonThemeDirMonitorData *monitor_data)
 {
   g_file_monitor_cancel (monitor_data->common_theme_dir_handle);
   g_file_monitor_cancel (monitor_data->gtk2_dir_handle);
+  g_file_monitor_cancel (monitor_data->gtk3_dir_handle);
   g_file_monitor_cancel (monitor_data->keybinding_dir_handle);
   g_file_monitor_cancel (monitor_data->marco_dir_handle);
 }
@@ -1364,7 +1418,8 @@ mate_theme_info_find_by_type_helper (gpointer key,
     MateThemeInfo *theme_info = list->data;
 
     if ((elements & MATE_THEME_MARCO && theme_info->has_marco) ||
-        (elements & MATE_THEME_GTK_2 && theme_info->has_gtk) ||
+        (elements & MATE_THEME_GTK_2 && theme_info->has_gtk2) ||
+        (elements & MATE_THEME_GTK_3 && theme_info->has_gtk3) ||
         (elements & MATE_THEME_GTK_2_KEYBINDING && theme_info->has_keybinding)) {
       hash_data->list = g_list_prepend (hash_data->list, theme_info);
       return;
@@ -1601,7 +1656,7 @@ mate_theme_meta_info_validate (const MateThemeMetaInfo   *info,
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   theme = mate_theme_info_find (info->gtk_theme_name);
-  if (!theme || !theme->has_gtk) {
+  if (!theme || !(theme->has_gtk2 || theme->has_gtk3)) {
     g_set_error (error, MATE_THEME_ERROR, MATE_THEME_ERROR_GTK_THEME_NOT_AVAILABLE,
                  _("This theme will not look as intended because the required GTK+ theme '%s' is not installed."),
                 info->gtk_theme_name);
