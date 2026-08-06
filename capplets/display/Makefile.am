@@ -19,6 +19,7 @@ nodist_mate_display_properties_SOURCES = \
 	$(BUILT_SOURCES)
 mate_display_properties_SOURCES =	\
 	xrandr-capplet.c		\
+	wlrandr-capplet.c		\
 	scrollarea.c			\
 	scrollarea.h
 
