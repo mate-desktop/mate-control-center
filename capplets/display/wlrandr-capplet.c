@@ -149,7 +149,6 @@ struct App
     GtkWidget *scale_vbox;
     GtkWidget *scale_bbox;
     GtkWidget *scale_combo;
-    GtkWidget *clone_checkbox;
     GtkWidget *show_icon_checkbox;
     GtkWidget *adaptive_sync_checkbox;
     GtkWidget *primary_button;
@@ -173,7 +172,6 @@ enum {
 
 static void rebuild_gui (App *app);
 static void fetch_configuration (App *app);
-static void on_clone_changed (GtkWidget *box, gpointer data);
 static void on_rate_changed (GtkComboBox *box, gpointer data);
 static void monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data);
 static gboolean mode_is_present (OutputHead *head, int width, int height, int rate);
@@ -826,47 +824,6 @@ on_configuration_changed (GDBusConnection *connection,
  * ------------------------------------------------------------------ */
 
 static void
-rebuild_mirror_screens (App *app)
-{
-    gboolean mirror_is_active;
-
-    g_signal_handlers_block_by_func (app->clone_checkbox, G_CALLBACK (on_clone_changed), app);
-
-    mirror_is_active = FALSE;
-    if (app->heads && app->heads->len > 1)
-    {
-        guint i;
-        gboolean all_same = TRUE;
-        int x = -1, y = -1;
-
-        for (i = 0; i < app->heads->len; i++)
-        {
-            OutputHead *head = get_nth_head (app, i);
-
-            if (!head->enabled)
-                continue;
-
-            if (x == -1)
-            {
-                x = head->x;
-                y = head->y;
-            }
-            else if (head->x != x || head->y != y)
-            {
-                all_same = FALSE;
-                break;
-            }
-        }
-
-        mirror_is_active = all_same && x != -1;
-    }
-
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (app->clone_checkbox), mirror_is_active);
-
-    g_signal_handlers_unblock_by_func (app->clone_checkbox, G_CALLBACK (on_clone_changed), app);
-}
-
-static void
 set_override_color (GtkWidget  *widget,
                     const char *style,
                     GdkRGBA    *rgba)
@@ -1168,7 +1125,6 @@ rebuild_gui (App *app)
 
     app->ignore_gui_changes = TRUE;
 
-    rebuild_mirror_screens (app);
     rebuild_current_monitor_label (app);
     rebuild_on_off_radios (app);
     rebuild_resolution_combo (app);
@@ -1177,10 +1133,9 @@ rebuild_gui (App *app)
     rebuild_scale_combo (app);
     rebuild_adaptive_sync_checkbox (app);
 
-    /* Features not supported by the wlrandr backend: mirroring, panel
-     * inclusion, primary output and system-wide installation.
+    /* Features not supported by the wlrandr backend: panel inclusion,
+     * primary output and system-wide installation.
      */
-    gtk_widget_set_sensitive (app->clone_checkbox, FALSE);
     gtk_widget_set_sensitive (app->panel_checkbox, FALSE);
     gtk_widget_set_sensitive (app->primary_button, FALSE);
     gtk_widget_set_sensitive (app->make_default_button, FALSE);
@@ -1389,12 +1344,6 @@ on_scale_changed (GtkComboBox *box, gpointer data)
     }
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
-}
-
-static void
-on_clone_changed (GtkWidget *box, gpointer data)
-{
-    /* Mirroring is not supported by the wlrandr backend; nothing to do. */
 }
 
 static void
@@ -2182,13 +2131,12 @@ run_application (App *app)
     g_signal_connect (app->adaptive_sync_checkbox, "toggled",
                       G_CALLBACK (on_adaptive_sync_toggled), app);
 
-    app->clone_checkbox = _gtk_builder_get_widget (builder, "clone_checkbox");
-    g_signal_connect (app->clone_checkbox, "toggled",
-                      G_CALLBACK (on_clone_changed), app);
-
     app->detect_displays_button = _gtk_builder_get_widget (builder, "detect_displays_button");
     g_signal_connect (app->detect_displays_button, "clicked",
                       G_CALLBACK (on_detect_displays), app);
+
+    /* Mirroring is not supported by the wlr-output-management protocol. */
+    gtk_widget_hide (_gtk_builder_get_widget (builder, "clone_checkbox"));
 
     app->primary_button = _gtk_builder_get_widget (builder, "primary_button");
     g_signal_connect (app->primary_button, "clicked", G_CALLBACK (set_primary), app);
