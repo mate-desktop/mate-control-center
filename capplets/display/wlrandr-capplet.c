@@ -268,6 +268,24 @@ get_geometry (OutputHead *head, int *w, int *h)
     }
 }
 
+/* Head sizes are reported in physical pixels while head positions are
+ * given in logical pixels (see HEAD_INFO_FIELD_X).  The preview must
+ * divide the physical size by the output's scale to stay in the same
+ * coordinate space as the positions; otherwise the arrangement is drawn
+ * off-center and clipped on scaled outputs.
+ */
+static void
+get_geometry_scaled (OutputHead *head, int *w, int *h)
+{
+    get_geometry (head, w, h);
+
+    if (head->scale > 0.0)
+    {
+        *w = (int) ((double) *w / head->scale + 0.5);
+        *h = (int) ((double) *h / head->scale + 0.5);
+    }
+}
+
 static int
 count_active_outputs (App *app)
 {
@@ -305,7 +323,7 @@ list_heads (App *app, int *total_w, int *total_h)
 
         result = g_list_prepend (result, head);
 
-        get_geometry (head, &w, &h);
+        get_geometry_scaled (head, &w, &h);
 
         *total_w += w;
         *total_h += h;
@@ -1491,7 +1509,7 @@ list_edges_for_output (OutputHead *head, GArray *edges)
 
     x = head->x;
     y = head->y;
-    get_geometry (head, &w, &h);
+    get_geometry_scaled (head, &w, &h);
 
     /* Top, Bottom, Left, Right */
     add_edge (head, x, y, x + w, y, edges);
@@ -1890,7 +1908,7 @@ paint_head (App     *app,
 
     foo_scroll_area_get_viewport (FOO_SCROLL_AREA (app->area), &viewport);
 
-    get_geometry (head, &w, &h);
+    get_geometry_scaled (head, &w, &h);
 
     viewport.height -= 2 * MARGIN;
     viewport.width -= 2 * MARGIN;
