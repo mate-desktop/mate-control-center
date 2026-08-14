@@ -479,7 +479,32 @@ foo_scroll_area_draw (GtkWidget *widget,
     FooScrollArea *scroll_area = FOO_SCROLL_AREA (widget);
     cairo_t *cr;
     cairo_region_t *region;
-    GtkAllocation widget_allocation;
+
+    /* The backing store inherits the device scale of the window it was
+     * created from (see create_new_surface).  If the window now lives on
+     * an output with a different scale, recreate it so the blit below
+     * stays 1:1; otherwise only a corner of the preview is drawn.
+     */
+    {
+	cairo_surface_t *target = cairo_get_target (widget_cr);
+	double tx, ty, sx, sy;
+
+	cairo_surface_get_device_scale (target, &tx, &ty);
+	cairo_surface_get_device_scale (scroll_area->priv->surface, &sx, &sy);
+
+	if (tx != sx || ty != sy)
+	{
+	    cairo_surface_t *new;
+	    GtkAllocation allocation;
+
+	    gtk_widget_get_allocation (widget, &allocation);
+	    new = cairo_surface_create_similar (target, CAIRO_CONTENT_COLOR,
+						allocation.width,
+						allocation.height);
+	    cairo_surface_destroy (scroll_area->priv->surface);
+	    scroll_area->priv->surface = new;
+	}
+    }
 
     /* Setup input areas */
     clear_exposed_input_region (scroll_area, scroll_area->priv->update_region);
@@ -504,9 +529,9 @@ foo_scroll_area_draw (GtkWidget *widget,
 
     scroll_area->priv->current_input = NULL;
 
-    /* Finally draw the backing pixmap */
-    gtk_widget_get_allocation (widget, &widget_allocation);
-    cairo_set_source_surface (widget_cr, scroll_area->priv->surface, widget_allocation.x, widget_allocation.y);
+    /* Finally draw the backing pixmap.  The draw context is translated to
+     * the widget's origin, so the surface is blitted from (0, 0). */
+    cairo_set_source_surface (widget_cr, scroll_area->priv->surface, 0, 0);
     cairo_paint (widget_cr);
 
     cairo_region_destroy (region);
