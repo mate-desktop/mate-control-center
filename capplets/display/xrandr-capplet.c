@@ -32,6 +32,7 @@
 #include <libmate-desktop/mate-rr-config.h>
 #include <libmate-desktop/mate-rr-labeler.h>
 #include <gdk/gdkx.h>
+#include <gdk/gdkwayland.h>
 #include <X11/Xlib.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
@@ -2605,12 +2606,21 @@ restart:
     g_object_unref (app->scale_settings);
 }
 
+int wlrandr_capplet_main (int argc, char **argv);
+
 int
 main (int argc, char **argv)
 {
     App *app;
 
     capplet_init (NULL, &argc, &argv);
+
+    /* Under Wayland there is no XRandR; hand over to the wlrandr backend
+     * which talks to the wlrandr plugin of mate-settings-daemon.
+     */
+    if (gdk_display_get_default () &&
+        GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ()))
+        return wlrandr_capplet_main (argc, argv);
 
     app = g_new0 (App, 1);
 
