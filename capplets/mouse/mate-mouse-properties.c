@@ -283,6 +283,10 @@ setup_dialog (GtkBuilder *dialog)
 	g_settings_bind (interface_settings, "gtk-enable-primary-paste", WID ("middle_button_paste_toggle"),
 		"active", G_SETTINGS_BIND_DEFAULT);
 
+	/* Natural Scrolling */
+	g_settings_bind (mouse_settings, "natural-scroll", WID ("mouse_natural_scroll_toggle"),
+		"active", G_SETTINGS_BIND_DEFAULT);
+
 	/* Double-click time */
 	g_settings_bind (mouse_settings, DOUBLE_CLICK_KEY,
 		gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "delay_scale"))), "value",
