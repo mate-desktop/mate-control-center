@@ -126,6 +126,13 @@ file_theme_type (const gchar *dir)
 		g_free (filename);
 	}
 
+	filename = g_build_filename (dir, "gtk-3.0", "gtk.css", NULL);
+	exists = g_file_test (filename, G_FILE_TEST_IS_REGULAR);
+	g_free (filename);
+
+	if (exists)
+		return THEME_GTK;
+
 	filename = g_build_filename (dir, "gtk-2.0", "gtkrc", NULL);
 	exists = g_file_test (filename, G_FILE_TEST_IS_REGULAR);
 	g_free (filename);
