@@ -881,7 +881,6 @@ font_view_application_startup (GApplication *application)
     gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
     gtk_window_set_default_size (GTK_WINDOW (window), 800, 600);
     gtk_window_set_icon_name (GTK_WINDOW (window), FONT_VIEW_ICON_NAME);
-    gtk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
     gtk_window_set_title (GTK_WINDOW (window), _("Font Viewer"));
 
     self->main_grid = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
