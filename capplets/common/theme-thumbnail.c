@@ -284,7 +284,6 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   GtkRequisition requisition;
   GtkAllocation allocation;
   GdkPixbuf *pixbuf, *retval;
-  gint width, height;
 
   settings = gtk_settings_get_default ();
   g_object_set (settings, "gtk-theme-name", (char *) theme_thumbnail_data->control_theme_name->data,
@@ -328,8 +327,6 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
   gtk_widget_size_allocate (window, &allocation);
   gtk_widget_get_preferred_size (window, &requisition, NULL);
 
-  gtk_window_get_size (GTK_WINDOW (window), &width, &height);
-
   gtk_widget_queue_draw (window);
   while (gtk_events_pending ())
     gtk_main_iteration ();
@@ -338,7 +335,7 @@ create_gtk_theme_pixbuf (ThemeThumbnailData *theme_thumbnail_data)
 
   retval = gdk_pixbuf_scale_simple (pixbuf,
                                     GTK_THUMBNAIL_SIZE,
-                                    (int) GTK_THUMBNAIL_SIZE * (((double) height) / ((double) width)),
+                                    (int) GTK_THUMBNAIL_SIZE * (((double) requisition.height) / ((double) requisition.width)),
                                     GDK_INTERP_BILINEAR);
   g_object_unref (pixbuf);
   gtk_widget_destroy (window);
