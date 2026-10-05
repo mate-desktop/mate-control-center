@@ -118,6 +118,7 @@ mate_system_info_row_fill (GtkWidget  *row,
     gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 6);
 
     label = gtk_label_new (NULL);
+    gtk_label_set_selectable (GTK_LABEL (label), TRUE);
     gtk_box_pack_end (GTK_BOX (box), label, FALSE, FALSE, 6);
     g_object_set_data (G_OBJECT (row), "labelvalue", label);
 
