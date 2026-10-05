@@ -133,6 +133,13 @@ file_theme_type (const gchar *dir)
 	if (exists)
 		return THEME_GTK;
 
+	filename = g_build_filename (dir, "metacity-1", "metacity-theme-3.xml", NULL);
+	exists = g_file_test (filename, G_FILE_TEST_IS_REGULAR);
+	g_free (filename);
+
+	if (exists)
+		return THEME_MARCO;
+
 	filename = g_build_filename (dir, "metacity-1", "metacity-theme-2.xml", NULL);
 	exists = g_file_test (filename, G_FILE_TEST_IS_REGULAR);
 	g_free (filename);
