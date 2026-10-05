@@ -86,8 +86,8 @@ slab_section_set_title_color (GtkWidget * widget)
 		if (SLAB_SECTION (widget)->selected)
 		{
 			gtk_style_context_get (context,
-			                       GTK_STATE_FLAG_SELECTED,
-			                       "background-color", &rgba,
+			                       GTK_STATE_FLAG_NORMAL,
+			                       "color", &rgba,
 			                       NULL);
 			set_override_color (SLAB_SECTION (widget)->title, rgba);
 		}
