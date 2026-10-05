@@ -297,20 +297,29 @@ app_resizer_paint_window (GtkWidget * widget, cairo_t * cr, AppShellData * app_d
 	if (app_data->selected_group)
 	{
 		GtkWidget *selected_widget = GTK_WIDGET (app_data->selected_group);
+		gint x, y;
 		GdkRGBA *rgba;
-		GtkAllocation selected_widget_allocation;
-		gtk_widget_get_allocation (selected_widget, &selected_widget_allocation);
 
 		gtk_style_context_get (context,
 		                       GTK_STATE_FLAG_PRELIGHT,
 		                       "background-color", &rgba,
 		                       NULL);
 
-		gdk_cairo_set_source_rgba (cr, rgba);
-		cairo_set_line_width(cr, 1);
-		cairo_rectangle(cr, selected_widget_allocation.x, selected_widget_allocation.y, selected_widget_allocation.width, selected_widget_allocation.height);
-		cairo_stroke_preserve(cr);
-		cairo_fill(cr);
+		if (gtk_widget_translate_coordinates (selected_widget,
+		                                      widget,
+		                                      0, 0,
+		                                      &x, &y))
+		{
+			gdk_cairo_set_source_rgba (cr, rgba);
+			cairo_set_line_width (cr, 1);
+			cairo_rectangle (cr,
+			                 x, y,
+			                 gtk_widget_get_allocated_width (selected_widget),
+			                 gtk_widget_get_allocated_height (selected_widget));
+			cairo_stroke_preserve (cr);
+			cairo_fill (cr);
+		}
+
 		gdk_rgba_free (rgba);
 	}
 
