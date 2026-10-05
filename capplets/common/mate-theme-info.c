@@ -996,13 +996,41 @@ marco_dir_changed (GFileMonitor              *monitor,
                    GFileMonitorEvent          event_type,
                    CommonThemeDirMonitorData *monitor_data)
 {
+  GFile *parent;
+  GFile *theme_file = NULL;
+  GFile *candidate;
+  gchar *basename;
   gchar *affected_file;
+  gint version;
 
   affected_file = g_file_get_basename (file);
 
-  /* The only file we care about is metacity-theme-(1|2).xml */
-  if (!strcmp (affected_file, "metacity-theme-1.xml") || !strcmp (affected_file, "metacity-theme-2.xml")) {
-    update_marco_index (file, monitor_data->priority);
+  /* The only file we care about is metacity-theme-(1|2|3).xml */
+  if (!strcmp (affected_file, "metacity-theme-1.xml") ||
+      !strcmp (affected_file, "metacity-theme-2.xml") ||
+      !strcmp (affected_file, "metacity-theme-3.xml")) {
+    parent = g_file_get_parent (file);
+
+    for (version = 3; version >= 1; version--) {
+      basename = g_strdup_printf ("metacity-theme-%d.xml", version);
+      candidate = g_file_get_child (parent, basename);
+      g_free (basename);
+
+      if (g_file_query_exists (candidate, NULL)) {
+        theme_file = candidate;
+        break;
+      }
+
+      g_object_unref (candidate);
+    }
+
+    update_marco_index (theme_file != NULL ? theme_file : file,
+                        monitor_data->priority);
+
+    if (theme_file != NULL)
+      g_object_unref (theme_file);
+
+    g_object_unref (parent);
   }
 
   g_free (affected_file);
@@ -1137,15 +1165,22 @@ add_common_theme_dir_monitor (GFile                      *theme_dir_uri,
 
   /* marco theme subdir */
   subdir = g_file_get_child (theme_dir_uri, "metacity-1");
-  uri = g_file_get_child (subdir, "metacity-theme-2.xml");
+  uri = g_file_get_child (subdir, "metacity-theme-3.xml");
   if (g_file_query_exists (uri, NULL)) {
     update_marco_index (uri, monitor_data->priority);
   }
   else {
     g_object_unref (uri);
-    uri = g_file_get_child (subdir, "metacity-theme-1.xml");
+    uri = g_file_get_child (subdir, "metacity-theme-2.xml");
     if (g_file_query_exists (uri, NULL)) {
       update_marco_index (uri, monitor_data->priority);
+    }
+    else {
+      g_object_unref (uri);
+      uri = g_file_get_child (subdir, "metacity-theme-1.xml");
+      if (g_file_query_exists (uri, NULL)) {
+        update_marco_index (uri, monitor_data->priority);
+      }
     }
   }
   g_object_unref (uri);
