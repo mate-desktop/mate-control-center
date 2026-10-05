@@ -769,7 +769,6 @@ mate_system_info_new (void)
                            NULL);
     gtk_window_set_title (GTK_WINDOW (dialog), _("Mate System Info"));
     gtk_widget_set_size_request (GTK_WIDGET (dialog), 600, 500);
-    gtk_window_set_resizable  (GTK_WINDOW (dialog), FALSE);
 
     return dialog;
 }
