@@ -321,7 +321,7 @@ setup_dialog (GtkBuilder *dialog)
 
 	/* Trackpad page */
 	if (touchpad_is_present () == FALSE)
-		gtk_notebook_remove_page (GTK_NOTEBOOK (gtk_builder_get_object (dialog, "prefs_widget")), -1);
+		gtk_notebook_remove_page (GTK_NOTEBOOK (gtk_builder_get_object (dialog, "prefs_widget")), 1);
 	else {
 		g_settings_bind (touchpad_settings, "touchpad-enabled",
 		                 gtk_builder_get_object (dialog, "touchpad_enable"), "active",
