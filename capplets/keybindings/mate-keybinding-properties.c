@@ -1846,12 +1846,32 @@ cb_app_dialog_response (GtkWidget *dialog, gint response_id, gpointer data)
   if (response_id == GTK_RESPONSE_OK)
     {
       GAppInfo *info;
+      const gchar *app_id;
       const gchar *custom_name;
+      gchar *quoted_id;
+      gchar *command;
 
       info = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog));
+      if (info == NULL)
+        {
+          gtk_widget_hide (dialog);
+          return;
+        }
 
-      gtk_entry_set_text (GTK_ENTRY (custom_shortcut_command_entry),
-                          g_app_info_get_executable (info));
+      app_id = g_app_info_get_id (info);
+      if (app_id != NULL && app_id[0] != '\0')
+        {
+          quoted_id = g_shell_quote (app_id);
+          command = g_strdup_printf ("gtk-launch %s", quoted_id);
+          gtk_entry_set_text (GTK_ENTRY (custom_shortcut_command_entry), command);
+          g_free (command);
+          g_free (quoted_id);
+        }
+      else
+        {
+          gtk_entry_set_text (GTK_ENTRY (custom_shortcut_command_entry),
+                              g_app_info_get_executable (info));
+        }
       /* if name isn't set yet, use the associated one */
       custom_name = gtk_entry_get_text (GTK_ENTRY (custom_shortcut_name_entry));
       if (! custom_name || custom_name[0] == '\0')
