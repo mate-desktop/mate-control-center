@@ -767,7 +767,7 @@ mate_system_info_new (void)
     dialog = g_object_new (MATE_TYPE_SYSTEM_INFO,
                            "use-header-bar", use_header,
                            NULL);
-    gtk_window_set_title (GTK_WINDOW (dialog), _("Mate System Info"));
+    gtk_window_set_title (GTK_WINDOW (dialog), _("System Information"));
     gtk_widget_set_size_request (GTK_WIDGET (dialog), 600, 500);
     gtk_window_set_resizable  (GTK_WINDOW (dialog), FALSE);
 
