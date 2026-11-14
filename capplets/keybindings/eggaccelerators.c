@@ -360,7 +360,24 @@ egg_accelerator_parse_virtual (const gchar            *accelerator,
 	    }
 	  else if (keycode != NULL)
 	    {
-	      *keycode = XKeysymToKeycode (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), keyval);
+	      GdkDisplay *display = gdk_display_get_default ();
+
+	      if (GDK_IS_X11_DISPLAY (display))
+	        {
+		  *keycode = XKeysymToKeycode (GDK_DISPLAY_XDISPLAY (display), keyval);
+		}
+	      else
+	        {
+		  /* No X server to ask (Wayland): use the keymap GDK built from XKB */
+		  GdkKeymapKey *keys = NULL;
+		  gint n_keys = 0;
+
+		  *keycode = 0;
+		  if (gdk_keymap_get_entries_for_keyval (gdk_keymap_get_for_display (display),
+							 keyval, &keys, &n_keys) && n_keys > 0)
+		    *keycode = keys[0].keycode;
+		  g_free (keys);
+		}
 	      if (*keycode == 0)
 	 	bad_keyval = TRUE;
 	    }
@@ -529,10 +546,27 @@ reload_modmap (GdkKeymap *keymap,
   int map_size;
   int i;
 
+  memset (modmap->mapping, 0, sizeof (modmap->mapping));
+
+  if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    {
+      /* No X modifier map on Wayland. Use the usual XKB layout:
+       * Mod2 is NumLock and Mod4 is Super. */
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD2] |= EGG_VIRTUAL_NUM_LOCK_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD4] |= EGG_VIRTUAL_SUPER_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_SHIFT] |= EGG_VIRTUAL_SHIFT_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_CONTROL] |= EGG_VIRTUAL_CONTROL_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_LOCK] |= EGG_VIRTUAL_LOCK_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD1] |= EGG_VIRTUAL_ALT_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD2] |= EGG_VIRTUAL_MOD2_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD3] |= EGG_VIRTUAL_MOD3_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD4] |= EGG_VIRTUAL_MOD4_MASK;
+      modmap->mapping[EGG_MODMAP_ENTRY_MOD5] |= EGG_VIRTUAL_MOD5_MASK;
+      return;
+    }
+
   /* FIXME multihead */
   xmodmap = XGetModifierMapping (gdk_x11_get_default_xdisplay ());
-
-  memset (modmap->mapping, 0, sizeof (modmap->mapping));
 
   /* there are 8 modifiers in the order shift, shift lock,
    * control, mod1-5 with up to max_keypermod bindings each

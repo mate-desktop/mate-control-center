@@ -330,8 +330,38 @@ static gboolean is_modifier(guint keycode)
 	gint map_size;
 	XModifierKeymap* mod_keymap;
 	gboolean retval = FALSE;
+	GdkDisplay *display = gdk_display_get_default ();
 
-	mod_keymap = XGetModifierMapping(gdk_x11_display_get_xdisplay(gdk_display_get_default()));
+	if (!GDK_IS_X11_DISPLAY (display))
+	{
+		/* No X modifier map on Wayland: a key is a modifier if the keymap
+		 * gives it a modifier keysym */
+		GdkKeymapKey *keys = NULL;
+		guint *keyvals = NULL;
+		gint n_entries = 0;
+
+		if (gdk_keymap_get_entries_for_keycode (gdk_keymap_get_for_display (display),
+							keycode, &keys, &keyvals, &n_entries))
+		{
+			for (i = 0; i < n_entries; i++)
+			{
+				guint kv = keyvals[i];
+
+				if ((kv >= GDK_KEY_Shift_L && kv <= GDK_KEY_Hyper_R) ||
+				    kv == GDK_KEY_Mode_switch || kv == GDK_KEY_ISO_Level3_Shift ||
+				    kv == GDK_KEY_ISO_Level5_Shift)
+				{
+					retval = TRUE;
+					break;
+				}
+			}
+		}
+		g_free (keys);
+		g_free (keyvals);
+		return retval;
+	}
+
+	mod_keymap =XGetModifierMapping(gdk_x11_display_get_xdisplay(gdk_display_get_default()));
 
 	map_size = 8 * mod_keymap->max_keypermod;
 	i = 0;
@@ -522,6 +552,43 @@ static void pointless_eventbox_start_editing(GtkCellEditable* cell_editable, Gdk
 	/* do nothing, because we are pointless */
 }
 
+static void
+pointless_eventbox_set_property (GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec)
+{
+	switch (prop_id)
+	{
+	case 1: /* editing-canceled, overridden from GtkCellEditable */
+		g_object_set_data (object, "egg-editing-canceled",
+				   GINT_TO_POINTER (g_value_get_boolean (value)));
+		break;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+pointless_eventbox_get_property (GObject *object, guint prop_id, GValue *value, GParamSpec *pspec)
+{
+	switch (prop_id)
+	{
+	case 1:
+		g_value_set_boolean (value, GPOINTER_TO_INT (g_object_get_data (object, "egg-editing-canceled")));
+		break;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+pointless_eventbox_class_init (GtkEventBoxClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->set_property = pointless_eventbox_set_property;
+	object_class->get_property = pointless_eventbox_get_property;
+	g_object_class_override_property (object_class, 1, "editing-canceled");
+}
+
 static void pointless_eventbox_cell_editable_init(GtkCellEditableIface* iface)
 {
 	iface->start_editing = pointless_eventbox_start_editing;
@@ -539,7 +606,7 @@ pointless_eventbox_subclass_get_type (void)
         sizeof (GtkEventBoxClass),
 	NULL,		/* base_init */
 	NULL,		/* base_finalize */
-        NULL,
+        (GClassInitFunc) pointless_eventbox_class_init,
 	NULL,		/* class_finalize */
 	NULL,		/* class_data */
         sizeof (GtkEventBox),
