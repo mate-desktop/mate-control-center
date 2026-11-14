@@ -22,11 +22,128 @@
 
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <gio/gio.h>
 
 #include <sys/types.h>
 #include <X11/Xatom.h>
 
 #include "msd-input-helper.h"
+
+/*
+ * Input devices without X
+ *
+ * Outside X11 (on Wayland) a client cannot list input devices; the compositor
+ * owns them. The session's compositor, or any other service that owns the
+ * input devices, can describe them on the session bus:
+ *
+ *   Bus name   org.mate.InputDevices
+ *   Object     /org/mate/InputDevices
+ *   Interface  org.mate.InputDevices1
+ *
+ *   GetDevices () -> (aa{sv} devices)
+ *     One dictionary per device:
+ *       "name"             s  human readable name
+ *       "type"             s  "keyboard", "pointer", "touchpad", "touchscreen",
+ *                             "tablet" or "other"
+ *       "has-left-button"  b  pointers and touchpads: whether the device can
+ *                             click with a left button (a clickpad can, as its
+ *                             surface clicks); false on a touchpad that can
+ *                             only tap
+ *     Unknown keys are ignored, so the list can grow.
+ *
+ * When nobody provides it the capplet behaves as on an X server without
+ * XInput: it assumes a touchpad may be present.
+ */
+#define INPUT_DEVICES_BUS_NAME  "org.mate.InputDevices"
+#define INPUT_DEVICES_PATH      "/org/mate/InputDevices"
+#define INPUT_DEVICES_INTERFACE "org.mate.InputDevices1"
+
+/* The devices as an aa{sv}, or NULL when nobody describes them. */
+static GVariant *
+input_devices_get (void)
+{
+        GDBusConnection *bus;
+        GVariant *reply;
+        GVariant *devices = NULL;
+
+        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+        if (bus == NULL)
+                return NULL;
+
+        reply = g_dbus_connection_call_sync (bus,
+                                             INPUT_DEVICES_BUS_NAME,
+                                             INPUT_DEVICES_PATH,
+                                             INPUT_DEVICES_INTERFACE,
+                                             "GetDevices",
+                                             NULL,
+                                             G_VARIANT_TYPE ("(aa{sv})"),
+                                             G_DBUS_CALL_FLAGS_NO_AUTO_START,
+                                             1000, NULL, NULL);
+        if (reply != NULL) {
+                devices = g_variant_get_child_value (reply, 0);
+                g_variant_unref (reply);
+        }
+        g_object_unref (bus);
+
+        return devices;
+}
+
+static gboolean
+device_is_of_type (GVariant   *device,
+                   const char *type)
+{
+        const char *device_type;
+
+        return g_variant_lookup (device, "type", "&s", &device_type) &&
+               g_strcmp0 (device_type, type) == 0;
+}
+
+/* Without X: whether a touchpad is listed; TRUE when nobody lists devices. */
+static gboolean
+input_devices_have_touchpad (void)
+{
+        GVariant *devices, *device;
+        GVariantIter iter;
+        gboolean found = FALSE;
+
+        devices = input_devices_get ();
+        if (devices == NULL)
+                return TRUE;
+
+        g_variant_iter_init (&iter, devices);
+        while (!found && (device = g_variant_iter_next_value (&iter)) != NULL) {
+                found = device_is_of_type (device, "touchpad");
+                g_variant_unref (device);
+        }
+        g_variant_unref (devices);
+
+        return found;
+}
+
+gboolean
+touchpad_lacks_left_button (void)
+{
+        GVariant *devices, *device;
+        GVariantIter iter;
+        gboolean lacks = FALSE;
+
+        devices = input_devices_get ();
+        if (devices == NULL)
+                return FALSE;
+
+        g_variant_iter_init (&iter, devices);
+        while (!lacks && (device = g_variant_iter_next_value (&iter)) != NULL) {
+                gboolean has_left_button;
+
+                if (device_is_of_type (device, "touchpad") &&
+                    g_variant_lookup (device, "has-left-button", "b", &has_left_button))
+                        lacks = !has_left_button;
+                g_variant_unref (device);
+        }
+        g_variant_unref (devices);
+
+        return lacks;
+}
 
 gboolean
 supports_xinput_devices (void)
@@ -99,6 +216,9 @@ touchpad_is_present (void)
         gint n_devices;
         guint i;
         gboolean retval;
+
+        if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+                return input_devices_have_touchpad ();
 
         if (supports_xinput_devices () == FALSE)
                 return TRUE;
