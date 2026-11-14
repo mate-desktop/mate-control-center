@@ -171,6 +171,14 @@ orientation_radio_button_toggled (GtkToggleButton *togglebutton,
 	g_settings_set_boolean (mouse_settings, "left-handed", left_handed);
 }
 
+/* A touchpad without a physical left button needs tap-to-click */
+static void
+force_tap_to_click (GtkBuilder *dialog)
+{
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (dialog, "tap_to_click_toggle")), TRUE);
+	gtk_widget_set_sensitive (WID ("tap_to_click_toggle"), FALSE);
+}
+
 static void
 synaptics_check_capabilities (GtkBuilder *dialog)
 {
@@ -183,6 +191,12 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 	unsigned char *data;
 
 	display = gdk_display_get_default ();
+	if (!GDK_IS_X11_DISPLAY (display)) {
+		if (touchpad_lacks_left_button ())
+			force_tap_to_click (dialog);
+		return;
+	}
+
 	prop = XInternAtom (GDK_DISPLAY_XDISPLAY(display), "Synaptics Capabilities", True);
 	if (!prop)
 		return;
@@ -204,10 +218,8 @@ synaptics_check_capabilities (GtkBuilder *dialog)
 					 &bytes_after, &data) == Success) && (realtype != None)) {
 			/* Property data is booleans for has_left, has_middle,
 			 * has_right, has_double, has_triple */
-			if (!data[0]) {
-				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (dialog, "tap_to_click_toggle")), TRUE);
-				gtk_widget_set_sensitive (WID ("tap_to_click_toggle"), FALSE);
-			}
+			if (!data[0])
+				force_tap_to_click (dialog);
 
 			XFree (data);
 		}
@@ -308,6 +320,12 @@ setup_dialog (GtkBuilder *dialog)
 	                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "sensitivity_scale"))), "value",
 	                 G_SETTINGS_BIND_DEFAULT);
 
+	/* Hide the threshold where libinput drives the mice: it has none */
+	if (pointer_threshold_ignored (FALSE)) {
+		gtk_widget_hide (WID ("sensitivity_label"));
+		gtk_widget_hide (WID ("hbox3"));
+	}
+
 	g_signal_connect (WID ("mouse_accel_profile"), "changed",
 			  G_CALLBACK (accel_profile_combobox_changed_callback),
 	                  NULL);
@@ -383,6 +401,10 @@ setup_dialog (GtkBuilder *dialog)
 		g_settings_bind (touchpad_settings, "motion-threshold",
 		                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_sensitivity_scale"))), "value",
 		                 G_SETTINGS_BIND_DEFAULT);
+		if (pointer_threshold_ignored (TRUE)) {
+			gtk_widget_hide (WID ("touchpad_sensitivity_label"));
+			gtk_widget_hide (WID ("hbox31"));
+		}
 
 		synaptics_check_capabilities (dialog);
 	}
