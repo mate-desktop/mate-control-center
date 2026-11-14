@@ -32,6 +32,8 @@ XDevice  *device_is_touchpad      (XDeviceInfo *deviceinfo);
 gboolean  touchpad_is_present     (void);
 /* Without X: whether a listed touchpad cannot click (tap only) */
 gboolean  touchpad_lacks_left_button (void);
+/* Whether the touchpads (or the other pointers) ignore a motion threshold */
+gboolean  pointer_threshold_ignored (gboolean touchpads);
 
 G_END_DECLS
 
