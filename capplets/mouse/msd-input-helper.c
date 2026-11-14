@@ -24,6 +24,7 @@
 #include <gdk/gdkx.h>
 #include <gio/gio.h>
 
+#include <string.h>
 #include <sys/types.h>
 #include <X11/Xatom.h>
 
@@ -207,6 +208,78 @@ device_is_touchpad (XDeviceInfo *deviceinfo)
 
         XCloseDevice (GDK_DISPLAY_XDISPLAY (display), device);
         return NULL;
+}
+
+static gboolean
+device_is_driven_by_libinput (XDeviceInfo *deviceinfo)
+{
+        GdkDisplay *display = gdk_display_get_default ();
+        XDevice *device;
+        gboolean libinput;
+
+        /* Xwayland's devices stand for the compositor's, which use libinput */
+        if (g_str_has_prefix (deviceinfo->name, "xwayland-"))
+                return TRUE;
+
+        gdk_x11_display_error_trap_push (display);
+        device = XOpenDevice (GDK_DISPLAY_XDISPLAY (display), deviceinfo->id);
+        if (gdk_x11_display_error_trap_pop (display) || (device == NULL))
+                return FALSE;
+
+        /* xf86-input-libinput sets this on every device it drives */
+        libinput = device_has_property (device, "libinput Send Events Modes Available");
+        XCloseDevice (GDK_DISPLAY_XDISPLAY (display), device);
+
+        return libinput;
+}
+
+/*
+ * libinput has no motion threshold, only an acceleration speed and profile,
+ * so the threshold setting does nothing for devices it drives: always outside
+ * X11, and under X11 with xf86-input-libinput. Under X11 the answer is TRUE
+ * only when there is at least one such pointer and all of them use libinput;
+ * a device on evdev or synaptics still honours the threshold.
+ */
+gboolean
+pointer_threshold_ignored (gboolean touchpads)
+{
+        GdkDisplay *display = gdk_display_get_default ();
+        Atom touchpad_type;
+        XDeviceInfo *device_info;
+        gint n_devices, i;
+        gint n_matching = 0;
+        gboolean all_libinput = TRUE;
+
+        if (!GDK_IS_X11_DISPLAY (display))
+                return TRUE;
+
+        if (supports_xinput_devices () == FALSE)
+                return FALSE;
+
+        touchpad_type = XInternAtom (GDK_DISPLAY_XDISPLAY (display), XI_TOUCHPAD, True);
+        device_info = XListInputDevices (GDK_DISPLAY_XDISPLAY (display), &n_devices);
+        if (device_info == NULL)
+                return FALSE;
+
+        for (i = 0; i < n_devices && all_libinput; i++) {
+                gboolean is_touchpad;
+
+                if (device_info[i].use != IsXExtensionPointer)
+                        continue;
+                /* The XTEST pointer is a virtual device of the X server */
+                if (strstr (device_info[i].name, "XTEST") != NULL)
+                        continue;
+
+                is_touchpad = touchpad_type != None && device_info[i].type == touchpad_type;
+                if (is_touchpad != touchpads)
+                        continue;
+
+                n_matching++;
+                all_libinput = device_is_driven_by_libinput (&device_info[i]);
+        }
+        XFreeDeviceList (device_info);
+
+        return n_matching > 0 && all_libinput;
 }
 
 gboolean

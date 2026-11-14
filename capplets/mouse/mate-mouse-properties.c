@@ -320,6 +320,12 @@ setup_dialog (GtkBuilder *dialog)
 	                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "sensitivity_scale"))), "value",
 	                 G_SETTINGS_BIND_DEFAULT);
 
+	/* Hide the threshold where libinput drives the mice: it has none */
+	if (pointer_threshold_ignored (FALSE)) {
+		gtk_widget_hide (WID ("sensitivity_label"));
+		gtk_widget_hide (WID ("hbox3"));
+	}
+
 	g_signal_connect (WID ("mouse_accel_profile"), "changed",
 			  G_CALLBACK (accel_profile_combobox_changed_callback),
 	                  NULL);
@@ -395,6 +401,10 @@ setup_dialog (GtkBuilder *dialog)
 		g_settings_bind (touchpad_settings, "motion-threshold",
 		                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_sensitivity_scale"))), "value",
 		                 G_SETTINGS_BIND_DEFAULT);
+		if (pointer_threshold_ignored (TRUE)) {
+			gtk_widget_hide (WID ("touchpad_sensitivity_label"));
+			gtk_widget_hide (WID ("hbox31"));
+		}
 
 		synaptics_check_capabilities (dialog);
 	}
