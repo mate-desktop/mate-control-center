@@ -30,6 +30,7 @@
 
 #include <stdlib.h>
 #include <gio/gio.h>
+#include <gdk/gdkx.h>
 
 #include "capplet-util.h"
 #include "activate-settings-daemon.h"
@@ -121,7 +122,14 @@ setup_dialog (GtkBuilder * dialog)
 	                  (GCallback) dialog_response,
 	                  NULL);
 
-	setup_xkb_tabs (dialog);
+	if (GDK_IS_X11_DISPLAY (gdk_display_get_default ())) {
+		setup_xkb_tabs (dialog);
+	} else {
+		/* The layouts tab is built on libxklavier, which needs an X
+		 * server. Under Wayland the compositor owns the keyboard layout,
+		 * so don't show the tab. */
+		gtk_widget_hide (WID ("vbox33"));
+	}
 	setup_a11y_tabs (dialog);
 }
 
