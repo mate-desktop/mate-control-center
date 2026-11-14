@@ -34,6 +34,12 @@
 #include <X11/Xlib.h>
 #include <X11/extensions/scrnsaver.h>
 #include "drw-monitor.h"
+#ifdef HAVE_WAYLAND_IDLE
+#include "drw-idle-wayland.h"
+#endif
+
+/* How often the idle state is checked, in seconds */
+#define POLL_INTERVAL 3
 
 struct _DrwMonitorPriv {
 	XScreenSaverInfo *ss_info;
@@ -41,6 +47,9 @@ struct _DrwMonitorPriv {
 	unsigned long     last_idle;
 
 	time_t            last_activity;
+#ifdef HAVE_WAYLAND_IDLE
+	DrwIdleWayland   *wl_idle;
+#endif
 };
 
 /* Signals */
@@ -122,12 +131,17 @@ drw_monitor_finalize (GObject *object)
 
         priv = monitor->priv;
 
-	g_source_remove (priv->timeout_id);
-	priv->timeout_id = 0;
+	if (priv->timeout_id != 0) {
+		g_source_remove (priv->timeout_id);
+		priv->timeout_id = 0;
+	}
 
 	if (priv->ss_info) {
 		XFree (priv->ss_info);
 	}
+#ifdef HAVE_WAYLAND_IDLE
+	drw_idle_wayland_free (priv->wl_idle);
+#endif
 
 	g_free (priv);
 	monitor->priv = NULL;
@@ -144,6 +158,25 @@ drw_monitor_timeout (DrwMonitor *monitor)
  	time_t          now;
 
 	priv = monitor->priv;
+
+#ifdef HAVE_WAYLAND_IDLE
+	if (priv->wl_idle != NULL) {
+		/* The compositor says "idle" after POLL_INTERVAL seconds without
+		 * input, so not idle means there was input since the last check:
+		 * the same as the X idle time going down. */
+		if (!drw_idle_wayland_is_idle (priv->wl_idle)) {
+			now = time (NULL);
+
+			if (now - priv->last_activity < 25) {
+				g_signal_emit (monitor, signals[ACTIVITY], 0, NULL);
+			}
+
+			priv->last_activity = now;
+		}
+
+		return TRUE;
+	}
+#endif
 
 	if (XScreenSaverQueryInfo (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), DefaultRootWindow (GDK_DISPLAY_XDISPLAY(gdk_display_get_default())), priv->ss_info) != 0) {
 		if (priv->ss_info->idle < priv->last_idle) {
@@ -163,6 +196,18 @@ drw_monitor_timeout (DrwMonitor *monitor)
 }
 
 static gboolean
+start_wayland_idle (DrwMonitorPriv *priv)
+{
+#ifdef HAVE_WAYLAND_IDLE
+	priv->wl_idle = drw_idle_wayland_new (POLL_INTERVAL * 1000);
+
+	return priv->wl_idle != NULL;
+#else
+	return FALSE;
+#endif
+}
+
+static gboolean
 drw_monitor_setup (DrwMonitor *monitor)
 {
 	DrwMonitorPriv *priv;
@@ -170,6 +215,20 @@ drw_monitor_setup (DrwMonitor *monitor)
 	int             error_base;
 
 	priv = monitor->priv;
+
+	if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ())) {
+		/* No X screensaver extension: ask the Wayland compositor. */
+		if (!start_wayland_idle (priv)) {
+			g_message ("Typing activity can't be monitored: no X server, "
+				   "and the compositor offers no ext-idle-notify-v1");
+			return FALSE;
+		}
+
+		priv->last_activity = time (NULL);
+		priv->timeout_id = g_timeout_add_seconds (POLL_INTERVAL, (GSourceFunc) drw_monitor_timeout, monitor);
+
+		return TRUE;
+	}
 
 	if (!XScreenSaverQueryExtension (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &event_base, &error_base)) {
 		return FALSE;
@@ -179,7 +238,7 @@ drw_monitor_setup (DrwMonitor *monitor)
 
 	priv->last_activity = time (NULL);
 
-	priv->timeout_id = g_timeout_add_seconds (3, (GSourceFunc) drw_monitor_timeout, monitor);
+	priv->timeout_id = g_timeout_add_seconds (POLL_INTERVAL, (GSourceFunc) drw_monitor_timeout, monitor);
 
 	return TRUE;
 }

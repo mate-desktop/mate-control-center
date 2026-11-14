@@ -532,6 +532,7 @@ create_secondary_break_windows (void)
 	GtkWidget  *window;
 	GList      *windows = NULL;
 	gint        scale;
+	gint        screen_width, screen_height;
 
 	display = gdk_display_get_default ();
 
@@ -547,9 +548,8 @@ create_secondary_break_windows (void)
 
 		gtk_window_set_screen (GTK_WINDOW (window), screen);
 
-		gtk_window_set_default_size (GTK_WINDOW (window),
-					     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale,
-					     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale);
+		drw_get_screen_size (screen, scale, &screen_width, &screen_height);
+		gtk_window_set_default_size (GTK_WINDOW (window), screen_width, screen_height);
 
 		gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 		drw_setup_background (GTK_WIDGET (window));
