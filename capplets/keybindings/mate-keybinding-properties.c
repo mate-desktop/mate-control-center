@@ -877,6 +877,10 @@ strv_contains (char **strv,
 {
   char **p;
 
+  /* No window manager keybindings known (e.g. on Wayland) */
+  if (strv == NULL)
+    return FALSE;
+
   for (p = strv; *p; p++)
     if (strcmp (*p, str) == 0)
       return TRUE;

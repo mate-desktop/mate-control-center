@@ -4,6 +4,7 @@
 #include <string.h>
 #include <glib.h>
 #include <glib-object.h>
+#include <gio/gio.h>
 #include "wm-common.h"
 
 typedef struct _WMCallbackData
@@ -80,15 +81,53 @@ wm_common_get_current_window_manager (void)
     return g_strdup (WM_COMMON_UNKNOWN);
 }
 
+/* Some Wayland compositors, might be able to read the same org.mate.Marco.*
+ * keybinding settings as Marco, so the own these names when they run. */
+static gboolean
+wm_common_is_polo_running (void)
+{
+  GDBusConnection *bus;
+  GVariant *reply;
+  gboolean running = FALSE;
+
+  bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+  if (bus == NULL)
+    return FALSE;
+
+  reply = g_dbus_connection_call_sync (bus,
+                                       "org.freedesktop.DBus",
+                                       "/org/freedesktop/DBus",
+                                       "org.freedesktop.DBus",
+                                       "NameHasOwner",
+                                       g_variant_new ("(s)", "org.mate.Polo"),
+                                       G_VARIANT_TYPE ("(b)"),
+                                       G_DBUS_CALL_FLAGS_NONE,
+                                       1000, NULL, NULL);
+  if (reply != NULL)
+    {
+      g_variant_get (reply, "(b)", &running);
+      g_variant_unref (reply);
+    }
+  g_object_unref (bus);
+
+  return running;
+}
+
 char**
 wm_common_get_current_keybindings (void)
 {
 
   if (!(GDK_IS_X11_DISPLAY (gdk_display_get_default())))
   {
-    /*This should never reached in wayland as compositors control
-     *and limit keybindings
-     */
+    /* Other Wayland compositors control and limit keybindings themselves.
+     * Polo honours Marco's settings, so show the Marco keybindings. */
+    if (wm_common_is_polo_running ())
+      {
+        char *marco[] = { WM_COMMON_MARCO, NULL };
+
+        return g_strdupv (marco);
+      }
+
     return NULL;
   }
 
