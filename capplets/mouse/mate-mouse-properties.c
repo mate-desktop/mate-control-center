@@ -394,6 +394,18 @@ setup_dialog (GtkBuilder *dialog)
 		gtk_widget_show (two_click_comboxbox);
 		gtk_widget_show (three_click_comboxbox);
 
+		/* On Wayland the compositor's libinput fixes a two-finger tap to
+		 * the right button, so with tapping on, two-finger click emulation
+		 * has nothing to choose. */
+		if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ())) {
+			g_settings_bind (touchpad_settings, "tap-to-click",
+			                 WID ("label6"), "sensitive",
+			                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_INVERT_BOOLEAN);
+			g_settings_bind (touchpad_settings, "tap-to-click",
+			                 WID ("hbox_two_finger_click"), "sensitive",
+			                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_INVERT_BOOLEAN);
+		}
+
 		/* speed */
 		g_settings_bind (touchpad_settings, "motion-acceleration",
 		                 gtk_range_get_adjustment (GTK_RANGE (gtk_builder_get_object (dialog, "touchpad_accel_scale"))), "value",
