@@ -79,6 +79,18 @@ void     display_head_get_logical_size   (OutputHead *head,
                                           int        *width,
                                           int        *height);
 
+/* The rectangle around every head, in logical pixels; FALSE when there are none. */
+gboolean display_heads_get_frame         (GArray     *heads,
+                                          int        *x,
+                                          int        *y,
+                                          int        *width,
+                                          int        *height);
+/* Moves the heads that are off into a row to the right of the enabled ones. */
+void     display_heads_place_disabled    (GArray     *heads);
+/* Moves @head, just turned on, to the right of the rightmost enabled head. */
+void     display_heads_place_turned_on   (GArray     *heads,
+                                          OutputHead *head);
+
 G_END_DECLS
 
 #endif

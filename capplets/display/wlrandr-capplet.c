@@ -67,6 +67,7 @@ struct App
     GtkWidget *detect_displays_button;
 
     GtkWidget *area;
+    GdkRectangle frame;
     gboolean   ignore_gui_changes;
     gboolean   applying;
     GSettings *settings;
@@ -140,63 +141,31 @@ count_active_outputs (App *app)
     return count;
 }
 
-static GList *
-list_heads (App *app, int *total_w, int *total_h)
+static void
+update_frame (App *app)
 {
-    guint i;
-    int dummy;
-    GList *result = NULL;
+    if (app->heads == NULL || foo_scroll_area_is_grabbed (FOO_SCROLL_AREA (app->area)))
+        return;
 
-    if (!total_w)
-        total_w = &dummy;
-    if (!total_h)
-        total_h = &dummy;
-
-    *total_w = 0;
-    *total_h = 0;
-
-    for (i = 0; i < app->heads->len; i++)
-    {
-        OutputHead *head = get_nth_head (app, i);
-        int w, h;
-
-        result = g_list_prepend (result, head);
-
-        display_head_get_logical_size (head, &w, &h);
-
-        *total_w += w;
-        *total_h += h;
-    }
-
-    return g_list_reverse (result);
+    display_heads_place_disabled (app->heads);
+    if (!display_heads_get_frame (app->heads, &app->frame.x, &app->frame.y,
+                                  &app->frame.width, &app->frame.height))
+        app->frame.width = app->frame.height = 0;
 }
 
 static double
 compute_scale (App *app)
 {
-    int available_w, available_h;
-    int total_w, total_h;
-    guint n_monitors;
     GdkRectangle viewport;
-    GList *heads;
-    const int SPACE = 15;
     const int MARGIN = 15;
 
     foo_scroll_area_get_viewport (FOO_SCROLL_AREA (app->area), &viewport);
 
-    heads = list_heads (app, &total_w, &total_h);
-
-    n_monitors = g_list_length (heads);
-
-    g_list_free (heads);
-
-    available_w = viewport.width  - 2 * MARGIN - ((int) n_monitors - 1) * SPACE;
-    available_h = viewport.height - 2 * MARGIN - ((int) n_monitors - 1) * SPACE;
-
-    if (total_w == 0 || total_h == 0)
+    if (app->frame.width <= 0 || app->frame.height <= 0)
         return 1.0;
 
-    return MIN ((double) available_w / total_w, (double) available_h / total_h);
+    return MIN ((double) (viewport.width - 2 * MARGIN) / app->frame.width,
+                (double) (viewport.height - 2 * MARGIN) / app->frame.height);
 }
 
 /* ------------------------------------------------------------------ *
@@ -391,6 +360,8 @@ static void
 on_heads_changed (GArray *heads, const char *error, gpointer data)
 {
     App *app = data;
+    char *selected = NULL;
+    guint i;
 
     if (heads == NULL)
     {
@@ -398,9 +369,19 @@ on_heads_changed (GArray *heads, const char *error, gpointer data)
         return;
     }
 
+    if (app->current_head)
+        selected = g_strdup (app->current_head->name);
+
     free_heads (app);
     app->current_head = NULL;
     app->heads = heads;
+
+    for (i = 0; selected && i < heads->len; i++)
+    {
+        if (g_strcmp0 (get_nth_head (app, i)->name, selected) == 0)
+            app->current_head = get_nth_head (app, i);
+    }
+    g_free (selected);
 
     select_default_head (app);
 
@@ -823,7 +804,10 @@ monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data)
     app->current_head->enabled = is_on;
 
     if (is_on)
+    {
         select_resolution_for_current_output (app); /* The refresh rate will be picked in rebuild_rate_combo() */
+        display_heads_place_turned_on (app->heads, app->current_head);
+    }
 
     rebuild_gui (app);
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
@@ -1011,7 +995,6 @@ on_adaptive_sync_toggled (GtkToggleButton *toggle, gpointer data)
  *  Scroll area                                                       *
  * ------------------------------------------------------------------ */
 
-#define SPACE 15
 #define MARGIN 15
 
 static PangoLayout *
@@ -1020,9 +1003,11 @@ get_display_name (App *app, OutputHead *head)
     char *text;
     PangoLayout *layout;
 
-    text = g_strdup_printf ("<b>%s</b>\n<small>%s</small>",
-                            head->description && head->description[0] ? head->description : head->name,
-                            head->name);
+    text = g_markup_printf_escaped ("<b>%s</b>\n<small>%s</small>%s%s",
+                                    head->description && head->description[0] ? head->description : head->name,
+                                    head->name,
+                                    head->enabled ? "" : "\n",
+                                    head->enabled ? "" : _("Off"));
     layout = gtk_widget_create_pango_layout (GTK_WIDGET (app->area), text);
     pango_layout_set_markup (layout, text, -1);
     g_free (text);
@@ -1126,7 +1111,10 @@ list_edges (App *app, GArray *edges)
     guint i;
 
     for (i = 0; i < app->heads->len; i++)
-        list_edges_for_output (get_nth_head (app, i), edges);
+    {
+        if (get_nth_head (app, i)->enabled)
+            list_edges_for_output (get_nth_head (app, i), edges);
+    }
 }
 
 static gboolean
@@ -1329,7 +1317,9 @@ config_is_aligned (App *app, GArray *edges)
 
     for (i = 0; i < app->heads->len; i++)
     {
-        if (!head_is_aligned (get_nth_head (app, i), edges))
+        OutputHead *head = get_nth_head (app, i);
+
+        if (head->enabled && !head_is_aligned (head, edges))
             return FALSE;
     }
 
@@ -1344,8 +1334,10 @@ on_output_event (FooScrollArea      *area,
     OutputHead *head = data;
     App *app = g_object_get_data (G_OBJECT (area), "app");
 
-    if (app->heads && app->heads->len > 1)
+    if (head->enabled && count_active_outputs (app) > 1)
         set_cursor (GTK_WIDGET (area), GDK_FLEUR);
+    else
+        set_cursor (GTK_WIDGET (area), GDK_ARROW);
 
     if (event->type == FOO_BUTTON_PRESS)
     {
@@ -1356,7 +1348,7 @@ on_output_event (FooScrollArea      *area,
         rebuild_gui (app);
         set_monitors_tooltip (app, TRUE);
 
-        if (app->heads && app->heads->len > 1)
+        if (head->enabled && count_active_outputs (app) > 1)
         {
             foo_scroll_area_begin_grab (area, on_output_event, data);
 
@@ -1495,15 +1487,13 @@ paint_head (App     *app,
     int w, h;
     double scale = compute_scale (app);
     double x, y;
-    int total_w, total_h;
-    GList *heads = list_heads (app, &total_w, &total_h);
-    OutputHead *head = g_list_nth_data (heads, i);
+    OutputHead *head = get_nth_head (app, i);
     PangoLayout *layout = get_display_name (app, head);
     PangoRectangle ink_extent, log_extent;
     GdkRectangle viewport;
     GdkRGBA output_color;
     double r, g, b;
-    double available_w;
+    double available_w, available_h;
     double factor;
 
     cairo_save (cr);
@@ -1515,8 +1505,8 @@ paint_head (App     *app,
     viewport.height -= 2 * MARGIN;
     viewport.width -= 2 * MARGIN;
 
-    x = head->x * scale + MARGIN + (viewport.width - total_w * scale) / 2.0;
-    y = head->y * scale + MARGIN + (viewport.height - total_h * scale) / 2.0;
+    x = (head->x - app->frame.x) * scale + MARGIN + (viewport.width - app->frame.width * scale) / 2.0;
+    y = (head->y - app->frame.y) * scale + MARGIN + (viewport.height - app->frame.height * scale) / 2.0;
 
     cairo_translate (cr,
                      x + (w * scale + 0.5) / 2,
@@ -1536,10 +1526,9 @@ paint_head (App     *app,
 
     if (!head->enabled)
     {
-        /* If the output is turned off, just darken the selected color */
-        r *= 0.2;
-        g *= 0.2;
-        b *= 0.2;
+        r = (r + 2.0 * 0.8) / 3.0;
+        g = (g + 2.0 * 0.8) / 3.0;
+        b = (b + 2.0 * 0.8) / 3.0;
     }
 
     cairo_set_source_rgba (cr, r, g, b, 1.0);
@@ -1569,10 +1558,12 @@ paint_head (App     *app,
     pango_layout_get_pixel_extents (layout, &ink_extent, &log_extent);
 
     available_w = w * scale + 0.5 - 6; /* Same as the inner rectangle's width, minus 1 pixel of padding on each side */
+    available_h = h * scale + 0.5 - 6;
+    factor = 1.0;
     if (available_w < ink_extent.width)
         factor = available_w / ink_extent.width;
-    else
-        factor = 1.0;
+    if (available_h < log_extent.height * factor)
+        factor = available_h / log_extent.height;
 
     cairo_move_to (cr,
                    x + ((w * scale + 0.5) - factor * log_extent.width) / 2,
@@ -1583,15 +1574,13 @@ paint_head (App     *app,
     if (head->enabled)
         cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
     else
-        cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
+        cairo_set_source_rgb (cr, 0.35, 0.35, 0.35);
 
     pango_cairo_show_layout (cr, layout);
 
     cairo_restore (cr);
 
     g_object_unref (layout);
-
-    g_list_free (heads);
 }
 
 static void
@@ -1600,25 +1589,17 @@ on_area_paint (FooScrollArea *area,
                gpointer      data)
 {
     App *app = data;
-    GList *heads;
-    GList *list;
+    guint i;
 
     paint_background (area, cr);
 
     if (!app->heads)
         return;
 
-    heads = list_heads (app, NULL, NULL);
+    update_frame (app);
 
-    for (list = heads; list != NULL; list = list->next)
-    {
-        int pos;
-
-        if ((pos = g_list_position (heads, list)) != -1)
-            paint_head (app, cr, (guint) pos);
-    }
-
-    g_list_free (heads);
+    for (i = 0; i < app->heads->len; i++)
+        paint_head (app, cr, i);
 }
 
 static void
@@ -1659,6 +1640,9 @@ select_default_head (App *app)
             break;
         }
     }
+
+    if (!app->current_head && app->heads->len > 0)
+        app->current_head = get_nth_head (app, 0);
 }
 
 static void

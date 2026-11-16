@@ -78,12 +78,84 @@ test_sizes (void)
     display_heads_free (heads);
 }
 
+static void
+test_place_disabled (void)
+{
+    GArray *heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
+    int x, y, w, h;
+
+    add_head (heads, "off1", FALSE, 0, 0, 0, 0, 1366, 768, 0, 1.0);
+    add_head (heads, "A", TRUE, 0, 100, 1920, 1080, 1920, 1080, 0, 1.0);
+    add_head (heads, "B", TRUE, 1920, 0, 1280, 1024, 1280, 1024, 0, 1.0);
+    add_head (heads, "off2", FALSE, 1920, 0, 0, 0, 1024, 768, 0, 1.0);
+
+    display_heads_place_disabled (heads);
+
+    g_assert_cmpint (nth (heads, 0)->x, ==, 3200 + 1180 / 6);
+    g_assert_cmpint (nth (heads, 0)->y, ==, 0);
+    g_assert_cmpint (nth (heads, 3)->x, ==, 3200 + 1180 / 6 + 1366 + 1180 / 6);
+    g_assert_cmpint (nth (heads, 3)->y, ==, 0);
+    g_assert_cmpint (nth (heads, 1)->x, ==, 0);
+    g_assert_cmpint (nth (heads, 1)->y, ==, 100);
+    g_assert_cmpint (nth (heads, 2)->x, ==, 1920);
+
+    g_assert_true (display_heads_get_frame (heads, &x, &y, &w, &h));
+    g_assert_cmpint (x, ==, 0);
+    g_assert_cmpint (y, ==, 0);
+    g_assert_cmpint (w, ==, nth (heads, 3)->x + 1024);
+    g_assert_cmpint (h, ==, 1180);
+
+    display_heads_free (heads);
+}
+
+static void
+test_place_disabled_alone (void)
+{
+    GArray *heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
+
+    add_head (heads, "off1", FALSE, 500, 500, 0, 0, 1366, 768, 0, 1.0);
+    add_head (heads, "off2", FALSE, 500, 500, 0, 0, 1024, 768, 0, 1.0);
+
+    display_heads_place_disabled (heads);
+
+    g_assert_cmpint (nth (heads, 0)->x, ==, 0);
+    g_assert_cmpint (nth (heads, 1)->x, ==, 1366);
+    g_assert_cmpint (nth (heads, 1)->y, ==, 0);
+
+    display_heads_free (heads);
+}
+
+static void
+test_place_turned_on (void)
+{
+    GArray *heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
+
+    add_head (heads, "A", TRUE, -1920, 0, 1920, 1080, 1920, 1080, 0, 1.0);
+    add_head (heads, "B", TRUE, 0, 300, 3840, 2160, 3840, 2160, 0, 2.0);
+    add_head (heads, "C", TRUE, 9000, 9000, 0, 0, 1366, 768, 0, 1.0);
+
+    display_heads_place_turned_on (heads, nth (heads, 2));
+    g_assert_cmpint (nth (heads, 2)->x, ==, 1920);
+    g_assert_cmpint (nth (heads, 2)->y, ==, 300);
+
+    nth (heads, 0)->enabled = FALSE;
+    nth (heads, 1)->enabled = FALSE;
+    display_heads_place_turned_on (heads, nth (heads, 2));
+    g_assert_cmpint (nth (heads, 2)->x, ==, 0);
+    g_assert_cmpint (nth (heads, 2)->y, ==, 0);
+
+    display_heads_free (heads);
+}
+
 int
 main (int argc, char **argv)
 {
     g_test_init (&argc, &argv, NULL);
 
     g_test_add_func ("/display-head/sizes", test_sizes);
+    g_test_add_func ("/display-head/place-disabled", test_place_disabled);
+    g_test_add_func ("/display-head/place-disabled-alone", test_place_disabled_alone);
+    g_test_add_func ("/display-head/place-turned-on", test_place_turned_on);
 
     return g_test_run ();
 }
