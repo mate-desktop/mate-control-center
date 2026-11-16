@@ -28,10 +28,10 @@
 
 #define MSD_WLRANDR_DBUS_PATH     "/org/mate/SettingsDaemon/WLRANDR"
 #define MSD_WLRANDR_DBUS_NAME     "org.mate.SettingsDaemon.WLRANDR"
+#define MSD_WLRANDR_DBUS_NAME_3   "org.mate.SettingsDaemon.WLRANDR_3"
 
-#define HEAD_INFO_FORMAT  "(ssbiiidbb(iiii)a(iiii))"
-#define HEAD_SET_TYPE     "a(sbiiiiidib)"
-#define HEAD_SET_FORMAT   "(sbiiiiidib)"
+#define HEAD_SET_FORMAT    "(sbiiiiidib)"
+#define HEAD_SET_FORMAT_3  "(sbiiiiidibb)"
 #define MODE_FORMAT       "(iiii)"
 
 typedef enum
@@ -47,6 +47,8 @@ typedef enum
     HEAD_INFO_FIELD_ADAPTIVE_SYNC,
     HEAD_INFO_FIELD_CURRENT_MODE,
     HEAD_INFO_FIELD_MODES,
+    HEAD_INFO_FIELD_ID,
+    HEAD_INFO_FIELD_PRIMARY,
 } HeadInfoField;
 
 typedef struct
@@ -63,8 +65,14 @@ typedef struct
     gpointer                  data;
 } ApplyCall;
 
+static gboolean
+has_primary (WlrandrBackend *self)
+{
+    return (self->base.features & DISPLAY_BACKEND_PRIMARY) != 0;
+}
+
 static GArray *
-parse_heads (GVariant *configuration)
+parse_heads (WlrandrBackend *self, GVariant *configuration)
 {
     GVariantIter iter;
     GArray *heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
@@ -119,6 +127,9 @@ parse_heads (GVariant *configuration)
         head.rate = cur_rate;
         head.preferred = cur_pref;
         head.modes = g_array_new (FALSE, FALSE, sizeof (Mode));
+
+        if (has_primary (self))
+            g_variant_get_child (head_var, HEAD_INFO_FIELD_PRIMARY, "b", &head.primary);
 
         if (cur_w > 0 && cur_h > 0)
         {
@@ -176,8 +187,8 @@ on_configuration_received (GObject *source_object, GAsyncResult *res, gpointer d
         return;
     }
 
-    g_variant_get (result, "(@a" HEAD_INFO_FORMAT ")", &configuration);
-    self->base.changed (parse_heads (configuration), NULL, self->base.changed_data);
+    configuration = g_variant_get_child_value (result, 0);
+    self->base.changed (parse_heads (self, configuration), NULL, self->base.changed_data);
 }
 
 static void
@@ -212,11 +223,14 @@ wlrandr_apply (DisplayBackend            *backend,
                gpointer                   data)
 {
     WlrandrBackend *self = (WlrandrBackend *) backend;
+    const char *format = has_primary (self) ? HEAD_SET_FORMAT_3 : HEAD_SET_FORMAT;
+    g_autofree char *type = g_strconcat ("a", format, NULL);
+    gboolean primary_set = FALSE;
     GVariantBuilder builder;
     ApplyCall *call;
     guint i;
 
-    g_variant_builder_init (&builder, G_VARIANT_TYPE (HEAD_SET_TYPE));
+    g_variant_builder_init (&builder, G_VARIANT_TYPE (type));
 
     for (i = 0; i < heads->len; i++)
     {
@@ -226,17 +240,30 @@ wlrandr_apply (DisplayBackend            *backend,
         if (head->enabled)
             display_head_get_size (head, &width, &height);
 
-        g_variant_builder_add (&builder, HEAD_SET_FORMAT,
-                               head->name, head->enabled, width, height, head->rate,
-                               head->x, head->y, head->scale, head->transform,
-                               head->adaptive_sync);
+        if (has_primary (self))
+        {
+            gboolean primary = head->primary && head->enabled && !primary_set;
+
+            primary_set = primary_set || primary;
+            g_variant_builder_add (&builder, format,
+                                   head->name, head->enabled, width, height, head->rate,
+                                   head->x, head->y, head->scale, head->transform,
+                                   head->adaptive_sync, primary);
+        }
+        else
+        {
+            g_variant_builder_add (&builder, format,
+                                   head->name, head->enabled, width, height, head->rate,
+                                   head->x, head->y, head->scale, head->transform,
+                                   head->adaptive_sync);
+        }
     }
 
     call = g_new0 (ApplyCall, 1);
     call->done = done;
     call->data = data;
     g_dbus_proxy_call (self->proxy, "SetConfiguration",
-                       g_variant_new ("(@a" HEAD_SET_FORMAT ")", g_variant_builder_end (&builder)),
+                       g_variant_new_tuple ((GVariant *[]) { g_variant_builder_end (&builder) }, 1),
                        G_DBUS_CALL_FLAGS_NONE, -1, NULL, on_set_configuration_returned, call);
 }
 
@@ -264,20 +291,42 @@ wlrandr_free (DisplayBackend *backend)
     g_free (self);
 }
 
+static gboolean
+serves_interface (GDBusConnection *connection, const char *interface)
+{
+    g_autoptr (GVariant) result = NULL;
+    g_autoptr (GDBusNodeInfo) node = NULL;
+    const char *xml;
+
+    result = g_dbus_connection_call_sync (connection, "org.mate.SettingsDaemon", MSD_WLRANDR_DBUS_PATH,
+                                          "org.freedesktop.DBus.Introspectable", "Introspect", NULL,
+                                          G_VARIANT_TYPE ("(s)"), G_DBUS_CALL_FLAGS_NONE, -1, NULL, NULL);
+    if (result == NULL)
+        return FALSE;
+
+    g_variant_get (result, "(&s)", &xml);
+    node = g_dbus_node_info_new_for_xml (xml, NULL);
+    return node != NULL && g_dbus_node_info_lookup_interface (node, interface) != NULL;
+}
+
 DisplayBackend *
 display_backend_wlrandr_new (DisplayBackendChangedFunc changed, gpointer data, GError **error)
 {
     WlrandrBackend *self;
     GDBusConnection *connection;
     GDBusProxy *proxy;
+    gboolean primary;
+    const char *interface;
 
     connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, error);
     if (connection == NULL)
         return NULL;
 
+    primary = serves_interface (connection, MSD_WLRANDR_DBUS_NAME_3);
+    interface = primary ? MSD_WLRANDR_DBUS_NAME_3 : MSD_WLRANDR_DBUS_NAME;
     proxy = g_dbus_proxy_new_sync (connection, G_DBUS_PROXY_FLAGS_NONE, NULL,
                                    "org.mate.SettingsDaemon", MSD_WLRANDR_DBUS_PATH,
-                                   MSD_WLRANDR_DBUS_NAME, NULL, error);
+                                   interface, NULL, error);
     if (proxy == NULL)
     {
         g_object_unref (connection);
@@ -286,7 +335,7 @@ display_backend_wlrandr_new (DisplayBackendChangedFunc changed, gpointer data, G
 
     self = g_new0 (WlrandrBackend, 1);
     self->base.name = "mate-settings-daemon";
-    self->base.features = 0;
+    self->base.features = primary ? DISPLAY_BACKEND_PRIMARY : 0;
     self->base.changed = changed;
     self->base.changed_data = data;
     self->base.refresh = wlrandr_refresh;
@@ -294,7 +343,7 @@ display_backend_wlrandr_new (DisplayBackendChangedFunc changed, gpointer data, G
     self->base.free = wlrandr_free;
     self->connection = connection;
     self->proxy = proxy;
-    self->signal_id = g_dbus_connection_signal_subscribe (connection, NULL, MSD_WLRANDR_DBUS_NAME,
+    self->signal_id = g_dbus_connection_signal_subscribe (connection, NULL, interface,
                                                           "ConfigurationChanged",
                                                           MSD_WLRANDR_DBUS_PATH, NULL,
                                                           G_DBUS_SIGNAL_FLAGS_NONE,
