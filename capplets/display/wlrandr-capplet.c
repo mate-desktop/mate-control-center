@@ -112,6 +112,13 @@ error_message (App *app, const char *primary_text, const char *secondary_text)
  *  OutputHead helpers                                                *
  * ------------------------------------------------------------------ */
 
+static gboolean
+has_primary (App *app)
+{
+    return app->backend != NULL &&
+           (display_backend_get_features (app->backend) & DISPLAY_BACKEND_PRIMARY) != 0;
+}
+
 static OutputHead *
 get_nth_head (App *app, int i)
 {
@@ -741,7 +748,10 @@ rebuild_gui (App *app)
      * primary output and system-wide installation.
      */
     gtk_widget_set_sensitive (app->panel_checkbox, FALSE);
-    gtk_widget_set_sensitive (app->primary_button, FALSE);
+    gtk_widget_set_visible (app->primary_button, has_primary (app));
+    gtk_widget_set_sensitive (app->primary_button,
+                              has_primary (app) && app->current_head &&
+                              app->current_head->enabled && !app->current_head->primary);
     gtk_widget_set_sensitive (app->make_default_button, FALSE);
 
     app->ignore_gui_changes = FALSE;
@@ -783,6 +793,30 @@ select_resolution_for_current_output (App *app)
 }
 
 static void
+move_primary (App *app)
+{
+    OutputHead *chosen = NULL;
+    guint i;
+
+    for (i = 0; i < app->heads->len; i++)
+    {
+        OutputHead *head = get_nth_head (app, i);
+
+        head->primary = FALSE;
+        if (!head->enabled)
+            continue;
+
+        if (chosen == NULL ||
+            (head->internal && !chosen->internal) ||
+            (head->internal == chosen->internal && head->x < chosen->x))
+            chosen = head;
+    }
+
+    if (chosen)
+        chosen->primary = TRUE;
+}
+
+static void
 monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data)
 {
     App *app = data;
@@ -805,6 +839,9 @@ monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data)
     }
 
     app->current_head->enabled = is_on;
+
+    if (!is_on && app->current_head->primary)
+        move_primary (app);
 
     if (is_on)
     {
@@ -930,7 +967,17 @@ on_detect_displays (GtkWidget *widget, gpointer data)
 static void
 set_primary (GtkWidget *widget, gpointer data)
 {
-    /* The wlr-output-management protocol has no primary output concept. */
+    App *app = data;
+    guint i;
+
+    if (!has_primary (app) || app->current_head == NULL || !app->current_head->enabled)
+        return;
+
+    for (i = 0; i < app->heads->len; i++)
+        get_nth_head (app, i)->primary = get_nth_head (app, i) == app->current_head;
+
+    rebuild_gui (app);
+    foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
 
 static void
@@ -969,11 +1016,13 @@ get_display_name (App *app, OutputHead *head)
     char *text;
     PangoLayout *layout;
 
+    const char *state = !head->enabled ? _("Off") : has_primary (app) && head->primary ? _("Primary") : NULL;
+
     text = g_markup_printf_escaped ("<b>%s</b>\n<small>%s</small>%s%s",
                                     head->description && head->description[0] ? head->description : head->name,
                                     head->name,
-                                    head->enabled ? "" : "\n",
-                                    head->enabled ? "" : _("Off"));
+                                    state ? "\n" : "",
+                                    state ? state : "");
     layout = gtk_widget_create_pango_layout (GTK_WIDGET (app->area), text);
     pango_layout_set_markup (layout, text, -1);
     g_free (text);
