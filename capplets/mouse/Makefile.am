@@ -7,12 +7,25 @@ bin_PROGRAMS = mate-mouse-properties
 
 mate_mouse_properties_LDADD = $(MATECC_CAPPLETS_LIBS)
 BUILT_SOURCES = mate-mouse-properties-resources.h mate-mouse-properties-resources.c
+if HAVE_WAYLAND_PROTOCOLS
+BUILT_SOURCES += \
+	mate-input-device-v1-client-protocol.h \
+	mate-input-device-v1-protocol.c
+mate_mouse_properties_LDADD += $(MOUSE_WAYLAND_LIBS)
+endif
 nodist_mate_mouse_properties_SOURCES = \
 	$(BUILT_SOURCES)
 mate_mouse_properties_SOURCES =	\
 	mate-mouse-properties.c	\
 	msd-input-helper.c	\
-	msd-input-helper.h
+	msd-input-helper.h	\
+	msd-input-wayland.c	\
+	msd-input-wayland.h
+
+mate-input-device-v1-client-protocol.h: $(MATE_WAYLAND_PROTOCOLS_DIR)/mate-input-device-v1.xml
+	$(AM_V_GEN) $(WAYLAND_SCANNER) client-header $< $@
+mate-input-device-v1-protocol.c: $(MATE_WAYLAND_PROTOCOLS_DIR)/mate-input-device-v1.xml
+	$(AM_V_GEN) $(WAYLAND_SCANNER) private-code $< $@
 
 include $(top_srcdir)/gla11y.mk
 
@@ -33,6 +46,7 @@ mate-mouse-properties-resources.h mate-mouse-properties-resources.c: org.mate.mc
 AM_CPPFLAGS = \
 	$(WARN_CFLAGS) \
 	$(MATECC_CAPPLETS_CFLAGS) \
+	$(MOUSE_WAYLAND_CFLAGS) \
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 EXTRA_DIST = \

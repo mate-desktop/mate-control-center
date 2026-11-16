@@ -22,7 +22,6 @@
 
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <gio/gio.h>
 
 #include <string.h>
 #include <sys/types.h>
@@ -30,120 +29,80 @@
 
 #include "msd-input-helper.h"
 
-/*
- * Input devices without X
- *
- * Outside X11 (on Wayland) a client cannot list input devices; the compositor
- * owns them. The session's compositor, or any other service that owns the
- * input devices, can describe them on the session bus:
- *
- *   Bus name   org.mate.InputDevices
- *   Object     /org/mate/InputDevices
- *   Interface  org.mate.InputDevices1
- *
- *   GetDevices () -> (aa{sv} devices)
- *     One dictionary per device:
- *       "name"             s  human readable name
- *       "type"             s  "keyboard", "pointer", "touchpad", "touchscreen",
- *                             "tablet" or "other"
- *       "has-left-button"  b  pointers and touchpads: whether the device can
- *                             click with a left button (a clickpad can, as its
- *                             surface clicks); false on a touchpad that can
- *                             only tap
- *     Unknown keys are ignored, so the list can grow.
- *
- * When nobody provides it the capplet behaves as on an X server without
- * XInput: it assumes a touchpad may be present.
- */
-#define INPUT_DEVICES_BUS_NAME  "org.mate.InputDevices"
-#define INPUT_DEVICES_PATH      "/org/mate/InputDevices"
-#define INPUT_DEVICES_INTERFACE "org.mate.InputDevices1"
-
-/* The devices as an aa{sv}, or NULL when nobody describes them. */
-static GVariant *
-input_devices_get (void)
-{
-        GDBusConnection *bus;
-        GVariant *reply;
-        GVariant *devices = NULL;
-
-        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
-        if (bus == NULL)
-                return NULL;
-
-        reply = g_dbus_connection_call_sync (bus,
-                                             INPUT_DEVICES_BUS_NAME,
-                                             INPUT_DEVICES_PATH,
-                                             INPUT_DEVICES_INTERFACE,
-                                             "GetDevices",
-                                             NULL,
-                                             G_VARIANT_TYPE ("(aa{sv})"),
-                                             G_DBUS_CALL_FLAGS_NO_AUTO_START,
-                                             1000, NULL, NULL);
-        if (reply != NULL) {
-                devices = g_variant_get_child_value (reply, 0);
-                g_variant_unref (reply);
-        }
-        g_object_unref (bus);
-
-        return devices;
-}
+/* Without X the compositor owns the input devices; it may describe them
+ * through mate_input_device_manager_v1 (see msd-input-wayland.c). */
 
 static gboolean
-device_is_of_type (GVariant   *device,
-                   const char *type)
+kind_matches (guint kind, gboolean touchpads)
 {
-        const char *device_type;
+        if (touchpads)
+                return kind == INPUT_KIND_TOUCHPAD;
 
-        return g_variant_lookup (device, "type", "&s", &device_type) &&
-               g_strcmp0 (device_type, type) == 0;
+        return kind == INPUT_KIND_MOUSE || kind == INPUT_KIND_TRACKBALL ||
+               kind == INPUT_KIND_POINTING_STICK;
 }
 
 /* Without X: whether a touchpad is listed; TRUE when nobody lists devices. */
 static gboolean
 input_devices_have_touchpad (void)
 {
-        GVariant *devices, *device;
-        GVariantIter iter;
-        gboolean found = FALSE;
+        GArray *devices = input_devices_describe ();
+        guint i;
 
-        devices = input_devices_get ();
         if (devices == NULL)
                 return TRUE;
 
-        g_variant_iter_init (&iter, devices);
-        while (!found && (device = g_variant_iter_next_value (&iter)) != NULL) {
-                found = device_is_of_type (device, "touchpad");
-                g_variant_unref (device);
-        }
-        g_variant_unref (devices);
+        for (i = 0; i < devices->len; i++)
+                if (g_array_index (devices, InputDeviceDescription, i).kind == INPUT_KIND_TOUCHPAD)
+                        return TRUE;
 
-        return found;
+        return FALSE;
 }
 
 gboolean
 touchpad_lacks_left_button (void)
 {
-        GVariant *devices, *device;
-        GVariantIter iter;
-        gboolean lacks = FALSE;
+        GArray *devices = input_devices_describe ();
+        guint i;
 
-        devices = input_devices_get ();
         if (devices == NULL)
                 return FALSE;
 
-        g_variant_iter_init (&iter, devices);
-        while (!lacks && (device = g_variant_iter_next_value (&iter)) != NULL) {
-                gboolean has_left_button;
+        for (i = 0; i < devices->len; i++) {
+                InputDeviceDescription *device = &g_array_index (devices, InputDeviceDescription, i);
 
-                if (device_is_of_type (device, "touchpad") &&
-                    g_variant_lookup (device, "has-left-button", "b", &has_left_button))
-                        lacks = !has_left_button;
-                g_variant_unref (device);
+                if (device->kind == INPUT_KIND_TOUCHPAD && !(device->buttons & INPUT_BUTTON_LEFT))
+                        return TRUE;
         }
-        g_variant_unref (devices);
 
-        return lacks;
+        return FALSE;
+}
+
+gboolean
+pointer_support (gboolean touchpads, InputDeviceDescription *support)
+{
+        GArray *devices = input_devices_describe ();
+        gboolean found = FALSE;
+        guint i;
+
+        memset (support, 0, sizeof (*support));
+        if (devices == NULL)
+                return FALSE;
+
+        for (i = 0; i < devices->len; i++) {
+                InputDeviceDescription *device = &g_array_index (devices, InputDeviceDescription, i);
+
+                if (!kind_matches (device->kind, touchpads))
+                        continue;
+
+                found = TRUE;
+                support->config |= device->config;
+                support->accel_profiles |= device->accel_profiles;
+                support->scroll_methods |= device->scroll_methods;
+                support->tap_fingers = MAX (support->tap_fingers, device->tap_fingers);
+        }
+
+        return found;
 }
 
 gboolean
