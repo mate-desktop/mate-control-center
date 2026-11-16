@@ -1,5 +1,5 @@
 /* Monitor Settings for Wayland.  A preference panel for configuring monitors
- * that talks to the wlrandr plugin of mate-settings-daemon over D-Bus.
+ * that talks to the compositor, or to mate-settings-daemon's wlrandr plugin.
  *
  * Copyright (C) 2023  mate-desktop.org
  *
@@ -28,101 +28,12 @@
 #include <gio/gio.h>
 
 #include "capplet-util.h"
+#include "display-backend.h"
 
-#define MSD_WLRANDR_DBUS_NAME     "org.mate.SettingsDaemon.WLRANDR"
-#define MSD_WLRANDR_DBUS_NAME_2   "org.mate.SettingsDaemon.WLRANDR_2"
-#define MSD_WLRANDR_DBUS_PATH     "/org/mate/SettingsDaemon/WLRANDR"
 #define MSD_WLRANDR_SCHEMA        "org.mate.SettingsDaemon.plugins.wlrandr"
 #define SHOW_ICON_KEY             "show-notification-icon"
 
-#define HEAD_INFO_TYPE  "a(ssbiiidbb(iiii)a(iiii))"
-#define HEAD_SET_TYPE   "a(sbiiiiidib)"
-#define HEAD_INFO_FORMAT  "(ssbiiidbb(iiii)a(iiii))"
-#define HEAD_SET_FORMAT   "(sbiiiiidib)"
-#define MODE_FORMAT       "(iiii)"
-
-/* GVariant type strings cannot contain whitespace, so the compact forms
- * above are required on the wire.  These enums document what each field
- * means so the code below never has to be decoded from the string. */
-
-/* One head as reported by GetConfiguration:
- * (name, description, enabled, x, y, transform, scale,
- *  adaptive_sync_supported, adaptive_sync,
- *  current_mode (width, height, refresh, preferred),
- *  modes (width, height, refresh, preferred) ...) */
-typedef enum
-{
-    HEAD_INFO_FIELD_NAME,                    /* s      output name */
-    HEAD_INFO_FIELD_DESCRIPTION,             /* s      human-readable description */
-    HEAD_INFO_FIELD_ENABLED,                 /* b      output enabled */
-    HEAD_INFO_FIELD_X,                       /* i      x position on the logical screen */
-    HEAD_INFO_FIELD_Y,                       /* i      y position on the logical screen */
-    HEAD_INFO_FIELD_TRANSFORM,               /* i      rotation (wl_output_transform) */
-    HEAD_INFO_FIELD_SCALE,                   /* d      fractional scale factor */
-    HEAD_INFO_FIELD_ADAPTIVE_SYNC_SUPPORTED, /* b      hardware supports adaptive sync */
-    HEAD_INFO_FIELD_ADAPTIVE_SYNC,           /* b      adaptive sync currently active */
-    HEAD_INFO_FIELD_CURRENT_MODE,            /* (iiii) the mode currently in use */
-    HEAD_INFO_FIELD_MODES,                   /* a(iiii) all modes the output supports */
-    HEAD_INFO_N_FIELDS
-} HeadInfoField;
-
-/* One entry of the modes array. */
-typedef enum
-{
-    MODE_FIELD_WIDTH,                        /* i      width in pixels */
-    MODE_FIELD_HEIGHT,                       /* i      height in pixels */
-    MODE_FIELD_REFRESH,                      /* i      refresh rate in mHz */
-    MODE_FIELD_PREFERRED,                    /* i      1 if this is the preferred mode */
-    MODE_N_FIELDS
-} ModeField;
-
-/* One head as sent to SetConfiguration:
- * (name, enabled, width, height, refresh, x, y, scale, transform,
- *  adaptive_sync) */
-typedef enum
-{
-    HEAD_SET_FIELD_NAME,                     /* s      output name */
-    HEAD_SET_FIELD_ENABLED,                  /* b      output enabled */
-    HEAD_SET_FIELD_WIDTH,                    /* i      desired width in pixels */
-    HEAD_SET_FIELD_HEIGHT,                   /* i      desired height in pixels */
-    HEAD_SET_FIELD_RATE,                     /* i      desired refresh rate in mHz */
-    HEAD_SET_FIELD_X,                        /* i      desired x position */
-    HEAD_SET_FIELD_Y,                        /* i      desired y position */
-    HEAD_SET_FIELD_SCALE,                    /* d      desired fractional scale */
-    HEAD_SET_FIELD_TRANSFORM,                /* i      desired rotation */
-    HEAD_SET_FIELD_ADAPTIVE_SYNC,            /* b      desired adaptive sync state */
-    HEAD_SET_N_FIELDS
-} HeadSetField;
-
 typedef struct App App;
-typedef struct GrabInfo GrabInfo;
-
-typedef struct
-{
-    int       width;
-    int       height;
-    int       rate;
-    gboolean  preferred;
-} Mode;
-
-typedef struct
-{
-    char       *name;
-    char       *description;
-    gboolean    enabled;
-    int         x;
-    int         y;
-    int         transform;             /* wl_output.transform value */
-    double      scale;
-    int         adaptive_sync_supported;  /* -1 unknown, 0 no, 1 yes */
-    gboolean    adaptive_sync;
-    int         width;                 /* current mode */
-    int         height;
-    int         rate;
-    gboolean    preferred;
-    GArray     *modes;                 /* Mode */
-    GrabInfo   *grab_info;
-} OutputHead;
 
 struct GrabInfo
 {
@@ -160,9 +71,7 @@ struct App
     gboolean   applying;
     GSettings *settings;
 
-    GDBusConnection *connection;
-    GDBusProxy *proxy;
-    guint       signal_id;
+    DisplayBackend *backend;
 };
 
 /* Response codes for custom buttons in the main dialog */
@@ -174,7 +83,6 @@ static void rebuild_gui (App *app);
 static void fetch_configuration (App *app);
 static void on_rate_changed (GtkComboBox *box, gpointer data);
 static void monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data);
-static gboolean mode_is_present (OutputHead *head, int width, int height, int rate);
 static void select_default_head (App *app);
 static void on_adaptive_sync_toggled (GtkToggleButton *toggle, gpointer data);
 static void rebuild_adaptive_sync_checkbox (App *app);
@@ -218,34 +126,6 @@ head_set_transform (OutputHead *head, int transform)
 }
 
 static void
-head_get_preferred_size (OutputHead *head, int *width, int *height)
-{
-    guint i;
-    int best_w = 0, best_h = 0;
-
-    for (i = 0; i < head->modes->len; i++)
-    {
-        Mode *mode = &g_array_index (head->modes, Mode, i);
-
-        if (mode->preferred)
-        {
-            *width = mode->width;
-            *height = mode->height;
-            return;
-        }
-
-        if (mode->width * mode->height > best_w * best_h)
-        {
-            best_w = mode->width;
-            best_h = mode->height;
-        }
-    }
-
-    *width = best_w;
-    *height = best_h;
-}
-
-static void
 get_geometry (OutputHead *head, int *w, int *h)
 {
     if (head->enabled && head->width > 0 && head->height > 0)
@@ -255,7 +135,7 @@ get_geometry (OutputHead *head, int *w, int *h)
     }
     else
     {
-        head_get_preferred_size (head, w, h);
+        display_head_get_preferred_size (head, w, h);
     }
 
     if (head->transform & 1)
@@ -269,7 +149,7 @@ get_geometry (OutputHead *head, int *w, int *h)
 }
 
 /* Head sizes are reported in physical pixels while head positions are
- * given in logical pixels (see HEAD_INFO_FIELD_X).  The preview must
+ * given in logical pixels.  The preview must
  * divide the physical size by the output's scale to stay in the same
  * coordinate space as the positions; otherwise the arrangement is drawn
  * off-center and clipped on scaled outputs.
@@ -535,188 +415,30 @@ make_rate_string (int hz)
 }
 
 /* ------------------------------------------------------------------ *
- *  D-Bus                                                             *
+ *  Display backend                                                   *
  * ------------------------------------------------------------------ */
-
-static void
-parse_heads_from_variant (App *app, GVariant *configuration)
-{
-    GVariantIter iter;
-
-    g_variant_iter_init (&iter, configuration);
-
-    if (app->heads)
-    {
-        g_array_free (app->heads, TRUE);
-        app->heads = NULL;
-    }
-
-    app->heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
-
-    while (TRUE)
-    {
-        GVariant *head_var;
-        const char *name;
-        const char *description;
-        gboolean enabled;
-        gboolean adaptive_sync_supported;
-        gboolean adaptive_sync;
-        int x, y, transform;
-        double scale;
-        int cur_w, cur_h, cur_rate, cur_pref;
-        g_autoptr (GVariant) modes_var = NULL;
-        OutputHead head;
-        GVariantIter modes_iter;
-
-        head_var = g_variant_iter_next_value (&iter);
-        if (head_var == NULL)
-            break;
-
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_NAME,
-                             "&s", &name);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_DESCRIPTION,
-                             "&s", &description);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_ENABLED,
-                             "b", &enabled);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_X,
-                             "i", &x);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_Y,
-                             "i", &y);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_TRANSFORM,
-                             "i", &transform);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_SCALE,
-                             "d", &scale);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_ADAPTIVE_SYNC_SUPPORTED,
-                             "b", &adaptive_sync_supported);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_ADAPTIVE_SYNC,
-                             "b", &adaptive_sync);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_CURRENT_MODE,
-                             MODE_FORMAT, &cur_w, &cur_h, &cur_rate, &cur_pref);
-        g_variant_get_child (head_var, HEAD_INFO_FIELD_MODES,
-                             "@a" MODE_FORMAT, &modes_var);
-
-        memset (&head, 0, sizeof (OutputHead));
-        head.name = g_strdup (name);
-        head.description = g_strdup (description);
-        head.enabled = enabled;
-        head.x = x;
-        head.y = y;
-        head_set_transform (&head, transform);
-        head.scale = scale;
-        head.adaptive_sync_supported = adaptive_sync_supported ? 1 : 0;
-        head.adaptive_sync = adaptive_sync;
-        head.width = cur_w;
-        head.height = cur_h;
-        head.rate = cur_rate;
-        head.preferred = cur_pref;
-        head.modes = g_array_new (FALSE, FALSE, sizeof (Mode));
-
-        if (cur_w > 0 && cur_h > 0)
-        {
-            Mode m;
-
-            m.width = cur_w;
-            m.height = cur_h;
-            m.rate = cur_rate;
-            m.preferred = cur_pref;
-            g_array_append_val (head.modes, m);
-        }
-
-        g_variant_iter_init (&modes_iter, modes_var);
-        while (TRUE)
-        {
-            int w, h, rate;
-            int pref;
-            Mode mode;
-
-            if (!g_variant_iter_next (&modes_iter, MODE_FORMAT,
-                                      &w, &h, &rate, &pref))
-                break;
-
-            if (mode_is_present (&head, w, h, rate))
-                continue;
-
-            mode.width = w;
-            mode.height = h;
-            mode.rate = rate;
-            mode.preferred = pref;
-            g_array_append_val (head.modes, mode);
-        }
-
-        g_variant_unref (head_var);
-
-        g_array_append_val (app->heads, head);
-    }
-
-    if (app->heads->len == 0)
-    {
-        g_array_free (app->heads, TRUE);
-        app->heads = NULL;
-    }
-}
-
-static gboolean
-mode_is_present (OutputHead *head, int width, int height, int rate)
-{
-    guint i;
-
-    for (i = 0; i < head->modes->len; i++)
-    {
-        Mode *mode = &g_array_index (head->modes, Mode, i);
-
-        if (mode->width == width && mode->height == height && mode->rate == rate)
-            return TRUE;
-    }
-
-    return FALSE;
-}
 
 static void
 free_heads (App *app)
 {
-    guint i;
-
-    if (!app->heads)
-        return;
-
-    for (i = 0; i < app->heads->len; i++)
-    {
-        OutputHead *head = get_nth_head (app, i);
-
-        g_free (head->name);
-        g_free (head->description);
-        g_free (head->grab_info);
-        if (head->modes)
-            g_array_free (head->modes, TRUE);
-    }
-
-    g_array_free (app->heads, TRUE);
+    display_heads_free (app->heads);
     app->heads = NULL;
 }
 
 static void
-on_configuration_received (GObject *source_object, GAsyncResult *res, gpointer data)
+on_heads_changed (GArray *heads, const char *error, gpointer data)
 {
     App *app = data;
-    GError *error = NULL;
-    g_autoptr (GVariant) result = NULL;
-    g_autoptr (GVariant) configuration = NULL;
 
-    result = g_dbus_proxy_call_finish (app->proxy, res, &error);
-    if (result == NULL)
+    if (heads == NULL)
     {
-        if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-            error_message (app, _("Could not get display configuration"), error->message);
-        g_error_free (error);
+        error_message (app, _("Could not get display configuration"), error);
         return;
     }
 
-    g_variant_get (result, "(@a" HEAD_INFO_FORMAT ")", &configuration);
-
     free_heads (app);
     app->current_head = NULL;
-
-    parse_heads_from_variant (app, configuration);
+    app->heads = heads;
 
     select_default_head (app);
 
@@ -727,35 +449,19 @@ on_configuration_received (GObject *source_object, GAsyncResult *res, gpointer d
 static void
 fetch_configuration (App *app)
 {
-    if (app->proxy == NULL)
-        return;
-
-    g_dbus_proxy_call (app->proxy,
-                       "GetConfiguration",
-                       NULL,
-                       G_DBUS_CALL_FLAGS_NONE,
-                       -1,
-                       NULL,
-                       (GAsyncReadyCallback) on_configuration_received,
-                       app);
+    if (app->backend)
+        display_backend_refresh (app->backend);
 }
 
 static void
-on_set_configuration_returned (GObject *source_object, GAsyncResult *res, gpointer data)
+on_configuration_applied (const char *error, gpointer data)
 {
     App *app = data;
-    GError *error = NULL;
-    g_autoptr (GVariant) result = NULL;
 
     app->applying = FALSE;
 
-    result = g_dbus_proxy_call_finish (app->proxy, res, &error);
-    if (result == NULL)
-    {
-        if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-            error_message (app, _("Could not apply the display configuration"), error->message);
-        g_error_free (error);
-    }
+    if (error)
+        error_message (app, _("Could not apply the display configuration"), error);
 
     gtk_widget_set_sensitive (app->dialog, TRUE);
 }
@@ -763,78 +469,12 @@ on_set_configuration_returned (GObject *source_object, GAsyncResult *res, gpoint
 static void
 apply_configuration (App *app)
 {
-    GVariantBuilder builder;
-    guint i;
-
-    g_assert (app->proxy != NULL);
+    g_assert (app->backend != NULL);
     g_assert (app->applying == FALSE);
 
     app->applying = TRUE;
-
-    g_variant_builder_init (&builder, G_VARIANT_TYPE (HEAD_SET_TYPE));
-
-    for (i = 0; i < app->heads->len; i++)
-    {
-        OutputHead *head = get_nth_head (app, i);
-        int width, height;
-
-        if (!head->enabled)
-        {
-            width = 0;
-            height = 0;
-        }
-        else
-        {
-            get_geometry (head, &width, &height);
-        }
-
-        g_variant_builder_add (&builder, HEAD_SET_FORMAT,
-                               head->name,
-                               head->enabled,
-                               width,
-                               height,
-                               head->rate,
-                               head->x,
-                               head->y,
-                               head->scale,
-                               head->transform,
-                               head->adaptive_sync);
-    }
-
     gtk_widget_set_sensitive (app->dialog, FALSE);
-
-    g_dbus_proxy_call (app->proxy,
-                       "SetConfiguration",
-                       g_variant_new ("(@a" HEAD_SET_FORMAT ")", g_variant_builder_end (&builder)),
-                       G_DBUS_CALL_FLAGS_NONE,
-                       -1,
-                       NULL,
-                       (GAsyncReadyCallback) on_set_configuration_returned,
-                       app);
-}
-
-static void
-on_configuration_changed (GDBusConnection *connection,
-                          const gchar     *sender_name,
-                          const gchar     *object_path,
-                          const gchar     *interface_name,
-                          const gchar     *signal_name,
-                          GVariant        *parameters,
-                          gpointer         user_data)
-{
-    App *app = user_data;
-
-    if (!app->applying)
-    {
-        fetch_configuration (app);
-        return;
-    }
-
-    /* When we applied a configuration ourselves, fetch the new state once
-     * the daemon reports it so that the edited values stay in sync with
-     * what was actually applied.
-     */
-    fetch_configuration (app);
+    display_backend_apply (app->backend, app->heads, FALSE, on_configuration_applied, app);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1172,7 +812,7 @@ select_resolution_for_current_output (App *app)
     guint i;
     int best_w = 0, best_h = 0;
 
-    head_get_preferred_size (app->current_head, &width, &height);
+    display_head_get_preferred_size (app->current_head, &width, &height);
 
     if (width != 0 && height != 0)
     {
@@ -2196,44 +1836,16 @@ run_application (App *app)
 
     g_object_unref (builder);
 
-    app->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
-    if (app->connection == NULL)
-    {
-        error_message (app, _("Could not get session bus"), error->message);
-        g_error_free (error);
-        gtk_widget_destroy (app->dialog);
-        app->dialog = NULL;
-        return;
-    }
-
-    app->proxy = g_dbus_proxy_new_sync (app->connection,
-                                        G_DBUS_PROXY_FLAGS_NONE,
-                                        NULL,
-                                        "org.mate.SettingsDaemon",
-                                        MSD_WLRANDR_DBUS_PATH,
-                                        MSD_WLRANDR_DBUS_NAME,
-                                        NULL,
-                                        &error);
-    if (app->proxy == NULL)
+    app->backend = display_backend_new (on_heads_changed, app, &error);
+    if (app->backend == NULL)
     {
         error_message (app, _("Could not connect to the display settings daemon"),
                        _("The wlrandr plugin of mate-settings-daemon does not seem to be active."));
-        g_error_free (error);
+        g_clear_error (&error);
         gtk_widget_destroy (app->dialog);
         app->dialog = NULL;
         return;
     }
-
-    app->signal_id = g_dbus_connection_signal_subscribe (app->connection,
-                                                         NULL,
-                                                         MSD_WLRANDR_DBUS_NAME,
-                                                         "ConfigurationChanged",
-                                                         MSD_WLRANDR_DBUS_PATH,
-                                                         NULL,
-                                                         G_DBUS_SIGNAL_FLAGS_NONE,
-                                                         on_configuration_changed,
-                                                         app,
-                                                         NULL);
 
     fetch_configuration (app);
 
@@ -2282,13 +1894,7 @@ wlrandr_capplet_main (int argc, char **argv)
 
     run_application (app);
 
-    if (app->signal_id != 0)
-        g_dbus_connection_signal_unsubscribe (app->connection, app->signal_id);
-
-    if (app->proxy)
-        g_object_unref (app->proxy);
-    if (app->connection)
-        g_object_unref (app->connection);
+    display_backend_free (app->backend);
 
     free_heads (app);
 
