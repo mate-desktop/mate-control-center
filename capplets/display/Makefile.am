@@ -7,6 +7,14 @@ BUILT_SOURCES = \
 	mate-display-properties-resources.h \
 	mate-display-properties-resources.c
 
+if HAVE_WAYLAND_PROTOCOLS
+BUILT_SOURCES += \
+	wlr-output-management-unstable-v1-client-protocol.h \
+	wlr-output-management-unstable-v1-protocol.c \
+	mate-output-v1-client-protocol.h \
+	mate-output-v1-protocol.c
+endif
+
 ui_files = display-capplet.ui
 
 include $(top_srcdir)/gla11y.mk
@@ -25,6 +33,10 @@ mate_display_properties_SOURCES =	\
 	display-backend-wlrandr.c	\
 	scrollarea.c			\
 	scrollarea.h
+
+if HAVE_WAYLAND_PROTOCOLS
+mate_display_properties_SOURCES += display-backend-protocol.c
+endif
 
 mate_display_properties_LDFLAGS = -export-dynamic
 mate_display_properties_LDADD = \
@@ -67,6 +79,15 @@ AM_CPPFLAGS =					\
 	-DMATELOCALEDIR="\"$(datadir)/locale\""	\
 	-DMATECC_DATA_DIR="\"$(pkgdatadir)\""
 
+%-client-protocol.h: $(srcdir)/protocols/%.xml
+	$(AM_V_GEN) $(WAYLAND_SCANNER) client-header $< $@
+%-protocol.c: $(srcdir)/protocols/%.xml
+	$(AM_V_GEN) $(WAYLAND_SCANNER) private-code $< $@
+mate-output-v1-client-protocol.h: $(MATE_WAYLAND_PROTOCOLS_DIR)/mate-output-v1.xml
+	$(AM_V_GEN) $(WAYLAND_SCANNER) client-header $< $@
+mate-output-v1-protocol.c: $(MATE_WAYLAND_PROTOCOLS_DIR)/mate-output-v1.xml
+	$(AM_V_GEN) $(WAYLAND_SCANNER) private-code $< $@
+
 foo-marshal.c: foo-marshal.list
 	@GLIB_GENMARSHAL@ --prefix=foo_marshal $< --header > $@
 foo-marshal.h: foo-marshal.list
@@ -76,7 +97,7 @@ mate-display-properties-resources.h mate-display-properties-resources.c: org.mat
 
 CLEANFILES = $(MATECC_CAPPLETS_CLEANFILES) $(desktop_DATA) $(BUILT_SOURCES)
 
-EXTRA_DIST = $(ui_files) foo-marshal.list $(Desktop_in_files) org.mate.mcc.display.gresource.xml org.mate.randr.policy.in ui-a11y.suppr
+EXTRA_DIST = $(ui_files) protocols/wlr-output-management-unstable-v1.xml foo-marshal.list $(Desktop_in_files) org.mate.mcc.display.gresource.xml org.mate.randr.policy.in ui-a11y.suppr
 DISTCLEANFILES = org.mate.randr.policy
 
 -include $(top_srcdir)/git.mk
