@@ -409,9 +409,12 @@ make_resolution_string (guint width, guint height)
 }
 
 static char *
-make_rate_string (int hz)
+make_rate_string (int mhz)
 {
-    return g_strdup_printf (_("%d Hz"), hz);
+    if (mhz % 1000 == 0)
+        return g_strdup_printf (_("%d Hz"), mhz / 1000);
+
+    return g_strdup_printf (_("%.2f Hz"), mhz / 1000.0);
 }
 
 /* ------------------------------------------------------------------ *
