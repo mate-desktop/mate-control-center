@@ -193,7 +193,7 @@ PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES fontconfig freetype2 mate-desktop
 PKG_CHECK_MODULES(AT_CAPPLET, $COMMON_MODULES)
 
 AC_ARG_ENABLE([wayland],
-              AS_HELP_STRING([--disable-wayland], [do not talk to Wayland compositors through the MATE output protocol]),
+              AS_HELP_STRING([--disable-wayland], [do not talk to Wayland compositors through the MATE protocols]),
               [enable_wayland=$enableval],
               [enable_wayland=auto])
 have_wayland_protocols=no
@@ -210,9 +210,10 @@ if test "x$enable_wayland" != "xno"; then
 fi
 if test "x$have_wayland_protocols" = "xyes"; then
     DISPLAY_WAYLAND_MODULES=wayland-client
+    PKG_CHECK_MODULES(MOUSE_WAYLAND, wayland-client)
     MATE_WAYLAND_PROTOCOLS_DIR=`$PKG_CONFIG --variable=pkgdatadir mate-wayland-protocols`
     AC_SUBST(MATE_WAYLAND_PROTOCOLS_DIR)
-    AC_DEFINE(HAVE_WAYLAND_PROTOCOLS, 1, [Define to talk to Wayland compositors through the MATE output protocol])
+    AC_DEFINE(HAVE_WAYLAND_PROTOCOLS, 1, [Define to talk to Wayland compositors through the MATE protocols])
     PKG_CHECK_EXISTS([gtk-layer-shell-0],
                      [DISPLAY_WAYLAND_MODULES="$DISPLAY_WAYLAND_MODULES gtk-layer-shell-0"
                       AC_DEFINE(HAVE_GTK_LAYER_SHELL, 1, [Define to label monitors with gtk-layer-shell])])
@@ -352,6 +353,6 @@ Configure summary:
 	Systemd:                           ${have_systemd}
 
         Accountsservice:           ${have_accountsservice}
-        Wayland output protocol:   ${have_wayland_protocols}
+        Wayland protocols:         ${have_wayland_protocols}
         Native Language support:   ${USE_NLS}
 "
