@@ -63,6 +63,7 @@ typedef struct
 } OutputHead;
 
 void     display_heads_free              (GArray     *heads);
+GArray  *display_heads_copy              (GArray     *heads);
 void     display_head_get_preferred_size (OutputHead *head,
                                           int        *width,
                                           int        *height);
