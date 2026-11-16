@@ -27,9 +27,18 @@ G_BEGIN_DECLS
 #include <X11/extensions/XInput.h>
 #include <X11/extensions/XIproto.h>
 
+#include "msd-input-wayland.h"
+
 gboolean  supports_xinput_devices (void);
 XDevice  *device_is_touchpad      (XDeviceInfo *deviceinfo);
 gboolean  touchpad_is_present     (void);
+/* Without X: whether a listed touchpad cannot click (tap only) */
+gboolean  touchpad_lacks_left_button (void);
+/* Whether the touchpads (or the other pointers) ignore a motion threshold */
+gboolean  pointer_threshold_ignored (gboolean touchpads);
+/* Without X: what the touchpads (or the other pointers) support between them;
+ * FALSE when the compositor does not say or none is plugged in */
+gboolean  pointer_support (gboolean touchpads, InputDeviceDescription *support);
 
 G_END_DECLS
 
