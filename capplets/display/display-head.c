@@ -46,6 +46,29 @@ display_heads_free (GArray *heads)
     g_array_free (heads, TRUE);
 }
 
+GArray *
+display_heads_copy (GArray *heads)
+{
+    GArray *copy = g_array_sized_new (FALSE, FALSE, sizeof (OutputHead), heads->len);
+    guint i;
+
+    for (i = 0; i < heads->len; i++)
+    {
+        OutputHead head = g_array_index (heads, OutputHead, i);
+
+        head.name = g_strdup (head.name);
+        head.description = g_strdup (head.description);
+        head.modes = head.modes ? g_array_copy (head.modes) : NULL;
+        head.grab_info = NULL;
+        head.id = g_strdup (head.id);
+        head.display_name = g_strdup (head.display_name);
+        head.mirror_of = g_strdup (head.mirror_of);
+        g_array_append_val (copy, head);
+    }
+
+    return copy;
+}
+
 void
 display_head_get_preferred_size (OutputHead *head, int *width, int *height)
 {

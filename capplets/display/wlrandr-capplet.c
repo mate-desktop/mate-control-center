@@ -34,6 +34,8 @@
 #define MSD_WLRANDR_SCHEMA        "org.mate.SettingsDaemon.plugins.wlrandr"
 #define SHOW_ICON_KEY             "show-notification-icon"
 #define SNAP_DISTANCE             8
+#define CONFIRM_SECONDS           30
+#define MSD_DOMAIN                "mate-settings-daemon"
 
 typedef struct App App;
 
@@ -72,6 +74,9 @@ struct App
     GtkWidget *area;
     GdkRectangle frame;
     gboolean   mirror;
+    GArray    *reported;               /* OutputHead, as the backend last reported them */
+    GArray    *pending;                /* applied temporarily, waiting for Keep */
+    GArray    *previous;               /* what Restore goes back to */
     gboolean   ignore_gui_changes;
     gboolean   applying;
     GSettings *settings;
@@ -431,6 +436,12 @@ on_heads_changed (GArray *heads, const char *error, gpointer data)
     app->current_head = NULL;
     app->heads = heads;
 
+    if (app->pending == NULL)
+    {
+        display_heads_free (app->reported);
+        app->reported = display_heads_copy (heads);
+    }
+
     for (i = 0; selected && i < heads->len; i++)
     {
         if (g_strcmp0 (get_nth_head (app, i)->name, selected) == 0)
@@ -454,6 +465,94 @@ fetch_configuration (App *app)
         display_backend_refresh (app->backend);
 }
 
+typedef struct
+{
+    GtkWidget *dialog;
+    int        left;
+    guint      source;
+} Countdown;
+
+static void
+countdown_show (Countdown *countdown)
+{
+    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (countdown->dialog),
+                                              g_dngettext (MSD_DOMAIN,
+                                                           "The display will be reset to its previous configuration in %d second",
+                                                           "The display will be reset to its previous configuration in %d seconds",
+                                                           countdown->left),
+                                              countdown->left);
+}
+
+static gboolean
+countdown_tick (gpointer data)
+{
+    Countdown *countdown = data;
+
+    if (--countdown->left <= 0)
+    {
+        countdown->source = 0;
+        gtk_dialog_response (GTK_DIALOG (countdown->dialog), GTK_RESPONSE_CANCEL);
+        return G_SOURCE_REMOVE;
+    }
+
+    countdown_show (countdown);
+    return G_SOURCE_CONTINUE;
+}
+
+static gboolean
+ask_to_keep (App *app)
+{
+    Countdown countdown;
+    int response;
+
+    countdown.dialog = gtk_message_dialog_new (GTK_WINDOW (app->dialog),
+                                               GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                               GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
+                                               "%s", g_dgettext (MSD_DOMAIN, "Does the display look OK?"));
+    gtk_dialog_add_buttons (GTK_DIALOG (countdown.dialog),
+                            g_dgettext (MSD_DOMAIN, "_Restore Previous Configuration"), GTK_RESPONSE_CANCEL,
+                            g_dgettext (MSD_DOMAIN, "_Keep This Configuration"), GTK_RESPONSE_ACCEPT,
+                            NULL);
+    gtk_dialog_set_default_response (GTK_DIALOG (countdown.dialog), GTK_RESPONSE_ACCEPT);
+
+    countdown.left = CONFIRM_SECONDS;
+    countdown_show (&countdown);
+    countdown.source = g_timeout_add_seconds (1, countdown_tick, &countdown);
+
+    response = gtk_dialog_run (GTK_DIALOG (countdown.dialog));
+
+    if (countdown.source)
+        g_source_remove (countdown.source);
+    gtk_widget_destroy (countdown.dialog);
+
+    return response == GTK_RESPONSE_ACCEPT;
+}
+
+static void on_configuration_applied (const char *error, gpointer data);
+
+static gboolean
+confirm_configuration (gpointer data)
+{
+    App *app = data;
+    GArray *pending = app->pending;
+    GArray *previous = app->previous;
+    gboolean keep;
+
+    keep = ask_to_keep (app) || previous == NULL;
+
+    app->pending = NULL;
+    app->previous = NULL;
+
+    app->applying = TRUE;
+    gtk_widget_set_sensitive (app->dialog, FALSE);
+    display_backend_apply (app->backend, keep ? pending : previous, FALSE, on_configuration_applied, app);
+
+    display_heads_free (pending);
+    display_heads_free (previous);
+
+    return G_SOURCE_REMOVE;
+}
+
 static void
 on_configuration_applied (const char *error, gpointer data)
 {
@@ -462,7 +561,18 @@ on_configuration_applied (const char *error, gpointer data)
     app->applying = FALSE;
 
     if (error)
+    {
+        display_heads_free (app->pending);
+        display_heads_free (app->previous);
+        app->pending = NULL;
+        app->previous = NULL;
         error_message (app, _("Could not apply the display configuration"), error);
+    }
+    else if (app->pending)
+    {
+        g_idle_add (confirm_configuration, app);
+        return;
+    }
 
     gtk_widget_set_sensitive (app->dialog, TRUE);
 }
@@ -470,13 +580,24 @@ on_configuration_applied (const char *error, gpointer data)
 static void
 apply_configuration (App *app)
 {
+    gboolean temporary;
+
     g_assert (app->backend != NULL);
     g_assert (app->applying == FALSE);
+
+    temporary = (display_backend_get_features (app->backend) & DISPLAY_BACKEND_TEMPORARY) != 0;
 
     app->applying = TRUE;
     display_layout_normalize (app->heads);
     gtk_widget_set_sensitive (app->dialog, FALSE);
-    display_backend_apply (app->backend, app->heads, FALSE, on_configuration_applied, app);
+
+    if (temporary)
+    {
+        app->pending = display_heads_copy (app->heads);
+        app->previous = app->reported ? display_heads_copy (app->reported) : NULL;
+    }
+
+    display_backend_apply (app->backend, app->heads, temporary, on_configuration_applied, app);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1745,6 +1866,7 @@ wlrandr_capplet_main (int argc, char **argv)
     display_backend_free (app->backend);
 
     free_heads (app);
+    display_heads_free (app->reported);
 
     if (app->dialog)
         gtk_widget_destroy (app->dialog);
