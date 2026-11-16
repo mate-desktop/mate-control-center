@@ -33,6 +33,8 @@ mate_display_properties_SOURCES =	\
 	display-backend-wlrandr.c	\
 	display-head.c			\
 	display-head.h			\
+	display-layout.c		\
+	display-layout.h		\
 	scrollarea.c			\
 	scrollarea.h
 
@@ -45,10 +47,12 @@ mate_display_properties_LDADD = \
 	$(top_builddir)/capplets/common/libcommon.la \
 	$(DISPLAY_CAPPLET_LIBS)
 
-check_PROGRAMS = test-display-head
+check_PROGRAMS = test-display-head test-display-layout
 TESTS = $(check_PROGRAMS)
 test_display_head_SOURCES = test-display-head.c display-head.c display-head.h
 test_display_head_LDADD = $(DISPLAY_CAPPLET_LIBS)
+test_display_layout_SOURCES = test-display-layout.c display-layout.c display-layout.h display-head.c display-head.h
+test_display_layout_LDADD = $(DISPLAY_CAPPLET_LIBS)
 
 mate_display_properties_install_systemwide_SOURCES =	\
 	mate-display-properties-install-systemwide.c
