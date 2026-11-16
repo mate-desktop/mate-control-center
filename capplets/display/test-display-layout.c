@@ -304,6 +304,99 @@ test_validity (void)
     display_heads_free (heads);
 }
 
+static void
+add_mode (OutputHead *head, int width, int height, int rate, gboolean preferred)
+{
+    Mode mode = { width, height, rate, preferred };
+
+    g_array_append_val (head->modes, mode);
+}
+
+static GArray *
+mirror_heads (void)
+{
+    GArray *heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
+    OutputHead *a, *b;
+
+    add_head (heads, "A", 0, 0, 1920, 1080, 0, 1.0);
+    add_head (heads, "B", 1920, 0, 2560, 1440, 1, 2.0);
+    a = nth (heads, 0);
+    b = nth (heads, 1);
+    a->rate = 60000;
+    add_mode (a, 1280, 720, 60000, FALSE);
+    add_mode (a, 1024, 768, 60000, FALSE);
+    b->rate = 60000;
+    add_mode (b, 1920, 1080, 60000, FALSE);
+    add_mode (b, 1920, 1080, 74973, FALSE);
+    add_mode (b, 1024, 768, 60000, FALSE);
+
+    return heads;
+}
+
+static void
+test_clone_size (void)
+{
+    GArray *heads = mirror_heads ();
+    OutputHead *c;
+    int w = 0, h = 0;
+
+    g_assert_true (display_heads_get_clone_size (heads, &w, &h));
+    g_assert_cmpint (w, ==, 1920);
+    g_assert_cmpint (h, ==, 1080);
+    g_assert_true (display_heads_have_size (heads, 1024, 768));
+    g_assert_false (display_heads_have_size (heads, 1280, 720));
+
+    c = add_head (heads, "C", 0, 0, 800, 600, 0, 1.0);
+    c->enabled = FALSE;
+    g_assert_false (display_heads_get_clone_size (heads, &w, &h));
+
+    display_heads_free (heads);
+
+    heads = g_array_new (FALSE, FALSE, sizeof (OutputHead));
+    add_head (heads, "A", 0, 0, 1920, 1080, 0, 1.0);
+    g_assert_false (display_heads_get_clone_size (heads, &w, &h));
+    display_heads_free (heads);
+}
+
+static void
+test_mirror (void)
+{
+    GArray *heads = mirror_heads ();
+    OutputHead *c;
+
+    c = add_head (heads, "C", 0, 0, 1920, 1080, 0, 1.5);
+    c->enabled = FALSE;
+    c->rate = 50000;
+    add_mode (c, 1920, 1080, 50000, FALSE);
+    g_assert_false (display_heads_are_mirrored (heads));
+
+    display_heads_mirror (heads, 1920, 1080);
+
+    g_assert_true (display_heads_are_mirrored (heads));
+    g_assert_true (display_layout_is_valid (heads));
+    g_assert_true (nth (heads, 2)->enabled);
+    g_assert_cmpint (nth (heads, 0)->rate, ==, 60000);
+    g_assert_cmpint (nth (heads, 1)->rate, ==, 74973);
+    g_assert_cmpint (nth (heads, 2)->rate, ==, 60000);
+    g_assert_cmpint (nth (heads, 1)->transform, ==, 0);
+    g_assert_cmpfloat (nth (heads, 1)->scale, ==, 1.0);
+    g_assert_cmpfloat (nth (heads, 2)->scale, ==, 1.0);
+    assert_at (nth (heads, 1), 0, 0);
+
+    display_heads_unmirror (heads);
+    g_assert_false (display_heads_are_mirrored (heads));
+    assert_at (nth (heads, 0), 0, 0);
+    assert_at (nth (heads, 1), 1920, 0);
+    assert_at (nth (heads, 2), 3840, 0);
+    g_assert_true (display_layout_is_valid (heads));
+
+    nth (heads, 2)->enabled = FALSE;
+    nth (heads, 1)->enabled = FALSE;
+    g_assert_false (display_heads_are_mirrored (heads));
+
+    display_heads_free (heads);
+}
+
 int
 main (int argc, char **argv)
 {
@@ -322,6 +415,8 @@ main (int argc, char **argv)
     g_test_add_func ("/display-layout/resized", test_resized);
     g_test_add_func ("/display-layout/normalize", test_normalize);
     g_test_add_func ("/display-layout/validity", test_validity);
+    g_test_add_func ("/display-layout/clone-size", test_clone_size);
+    g_test_add_func ("/display-layout/mirror", test_mirror);
 
     return g_test_run ();
 }

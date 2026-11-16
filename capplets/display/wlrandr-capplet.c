@@ -65,11 +65,13 @@ struct App
     GtkWidget *show_icon_checkbox;
     GtkWidget *adaptive_sync_checkbox;
     GtkWidget *primary_button;
+    GtkWidget *clone_checkbox;
     GtkWidget *make_default_button;
     GtkWidget *detect_displays_button;
 
     GtkWidget *area;
     GdkRectangle frame;
+    gboolean   mirror;
     gboolean   ignore_gui_changes;
     gboolean   applying;
     GSettings *settings;
@@ -87,6 +89,7 @@ static void fetch_configuration (App *app);
 static void on_rate_changed (GtkComboBox *box, gpointer data);
 static void monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data);
 static void select_default_head (App *app);
+static void on_clone_changed (GtkToggleButton *toggle, gpointer data);
 static void on_adaptive_sync_toggled (GtkToggleButton *toggle, gpointer data);
 static void rebuild_adaptive_sync_checkbox (App *app);
 
@@ -117,6 +120,13 @@ has_primary (App *app)
 {
     return app->backend != NULL &&
            (display_backend_get_features (app->backend) & DISPLAY_BACKEND_PRIMARY) != 0;
+}
+
+static gboolean
+has_mirror (App *app)
+{
+    return app->backend != NULL &&
+           (display_backend_get_features (app->backend) & DISPLAY_BACKEND_MIRROR) != 0;
 }
 
 static OutputHead *
@@ -365,6 +375,42 @@ free_heads (App *app)
     app->heads = NULL;
 }
 
+static OutputHead *
+first_enabled_head (App *app)
+{
+    guint i;
+
+    for (i = 0; i < app->heads->len; i++)
+        if (get_nth_head (app, i)->enabled)
+            return get_nth_head (app, i);
+
+    return NULL;
+}
+
+static gboolean
+reported_mirror (App *app)
+{
+    const char *source = NULL;
+    guint i, enabled = 0;
+
+    for (i = 0; i < app->heads->len; i++)
+    {
+        OutputHead *head = get_nth_head (app, i);
+
+        if (!head->enabled)
+            continue;
+
+        if (head->mirror_of == NULL || head->mirror_of[0] == '\0' ||
+            (source != NULL && g_strcmp0 (source, head->mirror_of) != 0))
+            return FALSE;
+
+        source = head->mirror_of;
+        enabled++;
+    }
+
+    return enabled >= 2;
+}
+
 static void
 on_heads_changed (GArray *heads, const char *error, gpointer data)
 {
@@ -392,6 +438,9 @@ on_heads_changed (GArray *heads, const char *error, gpointer data)
     }
     g_free (selected);
 
+    app->mirror = has_mirror (app) && reported_mirror (app);
+    if (app->mirror)
+        app->current_head = first_enabled_head (app);
     select_default_head (app);
 
     rebuild_gui (app);
@@ -481,7 +530,10 @@ rebuild_current_monitor_label (App *app)
         const char *name = app->current_head->description && app->current_head->description[0] ?
                            app->current_head->description : app->current_head->name;
 
-        tmp = g_strdup_printf (_("Monitor: %s"), name);
+        if (app->mirror)
+            tmp = g_strdup (_("Mirror Screens"));
+        else
+            tmp = g_strdup_printf (_("Monitor: %s"), name);
 
         str = g_strdup_printf ("<b>%s</b>", tmp);
         use_color = TRUE;
@@ -534,7 +586,7 @@ rebuild_on_off_radios (App *app)
     on_active = FALSE;
     off_active = FALSE;
 
-    if (app->current_head)
+    if (app->current_head && !app->mirror)
     {
         if (count_active_outputs (app) > 1 || !app->current_head->enabled)
             sensitive = TRUE;
@@ -574,6 +626,9 @@ rebuild_resolution_combo (App *app)
     for (i = 0; i < app->current_head->modes->len; i++)
     {
         Mode *mode = &g_array_index (app->current_head->modes, Mode, i);
+
+        if (app->mirror && !display_heads_have_size (app->heads, mode->width, mode->height))
+            continue;
 
         add_key (app->resolution_combo,
                  make_resolution_string (mode->width, mode->height),
@@ -730,6 +785,22 @@ rebuild_adaptive_sync_checkbox (App *app)
 }
 
 static void
+rebuild_clone_checkbox (App *app)
+{
+    int width, height;
+
+    g_signal_handlers_block_by_func (app->clone_checkbox, G_CALLBACK (on_clone_changed), app);
+
+    gtk_widget_set_visible (app->clone_checkbox, has_mirror (app));
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (app->clone_checkbox), app->mirror);
+    gtk_widget_set_sensitive (app->clone_checkbox,
+                              app->mirror ||
+                              (app->heads && display_heads_get_clone_size (app->heads, &width, &height)));
+
+    g_signal_handlers_unblock_by_func (app->clone_checkbox, G_CALLBACK (on_clone_changed), app);
+}
+
+static void
 rebuild_gui (App *app)
 {
     g_assert (app->ignore_gui_changes == FALSE);
@@ -750,8 +821,9 @@ rebuild_gui (App *app)
     gtk_widget_set_sensitive (app->panel_checkbox, FALSE);
     gtk_widget_set_visible (app->primary_button, has_primary (app));
     gtk_widget_set_sensitive (app->primary_button,
-                              has_primary (app) && app->current_head &&
+                              has_primary (app) && !app->mirror && app->current_head &&
                               app->current_head->enabled && !app->current_head->primary);
+    rebuild_clone_checkbox (app);
     gtk_widget_set_sensitive (app->make_default_button, FALSE);
 
     app->ignore_gui_changes = FALSE;
@@ -878,7 +950,9 @@ on_resolution_changed (GtkComboBox *box, gpointer data)
             app->current_head->enabled = TRUE;
     }
 
-    if (app->current_head->enabled)
+    if (app->mirror)
+        display_heads_mirror (app->heads, width, height);
+    else if (app->current_head->enabled)
         display_layout_resized (app->heads, app->current_head, old_width, old_height);
     else
         display_layout_tidy (app->heads, NULL);
@@ -914,10 +988,23 @@ on_rotation_changed (GtkComboBox *box, gpointer data)
         return;
 
     display_head_get_logical_size (app->current_head, &old_width, &old_height);
-    if (get_mode (app->rotation_combo, NULL, NULL, NULL, &transform))
+    if (!get_mode (app->rotation_combo, NULL, NULL, NULL, &transform))
+        return;
+
+    if (app->mirror)
+    {
+        guint i;
+
+        for (i = 0; i < app->heads->len; i++)
+            if (get_nth_head (app, i)->enabled)
+                head_set_transform (get_nth_head (app, i), transform);
+    }
+    else
+    {
         head_set_transform (app->current_head, transform);
-    if (app->current_head->enabled)
-        display_layout_resized (app->heads, app->current_head, old_width, old_height);
+        if (app->current_head->enabled)
+            display_layout_resized (app->heads, app->current_head, old_width, old_height);
+    }
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
@@ -944,12 +1031,50 @@ on_scale_changed (GtkComboBox *box, gpointer data)
 
     if (text)
     {
-        app->current_head->scale = g_ascii_strtod (text, NULL);
+        double scale = g_ascii_strtod (text, NULL);
+        guint i;
+
         g_free (text);
+        for (i = 0; i < app->heads->len; i++)
+        {
+            OutputHead *head = get_nth_head (app, i);
+
+            if (head == app->current_head || (app->mirror && head->enabled))
+                head->scale = scale;
+        }
     }
-    if (app->current_head->enabled)
+    if (!app->mirror && app->current_head->enabled)
         display_layout_resized (app->heads, app->current_head, old_width, old_height);
 
+    foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
+}
+
+static void
+on_clone_changed (GtkToggleButton *toggle, gpointer data)
+{
+    App *app = data;
+    int width, height;
+
+    if (app->ignore_gui_changes || app->heads == NULL)
+        return;
+
+    if (gtk_toggle_button_get_active (toggle))
+    {
+        if (!display_heads_get_clone_size (app->heads, &width, &height))
+            return;
+
+        display_heads_mirror (app->heads, width, height);
+        app->mirror = TRUE;
+        app->current_head = first_enabled_head (app);
+    }
+    else
+    {
+        app->mirror = FALSE;
+        display_heads_unmirror (app->heads);
+        display_layout_tidy (app->heads, NULL);
+    }
+
+    rebuild_gui (app);
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
 
@@ -1017,6 +1142,16 @@ get_display_name (App *app, OutputHead *head)
     PangoLayout *layout;
 
     const char *state = !head->enabled ? _("Off") : has_primary (app) && head->primary ? _("Primary") : NULL;
+
+    if (app->mirror && head->enabled)
+    {
+        layout = gtk_widget_create_pango_layout (GTK_WIDGET (app->area), NULL);
+        text = g_markup_printf_escaped ("<b>%s</b>", _("Mirror Screens"));
+        pango_layout_set_markup (layout, text, -1);
+        g_free (text);
+        pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
+        return layout;
+    }
 
     text = g_markup_printf_escaped ("<b>%s</b>\n<small>%s</small>%s%s",
                                     head->description && head->description[0] ? head->description : head->name,
@@ -1106,7 +1241,7 @@ on_area_key_press (GtkWidget *widget, GdkEventKey *event, gpointer data)
         return FALSE;
     }
 
-    if (head == NULL || !head->enabled || count_active_outputs (app) < 2 ||
+    if (head == NULL || !head->enabled || app->mirror || count_active_outputs (app) < 2 ||
         foo_scroll_area_is_grabbed (FOO_SCROLL_AREA (widget)))
         return TRUE;
 
@@ -1125,7 +1260,7 @@ on_output_event (FooScrollArea      *area,
     OutputHead *head = data;
     App *app = g_object_get_data (G_OBJECT (area), "app");
 
-    if (head->enabled && count_active_outputs (app) > 1)
+    if (head->enabled && !app->mirror && count_active_outputs (app) > 1)
         set_cursor (GTK_WIDGET (area), GDK_FLEUR);
     else
         set_cursor (GTK_WIDGET (area), GDK_ARROW);
@@ -1140,7 +1275,7 @@ on_output_event (FooScrollArea      *area,
         rebuild_gui (app);
         set_monitors_tooltip (app, TRUE);
 
-        if (head->enabled && count_active_outputs (app) > 1)
+        if (head->enabled && !app->mirror && count_active_outputs (app) > 1)
         {
             foo_scroll_area_begin_grab (area, on_output_event, data);
 
@@ -1356,7 +1491,13 @@ on_area_paint (FooScrollArea *area,
     update_frame (app);
 
     for (i = 0; i < app->heads->len; i++)
+    {
+        OutputHead *head = get_nth_head (app, i);
+
+        if (app->mirror && head->enabled && head != first_enabled_head (app))
+            continue;
         paint_head (app, cr, i);
+    }
 }
 
 static void
@@ -1496,8 +1637,9 @@ run_application (App *app)
     g_signal_connect (app->detect_displays_button, "clicked",
                       G_CALLBACK (on_detect_displays), app);
 
-    /* Mirroring is not supported by the wlr-output-management protocol. */
-    gtk_widget_hide (_gtk_builder_get_widget (builder, "clone_checkbox"));
+    app->clone_checkbox = _gtk_builder_get_widget (builder, "clone_checkbox");
+    gtk_widget_hide (app->clone_checkbox);
+    g_signal_connect (app->clone_checkbox, "toggled", G_CALLBACK (on_clone_changed), app);
 
     app->primary_button = _gtk_builder_get_widget (builder, "primary_button");
     g_signal_connect (app->primary_button, "clicked", G_CALLBACK (set_primary), app);

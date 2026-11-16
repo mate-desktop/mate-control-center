@@ -576,3 +576,159 @@ display_layout_is_valid (GArray *heads)
     g_array_free (items, TRUE);
     return valid;
 }
+
+static gboolean
+head_has_size (OutputHead *head, int width, int height)
+{
+    guint i;
+
+    for (i = 0; i < head->modes->len; i++)
+    {
+        Mode *mode = &g_array_index (head->modes, Mode, i);
+
+        if (mode->width == width && mode->height == height)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+gboolean
+display_heads_have_size (GArray *heads, int width, int height)
+{
+    guint i;
+
+    for (i = 0; i < heads->len; i++)
+        if (!head_has_size (&g_array_index (heads, OutputHead, i), width, height))
+            return FALSE;
+
+    return heads->len > 0;
+}
+
+gboolean
+display_heads_get_clone_size (GArray *heads, int *width, int *height)
+{
+    OutputHead *first;
+    int best_w = 0, best_h = 0;
+    guint i;
+
+    if (heads->len < 2)
+        return FALSE;
+
+    first = &g_array_index (heads, OutputHead, 0);
+    for (i = 0; i < first->modes->len; i++)
+    {
+        Mode *mode = &g_array_index (first->modes, Mode, i);
+
+        if ((gint64) mode->width * mode->height > (gint64) best_w * best_h &&
+            display_heads_have_size (heads, mode->width, mode->height))
+        {
+            best_w = mode->width;
+            best_h = mode->height;
+        }
+    }
+
+    if (best_w <= 0 || best_h <= 0)
+        return FALSE;
+
+    *width = best_w;
+    *height = best_h;
+    return TRUE;
+}
+
+static int
+rate_for_size (OutputHead *head, int width, int height)
+{
+    int highest = 0;
+    int preferred = 0;
+    guint i;
+
+    for (i = 0; i < head->modes->len; i++)
+    {
+        Mode *mode = &g_array_index (head->modes, Mode, i);
+
+        if (mode->width != width || mode->height != height)
+            continue;
+
+        if (head->enabled && mode->rate == head->rate &&
+            head->width == width && head->height == height)
+            return mode->rate;
+
+        if (mode->preferred)
+            preferred = mode->rate;
+        highest = MAX (highest, mode->rate);
+    }
+
+    return preferred ? preferred : highest;
+}
+
+void
+display_heads_mirror (GArray *heads, int width, int height)
+{
+    double scale = 0.0;
+    guint i;
+
+    for (i = 0; i < heads->len && scale <= 0.0; i++)
+    {
+        OutputHead *head = &g_array_index (heads, OutputHead, i);
+
+        if (head->enabled)
+            scale = head->scale;
+    }
+
+    if (scale <= 0.0)
+        scale = 1.0;
+
+    for (i = 0; i < heads->len; i++)
+    {
+        OutputHead *head = &g_array_index (heads, OutputHead, i);
+
+        if (!head_has_size (head, width, height))
+            continue;
+
+        head->rate = rate_for_size (head, width, height);
+        head->enabled = TRUE;
+        head->width = width;
+        head->height = height;
+        head->x = 0;
+        head->y = 0;
+        head->transform = 0;
+        head->scale = scale;
+    }
+}
+
+void
+display_heads_unmirror (GArray *heads)
+{
+    int x = 0;
+    guint i;
+
+    for (i = 0; i < heads->len; i++)
+    {
+        OutputHead *head = &g_array_index (heads, OutputHead, i);
+        int w, h;
+
+        if (!head->enabled)
+            continue;
+
+        display_head_get_logical_size (head, &w, &h);
+        head->x = x;
+        head->y = 0;
+        x += w;
+    }
+}
+
+gboolean
+display_heads_are_mirrored (GArray *heads)
+{
+    GArray *items = collect (heads);
+    gboolean mirrored = items->len >= 2;
+    guint i;
+
+    for (i = 1; i < items->len && mirrored; i++)
+        if (!same (&item_at (items, 0)->rect, &item_at (items, i)->rect))
+            mirrored = FALSE;
+
+    g_array_free (items, TRUE);
+    return mirrored;
+}
