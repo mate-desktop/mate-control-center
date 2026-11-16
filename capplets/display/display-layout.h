@@ -51,6 +51,22 @@ void     display_layout_resized   (GArray     *heads,
 void     display_layout_normalize (GArray     *heads);
 gboolean display_layout_is_valid  (GArray     *heads);
 
+/* The largest size every head has a mode for; FALSE with fewer than two heads. */
+gboolean display_heads_get_clone_size (GArray *heads,
+                                       int    *width,
+                                       int    *height);
+gboolean display_heads_have_size      (GArray *heads,
+                                       int     width,
+                                       int     height);
+/* Every head on at 0,0 in @width x @height, unrotated, at one scale. */
+void     display_heads_mirror         (GArray *heads,
+                                       int     width,
+                                       int     height);
+/* The enabled heads side by side, in list order. */
+void     display_heads_unmirror       (GArray *heads);
+/* At least two enabled heads, all with the same rectangle. */
+gboolean display_heads_are_mirrored   (GArray *heads);
+
 G_END_DECLS
 
 #endif
