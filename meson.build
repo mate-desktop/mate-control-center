@@ -92,6 +92,15 @@ enable_accountsservice = get_option('accountsservice')
 accounts_dep = dependency('accountsservice', version: '>= 0.6.39', required: enable_accountsservice)
 config_h.set10('HAVE_ACCOUNTSSERVICE', accounts_dep.found())
 
+wayland_option = get_option('wayland')
+wayland_client_dep = dependency('wayland-client', required: wayland_option)
+wayland_scanner = find_program('wayland-scanner', native: true, required: wayland_option)
+mate_wayland_protocols_dep = dependency('mate-wayland-protocols', required: wayland_option)
+have_wayland_protocols = wayland_client_dep.found() and wayland_scanner.found() and mate_wayland_protocols_dep.found()
+if have_wayland_protocols
+  config_h.set('HAVE_WAYLAND_PROTOCOLS', 1)
+endif
+
 common_deps = [
   gio_dep,
   xcursor_dep,

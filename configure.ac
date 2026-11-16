@@ -192,7 +192,31 @@ PKG_CHECK_MODULES(FONT_VIEWER, $COMMON_MODULES fontconfig freetype2 mate-desktop
 
 PKG_CHECK_MODULES(AT_CAPPLET, $COMMON_MODULES)
 
-PKG_CHECK_MODULES(DISPLAY_CAPPLET, $COMMON_MODULES)
+AC_ARG_ENABLE([wayland],
+              AS_HELP_STRING([--disable-wayland], [do not talk to Wayland compositors through the MATE output protocol]),
+              [enable_wayland=$enableval],
+              [enable_wayland=auto])
+have_wayland_protocols=no
+DISPLAY_WAYLAND_MODULES=
+if test "x$enable_wayland" != "xno"; then
+    PKG_CHECK_EXISTS([wayland-client mate-wayland-protocols], [have_wayland_protocols=yes])
+    AC_PATH_PROG([WAYLAND_SCANNER], [wayland-scanner])
+    if test -z "$WAYLAND_SCANNER"; then
+        have_wayland_protocols=no
+    fi
+    if test "x$enable_wayland" = "xyes" && test "x$have_wayland_protocols" = "xno"; then
+        AC_MSG_ERROR([Wayland support needs wayland-client, wayland-scanner and mate-wayland-protocols])
+    fi
+fi
+if test "x$have_wayland_protocols" = "xyes"; then
+    DISPLAY_WAYLAND_MODULES=wayland-client
+    MATE_WAYLAND_PROTOCOLS_DIR=`$PKG_CONFIG --variable=pkgdatadir mate-wayland-protocols`
+    AC_SUBST(MATE_WAYLAND_PROTOCOLS_DIR)
+    AC_DEFINE(HAVE_WAYLAND_PROTOCOLS, 1, [Define to talk to Wayland compositors through the MATE output protocol])
+fi
+AM_CONDITIONAL(HAVE_WAYLAND_PROTOCOLS, [test "x$have_wayland_protocols" = "xyes"])
+
+PKG_CHECK_MODULES(DISPLAY_CAPPLET, $COMMON_MODULES $DISPLAY_WAYLAND_MODULES)
 DISPLAY_CAPPLET_LIBS="$DISPLAY_CAPPLET_LIBS"
 
 CAPPLET_LIBS="$CAPPLET_LIBS $x_libs"
@@ -325,5 +349,6 @@ Configure summary:
 	Systemd:                           ${have_systemd}
 
         Accountsservice:           ${have_accountsservice}
+        Wayland output protocol:   ${have_wayland_protocols}
         Native Language support:   ${USE_NLS}
 "
