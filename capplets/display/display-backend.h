@@ -22,45 +22,9 @@
 
 #include <glib.h>
 
+#include "display-head.h"
+
 G_BEGIN_DECLS
-
-typedef struct
-{
-    int       width;
-    int       height;
-    int       rate;                    /* mHz */
-    gboolean  preferred;
-} Mode;
-
-typedef struct GrabInfo GrabInfo;
-
-typedef struct
-{
-    char       *name;                  /* connector */
-    char       *description;
-    gboolean    enabled;
-    int         x;
-    int         y;
-    int         transform;             /* wl_output.transform value */
-    double      scale;
-    int         adaptive_sync_supported;  /* -1 unknown, 0 no, 1 yes */
-    gboolean    adaptive_sync;
-    int         width;                 /* current mode */
-    int         height;
-    int         rate;
-    gboolean    preferred;
-    GArray     *modes;                 /* Mode */
-    GrabInfo   *grab_info;
-
-    /* Only with DISPLAY_BACKEND_IDENTITY (else NULL or FALSE). */
-    char       *id;
-    char       *display_name;
-    gboolean    internal;
-    /* With DISPLAY_BACKEND_PRIMARY: read, and applied by display_backend_apply (). */
-    gboolean    primary;
-    /* With DISPLAY_BACKEND_MIRROR: the id of the head whose picture this one shows. */
-    char       *mirror_of;
-} OutputHead;
 
 typedef enum
 {
@@ -94,15 +58,6 @@ void            display_backend_apply        (DisplayBackend            *backend
                                               DisplayBackendAppliedFunc  done,
                                               gpointer                   data);
 void            display_backend_free         (DisplayBackend            *backend);
-
-void            display_heads_free           (GArray                    *heads);
-void            display_head_get_preferred_size (OutputHead             *head,
-                                                 int                    *width,
-                                                 int                    *height);
-gboolean        display_head_has_mode        (OutputHead                *head,
-                                              int                        width,
-                                              int                        height,
-                                              int                        rate);
 
 /* Backend implementations, behind display_backend_new (). */
 struct DisplayBackend

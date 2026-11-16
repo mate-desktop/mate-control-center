@@ -224,25 +224,7 @@ wlrandr_apply (DisplayBackend            *backend,
         int width = 0, height = 0;
 
         if (head->enabled)
-        {
-            if (head->width > 0 && head->height > 0)
-            {
-                width = head->width;
-                height = head->height;
-            }
-            else
-            {
-                display_head_get_preferred_size (head, &width, &height);
-            }
-
-            if (head->transform & 1)
-            {
-                int tmp = height;
-
-                height = width;
-                width = tmp;
-            }
-        }
+            display_head_get_size (head, &width, &height);
 
         g_variant_builder_add (&builder, HEAD_SET_FORMAT,
                                head->name, head->enabled, width, height, head->rate,

@@ -125,47 +125,6 @@ head_set_transform (OutputHead *head, int transform)
     head->transform = transform & 0x3;
 }
 
-static void
-get_geometry (OutputHead *head, int *w, int *h)
-{
-    if (head->enabled && head->width > 0 && head->height > 0)
-    {
-        *w = head->width;
-        *h = head->height;
-    }
-    else
-    {
-        display_head_get_preferred_size (head, w, h);
-    }
-
-    if (head->transform & 1)
-    {
-        int tmp;
-
-        tmp = *h;
-        *h = *w;
-        *w = tmp;
-    }
-}
-
-/* Head sizes are reported in physical pixels while head positions are
- * given in logical pixels.  The preview must
- * divide the physical size by the output's scale to stay in the same
- * coordinate space as the positions; otherwise the arrangement is drawn
- * off-center and clipped on scaled outputs.
- */
-static void
-get_geometry_scaled (OutputHead *head, int *w, int *h)
-{
-    get_geometry (head, w, h);
-
-    if (head->scale > 0.0)
-    {
-        *w = (int) ((double) *w / head->scale + 0.5);
-        *h = (int) ((double) *h / head->scale + 0.5);
-    }
-}
-
 static int
 count_active_outputs (App *app)
 {
@@ -203,7 +162,7 @@ list_heads (App *app, int *total_w, int *total_h)
 
         result = g_list_prepend (result, head);
 
-        get_geometry_scaled (head, &w, &h);
+        display_head_get_logical_size (head, &w, &h);
 
         *total_w += w;
         *total_h += h;
@@ -630,7 +589,7 @@ rebuild_resolution_combo (App *app)
                  mode->width, mode->height, 0, -1);
     }
 
-    get_geometry (app->current_head, &width, &height);
+    display_head_get_size (app->current_head, &width, &height);
 
     if (!combo_select (app->resolution_combo, make_resolution_string (width, height)))
     {
@@ -668,7 +627,7 @@ rebuild_rate_combo (App *app)
 
     gtk_widget_set_sensitive (app->refresh_combo, TRUE);
 
-    get_geometry (app->current_head, &output_width, &output_height);
+    display_head_get_size (app->current_head, &output_width, &output_height);
 
     for (i = 0; i < app->current_head->modes->len; i++)
     {
@@ -882,7 +841,7 @@ realign_outputs_after_resolution_change (App *app, OutputHead *head_that_changed
 
     x = head_that_changed->x;
     y = head_that_changed->y;
-    get_geometry (head_that_changed, &width, &height);
+    display_head_get_size (head_that_changed, &width, &height);
     if (width == old_width && height == old_height)
         return;
 
@@ -903,7 +862,7 @@ realign_outputs_after_resolution_change (App *app, OutputHead *head_that_changed
 
         output_x = head->x;
         output_y = head->y;
-        get_geometry (head, &output_width, &output_height);
+        display_head_get_size (head, &output_width, &output_height);
 
         if (output_x >= old_right_edge)
             output_x += dx;
@@ -931,7 +890,7 @@ on_resolution_changed (GtkComboBox *box, gpointer data)
     if (!app->current_head)
         return;
 
-    get_geometry (app->current_head, &old_width, &old_height);
+    display_head_get_size (app->current_head, &old_width, &old_height);
 
     if (get_mode (app->resolution_combo, &width, &height, NULL, NULL))
     {
@@ -1152,7 +1111,7 @@ list_edges_for_output (OutputHead *head, GArray *edges)
 
     x = head->x;
     y = head->y;
-    get_geometry_scaled (head, &w, &h);
+    display_head_get_logical_size (head, &w, &h);
 
     /* Top, Bottom, Left, Right */
     add_edge (head, x, y, x + w, y, edges);
@@ -1423,7 +1382,7 @@ on_output_event (FooScrollArea      *area,
             guint i;
             GArray *edges, *snaps;
 
-            get_geometry (head, &width, &height);
+            display_head_get_size (head, &width, &height);
             new_x = info->output_x + (int) ((double)(event->x - info->grab_x) / scale);
             new_y = info->output_y + (int) ((double)(event->y - info->grab_y) / scale);
 
@@ -1551,7 +1510,7 @@ paint_head (App     *app,
 
     foo_scroll_area_get_viewport (FOO_SCROLL_AREA (app->area), &viewport);
 
-    get_geometry_scaled (head, &w, &h);
+    display_head_get_logical_size (head, &w, &h);
 
     viewport.height -= 2 * MARGIN;
     viewport.width -= 2 * MARGIN;
