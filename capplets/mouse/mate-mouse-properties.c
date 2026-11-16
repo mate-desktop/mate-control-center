@@ -171,6 +171,51 @@ orientation_radio_button_toggled (GtkToggleButton *togglebutton,
 	g_settings_set_boolean (mouse_settings, "left-handed", left_handed);
 }
 
+static gboolean
+lacks_fingers (gboolean touchpads, guint fingers)
+{
+	InputDeviceDescription support;
+
+	return pointer_support (touchpads, &support) && support.tap_fingers < fingers;
+}
+
+static void
+grey_out (GtkBuilder *dialog, const char *name, gboolean supported)
+{
+	if (!supported)
+		gtk_widget_set_sensitive (WID (name), FALSE);
+}
+
+/* Without X, grey out what none of the devices supports */
+static void
+grey_unsupported (GtkBuilder *dialog, gboolean touchpads)
+{
+	InputDeviceDescription support;
+
+	if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()) || !pointer_support (touchpads, &support))
+		return;
+
+	if (touchpads) {
+		grey_out (dialog, "tap_to_click_toggle", support.config & INPUT_CONFIG_TAP);
+		grey_out (dialog, "disable_w_typing_toggle", support.config & INPUT_CONFIG_DWT);
+		grey_out (dialog, "natural_scroll_toggle", support.config & INPUT_CONFIG_NATURAL_SCROLL);
+		grey_out (dialog, "vert_edge_scroll_toggle", support.scroll_methods & INPUT_SCROLL_EDGE);
+		grey_out (dialog, "horiz_edge_scroll_toggle", support.scroll_methods & INPUT_SCROLL_EDGE);
+		grey_out (dialog, "vert_twofinger_scroll_toggle", support.scroll_methods & INPUT_SCROLL_TWO_FINGER);
+		grey_out (dialog, "horiz_twofinger_scroll_toggle", support.scroll_methods & INPUT_SCROLL_TWO_FINGER);
+		grey_out (dialog, "touchpad_accel_scale", support.config & INPUT_CONFIG_ACCEL_SPEED);
+		grey_out (dialog, "label6", support.tap_fingers >= 2);
+		grey_out (dialog, "hbox_two_finger_click", support.tap_fingers >= 2);
+	} else {
+		grey_out (dialog, "right_handed_radio", support.config & INPUT_CONFIG_LEFT_HANDED);
+		grey_out (dialog, "left_handed_radio", support.config & INPUT_CONFIG_LEFT_HANDED);
+		grey_out (dialog, "middle_button_emulation_toggle", support.config & INPUT_CONFIG_MIDDLE_EMULATION);
+		grey_out (dialog, "mouse_natural_scroll_toggle", support.config & INPUT_CONFIG_NATURAL_SCROLL);
+		grey_out (dialog, "accel_scale", support.config & INPUT_CONFIG_ACCEL_SPEED);
+		grey_out (dialog, "mouse_accel_profile", support.accel_profiles != 0);
+	}
+}
+
 /* A touchpad without a physical left button needs tap-to-click */
 static void
 force_tap_to_click (GtkBuilder *dialog)
@@ -397,7 +442,7 @@ setup_dialog (GtkBuilder *dialog)
 		/* On Wayland the compositor's libinput fixes a two-finger tap to
 		 * the right button, so with tapping on, two-finger click emulation
 		 * has nothing to choose. */
-		if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ())) {
+		if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ()) && !lacks_fingers (TRUE, 2)) {
 			g_settings_bind (touchpad_settings, "tap-to-click",
 			                 WID ("label6"), "sensitive",
 			                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_INVERT_BOOLEAN);
@@ -418,9 +463,11 @@ setup_dialog (GtkBuilder *dialog)
 			gtk_widget_hide (WID ("hbox31"));
 		}
 
+		grey_unsupported (dialog, TRUE);
 		synaptics_check_capabilities (dialog);
 	}
 
+	grey_unsupported (dialog, FALSE);
 }
 
 /* Callback issued when a button is clicked on the dialog */
