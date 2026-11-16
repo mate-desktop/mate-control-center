@@ -213,6 +213,9 @@ if test "x$have_wayland_protocols" = "xyes"; then
     MATE_WAYLAND_PROTOCOLS_DIR=`$PKG_CONFIG --variable=pkgdatadir mate-wayland-protocols`
     AC_SUBST(MATE_WAYLAND_PROTOCOLS_DIR)
     AC_DEFINE(HAVE_WAYLAND_PROTOCOLS, 1, [Define to talk to Wayland compositors through the MATE output protocol])
+    PKG_CHECK_EXISTS([gtk-layer-shell-0],
+                     [DISPLAY_WAYLAND_MODULES="$DISPLAY_WAYLAND_MODULES gtk-layer-shell-0"
+                      AC_DEFINE(HAVE_GTK_LAYER_SHELL, 1, [Define to label monitors with gtk-layer-shell])])
 fi
 AM_CONDITIONAL(HAVE_WAYLAND_PROTOCOLS, [test "x$have_wayland_protocols" = "xyes"])
 

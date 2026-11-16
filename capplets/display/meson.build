@@ -4,6 +4,7 @@ sources = files(
   'display-backend.c',
   'display-backend-wlrandr.c',
   'display-head.c',
+  'display-labeler.c',
   'display-layout.c',
   'scrollarea.c',
 )
@@ -30,6 +31,9 @@ if have_wayland_protocols
   endforeach
   sources += files('display-backend-protocol.c')
   display_deps += wayland_client_dep
+  if gtk_layer_shell_dep.found()
+    display_deps += gtk_layer_shell_dep
+  endif
 endif
 
 sources += gnome.compile_resources(

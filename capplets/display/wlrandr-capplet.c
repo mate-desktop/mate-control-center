@@ -29,6 +29,7 @@
 
 #include "capplet-util.h"
 #include "display-backend.h"
+#include "display-labeler.h"
 #include "display-layout.h"
 
 #define MSD_WLRANDR_SCHEMA        "org.mate.SettingsDaemon.plugins.wlrandr"
@@ -72,6 +73,7 @@ struct App
     GtkWidget *detect_displays_button;
 
     GtkWidget *area;
+    DisplayLabeler *labeler;
     GdkRectangle frame;
     gboolean   mirror;
     GArray    *reported;               /* OutputHead, as the backend last reported them */
@@ -452,6 +454,8 @@ on_heads_changed (GArray *heads, const char *error, gpointer data)
     app->mirror = has_mirror (app) && reported_mirror (app);
     if (app->mirror)
         app->current_head = first_enabled_head (app);
+    if (app->labeler)
+        display_labeler_show (app->labeler, heads, app->mirror);
     select_default_head (app);
 
     rebuild_gui (app);
@@ -625,18 +629,12 @@ set_override_color (GtkWidget  *widget,
 }
 
 static GdkRGBA
-get_head_color (guint index)
+get_head_color (App *app, guint index)
 {
-    static const GdkRGBA palette[] = {
-        { 0.38, 0.55, 0.79, 1.0 },
-        { 0.55, 0.79, 0.38, 1.0 },
-        { 0.79, 0.38, 0.55, 1.0 },
-        { 0.79, 0.70, 0.38, 1.0 },
-        { 0.38, 0.79, 0.70, 1.0 },
-        { 0.70, 0.38, 0.79, 1.0 },
-    };
+    GdkRGBA color;
 
-    return palette[index % G_N_ELEMENTS (palette)];
+    display_labeler_get_color (index, app->heads ? app->heads->len : 1, &color);
+    return color;
 }
 
 static void
@@ -648,8 +646,7 @@ rebuild_current_monitor_label (App *app)
 
     if (app->current_head)
     {
-        const char *name = app->current_head->description && app->current_head->description[0] ?
-                           app->current_head->description : app->current_head->name;
+        const char *name = display_head_get_label (app->current_head);
 
         if (app->mirror)
             tmp = g_strdup (_("Mirror Screens"));
@@ -672,21 +669,21 @@ rebuild_current_monitor_label (App *app)
     if (use_color)
     {
         guint i;
-        color = get_head_color (0);
+        color = get_head_color (app, 0);
 
         for (i = 0; i < app->heads->len; i++)
         {
             if (get_nth_head (app, i) == app->current_head)
             {
-                color = get_head_color (i);
+                color = get_head_color (app, i);
                 break;
             }
         }
 
         set_override_color (app->current_monitor_event_box, "background-color", &color);
-        color.red = 1.0;
-        color.green = 1.0;
-        color.blue = 1.0;
+        color.red = 0.0;
+        color.green = 0.0;
+        color.blue = 0.0;
         set_override_color (app->current_monitor_label, "color", &color);
     }
 
@@ -1275,7 +1272,7 @@ get_display_name (App *app, OutputHead *head)
     }
 
     text = g_markup_printf_escaped ("<b>%s</b>\n<small>%s</small>%s%s",
-                                    head->description && head->description[0] ? head->description : head->name,
+                                    display_head_get_label (head),
                                     head->name,
                                     state ? "\n" : "",
                                     state ? state : "");
@@ -1532,7 +1529,7 @@ paint_head (App     *app,
     cairo_rectangle (cr, x, y, w * scale + 0.5, h * scale + 0.5);
     cairo_clip_preserve (cr);
 
-    output_color = get_head_color (i);
+    output_color = get_head_color (app, i);
     r = output_color.red;
     g = output_color.green;
     b = output_color.blue;
@@ -1805,6 +1802,7 @@ run_application (App *app)
 
     g_object_unref (builder);
 
+    app->labeler = display_labeler_new ();
     app->backend = display_backend_new (on_heads_changed, app, &error);
     if (app->backend == NULL)
     {
@@ -1864,6 +1862,7 @@ wlrandr_capplet_main (int argc, char **argv)
     run_application (app);
 
     display_backend_free (app->backend);
+    display_labeler_free (app->labeler);
 
     free_heads (app);
     display_heads_free (app->reported);

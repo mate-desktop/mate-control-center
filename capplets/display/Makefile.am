@@ -33,6 +33,8 @@ mate_display_properties_SOURCES =	\
 	display-backend-wlrandr.c	\
 	display-head.c			\
 	display-head.h			\
+	display-labeler.c		\
+	display-labeler.h		\
 	display-layout.c		\
 	display-layout.h		\
 	scrollarea.c			\
