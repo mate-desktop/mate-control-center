@@ -3,6 +3,7 @@ sources = files(
   'wlrandr-capplet.c',
   'display-backend.c',
   'display-backend-wlrandr.c',
+  'display-head.c',
   'scrollarea.c',
 )
 
@@ -54,6 +55,12 @@ executable(
   install : true,
   install_dir : get_option('bindir')
 )
+
+test('display-head', executable('test-display-head',
+  sources : ['test-display-head.c', 'display-head.c'],
+  include_directories: config_inc,
+  dependencies : glib_dep,
+))
 
 executable(
   'mate-display-properties-install-systemwide',
