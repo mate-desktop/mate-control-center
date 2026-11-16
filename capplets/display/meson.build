@@ -4,6 +4,7 @@ sources = files(
   'display-backend.c',
   'display-backend-wlrandr.c',
   'display-head.c',
+  'display-layout.c',
   'scrollarea.c',
 )
 
@@ -58,6 +59,12 @@ executable(
 
 test('display-head', executable('test-display-head',
   sources : ['test-display-head.c', 'display-head.c'],
+  include_directories: config_inc,
+  dependencies : glib_dep,
+))
+
+test('display-layout', executable('test-display-layout',
+  sources : ['test-display-layout.c', 'display-layout.c', 'display-head.c'],
   include_directories: config_inc,
   dependencies : glib_dep,
 ))

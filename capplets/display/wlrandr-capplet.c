@@ -29,9 +29,11 @@
 
 #include "capplet-util.h"
 #include "display-backend.h"
+#include "display-layout.h"
 
 #define MSD_WLRANDR_SCHEMA        "org.mate.SettingsDaemon.plugins.wlrandr"
 #define SHOW_ICON_KEY             "show-notification-icon"
+#define SNAP_DISTANCE             8
 
 typedef struct App App;
 
@@ -416,6 +418,7 @@ apply_configuration (App *app)
     g_assert (app->applying == FALSE);
 
     app->applying = TRUE;
+    display_layout_normalize (app->heads);
     gtk_widget_set_sensitive (app->dialog, FALSE);
     display_backend_apply (app->backend, app->heads, FALSE, on_configuration_applied, app);
 }
@@ -808,59 +811,10 @@ monitor_on_off_toggled_cb (GtkToggleButton *toggle, gpointer data)
         select_resolution_for_current_output (app); /* The refresh rate will be picked in rebuild_rate_combo() */
         display_heads_place_turned_on (app->heads, app->current_head);
     }
+    display_layout_tidy (app->heads, NULL);
 
     rebuild_gui (app);
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
-}
-
-static void
-realign_outputs_after_resolution_change (App *app, OutputHead *head_that_changed, int old_width, int old_height)
-{
-    int i;
-    int old_right_edge, old_bottom_edge;
-    int dx, dy;
-    int x, y, width, height;
-
-    g_assert (app->heads != NULL);
-
-    x = head_that_changed->x;
-    y = head_that_changed->y;
-    display_head_get_size (head_that_changed, &width, &height);
-    if (width == old_width && height == old_height)
-        return;
-
-    old_right_edge = x + old_width;
-    old_bottom_edge = y + old_height;
-
-    dx = width - old_width;
-    dy = height - old_height;
-
-    for (i = 0; i < (int) app->heads->len; i++)
-    {
-        OutputHead *head = get_nth_head (app, i);
-        int output_x, output_y;
-        int output_width, output_height;
-
-        if (head == head_that_changed)
-            continue;
-
-        output_x = head->x;
-        output_y = head->y;
-        display_head_get_size (head, &output_width, &output_height);
-
-        if (output_x >= old_right_edge)
-            output_x += dx;
-        else if (output_x + output_width == old_right_edge)
-            output_x = x + width - output_width;
-
-        if (output_y >= old_bottom_edge)
-            output_y += dy;
-        else if (output_y + output_height == old_bottom_edge)
-            output_y = y + height - output_height;
-
-        head->x = output_x;
-        head->y = output_y;
-    }
 }
 
 static void
@@ -874,7 +828,7 @@ on_resolution_changed (GtkComboBox *box, gpointer data)
     if (!app->current_head)
         return;
 
-    display_head_get_size (app->current_head, &old_width, &old_height);
+    display_head_get_logical_size (app->current_head, &old_width, &old_height);
 
     if (get_mode (app->resolution_combo, &width, &height, NULL, NULL))
     {
@@ -887,7 +841,10 @@ on_resolution_changed (GtkComboBox *box, gpointer data)
             app->current_head->enabled = TRUE;
     }
 
-    realign_outputs_after_resolution_change (app, app->current_head, old_width, old_height);
+    if (app->current_head->enabled)
+        display_layout_resized (app->heads, app->current_head, old_width, old_height);
+    else
+        display_layout_tidy (app->heads, NULL);
 
     rebuild_rate_combo (app);
 
@@ -914,12 +871,16 @@ on_rotation_changed (GtkComboBox *box, gpointer data)
 {
     App *app = data;
     int transform;
+    int old_width, old_height;
 
     if (!app->current_head)
         return;
 
+    display_head_get_logical_size (app->current_head, &old_width, &old_height);
     if (get_mode (app->rotation_combo, NULL, NULL, NULL, &transform))
         head_set_transform (app->current_head, transform);
+    if (app->current_head->enabled)
+        display_layout_resized (app->heads, app->current_head, old_width, old_height);
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
@@ -931,12 +892,15 @@ on_scale_changed (GtkComboBox *box, gpointer data)
     GtkTreeIter iter;
     GtkTreeModel *model;
     gchar *text = NULL;
+    int old_width, old_height;
 
     if (!app->current_head)
         return;
 
     if (!gtk_combo_box_get_active_iter (box, &iter))
         return;
+
+    display_head_get_logical_size (app->current_head, &old_width, &old_height);
 
     model = gtk_combo_box_get_model (box);
     gtk_tree_model_get (model, &iter, 0, &text, -1);
@@ -946,6 +910,8 @@ on_scale_changed (GtkComboBox *box, gpointer data)
         app->current_head->scale = g_ascii_strtod (text, NULL);
         g_free (text);
     }
+    if (app->current_head->enabled)
+        display_layout_resized (app->heads, app->current_head, old_width, old_height);
 
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (app->area));
 }
@@ -1061,269 +1027,45 @@ set_monitors_tooltip (App *app, gboolean is_dragging)
     gtk_widget_set_tooltip_text (app->area, text);
 }
 
-typedef struct Edge
+static gboolean
+on_area_key_press (GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
-    OutputHead *head;
-    int x1, y1;
-    int x2, y2;
-} Edge;
+    App *app = data;
+    OutputHead *head = app->current_head;
+    int step = (event->state & GDK_SHIFT_MASK) ? 10 : 1;
+    int dx = 0, dy = 0;
 
-typedef struct Snap
-{
-    Edge *snapper;              /* Edge that should be snapped */
-    Edge *snappee;
-    int dy, dx;
-} Snap;
-
-static void
-add_edge (OutputHead *head, int x1, int y1, int x2, int y2, GArray *edges)
-{
-    Edge e;
-
-    e.x1 = x1;
-    e.x2 = x2;
-    e.y1 = y1;
-    e.y2 = y2;
-    e.head = head;
-
-    g_array_append_val (edges, e);
-}
-
-static void
-list_edges_for_output (OutputHead *head, GArray *edges)
-{
-    int x, y, w, h;
-
-    x = head->x;
-    y = head->y;
-    display_head_get_logical_size (head, &w, &h);
-
-    /* Top, Bottom, Left, Right */
-    add_edge (head, x, y, x + w, y, edges);
-    add_edge (head, x, y + h, x + w, y + h, edges);
-    add_edge (head, x, y, x, y + h, edges);
-    add_edge (head, x + w, y, x + w, y + h, edges);
-}
-
-static void
-list_edges (App *app, GArray *edges)
-{
-    guint i;
-
-    for (i = 0; i < app->heads->len; i++)
+    switch (event->keyval)
     {
-        if (get_nth_head (app, i)->enabled)
-            list_edges_for_output (get_nth_head (app, i), edges);
-    }
-}
-
-static gboolean
-overlap (int s1, int e1, int s2, int e2)
-{
-    return (!(e1 < s2 || s1 >= e2));
-}
-
-static gboolean
-horizontal_overlap (Edge *snapper, Edge *snappee)
-{
-    if (snapper->y1 != snapper->y2 || snappee->y1 != snappee->y2)
+    case GDK_KEY_Left:
+    case GDK_KEY_KP_Left:
+        dx = -step;
+        break;
+    case GDK_KEY_Right:
+    case GDK_KEY_KP_Right:
+        dx = step;
+        break;
+    case GDK_KEY_Up:
+    case GDK_KEY_KP_Up:
+        dy = -step;
+        break;
+    case GDK_KEY_Down:
+    case GDK_KEY_KP_Down:
+        dy = step;
+        break;
+    default:
         return FALSE;
-
-    return overlap (snapper->x1, snapper->x2, snappee->x1, snappee->x2);
-}
-
-static gboolean
-vertical_overlap (Edge *snapper, Edge *snappee)
-{
-    if (snapper->x1 != snapper->x2 || snappee->x1 != snappee->x2)
-        return FALSE;
-
-    return overlap (snapper->y1, snapper->y2, snappee->y1, snappee->y2);
-}
-
-static void
-add_snap (GArray *snaps, Snap snap)
-{
-    if (ABS (snap.dx) <= 200 || ABS (snap.dy) <= 200)
-        g_array_append_val (snaps, snap);
-}
-
-static void
-add_edge_snaps (Edge *snapper, Edge *snappee, GArray *snaps)
-{
-    Snap snap;
-
-    snap.snapper = snapper;
-    snap.snappee = snappee;
-
-    if (horizontal_overlap (snapper, snappee))
-    {
-        snap.dx = 0;
-        snap.dy = snappee->y1 - snapper->y1;
-
-        add_snap (snaps, snap);
-    }
-    else if (vertical_overlap (snapper, snappee))
-    {
-        snap.dy = 0;
-        snap.dx = snappee->x1 - snapper->x1;
-
-        add_snap (snaps, snap);
     }
 
-    /* Corner snaps */
-    /* 1->1 */
-    snap.dx = snappee->x1 - snapper->x1;
-    snap.dy = snappee->y1 - snapper->y1;
-
-    add_snap (snaps, snap);
-
-    /* 1->2 */
-    snap.dx = snappee->x2 - snapper->x1;
-    snap.dy = snappee->y2 - snapper->y1;
-
-    add_snap (snaps, snap);
-
-    /* 2->2 */
-    snap.dx = snappee->x2 - snapper->x2;
-    snap.dy = snappee->y2 - snapper->y2;
-
-    add_snap (snaps, snap);
-
-    /* 2->1 */
-    snap.dx = snappee->x1 - snapper->x2;
-    snap.dy = snappee->y1 - snapper->y2;
-
-    add_snap (snaps, snap);
-}
-
-static void
-list_snaps (OutputHead *head, GArray *edges, GArray *snaps)
-{
-    guint i;
-
-    for (i = 0; i < edges->len; ++i)
-    {
-        Edge *output_edge = &(g_array_index (edges, Edge, i));
-
-        if (output_edge->head == head)
-        {
-            guint j;
-
-            for (j = 0; j < edges->len; ++j)
-            {
-                Edge *edge = &(g_array_index (edges, Edge, j));
-
-                if (edge->head != head)
-                    add_edge_snaps (output_edge, edge, snaps);
-            }
-        }
-    }
-}
-
-static gboolean
-is_corner_snap (const Snap *s)
-{
-    return s->dx != 0 && s->dy != 0;
-}
-
-static int
-compare_snaps (gconstpointer v1, gconstpointer v2)
-{
-    const Snap *s1 = v1;
-    const Snap *s2 = v2;
-    int sv1 = MAX (ABS (s1->dx), ABS (s1->dy));
-    int sv2 = MAX (ABS (s2->dx), ABS (s2->dy));
-    int d;
-
-    d = sv1 - sv2;
-
-    if (d == 0)
-    {
-        if (is_corner_snap (s1) && !is_corner_snap (s2))
-            return -1;
-        else if (is_corner_snap (s2) && !is_corner_snap (s1))
-            return 1;
-        else
-            return 0;
-    }
-    else
-    {
-        return d;
-    }
-}
-
-static gboolean
-corner_on_edge (int x, int y, Edge *e)
-{
-    if (x == e->x1 && x == e->x2 && y >= e->y1 && y <= e->y2)
+    if (head == NULL || !head->enabled || count_active_outputs (app) < 2 ||
+        foo_scroll_area_is_grabbed (FOO_SCROLL_AREA (widget)))
         return TRUE;
 
-    if (y == e->y1 && y == e->y2 && x >= e->x1 && x <= e->x2)
-        return TRUE;
+    display_layout_move (app->heads, head, head->x + dx, head->y + dy, 0);
+    display_layout_tidy (app->heads, head);
+    foo_scroll_area_invalidate (FOO_SCROLL_AREA (widget));
 
-    return FALSE;
-}
-
-static gboolean
-edges_align (Edge *e1, Edge *e2)
-{
-    if (corner_on_edge (e1->x1, e1->y1, e2))
-        return TRUE;
-
-    if (corner_on_edge (e2->x1, e2->y1, e1))
-        return TRUE;
-
-    return FALSE;
-}
-
-static gboolean
-head_is_aligned (OutputHead *head, GArray *edges)
-{
-    gboolean result = FALSE;
-    guint i;
-
-    for (i = 0; i < edges->len; ++i)
-    {
-        Edge *output_edge = &(g_array_index (edges, Edge, i));
-
-        if (output_edge->head == head)
-        {
-            guint j;
-
-            for (j = 0; j < edges->len; ++j)
-            {
-                Edge *edge = &(g_array_index (edges, Edge, j));
-
-                if ((edge->head != output_edge->head) &&
-                    edges_align (output_edge, edge))
-                {
-                    result = TRUE;
-                    goto done;
-                }
-            }
-        }
-    }
-done:
-
-    return result;
-}
-
-static gboolean
-config_is_aligned (App *app, GArray *edges)
-{
-    guint i;
-    gboolean result = TRUE;
-
-    for (i = 0; i < app->heads->len; i++)
-    {
-        OutputHead *head = get_nth_head (app, i);
-
-        if (head->enabled && !head_is_aligned (head, edges))
-            return FALSE;
-    }
-
-    return result;
+    return TRUE;
 }
 
 static void
@@ -1344,6 +1086,7 @@ on_output_event (FooScrollArea      *area,
         GrabInfo *info;
 
         app->current_head = head;
+        gtk_widget_grab_focus (GTK_WIDGET (area));
 
         rebuild_gui (app);
         set_monitors_tooltip (app, TRUE);
@@ -1369,50 +1112,15 @@ on_output_event (FooScrollArea      *area,
         {
             GrabInfo *info = head->grab_info;
             double scale = compute_scale (app);
-            int width, height;
-            int new_x, new_y;
-            guint i;
-            GArray *edges, *snaps;
 
-            display_head_get_size (head, &width, &height);
-            new_x = info->output_x + (int) ((double)(event->x - info->grab_x) / scale);
-            new_y = info->output_y + (int) ((double)(event->y - info->grab_y) / scale);
-
-            head->x = new_x;
-            head->y = new_y;
-
-            edges = g_array_new (TRUE, TRUE, sizeof (Edge));
-            snaps = g_array_new (TRUE, TRUE, sizeof (Snap));
-
-            list_edges (app, edges);
-            list_snaps (head, edges, snaps);
-
-            g_array_sort (snaps, compare_snaps);
-
-            head->x = new_x;
-            head->y = new_y;
-
-            for (i = 0; i < snaps->len; ++i)
-            {
-                Snap *snap = &(g_array_index (snaps, Snap, i));
-
-                head->x = new_x + snap->dx;
-                head->y = new_y + snap->dy;
-
-                if (config_is_aligned (app, edges))
-                    break;
-                else
-                {
-                    head->x = info->output_x;
-                    head->y = info->output_y;
-                }
-            }
-
-            g_array_free (snaps, TRUE);
-            g_array_free (edges, TRUE);
+            display_layout_move (app->heads, head,
+                                 info->output_x + (int) ((double) (event->x - info->grab_x) / scale),
+                                 info->output_y + (int) ((double) (event->y - info->grab_y) / scale),
+                                 (int) (SNAP_DISTANCE / scale));
 
             if (event->type == FOO_BUTTON_RELEASE)
             {
+                display_layout_tidy (app->heads, head);
                 foo_scroll_area_end_grab (area);
                 set_monitors_tooltip (app, FALSE);
 
@@ -1770,6 +1478,9 @@ run_application (App *app)
 
     /* FIXME: this should be computed dynamically */
     foo_scroll_area_set_min_size (FOO_SCROLL_AREA (app->area), -1, 200);
+    gtk_widget_set_can_focus (app->area, TRUE);
+    g_signal_connect (app->area, "key-press-event",
+                      G_CALLBACK (on_area_key_press), app);
     gtk_widget_show (app->area);
     g_signal_connect (app->area, "paint",
                       G_CALLBACK (on_area_paint), app);
