@@ -1,6 +1,8 @@
 sources = files(
   'xrandr-capplet.c',
   'wlrandr-capplet.c',
+  'display-backend.c',
+  'display-backend-wlrandr.c',
   'scrollarea.c',
 )
 

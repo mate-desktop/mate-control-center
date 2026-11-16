@@ -20,6 +20,9 @@ nodist_mate_display_properties_SOURCES = \
 mate_display_properties_SOURCES =	\
 	xrandr-capplet.c		\
 	wlrandr-capplet.c		\
+	display-backend.c		\
+	display-backend.h		\
+	display-backend-wlrandr.c	\
 	scrollarea.c			\
 	scrollarea.h
 
