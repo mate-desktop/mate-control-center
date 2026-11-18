@@ -33,6 +33,9 @@ if HAVE_LIBCANBERRA_GTK
   mate_typing_monitor_LDADD += @LIBCANBERRA_GTK_LIBS@
 endif
 
+# Built by meson only (Wayland idle monitoring)
+EXTRA_DIST = drw-idle-wayland.c drw-idle-wayland.h
+
 imagedir = $(pkgdatadir)/pixmaps
 dist_image_DATA = bar.png bar-red.png bar-green.png bar-disabled.png ocean-stripes.png
 

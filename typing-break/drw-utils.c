@@ -90,6 +90,35 @@ create_tile_pixbuf (GdkPixbuf    *dest_pixbuf,
 	return dest_pixbuf;
 }
 
+/* Size of the screen in logical pixels. An X screen is in device pixels, so it
+ * is divided by the scale; elsewhere (Wayland) use the monitors' bounding box. */
+void
+drw_get_screen_size (GdkScreen *screen,
+		     gint       scale,
+		     gint      *width,
+		     gint      *height)
+{
+	GdkDisplay *display = gdk_screen_get_display (screen);
+
+	if (GDK_IS_X11_DISPLAY (display)) {
+		*width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale;
+		*height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale;
+	} else {
+		gint n_monitors = gdk_display_get_n_monitors (display);
+		gint i;
+
+		*width = 0;
+		*height = 0;
+		for (i = 0; i < n_monitors; i++) {
+			GdkRectangle geometry;
+
+			gdk_monitor_get_geometry (gdk_display_get_monitor (display, i), &geometry);
+			*width = MAX (*width, geometry.x + geometry.width);
+			*height = MAX (*height, geometry.y + geometry.height);
+		}
+	}
+}
+
 static gboolean
 window_draw_event   (GtkWidget      *widget,
 		     cairo_t        *cr,
@@ -128,8 +157,7 @@ set_pixmap_background (GtkWidget *window)
 
 	screen = gtk_widget_get_screen (window);
 	scale = gtk_widget_get_scale_factor (window);
-	width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale;
-	height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale;
+	drw_get_screen_size (screen, scale, &width, &height);
 
 	tmp_pixbuf = gdk_pixbuf_get_from_window (gdk_screen_get_root_window (screen),
 						 0,

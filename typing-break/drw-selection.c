@@ -31,7 +31,11 @@ struct _DrwSelection
 {
 	GdkWindow *owner_window;
 	GtkWidget *invisible;
+	GDBusConnection *bus; /* off X11: holds the single instance name */
+	gboolean   is_master;
 };
+
+#define INSTANCE_BUS_NAME "org.mate.TypingMonitor"
 
 #define SELECTION_NAME "_CODEFACTORY_DRWRIGHT"
 
@@ -166,13 +170,46 @@ drw_selection_filter (GdkXEvent *xevent,
 	return GDK_FILTER_CONTINUE;
 }
 
+/* There is no X selection to claim on Wayland: use a session bus name. */
+static void
+drw_selection_claim_bus_name (DrwSelection *drw_selection)
+{
+	GVariant *reply;
+
+	/* No bus: nothing to arbitrate with, so run as the only instance. */
+	drw_selection->is_master = TRUE;
+	drw_selection->bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+	if (drw_selection->bus == NULL)
+		return;
+
+	/* RequestName with DBUS_NAME_FLAG_DO_NOT_QUEUE (4); reply 1 is primary owner */
+	reply = g_dbus_connection_call_sync (drw_selection->bus,
+					     "org.freedesktop.DBus",
+					     "/org/freedesktop/DBus",
+					     "org.freedesktop.DBus",
+					     "RequestName",
+					     g_variant_new ("(su)", INSTANCE_BUS_NAME, 4),
+					     G_VARIANT_TYPE ("(u)"),
+					     G_DBUS_CALL_FLAGS_NONE,
+					     -1, NULL, NULL);
+	if (reply != NULL) {
+		guint32 result;
+
+		g_variant_get (reply, "(u)", &result);
+		drw_selection->is_master = (result == 1 || result == 4);
+		g_variant_unref (reply);
+	}
+}
+
 DrwSelection *
 drw_selection_start (void)
 {
-	DrwSelection *drw_selection = g_new (DrwSelection, 1);
+	DrwSelection *drw_selection = g_new0 (DrwSelection, 1);
 
-	drw_selection->owner_window = NULL;
-	drw_selection->invisible = NULL;
+	if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ())) {
+		drw_selection_claim_bus_name (drw_selection);
+		return drw_selection;
+	}
 
 	drw_selection_negotiate (drw_selection);
 
@@ -183,11 +220,15 @@ void
 drw_selection_stop (DrwSelection *drw_selection)
 {
 	drw_selection_reset (drw_selection);
+	g_clear_object (&drw_selection->bus);
 	g_free (drw_selection);
 }
 
 gboolean
 drw_selection_is_master (DrwSelection *drw_selection)
 {
+	if (drw_selection->bus != NULL || drw_selection->is_master)
+		return drw_selection->is_master;
+
 	return drw_selection->invisible != NULL;
 }
