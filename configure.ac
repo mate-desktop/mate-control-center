@@ -293,6 +293,7 @@ capplets/network/Makefile
 capplets/time-admin/Makefile
 capplets/time-admin/src/Makefile
 capplets/time-admin/data/Makefile
+capplets/panel/Makefile
 capplets/windows/Makefile
 font-viewer/Makefile
 help/Makefile
