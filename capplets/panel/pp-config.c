@@ -17,6 +17,7 @@
 #include <gio/gdesktopappinfo.h>
 
 #include "pp-config.h"
+#include "pp-monitors.h"
 #include "pp-panel.h"
 
 #define GENERAL_SCHEMA    "org.mate.panel"
@@ -275,19 +276,24 @@ orientation_name (int orientation)
 }
 
 char *
-pp_config_toplevel_label (const char *toplevel_id)
+pp_config_toplevel_label (const char *toplevel_id, GPtrArray *monitors)
 {
 	GSettings *settings = pp_config_toplevel (toplevel_id);
 	char *name = g_settings_get_string (settings, "name");
 	int orientation = g_settings_get_enum (settings, "orientation");
-	int monitor = g_settings_get_int (settings, "monitor");
+	int index = g_settings_get_int (settings, "monitor");
+	const PpMonitor *monitor = pp_monitors_lookup (monitors, index);
 	char *label;
 
-	if (name != NULL && name[0] != '\0')
+	if (name != NULL && name[0] != '\0') {
 		label = g_strdup (name);
-	else
-		label = g_strdup_printf (_("%s Panel, Monitor %d"),
-					 orientation_name (orientation), monitor + 1);
+	} else {
+		char *where = monitor != NULL ? pp_monitor_label (monitor)
+					      : g_strdup_printf (_("Monitor %d"), index + 1);
+
+		label = g_strdup_printf (_("%s Panel, %s"), orientation_name (orientation), where);
+		g_free (where);
+	}
 
 	g_free (name);
 	g_object_unref (settings);
@@ -295,13 +301,13 @@ pp_config_toplevel_label (const char *toplevel_id)
 }
 
 char *
-pp_config_toplevel_create (GdkDisplay *display)
+pp_config_toplevel_create (GPtrArray *monitors)
 {
 	static const int order[] = { ORIENT_TOP, ORIENT_BOTTOM, ORIENT_RIGHT, ORIENT_LEFT };
 	char **all = get_list ("toplevel-id-list");
 	GPtrArray *items = g_ptr_array_new ();
 	GSettings *settings;
-	int n_monitors = display != NULL ? MAX (1, gdk_display_get_n_monitors (display)) : 1;
+	int n_monitors = monitors != NULL ? MAX (1, (int) monitors->len) : 1;
 	int *filled = g_new0 (int, n_monitors);
 	int monitor = 0;
 	int orientation = ORIENT_TOP;
@@ -343,7 +349,12 @@ pp_config_toplevel_create (GdkDisplay *display)
 	settings = pp_config_toplevel (id);
 	g_settings_set_int (settings, "screen", 0);
 	if (found) {
-		g_settings_set_int (settings, "monitor", monitor);
+		const PpMonitor *chosen = pp_monitors_lookup (monitors, monitor);
+
+		if (chosen != NULL)
+			pp_monitors_assign (settings, chosen);
+		else
+			g_settings_set_int (settings, "monitor", monitor);
 		g_settings_set_enum (settings, "orientation", orientation);
 	}
 	g_settings_sync ();

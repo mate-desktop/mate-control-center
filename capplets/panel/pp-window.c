@@ -11,9 +11,12 @@
 
 #include <config.h>
 
+#include <stdlib.h>
+
 #include <glib/gi18n.h>
 
 #include "pp-config.h"
+#include "pp-monitors.h"
 #include "pp-panel.h"
 #include "pp-window.h"
 
@@ -59,8 +62,14 @@ typedef struct {
 	guint      watch_id;
 	GPtrArray *watchers;
 
+	GPtrArray       *monitors;
+	GDBusConnection *bus;
+	guint            monitors_signal;
+
 	GtkWidget *orientation_combo;
 	GtkWidget *orientation_label;
+	GtkWidget *monitor_combo;
+	GtkWidget *monitor_label;
 	GtkWidget *size_spin;
 	GtkWidget *arrows_toggle;
 	GtkWidget *color_widgets;
@@ -177,28 +186,20 @@ indented (GtkWidget *child)
 static void
 update_size_range (PpWindow *pw)
 {
-	GdkDisplay *display = gdk_display_get_default ();
-	int monitor_index;
+	const PpMonitor *monitor;
 	int orientation;
-	int n;
 	int max;
-	GdkMonitor *monitor;
-	GdkRectangle geometry;
 
-	if (pw->size_spin == NULL || display == NULL)
+	if (pw->size_spin == NULL || pw->monitors == NULL || pw->monitors->len == 0)
 		return;
 
-	monitor_index = g_settings_get_int (pw->toplevel, "monitor");
 	orientation = g_settings_get_enum (pw->toplevel, "orientation");
-	n = gdk_display_get_n_monitors (display);
-	monitor = n > 0 ? gdk_display_get_monitor (display, CLAMP (monitor_index, 0, n - 1)) : NULL;
+	monitor = pp_monitors_lookup (pw->monitors, g_settings_get_int (pw->toplevel, "monitor"));
 	if (monitor == NULL)
-		monitor = gdk_display_get_primary_monitor (display);
-	if (monitor == NULL)
-		return;
+		monitor = pw->monitors->pdata[0];
 
-	gdk_monitor_get_geometry (monitor, &geometry);
-	max = (orientation == 1 || orientation == 4 ? geometry.height : geometry.width) / MAX_SIZE_RATIO;
+	max = (orientation == 1 || orientation == 4 ? monitor->geometry.height
+						    : monitor->geometry.width) / MAX_SIZE_RATIO;
 	max = MAX (max, g_settings_get_int (pw->toplevel, "size"));
 	gtk_spin_button_set_range (GTK_SPIN_BUTTON (pw->size_spin), MIN_PANEL_SIZE, MAX (max, MIN_PANEL_SIZE));
 }
@@ -214,10 +215,107 @@ update_orientation_sensitivity (PpWindow *pw)
 }
 
 static void
+fill_monitor_combo (PpWindow *pw)
+{
+	int current;
+	gboolean found = FALSE;
+	char *active;
+	guint i;
+
+	if (pw->monitor_combo == NULL || pw->monitors == NULL)
+		return;
+
+	current = g_settings_get_int (pw->toplevel, "monitor");
+	active = g_strdup_printf ("%d", current);
+
+	pw->updating = TRUE;
+	gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (pw->monitor_combo));
+	for (i = 0; i < pw->monitors->len; i++) {
+		const PpMonitor *monitor = pw->monitors->pdata[i];
+		char *id = g_strdup_printf ("%d", monitor->index);
+		char *label = pp_monitor_label (monitor);
+
+		gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (pw->monitor_combo), id, label);
+		found = found || monitor->index == current;
+		g_free (id);
+		g_free (label);
+	}
+	if (!found) {
+		char *label = g_strdup_printf (_("Monitor %d (not connected)"), current + 1);
+
+		gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (pw->monitor_combo), active, label);
+		g_free (label);
+	}
+	gtk_combo_box_set_active_id (GTK_COMBO_BOX (pw->monitor_combo), active);
+	pw->updating = FALSE;
+
+	gtk_widget_set_sensitive (pw->monitor_combo,
+				  (pw->monitors->len > 1 || !found) &&
+				  g_settings_is_writable (pw->toplevel, "monitor"));
+	gtk_widget_set_sensitive (pw->monitor_label, gtk_widget_get_sensitive (pw->monitor_combo));
+	g_free (active);
+}
+
+static void
+monitor_combo_changed_cb (GtkComboBox *combo, PpWindow *pw)
+{
+	const char *active = gtk_combo_box_get_active_id (combo);
+	const PpMonitor *monitor;
+
+	if (pw->updating || active == NULL)
+		return;
+
+	monitor = pp_monitors_lookup (pw->monitors, atoi (active));
+	if (monitor != NULL && monitor->index != g_settings_get_int (pw->toplevel, "monitor"))
+		pp_monitors_assign (pw->toplevel, monitor);
+}
+
+static gboolean
+same_monitors (GPtrArray *a, GPtrArray *b)
+{
+	guint i;
+
+	if (a == NULL || b == NULL || a->len != b->len)
+		return FALSE;
+	for (i = 0; i < a->len; i++) {
+		const PpMonitor *x = a->pdata[i];
+		const PpMonitor *y = b->pdata[i];
+
+		if (x->index != y->index || x->primary != y->primary ||
+		    g_strcmp0 (x->id, y->id) != 0 || g_strcmp0 (x->connector, y->connector) != 0 ||
+		    g_strcmp0 (x->name, y->name) != 0 ||
+		    !gdk_rectangle_equal (&x->geometry, &y->geometry))
+			return FALSE;
+	}
+	return TRUE;
+}
+
+static void
+refresh_monitors (PpWindow *pw)
+{
+	GPtrArray *monitors = pp_monitors_new (gtk_widget_get_display (pw->window));
+
+	if (same_monitors (pw->monitors, monitors)) {
+		g_ptr_array_unref (monitors);
+		return;
+	}
+
+	if (pw->monitors != NULL)
+		g_ptr_array_unref (pw->monitors);
+	pw->monitors = monitors;
+	update_size_range (pw);
+	fill_monitor_combo (pw);
+	rebuild_combo (pw, pw->toplevel_id);
+}
+
+static void
 toplevel_changed_cb (GSettings *settings, const char *key, PpWindow *pw)
 {
 	if (g_strcmp0 (key, "expand") == 0)
 		update_orientation_sensitivity (pw);
+
+	if (g_strcmp0 (key, "monitor") == 0)
+		fill_monitor_combo (pw);
 
 	if (g_strcmp0 (key, "orientation") == 0 || g_strcmp0 (key, "monitor") == 0)
 		update_size_range (pw);
@@ -260,12 +358,20 @@ build_general (PpWindow *pw)
 	gtk_grid_attach (GTK_GRID (grid), pw->orientation_label, 0, 0, 1, 1);
 	gtk_grid_attach (GTK_GRID (grid), combo, 1, 0, 2, 1);
 
+	pw->monitor_combo = named (gtk_combo_box_text_new (), "monitor-combo");
+	gtk_widget_set_hexpand (pw->monitor_combo, TRUE);
+	pw->monitor_label = make_label (_("_Monitor:"), pw->monitor_combo);
+	gtk_grid_attach (GTK_GRID (grid), pw->monitor_label, 0, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), pw->monitor_combo, 1, 1, 2, 1);
+	fill_monitor_combo (pw);
+	g_signal_connect (pw->monitor_combo, "changed", G_CALLBACK (monitor_combo_changed_cb), pw);
+
 	spin = named (gtk_spin_button_new_with_range (MIN_PANEL_SIZE, 256, 1), "size-spin");
 	pw->size_spin = spin;
 	update_size_range (pw);
-	gtk_grid_attach (GTK_GRID (grid), make_label (_("_Size:"), spin), 0, 1, 1, 1);
-	gtk_grid_attach (GTK_GRID (grid), spin, 1, 1, 1, 1);
-	gtk_grid_attach (GTK_GRID (grid), make_label (_("pixels"), NULL), 2, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), make_label (_("_Size:"), spin), 0, 2, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), spin, 1, 2, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), make_label (_("pixels"), NULL), 2, 2, 1, 1);
 	gtk_box_pack_start (GTK_BOX (box), grid, FALSE, FALSE, 0);
 
 	expand = named (gtk_check_button_new_with_mnemonic (_("E_xpand")), "expand-toggle");
@@ -678,6 +784,7 @@ refresh_timeout_cb (gpointer data)
 	PpWindow *pw = data;
 
 	pw->refresh_source = 0;
+	refresh_monitors (pw);
 	refresh_objects (pw);
 
 	return G_SOURCE_REMOVE;
@@ -954,6 +1061,8 @@ rebuild_pages (PpWindow *pw)
 {
 	clear_current (pw);
 	pw->orientation_combo = NULL;
+	pw->monitor_combo = NULL;
+	pw->monitor_label = NULL;
 	pw->size_spin = NULL;
 	pw->store = NULL;
 	pw->tree = NULL;
@@ -1009,7 +1118,7 @@ rebuild_combo (PpWindow *pw, const char *select)
 	pw->updating = TRUE;
 	gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (pw->combo));
 	for (i = 0; ids[i] != NULL; i++) {
-		char *label = pp_config_toplevel_label (ids[i]);
+		char *label = pp_config_toplevel_label (ids[i], pw->monitors);
 		int n = GPOINTER_TO_INT (g_hash_table_lookup (seen, label)) + 1;
 
 		g_hash_table_replace (seen, g_strdup (label), GINT_TO_POINTER (n));
@@ -1059,7 +1168,7 @@ panel_list_changed_cb (GSettings *settings, const char *key, PpWindow *pw)
 static void
 add_panel_clicked_cb (GtkButton *button, PpWindow *pw)
 {
-	char *id = pp_config_toplevel_create (gtk_widget_get_display (pw->window));
+	char *id = pp_config_toplevel_create (pw->monitors);
 
 	rebuild_combo (pw, id);
 	g_free (id);
@@ -1166,12 +1275,37 @@ panel_vanished_cb (GDBusConnection *connection, const char *name, gpointer data)
 }
 
 static void
+monitors_changed_cb (GDBusConnection *connection,
+		     const char      *sender,
+		     const char      *object_path,
+		     const char      *interface,
+		     const char      *signal,
+		     GVariant        *parameters,
+		     gpointer         data)
+{
+	schedule_refresh (data, 50);
+}
+
+static void
+display_monitors_changed_cb (GdkDisplay *display, GdkMonitor *monitor, PpWindow *pw)
+{
+	schedule_refresh (pw, LIST_DELAY_MS);
+}
+
+static void
 window_destroy_cb (GtkWidget *widget, PpWindow *pw)
 {
 	if (pw->refresh_source != 0)
 		g_source_remove (pw->refresh_source);
 	if (pw->watch_id != 0)
 		g_bus_unwatch_name (pw->watch_id);
+	if (pw->bus != NULL) {
+		g_dbus_connection_signal_unsubscribe (pw->bus, pw->monitors_signal);
+		g_object_unref (pw->bus);
+	}
+	g_signal_handlers_disconnect_by_data (gtk_widget_get_display (pw->window), pw);
+	if (pw->monitors != NULL)
+		g_ptr_array_unref (pw->monitors);
 
 	g_signal_handlers_disconnect_by_data (pw->general, pw);
 	clear_current (pw);
@@ -1277,6 +1411,19 @@ pp_window_new (GtkApplication *application)
 
 	pw->watch_id = g_bus_watch_name (G_BUS_TYPE_SESSION, PP_PANEL_BUS_NAME, G_BUS_NAME_WATCHER_FLAGS_NONE,
 					 panel_appeared_cb, panel_vanished_cb, pw, NULL);
+
+	pw->monitors = pp_monitors_new (gtk_widget_get_display (pw->window));
+	pw->bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+	if (pw->bus != NULL)
+		pw->monitors_signal = g_dbus_connection_signal_subscribe (pw->bus, PP_PANEL_BUS_NAME,
+									  "org.mate.Panel.Shell", "MonitorsChanged",
+									  "/org/mate/panel/Shell", NULL,
+									  G_DBUS_SIGNAL_FLAGS_NONE,
+									  monitors_changed_cb, pw, NULL);
+	g_signal_connect (gtk_widget_get_display (pw->window), "monitor-added",
+			  G_CALLBACK (display_monitors_changed_cb), pw);
+	g_signal_connect (gtk_widget_get_display (pw->window), "monitor-removed",
+			  G_CALLBACK (display_monitors_changed_cb), pw);
 
 	pw->locked_down = g_settings_get_boolean (pw->general, "locked-down");
 	rebuild_combo (pw, NULL);

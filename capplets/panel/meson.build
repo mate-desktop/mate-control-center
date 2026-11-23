@@ -12,6 +12,7 @@ i18n.merge_file(
 sources = files(
   'mate-panel-properties.c',
   'pp-config.c',
+  'pp-monitors.c',
   'pp-panel.c',
   'pp-window.c'
 )
@@ -25,3 +26,11 @@ executable(
   install : true,
   install_dir : get_option('bindir')
 )
+
+test('panel-monitors', executable(
+  'test-panel-monitors',
+  sources : files('test-panel-monitors.c', 'pp-config.c', 'pp-monitors.c', 'pp-panel.c', 'pp-window.c'),
+  include_directories: config_inc,
+  dependencies : [common_deps, libcommon_dep],
+  c_args : cflags,
+))

@@ -28,6 +28,7 @@ gboolean   pp_panel_add_to_panel    (const char  *toplevel_id,
                                      GError     **error);
 gboolean   pp_panel_show_properties (const char  *object_id,
                                      GError     **error);
+GVariant  *pp_panel_get_monitors    (GError     **error);
 
 G_END_DECLS
 

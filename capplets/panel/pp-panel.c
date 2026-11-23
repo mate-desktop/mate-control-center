@@ -157,3 +157,9 @@ pp_panel_show_properties (const char *object_id, GError **error)
 
 	return shown;
 }
+
+GVariant *
+pp_panel_get_monitors (GError **error)
+{
+	return call_shell ("GetMonitors", NULL, G_VARIANT_TYPE ("(a(isss(iiii)b))"), error);
+}

@@ -46,9 +46,10 @@ GSettings  *pp_config_object             (const char *object_id);
 
 char      **pp_config_toplevel_ids       (void);
 char      **pp_config_object_ids         (void);
-char       *pp_config_toplevel_label     (const char *toplevel_id);
+char       *pp_config_toplevel_label     (const char *toplevel_id,
+                                          GPtrArray  *monitors);
 
-char       *pp_config_toplevel_create    (GdkDisplay *display);
+char       *pp_config_toplevel_create    (GPtrArray  *monitors);
 gboolean    pp_config_toplevel_delete    (const char *toplevel_id);
 void        pp_config_reset_all          (void);
 

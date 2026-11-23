@@ -9,6 +9,24 @@ mate_panel_properties_SOURCES = \
 	mate-panel-properties.c \
 	pp-config.c \
 	pp-config.h \
+	pp-monitors.c \
+	pp-monitors.h \
+	pp-panel.c \
+	pp-panel.h \
+	pp-window.c \
+	pp-window.h
+
+check_PROGRAMS = test-panel-monitors
+TESTS = test-panel-monitors
+
+test_panel_monitors_LDADD = $(MATECC_CAPPLETS_LIBS)
+
+test_panel_monitors_SOURCES = \
+	test-panel-monitors.c \
+	pp-config.c \
+	pp-config.h \
+	pp-monitors.c \
+	pp-monitors.h \
 	pp-panel.c \
 	pp-panel.h \
 	pp-window.c \
