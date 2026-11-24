@@ -23,7 +23,6 @@
 #include "time-map.h"
 
 #define  LOCKFILE               "/tmp/time-admin.pid"
-#define  TIME_ADMIN_PERMISSION  "org.freedesktop.timedate1.set-time"
 
 static char *translate(const char *value)
 {
@@ -95,27 +94,8 @@ static void CloseWindow (GtkButton *button,gpointer data)
     QuitApp(ta);
 }
 
-static void UpdatePermission(TimeAdmin *ta)
-{
-    gboolean is_authorized;
-
-    is_authorized = g_permission_get_allowed (G_PERMISSION (ta->Permission));
-    gtk_widget_set_sensitive(ta->TimeZoneButton, is_authorized);
-    gtk_widget_set_sensitive(ta->NtpSyncSwitch,  is_authorized);
-    gtk_widget_set_sensitive(ta->SaveButton,     is_authorized && !ta->NtpState);
-}
-
-static void on_permission_changed (GPermission *permission,
-                                   GParamSpec  *pspec,
-                                   gpointer     data)
-{
-    TimeAdmin *ua = (TimeAdmin *)data;
-    UpdatePermission(ua);
-}
-
 static void InitMainWindow(TimeAdmin *ta)
 {
-    GError     *error = NULL;
     GtkBuilder *builder;
 
     builder = gtk_builder_new_from_resource ("/org/mate/mcc/ta/time-admin.ui");
@@ -145,18 +125,10 @@ static void InitMainWindow(TimeAdmin *ta)
     /* Make sure that every window gets an icon */
     gtk_window_set_default_icon_name ("preferences-system-time");
 
-    ta->Permission = polkit_permission_new_sync (TIME_ADMIN_PERMISSION, NULL, NULL, &error);
-    if (ta->Permission == NULL)
-    {
-        g_warning ("Failed to acquire %s: %s", TIME_ADMIN_PERMISSION, error->message);
-        g_error_free (error);
-    }
-    gtk_lock_button_set_permission(GTK_LOCK_BUTTON (ta->ButtonLock),ta->Permission);
-    g_signal_connect(ta->Permission, "notify", G_CALLBACK (on_permission_changed), ta);
-
     /* NTP sync switch */
     ta->NtpState = GetNtpState(ta);
     gtk_switch_set_state (GTK_SWITCH(ta->NtpSyncSwitch), ta->NtpState);
+    gtk_widget_set_sensitive (ta->SaveButton, !ta->NtpState);
 
     /* Time zone */
     SetupTimezoneDialog(ta);
@@ -299,7 +271,6 @@ int main(int argc, char **argv)
     /* Create the main window */
     InitMainWindow(&ta);
 
-    UpdatePermission(&ta);
     gtk_widget_show_all(ta.MainWindow);
     gtk_main();
 
