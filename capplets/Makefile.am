@@ -8,6 +8,7 @@ SUBDIRS = \
 	keybindings \
 	mouse \
 	network \
+	panel \
 	windows \
 	about-me \
 	system-info
@@ -25,6 +26,7 @@ DIST_SUBDIRS = \
 	keyboard \
 	mouse \
 	network \
+	panel \
 	time-admin \
 	windows \
 	display \
