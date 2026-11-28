@@ -126,6 +126,7 @@ drw_break_window_init (DrwBreakWindow *window)
 	gint                   right_padding;
 	gint                   bottom_padding;
 	gint                   scale;
+	gint                   screen_width, screen_height;
 	GSettings             *settings;
 
 	priv = drw_break_window_get_instance_private (window);
@@ -148,16 +149,15 @@ drw_break_window_init (DrwBreakWindow *window)
 
 	gdk_monitor_get_geometry (gdk_display_get_monitor (display, root_monitor), &monitor);
 
-	gtk_window_set_default_size (GTK_WINDOW (window),
-				     WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale,
-				     HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale);
+	drw_get_screen_size (screen, scale, &screen_width, &screen_height);
+	gtk_window_set_default_size (GTK_WINDOW (window), screen_width, screen_height);
 
 	gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
 	gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 	drw_setup_background (GTK_WIDGET (window));
 
-	right_padding = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale - monitor.width - monitor.x;
-	bottom_padding = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / scale - monitor.height - monitor.y;
+	right_padding = screen_width - monitor.width - monitor.x;
+	bottom_padding = screen_height - monitor.height - monitor.y;
 
 	outer_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_set_hexpand (outer_vbox, TRUE);

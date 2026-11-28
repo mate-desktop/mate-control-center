@@ -24,6 +24,7 @@
 #include <gtk/gtk.h>
 
 void drw_setup_background (GtkWidget *window);
+void drw_get_screen_size  (GdkScreen *screen, gint scale, gint *width, gint *height);
 
 
 #endif /* __DRW_UTILS_H__ */
